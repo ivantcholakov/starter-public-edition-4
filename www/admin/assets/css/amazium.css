@@ -1,0 +1,107 @@
+/* 
+* Amazium V1.0.0
+* Copyright 2011, Mike Ballan
+* www.amazium.co.uk
+*/
+
+
+/* Standard 960px ----------- */
+
+	.grid_1								{ width:48px; }
+	.grid_2 							{ width:128px; }
+	.grid_3 							{ width:208px; }
+	.grid_4 							{ width:288px; }
+	.grid_5 							{ width:368px; }		
+	.grid_6 							{ width:448px; }
+	.grid_7 							{ width:528px; }
+	.grid_8 							{ width:608px; }
+	.grid_9								{ width:688px; }
+	.grid_10							{ width:768px; }
+	.grid_11							{ width:848px; }
+	.grid_12							{ width:928px; }
+	
+	.column 							{ margin:0 16px 0 16px; overflow:hidden; float:left; display:inline; }
+	.row 								{ margin:0 auto; width:960px; overflow:hidden; }
+	.row .row 							{ margin:0 -16px 0 -16px; width:auto; display:inline-block; }
+
+/***** iPad Smaller than 959px *****/
+
+	@media only screen and (min-width: 768px) and (max-width: 959px) {
+		
+	.grid_1								{ width:36px; }
+	.grid_2 							{ width:100px; }
+	.grid_3 							{ width:164px; }
+	.grid_4 							{ width:228px; }
+	.grid_5 							{ width:292px; }		
+	.grid_6 							{ width:356px; }
+	.grid_7 							{ width:420px; }
+	.grid_8 							{ width:484px; }
+	.grid_9								{ width:548px; }
+	.grid_10							{ width:612px; }
+	.grid_11							{ width:676px; }
+	.grid_12							{ width:740px; }
+	
+	.column 							{ margin:0 14px 0 14px; overflow:hidden; float:left; display:inline; }
+	.row 								{ margin:0 auto; width:768px; overflow:hidden; }
+	.row .row 							{ margin:0 -14px 0 -14px; width:auto; display:inline-block; }
+
+}
+
+/* iPhone (landscape) ----------- */
+@media only screen and (max-width: 767px) {
+		
+	.grid_1,
+	.grid_2,
+	.grid_3,
+	.grid_4,
+	.grid_5,
+	.grid_6,
+	.grid_7,
+	.grid_8,
+	.grid_9,
+	.grid_10,
+	.grid_11,
+	.grid_12							{ width:300px; }
+	
+	.column 							{ margin:10px 0 0 0; overflow:hidden; float:left; display:inline; }
+	.row 								{ margin:0 auto; width:300px; overflow:hidden; }
+	.row .row 							{ margin:0; width:auto; display:inline-block; }
+				
+}	 
+
+/* iPhone (portrait) ----------- */	
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	
+	.grid_1,
+	.grid_2,
+	.grid_3,
+	.grid_4,
+	.grid_5,
+	.grid_6,
+	.grid_7,
+	.grid_8,
+	.grid_9,
+	.grid_10,
+	.grid_11,
+	.grid_12							{ width:456px; }
+	
+	.column 							{ margin:10px 0 0 0; overflow:hidden; float:left; display:inline; }
+	.row 								{ margin:0 auto; width:456px; overflow:hidden; }
+	.row .row 							{ margin:0; width:auto; display:inline-block; }
+	
+}
+	 
+/* Clean up on isle 6 ----------- */	
+
+	.container:after 					{ content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; } 
+	
+	.clearfix:before,
+	.clearfix:after,
+	.row:before,
+	.row:after 							{ content:'\0020'; display:block; overflow:hidden; visibility:hidden; width:0; height:0; }
+	
+	.row:after,	.clearfix:after 		{ clear:both; }
+	.row, 
+	.clearfix 							{ zoom:1; }
+	.clear 								{ clear:both; display:block; overflow:hidden; visibility:hidden; width:0; height:0;	}
+	
