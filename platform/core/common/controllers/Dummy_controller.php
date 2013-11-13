@@ -7,7 +7,9 @@ class Dummy_controller extends Core_Controller {
     public function __construct() {
 
         if (NORMAL_MVC_EXECUTION) {
-            die('Access to this script (the dummy controller) is not allowed on normal core initialization.');
+
+            echo 'Access to the dummy controller is not allowed on normal MVC execution.';
+            exit(EXIT_ERROR);
         }
 
         parent::__construct();
