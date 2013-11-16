@@ -5,7 +5,7 @@
  * @license The MIT License, http://opensource.org/licenses/MIT for my modifications.
  */
 
-class Core_Config extends CI_Config {
+class Core_Config extends MX_Config {
 
     /**
      * Class constructor
