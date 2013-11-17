@@ -6,8 +6,13 @@ class Base_Controller extends Core_Controller {
 
         parent::__construct();
 
+        $this->load->helper('language');
         $this->load->helper('url');
         $this->load->library('template');
+
+        $this->language = config_item('language');
+
+        $this->template->set('language', $this->language);
 
         //$default_title = config_item('default_title');
         $default_title = 'Application Starter 4 Public Edition';

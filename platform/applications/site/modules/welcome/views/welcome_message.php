@@ -18,6 +18,33 @@
 
         <p><?php echo $diagnostics; ?></p>
 
+        <h2>Internationalization Test</h2>
+
+        <p>
+            Language switcher:
+
+<?php
+        foreach ($language_switcher as $key => $item) {
+
+            if (!empty($item['active'])) {
+?>
+
+            <big><?php echo $item['link']; ?></big>
+<?php
+            } else {
+?>
+
+            <?php echo $item['link']; ?>
+
+<?php
+            }
+        }
+?>
+
+        </p>
+
+        <p>A translated text: <strong><?php echo lang('welcome.hello'); ?></strong></p>
+
     </div>
 
     <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>

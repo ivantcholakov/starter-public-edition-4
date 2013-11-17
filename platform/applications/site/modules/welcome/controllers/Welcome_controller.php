@@ -5,6 +5,8 @@ class Welcome_controller extends Base_Controller {
     public function __construct() {
 
         parent::__construct();
+
+        $this->lang->load('welcome');
     }
 
     public function index() {
@@ -47,8 +49,27 @@ class Welcome_controller extends Base_Controller {
 
         $diagnostics = implode('<br />', $diagnostics);
 
+        $language_switcher = array(
+            array(
+                'link' => anchor($this->lang->switch_uri('en'), 'English'),
+                'language' => 'english',
+            ),
+            array(
+                'link' => anchor($this->lang->switch_uri('bg'), 'Bulgarian'),
+                'language' => 'bulgarian',
+            ),
+        );
+
+        foreach ($language_switcher as $key => $item) {
+
+            if ($this->language == $item['language']) {
+                $language_switcher[$key]['active'] = true;
+            }
+        }
+
         $this->template
             ->set('diagnostics', $diagnostics)
+            ->set('language_switcher', $language_switcher)
             ->build('welcome_message');
     }
 
