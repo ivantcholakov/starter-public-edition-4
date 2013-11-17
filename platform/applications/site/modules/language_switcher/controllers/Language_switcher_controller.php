@@ -9,7 +9,10 @@ class Language_switcher_controller extends Core_Controller {
         $this->language = config_item('language');
     }
 
-    public function _remap() { }
+    public function _remap() {
+
+        show_404();
+    }
 
     public function index() {
 
