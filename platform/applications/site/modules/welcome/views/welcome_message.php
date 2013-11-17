@@ -24,21 +24,9 @@
             Language switcher:
 
 <?php
-        foreach ($language_switcher as $key => $item) {
 
-            if (!empty($item['active'])) {
-?>
+echo Modules::run('language_switcher/index');
 
-            <big><?php echo $item['link']; ?></big>
-<?php
-            } else {
-?>
-
-            <?php echo $item['link']; ?>
-
-<?php
-            }
-        }
 ?>
 
         </p>
