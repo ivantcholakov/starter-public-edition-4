@@ -48,13 +48,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
  * ------------------------------------------------------
- *  Load the global functions
- * ------------------------------------------------------
- */
-	require_once(BASEPATH.'core/Common.php');
-
-/*
- * ------------------------------------------------------
  *  Load the framework constants
  * ------------------------------------------------------
  */
@@ -62,10 +55,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	{
 		require(APPPATH.'config/'.ENVIRONMENT.'/constants.php');
 	}
-	else
-	{
-		require(APPPATH.'config/constants.php');
-	}
+
+	require(APPPATH.'config/constants.php');
+
+/*
+ * ------------------------------------------------------
+ *  Load the global functions
+ * ------------------------------------------------------
+ */
+	require_once(BASEPATH.'core/Common.php');
 
 /*
  * ------------------------------------------------------

@@ -19,7 +19,8 @@ define('IS_PHP_5_3', version_compare(PHP_VERSION, '5.3.0', '>='));
 define('IS_PHP_5_4', version_compare(PHP_VERSION, '5.4.0', '>='));
 define('IS_PHP_5_5', version_compare(PHP_VERSION, '5.5.0', '>='));
 define('IS_WINDOWS_OS', strtolower(substr(php_uname('s'), 0, 3 )) == 'win');
-define('IS_CLI_REQUEST', (PHP_SAPI == 'cli') or defined('STDIN'));
+define('IS_CLI', (PHP_SAPI == 'cli') or defined('STDIN'));
+define('IS_CLI_REQUEST', IS_CLI);   // Deprecated, use IS_CLI instead.
 define('IS_AJAX_REQUEST', isset($_SERVER['HTTP_X_REQUESTED_WITH'])
     && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
 
@@ -235,7 +236,7 @@ if (WRITABLEPATH == '' || WRITABLEPATH == '/' || !is_dir(WRITABLEPATH)) {
  */
 
 // Set the current directory correctly for CLI requests
-if (IS_CLI_REQUEST) {
+if (IS_CLI) {
     chdir(dirname(FCPATH));
 }
 

@@ -75,9 +75,17 @@ class Core_Exceptions extends CI_Exceptions {
      */
     public function show_error($heading, $message, $template = 'error_general', $status_code = 500)
     {
-        set_status_header($status_code);
-
-        $message = '<p>'.implode('</p><p>', is_array($message) ? $message : array($message)).'</p>';
+        if (is_cli())
+        {
+            $message = "\t".(is_array($message) ? implode("\n\t", $message) : $message);
+            $template = 'cli'.DIRECTORY_SEPARATOR.$template;
+        }
+        else
+        {
+            set_status_header($status_code);
+            $message = '<p>'.(is_array($message) ? implode('</p><p>', $message) : $message).'</p>';
+            $template = 'html'.DIRECTORY_SEPARATOR.$template;
+        }
 
         if (ob_get_level() > $this->ob_level + 1)
         {
@@ -85,14 +93,14 @@ class Core_Exceptions extends CI_Exceptions {
         }
         ob_start();
         // Modified by Ivan Tcholakov, 10-OCT-2013.
-        //include(VIEWPATH.'errors/'.$template.'.php');
-        if (file_exists(VIEWPATH.'errors/'.$template.'.php'))
+        //include(VIEWPATH.'errors'.DIRECTORY_SEPARATOR.$template.'.php');
+        if (file_exists(VIEWPATH.'errors'.DIRECTORY_SEPARATOR.$template.'.php'))
         {
-            include VIEWPATH.'errors/'.$template.'.php';
+            include VIEWPATH.'errors'.DIRECTORY_SEPARATOR.$template.'.php';
         }
         else
         {
-            include COMMONPATH.'views/errors/'.$template.'.php';
+            include COMMONPATH.'views'.DIRECTORY_SEPARATOR.'errors'.DIRECTORY_SEPARATOR.$template.'.php';
         }
         //
         $buffer = ob_get_contents();
@@ -114,13 +122,22 @@ class Core_Exceptions extends CI_Exceptions {
     public function show_php_error($severity, $message, $filepath, $line)
     {
         $severity = isset($this->levels[$severity]) ? $this->levels[$severity] : $severity;
-        $filepath = str_replace('\\', '/', $filepath);
 
-        // For safety reasons we do not show the full file path
-        if (FALSE !== strpos($filepath, '/'))
+        // For safety reasons we don't show the full file path in non-CLI requests
+        if ( ! is_cli())
         {
-            $x = explode('/', $filepath);
-            $filepath = $x[count($x)-2].'/'.end($x);
+            $filepath = str_replace('\\', '/', $filepath);
+            if (FALSE !== strpos($filepath, '/'))
+            {
+                $x = explode('/', $filepath);
+                $filepath = $x[count($x)-2].'/'.end($x);
+            }
+
+            $template = 'html'.DIRECTORY_SEPARATOR.'error_php';
+        }
+        else
+        {
+            $template = 'cli'.DIRECTORY_SEPARATOR.'error_php';
         }
 
         if (ob_get_level() > $this->ob_level + 1)
@@ -132,11 +149,11 @@ class Core_Exceptions extends CI_Exceptions {
         //include(VIEWPATH.'errors/error_php.php');
         if (file_exists(VIEWPATH.'errors/error_php.php'))
         {
-            include VIEWPATH.'errors/error_php.php';
+            include VIEWPATH.'errors'.DIRECTORY_SEPARATOR.$template.'.php';
         }
         else
         {
-            include COMMONPATH.'views/errors/error_php.php';
+            include COMMONPATH.'views'.DIRECTORY_SEPARATOR.'errors'.DIRECTORY_SEPARATOR.$template.'.php';
         }
         //
         $buffer = ob_get_contents();

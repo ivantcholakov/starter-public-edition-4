@@ -320,7 +320,7 @@ $config['sess_time_to_update']  = 300;
 |
 */
 $config['cookie_prefix']    = '';
-$config['cookie_domain']    = (IS_CLI_REQUEST || $_SERVER['SERVER_NAME'] == 'localhost') ? '' : $_SERVER['SERVER_NAME'];
+$config['cookie_domain']    = (IS_CLI || $_SERVER['SERVER_NAME'] == 'localhost') ? '' : $_SERVER['SERVER_NAME'];
 $config['cookie_path']      = $DETECT_URL['base_uri'];
 $config['cookie_secure']    = FALSE;
 $config['cookie_httponly']  = FALSE;

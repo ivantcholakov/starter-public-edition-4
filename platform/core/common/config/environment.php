@@ -29,7 +29,7 @@ ini_set('max_input_time', 60);
 
 ini_set('auto_detect_line_endings', true);
 
-if (IS_CLI_REQUEST) {
+if (IS_CLI) {
 
     ini_set('html_errors', 0);
     ini_set('error_prepend_string', '');
