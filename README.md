@@ -27,7 +27,7 @@ After such a rearangement open the file config.php (www/config.php before rearra
 Don't forget to check platform/writable folder, it should be writable.
 
 Have a look at the files .htaccess and robots.txt and adjust them for your site.
-Within the folder platform/applications you will by default two applications - "site" and "admin".
+Within the folder platform/applications you will by default two applications - "site_example" and "admin_example".
 Have a look at their configuration files. Also, The common PHP configuration files you may find at platform/core/common/config/ folder.
 
 The platform auto-detects its base URL address nevertheless its public part is on the document root of the web-server or not.
