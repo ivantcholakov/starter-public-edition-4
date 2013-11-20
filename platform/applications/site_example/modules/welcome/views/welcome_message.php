@@ -11,7 +11,7 @@
         </p>
 
         <p>
-            Here you can start developing the administration part of your site: <a href="<?php echo base_url('admin'); ?>"><?php echo base_url('admin'); ?></a>
+            Here you can start developing the administration part of your site: <a href="<?php echo base_url('admin-example'); ?>"><?php echo base_url('admin-example'); ?></a>
         </p>
 
         <h2>Self-Diagnostics</h2>

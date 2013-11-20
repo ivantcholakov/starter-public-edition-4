@@ -2,7 +2,7 @@
 
 $PLATFORMPATH = dirname(__FILE__).'/../platform';
 
-$DEFAULTAPPNAME = 'site';
+$DEFAULTAPPNAME = 'site_example';
 $DEFAULTFCPATH = dirname(__FILE__);
 
 if (!isset($APPNAME)) {
