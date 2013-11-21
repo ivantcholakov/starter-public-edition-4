@@ -281,6 +281,16 @@ class Core_Model extends CI_Model
     }
 
     /**
+     * An alias of get_by().
+     */
+    public function first()
+    {
+        $args = func_get_args();
+
+        return call_user_func_array(array($this, 'get_by'), $args);
+    }
+
+    /**
      * Fetch an array of records based on an array of primary values.
      */
     public function get_many($values)
@@ -299,6 +309,16 @@ class Core_Model extends CI_Model
         $this->_set_where($where);
 
         return $this->get_all();
+    }
+
+    /**
+     * An alias of get_many_by().
+     */
+    public function find()
+    {
+        $args = func_get_args();
+
+        return call_user_func_array(array($this, 'get_many_by'), $args);
     }
 
     /**
