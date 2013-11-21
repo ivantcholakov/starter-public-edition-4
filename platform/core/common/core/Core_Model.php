@@ -1686,7 +1686,21 @@ class Core_Model extends CI_Model
         return $this;
     }
 
-   /* --------------------------------------------------------------
+    /**
+     * A wrapper to $this->_database->table_exists()
+     */
+    public function table_exists($table_name = NULL)
+    {
+        $table_name = (string) $table_name;
+
+        if ($table_name == '') {
+            $table_name = $this->_table;
+        }
+
+        return $this->_database->table_exists($table_name);
+    }
+
+    /* --------------------------------------------------------------
      * INTERNAL METHODS
      * ------------------------------------------------------------ */
 
