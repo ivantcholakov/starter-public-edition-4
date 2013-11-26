@@ -2109,7 +2109,18 @@ class Core_Model extends CI_Model
     }
     
     /**
-     * Common module extender
+     * Common module extender.
+     *
+     * Usage example:
+     *
+     * class News extends Core_Model {
+     *     public function __construct() {
+     *         parent::__construct();
+     *         // Use this call to load an existing model in common/modules/[module]/models
+     *         // with same name as the current.
+     *         $this->common_module_loader(__CLASS__, __FILE__);
+     *     }
+     * }
      * 
      * @param type $class
      * @param type $module
@@ -2134,6 +2145,13 @@ class Core_Model extends CI_Model
             
             $newclass = ucfirst($class).'_common'; 
             $this->common_module_extender = new $newclass($params);
+
+            // Added by Ivan Tcholakov, 26-NOV-2013.
+            // Transfer parent object properties to the current one.
+            foreach (get_object_vars($this->common_module_extender) as $name => $value) {
+                $this->$name = $value;
+            }
+            //
         }
     }
     
