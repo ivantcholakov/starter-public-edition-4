@@ -2113,6 +2113,7 @@ class Core_Model extends CI_Model
      *
      * Usage example:
      *
+     * // File: platform/applications/site/models/News.php
      * class News extends Core_Model {
      *     public function __construct() {
      *         parent::__construct();
@@ -2121,7 +2122,18 @@ class Core_Model extends CI_Model
      *         $this->common_module_loader(__CLASS__, __FILE__);
      *     }
      * }
-     * 
+     *
+     * // File: platform/core/common/models/News.php
+     * class News extends Core_Model {
+     *     protected $check_for_existing_fields = true;
+     *     public $protected_attributes = array('id');
+     *     protected $_table = 'news';
+     *     protected $return_type = 'array';
+     *     public function __construct() {
+     *         parent::__construct();
+     *     }
+     * }
+     *
      * @param type $class
      * @param type $module
      * @param type $params
