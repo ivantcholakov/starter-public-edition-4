@@ -6,6 +6,8 @@ class Base_Controller extends Core_Controller {
 
         parent::__construct();
 
+        $this->load->library('settings');
+
         $this->load->helper('language');
         $this->load->helper('url');
         $this->load->library('template');
