@@ -220,7 +220,7 @@ class Core_Model extends CI_Model
             $this->_count_string = 'SELECT COUNT(1) AS ';
         }
     }
-    
+
     /* --------------------------------------------------------------
      * CRUD INTERFACE
      * ------------------------------------------------------------ */
@@ -1768,8 +1768,14 @@ class Core_Model extends CI_Model
     {
         $table_name = (string) $table_name;
 
-        if ($table_name == '') {
+        if ($table_name == '')
+        {
             $table_name = $this->_table;
+        }
+
+        if (!isset($this->_database) || !is_object($this->_database))
+        {
+            return FALSE;
         }
 
         return $this->_database->table_exists($table_name);
@@ -1810,12 +1816,12 @@ class Core_Model extends CI_Model
      */
     public function validate($data)
     {
-        if($this->skip_validation)
+        if ($this->skip_validation)
         {
             return $data;
         }
 
-        if(!empty($this->validate))
+        if (!empty($this->validate))
         {
             foreach($data as $key => $val)
             {
@@ -1824,7 +1830,7 @@ class Core_Model extends CI_Model
 
             $this->load->library('form_validation');
 
-            if(is_array($this->validate))
+            if (is_array($this->validate))
             {
                 $this->form_validation->set_rules($this->validate);
 
@@ -2061,11 +2067,13 @@ class Core_Model extends CI_Model
      */
     public function __get($myVar)
     {
-        if (isset($this->common_module_extender->$myVar)) {
+        if (isset($this->common_module_extender->$myVar))
+        {
             return $this->common_module_extender->$myVar;
         }
 
-        if (isset(CI::$APP->$myVar)) {
+        if (isset(CI::$APP->$myVar))
+        {
             return CI::$APP->$myVar;
         }
 
@@ -2080,9 +2088,12 @@ class Core_Model extends CI_Model
      */
     public function __set($myVar, $myValue = '')
     {
-        if (isset($this->common_module_extender->$myVar)) {
+        if (isset($this->common_module_extender->$myVar))
+        {
             $this->common_module_extender->$myVar = $myValue;
-        } else {
+        }
+        else
+        {
             CI::$APP->$myVar = $myValue;
         }
     }
@@ -2095,13 +2106,15 @@ class Core_Model extends CI_Model
      * @return type
      * @throws Exception
      */
-    public function __call($name, array $arguments) {
-
-        if (method_exists($this->common_module_extender, $name)) {
+    public function __call($name, array $arguments)
+    {
+        if (method_exists($this->common_module_extender, $name))
+        {
             return call_user_func_array(array($this->common_module_extender, $name), $arguments);
         }
 
-        if (method_exists(CI::$APP, $name)) {
+        if (method_exists(CI::$APP, $name))
+        {
             return call_user_func_array(array(CI::$APP, $name), $arguments);
         }
 
@@ -2114,8 +2127,10 @@ class Core_Model extends CI_Model
      * Usage example:
      *
      * // File: platform/applications/site/models/News.php
-     * class News extends Core_Model {
-     *     public function __construct() {
+     * class News extends Core_Model
+     * {
+     *     public function __construct()
+     *     {
      *         parent::__construct();
      *         // Use this call to load an existing model in common/modules/[module]/models
      *         // with same name as the current.
@@ -2124,12 +2139,14 @@ class Core_Model extends CI_Model
      * }
      *
      * // File: platform/core/common/models/News.php
-     * class News extends Core_Model {
+     * class News extends Core_Model
+     * {
      *     protected $check_for_existing_fields = true;
      *     public $protected_attributes = array('id');
      *     protected $_table = 'news';
      *     protected $return_type = 'array';
-     *     public function __construct() {
+     *     public function __construct()
+     *     {
      *         parent::__construct();
      *     }
      * }
@@ -2160,7 +2177,8 @@ class Core_Model extends CI_Model
 
             // Added by Ivan Tcholakov, 26-NOV-2013.
             // Transfer parent object properties to the current one.
-            foreach (get_object_vars($this->common_module_extender) as $name => $value) {
+            foreach (get_object_vars($this->common_module_extender) as $name => $value)
+            {
                 $this->$name = $value;
             }
             //
