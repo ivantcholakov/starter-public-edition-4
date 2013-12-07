@@ -228,6 +228,7 @@ The technique of this hack is available, but it is not mandatory.
 * cURL library for CodeIgniter, https://github.com/philsturgeon/codeigniter-curl
 * A simple Event System for CodeIgniter, https://github.com/ericbarnes/CodeIgniter-Events
 * Support for database stored settings (Settings library).
+* Textile, A Humane Web Text Generator, http://textile.thresholdstate.com/
 
 License Information
 -------------------
