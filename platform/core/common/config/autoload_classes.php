@@ -11,5 +11,9 @@
 */
 
 $autoload['classes'] = array(
+    'Markdownify' => COMMONPATH.'third_party/markdownify/markdownify.php',
+    'Markdownify_Extra' => COMMONPATH.'third_party/markdownify/markdownify_extra.php',
+    'Markdown_Parser' => COMMONPATH.'third_party/markdown/markdown.php',
+    'MarkdownExtra_Parser' => COMMONPATH.'third_party/markdown/markdown.php',
     'Textile' => COMMONPATH.'libraries/Textile.php',
 );

@@ -56,6 +56,46 @@ if (!function_exists('doctype')) {
 
 }
 
+if (!function_exists('html_to_text')) {
+
+    function html_to_text($html) {
+
+        static $parser;
+
+        if (!isset($parser)) {
+            $parser = new Markdownify_Extra();
+            $parser->keepHTML = false;
+        }
+
+        return @ $parser->parseString($html);
+    }
+
+}
+
+if (!function_exists('text_to_html')) {
+
+    function text_to_html($text) {
+
+        static $parser;
+
+        if (!isset($parser)) {
+            $parser = new MarkdownExtra_Parser();
+        }
+
+        return @ $parser->transform($text);
+    }
+
+}
+
+if (!function_exists('html_simplify')) {
+
+    function html_simplify($string) {
+
+        return text_to_html(strip_tags(text_to_html(html_to_text($string))));
+    }
+
+}
+
 
 //------------------------------------------------------------------------------
 

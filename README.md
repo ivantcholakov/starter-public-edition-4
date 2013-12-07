@@ -229,6 +229,8 @@ The technique of this hack is available, but it is not mandatory.
 * A simple Event System for CodeIgniter, https://github.com/ericbarnes/CodeIgniter-Events
 * Support for database stored settings (Settings library).
 * Textile, A Humane Web Text Generator, http://textile.thresholdstate.com/
+* Markdown Extra - A text-to-HTML conversion tool, http://michelf.com/projects/php-markdown/
+* Markdownify - A HTML-to-text conversion tool, http://milianw.de/projects/markdownify/
 
 License Information
 -------------------
