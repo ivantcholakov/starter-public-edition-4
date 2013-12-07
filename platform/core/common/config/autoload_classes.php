@@ -10,4 +10,6 @@
 | -------------------------------------------------------------------
 */
 
-$autoload['classes'] = array();
+$autoload['classes'] = array(
+    'Textile' => COMMONPATH.'libraries/Textile.php',
+);
