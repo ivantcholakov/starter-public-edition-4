@@ -231,6 +231,8 @@ The technique of this hack is available, but it is not mandatory.
 * Textile, A Humane Web Text Generator, http://textile.thresholdstate.com/
 * Markdown Extra - A text-to-HTML conversion tool, http://michelf.com/projects/php-markdown/
 * Markdownify - A HTML-to-text conversion tool, http://milianw.de/projects/markdownify/
+* PHPMailer, http://phpmailer.worxware.com/, https://github.com/Synchro/PHPMailer
+* A CodeIgniter compatible email-library powered by PHPMailer, https://github.com/ivantcholakov/codeigniter-phpmailer
 
 License Information
 -------------------
