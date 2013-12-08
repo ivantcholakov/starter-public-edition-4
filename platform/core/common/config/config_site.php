@@ -52,5 +52,5 @@ $config['cc_email'] = '';
 | Google Analytics Settings
 |--------------------------------------------------------------------------
 */
-$config['google_analytics_active'] = false;
+$config['google_analytics_enabled'] = false;
 $config['google_analytics_id'] = 'UA-XXXXX-X';  // Change UA-XXXXX-X to be your site's ID.
