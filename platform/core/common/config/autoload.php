@@ -80,6 +80,7 @@ $autoload['packages'] = array(COMMONPATH.'third_party', APPPATH.'third_party');
 
 $autoload['libraries'] = array(
     'session', // A temporary fix for extending CI_Session class.
+    'events',
 );
 
 
