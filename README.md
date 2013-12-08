@@ -236,6 +236,7 @@ The technique of this hack is available, but it is not mandatory.
 * A PHP class for transliteration, https://github.com/ivantcholakov/transliterate
 * AES (256, 192, 128) Symmetric Encryption, Compatible with OpenSSL, https://github.com/ivantcholakov/gibberish-aes-php
 * HTML Purifier, http://htmlpurifier.org/
+* Core_Lang, language translations: Support has been implemented for placeholders %s, %d, etc.
 
 License Information
 -------------------
