@@ -96,6 +96,41 @@ if (!function_exists('html_simplify')) {
 
 }
 
+if (!function_exists('nohtml')) {
+
+    function nohtml($string) {
+
+        static $purifier;
+
+        if (!isset($purifier)) {
+
+            $config = HTMLPurifier_Config::createDefault();
+
+            $config->set('Cache.SerializerPath', HTMLPURIFIER_CACHE_SERIALIZER_PATH);
+            $config->set('Core.Encoding', 'utf-8');
+            $config->set('HTML.Doctype', 'XHTML 1.0 Transitional');
+            $config->set('HTML.TidyLevel', 'light');
+            $config->set('Core.ConvertDocumentToFragment', false);
+            $config->set('Core.RemoveProcessingInstructions', true);
+            @ $config->set('HTML.Allowed', '');
+
+            $purifier = @ new HTMLPurifier($config);
+        }
+
+        return trim(@ $purifier->purify($string), " \t\n\r\0\x0B");
+    }
+
+}
+
+if (!function_exists('trim_html')) {
+
+    function trim_html($string) {
+
+        return nohtml($string) == '' ? '' : $string;
+    }
+
+}
+
 
 //------------------------------------------------------------------------------
 

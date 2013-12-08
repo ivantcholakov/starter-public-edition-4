@@ -247,6 +247,10 @@ if (isset($assign_to_config) && is_array($assign_to_config))
 $cache_path = $CFG->item('cache_path') == '' ? APPPATH.'cache/' : $CFG->item('cache_path');
 file_exists($cache_path) OR @mkdir($cache_path, DIR_WRITE_MODE, TRUE);
 
+// For HTMLPurifier, no trailing slash.
+define('HTMLPURIFIER_CACHE_SERIALIZER_PATH', WRITABLEPATH.'htmlpurifier');
+file_exists(HTMLPURIFIER_CACHE_SERIALIZER_PATH) OR @mkdir(HTMLPURIFIER_CACHE_SERIALIZER_PATH, DIR_WRITE_MODE, TRUE);
+
 
 /*
  * ------------------------------------------------------

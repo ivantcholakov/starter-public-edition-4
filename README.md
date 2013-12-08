@@ -235,6 +235,7 @@ The technique of this hack is available, but it is not mandatory.
 * A CodeIgniter compatible email-library powered by PHPMailer, https://github.com/ivantcholakov/codeigniter-phpmailer
 * A PHP class for transliteration, https://github.com/ivantcholakov/transliterate
 * AES (256, 192, 128) Symmetric Encryption, Compatible with OpenSSL, https://github.com/ivantcholakov/gibberish-aes-php
+* HTML Purifier, http://htmlpurifier.org/
 
 License Information
 -------------------
