@@ -237,6 +237,31 @@ The technique of this hack is available, but it is not mandatory.
 * AES (256, 192, 128) Symmetric Encryption, Compatible with OpenSSL, https://github.com/ivantcholakov/gibberish-aes-php
 * HTML Purifier, http://htmlpurifier.org/
 * Core_Lang, language translations: Support has been implemented for placeholders %s, %d, etc.
+* Translation within views by using i18n tag, http://devzone.zend.com/1441/zend-framework-and-translation/
+
+How to use this feature:
+
+Enable the configuration option 'parse_i18n':
+```php
+$config['parse_i18n'] = TRUE;
+```
+Then in your views you can use the following syntax:
+```php
+<i18n>translate_this</i18n>
+```
+or
+```php
+<i18n replacement="John,McClane">dear</i18n>
+```
+where $lang['dear] = 'Dear Mr. %s %s,';
+
+You can override the global setting 'parse_i18n' within the controller by inserting the line:
+```php
+$this->parse_i18n = TRUE // or FALSE
+```
+
+Parsing of <i18n> tags is done on the final output buffer only when
+the MIME-type is 'text/html'.
 
 License Information
 -------------------

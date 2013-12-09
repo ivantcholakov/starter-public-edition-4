@@ -356,6 +356,7 @@ $config['csrf_cookie_name']     = 'csrf_protection_cookie';
 $config['csrf_expire']          = 4 * 60 * 60;  // 4 hours
 $config['csrf_regenerate']      = FALSE;
 $config['csrf_exclude_uris']    = array();
+
 /*
 |--------------------------------------------------------------------------
 | Output Compression
@@ -374,6 +375,32 @@ $config['csrf_exclude_uris']    = array();
 |
 */
 $config['compress_output'] = FALSE;
+
+/*
+|--------------------------------------------------------------------------
+| Parse <i18n> tags
+|--------------------------------------------------------------------------
+|
+| Usage of this feature:
+|
+| Enable the configuration option 'parse_i18n':
+| $config['parse_i18n'] = TRUE;
+|
+| Then in your views you can use the following syntax:
+| <i18n>translate_this</i18n>
+| or
+| <i18n replacement="John,McClane">dear</i18n>
+| where $lang['dear] = 'Dear Mr. %s %s,';
+|
+| You can override the global setting 'parse_i18n' within the controller
+| by inserting the line:
+| $this->parse_i18n = TRUE // or FALSE
+|
+| Parsing of <i18n> tags is done on the final output buffer only when
+| the MIME-type is 'text/html'.
+|
+*/
+$config['parse_i18n'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------

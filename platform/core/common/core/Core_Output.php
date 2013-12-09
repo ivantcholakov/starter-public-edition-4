@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * A upgrade ot the Output Class
+ * A upgrade of the Output Class
  * Output caching is to support query strings.
  * @author Modifications by Ivan Tcholakov, 2012
  * @license The MIT License, http://opensource.org/licenses/MIT for my modifications.
@@ -41,6 +41,23 @@ class Core_Output extends CI_Output {
         if ($output === '')
         {
             $output =& $this->final_output;
+        }
+
+        // --------------------------------------------------------------------
+
+        // Parse language translation tags (<i18n>...</i18n>).
+
+        $parse_i18n = (bool) $CFG->item('parse_i18n');
+
+        if (isset($CI) && is_object($CI) && isset($CI->parse_i18n))
+        {
+            // Override the global setting.
+            $parse_i18n = (bool) $CI->parse_i18n;
+        }
+
+        if ($parse_i18n && $this->mime_type == 'text/html')
+        {
+            $output = $this->parse_i18n($output);
         }
 
         // --------------------------------------------------------------------
@@ -299,5 +316,73 @@ class Core_Output extends CI_Output {
     }
 
     // --------------------------------------------------------------------
+
+    /**
+     * i18n tag parser.
+     * @param       string      $output     The output buffer content.
+     * @return      string                  The parsed content as a result.
+     * @link http://devzone.zend.com/1441/zend-framework-and-translation/
+     */
+    public function parse_i18n($output)
+    {
+        if (strlen($output) == 0)
+        {
+            return '';
+        }
+
+        global $LANG;
+
+        $delimiter_start = '<i18n>';
+        $delimiter_end = '</i18n>';
+        $replacement_attr = 'replacement';
+        $replacement_attr_delimiter = ',';
+
+        $delimiter_start_length = strlen($delimiter_start);
+        $delimiter_end_length = strlen($delimiter_end);
+        
+        $delimiter_begin = substr($delimiter_start, 0, -1);
+
+        $offset = 0;
+
+        while (($pos_start = strpos($output, $delimiter_begin, $offset)) !== false)
+        {
+            $offset = $pos_start + $delimiter_start_length;
+            
+            // Check for an tag ending '>'.
+            $pos_tag_end = strpos($output, '>', $offset - 1);
+
+            $format_values = null;
+
+            // If '<i18n' is not followed by char '>' directly, then we obviously have attributes in our tag.
+            if ($pos_tag_end - $pos_start + 1 > $delimiter_start_length)
+            {
+                $format = substr($output, $offset, $pos_tag_end - $offset);
+
+                $matches = array();
+                // Check for value of 'format' attribute and explode it into $format_values.
+                preg_match('/' . $replacement_attr . '="([^"]*)"/', $format, $matches);
+                if (isset($matches[1]))
+                {
+                    $format_values = explode($replacement_attr_delimiter, $matches[1]);
+                }
+
+                $offset = $pos_tag_end + 1;
+            }
+            
+            if (($pos_end = strpos($output, $delimiter_end, $offset)) === false)
+            {
+                trigger_error("parse_i18n: No ending i18n tag after position [$offset] found!", E_USER_ERROR);
+            }
+
+            $translate = substr($output, $offset, $pos_end - $offset);
+            $translate = $LANG->line($translate, $format_values);
+            
+            $offset = $pos_end + $delimiter_end_length;
+            $output = substr_replace($output, $translate, $pos_start, $offset - $pos_start);
+            $offset = $offset - $delimiter_start_length - $delimiter_end_length;
+        }
+
+        return $output;
+    }
 
 }
