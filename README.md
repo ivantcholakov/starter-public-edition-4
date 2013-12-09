@@ -257,7 +257,7 @@ where $lang['dear'] = 'Dear Mr. %s %s,';
 
 You can override the global setting 'parse_i18n' within the controller by inserting the line:
 ```php
-$this->parse_i18n = TRUE // or FALSE
+$this->parse_i18n = TRUE; // or FALSE
 ```
 
 Parsing of <i18n> tags is done on the final output buffer only when
