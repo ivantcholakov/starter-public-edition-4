@@ -390,7 +390,7 @@ $config['compress_output'] = FALSE;
 | <i18n>translate_this</i18n>
 | or
 | <i18n replacement="John,McClane">dear</i18n>
-| where $lang['dear] = 'Dear Mr. %s %s,';
+| where $lang['dear'] = 'Dear Mr. %s %s,';
 |
 | You can override the global setting 'parse_i18n' within the controller
 | by inserting the line:
