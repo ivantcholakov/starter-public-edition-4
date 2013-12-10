@@ -29,6 +29,8 @@ class Welcome_controller extends Base_Controller {
             $writable_folders[$key]['is_writable'] = is_really_writable($folder['path']);
         }
 
+        $mailer_enabled = (bool) $this->settings->get('mailer_enabled');
+
         // Diagnostics data decoration.
 
         $diagnostics = array();
@@ -45,6 +47,17 @@ class Welcome_controller extends Base_Controller {
 
                 $diagnostics[] = "$key - <span style=\"color: red\">make it writable</span>";
             }
+        }
+
+        $diagnostics[] = '<strong>Mailer:</strong>';
+
+        if ($mailer_enabled) {
+
+            $diagnostics[] = 'Mailer service - <span style="color: green">enabled</span>';
+
+        } else {
+
+            $diagnostics[] = 'Mailer service - <span style="color: red">disabled. Check $config[\'mailer_enabled\'] option within platform/core/common/config/config_site.php. Check also the mailer settings within platform/core/common/config/email.php.</span>';
         }
 
         $diagnostics = implode('<br />', $diagnostics);
