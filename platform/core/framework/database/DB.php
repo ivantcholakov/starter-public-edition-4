@@ -56,22 +56,22 @@ function &DB($params = '', $query_builder_override = NULL)
 		{
 			include COMMONPATH.'config/database.php';
 			$config_database_found = true;
-                }
+		}
 		if (file_exists(COMMONPATH.'config/'.ENVIRONMENT.'/database.php'))
 		{
 			include COMMONPATH.'config/'.ENVIRONMENT.'/database.php';
 			$config_database_found = true;
-                }
+		}
 		if (file_exists(APPPATH.'config/database.php'))
 		{
 			include APPPATH.'config/database.php';
 			$config_database_found = true;
-                }
+		}
 		if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/database.php'))
 		{
 			include APPPATH.'config/'.ENVIRONMENT.'/database.php';
 			$config_database_found = true;
-                }
+		}
 		if (!$config_database_found)
 		{
 			show_error('The configuration file database.php does not exist.');
@@ -242,11 +242,6 @@ function &DB($params = '', $query_builder_override = NULL)
 	if ($DB->autoinit === TRUE)
 	{
 		$DB->initialize();
-	}
-
-	if ( ! empty($params['stricton']))
-	{
-		$DB->query('SET SESSION sql_mode="STRICT_ALL_TABLES"');
 	}
 
 	return $DB;
