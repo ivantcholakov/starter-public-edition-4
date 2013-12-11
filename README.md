@@ -263,6 +263,8 @@ $this->parse_i18n = TRUE; // or FALSE
 Parsing of <i18n> tags is done on the final output buffer only when
 the MIME-type is 'text/html'.
 
+* KCAPTCHA Version 2.0 - A Port for CodeIgniter, https://github.com/ivantcholakov/codeigniter-kcaptcha
+
 License Information
 -------------------
 
