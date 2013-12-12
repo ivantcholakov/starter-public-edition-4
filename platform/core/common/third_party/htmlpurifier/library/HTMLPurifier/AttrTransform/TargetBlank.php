@@ -26,7 +26,7 @@ class HTMLPurifier_AttrTransform_TargetBlank extends HTMLPurifier_AttrTransform
         $scheme = $url->getSchemeObj($config, $context);
 
         if ($scheme->browsable && !$url->isBenign($config, $context)) {
-            $attr['target'] = '_blank';
+            $attr['target'] = 'blank';
         }
 
         return $attr;

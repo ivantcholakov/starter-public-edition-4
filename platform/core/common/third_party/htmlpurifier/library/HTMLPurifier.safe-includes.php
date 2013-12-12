@@ -159,7 +159,6 @@ require_once $__dir . '/HTMLPurifier/HTMLModule/Proprietary.php';
 require_once $__dir . '/HTMLPurifier/HTMLModule/Ruby.php';
 require_once $__dir . '/HTMLPurifier/HTMLModule/SafeEmbed.php';
 require_once $__dir . '/HTMLPurifier/HTMLModule/SafeObject.php';
-require_once $__dir . '/HTMLPurifier/HTMLModule/SafeScripting.php';
 require_once $__dir . '/HTMLPurifier/HTMLModule/Scripting.php';
 require_once $__dir . '/HTMLPurifier/HTMLModule/StyleAttribute.php';
 require_once $__dir . '/HTMLPurifier/HTMLModule/Tables.php';

@@ -355,12 +355,7 @@ class HTMLPurifier_Encoder
             $str = utf8_encode($str);
             return $str;
         }
-        $bug = HTMLPurifier_Encoder::testIconvTruncateBug();
-        if ($bug == self::ICONV_OK) {
-            trigger_error('Encoding not supported, please install iconv', E_USER_ERROR);
-        } else {
-            trigger_error('You have a buggy version of iconv, see https://bugs.php.net/bug.php?id=48147 and http://sourceware.org/bugzilla/show_bug.cgi?id=13541', E_USER_ERROR);
-        }
+        trigger_error('Encoding not supported, please install iconv', E_USER_ERROR);
     }
 
     /**

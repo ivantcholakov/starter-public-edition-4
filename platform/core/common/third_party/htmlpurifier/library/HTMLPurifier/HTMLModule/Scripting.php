@@ -45,8 +45,8 @@ class HTMLPurifier_HTMLModule_Scripting extends HTMLPurifier_HTMLModule
         );
         $this->info['script']->content_model = '#PCDATA';
         $this->info['script']->content_model_type = 'optional';
-        $this->info['script']->attr_transform_pre[] =
-        $this->info['script']->attr_transform_post[] =
+        $this->info['script']->attr_transform_pre['type'] =
+        $this->info['script']->attr_transform_post['type'] =
             new HTMLPurifier_AttrTransform_ScriptRequired();
     }
 }
