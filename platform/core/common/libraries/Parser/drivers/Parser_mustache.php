@@ -118,7 +118,7 @@ class CI_Parser_mustache extends CI_Driver {
         }
         else
         {
-            echo $this->parser->render($template, $data);
+            $this->ci->output->append_output($this->parser->render($template, $data));
         }
     }
 
@@ -132,7 +132,7 @@ class CI_Parser_mustache extends CI_Driver {
         }
         else
         {
-            echo $this->parser->render($template, $data);
+            $this->ci->output->append_output($this->parser->render($template, $data));
         }
     }
 
