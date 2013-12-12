@@ -429,4 +429,30 @@ class Core_Loader extends MX_Loader {
         }
     }
 
+    public function parser($driver = '', $params = NULL, $object_name = NULL)
+    {
+        $driver = (string) $driver;
+
+        if ($driver == '')
+        {
+            $driver = 'parser';
+        }
+
+        if (!empty($params) && is_array($params))
+        {
+            $params = array_merge($params, array('parser_driver' => $driver));
+        }
+        else
+        {
+            $params = array('parser_driver' => $driver);
+        }
+
+        if (!isset($object_name) || $object_name == '')
+        {
+            $object_name = $driver;
+        }
+
+        return $this->load->driver('parser', $params, $object_name);
+    }
+
 }

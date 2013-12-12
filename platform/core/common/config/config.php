@@ -440,6 +440,19 @@ $config['time_reference'] = 'local';
 */
 $config['rewrite_short_tags'] = FALSE;
 
+/*
+|--------------------------------------------------------------------------
+| Parser Variables
+|--------------------------------------------------------------------------
+|
+| 'parser_driver'           = The driver to load: "parser" driver (default)
+| 'parser_valid_drivers'    = additional valid drivers which may be loaded
+|
+*/
+$config['parser_driver']        = 'parser';
+$config['parser_valid_drivers'] = array(
+    'mustache',
+);
 
 /*
 |--------------------------------------------------------------------------

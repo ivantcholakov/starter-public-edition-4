@@ -264,6 +264,36 @@ Parsing of <i18n> tags is done on the final output buffer only when
 the MIME-type is 'text/html'.
 
 * KCAPTCHA Version 2.0 - A Port for CodeIgniter, https://github.com/ivantcholakov/codeigniter-kcaptcha
+* Mustache, Logic-less templates, https://github.com/bobthecow/mustache.php
+* Parser class: Driver support has been implemented. A Mustache driver has been added.
+
+Instead of:
+
+```php
+$this->load->library('parser');
+```
+
+write the following:
+
+```php
+$this->load->parser();
+```
+
+Quick tests:
+
+```php
+// The default parser.
+$this->load->parser();
+echo $this->parser->parse_string('Hello, {name}!', array('name' => 'John'), TRUE);
+
+echo '<br />';
+
+// Mustache parser.
+$this->load->parser('mustache');
+echo $this->mustache->parse_string('Hello, {{name}}!', array('name' => 'John'), TRUE);
+
+echo '<br />';
+```
 
 License Information
 -------------------

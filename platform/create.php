@@ -251,6 +251,10 @@ file_exists($cache_path) OR @mkdir($cache_path, DIR_WRITE_MODE, TRUE);
 define('HTMLPURIFIER_CACHE_SERIALIZER_PATH', WRITABLEPATH.'htmlpurifier');
 file_exists(HTMLPURIFIER_CACHE_SERIALIZER_PATH) OR @mkdir(HTMLPURIFIER_CACHE_SERIALIZER_PATH, DIR_WRITE_MODE, TRUE);
 
+// For Mustache, with trailing slash.
+define('MUSTACHE_CACHE', WRITABLEPATH.'mustache/'.APPNAME.'/');
+file_exists(MUSTACHE_CACHE) OR @mkdir(MUSTACHE_CACHE, DIR_WRITE_MODE, TRUE);
+
 
 /*
  * ------------------------------------------------------

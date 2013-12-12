@@ -35,17 +35,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author		EllisLab Dev Team
  * @link		http://codeigniter.com/user_guide/libraries/parser.html
  */
-class CI_Parser {
+class CI_Parser_parser extends CI_Parser_driver {
 
 	/**
-	 * Left delimiter character for pseudo vars
+	 * Left delimeter character for psuedo vars
 	 *
 	 * @var string
 	 */
 	public $l_delim = '{';
 
 	/**
-	 * Right delimiter character for pseudo vars
+	 * Right delimeter character for psuedo vars
 	 *
 	 * @var string
 	 */
@@ -83,7 +83,7 @@ class CI_Parser {
 	 * @param	bool
 	 * @return	string
 	 */
-	public function parse($template, $data, $return = FALSE)
+	public function parse($template, $data = array(), $return = FALSE)
 	{
 		$template = $this->CI->load->view($template, $data, TRUE);
 
@@ -103,7 +103,7 @@ class CI_Parser {
 	 * @param	bool
 	 * @return	string
 	 */
-	public function parse_string($template, $data, $return = FALSE)
+	public function parse_string($template, $data = array(), $return = FALSE)
 	{
 		return $this->_parse($template, $data, $return);
 	}
@@ -228,4 +228,4 @@ class CI_Parser {
 }
 
 /* End of file Parser.php */
-/* Location: ./system/libraries/Parser.php */
+/* Location: ./system/libraries/Parser/drivers/Parser_parser.php */
