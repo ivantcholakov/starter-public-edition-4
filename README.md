@@ -295,6 +295,26 @@ echo $this->mustache->parse_string('Hello, {{name}}!', array('name' => 'John'), 
 echo '<br />';
 ```
 
+* Method chaining on Loader class has been implemented, see https://github.com/EllisLab/CodeIgniter/issues/2165
+
+Instead of:
+
+```php
+$this->load->library('settings');
+$this->load->helper('url');
+$this->load->library('template');
+```
+
+you can write:
+
+```php
+$this->load
+    ->library('settings')
+    ->helper('url')
+    ->library('template')
+;
+```
+
 License Information
 -------------------
 

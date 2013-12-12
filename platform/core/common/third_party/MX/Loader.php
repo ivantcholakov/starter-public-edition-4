@@ -124,29 +124,60 @@ class MX_Loader extends CI_Loader
     public function helper($helper = array()) {
         
         if (is_array($helper)) return $this->helpers($helper);
-        
-        if (isset($this->_ci_helpers[$helper]))    return;
+
+        // Modified by Ivan Tcholakov, 12-DEC-2013.
+        // See https://github.com/EllisLab/CodeIgniter/issues/2165
+        //if (isset($this->_ci_helpers[$helper]))    return;
+        if (isset($this->_ci_helpers[$helper])) {
+            return $this;
+        }
+        //
 
         list($path, $_helper) = Modules::find($helper.'_helper', $this->_module, 'helpers/');
 
-        if ($path === FALSE) return parent::helper($helper);
+        // Modified by Ivan Tcholakov, 12-DEC-2013.
+        // See https://github.com/EllisLab/CodeIgniter/issues/2165
+        //if ($path === FALSE) return parent::helper($helper);
+        if ($path === FALSE) {
+            parent::helper($helper);
+            return $this;
+        }
+        //
 
         Modules::load_file($_helper, $path);
         $this->_ci_helpers[$_helper] = TRUE;
+
+        // Added by Ivan Tcholakov, 12-DEC-2013.
+        // See https://github.com/EllisLab/CodeIgniter/issues/2165
+        return $this;
+        //
     }
 
     /** Load an array of helpers **/
     public function helpers($helpers = array()) {
-        foreach ($helpers as $_helper) $this->helper($_helper);    
+        foreach ($helpers as $_helper) $this->helper($_helper);
+        // Added by Ivan Tcholakov, 12-DEC-2013.
+        // See https://github.com/EllisLab/CodeIgniter/issues/2165
+        return $this;
+        //
     }
 
     /** Load a module language file **/
     public function language($langfile = array(), $idiom = '', $return = FALSE, $add_suffix = TRUE, $alt_path = '') {
-        return CI::$APP->lang->load($langfile, $idiom, $return, $add_suffix, $alt_path, $this->_module);
+        // Modified by Ivan Tcholakov, 12-DEC-2013.
+        // See https://github.com/EllisLab/CodeIgniter/issues/2165
+        //return CI::$APP->lang->load($langfile, $idiom, $return, $add_suffix, $alt_path, $this->_module);
+        CI::$APP->lang->load($langfile, $idiom, $return, $add_suffix, $alt_path, $this->_module);
+        return $this;
+        //
     }
     
     public function languages($languages) {
         foreach($languages as $_language) $this->language($_language);
+        // Added by Ivan Tcholakov, 12-DEC-2013.
+        // See https://github.com/EllisLab/CodeIgniter/issues/2165
+        return $this;
+        //
     }
     
     /** Load a module library **/
@@ -171,7 +202,11 @@ class MX_Loader extends CI_Loader
             //if ($_alias) {
             if ($_alias && $_alias != $class) {
             //
-                return CI::$APP->$_alias;
+                // Modified by Ivan Tcholakov, 12-DEC-2013.
+                // See https://github.com/EllisLab/CodeIgniter/issues/2165
+                //return CI::$APP->$_alias;
+                return $this;
+                //
             }
         }
 
@@ -206,12 +241,20 @@ class MX_Loader extends CI_Loader
             $this->_ci_classes[$class] = $_alias;
         }
         
-        return CI::$APP->$_alias;
+        // Modified by Ivan Tcholakov, 12-DEC-2013.
+        // See https://github.com/EllisLab/CodeIgniter/issues/2165
+        //return CI::$APP->$_alias;
+        return $this;
+        //
     }
 
     /** Load an array of libraries **/
     public function libraries($libraries) {
         foreach ($libraries as $_library) $this->library($_library);    
+        // Added by Ivan Tcholakov, 12-DEC-2013.
+        // See https://github.com/EllisLab/CodeIgniter/issues/2165
+        return $this;
+        //
     }
 
     /** Load a module model **/
@@ -221,8 +264,13 @@ class MX_Loader extends CI_Loader
 
         ($_alias = $object_name) OR $_alias = basename($model);
 
-        if (in_array($_alias, $this->_ci_models, TRUE)) 
-            return CI::$APP->$_alias;
+        if (in_array($_alias, $this->_ci_models, TRUE)) {
+            // Modified by Ivan Tcholakov, 12-DEC-2013.
+            // See https://github.com/EllisLab/CodeIgniter/issues/2165
+            //return CI::$APP->$_alias;
+            return $this;
+            //
+        }
             
         /* check module */
         list($path, $_model) = Modules::find(strtolower($model), $this->_module, 'models/');
@@ -252,7 +300,11 @@ class MX_Loader extends CI_Loader
             $this->_ci_models[] = $_alias;
         }
         
-        return CI::$APP->$_alias;
+        // Modified by Ivan Tcholakov, 12-DEC-2013.
+        // See https://github.com/EllisLab/CodeIgniter/issues/2165
+        //return CI::$APP->$_alias;
+        return $this;
+        //
     }
 
     // Added by Ivan Tcholakov, 30-OCT-2013.
@@ -346,7 +398,11 @@ class MX_Loader extends CI_Loader
 
     /** Load an array of models **/
     public function models($models) {
-        foreach ($models as $_model) $this->model($_model);    
+        foreach ($models as $_model) $this->model($_model);
+        // Added by Ivan Tcholakov, 12-DEC-2013.
+        // See https://github.com/EllisLab/CodeIgniter/issues/2165
+        return $this;
+        //
     }
 
     /** Load a module controller **/
@@ -356,12 +412,20 @@ class MX_Loader extends CI_Loader
 
         $_alias = strtolower(basename($module));
         CI::$APP->$_alias = Modules::load(array($module => $params));
-        return CI::$APP->$_alias;
+        // Modified by Ivan Tcholakov, 12-DEC-2013.
+        // See https://github.com/EllisLab/CodeIgniter/issues/2165
+        //return CI::$APP->$_alias;
+        return $this;
+        //
     }
 
     /** Load an array of controllers **/
     public function modules($modules) {
         foreach ($modules as $_module) $this->module($_module);    
+        // Added by Ivan Tcholakov, 12-DEC-2013.
+        // See https://github.com/EllisLab/CodeIgniter/issues/2165
+        return $this;
+        //
     }
 
     /** Load a module plugin **/
@@ -369,8 +433,13 @@ class MX_Loader extends CI_Loader
         
         if (is_array($plugin)) return $this->plugins($plugin);        
         
-        if (isset($this->_ci_plugins[$plugin]))    
-            return;
+        if (isset($this->_ci_plugins[$plugin])) {
+            // Modified by Ivan Tcholakov, 12-DEC-2013.
+            // See https://github.com/EllisLab/CodeIgniter/issues/2165
+            //return;
+            return $this;
+            //
+        }
 
         list($path, $_plugin) = Modules::find($plugin.'_pi', $this->_module, 'plugins/');    
         
@@ -380,11 +449,20 @@ class MX_Loader extends CI_Loader
 
         Modules::load_file($_plugin, $path);
         $this->_ci_plugins[$plugin] = TRUE;
+
+        // Added by Ivan Tcholakov, 12-DEC-2013.
+        // See https://github.com/EllisLab/CodeIgniter/issues/2165
+        return $this;
+        //
     }
 
     /** Load an array of plugins **/
     public function plugins($plugins) {
         foreach ($plugins as $_plugin) $this->plugin($_plugin);    
+        // Added by Ivan Tcholakov, 12-DEC-2013.
+        // See https://github.com/EllisLab/CodeIgniter/issues/2165
+        return $this;
+        //
     }
 
     /** Load a module view **/
@@ -395,8 +473,16 @@ class MX_Loader extends CI_Loader
             $this->_ci_view_paths = array($path => TRUE) + $this->_ci_view_paths;
             $view = $_view;
         }
-        
-        return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
+
+        // Modified by Ivan Tcholakov, 12-DEC-2013.
+        // See https://github.com/EllisLab/CodeIgniter/issues/2165
+        //return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
+        if ($return) {
+            return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
+        }
+        $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
+        return $this;
+        //
     }
 
     public function _ci_is_instance() {}
