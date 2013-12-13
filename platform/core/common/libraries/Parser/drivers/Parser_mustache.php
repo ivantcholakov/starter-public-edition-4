@@ -29,6 +29,7 @@ class CI_Parser_mustache extends CI_Driver {
         $this->ci = get_instance();
 
         // Default configuration options.
+
 	$this->config = array(
             'extension' => '.mustache',
             'cache' => MUSTACHE_CACHE,
@@ -92,10 +93,15 @@ class CI_Parser_mustache extends CI_Driver {
         log_message('debug', "CI_Parser_mustache Class Initialized");
     }
 
-    public function parse($template, $data, $return = FALSE)
+    public function parse($template, $data = array(), $return = FALSE)
     {
+        if (!is_array($data))
+        {
+            $data = array();
+        }
+
         $template = $this->ci->load->path($template);
-        
+
         $path = pathinfo($template);
         $base_dir = $path['dirname'];
         $template = $path['basename'];
@@ -112,8 +118,13 @@ class CI_Parser_mustache extends CI_Driver {
         }
     }
 
-    public function parse_string($template, $data, $return = FALSE)
+    public function parse_string($template, $data = array(), $return = FALSE)
     {
+        if (!is_array($data))
+        {
+            $data = array();
+        }
+
         $this->parser->setLoader($this->string_loader);
         
         if ($return)
