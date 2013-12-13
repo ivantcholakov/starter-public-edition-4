@@ -90,7 +90,7 @@ class CI_Parser_mustache extends CI_Driver {
             }
         }
 
-        log_message('debug', "CI_Parser_mustache Class Initialized");
+        log_message('debug', 'CI_Parser_mustache Class Initialized');
     }
 
     public function parse($template, $data = array(), $return = FALSE)

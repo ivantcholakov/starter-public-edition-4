@@ -83,7 +83,7 @@ class CI_Parser_textile extends CI_Driver {
             }
         }
 
-        log_message('debug', "CI_Parser_textile Class Initialized");
+        log_message('debug', 'CI_Parser_textile Class Initialized');
     }
 
     public function parse($template, $data, $return = FALSE)
