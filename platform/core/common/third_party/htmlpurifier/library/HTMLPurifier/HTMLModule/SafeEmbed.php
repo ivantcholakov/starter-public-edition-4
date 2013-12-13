@@ -22,7 +22,7 @@ class HTMLPurifier_HTMLModule_SafeEmbed extends HTMLPurifier_HTMLModule
                 'allownetworking' => 'Enum#internal',
                 'allowfullscreen' => 'Enum#true,false',
                 'flashvars' => 'Text',
-                'wmode' => 'Enum#window',
+                'wmode' => 'Enum#window,transparent,opaque',
                 'name' => 'ID',
             )
         );
