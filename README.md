@@ -293,6 +293,12 @@ $this->load->parser('mustache');
 echo $this->mustache->parse_string('Hello, {{name}}!', array('name' => 'John'), TRUE);
 
 echo '<br />';
+
+// Parsing a Mustache type of view.
+$email_content = $this->mustache->parse('email.mustache', array('name' => 'John'), TRUE);
+echo $email_content;
+
+echo '<br />';
 ```
 
 * Method chaining on Loader class has been implemented, see https://github.com/EllisLab/CodeIgniter/issues/2165
