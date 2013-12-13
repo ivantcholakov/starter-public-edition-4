@@ -231,6 +231,7 @@ The technique of this hack is available, but it is not mandatory.
 * Textile, A Humane Web Text Generator, http://textile.thresholdstate.com/
 * Markdown Extra - A text-to-HTML conversion tool, http://michelf.com/projects/php-markdown/
 * Markdownify - A HTML-to-text conversion tool, http://milianw.de/projects/markdownify/
+* Mustache, Logic-less templates, https://github.com/bobthecow/mustache.php
 * PHPMailer, http://phpmailer.worxware.com/, https://github.com/Synchro/PHPMailer
 * A CodeIgniter compatible email-library powered by PHPMailer, https://github.com/ivantcholakov/codeigniter-phpmailer
 * A PHP class for transliteration, https://github.com/ivantcholakov/transliterate
@@ -264,7 +265,26 @@ Parsing of <i18n> tags is done on the final output buffer only when
 the MIME-type is 'text/html'.
 
 * KCAPTCHA Version 2.0 - A Port for CodeIgniter, https://github.com/ivantcholakov/codeigniter-kcaptcha
-* Mustache, Logic-less templates, https://github.com/bobthecow/mustache.php
+* Method chaining on Loader class has been implemented, see https://github.com/EllisLab/CodeIgniter/issues/2165
+
+Instead of:
+
+```php
+$this->load->library('settings');
+$this->load->helper('url');
+$this->load->library('template');
+```
+
+you can write:
+
+```php
+$this->load
+    ->library('settings')
+    ->helper('url')
+    ->library('template')
+;
+```
+
 * Parser class: Driver support has been implemented. A Mustache driver has been added.
 
 Instead of:
@@ -301,32 +321,20 @@ echo $email_content;
 echo '<br />';
 ```
 
-* Method chaining on Loader class has been implemented, see https://github.com/EllisLab/CodeIgniter/issues/2165
-
-Instead of:
-
-```php
-$this->load->library('settings');
-$this->load->helper('url');
-$this->load->library('template');
-```
-
-you can write:
-
-```php
-$this->load
-    ->library('settings')
-    ->helper('url')
-    ->library('template')
-;
-```
-
 * Parser class: A Textile driver has been added.
 
 ```php
 $this->load->parser('textile');
 echo $this->textile->parse_string('h1. Hello!', NULL, TRUE);
 echo $this->textile->parse('hello.textile', NULL, TRUE);
+```
+
+* Parser class: A Markdown driver has been added.
+
+```php
+$this->load->parser('markdown');
+echo $this->markdown->parse_string('# Hello!', NULL, TRUE);
+echo $this->markdown->parse('hello.markdown', NULL, TRUE);
 ```
 
 License Information
