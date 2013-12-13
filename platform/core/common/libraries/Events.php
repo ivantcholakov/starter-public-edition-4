@@ -53,15 +53,17 @@ class Events {
 
         $dir_map = directory_map(APPPATH.'modules', 1);
 
-        foreach ($dir_map as $key => $name)
+        if (!empty($dir_map))
         {
-
-            if (strpos($name, '.') !== false)
+            foreach ($dir_map as $key => $name)
             {
-                continue;   // Skip files.
-            }
+                if (strpos($name, '.') !== false)
+                {
+                    continue;   // Skip files.
+                }
 
-            $module_dirs[] = rtrim($name, DIRECTORY_SEPARATOR);
+                $module_dirs[] = rtrim($name, DIRECTORY_SEPARATOR);
+            }
         }
 
         @ sort($module_dirs);
@@ -98,15 +100,17 @@ class Events {
 
         $dir_map = directory_map(COMMONPATH.'modules', 1);
 
-        foreach ($dir_map as $key => $name)
+        if (!empty($dir_map))
         {
-
-            if (strpos($name, '.') !== false)
+            foreach ($dir_map as $key => $name)
             {
-                continue;   // Skip files.
-            }
+                if (strpos($name, '.') !== false)
+                {
+                    continue;   // Skip files.
+                }
 
-            $module_dirs[] = rtrim($name, DIRECTORY_SEPARATOR);
+                $module_dirs[] = rtrim($name, DIRECTORY_SEPARATOR);
+            }
         }
 
         @ sort($module_dirs);
