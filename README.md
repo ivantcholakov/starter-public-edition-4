@@ -321,6 +321,14 @@ $this->load
 ;
 ```
 
+* Parser class: A Textile driver has been added.
+
+```php
+$this->load->parser('textile');
+echo $this->textile->parse_string('h1. Hello!', NULL, TRUE);
+echo $this->textile->parse('hello.textile', NULL, TRUE);
+```
+
 License Information
 -------------------
 

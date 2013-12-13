@@ -452,6 +452,7 @@ $config['rewrite_short_tags'] = FALSE;
 $config['parser_driver']        = 'parser';
 $config['parser_valid_drivers'] = array(
     'mustache',
+    'textile',
 );
 
 /*
