@@ -337,6 +337,14 @@ echo $this->markdown->parse_string('# Hello!', NULL, TRUE);
 echo $this->markdown->parse('hello.markdown', NULL, TRUE);
 ```
 
+* Parser class: A Markdownify driver has been added.
+
+```php
+$this->load->parser('markdownify');
+echo $this->markdownify->parse_string('<h1>Hello!</h1>', NULL, TRUE);
+echo $this->markdownify->parse('hello.html', NULL, TRUE);
+```
+
 License Information
 -------------------
 
