@@ -509,4 +509,35 @@ class Core_Loader extends MX_Loader {
         //
     }
 
+    public function path($view) {
+
+        list($path, $_view) = Modules::find($view, $this->_module, 'views/');
+
+        if ($path != FALSE) {
+            $this->_ci_view_paths = array($path => TRUE) + $this->_ci_view_paths;
+            $view = $_view;
+        }
+
+        //----------------------------------------------------------------------
+
+        $_ci_file = $view;
+        $_ci_path = '';
+
+        foreach ($this->_ci_view_paths as $path => $cascade) {
+
+            if (file_exists($view = $path.$_ci_file)) {
+                $_ci_path = $view;
+                break;
+            }
+
+            if ( ! $cascade) break;
+        }
+
+        if (empty($_ci_path)) {
+            show_error('Unable to find the requested file: '.$_ci_file);
+        }
+
+        return $_ci_path;
+    }
+
 }
