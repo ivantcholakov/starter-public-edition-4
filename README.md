@@ -345,6 +345,8 @@ echo $this->markdownify->parse_string('<h1>Hello!</h1>', NULL, TRUE);
 echo $this->markdownify->parse('hello.html', NULL, TRUE);
 ```
 
+* CodeIgniter Checkbox Helper, https://gist.github.com/mikedfunk/4004986
+
 License Information
 -------------------
 
