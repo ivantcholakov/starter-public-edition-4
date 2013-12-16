@@ -188,33 +188,42 @@ class MY_Lang extends Core_Lang {
      * modify the default value to true to use this feature without having to 
      * modify your code 
      */
-    function load($langfile = '', $idiom = '', $return = FALSE, $add_suffix = TRUE, $alt_path = '', $load_first_lang = false) {
+    // Modified by Ivan Tcholakov, 17-DEC-2013.
+    //function load($langfile = '', $idiom = '', $return = FALSE, $add_suffix = TRUE, $alt_path = '', $load_first_lang = false) {
+    function load($langfile = '', $idiom = '', $return = FALSE, $add_suffix = TRUE, $alt_path = '', $module = '', $load_first_lang = false) {
+    //
 
-       if ($load_first_lang) {
+        if ($load_first_lang) {
 
-           reset($this->languages);
-           $firstKey = key($this->languages);
-           $firstValue = $this->languages[$firstKey];
+            reset($this->languages);
+            $firstKey = key($this->languages);
+            $firstValue = $this->languages[$firstKey];
 
-           if ($this->lang_code != $firstKey) {
+            if ($this->lang_code != $firstKey) {
 
-               $addedLang = parent::load($langfile, $firstValue, $return, $add_suffix, $alt_path);
+                // Modified by Ivan Tcholakov, 17-DEC-2013.
+                //$addedLang = parent::load($langfile, $firstValue, $return, $add_suffix, $alt_path);
+                $addedLang = parent::load($langfile, $firstValue, $return, $add_suffix, $alt_path, $module);
+                //
 
-               if ($addedLang) {
+                if ($addedLang) {
 
-                   if ($add_suffix) {
+                    if ($add_suffix) {
 
-                       $langfileToRemove = str_replace('.php', '', $langfile);
-                       $langfileToRemove = str_replace('_lang.', '', $langfileToRemove) . '_lang';
-                       $langfileToRemove .= '.php';
-                   }
+                        $langfileToRemove = str_replace('.php', '', $langfile);
+                        $langfileToRemove = str_replace('_lang.', '', $langfileToRemove) . '_lang';
+                        $langfileToRemove .= '.php';
+                    }
 
-                   $this->is_loaded = array_diff($this->is_loaded, array($langfileToRemove));
-               }
-           }
-       }
+                    $this->is_loaded = array_diff($this->is_loaded, array($langfileToRemove));
+                }
+            }
+        }
 
-       return parent::load($langfile, $idiom, $return, $add_suffix, $alt_path);
+        // Modified by Ivan Tcholakov, 17-DEC-2013.
+        //return parent::load($langfile, $idiom, $return, $add_suffix, $alt_path);
+        return parent::load($langfile, $idiom, $return, $add_suffix, $alt_path, $module);
+        //
     }
 
 }
