@@ -94,25 +94,52 @@ class Modules
             if (empty($class)) return;
 
             /* set the module directory */
-            // Modified by Ivan Tcholakov, 18-OCT-2013.
+            // Modified by Ivan Tcholakov, 16-DEC-2013.
             //$path = APPPATH.'controllers/'.CI::$APP->router->directory;
             $path = resolve_path(APPPATH.'controllers/'.CI::$APP->router->directory).'/';
+            $path_common = resolve_path(COMMONPATH.'controllers/'.CI::$APP->router->directory).'/';
             //
 
             /* load the controller class */
-            // Modified by Ivan Tcholakov, 28-FEB-2012.
+            // Modified by Ivan Tcholakov, 16-DEC-2013.
             //$class = $class.CI::$APP->config->item('controller_suffix');
             if (self::test_load_file(ucfirst($class).CI::$APP->config->item('controller_suffix'), $path)) {
                 $class = ucfirst($class).CI::$APP->config->item('controller_suffix');
+                self::load_file($class, $path);
             }
             elseif (self::test_load_file($class.CI::$APP->config->item('controller_suffix'), $path)) {
                 $class = $class.CI::$APP->config->item('controller_suffix');
+                self::load_file($class, $path);
             }
             elseif (self::test_load_file(ucfirst($class), $path)) {
                 $class = ucfirst($class);
+                self::load_file($class, $path);
+            }
+            elseif (self::test_load_file($class, $path)) {
+                self::load_file($class, $path);
+            }
+            else {
+                if (self::test_load_file(ucfirst($class).CI::$APP->config->item('controller_suffix'), $path_common)) {
+                    $class = ucfirst($class).CI::$APP->config->item('controller_suffix');
+                    self::load_file($class, $path_common);
+                }
+                elseif (self::test_load_file($class.CI::$APP->config->item('controller_suffix'), $path_common)) {
+                    $class = $class.CI::$APP->config->item('controller_suffix');
+                    self::load_file($class, $path_common);
+                }
+                elseif (self::test_load_file(ucfirst($class), $path_common)) {
+                    $class = ucfirst($class);
+                    self::load_file($class, $path_common);
+                }
+                elseif (self::test_load_file($class, $path_common)) {
+                    self::load_file($class, $path_common);
+                }
+                else {
+                    // Will cause an error, intentionally.
+                    self::load_file($class, $path);
+                }
             }
             //
-            self::load_file($class, $path);
 
             /* create and register the new controller */
             $controller = ucfirst($class);
