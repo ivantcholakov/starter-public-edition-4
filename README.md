@@ -352,7 +352,20 @@ echo $this->markdownify->parse('hello.html', NULL, TRUE);
 ```php
 $this->load->parser('less');
 echo $this->less->parse_string('@color: #4D926F; #header { color: @color; } h2 { color: @color; }', NULL, TRUE);
-echo $this->less->parse(FCPATH.'assets/less/lib/bootstrap-3/bootstrap.less', NULL, TRUE);
+echo $this->less->parse(DEFAULTFCPATH.'assets/less/lib/bootstrap-3/bootstrap.less', NULL, TRUE);
+```
+
+* LESS-assets compiler has been added.
+
+Have a look at platform/core/common/config/less_compile.php file. It contains a list of files (sources, destinations)
+to be used for LESS to CSS compilation. You may edit this list according to your needs. Before compilation, make sure
+that destination files (if exist) are writable and their containing folders are writable too.
+
+LESS-compilation is to be done from command-line. Open a terminal at the folder platform/www/ and write the following
+command:
+
+```bash
+php cli.php less compile
 ```
 
 License Information
