@@ -19,7 +19,6 @@ class CI_Parser_textile extends CI_Driver {
     protected $parser;
     protected $parser_methods = array();
     protected $parser_properties = array();
-    protected $string_loader;
 
     private $ci;
 
