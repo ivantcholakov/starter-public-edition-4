@@ -51,17 +51,20 @@ class CI_Parser_less extends CI_Driver {
     }
 
     // Note: Provide the full path for $template.
-    public function parse($template, $data, $return = FALSE)
+    public function parse($template, $data = array(), $return = FALSE)
     {
         if (!is_array($data))
         {
             $data = array();
         }
 
-        $uri_root = isset($data['uri_root']) ? (string) $data['uri_root'] : '';
+        $data['uri_root'] = isset($data['uri_root']) ? (string) $data['uri_root'] : '';
 
-        $parser = new Less_Parser($this->options);
-        $parser->parseFile($template, $uri_root);
+        // Injecting configuration options from $data variable.
+        $options = array_merge($this->config, $data);
+
+        $parser = new Less_Parser($options);
+        $parser->parseFile($template, $options['uri_root']);
 
         if ($return)
         {
@@ -73,14 +76,17 @@ class CI_Parser_less extends CI_Driver {
         }
     }
 
-    public function parse_string($template, $data, $return = FALSE)
+    public function parse_string($template, $data = array(), $return = FALSE)
     {
         if (!is_array($data))
         {
             $data = array();
         }
-        
-        $parser = new Less_Parser($this->options);
+
+        // Injecting configuration options from $data variable.
+        $options = array_merge($this->config, $data);
+
+        $parser = new Less_Parser($options);
         $parser->parse($template);
 
         if ($return)

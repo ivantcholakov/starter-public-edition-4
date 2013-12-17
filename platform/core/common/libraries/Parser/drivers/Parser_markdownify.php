@@ -91,7 +91,7 @@ class CI_Parser_markdownify extends CI_Driver {
         log_message('debug', 'CI_Parser_markdownify Class Initialized');
     }
 
-    public function parse($template, $data, $return = FALSE)
+    public function parse($template, $data = array(), $return = FALSE)
     {
         if (!is_array($data))
         {
@@ -111,7 +111,7 @@ class CI_Parser_markdownify extends CI_Driver {
         }
     }
 
-    public function parse_string($template, $data, $return = FALSE)
+    public function parse_string($template, $data = array(), $return = FALSE)
     {
         if (!is_array($data))
         {
