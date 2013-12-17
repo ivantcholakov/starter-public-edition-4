@@ -5,7 +5,5 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-$config['cache'] = MUSTACHE_CACHE;
-$config['cache_file_mode'] = FILE_WRITE_MODE;
 $config['charset'] = 'UTF-8';
 $config['entityFlags'] = ENT_COMPAT;
