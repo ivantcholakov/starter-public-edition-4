@@ -346,6 +346,14 @@ echo $this->markdownify->parse('hello.html', NULL, TRUE);
 ```
 
 * CodeIgniter Checkbox Helper, https://gist.github.com/mikedfunk/4004986
+* Less.php compiler, https://github.com/oyejorge/less.php
+* Parser class: A LESS driver has been added.
+
+```php
+$this->load->parser('less');
+echo $this->less->parse_string('@color: #4D926F; #header { color: @color; } h2 { color: @color; }', NULL, TRUE);
+echo $this->less->parse(FCPATH.'assets/less/lib/bootstrap-3/bootstrap.less', NULL, TRUE);
+```
 
 License Information
 -------------------
