@@ -30,13 +30,13 @@ class CI_Parser_mustache extends CI_Driver {
 
         // Default configuration options.
 
-	$this->config = array(
+        $this->config = array(
             'extension' => '.mustache',
             'cache' => MUSTACHE_CACHE,
             'cache_file_mode' => FILE_WRITE_MODE,
             'charset' => 'UTF-8',
             'entityFlags' => ENT_COMPAT,
-	);
+        );
 
         if ($this->ci->config->load('parser_mustache', TRUE, TRUE))
         {

@@ -26,10 +26,13 @@ class CI_Parser_markdown extends CI_Driver {
     {
         $this->ci = get_instance();
 
+        $this->ci->load->helper('url');
+
         // Default configuration options.
 
 	$this->config = array(
-
+            'auto_links' => true,
+            'detect_code_blocks' => true,
         );
 
         if ($this->ci->config->load('parser_markdown', TRUE, TRUE))
@@ -92,16 +95,31 @@ class CI_Parser_markdown extends CI_Driver {
             $data = array();
         }
 
+        // Injecting configuration options from $data variable.
+        $options = array_merge($this->config, $data);
+
         $template = $this->ci->load->path($template);
         $content = file_get_contents($template);
 
+        if (!empty($options['detect_code_blocks']))
+        {
+            $content = preg_replace('/`{3,}[a-z]*/i', '~~~', $content);
+        }
+
+        $result = @ $this->parser->transform($content);
+
+        if (!empty($options['auto_links']))
+        {
+            $result = auto_link($result);
+        }
+
         if ($return)
         {
-            return @ $this->parser->transform($content);
+            return $result;
         }
         else
         {
-            $this->ci->output->append_output(@ $this->parser->transform($content));
+            $this->ci->output->append_output($result);
         }
     }
 
@@ -112,13 +130,28 @@ class CI_Parser_markdown extends CI_Driver {
             $data = array();
         }
         
+        // Injecting configuration options from $data variable.
+        $options = array_merge($this->config, $data);
+
+        if (!empty($options['detect_code_blocks']))
+        {
+            $template = preg_replace('/`{3,}[a-z]*/i', '~~~', $template);
+        }
+
+        $result = @ $this->parser->transform($template);
+
+        if (!empty($options['auto_links']))
+        {
+            $result = auto_link($result);
+        }
+
         if ($return)
         {
-            return @ $this->parser->transform($template);
+            return $result;
         }
         else
         {
-            $this->ci->output->append_output(@ $this->parser->transform($template));
+            $this->ci->output->append_output($result);
         }
     }
 
