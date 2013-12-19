@@ -9,7 +9,7 @@
             </p>
 
             <div class="alert alert-info">
-                <i class="fa fa-exclamation-circle"></i> Here you can start developing the administration part of your site: <a href="<?php echo base_url('admin-example'); ?>"><?php echo base_url('admin-example'); ?></a>
+                <i class="fa fa-exclamation-circle"></i> Here you can start developing the administration part of your site: <strong><a href="<?php echo base_url('admin-example'); ?>"><?php echo base_url('admin-example'); ?></a></strong>
             </div>
 
             <h2>Self-Diagnostics</h2>
