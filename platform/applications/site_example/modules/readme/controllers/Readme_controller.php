@@ -13,6 +13,9 @@ class Readme_controller extends Base_Controller {
 
         $this->load->parser('markdown');
 
+        $this->template->inject_partial('css', css('lib/google-code-prettify/prettify.css'));
+        $this->template->set_partial('scripts', 'readme_scripts');
+
         $this->template
             ->title('README')
         ;
