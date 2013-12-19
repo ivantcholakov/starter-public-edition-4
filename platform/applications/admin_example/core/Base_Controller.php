@@ -58,13 +58,13 @@ class Base_Controller extends Core_Controller {
         //$this->session->unset_userdata('user_logged');
         //
 
-        $this->session->sess_regenerate(true);
+        $this->session->sess_destroy();
     }
 
     private function _check_access() {
 
         $ignored_pages = array('login', 'logout');
-        $current_page = $this->uri->segment(1, '');
+        $current_page = $this->uri->rsegment(1, '');
 
         if (in_array($current_page, $ignored_pages)) {
             return true;
