@@ -57,7 +57,10 @@ class MY_Lang extends Core_Lang {
             // Set default language
             $CFG->set_item('language', $this->languages[$this->default_lang()]);
 
-            $uri = (!empty($this->uri)) ? $this->uri: $this->default_uri;
+            // Modified by Ivan Tcholakov, 19-DEC-2013.
+            //$uri = (!empty($this->uri)) ? $this->uri: $this->default_uri;
+            $uri = (string) $this->uri;
+            //
             // OPB - modification to use i18n also without changing the .htaccess (without pretty url) 
             $index_url = empty($CFG->config['index_page']) ? '' : $CFG->config['index_page'].'/';
             $new_url = $CFG->config['base_url'].$index_url.$this->default_lang().'/'.$uri;
