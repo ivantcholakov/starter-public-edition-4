@@ -13,6 +13,8 @@ class Base_Controller extends Core_Controller {
             ->library('template')
         ;
 
+        $this->template->set_layout('site_example');
+        
         $this->language = config_item('language');
 
         $this->template->set('language', $this->language);
@@ -35,11 +37,6 @@ class Base_Controller extends Core_Controller {
         if ($default_keywords != '') {
             $this->template->set_metadata('keywords', $default_keywords);
         }
-
-        $this->template
-            ->inject_partial('css', css('welcome.css'))
-        ;
-
     }
 
 }
