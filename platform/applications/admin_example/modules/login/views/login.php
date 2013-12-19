@@ -15,7 +15,7 @@ if ($error_message != '') {
                 <input type="text" name="username" id="username" class="form-control" placeholder="Username" value="<?php echo set_value('username'); ?>" />
                 <input type="password" name="password" id="password" class="form-control" placeholder="Password" value="<?php echo set_value('password'); ?>" />
 
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+                <button class="btn btn-lg btn-primary btn-block" type="submit"><i class="fa fa-check"> Login</i></button>
 
                 <p class="help-block">
                     Enter random username and password and click on "Login" button to get in.
