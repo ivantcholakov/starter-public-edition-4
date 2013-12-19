@@ -251,6 +251,12 @@ or
 ```
 where $lang['dear'] = 'Dear Mr. %s %s,';
 
+Here is a way how to translate title and alt attributes:
+
+```php
+<img src="..." i18n:title="click_me" />
+```
+
 You can override the global setting 'parse_i18n' within the controller by inserting the line:
 ```php
 $this->parse_i18n = TRUE; // or FALSE

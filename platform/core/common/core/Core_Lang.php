@@ -131,7 +131,25 @@ class Core_Lang extends MX_Lang {
             $offset = $offset - $delimiter_start_length - $delimiter_end_length;
         }
 
+        // Added by Ivan Tcholakov, 19-DEC-2013.
+        // Parse attributes:
+        // i18n:title
+        // i18n:alt
+        $string = preg_replace_callback(
+            '/i18n:(title|alt)(\s*=\s*["\'])([^"\']+)(["\'])/im',
+            array($this, '_parse_i18n_attributes_callback'),
+            $string
+        );
+        //
+
         return $string;
     }
+
+    // Added by Ivan Tcholakov, 19-DEC-2013.
+    public function _parse_i18n_attributes_callback($matches) {
+
+        return strtolower($matches[1]).$matches[2].$this->line($matches[3]).$matches[4];
+    }
+    //
 
 }
