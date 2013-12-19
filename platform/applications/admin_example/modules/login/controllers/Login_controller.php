@@ -5,6 +5,8 @@ class Login_controller extends Base_Controller {
     public function __construct() {
 
         parent::__construct();
+
+        $this->template->set_layout('admin_example_login');
     }
 
     public function index() {

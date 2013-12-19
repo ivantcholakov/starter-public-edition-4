@@ -26,12 +26,11 @@ $segment_1 = $this->uri->rsegment(1);
 
                     <ul class="nav navbar-nav">
 
-                        <li<?php if ($segment_1 == '' || $segment_1 == 'welcome') { ?> class="active"<?php } ?>><a href="<?php echo site_url(); ?>"><i class="fa fa-home"></i> Home</a></li>
-
-                        <li<?php if ($segment_1 == 'readme') { ?> class="active"<?php } ?>><a href="<?php echo site_url('readme'); ?>"><i class="fa fa-info-circle"></i> README</a></li>
+                        <li<?php if ($segment_1 == '' || $segment_1 == 'home') { ?> class="active"<?php } ?>><a href="<?php echo site_url(); ?>"><i class="fa fa-home"></i> Home</a></li>
 
                     </ul>
 
+                    <a class="btn btn-default navbar-btn navbar-right" href="<?php echo site_url('logout'); ?>"><i class="fa fa-power-off"></i> Logout</a>
               </div>
 
             </div>
