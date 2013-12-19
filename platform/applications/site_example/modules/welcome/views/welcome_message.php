@@ -8,9 +8,9 @@
                 Project repository: <a href="https://github.com/ivantcholakov/starter-public-edition-4/" target="_blank">https://github.com/ivantcholakov/starter-public-edition-4/</a>
             </p>
 
-            <p>
-                Here you can start developing the administration part of your site: <a href="<?php echo base_url('admin-example'); ?>"><?php echo base_url('admin-example'); ?></a>
-            </p>
+            <div class="alert alert-info">
+                <i class="fa fa-exclamation-circle"></i> Here you can start developing the administration part of your site: <a href="<?php echo base_url('admin-example'); ?>"><?php echo base_url('admin-example'); ?></a>
+            </div>
 
             <h2>Self-Diagnostics</h2>
 
