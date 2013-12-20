@@ -50,7 +50,7 @@ class Core_Lang extends MX_Lang {
 
             if (is_array($param) && !empty($param)) {
 
-                $value = vsprintf($value, $param);
+                $value = @ vsprintf($value, $param);
 
             } elseif ($param != '') {
 
@@ -149,7 +149,26 @@ class Core_Lang extends MX_Lang {
     // Added by Ivan Tcholakov, 19-DEC-2013.
     public function _parse_i18n_attributes_callback($matches) {
 
-        return strtolower($matches[1]).$matches[2].$this->line($matches[3]).$matches[4];
+        $result = strtolower($matches[1]).$matches[2];
+        $attribute = $matches[3];
+        $pos = strpos($attribute, '|');
+
+        if ($pos === false) {
+
+            $result .= $this->line($attribute);
+
+        } else {
+
+            $translate = substr($attribute, 0, $pos);
+            $format_values = substr($attribute, $pos + 1);
+            $format_values = explode(',', $format_values);
+
+            $result .= $this->line($translate, $format_values);
+        }
+
+        $result .= $matches[4];
+
+        return $result;
     }
     //
 

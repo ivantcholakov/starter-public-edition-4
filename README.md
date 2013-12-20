@@ -184,7 +184,7 @@ It is just an entry point, without configuration data.
     modules/demo/controllers/page/Page.php     -> address: site_url/demo/page/[index/method]  
     modules/demo/controllers/page/Other.php    -> address: site_url/demo/page/other/[index/method]
 
-* SEO Friendly URLS in CodeIgniter, http://www.einsteinseyes.com/blog/techno-babble/seo-friendly-urls-in-codeigniter-2-0-hmvc/
+* SEO Friendly URLs in CodeIgniter, http://www.einsteinseyes.com/blog/techno-babble/seo-friendly-urls-in-codeigniter-2-0-hmvc/
 * Hack 2. Prevent Model-Controller Name Collision, http://net.tutsplus.com/tutorials/php/6-codeigniter-hacks-for-the-masters/
 
 Instead of:
@@ -245,7 +245,7 @@ Then in your views you can use the following syntax:
 ```php
 <i18n>translate_this</i18n>
 ```
-or
+or with parameters
 ```php
 <i18n replacement="John,McClane">dear</i18n>
 ```
@@ -255,6 +255,10 @@ Here is a way how to translate title, alt, placeholder and valie attributes:
 
 ```php
 <img src="..." i18n:title="click_me" />
+```
+or with parameters
+```php
+<img src="..." i18n:title="dear|John,McClane" />
 ```
 
 You can override the global setting 'parse_i18n' within the controller by inserting the line:
