@@ -200,7 +200,8 @@ class MX_Loader extends CI_Loader
             // Total mystery is here.
             // The test case: Load parsers with different drivers (the default and mustache).
             //if ($_alias) {
-            if ($_alias && $_alias != $class) {
+            //if ($_alias && $_alias != $class) {
+            if ($_alias && $_alias != $class && $class != 'parser') {   // A durty workaround for parser drivers, 20-DEC-2013.
             //
                 // Modified by Ivan Tcholakov, 12-DEC-2013.
                 // See https://github.com/EllisLab/CodeIgniter/issues/2165
