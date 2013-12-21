@@ -30,7 +30,7 @@ class CI_Parser_markdown extends CI_Driver {
 
         // Default configuration options.
 
-	$this->config = array(
+        $this->config = array(
             'auto_links' => true,
             'detect_code_blocks' => true,
         );

@@ -17,7 +17,7 @@ class CI_Parser_i18n extends CI_Driver {
 
         // Default configuration options.
 
-	$this->config = array(
+        $this->config = array(
 
         );
 

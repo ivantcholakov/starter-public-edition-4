@@ -17,7 +17,7 @@ class CI_Parser_less extends CI_Driver {
 
         // Default configuration options.
 
-	$this->config = array(
+        $this->config = array(
 
         );
 
