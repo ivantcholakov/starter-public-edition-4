@@ -62,14 +62,3 @@ if (!function_exists('validation_errors_array'))
         return $OBJ->error_array();
     }
 }
-
-if (!function_exists('validation_errors_description'))
-{
-    function validation_errors_description() {
-
-        $ci = get_instance();
-        $ci->lang->load('form_validation');
-
-        return '<p>'.$ci->lang->line('form_validation_errors').'</p>'.'<ul>'.validation_errors('<li>', '</li>').'</ul>';
-    }
-}
