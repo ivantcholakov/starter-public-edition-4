@@ -12,7 +12,7 @@ $segment_1 = $this->uri->rsegment(1);
                 <div class="navbar-header">
 
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
+                        <span class="sr-only"><i18n>ui_toggle_navigation</i18n></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -29,6 +29,8 @@ $segment_1 = $this->uri->rsegment(1);
                         <li<?php if ($segment_1 == '' || $segment_1 == 'welcome') { ?> class="active"<?php } ?>><a href="<?php echo site_url(); ?>"><i class="fa fa-home"></i> Home</a></li>
 
                         <li<?php if ($segment_1 == 'readme') { ?> class="active"<?php } ?>><a href="<?php echo site_url('readme'); ?>"><i class="fa fa-info-circle"></i> README</a></li>
+
+                        <li<?php if ($segment_1 == 'contact_page_test') { ?> class="active"<?php } ?>><a href="<?php echo site_url('contact-page-test'); ?>"><i class="fa fa-envelope"></i> Contact Page Test</a></li>
 
                     </ul>
 

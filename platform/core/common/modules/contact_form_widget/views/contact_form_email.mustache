@@ -1,0 +1,29 @@
+
+            <p><a href="{{site_url}}">{{site_name}}</a></p>
+
+            <p>
+                <i18n>mailer_a_message_has_been_received_from</i18n> <strong>{{contact_form_name}}</strong>
+            </p>
+
+            <p>
+                <i18n>contact_email</i18n>: <a href="mailto:{{contact_form_email}}">{{contact_form_email}}</a>
+                <br />
+
+                {{#contact_form_phone}}
+                <i18n>contact_phone</i18n>: {{contact_form_phone}}
+                <br />
+
+                {{/contact_form_phone}}
+
+                {{#contact_form_organization}}
+                <i18n>contact_organization</i18n>: {{contact_form_organization}}
+                <br />
+
+                {{/contact_form_organization}}
+            </p>
+
+            <hr width="600" align="left" />
+
+            <p><strong>{{contact_form_subject}}</strong></p>
+
+            {{{contact_form_message}}}
