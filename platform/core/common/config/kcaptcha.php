@@ -30,11 +30,13 @@ $config['background_color'] = array();
 
 // White noise within the generated captcha image.
 // 0 - no white noise.
-$config['white_noise_density']  = 1/6;
+//$config['white_noise_density']  = 1/6;
+$config['white_noise_density']  = 0;
 
 // White noise within the generated captcha image.
 // 0 - no black noise.
-$config['black_noise_density']  = 1/30;
+//$config['black_noise_density']  = 1/30;
+$config['black_noise_density']  = 0;
 
 // Whether a link to the site of KCAPTCH creator to be shown (true/false).
 $config['show_credits'] = true;
