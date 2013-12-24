@@ -1,5 +1,6 @@
 <?php
 
+require COMMONPATH.'third_party/phpmailer/PHPMailerAutoload.php';
 require COMMONPATH.'third_party/htmlpurifier/library/HTMLPurifier/Bootstrap.php';
 
 spl_autoload_register('_common_autoloader');
