@@ -1,5 +1,9 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
+if (!isset($contacts) || !is_array($contacts)) {
+    $contacts = array();
+}
+
 foreach ($contacts as $item) {
 
 ?>
