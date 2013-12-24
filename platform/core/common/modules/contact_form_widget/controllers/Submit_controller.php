@@ -183,7 +183,7 @@ class Submit_controller extends Core_Controller {
 
     protected function _load_email_template($data) {
 
-        // Here is the dafault email template. You may get it from database too.
+        // Here is the default email template. You may get it from database too.
         $template = $this->load->view('contact_form_email.mustache', null, true);
 
         $template = $this->i18n->parse_string($template, null, true);
