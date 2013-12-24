@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-if ($contact_show_map) {
+if (isset($contact_map) && $contact_map != '') {
 
 ?>
 

@@ -33,7 +33,6 @@ class Contact_map_widget_controller extends Core_Controller {
 
         $data = $this->settings->get(array(
             'contact_map',
-            'contact_show_map',
         ));
 
         echo $this->i18n->parse('contact_map_widget', $data, TRUE);
