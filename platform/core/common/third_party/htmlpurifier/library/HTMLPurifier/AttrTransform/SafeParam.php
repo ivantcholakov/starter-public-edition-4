@@ -14,30 +14,51 @@
  */
 class HTMLPurifier_AttrTransform_SafeParam extends HTMLPurifier_AttrTransform
 {
+    /**
+     * @type string
+     */
     public $name = "SafeParam";
+
+    /**
+     * @type HTMLPurifier_AttrDef_URI
+     */
     private $uri;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->uri = new HTMLPurifier_AttrDef_URI(true); // embedded
         $this->wmode = new HTMLPurifier_AttrDef_Enum(array('window', 'opaque', 'transparent'));
     }
 
-    public function transform($attr, $config, $context) {
+    /**
+     * @param array $attr
+     * @param HTMLPurifier_Config $config
+     * @param HTMLPurifier_Context $context
+     * @return array
+     */
+    public function transform($attr, $config, $context)
+    {
         // If we add support for other objects, we'll need to alter the
         // transforms.
         switch ($attr['name']) {
             // application/x-shockwave-flash
             // Keep this synchronized with Injector/SafeObject.php
             case 'allowScriptAccess':
+            // Added by Ivan Tcholakov, 24-DEC-2013.
             case 'allowscriptaccess':
+            //
                 $attr['value'] = 'never';
                 break;
             case 'allowNetworking':
+            // Added by Ivan Tcholakov, 24-DEC-2013.
             case 'allownetworking':
+            //
                 $attr['value'] = 'internal';
                 break;
             case 'allowFullScreen':
+            // Added by Ivan Tcholakov, 24-DEC-2013.
             case 'allowfullscreen':
+            //
                 if ($config->get('HTML.FlashAllowFullScreen')) {
                     $attr['value'] = ($attr['value'] == 'true') ? 'true' : 'false';
                 } else {

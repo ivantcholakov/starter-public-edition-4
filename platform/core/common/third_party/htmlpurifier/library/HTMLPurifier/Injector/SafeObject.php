@@ -6,34 +6,68 @@
  */
 class HTMLPurifier_Injector_SafeObject extends HTMLPurifier_Injector
 {
+    /**
+     * @type string
+     */
     public $name = 'SafeObject';
+
+    /**
+     * @type array
+     */
     public $needed = array('object', 'param');
 
+    /**
+     * @type array
+     */
     protected $objectStack = array();
+
+    /**
+     * @type array
+     */
     protected $paramStack  = array();
 
-    // Keep this synchronized with AttrTransform/SafeParam.php
+    /**
+     * Keep this synchronized with AttrTransform/SafeParam.php.
+     * @type array
+     */
     protected $addParam = array(
         'allowScriptAccess' => 'never',
         'allowNetworking' => 'internal',
+        // Added by Ivan Tcholakov, 24-DEC-2013.
         'allowscriptaccess' => 'never',
         'allownetworking' => 'internal',
-
+        //
     );
+
+    /**
+     * @type array
+     */
     protected $allowedParam = array(
         'wmode' => true,
         'movie' => true,
         'flashvars' => true,
         'src' => true,
         'allowFullScreen' => true, // if omitted, assume to be 'false'
+        // Added by Ivan Tcholakov, 24-DEC-2013.
         'allowfullscreen' => true, // if omitted, assume to be 'false'
+        //
     );
 
-    public function prepare($config, $context) {
+    /**
+     * @param HTMLPurifier_Config $config
+     * @param HTMLPurifier_Context $context
+     * @return void
+     */
+    public function prepare($config, $context)
+    {
         parent::prepare($config, $context);
     }
 
-    public function handleElement(&$token) {
+    /**
+     * @param HTMLPurifier_Token $token
+     */
+    public function handleElement(&$token)
+    {
         if ($token->name == 'object') {
             $this->objectStack[] = $token;
             $this->paramStack[] = array();
@@ -55,16 +89,15 @@ class HTMLPurifier_Injector_SafeObject extends HTMLPurifier_Injector
                 // attribute, which we need if a type is specified. This is
                 // *very* Flash specific.
                 if (!isset($this->objectStack[$i]->attr['data']) &&
-                    ($token->attr['name'] == 'movie' || $token->attr['name'] == 'src')) {
+                    ($token->attr['name'] == 'movie' || $token->attr['name'] == 'src')
+                ) {
                     $this->objectStack[$i]->attr['data'] = $token->attr['value'];
                 }
                 // Check if the parameter is the correct value but has not
                 // already been added
-                if (
-                    !isset($this->paramStack[$i][$n]) &&
+                if (!isset($this->paramStack[$i][$n]) &&
                     isset($this->addParam[$n]) &&
-                    $token->attr['name'] === $this->addParam[$n]
-                ) {
+                    $token->attr['name'] === $this->addParam[$n]) {
                     // keep token, and add to param stack
                     $this->paramStack[$i][$n] = true;
                 } elseif (isset($this->allowedParam[$n])) {
@@ -80,7 +113,8 @@ class HTMLPurifier_Injector_SafeObject extends HTMLPurifier_Injector
         }
     }
 
-    public function handleEnd(&$token) {
+    public function handleEnd(&$token)
+    {
         // This is the WRONG way of handling the object and param stacks;
         // we should be inserting them directly on the relevant object tokens
         // so that the global stack handling handles it.
@@ -89,7 +123,6 @@ class HTMLPurifier_Injector_SafeObject extends HTMLPurifier_Injector
             array_pop($this->paramStack);
         }
     }
-
 }
 
 // vim: et sw=4 sts=4
