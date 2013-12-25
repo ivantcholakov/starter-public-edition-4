@@ -1712,7 +1712,7 @@ abstract class CI_DB_driver {
 					// See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
 					//$message[] = 'Filename: '.str_replace(array(APPPATH, BASEPATH), '', $call['file']);
 					$message[] = 'Filename: '.str_replace(array(APPPATH, COMMONPATH, BASEPATH), '', $call['file']);
-					// See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
+					//
 					$message[] = 'Line Number: '.$call['line'];
 					break;
 				}
