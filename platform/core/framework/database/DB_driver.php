@@ -712,8 +712,36 @@ abstract class CI_DB_driver {
 
 		if ( ! class_exists($driver, FALSE))
 		{
-			include_once(BASEPATH.'database/DB_result.php');
-			include_once(BASEPATH.'database/drivers/'.$this->dbdriver.'/'.$this->dbdriver.'_result.php');
+			// Modified by Ivan Tcholakov, 25-DEC-2013.
+			// See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
+			//include_once(BASEPATH.'database/DB_result.php');
+			//include_once(BASEPATH.'database/drivers/'.$this->dbdriver.'/'.$this->dbdriver.'_result.php');
+			if (file_exists(APPPATH.'database/DB_result.php'))
+			{
+				include_once APPPATH.'database/DB_result.php';
+			}
+			elseif (file_exists(COMMONPATH.'database/DB_result.php'))
+			{
+				include_once COMMONPATH.'database/DB_result.php';
+			}
+			else
+			{
+				include_once BASEPATH.'database/DB_result.php';
+			}
+			
+			if (file_exists(APPPATH.'database/drivers/'.$this->dbdriver.'/'.$this->dbdriver.'_result.php'))
+			{
+				include_once APPPATH.'database/drivers/'.$this->dbdriver.'/'.$this->dbdriver.'_result.php';
+			}
+			elseif (file_exists(COMMONPATH.'database/drivers/'.$this->dbdriver.'/'.$this->dbdriver.'_result.php'))
+			{
+				include_once COMMONPATH.'database/drivers/'.$this->dbdriver.'/'.$this->dbdriver.'_result.php';
+			}
+			else
+			{
+				include_once BASEPATH.'database/drivers/'.$this->dbdriver.'/'.$this->dbdriver.'_result.php';
+			}
+			//
 		}
 
 		return $driver;
@@ -1572,10 +1600,32 @@ abstract class CI_DB_driver {
 				return TRUE;
 			}
 		}
-		elseif ( ! @include_once(BASEPATH.'database/DB_cache.php'))
+		// Modified by Ivan Tcholakov, 25-DEC-2013.
+		// See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
+		//elseif ( ! @include_once(BASEPATH.'database/DB_cache.php'))
+		//{
+		//	return $this->cache_off();
+		//}
+		else
 		{
-			return $this->cache_off();
+			if (file_exists(APPPATH.'database/DB_cache.php'))
+			{
+				include_once APPPATH.'database/DB_cache.php';
+			}
+			elseif (file_exists(COMMONPATH.'database/DB_cache.php'))
+			{
+				include_once COMMONPATH.'database/DB_cache.php';
+			}
+			elseif (file_exists(BASEPATH.'database/DB_cache.php'))
+			{
+				include_once BASEPATH.'database/DB_cache.php';
+			}
+			else
+			{
+				return $this->cache_off();
+			}
 		}
+		//
 
 		$this->CACHE = new CI_DB_Cache($this); // pass db object to support multiple db connections and returned db objects
 		return TRUE;
@@ -1651,10 +1701,18 @@ abstract class CI_DB_driver {
 					$call['file'] = str_replace('\\', '/', $call['file']);
 				}
 
-				if (strpos($call['file'], BASEPATH.'database') === FALSE && strpos($call['class'], 'Loader') === FALSE)
+				// Modified by Ivan Tcholakov, 25-DEC-2013.
+				// See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
+				//if (strpos($call['file'], BASEPATH.'database') === FALSE && strpos($call['class'], 'Loader') === FALSE)
+				if (strpos($call['file'], APPPATH.'database') === FALSE && strpos($call['file'], COMMONPATH.'database') === FALSE && strpos($call['file'], BASEPATH.'database') === FALSE && strpos($call['class'], 'Loader') === FALSE)
+				//
 				{
 					// Found it - use a relative path for safety
-					$message[] = 'Filename: '.str_replace(array(APPPATH, BASEPATH), '', $call['file']);
+					// Modified by Ivan Tcholakov, 25-DEC-2013.
+					// See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
+					//$message[] = 'Filename: '.str_replace(array(APPPATH, BASEPATH), '', $call['file']);
+					$message[] = 'Filename: '.str_replace(array(APPPATH, COMMONPATH, BASEPATH), '', $call['file']);
+					// See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
 					$message[] = 'Line Number: '.$call['line'];
 					break;
 				}

@@ -373,6 +373,10 @@ command:
 php cli.php less compile
 ```
 
+* A way for database classes/drivers modification: Files under platform/core/framework/database/ folder may be copied
+into platform/core/common/database/ (the prefered location) or platform/applications/{application_name}/database.
+The copied files can be modified/customized. See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
+
 Credits
 -------
 

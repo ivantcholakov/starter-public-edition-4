@@ -186,11 +186,41 @@ function &DB($params = '', $query_builder_override = NULL)
 		$query_builder = $active_record;
 	}
 
-	require_once(BASEPATH.'database/DB_driver.php');
+	// Modified by Ivan Tcholakov, 25-DEC-2013.
+	// See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
+	//require_once(BASEPATH.'database/DB_driver.php');
+	if (file_exists(APPPATH.'database/DB_driver.php'))
+	{
+		require_once(APPPATH.'database/DB_driver.php');
+	}
+	elseif (file_exists(COMMONPATH.'database/DB_driver.php'))
+	{
+		require_once(COMMONPATH.'database/DB_driver.php');
+	}
+	else
+	{
+		require_once(BASEPATH.'database/DB_driver.php');
+	}
+	//
 
 	if ( ! isset($query_builder) OR $query_builder === TRUE)
 	{
-		require_once(BASEPATH.'database/DB_query_builder.php');
+		// Modified by Ivan Tcholakov, 25-DEC-2013.
+		// See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
+		//require_once(BASEPATH.'database/DB_query_builder.php');
+		if (file_exists(APPPATH.'database/DB_query_builder.php'))
+		{
+			require_once(APPPATH.'database/DB_query_builder.php');
+		}
+		elseif (file_exists(COMMONPATH.'database/DB_query_builder.php'))
+		{
+			require_once(COMMONPATH.'database/DB_query_builder.php');
+		}
+		else
+		{
+			require_once(BASEPATH.'database/DB_query_builder.php');
+		}
+		//
 		if ( ! class_exists('CI_DB', FALSE))
 		{
 			/**
@@ -213,12 +243,33 @@ function &DB($params = '', $query_builder_override = NULL)
 	}
 
 	// Load the DB driver
-	$driver_file = BASEPATH.'database/drivers/'.$params['dbdriver'].'/'.$params['dbdriver'].'_driver.php';
+	// Modified by Ivan Tcholakov, 25-DEC-2013.
+	// See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
+	//$driver_file = BASEPATH.'database/drivers/'.$params['dbdriver'].'/'.$params['dbdriver'].'_driver.php';
+	//
+	//if ( ! file_exists($driver_file))
+	//{
+	//	show_error('Invalid DB driver');
+	//}
+	$driver_file = APPPATH.'database/drivers/'.$params['dbdriver'].'/'.$params['dbdriver'].'_driver.php';
+	if (!file_exists($driver_file))
+	{
+		$driver_file = COMMONPATH.'database/drivers/'.$params['dbdriver'].'/'.$params['dbdriver'].'_driver.php';
+	}
+	if (!file_exists($driver_file))
+	{
+		$driver_file = BASEPATH.'database/drivers/'.$params['dbdriver'].'/'.$params['dbdriver'].'_driver.php';
+	}
+	if (!file_exists($driver_file))
+	{
+		$driver_file = FALSE;
+	}
 
-	if ( ! file_exists($driver_file))
+	if ($driver_file === FALSE)
 	{
 		show_error('Invalid DB driver');
 	}
+	//
 
 	require_once($driver_file);
 
@@ -229,14 +280,37 @@ function &DB($params = '', $query_builder_override = NULL)
 	// Check for a subdriver
 	if ( ! empty($DB->subdriver))
 	{
-		$driver_file = BASEPATH.'database/drivers/'.$DB->dbdriver.'/subdrivers/'.$DB->dbdriver.'_'.$DB->subdriver.'_driver.php';
+		// Modified by Ivan Tcholakov, 25-DEC-2013.
+		// See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
+		//$driver_file = BASEPATH.'database/drivers/'.$DB->dbdriver.'/subdrivers/'.$DB->dbdriver.'_'.$DB->subdriver.'_driver.php';
+		//
+		//if (file_exists($driver_file))
+		//{
+		//	require_once($driver_file);
+		//	$driver = 'CI_DB_'.$DB->dbdriver.'_'.$DB->subdriver.'_driver';
+		//	$DB = new $driver($params);
+		//}
+		$driver_file = APPPATH.'database/drivers/'.$DB->dbdriver.'/subdrivers/'.$DB->dbdriver.'_'.$DB->subdriver.'_driver.php';
+		if (!file_exists($driver_file))
+		{
+			$driver_file = COMMONPATH.'database/drivers/'.$DB->dbdriver.'/subdrivers/'.$DB->dbdriver.'_'.$DB->subdriver.'_driver.php';
+		}
+		if (!file_exists($driver_file))
+		{
+			$driver_file = BASEPATH.'database/drivers/'.$DB->dbdriver.'/subdrivers/'.$DB->dbdriver.'_'.$DB->subdriver.'_driver.php';
+		}
+		if (!file_exists($driver_file))
+		{
+			$driver_file = FALSE;
+		}
 
-		if (file_exists($driver_file))
+		if ($driver_file !== FALSE)
 		{
 			require_once($driver_file);
 			$driver = 'CI_DB_'.$DB->dbdriver.'_'.$DB->subdriver.'_driver';
 			$DB = new $driver($params);
 		}
+		//
 	}
 
 	if ($DB->autoinit === TRUE)

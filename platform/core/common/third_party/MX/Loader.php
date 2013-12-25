@@ -109,7 +109,22 @@ class MX_Loader extends CI_Loader
             return;
         }
 
-        require_once BASEPATH.'database/DB.php';
+        // Modified by Ivan Tcholakov, 25-DEC-2013.
+        // See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
+        //require_once BASEPATH.'database/DB.php';
+        if (file_exists(APPPATH.'database/DB.php'))
+        {
+            require_once APPPATH.'database/DB.php';
+        }
+        elseif (file_exists(COMMONPATH.'database/DB.php'))
+        {
+            require_once COMMONPATH.'database/DB.php';
+        }
+        else
+        {
+            require_once BASEPATH.'database/DB.php';
+        }
+        //
 
         if ($return === TRUE) {
             return DB($params, $query_builder);
@@ -118,6 +133,157 @@ class MX_Loader extends CI_Loader
         CI::$APP->db = DB($params, $query_builder);
 
         return CI::$APP->db;
+    }
+
+    /**
+     * Load the Database Utilities Class
+     *
+     * @param       object      $db         Database object
+     * @param       bool        $return     Whether to return the DB Forge class object or not
+     * @return                              void|object
+     */
+    public function dbutil($db = NULL, $return = FALSE)
+    {
+        $CI =& get_instance();
+
+        if ( ! is_object($db) OR ! ($db instanceof CI_DB))
+        {
+            class_exists('CI_DB', FALSE) OR $this->database();
+            $db =& $CI->db;
+        }
+
+        // Modified by Ivan Tcholakov, 25-DEC-2013.
+        // See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
+        //require_once(BASEPATH.'database/DB_utility.php');
+        //require_once(BASEPATH.'database/drivers/'.$db->dbdriver.'/'.$db->dbdriver.'_utility.php');
+        if (file_exists(APPPATH.'database/DB_utility.php'))
+        {
+            require_once APPPATH.'database/DB_utility.php';
+        }
+        elseif (file_exists(COMMONPATH.'database/DB_utility.php'))
+        {
+            require_once COMMONPATH.'database/DB_utility.php';
+        }
+        else
+        {
+            require_once BASEPATH.'database/DB_utility.php';
+        }
+
+        if (file_exists(APPPATH.'database/drivers/'.$db->dbdriver.'/'.$db->dbdriver.'_utility.php'))
+        {
+            require_once APPPATH.'database/drivers/'.$db->dbdriver.'/'.$db->dbdriver.'_utility.php';
+        }
+        elseif (file_exists(COMMONPATH.'database/drivers/'.$db->dbdriver.'/'.$db->dbdriver.'_utility.php'))
+        {
+            require_once COMMONPATH.'database/drivers/'.$db->dbdriver.'/'.$db->dbdriver.'_utility.php';
+        }
+        else
+        {
+            require_once BASEPATH.'database/drivers/'.$db->dbdriver.'/'.$db->dbdriver.'_utility.php';
+        }
+        //
+
+        $class = 'CI_DB_'.$db->dbdriver.'_utility';
+
+        if ($return === TRUE)
+        {
+            return new $class($db);
+        }
+
+        $CI->dbutil = new $class($db);
+    }
+
+    // --------------------------------------------------------------------
+
+    /**
+     * Load the Database Forge Class
+     *
+     * @param       object      $db         Database object
+     * @param       bool        $return     Whether to return the DB Forge class object or not
+     * @return                              void|object
+     */
+    public function dbforge($db = NULL, $return = FALSE)
+    {
+        $CI =& get_instance();
+        if ( ! is_object($db) OR ! ($db instanceof CI_DB))
+        {
+            class_exists('CI_DB', FALSE) OR $this->database();
+            $db =& $CI->db;
+        }
+
+        // Modified by Ivan Tcholakov, 25-DEC-2013.
+        // See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
+        //require_once(BASEPATH.'database/DB_forge.php');
+        //require_once(BASEPATH.'database/drivers/'.$db->dbdriver.'/'.$db->dbdriver.'_forge.php');
+        if (file_exists(APPPATH.'database/DB_forge.php'))
+        {
+            require_once APPPATH.'database/DB_forge.php';
+        }
+        elseif (file_exists(COMMONPATH.'database/DB_forge.php'))
+        {
+            require_once COMMONPATH.'database/DB_forge.php';
+        }
+        else
+        {
+            require_once BASEPATH.'database/DB_forge.php';
+        }
+
+        if (file_exists(APPPATH.'database/drivers/'.$db->dbdriver.'/'.$db->dbdriver.'_forge.php'))
+        {
+            require_once APPPATH.'database/drivers/'.$db->dbdriver.'/'.$db->dbdriver.'_forge.php';
+        }
+        elseif (file_exists(COMMONPATH.'database/drivers/'.$db->dbdriver.'/'.$db->dbdriver.'_forge.php'))
+        {
+            require_once COMMONPATH.'database/drivers/'.$db->dbdriver.'/'.$db->dbdriver.'_forge.php';
+        }
+        else
+        {
+            require_once BASEPATH.'database/drivers/'.$db->dbdriver.'/'.$db->dbdriver.'_forge.php';
+        }
+        //
+
+        if ( ! empty($db->subdriver))
+        {
+            // Modified by Ivan Tcholakov, 25-DEC-2013.
+            // See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
+            //$driver_path = BASEPATH.'database/drivers/'.$db->dbdriver.'/subdrivers/'.$db->dbdriver.'_'.$db->subdriver.'_forge.php';
+            //if (file_exists($driver_path))
+            //{
+            //    require_once($driver_path);
+            //    $class = 'CI_DB_'.$db->dbdriver.'_'.$db->subdriver.'_forge';
+            //}
+            $driver_path = APPPATH.'database/drivers/'.$db->dbdriver.'/subdrivers/'.$db->dbdriver.'_'.$db->subdriver.'_forge.php';
+            if (!file_exists($driver_path))
+            {
+                $driver_path = COMMONPATH.'database/drivers/'.$db->dbdriver.'/subdrivers/'.$db->dbdriver.'_'.$db->subdriver.'_forge.php';
+            }
+            if (!file_exists($driver_path))
+            {
+                $driver_path = BASEPATH.'database/drivers/'.$db->dbdriver.'/subdrivers/'.$db->dbdriver.'_'.$db->subdriver.'_forge.php';
+            }
+            if (!file_exists($driver_path))
+            {
+                $driver_path = FALSE;
+            }
+
+            if ($driver_path !== FALSE)
+            {
+                require_once($driver_path);
+                $class = 'CI_DB_'.$db->dbdriver.'_'.$db->subdriver.'_forge';
+            }
+            //
+        }
+        else
+        {
+            $class = 'CI_DB_'.$db->dbdriver.'_forge';
+        }
+
+        if ($return === TRUE)
+        {
+            return new $class($db);
+        }
+
+        $CI->dbforge = new $class($db);
     }
 
     /** Load a module helper **/
