@@ -4,13 +4,9 @@ class Form_validation extends CI_Form_validation {
 
     public $CI; // See https://bitbucket.org/wiredesignz/codeigniter-modular-extensions-hmvc/wiki/Home
 
-    protected $is_utf8;
-
     public function __construct($rules = array()) {
 
         parent::__construct($rules);
-
-        $this->is_utf8 = strtolower(config_item('charset')) == 'utf-8';
 
         $this->CI->load->helper('checkbox');
         $this->CI->load->helper('email');
@@ -46,7 +42,7 @@ class Form_validation extends CI_Form_validation {
             $val = (int) $val;
         }
 
-        return $this->is_utf8
+        return IS_UTF8_CHARSET
             ? ($val <= UTF8::strlen($str))
             : ($val <= strlen($str));
     }
@@ -59,7 +55,7 @@ class Form_validation extends CI_Form_validation {
             $val = (int) $val;
         }
 
-        return $this->is_utf8
+        return IS_UTF8_CHARSET
             ? ($val >= UTF8::strlen($str))
             : ($val >= strlen($str));
     }
@@ -72,7 +68,7 @@ class Form_validation extends CI_Form_validation {
             $val = (int) $val;
         }
 
-        return $this->is_utf8
+        return IS_UTF8_CHARSET
             ? (UTF8::strlen($str) === $val)
             : (strlen($str) === $val);
     }
