@@ -54,6 +54,13 @@ class Core_Config extends MX_Config {
         if (!defined('CURRENT_URL')) {
             define('CURRENT_URL', rtrim(SERVER_URL, '/').CURRENT_URI);
         }
+
+        // Added by Ivan Tcholakov, 26-DEC-2013.
+        // See https://github.com/EllisLab/CodeIgniter/issues/2792
+        if (!defined('IS_UTF8_CHARSET')) {
+            define('IS_UTF8_CHARSET', strtolower($this->config['charset']) === 'utf-8');
+        }
+        //
     }
 
     // --------------------------------------------------------------------
