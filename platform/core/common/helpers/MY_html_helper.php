@@ -221,7 +221,7 @@ if (!function_exists('get_attributes_string')) {
     /**
      * Creates HTML attribute string from array
      *
-     * @param array $attributes Attribute array
+     * @param string|array $attributes Attribute array
      *
      * @return string Attribute string
      */
