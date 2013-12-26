@@ -47,3 +47,26 @@ if (!function_exists('character_limiter') && IS_UTF8_CHARSET) {
     }
 
 }
+
+if (!function_exists('convert_accented_characters') && IS_UTF8_CHARSET) {
+
+    /**
+     * Converts Accented Foreign Characters to ASCII
+     *
+     * @param   string  $string     Input string
+     * @param   string  $language   Language identificator
+     * @return  string
+     */
+    function convert_accented_characters($string, $language = null) {
+
+        $language = (string) $language;
+
+        if ($language == '') {
+            $language = config_item('language');
+        }
+
+        // See https://github.com/ivantcholakov/transliterate
+        return Transliterate::to_ascii($string, $language);
+    }
+
+}
