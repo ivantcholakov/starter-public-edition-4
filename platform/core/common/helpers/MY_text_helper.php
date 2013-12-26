@@ -6,12 +6,12 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-if (!function_exists('character_limiter')) {
+if (!function_exists('character_limiter') && IS_UTF8_CHARSET) {
 
     /**
      * Character Limiter, UTF-8 version.
      *
-     * Limits the string based on the character count.  Preserves complete words
+     * Limits the string based on the character count. Preserves complete words
      * so the character count may not be exactly as specified.
      *
      * @param       string
