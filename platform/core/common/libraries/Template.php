@@ -57,13 +57,14 @@ class Template
     {
         $this->_ci =& get_instance();
 
+        $this->_ci->load->helper('asset');
+        $this->_ci->load->helper('template');
+        $this->_ci->load->helper('html');
+
         if ( ! empty($config))
         {
             $this->initialize($config);
         }
-
-        $this->_ci->load->helper('asset');
-        $this->_ci->load->helper('template');
 
         log_message('debug', 'Template class Initialized');
     }
@@ -922,8 +923,6 @@ class Template
         if (!in_array($tag, array('body', 'html'))) {
             return;
         }
-
-        ci()->load->helper('html');
 
         $this->_ci->load->_ci_cached_vars['template_'.$tag.'_tag_attributes'] = get_attributes_string($attributes);
     }
