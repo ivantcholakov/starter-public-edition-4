@@ -60,6 +60,7 @@ class Template
         $this->_ci->load->helper('asset');
         $this->_ci->load->helper('template');
         $this->_ci->load->helper('html');
+        $this->_ci->load->library('user_agent');
 
         if ( ! empty($config))
         {
@@ -112,9 +113,6 @@ class Template
         // What controllers or methods are in use
         $this->_controller    = $this->_ci->router->class;
         $this->_method        = $this->_ci->router->method;
-
-        // Load user agent library if not loaded
-        $this->_ci->load->library('user_agent');
 
         // We'll want to know this later
         $this->_is_mobile = $this->_ci->agent->is_mobile();
