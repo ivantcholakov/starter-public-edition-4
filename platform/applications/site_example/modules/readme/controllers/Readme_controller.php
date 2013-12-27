@@ -41,7 +41,7 @@ class Readme_controller extends Base_Controller {
         }
 
         if ($path != '') {
-            $content = $this->auto_link->parse_string($this->markdown->parse_string(@ file_get_contents($path), null, true), null, true);
+            $content = $this->auto_link->parse_string($this->markdown->parse($path, null, true, array('full_path' => true)), null, true);
         }
 
         $this->template
