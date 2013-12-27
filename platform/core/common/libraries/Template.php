@@ -33,8 +33,16 @@ class Template
 
     private $_title_separator = ' | ';
 
-    private $_parser_enabled = true;
-    private $_parser_body_enabled = true;
+    // Removed by Ivan Tcholakov, 27-DEC-2013.
+    //private $_parser_enabled = true;
+    //private $_parser_body_enabled = true;
+    //
+
+    // Added by Ivan Tcholakov, 27-DEC-2013.
+    private $_parsers = array();
+    private $_parsers_body = array();
+    //
+
     private $_minify_enabled = false;
 
     private $_theme_locations = array();
@@ -98,11 +106,13 @@ class Template
             $this->_theme_locations = array(APPPATH . 'themes/');
         }
 
-        // If the parse is going to be used, best make sure it's loaded
-        if ($this->_parser_enabled === true)
-        {
-            $this->_ci->load->library('parser');
-        }
+        // Removed by Ivan Tcholakov, 27-DEC-2013.
+        //// If the parse is going to be used, best make sure it's loaded
+        //if ($this->_parser_enabled === true)
+        //{
+        //    $this->_ci->load->library('parser');
+        //}
+        //
 
         // Modular Separation / Modular Extensions has been detected
         if (method_exists( $this->_ci->router, 'fetch_module' ))
@@ -244,16 +254,33 @@ class Template
             // If it uses a view, load it
             if (isset($partial['view']))
             {
-                $template['partials'][$name] = $this->_find_view($partial['view'], $partial['data']);
+                // Modified by Ivan Tcholakov, 28-DEC-2013.
+                //$template['partials'][$name] = $this->_find_view($partial['view'], $partial['data']);
+                $template['partials'][$name] = $this->_find_view($partial['view'], $partial['data'], $this->_parsers);
+                //
             }
 
             // Otherwise the partial must be a string
             else
             {
-                if ($this->_parser_enabled === true)
+                // Modified by Ivan Tcholakov, 27-DEC-2013.
+                //if ($this->_parser_enabled === true)
+                //{
+                //    $partial['string'] = $this->_ci->parser->parse_string($partial['string'], $this->_data + $partial['data'], true, true);
+                //}
+                if (!empty($this->_parsers))
                 {
-                    $partial['string'] = $this->_ci->parser->parse_string($partial['string'], $this->_data + $partial['data'], true, true);
+                    $data = $this->_data + $partial['data'];
+
+                    foreach ($this->_parsers as $parser => $config)
+                    {
+                        $this->_ci->load->parser($parser);
+                        $partial['string'] = $this->_ci->{$parser}->parse_string($partial['string'], $data, true, $config);
+                    }
+
+                    unset($data);
                 }
+                //
 
                 $template['partials'][$name] = $partial['string'];
             }
@@ -274,7 +301,10 @@ class Template
         $this->cache_lifetime > 0 && $this->_ci->output->cache( $this->cache_lifetime );
 
         // Test to see if this file
-        $this->_body = $this->_find_view( $view, array(), $this->_parser_body_enabled );
+        // Modified by Ivan Tcholakov, 28-DEC-2013.
+        //$this->_body = $this->_find_view( $view, array(), $this->_parser_body_enabled );
+        $this->_body = $this->_find_view( $view, array(), $this->_parsers_body);
+        //
 
         // Want this file wrapped with a layout file?
         if ($this->_layout)
@@ -283,7 +313,10 @@ class Template
             $template['body'] = $this->_body;
 
             // Find the main body and 3rd param means parse if its a theme view (only if parser is enabled)
-            $this->_body = self::_load_view('layouts/'.$this->_layout, $this->_data, true, self::_find_view_folder());
+            // Modified by Ivan Tcholakov, 27-DEC-2013.
+            //$this->_body = self::_load_view('layouts/'.$this->_layout, $this->_data, true, self::_find_view_folder());
+            $this->_body = self::_load_view('layouts/'.$this->_layout, $this->_data, $this->_parsers, self::_find_view_folder());
+            //
         }
 
         if ($this->_minify_enabled && function_exists('process_data_jmr1'))
@@ -577,17 +610,91 @@ class Template
         return $this;
     }
 
+    private function _detect_parsers(& $parsers) {
+
+        // BC: Detect a boolean value.
+
+        if (!is_array($parsers)) {
+
+            if (is_bool($parsers)) {
+
+                $is_bool = true;
+
+            } elseif (empty($parsers)) {
+
+                $is_bool = true;
+                $parsers = false;
+                
+            } elseif (is_numeric($parsers)) {
+
+                $is_bool = true;
+                $parsers = $parsers > 0;
+
+            } else {
+
+                $is_bool = false;
+                $parsers = array((string) $parsers);
+            }
+
+        } else {
+
+            $is_bool = false;
+        }
+
+        return $is_bool;
+    }
 
     /**
      * enable_parser
      * Should be parser be used or the view files just loaded normally?
      *
-     * @param    bool    $bool
+     * @param     mixed     $parsers
      * @return    object    $this
      */
-    public function enable_parser($bool)
+    public function enable_parser($parsers)
     {
-        $this->_parser_enabled = $bool;
+        // Modified by Ivan Tcholakov, 27-DEC-2013.
+        //$this->_parser_enabled = $parsers;
+        //return $this;
+
+        $is_bool = $this->_detect_parsers($parsers);
+
+        if ($is_bool) {
+
+            if ($parsers) {
+
+                $this->_parsers['parser'] = array();
+
+            } else {
+
+                $this->_parsers = array();
+            }
+
+        } elseif (!empty($parsers)) {
+
+            foreach ($parsers as $parser_key => $parser_value) {
+
+                if (is_string($parser_key)) {
+
+                    if ($parser_value !== false) {
+
+                        $this->_parsers[$parser_key] = $parser_value;
+
+                    } else {
+
+                        if (array_key_exists($parser_key, $this->_parsers)) {
+
+                            unset($this->_parsers[$parser_key]);
+                        }
+                    }
+
+                } elseif (is_string($parser_value)) {
+
+                    $this->_parsers[$parser_value] = array();
+                }
+            }
+        }
+
         return $this;
     }
 
@@ -595,12 +702,53 @@ class Template
      * enable_parser_body
      * Should be parser be used or the body view files just loaded normally?
      *
-     * @param    bool    $bool
+     * @param     mixed     $parsers
      * @return    object    $this
      */
-    public function enable_parser_body($bool)
+    public function enable_parser_body($parsers)
     {
-        $this->_parser_body_enabled = $bool;
+        // Modified by Ivan Tcholakov, 27-DEC-2013.
+        //$this->_parser_body_enabled = $parsers;
+        //return $this;
+
+        $is_bool = $this->_detect_parsers($parsers);
+
+        if ($is_bool) {
+
+            if ($parsers) {
+
+                $this->_parsers_body['parser'] = array();
+
+            } else {
+
+                $this->_parsers_body = array();
+            }
+
+        } elseif (!empty($parsers)) {
+
+            foreach ($parsers as $parser_key => $parser_value) {
+
+                if (is_string($parser_key)) {
+
+                    if ($parser_value !== false) {
+
+                        $this->_parsers_body[$parser_key] = $parser_value;
+
+                    } else {
+
+                        if (array_key_exists($parser_key, $this->_parsers_body)) {
+
+                            unset($this->_parsers_body[$parser_key]);
+                        }
+                    }
+
+                } elseif (is_string($parser_value)) {
+
+                    $this->_parsers_body[$parser_value] = array();
+                }
+            }
+        }
+
         return $this;
     }
 
@@ -781,7 +929,10 @@ class Template
     }
 
     // A module view file can be overriden in a theme
-    private function _find_view($view, array $data, $parse_view = true)
+    // Modified by Ivan Tcholakov, 28-DEC-2013.
+    //private function _find_view($view, array $data, $parse_view = true)
+    private function _find_view($view, array $data, $parsers = array())
+    //
     {
         // Only bother looking in themes if there is a theme
         if ( ! empty($this->_theme))
@@ -799,34 +950,42 @@ class Template
             {
                 if (file_exists($location . $theme_view . self::_ext($theme_view)))
                 {
-                    return self::_load_view($theme_view, $this->_data + $data, $parse_view, $location);
+                    return self::_load_view($theme_view, $this->_data + $data, $parsers, $location);
                 }
             }
         }
 
         // Not found it yet? Just load, its either in the module or root view
-        return self::_load_view($view, $this->_data + $data, $parse_view);
+        return self::_load_view($view, $this->_data + $data, $parsers);
     }
 
-    private function _load_view($view, array $data, $parse_view = true, $override_view_path = null)
+    // Modified by Ivan Tcholakov, 28-DEC-2013.
+    //private function _load_view($view, array $data, $parse_view = true, $override_view_path = null)
+    private function _load_view($view, array $data, $parsers = array(), $override_view_path = null)
+    //
     {
         // Sevear hackery to load views from custom places AND maintain compatibility with Modular Extensions
         if ($override_view_path !== null)
         {
-            // Added by Ivan Tcholakov, 22-OCT-2013.
-            if (!file_exists($override_view_path.$view.self::_ext($view)))
-            {
-                $override_view_path = COMMONPATH.'views/';
-            }
+            // Modified by Ivan Tcholakov, 27-DEC-2013.
+            //if ($this->_parser_enabled === true and $parse_view === true)
+            if (!empty($parsers))
             //
-            if ($this->_parser_enabled === true and $parse_view === true)
             {
                 // Load content and pass through the parser
-                $content = $this->_ci->parser->parse_string($this->_ci->load->_ci_load(array(
+                // Modified by Ivan Tcholakov, 27-DEC-2013.
+                //$content = $this->_ci->parser->parse_string($this->_ci->load->_ci_load(array(
+                //    '_ci_path' => $override_view_path.$view.self::_ext($view),
+                //    '_ci_vars' => $data,
+                //    '_ci_return' => true
+                //)), $data, true);
+                $content = $this->_ci->load->_ci_load(array(
                     '_ci_path' => $override_view_path.$view.self::_ext($view),
                     '_ci_vars' => $data,
-                    '_ci_return' => true
-                )), $data, true);
+                    '_ci_return' => true,
+                    '_ci_parsers_param' => $parsers
+                ));
+                //
             }
 
             else
@@ -844,13 +1003,18 @@ class Template
         else
         {
             // Grab the content of the view (parsed or loaded)
-            $content = ($this->_parser_enabled === true AND $parse_view === true)
-
-                // Parse that bad boy
-                ? $this->_ci->parser->parse($view, $data, true )
-
-                // None of that fancy stuff for me!
+            // Modified by Ivan Tcholakov, 27-DEC-2013.
+            //$content = ($this->_parser_enabled === true AND $parse_view === true)
+            //
+            //    // Parse that bad boy
+            //    ? $this->_ci->parser->parse($view, $data, true )
+            //
+            //    // None of that fancy stuff for me!
+            //    : $this->_ci->load->view($view, $data, true );
+            $content = (!empty($parsers))
+                ? $this->_ci->load->view($view, $data, true, $parsers)
                 : $this->_ci->load->view($view, $data, true );
+            //
         }
 
         return $content;

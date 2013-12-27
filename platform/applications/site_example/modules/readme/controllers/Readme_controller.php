@@ -11,15 +11,9 @@ class Readme_controller extends Base_Controller {
 
         parent::__construct();
 
-        $this->load
-            ->parser('markdown')
-            ->parser('auto_link')
-        ;
-
-        $this->template->inject_partial('css', css('lib/google-code-prettify/prettify.css'));
-        $this->template->set_partial('scripts', 'readme_scripts');
-
         $this->template
+            ->inject_partial('css', css('lib/google-code-prettify/prettify.css'))
+            ->set_partial('scripts', 'readme_scripts')
             ->title('README')
         ;
     }
@@ -40,6 +34,8 @@ class Readme_controller extends Base_Controller {
 
         $this->template
             ->set('path', $path)
+            //->enable_parser_body(array('markdown', 'auto_link' => array('attributes' => 'target="_blank"')))
+            ->enable_parser_body(array('markdown', 'auto_link'))
             ->build('readme');
     }
 

@@ -2,17 +2,10 @@
 
 if ($path != '') {
 
-    echo $this->auto_link->parse_string(
-        $this->markdown->parse($path, null, true, array('full_path' => true))
-        , null, true
-    );
+    echo file_get_contents($path);
 
 } else {
 
-?>
-
-    <h1>The file README.md has not been found.</h1>
-
-<?php
+    echo '# The file README.md has not been found.';
 
 }
