@@ -140,6 +140,14 @@ class Events {
     //--------------------------------------------------------------------------
 
     /**
+     * Return all registered event keys
+     */
+    static function registered()
+    {
+        return array_keys(self::$_listeners);
+    }
+
+    /**
      * Register
      *
      * Registers a Callback for a given event
