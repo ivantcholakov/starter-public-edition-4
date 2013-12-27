@@ -16,10 +16,6 @@ if (!class_exists('MarkdownExtra_Parser', FALSE))
 class CI_Parser_markdown extends CI_Driver {
 
     protected $config;
-    protected $parser;
-    protected $parser_methods = array();
-    protected $parser_properties = array();
-
     private $ci;
 
     public function __construct()
@@ -53,62 +49,39 @@ class CI_Parser_markdown extends CI_Driver {
 
         if (isset($this->_parent) && !empty($this->_parent->params) && is_array($this->_parent->params))
         {
-            if (array_key_exists('parser_driver', $this->_parent->params))
-            {
-                unset($this->_parent->params['parser_driver']);
-            }
-
             $this->config = array_merge($this->config, $this->_parent->params);
-        }
 
-        // Markdown parser initialization.
-
-        $this->parser = new MarkdownExtra_Parser();
-
-        // Scanning parser public properties and methods for magic methods implementation.
-
-        $r = new ReflectionObject($this->parser);
-
-        foreach ($r->getMethods() as $method)
-        {
-            if ($method->isPublic())
+            if (array_key_exists('parser_driver', $this->config))
             {
-                $this->parser_methods[] = $method->getName();
-            }
-        }
-
-        foreach ($r->getProperties() as $prop)
-        {
-            if ($prop->isPublic())
-            {
-                $this->parser_properties[] = $prop->getName();
+                unset($this->config['parser_driver']);
             }
         }
 
         log_message('debug', 'CI_Parser_markdown Class Initialized');
     }
 
-    public function parse($template, $data = array(), $return = FALSE)
+    public function parse($template, $data = array(), $return = FALSE, $config = array())
     {
-        if (!is_array($data))
+        if (!is_array($config))
         {
-            $data = array();
+            $config = array();
         }
 
-        // Injecting configuration options from $data variable.
-        $options = array_merge($this->config, $data);
+        $config = array_merge($this->config, $config);
 
         $template = $this->ci->load->path($template);
         $content = file_get_contents($template);
 
-        if (!empty($options['detect_code_blocks']))
+        if (!empty($config['detect_code_blocks']))
         {
             $content = preg_replace('/`{3,}[a-z]*/i', '~~~', $content);
         }
 
-        $result = @ $this->parser->transform($content);
+        $parser = new MarkdownExtra_Parser();
 
-        if (!empty($options['auto_links']))
+        $result = @ $parser->transform($content);
+
+        if (!empty($config['auto_links']))
         {
             $result = auto_link($result);
         }
@@ -123,24 +96,25 @@ class CI_Parser_markdown extends CI_Driver {
         }
     }
 
-    public function parse_string($template, $data = array(), $return = FALSE)
+    public function parse_string($template, $data = array(), $return = FALSE, $config = array())
     {
-        if (!is_array($data))
+        if (!is_array($config))
         {
-            $data = array();
+            $config = array();
         }
-        
-        // Injecting configuration options from $data variable.
-        $options = array_merge($this->config, $data);
 
-        if (!empty($options['detect_code_blocks']))
+        $config = array_merge($this->config, $config);
+
+        if (!empty($config['detect_code_blocks']))
         {
             $template = preg_replace('/`{3,}[a-z]*/i', '~~~', $template);
         }
 
-        $result = @ $this->parser->transform($template);
+        $parser = new MarkdownExtra_Parser();
 
-        if (!empty($options['auto_links']))
+        $result = @ $parser->transform($template);
+
+        if (!empty($config['auto_links']))
         {
             $result = auto_link($result);
         }
@@ -152,33 +126,6 @@ class CI_Parser_markdown extends CI_Driver {
         else
         {
             $this->ci->output->append_output($result);
-        }
-    }
-
-    // Magic Methods
-    //--------------------------------------------------------------------------
-
-    public function __get($property)
-    {
-        if (in_array($property, $this->parser_properties))
-        {
-            return $this->parser->{$property};
-        }
-        else
-        {
-            return parent::__get($property);
-        }
-    }
-
-    public function __call($method, $args = array())
-    {
-        if (in_array($method, $this->parser_methods))
-        {
-            return call_user_func_array(array($this->parser, $method), $args);
-        }
-        else
-        {
-            return parent::__call($method, $args);
         }
     }
 

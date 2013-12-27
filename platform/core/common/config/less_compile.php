@@ -5,6 +5,13 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
+/**
+ * How to recompile these LESS-sources:
+ * make sure the destination folders and files are writable.
+ * open a terminal at the folder platform/www/ and write the following command:
+ * php cli.php less compile
+ */
+
 $config['less_compile'] = array(
 
     array(

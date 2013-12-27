@@ -42,7 +42,7 @@ class Compile_controller extends Core_Controller {
                 continue;
             }
 
-            write_file($destination, $this->less->parse($source, array('compress' => $compress), true));
+            write_file($destination, $this->less->parse($source, null, true, array('compress' => $compress)));
         }
 
     }

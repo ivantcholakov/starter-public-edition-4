@@ -8,7 +8,6 @@
 class CI_Parser_i18n extends CI_Driver {
 
     protected $config;
-
     private $ci;
 
     public function __construct()
@@ -39,19 +38,18 @@ class CI_Parser_i18n extends CI_Driver {
 
         if (isset($this->_parent) && !empty($this->_parent->params) && is_array($this->_parent->params))
         {
-            if (array_key_exists('parser_driver', $this->_parent->params))
-            {
-                unset($this->_parent->params['parser_driver']);
-            }
-
             $this->config = array_merge($this->config, $this->_parent->params);
+
+            if (array_key_exists('parser_driver', $this->config))
+            {
+                unset($this->config['parser_driver']);
+            }
         }
 
         log_message('debug', 'CI_Parser_i18n Class Initialized');
     }
 
-    // Note: Provide the full path for $template.
-    public function parse($template, $data = array(), $return = FALSE)
+    public function parse($template, $data = array(), $return = FALSE, $config = array())
     {
         if (!is_array($data))
         {
@@ -70,13 +68,8 @@ class CI_Parser_i18n extends CI_Driver {
         }
     }
 
-    public function parse_string($template, $data = array(), $return = FALSE)
+    public function parse_string($template, $data = array(), $return = FALSE, $config = array())
     {
-        if (!is_array($data))
-        {
-            $data = array();
-        }
-
         if ($return)
         {
             return $this->ci->lang->parse_i18n($template);

@@ -120,9 +120,15 @@ class CI_Parser extends CI_Driver_Library {
 	 * @param	bool
 	 * @return	string
 	 */
-	public function parse($template, $data = array(), $return = FALSE)
+	// Modified by Ivan Tcholakov, 27-DEC-2013.
+	//public function parse($template, $data = array(), $return = FALSE)
+	public function parse($template, $data = array(), $return = FALSE, $config = array())
+	// Modified by Ivan Tcholakov, 27-DEC-2013.
 	{
-		return $this->driver->parse($template, $data, $return);
+		// Modified by Ivan Tcholakov, 27-DEC-2013.
+		//return $this->driver->parse($template, $data, $return);
+		return $this->driver->parse($template, $data, $return, $config);
+		//
 	}
 
 	// --------------------------------------------------------------------
@@ -138,9 +144,15 @@ class CI_Parser extends CI_Driver_Library {
 	 * @param	bool
 	 * @return	string
 	 */
-	public function parse_string($template, $data = array(), $return = FALSE)
+	// Modified by Ivan Tcholakov, 27-DEC-2013.
+	//public function parse_string($template, $data = array(), $return = FALSE)
+	public function parse_string($template, $data = array(), $return = FALSE, $config = array())
+	//
 	{
-		return $this->driver->parse_string($template, $data, $return);
+		// Modified by Ivan Tcholakov, 27-DEC-2013.
+		//return $this->driver->parse_string($template, $data, $return);
+		return $this->driver->parse_string($template, $data, $return, $config);
+		//
 	}
 	
 	/**
@@ -228,8 +240,11 @@ abstract class CI_Parser_driver extends CI_Driver {
 	 * @param	bool
 	 * @return	string
 	 */
-	abstract public function parse($template, $data = array(), $return = FALSE);
-	
+	// Modified by Ivan Tcholakov, 27-DEC-2013.
+	//abstract public function parse($template, $data = array(), $return = FALSE);
+	abstract public function parse($template, $data = array(), $return = FALSE, $config = array());
+	//
+
 	/**
 	 * Parse a template string
 	 *
@@ -243,8 +258,11 @@ abstract class CI_Parser_driver extends CI_Driver {
 	 * @param	bool
 	 * @return	string
 	 */
-	abstract public function parse_string($template, $data = array(), $return = FALSE);
-	
+	// Modified by Ivan Tcholakov, 27-DEC-2013.
+	// abstract public function parse_string($template, $data = array(), $return = FALSE);
+	abstract public function parse_string($template, $data = array(), $return = FALSE, $config = array());
+	//
+
 	/**
 	 * Initialize driver
 	 *

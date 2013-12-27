@@ -17,11 +17,6 @@ if (!class_exists('Mustache_Autoloader', FALSE))
 class CI_Parser_mustache extends CI_Driver {
 
     protected $config;
-    protected $parser;
-    protected $parser_methods = array();
-    protected $parser_properties = array();
-    protected $string_loader;
-
     private $ci;
 
     public function __construct()
@@ -56,45 +51,26 @@ class CI_Parser_mustache extends CI_Driver {
 
         if (isset($this->_parent) && !empty($this->_parent->params) && is_array($this->_parent->params))
         {
-            if (array_key_exists('parser_driver', $this->_parent->params))
-            {
-                unset($this->_parent->params['parser_driver']);
-            }
-
             $this->config = array_merge($this->config, $this->_parent->params);
-        }
 
-        // Mustache_Engine parser initialization.
-
-        $this->parser= new Mustache_Engine($this->config);
-
-        $this->string_loader = new Mustache_Loader_StringLoader();
-
-        // Scanning Mustache_Engine public properties and methods for magic methods implementation.
-
-        $r = new ReflectionObject($this->parser);
-
-        foreach ($r->getMethods() as $method)
-        {
-            if ($method->isPublic())
+            if (array_key_exists('parser_driver', $this->config))
             {
-                $this->parser_methods[] = $method->getName();
-            }
-        }
-
-        foreach ($r->getProperties() as $prop)
-        {
-            if ($prop->isPublic())
-            {
-                $this->parser_properties[] = $prop->getName();
+                unset($this->config['parser_driver']);
             }
         }
 
         log_message('debug', 'CI_Parser_mustache Class Initialized');
     }
 
-    public function parse($template, $data = array(), $return = FALSE)
+    public function parse($template, $data = array(), $return = FALSE, $config = array())
     {
+        if (!is_array($config))
+        {
+            $config = array();
+        }
+
+        $config = array_merge($this->config, $config);
+
         if (!is_array($data))
         {
             $data = array();
@@ -106,61 +82,43 @@ class CI_Parser_mustache extends CI_Driver {
         $base_dir = $path['dirname'];
         $template = $path['basename'];
 
-        $this->parser->setLoader(new Mustache_Loader_FilesystemLoader($base_dir));
+        $parser = new Mustache_Engine($config);
+        $parser->setLoader(new Mustache_Loader_FilesystemLoader($base_dir));
 
         if ($return)
         {
-            return $this->parser->render($template, $data);
+            return $parser->render($template, $data);
         }
         else
         {
-            $this->ci->output->append_output($this->parser->render($template, $data));
+            $this->ci->output->append_output($parser->render($template, $data));
         }
     }
 
-    public function parse_string($template, $data = array(), $return = FALSE)
+    public function parse_string($template, $data = array(), $return = FALSE, $config = array())
     {
+        if (!is_array($config))
+        {
+            $config = array();
+        }
+
+        $config = array_merge($this->config, $config);
+
         if (!is_array($data))
         {
             $data = array();
         }
 
-        $this->parser->setLoader($this->string_loader);
+        $parser = new Mustache_Engine($config);
+        $parser->setLoader(new Mustache_Loader_StringLoader());
         
         if ($return)
         {
-            return $this->parser->render($template, $data);
+            return $parser->render($template, $data);
         }
         else
         {
-            $this->ci->output->append_output($this->parser->render($template, $data));
-        }
-    }
-
-    // Magic Methods
-    //--------------------------------------------------------------------------
-
-    public function __get($property)
-    {
-        if (in_array($property, $this->parser_properties))
-        {
-            return $this->parser->{$property};
-        }
-        else
-        {
-            return parent::__get($property);
-        }
-    }
-
-    public function __call($method, $args = array())
-    {
-        if (in_array($method, $this->parser_methods))
-        {
-            return call_user_func_array(array($this->parser, $method), $args);
-        }
-        else
-        {
-            return parent::__call($method, $args);
+            $this->ci->output->append_output($parser->render($template, $data));
         }
     }
 

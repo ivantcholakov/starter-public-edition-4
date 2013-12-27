@@ -16,10 +16,6 @@ if (!class_exists('Textile', FALSE))
 class CI_Parser_textile extends CI_Driver {
 
     protected $config;
-    protected $parser;
-    protected $parser_methods = array();
-    protected $parser_properties = array();
-
     private $ci;
 
     public function __construct()
@@ -50,102 +46,59 @@ class CI_Parser_textile extends CI_Driver {
 
         if (isset($this->_parent) && !empty($this->_parent->params) && is_array($this->_parent->params))
         {
-            if (array_key_exists('parser_driver', $this->_parent->params))
-            {
-                unset($this->_parent->params['parser_driver']);
-            }
-
             $this->config = array_merge($this->config, $this->_parent->params);
-        }
 
-        // Textile parser initialization.
-
-        $this->parser = new Textile($this->config['doctype']);
-
-        // Scanning parser public properties and methods for magic methods implementation.
-
-        $r = new ReflectionObject($this->parser);
-
-        foreach ($r->getMethods() as $method)
-        {
-            if ($method->isPublic())
+            if (array_key_exists('parser_driver', $this->config))
             {
-                $this->parser_methods[] = $method->getName();
-            }
-        }
-
-        foreach ($r->getProperties() as $prop)
-        {
-            if ($prop->isPublic())
-            {
-                $this->parser_properties[] = $prop->getName();
+                unset($this->config['parser_driver']);
             }
         }
 
         log_message('debug', 'CI_Parser_textile Class Initialized');
     }
 
-    public function parse($template, $data = array(), $return = FALSE)
+    public function parse($template, $data = array(), $return = FALSE, $config = array())
     {
-        if (!is_array($data))
+        if (!is_array($config))
         {
-            $data = array();
+            $config = array();
         }
+
+        $config = array_merge($this->config, $config);
 
         $template = $this->ci->load->path($template);
         $content = file_get_contents($template);
 
+        $parser = new Textile($config['doctype']);
+
         if ($return)
         {
-            return $this->parser->textileThis($content);
+            return $parser->textileThis($content);
         }
         else
         {
-            $this->ci->output->append_output($this->parser->textileThis($content));
+            $this->ci->output->append_output($parser->textileThis($content));
         }
     }
 
-    public function parse_string($template, $data = array(), $return = FALSE)
+    public function parse_string($template, $data = array(), $return = FALSE, $config = array())
     {
-        if (!is_array($data))
+        if (!is_array($config))
         {
-            $data = array();
+            $config = array();
         }
-        
+
+        $config = array_merge($this->config, $config);
+
+        $parser = new Textile($config['doctype']);
+
         if ($return)
         {
-            return $this->parser->textileThis($template);
+            return $parser->textileThis($template);
         }
         else
         {
-            $this->ci->output->append_output($this->parser->textileThis($template));
-        }
-    }
-
-    // Magic Methods
-    //--------------------------------------------------------------------------
-
-    public function __get($property)
-    {
-        if (in_array($property, $this->parser_properties))
-        {
-            return $this->parser->{$property};
-        }
-        else
-        {
-            return parent::__get($property);
-        }
-    }
-
-    public function __call($method, $args = array())
-    {
-        if (in_array($method, $this->parser_methods))
-        {
-            return call_user_func_array(array($this->parser, $method), $args);
-        }
-        else
-        {
-            return parent::__call($method, $args);
+            $this->ci->output->append_output($parser->textileThis($template));
         }
     }
 
