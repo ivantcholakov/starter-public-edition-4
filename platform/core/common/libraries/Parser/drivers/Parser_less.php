@@ -20,7 +20,7 @@ class CI_Parser_less extends CI_Driver {
             'compress' => FALSE,
             'strictUnits' => FALSE,
             'uri_root' => '',
-            'full_path' => TRUE,
+            'full_path' => FALSE,
         );
 
         if ($this->ci->config->load('parser_less', TRUE, TRUE))
@@ -65,6 +65,9 @@ class CI_Parser_less extends CI_Driver {
         {
             $template = $this->ci->load->path($template);
         }
+
+        // For security reasons don't parse PHP content.
+        $template = file_get_contents($template);
 
         $parser = new Less_Parser($config);
         $parser->parseFile($template, $config['uri_root']);

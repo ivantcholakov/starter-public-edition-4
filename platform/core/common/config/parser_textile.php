@@ -6,3 +6,6 @@
  */
 
 $config['doctype'] = 'xhtml';   // 'xhtml' or 'html5'
+
+// This option enforces template full paths to be given for method parse().
+$config['full_path'] = FALSE;

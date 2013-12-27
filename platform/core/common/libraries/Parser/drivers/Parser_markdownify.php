@@ -28,6 +28,7 @@ class CI_Parser_markdownify extends CI_Driver {
             'linksAfterEachParagraph' => FALSE,
             'bodyWidth' => FALSE,
             'keepHTML' => FALSE,
+            'full_path' => FALSE,
         );
 
         if ($this->ci->config->load('parser_markdownify', TRUE, TRUE))
@@ -68,8 +69,13 @@ class CI_Parser_markdownify extends CI_Driver {
 
         $config = array_merge($this->config, $config);
 
-        $template = $this->ci->load->path($template);
-        $content = file_get_contents($template);
+        if (!$config['full_path'])
+        {
+            $template = $this->ci->load->path($template);
+        }
+
+        // For security reasons don't parse PHP content.
+        $template = file_get_contents($template);
 
         $parser = new Markdownify_Extra(
             $config['linksAfterEachParagraph'],
@@ -79,11 +85,11 @@ class CI_Parser_markdownify extends CI_Driver {
 
         if ($return)
         {
-            return @ $parser->parseString($content);
+            return @ $parser->parseString($template);
         }
         else
         {
-            $this->ci->output->append_output(@ $parser->parseString($content));
+            $this->ci->output->append_output(@ $parser->parseString($template));
         }
     }
 

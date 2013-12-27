@@ -31,6 +31,7 @@ class CI_Parser_mustache extends CI_Driver {
             'cache_file_mode' => FILE_WRITE_MODE,
             'charset' => 'UTF-8',
             'entityFlags' => ENT_COMPAT,
+            'full_path' => FALSE,
         );
 
         if ($this->ci->config->load('parser_mustache', TRUE, TRUE))
@@ -76,7 +77,12 @@ class CI_Parser_mustache extends CI_Driver {
             $data = array();
         }
 
-        $template = $this->ci->load->path($template);
+        // For security reasons don't parse PHP content.
+
+        if (!$config['full_path'])
+        {
+            $template = $this->ci->load->path($template);
+        }
 
         $path = pathinfo($template);
         $base_dir = $path['dirname'];

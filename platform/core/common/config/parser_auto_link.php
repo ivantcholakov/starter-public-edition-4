@@ -5,8 +5,12 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-$config['charset'] = 'UTF-8';
-$config['entityFlags'] = ENT_COMPAT;
+// What kind of links to be parsed: 'email', 'url', or 'both'
+$config['type'] = 'both';
+
+// Atthibutes to be added to automatically created links.
+// Example: $config['attributes'] = 'target="_blank"';
+$config['attributes'] = '';
 
 // This option enforces template full paths to be given for method parse().
 $config['full_path'] = FALSE;

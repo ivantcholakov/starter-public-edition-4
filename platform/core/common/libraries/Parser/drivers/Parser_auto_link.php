@@ -5,7 +5,7 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class CI_Parser_i18n extends CI_Driver {
+class CI_Parser_auto_link extends CI_Driver {
 
     protected $config;
     private $ci;
@@ -14,15 +14,19 @@ class CI_Parser_i18n extends CI_Driver {
     {
         $this->ci = get_instance();
 
+        $this->ci->load->helper('url');
+
         // Default configuration options.
 
         $this->config = array(
+            'type' => 'both',
+            'attributes' => '',
             'full_path' => FALSE,
         );
 
-        if ($this->ci->config->load('parser_i18n', TRUE, TRUE))
+        if ($this->ci->config->load('parser_auto_link', TRUE, TRUE))
         {
-            $this->config = array_merge($this->config, $this->ci->config->item('parser_i18n'));
+            $this->config = array_merge($this->config, $this->ci->config->item('parser_auto_link'));
         }
 
         // Ivan Tcholakov: A ugly hack for accessing the parent loader object,
@@ -46,7 +50,7 @@ class CI_Parser_i18n extends CI_Driver {
             }
         }
 
-        log_message('debug', 'CI_Parser_i18n Class Initialized');
+        log_message('debug', 'CI_Parser_auto_link Class Initialized');
     }
 
     public function parse($template, $data = array(), $return = FALSE, $config = array())
@@ -63,25 +67,21 @@ class CI_Parser_i18n extends CI_Driver {
             $data = array();
         }
 
-        if ($config['full_path'])
+        if (!$config['full_path'])
         {
             $template = $this->ci->load->path($template);
+        }
 
-            // For security reasons don't parse PHP content in this case.
-            $template = file_get_contents($template);
-        }
-        else
-        {
-            $template = $this->ci->load->view($template, $data, TRUE);
-        }
+        // For security reasons don't parse PHP content.
+        $template = file_get_contents($template);
 
         if ($return)
         {
-            return $this->ci->lang->parse_i18n($template);
+            return auto_link($template, $config['type'], $config['attributes']);
         }
         else
         {
-            $this->ci->output->append_output($this->ci->lang->parse_i18n($template));
+            $this->ci->output->append_output(auto_link($template, $config['type'], $config['attributes']));
         }
     }
 
@@ -96,11 +96,11 @@ class CI_Parser_i18n extends CI_Driver {
 
         if ($return)
         {
-            return $this->ci->lang->parse_i18n($template);
+            return auto_link($template, $config['type'], $config['attributes']);
         }
         else
         {
-             $this->ci->output->append_output($this->ci->lang->parse_i18n($template));
+             $this->ci->output->append_output(auto_link($template, $config['type'], $config['attributes']));
         }
     }
 

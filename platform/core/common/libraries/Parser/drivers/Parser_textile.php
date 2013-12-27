@@ -26,6 +26,7 @@ class CI_Parser_textile extends CI_Driver {
 
         $this->config = array(
             'doctype' => 'xhtml',
+            'full_path' => FALSE,
         );
 
         if ($this->ci->config->load('parser_textile', TRUE, TRUE))
@@ -66,18 +67,23 @@ class CI_Parser_textile extends CI_Driver {
 
         $config = array_merge($this->config, $config);
 
-        $template = $this->ci->load->path($template);
-        $content = file_get_contents($template);
+        if (!$config['full_path'])
+        {
+            $template = $this->ci->load->path($template);
+        }
+
+        // For security reasons don't parse PHP content.
+        $template = file_get_contents($template);
 
         $parser = new Textile($config['doctype']);
 
         if ($return)
         {
-            return $parser->textileThis($content);
+            return $parser->textileThis($template);
         }
         else
         {
-            $this->ci->output->append_output($parser->textileThis($content));
+            $this->ci->output->append_output($parser->textileThis($template));
         }
     }
 

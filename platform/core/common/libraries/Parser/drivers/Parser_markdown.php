@@ -27,8 +27,8 @@ class CI_Parser_markdown extends CI_Driver {
         // Default configuration options.
 
         $this->config = array(
-            'auto_links' => true,
-            'detect_code_blocks' => true,
+            'detect_code_blocks' => TRUE,
+            'full_path' => FALSE,
         );
 
         if ($this->ci->config->load('parser_markdown', TRUE, TRUE))
@@ -69,30 +69,30 @@ class CI_Parser_markdown extends CI_Driver {
 
         $config = array_merge($this->config, $config);
 
-        $template = $this->ci->load->path($template);
-        $content = file_get_contents($template);
+        if (!$config['full_path'])
+        {
+            $template = $this->ci->load->path($template);
+        }
+
+        // For security reasons don't parse PHP content.
+        $template = file_get_contents($template);
 
         if (!empty($config['detect_code_blocks']))
         {
-            $content = preg_replace('/`{3,}[a-z]*/i', '~~~', $content);
+            $template = preg_replace('/`{3,}[a-z]*/i', '~~~', $template);
         }
 
         $parser = new MarkdownExtra_Parser();
 
-        $result = @ $parser->transform($content);
-
-        if (!empty($config['auto_links']))
-        {
-            $result = auto_link($result);
-        }
+        $result = @ $parser->transform($template);
 
         if ($return)
         {
-            return $result;
+            return @ $parser->transform($template);
         }
         else
         {
-            $this->ci->output->append_output($result);
+            $this->ci->output->append_output(@ $parser->transform($template));
         }
     }
 
@@ -114,18 +114,13 @@ class CI_Parser_markdown extends CI_Driver {
 
         $result = @ $parser->transform($template);
 
-        if (!empty($config['auto_links']))
-        {
-            $result = auto_link($result);
-        }
-
         if ($return)
         {
-            return $result;
+            return @ $parser->transform($template);
         }
         else
         {
-            $this->ci->output->append_output($result);
+            $this->ci->output->append_output(@ $parser->transform($template));
         }
     }
 

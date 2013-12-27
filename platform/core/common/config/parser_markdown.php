@@ -5,8 +5,8 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-// Parse for links and make them clickable.
-$config['auto_links'] = TRUE;
-
 // A workaround for ```php kind of blocks detection.
 $config['detect_code_blocks'] = TRUE;
+
+// This option enforces template full paths to be given for method parse().
+$config['full_path'] = FALSE;

@@ -14,5 +14,5 @@ $config['strictUnits'] = FALSE;
 // URI root the be added as suffix to relative URLs.
 $config['uri_root'] = '';
 
-// This option enforces source full paths to be given for method parse().
-$config['full_path'] = TRUE;
+// This option enforces template full paths to be given for method parse().
+$config['full_path'] = FALSE;

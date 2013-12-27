@@ -11,7 +11,10 @@ class Readme_controller extends Base_Controller {
 
         parent::__construct();
 
-        $this->load->parser('markdown');
+        $this->load
+            ->parser('markdown')
+            ->parser('auto_link')
+        ;
 
         $this->template->inject_partial('css', css('lib/google-code-prettify/prettify.css'));
         $this->template->set_partial('scripts', 'readme_scripts');
@@ -38,7 +41,7 @@ class Readme_controller extends Base_Controller {
         }
 
         if ($path != '') {
-            $content = $this->markdown->parse_string(@ file_get_contents($path), null, true);
+            $content = $this->auto_link->parse_string($this->markdown->parse_string(@ file_get_contents($path), null, true), null, true);
         }
 
         $this->template
