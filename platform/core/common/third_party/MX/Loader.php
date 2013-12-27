@@ -633,7 +633,11 @@ class MX_Loader extends CI_Loader
     }
 
     /** Load a module view **/
-    public function view($view, $vars = array(), $return = FALSE) {
+    // Modified by Ivan Tcholakov, 27-DEC-2013.
+    //public function view($view, $vars = array(), $return = FALSE) {
+    public function view($view, $vars = array(), $return = FALSE, $parsers = array()) {
+    //
+
         list($path, $_view) = Modules::find($view, $this->_module, 'views/');
 
         if ($path != FALSE) {
@@ -641,13 +645,13 @@ class MX_Loader extends CI_Loader
             $view = $_view;
         }
 
-        // Modified by Ivan Tcholakov, 12-DEC-2013.
+        // Modified by Ivan Tcholakov, 12-DEC-2013, 27-DEC-2013.
         // See https://github.com/EllisLab/CodeIgniter/issues/2165
         //return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
         if ($return) {
-            return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
+            return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return, '_ci_parsers_param' => $parsers));
         }
-        $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
+        $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return, '_ci_parsers_param' => $parsers));
         return $this;
         //
     }
@@ -696,12 +700,72 @@ class MX_Loader extends CI_Loader
         
         extract($this->_ci_cached_vars);
 
+        // Added by Ivan Tcholakov, 27-DEC-2013.
+
+        $_ci_parsers_param = isset($_ci_parsers_param) ? $_ci_parsers_param : array();
+
+        if (!is_array($_ci_parsers_param)) {
+
+            $_ci_parsers_param = (string) $_ci_parsers_param;
+
+            if ($_ci_parsers_param != '') {
+                $_ci_parsers_param = array($_ci_parsers_param);
+            } else {
+                $_ci_parsers_param = array();
+            }
+        }
+
+        $_ci_parsers = array();
+
+        foreach ($_ci_parsers_param as $_ci_parser_key => $_ci_parser_value) {
+
+            if (is_string($_ci_parser_key)) {
+
+                $_ci_parsers[] = array('parser' => $_ci_parser_key, 'config' => $_ci_parser_value);
+
+            } elseif (is_string($_ci_parser_value)) {
+
+                $_ci_parsers[] = array('parser' => $_ci_parser_value, 'config' => array());
+            }
+
+        }
+        //
+
         ob_start();
 
-        if ((bool) @ini_get('short_open_tag') === FALSE AND CI::$APP->config->item('rewrite_short_tags') == TRUE) {
-            echo eval('?>'.preg_replace("/;*\s*\?>/", "; ?>", str_replace('<?=', '<?php echo ', file_get_contents($_ci_path))));
+        if (empty($_ci_parsers)) {
+
+            if (!is_php('5.4') && (bool) @ini_get('short_open_tag') === FALSE && CI::$APP->config->item('rewrite_short_tags') == TRUE && function_usable('eval')) {
+                echo eval('?>'.preg_replace("/;*\s*\?>/", "; ?>", str_replace('<?=', '<?php echo ', file_get_contents($_ci_path))));
+            } else {
+                include($_ci_path);
+            }
+
         } else {
-            include($_ci_path);
+
+            // This conditional branch has been added by Ivan Tcholakov, 27-DEC-2013.
+
+            if (!isset($_ci_vars)) {
+                $_ci_vars = array();
+            }
+
+            ob_start();
+
+            if (!is_php('5.4') && (bool) @ini_get('short_open_tag') === FALSE && CI::$APP->config->item('rewrite_short_tags') == TRUE && function_usable('eval')) {
+                echo eval('?>'.preg_replace("/;*\s*\?>/", "; ?>", str_replace('<?=', '<?php echo ', file_get_contents($_ci_path))));
+            } else {
+                include($_ci_path);
+            }
+
+            $_ci_template_content = ob_get_clean();
+
+            foreach ($_ci_parsers as $_ci_parser)
+            {
+                CI::$APP->load->parser($_ci_parser['parser']);
+                $_ci_template_content = CI::$APP->{$_ci_parser['parser']}->parse_string($_ci_template_content, $_ci_vars, true, $_ci_parser['config']);
+            }
+
+            echo $_ci_template_content;
         }
 
         log_message('debug', 'File loaded: '.$_ci_path);

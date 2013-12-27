@@ -19,7 +19,7 @@ class Contact_map_widget_controller extends Core_Controller {
             ->helper('language')
             ->helper('url')
             ->helper('asset')
-            ->parser('i18n')
+            //->parser('i18n')
             ->language('contact')
         ;
     }
@@ -35,7 +35,12 @@ class Contact_map_widget_controller extends Core_Controller {
             'contact_map',
         ));
 
-        echo $this->i18n->parse('contact_map_widget', $data, TRUE);
+        //// TODO: A workaround, 24-DEC-2013.
+        ////echo $this->i18n->parse('contact_map_widget', $data, TRUE);
+        //echo $this->i18n->parse_string($this->load->view('contact_map_widget', $data, true), null, true);
+        ////
+
+        $this->load->view('contact_map_widget', $data, false, 'i18n');
     }
 
 }
