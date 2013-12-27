@@ -26,8 +26,6 @@ class Readme_controller extends Base_Controller {
 
     public function index() {
 
-        $content = '<h1>The file README.md has not been found.</h1>';
-
         $path = '';
 
         if (file_exists(PLATFORMPATH.'../README.md')) {
@@ -40,12 +38,8 @@ class Readme_controller extends Base_Controller {
             $path = DEFAULTFCPATH.'README.md';
         }
 
-        if ($path != '') {
-            $content = $this->auto_link->parse_string($this->markdown->parse($path, null, true, array('full_path' => true)), null, true);
-        }
-
         $this->template
-            ->set('content', $content)
+            ->set('path', $path)
             ->build('readme');
     }
 
