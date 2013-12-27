@@ -76,17 +76,65 @@ if (!function_exists('url_add_params')) {
 
 if ( ! function_exists('auto_link'))
 {
-    function auto_link($str, $type = 'both', $popup = FALSE)
+    /**
+     * Modifies the auto_link helper (url_helper) by accepting as an optional third
+     * argument an array of html attributes for the anchor tags (just like the anchor helper).
+     *
+     * This array is supplied as the third argument, replacing the
+     * optional argument $pop in the original helper.
+     * 
+     * This modified helper attempts to be backward compatible with the use of the 
+     * original helper by accepting TRUE and FALSE as possible values for the $attributes
+     * argument, and giving output identical to the original usage of the helper.
+     *
+     * use:  auto_link($string, 'url' , array('class' => 'external', 'target'=>'_blank'));
+     * use:  auto_link($string, 'email', array('class' => 'email_link' , 'style' => 'color:red;'));
+     * use(legacy): auto_link($string, 'url' , TRUE);
+     *
+     * @link https://github.com/EllisLab/CodeIgniter/wiki/auto-link
+     * @author Derek Jones (original author)
+     * @author Ivan Tcholakov (adaptation)
+     *
+     * @see url_helper
+     * @link http://codeigniter.com/user_guide/helpers/url_helper.html
+     * @param string $str
+     * @param string $type 
+     * @param mixed $attributes 
+     * @return string
+     */
+    function auto_link($str, $type = 'both', $attributes = '')
     {
+        static $html_helper_loaded = null;
+
+        if ($html_helper_loaded !== true)
+        {
+            get_instance()->load->helper('html');
+            $html_helper_loaded = true;
+        }
+
+        // MAKE THE THIRD ARGUMENT BACKWARD COMPATIBLE
+        // here we deal with the original third argument $pop
+        // which could be TRUE or FALSE, and was FALSE by default.
+        if ($attributes === TRUE)
+        {
+            $attributes = ' target="_blank"';
+        }
+        elseif ($attributes === FALSE)
+        {
+            $attributes = '';
+        }
+
+        if ($attributes != '')
+        {
+            $attributes = ' '.get_attributes_string($attributes);
+        }
+
         // Find and replace any URLs.
         // Modified by Ivan Tcholakov, 19-DEC-2013.
         //if ($type !== 'email' && preg_match_all('#(\w*://|www\.)[^\s()<>;]+\w#i', $str, $matches, PREG_OFFSET_CAPTURE | PREG_SET_ORDER))
         if ($type !== 'email' && preg_match_all('#(\w*://|www\.)[^\s()<>;]+(\w|/)#i', $str, $matches, PREG_OFFSET_CAPTURE | PREG_SET_ORDER))
         //
         {
-            // Set our target HTML if using popup links.
-            $target = ($popup) ? ' target="_blank"' : '';
-
             // We process the links in reverse order (last -> first) so that
             // the returned string offsets from preg_match_all() are not
             // moved as we add more HTML.
@@ -97,7 +145,7 @@ if ( ! function_exists('auto_link'))
                 //
                 // With PREG_OFFSET_CAPTURE, both of the above is an array,
                 // where the actual value is held in [0] and its offset at the [1] index.
-                $a = '<a href="'.(strpos($match[1][0], '/') ? '' : 'http://').$match[0][0].'"'.$target.'>'.$match[0][0].'</a>';
+                $a = '<a href="'.(strpos($match[1][0], '/') ? '' : 'http://').$match[0][0].'"'.$attributes.'>'.$match[0][0].'</a>';
                 $str = substr_replace($str, $a, $match[0][1], strlen($match[0][0]));
             }
         }
@@ -109,7 +157,7 @@ if ( ! function_exists('auto_link'))
             {
                 if (filter_var($match[0], FILTER_VALIDATE_EMAIL) !== FALSE)
                 {
-                    $str = substr_replace($str, safe_mailto($match[0]), $match[1], strlen($match[0]));
+                    $str = substr_replace($str, safe_mailto($match[0], '', $attributes), $match[1], strlen($match[0]));
                 }
             }
         }
