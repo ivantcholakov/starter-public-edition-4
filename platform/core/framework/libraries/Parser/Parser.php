@@ -123,8 +123,56 @@ class CI_Parser extends CI_Driver_Library {
 	// Modified by Ivan Tcholakov, 27-DEC-2013.
 	//public function parse($template, $data = array(), $return = FALSE)
 	public function parse($template, $data = array(), $return = FALSE, $config = array())
-	// Modified by Ivan Tcholakov, 27-DEC-2013.
+	//
 	{
+		// Added by Ivan Tcholakov, 28-DEC-2013.
+		// Processing an alternative chain of drivers.
+ 
+		$CI = &get_instance();
+
+		if (!empty($config))
+		{
+			$config = CI::$APP->parser->parse_config($config);
+		}
+		else
+		{
+			$config = array();
+		}
+
+		if (!empty($config))
+		{
+			$i = 0;
+
+			foreach ($config as $driver)
+			{
+				$CI->load->parser($driver['parser']);
+
+				if ($i == 0)
+				{
+					$template = $CI->{$driver['parser']}->parse($template, $data, true, $driver['config']);
+				}
+				else
+				{
+					$template = $CI->{$driver['parser']}->parse_string($template, $data, true, $driver['config']);
+				}
+
+				$i++;
+			}
+
+			if ($return)
+			{
+				return $template;
+			}
+			else
+			{
+				$CI->output->append_output($template);
+			}
+
+			return;
+		}
+
+		//
+
 		// Modified by Ivan Tcholakov, 27-DEC-2013.
 		//return $this->driver->parse($template, $data, $return);
 		return $this->driver->parse($template, $data, $return, $config);
@@ -149,12 +197,89 @@ class CI_Parser extends CI_Driver_Library {
 	public function parse_string($template, $data = array(), $return = FALSE, $config = array())
 	//
 	{
+		// Added by Ivan Tcholakov, 28-DEC-2013.
+		// Processing an alternative chain of drivers.
+ 
+		$CI = &get_instance();
+
+		if (!empty($config))
+		{
+			$config = CI::$APP->parser->parse_config($config);
+		}
+		else
+		{
+			$config = array();
+		}
+
+		if (!empty($config))
+		{
+			foreach ($config as $driver)
+			{
+				$CI->load->parser($driver['parser']);
+				$template = $CI->{$driver['parser']}->parse_string($template, $data, true, $driver['config']);
+			}
+
+			if ($return)
+			{
+				return $template;
+			}
+			else
+			{
+				$CI->output->append_output($template);
+			}
+
+			return;
+		}
+
+		//
+
 		// Modified by Ivan Tcholakov, 27-DEC-2013.
 		//return $this->driver->parse_string($template, $data, $return);
 		return $this->driver->parse_string($template, $data, $return, $config);
 		//
 	}
-	
+
+	public function parse_config($config)
+	{
+		$config = !empty($config) ? $config : array();
+
+		if (!is_array($config))
+		{
+			$config = (string) $config;
+
+			if ($config != '')
+			{
+				$config = array($config);
+			}
+			else
+			{
+				$config = array();
+			}
+		}
+
+		$result = array();
+
+		foreach ($config as $driver => $driver_config)
+		{
+			if (is_string($driver))
+			{
+				// The simple driver has no configuration.
+				if ($driver == 'parser')
+				{
+					$driver_config = array();
+				}
+
+				$result[] = array('parser' => $driver, 'config' => $driver_config);
+			}
+			elseif (is_string($driver_config))
+			{
+				$result[] = array('parser' => $driver_config, 'config' => array());
+			}
+		}
+
+		return $result;
+	}
+
 	/**
 	 * __get magic method
 	 *

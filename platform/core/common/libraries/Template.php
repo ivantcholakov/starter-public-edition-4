@@ -983,11 +983,10 @@ class Template
                     '_ci_path' => $override_view_path.$view.self::_ext($view),
                     '_ci_vars' => $data,
                     '_ci_return' => true,
-                    '_ci_parsers_param' => $parsers
+                    '_ci_parsers' => $parsers
                 ));
                 //
             }
-
             else
             {
                 // Load it directly, bypassing $this->load->view() as ME resets _ci_view

@@ -612,9 +612,9 @@ class MX_Loader extends CI_Loader
         // See https://github.com/EllisLab/CodeIgniter/issues/2165
         //return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
         if ($return) {
-            return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return, '_ci_parsers_param' => $parsers));
+            return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return, '_ci_parsers' => $parsers));
         }
-        $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return, '_ci_parsers_param' => $parsers));
+        $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return, '_ci_parsers' => $parsers));
         return $this;
         //
     }
@@ -663,34 +663,16 @@ class MX_Loader extends CI_Loader
 
         extract($this->_ci_cached_vars);
 
-        // Added by Ivan Tcholakov, 27-DEC-2013.
+        // Added by Ivan Tcholakov, 28-DEC-2013.
 
-        $_ci_parsers_param = isset($_ci_parsers_param) ? $_ci_parsers_param : array();
+        if (!empty($_ci_parsers)) {
 
-        if (!is_array($_ci_parsers_param)) {
+            CI::$APP->load->parser('parser');
+            $_ci_parsers = CI::$APP->parser->parse_config($_ci_parsers);
 
-            $_ci_parsers_param = (string) $_ci_parsers_param;
+        } else {
 
-            if ($_ci_parsers_param != '') {
-                $_ci_parsers_param = array($_ci_parsers_param);
-            } else {
-                $_ci_parsers_param = array();
-            }
-        }
-
-        $_ci_parsers = array();
-
-        foreach ($_ci_parsers_param as $_ci_parser_key => $_ci_parser_value) {
-
-            if (is_string($_ci_parser_key)) {
-
-                $_ci_parsers[] = array('parser' => $_ci_parser_key, 'config' => $_ci_parser_value);
-
-            } elseif (is_string($_ci_parser_value)) {
-
-                $_ci_parsers[] = array('parser' => $_ci_parser_value, 'config' => array());
-            }
-
+            $_ci_parsers = array();
         }
         //
 
