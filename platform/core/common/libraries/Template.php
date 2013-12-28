@@ -967,53 +967,17 @@ class Template
         // Sevear hackery to load views from custom places AND maintain compatibility with Modular Extensions
         if ($override_view_path !== null)
         {
-            // Modified by Ivan Tcholakov, 27-DEC-2013.
-            //if ($this->_parser_enabled === true and $parse_view === true)
-            if (!empty($parsers))
-            //
-            {
-                // Load content and pass through the parser
-                // Modified by Ivan Tcholakov, 27-DEC-2013.
-                //$content = $this->_ci->parser->parse_string($this->_ci->load->_ci_load(array(
-                //    '_ci_path' => $override_view_path.$view.self::_ext($view),
-                //    '_ci_vars' => $data,
-                //    '_ci_return' => true
-                //)), $data, true);
-                $content = $this->_ci->load->_ci_load(array(
-                    '_ci_path' => $override_view_path.$view.self::_ext($view),
-                    '_ci_vars' => $data,
-                    '_ci_return' => true,
-                    '_ci_parsers' => $parsers
-                ));
-                //
-            }
-            else
-            {
-                // Load it directly, bypassing $this->load->view() as ME resets _ci_view
-                $content = $this->_ci->load->_ci_load(array(
-                    '_ci_path' => $override_view_path.$view.self::_ext($view),
-                    '_ci_vars' => $data,
-                    '_ci_return' => true
-                ));
-            }
+            $content = $this->_ci->load->_ci_load(array(
+                '_ci_path' => $override_view_path.$view.self::_ext($view),
+                '_ci_vars' => $data,
+                '_ci_return' => true,
+                '_ci_parsers' => $parsers
+            ));
         }
-
         // Can just run as usual
         else
         {
-            // Grab the content of the view (parsed or loaded)
-            // Modified by Ivan Tcholakov, 27-DEC-2013.
-            //$content = ($this->_parser_enabled === true AND $parse_view === true)
-            //
-            //    // Parse that bad boy
-            //    ? $this->_ci->parser->parse($view, $data, true )
-            //
-            //    // None of that fancy stuff for me!
-            //    : $this->_ci->load->view($view, $data, true );
-            $content = (!empty($parsers))
-                ? $this->_ci->load->view($view, $data, true, $parsers)
-                : $this->_ci->load->view($view, $data, true );
-            //
+            $content = $this->_ci->load->view($view, $data, true, $parsers);
         }
 
         return $content;
