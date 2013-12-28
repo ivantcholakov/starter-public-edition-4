@@ -105,7 +105,7 @@ class MX_Loader extends CI_Loader
      */
     public function database($params = '', $return = FALSE, $query_builder = NULL) {
 
-        if (class_exists('CI_DB', FALSE) && $return === FALSE && $query_builder === NULL && isset(CI::$APP->db) && is_object(CI::$APP->db) && ! empty(CI::$APP->db->conn_id)) { 
+        if (class_exists('CI_DB', FALSE) && $return === FALSE && $query_builder === NULL && isset(CI::$APP->db) && is_object(CI::$APP->db) && ! empty(CI::$APP->db->conn_id)) {
             return;
         }
 
@@ -349,7 +349,7 @@ class MX_Loader extends CI_Loader
     /** Load a module library **/
     public function library($library = '', $params = NULL, $object_name = NULL) {
 
-        if (is_array($library)) return $this->libraries($library);        
+        if (is_array($library)) return $this->libraries($library);
 
         $class = strtolower(basename($library));
 
@@ -417,7 +417,7 @@ class MX_Loader extends CI_Loader
 
     /** Load an array of libraries **/
     public function libraries($libraries) {
-        foreach ($libraries as $_library) $this->library($_library);    
+        foreach ($libraries as $_library) $this->library($_library);
         // Added by Ivan Tcholakov, 12-DEC-2013.
         // See https://github.com/EllisLab/CodeIgniter/issues/2165
         return $this;
@@ -588,44 +588,7 @@ class MX_Loader extends CI_Loader
 
     /** Load an array of controllers **/
     public function modules($modules) {
-        foreach ($modules as $_module) $this->module($_module);    
-        // Added by Ivan Tcholakov, 12-DEC-2013.
-        // See https://github.com/EllisLab/CodeIgniter/issues/2165
-        return $this;
-        //
-    }
-
-    /** Load a module plugin **/
-    public function plugin($plugin) {
-
-        if (is_array($plugin)) return $this->plugins($plugin);        
-
-        if (isset($this->_ci_plugins[$plugin])) {
-            // Modified by Ivan Tcholakov, 12-DEC-2013.
-            // See https://github.com/EllisLab/CodeIgniter/issues/2165
-            //return;
-            return $this;
-            //
-        }
-
-        list($path, $_plugin) = Modules::find($plugin.'_pi', $this->_module, 'plugins/');    
-
-        if ($path === FALSE AND ! is_file($_plugin = APPPATH.'plugins/'.$_plugin.'.php')) {    
-            show_error("Unable to locate the plugin file: {$_plugin}");
-        }
-
-        Modules::load_file($_plugin, $path);
-        $this->_ci_plugins[$plugin] = TRUE;
-
-        // Added by Ivan Tcholakov, 12-DEC-2013.
-        // See https://github.com/EllisLab/CodeIgniter/issues/2165
-        return $this;
-        //
-    }
-
-    /** Load an array of plugins **/
-    public function plugins($plugins) {
-        foreach ($plugins as $_plugin) $this->plugin($_plugin);
+        foreach ($modules as $_module) $this->module($_module);
         // Added by Ivan Tcholakov, 12-DEC-2013.
         // See https://github.com/EllisLab/CodeIgniter/issues/2165
         return $this;
@@ -685,7 +648,7 @@ class MX_Loader extends CI_Loader
 
                 if ( ! $cascade) break;
             }
-            
+
         } elseif (isset($_ci_path)) {
 
             $_ci_file = basename($_ci_path);
@@ -778,7 +741,7 @@ class MX_Loader extends CI_Loader
             CI::$APP->output->append_output(ob_get_clean());
         }
     }
-    
+
     /** Autoload module items **/
     public function _autoloader($autoload) {
 
