@@ -18,9 +18,7 @@ class Submit_controller extends Core_Controller {
             ->helper('asset')
             ->helper('html')
             ->helper('array')
-            ->parser('i18n')
-            ->parser('textile')
-            ->parser('mustache')
+            ->parser()
             ->language('mailer')
             ->language('contact')
             ->library('kcaptcha', null, 'captcha')
@@ -176,19 +174,15 @@ class Submit_controller extends Core_Controller {
         $data['site_name'] = $this->settings->get('site_name');
         $data['site_url'] = $this->settings->get('contact_web_site');
         $data['contact_form_name'] = "{$data['contact_form_first_name']} {$data['contact_form_last_name']}";
-        $data['contact_form_message'] = $this->textile->parse_string($data['contact_form_message'], null, true);
+        $data['contact_form_message'] = $this->parser->parse_string($data['contact_form_message'], null, true, 'textile');
 
         return $data;
     }
 
     protected function _load_email_template($data) {
 
-        // Here is the default email template. You may get it from database too.
-        $template = $this->load->view('contact_form_email.mustache', null, true);
-
-        $template = $this->i18n->parse_string($template, null, true);
-
-        $data['email_template'] = $template;
+        // Here is the dеfault email template. You may get it from database too.
+        $data['email_template'] = $this->load->view('contact_form_email.mustache', null, true, 'i18n');
 
         return $data;
     }
@@ -198,7 +192,7 @@ class Submit_controller extends Core_Controller {
         $data['to'] = name_email_format($this->settings->get('site_name'), $this->settings->get('contact_email'));
         $data['reply_to'] = name_email_format($data['contact_form_name'], $data['contact_form_email']);
         $data['subject'] = '['.$this->settings->get('site_name').': '.$this->lang->line('mailer_a_message_has_been_received_from').' '.$data['contact_form_name'].'] '.$data['contact_form_subject'];
-        $data['body'] = $this->mustache->parse_string($data['email_template'], $data, true);
+        $data['body'] = $this->parser->parse_string($data['email_template'], $data, true, 'mustache');
 
         return $data;
     }
