@@ -72,7 +72,21 @@ class CI_Parser_i18n extends CI_Driver {
         }
         else
         {
-            $template = $this->ci->load->view($template, $data, TRUE);
+            // Adaptation for HMVC by wiredesignz.
+            //$template = $this->ci->load->view($template, $data, TRUE);
+
+            $ci = $this->ci;
+
+            foreach (debug_backtrace() as $item) {
+                $object = isset($item['object']) ? $item['object'] : null;
+                if (is_object($object) && @ is_a($object, 'MX_Controller')) {
+                    $ci = $object;
+                    break;
+                }
+            }
+
+            $template = $ci->load->view($template, $data, TRUE);
+            //
         }
 
         if ($return)

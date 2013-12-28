@@ -81,7 +81,21 @@ class CI_Parser_mustache extends CI_Driver {
 
         if (!$config['full_path'])
         {
-            $template = $this->ci->load->path($template);
+            // Adaptation for HMVC by wiredesignz.
+            //$template = $this->ci->load->path($template);
+
+            $ci = $this->ci;
+
+            foreach (debug_backtrace() as $item) {
+                $object = isset($item['object']) ? $item['object'] : null;
+                if (is_object($object) && @ is_a($object, 'MX_Controller')) {
+                    $ci = $object;
+                    break;
+                }
+            }
+
+            $template = $ci->load->path($template);
+            //
         }
 
         $path = pathinfo($template);

@@ -88,7 +88,21 @@ class CI_Parser_parser extends CI_Parser_driver {
 	public function parse($template, $data = array(), $return = FALSE, $config = array())
 	//
 	{
-		$template = $this->CI->load->view($template, $data, TRUE);
+		// Adaptation for HMVC by wiredesignz.
+		//$template = $this->CI->load->view($template, $data, TRUE);
+
+		$ci = $this->CI;
+
+		foreach (debug_backtrace() as $item) {
+			$object = isset($item['object']) ? $item['object'] : null;
+			if (is_object($object) && @ is_a($object, 'MX_Controller')) {
+				$ci = $object;
+				break;
+			}
+		}
+
+		$template = $ci->load->view($template, $data, TRUE);
+		//
 
 		// Modified by Ivan Tcholakov, 27-DEC-2013.
 		//return $this->_parse($template, $data, $return);
