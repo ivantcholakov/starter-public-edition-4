@@ -19,7 +19,6 @@ class Contact_info_widget_controller extends Core_Controller {
             ->helper('language')
             ->helper('url')
             ->helper('asset')
-            //->parser('i18n')
             ->language('contact')
         ;
     }
@@ -36,11 +35,6 @@ class Contact_info_widget_controller extends Core_Controller {
         if (empty($contacts)) {
             return;
         }
-
-        //// TODO: A workaround, 24-DEC-2013.
-        ////echo $this->i18n->parse('contact_info_widget', compact('contacts'), TRUE);
-        //echo $this->i18n->parse_string($this->load->view('contact_info_widget', compact('contacts'), true), null, true);
-        ////
 
         $this->load->view('contact_info_widget', compact('contacts'), false, 'i18n');
     }
