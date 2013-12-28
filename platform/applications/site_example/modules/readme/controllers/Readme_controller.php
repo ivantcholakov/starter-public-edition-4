@@ -34,7 +34,7 @@ class Readme_controller extends Base_Controller {
         }
 
         $this->template
-            ->set('path', $path)
+            ->set(compact('path', 'content'))
             ->enable_parser_body(array('markdown', 'auto_link'))
             ->build('readme');
     }
