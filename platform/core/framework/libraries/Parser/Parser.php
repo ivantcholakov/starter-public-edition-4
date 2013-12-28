@@ -414,6 +414,29 @@ abstract class CI_Parser_driver extends CI_Driver {
 		// Call initialize method now that driver has access to $this->_parent
 		$this->initialize();
 	}
+
+	// Adaptation for HMVC by wiredesignz.
+	protected function detect_mx()
+	{
+		$ci = get_instance();
+		$is_mx = false;
+
+		foreach (debug_backtrace() as $item)
+		{
+			$object = isset($item['object']) ? $item['object'] : null;
+
+			if (is_object($object) && @ is_a($object, 'MX_Controller'))
+			{
+				$ci = $object;
+				$is_mx = true;
+
+				break;
+			}
+		}
+
+		return array($ci, $is_mx);
+	}
+
 }
 
 /* End of file Parser.php */
