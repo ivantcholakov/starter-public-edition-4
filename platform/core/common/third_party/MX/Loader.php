@@ -804,6 +804,13 @@ class MX_Loader extends CI_Loader
             }
         }
     }
+
+    // Added by Ivan Tcholakov, 28-DEC-2013.
+    public function get_ob_level() {
+
+        return $this->_ci_ob_level;
+    }
+
 }
 
 /** load the CI class for Modular Separation **/
