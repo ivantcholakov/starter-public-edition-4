@@ -5,7 +5,7 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class CI_Parser_less extends CI_Driver {
+class CI_Parser_less extends CI_Parser_driver {
 
     protected $config;
     private $ci;
@@ -61,39 +61,25 @@ class CI_Parser_less extends CI_Driver {
 
         $config = array_merge($this->config, $config);
 
+        $ci = $this->ci;
+        $is_mx = false;
+
+        if (!$return || !$config['full_path'])
+        {
+            list($ci, $is_mx) = $this->detect_mx();
+        }
+
         if (!$config['full_path'])
         {
-            // Adaptation for HMVC by wiredesignz.
-            //$template = $this->ci->load->path($template);
-
-            $ci = $this->ci;
-
-            foreach (debug_backtrace() as $item) {
-                $object = isset($item['object']) ? $item['object'] : null;
-                if (is_object($object) && @ is_a($object, 'MX_Controller')) {
-                    $ci = $object;
-                    break;
-                }
-            }
-
             $template = $ci->load->path($template);
-            //
         }
 
         // For security reasons don't parse PHP content.
-        $template = @ file_get_contents($template);
-
         $parser = new Less_Parser($config);
-        $parser->parseFile($template, $config['uri_root']);
+        $parser->parseFile(@ file_get_contents($template), $config['uri_root']);
+        $template = $parser->getCss();
 
-        if ($return)
-        {
-            return $parser->getCss();
-        }
-        else
-        {
-            $this->ci->output->append_output($parser->getCss());
-        }
+        return $this->output($template, $return, $ci, $is_mx);
     }
 
     public function parse_string($template, $data = array(), $return = FALSE, $config = array())
@@ -105,17 +91,19 @@ class CI_Parser_less extends CI_Driver {
 
         $config = array_merge($this->config, $config);
 
+        $ci = $this->ci;
+        $is_mx = false;
+
+        if (!$return)
+        {
+            list($ci, $is_mx) = $this->detect_mx();
+        }
+
         $parser = new Less_Parser($config);
         $parser->parse($template);
+        $template = $parser->getCss();
 
-        if ($return)
-        {
-            return $parser->getCss();
-        }
-        else
-        {
-            $this->ci->output->append_output($parser->getCss());
-        }
+        return $this->output($template, $return, $ci, $is_mx);
     }
 
 }

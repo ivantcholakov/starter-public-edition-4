@@ -5,7 +5,7 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class CI_Parser_auto_link extends CI_Driver {
+class CI_Parser_auto_link extends CI_Parser_driver {
 
     protected $config;
     private $ci;
@@ -62,41 +62,23 @@ class CI_Parser_auto_link extends CI_Driver {
 
         $config = array_merge($this->config, $config);
 
-        if (!is_array($data))
+        $ci = $this->ci;
+        $is_mx = false;
+
+        if (!$return || !$config['full_path'])
         {
-            $data = array();
+            list($ci, $is_mx) = $this->detect_mx();
         }
 
         if (!$config['full_path'])
         {
-            // Adaptation for HMVC by wiredesignz.
-            //$template = $this->ci->load->path($template);
-
-            $ci = $this->ci;
-
-            foreach (debug_backtrace() as $item) {
-                $object = isset($item['object']) ? $item['object'] : null;
-                if (is_object($object) && @ is_a($object, 'MX_Controller')) {
-                    $ci = $object;
-                    break;
-                }
-            }
-
             $template = $ci->load->path($template);
-            //
         }
 
         // For security reasons don't parse PHP content.
-        $template = @ file_get_contents($template);
+        $template = auto_link(@ file_get_contents($template), $config['type'], $config['attributes']);
 
-        if ($return)
-        {
-            return auto_link($template, $config['type'], $config['attributes']);
-        }
-        else
-        {
-            $this->ci->output->append_output(auto_link($template, $config['type'], $config['attributes']));
-        }
+        return $this->output($template, $return, $ci, $is_mx);
     }
 
     public function parse_string($template, $data = array(), $return = FALSE, $config = array())
@@ -108,14 +90,17 @@ class CI_Parser_auto_link extends CI_Driver {
 
         $config = array_merge($this->config, $config);
 
-        if ($return)
+        $ci = $this->ci;
+        $is_mx = false;
+
+        if (!$return)
         {
-            return auto_link($template, $config['type'], $config['attributes']);
+            list($ci, $is_mx) = $this->detect_mx();
         }
-        else
-        {
-             $this->ci->output->append_output(auto_link($template, $config['type'], $config['attributes']));
-        }
+
+        $template = auto_link($template, $config['type'], $config['attributes']);
+
+        return $this->output($template, $return, $ci, $is_mx);
     }
 
 }

@@ -13,7 +13,7 @@ if (!class_exists('Textile', FALSE))
 }
 */
 
-class CI_Parser_textile extends CI_Driver {
+class CI_Parser_textile extends CI_Parser_driver {
 
     protected $config;
     private $ci;
@@ -67,38 +67,26 @@ class CI_Parser_textile extends CI_Driver {
 
         $config = array_merge($this->config, $config);
 
+        $ci = $this->ci;
+        $is_mx = false;
+
+        if (!$return || !$config['full_path'])
+        {
+            list($ci, $is_mx) = $this->detect_mx();
+        }
+
         if (!$config['full_path'])
         {
-            // Adaptation for HMVC by wiredesignz.
-            //$template = $this->ci->load->path($template);
-
-            $ci = $this->ci;
-
-            foreach (debug_backtrace() as $item) {
-                $object = isset($item['object']) ? $item['object'] : null;
-                if (is_object($object) && @ is_a($object, 'MX_Controller')) {
-                    $ci = $object;
-                    break;
-                }
-            }
-
             $template = $ci->load->path($template);
-            //
         }
 
         // For security reasons don't parse PHP content.
         $template = @ file_get_contents($template);
 
         $parser = new Textile($config['doctype']);
+        $template = $parser->textileThis($template);
 
-        if ($return)
-        {
-            return $parser->textileThis($template);
-        }
-        else
-        {
-            $this->ci->output->append_output($parser->textileThis($template));
-        }
+        return $this->output($template, $return, $ci, $is_mx);
     }
 
     public function parse_string($template, $data = array(), $return = FALSE, $config = array())
@@ -110,16 +98,18 @@ class CI_Parser_textile extends CI_Driver {
 
         $config = array_merge($this->config, $config);
 
-        $parser = new Textile($config['doctype']);
+        $ci = $this->ci;
+        $is_mx = false;
 
-        if ($return)
+        if (!$return)
         {
-            return $parser->textileThis($template);
+            list($ci, $is_mx) = $this->detect_mx();
         }
-        else
-        {
-            $this->ci->output->append_output($parser->textileThis($template));
-        }
+
+        $parser = new Textile($config['doctype']);
+        $template = $parser->textileThis($template);
+
+        return $this->output($template, $return, $ci, $is_mx);
     }
 
 }

@@ -239,6 +239,7 @@ class CI_Parser extends CI_Driver_Library {
 		//
 	}
 
+	// Added by Ivan Tcholakov, 28-DEC-2013.
 	public function parse_config($config)
 	{
 		$config = !empty($config) ? $config : array();
@@ -415,6 +416,7 @@ abstract class CI_Parser_driver extends CI_Driver {
 		$this->initialize();
 	}
 
+	// Added by Ivan Tcholakov, 28-DEC-2013.
 	// Adaptation for HMVC by wiredesignz.
 	protected function detect_mx()
 	{
@@ -435,6 +437,36 @@ abstract class CI_Parser_driver extends CI_Driver {
 		}
 
 		return array($ci, $is_mx);
+	}
+
+	// Added by Ivan Tcholakov, 28-DEC-2013.
+	// Adaptation for HMVC by wiredesignz.
+	protected function output(& $result, $return, $ci, $is_mx)
+	{
+		if ($return)
+		{
+			return $result;
+		}
+		elseif (!$is_mx)
+		{
+			$ci->output->append_output($result);
+		}
+		else
+		{
+			ob_start();
+
+			echo $result;
+
+			if (ob_get_level() > $ci->load->get_ob_level() + 1)
+			{
+				ob_end_flush();
+			}
+			else
+			{
+				$ci->output->append_output(ob_get_clean());
+			}
+		}
+
 	}
 
 }

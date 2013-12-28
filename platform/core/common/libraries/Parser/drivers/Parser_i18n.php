@@ -5,7 +5,7 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class CI_Parser_i18n extends CI_Driver {
+class CI_Parser_i18n extends CI_Parser_driver {
 
     protected $config;
     private $ci;
@@ -63,40 +63,25 @@ class CI_Parser_i18n extends CI_Driver {
             $data = array();
         }
 
+        $ci = $this->ci;
+        $is_mx = false;
+
+        if (!$return || !$config['full_path'])
+        {
+            list($ci, $is_mx) = $this->detect_mx();
+        }
+
         if ($config['full_path'])
         {
-            $template = $this->ci->load->path($template);
-
             // For security reasons don't parse PHP content in this case.
-            $template = file_get_contents($template);
+            $template = $ci->lang->parse_i18n( @ file_get_contents($template));
         }
         else
         {
-            // Adaptation for HMVC by wiredesignz.
-            //$template = $this->ci->load->view($template, $data, TRUE);
-
-            $ci = $this->ci;
-
-            foreach (debug_backtrace() as $item) {
-                $object = isset($item['object']) ? $item['object'] : null;
-                if (is_object($object) && @ is_a($object, 'MX_Controller')) {
-                    $ci = $object;
-                    break;
-                }
-            }
-
-            $template = $ci->load->view($template, $data, TRUE);
-            //
+            $template = $ci->lang->parse_i18n($ci->load->view($template, $data, TRUE));
         }
 
-        if ($return)
-        {
-            return $this->ci->lang->parse_i18n($template);
-        }
-        else
-        {
-            $this->ci->output->append_output($this->ci->lang->parse_i18n($template));
-        }
+        return $this->output($template, $return, $ci, $is_mx);
     }
 
     public function parse_string($template, $data = array(), $return = FALSE, $config = array())
@@ -108,14 +93,17 @@ class CI_Parser_i18n extends CI_Driver {
 
         $config = array_merge($this->config, $config);
 
-        if ($return)
+        $ci = $this->ci;
+        $is_mx = false;
+
+        if (!$return)
         {
-            return $this->ci->lang->parse_i18n($template);
+            list($ci, $is_mx) = $this->detect_mx();
         }
-        else
-        {
-             $this->ci->output->append_output($this->ci->lang->parse_i18n($template));
-        }
+
+        $template = $ci->lang->parse_i18n($template);
+
+        return $this->output($template, $return, $ci, $is_mx);
     }
 
 }
