@@ -221,7 +221,6 @@ class Submit_controller extends Core_Controller {
             $message = reset($messages);
         }
 
-
         return $this->load->view('messages_html', compact('success', 'messages', 'single_message', 'message'), true);
     }
 
