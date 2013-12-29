@@ -7,6 +7,9 @@
  * Some original functions from Phil Sturgeon have been taken as a starting point.
  */
 
+// Added by Ivan Tcholakov, 29-DEC-2013.
+ci()->config->load('asset', false, true);
+//
 
 // Functions by Phil Sturgeon (with minor modifications).
 //------------------------------------------------------------------------------
@@ -133,6 +136,8 @@ if (!function_exists('template_enable_oldie')) {
      */
     function template_enable_oldie() {
 
+        $result = false;
+
         $ie_min_supported = config_item('ie_min_supported_version');
 
         if ($ie_min_supported < 9) {
@@ -147,19 +152,18 @@ if (!function_exists('template_enable_oldie')) {
 
                     if ($browser['ie_version'] < 9 &&
                         $browser['ie_version'] >= $ie_min_supported) {
-                        return true;
-                    }
 
-                    return false;
+                        $result = true;
+                    }
                 }
 
-                return false;
-            }
+            } else {
 
-            return true;
+                $result = true;
+            }
         }
 
-        return false;
+        return $result;
     }
 
 }
