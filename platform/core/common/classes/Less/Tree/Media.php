@@ -1,35 +1,40 @@
 <?php
 
-//less.js : lib/less/tree/media.js
+class Less_Tree_Media extends Less_Tree{
 
-class Less_Tree_Media {
-
-	//public $type = 'Media';
 	public $features;
 	public $ruleset;
+	public $type = 'Media';
 
-	public function __construct($value = array(), $features = array()) {
+	public function __construct($value = array(), $features = array(), $index = null, $currentFileInfo = null ){
+
+		$this->index = $index;
+		$this->currentFileInfo = $currentFileInfo;
+
 		$selectors = $this->emptySelectors();
+
 		$this->features = new Less_Tree_Value($features);
-		$this->ruleset = new Less_Tree_Ruleset($selectors, $value);
-		$this->ruleset->allowImports = true;
+
+		$this->rules = array(new Less_Tree_Ruleset($selectors, $value));
+		$this->rules[0]->allowImports = true;
 	}
 
 	function accept( $visitor ){
-		//$visitor->visit($this->features);
-		$visitor->visit($this->ruleset);
+		$this->features = $visitor->visitObj($this->features);
+		$this->rules = $visitor->visitArray($this->rules);
 	}
 
-	public function toCSS($env) {
-		$features = $this->features->toCSS($env);
-		return '@media ' . $features . ($env->compress ? '{' : " {\n  ")
-			. str_replace("\n", "\n  ", trim($this->ruleset->toCSS($env)))
-			. ($env->compress ? '}' : "\n}\n");
+	function genCSS( $env, &$strs ){
+
+		self::OutputAdd( $strs, '@media ', $this->currentFileInfo, $this->index );
+		$this->features->genCSS( $env, $strs );
+		Less_Tree::outputRuleset( $env, $strs, $this->rules);
+
 	}
 
 	public function compile($env) {
 
-		$media = new Less_Tree_Media(array(), array());
+		$media = new Less_Tree_Media(array(), array(), $this->index, $this->currentFileInfo );
 
 		$strictMathBypass = false;
 		if( $env->strictMath === false) {
@@ -47,29 +52,36 @@ class Less_Tree_Media {
 		$env->mediaPath[] = $media;
 		$env->mediaBlocks[] = $media;
 
-		array_unshift($env->frames, $this->ruleset);
-		$media->ruleset = $this->ruleset->compile($env);
+		array_unshift($env->frames, $this->rules[0]);
+		$media->rules = array($this->rules[0]->compile($env));
 		array_shift($env->frames);
 
 		array_pop($env->mediaPath);
 
-		return count($env->mediaPath) == 0 ? $media->compileTop($env) : $media->compileNested($env);
+		return !$env->mediaPath ? $media->compileTop($env) : $media->compileNested($env);
 	}
 
-	// TODO: Not sure if this is right...
 	public function variable($name) {
-		return $this->ruleset->variable($name);
+		return $this->rules[0]->variable($name);
 	}
 
 	public function find($selector) {
-		return $this->ruleset->find($selector, $this);
+		return $this->rules[0]->find($selector, $this);
 	}
 
 	public function emptySelectors(){
-		$el = new Less_Tree_Element('','&', 0);
-		return array(new Less_Tree_Selector(array($el)));
+		$el = new Less_Tree_Element('','&', $this->index, $this->currentFileInfo );
+		return array( new Less_Tree_Selector(array($el), array(), null, $this->index, $this->currentFileInfo) );
 	}
 
+	public function markReferenced(){
+		$this->isReferenced = true;
+		foreach($this->rules[0]->rules as $rule){
+			if( Less_Parser::is_method($rule,'markReferenced') ){
+				$rule->markReferenced();
+			}
+		}
+	}
 
 	// evaltop
 	public function compileTop($env) {
@@ -147,8 +159,8 @@ class Less_Tree_Media {
 		return $result;
 	}
 
-    function bubbleSelectors($selectors) {
-		$this->ruleset = new Less_Tree_Ruleset( $selectors, array($this->ruleset) );
-    }
+	function bubbleSelectors($selectors) {
+		$this->rules = array(new Less_Tree_Ruleset( $selectors, array($this->rules[0])));
+	}
 
 }

@@ -1,22 +1,22 @@
 <?php
 
-class Less_Tree_Paren {
+class Less_Tree_Paren extends Less_Tree{
 
-	//public $type = 'Paren';
 	public $value;
+	public $type = 'Paren';
 
 	public function __construct($value) {
 		$this->value = $value;
 	}
 
-	/*
 	function accept($visitor){
-		$visitor->visit($this->value);
+		$this->value = $visitor->visitObj($this->value);
 	}
-	*/
 
-	public function toCSS($env) {
-		return '(' . trim($this->value->toCSS($env)) . ')';
+	function genCSS( $env, &$strs ){
+		self::OutputAdd( $strs, '(' );
+		$this->value->genCSS( $env, $strs );
+		self::OutputAdd( $strs, ')' );
 	}
 
 	public function compile($env) {

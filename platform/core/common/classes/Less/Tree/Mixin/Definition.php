@@ -1,7 +1,6 @@
 <?php
 
 class Less_Tree_Mixin_Definition extends Less_Tree_Ruleset{
-	//public $type = 'MixinDefinition';
 	public $name;
 	public $selectors;
 	public $params;
@@ -12,11 +11,14 @@ class Less_Tree_Mixin_Definition extends Less_Tree_Ruleset{
 	public $frames;
 	public $condition;
 	public $variadic;
+	public $type = 'MixinDefinition';
+
 
 	// less.js : /lib/less/tree/mixin.js : tree.mixin.Definition
 	public function __construct($name, $params, $rules, $condition, $variadic = false){
 		$this->name = $name;
 		$this->selectors = array(new Less_Tree_Selector(array( new Less_Tree_Element(null, $name))));
+
 		$this->params = $params;
 		$this->condition = $condition;
 		$this->variadic = $variadic;
@@ -25,24 +27,28 @@ class Less_Tree_Mixin_Definition extends Less_Tree_Ruleset{
 		$this->lookups = array();
 
 		$this->required = 0;
-		foreach( $params as $p ){
-			if (! isset($p['name']) || ($p['name'] && !isset($p['value']))) {
-				$this->required++;
+		if( is_array($params) ){
+			foreach( $params as $p ){
+				if (! isset($p['name']) || ($p['name'] && !isset($p['value']))) {
+					$this->required++;
+				}
 			}
 		}
 
 		$this->frames = array();
+		$this->SetRulesetIndex();
 	}
 
-	/*
-	function accept( $visitor ){
-		$visitor->visit($this->params);
-		$visitor->visit($this->rules);
-		$visitor->visit($this->condition);
-	}
-	*/
 
-	public function toCss($env){
+
+	//function accept( $visitor ){
+	//	$this->params = $visitor->visit($this->params);
+	//	$this->rules = $visitor->visit($this->rules);
+	//	$this->condition = $visitor->visit($this->condition);
+	//}
+
+
+	public function toCSS($env = null){
 		return '';
 	}
 
@@ -60,7 +66,8 @@ class Less_Tree_Mixin_Definition extends Less_Tree_Ruleset{
 		$mixinEnv->frames = array_merge( array($frame), $mixinEnv->frames);
 		//$mixinEnv = $mixinEnv->copyEvalEnv( array_merge( array($frame), $mixinEnv->frames) );
 
-		for($i = 0; $i < count($args); $i++ ){
+		$args_len = count($args);
+		for($i = 0; $i < $args_len; $i++ ){
 			$arg = $args[$i];
 
 			if( $arg && $arg['name'] ){
@@ -78,9 +85,10 @@ class Less_Tree_Mixin_Definition extends Less_Tree_Ruleset{
 				if ($isNamedFound) {
 					array_splice($args, $i, 1);
 					$i--;
+					$args_len--;
 					continue;
 				} else {
-					throw new Less_CompilerException("Named argument for " . $this->name .' '.$args[$i]['name'] . ' not found');
+					throw new Less_Exception_Compiler("Named argument for " . $this->name .' '.$args[$i]['name'] . ' not found');
 				}
 			}
 		}
@@ -88,7 +96,7 @@ class Less_Tree_Mixin_Definition extends Less_Tree_Ruleset{
 		$argIndex = 0;
 		foreach($params as $i => $param){
 
-			if ( isset($evaldArguments[$i]) ) continue;
+			if ( isset($evaldArguments[$i]) ){ continue; }
 
 			$arg = null;
 			if( array_key_exists($argIndex,$args) && $args[$argIndex] ){
@@ -100,7 +108,7 @@ class Less_Tree_Mixin_Definition extends Less_Tree_Ruleset{
 
 				if( isset($param['variadic']) && $args ){
 					$varargs = array();
-					for ($j = $argIndex; $j < count($args); $j++) {
+					for ($j = $argIndex; $j < $args_len; $j++) {
 						$varargs[] = $args[$j]['value']->compile($env);
 					}
 					$expression = new Less_Tree_Expression($varargs);
@@ -114,7 +122,7 @@ class Less_Tree_Mixin_Definition extends Less_Tree_Ruleset{
 						$val = $param['value']->compile($mixinEnv);
 						$frame->resetCache();
 					} else {
-						throw new Less_CompilerException("Wrong number of arguments for " . $this->name . " (" . count($args) . ' for ' . $this->arity . ")");
+						throw new Less_Exception_Compiler("Wrong number of arguments for " . $this->name . " (" . count($args) . ' for ' . $this->arity . ")");
 					}
 
 					array_unshift($frame->rules, new Less_Tree_Rule($param['name'], $val));
@@ -123,7 +131,7 @@ class Less_Tree_Mixin_Definition extends Less_Tree_Ruleset{
 			}
 
 			if ( isset($param['variadic']) && $args) {
-				for ($j = $argIndex; $j < count($args); $j++) {
+				for ($j = $argIndex; $j < $args_len; $j++) {
 					$evaldArguments[$j] = $args[$j]['value']->compile($env);
 				}
 			}
@@ -151,22 +159,19 @@ class Less_Tree_Mixin_Definition extends Less_Tree_Ruleset{
 		$ex = new Less_Tree_Expression($_arguments);
 		array_unshift($frame->rules, new Less_Tree_Rule('@arguments', $ex->compile($env)));
 
-		$rules = $important
-			? Less_Tree_Ruleset::makeImportant($this->selectors, $this->rules)->rules
-			: array_slice($this->rules, 0);
+
+		$rules = array_slice($this->rules,0);
 
 		$ruleset = new Less_Tree_Ruleset(null, $rules);
+		$ruleset->originalRuleset = $this->ruleset_id;
 
 
-		// duplicate the environment, adding new frames.
-		$ruleSetEnv = new Less_Environment();
-		$ruleSetEnv->addFrame($this);
-		$ruleSetEnv->addFrame($frame);
-		$ruleSetEnv->addFrames($mixinFrames);
-		$ruleSetEnv->compress = $env->compress;
-		$ruleset = $ruleset->compile($ruleSetEnv);
+		$ruleSetEnv = $env->copyEvalEnv( array_merge( array($this, $frame), $mixinFrames ) );
+		$ruleset = $ruleset->compile( $ruleSetEnv );
 
-		$ruleset->originalRuleset = $this;
+		if( $important ){
+			$ruleset = $ruleset->makeImportant();
+		}
 		return $ruleset;
 	}
 
@@ -177,13 +182,17 @@ class Less_Tree_Mixin_Definition extends Less_Tree_Ruleset{
 			return true;
 		}
 
-		$mixinEnv = $env->copyEvalEnv( array_merge($this->frames, $env->frames) );
+		$frame = $this->compileParams($env, $env->copyEvalEnv(array_merge($this->frames,$env->frames)), $args );
 
-		$frame = $this->compileParams( $env, $mixinEnv, $args );
+		$compile_env = $env->copyEvalEnv(
+			array_merge(
+				array($frame)		// the parameter variables
+				, $this->frames		// the parent namespace/mixin frames
+				, $env->frames		// the current environment frames
+			)
+		);
 
-		$env->frames = array_merge( array($frame) , $env->frames);
-
-		if( !$this->condition->compile($env) ){
+		if( !$this->condition->compile($compile_env) ){
 			return false;
 		}
 
@@ -191,20 +200,22 @@ class Less_Tree_Mixin_Definition extends Less_Tree_Ruleset{
 	}
 
 	public function matchArgs($args, $env = NULL){
+		$argsLength = count($args);
 
-		if (!$this->variadic) {
-			if (count($args) < $this->required){
+		if( !$this->variadic ){
+			if( $argsLength < $this->required ){
 				return false;
 			}
-			if (count($args) > count($this->params)){
+			if( $argsLength > count($this->params) ){
 				return false;
 			}
-			if (($this->required > 0) && (count($args) > count($this->params))){
+		}else{
+			if( $argsLength < ($this->required - 1)){
 				return false;
 			}
 		}
 
-		$len = min(count($args), $this->arity);
+		$len = min($argsLength, $this->arity);
 
 		for( $i = 0; $i < $len; $i++ ){
 			if( !isset($this->params[$i]['name']) && !isset($this->params[$i]['variadic']) ){

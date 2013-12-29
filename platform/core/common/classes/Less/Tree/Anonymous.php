@@ -1,17 +1,16 @@
 <?php
 
 
-class Less_Tree_Anonymous{
+class Less_Tree_Anonymous extends Less_Tree{
 	public $value;
 	public $quote;
-	//public $type = 'Anonymous';
+	public $type = 'Anonymous';
 
-	public function __construct($value){
-		$this->value = is_string($value) ? $value : $value->value;
-	}
-
-	public function toCss(){
-		return $this->value;
+	public function __construct($value, $index = null, $currentFileInfo = null, $mapLines = null ){
+		$this->value = is_object($value) ? $value->value : $value;
+		$this->index = $index;
+		$this->mapLines = $mapLines;
+		$this->currentFileInfo = $currentFileInfo;
 	}
 
 	public function compile($env){
@@ -19,7 +18,7 @@ class Less_Tree_Anonymous{
 	}
 
 	function compare($x){
-		if( !Less_Parser::is_method( $x, 'toCSS' ) ){
+		if( !is_object($x) ){
 			return -1;
 		}
 
@@ -32,4 +31,13 @@ class Less_Tree_Anonymous{
 
 		return $left < $right ? -1 : 1;
 	}
+
+	public function genCSS( $env, &$strs ){
+		self::OutputAdd( $strs, $this->value, $this->currentFileInfo, $this->index, $this->mapLines );
+	}
+
+	public function toCSS($env = null){
+		return $this->value;
+	}
+
 }

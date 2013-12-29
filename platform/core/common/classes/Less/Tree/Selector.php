@@ -1,97 +1,128 @@
 <?php
 
-//less.js : lib/less/tree/selector.js
 
+class Less_Tree_Selector extends Less_Tree{
 
-class Less_Tree_Selector {
-
-	//public $type = 'Selector';
 	public $elements;
 	public $extendList = array();
-	private $_css;
+	public $_css;
+	public $index;
+	public $evaldCondition = false;
+	public $type = 'Selector';
+	public $currentFileInfo = array();
 
-	public function __construct($elements, $extendList = array() ){
+	public $elements_len = 0;
+
+	public function __construct($elements = null, $extendList=null , $condition = null, $index=null, $currentFileInfo=null, $isReferenced=null ){
+
+
+
 		$this->elements = $elements;
-		$this->extendList = $extendList;
+		$this->elements_len = count($elements);
+		if( $extendList ){
+			$this->extendList = $extendList;
+		}
+		$this->condition = $condition;
+		if( $currentFileInfo ){
+			$this->currentFileInfo = $currentFileInfo;
+		}
+		$this->isReferenced = $isReferenced;
+		if( !$condition ){
+			$this->evaldCondition = true;
+		}
 	}
 
-	/*
 	function accept($visitor) {
-		$visitor->visit($this->elements);
-		$visitor->visit($this->extendList);
+		$this->elements = $visitor->visitArray($this->elements);
+		$this->extendList = $visitor->visitArray($this->extendList);
+		if( $this->condition ){
+			$this->condition = $visitor->visitObj($this->condition);
+		}
 	}
-	*/
+
+	function createDerived( $elements, $extendList = null, $evaldCondition = null ){
+		$evaldCondition = $evaldCondition != null ? $evaldCondition : $this->evaldCondition;
+		$newSelector = new Less_Tree_Selector( $elements, ($extendList ? $extendList : $this->extendList), $this->condition, $this->index, $this->currentFileInfo, $this->isReferenced);
+		$newSelector->evaldCondition = $evaldCondition;
+		return $newSelector;
+	}
 
 	public function match($other) {
 		global $debug;
-		$len   = count($this->elements);
 
-		$olen = $offset = 0;
-		if( $other && count($other->elements) ){
+		if( !$other ){
+			return 0;
+		}
 
+		$offset = 0;
+		$olen = $other->elements_len;
+		if( $olen ){
 			if( $other->elements[0]->value === "&" ){
 				$offset = 1;
 			}
-			$olen = count($other->elements) - $offset;
+			$olen -= $offset;
 		}
 
-        if( $olen === 0 || $len < $olen ){
-			return false;
+		if( $olen === 0 ){
+			return 0;
 		}
 
-		$max = min($len, $olen);
+		if( $this->elements_len < $olen ){
+			return 0;
+		}
 
-		for ($i = 0; $i < $max; $i ++) {
+		for ($i = 0; $i < $olen; $i ++) {
 			if ($this->elements[$i]->value !== $other->elements[$i + $offset]->value) {
-				return false;
+				return 0;
 			}
 		}
 
-		return true;
+		return $olen; // return number of matched selectors
 	}
-
-
-
-
 
 	public function compile($env) {
-		$extendList = array();
-
-		for($i = 0, $len = count($this->extendList); $i < $len; $i++){
-			$extendList[] = $this->extendList[$i]->compile($this->extendList[$i]);
-		}
 
 		$elements = array();
-		for( $i = 0, $len = count($this->elements); $i < $len; $i++){
-			$elements[] = $this->elements[$i]->compile($env);
+		foreach($this->elements as $el){
+			$elements[] = $el->compile($env);
 		}
 
-		return new Less_Tree_Selector($elements, $extendList);
+		$extendList = array();
+		foreach($this->extendList as $el){
+			$extendList[] = $el->compile($el);
+		}
+
+		$evaldCondition = false;
+		if( $this->condition ){
+			$evaldCondition = $this->condition->compile($env);
+		}
+
+		return $this->createDerived( $elements, $extendList, $evaldCondition );
 	}
 
-	public function toCSS ($env){
+	function genCSS( $env, &$strs ){
 
-		if ($this->_css) {
-			return $this->_css;
+		if( !Less_Environment::$firstSelector && $this->elements[0]->combinator->value === "" ){
+			self::OutputAdd( $strs, ' ', $this->currentFileInfo, $this->index );
 		}
-
-		if (is_array($this->elements) && isset($this->elements[0]) &&
-			$this->elements[0]->combinator instanceof Less_Tree_Combinator &&
-			$this->elements[0]->combinator->value === '') {
-				$this->_css = ' ';
-		}else{
-			$this->_css = '';
-		}
-
-		foreach($this->elements as $e){
-			if( is_string($e) ){
-				$this->_css .= ' ' . trim($e);
-			}else{
-				$this->_css .= $e->toCSS($env);
+		if( !$this->_css ){
+			//TODO caching? speed comparison?
+			foreach($this->elements as $element){
+				$element->genCSS( $env, $strs );
 			}
 		}
+	}
 
-		return $this->_css;
+	function markReferenced(){
+		$this->isReferenced = true;
+	}
+
+	function getIsReferenced(){
+		return !isset($this->currentFileInfo['reference']) || !$this->currentFileInfo['reference'] || $this->isReferenced;
+	}
+
+	function getIsOutput(){
+		return $this->evaldCondition;
 	}
 
 }

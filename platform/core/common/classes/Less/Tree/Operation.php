@@ -1,8 +1,9 @@
 <?php
 
-class Less_Tree_Operation{
 
-	//public $type = 'Operation';
+class Less_Tree_Operation extends Less_Tree{
+
+	public $type = 'Operation';
 
 	public function __construct($op, $operands, $isSpaced = false){
 		$this->op = trim($op);
@@ -10,9 +11,9 @@ class Less_Tree_Operation{
 		$this->isSpaced = $isSpaced;
 	}
 
-	/*function accept($visitor) {
-		$visitor->visit($this->operands);
-	}*/
+	function accept($visitor) {
+		$this->operands = $visitor->visitArray($this->operands);
+	}
 
 	public function compile($env){
 		$a = $this->operands[0]->compile($env);
@@ -20,17 +21,20 @@ class Less_Tree_Operation{
 
 
 		if( $env->isMathOn() ){
-			if( $a instanceof Less_Tree_Dimension && $b instanceof Less_Tree_Color ){
-				if ($this->op === '*' || $this->op === '+') {
-					$temp = $b;
-					$b = $a;
-					$a = $temp;
-				} else {
-					throw new Less_CompilerError("Operation on an invalid type");
+
+			if( $a instanceof Less_Tree_Dimension ){
+
+				if( $b instanceof Less_Tree_Color ){
+					if ($this->op === '*' || $this->op === '+') {
+						$temp = $b;
+						$b = $a;
+						$a = $temp;
+					} else {
+						throw new Less_Exception_Compiler("Operation on an invalid type");
+					}
 				}
-			}
-			if ( !Less_Parser::is_method($a,'operate') ) {
-				throw new Less_CompilerError("Operation on an invalid type");
+			}elseif( !($a instanceof Less_Tree_Color) ){
+				throw new Less_Exception_Compiler("Operation on an invalid type");
 			}
 
 			return $a->operate($env,$this->op, $b);
@@ -39,8 +43,16 @@ class Less_Tree_Operation{
 		}
 	}
 
-	function toCSS($env){
-		$separator = $this->isSpaced ? " " : "";
-		return $this->operands[0]->toCSS($env) . $separator . $this->op . $separator . $this->operands[1]->toCSS($env);
+	function genCSS( $env, &$strs ){
+		$this->operands[0]->genCSS( $env, $strs );
+		if( $this->isSpaced ){
+			self::OutputAdd( $strs, " " );
+		}
+		self::OutputAdd( $strs, $this->op );
+		if( $this->isSpaced ){
+			self::OutputAdd( $strs, ' ' );
+		}
+		$this->operands[1]->genCSS( $env, $strs );
 	}
+
 }

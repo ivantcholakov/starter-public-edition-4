@@ -1,11 +1,11 @@
 <?php
 
 
-class Less_Tree_Unit{
+class Less_Tree_Unit extends Less_Tree{
 
-	//public $type = 'Unit';
 	var $numerator = array();
 	var $denominator = array();
+	public $type = 'Unit';
 
 	function __construct($numerator = array(), $denominator = array(), $backupUnit = null ){
 		$this->numerator = $numerator;
@@ -16,18 +16,16 @@ class Less_Tree_Unit{
 	function __clone(){
 	}
 
-	function toCSS($env){
+	function genCSS( $env, &$strs ){
 
-		if( count($this->numerator) ){
-			return $this->numerator[0];
+		if( $this->numerator ){
+			self::OutputAdd( $strs, $this->numerator[0] );
+		}elseif( $this->denominator ){
+			self::OutputAdd( $strs, $this->denominator[0] );
+		}elseif( (!$env || !$env->strictUnits) && $this->backupUnit ){
+			self::OutputAdd( $strs, $this->backupUnit );
+			return ;
 		}
-		if( count($this->denominator) ){
-			return $this->denominator[0];
-		}
-		if( (!$env || !$env->strictUnits) && $this->backupUnit ){
-			return $this->backupUnit;
-		}
-		return "";
 	}
 
 	function toString(){
@@ -46,16 +44,21 @@ class Less_Tree_Unit{
 		return $this->toString() === $unitString;
 	}
 
+	function isLength(){
+		$css = $this->toCSS();
+		return !!preg_match('/px|em|%|in|cm|mm|pc|pt|ex/',$css);
+	}
+
 	function isAngle() {
 		return isset( Less_Tree_UnitConversions::$angle[$this->toCSS()] );
 	}
 
 	function isEmpty(){
-		return count($this->numerator) === 0 && count($this->denominator) === 0;
+		return !$this->numerator && !$this->denominator;
 	}
 
 	function isSingular() {
-		return count($this->numerator) <= 1 && count($this->denominator) == 0;
+		return count($this->numerator) <= 1 && !$this->denominator;
 	}
 
 
@@ -65,15 +68,13 @@ class Less_Tree_Unit{
 		foreach(Less_Tree_UnitConversions::$groups as $groupName){
 			$group = Less_Tree_UnitConversions::${$groupName};
 
-			for($i=0; $i < count($this->numerator); $i++ ){
-				$atomicUnit = $this->numerator[$i];
+			foreach($this->numerator as $atomicUnit){
 				if( isset($group[$atomicUnit]) && !isset($result[$groupName]) ){
 					$result[$groupName] = $atomicUnit;
 				}
 			}
 
-			for($i=0; $i < count($this->denominator); $i++ ){
-				$atomicUnit = $this->denominator[$i];
+			foreach($this->denominator as $atomicUnit){
 				if( isset($group[$atomicUnit]) && !isset($result[$groupName]) ){
 					$result[$groupName] = $atomicUnit;
 				}
@@ -87,16 +88,14 @@ class Less_Tree_Unit{
 		$counter = array();
 		$backup = null;
 
-		for( $i = 0; $i < count($this->numerator); $i++ ){
-			$atomicUnit = $this->numerator[$i];
+		foreach($this->numerator as $atomicUnit){
 			if( !$backup ){
 				$backup = $atomicUnit;
 			}
 			$counter[$atomicUnit] = ( isset($counter[$atomicUnit]) ? $counter[$atomicUnit] : 0) + 1;
 		}
 
-		for( $i = 0; $i < count($this->denominator); $i++ ){
-			$atomicUnit = $this->denominator[$i];
+		foreach($this->denominator as $atomicUnit){
 			if( !$backup ){
 				$backup = $atomicUnit;
 			}
@@ -118,7 +117,7 @@ class Less_Tree_Unit{
 			}
 		}
 
-		if( count($this->numerator) === 0 && count($this->denominator) === 0 && $backup ){
+		if( !$this->numerator && !$this->denominator && $backup ){
 			$this->backupUnit = $backup;
 		}
 

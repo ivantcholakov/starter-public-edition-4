@@ -1,33 +1,53 @@
 <?php
 
-//less.js : /lib/less/tree/ruleset.js
 
+class Less_Tree_Ruleset extends Less_Tree{
 
-class Less_Tree_Ruleset{
-	//public $type = 'Ruleset';
 	protected $lookups;
-	private $_variables;
-	private $_rulesets;
+	public $_variables;
+	public $_rulesets;
 
 	public $strictImports;
 
 	public $selectors;
 	public $rules;
 	public $root;
-	public $firstRoot;
 	public $allowImports;
-	public $paths = array();
+	public $paths;
+	public $firstRoot;
+	public $type = 'Ruleset';
 
-	public function __construct($selectors, $rules, $strictImports = false){
+
+	var $ruleset_id;
+	var $originalRuleset;
+
+
+	public function SetRulesetIndex(){
+		$this->ruleset_id = Less_Parser::$next_id++;
+		$this->originalRuleset = $this->ruleset_id;
+	}
+
+	public function __construct($selectors, $rules, $strictImports = null){
 		$this->selectors = $selectors;
 		$this->rules = $rules;
 		$this->lookups = array();
 		$this->strictImports = $strictImports;
+		$this->SetRulesetIndex();
 	}
 
 	function accept( $visitor ){
-		//$visitor->visit($this->selectors);
-		$visitor->visit($this->rules);
+		if( $this->paths ){
+			$paths_len = count($this->paths);
+			for($i = 0,$paths_len; $i < $paths_len; $i++ ){
+				$this->paths[$i] = $visitor->visitArray($this->paths[$i]);
+			}
+		}elseif( $this->selectors ){
+			$this->selectors = $visitor->visitArray($this->selectors);
+		}
+
+		if( $this->rules ){
+			$this->rules = $visitor->visitArray($this->rules);
+		}
 	}
 
 	public function compile($env){
@@ -35,15 +55,14 @@ class Less_Tree_Ruleset{
 		$selectors = array();
 		if( $this->selectors ){
 			foreach($this->selectors as $s){
-				if( Less_Parser::is_method($s,'compile') ){
-					$selectors[] = $s->compile($env);
-				}
+				$selectors[] = $s->compile($env);
 			}
 		}
 		$ruleset = new Less_Tree_Ruleset($selectors, $this->rules, $this->strictImports);
 		$rules = array();
 
-		$ruleset->originalRuleset = $this;
+		$ruleset->originalRuleset = $this->ruleset_id;
+
 		$ruleset->root = $this->root;
 		$ruleset->firstRoot = $this->firstRoot;
 		$ruleset->allowImports = $this->allowImports;
@@ -63,9 +82,10 @@ class Less_Tree_Ruleset{
 
 		// Store the frames around mixin definitions,
 		// so they can be evaluated like closures when the time comes.
-		foreach($ruleset->rules as $i => $rule) {
-			if ($rule instanceof Less_Tree_Mixin_Definition) {
-				$ruleset->rules[$i]->frames = $env->frames;
+		$ruleset_len = count($ruleset->rules);
+		for( $i = 0; $i < $ruleset_len; $i++ ){
+			if( $ruleset->rules[$i] instanceof Less_Tree_Mixin_Definition ){
+				$ruleset->rules[$i]->frames = array_slice($env->frames,0);
 			}
 		}
 
@@ -75,7 +95,7 @@ class Less_Tree_Ruleset{
 		}
 
 		// Evaluate mixin calls.
-		for($i=0; $i < count($ruleset->rules); $i++){
+		for($i=0; $i < $ruleset_len; $i++){
 			$rule = $ruleset->rules[$i];
 			if( $rule instanceof Less_Tree_Mixin_Call ){
 				$rules = $rule->compile($env);
@@ -93,17 +113,18 @@ class Less_Tree_Ruleset{
 						$temp[] = $r;
 					}
 				}
-				$rules = $temp;
-				array_splice($ruleset->rules, $i, 1, $rules);
-				$i += count($rules)-1;
+				$temp_count = count($temp)-1;
+				array_splice($ruleset->rules, $i, 1, $temp);
+				$ruleset_len += $temp_count;
+				$i += $temp_count;
 				$ruleset->resetCache();
-            }
-        }
+			}
+		}
 
 
-		for( $i=0, $rule_len=count($ruleset->rules); $i<$rule_len; $i++ ){
+		for( $i=0; $i<$ruleset_len; $i++ ){
 			if(! ($ruleset->rules[$i] instanceof Less_Tree_Mixin_Definition) ){
-				$ruleset->rules[$i] = Less_Parser::is_method($ruleset->rules[$i],'compile') ? $ruleset->rules[$i]->compile($env) : $ruleset->rules[$i];
+				$ruleset->rules[$i] = $ruleset->rules[$i]->compile($env);
 			}
 		}
 
@@ -112,53 +133,62 @@ class Less_Tree_Ruleset{
 		$env->shiftFrame();
 		array_shift($env->selectors);
 
-        if ($mediaBlockCount) {
-			for($i = $mediaBlockCount; $i < count($env->mediaBlocks); $i++ ){
+		if ($mediaBlockCount) {
+			$len = count($env->mediaBlocks);
+			for($i = $mediaBlockCount; $i < $len; $i++ ){
 				$env->mediaBlocks[$i]->bubbleSelectors($selectors);
 			}
-        }
+		}
 
 		return $ruleset;
 	}
 
-    function evalImports($env) {
+	function evalImports($env) {
 
-		for($i=0; $i < count($this->rules); $i++){
+		$rules_len = count($this->rules);
+		for($i=0; $i < $rules_len; $i++){
 			$rule = $this->rules[$i];
 
-			if( $rule instanceof Less_Tree_Import  ){
+			if( $rule instanceof Less_Tree_Import ){
 				$rules = $rule->compile($env);
 				if( is_array($rules) ){
 					array_splice($this->rules, $i, 1, $rules);
+					$temp_count = count($rules)-1;
+					$i += $temp_count;
+					$rules_len += $temp_count;
 				}else{
 					array_splice($this->rules, $i, 1, array($rules));
 				}
-				if( count($rules) ){
-					$i += count($rules)-1;
-				}
+
 				$this->resetCache();
 			}
 		}
-    }
+	}
 
-	static function makeImportant($selectors = null, $rules = null, $strictImports = false) {
+	function makeImportant(){
 
 		$important_rules = array();
-		foreach($rules as $rule){
-			if( Less_Parser::is_method($rule,'makeImportant') && property_exists($rule,'selectors') ){
-				$important_rules[] = $rule->makeImportant($rule->selectors, $rule->rules, $strictImports);
-			}elseif( Less_Parser::is_method($rule,'makeImportant') ){
+		foreach($this->rules as $rule){
+			if( $rule instanceof Less_Tree_Rule || $rule instanceof Less_Tree_Ruleset ){
 				$important_rules[] = $rule->makeImportant();
 			}else{
 				$important_rules[] = $rule;
 			}
 		}
 
-		return new Less_Tree_Ruleset($selectors, $important_rules, $strictImports );
+		return new Less_Tree_Ruleset($this->selectors, $important_rules, $this->strictImports );
 	}
 
 	public function matchArgs($args){
-		return !is_array($args) || count($args) === 0;
+		return !is_array($args) || !$args;
+	}
+
+	public function matchCondition( $args, $env ){
+		$lastSelector = end($this->selectors);
+		if( $lastSelector->condition && !$lastSelector->condition->compile( $env->copyEvalEnv( $env->frames ) ) ){
+			return false;
+		}
+		return true;
 	}
 
 	function resetCache() {
@@ -186,33 +216,31 @@ class Less_Tree_Ruleset{
 		return isset($vars[$name]) ? $vars[$name] : null;
 	}
 
-
-
 	public function find( $selector, $self = null, $env = null){
 
 		if( !$self ){
-			$self = $this;
+			$self = $this->ruleset_id;
 		}
 
 		$key = $selector->toCSS($env);
 
 		if( !array_key_exists($key, $this->lookups) ){
-			$this->lookups[$key] = array();;
+			$this->lookups[$key] = array();
 
 
 			foreach($this->rules as $rule){
 
-				if( $rule == $self ){
-					continue;
-				}
-
 				if( ($rule instanceof Less_Tree_Ruleset) || ($rule instanceof Less_Tree_Mixin_Definition) ){
 
-					foreach( $rule->selectors as $ruleSelector ){
-						if( $selector->match($ruleSelector) ){
+					if( $rule->ruleset_id == $self ){
+						continue;
+					}
 
-							if (count($selector->elements) > count($ruleSelector->elements)) {
-								$this->lookups[$key] = array_merge($this->lookups[$key], $rule->find( new Less_Tree_Selector(array_slice($selector->elements, 1)), $self, $env));
+					foreach( $rule->selectors as $ruleSelector ){
+						$match = $selector->match($ruleSelector);
+						if( $match ){
+							if( $selector->elements_len > $match ){
+								$this->lookups[$key] = array_merge($this->lookups[$key], $rule->find( new Less_Tree_Selector(array_slice($selector->elements, $match)), $self, $env));
 							} else {
 								$this->lookups[$key][] = $rule;
 							}
@@ -226,117 +254,128 @@ class Less_Tree_Ruleset{
 		return $this->lookups[$key];
 	}
 
-	//
-	// Entry point for code generation
-	//
-	//	 `context` holds an array of arrays.
-	//
-	public function toCSS($env){
-		$css = '';	  // The CSS output
-		$rules = array();	// node.Rule instances
-		$_rules = array();
-		$rulesets = array(); // node.Ruleset instances
+	public function genCSS( $env, &$strs ){
+		$ruleNodes = array();
+		$rulesetNodes = array();
+		$firstRuleset = true;
 
-
-		// Compile rules and rulesets
-		foreach($this->rules as $rule) {
-			if (isset($rule->rules) || ($rule instanceof Less_Tree_Media)) {
-				$rulesets[] = $rule->toCSS($env);
-
-			} else if ( $rule instanceof Less_Tree_Directive ){
-				$cssValue = $rule->toCSS($env);
-                // Output only the first @charset definition as such - convert the others
-                // to comments in case debug is enabled
-                if ($rule->name === "@charset") {
-                    // Only output the debug info together with subsequent @charset definitions
-                    // a comment (or @media statement) before the actual @charset directive would
-                    // be considered illegal css as it has to be on the first line
-                    if ($env->charset) {
-                        continue;
-                    }
-                    $env->charset = true;
-                }
-                $rulesets[] = $cssValue;
-
-			} else if ($rule instanceof Less_Tree_Comment) {
-				if (!$rule->silent) {
-					if ($this->root) {
-						$rulesets[] = $rule->toCSS($env);
-					} else {
-						$rules[] = $rule->toCSS($env);
-					}
-				}
-			} else {
-				if( Less_Parser::is_method($rule, 'toCSS') && (!isset($rule->variable) || !$rule->variable) ){
-                    if( $this->firstRoot && $rule instanceof Less_Tree_Rule ){
-						throw new Less_CompilerError("properties must be inside selector blocks, they cannot be in the root.");
-                    }
-					$rules[] = $rule->toCSS($env);
-				} else if (isset($rule->value) && $rule->value && ! $rule->variable) {
-					$rules[] = (string) $rule->value;
-				}
-			}
+		if( !$this->root ){
+			$env->tabLevel++;
 		}
 
-		$rulesets = implode('', $rulesets);
+		$tabRuleStr = $tabSetStr = '';
+		if( !Less_Environment::$compress && $env->tabLevel ){
+			$tabRuleStr = str_repeat( '  ' , $env->tabLevel );
+			$tabSetStr = str_repeat( '  ' , $env->tabLevel-1 );
+		}
+
+		foreach($this->rules as $rule){
+
+			$class = get_class($rule);
+			if( ($class === 'Less_Tree_Media') || ($class === 'Less_Tree_Directive') || ($this->root && $class === 'Less_Tree_Comment') || ($class === 'Less_Tree_Ruleset' && $rule->rules) ){
+				$rulesetNodes[] = $rule;
+			}else{
+				$ruleNodes[] = $rule;
+			}
+		}
 
 		// If this is the root node, we don't render
 		// a selector, or {}.
-		// Otherwise, only output if this ruleset has rules.
-		if ($this->root) {
-			if( $env->compress ){
-				$css .= rtrim(implode('', $rules),';');
-			}else{
-				$css .= implode("\n", $rules);
+		if( !$this->root ){
+
+			/*
+			debugInfo = tree.debugInfo(env, this, tabSetStr);
+
+			if (debugInfo) {
+				output.add(debugInfo);
+				output.add(tabSetStr);
 			}
-		} else {
-			if (count($rules)) {
+			*/
 
-				$selector = array();
-				foreach($this->paths as $p){
-					$_p = '';
-					foreach($p as $s){
-						$_p .= $s->toCSS($env);
-					}
-					$selector[] = trim($_p);
+			for( $i = 0,$paths_len = count($this->paths); $i < $paths_len; $i++ ){
+				$path = $this->paths[$i];
+				Less_Environment::$firstSelector = true;
+				foreach($path as $p){
+					$p->genCSS($env, $strs );
+					Less_Environment::$firstSelector = false;
 				}
-				$css .= implode($env->compress ? ',' : ",\n", $selector);
+				if( $i + 1 < $paths_len ){
+					self::OutputAdd( $strs, Less_Environment::$compress ? ',' : (",\n" . $tabSetStr) );
+				}
+			}
 
-				// Remove duplicates
-				for ($i = count($rules) - 1; $i >= 0; $i--) {
-					if( substr($rules[$i],0,2) === "/*" || !in_array($rules[$i], $_rules) ){
-						array_unshift($_rules, $rules[$i]);
-					}
-				}
-				$rules = $_rules;
+			self::OutputAdd( $strs, (Less_Environment::$compress ? '{' : " {\n") . $tabRuleStr );
+		}
 
-				if( $env->compress ){
-					$css .= '{'.rtrim(implode('',$rules),';').'}';
-				}else{
-					$css .= " {\n  ".implode("\n  ",$rules)."\n}\n";
+		// Compile rules and rulesets
+		$ruleNodes_len = count($ruleNodes);
+		$rulesetNodes_len = count($rulesetNodes);
+		for( $i = 0; $i < $ruleNodes_len; $i++ ){
+			$rule = $ruleNodes[$i];
+
+			// @page{ directive ends up with root elements inside it, a mix of rules and rulesets
+			// In this instance we do not know whether it is the last property
+			if( $i + 1 === $ruleNodes_len && (!$this->root || $rulesetNodes_len === 0 || $this->firstRoot ) ){
+				$env->lastRule = true;
+			}
+
+			if( is_object($rule) ){
+				if( method_exists($rule,'genCSS') ){
+					$rule->genCSS( $env, $strs );
+				}elseif( property_exists($rule,'value') && $rule->value ){
+					self::OutputAdd( $strs, (string)$rule->value );
 				}
+			}
+
+			if( !$env->lastRule ){
+				self::OutputAdd( $strs, Less_Environment::$compress ? '' : ("\n" . $tabRuleStr) );
+			}else{
+				$env->lastRule = false;
 			}
 		}
-		$css .= $rulesets;
 
-		return $css . ($env->compress ? "\n" : '' );
+		if( !$this->root ){
+			self::OutputAdd( $strs, (Less_Environment::$compress ? '}' : "\n" . $tabSetStr . '}'));
+			$env->tabLevel--;
+		}
+
+		for( $i = 0; $i < $rulesetNodes_len; $i++ ){
+			if( $ruleNodes_len && $firstRuleset ){
+				self::OutputAdd( $strs, (Less_Environment::$compress ? "" : "\n") . ($this->root ? $tabRuleStr : $tabSetStr) );
+			}
+			if( !$firstRuleset ){
+				self::OutputAdd( $strs, (Less_Environment::$compress ? "" : "\n") . ($this->root ? $tabRuleStr : $tabSetStr));
+			}
+			$firstRuleset = false;
+			$rulesetNodes[$i]->genCSS($env, $strs);
+		}
+
+		if( !$strs && !Less_Environment::$compress && $this->firstRoot ){
+			self::OutputAdd( $strs, "\n" );
+		}
+
 	}
 
+	function markReferenced(){
 
-	public function joinSelectors( &$paths, $context, $selectors ){
+		foreach($this->selectors as $selector){
+			$selector->markReferenced();
+		}
+	}
+
+	public function joinSelectors( $context, $selectors ){
+		$paths = array();
 		if( is_array($selectors) ){
 			foreach($selectors as $selector) {
-				$this->joinSelector($paths, $context, $selector);
+				$this->joinSelector( $paths, $context, $selector);
 			}
 		}
+		return $paths;
 	}
 
-	public function joinSelector (&$paths, $context, $selector){
+	public function joinSelector( &$paths, $context, $selector){
 
-		$hasParentSelector = false; $newSelectors; $el; $sel; $parentSel;
-		$newSelectorPath; $afterParentJoin; $newJoinedSelector;
-		$newJoinedSelectorEmpty; $lastSelector; $currentElements;
-		$selectorsMultiplied;
+		$hasParentSelector = false;
 
 		foreach($selector->elements as $el) {
 			if( $el->value === '&') {
@@ -345,7 +384,7 @@ class Less_Tree_Ruleset{
 		}
 
 		if( !$hasParentSelector ){
-			if( count($context) > 0 ) {
+			if( $context ){
 				foreach($context as $context_el){
 					$paths[] = array_merge($context_el, array($selector) );
 				}
@@ -386,7 +425,7 @@ class Less_Tree_Ruleset{
 
 				// merge the current list of non parent selector elements
 				// on to the current list of selectors to add
-				if( count($currentElements) > 0) {
+				if( $currentElements ){
 					$this->mergeElementsOnToSelectors( $currentElements, $newSelectors);
 				}
 
@@ -395,12 +434,12 @@ class Less_Tree_Ruleset{
 
 					// if we don't have any parent paths, the & might be in a mixin so that it can be used
 					// whether there are parents or not
-					if( !count($context) ){
+					if( !$context ){
 						// the combinator used on el should now be applied to the next element instead so that
 						// it is not lost
-						if( count($sel) > 0 ){
+						if( $sel ){
 							$sel[0]->elements = array_slice($sel[0]->elements,0);
-							$sel[0]->elements[] = new Less_Tree_Element($el->combinator, '', 0); //new Element(el.Combinator,  ""));
+							$sel[0]->elements[] = new Less_Tree_Element($el->combinator, '', 0, $el->index, $el->currentFileInfo );
 						}
 						$selectorsMultiplied[] = $sel;
 					}else {
@@ -418,14 +457,14 @@ class Less_Tree_Ruleset{
 
 							//construct the joined selector - if & is the first thing this will be empty,
 							// if not newJoinedSelector will be the last set of elements in the selector
-							if ( count($sel) > 0) {
+							if( $sel ){
 								$newSelectorPath = $sel;
 								$lastSelector = array_pop($newSelectorPath);
-								$newJoinedSelector = new Less_Tree_Selector( $lastSelector->elements, $selector->extendList);
+								$newJoinedSelector = $selector->createDerived( array_slice($lastSelector->elements,0) );
 								$newJoinedSelectorEmpty = false;
 							}
 							else {
-								$newJoinedSelector = new Less_Tree_Selector( array(), $selector->extendList);
+								$newJoinedSelector = $selector->createDerived(array());
 							}
 
 							//put together the parent selectors after the join
@@ -433,11 +472,11 @@ class Less_Tree_Ruleset{
 								$afterParentJoin = array_merge($afterParentJoin, array_slice($parentSel,1) );
 							}
 
-							if ( count($parentSel) > 0) {
+							if ( $parentSel ){
 								$newJoinedSelectorEmpty = false;
 
 								// join the elements so far with the first part of the parent
-								$newJoinedSelector->elements[] = new Less_Tree_Element( $el->combinator, $parentSel[0]->elements[0]->value, 0 );
+								$newJoinedSelector->elements[] = new Less_Tree_Element( $el->combinator, $parentSel[0]->elements[0]->value, 0, $el->index, $el->currentFileInfo);
 
 								$newJoinedSelector->elements = array_merge( $newJoinedSelector->elements, array_slice($parentSel[0]->elements, 1) );
 							}
@@ -464,11 +503,11 @@ class Less_Tree_Ruleset{
 
 		// if we have any elements left over (e.g. .a& .b == .b)
 		// add them on to all the current selectors
-		if( count($currentElements) > 0) {
+		if( $currentElements ){
 			$this->mergeElementsOnToSelectors($currentElements, $newSelectors);
 		}
 		foreach( $newSelectors as $new_sel){
-			if( count($new_sel) ){
+			if( $new_sel ){
 				$paths[] = $new_sel;
 			}
 		}
@@ -476,7 +515,7 @@ class Less_Tree_Ruleset{
 
 	function mergeElementsOnToSelectors( $elements, &$selectors){
 
-		if( count($selectors) == 0) {
+		if( !$selectors ){
 			$selectors[] = array( new Less_Tree_Selector($elements) );
 			return;
 		}
@@ -485,9 +524,9 @@ class Less_Tree_Ruleset{
 		foreach( $selectors as &$sel){
 
 			// if the previous thing in sel is a parent this needs to join on to it
-			if ( count($sel) > 0) {
+			if( $sel ){
 				$last = count($sel)-1;
-				$sel[$last] = new Less_Tree_Selector( array_merge( $sel[$last]->elements, $elements), $sel[$last]->extendList );
+				$sel[$last] = $sel[$last]->createDerived( array_merge($sel[$last]->elements, $elements) );
 			}else{
 				$sel[] = new Less_Tree_Selector( $elements );
 			}

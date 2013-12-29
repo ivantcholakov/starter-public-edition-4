@@ -1,8 +1,8 @@
 <?php
 
-class Less_Tree_Javascript{
+class Less_Tree_Javascript extends Less_Tree{
 
-	//public $type = 'Javascript';
+	public $type = 'Javascript';
 
 	public function __construct($string, $index, $escaped){
 		$this->escaped = $escaped;
@@ -14,7 +14,11 @@ class Less_Tree_Javascript{
 		return $this;
 	}
 
-	public function toCss($env){
-		return $env->compress ? '' : '/* Sorry, can not do JavaScript evaluation in PHP... :( */';
+	function genCSS( $env, &$strs ){
+		self::OutputAdd( $strs, '/* Sorry, can not do JavaScript evaluation in PHP... :( */' );
+	}
+
+	public function toCSS($env = null){
+		return Less_Environment::$compress ? '' : '/* Sorry, can not do JavaScript evaluation in PHP... :( */';
 	}
 }

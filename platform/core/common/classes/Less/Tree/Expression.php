@@ -1,20 +1,19 @@
 <?php
 
-class Less_Tree_Expression {
+class Less_Tree_Expression extends Less_Tree{
 
-	//public $type = 'Expression';
 	public $value = array();
 	public $parens = false;
 	public $parensInOp = false;
+	public $type = 'Expression';
 
-	public function __construct($value) {
+	public function __construct($value=null) {
 		$this->value = $value;
 	}
 
-	/*function accept( $visitor ){
-		$visitor->visit( $this->value );
+	function accept( $visitor ){
+		$this->value = $visitor->visitArray( $this->value );
 	}
-	*/
 
 	public function compile($env) {
 
@@ -24,25 +23,31 @@ class Less_Tree_Expression {
 			$env->inParenthesis();
 		}
 
-		if (is_array($this->value) && count($this->value) > 1) {
+		if( $this->value ){
 
-			$ret = array();
-			foreach($this->value as $e){
-				$ret[] = $e->compile($env);
+			$count = count($this->value);
+
+			if( $count > 1 ){
+
+				$ret = array();
+				foreach($this->value as $e){
+					$ret[] = $e->compile($env);
+				}
+				$returnValue = new Less_Tree_Expression($ret);
+
+			}elseif( $count === 1 ){
+
+				if( !isset($this->value[0]) ){
+					$this->value = array_slice($this->value,0);
+				}
+
+				if( ($this->value[0] instanceof Less_Tree_Expression) && $this->value[0]->parens && !$this->value[0]->parensInOp ){
+					$doubleParen = true;
+				}
+
+				$returnValue = $this->value[0]->compile($env);
 			}
-			$returnValue = new Less_Tree_Expression($ret);
 
-		} else if (is_array($this->value) && count($this->value) == 1) {
-
-			if( !isset($this->value[0]) ){
-				$this->value = array_slice($this->value,0);
-			}
-
-			if( property_exists($this->value[0], 'parens') && $this->value[0]->parens && !$this->value[0]->parensInOp ){
-				$doubleParen = true;
-			}
-
-			$returnValue = $this->value[0]->compile($env);
 		} else {
 			$returnValue = $this;
 		}
@@ -55,14 +60,14 @@ class Less_Tree_Expression {
 		return $returnValue;
 	}
 
-	public function toCSS ($env) {
-
-		$ret = array();
-		foreach($this->value as $e){
-			$ret[] = Less_Parser::is_method($e, 'toCSS') ? $e->toCSS($env) : '';
+	function genCSS( $env, &$strs ){
+		$val_len = count($this->value);
+		for( $i = 0; $i < $val_len; $i++ ){
+			$this->value[$i]->genCSS( $env, $strs );
+			if( $i + 1 < $val_len ){
+				self::OutputAdd( $strs, ' ' );
+			}
 		}
-
-		return implode(' ',$ret);
 	}
 
 	function throwAwayComments() {

@@ -5,14 +5,14 @@
 // A function call node.
 //
 
-class Less_Tree_Call{
-    public $type = 'Call';
-    private $value;
+class Less_Tree_Call extends Less_Tree{
+    public $value;
 
     var $name;
     var $args;
     var $index;
     var $currentFileInfo;
+    public $type = 'Call';
 
 	public function __construct($name, $args, $index, $currentFileInfo = null ){
 		$this->name = $name;
@@ -21,11 +21,9 @@ class Less_Tree_Call{
 		$this->currentFileInfo = $currentFileInfo;
 	}
 
-	/*
 	function accept( $visitor ){
-		$visitor->visit( $this->args );
+		$this->args = $visitor->visitArray( $this->args );
 	}
-	*/
 
     //
     // When evaluating a function call,
@@ -46,35 +44,53 @@ class Less_Tree_Call{
 		}
 
 		$name = $this->name;
-		if( $name == '%' ){
+		switch($name){
+			case '%':
 			$name = '_percent';
-		}elseif( $name == 'data-uri' ){
+			break;
+
+			case 'data-uri':
 			$name = 'datauri';
+			break;
+
+			case 'svg-gradient':
+			$name = 'svggradient';
+			break;
 		}
 
-		if( Less_Parser::is_method($env, $name) ){ // 1.
-			try {
 
-				$result = call_user_func_array( array($env, $name), $args);
+		if( is_callable( array('Less_Functions',$name) ) ){ // 1.
+			try {
+				$func = new Less_Functions($env, $this->currentFileInfo);
+				$result = call_user_func_array( array($func,$name),$args);
 				if( $result != null ){
 					return $result;
 				}
 
 			} catch (Exception $e) {
-				throw Less_CompilerException('error evaluating function `' . $this->name . '` '.$e->getMessage().' index: '. $this->index);
+				throw Less_Exception_Compiler('error evaluating function `' . $this->name . '` '.$e->getMessage().' index: '. $this->index);
+			}
+
+		}
+
+		return new Less_Tree_Call( $this->name, $args, $this->index, $this->currentFileInfo );
+    }
+
+	public function genCSS( $env, &$strs ){
+
+		self::OutputAdd( $strs, $this->name . '(', $this->currentFileInfo, $this->index );
+		$args_len = count($this->args);
+		for($i = 0; $i < $args_len; $i++ ){
+			$this->args[$i]->genCSS($env, $strs );
+			if( $i + 1 < $args_len ){
+				self::OutputAdd( $strs, ', ' );
 			}
 		}
 
-		// 2.
-		$temp = array();
-		foreach($args as $a){
-			$temp[] = $a->toCSS($env);
-		}
-		return new Less_Tree_Anonymous($this->name .
-				   "(" . implode(', ', $temp) . ")");
-    }
+		self::OutputAdd( $strs, ')' );
+	}
 
-    public function toCSS ($env) {
+    public function toCSS($env = null){
         return $this->compile($env)->toCSS();
     }
 

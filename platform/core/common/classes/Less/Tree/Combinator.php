@@ -1,33 +1,45 @@
 <?php
 
-// less.js : lib/less/tree/element.js
 
+class Less_Tree_Combinator extends Less_Tree{
 
-class Less_Tree_Combinator {
-
-	//public $type = 'Combinator';
 	public $value;
+	public $type = 'Combinator';
 
 	public function __construct($value = null) {
-		if ($value == ' ') {
+		if( $value == ' ' ){
 			$this->value = ' ';
-		} else {
+		}else {
 			$this->value = trim($value);
 		}
 	}
 
-	public function toCSS ($env) {
-		$v = array(
-			''   => '',
-			' '  => ' ',
-			':'  => ' :',
-			'+'  => $env->compress ? '+' : ' + ',
-			'~'  => $env->compress ? '~' : ' ~ ',
-			'>'  => $env->compress ? '>' : ' > ',
-			'|'  => $env->compress ? '|' : ' | '
+	static $_outputMap = array(
+		''  => '',
+		' ' => ' ',
+		':' => ' :',
+		'+' => ' + ',
+		'~' => ' ~ ',
+		'>' => ' > ',
+		'|' => '|'
+	);
 
-		);
+	static $_outputMapCompressed = array(
+		''  => '',
+		' ' => ' ',
+		':' => ' :',
+		'+' => '+',
+		'~' => '~',
+		'>' => '>',
+		'|' => '|'
+	);
 
-		return $v[$this->value];
+	function genCSS($env, &$strs ){
+		if( Less_Environment::$compress ){
+			self::OutputAdd( $strs, self::$_outputMapCompressed[$this->value] );
+		}else{
+			self::OutputAdd( $strs, self::$_outputMap[$this->value] );
+		}
 	}
+
 }

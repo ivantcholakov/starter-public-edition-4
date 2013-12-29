@@ -1,12 +1,12 @@
 <?php
 
 
-class Less_Tree_Quoted{
-	//public $type = 'Quoted';
+class Less_Tree_Quoted extends Less_Tree{
 	public $value;
 	public $content;
 	public $index;
 	public $currentFileInfo;
+	public $type = 'Quoted';
 
 	public function __construct($str, $content = '', $escaped = false, $index = false, $currentFileInfo = null ){
 		$this->escaped = $escaped;
@@ -16,13 +16,15 @@ class Less_Tree_Quoted{
 		$this->currentFileInfo = $currentFileInfo;
 	}
 
-	public function toCSS (){
-		if ($this->escaped) {
-			return $this->value;
-		} else {
-			return $this->quote . $this->value . $this->quote;
-		}
-	}
+    public function genCSS( $env, &$strs ){
+		if( !$this->escaped ){
+			self::OutputAdd( $strs, $this->quote, $this->currentFileInfo, $this->index );
+        }
+        self::OutputAdd( $strs, $this->value );
+        if( !$this->escaped ){
+			self::OutputAdd( $strs, $this->quote );
+        }
+    }
 
 	public function compile($env){
 

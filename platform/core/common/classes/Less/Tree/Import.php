@@ -14,9 +14,8 @@
 // `import,push`, we also pass it a callback, which it'll call once
 // the file has been fetched, and parsed.
 //
-class Less_Tree_Import{
+class Less_Tree_Import extends Less_Tree{
 
-	//public $type = 'Import';
 	public $options;
 	public $index;
 	public $path;
@@ -25,6 +24,7 @@ class Less_Tree_Import{
 	public $css;
 	public $skip;
 	public $root;
+	public $type = 'Import';
 
 	function __construct($path, $features, $options, $index, $currentFileInfo = null ){
 		$this->options = $options;
@@ -33,16 +33,19 @@ class Less_Tree_Import{
 		$this->features = $features;
 		$this->currentFileInfo = $currentFileInfo;
 
+		if( is_array($options) ){
+			$this->options += array('inline'=>false);
 
-		if( isset($this->options['less']) ){
-			$this->css = !$this->options['less'];
-		} else {
-			$pathValue = $this->getPath();
-			if( $pathValue && preg_match('/css([\?;].*)?$/',$pathValue) ){
-				$this->css = true;
+			if( isset($this->options['less']) || $this->options['inline'] ){
+				$this->css = !isset($this->options['less']) || !$this->options['less'] || $this->options['inline'];
+			} else {
+				$pathValue = $this->getPath();
+				if( $pathValue && preg_match('/css([\?;].*)?$/',$pathValue) ){
+					$this->css = true;
+				}
 			}
 		}
-    }
+	}
 
 //
 // The actual import node doesn't return anything, when converted to CSS.
@@ -53,15 +56,34 @@ class Less_Tree_Import{
 // we end up with a flat structure, which can easily be imported in the parent
 // ruleset.
 //
-	/*
-	function accept($visitor) {
-		$visitor->visit($this->features);
-		$visitor->visit($this->path);
-		$visitor->visit($this->root);
-	}
-	*/
 
-	function toCSS($env) {
+	function accept($visitor){
+
+		if( $this->features ){
+			$this->features = $visitor->visitObj($this->features);
+		}
+		$this->path = $visitor->visitObj($this->path);
+
+		if( !$this->options['inline'] && $this->root ){
+			$this->root = $visitor->visit($this->root);
+		}
+	}
+
+	function genCSS( $env, &$strs ){
+		if( $this->css ){
+
+			self::OutputAdd( $strs, '@import ', $this->currentFileInfo, $this->index );
+
+			$this->path->genCSS( $env, $strs );
+			if( $this->features ){
+				self::OutputAdd( $strs, ' ' );
+				$this->features->genCSS( $env, $strs );
+			}
+			self::OutputAdd( $strs, ';' );
+		}
+	}
+
+	function toCSS($env = null){
 		$features = $this->features ? ' ' . $this->features->toCSS($env) : '';
 
 		if ($this->css) {
@@ -87,13 +109,23 @@ class Less_Tree_Import{
 
 	function compilePath($env) {
 		$path = $this->path->compile($env);
-		if( $this->currentFileInfo && $this->currentFileInfo['rootpath'] && !($path instanceof Less_Tree_URL)) {
-			$pathValue = $path->value;
-			// Add the base path if the import is relative
-			if( $pathValue && $env->isPathRelative($pathValue) ){
-				$path->value = Less_Environment::NormPath($this->currentFileInfo['uri_root']. $pathValue);
-			}
+		$rootpath = '';
+		if( $this->currentFileInfo && $this->currentFileInfo['rootpath'] ){
+			$rootpath = $this->currentFileInfo['rootpath'];
 		}
+
+
+		if( !($path instanceof Less_Tree_URL) ){
+			if( $rootpath ){
+				$pathValue = $path->value;
+				// Add the base path if the import is relative
+				if( $pathValue && Less_Environment::isPathRelative($pathValue) ){
+					$path->value = $this->currentFileInfo['uri_root'].$pathValue;
+				}
+			}
+			$path->value = Less_Environment::normalizePath($path->value);
+		}
+
 		return $path;
 	}
 
@@ -104,12 +136,12 @@ class Less_Tree_Import{
 
 		//get path & uri
 		$evald_path = $evald->getPath();
-		if( $evald_path && $env->isPathRelative($evald_path) ){
+		if( $evald_path && Less_Environment::isPathRelative($evald_path) ){
 			foreach(Less_Parser::$import_dirs as $rootpath => $rooturi){
 				$temp = $rootpath.$evald_path;
 				if( file_exists($temp) ){
-					$full_path = Less_Environment::NormPath($temp);
-					$uri = Less_Environment::NormPath(dirname($rooturi.$evald_path));
+					$full_path = Less_Environment::normalizePath($temp);
+					$uri = Less_Environment::normalizePath(dirname($rooturi.$evald_path));
 					break;
 				}
 			}
@@ -122,23 +154,58 @@ class Less_Tree_Import{
 
 		//import once
 		$realpath = realpath($full_path);
-		if( !isset($evald->options['multiple']) && $realpath && Less_Parser::FileParsed($realpath) ){
-			$evald->skip = true;
+
+
+		if( $realpath && Less_Parser::FileParsed($realpath) ){
+			if( isset($this->currentFileInfo['reference']) ){
+				$evald->skip = true;
+			}elseif( !isset($evald->options['multiple']) && !$env->importMultiple ){
+				$evald->skip = true;
+			}
 		}
 
 		$features = ( $evald->features ? $evald->features->compile($env) : null );
 
-		if ($evald->skip) { return array(); }
+		if( $evald->skip ){
+			return array();
+		}
 
-		if( $evald->css ){
+
+		if( $this->options['inline'] ){
+			//todo needs to reference css file not import
+			//$contents = new Less_Tree_Anonymous($this->root, 0, array('filename'=>$this->importedFilename), true );
+
+			Less_Parser::AddParsedFile($full_path);
+			$contents = new Less_Tree_Anonymous( file_get_contents($full_path), 0, array(), true );
+
+			if( $this->features ){
+				return new Less_Tree_Media( array($contents), $this->features->value );
+			}
+
+			return array( $contents );
+
+		}elseif( $evald->css ){
 			$temp = $this->compilePath( $env);
 			return new Less_Tree_Import( $this->compilePath( $env), $features, $this->options, $this->index);
 		}
 
-		$parser = new Less_Parser($env);
+
+		// options
+		$import_env = clone $env;
+		if( (isset($this->options['reference']) && $this->options['reference']) || isset($this->currentFileInfo['reference']) ){
+			$import_env->currentFileInfo['reference'] = true;
+		}
+
+		if( (isset($this->options['multiple']) && $this->options['multiple']) ){
+			$import_env->importMultiple = true;
+		}
+
+		$parser = new Less_Parser($import_env);
 		$evald->root = $parser->parseFile($full_path, $uri, true);
+
+
 		$ruleset = new Less_Tree_Ruleset(array(), $evald->root->rules );
-		$ruleset->evalImports($env);
+		$ruleset->evalImports($import_env);
 
 		return $this->features ? new Less_Tree_Media($ruleset->rules, $this->features->value) : $ruleset->rules;
 	}
