@@ -32,7 +32,7 @@ $segment_1 = $this->uri->rsegment(1);
 
                         <li<?php if ($segment_1 == 'contact_page_test') { ?> class="active"<?php } ?>><a href="<?php echo site_url('contact-page-test'); ?>"><i class="fa fa-envelope"></i> Contact Page Test</a></li>
 
-                        <li<?php if ($segment_1 == 'playground') { ?> class="active"<?php } ?>><a href="<?php echo site_url('playground'); ?>"><i class="fa fa-sun-o"></i> The Playground</a></li>
+                        <li<?php if ($segment_1 == 'playground' || $this->uri->segment(1) == 'playground' || $this->uri->segment(2) == 'playground') { ?> class="active"<?php } ?>><a href="<?php echo site_url('playground'); ?>"><i class="fa fa-sun-o"></i> The Playground</a></li>
 
                     </ul>
 

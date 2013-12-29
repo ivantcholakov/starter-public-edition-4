@@ -23,6 +23,12 @@
                     <li><a href="<?php echo base_url('non-mvc/normalize.css.php'); ?>">Testing normalize.css</a></li>
                 </ul>
 
+                <h4>Feature Tests</h4>
+
+                <ul>
+                    <li><a href="<?php echo site_url('playground/captcha'); ?>">Captcha Test</a></li>
+                </ul>
+
             </div>
 
         </div>

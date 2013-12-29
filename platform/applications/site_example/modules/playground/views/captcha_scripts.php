@@ -22,7 +22,7 @@
 
                 $.ajax({
                     type: 'get',
-                    url: SITE_URL + 'welcome/test_captcha',
+                    url: SITE_URL + 'playground/captcha/test_captcha',
                     cache: false,
                     success: function(data) {
                         $('#captcha_test').html(data);
