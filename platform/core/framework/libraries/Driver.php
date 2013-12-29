@@ -172,19 +172,7 @@ class CI_Driver_Library {
 		}
 
 		// Instantiate, decorate and add child
-		// Added by Ivan Tcholakov, 12-DEC-2013.
-		// Yes, it is ugly, but I need access within the child constructor.
-		global $PARENT_DRIVER_LIBRARY_OBJECT;
-		$PARENT_DRIVER_LIBRARY_OBJECT = $this;
-		//
 		$obj = new $class_name();
-		// Added by Ivan Tcholakov, 12-DEC-2013.
-		if (isset($PARENT_DRIVER_LIBRARY_OBJECT))
-		{
-			// Ivan Tcholakov: I may unset it within the child constor too.
-			unset($PARENT_DRIVER_LIBRARY_OBJECT);
-		}
-		//
 		$obj->decorate($this);
 		$this->$child = $obj;
 		return $this->$child;

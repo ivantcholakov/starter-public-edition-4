@@ -10,7 +10,7 @@ class CI_Parser_less extends CI_Parser_driver {
     protected $config;
     private $ci;
 
-    public function __construct()
+    public function initialize()
     {
         $this->ci = get_instance();
 
@@ -27,15 +27,6 @@ class CI_Parser_less extends CI_Parser_driver {
         {
             $this->config = array_merge($this->config, $this->ci->config->item('parser_less'));
         }
-
-        // Ivan Tcholakov: A ugly hack for accessing the parent loader object,
-        // since there is no decoration yet.
-        global $PARENT_DRIVER_LIBRARY_OBJECT;
-        if (isset($PARENT_DRIVER_LIBRARY_OBJECT))
-        {
-            $this->_parent = $PARENT_DRIVER_LIBRARY_OBJECT;
-        }
-        //
 
         // Injecting configuration options directly.
 
