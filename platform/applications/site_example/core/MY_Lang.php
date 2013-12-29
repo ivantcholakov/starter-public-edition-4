@@ -66,7 +66,7 @@ class MY_Lang extends Core_Lang {
             $new_url = $CFG->config['base_url'].$index_url.$this->default_lang().'/'.$uri;
 
             // Added by Ivan Tcholakov, 18-DEC-2013.
-            if (!IS_CLI) {
+            if (NORMAL_MVC_EXECUTION && !IS_CLI) {
             //
             header('Location: ' . $new_url, TRUE, 302);
             exit;
