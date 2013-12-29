@@ -668,7 +668,7 @@ class MX_Loader extends CI_Loader
         if (!empty($_ci_parsers)) {
 
             CI::$APP->load->parser();
-            $_ci_parsers = CI::$APP->parser->parse_config($_ci_parsers);
+            $_ci_parsers = CI::$APP->parser->parse_config($_ci_parsers, TRUE);
 
         } else {
 

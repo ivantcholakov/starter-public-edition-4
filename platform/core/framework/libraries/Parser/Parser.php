@@ -128,45 +128,41 @@ class CI_Parser extends CI_Driver_Library {
 		// Added by Ivan Tcholakov, 28-DEC-2013.
 		// Processing an alternative chain of drivers.
  
-		$CI = &get_instance();
-
-		if (!empty($config))
+		if ($this->_detect_config_chain($config))
 		{
+			$CI = &get_instance();
+
 			$config = $this->parse_config($config);
-		}
-		else
-		{
-			$config = array();
-		}
 
-		if (!empty($config))
-		{
-			$i = 0;
-
-			foreach ($config as $driver)
+			if (!empty($config))
 			{
-				$CI->load->parser($driver['parser']);
+				$i = 0;
 
-				if ($i == 0)
+				foreach ($config as $driver)
 				{
-					$template = $CI->{$driver['parser']}->parse($template, $data, true, $driver['config']);
-				}
-				else
-				{
-					$template = $CI->{$driver['parser']}->parse_string($template, $data, true, $driver['config']);
+					$CI->load->parser($driver['parser']);
+
+					if ($i == 0)
+					{
+						$template = $CI->{$driver['parser']}->parse($template, $data, true, $driver['config']);
+					}
+					else
+					{
+						$template = $CI->{$driver['parser']}->parse_string($template, $data, true, $driver['config']);
+					}
+
+					$i++;
 				}
 
-				$i++;
+				$is_mx = false;
+
+				if (!$return)
+				{
+					list($CI, $is_mx) = $this->detect_mx();
+				}
+
+				return $this->output($template, $return, $CI, $is_mx);
 			}
-
-			$is_mx = false;
-
-			if (!$return)
-			{
-				list($CI, $is_mx) = $this->detect_mx();
-			}
-
-			return $this->output($template, $return, $CI, $is_mx);
 		}
 
 		//
@@ -198,33 +194,29 @@ class CI_Parser extends CI_Driver_Library {
 		// Added by Ivan Tcholakov, 28-DEC-2013.
 		// Processing an alternative chain of drivers.
  
-		$CI = &get_instance();
-
-		if (!empty($config))
+		if ($this->_detect_config_chain($config))
 		{
+			$CI = &get_instance();
+
 			$config = $this->parse_config($config);
-		}
-		else
-		{
-			$config = array();
-		}
 
-		if (!empty($config))
-		{
-			foreach ($config as $driver)
+			if (!empty($config))
 			{
-				$CI->load->parser($driver['parser']);
-				$template = $CI->{$driver['parser']}->parse_string($template, $data, true, $driver['config']);
+				foreach ($config as $driver)
+				{
+					$CI->load->parser($driver['parser']);
+					$template = $CI->{$driver['parser']}->parse_string($template, $data, true, $driver['config']);
+				}
+
+				$is_mx = false;
+
+				if (!$return)
+				{
+					list($CI, $is_mx) = $this->detect_mx();
+				}
+
+				return $this->output($template, $return, $CI, $is_mx);
 			}
-
-			$is_mx = false;
-
-			if (!$return)
-			{
-				list($CI, $is_mx) = $this->detect_mx();
-			}
-
-			return $this->output($template, $return, $CI, $is_mx);
 		}
 
 		//
@@ -236,10 +228,8 @@ class CI_Parser extends CI_Driver_Library {
 	}
 
 	// Added by Ivan Tcholakov, 28-DEC-2013.
-	public function parse_config($config)
+	public function parse_config($config, $force_return_config_chain = FALSE)
 	{
-		$config = !empty($config) ? $config : array();
-
 		if (!is_array($config))
 		{
 			$config = (string) $config;
@@ -254,18 +244,70 @@ class CI_Parser extends CI_Driver_Library {
 			}
 		}
 
+		if ($force_return_config_chain || $this->_detect_config_chain($config))
+		{
+			return $this->_parse_config_chain($config);
+		}
+
+		return $config;
+	}
+
+	// Added by Ivan Tcholakov, 29-DEC-2013.
+	protected function _detect_config_chain($config)
+	{
+		if (!is_array($config))
+		{
+			$config = (string) $config;
+
+			if ($config != '')
+			{
+				$config = array($config);
+			}
+			else
+			{
+				$config = array();
+			}
+		}
+
+		if (empty($config))
+		{
+			return false;
+		}
+
+		foreach ($config as $key => $value)
+		{
+			if (is_string($key))
+			{
+				if (!in_array($key, $this->valid_drivers))
+				{
+					return false;
+				}
+			}
+			elseif (is_string($value))
+			{
+				if (!in_array($value, $this->valid_drivers))
+				{
+					return false;
+				}
+			}
+			elseif (!is_array($value))
+			{
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	// Added by Ivan Tcholakov, 29-DEC-2013.
+	protected function _parse_config_chain($config)
+	{
 		$result = array();
 
 		foreach ($config as $driver => $driver_config)
 		{
 			if (is_string($driver))
 			{
-				// The simple driver has no configuration.
-				if ($driver == 'parser')
-				{
-					$driver_config = array();
-				}
-
 				$result[] = array('parser' => $driver, 'config' => $driver_config);
 			}
 			elseif (is_string($driver_config))
