@@ -132,7 +132,7 @@ class CI_Parser extends CI_Driver_Library {
 
 		if (!empty($config))
 		{
-			$config = CI::$APP->parser->parse_config($config);
+			$config = $this->parse_config($config);
 		}
 		else
 		{
@@ -159,16 +159,14 @@ class CI_Parser extends CI_Driver_Library {
 				$i++;
 			}
 
-			if ($return)
+			$is_mx = false;
+
+			if (!$return)
 			{
-				return $template;
-			}
-			else
-			{
-				$CI->output->append_output($template);
+				list($CI, $is_mx) = $this->detect_mx();
 			}
 
-			return;
+			return $this->output($template, $return, $CI, $is_mx);
 		}
 
 		//
@@ -204,7 +202,7 @@ class CI_Parser extends CI_Driver_Library {
 
 		if (!empty($config))
 		{
-			$config = CI::$APP->parser->parse_config($config);
+			$config = $this->parse_config($config);
 		}
 		else
 		{
@@ -219,16 +217,14 @@ class CI_Parser extends CI_Driver_Library {
 				$template = $CI->{$driver['parser']}->parse_string($template, $data, true, $driver['config']);
 			}
 
-			if ($return)
+			$is_mx = false;
+
+			if (!$return)
 			{
-				return $template;
-			}
-			else
-			{
-				$CI->output->append_output($template);
+				list($CI, $is_mx) = $this->detect_mx();
 			}
 
-			return;
+			return $this->output($template, $return, $CI, $is_mx);
 		}
 
 		//
@@ -279,6 +275,58 @@ class CI_Parser extends CI_Driver_Library {
 		}
 
 		return $result;
+	}
+
+	// Added by Ivan Tcholakov, 28-DEC-2013.
+	// Adaptation for HMVC by wiredesignz.
+	protected function detect_mx()
+	{
+		$ci = get_instance();
+		$is_mx = false;
+
+		foreach (debug_backtrace() as $item)
+		{
+			$object = isset($item['object']) ? $item['object'] : null;
+
+			if (is_object($object) && @ is_a($object, 'MX_Controller'))
+			{
+				$ci = $object;
+				$is_mx = true;
+
+				break;
+			}
+		}
+
+		return array($ci, $is_mx);
+	}
+
+	// Added by Ivan Tcholakov, 28-DEC-2013.
+	// Adaptation for HMVC by wiredesignz.
+	protected function output(& $result, $return, $ci, $is_mx)
+	{
+		if ($return)
+		{
+			return $result;
+		}
+		elseif (!$is_mx)
+		{
+			$ci->output->append_output($result);
+		}
+		else
+		{
+			ob_start();
+
+			echo $result;
+
+			if (ob_get_level() > $ci->load->get_ob_level() + 1)
+			{
+				ob_end_flush();
+			}
+			else
+			{
+				$ci->output->append_output(ob_get_clean());
+			}
+		}
 	}
 
 	/**
@@ -466,7 +514,6 @@ abstract class CI_Parser_driver extends CI_Driver {
 				$ci->output->append_output(ob_get_clean());
 			}
 		}
-
 	}
 
 }
