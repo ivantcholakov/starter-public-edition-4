@@ -24,6 +24,10 @@ define('IS_CLI_REQUEST', IS_CLI);   // Deprecated, use IS_CLI instead.
 define('IS_AJAX_REQUEST', isset($_SERVER['HTTP_X_REQUESTED_WITH'])
     && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
 
+define('ICONV_INSTALLED', function_exists('iconv'));
+define('MBSTRING_INSTALLED', function_exists('mb_strlen'));
+define('PCRE_UTF8_INSTALLED', @preg_match('/./u', 'é') === 1);
+
 // Fix $_SERVER['REQUEST_URI'] if it is missing.
 if (!isset($_SERVER['REQUEST_URI']) || $_SERVER['REQUEST_URI'] == '') {
     $_SERVER['REQUEST_URI'] = $_SERVER['SCRIPT_NAME'];
