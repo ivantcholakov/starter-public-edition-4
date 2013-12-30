@@ -13,6 +13,12 @@ Requirements
 PHP 5.2.4+ (officially, actually the platform works on PHP 5.2.0), Apache 2.2 - 2.4.
 For database support seek information within CodeIgniter 3.0-dev documentation.
 
+For UTF-8 encoded sites it is highly recommendabe the following PHP extensions to be installed:
+
+* **mbstring**;
+* **iconv**;
+* **pcre** compiled with UTF-8 support (the "u" modifier should work).
+
 Installation
 ------------
 
