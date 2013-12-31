@@ -165,3 +165,65 @@ if ( ! function_exists('auto_link'))
         return $str;
     }
 }
+
+if (!function_exists('url_title') && IS_UTF8_CHARSET) {
+
+    // Added by Ivan Tcholakov, 31-DEC-2013.
+    function url_title($str, $separator = '-', $lowercase = FALSE, $transliterate_to_ascii = TRUE, $language = NULL) {
+
+        $language = (string) $language;
+
+        if ($language == '') {
+            $language = config_item('language');
+        }
+
+        $str = strip_tags($str);
+
+        if ($transliterate_to_ascii) {
+            $str = Transliterate::to_ascii($str, $language);
+        }
+
+        if ($separator === 'dash') {
+            $separator = '-';
+        }
+        elseif ($separator === 'underscore') {
+            $separator = '_';
+        }
+
+        $q_separator = preg_quote($separator);
+
+        if (PCRE_UTF8_INSTALLED) {
+
+            $trans = array(
+                    '&.+?;'                 => '',
+                    '[^\p{L}0-9 _-]'        => '',
+                    '\s+'                   => $separator,
+                    '('.$q_separator.')+'   => $separator
+                );
+
+            foreach ($trans as $key => $val) {
+                $str = preg_replace('#'.$key.'#u', $val, $str);
+            }
+
+        } else {
+
+            $trans = array(
+                    '&.+?;'                 => '',
+                    '[^a-z0-9 _-]'          => '',
+                    '\s+'                   => $separator,
+                    '('.$q_separator.')+'   => $separator
+                );
+
+            foreach ($trans as $key => $val) {
+                $str = preg_replace('#'.$key.'#i', $val, $str);
+            }
+        }
+
+        if ($lowercase) {
+            $str = UTF8::strtolower($str);
+        }
+
+        return trim(trim($str, $separator));
+    }
+
+}
