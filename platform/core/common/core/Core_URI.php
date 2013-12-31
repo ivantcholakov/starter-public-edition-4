@@ -16,9 +16,9 @@ class Core_URI extends CI_URI {
             ////if ( ! preg_match('|^['.str_replace(array('\\-', '\-'), '-', preg_quote($this->config->item('permitted_uri_chars'), '-')).']+$|i', $str))
             //if ( ! preg_match('|^['.str_replace(array('\\-', '\-'), '-', preg_quote($this->config->item('permitted_uri_chars'), '-')).']+$|i', urldecode($str)))
             ////
-            if ( ! preg_match('|^['.str_replace(array('\\-', '\-'), '-', preg_quote($this->config->item('permitted_uri_chars'), '-')).']+$|'.(IS_UTF8_CHARSET ? 'u' : '').'i', urldecode($str)))
+            if ( ! preg_match('|^['.str_replace(array('\\-', '\-'), '-', preg_quote($this->config->item('permitted_uri_chars'), '-')).']+$|'.(IS_UTF8_CHARSET && PCRE_UTF8_INSTALLED ? 'u' : '').'i', urldecode($str)))
             // An alternative workaround for enabling all the unicode letters:
-            // if ( ! preg_match('|^['.str_replace(array('\\-', '\-', '\\\\p\\{L\\}'), array('-', '-', '\\p{L}'), preg_quote($this->config->item('permitted_uri_chars'), '-')).']+$|'.(IS_UTF8_CHARSET ? 'u' : '').'i', urldecode($str)))
+            // if ( ! preg_match('|^['.str_replace(array('\\-', '\-', '\\\\p\\{L\\}'), array('-', '-', '\\p{L}'), preg_quote($this->config->item('permitted_uri_chars'), '-')).']+$|'.(IS_UTF8_CHARSET && PCRE_UTF8_INSTALLED ? 'u' : '').'i', urldecode($str)))
             //
             {
                 show_error('The URI you submitted has disallowed characters.', 400);
