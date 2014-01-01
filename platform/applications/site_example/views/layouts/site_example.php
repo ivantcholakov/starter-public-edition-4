@@ -39,7 +39,7 @@ echo body_tag();
     <div id="wrap">
 <?php
 
-file_partial('site_example_navbar');
+echo Modules::run('main_menu_widget');
 
 echo noscript();
 echo unsupported_browser();
