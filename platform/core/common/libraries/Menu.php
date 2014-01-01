@@ -161,8 +161,12 @@ class Menu {
             
             foreach($items as $key => $val)
             {
-                 $id = (is_array($val) AND !empty($val['id'])) ? $val['id'] : trim($key);
-                $defaults[$key] = array('id' => $id, 'label' => '', 'location' => $key, 'attributes' => array(), 'active' => NULL, 'parent_id' => $this->root_value, 'hidden' => FALSE, 'blank' => FALSE);
+                $id = (is_array($val) AND !empty($val['id'])) ? $val['id'] : trim($key);
+                // Modified by Ivan Tcholakov, 01-JAN-2014.
+                // Adding support for font-based icons.
+                //$defaults[$key] = array('id' => $id, 'label' => '', 'location' => $key, 'attributes' => array(), 'active' => NULL, 'parent_id' => $this->root_value, 'hidden' => FALSE, 'blank' => FALSE);
+                $defaults[$key] = array('id' => $id, 'label' => '', 'location' => $key, 'attributes' => array(), 'active' => NULL, 'parent_id' => $this->root_value, 'hidden' => FALSE, 'blank' => FALSE, 'icon' => '');
+                //
                 if (!is_array($val)) 
                 {
                     $val = array('id' => $key, 'label' => $val);
@@ -489,7 +493,10 @@ class Menu {
             // loop through base menu items and start drill down
             foreach($filtered_menu as $key => $val)
             {
-                $label = $this->_get_label($val['label']);
+                // Modified by Ivan Tcholakov, 01-JAN-2014.
+                //$label = $this->_get_label($val['label']);
+                $label = $this->_get_label($val['label'], isset($val['icon']) ? $val['icon'] : '');
+                //
 
                 if ($active_index > -1 AND $key == $this->_active_items[$active_index])
                 {
@@ -586,7 +593,10 @@ class Menu {
         for ($i = $num; $i >= 0; $i--)
         {
             $val = $this->_active_items[$i];
-            $label = $this->_get_label($this->_items[$val]['label']);
+            // Modified by Ivan Tcholakov, 01-JAN-2014.
+            //$label = $this->_get_label($this->_items[$val]['label']);
+            $label = $this->_get_label($this->_items[$val]['label'], isset($this->_items[$val]['icon']) ? $this->_items[$val]['icon'] : '');
+            //
             if (!empty($this->item_tag))
             {
                 $str .= "\t<".$this->item_tag.">";
@@ -655,7 +665,10 @@ class Menu {
             for ($i = 0; $i <= $num; $i++)
             {
                 $val = $this->_active_items[$i];
-                $label = $this->_get_label($this->_items[$val]['label']);
+                // Modified by Ivan Tcholakov, 01-JAN-2014.
+                //$label = $this->_get_label($this->_items[$val]['label']);
+                $label = $this->_get_label($this->_items[$val]['label'], isset($this->_items[$val]['icon']) ? $this->_items[$val]['icon'] : '');
+                //
                 if ($i != 0)
                 {
                     $str .= $this->delimiter;
@@ -672,7 +685,10 @@ class Menu {
             for ($i = $num; $i >= 0; $i--)
             {
                 $val = $this->_active_items[$i];
-                $label = $this->_get_label($this->_items[$val]['label']);
+                // Modified by Ivan Tcholakov, 01-JAN-2014.
+                //$label = $this->_get_label($this->_items[$val]['label']);
+                $label = $this->_get_label($this->_items[$val]['label'], isset($this->_items[$val]['icon']) ? $this->_items[$val]['icon'] : '');
+                //
                 $str .= $label;
                 if ($i != 0)
                 {
@@ -867,7 +883,10 @@ class Menu {
     protected function _create_link($val)
     {
         $str = '';
-        $label = $this->_get_label($val['label']);
+        // Modified by Ivan Tcholakov, 01-JAN-2014.
+        //$label = $this->_get_label($val['label']);
+        $label = $this->_get_label($val['label'], isset($val['icon']) ? $val['icon'] : '');
+        //
         
         if (function_exists('get_instance'))
         {
@@ -972,15 +991,30 @@ class Menu {
      * @param       boolean first time iterating through?
      * @return      string
      */
-    protected function _get_label($label)
+    // Modified by Ivan Tcholakov, 01-JAN-2014.
+    // Adding support for font-based icons.
+    //protected function _get_label($label)
+    //{
+    //    if (!empty($this->pre_render_func)) 
+    //    {
+    //        $label = call_user_func($this->pre_render_func, $label);
+    //    }
+    //    return $label;
+    //}
+    protected function _get_label($label, $icon = '')
     {
         if (!empty($this->pre_render_func)) 
         {
-            $label = call_user_func($this->pre_render_func, $label);
+            $label = call_user_func($this->pre_render_func, $label, $icon);
+        }
+        elseif ($icon != '')
+        {
+            $label = "<i class=\"$icon\"></i> $label";
         }
         return $label;
     }
-    
+    //
+
     // --------------------------------------------------------------------
 
     /**
