@@ -261,7 +261,7 @@ License Information
 -------------------
 
 For my original code:  
-Author: Ivan Tcholakov ivantcholakov@gmail.com, 2012-2013.  
+Author: Ivan Tcholakov ivantcholakov@gmail.com, 2012-2014.  
 License: The MIT License (MIT), http://opensource.org/licenses/MIT
 
 CodeIgniter:  
