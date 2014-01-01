@@ -34,8 +34,6 @@ class Main_menu_widget_controller extends Core_Controller {
         $nav = array();
         $active = '';
 
-        $segment_1 = $this->uri->rsegment(1);
-
         $nav['home'] = array('label' => $this->lang->line('ui_home'), 'icon' => 'fa fa-home', 'location' => site_url());
         $nav['readme'] = array('label' => 'README', 'icon' => 'fa fa-info-circle', 'location' => site_url('readme'));
         $nav['contact_page_test'] = array('label' => 'Contact Page Test', 'icon' => 'fa fa-envelope', 'location' => site_url('contact-page-test'));
