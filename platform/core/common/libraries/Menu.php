@@ -3,7 +3,7 @@
  * FUEL CMS
  * http://www.getfuelcms.com
  *
- * An open source Content Management System based on the 
+ * An open source Content Management System based on the
  * Codeigniter framework (http://codeigniter.com)
  *
  * @package         FUEL CMS
@@ -22,7 +22,7 @@
  *
  * This class takes an array of elements that you can create a parent
  * child relationship by creating an array like so:
- * 
+ *
  * $nav['about/history'] = array('label' => 'About', 'parent_id' => 'about');
  * OR
  * $nav['about/history'] = array('location' => 'about_us/history', label' => 'About', 'parent_id' => 'about');
@@ -39,7 +39,7 @@
  */
 
 class Menu {
-    
+
     public $active_class = 'active'; // the active css class
     public $active = ''; // the active menu item
     public $styles = array(); // css class styles to apply to menu items... can be a nested array
@@ -60,24 +60,24 @@ class Menu {
     public $use_nav_key = 'AUTO'; // use the nav_key value to match active
     public $render_type = 'basic'; // basic, breadcrumb, page_title, collapsible, delimited, array
     public $pre_render_func = ''; // function to apply to menu labels before rendering
-    
+
     // for breadcrumb AND/OR page_title
-    public $delimiter = FALSE; // the html element between the links 
+    public $delimiter = FALSE; // the html element between the links
     public $display_current = TRUE; // display the current active breadcrumb item?
     public $home_link = 'Home'; // the root home link
 
     // for breadcrumb ONLY
     public $arrow_class = 'arrow'; // the class for the arrows
-    
+
     // for page_title ONLY
     public $order = 'asc'; // the order to display... for page_title ONLY
-    
-    
+
+
     protected $_items = array(); // the items in the menu
     protected $_active_items = array(); // the active menu items
     protected $_reset_params = array(); // reset params
-    
-    
+
+
     /**
      * Constructor - Sets Menu preferences
      *
@@ -117,7 +117,7 @@ class Menu {
             }
         }
     }
-    
+
     // --------------------------------------------------------------------
 
     /**
@@ -134,7 +134,7 @@ class Menu {
             $this->$key = $val;
         }
     }
-    
+
     // --------------------------------------------------------------------
 
     /**
@@ -158,7 +158,7 @@ class Menu {
                 $this->use_nav_key = TRUE;
                 $auto_nav_key = TRUE;
             }
-            
+
             foreach($items as $key => $val)
             {
                 $id = (is_array($val) AND !empty($val['id'])) ? $val['id'] : trim($key);
@@ -167,25 +167,25 @@ class Menu {
                 //$defaults[$key] = array('id' => $id, 'label' => '', 'location' => $key, 'attributes' => array(), 'active' => NULL, 'parent_id' => $this->root_value, 'hidden' => FALSE, 'blank' => FALSE);
                 $defaults[$key] = array('id' => $id, 'label' => '', 'location' => $key, 'attributes' => array(), 'active' => NULL, 'parent_id' => $this->root_value, 'hidden' => FALSE, 'blank' => FALSE, 'icon' => '');
                 //
-                if (!is_array($val)) 
+                if (!is_array($val))
                 {
                     $val = array('id' => $key, 'label' => $val);
                 }
                 $return[$id] = array_merge($defaults[$key], $val);
-                
+
                 // check to make sure parent_id does not equal id to prevent infinite loops
                 if ($return[$id]['id'] == $return[$id]['parent_id'])
                 {
                     $return[$id]['parent_id'] = $this->root_value;
                 }
-                
+
                 // Capture all that have selected states so we can loop through later
                 if (isset($return[$id]['active']) OR isset($return[$id]['selected']))
                 {
                     $selected[$id] = (isset($return[$id]['active'])) ? $return[$id]['active'] :  $return[$id]['selected'];
                 }
-                
-                if ($auto_nav_key AND !is_numeric($id)) 
+
+                if ($auto_nav_key AND !is_numeric($id))
                 {
                     $this->use_nav_key = FALSE;
                 }
@@ -195,11 +195,11 @@ class Menu {
             {
                 $active = $return[$this->active]['nav_key'];
             }
-            
+
             // now loop through the selected states
             foreach($selected as $s_id => $active_regex)
             {
-            
+
                 $match = str_replace(':children', $s_id.'$|'.$s_id.'/.+', $active_regex);
                 $match = str_replace(':any', '.+', str_replace(':num', '[0-9]+', $match));
 
@@ -251,7 +251,7 @@ class Menu {
         }
         return $output;
     }
-    
+
     // --------------------------------------------------------------------
 
     /**
@@ -277,14 +277,14 @@ class Menu {
 
         if (!empty($active)) $this->active = $active;
         if (!isset($parent_id)) $parent_id = $this->root_value;
-        
+
         $this->_items = $this->normalize_items($items);
         $root_items = $this->_get_menu_items($parent_id);
-        
+
         $this->_active_items = $this->get_items_in_path($this->active);
         return $this->_render($root_items);
     }
-    
+
     // --------------------------------------------------------------------
 
     /**
@@ -300,7 +300,7 @@ class Menu {
     {
         return $this->render($items, $active, $parent_id, 'collapsible');
     }
-    
+
     // --------------------------------------------------------------------
 
     /**
@@ -332,7 +332,7 @@ class Menu {
     {
         return $this->render($items, $active, $parent_id, 'page_title');
     }
-    
+
     // --------------------------------------------------------------------
 
     /**
@@ -348,7 +348,7 @@ class Menu {
     {
         return $this->render($items, $active, $parent_id, 'delimited');
     }
-    
+
     // --------------------------------------------------------------------
 
     /**
@@ -409,15 +409,15 @@ class Menu {
 
                 foreach($filtered_menu as $key => $val)
                 {
-          
+
                     $str .= $this->_create_open_li($val, $level, $i, ($i == (count($filtered_menu) -1)));
                     $subitems = $this->_get_menu_items($val['id']);
 
 
-          
+
                     if (!empty($subitems))
                     {
-                   
+
                         $str .= $this->_render_basic($subitems, $level);
 
                     }
@@ -429,12 +429,12 @@ class Menu {
                 }
 
                 if (!empty($this->container_tag)) $str .= str_repeat("\t", $level)."</".$this->container_tag.">\n".str_repeat("\t", $level);
-                
+
             }
         }
         return $str;
     }
-    
+
     // --------------------------------------------------------------------
 
     /**
@@ -449,7 +449,7 @@ class Menu {
     {
         // filter out hidden ones first. Need to do in seperate loop in case there is a hidden on e at the end
         $filtered_menu = array();
-        
+
         if (!$this->include_hidden)
         {
             foreach($menu as $key => $val)
@@ -464,18 +464,18 @@ class Menu {
         {
             $filtered_menu = $menu;
         }
-        
+
         $str = '';
-        
+
         if (!empty($filtered_menu))
         {
             if (!empty($this->container_tag)) $str .= "\n".str_repeat("\t", $level)."<".$this->container_tag.$this->_get_attrs($this->container_tag_attrs);
             if (!empty($this->container_tag_id) AND $level == 0) $str .= " id=\"".$this->container_tag_id."\"";
             if (!empty($this->container_tag_class) AND $level == 0) $str .= " class=\"".$this->container_tag_class."\"";
             if (!empty($this->container_tag)) $str .= ">\n";
-            
+
             $i = 0;
-            
+
             // find start index
             $active_index = 0;
             if (!empty($this->_active_items))
@@ -489,7 +489,7 @@ class Menu {
                     }
                 }
             }
-            
+
             // loop through base menu items and start drill down
             foreach($filtered_menu as $key => $val)
             {
@@ -508,13 +508,13 @@ class Menu {
                     {
                         $str .= "<".$this->item_tag;
                         $str .= $this->_get_li_classes($key, $val['id'], $level, ($i == (count($menu) -1)));
-                        
+
                         // set id
                         if (!empty($this->item_id_prefix))
                         {
                             $str .= ' id="'.$this->_get_id($val).'"';
                         }
-                        
+
                         $str .= '>';
                     }
                     $str .= anchor($val['location'], $label, $val['attributes']);
@@ -577,8 +577,8 @@ class Menu {
             {
                 $home_anchor = anchor('', $this->home_link);
             }
-            
-            
+
+
             if (!empty($this->item_tag))
             {
                 $str .= "\t<".$this->item_tag.">";
@@ -606,7 +606,7 @@ class Menu {
                 $str .= anchor($this->_items[$val]['location'], $label);
                 $str .= ' <span class="'.$this->arrow_class.'">'.$this->delimiter.'</span> ';
             }
-            else if ($this->display_current) 
+            else if ($this->display_current)
             {
                 $str .= $label;
             }
@@ -623,13 +623,13 @@ class Menu {
             if (!empty($this->container_tag_id)) $return .= " id=\"".$this->container_tag_id."\"";
             if (!empty($this->container_tag_class)) $return .= " class=\"".$this->container_tag_class."\"";
             if (!empty($this->container_tag)) $return .= ">\n";
-            
+
             $return .= $str;
             if (!empty($this->container_tag))     $return .= "</".$this->container_tag.">\n";
         }
         return $return;
     }
-    
+
     // --------------------------------------------------------------------
 
     /**
@@ -695,12 +695,12 @@ class Menu {
                     $str .= $this->delimiter;
                 }
             }
-            
+
         }
 
         return $str;
     }
-    
+
     // --------------------------------------------------------------------
 
     /**
@@ -738,7 +738,7 @@ class Menu {
             $links[] = $this->_create_link($val);
         }
         $str = implode($this->delimiter, $links);
-        
+
         $return = '';
         if (!empty($str))
         {
@@ -746,14 +746,14 @@ class Menu {
             if (!empty($this->container_tag_id)) $return .= " id=\"".$this->container_tag_id."\"";
             if (!empty($this->container_tag_class)) $return .= " class=\"".$this->container_tag_class."\"";
             if (!empty($this->container_tag)) $return .= ">\n";
-            
+
             $return .= $str;
             if (!empty($this->container_tag))     $return .= "</".$this->container_tag.">\n";
         }
-        
+
         return $return;
     }
-    
+
     // --------------------------------------------------------------------
 
     /**
@@ -773,7 +773,7 @@ class Menu {
                 $subitems = $this->_get_menu_items($val['id']);
                 $new_key = (isset($val['nav_key'])) ? $val['nav_key'] : $val['location'];
                 $return[$new_key] = $val;
-                
+
                 if (!empty($subitems))
                 {
                     $level = $level + 1;
@@ -783,7 +783,7 @@ class Menu {
         }
         return $return;
     }
-    
+
     // --------------------------------------------------------------------
 
     /**
@@ -809,7 +809,7 @@ class Menu {
         }
         return $str;
     }
-    
+
     // --------------------------------------------------------------------
 
     /**
@@ -829,7 +829,7 @@ class Menu {
         }
         return $this->item_id_prefix.$id;
     }
-    
+
     // --------------------------------------------------------------------
 
     /**
@@ -856,7 +856,7 @@ class Menu {
             {
                 $str .= ' id="'.$this->_get_id($val).'"';
             }
-        
+
             // set styles
             $str .= $this->_get_li_classes($val, $level, $i, $is_last);
             $str .= '>';
@@ -866,8 +866,8 @@ class Menu {
     }
         return $str;
     }
-    
-    
+
+
     // --------------------------------------------------------------------
 
     /**
@@ -887,7 +887,7 @@ class Menu {
         //$label = $this->_get_label($val['label']);
         $label = $this->_get_label($val['label'], isset($val['icon']) ? $val['icon'] : '');
         //
-        
+
         if (function_exists('get_instance'))
         {
             $CI =& get_instance();
@@ -906,13 +906,13 @@ class Menu {
                     }
                 }
                 $str .= anchor($val['location'], $label, $val['attributes']);
-                
+
             }
             else
             {
                 $str .= $label;
             }
-            
+
         } else {
             $attrs = '';
             if (!empty($val['location']))
@@ -921,7 +921,7 @@ class Menu {
                 {
                     if (is_array($val['attributes']))
                     {
-                        foreach($val['attributes'] as $key2 => $val2) 
+                        foreach($val['attributes'] as $key2 => $val2)
                         {
                             $attrs .= ' '.$key2.'="'.$val2.'"';
                         }
@@ -936,8 +936,8 @@ class Menu {
             {
                 $str .= $label;
             }
-            
-            
+
+
         }
         return $str;
     }
@@ -961,10 +961,10 @@ class Menu {
 
         if (!empty($this->first_class) AND $i == 0) $css_classes[] = $this->first_class;
         if (!empty($this->last_class) AND $is_last) $css_classes[] = $this->last_class;
-        
-        if ($this->active == $active OR ($this->cascade_selected AND 
-                is_array($this->_active_items) AND 
-                in_array($active, $this->_active_items))) 
+
+        if ($this->active == $active OR ($this->cascade_selected AND
+                is_array($this->_active_items) AND
+                in_array($active, $this->_active_items)))
                 {
                     $css_classes[] = $this->active_class;
                 }
@@ -979,8 +979,8 @@ class Menu {
         }
         return $str;
     }
-    
-    
+
+
     // --------------------------------------------------------------------
 
     /**
@@ -995,7 +995,7 @@ class Menu {
     // Adding support for font-based icons.
     //protected function _get_label($label)
     //{
-    //    if (!empty($this->pre_render_func)) 
+    //    if (!empty($this->pre_render_func))
     //    {
     //        $label = call_user_func($this->pre_render_func, $label);
     //    }
@@ -1003,7 +1003,7 @@ class Menu {
     //}
     protected function _get_label($label, $icon = '')
     {
-        if (!empty($this->pre_render_func)) 
+        if (!empty($this->pre_render_func))
         {
             $label = call_user_func($this->pre_render_func, $label, $icon);
         }
@@ -1027,13 +1027,13 @@ class Menu {
      */
     public function get_items_in_path($active, $first_time = TRUE){
         static $active_items = array();
-        
+
         // reset it if is called more then once
         if ($first_time)
         {
             $active_items = array();
         }
-    
+
 
         if ( isset($this->_items[$active]))
         {
@@ -1069,10 +1069,10 @@ class Menu {
                 $this->get_items_in_path($key, FALSE);
             }
         }
-        
+
         return $active_items;
     }
-    
+
     // --------------------------------------------------------------------
 
     /**
@@ -1093,7 +1093,7 @@ class Menu {
             // force numbers to be integers if numeric so we can do a strict comparison
             if (is_numeric($val['parent_id'])) $val['parent_id'] = (int) $val['parent_id'];
             if (is_numeric($parent)) $parent = (int) $parent;
-            
+
             if ($parent === $val['parent_id'])
             {
                 $subitems[$key] = $val;
