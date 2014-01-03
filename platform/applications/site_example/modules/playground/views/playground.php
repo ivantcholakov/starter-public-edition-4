@@ -14,7 +14,7 @@
 
                 <ul>
                     <li><a href="<?php echo base_url('non-mvc/demo.php'); ?>">Non-MVC Page Demonstration</a></li>
-                    <li><a href="<?php echo base_url('non-mvc/http_build_url.php'); ?>">Testing http_build_url()</a></li>
+                    <li><a href="<?php echo base_url('non-mvc/http_build_url_test.php'); ?>">Testing http_build_url()</a></li>
                     <li>
                         <a href="<?php echo base_url('non-mvc/idna.php'); ?>">IDNA Converter Test (PEAR IDNA2)</a>
                         <br />
