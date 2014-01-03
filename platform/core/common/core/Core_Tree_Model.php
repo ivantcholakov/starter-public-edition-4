@@ -35,6 +35,8 @@ class Core_Tree_Model extends Core_Model {
     protected $parent_id_key = 'parent_id';
     protected $level_index = 'level';
     protected $children_index = 'children';
+    protected $has_children_index = 'has_children';
+    protected $children_count_index = 'children_count';
     protected $display_level_index = 'display_level';
 
     protected $cache = null;
@@ -336,7 +338,15 @@ class Core_Tree_Model extends Core_Model {
                  $children = $this->get_children($row[$this->primary_key], $select, $where, $order_by, $deepness);
 
                  if (!empty($children)) {
+
                      $result[$key][$this->children_index] = $children;
+                     $result[$key][$this->has_children_index] = true;
+                     $result[$key][$this->children_count_index] = count($children);
+
+                 } else {
+
+                     $result[$key][$this->has_children_index] = false;
+                     $result[$key][$this->children_count_index] = 0;
                  }
              }
 
