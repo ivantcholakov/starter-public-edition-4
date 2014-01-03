@@ -64,7 +64,7 @@ function print_d($var)
 	);
 
 	$t = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
-	$s = file($t[0]['file']);
+	$s = @ file($t[0]['file']);
 	$s = $s[$t[0]['line']-1];
 
 	$t = explode('print_d(', $s, 2);
