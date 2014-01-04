@@ -34,12 +34,23 @@ class Main_menu_widget_controller extends Core_Controller {
         $nav = array();
         $active = '';
 
+        // The main menu items.
         $nav['home'] = array('label' => $this->lang->line('ui_home'), 'icon' => 'fa fa-home', 'location' => site_url());
-        $nav['readme'] = array('label' => 'README', 'icon' => 'fa fa-info-circle', 'location' => site_url('readme'));
-        $nav['contact_page_test'] = array('label' => 'Contact Page Test', 'icon' => 'fa fa-envelope', 'location' => site_url('contact-page-test'));
-        $nav['playground'] = array('label' => 'The Playground', 'icon' => 'fa fa-sun-o', 'location' => site_url('playground'));
+        $nav['readme'] = array('label' => 'README', 'icon' => 'fa fa-info-circle', 'location' => 'readme');
+        $nav['contact-page-test'] = array('label' => 'Contact Page Test', 'icon' => 'fa fa-envelope', 'location' => 'contact-page-test');
+        $nav['playground'] = array('label' => 'The Playground', 'icon' => 'fa fa-sun-o', 'location' => 'playground');
 
-        $segment_1 = $this->uri->rsegment(1);
+        // Sub-menu demostration.
+        $nav['non_mvc_page'] = array('label' => 'Non-MVC Page Demonstration', 'location' => 'non-mvc/demo.php', 'parent_id' => 'playground');
+        $nav['http_build_url'] = array('label' => 'Testing http_build_url()', 'location' => 'non-mvc/http_build_url_test.php', 'parent_id' => 'playground');
+        $nav['idna_test'] = array('label' => 'IDNA Converter Test', 'location' => 'non-mvc/idna.php', 'parent_id' => 'playground');
+        $nav['normalize_css'] = array('label' => 'Testing normalize.css', 'location' => 'non-mvc/normalize.css.php', 'parent_id' => 'playground');
+        $nav['playground/separator_1'] = array('blank' => true, 'parent_id' => 'playground');
+        $nav['playground/captcha'] = array('label' => 'Captcha Test', 'location' => 'playground/captcha', 'parent_id' => 'playground');
+        $nav['playground/separator_2'] = array('blank' => true, 'parent_id' => 'playground');
+        $nav['and_so_on'] = array('label' => 'And so on, see the Playground index page', 'location' => '#', 'parent_id' => 'playground');
+
+        $segment_1 = $this->uri->segment(2);
 
         switch ($segment_1) {
 
@@ -52,8 +63,8 @@ class Main_menu_widget_controller extends Core_Controller {
                 $active = 'readme';
                 break;
 
-            case 'contact_page_test':
-                $active = 'contact_page_test';
+            case 'contact-page-test':
+                $active = 'contact-page-test';
                 break;
 
             case 'playground':
@@ -61,13 +72,16 @@ class Main_menu_widget_controller extends Core_Controller {
                 break;
         }
 
-        if ($this->uri->segment(1) == 'playground' || $this->uri->segment(2) == 'playground') {
-            $active = 'playground';
+        // TODO: This mess needs a revision.
+        if ($this->uri->segment(3) == 'captcha') {
+            $active = 'playground/captcha';
         }
 
+        $nav = $this->menu->render($nav, $active, NULL, 'data');
+        $this->menu->reset();
+
         $data = compact(
-            'nav',
-            'active'
+            'nav'
         );
 
         $this->load->view('main_menu_widget', $data, false, 'i18n');

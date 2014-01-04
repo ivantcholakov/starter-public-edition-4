@@ -795,6 +795,23 @@ class Menu {
                 {
                     $val['is_active'] = false;
                 }
+
+                if (preg_match('#^(\w+:)?//#i', $val['location']))
+                {
+                    $val['link'] = $val['location'];
+                }
+                elseif (preg_match('/^#/', $val['location']))
+                {
+                    $val['link'] = CURRENT_URI.$val['location'];
+                }
+                elseif (preg_match('/\.(php|htm|html)$/i', $val['location']))
+                {
+                    $val['link'] = base_url($val['location']);
+                }
+                else
+                {
+                    $val['link'] = site_url($val['location']);
+                }
                 //
 
                 $subitems = $this->_get_menu_items($val['id']);
@@ -937,7 +954,22 @@ class Menu {
 
             // Modified by Ivan Tcholakov, 04-JAN-2014.
             //$location = (preg_match('/^#/', $val['location'])) ? $val['location'] : site_url($val['location']);
-            $location = (preg_match('/^#/', $val['location']) || preg_match('#^(\w+:)?//#i', $val['location'])) ? $val['location'] : site_url($val['location']);
+            if (preg_match('#^(\w+:)?//#i', $val['location']))
+            {
+                $location = $val['location'];
+            }
+            elseif (preg_match('/^#/', $val['location']))
+            {
+                $location = CURRENT_URI.$val['location'];
+            }
+            elseif (preg_match('/\.(php|htm|html)$/i', $val['location']))
+            {
+                $location = base_url($val['location']);
+            }
+            else
+            {
+                $location = site_url($val['location']);
+            }
             //
             $str .= '<a href="'.$location.'"'.$attrs.'>'.$label.'</a>';
         }
