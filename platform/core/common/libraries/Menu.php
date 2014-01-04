@@ -783,6 +783,20 @@ class Menu {
         {
             foreach($menu as $key => $val)
             {
+                // Added by Ivan Tcholakov, 04-DEC-2014.
+                $active = (is_array($val)) ? $val['id'] : $val;
+                if ($this->active == $active OR ($this->cascade_selected AND
+                        is_array($this->_active_items) AND
+                        in_array($active, $this->_active_items)))
+                {
+                    $val['is_active'] = true;
+                }
+                else
+                {
+                    $val['is_active'] = false;
+                }
+                //
+
                 $subitems = $this->_get_menu_items($val['id']);
                 $new_key = (isset($val['nav_key'])) ? $val['nav_key'] : $val['location'];
                 $return[$new_key] = $val;
