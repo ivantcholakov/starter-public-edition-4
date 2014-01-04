@@ -923,7 +923,7 @@ class Menu {
 
             // Modified by Ivan Tcholakov, 04-JAN-2014.
             //$location = (preg_match('/^#/', $val['location'])) ? $val['location'] : site_url($val['location']);
-            $location = (preg_match('#^(\w+:)?//#i', $val['location'])) ? $val['location'] : site_url($val['location']);
+            $location = (preg_match('/^#/', $val['location']) || preg_match('#^(\w+:)?//#i', $val['location'])) ? $val['location'] : site_url($val['location']);
             //
             $str .= '<a href="'.$location.'"'.$attrs.'>'.$label.'</a>';
         }
