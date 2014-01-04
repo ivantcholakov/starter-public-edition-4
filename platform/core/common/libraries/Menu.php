@@ -8,8 +8,8 @@
  *
  * @package         FUEL CMS
  * @author          David McReynolds @ Daylight Studio
- * @copyright       Copyright (c) 2011, Run for Daylight LLC.
- * @license         http://www.getfuelcms.com/user_guide/general/license
+ * @copyright       Copyright (c) 2013, Run for Daylight LLC.
+ * @license         http://docs.getfuelcms.com/general/license
  * @link            http://www.getfuelcms.com
  * @license         Note by Ivan Tcholakov, 01-JAN-2014: According to the provided links
  *                  the license actually is Apache License v2.0, http://www.apache.org/licenses/LICENSE-2.0
@@ -32,10 +32,7 @@
  * @subpackage      Libraries
  * @category        Libraries
  * @author          David McReynolds @ Daylight Studio
- * @link            http://www.getfuelcms.com/user_guide/libraries/menu
- *
- * --- Addendum ---
- * Modified/repackaged by B. Kendall (barnabas@bkendall.biz) to be distributed as a Spark
+ * @link            http://docs.getfuelcms.com/libraries/menu
  */
 
 class Menu {
@@ -46,7 +43,7 @@ class Menu {
     public $first_class = 'first'; // the css class for the first menu item
     public $last_class = 'last';  // the css class for the last menu item
     public $depth = NULL; // the depth of the menu to render at
-    public $use_titles = TRUE; // use the title attribute in the links
+    public $use_titles = FALSE; // use the title attribute in the links
     public $root_value = NULL; // the root parent value... can be NULL or 0
     public $container_tag = 'ul'; // the html tag for the container of a set of menu items
     public $container_tag_attrs = ''; // html attributes for the container tag
@@ -77,11 +74,17 @@ class Menu {
     protected $_active_items = array(); // the active menu items
     protected $_reset_params = array(); // reset params
 
+    
+    // --------------------------------------------------------------------
 
     /**
-     * Constructor - Sets Menu preferences
+     * Constructor
      *
-     * The constructor can be passed an array of config values
+     * Accepts an associative array as input, containing preferences (optional)
+     *
+     * @access    public
+     * @param    array    config preferences
+     * @return    void
      */
     public function __construct($params = array())
     {
@@ -108,14 +111,45 @@ class Menu {
      */
     public function initialize($params = array())
     {
-        $valid_null = array('root_value', 'depth');
-        foreach ($params as $key => $val)
+        $this->reset();
+        $this->set_params($params);
+    }
+    
+    // --------------------------------------------------------------------
+
+    /**
+     * Set object parameters
+     *
+     * @access    public
+     * @param    array
+     * @return    void
+     */
+    public function set_params($params)
+    {
+        if (is_array($params) AND count($params) > 0)
         {
-            if (isset($this->$key) OR in_array($key, $valid_null))
+            $valid_null = array('root_value', 'depth');
+            foreach ($params as $key => $val)
             {
-                $this->$key = $val;
+                if (isset($this->$key) OR in_array($key, $valid_null))
+                {
+                    $this->$key = $val;
+                }
             }
         }
+    }
+
+    // --------------------------------------------------------------------
+
+    /**
+     * Same as reset
+     *
+     * @access    public
+     * @return    void
+     */
+    public function clear()
+    {
+        $this->reset();
     }
 
     // --------------------------------------------------------------------
@@ -124,7 +158,6 @@ class Menu {
      * Clear class values
      *
      * @access      public
-     * @param       array
      * @return      void
      */
     public function reset()
@@ -142,6 +175,7 @@ class Menu {
      *
      * @access      protected
      * @param       array menu item data
+     * @param       boolean wether or not to use the nav_key field instead of the array key for the unique ID
      * @return      array
      */
     public function normalize_items($items)
@@ -162,25 +196,32 @@ class Menu {
             foreach($items as $key => $val)
             {
                 $id = (is_array($val) AND !empty($val['id'])) ? $val['id'] : trim($key);
-                // Modified by Ivan Tcholakov, 01-JAN-2014.
+                // Modified by Ivan Tcholakov, 04-JAN-2014.
                 // Adding support for font-based icons.
-                //$defaults[$key] = array('id' => $id, 'label' => '', 'location' => $key, 'attributes' => array(), 'active' => NULL, 'parent_id' => $this->root_value, 'hidden' => FALSE, 'blank' => FALSE);
-                $defaults[$key] = array('id' => $id, 'label' => '', 'location' => $key, 'attributes' => array(), 'active' => NULL, 'parent_id' => $this->root_value, 'hidden' => FALSE, 'blank' => FALSE, 'icon' => '');
+                //$defaults = array('id' => $id, 'label' => '', 'location' => $key, 'attributes' => array(), 'active' => NULL, 'parent_id' => $this->root_value, 'hidden' => FALSE);
+                $defaults = array('id' => $id, 'label' => '', 'location' => $key, 'attributes' => array(), 'active' => NULL, 'parent_id' => $this->root_value, 'hidden' => FALSE, 'blank' => FALSE, 'icon' => '');
                 //
                 if (!is_array($val))
                 {
                     $val = array('id' => $key, 'label' => $val);
                 }
-                $return[$id] = array_merge($defaults[$key], $val);
+                $return[$id] = array_merge($defaults, $val);
 
                 // check to make sure parent_id does not equal id to prevent infinite loops
                 if ($return[$id]['id'] == $return[$id]['parent_id'])
                 {
-                    $return[$id]['parent_id'] = $this->root_value;
+                    if ($return[$id]['id'] === 0)
+                    {
+                        unset($return[$id]);
+                    }
+                    else
+                    {
+                        $return[$id]['parent_id'] = $this->root_value;
+                    }
                 }
 
                 // Capture all that have selected states so we can loop through later
-                if (isset($return[$id]['active']) OR isset($return[$id]['selected']))
+                if (!empty($return[$id]['active']) OR !empty($return[$id]['selected']))
                 {
                     $selected[$id] = (isset($return[$id]['active'])) ? $return[$id]['active'] :  $return[$id]['selected'];
                 }
@@ -199,8 +240,8 @@ class Menu {
             // now loop through the selected states
             foreach($selected as $s_id => $active_regex)
             {
-
-                $match = str_replace(':children', $s_id.'$|'.$s_id.'/.+', $active_regex);
+                $location = $return[$s_id]['location'];
+                $match = str_replace(':children', $location.'$|'.$location.'/.+', $active_regex);
                 $match = str_replace(':any', '.+', str_replace(':num', '[0-9]+', $match));
 
                 if (empty($active))
@@ -243,7 +284,7 @@ class Menu {
             case 'delimited':
                 $output = $this->_render_delimited($root_items);
                 break;
-            case 'array':
+            case 'array': case 'data':
                 $output = $this->_render_array($root_items);
                 break;
             default:
@@ -279,8 +320,8 @@ class Menu {
         if (!isset($parent_id)) $parent_id = $this->root_value;
 
         $this->_items = $this->normalize_items($items);
-        $root_items = $this->_get_menu_items($parent_id);
 
+        $root_items = $this->_get_menu_items($parent_id);
         $this->_active_items = $this->get_items_in_path($this->active);
         return $this->_render($root_items);
     }
@@ -368,6 +409,19 @@ class Menu {
     // --------------------------------------------------------------------
 
     /**
+     * Returns the active items in the navigation. A render must be performed first
+     *
+     * @access      public
+     * @return      array
+     */
+    public function active_items()
+    {
+        return $this->_active_items;
+    }
+
+    // --------------------------------------------------------------------
+
+    /**
      * Renders a basic menu
      *
      * @access      protected
@@ -381,23 +435,9 @@ class Menu {
         if (!empty($menu) AND (isset($this->depth) AND $level < $this->depth) OR !isset($this->depth))
         {
             // filter out hidden ones first. Need to do in seperate loop in case there is a hidden one at the end
-            $filtered_menu = array();
-            if (empty($this->include_hidden))
-            {
-                foreach($menu as $key => $val)
-                {
-                    if (!$val['hidden'] OR strtolower($val['hidden']) == 'no')
-                    {
-                        $filtered_menu[$key] = $val;
-                    }
-                }
-            }
-            else
-            {
-                $filtered_menu = $menu;
-            }
+            $menu = $this->_filter_hidden($menu);
 
-            if (!empty($filtered_menu))
+            if (!empty($menu))
             {
                 if (!empty($this->container_tag)) $str .= "\n".str_repeat("\t", ($level + 1))."<".$this->container_tag.$this->_get_attrs($this->container_tag_attrs);
                 if (!empty($this->container_tag_id) AND $level == -1) $str .= " id=\"".$this->container_tag_id."\"";
@@ -407,19 +447,14 @@ class Menu {
                 $level = $level + 1;
                 $i = 0;
 
-                foreach($filtered_menu as $key => $val)
+                foreach($menu as $key => $val)
                 {
-
-                    $str .= $this->_create_open_li($val, $level, $i, ($i == (count($filtered_menu) -1)));
+                    $str .= $this->_create_open_li($val, $level, $i, ($i == (count($menu) -1)));
                     $subitems = $this->_get_menu_items($val['id']);
-
-
 
                     if (!empty($subitems))
                     {
-
                         $str .= $this->_render_basic($subitems, $level);
-
                     }
                     if (!empty($this->item_tag))
                     {
@@ -427,7 +462,6 @@ class Menu {
                     }
                     $i++;
                 }
-
                 if (!empty($this->container_tag)) $str .= str_repeat("\t", $level)."</".$this->container_tag.">\n".str_repeat("\t", $level);
 
             }
@@ -448,26 +482,11 @@ class Menu {
     protected function _render_collabsible($menu, $level = 0)
     {
         // filter out hidden ones first. Need to do in seperate loop in case there is a hidden on e at the end
-        $filtered_menu = array();
-
-        if (!$this->include_hidden)
-        {
-            foreach($menu as $key => $val)
-            {
-                if (!$val['hidden'] OR strtolower($val['hidden']) == 'no')
-                {
-                    $filtered_menu[$key] = $val;
-                }
-            }
-        }
-        else
-        {
-            $filtered_menu = $menu;
-        }
+        $menu = $this->_filter_hidden($menu);
 
         $str = '';
 
-        if (!empty($filtered_menu))
+        if (!empty($menu))
         {
             if (!empty($this->container_tag)) $str .= "\n".str_repeat("\t", $level)."<".$this->container_tag.$this->_get_attrs($this->container_tag_attrs);
             if (!empty($this->container_tag_id) AND $level == 0) $str .= " id=\"".$this->container_tag_id."\"";
@@ -482,7 +501,7 @@ class Menu {
             {
                 foreach($this->_active_items as $index => $item)
                 {
-                    if (!empty($filtered_menu[$item]))
+                    if (!empty($menu[$item]))
                     {
                         $active_index = $index;
                         break;
@@ -491,12 +510,9 @@ class Menu {
             }
 
             // loop through base menu items and start drill down
-            foreach($filtered_menu as $key => $val)
+            foreach($menu as $key => $val)
             {
-                // Modified by Ivan Tcholakov, 01-JAN-2014.
-                //$label = $this->_get_label($val['label']);
-                $label = $this->_get_label($val['label'], isset($val['icon']) ? $val['icon'] : '');
-                //
+                $label = $this->_get_label($val);
 
                 if ($active_index > -1 AND $key == $this->_active_items[$active_index])
                 {
@@ -520,7 +536,7 @@ class Menu {
                     $str .= anchor($val['location'], $label, $val['attributes']);
                     if (!empty($subitems))
                     {
-              $str .= $this->_render_collabsible($subitems, $level);
+                        $str .= $this->_render_collabsible($subitems, $level);
                     }
                     if (!empty($this->item_tag))
                     {
@@ -593,10 +609,7 @@ class Menu {
         for ($i = $num; $i >= 0; $i--)
         {
             $val = $this->_active_items[$i];
-            // Modified by Ivan Tcholakov, 01-JAN-2014.
-            //$label = $this->_get_label($this->_items[$val]['label']);
-            $label = $this->_get_label($this->_items[$val]['label'], isset($this->_items[$val]['icon']) ? $this->_items[$val]['icon'] : '');
-            //
+            $label = $this->_get_label($this->_items[$val]);
             if (!empty($this->item_tag))
             {
                 $str .= "\t<".$this->item_tag.">";
@@ -665,10 +678,7 @@ class Menu {
             for ($i = 0; $i <= $num; $i++)
             {
                 $val = $this->_active_items[$i];
-                // Modified by Ivan Tcholakov, 01-JAN-2014.
-                //$label = $this->_get_label($this->_items[$val]['label']);
-                $label = $this->_get_label($this->_items[$val]['label'], isset($this->_items[$val]['icon']) ? $this->_items[$val]['icon'] : '');
-                //
+                $label = strip_tags($this->_get_label($this->_items[$val]));
                 if ($i != 0)
                 {
                     $str .= $this->delimiter;
@@ -676,7 +686,7 @@ class Menu {
                 $str .= $label;
             }
             if (($num >= 0 AND !empty($home_link)) OR (empty($home_link) AND $num > 0)) $str .= $this->delimiter;
-            $str .= $home_link;
+            $str .= strip_tags($home_link);
         }
         else
         {
@@ -685,10 +695,7 @@ class Menu {
             for ($i = $num; $i >= 0; $i--)
             {
                 $val = $this->_active_items[$i];
-                // Modified by Ivan Tcholakov, 01-JAN-2014.
-                //$label = $this->_get_label($this->_items[$val]['label']);
-                $label = $this->_get_label($this->_items[$val]['label'], isset($this->_items[$val]['icon']) ? $this->_items[$val]['icon'] : '');
-                //
+                $label = strip_tags($this->_get_label($this->_items[$val]));
                 $str .= $label;
                 if ($i != 0)
                 {
@@ -712,6 +719,9 @@ class Menu {
      */
     protected function _render_delimited($menu)
     {
+        // filter out hidden ones first. Need to do in seperate loop in case there is a hidden one at the end
+        $menu = $this->_filter_hidden($menu);
+        
         if ($this->container_tag !== FALSE)
         {
             $this->container_tag = 'div';
@@ -728,14 +738,17 @@ class Menu {
             {
                 if (is_array($val['attributes']))
                 {
-                    if (!in_array('id', $val['attributes'])) $val['attributes']['id'] = $this->_get_id($val);
+                    if (!in_array('id', $val['attributes']))
+                    {
+                        $val['attributes']['id'] = $this->_get_id($val);
+                    }
                 }
                 else if (strpos($val['id'], 'id=') === FALSE)
                 {
                     $val['attributes'] .= ' id="'.$this->_get_id($val).'"';
                 }
             }
-            $links[] = $this->_create_link($val);
+            $links[] = $this->_create_link($val, $val['id']);
         }
         $str = implode($this->delimiter, $links);
 
@@ -861,9 +874,9 @@ class Menu {
             $str .= $this->_get_li_classes($val, $level, $i, $is_last);
             $str .= '>';
         }
-    if (!$val['blank']) {
-      $str .= $this->_create_link($val);
-    }
+        if (!empty($val['blank'])) {
+            $str .= $this->_create_link($val);
+        }
         return $str;
     }
 
@@ -871,72 +884,58 @@ class Menu {
     // --------------------------------------------------------------------
 
     /**
-     * Creates an open list item element
+     * Creates a link element
      *
      * @access      protected
      * @param       array menu item data
-     * @param       int current level
-     * @param       int current item index
-     * @param       boolean whether the item is the last in the list
+     * @param       string the active path if you want the active class rendered on the anchor (optional)
      * @return      string
      */
-    protected function _create_link($val)
+    protected function _create_link($val, $active = NULL)
     {
         $str = '';
-        // Modified by Ivan Tcholakov, 01-JAN-2014.
-        //$label = $this->_get_label($val['label']);
-        $label = $this->_get_label($val['label'], isset($val['icon']) ? $val['icon'] : '');
-        //
+        $label = $this->_get_label($val);
 
-        if (function_exists('get_instance'))
+        $attrs = '';
+        if (!empty($val['location']))
         {
-            $CI =& get_instance();
-            $CI->load->helper('url');
-            if (isset($val['location']))
+            if (!empty($val['attributes']))
             {
-                if ($this->use_titles)
+                if (is_array($val['attributes']))
                 {
-                    if (is_array($val['attributes']))
+                    foreach($val['attributes'] as $key2 => $val2)
                     {
-                        if (!in_array('title', $val['attributes'])) $val['attributes']['title'] = strip_tags($val['label']);
+                        $attrs .= ' '.$key2.'="'.$val2.'"';
                     }
-                    else if (strpos($val['attributes'], 'title=') === FALSE)
-                    {
-                        $val['attributes'] .= ' title="'.strip_tags($val['label']).'"';
-                    }
+                } else {
+                    $attrs .= ' '.$val['attributes'];
                 }
-                $str .= anchor($val['location'], $label, $val['attributes']);
-
             }
-            else
+            if ($this->use_titles AND (empty($attrs) OR strpos($attrs, 'title=') === FALSE))
             {
-                $str .= $label;
+                $attrs .= ' title="'.strip_tags($val['label']).'"';
             }
 
-        } else {
-            $attrs = '';
-            if (!empty($val['location']))
+            if (!empty($active) AND $this->active == $active)
             {
-                if (!empty($val['attributes']))
-                {
-                    if (is_array($val['attributes']))
-                    {
-                        foreach($val['attributes'] as $key2 => $val2)
-                        {
-                            $attrs .= ' '.$key2.'="'.$val2.'"';
-                        }
-                    } else {
-                        $attrs .= $val['attributes'];
-                    }
-                    if ($this->use_titles AND strpos($attrs, 'title=') === FALSE) $attrs .= ' title="'.$attrs['label'].'"';
-                }
-                $str .= '<a href="'.site_url($val['location']).'"'.$attrs.'>'.$label.'</a>';
-            }
-            else
-            {
-                $str .= $label;
+                $attrs .= ' class="'.$this->active_class.'"';
             }
 
+            $location = (preg_match('/^#/', $val['location'])) ? $val['location'] : site_url($val['location']);
+            $str .= '<a href="'.$location.'"'.$attrs.'>'.$label.'</a>';
+        }
+        else
+        {
+            if (!empty($active) AND $this->active == $active)
+            {
+                $str .= '<span class="'.$this->active_class.'">';
+                $has_active = TRUE;
+            }
+            $str .= $label;
+            if (!empty($has_active))
+            {
+                $str .= '</span>';
+            }
 
         }
         return $str;
@@ -965,11 +964,21 @@ class Menu {
         if ($this->active == $active OR ($this->cascade_selected AND
                 is_array($this->_active_items) AND
                 in_array($active, $this->_active_items)))
-                {
-                    $css_classes[] = $this->active_class;
-                }
+        {
+            $css_classes[] = $this->active_class;
+        }
 
-        if (!empty($this->styles[$level][$i])) $css_classes[] = $this->styles[$level][$i];
+        if (!empty($this->styles[$level]))
+        {
+            if (is_array($this->styles[$level]) AND !empty($this->styles[$level][$i]))
+            {
+                $css_classes[] = $this->styles[$level][$i];
+            }
+            else if (is_string($this->styles[$level]))
+            {
+                $css_classes[] = $this->styles[$level];
+            }
+        }
 
         if (!empty($css_classes))
         {
@@ -984,36 +993,36 @@ class Menu {
     // --------------------------------------------------------------------
 
     /**
-     * Generates the label of the menu item
+     * Generates the label of the menu item and will call any pre_render_func before returning value
      *
      * @access      protected
-     * @param       string active element
-     * @param       boolean first time iterating through?
+     * @param       array menu item values
      * @return      string
      */
-    // Modified by Ivan Tcholakov, 01-JAN-2014.
-    // Adding support for font-based icons.
-    //protected function _get_label($label)
-    //{
-    //    if (!empty($this->pre_render_func))
-    //    {
-    //        $label = call_user_func($this->pre_render_func, $label);
-    //    }
-    //    return $label;
-    //}
-    protected function _get_label($label, $icon = '')
+    protected function _get_label($label)
     {
         if (!empty($this->pre_render_func))
         {
-            $label = call_user_func($this->pre_render_func, $label, $icon);
+            $label = call_user_func($this->pre_render_func, $label);
         }
-        elseif ($icon != '')
+
+        // if it is an array, we will assume they want the 'label' key
+        if (is_array($label))
         {
-            $label = "<i class=\"$icon\"></i> $label";
+            // Modified by Ivan Tcholakov, 04-DEC-2013.
+            //$label = $label['label'];
+            if (isset($label['icon']) && $label['icon'] != '')
+            {
+                $label = "<i class=\"{$label['icon']}\"></i> {$label['label']}";
+            }
+            else
+            {
+                $label = $label['label'];
+            }
+            //
         }
         return $label;
     }
-    //
 
     // --------------------------------------------------------------------
 
@@ -1033,7 +1042,6 @@ class Menu {
         {
             $active_items = array();
         }
-
 
         if ( isset($this->_items[$active]))
         {
@@ -1078,7 +1086,7 @@ class Menu {
     /**
      * Gets the menu items based on the parent
      *
-     * @access      public
+     * @access      protected
      * @param       mixed parent id
      * @param       array menu items
      * @return      array
@@ -1102,4 +1110,39 @@ class Menu {
         return $subitems;
     }
 
+    // --------------------------------------------------------------------
+
+    /**
+     * Filter out hidden menu items
+     *
+     * @access      protected
+     * @param       array menu items
+     * @return      array
+     */
+    protected function _filter_hidden($menu)
+    {
+        $filtered_menu = array();
+        if (!$this->include_hidden)
+        {
+            foreach($menu as $key => $val)
+            {
+                if (!$val['hidden'] OR strtolower($val['hidden']) == 'no')
+                {
+                    $filtered_menu[$key] = $val;
+                }
+            }
+        }
+        else
+        {
+            $filtered_menu = $menu;
+        }
+
+        return $filtered_menu;
+        
+    }
+
+
 }
+
+/* End of file Menu.php */
+/* Location: ./modules/fuel/libraries/Menu.php */
