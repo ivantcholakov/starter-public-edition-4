@@ -2,6 +2,7 @@
 
 /*
 
+Kratt Tools PRINT_D
 Written by Pertti Soomann, 2014
 
 Check for latest version and report issues at
@@ -36,10 +37,10 @@ either expressed or implied, of the FreeBSD Project.
 
 */
 
-function print_d($var)
+function print_d($var, $options = false)
 {
 	$css = array(
-		'holder' => 'border: 1px solid #eee; padding: 6px; background: #fff; float: left; margin: 3px; font-size: 11px; font-family:Lucida Console, Monaco, monospace;',
+		'holder' => 'border: 1px solid #ddd; padding: 6px; background: #fff; float: left; margin: 3px; font-size: 11px; font-family:Lucida Console, Monaco, monospace;',
 		'table' => 'border: 1px solid #ddd; border-collapse:collapse;',
 		'table-methods' => 'margin-top: 4px; width: 100%;',
 		'td' => 'border: 1px solid #ddd; font-size: 11px; vertical-align: top; padding: 2px 4px 2px 4px;',
@@ -56,37 +57,60 @@ function print_d($var)
 		'type-integer' => 'font-weight: bold; max-width: 250px; color: #00d; text-align: right;',
 		'type-float' => 'font-weight: bold; max-width: 250px; color: #00d; text-align: right;',
 		'type-double' => 'font-weight: bold; max-width: 250px; color: #00d; text-align: right;',
-		'type-string' => 'font-weight: bold; max-width: 250px; color: #0d0;',
+		'type-string' => 'font-weight: bold; max-width: 250px; color: #d00;',
 		'type-boolean' => 'font-weight: bold; max-width: 250px; color: #bbb;',
 		'type-null' => 'font-weight: bold; max-width: 250px; color: #bbb;',
 		'void' => 'font-style: italic; color: #bbb;',
 		'emptystring' => 'color: #bbb; font-style: italic; font-weight: normal;'
 	);
 
-	$t = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
-	$s = @ file($t[0]['file']);
-	$s = $s[$t[0]['line']-1];
-
-	$t = explode('print_d(', $s, 2);
-	if (count($t) > 1)
+	if (!isset($options['varname']) || $options['varname'])
 	{
-		$t = trim(preg_replace('/\s+/', ' ', $t[1]));
-		if (substr($t, 0, 1) == '$')
+		$t = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
+		if (file_exists($t[0]['file']))
 		{
-			$t = explode(')', $t, 2);
-			$name = $t[0];
-			$name = trim(preg_replace('/\s+/', '', $name));
+			$s = file($t[0]['file']);
+			$s = $s[$t[0]['line']-1];
+			$t = explode('print_d(', $s, 2);
+			if (count($t) > 1)
+			{
+				$t = trim(preg_replace('/\s+/', ' ', $t[1]));
+				if (strpos($t, '('))
+				{
+					$t = explode(');', $t, 2);
+					$func_name = $t[0];
+					$func_name = trim(preg_replace('/\s+/', '', $func_name));
+
+					if (strtolower(substr($func_name, 0, 6)) === 'array(')
+						unset($func_name);
+					else
+					{
+						if (strtolower(substr($func_name, -5)) === ',true')
+							$func_name = substr($func_name, 0, -5);
+					}
+				}
+				else if (substr($t, 0, 1) == '$')
+				{
+					$t = explode(');', $t, 2);
+					$name = $t[0];
+					$name = trim(preg_replace('/\s+/', '', $name));
+					if (strtolower(substr($name, -5)) === ',true')
+						$name = substr($name, 0, -5);
+				}
+			}
 		}
 	}
 
-	$type = gettype($var);
+	$type = strtolower(gettype($var));
 
 	$ret = '<div style="'.$css['holder'].'">';
 
-	if ($type === 'array' || $type === 'object')
+	if ($type === 'array' || $type === 'object' || isset($func_name))
 	{
 		if (isset($name))
 			$ret .= '<strong>'.$name.'</strong>';
+		else if (isset($func_name))
+			$ret .= '<strong>'.$func_name.'</strong>';
 
 		if ($type === 'object')
 			$ret .= ' '.get_class($var);
@@ -97,27 +121,40 @@ function print_d($var)
 	{
 	 	case 'array':
 	 	case 'object':
-	 		foreach($var as $i => $v)
-	 		{
-	 			$v_type = strtolower(gettype($v));
-	 			
-	 			if ($v_type === 'object' || $v_type === 'array')
-	 				$v = '<pre style="'.$css['pre'].'">'.print_r($v, true).'</pre>';
-	 			else if ($v_type === 'boolean')
-	 				$v = $v ? 'TRUE' : 'FALSE';
-	 			else if ($v_type === 'string' && $v === '')
-	 				$v = '<span style="'.$css['emptystring'].'">empty string</span>';
-	 			else if ($v_type === 'null')
-	 				$v = 'NULL';
 
-	 			$ret .= '<tr>';
-	 			$ret .= '<td style="'.$css['td'].$css['type'].'">'.$v_type.'</td>';
-	 			$ret .= '<td style="'.$css['td'].'">'.$i.'</td>';
-	 			$ret .= '<td style="'.$css['td'].$css['type-'.$v_type].'">'.$v.'</td>';
+	 		$count = 0;
+	 		if ($var)
+	 		{
+		 		foreach($var as $i => $v)
+		 		{
+		 			++$count;
+		 			$v_type = strtolower(gettype($v));
+		 			
+		 			if ($v_type === 'object' || $v_type === 'array')
+		 				$v = print_d($v, array('varname' => false));
+		 			else if ($v_type === 'boolean')
+		 				$v = $v ? 'TRUE' : 'FALSE';
+		 			else if ($v_type === 'string' && $v === '')
+		 				$v = '<span style="'.$css['emptystring'].'">empty string</span>';
+		 			else if ($v_type === 'null')
+		 				$v = 'NULL';
+
+		 			$ret .= '<tr>';
+		 			$ret .= '<td style="'.$css['td'].$css['type'].'">'.$v_type.'</td>';
+		 			$ret .= '<td style="'.$css['td'].'">'.$i.'</td>';
+		 			$ret .= '<td style="'.$css['td'].$css['type-'.$v_type].'">'.$v.'</td>';
+		 			$ret .= '</tr>';
+		 		}
+		 	}
+
+		 	if ($count === 0)
+	 		{
+				$ret .= '<tr>';
+	 			$ret .= '<td style="'.$css['td'].'"><span style="'.$css['emptystring'].'">empty '.($type === 'array' ? 'array' : 'class').'</span></td>';
 	 			$ret .= '</tr>';
 	 		}
 
-	 		if ($type === 'object')
+	 		if ($type === 'object' && ($options === true || (isset($options['methods']) && $options['methods'] === true)))
 	 		{
 	 			$methods = get_class_methods($var);
 	 			if ($methods)
@@ -178,6 +215,9 @@ function print_d($var)
 
  			if ($type === 'boolean')
 	 			$var = $var ? 'TRUE' : 'FALSE';
+	 		else if ($type === 'null')
+ 				$var = 'NULL';
+
 
  			$ret .= '<tr>';
  			$ret .= '<td style="'.$css['td'].$css['type'].'">'.$type.'</td>';
