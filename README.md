@@ -252,6 +252,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * CodeIgniter Cache Helper, https://github.com/stevenbenner/codeigniter-cache-helper
 * auto_link() helper accepts attributes, https://github.com/EllisLab/CodeIgniter/wiki/auto-link
 * Menu Library, https://github.com/nihaopaul/Spark-Menu, https://github.com/Barnabas/Spark-Menu (the original spark-source)
+* Function print_d() (enhanced debug print), https://github.com/vikerlane/print_d
 
 Credits
 -------
