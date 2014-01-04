@@ -874,7 +874,7 @@ class Menu {
             $str .= $this->_get_li_classes($val, $level, $i, $is_last);
             $str .= '>';
         }
-        if (!empty($val['blank'])) {
+        if (empty($val['blank'])) {
             $str .= $this->_create_link($val);
         }
         return $str;
