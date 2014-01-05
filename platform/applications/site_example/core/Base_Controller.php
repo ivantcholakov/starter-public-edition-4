@@ -11,7 +11,6 @@ class Base_Controller extends Core_Controller {
             ->helper('language')
             ->helper('url')
             ->library('template')
-            ->parser('i18n')
             ->language('ui')
         ;
 

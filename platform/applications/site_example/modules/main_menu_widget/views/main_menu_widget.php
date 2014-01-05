@@ -74,6 +74,8 @@ if (!empty($nav)) {
 
 }
 
+echo Modules::run('language_switcher_widget/index', 'navbar');
+
 ?>
 
                 </div>

@@ -19,14 +19,7 @@
             <h2>Internationalization Test</h2>
 
             <p>
-                Language switcher:
-
-    <?php
-
-    echo Modules::run('language_switcher/index');
-
-    ?>
-
+                Switch language by using the menu, see top, right. The text below should be properly translated.
             </p>
 
             <p>A translated text: <strong><?php echo lang('welcome.hello'); ?></strong></p>
