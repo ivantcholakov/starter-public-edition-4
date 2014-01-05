@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed.');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -27,6 +27,8 @@ class Settings {
         if (is_array($this->settings)) {
             return $this->settings;
         }
+
+        $this->settings = array();
 
         if (!$this->settings_model->table_exists()) {
             return false;
@@ -61,10 +63,6 @@ class Settings {
                     $this->settings[$item['name']] = $item['value'];
                 }
             }
-
-        } else {
-
-            $this->settings = array();
         }
 
         return $this->settings;
@@ -89,7 +87,7 @@ class Settings {
             return null;
         }
 
-        if (isset($this->settings[$name])) {
+        if (array_key_exists($name, $this->settings)) {
             return $this->settings[$name];
         }
 
