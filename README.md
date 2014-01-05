@@ -253,6 +253,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * auto_link() helper accepts attributes, https://github.com/EllisLab/CodeIgniter/wiki/auto-link
 * Menu Library, https://github.com/nihaopaul/Spark-Menu, https://github.com/Barnabas/Spark-Menu (the original spark-source), https://github.com/daylightstudio/FUEL-CMS/blob/master/fuel/modules/fuel/libraries/Menu.php
 * Function print_d() (enhanced debug print), https://github.com/vikerlane/print_d
+* Registry library for CodeIgniter, https://github.com/ivantcholakov/codeigniter-registry
 
 Credits
 -------
