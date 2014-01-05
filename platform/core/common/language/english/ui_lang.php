@@ -5,3 +5,4 @@ $lang['ui_toggle_navigation'] = 'Toggle navigation';
 $lang['ui_see_a_lager_map'] = 'See a larger map';
 $lang['ui_home'] = 'Home';
 $lang['ui_logo'] = 'Logo';
+$lang['ui_switch_language'] = 'Switch language';
