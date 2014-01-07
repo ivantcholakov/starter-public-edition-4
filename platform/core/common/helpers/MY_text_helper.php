@@ -89,6 +89,10 @@ if (!function_exists('ellipsize') && IS_UTF8_CHARSET)
         // Strip tags
         $str = trim(strip_tags($str));
 
+        // Added by Ivan Tcholakov, 07-JAN-2014.
+        $str = html_entity_decode($str, ENT_QUOTES, 'UTF-8');
+        //
+
         // Is the string long enough to ellipsize?
         if (UTF8::strlen($str) <= $max_length)
         {
