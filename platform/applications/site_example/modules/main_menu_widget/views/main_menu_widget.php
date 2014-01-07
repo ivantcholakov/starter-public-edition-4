@@ -50,7 +50,7 @@ if (!empty($nav)) {
 
                         <li class="dropdown-split-left<?php if (!empty($item['is_active'])) { ?> active<?php } ?>"><a href="<?php echo $item['link']; ?>"><?php if ($item['icon'] != '') { ?><i class="<?php echo $item['icon']; ?>"></i>&nbsp; <?php } echo $item['label']; ?></a></li>
                         <li class="dropdown dropdown-split-right">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
                                 <i class="fa fa-caret-down"></i>
                             </a>
                             <ul class="dropdown-menu pull-right">
