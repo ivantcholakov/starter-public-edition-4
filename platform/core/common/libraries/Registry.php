@@ -87,6 +87,13 @@ class Registry {
 
     public function __construct() {
 
+        // Added by Ivan Tcholakov, 07-JAN-2014.
+        $ci = get_instance();
+        if (is_object($ci)) {
+            $ci->load->helper('registry');
+        }
+        //
+
         log_message('debug', 'Registry class initialized');
     }
 

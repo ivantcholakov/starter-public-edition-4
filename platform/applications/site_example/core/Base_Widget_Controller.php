@@ -7,11 +7,7 @@ class Base_Widget_Controller extends Core_Controller {
         parent::__construct();
 
         $this->load
-            ->library('settings')
-            ->helper('url')
-            ->helper('language')
             ->helper('asset')
-            ->language('ui')
         ;
 
     }

@@ -7,11 +7,7 @@ class Base_Controller extends Core_Controller {
         parent::__construct();
 
         $this->load
-            ->library('settings')
-            ->helper('language')
-            ->helper('url')
             ->library('template')
-            ->language('ui')
         ;
 
         $this->template->set_layout('site_example');

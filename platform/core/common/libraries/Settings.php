@@ -20,6 +20,10 @@ class Settings {
         $this->settings_model = $this->ci->settings_model;
 
         $this->get_all();
+
+        // Added by Ivan Tcholakov, 07-JAN-2014.
+        $this->ci->load->helper('settings');
+        //
     }
 
     public function get_all() {
@@ -68,30 +72,30 @@ class Settings {
         return $this->settings;
     }
 
-    public function get($name) {
+    public function get($key) {
 
-        if (is_array($name)) {
+        if (is_array($key)) {
 
             $result = array();
 
-            foreach ($name as $key) {
-                $result[$key] = $this->get($key);
+            foreach ($key as $k) {
+                $result[$k] = $this->get($k);
             }
 
             return $result;
         }
 
-        $name = (string) $name;
+        $key = (string) $key;
 
-        if ($name == '') {
+        if ($key == '') {
             return null;
         }
 
-        if (array_key_exists($name, $this->settings)) {
-            return $this->settings[$name];
+        if (array_key_exists($key, $this->settings)) {
+            return $this->settings[$key];
         }
 
-        return $this->ci->config->item($name);
+        return $this->ci->config->item($key);
     }
 
 }
