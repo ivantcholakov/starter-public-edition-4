@@ -13,14 +13,14 @@ if (!empty($language_switcher)) {
         if (!empty($item['active'])) {
 ?>
 
-    <strong><?php echo anchor($item['link'], image('flags/'.$item['flag'].'.png').' '.$item['label']); ?></strong>
+    <strong><?php echo anchor($item['link'], image('lib/flags/'.$item['flag'].'.png').' '.$item['label']); ?></strong>
 <?php
 
         } else {
 
 ?>
 
-    <?php echo anchor($item['link'], image('flags/'.$item['flag'].'.png'). ' '.$item['label']); ?>
+    <?php echo anchor($item['link'], image('lib/flags/'.$item['flag'].'.png'). ' '.$item['label']); ?>
 
 <?php
         }
