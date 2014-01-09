@@ -55,6 +55,8 @@ class MX_Controller
     }
 
     public function __get($class) {
+
         return CI::$APP->$class;
     }
+
 }

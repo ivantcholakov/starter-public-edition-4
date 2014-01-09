@@ -40,20 +40,29 @@ class MX_Router extends CI_Router
     protected $module;
 
     public function fetch_module() {
+
         return $this->module;
     }
 
     public function _validate_request($segments) {
 
-        if (count($segments) == 0) return $segments;
+        if (count($segments) == 0) {
+            return $segments;
+        }
 
         /* locate module controller */
-        if ($located = $this->locate($segments)) return $located;
+        if ($located = $this->locate($segments)) {
+            return $located;
+        }
 
         /* use a default 404_override controller */
         if (isset($this->routes['404_override']) AND $this->routes['404_override']) {
+
             $segments = explode('/', $this->routes['404_override']);
-            if ($located = $this->locate($segments)) return $located;
+
+            if ($located = $this->locate($segments)) {
+                return $located;
+            }
         }
 
         /* no controller found */
@@ -99,18 +108,18 @@ class MX_Router extends CI_Router
                     $this->directory .= $directory.'/';
 
                     /* module sub-directory controller exists? */
-                    if(is_file($source.$directory.$ext)) {
+                    if (is_file($source.$directory.$ext)) {
                         return array_slice($segments, 1);
                     }
 
                     /* module sub-directory sub-controller exists? */
-                    if($controller AND is_file($source.$controller.$ext))    {
+                    if ($controller AND is_file($source.$controller.$ext))    {
                         return array_slice($segments, 2);
                     }
                 }
 
                 /* module controller exists? */
-                if(is_file($source.$module.$ext)) {
+                if (is_file($source.$module.$ext)) {
                     return $segments;
                 }
             }
@@ -123,18 +132,22 @@ class MX_Router extends CI_Router
 
         /* application sub-directory controller exists? */
         if ($directory AND is_file(APPPATH.'controllers/'.$module.'/'.$directory.$ext)) {
+
             $this->directory = $module.'/';
             return array_slice($segments, 1);
         }
 
         /* application sub-directory default controller exists? */
         if (is_file(APPPATH.'controllers/'.$module.'/'.$this->default_controller.$ext)) {
+
             $this->directory = $module.'/';
             return array($this->default_controller);
         }
     }
 
     public function set_class($class) {
+
         $this->class = $class.$this->config->item('controller_suffix');
     }
+
 }

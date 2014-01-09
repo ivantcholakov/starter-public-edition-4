@@ -61,6 +61,7 @@ class CI extends CI_Controller
 
         parent::__construct();
     }
+
 }
 
 /* create the application object */
