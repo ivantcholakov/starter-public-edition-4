@@ -763,8 +763,8 @@ class MX_Loader extends CI_Loader
             }
         }
 
-        /* autoload helpers, plugins, languages */
-        foreach (array('helper', 'plugin', 'language') as $type) {
+        /* autoload helpers, languages */
+        foreach (array('helper', 'language') as $type) {
             if (isset($autoload[$type])) {
                 foreach ($autoload[$type] as $item) {
                     $this->$type($item);
