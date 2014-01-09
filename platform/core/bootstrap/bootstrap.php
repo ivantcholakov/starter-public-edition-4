@@ -27,6 +27,7 @@ define('IS_AJAX_REQUEST', isset($_SERVER['HTTP_X_REQUESTED_WITH'])
 define('ICONV_INSTALLED', function_exists('iconv'));
 define('MBSTRING_INSTALLED', function_exists('mb_strlen'));
 define('PCRE_UTF8_INSTALLED', @preg_match('/./u', 'é') === 1);
+define('INTL_INSTALLED', function_exists('intl_get_error_code'));
 
 // Fix $_SERVER['REQUEST_URI'] if it is missing.
 if (!isset($_SERVER['REQUEST_URI']) || $_SERVER['REQUEST_URI'] == '') {
