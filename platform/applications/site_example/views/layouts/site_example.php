@@ -92,6 +92,24 @@ echo js('lib/google-code-prettify/prettify.js');
     //]]>
     </script>
 
+    <script type="text/javascript">
+    //<![CDATA[
+
+        $(function() {
+
+            // Go to top
+            $('.gototop').click(function(event) {
+                event.preventDefault();
+                $('html, body').animate({
+                    scrollTop: $("body").offset().top
+                }, 500);
+            });
+
+        });
+
+    //]]>
+    </script>
+
 <?php
 
 echo div_debug();
