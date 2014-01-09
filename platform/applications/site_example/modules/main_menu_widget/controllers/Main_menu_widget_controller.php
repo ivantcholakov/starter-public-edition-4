@@ -74,10 +74,13 @@ class Main_menu_widget_controller extends Core_Controller {
         }
 
         // TODO: This mess needs a revision.
-        if ($this->uri->segment(3) == 'captcha') {
-            $active = 'playground/captcha';
-        } elseif ($this->uri->segment(3) == 'mustache') {
-            $active = 'playground/mustache';
+        switch ($this->uri->segment(3)) {
+            case 'captcha':
+                $active = 'playground/captcha';
+                break;
+            case 'mustache':
+                $active = 'playground/mustache';
+                break;
         }
         //
 
