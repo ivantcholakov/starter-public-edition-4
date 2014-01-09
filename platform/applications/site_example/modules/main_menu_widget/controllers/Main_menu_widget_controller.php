@@ -47,6 +47,7 @@ class Main_menu_widget_controller extends Core_Controller {
         $nav['normalize_css'] = array('label' => 'Testing normalize.css', 'location' => 'non-mvc/normalize.css.php', 'parent_id' => 'playground');
         $nav['playground/separator_1'] = array('blank' => true, 'parent_id' => 'playground');
         $nav['playground/captcha'] = array('label' => 'Captcha Test', 'location' => 'playground/captcha', 'parent_id' => 'playground');
+        $nav['playground/mustache'] = array('label' => 'Mustache Parser Test', 'location' => 'playground/mustache', 'parent_id' => 'playground');
         $nav['playground/separator_2'] = array('blank' => true, 'parent_id' => 'playground');
         $nav['and_so_on'] = array('label' => 'And so on, see the Playground index page', 'location' => '#', 'parent_id' => 'playground');
 
@@ -75,7 +76,11 @@ class Main_menu_widget_controller extends Core_Controller {
         // TODO: This mess needs a revision.
         if ($this->uri->segment(3) == 'captcha') {
             $active = 'playground/captcha';
+        } elseif ($this->uri->segment(3) == 'mustache') {
+            $active = 'playground/mustache';
         }
+        //
+
 
         $nav = $this->menu->render($nav, $active, NULL, 'data');
         $this->menu->reset();

@@ -12,8 +12,6 @@ class Readme_controller extends Base_Controller {
         parent::__construct();
 
         $this->template
-            ->inject_partial('css', css('lib/google-code-prettify/prettify.css'))
-            ->set_partial('scripts', 'readme_scripts')
             ->title('README')
         ;
     }

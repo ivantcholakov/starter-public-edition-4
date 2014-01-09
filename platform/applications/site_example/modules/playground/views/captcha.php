@@ -1,5 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
+        <section>
+
             <div class="page-header">
                 <h1>Captcha Test</h1>
             </div>
@@ -24,3 +26,5 @@
             <h4>User input simulation:</h4>
 
             <div id="captcha_test"></div>
+
+        </section>

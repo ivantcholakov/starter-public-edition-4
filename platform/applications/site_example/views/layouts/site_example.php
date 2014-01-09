@@ -17,6 +17,7 @@ echo cleartype_ie();
 
 echo css('lib/bootstrap-3/bootstrap.min.css');
 echo css('lib/font-awesome-4/font-awesome.min.css');
+echo css('lib/google-code-prettify/prettify.css');
 echo css('site_example.css');
 
 file_partial('css');
@@ -72,6 +73,26 @@ echo js('lib/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js');
 
 file_partial('scripts');
 template_partial('scripts');
+
+echo js('lib/google-code-prettify/prettify.js');
+
+?>
+
+    <script type="text/javascript">
+    //<![CDATA[
+
+        $('pre').addClass('prettyprint');
+
+        !function ($) {
+            $(function() {
+                window.prettyPrint && prettyPrint();
+            })
+        } (window.jQuery);
+
+    //]]>
+    </script>
+
+<?php
 
 echo div_debug();
 

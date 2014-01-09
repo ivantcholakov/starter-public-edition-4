@@ -27,6 +27,7 @@
 
                 <ul>
                     <li><a href="<?php echo site_url('playground/captcha'); ?>">Captcha Test</a></li>
+                    <li><a href="<?php echo site_url('playground/mustache'); ?>">Mustache Parser Test</a></li>
                 </ul>
 
             </div>
