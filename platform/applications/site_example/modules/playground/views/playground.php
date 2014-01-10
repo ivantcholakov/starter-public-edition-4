@@ -38,6 +38,7 @@
                     <li><a href="<?php echo site_url('playground/gibberish-aes'); ?>">GibberishAES Test</a></li>
                     <li><a href="<?php echo site_url('playground/random'); ?>">Random Values Test</a></li>
                     <li><a href="<?php echo site_url('playground/ajax-queue'); ?>">AJAX Queue Test</a></li>
+                    <li><a href="<?php echo site_url('playground/rest/server'); ?>">RESTful Service Test</a></li>
                 </ul>
 
             </div>
