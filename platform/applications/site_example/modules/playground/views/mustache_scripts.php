@@ -5,7 +5,6 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-
 ?>
 
     <script type="text/javascript">

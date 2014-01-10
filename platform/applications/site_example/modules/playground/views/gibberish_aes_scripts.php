@@ -1,4 +1,9 @@
-<?php if (!defined('BASEPATH')) { exit('No direct script access allowed.'); }
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @license The MIT License, http://opensource.org/licenses/MIT
+ */
 
 echo js('lib/gibberish-aes/gibberish-aes.min.js');
 
