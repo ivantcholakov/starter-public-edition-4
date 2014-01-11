@@ -11,6 +11,8 @@ class Readme_controller extends Base_Controller {
 
         parent::__construct();
 
+        $this->load->parser();
+
         $this->template
             ->title('README')
         ;
@@ -33,7 +35,6 @@ class Readme_controller extends Base_Controller {
 
         $this->template
             ->set(compact('path', 'content'))
-            ->enable_parser_body(array('markdown', 'auto_link'))
             ->build('readme');
     }
 
