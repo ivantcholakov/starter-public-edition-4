@@ -455,6 +455,9 @@ $config['parser_valid_drivers'] = array(
     'textile',
     'markdown',
     'markdownify',
+    'auto_link',
+    'i18n',
+    'less',
 );
 
 /*
