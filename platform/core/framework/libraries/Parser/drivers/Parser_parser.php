@@ -88,6 +88,11 @@ class CI_Parser_parser extends CI_Parser_driver {
 	public function parse($template, $data = array(), $return = FALSE, $config = array())
 	//
 	{
+		if (!is_array($data))
+		{
+			$data = array();
+		}
+
 		// Adaptation for HMVC by wiredesignz.
 		//$template = $this->CI->load->view($template, $data, TRUE);
 
@@ -128,6 +133,11 @@ class CI_Parser_parser extends CI_Parser_driver {
 	public function parse_string($template, $data = array(), $return = FALSE, $config = array())
 	// Modified by Ivan Tcholakov, 27-DEC-2013.
 	{
+		if (!is_array($data))
+		{
+			$data = array();
+		}
+
 		// Modified by Ivan Tcholakov, 27-DEC-2013.
 		//return $this->_parse($template, $data, $return);
 		return $this->_parse($template, $data, $return, $config);
