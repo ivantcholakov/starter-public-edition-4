@@ -71,9 +71,9 @@ class CI_Parser extends CI_Driver_Library {
 	public function __construct(array $params = array())
 	{
 		$CI = &get_instance();
-		
+
 		$tmp_vdrivers = array_map('strtolower', $this->valid_drivers);
-		
+
 		// load up the valid drivers
 		$drivers = isset($params['parser_valid_drivers']) ? $params['parser_valid_drivers'] : $CI->config->item('parser_valid_drivers');
 		if ($drivers)
@@ -107,7 +107,7 @@ class CI_Parser extends CI_Driver_Library {
 		// Load driver and get array reference
 		$this->driver = $this->load_driver($driver);
 	}
-	
+
 	/**
 	 * Parse a template
 	 *
@@ -127,7 +127,7 @@ class CI_Parser extends CI_Driver_Library {
 	{
 		// Added by Ivan Tcholakov, 28-DEC-2013.
 		// Processing an alternative chain of drivers.
- 
+
 		if ($this->_detect_config_chain($config))
 		{
 			$CI = &get_instance();
@@ -193,7 +193,7 @@ class CI_Parser extends CI_Driver_Library {
 	{
 		// Added by Ivan Tcholakov, 28-DEC-2013.
 		// Processing an alternative chain of drivers.
- 
+
 		if ($this->_detect_config_chain($config))
 		{
 			$CI = &get_instance();
@@ -374,7 +374,7 @@ class CI_Parser extends CI_Driver_Library {
 	/**
 	 * __get magic method
 	 *
-	 * Any property references to the parser driver will default to calling the specified 
+	 * Any property references to the parser driver will default to calling the specified
 	 * adapter
 	 *
 	 * @param	string
@@ -386,10 +386,10 @@ class CI_Parser extends CI_Driver_Library {
 		{
 			return $this->driver->{$name};
 		}
-		
-		return NULL;	
+
+		return NULL;
 	}
-	
+
 	/**
 	 * __call magic method
 	 *
@@ -405,7 +405,7 @@ class CI_Parser extends CI_Driver_Library {
 		{
 			return call_user_func_array(array($this->driver, $method), $args);
 		}
-		
+
 		return NULL;
 	}
 }
