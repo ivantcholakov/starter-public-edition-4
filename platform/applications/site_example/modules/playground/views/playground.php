@@ -40,6 +40,7 @@
                     <li><a href="<?php echo site_url('playground/ajax-queue'); ?>">AJAX Queue Test</a></li>
                     <li><a href="<?php echo site_url('playground/jquery-url-parser'); ?>">jQuery URL Parser Test</a></li>
                     <li><a href="<?php echo site_url('playground/rest/server'); ?>">RESTful Service Test</a></li>
+                    <li><a href="<?php echo site_url('playground/online-editor/user-mode'); ?>">Online Editor Test</a></li>
                 </ul>
 
             </div>
