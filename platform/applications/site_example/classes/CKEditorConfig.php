@@ -7,7 +7,7 @@ class CKEditorConfig {
     final private function __construct() {}
     final private function __clone() {}
 
-    public static function get($editor_config_key, $editor_toolbar_key = null) {
+    public static function get($editor_config_key = null, $editor_toolbar_key = null) {
 
         $editor_config_key = (string) $editor_config_key;
         $editor_toolbar_key = (string) $editor_toolbar_key;
@@ -20,6 +20,7 @@ class CKEditorConfig {
         }
 
         $key = $editor_config_key;
+
         if ($editor_toolbar_key != '') {
             $key .= '_'.$editor_toolbar_key;
         } else {
@@ -30,13 +31,31 @@ class CKEditorConfig {
             return self::$config[$key];
         }
 
-        $config_dir = APPPATH.'config/';
+        // Get editor's configureation.
+
+        $ci = get_instance();
 
         $config = array();
-        @ include $config_dir.'editor_default.php';
-        if ($editor_config_key != 'default') {
-            @ include $config_dir.'editor_'.$editor_config_key.'.php';
+
+        $ci->config->load('editor_default', true, true);
+        $config_default = $ci->config->item('editor_default');
+
+        if (!is_array($config_default)) {
+            $config_default = array();
         }
+
+        if ($editor_config_key != 'default') {
+
+            $ci->config->load('editor_'.$editor_config_key, true, true);
+            $config = $ci->config->item('editor_'.$editor_config_key);
+
+            if (!is_array($config)) {
+                $config = array();
+            }
+        }
+
+        $config = array_replace_recursive($config_default, $config);
+
         if (empty($config['config']['fullPage'])) {
             if (isset($config['config']['contentsCss'])) {
                 if (!is_array($config['config']['contentsCss'])) {
@@ -46,14 +65,18 @@ class CKEditorConfig {
                 $config['config']['contentsCss'] = array();
             }
         }
+
         self::$config[$key] = $config;
 
-        $config = array();
-        if (file_exists($config_dir.'editor_toolbar_'.$editor_toolbar_key.'.php')) {
-            @ include $config_dir.'editor_toolbar_'.$editor_toolbar_key.'.php';
-        } else {
-            @ include $config_dir.'editor_toolbar_default.php';
+        // Get toolbar configuration.
+
+        $ci->config->load('editor_toolbar_'.$editor_toolbar_key, true, true);
+        $config = $ci->config->item('editor_toolbar_'.$editor_toolbar_key);
+
+        if (!is_array($config)) {
+            $config = array();
         }
+
         self::$config[$key]['config']['toolbar'] = $editor_toolbar_key;
         self::$config[$key]['config']['toolbar_'.$editor_toolbar_key] = $config;
 

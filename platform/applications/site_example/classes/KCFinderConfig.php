@@ -21,13 +21,28 @@ class KCFinderConfig {
             return self::$config[$key];
         }
 
-        $config_dir = APPPATH.'config/';
+        $ci = get_instance();
 
         $config = array();
-        @ include $config_dir.'editor_filemanager_default.php';
-        if ($key != 'default') {
-            @ include $config_dir.'editor_filemanager_'.$key.'.php';
+
+        $ci->config->load('editor_filemanager_default', true, true);
+        $config_default = $ci->config->item('editor_filemanager_default');
+
+        if (!is_array($config_default)) {
+            $config_default = array();
         }
+
+        if ($key != 'default') {
+
+            $ci->config->load('editor_filemanager_'.$key, true, true);
+            $config = $ci->config->item('editor_filemanager_'.$key);
+
+            if (!is_array($config)) {
+                $config = array();
+            }
+        }
+
+        $config = array_replace_recursive($config_default, $config);
 
         self::$config[$key] = $config;
 
