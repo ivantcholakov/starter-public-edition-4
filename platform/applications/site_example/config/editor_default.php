@@ -16,10 +16,6 @@ $config['config']['height'] = '100';
 $config['config']['resize_enabled'] = false;
 $config['textareaAttributes'] = array('rows' => 8, 'cols' => 60);
 
-$config['config']['extraPlugins'] = '';
-$config['config']['autoGrow_minHeight'] = '100';
-$config['config']['autoGrow_maxHeight'] = '400';
-
 $config['config']['entities_latin'] = false;
 $config['config']['entities_greek'] = false;
 
