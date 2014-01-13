@@ -13,10 +13,18 @@ if (!function_exists('html_filter_user')) {
 
         if (!isset($purifier)) {
 
-            $config = array();
-            $config['allowed_tags'] = '';
+            $ci = get_instance();
 
-            @include APPPATH.'config/html_filter_user.php';
+            $ci->config->load('html_filter_user', true, true);
+            $config = $ci->config->item('html_filter_user');
+
+            if (!is_array($config)) {
+                $config = array();
+            }
+
+            if (!isset($config['allowed_tags'])) {
+                $config['allowed_tags'] = '';
+            }
 
             $purifier_config = HTMLPurifier_Config::createDefault();
             $purifier_config->set('Cache.SerializerPath', APPPATH.'cache_htmlpurifier');
@@ -51,10 +59,18 @@ if (!function_exists('html_filter_admin')) {
 
         if (!isset($purifier)) {
 
-            $config = array();
-            $config['allowed_tags'] = '';
+            $ci = get_instance();
 
-            @include APPPATH.'config/html_filter_admin.php';
+            $ci->config->load('html_filter_admin', true, true);
+            $config = $ci->config->item('html_filter_admin');
+
+            if (!is_array($config)) {
+                $config = array();
+            }
+
+            if (!isset($config['allowed_tags'])) {
+                $config['allowed_tags'] = '';
+            }
 
             $purifier_config = HTMLPurifier_Config::createDefault();
             $purifier_config->set('Cache.SerializerPath', APPPATH.'cache_htmlpurifier');
