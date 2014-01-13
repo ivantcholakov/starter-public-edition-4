@@ -55,6 +55,28 @@ class Core_Config extends MX_Config {
             define('CURRENT_URL', rtrim(SERVER_URL, '/').CURRENT_URI);
         }
 
+        // Added by Ivan Tcholakov, 13-JAN-2014.
+        if (!defined('COMMON_BASE_URL')) {
+
+            if (APPSEGMENT != '') {
+                define('COMMON_BASE_URL', preg_replace('/'. preg_quote($this->add_slash(APPSEGMENT), '/') . '$/', '', BASE_URL));
+            } else {
+                define('COMMON_BASE_URL', BASE_URL);
+            }
+        }
+        //
+
+        // Added by Ivan Tcholakov, 13-JAN-2014.
+        if (!defined('COMMON_BASE_URI')) {
+
+            if (APPSEGMENT != '') {
+                define('COMMON_BASE_URI', preg_replace('/'. preg_quote($this->add_slash(APPSEGMENT), '/') . '$/', '', BASE_URI));
+            } else {
+                define('COMMON_BASE_URI', BASE_URI);
+            }
+        }
+        //
+
         // Added by Ivan Tcholakov, 26-DEC-2013.
         // See https://github.com/EllisLab/CodeIgniter/issues/2792
         if (!defined('IS_UTF8_CHARSET')) {
@@ -302,6 +324,33 @@ class Core_Config extends MX_Config {
         }
 
         return BASE_URI.$this->item('index_page').$uri;
+    }
+
+    // Added by Ivan Tcholakov, 13-JAN-2014.
+    public function common_base_url($uri = '', $protocol = NULL)
+    {
+        if (is_array($uri)) {
+            $uri = implode('/', $uri);
+        }
+
+        $base_url = COMMON_BASE_URL;
+
+        if (isset($protocol))
+        {
+            $base_url = $protocol.substr($base_url, strpos($base_url, '://'));
+        }
+
+        return $base_url.ltrim($this->_uri_string($uri), '/');
+    }
+
+    // Added by Ivan Tcholakov, 13-JAN-2014.
+    public function common_base_uri($uri = '') {
+
+        if (is_array($uri)) {
+            $uri = implode('/', $uri);
+        }
+
+        return COMMON_BASE_URI.ltrim($this->_uri_string($uri), '/');
     }
 
 }

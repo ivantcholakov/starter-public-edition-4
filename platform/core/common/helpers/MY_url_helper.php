@@ -7,6 +7,7 @@ if (!function_exists('base_uri')) {
 
         return get_instance()->config->base_uri($uri);
     }
+
 }
 
 if (!function_exists('site_uri')) {
@@ -16,6 +17,27 @@ if (!function_exists('site_uri')) {
 
         return get_instance()->config->site_uri($uri);
     }
+
+}
+
+if (!function_exists('common_base_url')) {
+
+    // Added by Ivan Tcholakov, 13-JAN-2014.
+    function common_base_url($uri = '') {
+
+        return get_instance()->config->common_base_url($uri);
+    }
+
+}
+
+if (!function_exists('common_base_uri')) {
+
+    // Added by Ivan Tcholakov, 13-JAN-2014.
+    function common_base_uri($uri = '') {
+
+        return get_instance()->config->common_base_uri($uri);
+    }
+
 }
 
 if (!function_exists('url_add_params')) {
