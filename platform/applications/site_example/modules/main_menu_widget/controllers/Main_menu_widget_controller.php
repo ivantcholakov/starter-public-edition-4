@@ -49,7 +49,7 @@ class Main_menu_widget_controller extends Core_Controller {
         $nav['playground/captcha'] = array('label' => 'Captcha Test', 'location' => 'playground/captcha', 'parent_id' => 'playground');
         $nav['playground/mustache'] = array('label' => 'Mustache Parser Test', 'location' => 'playground/mustache', 'parent_id' => 'playground');
         $nav['playground/separator_2'] = array('blank' => true, 'parent_id' => 'playground');
-        $nav['and_so_on'] = array('label' => 'And so on, see the Playground index page', 'location' => '#', 'parent_id' => 'playground');
+        $nav['and_so_on'] = array('label' => 'And so on, see the Playground index page', 'location' => 'playground', 'parent_id' => 'playground');
 
         $segment_1 = $this->uri->segment(2);
 
