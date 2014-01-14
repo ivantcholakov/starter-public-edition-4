@@ -291,11 +291,27 @@ if (NORMAL_MVC_EXECUTION) {
 }
 //
 
+// Added by Ivan Tcholakov, 14-JAN-2014.
 // Set any routing overrides that may exist in the main index file
-if (isset($routing))
+if (isset($routing) && is_array($routing))
 {
-    $RTR->_set_overrides($routing);
+    if (isset($routing['directory']))
+    {
+        $RTR->set_directory($routing['directory']);
+    }
+
+    if ( ! empty($routing['controller']))
+    {
+        $RTR->set_class($routing['controller']);
+    }
+
+    if (isset($routing['function']))
+    {
+        $routing['function'] = empty($routing['function']) ? 'index' : $routing['function'];
+        $RTR->set_method($routing['function']);
+    }
 }
+//
 
 
 // Added by Ivan Tcholakov.
