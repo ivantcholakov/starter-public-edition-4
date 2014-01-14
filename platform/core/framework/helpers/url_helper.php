@@ -109,8 +109,7 @@ if ( ! function_exists('uri_string'))
 	 */
 	function uri_string()
 	{
-		$CI =& get_instance();
-		return $CI->uri->uri_string();
+		return get_instance()->uri->uri_string();
 	}
 }
 
@@ -127,8 +126,7 @@ if ( ! function_exists('index_page'))
 	 */
 	function index_page()
 	{
-		$CI =& get_instance();
-		return $CI->config->item('index_page');
+		return get_instance()->config->item('index_page');
 	}
 }
 
@@ -534,11 +532,16 @@ if ( ! function_exists('redirect'))
 		}
 		elseif ($method !== 'refresh' && (empty($code) OR ! is_numeric($code)))
 		{
-			// Reference: http://en.wikipedia.org/wiki/Post/Redirect/Get
-			$code = (isset($_SERVER['REQUEST_METHOD'], $_SERVER['SERVER_PROTOCOL'])
-					&& $_SERVER['REQUEST_METHOD'] === 'POST'
-					&& $_SERVER['SERVER_PROTOCOL'] === 'HTTP/1.1')
-				? 303 : 302;
+			if (isset($_SERVER['SERVER_PROTOCOL'], $_SERVER['REQUEST_METHOD']) && $_SERVER['SERVER_PROTOCOL'] === 'HTTP/1.1')
+			{
+				$code = ($_SERVER['REQUEST_METHOD'] !== 'GET')
+					? 303	// reference: http://en.wikipedia.org/wiki/Post/Redirect/Get
+					: 307;
+			}
+			else
+			{
+				$code = 302;
+			}
 		}
 
 		switch ($method)
