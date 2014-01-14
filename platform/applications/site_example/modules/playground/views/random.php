@@ -19,7 +19,7 @@
 
                     <div class="col-md-6">
 
-                        <h4>Javascript Implementation Tests</h4>
+                        <h4>JavaScript Implementation Tests</h4>
 
                         <table class="table table-bordered" style="table-layout: fixed; word-wrap: break-word;">
                             <tbody>

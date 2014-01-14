@@ -19,7 +19,7 @@
 
                     <div class="col-md-6">
 
-                        <h3>Javascript Implementation</h3>
+                        <h3>JavaScript Implementation</h3>
 
                         <p><a href="https://github.com/mdp/gibberish-aes" target="_blank">https://github.com/mdp/gibberish-aes</a></p>
 
