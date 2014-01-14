@@ -39,6 +39,15 @@ either expressed or implied, of the FreeBSD Project.
 
 function print_d($var, $options = false)
 {
+	if (is_bool($options))
+	{
+		$options = array('methods' => $options);
+	}
+
+	$options['recursive'] = isset($options['recursive']) ? $options['recursive'] : false;
+
+	$ret = '';
+
 	$css = array(
 		'holder' => 'border: 1px solid #ddd; padding: 6px; background: #fff; float: left; margin: 3px; font-size: 11px; font-family:Lucida Console, Monaco, monospace;',
 		'table' => 'border: 1px solid #ddd; border-collapse:collapse;',
@@ -64,7 +73,7 @@ function print_d($var, $options = false)
 		'emptystring' => 'color: #bbb; font-style: italic; font-weight: normal;'
 	);
 
-	if (!isset($options['varname']) || $options['varname'])
+	if (!$options['recursive'])
 	{
 		$t = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
 		if (file_exists($t[0]['file']))
@@ -75,27 +84,53 @@ function print_d($var, $options = false)
 			if (count($t) > 1)
 			{
 				$t = trim(preg_replace('/\s+/', ' ', $t[1]));
+
+				$t2 = '';
+				$len = strlen($t);
+				$prev = false;
+				$quotes_open = false;
+				$brackets = 0;
+				for($i=0; $i<$len; ++$i)
+				{
+					$c = $t[$i];
+					if ($quotes_open)
+					{
+						if ($c === $quotes_open && $prev !== '\\')
+						{
+							$quotes_open = false;
+						}
+					}
+					else if ($c === '\'' || $c === '"')
+					{
+						$quotes_open = $c;
+					}
+					else if ($c === '(')
+					{
+						++$brackets;
+					}
+					else if ($brackets > 0 && $c === ')')
+					{
+						--$brackets;
+					}
+					else if ($brackets === 0 && ($c === ',' || $c === ')'))
+					{
+						break;
+					}
+					$t2 .= $t[$i];
+					$prev = $t[$i];
+				}
+
+				$t = trim(preg_replace('/\s+/', ' ', $t2));
+
 				if (strpos($t, '('))
 				{
-					$t = explode(');', $t, 2);
-					$func_name = $t[0];
-					$func_name = trim(preg_replace('/\s+/', '', $func_name));
-
-					if (strtolower(substr($func_name, 0, 6)) === 'array(')
-						unset($func_name);
-					else
-					{
-						if (strtolower(substr($func_name, -5)) === ',true')
-							$func_name = substr($func_name, 0, -5);
-					}
+					if (strtolower(substr($t, 0, 6)) !== 'array(')
+						$func_name = $t;
 				}
-				else if (substr($t, 0, 1) == '$')
+				else if ($t[0] === '$')
 				{
-					$t = explode(');', $t, 2);
-					$name = $t[0];
-					$name = trim(preg_replace('/\s+/', '', $name));
-					if (strtolower(substr($name, -5)) === ',true')
-						$name = substr($name, 0, -5);
+					$name = $t;
+						$name = trim(preg_replace('/\s+/', '', $name));
 				}
 			}
 		}
@@ -103,7 +138,8 @@ function print_d($var, $options = false)
 
 	$type = strtolower(gettype($var));
 
-	$ret = '<div style="'.$css['holder'].'">';
+	if (!$options['recursive'])
+		$ret .= '<div style="'.$css['holder'].'">';
 
 	if ($type === 'array' || $type === 'object' || isset($func_name))
 	{
@@ -131,7 +167,7 @@ function print_d($var, $options = false)
 		 			$v_type = strtolower(gettype($v));
 		 			
 		 			if ($v_type === 'object' || $v_type === 'array')
-		 				$v = print_d($v, array('varname' => false));
+		 				$v = print_d($v, array('recursive' => true));
 		 			else if ($v_type === 'boolean')
 		 				$v = $v ? 'TRUE' : 'FALSE';
 		 			else if ($v_type === 'string' && $v === '')
@@ -229,7 +265,8 @@ function print_d($var, $options = false)
 	}
 	$ret .= '</table>';
 
-	$ret .= '</div>';
+	if (!$options['recursive'])
+		$ret .= '</div>';
 
 	return $ret;
 }
