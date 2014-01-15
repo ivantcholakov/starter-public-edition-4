@@ -20,6 +20,11 @@ class Test_controller extends Core_Controller {
     public function index($to = null) {
 
         $to = $to == '' ? null : $to;
+        return Events::trigger('email', array_merge($this->get_message(), compact('to')));
+    }
+
+    public function get_message() {
+
         $subject = '['.$this->settings->get('site_name').'] '.'Test Message';
         $body =
 '
@@ -27,7 +32,7 @@ class Test_controller extends Core_Controller {
     <p>Greetings from the team of <a href="'.common_base_url().'">'.$this->settings->get('site_name').'</a>.</p>
 ';
 
-        return Events::trigger('email', compact('to', 'subject', 'body'));
+        return compact('subject', 'body');
     }
 
 }
