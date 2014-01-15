@@ -130,7 +130,11 @@ class Email_controller extends Core_Controller {
                 $this->email->cc($cc);
             }
 
-            if (isset($data['attach']) && is_array($data['attach'])) {
+            if (isset($data['attach'])) {
+
+                if (!is_array($data['attach'])) {
+                    $data['attach'] = array((string) $data['attach']);
+                }
 
                 foreach ($data['attach'] as $attachment) {
 
