@@ -122,20 +122,13 @@ class Email_controller extends Core_Controller {
         }
 
         $subject = isset($data['subject']) ? trim($data['subject']) : '';
-        $body = isset($data['body']) ? trim($data['body']) : '';
+        $body = isset($data['body']) ? $data['body'] : '';
 
-        if ($subject != '' && $body != '') {
+        if ($subject != '' && trim($body) != '') {
 
             if (!empty($cc)) {
                 $this->email->cc($cc);
             }
-
-            $this->email
-                ->from($from, $from_name, $return_path)
-                ->to($to)
-                ->reply_to($reply_to, $reply_to_name)
-                ->subject($subject)
-                ->message($body);
 
             if (isset($data['attach']) && is_array($data['attach'])) {
 
@@ -144,7 +137,13 @@ class Email_controller extends Core_Controller {
                 }
             }
 
-            $result = (bool) $this->email->send();
+            $result = (bool) $this->email
+                ->from($from, $from_name, $return_path)
+                ->to($to)
+                ->reply_to($reply_to, $reply_to_name)
+                ->subject($subject)
+                ->message($body)
+                ->send();
 
             $debug_message = trim(strip_tags($this->email->print_debugger()));
 
