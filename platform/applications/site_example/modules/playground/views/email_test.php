@@ -21,7 +21,9 @@
 
 <?php
 
-file_partial('messages');
+if ($this->settings->get('mailer_enabled')) {
+
+    file_partial('messages');
 
 ?>
 
@@ -77,6 +79,22 @@ file_partial('messages');
                         });
                         //]]>
                         </script>
+
+<?php
+
+} else {
+
+?>
+
+                        <div class="status alert alert-warning">
+                            <i18n>mailer_disabled</i18n>
+                        </div>
+
+<?php
+
+}
+
+?>
 
                     </div>
 
