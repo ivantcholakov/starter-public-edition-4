@@ -56,23 +56,23 @@ class Core_Config extends MX_Config {
         }
 
         // Added by Ivan Tcholakov, 13-JAN-2014.
-        if (!defined('COMMON_BASE_URL')) {
+        if (!defined('DEFAULT_BASE_URL')) {
 
             if (APPSEGMENT != '') {
-                define('COMMON_BASE_URL', preg_replace('/'. preg_quote($this->add_slash(APPSEGMENT), '/') . '$/', '', BASE_URL));
+                define('DEFAULT_BASE_URL', preg_replace('/'. preg_quote($this->add_slash(APPSEGMENT), '/') . '$/', '', BASE_URL));
             } else {
-                define('COMMON_BASE_URL', BASE_URL);
+                define('DEFAULT_BASE_URL', BASE_URL);
             }
         }
         //
 
         // Added by Ivan Tcholakov, 13-JAN-2014.
-        if (!defined('COMMON_BASE_URI')) {
+        if (!defined('DEFAULT_BASE_URI')) {
 
             if (APPSEGMENT != '') {
-                define('COMMON_BASE_URI', preg_replace('/'. preg_quote($this->add_slash(APPSEGMENT), '/') . '$/', '', BASE_URI));
+                define('DEFAULT_BASE_URI', preg_replace('/'. preg_quote($this->add_slash(APPSEGMENT), '/') . '$/', '', BASE_URI));
             } else {
-                define('COMMON_BASE_URI', BASE_URI);
+                define('DEFAULT_BASE_URI', BASE_URI);
             }
         }
         //
@@ -327,13 +327,13 @@ class Core_Config extends MX_Config {
     }
 
     // Added by Ivan Tcholakov, 13-JAN-2014.
-    public function common_base_url($uri = '', $protocol = NULL)
+    public function default_base_url($uri = '', $protocol = NULL)
     {
         if (is_array($uri)) {
             $uri = implode('/', $uri);
         }
 
-        $base_url = COMMON_BASE_URL;
+        $base_url = DEFAULT_BASE_URL;
 
         if (isset($protocol))
         {
@@ -344,13 +344,13 @@ class Core_Config extends MX_Config {
     }
 
     // Added by Ivan Tcholakov, 13-JAN-2014.
-    public function common_base_uri($uri = '') {
+    public function default_base_uri($uri = '') {
 
         if (is_array($uri)) {
             $uri = implode('/', $uri);
         }
 
-        return COMMON_BASE_URI.ltrim($this->_uri_string($uri), '/');
+        return DEFAULT_BASE_URI.ltrim($this->_uri_string($uri), '/');
     }
 
 }

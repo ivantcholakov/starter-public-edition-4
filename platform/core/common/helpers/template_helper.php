@@ -477,8 +477,8 @@ if (!function_exists('js_platform')) {
         var SITE_URI = '".SITE_URI."';
         var CURRENT_URL = '".CURRENT_URL."';
         var CURRENT_URI = '".CURRENT_URI."';
-        var COMMON_BASE_URL = '".COMMON_BASE_URL."';
-        var COMMON_BASE_URI = '".COMMON_BASE_URI."';
+        var DEFAULT_BASE_URL = '".DEFAULT_BASE_URL."';
+        var DEFAULT_BASE_URI = '".DEFAULT_BASE_URI."';
         var ASSET_URI = '".config_item('asset_dir')."';
         var ASSET_IMG_URI = '".image_path('')."';
         var ASSET_JS_URI = '".js_path('')."';
