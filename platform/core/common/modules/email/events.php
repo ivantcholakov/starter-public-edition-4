@@ -18,6 +18,7 @@ class Common_Events_Email {
         $this->settings = $this->ci->settings;
 
         if ($this->settings->get('mailer_enabled')) {
+
             Events::register('email', array($this, 'email'));
             Events::register('email_test', array($this, 'email_test'));
         }
@@ -30,15 +31,7 @@ class Common_Events_Email {
 
     public function email_test($to = null) {
 
-        $to = $to == '' ? null : $to;
-        $subject = '['.$this->settings->get('site_name').'] '.'Test Message';
-        $body =
-'
-    <h1>This is a message for testing purpose</h1>
-    <p>Greetings from the team of <a href="'.base_url().'">'.$this->settings->get('site_name').'</a>.</p>
-';
-
-        return Events::trigger('email', compact('to', 'subject', 'body'));
+        return Modules::run('email/test/index', $to);
     }
 
 }
