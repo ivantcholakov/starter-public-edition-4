@@ -27,7 +27,19 @@ if ($this->settings->get('mailer_enabled')) {
 
 ?>
 
-                        <h4>Sending a test message to the notification email address<h4/>
+                        <h4>Test message preview</h4>
+
+                        <div class="thumbnail">
+
+                            <p>Subject: <?php echo $subject; ?></p>
+
+                            <hr />
+
+                            <?php echo $body; ?>
+
+                        </div>
+
+                        <h4>Sending the test message to the notification email address</h4>
 
                         <?php echo form_open('', 'method="post" role="form"'); ?>
 

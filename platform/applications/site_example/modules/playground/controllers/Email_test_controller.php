@@ -14,6 +14,7 @@ class Email_test_controller extends Base_Controller {
         $this->load
             ->language('mailer')
             ->library('kcaptcha', null, 'captcha')
+            ->parser()
         ;
 
         $this->lang->load('captcha', '', FALSE, TRUE, '', 'captcha');
@@ -44,11 +45,6 @@ class Email_test_controller extends Base_Controller {
 
             $success = (bool) Events::trigger('email_test', $this->settings->get('notification_email'));
 
-            // Added by Ivan Tcholakov, 15-JAN-2014.
-            // TODO: This is a workaround, fix it.
-            $this->load->set_module('playground');
-            //
-
             if ($success) {
                 $messages[] = $this->lang->line('mailer_your_message_has_been_sent');
             } else {
@@ -62,8 +58,24 @@ class Email_test_controller extends Base_Controller {
 
         $this->captcha->clear();
 
+        extract(Modules::run('email/test/get_message'));
+
+        $has_logo = file_exists(DEFAULTFCPATH.'apple-touch-icon-precomposed.png');
+
+        $body = $this->parser->parse_string(
+            $body,
+            array(/* 'has_logo' => $has_logo, */ 'has_logo' => false, 'logo_src' => common_base_url('apple-touch-icon-precomposed.png')),
+            true,
+            'mustache'
+        );
+        
+        // Added by Ivan Tcholakov, 15-JAN-2014.
+        // TODO: This is a workaround, fix it.
+        $this->load->set_module('playground');
+        //
+
         $this->template
-            ->set(compact('success', 'messages'))
+            ->set(compact('success', 'messages', 'subject', 'body'))
             ->enable_parser_body('i18n')
             ->build('email_test');
     }
