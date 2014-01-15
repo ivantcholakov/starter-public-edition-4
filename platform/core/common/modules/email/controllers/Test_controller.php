@@ -24,7 +24,7 @@ class Test_controller extends Core_Controller {
         $body =
 '
     <h1>This is a message for testing purpose</h1>
-    <p>Greetings from the team of <a href="'.base_url().'">'.$this->settings->get('site_name').'</a>.</p>
+    <p>Greetings from the team of <a href="'.common_base_url().'">'.$this->settings->get('site_name').'</a>.</p>
 ';
 
         return Events::trigger('email', compact('to', 'subject', 'body'));
