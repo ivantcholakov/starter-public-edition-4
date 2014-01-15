@@ -133,7 +133,17 @@ class Email_controller extends Core_Controller {
             if (isset($data['attach']) && is_array($data['attach'])) {
 
                 foreach ($data['attach'] as $attachment) {
-                    $this->email->attach($attachment);
+
+                    if (!is_array($attachment)) {
+                        $attachment = array('file' => $attachment);
+                    }
+
+                    $attachment['file'] = isset($attachment['file']) ? (string) $attachment['file'] : '';
+                    $attachment['disposition'] = isset($attachment['disposition']) ? (string) $attachment['disposition'] : '';
+                    $attachment['newname'] = isset($attachment['newname']) ? (string) $attachment['newname'] : null;
+                    $attachment['mime'] = isset($attachment['mime']) ? (string) $attachment['mime'] : '';
+
+                    $this->email->attach($attachment['file'], $attachment['disposition'], $attachment['newname'], $attachment['mime']);
                 }
             }
 
