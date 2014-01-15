@@ -67,7 +67,7 @@ if ($this->settings->get('mailer_enabled')) {
                                 <button id="contact_form_submit" name="contact_form_submit" type="submit" class="btn btn-primary btn-lg">
                                     <i id="contact_form_submit_icon" class="fa fa-check fa-fw"></i>
                                     <i id="contact_form_processing" class="fa fa-spinner fa-spin fa-fw" style="display: none;"></i>
-                                    Send
+                                    Send message
                                 </button>
                             </div>
 
