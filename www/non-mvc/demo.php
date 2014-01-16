@@ -64,7 +64,7 @@ echo js_jquery();
 </head>
 <?php
 
-echo body_tag();
+echo body_tag('id="page-top"');
 
 ?>
 
