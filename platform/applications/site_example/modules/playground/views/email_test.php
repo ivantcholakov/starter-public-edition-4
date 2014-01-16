@@ -41,7 +41,7 @@ if ($this->settings->get('mailer_enabled')) {
 
                         <h4>Sending the test message to the notification email address</h4>
 
-                        <?php echo form_open('', 'method="post" role="form"'); ?>
+                        <?php echo form_open('', 'id="email_test_form" method="post" role="form"'); ?>
 
                             <div class="form-group">
                                 <img id="captcha_image"
@@ -54,7 +54,7 @@ if ($this->settings->get('mailer_enabled')) {
 
                             <div class="form-group">
                                 <div class="input-group" style="width: 100%; max-width: 300px;">
-                                    <input type="text" id="contact_form_captcha" name="contact_form_captcha" class="form-control" i18n:placeholder="captcha.label|* " maxlength="<?php echo $this->captcha->length; ?>" />
+                                    <input type="text" id="email_test_form_captcha" name="email_test_form_captcha" class="form-control" i18n:placeholder="captcha.label|* " maxlength="<?php echo $this->captcha->length; ?>" />
                                 </div>
                             </div>
 
@@ -64,9 +64,9 @@ if ($this->settings->get('mailer_enabled')) {
                             </div>
 
                             <div class="form-group">
-                                <button id="contact_form_submit" name="contact_form_submit" type="submit" class="btn btn-primary btn-lg">
-                                    <i id="contact_form_submit_icon" class="fa fa-check fa-fw"></i>
-                                    <i id="contact_form_processing" class="fa fa-spinner fa-spin fa-fw" style="display: none;"></i>
+                                <button id="email_test_form_submit" name="email_test_form_submit" type="submit" class="btn btn-primary btn-lg">
+                                    <i id="email_test_form_submit_icon" class="fa fa-check fa-fw"></i>
+                                    <i id="email_test_form_processing" class="fa fa-spinner fa-spin fa-fw" style="display: none;"></i>
                                     Send message
                                 </button>
                             </div>
@@ -79,7 +79,7 @@ if ($this->settings->get('mailer_enabled')) {
                         function refresh_captcha() {
 
                             $('#captcha_image').attr('src', '<?php echo $this->captcha->src; ?>' + '?nocache=' + Math.random()*999999999);
-                            $('#contact_form_captcha').val('');
+                            $('#email_test_form_captcha').val('');
                         }
 
                         $(function () {
@@ -88,7 +88,15 @@ if ($this->settings->get('mailer_enabled')) {
                                 refresh_captcha();
                             });
 
+                            $('#email_test_form').submit(function(e) {
+
+                                $('#email_test_form_submit').attr('disabled', 'disabled');
+                                $('#email_test_form_submit_icon').hide();
+                                $('#email_test_form_processing').show();
+                            });
+
                         });
+
                         //]]>
                         </script>
 

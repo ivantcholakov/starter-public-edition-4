@@ -28,7 +28,7 @@ class Email_test_controller extends Base_Controller {
 
         $validation_rules = array(
             array(
-                'field' => 'contact_form_captcha',
+                'field' => 'email_test_form_captcha',
                 'label' => 'Captcha',
                 'rules' => 'nohtml|trim|callback__captcha'
             ),
