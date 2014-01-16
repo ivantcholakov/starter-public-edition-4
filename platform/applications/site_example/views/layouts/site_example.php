@@ -76,42 +76,7 @@ file_partial('scripts');
 template_partial('scripts');
 
 echo js('lib/google-code-prettify/prettify.js');
-
-?>
-
-    <script type="text/javascript">
-    //<![CDATA[
-
-        $('pre').addClass('prettyprint');
-
-        !function ($) {
-            $(function() {
-                window.prettyPrint && prettyPrint();
-            })
-        } (window.jQuery);
-
-    //]]>
-    </script>
-
-    <script type="text/javascript">
-    //<![CDATA[
-
-        $(function() {
-
-            // Go to top
-            $('.gototop').click(function(event) {
-                event.preventDefault();
-                $('html, body').animate({
-                    scrollTop: $("body").offset().top
-                }, 500);
-            });
-
-        });
-
-    //]]>
-    </script>
-
-<?php
+echo js('site_example.js');
 
 echo div_debug();
 

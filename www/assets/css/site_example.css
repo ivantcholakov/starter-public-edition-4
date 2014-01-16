@@ -3,24 +3,25 @@
 
 html,
 body {
-  height: 100%;
-  /* The html and body elements cannot have any padding or margin. */
+    height: 100%;
+    /* The html and body elements cannot have any padding or margin. */
 }
 
 /* Wrapper for page content to push down footer */
 #wrap {
-  min-height: 100%;
-  height: auto;
-  /* Negative indent footer by its height */
-  margin: 0 auto -60px;
-  /* Pad bottom by footer height */
-  padding: 0 0 60px;
+    min-height: 100%;
+    height: auto;
+    /* Negative indent footer by its height */
+    margin: 0 auto -60px;
+    /* Pad bottom by footer height */
+    padding: 0 0 60px;
 }
 
 /* Set the fixed height of the footer here */
 #footer {
-  height: 60px;
-  background-color: #f5f5f5;
+    /* height: 60px; */
+    min-height: 60px;
+    background-color: #f5f5f5;
 }
 
 
@@ -29,17 +30,47 @@ body {
 /* Not required for template or sticky footer method. */
 
 #wrap > .container {
-  padding: 60px 15px 0;
+    padding: 60px 15px 0;
 }
 .container .text-muted {
-  margin: 20px 0;
+    margin: 20px 0;
 }
 
 #footer > .container {
-  padding-left: 15px;
-  padding-right: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 code {
-  font-size: 80%;
+    font-size: 80%;
+}
+
+
+/* Scroll To Top Link
+See http://appglobe.com/scroll-to-top-animation/
+-------------------------------------------------- */
+
+/* 
+ * Scroll top link inside footer, but fixed relative to viewport.
+ */
+#footer #scroll-top {
+    position: fixed; 
+    /* On top of everything */
+    z-index: 9999; 
+    bottom: 0;
+    right: 0;
+    margin: 0.9em;
+    display: inline-block;
+    padding: 0.15em 0.5em;
+    -webkit-border-radius: 3px; 
+    -moz-border-radius: 3px; 
+    border-radius: 3px;
+    color: #fafafa;
+    text-decoration: none;
+    border: 1px solid transparent;
+    background: #39b5e9;
+    letter-spacing: 1px;
+    outline: 0;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
 }
