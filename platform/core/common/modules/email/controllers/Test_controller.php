@@ -27,16 +27,29 @@ class Test_controller extends Core_Controller {
 
         extract($this->get_message());
 
-        $has_logo = file_exists(FCPATH.'apple-touch-icon-precomposed.png');
+        $logo = DEFAULTFCPATH.'apple-touch-icon-precomposed.png';
+        $has_logo = file_exists($logo);
 
         $body = $this->parser->parse_string(
             $body,
-            array(/* 'has_logo' => $has_logo, */ 'has_logo' => false, /* 'logo_src' => base_url('apple-touch-icon-precomposed.png') */),
+            array('has_logo' => $has_logo, 'logo_src' => 'cid:logo_src'),
             true,
             'mustache'
         );
-        
-        return Events::trigger('email', compact('subject', 'body', 'to'));
+
+        $attach = array();
+
+        if ($has_logo) {
+
+            $attach[] = array(
+                'file' => $logo,
+                'disposition' => 'inline',
+                'embedded_image' => true,
+                'key' => 'logo_src',
+            );
+        }
+
+        return Events::trigger('email', compact('subject', 'body', 'attach', 'to'));
     }
 
     public function get_message() {

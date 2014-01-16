@@ -146,8 +146,31 @@ class Email_controller extends Core_Controller {
                     $attachment['disposition'] = isset($attachment['disposition']) ? (string) $attachment['disposition'] : '';
                     $attachment['newname'] = isset($attachment['newname']) ? (string) $attachment['newname'] : null;
                     $attachment['mime'] = isset($attachment['mime']) ? (string) $attachment['mime'] : '';
+                    $attachment['embedded_image'] = !empty($attachment['embedded_image']);
+                    $attachment['key'] = isset($attachment['key']) ? (string) $attachment['key'] : null;
 
-                    $this->email->attach($attachment['file'], $attachment['disposition'], $attachment['newname'], $attachment['mime']);
+                    if ($attachment['file'] == '') {
+                        continue;
+                    }
+
+                    if ($attachment['mime'] != '' && $attachment['newname'] == '') {
+                        continue;
+                    }
+
+                    $this->email->attach($attachment['file'], $attachment['disposition'], $attachment['newname'], $attachment['mime'], $attachment['embedded_image']);
+
+                    if ($attachment['key'] != '') {
+
+                        if ($attachment['mime'] != '') {
+                            $attachment['file'] = $attachment['newname'];
+                        }
+
+                        $attachment['cid'] = (string) $this->email->get_attachment_cid($attachment['file']);
+
+                        if ($attachment['cid'] != '') {
+                            $body = str_replace("cid:{$attachment['key']}", "cid:{$attachment['cid']}", $body);
+                        }
+                    }
                 }
             }
 
