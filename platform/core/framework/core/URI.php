@@ -70,6 +70,15 @@ class CI_URI {
 	public $rsegments =	array();
 
 	/**
+	 * Permitted URI chars
+	 *
+	 * PCRE character group allowed in URI segments
+	 *
+	 * @var	string
+	 */
+	protected $_permitted_uri_chars;
+
+	/**
 	 * Class constructor
 	 *
 	 * Simply globalizes the $RTR object. The front
@@ -81,6 +90,12 @@ class CI_URI {
 	public function __construct()
 	{
 		$this->config =& load_class('Config', 'core');
+
+		if ($this->config->item('enable_query_strings') !== TRUE OR is_cli())
+		{
+			$this->_permitted_uri_chars = $this->config->item('permitted_uri_chars');
+		}
+
 		log_message('debug', 'URI Class Initialized');
 	}
 
@@ -305,21 +320,17 @@ class CI_URI {
 	 */
 	public function filter_uri($str)
 	{
-		if ($str !== '' && $this->config->item('permitted_uri_chars') != '' && $this->config->item('enable_query_strings') === FALSE)
+		if ( ! empty($str) && ! empty($this->_permitted_uri_chars) && ! preg_match('/^['.$this->_permitted_uri_chars.']+$/i'.(UTF8_ENABLED ? 'u' : ''), $str))
 		{
-			// preg_quote() in PHP 5.3 escapes -, so the str_replace() and addition of - to preg_quote() is to maintain backwards
-			// compatibility as many are unaware of how characters in the permitted_uri_chars will be parsed as a regex pattern
-			if ( ! preg_match('|^['.str_replace(array('\\-', '\-'), '-', preg_quote($this->config->item('permitted_uri_chars'), '-')).']+$|i', $str))
-			{
-				show_error('The URI you submitted has disallowed characters.', 400);
-			}
+			show_error('The URI you submitted has disallowed characters.', 400);
 		}
 
 		// Convert programatic characters to entities and return
 		return str_replace(
-					array('$',     '(',     ')',     '%28',   '%29'), // Bad
-					array('&#36;', '&#40;', '&#41;', '&#40;', '&#41;'), // Good
-					$str);
+			array('$',     '(',     ')',     '%28',   '%29'),	// Bad
+			array('&#36;', '&#40;', '&#41;', '&#40;', '&#41;'),	// Good
+			$str
+		);
 	}
 
 	// --------------------------------------------------------------------

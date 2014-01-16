@@ -39,7 +39,7 @@
 | path to your installation.
 |
 */
-$config['base_url']    = '';
+$config['base_url'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -141,14 +141,17 @@ $config['subclass_prefix'] = 'MY_';
 | Allowed URL Characters
 |--------------------------------------------------------------------------
 |
-| This lets you specify with a regular expression which characters are permitted
-| within your URLs.  When someone tries to submit a URL with disallowed
-| characters they will get a warning message.
+| This lets you specify which characters are permitted within your URLs.
+| When someone tries to submit a URL with disallowed characters they will
+| get a warning message.
 |
 | As a security measure you are STRONGLY encouraged to restrict URLs to
 | as few characters as possible.  By default only these are allowed: a-z 0-9~%.:_-
 |
 | Leave blank to allow all characters -- but only if you are insane.
+|
+| The configured value is actually a regular expression character group
+| and it will be executed as: ! preg_match('/^[<permitted_uri_chars>]+$/i
 |
 | DO NOT CHANGE THIS UNLESS YOU FULLY UNDERSTAND THE REPERCUSSIONS!!
 |
@@ -181,11 +184,11 @@ $config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-=+';
 | use segment based URLs.
 |
 */
-$config['allow_get_array']      = TRUE;
+$config['allow_get_array'] = TRUE;
 $config['enable_query_strings'] = FALSE;
-$config['controller_trigger']   = 'c';
-$config['function_trigger']     = 'm';
-$config['directory_trigger']    = 'd'; // experimental not currently in use
+$config['controller_trigger'] = 'c';
+$config['function_trigger'] = 'm';
+$config['directory_trigger'] = 'd'; // experimental not currently in use
 
 /*
 |--------------------------------------------------------------------------
@@ -284,9 +287,9 @@ $config['encryption_key'] = 'MY_ENCRIPTION_KEY';
 | 'sess_valid_drivers'      = additional valid drivers which may be loaded
 | 'sess_cookie_name'        = the name you want for the cookie, must contain only [0-9a-z_-] characters
 | 'sess_expiration'         = the number of SECONDS you want the session to last.
-|   by default sessions last 7200 seconds (two hours).  Set to zero for no expiration.
+|                             by default sessions last 7200 seconds (two hours).  Set to zero for no expiration.
 | 'sess_expire_on_close'    = Whether to cause the session to expire automatically
-|   when the browser window is closed
+|                             when the browser window is closed
 | 'sess_encrypt_cookie'     = Whether to encrypt the cookie
 | 'sess_use_database'       = Whether to save the session data to a database
 | 'sess_table_name'         = The name of the session database table
