@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Core_URI extends CI_URI {
 
     // This method has been modified for backward compatibility with PHP prior to version 5.2.4.
-    public function _filter_uri($str)
+    public function filter_uri($str)
     {
         if ($str !== '' && $this->config->item('permitted_uri_chars') != '' && $this->config->item('enable_query_strings') === FALSE)
         {
