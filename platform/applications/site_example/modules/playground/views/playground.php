@@ -17,6 +17,14 @@
                     <h1>The Playground</h1>
                 </div>
 
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-8">
+
                 <h4>Standalone Pages</h4>
 
                 <ul>
@@ -43,6 +51,12 @@
                     <li><a href="<?php echo site_url('playground/online-editor/user-mode'); ?>">Online Editor Test</a></li>
                     <li><a href="<?php echo site_url('playground/email-test'); ?>">Email Test</a></li>
                 </ul>
+
+            </div>
+
+            <div class="col-sm-4">
+
+                  <img src="<?php echo image_path('playground.jpg'); ?>" class="thumbnail img-responsive" />
 
             </div>
 
