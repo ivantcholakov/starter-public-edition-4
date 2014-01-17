@@ -80,7 +80,7 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-    'dsn'    => '',
+    'dsn'      => '',
     'hostname' => 'localhost',
     'username' => '',
     'password' => '',
@@ -95,7 +95,7 @@ $db['default'] = array(
     'dbcollat' => 'utf8_general_ci',
     'swap_pre' => '',
     'autoinit' => TRUE,
-    'encrypt' => FALSE,
+    'encrypt'  => FALSE,
     'compress' => FALSE,
     'stricton' => FALSE,
     'failover' => array()
