@@ -281,48 +281,43 @@ $URI =& load_class('URI', 'core');
  * ------------------------------------------------------
  */
 $RTR =& load_class('Router', 'core');
+
 // Added by Ivan Tcholakov, 01-NOV-2013.
-if (NORMAL_MVC_EXECUTION) {
-    $RTR->_set_routing();
-}
-//
-
-// Added by Ivan Tcholakov, 14-JAN-2014.
-// Set any routing overrides that may exist in the main index file
-if (isset($routing) && is_array($routing))
+if (NORMAL_MVC_EXECUTION)
 {
-    if (isset($routing['directory']))
-    {
-        $RTR->set_directory($routing['directory']);
-    }
 
-    if ( ! empty($routing['controller']))
-    {
-        $RTR->set_class($routing['controller']);
-    }
+    $RTR->_set_routing();
 
-    if (isset($routing['function']))
+    // Added by Ivan Tcholakov, 14-JAN-2014.
+    // Set any routing overrides that may exist in the main index file
+    if (isset($routing) && is_array($routing))
     {
-        $routing['function'] = empty($routing['function']) ? 'index' : $routing['function'];
-        $RTR->set_method($routing['function']);
+        if (isset($routing['directory']))
+        {
+            $RTR->set_directory($routing['directory']);
+        }
+
+        if ( ! empty($routing['controller']))
+        {
+            $RTR->set_class($routing['controller']);
+        }
+
+        if (isset($routing['function']))
+        {
+            $routing['function'] = empty($routing['function']) ? 'index' : $routing['function'];
+            $RTR->set_method($routing['function']);
+        }
     }
+    //
 }
-//
-
-
-// Added by Ivan Tcholakov.
-//--------------------------------------------------------------------------
-
-if (!NORMAL_MVC_EXECUTION) {
+else
+{
     $base_class_name = 'Dummy';
     $class  = $base_class_name.$CFG->config['controller_suffix'];
     $method = 'index';
     $RTR->set_class($base_class_name);
 }
-
-//--------------------------------------------------------------------------
 //
-
 
 /*
  * ------------------------------------------------------
