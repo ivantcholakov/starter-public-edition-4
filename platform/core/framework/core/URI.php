@@ -206,7 +206,7 @@ class CI_URI {
 	 * @param 	string	$str
 	 * @return	void
 	 */
-	protected function _set_uri_string($str)
+	/* protected */ public function _set_uri_string($str)
 	{
 		// Filter out control characters and trim slashes
 		$this->uri_string = trim(remove_invisible_characters($str, FALSE), '/');
@@ -223,7 +223,7 @@ class CI_URI {
 	 * @used-by	CI_URI::_fetch_uri_string()
 	 * @return	string
 	 */
-	protected function _parse_request_uri()
+	/* protected */ public function _parse_request_uri()
 	{
 		if ( ! isset($_SERVER['REQUEST_URI'], $_SERVER['SCRIPT_NAME']))
 		{
@@ -276,7 +276,7 @@ class CI_URI {
 	 *
 	 * @return	string
 	 */
-	protected function _parse_query_string()
+	/* protected */ public function _parse_query_string()
 	{
 		$uri = isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : @getenv('QUERY_STRING');
 
@@ -305,7 +305,7 @@ class CI_URI {
 	 *
 	 * @return	string
 	 */
-	protected function _parse_argv()
+	/* protected */ public function _parse_argv()
 	{
 		$args = array_slice($_SERVER['argv'], 1);
 		return $args ? implode('/', $args) : '';
