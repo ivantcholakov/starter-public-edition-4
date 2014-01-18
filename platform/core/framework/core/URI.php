@@ -87,7 +87,7 @@ class CI_URI {
 	{
 		$this->config =& load_class('Config', 'core');
 
-		if ($this->config->item('enable_query_strings') !== TRUE OR is_cli())
+		if (is_cli() OR $this->config->item('enable_query_strings') !== TRUE)
 		{
 			$this->_permitted_uri_chars = $this->config->item('permitted_uri_chars');
 		}

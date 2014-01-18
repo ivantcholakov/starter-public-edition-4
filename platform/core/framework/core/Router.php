@@ -206,10 +206,10 @@ class CI_Router {
 			$this->routes = $route;
 		}
 
-		// Were there any query string segments? If so, we'll validate them and bail out since we're done.
+		// Is there anything to parse?
 		if (count($segments) > 0)
 		{
-			return $this->_validate_request($segments);
+			$this->_validate_request($segments);
 		}
 
 		// Fetch the complete URI string
@@ -218,13 +218,54 @@ class CI_Router {
 		// Is there a URI string? If not, the default controller specified in the "routes" file will be shown.
 		if ($this->uri->uri_string == '')
 		{
-			return $this->_set_default_controller();
+			$this->_set_default_controller();
 		}
 
 		$this->uri->_remove_url_suffix(); // Remove the URL suffix
 		$this->uri->_explode_segments(); // Compile the segments into an array
 		$this->_parse_routes(); // Parse any custom routing that may exist
 		$this->uri->_reindex_segments(); // Re-index the segment array so that it starts with 1 rather than 0
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Set request route
+	 *
+	 * Takes an array of URI segments as input and sets the class/method
+	 * to be called.
+	 *
+	 * @used-by	CI_Router::_parse_routes()
+	 * @param	array	$segments	URI segments
+	 * @return	void
+	 */
+	protected function _set_request($segments = array())
+	{
+		$segments = $this->_validate_request($segments);
+
+		if (empty($segments))
+		{
+			$this->_set_default_controller();
+			return;
+		}
+
+		if ($this->translate_uri_dashes === TRUE)
+		{
+			$segments[0] = str_replace('-', '_', $segments[0]);
+			if (isset($segments[1]))
+			{
+				$segments[1] = str_replace('-', '_', $segments[1]);
+			}
+		}
+
+		$this->set_class($segments[0]);
+		isset($segments[1]) OR $segments[1] = 'index';
+		$this->set_method($segments[1]);
+
+		// Update our "routed" segment array to contain the segments.
+		// Note: If there is no custom routing, this array will be
+		// identical to $this->uri->segments
+		$this->uri->rsegments = $segments;
 	}
 
 	// --------------------------------------------------------------------
@@ -258,52 +299,13 @@ class CI_Router {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Set request route
-	 *
-	 * Takes an array of URI segments as input and sets the class/method
-	 * to be called.
-	 *
-	 * @used-by	CI_Router::_parse_routes()
-	 * @param	array	$segments	URI segments
-	 * @return	void
-	 */
-	protected function _set_request($segments = array())
-	{
-		$segments = $this->_validate_request($segments);
-
-		if (count($segments) === 0)
-		{
-			return $this->_set_default_controller();
-		}
-
-		if ($this->translate_uri_dashes === TRUE)
-		{
-			$segments[0] = str_replace('-', '_', $segments[0]);
-			if (isset($segments[1]))
-			{
-				$segments[1] = str_replace('-', '_', $segments[1]);
-			}
-		}
-
-		$this->set_class($segments[0]);
-		isset($segments[1]) OR $segments[1] = 'index';
-		$this->set_method($segments[1]);
-
-		// Update our "routed" segment array to contain the segments.
-		// Note: If there is no custom routing, this array will be
-		// identical to $this->uri->segments
-		$this->uri->rsegments = $segments;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
 	 * Validate request
 	 *
 	 * Attempts validate the URI request and determine the controller path.
 	 *
+	 * @used-by	CI_Router::_set_request()
 	 * @param	array	$segments	URI segments
-	 * @return	array	URI segments
+	 * @return	mixed	URI segments
 	 */
 	protected function _validate_request($segments)
 	{
@@ -396,12 +398,14 @@ class CI_Router {
 			// Check default routes format
 			if (is_string($this->routes[$uri]))
 			{
-				return $this->_set_request(explode('/', $this->routes[$uri]));
+				$this->_set_request(explode('/', $this->routes[$uri]));
+				return;
 			}
 			// Is there a matching http verb?
 			elseif (is_array($this->routes[$uri]) && isset($this->routes[$uri][$http_verb]))
 			{
-				return $this->_set_request(explode('/', $this->routes[$uri][$http_verb]));
+				$this->_set_request(explode('/', $this->routes[$uri][$http_verb]));
+				return;
 			}
 		}
 
@@ -471,7 +475,8 @@ class CI_Router {
 					$val = preg_replace('#^'.$key.'$#', $val, $uri);
 				}
 
-				return $this->_set_request(explode('/', $val));
+				$this->_set_request(explode('/', $val));
+				return;
 			}
 		}
 
