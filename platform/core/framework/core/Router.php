@@ -91,6 +91,15 @@ class CI_Router {
 	 */
 	public $translate_uri_dashes = FALSE;
 
+	/**
+	 * Enable query strings flag
+	 *
+	 * Determines wether to use GET parameters or segment URIs
+	 *
+	 * @var	bool
+	 */
+	public $enable_query_strings = FALSE;
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -108,6 +117,8 @@ class CI_Router {
 
 		$this->config =& load_class('Config', 'core');
 		$this->uri =& load_class('URI', 'core');
+
+		$this->enable_query_strings = ( ! is_cli() && $this->config->item('enable_query_strings') === TRUE);
 		// Removed by Ivan Tcholakov, 14-JAN-2014.
 		//$this->_set_routing();
 		//
@@ -252,6 +263,7 @@ class CI_Router {
 	 * Takes an array of URI segments as input and sets the class/method
 	 * to be called.
 	 *
+	 * @used-by	CI_Router::_parse_routes()
 	 * @param	array	$segments	URI segments
 	 * @return	void
 	 */

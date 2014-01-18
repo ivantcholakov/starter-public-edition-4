@@ -51,7 +51,7 @@ class CI_URI {
 	 *
 	 * @var	string
 	 */
-	public $uri_string;
+	public $uri_string = '';
 
 	/**
 	 * List of URI segments
@@ -80,10 +80,6 @@ class CI_URI {
 
 	/**
 	 * Class constructor
-	 *
-	 * Simply globalizes the $RTR object. The front
-	 * loads the Router class early on so it's not available
-	 * normally as other classes are.
 	 *
 	 * @return	void
 	 */
@@ -240,36 +236,10 @@ class CI_URI {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Remove relative directory (../) and multi slashes (///)
-	 *
-	 * Do some final cleaning of the URI and return it, currently only used in self::_parse_request_uri()
-	 *
-	 * @param	string	$url
-	 * @return	string
-	 */
-	protected function _remove_relative_directory($uri)
-	{
-		$uris = array();
-		$tok = strtok($uri, '/');
-		while ($tok !== FALSE)
-		{
-			if (( ! empty($tok) OR $tok === '0') && $tok !== '..')
-			{
-				$uris[] = $tok;
-			}
-			$tok = strtok('/');
-		}
-		return implode('/', $uris);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
 	 * Parse QUERY_STRING
 	 *
 	 * Will parse QUERY_STRING and automatically detect the URI from it.
 	 *
-	 * @used-by	CI_URI::_fetch_uri_string()
 	 * @return	string
 	 */
 	protected function _parse_query_string()
@@ -310,11 +280,36 @@ class CI_URI {
 	// --------------------------------------------------------------------
 
 	/**
+	 * Remove relative directory (../) and multi slashes (///)
+	 *
+	 * Do some final cleaning of the URI and return it, currently only used in self::_parse_request_uri()
+	 *
+	 * @param	string	$url
+	 * @return	string
+	 */
+	protected function _remove_relative_directory($uri)
+	{
+		$uris = array();
+		$tok = strtok($uri, '/');
+		while ($tok !== FALSE)
+		{
+			if (( ! empty($tok) OR $tok === '0') && $tok !== '..')
+			{
+				$uris[] = $tok;
+			}
+			$tok = strtok('/');
+		}
+
+		return implode('/', $uris);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
 	 * Filter URI
 	 *
 	 * Filters segments for malicious characters.
 	 *
-	 * @used-by	CI_Router
 	 * @param	string	$str
 	 * @return	string
 	 */
@@ -714,7 +709,7 @@ class CI_URI {
 	{
 		global $RTR;
 
-		return ltrim($RTR->directory, '/').implode('/', $this->rsegment_array());
+		return ltrim($RTR->directory, '/').implode('/', $this->rsegments);
 	}
 
 }
