@@ -113,7 +113,7 @@ if (!defined('NORMAL_MVC_EXECUTION')) {
  * Do our custom initialization first.
  *---------------------------------------------------------------
  */
-require BOOTSTRAPPATH.'bootstrap.php';
+require_once BOOTSTRAPPATH.'bootstrap.php';
 
 
 // Added here by Ivan Tcholakov.
@@ -122,7 +122,7 @@ require BOOTSTRAPPATH.'bootstrap.php';
  * Load the base controller class definition.
  * --------------------------------------------------------------------
  */
-require BASEPATH.'core/Controller.php';
+require_once BASEPATH.'core/Controller.php';
 //
 
 
@@ -133,17 +133,17 @@ require BASEPATH.'core/Controller.php';
  */
 if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/constants.php'))
 {
-    require APPPATH.'config/'.ENVIRONMENT.'/constants.php';
+    require_once APPPATH.'config/'.ENVIRONMENT.'/constants.php';
 }
 
 if (file_exists(APPPATH.'config/constants.php'))
 {
-    require APPPATH.'config/constants.php';
+    require_once APPPATH.'config/constants.php';
 }
 
 if (file_exists(COMMONPATH.'config/'.ENVIRONMENT.'/constants.php'))
 {
-    require COMMONPATH.'config/'.ENVIRONMENT.'/constants.php';
+    require_once COMMONPATH.'config/'.ENVIRONMENT.'/constants.php';
 }
 
 require COMMONPATH.'config/constants.php';
@@ -155,11 +155,11 @@ require COMMONPATH.'config/constants.php';
  * ------------------------------------------------------
  */
 if (file_exists(APPPATH.'core/Common.php')) {
-    require APPPATH.'core/Common.php';
+    require_once APPPATH.'core/Common.php';
 }
 
 require COMMONPATH.'core/Common.php';
-require BASEPATH.'core/Common.php';
+require_once BASEPATH.'core/Common.php';
 
 
 /*
@@ -172,7 +172,6 @@ register_shutdown_function('_shutdown_handler');
 
 // Kill magic quotes
 is_php('5.4') OR @ini_set('magic_quotes_runtime', 0);
-
 
 /*
  * ------------------------------------------------------
@@ -195,7 +194,6 @@ if ( ! empty($assign_to_config['subclass_prefix']))
     get_config(array('subclass_prefix' => $assign_to_config['subclass_prefix']));
 }
 
-
 /*
  * ------------------------------------------------------
  *  Start the timer... tick tock tick tock...
@@ -204,7 +202,6 @@ if ( ! empty($assign_to_config['subclass_prefix']))
 $BM =& load_class('Benchmark', 'core');
 $BM->mark('total_execution_time_start');
 $BM->mark('loading_time:_base_classes_start');
-
 
 /*
  * ------------------------------------------------------
@@ -235,7 +232,6 @@ if (isset($assign_to_config) && is_array($assign_to_config))
         $CFG->set_item($key, $value);
     }
 }
-
 
 /*
  * ------------------------------------------------------
@@ -351,7 +347,6 @@ if (NORMAL_MVC_EXECUTION
     exit;
 }
 
-
 /*
  * -----------------------------------------------------
  * Load the security class for xss and csrf support
@@ -373,7 +368,6 @@ $IN =& load_class('Input', 'core');
  */
 $LANG =& load_class('Lang', 'core');
 
-
 /*
  * ------------------------------------------------------
  *  Load the app controller and local controller
@@ -382,7 +376,7 @@ $LANG =& load_class('Lang', 'core');
  */
 // Removed by Ivan Tcholakov.
 //// Load the base controller class
-//require BASEPATH.'core/Controller.php';
+//require_once BASEPATH.'core/Controller.php';
 //
 
 
@@ -407,191 +401,221 @@ function &ci()
 //
 
 
-// Many modifications by Ivan Tcholakov.
-//--------------------------------------------------------------------------
-
-if (NORMAL_MVC_EXECUTION) {
-
-    // Modified by Ivan Tcholakov, 25-JUL-2013.
-    $class = ucfirst($RTR->class);
-    //$class  = $RTR->class;
-    //
-
-    // Added by Ivan Tcholakov, 08-OCT-2013.
-    $class_no_suffix = str_replace($CFG->config['controller_suffix'], '', $class);
-    $class_lcfirst = lcfirst($class);
-    $class_lcfirst_no_suffix = str_replace($CFG->config['controller_suffix'], '', $class_lcfirst);
-    $class_include_path = null;
-
-    $app_search_dir = realpath(resolve_path(APPPATH.'controllers/'.$RTR->directory));
-    if ($app_search_dir !== false) {
-        $app_search_dir = rtrim(str_replace('\\', '/', $app_search_dir), '/').'/';
-    }
-
-    $common_search_dir = realpath(resolve_path(COMMONPATH.'controllers/'.$RTR->directory));
-    if ($common_search_dir !== false) {
-        $common_search_dir = rtrim(str_replace('\\', '/', $common_search_dir), '/').'/';
-    }
-    //
-
-    // Load the local application controller
-    // Note: The Router class automatically validates the controller path using the router->_validate_request().
-    // If this include fails it means that the default controller in the Routes.php file is not resolving to something valid.
-    // Modified by Ivan Tcholakov, 28-FEB-2012.
-    //if ( ! file_exists(APPPATH.'controllers/'.$RTR->directory.$RTR->class.'.php'))
-    //{
-    //    show_error('Unable to load your default controller. Please make sure the controller specified in your Routes.php file is valid.');
-    //}
-    //
-    //include(APPPATH.'controllers/'.$RTR->directory.$RTR->class.'.php');
-    //
-    if ($app_search_dir != '' && file_exists($app_search_dir.$class.'.php'))
-    {
-        $class_include_path = $app_search_dir.$class.'.php';
-    }
-    elseif ($app_search_dir != '' && file_exists($app_search_dir.$class_no_suffix.'.php'))
-    {
-        $class = $class_no_suffix;
-        $class_include_path = $app_search_dir.$class.'.php';
-    }
-    elseif ($app_search_dir != '' && file_exists($app_search_dir.$class_lcfirst.'.php'))
-    {
-        $class = $class_lcfirst;
-        $class_include_path = $app_search_dir.$class.'.php';
-    }
-    elseif ($app_search_dir != '' && file_exists($app_search_dir.$class_lcfirst_no_suffix.'.php'))
-    {
-        $class = $class_lcfirst_no_suffix;
-        $class_include_path = $app_search_dir.$class.'.php';
-    }
-    elseif ($common_search_dir != '' && file_exists($common_search_dir.$class.'.php'))
-    {
-        $class_include_path = $common_search_dir.$class.'.php';
-    }
-    elseif ($common_search_dir != '' && file_exists($common_search_dir.$class_no_suffix.'.php'))
-    {
-        $class = $class_no_suffix;
-        $class_include_path = $common_search_dir.$class.'.php';
-    }
-    elseif ($common_search_dir != '' && file_exists($common_search_dir.$class_lcfirst.'.php'))
-    {
-        $class = $class_lcfirst;
-        $class_include_path = $common_search_dir.$class.'.php';
-    }
-    elseif ($common_search_dir != '' && file_exists($common_search_dir.$class_lcfirst_no_suffix.'.php'))
-    {
-        $class = $class_lcfirst_no_suffix;
-        $class_include_path = $common_search_dir.$class.'.php';
-    }
-    else
-    {
-        show_error('Unable to load your default controller. Please make sure the controller specified in your Routes.php file is valid.');
-    }
-
-    require $class_include_path;
-    //
-
-} else {
-
-    require COMMONPATH.'controllers/'.$class.'.php';
-}
-
-//--------------------------------------------------------------------------
-//
-
-
 // Set a mark point for benchmarking
 $BM->mark('loading_time:_base_classes_end');
 
-
+// Many modifications by Ivan Tcholakov.
 //--------------------------------------------------------------------------
 
-if (NORMAL_MVC_EXECUTION) {
+function _find_controller_file($class, $directory, & $found_class, & $found_path) {
+
+    global $CFG;
+    $suffix_pattern = '/'.preg_quote($CFG->config['controller_suffix'], '/').'$/';
+
+    $search_dir = realpath(resolve_path(APPPATH.'controllers/'.$directory));
+
+    if ($search_dir !== false) {
+
+        $search_dir = rtrim(str_replace('\\', '/', $search_dir), '/').'/';
+
+        $found_class = ucfirst($class);
+
+        if (file_exists($search_dir.$found_class.'.php')) {
+
+            $found_path = $search_dir.$found_class.'.php';
+            return true;
+        }
+
+        $found_class = preg_replace($suffix_pattern, '', $found_class);
+
+        if (file_exists($search_dir.$found_class.'.php')) {
+
+            $found_path = $search_dir.$found_class.'.php';
+            return true;
+        }
+
+        $found_class = lcfirst($class);
+
+        if (file_exists($search_dir.$found_class.'.php')) {
+
+            $found_path = $search_dir.$found_class.'.php';
+            return true;
+        }
+
+        $found_class = preg_replace($suffix_pattern, '', $found_class);
+
+        if (file_exists($search_dir.$found_class.'.php')) {
+
+            $found_path = $search_dir.$found_class.'.php';
+            return true;
+        }
+    }
+
+    $search_dir = realpath(resolve_path(COMMONPATH.'controllers/'.$directory));
+
+    if ($search_dir !== false) {
+
+        $search_dir = rtrim(str_replace('\\', '/', $search_dir), '/').'/';
+
+        $found_class = ucfirst($class);
+
+        if (file_exists($search_dir.$found_class.'.php')) {
+
+            $found_path = $search_dir.$found_class.'.php';
+            return true;
+        }
+
+        $found_class = preg_replace($suffix_pattern, '', $found_class);
+
+        if (file_exists($search_dir.$found_class.'.php')) {
+
+            $found_path = $search_dir.$found_class.'.php';
+            return true;
+        }
+
+        $found_class = lcfirst($class);
+
+        if (file_exists($search_dir.$found_class.'.php')) {
+
+            $found_path = $search_dir.$found_class.'.php';
+            return true;
+        }
+
+        $found_class = preg_replace($suffix_pattern, '', $found_class);
+
+        if (file_exists($search_dir.$found_class.'.php')) {
+
+            $found_path = $search_dir.$found_class.'.php';
+            return true;
+        }
+    }
+
+    $found_class = $class;
+    $found_path = '';
+
+    return false;
+}
 
 /*
  * ------------------------------------------------------
- *  Security check
+ *  Sanity checks
  * ------------------------------------------------------
  *
- *  None of the methods in the app controller or the
- *  loader class can be called via the URI, nor can
+ *  The Router class has already validated the request,
+ *  leaving us with 3 options here:
+ *
+ *    1) an empty class name, if we reached the default
+ *       controller, but it didn't exist;
+ *    2) a query string which doesn't go through a
+ *       file_exists() check
+ *    3) a regular request for a non-existing page
+ *
+ *  We handle all of these as a 404 error.
+ *
+ *  Furthermore, none of the methods in the app controller
+ *  or the loader class can be called via the URI, nor can
  *  controller methods that begin with an underscore.
  */
+if (NORMAL_MVC_EXECUTION) {
+
+    $e404 = FALSE;
+    $class = ucfirst($RTR->class);
     $method = $RTR->method;
 
-    if ( ! class_exists($class, FALSE) OR $method[0] === '_' OR method_exists('CI_Controller', $method))
+    if (empty($class) OR ! _find_controller_file($class, $RTR->directory, $found_class, $found_path))
     {
-        if ( ! empty($RTR->routes['404_override']))
-        {
-            if (sscanf($RTR->routes['404_override'], '%[^/]/%s', $class, $method) !== 2)
-            {
-                $method = 'index';
-            }
-
-            // Removed by Ivan Tcholakov, 25-JUL-2013.
-            //$class = ucfirst($class);
-            //
-
-            if ( ! class_exists($class, FALSE))
-            {
-                if ( ! file_exists(APPPATH.'controllers/'.$class.'.php'))
-                {
-                    show_404($class.'/'.$method);
-                }
-
-                include_once(APPPATH.'controllers/'.$class.'.php');
-            }
-        }
-        else
-        {
-            show_404($class.'/'.$method);
-        }
-    }
-
-    if (method_exists($class, '_remap'))
-    {
-        $params = array($method, array_slice($URI->rsegments, 2));
-        $method = '_remap';
+        $e404 = TRUE;
     }
     else
     {
+        $class = $found_class;
+        require_once $found_path;
+
+        if ( ! class_exists($class, FALSE) OR $method[0] === '_' OR method_exists('CI_Controller', $method))
+        {
+            $e404 = TRUE;
+        }
+        elseif (method_exists($class, '_remap'))
+        {
+            $params = array($method, array_slice($URI->rsegments, 2));
+            $method = '_remap';
+        }
         // WARNING: It appears that there are issues with is_callable() even in PHP 5.2!
         // Furthermore, there are bug reports and feature/change requests related to it
         // that make it unreliable to use in this context. Please, DO NOT change this
         // work-around until a better alternative is available.
-        if ( ! in_array(strtolower($method), array_map('strtolower', get_class_methods($class)), TRUE))
+        elseif ( ! in_array(strtolower($method), array_map('strtolower', get_class_methods($class)), TRUE))
         {
-            if (empty($RTR->routes['404_override']))
+            $e404 = TRUE;
+        }
+    }
+
+    if ($e404)
+    {
+        if ( ! empty($RTR->routes['404_override']))
+        {
+            if (sscanf($RTR->routes['404_override'], '%[^/]/%s', $error_class, $error_method) !== 2)
             {
-                show_404($class.'/'.$method);
-            }
-            elseif (sscanf($RTR->routes['404_override'], '%[^/]/%s', $class, $method) !== 2)
-            {
-                $method = 'index';
+                $error_method = 'index';
             }
 
-            // Removed by Ivan Tcholakov, 25-JUL-2013.
-            //$class = ucfirst($class);
-            //
+            $error_class = ucfirst($error_class);
 
-            if ( ! class_exists($class, FALSE))
+            if ( ! class_exists($error_class, FALSE))
             {
-                if ( ! file_exists(APPPATH.'controllers/'.$class.'.php'))
+                if (_find_controller_file($error_class, $RTR->directory, $found_class, $found_path))
                 {
-                    show_404($class.'/'.$method);
+                    $error_class = $found_class;
+                    require_once $found_path;
+                    $e404 = ! class_exists($error_class, FALSE);
                 }
-
-                include_once(APPPATH.'controllers/'.$class.'.php');
+                // Were we in a directory? If so, check for a global override
+                elseif ( ! empty($RTR->directory) && _find_controller_file($error_class, '', $found_class, $found_path))
+                {
+                    $error_class = $found_class;
+                    require_once $found_path;
+                    if (($e404 = ! class_exists($error_class, FALSE)) === FALSE)
+                    {
+                        $RTR->directory = '';
+                    }
+                }
+            }
+            else
+            {
+                $e404 = FALSE;
             }
         }
 
+        // Did we reset the $e404 flag? If so, set the rsegments, starting from index 1
+        if ( ! $e404)
+        {
+            $class = $error_class;
+            $method = $error_method;
+
+            $URI->rsegments = array(
+                1 => $class,
+                2 => $method
+            );
+        }
+        else
+        {
+            show_404($RTR->directory.$class.'/'.$method);
+        }
+    }
+
+    if ($method !== '_remap')
+    {
         $params = array_slice($URI->rsegments, 2);
     }
+
+} else {
+
+    require COMMONPATH.'controllers/'.$class.'.php';
 
 }
 
 //--------------------------------------------------------------------------
-
+//
 
 /*
  * ------------------------------------------------------
@@ -605,7 +629,6 @@ $EXT->call_hook('pre_controller');
  *  Instantiate the requested controller
  * ------------------------------------------------------
  */
-
 // Mark a start point so we can benchmark the controller
 $BM->mark('controller_execution_time_( '.$class.' / '.$method.' )_start');
 
