@@ -221,10 +221,38 @@ class CI_Router {
 			$this->_set_default_controller();
 		}
 
-		$this->uri->_remove_url_suffix(); // Remove the URL suffix
-		$this->uri->_explode_segments(); // Compile the segments into an array
+		// Remove the URL suffix
+		$suffix = (string) $this->uri->config->item('url_suffix');
+
+		if ($suffix !== '')
+		{
+			$slen = strlen($suffix);
+
+			if (substr($this->uri->uri_string, -$slen) === $suffix)
+			{
+				$this->uri->uri_string = substr($this->uri->uri_string, 0, -$slen);
+			}
+		}
+
+		// Compile the segments into an array
+		foreach (explode('/', preg_replace('|/*(.+?)/*$|', '\\1', $this->uri->uri_string)) as $val)
+		{
+			// Filter segments for security
+			$val = trim($this->uri->filter_uri($val));
+
+			if ($val !== '')
+			{
+				$this->uri->segments[] = $val;
+			}
+		}
+
 		$this->_parse_routes(); // Parse any custom routing that may exist
-		$this->uri->_reindex_segments(); // Re-index the segment array so that it starts with 1 rather than 0
+
+		// Re-index the segment array so that it starts with 1 rather than 0
+		array_unshift($this->uri->segments, NULL);
+		array_unshift($this->uri->rsegments, NULL);
+		unset($this->uri->segments[0]);
+		unset($this->uri->rsegments[0]);
 	}
 
 	// --------------------------------------------------------------------
@@ -290,8 +318,11 @@ class CI_Router {
 
 		$this->_set_request(array($class, $method));
 
-		// re-index the routed segments array so it starts with 1 rather than 0
-		$this->uri->_reindex_segments();
+		// Re-index the routed segments array so it starts with 1 rather than 0
+		array_unshift($this->uri->segments, NULL);
+		array_unshift($this->uri->rsegments, NULL);
+		unset($this->uri->segments[0]);
+		unset($this->uri->rsegments[0]);
 
 		log_message('debug', 'No URI present. Default controller set.');
 	}

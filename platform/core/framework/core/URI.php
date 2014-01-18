@@ -87,6 +87,8 @@ class CI_URI {
 	{
 		$this->config =& load_class('Config', 'core');
 
+		// If query strings are enabled, we don't need to parse any segments.
+		// However, they don't make sense under CLI.
 		if (is_cli() OR $this->config->item('enable_query_strings') !== TRUE)
 		{
 			$this->_permitted_uri_chars = $this->config->item('permitted_uri_chars');
@@ -326,79 +328,6 @@ class CI_URI {
 			array('&#36;', '&#40;', '&#41;', '&#40;', '&#41;'),	// Good
 			$str
 		);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Remove URL suffix
-	 *
-	 * Removes the suffix from the URL if needed.
-	 *
-	 * @used-by	CI_Router
-	 * @return	void
-	 */
-	public function _remove_url_suffix()
-	{
-		$suffix = (string) $this->config->item('url_suffix');
-
-		if ($suffix === '')
-		{
-			return;
-		}
-
-		$slen = strlen($suffix);
-
-		if (substr($this->uri_string, -$slen) === $suffix)
-		{
-			$this->uri_string = substr($this->uri_string, 0, -$slen);
-		}
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Explode URI segments
-	 *
-	 * The individual segments will be stored in the $this->segments array.
-	 *
-	 * @see		CI_URI::$segments
-	 * @used-by	CI_Router
-	 * @return	void
-	 */
-	public function _explode_segments()
-	{
-		foreach (explode('/', preg_replace('|/*(.+?)/*$|', '\\1', $this->uri_string)) as $val)
-		{
-			// Filter segments for security
-			$val = trim($this->filter_uri($val));
-
-			if ($val !== '')
-			{
-				$this->segments[] = $val;
-			}
-		}
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Re-index Segments
-	 *
-	 * Re-indexes the CI_URI::$segment array so that it starts at 1 rather
-	 * than 0. Doing so makes it simpler to use methods like
-	 * CI_URI::segment(n) since there is a 1:1 relationship between the
-	 * segment array and the actual segments.
-	 *
-	 * @used-by	CI_Router
-	 * @return	void
-	 */
-	public function _reindex_segments()
-	{
-		array_unshift($this->segments, NULL);
-		array_unshift($this->rsegments, NULL);
-		unset($this->segments[0]);
-		unset($this->rsegments[0]);
 	}
 
 	// --------------------------------------------------------------------
