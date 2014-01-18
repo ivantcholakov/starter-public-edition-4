@@ -165,25 +165,39 @@ class CI_Router {
 		// since URI segments are more search-engine friendly, but they can optionally be used.
 		// If this feature is enabled, we will gather the directory/class/method a little differently
 		$segments = array();
-		if ($this->config->item('enable_query_strings') === TRUE
-			&& ! empty($_GET[$this->config->item('controller_trigger')])
-			&& is_string($_GET[$this->config->item('controller_trigger')])
-		)
+		if ($this->enable_query_strings)
 		{
-			if (isset($_GET[$this->config->item('directory_trigger')]) && is_string($_GET[$this->config->item('directory_trigger')]))
+			$_d = $this->config->item('directory_trigger');
+			$_d = isset($_GET[$_d]) ? trim($_GET[$_d], " \t\n\r\0\x0B/") : '';
+			if ($_d !== '')
 			{
-				$this->set_directory(trim($this->uri->filter_uri($_GET[$this->config->item('directory_trigger')])));
-				$segments[] = $this->directory;
+				$this->set_directory($this->uri->filter_uri($_d));
 			}
 
-			$this->set_class(trim($this->uri->filter_uri($_GET[$this->config->item('controller_trigger')])));
-			$segments[] = $this->class;
-
-			if ( ! empty($_GET[$this->config->item('function_trigger')]) && is_string($_GET[$this->config->item('function_trigger')]))
+			$_c = $this->config->item('controller_trigger');
+			if ( ! empty($_GET[$_c]))
 			{
-				$this->set_method(trim($this->uri->filter_uri($_GET[$this->config->item('function_trigger')])));
-				$segments[] = $this->method;
+				$this->set_class(trim($this->uri->filter_uri(trim($_GET[$_c]))));
+
+				$_f = $this->config->item('function_trigger');
+				if ( ! empty($_GET[$_f]))
+				{
+					$this->set_method(trim($this->uri->filter_uri($_GET[$_f])));
+				}
+
+				$this->uri->rsegments = array(
+					1 => $this->class,
+					2 => $this->method
+				);
 			}
+			else
+			{
+				$this->_set_default_controller();
+			}
+
+			// Routing rules don't apply to query strings and we don't need to detect
+			// directories, so we're done here
+			return;
 		}
 
 		// Load the routes.php file.
