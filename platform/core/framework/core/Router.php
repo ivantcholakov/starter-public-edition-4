@@ -344,8 +344,10 @@ class CI_Router {
 		}
 
 		$this->set_class($segments[0]);
-		isset($segments[1]) OR $segments[1] = 'index';
-		$this->set_method($segments[1]);
+		if (isset($segments[1]))
+		{
+			$this->set_method($segments[1]);
+		}
 
 		// Update our "routed" segment array to contain the segments.
 		// Note: If there is no custom routing, this array will be
