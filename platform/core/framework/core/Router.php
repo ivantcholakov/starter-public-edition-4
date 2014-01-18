@@ -213,7 +213,63 @@ class CI_Router {
 		}
 
 		// Fetch the complete URI string
-		$this->uri->_fetch_uri_string();
+
+		$protocol = strtoupper($this->uri->config->item('uri_protocol'));
+
+		if ($protocol === 'AUTO')
+		{
+			// Is the request coming from the command line?
+			if (is_cli())
+			{
+				$this->uri->_set_uri_string($this->uri->_parse_argv());
+			}
+
+			// Is there a PATH_INFO variable? This should be the easiest solution.
+			elseif (isset($_SERVER['PATH_INFO']))
+			{
+				$this->uri->_set_uri_string($_SERVER['PATH_INFO']);
+			}
+
+			// Let's try REQUEST_URI then, this will work in most situations
+			elseif (($uri = $this->uri->_parse_request_uri()) !== '')
+			{
+				$this->uri->_set_uri_string($uri);
+			}
+
+			// No REQUEST_URI either?... What about QUERY_STRING?
+			elseif (($uri = $this->uri->_parse_query_string()) !== '')
+			{
+				$this->uri->_set_uri_string($uri);
+			}
+
+			// As a last ditch effort let's try using the $_GET array
+			elseif (is_array($_GET) && count($_GET) === 1 && trim(key($_GET), '/') !== '')
+			{
+				$this->uri->_set_uri_string(key($_GET));
+			}
+
+			else
+			{
+				// We've exhausted all our options...
+				$this->uri->uri_string = '';
+			}
+		}
+
+		elseif ($protocol === 'CLI')
+		{
+			$this->uri->_set_uri_string($this->uri->_parse_argv());
+		}
+
+		elseif (method_exists($this, ($method = '_parse_'.strtolower($protocol))))
+		{
+			$this->uri->_set_uri_string($this->uri->$method());
+		}
+
+		else
+		{
+			$uri = isset($_SERVER[$protocol]) ? $_SERVER[$protocol] : @getenv($protocol);
+			$this->uri->_set_uri_string($uri);
+		}
 
 		// Is there a URI string? If not, the default controller specified in the "routes" file will be shown.
 		if ($this->uri->uri_string == '')

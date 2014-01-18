@@ -133,74 +133,6 @@ class CI_URI {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Fetch URI String
-	 *
-	 * @used-by	CI_Router
-	 * @return	void
-	 */
-	public function _fetch_uri_string()
-	{
-		$protocol = strtoupper($this->config->item('uri_protocol'));
-
-		if ($protocol === 'AUTO')
-		{
-			// Is the request coming from the command line?
-			if (is_cli())
-			{
-				$this->_set_uri_string($this->_parse_argv());
-			}
-
-			// Is there a PATH_INFO variable? This should be the easiest solution.
-			elseif (isset($_SERVER['PATH_INFO']))
-			{
-				$this->_set_uri_string($_SERVER['PATH_INFO']);
-			}
-
-			// Let's try REQUEST_URI then, this will work in most situations
-			elseif (($uri = $this->_parse_request_uri()) !== '')
-			{
-				$this->_set_uri_string($uri);
-			}
-
-			// No REQUEST_URI either?... What about QUERY_STRING?
-			elseif (($uri = $this->_parse_query_string()) !== '')
-			{
-				$this->_set_uri_string($uri);
-			}
-
-			// As a last ditch effort let's try using the $_GET array
-			elseif (is_array($_GET) && count($_GET) === 1 && trim(key($_GET), '/') !== '')
-			{
-				$this->_set_uri_string(key($_GET));
-			}
-
-			else
-			{
-				// We've exhausted all our options...
-				$this->uri_string = '';
-			}
-		}
-
-		elseif ($protocol === 'CLI')
-		{
-			$this->_set_uri_string($this->_parse_argv());
-		}
-
-		elseif (method_exists($this, ($method = '_parse_'.strtolower($protocol))))
-		{
-			$this->_set_uri_string($this->$method());
-		}
-
-		else
-		{
-			$uri = isset($_SERVER[$protocol]) ? $_SERVER[$protocol] : @getenv($protocol);
-			$this->_set_uri_string($uri);
-		}
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
 	 * Set URI String
 	 *
 	 * @param 	string	$str
@@ -220,7 +152,6 @@ class CI_URI {
 	 * Will parse REQUEST_URI and automatically detect the URI from it,
 	 * while fixing the query string if necessary.
 	 *
-	 * @used-by	CI_URI::_fetch_uri_string()
 	 * @return	string
 	 */
 	/* protected */ public function _parse_request_uri()
