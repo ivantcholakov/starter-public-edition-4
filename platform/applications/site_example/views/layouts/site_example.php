@@ -23,6 +23,15 @@ echo css('site_example.css');
 file_partial('css');
 template_partial('css');
 
+echo js('lib/phpjs/echo.js');
+echo js('lib/phpjs/var_dump.js');
+echo js('lib/phpjs/trim.js');
+echo js('lib/phpjs/htmlspecialchars.js');
+echo js('lib/phpjs/htmlspecialchars_decode.js');
+echo js('lib/phpjs/number_format.js');
+echo js('lib/phpjs/floatval.js');
+echo js('lib/phpjs/round.js');
+
 echo js_platform();
 echo js_selectivizr();
 echo js_modernizr();
