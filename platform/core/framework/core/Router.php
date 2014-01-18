@@ -363,9 +363,8 @@ class CI_Router {
 			$this->set_method($segments[1]);
 		}
 
-		// Update our "routed" segment array to contain the segments.
-		// Note: If there is no custom routing, this array will be
-		// identical to $this->uri->segments
+		array_unshift($segments, NULL);
+		unset($segments[0]);
 		$this->uri->rsegments = $segments;
 	}
 
