@@ -148,55 +148,54 @@ class CI_URI {
 			if (is_cli())
 			{
 				$this->_set_uri_string($this->_parse_argv());
-				return;
 			}
 
 			// Is there a PATH_INFO variable? This should be the easiest solution.
-			if (isset($_SERVER['PATH_INFO']))
+			elseif (isset($_SERVER['PATH_INFO']))
 			{
 				$this->_set_uri_string($_SERVER['PATH_INFO']);
-				return;
 			}
 
 			// Let's try REQUEST_URI then, this will work in most situations
-			if (($uri = $this->_parse_request_uri()) !== '')
+			elseif (($uri = $this->_parse_request_uri()) !== '')
 			{
 				$this->_set_uri_string($uri);
-				return;
 			}
 
 			// No REQUEST_URI either?... What about QUERY_STRING?
-			if (($uri = $this->_parse_query_string()) !== '')
+			elseif (($uri = $this->_parse_query_string()) !== '')
 			{
 				$this->_set_uri_string($uri);
-				return;
 			}
 
 			// As a last ditch effort let's try using the $_GET array
-			if (is_array($_GET) && count($_GET) === 1 && trim(key($_GET), '/') !== '')
+			elseif (is_array($_GET) && count($_GET) === 1 && trim(key($_GET), '/') !== '')
 			{
 				$this->_set_uri_string(key($_GET));
-				return;
 			}
 
-			// We've exhausted all our options...
-			$this->uri_string = '';
-			return;
+			else
+			{
+				// We've exhausted all our options...
+				$this->uri_string = '';
+			}
 		}
 
-		if ($protocol === 'CLI')
+		elseif ($protocol === 'CLI')
 		{
 			$this->_set_uri_string($this->_parse_argv());
-			return;
 		}
+
 		elseif (method_exists($this, ($method = '_parse_'.strtolower($protocol))))
 		{
 			$this->_set_uri_string($this->$method());
-			return;
 		}
 
-		$uri = isset($_SERVER[$protocol]) ? $_SERVER[$protocol] : @getenv($protocol);
-		$this->_set_uri_string($uri);
+		else
+		{
+			$uri = isset($_SERVER[$protocol]) ? $_SERVER[$protocol] : @getenv($protocol);
+			$this->_set_uri_string($uri);
+		}
 	}
 
 	// --------------------------------------------------------------------
