@@ -340,69 +340,25 @@ class CI_Router {
 	 */
 	protected function _validate_request($segments)
 	{
-		if (count($segments) === 0)
+		$c = count($segments);
+		// Loop through our segments and return as soon as a controller
+		// is found or when such a directory doesn't exist
+		while ($c-- > 0)
 		{
-			return $segments;
-		}
+			$test = $this->directory
+				.ucfirst($this->translate_uri_dashes === TRUE ? str_replace('-', '_', $segments[0]) : $segments[0]);
 
-		$test = ucfirst($this->translate_uri_dashes === TRUE ? str_replace('-', '_', $segments[0]) : $segments[0]);
-
-		// Does the requested controller exist in the root folder?
-		if (file_exists(APPPATH.'controllers/'.$test.'.php'))
-		{
-			return $segments;
-		}
-
-		// Is the controller in a sub-folder?
-		if (is_dir(APPPATH.'controllers/'.$segments[0]))
-		{
-			// Set the directory and remove it from the segment array
-			$this->set_directory(array_shift($segments));
-			if (count($segments) > 0)
+			if ( ! file_exists(APPPATH.'controllers/'.$test.'.php') && is_dir(APPPATH.'controllers/'.$this->directory.$segments[0]))
 			{
-				$test = ucfirst($this->translate_uri_dashes === TRUE ? str_replace('-', '_', $segments[0]) : $segments[0]);
-
-				// Does the requested controller exist in the sub-directory?
-				if ( ! file_exists(APPPATH.'controllers/'.$this->directory.$test.'.php'))
-				{
-					if ( ! empty($this->routes['404_override']))
-					{
-						$this->directory = '';
-						return explode('/', $this->routes['404_override'], 2);
-					}
-					else
-					{
-						show_404($this->directory.$segments[0]);
-					}
-				}
-			}
-			else
-			{
-				// Is the method being specified in the route?
-				$segments = explode('/', $this->default_controller);
-				if ( ! file_exists(APPPATH.'controllers/'.$this->directory.ucfirst($segments[0]).'.php'))
-				{
-					$this->directory = '';
-				}
+				$this->set_directory(array_shift($segments), TRUE);
+				continue;
 			}
 
 			return $segments;
 		}
 
-		// If we've gotten this far it means that the URI does not correlate to a valid
-		// controller class. We will now see if there is an override
-		if ( ! empty($this->routes['404_override']))
-		{
-			if (sscanf($this->routes['404_override'], '%[^/]/%s', $class, $method) !== 2)
-			{
-				$method = 'index';
-			}
-
-			return array($class, $method);
-		}
-
-		// Nothing else to do at this point but show a 404
-		show_404($segments[0]);
+		// This means that all segments were actually directories
+		return $segments;
 	}
 
 	// --------------------------------------------------------------------
@@ -574,11 +530,19 @@ class CI_Router {
 	 * Set directory name
 	 *
 	 * @param	string	$dir	Directory name
+	 * @param	bool	$appent	Whether we're appending rather then setting the full value
 	 * @return	void
 	 */
-	public function set_directory($dir)
+	public function set_directory($dir, $append = FALSE)
 	{
-		$this->directory = str_replace(array('/', '.'), '', $dir).'/';
+		if ($append !== TRUE OR empty($this->directory))
+		{
+			$this->directory = str_replace('.', '', trim($dir, '/')).'/';
+		}
+		else
+		{
+			$this->directory .= str_replace('.', '', trim($dir, '/')).'/';
+		}
 	}
 
 	// --------------------------------------------------------------------
