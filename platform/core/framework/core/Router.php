@@ -390,11 +390,11 @@ class CI_Router {
 
 		$this->_set_request(array($class, $method));
 
-		// Re-index the routed segments array so it starts with 1 rather than 0
-		array_unshift($this->uri->segments, NULL);
-		array_unshift($this->uri->rsegments, NULL);
-		unset($this->uri->segments[0]);
-		unset($this->uri->rsegments[0]);
+		// Assign routed segments, index starting from 1
+		$this->uri->rsegments = array(
+			1 => $class,
+			2 => $method
+		);
 
 		log_message('debug', 'No URI present. Default controller set.');
 	}
