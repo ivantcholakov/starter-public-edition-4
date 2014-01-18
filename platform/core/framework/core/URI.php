@@ -92,6 +92,39 @@ class CI_URI {
 		if (is_cli() OR $this->config->item('enable_query_strings') !== TRUE)
 		{
 			$this->_permitted_uri_chars = $this->config->item('permitted_uri_chars');
+
+			// If it's a CLI request, ignore the configuration
+			if (is_cli() OR ($protocol = strtoupper($this->config->item('uri_protocol')) === 'CLI'))
+			{
+				$this->_set_uri_string($this->_parse_argv());
+			}
+			elseif ($protocol === 'AUTO')
+			{
+				// Is there a PATH_INFO variable? This should be the easiest solution.
+				if (isset($_SERVER['PATH_INFO']))
+				{
+					$this->_set_uri_string($_SERVER['PATH_INFO']);
+				}
+				// No PATH_INFO? Let's try REQUST_URI or QUERY_STRING then
+				elseif (($uri = $this->_parse_request_uri()) !== '' OR ($uri = $this->_parse_query_string()) !== '')
+				{
+					$this->_set_uri_string($uri);
+				}
+				// As a last ditch effor, let's try using the $_GET array
+				elseif (is_array($_GET) && count($_GET) === 1 && trim(key($_GET), '/') !== '')
+				{
+					$this->_set_uri_string(key($_GET));
+				}
+			}
+			elseif (method_exists($this, ($method = '_parse_'.strtolower($protocol))))
+			{
+				$this->_set_uri_string($this->$method());
+			}
+			else
+			{
+				$uri = isset($_SERVER[$protocol]) ? $_SERVER[$protocol] : @getenv($protocol);
+				$this->_set_uri_string($uri);
+			}
 		}
 
 		log_message('debug', 'URI Class Initialized');
