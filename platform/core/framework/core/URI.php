@@ -142,6 +142,35 @@ class CI_URI {
 	{
 		// Filter out control characters and trim slashes
 		$this->uri_string = trim(remove_invisible_characters($str, FALSE), '/');
+
+		// Removed by Ivan Tcholakov, 19-JAN-2014.
+		// TODO: This is for supporting HMVC library, resolve at first chance.
+		//if ($this->uri_string !== '')
+		//{
+		//	// Remove the URL suffix, if present
+		//	if (($suffix = (string) $this->config->item('url_suffix')) !== '')
+		//	{
+		//		$slen = strlen($suffix);
+		//
+		//		if (substr($this->uri_string, -$slen) === $suffix)
+		//		{
+		//			$this->uri_string = substr($this->uri_string, 0, -$slen);
+		//		}
+		//	}
+		//
+		//	// Populate the segments array
+		//	foreach (explode('/', preg_replace('|/*(.+?)/*$|', '\\1', $this->uri_string)) as $val)
+		//	{
+		//		// Filter segments for security
+		//		$val = trim($this->filter_uri($val));
+		//
+		//		if ($val !== '')
+		//		{
+		//			$this->segments[] = $val;
+		//		}
+		//	}
+		//}
+		//
 	}
 
 	// --------------------------------------------------------------------

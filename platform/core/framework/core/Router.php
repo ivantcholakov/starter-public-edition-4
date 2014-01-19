@@ -164,7 +164,10 @@ class CI_Router {
 		// Are query strings enabled in the config file? Normally CI doesn't utilize query strings
 		// since URI segments are more search-engine friendly, but they can optionally be used.
 		// If this feature is enabled, we will gather the directory/class/method a little differently
+		// Added by Ivan Tcholakov, 19-JAN-2014.
+		// TODO: This is for supporting HMVC library, remove at first chance.
 		$segments = array();
+		//
 		if ($this->enable_query_strings)
 		{
 			$_d = $this->config->item('directory_trigger');
@@ -221,6 +224,16 @@ class CI_Router {
 		}
 
 		// Is there anything to parse?
+		// Modified by Ivan Tcholakov, 19-JAN-2014.
+		// TODO: This is for supporting HMVC library, resolve at first chance.
+		//if ($this->uri->uri_string !== '')
+		//{
+		//	$this->_parse_routes();
+		//}
+		//else
+		//{
+		//	$this->_set_default_controller();
+		//}
 		if (count($segments) > 0)
 		{
 			$this->_validate_request($segments);
@@ -323,6 +336,7 @@ class CI_Router {
 		array_unshift($this->uri->rsegments, NULL);
 		unset($this->uri->segments[0]);
 		unset($this->uri->rsegments[0]);
+		//
 	}
 
 	// --------------------------------------------------------------------
@@ -388,7 +402,18 @@ class CI_Router {
 			$method = 'index';
 		}
 
+		// Modified by Ivan Tcholakov, 19-JAN-2014.
+		// TODO: This is for supporting HMVC library, resolve at first chance.
+		//if ( ! file_exists(APPPATH.'controllers/'.$this->directory.ucfirst($class).'.php'))
+		//{
+		//	// This will trigger 404 later
+		//	return;
+		//}
+		//
+		//$this->set_class($class);
+		//$this->set_method($method);
 		$this->_set_request(array($class, $method));
+		//
 
 		// Assign routed segments, index starting from 1
 		$this->uri->rsegments = array(
