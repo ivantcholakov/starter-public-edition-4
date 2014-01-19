@@ -59,7 +59,7 @@ class Less_Tree_Call extends Less_Tree{
 		}
 
 
-		if( is_callable( array('Less_Functions',$name) ) ){ // 1.
+		if( method_exists('Less_Functions',$name) ){ // 1.
 			try {
 				$func = new Less_Functions($env, $this->currentFileInfo);
 				$result = call_user_func_array( array($func,$name),$args);
@@ -68,7 +68,7 @@ class Less_Tree_Call extends Less_Tree{
 				}
 
 			} catch (Exception $e) {
-				throw Less_Exception_Compiler('error evaluating function `' . $this->name . '` '.$e->getMessage().' index: '. $this->index);
+				throw new Less_Exception_Compiler('error evaluating function `' . $this->name . '` '.$e->getMessage().' index: '. $this->index);
 			}
 
 		}

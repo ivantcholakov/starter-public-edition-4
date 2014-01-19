@@ -151,7 +151,6 @@ class Less_Colors {
 			'teal'=>'#008080',
 			'thistle'=>'#d8bfd8',
 			'tomato'=>'#ff6347',
-			//'transparent'=>'rgba(0,0,0,0)',
 			'turquoise'=>'#40e0d0',
 			'violet'=>'#ee82ee',
 			'wheat'=>'#f5deb3',

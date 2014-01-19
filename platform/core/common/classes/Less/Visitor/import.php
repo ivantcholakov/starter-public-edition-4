@@ -1,19 +1,14 @@
 <?php
 
-if (!class_exists('Less_visitor', false)) {
-    include dirname(__FILE__).'/visitor.php';
-}
-
-
-class Less_importVisitor{
+/*
+class Less_Visitor_import extends Less_VisitorReplacing{
 
 	public $_visitor;
 	public $_importer;
-	public $isReplacing = true;
 	public $importCount;
 
 	function __construct( $importer = null, $evalEnv = null ){
-		$this->_visitor = new Less_visitor($this);
+		$this->_visitor = new Less_Visitor($this);
 		$this->_importer = $importer;
 		if( $evalEnv ){
 			$this->env = $evalEnv;
@@ -26,7 +21,7 @@ class Less_importVisitor{
 
 	function run( $root ){
 		// process the contents
-		$this->_visitor->visit($root);
+		$this->_visitor->visitObj($root);
 
 		$this->isFinished = true;
 
@@ -97,3 +92,4 @@ class Less_importVisitor{
 	}
 
 }
+*/

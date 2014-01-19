@@ -136,13 +136,21 @@ class Less_Tree_Import extends Less_Tree{
 
 		//get path & uri
 		$evald_path = $evald->getPath();
-		if( $evald_path && Less_Environment::isPathRelative($evald_path) ){
+		if( $evald_path ){
 			foreach(Less_Parser::$import_dirs as $rootpath => $rooturi){
-				$temp = $rootpath.$evald_path;
-				if( file_exists($temp) ){
-					$full_path = Less_Environment::normalizePath($temp);
-					$uri = Less_Environment::normalizePath(dirname($rooturi.$evald_path));
-					break;
+				if( is_callable($rooturi) ){
+					list($path, $uri) = call_user_func($rooturi, $evald_path);
+					if( null !== $path ){
+						$full_path = $path;
+						break;
+					}
+				}else{
+					$path = $rootpath.$evald_path;
+					if( file_exists($path) ){
+						$full_path = Less_Environment::normalizePath($path);
+						$uri = Less_Environment::normalizePath(dirname($rooturi.$evald_path));
+						break;
+					}
 				}
 			}
 		}

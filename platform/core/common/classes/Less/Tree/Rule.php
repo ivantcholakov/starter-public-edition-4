@@ -37,7 +37,7 @@ class Less_Tree_Rule extends Less_Tree{
 		}catch( Exception $e ){
 			$e->index = $this->index;
 			$e->filename = $this->currentFileInfo['filename'];
-			throw e;
+			throw $e;
 		}
 		self::OutputAdd( $strs, $this->important . (($this->inline || ($env->lastRule && Less_Environment::$compress)) ? "" : ";"), $this->currentFileInfo, $this->index);
 	}
@@ -50,16 +50,14 @@ class Less_Tree_Rule extends Less_Tree{
 			$strictMathBypass = true;
 			$env->strictMath = true;
 		}
-		try{
-			$return = new Less_Tree_Rule($this->name,
-										$this->value->compile($env),
-										$this->important,
-										$this->merge,
-										$this->index,
-										$this->currentFileInfo,
-										$this->inline);
-		}
-		catch(Exception $e){}
+
+		$return = new Less_Tree_Rule($this->name,
+									$this->value->compile($env),
+									$this->important,
+									$this->merge,
+									$this->index,
+									$this->currentFileInfo,
+									$this->inline);
 
 		if( $strictMathBypass ){
 			$env->strictMath = false;
