@@ -67,7 +67,7 @@ class CI_Parser_less extends CI_Parser_driver {
 
         // For security reasons don't parse PHP content.
         $parser = new Less_Parser($config);
-        $parser->parseFile(@ file_get_contents($template), $config['uri_root']);
+        $parser->parseFile($template, $config['uri_root']);
         $template = $parser->getCss();
 
         return $this->output($template, $return, $ci, $is_mx);
