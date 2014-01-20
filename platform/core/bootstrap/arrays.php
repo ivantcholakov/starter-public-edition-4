@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed.');
+<?php
 
 // The following functions have been borrowed from Laravel framework.
 // @link http://laravel.com/

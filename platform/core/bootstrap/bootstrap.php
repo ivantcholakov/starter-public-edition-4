@@ -337,6 +337,14 @@ if (!function_exists('http_build_str') || !function_exists('http_build_url')) {
 
 
 /*
+ * --------------------------------------------------------------------
+ * Fundamental functions.
+ * --------------------------------------------------------------------
+ */
+require BOOTSTRAPPATH.'arrays.php';
+
+
+/*
  *---------------------------------------------------------------
  * URL-based detection, stored within a global variable.
  *---------------------------------------------------------------
