@@ -10,7 +10,7 @@ if (!empty($language_switcher)) {
             echo ' | ';
         }
 
-        if (isset($item['flag'])) {
+        if (isset($item['flag']) && $item['flag'] != '') {
             $anchor = anchor($item['link'], image('lib/flags/'.$item['flag'].'.png').' '.$item['label']);
         } else {
             $anchor = anchor($item['link'], $item['label']);
