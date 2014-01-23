@@ -298,12 +298,20 @@ class Core_Lang extends MX_Lang {
         return $CFG->hide_default_language_uri_segment();
     }
 
+    // Added by Ivan Tcholakov, 23-JAN-2014.
+    public function get($language) {
+
+        global $CFG;
+
+        return $CFG->get_language($language);
+    }
+
     // Added by Ivan Tcholakov, 22-JAN-2014.
     public function set_current($language) {
 
         global $CFG;
 
-        return $CFG->set_current_language($language);
+        $CFG->set_current_language($language);
     }
 
     // Added by Ivan Tcholakov, 22-JAN-2014.

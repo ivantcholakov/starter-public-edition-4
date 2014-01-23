@@ -10,17 +10,23 @@ if (!empty($language_switcher)) {
             echo ' | ';
         }
 
+        if (isset($item['flag'])) {
+            $anchor = anchor($item['link'], image('lib/flags/'.$item['flag'].'.png').' '.$item['label']);
+        } else {
+            $anchor = anchor($item['link'], $item['label']);
+        }
+
         if (!empty($item['active'])) {
 ?>
 
-    <strong><?php echo anchor($item['link'], image('lib/flags/'.$item['flag'].'.png').' '.$item['label']); ?></strong>
+    <strong><?php echo $anchor; ?></strong>
 <?php
 
         } else {
 
 ?>
 
-    <?php echo anchor($item['link'], image('lib/flags/'.$item['flag'].'.png'). ' '.$item['label']); ?>
+    <?php echo $anchor; ?>
 
 <?php
         }

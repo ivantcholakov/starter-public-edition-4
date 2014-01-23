@@ -488,6 +488,16 @@ class Core_Config extends MX_Config {
         return $this->config['hide_default_uri_segment'];
     }
 
+    // Added by Ivan Tcholakov, 23-JAN-2014.
+    public function get_language($language) {
+
+        if (array_key_exists($language, $this->config['languages'])) {
+            return $this->config['languages'][$language];
+        }
+
+        return null;
+    }
+
     // Added by Ivan Tcholakov, 22-JAN-2014.
     public function set_current_language($language) {
 

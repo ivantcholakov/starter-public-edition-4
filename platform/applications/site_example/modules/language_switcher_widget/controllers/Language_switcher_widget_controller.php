@@ -5,11 +5,13 @@ class Language_switcher_widget_controller extends Base_Widget_Controller {
     public function __construct() {
 
         parent::__construct();
-
-        $this->language = config_item('language');
     }
 
     public function index($display_type = null) {
+
+        if (!$this->lang->multilingual_site()) {
+            return; // Don't show the language switcher in this case.
+        }
 
         $display_type = (string) $display_type;
 
@@ -21,26 +23,41 @@ class Language_switcher_widget_controller extends Base_Widget_Controller {
             $display_type = '';
         }
 
-        $language_switcher = array(
-            array(
-                'language' => 'english',
-                'label' => 'English',
-                'link' => $this->lang->switch_uri('english'),
-                'flag' => 'GB',
-            ),
-            array(
-                'language' => 'bulgarian',
-                'label' => 'Bulgarian',
-                'link' => $this->lang->switch_uri('bulgarian'),
-                'flag' => 'BG',
-            ),
-        );
+        $languages = array();
+        $enabled_languages = $this->lang->enabled();
 
-        foreach ($language_switcher as $key => $item) {
+        if (!empty($enabled_languages) && is_array($enabled_languages)) {
 
-            if ($this->language == $item['language']) {
-                $language_switcher[$key]['active'] = true;
+            foreach ($enabled_languages as $language) {
+
+                $value = $this->lang->get($language);
+
+                if (!empty($value) && is_array($value)) {
+                    $languages[$language] = $value;
+                }
             }
+        }
+
+        if (empty($languages)) {
+            return; // Don't show the language switcher, something is wrong with configuration data.
+        }
+
+        $language_switcher = array();
+
+        foreach ($languages as $key => $value) {
+
+            $item = array(
+                'language' => $key,
+                'label' => isset($value['name']) ? $value['name'] : $key,
+                'link' => $this->lang->switch_uri($key),
+                'flag' => isset($value['flag']) ? $value['flag'] : null,
+            );
+
+            if ($this->lang->current() == $key) {
+                $item['active'] = true;
+            }
+
+            $language_switcher[] = $item;
         }
 
         $this->load->view('language_switcher_widget'.($display_type == '' ? '' : '_'.$display_type), compact('language_switcher'), false, 'i18n');

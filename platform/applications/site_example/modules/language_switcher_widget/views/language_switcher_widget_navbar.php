@@ -15,7 +15,7 @@ if (!empty($language_switcher)) {
 
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" i18n:title="ui_switch_language"><?php echo image('lib/flags/'.$item_active['flag'].'.png'); ?> <span class="fa fa-caret-down"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" i18n:title="ui_switch_language"><?php echo isset($item_active['flag']) ? image('lib/flags/'.$item_active['flag'].'.png') : $item_active['label']; ?> <span class="fa fa-caret-down"></span></a>
                             <ul class="dropdown-menu">
 <?php
 
@@ -23,7 +23,7 @@ if (!empty($language_switcher)) {
 
 ?>
 
-                                <li><a href="<?php echo $item['link']; ?>"><?php echo image('lib/flags/'.$item['flag'].'.png').' '.$item['label']; ?></a></li>
+                                <li><a href="<?php echo $item['link']; ?>"><?php echo isset($item['flag']) ? image('lib/flags/'.$item['flag'].'.png').' '.$item['label'] : $item['label']; ?></a></li>
 <?php
         }
 
