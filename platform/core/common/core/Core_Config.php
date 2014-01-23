@@ -299,7 +299,7 @@ class Core_Config extends MX_Config {
         //}
         if ($uri == '')
         {
-            return $this->slash_item('base_url').$this->item('index_page').$this->language_uri_segment().'/';
+            return $this->slash_item('base_url').$this->item('index_page').$this->language_uri_segment($this->current_language()).'/';
         }
 
         $uri = $this->localized($uri);
@@ -445,7 +445,7 @@ class Core_Config extends MX_Config {
             if (!$this->get_uri_lang($uri)) {
 
                 if (!preg_match('/(.+)\.(([a-zA-Z0-9]{2,4})|([a-zA-Z0-9]{2}[\-_]{1}[a-zA-Z0-9]{2,3}))$/', $uri)) {
-                    $uri = $this->language_uri_segment() . '/' . $uri;
+                    $uri = $this->language_uri_segment($this->current_language()) . '/' . $uri;
                 }
             }
         }
