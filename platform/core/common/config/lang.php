@@ -11,7 +11,10 @@ $config['hide_default_uri_segment'] = true;
 // Declare the default language within config.php.
 // It should be one of the enabled languages.
 
-$config['enabled_languages'] = array(); // The default language is enabled by default.
+// A list of the enabled languages.
+// Example: $config['enabled_languages'] = array('english', 'bulgarian');
+// The default language is enabled by default.
+$config['enabled_languages'] = array();
 
 $config['languages'] = array(
 
@@ -55,7 +58,7 @@ $config['languages'] = array(
         'code' => 'es_419',
         'direction' => 'ltr',
         'uri_segment' => 'es-419',
-        'name' => 'Español  latinoamericano',
+        'name' => 'Español latinoamericano',
         'name_en' => 'Latin American Spanish',
         'flag' => 'MX',
     ),
