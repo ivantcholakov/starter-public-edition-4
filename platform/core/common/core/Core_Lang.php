@@ -246,14 +246,14 @@ class Core_Lang extends MX_Lang {
 
         $lang = $this->uri_segment($language);
 
-        $result = '';
+        $result = $uri;
 
         if ($this->valid_uri_segment($lang)) {
 
             if ($uri_segment = $this->get_uri_lang($uri)) {
 
                 $uri_segment['parts'][0] = $lang;
-                $result = implode('/',$uri_segment['parts']);
+                $result = implode('/', $uri_segment['parts']);
 
             } else {
 
