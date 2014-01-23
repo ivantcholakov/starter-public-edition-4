@@ -25,13 +25,13 @@ class Language_switcher_widget_controller extends Base_Widget_Controller {
             array(
                 'language' => 'english',
                 'label' => 'English',
-                'link' => $this->lang->switch_uri('en'),
+                'link' => $this->lang->switch_uri('english'),
                 'flag' => 'GB',
             ),
             array(
                 'language' => 'bulgarian',
                 'label' => 'Bulgarian',
-                'link' => $this->lang->switch_uri('bg'),
+                'link' => $this->lang->switch_uri('bulgarian'),
                 'flag' => 'BG',
             ),
         );

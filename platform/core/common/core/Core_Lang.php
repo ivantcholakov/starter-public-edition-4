@@ -12,6 +12,14 @@ class Core_Lang extends MX_Lang {
     public function __construct() {
 
         parent::__construct();
+
+        global $URI;
+
+        $uri_segment = $this->get_uri_lang($URI->uri_string());
+
+        $language = $uri_segment ? $this->by_uri_segment($uri_segment['lang']) : null;
+
+        $this->set($language);
     }
 
     /**
@@ -182,5 +190,240 @@ class Core_Lang extends MX_Lang {
         return $result;
     }
     //
+
+    /**
+     * Same behavior as the parent method, but it can load the first defined 
+     * lang configuration to fill other languages gaps. This is very useful
+     * because you don't have to update all your lang files during development
+     * each time you update a text. If a constant is missing it will load
+     * it in the first language configured in the array $languages. (OPB)
+     *
+     * @param boolean $load_default_lang false to keep the old behavior. Please
+     * modify the default value to true to use this feature without having to 
+     * modify your code 
+     */
+    // Modified by Ivan Tcholakov, 17-DEC-2013.
+    //function load($langfile = '', $idiom = '', $return = FALSE, $add_suffix = TRUE, $alt_path = '', $load_default_lang = false) {
+    function load($langfile = '', $idiom = '', $return = FALSE, $add_suffix = TRUE, $alt_path = '', $module = '', $load_default_lang = false) {
+    //
+
+        if ($load_default_lang) {
+
+            $default_lang = $this->default_lang();
+
+            if ($this->get() != $default_lang) {
+
+                // Modified by Ivan Tcholakov, 17-DEC-2013.
+                //$addedLang = parent::load($langfile, $firstValue, $return, $add_suffix, $alt_path);
+                $addedLang = parent::load($langfile, $default_lang, $return, $add_suffix, $alt_path, $module);
+                //
+
+                if ($addedLang) {
+
+                    if ($add_suffix) {
+
+                        $langfileToRemove = str_replace('.php', '', $langfile);
+                        $langfileToRemove = str_replace('_lang.', '', $langfileToRemove) . '_lang';
+                        $langfileToRemove .= '.php';
+                    }
+
+                    $this->is_loaded = array_diff($this->is_loaded, array($langfileToRemove));
+                }
+            }
+        }
+
+        // Modified by Ivan Tcholakov, 17-DEC-2013.
+        //return parent::load($langfile, $idiom, $return, $add_suffix, $alt_path);
+        return parent::load($langfile, $idiom, $return, $add_suffix, $alt_path, $module);
+        //
+    }
+
+    function switch_uri($language) {
+
+        global $URI;
+
+        $uri = (string) $URI->uri_string();
+
+        $lang = $this->uri_segment($language);
+
+        $result = '';
+
+        if ($this->valid_uri_segment($lang)) {
+
+            if ($uri_segment = $this->get_uri_lang($uri)) {
+
+                $uri_segment['parts'][0] = $lang;
+                $result = implode('/',$uri_segment['parts']);
+
+            } else {
+
+                $result = $lang.'/'.$uri;
+            }
+        }
+
+        return $result;
+    }
+
+    // Add language segment to $uri (if appropriate)
+    function localized($uri) {
+
+        global $CFG;
+
+        return $CFG->localized($uri);
+    }
+
+    // Added by Ivan Tcholakov, 22-JAN-2014.
+    // Checks whether the language exists within URI.
+    // When true - returns an array with language segment + rest.
+    public function get_uri_lang($uri = '') {
+
+        global $CFG;
+
+        return $CFG->get_uri_lang($uri);
+    }
+
+    // Added by Ivan Tcholakov, 21-JAN-2014.
+    public function multilingual_site() {
+
+        global $CFG;
+
+        return $CFG->multilingual_site();
+    }
+
+    // Added by Ivan Tcholakov, 22-JAN-2014.
+    public function hide_default_uri_segment() {
+
+        global $CFG;
+
+        return $CFG->hide_default_language_uri_segment();
+    }
+
+    // Added by Ivan Tcholakov, 22-JAN-2014.
+    public function set($language) {
+
+        global $CFG;
+
+        return $CFG->set_language($language);
+    }
+
+    // Added by Ivan Tcholakov, 22-JAN-2014.
+    public function get() {
+
+        global $CFG;
+
+        return $CFG->get_language();
+    }
+
+    // Added by Ivan Tcholakov, 21-JAN-2014.
+    public function default_lang() {
+
+        global $CFG;
+
+        return $CFG->default_language();
+    }
+
+    // Added by Ivan Tcholakov, 21-JAN-2014.
+    public function default_code() {
+
+        global $CFG;
+
+        return $CFG->default_language_code();
+    }
+
+    // Added by Ivan Tcholakov, 21-JAN-2014.
+    public function default_uri_segment() {
+
+        global $CFG;
+
+        return $CFG->default_language_uri_segment();
+    }
+
+    // Added by Ivan Tcholakov, 21-JAN-2014.
+    public function enabled() {
+
+        global $CFG;
+
+        return $CFG->enabled_languages();
+    }
+
+    // Added by Ivan Tcholakov, 21-JAN-2014.
+    public function enabled_codes() {
+
+        global $CFG;
+
+        return $CFG->enabled_languages_codes();
+    }
+
+    // Added by Ivan Tcholakov, 21-JAN-2014.
+    public function enabled_uri_segments() {
+
+        global $CFG;
+
+        return $CFG->enabled_languages_uri_segments();
+    }
+
+    // Added by Ivan Tcholakov, 21-JAN-2014.
+    public function valid($language) {
+
+        global $CFG;
+
+        return $CFG->valid_language($language);
+    }
+
+    // Added by Ivan Tcholakov, 21-JAN-2014.
+    public function valid_code($code) {
+
+        global $CFG;
+
+        return $CFG->valid_code($code);
+    }
+
+    // Added by Ivan Tcholakov, 21-JAN-2014.
+    public function valid_uri_segment($uri_segment) {
+
+        global $CFG;
+
+        return $CFG->valid_language_uri_segment($uri_segment);
+    }
+
+    // Added by Ivan Tcholakov, 21-JAN-2014.
+    public function by_code($code) {
+
+        global $CFG;
+
+        return $CFG->language_by_code($code);
+    }
+
+    // Added by Ivan Tcholakov, 21-JAN-2014.
+    public function by_uri_segment($uri_segment) {
+
+        global $CFG;
+
+        return $CFG->language_by_uri_segment($uri_segment);
+    }
+
+    // Added by Ivan Tcholakov, 21-JAN-2014.
+    public function code($language = null) {
+
+        global $CFG;
+
+        return $CFG->language_code($language);
+    }
+
+    // Added by Ivan Tcholakov, 21-JAN-2014.
+    public function uri_segment($language = null) {
+
+        global $CFG;
+
+        return $CFG->language_uri_segment($language);
+    }
+
+    // Added by Ivan Tcholakov, 21-JAN-2014.
+    public function direction($language = null) {
+
+        global $CFG;
+
+        return $CFG->language_direction($language);
+    }
 
 }
