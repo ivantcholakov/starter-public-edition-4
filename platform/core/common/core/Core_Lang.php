@@ -19,7 +19,7 @@ class Core_Lang extends MX_Lang {
 
         $language = $uri_segment ? $this->by_uri_segment($uri_segment['lang']) : null;
 
-        $this->set($language);
+        $this->set_current($language);
     }
 
     /**
@@ -299,19 +299,19 @@ class Core_Lang extends MX_Lang {
     }
 
     // Added by Ivan Tcholakov, 22-JAN-2014.
-    public function set($language) {
+    public function set_current($language) {
 
         global $CFG;
 
-        return $CFG->set_language($language);
+        return $CFG->set_current_language($language);
     }
 
     // Added by Ivan Tcholakov, 22-JAN-2014.
-    public function get() {
+    public function current() {
 
         global $CFG;
 
-        return $CFG->get_language();
+        return $CFG->current_language();
     }
 
     // Added by Ivan Tcholakov, 21-JAN-2014.

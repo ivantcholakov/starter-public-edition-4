@@ -489,7 +489,7 @@ class Core_Config extends MX_Config {
     }
 
     // Added by Ivan Tcholakov, 22-JAN-2014.
-    public function set_language($language) {
+    public function set_current_language($language) {
 
         if ($this->valid_language($language)) {
             $this->set_item('language', $language);
@@ -499,7 +499,7 @@ class Core_Config extends MX_Config {
     }
 
     // Added by Ivan Tcholakov, 22-JAN-2014.
-    public function get_language() {
+    public function current_language() {
 
         return $this->config['language'];
     }
