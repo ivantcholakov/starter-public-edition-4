@@ -75,6 +75,10 @@ class Core_Config extends MX_Config {
             $c['enabled_languages'] = array($c['default_language']);
         }
 
+        if (!in_array($c['default_language'], $c['enabled_languages'])) {
+            $c['enabled_languages'][] = $c['default_language'];
+        }
+
         $this->config = array_replace_recursive($this->config, $c);
         //
 
