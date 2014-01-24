@@ -442,13 +442,15 @@ class Core_Config extends MX_Config {
 
         if ($uri != '') {
 
-            if (!$this->get_uri_lang($uri)) {
+            if (!($this->hide_default_language_uri_segment() && $this->current_language() == $this->default_language())) {
 
-                if (!preg_match('/(.+)\.(([a-zA-Z0-9]{2,4})|([a-zA-Z0-9]{2}[\-_]{1}[a-zA-Z0-9]{2,3}))$/', $uri)) {
-                    $uri = $this->language_uri_segment($this->current_language()) . '/' . $uri;
+                if (!$this->get_uri_lang($uri)) {
+
+                    if (!preg_match('/(.+)\.(([a-zA-Z0-9]{2,4})|([a-zA-Z0-9]{2}[\-_]{1}[a-zA-Z0-9]{2,3}))$/', $uri)) {
+                        $uri = $this->language_uri_segment($this->current_language()) . '/' . $uri;
+                    }
                 }
             }
-
         }
 
         return $uri;

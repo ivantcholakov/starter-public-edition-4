@@ -253,7 +253,13 @@ class Core_Lang extends MX_Lang {
             if ($uri_segment = $this->get_uri_lang($uri)) {
 
                 $uri_segment['parts'][0] = $lang;
-                $result = implode('/', $uri_segment['parts']);
+                $parts = $uri_segment['parts'];
+
+                if ($this->hide_default_uri_segment() && $language == $this->default_lang()) {
+                    array_shift($parts);
+                }
+
+                $result = implode('/', $parts);
 
                 if (!isset($uri_segment['parts'][1])) {
                     $result .= '/';
@@ -261,7 +267,11 @@ class Core_Lang extends MX_Lang {
 
             } else {
 
-                $result = $lang.'/'.$uri;
+                if ($this->hide_default_uri_segment() && $language == $this->default_lang()) {
+                    $result = $uri;
+                } else {
+                    $result = $lang.'/'.$uri;
+                }
             }
         }
 
