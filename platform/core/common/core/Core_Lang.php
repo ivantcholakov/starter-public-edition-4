@@ -261,7 +261,7 @@ class Core_Lang extends MX_Lang {
 
                 $result = implode('/', $parts);
 
-                if (!isset($uri_segment['parts'][1])) {
+                if (!isset($uri_segment['parts'][1]) && $result != '') {
                     $result .= '/';
                 }
 
