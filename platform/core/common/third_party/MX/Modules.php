@@ -91,7 +91,10 @@ class Modules
         if ( ! isset(self::$registry[$alias])) {
 
             /* find the controller */
-            list($class) = CI::$APP->router->locate(explode('/', $module));
+            // Modified by Ivan Tcholakov, 21-JAN-2014.
+            //list($class) = CI::$APP->router->locate(explode('/', $module));
+            list($class) = CI::$APP->router->locate(explode('/', $module), false);
+            //
 
             /* controller cannot be located */
             if (empty($class)) {

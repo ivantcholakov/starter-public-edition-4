@@ -39,7 +39,7 @@ require dirname(__FILE__).'/Modules.php';
 // SEO Friendly URLS in CodeIgniter 2.0 + HMVC
 // http://www.einsteinseyes.com/blog/techno-babble/seo-friendly-urls-in-codeigniter-2-0-hmvc/
 
-// Controller location logic has been modified by Ivan Tcholakov, 2013.
+// Controller location logic has been modified by Ivan Tcholakov, 2014.
 
 class MX_Router extends CI_Router
 {
@@ -66,7 +66,7 @@ class MX_Router extends CI_Router
 
             $segments = explode('/', $this->routes['404_override']);
 
-            if ($located = $this->locate($segments)) {
+            if ($located = $this->locate($segments, false)) {
                 return $located;
             }
         }
@@ -78,8 +78,33 @@ class MX_Router extends CI_Router
         //
     }
 
+    // Override this method in an extension class.
+    // You may use it for slug support.
+    public function remap($segments) {
+
+        return $segments;
+    }
+
     /** Locate the controller **/
-    public function locate($segments) {
+    // Modified by Ivan Tcholakov, 21-JAN-2014.
+    //public function locate($segments) {
+    public function locate($segments, $http_request = true) {
+    //
+
+        // Resolving the language.
+        if ($http_request && !empty($segments)) {
+
+            if ($this->config->valid_language_uri_segment($segments[0])) {
+
+                $this->config->set_item('language', $this->config->language_by_uri_segment($segments[0]));
+                array_shift($segments);
+            }
+        }
+
+        // Processing slugs, if there are any.
+        if ($http_request) {
+            $segments = $this->remap($segments);
+        }
 
         $this->module = '';
         $this->directory = '';
