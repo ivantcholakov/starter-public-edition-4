@@ -6,6 +6,6 @@
  */
 
 $config['enabled_languages'] = array(
-    'bulgarian',
     'english',
+    'bulgarian',
 );
