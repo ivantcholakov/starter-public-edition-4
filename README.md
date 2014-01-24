@@ -143,6 +143,10 @@ $this->parse_i18n = TRUE; // or FALSE
 Parsing of <i18n> tags is done on the final output buffer only when
 the MIME-type is 'text/html'.
 
+**Note:** Enablig globally the i18n parser maybe is not the best idea. If you use HMVC, maybe it would
+be better i18n-parsing to be done selectively for particular html-fragments. See below on how to use the
+Parser class for this purpose.
+
 * KCAPTCHA Version 2.0 - A Port for CodeIgniter, https://github.com/ivantcholakov/codeigniter-kcaptcha
 * Parser class: Driver support has been implemented. A Mustache driver has been added.
 
