@@ -101,6 +101,7 @@ The technique of this hack is available, but it is not mandatory.
 * Markdown Extra - A text-to-HTML conversion tool, http://michelf.com/projects/php-markdown/
 * Markdownify - A HTML-to-text conversion tool, http://milianw.de/projects/markdownify/
 * Mustache, Logic-less templates, https://github.com/bobthecow/mustache.php
+* Less.php compiler, https://github.com/oyejorge/less.php
 * PHPMailer, http://phpmailer.worxware.com/, https://github.com/Synchro/PHPMailer
 * A CodeIgniter compatible email-library powered by PHPMailer, https://github.com/ivantcholakov/codeigniter-phpmailer
 * A PHP class for transliteration, https://github.com/ivantcholakov/transliterate
@@ -148,7 +149,7 @@ be better i18n-parsing to be done selectively for particular html-fragments. See
 Parser class for this purpose.
 
 * KCAPTCHA Version 2.0 - A Port for CodeIgniter, https://github.com/ivantcholakov/codeigniter-kcaptcha
-* Parser class: Driver support has been implemented. A Mustache driver has been added.
+* Parser class: Driver support has been implemented.
 
 Instead of:
 
@@ -168,57 +169,52 @@ Quick tests:
 // The default parser.
 $this->load->parser();
 echo $this->parser->parse_string('Hello, {name}!', array('name' => 'John'), TRUE);
+```
 
-echo '<br />';
+There are some other parser-drivers implemented. Examples:
 
+```php
 // Mustache parser.
 $this->load->parser('mustache');
 echo $this->mustache->parse_string('Hello, {{name}}!', array('name' => 'John'), TRUE);
+```
 
-echo '<br />';
-
+```php
 // Parsing a Mustache type of view.
 $email_content = $this->mustache->parse('email.mustache', array('name' => 'John'), TRUE);
 echo $email_content;
-
-echo '<br />';
 ```
 
-* Parser class: A Textile driver has been added.
-
 ```php
+// Textile parser
 $this->load->parser('textile');
 echo $this->textile->parse_string('h1. Hello!', NULL, TRUE);
 echo $this->textile->parse('hello.textile', NULL, TRUE);
 ```
 
-* Parser class: A Markdown driver has been added.
-
 ```php
+// Markdown parser
 $this->load->parser('markdown');
 echo $this->markdown->parse_string('# Hello!', NULL, TRUE);
 echo $this->markdown->parse('hello.markdown', NULL, TRUE);
 ```
 
-* Parser class: A Markdownify driver has been added.
-
 ```php
+// Markdownify parser
 $this->load->parser('markdownify');
 echo $this->markdownify->parse_string('<h1>Hello!</h1>', NULL, TRUE);
 echo $this->markdownify->parse('hello.html', NULL, TRUE);
 ```
 
-* CodeIgniter Checkbox Helper, https://gist.github.com/mikedfunk/4004986
-* Less.php compiler, https://github.com/oyejorge/less.php
-* Parser class: A LESS driver has been added.
-
 ```php
+// LESS parser
 $this->load->parser('less');
 echo $this->less->parse_string('@color: #4D926F; #header { color: @color; } h2 { color: @color; }', NULL, TRUE);
 echo $this->less->parse(DEFAULTFCPATH.'assets/less/lib/bootstrap-3/bootstrap.less', NULL, TRUE);
 ```
 
-* LESS-assets compiler has been added.
+* CodeIgniter Checkbox Helper, https://gist.github.com/mikedfunk/4004986
+* Configured LESS-assets compiler has been added.
 
 Have a look at platform/core/common/config/less_compile.php file. It contains a list of files (sources, destinations)
 to be used for LESS to CSS compilation. You may edit this list according to your needs. Before compilation, make sure
