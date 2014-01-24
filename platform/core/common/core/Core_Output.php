@@ -30,7 +30,7 @@ class Core_Output extends CI_Output {
         global $BM, $CFG, $LANG;
 
         // Grab the super object if we can.
-        if (class_exists('CI_Controller'))
+        if (class_exists('CI_Controller', FALSE))
         {
             $CI =& get_instance();
         }
@@ -93,15 +93,14 @@ class Core_Output extends CI_Output {
         if ($this->parse_exec_vars === TRUE)
         {
             $memory    = round(memory_get_usage() / 1024 / 1024, 2).'MB';
-
             $output = str_replace(array('{elapsed_time}', '{memory_usage}'), array($elapsed, $memory), $output);
         }
 
         // --------------------------------------------------------------------
 
         // Is compression requested?
-        if ($CFG->item('compress_output') === TRUE && $this->_zlib_oc === FALSE
-            && extension_loaded('zlib')
+        if (isset($CI) // This means that we're not serving a cache file, if we were, it would already be compressed
+            && $this->_compress_output === TRUE
             && isset($_SERVER['HTTP_ACCEPT_ENCODING']) && strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== FALSE)
         {
             ob_start('ob_gzhandler');
@@ -129,6 +128,21 @@ class Core_Output extends CI_Output {
         // simply echo out the data and exit.
         if ( ! isset($CI))
         {
+            if ($this->_compress_output === TRUE)
+            {
+                if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) && strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== FALSE)
+                {
+                    header('Content-Encoding: gzip');
+                    header('Content-Length: '.strlen($output));
+                }
+                else
+                {
+                    // User agent doesn't support gzip compression,
+                    // so we'll have to decompress our cache
+                    $output = gzinflate(substr($output, 10, -8));
+                }
+            }
+
             echo $output;
             log_message('debug', 'Final output sent to browser');
             log_message('debug', 'Total execution time: '.$elapsed);
@@ -183,7 +197,6 @@ class Core_Output extends CI_Output {
     {
         $CI =& get_instance();
         $path = $CI->config->item('cache_path');
-
         $cache_path = ($path === '') ? APPPATH.'cache/' : $path;
 
         if ( ! is_dir($cache_path) OR ! is_really_writable($cache_path))
@@ -192,9 +205,9 @@ class Core_Output extends CI_Output {
             return;
         }
 
-        $uri =  $CI->config->item('base_url').
-                $CI->config->item('index_page').
-                $CI->uri->uri_string();
+        $uri = $CI->config->item('base_url')
+            .$CI->config->item('index_page')
+            .$CI->uri->uri_string();
 
         // A patch for supporting query strings --------------------------------
         if (strpos($uri, '?') === false) {
@@ -211,31 +224,62 @@ class Core_Output extends CI_Output {
             return;
         }
 
-        $expire = time() + ($this->cache_expiration * 60);
-
-        // Put together our serialized info.
-        $cache_info = serialize(array(
-            'expire' => $expire,
-            'headers' => $this->headers
-        ));
-
         if (flock($fp, LOCK_EX))
         {
-            fwrite($fp, $cache_info.'ENDCI--->'.$output);
-            flock($fp, LOCK_UN);
+            // If output compression is enabled, compress the cache
+            // itself, so that we don't have to do that each time
+            // we're serving it
+            if ($this->_compress_output === TRUE)
+            {
+                $output = gzencode($output);
+
+                if ($this->get_header('content-type') === NULL)
+                {
+                    $this->set_content_type($this->mime_type);
+                }
+            }
+
+            $expire = time() + ($this->cache_expiration * 60);
+
+            // Put together our serialized info.
+            $cache_info = serialize(array(
+                'expire' => $expire,
+                'headers' => $this->headers
+            ));
+
+                $output = $cache_info.'ENDCI--->'.$output;
+
+                for ($written = 0, $length = strlen($output); $written < $length; $written += $result)
+                {
+                    if (($result = fwrite($fp, substr($output, $written))) === FALSE)
+                    {
+                        break;
+                    }
+                }
+
+                flock($fp, LOCK_UN);
+            }
+            else
+            {
+                log_message('error', 'Unable to secure a file lock for file at: '.$cache_path);
+                return;
+            }
+
+            fclose($fp);
+
+            if (is_int($result))
+            {
+                @chmod($cache_path, FILE_WRITE_MODE);
+            log_message('debug', 'Cache file written: '.$cache_path);
+
+            // Send HTTP cache-control headers to browser to match file cache settings.
+            $this->set_cache_header($_SERVER['REQUEST_TIME'], $expire);
         }
         else
         {
-            log_message('error', 'Unable to secure a file lock for file at: '.$cache_path);
-            return;
+            @unlink($cache_path);
+            log_message('error', 'Unable to write the complete cache content at: '.$cache_path);
         }
-        fclose($fp);
-        @chmod($cache_path, FILE_WRITE_MODE);
-
-        log_message('debug', 'Cache file written: '.$cache_path);
-
-        // Send HTTP cache-control headers to browser to match file cache settings.
-        $this->set_cache_header($_SERVER['REQUEST_TIME'], $expire);
     }
 
     // --------------------------------------------------------------------
