@@ -93,7 +93,7 @@ The technique of this hack is available, but it is not mandatory.
 * PHP fallback function http_build_url(), https://github.com/ivantcholakov/http_build_url
 * Core_Model, see https://github.com/ivantcholakov/codeigniter-base-model
 * Some basic javascripts + normalize.css.
-* CodeIgniter 2.1 internationalization i18n, https://github.com/EllisLab/CodeIgniter/wiki/CodeIgniter-2.1-internationalization-i18n
+* Internationalization, initially based on CodeIgniter 2.1 internationalization i18n, https://github.com/EllisLab/CodeIgniter/wiki/CodeIgniter-2.1-internationalization-i18n, but totally reworked.
 * cURL library for CodeIgniter, https://github.com/philsturgeon/codeigniter-curl
 * A simple Event System for CodeIgniter, https://github.com/ericbarnes/CodeIgniter-Events
 * Support for database stored settings (Settings library).
