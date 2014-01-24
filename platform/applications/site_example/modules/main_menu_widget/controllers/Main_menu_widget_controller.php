@@ -51,7 +51,13 @@ class Main_menu_widget_controller extends Core_Controller {
         $nav['playground/separator_2'] = array('blank' => true, 'parent_id' => 'playground');
         $nav['and_so_on'] = array('label' => 'And so on, see the Playground index page', 'location' => 'playground', 'parent_id' => 'playground');
 
-        $segment_1 = $this->uri->segment(2);
+        $segment_base = 2;
+
+        if (!$this->lang->get_uri_lang($this->uri->uri_string())) {
+            $segment_base = 1;
+        }
+
+        $segment_1 = $this->uri->segment($segment_base);
 
         switch ($segment_1) {
 
@@ -74,7 +80,7 @@ class Main_menu_widget_controller extends Core_Controller {
         }
 
         // TODO: This mess needs a revision.
-        switch ($this->uri->segment(3)) {
+        switch ($this->uri->segment($segment_base + 1)) {
             case 'captcha':
                 $active = 'playground/captcha';
                 break;
