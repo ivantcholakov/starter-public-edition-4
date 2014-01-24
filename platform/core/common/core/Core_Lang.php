@@ -255,6 +255,10 @@ class Core_Lang extends MX_Lang {
                 $uri_segment['parts'][0] = $lang;
                 $result = implode('/', $uri_segment['parts']);
 
+                if (!isset($uri_segment['parts'][1])) {
+                    $result .= '/';
+                }
+
             } else {
 
                 $result = $lang.'/'.$uri;
