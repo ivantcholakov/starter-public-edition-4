@@ -211,7 +211,7 @@ class Core_Lang extends MX_Lang {
 
             $default_lang = $this->default_lang();
 
-            if ($this->get() != $default_lang) {
+            if ($this->current() != $default_lang) {
 
                 // Modified by Ivan Tcholakov, 17-DEC-2013.
                 //$addedLang = parent::load($langfile, $firstValue, $return, $add_suffix, $alt_path);

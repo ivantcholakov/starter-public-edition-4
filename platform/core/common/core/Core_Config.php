@@ -442,12 +442,12 @@ class Core_Config extends MX_Config {
 
         if ($uri != '') {
 
-            //if (!$this->get_uri_lang($uri)) {
+            if (!$this->get_uri_lang($uri)) {
 
-                //if (!preg_match('/(.+)\.(([a-zA-Z0-9]{2,4})|([a-zA-Z0-9]{2}[\-_]{1}[a-zA-Z0-9]{2,3}))$/', $uri)) {
+                if (!preg_match('/(.+)\.(([a-zA-Z0-9]{2,4})|([a-zA-Z0-9]{2}[\-_]{1}[a-zA-Z0-9]{2,3}))$/', $uri)) {
                     $uri = $this->language_uri_segment($this->current_language()) . '/' . $uri;
-                //}
-            //}
+                }
+            }
 
         }
 
@@ -471,7 +471,12 @@ class Core_Config extends MX_Config {
             $result['parts'] = $uri_expl;  
 
             if ($this->valid_language_uri_segment($uri_expl[0])) {
+
                 $result['lang'] = $uri_expl[0];
+
+            } else {
+
+                return false;
             }
 
             return $result;
