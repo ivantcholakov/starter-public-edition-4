@@ -299,7 +299,11 @@ class Core_Config extends MX_Config {
         //}
         if ($uri == '')
         {
-            return $this->slash_item('base_url').$this->item('index_page').$this->language_uri_segment($this->current_language()).'/';
+            if ($this->hide_default_language_uri_segment() && $this->current_language() == $this->default_language()) {
+                return $this->slash_item('base_url').$this->item('index_page');
+            } else {
+                return $this->slash_item('base_url').($this->item('index_page') != '' ? $this->item('index_page').'/' : '').$this->language_uri_segment($this->current_language()).'/';
+            }
         }
 
         $uri = $this->localized($uri);
