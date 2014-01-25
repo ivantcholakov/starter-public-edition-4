@@ -10,7 +10,7 @@ This version supports multiple applications.
 Requirements
 ------------
 
-PHP 5.2.4+ (officially, actually the platform works on PHP 5.2.0), Apache 2.2 - 2.4.
+PHP 5.2.4+ (officially, actually the platform works on PHP 5.2.0), Apache 2.2 - 2.4 (mod_rewrite should be enabled).
 For database support seek information within CodeIgniter 3.0-dev documentation.
 
 For UTF-8 encoded sites it is highly recommendabe the following PHP extensions to be installed:
