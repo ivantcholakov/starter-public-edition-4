@@ -381,7 +381,7 @@ $code = <<<EOT
 // Test 17
 echo print_d(http_build_url('http://www.example.com/path/to/page/', '../another/location/', HTTP_URL_JOIN_PATH));
 // Expected result:
-http://www.example.com/path/to/another/location/
+// http://www.example.com/path/to/another/location/
 EOT;
 
 highlight_string($code);
