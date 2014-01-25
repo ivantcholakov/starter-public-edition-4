@@ -295,6 +295,13 @@ A contact form has been created that with minimal adaptation you may use directl
 If you have no previous experience with CodeIgniter, get familiar with its User Guide first:
 http://ellislab.com/codeigniter/user-guide/
 
+Real Life Usage
+---------------
+
+There is no real life usage yet, the platform is fresh. Information in this regard will be updated.
+Right now I am building a CMS, based upon this platform, it would not be publicly available.
+
+
 Credits
 -------
 
