@@ -13,6 +13,7 @@ class Email_controller extends Core_Controller {
 
         $this->load->library('settings');
         $this->load->library('email');
+        $this->load->library('registry');
     }
 
     public function _remap() {
@@ -31,9 +32,15 @@ class Email_controller extends Core_Controller {
      */
     public function index($data = array()) {
 
+        $this->registry->delete('email_debugger');
+
         if (!$this->settings->get('mailer_enabled')) {
 
-            log_message('error', 'Send email: E-mail service has not been activated.');
+            $debug_message = 'Send email: E-mail service has not been activated.';
+
+            $this->registry->set('email_debugger', $debug_message);
+            log_message('error', $debug_message);
+
             return false;
         }
 
@@ -184,14 +191,19 @@ class Email_controller extends Core_Controller {
 
             $debug_message = trim(strip_tags($this->email->print_debugger()));
 
-            if ($debug_message != '') {
+            $this->registry->set('email_debugger', $debug_message);
+
+            if (!$result && $debug_message != '') {
                 log_message($result ? 'debug' : 'error', $debug_message);
             }
 
             return $result;
         }
 
-        log_message('error', 'Send email: No subject or body text.');
+        $debug_message = 'Send email: No subject or body text.';
+
+        $this->registry->set('email_debugger', $debug_message);
+        log_message('error', $debug_message);
 
         return false;
     }
