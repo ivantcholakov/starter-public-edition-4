@@ -150,6 +150,11 @@ class Submit_controller extends Core_Controller {
             }
         }
 
+        // Added by Ivan Tcholakov, 25-JAN-2014.
+        // TODO: This is a workaround, fix it.
+        $this->load->set_module('contact_form_widget');
+        //
+
         $messages_html = $this->_prepare_messages_html($success, $messages);
 
         $this->captcha->clear();
