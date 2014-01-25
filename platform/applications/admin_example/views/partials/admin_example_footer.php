@@ -2,6 +2,6 @@
 
     <div id="footer">
         <div class="container">
-            <p class="text-muted">Ivan Tcholakov, 2014. Many thanks to Irida Design OOD for sponsoring this project.</p>
+            <p class="text-muted">Ivan Tcholakov, 2014. Many thanks to <a href="http://iridadesign.com" target="_blank">Irida Design OOD</a> for sponsoring this project.</p>
         </div>
     </div>
