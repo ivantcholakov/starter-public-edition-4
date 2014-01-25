@@ -283,6 +283,18 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Bootstrap 3.0.3, http://getbootstrap.com/
 * Bootstrap Hover Dropdown Plugin, https://github.com/CWSpear/bootstrap-hover-dropdown
 
+The Playground
+--------------
+
+It is hard everything about this platform to be documented in a formal way. This is why
+a special site section "The Playground" has been created, aimed at demonstration of
+platform's features/concepts. You may look at the examples and review their code.
+
+A contact form has been created that with minimal adaptation you may use directly in your projects.
+
+If you have no previous experience with CodeIgniter, get familiar with its User Guide first:
+http://ellislab.com/codeigniter/user-guide/
+
 Credits
 -------
 
