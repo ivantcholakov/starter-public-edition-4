@@ -213,6 +213,51 @@ echo $this->less->parse_string('@color: #4D926F; #header { color: @color; } h2 {
 echo $this->less->parse(DEFAULTFCPATH.'assets/less/lib/bootstrap-3/bootstrap.less', NULL, TRUE);
 ```
 
+Within the folder platform/core/common/libraries/Parser/drivers/ you may see all the additional parser drivers implemented.
+Also within the folder platform/core/common/config/ you may find the corresponding configuration files for the drivers,
+name by convention parser_*driver_name*.php. Better don't tweak the default configuration options, you may alter them
+directly on parser call where it is needed.
+
+The simple CodeIgniter's parser driver-name is 'parser', you may use it according to CodeIgniter's manual.
+
+**Enanced syntaxt for using parcers** (which I prefer)
+
+Using the generic parser class directly, with specifying the desired driver:
+
+```php
+$this->load->parser();
+
+// The fourth parameter means Mustache parser that is loaded automatically.
+echo $this->parser->parse_string($mustache_template, $data, true, 'mustache');
+
+// The fourth parameter means Markdown and auto_link parsers parser to be applied in a chain.
+echo $this->parser->parse_string($content, null, true, array('markdown', 'auto_link'));
+
+// The same chaining example, this time a configuration option of the second parser has been altered.
+echo $this->parser->parse_string($content, null, true, array('markdown', 'auto_link' => array('attributes' => 'target="_blank"')));
+```
+
+Using parsers indirectly on rendering views:
+
+```php
+// You don't need to load explicitly the parser library here.
+
+// The fourth parameter means that i18n parser is to be applied.
+// This is a way to handle internationalization on views selectively.
+$this->load->view('main_menu_widget', $data, false, 'i18n');
+```
+
+Using a parser indirectly with Phil Sturgeon's Template library:
+
+```php
+// You don't need to load explicitly the parser library here.
+
+$this->template
+    ->set(compact('success', 'messages', 'subject', 'body'))
+    ->enable_parser_body('i18n')  // Not elegant enough, sorry.
+    ->build('email_test');
+```
+
 * CodeIgniter Checkbox Helper, https://gist.github.com/mikedfunk/4004986
 * Configured LESS-assets compiler has been added.
 
