@@ -46,9 +46,16 @@ class Email_test_controller extends Base_Controller {
             $success = (bool) Events::trigger('email_test', $this->settings->get('notification_email'));
 
             if ($success) {
+
                 $messages[] = $this->lang->line('mailer_your_message_has_been_sent');
+
             } else {
-                $messages[] = $this->lang->line('mailer_error');
+
+                if ($this->registry->get('email_debugger') != '') {
+                    $messages[] = $this->lang->line('mailer_error').'<br /><br />'.$this->registry->get('email_debugger');
+                } else {
+                    $messages[] = $this->lang->line('mailer_error');
+                }
             }
 
         } else {
