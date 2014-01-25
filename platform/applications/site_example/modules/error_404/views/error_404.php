@@ -54,7 +54,7 @@
 
             <script type="text/javascript">
             //<![CDATA[
-                var GOOG_FIXURL_LANG = '<?php echo get_instance()->lang->lang(); ?>';
+                var GOOG_FIXURL_LANG = '<?php echo get_instance()->lang->code(); ?>';
                 var GOOG_FIXURL_SITE = BASE_URL;
             //]]>
             </script>
