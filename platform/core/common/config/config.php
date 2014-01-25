@@ -275,7 +275,7 @@ $config['cache_path'] = WRITABLEPATH.'cache/'.APPNAME.'/';
 | http://codeigniter.com/user_guide/libraries/sessions.html
 |
 */
-$config['encryption_key'] = 'MY_ENCRIPTION_KEY';
+$config['encryption_key'] = 'MY_ENCRYPTION_KEY';
 
 /*
 |--------------------------------------------------------------------------
