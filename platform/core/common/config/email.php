@@ -9,6 +9,7 @@ $config['smtp_pass']        = '';
 $config['smtp_port']        = 25;
 $config['smtp_timeout']     = 5;                        // (in seconds)
 $config['smtp_crypto']      = '';                       // '' or 'tls' or 'ssl'
+$config['smtp_debug']       = 0;                        // PHPMailer's SMTP debug info level: 0 = off, 1 = commands, 2 = commands and data
 $config['wordwrap']         = true;
 $config['wrapchars']        = 76;
 $config['mailtype']         = 'html';                   // 'text' or 'html'
@@ -31,6 +32,7 @@ $config['smtp_pass']        = 'yourpassword';
 $config['smtp_port']        = 465;
 $config['smtp_timeout']     = 5;
 $config['smtp_crypto']      = 'ssl';
+$config['smtp_debug']       = 0;                        // PHPMailer's SMTP debug info level: 0 = off, 1 = commands, 2 = commands and data
 $config['wordwrap']         = true;
 $config['wrapchars']        = 76;
 $config['mailtype']         = 'html';
