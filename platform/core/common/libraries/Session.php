@@ -30,7 +30,7 @@ class Session extends CI_Session {
 
             // Mark all 'old' flashdata as 'new' (keep data from being deleted during next request).
 
-            $userdata = $this->all_userdata();
+            $userdata = $this->userdata();
 
             foreach ($userdata as $name => $value) {
 
