@@ -2,14 +2,3 @@
 
 $route['default_controller'] = 'welcome';
 $route['404_override'] = 'error_404';
-
-// Internationalization
-// See https://github.com/EllisLab/CodeIgniter/wiki/CodeIgniter-2.1-internationalization-i18n
-
-// URI like '/en/about' -> use controller 'about'
-// An example: $route['^(en|de|fr|nl)/(.+)$'] = '$2';
-$route['^(en|bg)/(.+)$'] = '$2';
-
-// URI like '/en' -> use the default controller
-// An example: $route['^(en|de|fr|nl)$'] = $route['default_controller'];
-$route['^(en|bg)$'] = $route['default_controller'];
