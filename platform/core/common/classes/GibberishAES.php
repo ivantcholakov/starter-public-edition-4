@@ -40,10 +40,10 @@
  * GibberishAES::size($old_key_size);
  * echo $decrypted_string;
  * 
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2013.
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2014.
  * Code repository: @link https://github.com/ivantcholakov/gibberish-aes-php
  *
- * @version 1.0.0
+ * @version 1.0.1
  *
  * @license The MIT License (MIT)
  * @link http://opensource.org/licenses/MIT
@@ -54,9 +54,10 @@ class GibberishAES {
     protected static $key_size = 256;            // The default key size in bits
     protected static $valid_key_sizes = array(128, 192, 256);   // Sizes in bits
 
-    protected static $openssl_random_pseudo_bytes_exists;
-    protected static $openssl_encrypt_exists;
-    protected static $openssl_decrypt_exists;
+    protected static $openssl_random_pseudo_bytes_exists = null;
+    protected static $openssl_encrypt_exists = null;
+    protected static $openssl_decrypt_exists = null;
+    protected static $mcrypt_exists = null;
 
     // This is a static class, instances are disabled.
     final private function __construct() {}
@@ -65,9 +66,9 @@ class GibberishAES {
     /**
      * Crypt AES (256, 192, 128)
      *
-     * @param data $string
-     * @param string $pass
-     * @return base64 encrypted string
+     * @param   string  $string     The input message to be encrypted.
+     * @param   string  $pass       The key (string representation).
+     * @return  mixed               base64 encrypted string, FALSE on failure.
      */
     public static function enc($string, $pass) {
 
@@ -94,15 +95,17 @@ class GibberishAES {
         $key = substr($salted, 0, $key_length);
         $iv = substr($salted, $key_length, $block_length);
 
-        return base64_encode('Salted__' . $salt . self::aes_cbc_encrypt($string, $key, $iv));
+        $encrypted = self::aes_cbc_encrypt($string, $key, $iv);
+
+        return $encrypted !== false ? base64_encode('Salted__'.$salt.$encrypted) : false;
     }
 
     /**
      * Decrypt AES (256, 192, 128)
      *
-     * @param data $string
-     * @param string $pass
-     * @return dencrypted string
+     * @param   string  $string     The input message to be decrypted.
+     * @param   string  $pass       The key (string representation).
+     * @return  mixed               base64 decrypted string, FALSE on failure.
      */
     public static function dec($string, $pass) {
 
@@ -174,13 +177,16 @@ class GibberishAES {
         $newsize = (int) $newsize;
 
         if (!$valid_integer || !in_array($newsize, self::$valid_key_sizes)) {
-            trigger_error(
-                'Invalid key size value was to be set. It should be integer value (number of bits) amongst: 128, 192, 256.',
-                E_WARNING
-            );
-        }
 
-        self::$key_size = $newsize;
+            trigger_error(
+                'GibberishAES: Invalid key size value was to be set. It should be integer value (number of bits) amongst: 128, 192, 256.',
+                E_USER_WARNING
+            );
+
+        } else {
+
+            self::$key_size = $newsize;
+        }
 
         return $result;
     }
@@ -224,19 +230,33 @@ class GibberishAES {
             return openssl_encrypt($string, "aes-$key_size-cbc", $key, true, $iv);
         }
 
-        // Info: http://www.chilkatsoft.com/p/php_aes.asp
-        // http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation
+        if (!isset(self::$mcrypt_exists)) {
+            self::$mcrypt_exists = function_exists('mcrypt_encrypt');
+        }
 
-        $cipher = mcrypt_module_open(MCRYPT_RIJNDAEL_128, '', MCRYPT_MODE_CBC, '');
+        if (self::$mcrypt_exists) {
 
-        if (mcrypt_generic_init($cipher, $key, $iv) != -1) {
+            // Info: http://www.chilkatsoft.com/p/php_aes.asp
+            // http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation
 
-            $encrypted = mcrypt_generic($cipher, self::pkcs7_pad($string));
-            mcrypt_generic_deinit($cipher);
-            mcrypt_module_close($cipher);
+            $cipher = mcrypt_module_open(MCRYPT_RIJNDAEL_128, '', MCRYPT_MODE_CBC, '');
 
-            return $encrypted;
-	}
+            if (mcrypt_generic_init($cipher, $key, $iv) != -1) {
+
+                $encrypted = mcrypt_generic($cipher, self::pkcs7_pad($string));
+                mcrypt_generic_deinit($cipher);
+                mcrypt_module_close($cipher);
+
+                return $encrypted;
+            }
+
+            return false;
+        }
+
+        trigger_error(
+            'GibberishAES: System requirements failure, please, check them.',
+            E_USER_WARNING
+        );
 
         return false;
     }
@@ -254,16 +274,30 @@ class GibberishAES {
             return openssl_decrypt($crypted, "aes-$key_size-cbc", $key, true, $iv);
         }
 
-        $cipher = mcrypt_module_open(MCRYPT_RIJNDAEL_128, '', MCRYPT_MODE_CBC, '');
+        if (!isset(self::$mcrypt_exists)) {
+            self::$mcrypt_exists = function_exists('mcrypt_encrypt');
+        }
 
-        if (mcrypt_generic_init($cipher, $key, $iv) != -1) {
+        if (self::$mcrypt_exists) {
 
-            $decrypted = mdecrypt_generic($cipher, $crypted);
-            mcrypt_generic_deinit($cipher);
-            mcrypt_module_close($cipher);
+            $cipher = mcrypt_module_open(MCRYPT_RIJNDAEL_128, '', MCRYPT_MODE_CBC, '');
 
-            return self::remove_pkcs7_pad($decrypted);
-	}
+            if (mcrypt_generic_init($cipher, $key, $iv) != -1) {
+
+                $decrypted = mdecrypt_generic($cipher, $crypted);
+                mcrypt_generic_deinit($cipher);
+                mcrypt_module_close($cipher);
+
+                return self::remove_pkcs7_pad($decrypted);
+            }
+
+            return false;
+        }
+
+        trigger_error(
+            'GibberishAES: System requirements failure, please, check them.',
+            E_USER_WARNING
+        );
 
         return false;
     }
