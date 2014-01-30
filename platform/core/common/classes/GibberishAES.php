@@ -14,6 +14,9 @@
  * or
  * Mcrypt functions installed. 
  *
+ * If none of these functions exist, the class will try to use openssl
+ * from the command line (avoid this case).
+ * 
  * Usage:
  *
  * // This is a secret key, keep it in a safe place and don't loose it.
@@ -43,7 +46,7 @@
  * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2014.
  * Code repository: @link https://github.com/ivantcholakov/gibberish-aes-php
  *
- * @version 1.0.1
+ * @version 1.1
  *
  * @license The MIT License (MIT)
  * @link http://opensource.org/licenses/MIT
@@ -58,6 +61,7 @@ class GibberishAES {
     protected static $openssl_encrypt_exists = null;
     protected static $openssl_decrypt_exists = null;
     protected static $mcrypt_exists = null;
+    protected static $openssl_cli_exists = null;
 
     // This is a static class, instances are disabled.
     final private function __construct() {}
@@ -253,6 +257,23 @@ class GibberishAES {
             return false;
         }
 
+        if (!isset(self::$openssl_cli_exists)) {
+            self::$openssl_cli_exists = self::openssl_cli_exists();
+        }
+
+        if (self::$openssl_cli_exists) {
+
+            $cmd = 'echo '.self::escapeshellarg($string).' | openssl enc -e -a -A -aes-'.$key_size.'-cbc -K '.self::strtohex($key).' -iv '.self::strtohex($iv);
+
+            exec($cmd, $output, $return);
+
+            if ($return == 0 && isset($output[0])) {
+                return base64_decode($output[0]);
+            }
+
+            return false;
+        }
+
         trigger_error(
             'GibberishAES: System requirements failure, please, check them.',
             E_USER_WARNING
@@ -289,6 +310,25 @@ class GibberishAES {
                 mcrypt_module_close($cipher);
 
                 return self::remove_pkcs7_pad($decrypted);
+            }
+
+            return false;
+        }
+
+        if (!isset(self::$openssl_cli_exists)) {
+            self::$openssl_cli_exists = self::openssl_cli_exists();
+        }
+
+        if (self::$openssl_cli_exists) {
+
+            $string = base64_encode($crypted);
+
+            $cmd = 'echo '.self::escapeshellarg($string).' | openssl enc -d -a -A -aes-'.$key_size.'-cbc -K '.self::strtohex($key).' -iv '.self::strtohex($iv);
+
+            exec($cmd, $output, $return);
+
+            if ($return == 0 && isset($output[0])) {
+                return $output[0];
             }
 
             return false;
@@ -336,6 +376,54 @@ class GibberishAES {
         }
 
         return $string;
+    }
+
+    protected static function openssl_cli_exists() {
+
+        exec('openssl version', $output, $return);
+
+        return $return == 0;
+    }
+
+    protected static function strtohex($string) {
+
+         $result = '';
+
+         foreach (str_split($string) as $c) {
+             $result .= sprintf("%02X", ord($c));
+         }
+
+         return $result;
+    }
+
+    protected static function escapeshellarg($arg) {
+
+        if (strtolower(substr(php_uname('s'), 0, 3 )) == 'win') {
+
+            // See http://stackoverflow.com/questions/6427732/how-can-i-escape-an-arbitrary-string-for-use-as-a-command-line-argument-in-windo
+
+            // Sequence of backslashes followed by a double quote:
+            // double up all the backslashes and escape the double quote
+            $arg = preg_replace('/(\\*)"/g', '$1$1\\"', $arg);
+
+            // Sequence of backslashes followed by the end of the arg,
+            // which will become a double quote later:
+            // double up all the backslashes
+            $arg = preg_replace('/(\\*)$/', '$1$1', $arg);
+
+            // All other backslashes do not need modifying
+
+            // Double-quote the whole thing
+            $arg = '"'.$arg.'"';
+
+            // Escape shell metacharacters.
+            $arg = preg_replace('/([\(\)%!^"<>&|;, ])/g', '^$1', $arg);
+
+            return $arg;
+        }
+
+        // See http://markushedlund.com/dev-tech/php-escapeshellarg-with-unicodeutf-8-support
+        return "'" . str_replace("'", "'\\''", $arg) . "'";
     }
 
 }
