@@ -224,7 +224,7 @@ directly on parser call where it is needed.
 
 The simple CodeIgniter's parser driver-name is 'parser', you may use it according to CodeIgniter's manual.
 
-**Enanced syntaxt for using parcers** (which I prefer)
+**Enanced syntax for using parsers** (which I prefer)
 
 Using the generic parser class directly, with specifying the desired driver:
 
