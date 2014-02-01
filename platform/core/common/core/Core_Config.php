@@ -160,6 +160,9 @@ class Core_Config extends MX_Config {
      * @param   bool    $fail_gracefully    Whether to just return FALSE or display an error message
      * @return  bool                        TRUE if the file was loaded correctly or FALSE on failure
      */
+    // TODO: This method overload is to be be decided whether it is needed.
+    // TODO: The fourth paramter $module is missing.
+    /*
     public function load($file = '', $use_sections = FALSE, $fail_gracefully = FALSE) {
 
         $file = ($file === '') ? 'config' : str_replace('.php', '', $file);
@@ -241,6 +244,7 @@ class Core_Config extends MX_Config {
 
         return TRUE;
     }
+    */
 
     // --------------------------------------------------------------------
 
