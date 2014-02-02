@@ -284,11 +284,13 @@ class Core_Config extends MX_Config {
      *
      * Returns base_url . index_page [. uri_string]
      *
-     * @access    public
-     * @param     mixed    the URI string
+     * @uses        CI_Config::_uri_string()
+     *
+     * @param       string|string[]    $uri         URI string or an array of segments
+     * @param       string              $protocol
      * @return    string
      */
-    public function site_url($uri = '')
+    public function site_url($uri = '', $protocol = NULL)
     {
         // Added by Ivan Tcholakov, 12-OCT-2013.
         if (is_array($uri)) {
@@ -296,17 +298,24 @@ class Core_Config extends MX_Config {
         }
         //
 
+        $base_url = $this->slash_item('base_url');
+
+        if (isset($protocol))
+        {
+            $base_url = $protocol.substr($base_url, strpos($base_url, '://'));
+        }
+
         // Modified by Ivan Tcholakov, 21-JAN-2014.
         //if (empty($uri))
         //{
-        //    return $this->slash_item('base_url').$this->item('index_page');
+        //    return $base_url.$this->item('index_page');
         //}
         if ($uri == '')
         {
             if ($this->hide_default_language_uri_segment() && $this->current_language() == $this->default_language()) {
-                return $this->slash_item('base_url').$this->item('index_page');
+                return $base_url.$this->item('index_page');
             } else {
-                return $this->slash_item('base_url').($this->item('index_page') != '' ? $this->item('index_page').'/' : '').$this->language_uri_segment($this->current_language()).'/';
+                return $base_url.($this->item('index_page') != '' ? $this->item('index_page').'/' : '').$this->language_uri_segment($this->current_language()).'/';
             }
         }
 
@@ -331,14 +340,14 @@ class Core_Config extends MX_Config {
                 }
             }
 
-            return $this->slash_item('base_url').$this->slash_item('index_page').$uri;
+            return $base_url.$this->slash_item('index_page').$uri;
         }
         elseif (strpos($uri, '?') === FALSE)
         {
             $uri = '?'.$uri;
         }
 
-        return $this->slash_item('base_url').$this->item('index_page').$uri;
+        return $base_url.$this->item('index_page').$uri;
     }
 
     // --------------------------------------------------------------------
