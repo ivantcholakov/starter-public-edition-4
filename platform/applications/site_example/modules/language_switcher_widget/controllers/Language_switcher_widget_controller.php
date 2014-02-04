@@ -49,7 +49,7 @@ class Language_switcher_widget_controller extends Base_Widget_Controller {
             $item = array(
                 'language' => $key,
                 'label' => isset($value['name']) ? $value['name'] : $key,
-                'link' => $this->lang->switch_uri($key),
+                'link' => base_url($this->lang->switch_uri($key)),
                 'flag' => isset($value['flag']) ? $value['flag'] : null,
             );
 
