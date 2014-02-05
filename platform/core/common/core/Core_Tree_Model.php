@@ -315,16 +315,16 @@ class Core_Tree_Model extends Core_Model {
         return $this->find($this->parent_id_key, $id);
     }
 
-    public function get_tree($id = null, $select = '', $where = array(), $order_by = array(), $deepness = null) {
+    public function get_tree($id = null, $select = '', $where = array(), $order_by = array(), $depth = null) {
 
         $id = (int) $id;
         $level = empty($id) ? 0 : $this->get_level($id);
 
-        if (!is_null($deepness)) {
+        if (!is_null($depth)) {
 
-            $deepness = (int) $deepness;
+            $depth = (int) $depth;
 
-            if ($deepness < $level) {
+            if ($depth < $level) {
                 return null;
             }
         }
@@ -335,7 +335,7 @@ class Core_Tree_Model extends Core_Model {
 
              foreach ($result as $key => $row) {
 
-                 $children = $this->get_children($row[$this->primary_key], $select, $where, $order_by, $deepness);
+                 $children = $this->get_children($row[$this->primary_key], $select, $where, $order_by, $depth);
 
                  if (!empty($children)) {
 
@@ -356,9 +356,9 @@ class Core_Tree_Model extends Core_Model {
         return null;
     }
 
-    public function get_list($id = null, $select = '', $where = array(), $order_by = array(), $deepness = null) {
+    public function get_list($id = null, $select = '', $where = array(), $order_by = array(), $depth = null) {
 
-        $tree = $this->get_tree($id, $select, $where, $order_by, $deepness);
+        $tree = $this->get_tree($id, $select, $where, $order_by, $depth);
 
         return $this->_tree_to_list($tree);
     }
