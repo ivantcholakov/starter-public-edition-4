@@ -403,4 +403,59 @@ class Core_Tree_Model extends Core_Model {
         return true;
     }
 
+    public function get_path($id, $select = '') {
+
+        $result = array();
+
+        $id = (int) $id;
+
+        if (empty($id)) {
+            return $result;
+        }
+
+        if (!is_array($select)) {
+
+            $select = trim($select);
+            $select = $select == '' ? '*' : $select;
+            $select = explode(',', $select);
+
+        } elseif (empty($select)) {
+
+            $select = array('*');
+        }
+
+        $select = array_merge(
+            array(
+                $this->primary_key,
+                $this->parent_id_key,
+            ),
+            $select
+        );
+
+        $item = $this->select($select)->as_array()->get($id);
+
+        if (empty($item)) {
+            return $result;
+        }
+
+        $result[] = $item;
+
+        $parent_id = (int) $item[$this->parent_id_key];
+
+        while (!empty($parent_id)) {
+
+            $item = $this->select($select)->as_array()->get($parent_id);
+
+            if (empty($item)) {
+                break;
+            }
+
+            $result[] = $item;
+
+            $parent_id = $this->get_parent($parent_id);
+        }
+
+        return array_reverse($result);
+    }
+
 }
