@@ -62,7 +62,7 @@ class Core_Model extends CI_Model
     public $_database;
 
     /**
-     * Here a list of table fields e to be stored when is is required.
+     * Here a list of table fields e to be stored when it is required.
      */
     protected $_fields = NULL;
 
@@ -70,7 +70,7 @@ class Core_Model extends CI_Model
      * This model's default primary key or unique identifier.
      * Used by the get(), update() and delete() functions.
      */
-    protected $primary_key = 'id';
+    protected $primary_key = NULL;
 
     /**
      * Support for soft deletes and this model's 'deleted' key
@@ -188,12 +188,14 @@ class Core_Model extends CI_Model
     public function __construct()
     {
         parent::__construct();
+
         $this->_is_ci_3 = (int) CI_VERSION >= 3;
 
         $this->load->helper('inflector');
 
         $this->_set_database();
         $this->_fetch_table();
+        $this->_fetch_primary_key();
 
         $this->soft_delete_key_full = $this->_table.'.'.$this->soft_delete_key;
 
@@ -1899,6 +1901,22 @@ class Core_Model extends CI_Model
             }
 
             $this->_database = $this->db;
+        }
+    }
+
+    /**
+     * Guess the primary key for current table
+     */
+    protected function _fetch_primary_key()
+    {
+        if ($this->primary_key == NULL && $this->table_exists())
+        {
+            $row = $this->_database->query("SHOW KEYS FROM `".$this->_table."` WHERE Key_name = 'PRIMARY'")->row();
+
+            if (is_object($row))
+            {
+                $this->primary_key = $row->Column_name;
+            }
         }
     }
 
