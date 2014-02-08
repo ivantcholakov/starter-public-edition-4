@@ -78,7 +78,8 @@ $('pre').addClass('prettyprint');
 
                     if( !is_hidden ) {
 
-                        $scrolltop_link.slideUp().data('hidden', 1);
+                        //$scrolltop_link.slideUp().data('hidden', 1);
+                        $scrolltop_link.fadeOut(600).data('hidden', 1);
 
                     }
                 }
