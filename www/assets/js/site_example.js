@@ -18,7 +18,7 @@ $('pre').addClass('prettyprint');
 
 (function($) {
 
-    addScrollTopAnimation(); // tart 
+    addScrollTopAnimation();
 
     function addScrollTopAnimation() {
 
