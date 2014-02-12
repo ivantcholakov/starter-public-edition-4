@@ -319,11 +319,11 @@ Author: Ivan Tcholakov ivantcholakov@gmail.com, 2012-2014.
 License: The MIT License (MIT), http://opensource.org/licenses/MIT
 
 CodeIgniter:  
-Copyright (c) 2008 - 2013, EllisLab, Inc. (http://ellislab.com/)  
+Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)  
 License: Open Software License (OSL 3.0), http://opensource.org/licenses/OSL-3.0
 
 CodeIgniter configuration file:  
-Copyright (c) 2008 - 2013, EllisLab, Inc. (http://ellislab.com/)  
+Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)  
 License: Academic Free License (AFL 3.0), http://opensource.org/licenses/AFL-3.0
 
 Third parties:  
