@@ -21,9 +21,9 @@ class Image_lib extends CI_Image_lib
 
         // If the target width/height match the source, AND if the new file name is not equal to the old file name
         // we'll simply make a copy of the original with the new name... assuming dynamic rendering is off.
-        if ($this->dynamic_output === FALSE AND $this->orig_width == $this->width AND $this->orig_height == $this->height)
+        if ($this->dynamic_output === FALSE && $this->orig_width === $this->width && $this->orig_height === $this->height)
         {
-            if ($this->source_image != $this->new_image AND @copy($this->full_src_path, $this->full_dst_path))
+            if ($this->source_image !== $this->new_image && @copy($this->full_src_path, $this->full_dst_path))
             {
                 @chmod($this->full_dst_path, FILE_WRITE_MODE);
             }
@@ -32,7 +32,7 @@ class Image_lib extends CI_Image_lib
         }
 
         // Let's set up our values based on the action
-        if ($action == 'crop')
+        if ($action === 'crop')
         {
             //  Reassign the source width/height if cropping
             $this->orig_width  = $this->width;
@@ -42,7 +42,7 @@ class Image_lib extends CI_Image_lib
             if ($this->gd_version() !== FALSE)
             {
                 $gd_version = str_replace('0', '', $this->gd_version());
-                $v2_override = ($gd_version == 2) ? TRUE : FALSE;
+                $v2_override = ($gd_version === 2);
             }
         }
         else
@@ -58,14 +58,15 @@ class Image_lib extends CI_Image_lib
             return FALSE;
         }
 
-        //  Create The Image
-        //
-        //  old conditional which users report cause problems with shared GD libs who report themselves as "2.0 or greater"
-        //  it appears that this is no longer the issue that it was in 2004, so we've removed it, retaining it in the comment
-        //  below should that ever prove inaccurate.
-        //
-        //  if ($this->image_library == 'gd2' AND function_exists('imagecreatetruecolor') AND $v2_override == FALSE)
-        if ($this->image_library == 'gd2' AND function_exists('imagecreatetruecolor'))
+        /* Create the image
+         *
+         * Old conditional which users report cause problems with shared GD libs who report themselves as "2.0 or greater"
+         * it appears that this is no longer the issue that it was in 2004, so we've removed it, retaining it in the comment
+         * below should that ever prove inaccurate.
+         *
+         * if ($this->image_library === 'gd2' && function_exists('imagecreatetruecolor') && $v2_override === FALSE)
+         */
+        if ($this->image_library === 'gd2' && function_exists('imagecreatetruecolor'))
         {
             $create    = 'imagecreatetruecolor';
             $copy    = 'imagecopyresampled';
@@ -81,7 +82,7 @@ class Image_lib extends CI_Image_lib
         // Fix for losing image transparency
         // author Yorick Peterse - PyroCMS Dev Team
         //
-        //if ($this->image_type == 3) // png we can actually preserve transparency
+        //if ($this->image_type === 3) // png we can actually preserve transparency
         //{
         //    imagealphablending($dst_img, FALSE);
         //    imagesavealpha($dst_img, TRUE);
@@ -107,17 +108,13 @@ class Image_lib extends CI_Image_lib
         $copy($dst_img, $src_img, 0, 0, $this->x_axis, $this->y_axis, $this->width, $this->height, $this->orig_width, $this->orig_height);
 
         //  Show the image
-        if ($this->dynamic_output == TRUE)
+        if ($this->dynamic_output === TRUE)
         {
             $this->image_display_gd($dst_img);
         }
-        else
+        elseif ( ! $this->image_save_gd($dst_img)) // Or save it
         {
-            // Or save it
-            if ( ! $this->image_save_gd($dst_img))
-            {
-                return FALSE;
-            }
+            return FALSE;
         }
 
         //  Kill the file handles
@@ -137,18 +134,21 @@ class Image_lib extends CI_Image_lib
      * This simply creates an image resource handle
      * based on the type of image being processed
      *
-     * @access  public
+     * @param    string
      * @param   string
      * @return  resource
      */
-    function image_create_gd($path = '', $image_type = '')
+    public function image_create_gd($path = '', $image_type = '')
     {
-        if ($path == '')
+        if ($path === '')
+        {
             $path = $this->full_src_path;
+        }
 
-        if ($image_type == '')
+        if ($image_type === '')
+        {
             $image_type = $this->image_type;
-
+        }
 
         switch ($image_type)
         {
@@ -158,11 +158,11 @@ class Image_lib extends CI_Image_lib
                     $this->set_error(array('imglib_unsupported_imagecreate', 'imglib_gif_not_supported'));
                     return FALSE;
                 }
+
                 // Modified by Ivan Tcholakov, 08-SEP-2011.
                 //return imagecreatefromgif($path);
                 return @ imagecreatefromgif($path);
                 //
-                break;
             case 2 :
                 if ( ! function_exists('imagecreatefromjpeg'))
                 {
@@ -174,7 +174,6 @@ class Image_lib extends CI_Image_lib
                 //return imagecreatefromjpeg($path);
                 return @ imagecreatefromjpeg($path);
                 //
-                break;
             case 3 :
                 if ( ! function_exists('imagecreatefrompng'))
                 {
@@ -186,12 +185,10 @@ class Image_lib extends CI_Image_lib
                 //return imagecreatefrompng($path);
                 return @ imagecreatefrompng($path);
                 //
-                break;
-
+            default:
+                $this->set_error(array('imglib_unsupported_imagecreate'));
+                return FALSE;
         }
-
-        $this->set_error(array('imglib_unsupported_imagecreate'));
-        return FALSE;
     }
 
 }
