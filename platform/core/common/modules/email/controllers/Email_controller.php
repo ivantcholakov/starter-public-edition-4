@@ -130,6 +130,7 @@ class Email_controller extends Core_Controller {
 
         $subject = isset($data['subject']) ? trim($data['subject']) : '';
         $body = isset($data['body']) ? $data['body'] : '';
+        $alt_body = isset($data['alt_body']) ? $data['alt_body'] : '';
 
         if ($subject != '' && trim($body) != '') {
 
@@ -181,13 +182,18 @@ class Email_controller extends Core_Controller {
                 }
             }
 
-            $result = (bool) $this->email
+            $this->email
                 ->from($from, $from_name, $return_path)
                 ->to($to)
                 ->reply_to($reply_to, $reply_to_name)
                 ->subject($subject)
-                ->message($body)
-                ->send();
+                ->message($body);
+
+            if (trim($alt_body) != '') {
+                $this->email->set_alt_message($alt_body);
+            }
+
+            $result = (bool) $this->email->send();
 
             $debug_message = trim(strip_tags($this->email->print_debugger()));
 
