@@ -27,7 +27,8 @@ class Email_controller extends Core_Controller {
      *                                      with the following elements (not all of them are mandatory):
      *                                      'from', 'from_name', 'return_path', 'to' (string or array),
      *                                      'reply_to', 'reply_to_name', 'cc' (string or array),
-     *                                      'subject' (mandatory), 'body' (mandatory), 'attach' (array of file names).
+     *                                      'subject' (mandatory), 'body' (mandatory), 'alt_body',
+     *                                      'attach' (array of file names).
      * @return      boolean                 TRUE on success, FALSE on failure
      */
     public function index($data = array()) {
