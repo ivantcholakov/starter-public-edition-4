@@ -304,6 +304,16 @@ class CI_Pagination {
 	 */
 	public function __construct($params = array())
 	{
+		$CI =& get_instance();
+		$CI->load->language('pagination');
+		foreach (array('first_link', 'next_link', 'prev_link', 'last_link') as $key)
+		{
+			if (($val = $CI->lang->line('pagination_'.$key)) !== FALSE)
+			{
+				$this->$key = $val;
+			}
+		}
+
 		$this->initialize($params);
 		log_message('debug', 'Pagination Class Initialized');
 	}
@@ -316,7 +326,7 @@ class CI_Pagination {
 	 * @param	array	$params	Initialization parameters
 	 * @return	CI_Pagination
 	 */
-	public function initialize($params = array())
+	public function initialize(array $params = array())
 	{
 		if (isset($params['attributes']) && is_array($params['attributes']))
 		{
@@ -332,14 +342,11 @@ class CI_Pagination {
 			unset($params['anchor_class']);
 		}
 
-		if (count($params) > 0)
+		foreach ($params as $key => $val)
 		{
-			foreach ($params as $key => $val)
+			if (property_exists($this, $this->$key))
 			{
-				if (isset($this->$key))
-				{
-					$this->$key = $val;
-				}
+				$this->$key = $val;
 			}
 		}
 
@@ -396,30 +403,32 @@ class CI_Pagination {
 		}
 
 		// Put together our base and first URLs.
-		$this->base_url = trim($this->base_url);
+		// Note: DO NOT append to the properties as that would break successive calls
+		$base_url = trim($this->base_url);
+		$first_url = $this->first_url;
 
 		$query_string = '';
-		$query_string_sep = (strpos($this->base_url, '?') === FALSE) ? '?' : '&amp;';
+		$query_string_sep = (strpos($base_url, '?') === FALSE) ? '?' : '&amp;';
 
 		// Are we using query strings?
 		if ($CI->config->item('enable_query_strings') === TRUE OR $this->page_query_string === TRUE)
 		{
 			// If a custom first_url hasn't been specified, we'll create one from
 			// the base_url, but without the page item.
-			if ($this->first_url === '')
+			if ($first_url === '')
 			{
-				$this->first_url = $this->base_url;
+				$first_url = $base_url;
 
 				// If we saved any GET items earlier, make sure they're appended.
 				if ( ! empty($get))
 				{
-					$this->first_url .= $query_string_sep.http_build_query($get);
+					$first_url .= $query_string_sep.http_build_query($get);
 				}
 			}
 
 			// Add the page segment to the end of the query string, where the
 			// page number will be appended.
-			$this->base_url .= $query_string_sep.http_build_query(array_merge($get, array($this->query_string_segment => '')));
+			$base_url .= $query_string_sep.http_build_query(array_merge($get, array($this->query_string_segment => '')));
 		}
 		else
 		{
@@ -433,17 +442,17 @@ class CI_Pagination {
 
 			// Does the base_url have the query string in it?
 			// If we're supposed to save it, remove it so we can append it later.
-			if ($this->reuse_query_string === TRUE && ($base_query_pos = strpos($this->base_url, '?')) !== FALSE)
+			if ($this->reuse_query_string === TRUE && ($base_query_pos = strpos($base_url, '?')) !== FALSE)
 			{
-				$this->base_url = substr($this->base_url, 0, $base_query_pos);
+				$base_url = substr($base_url, 0, $base_query_pos);
 			}
 
-			if ($this->first_url === '')
+			if ($first_url === '')
 			{
-				$this->first_url = $this->base_url.$query_string;
+				$first_url = $base_url.$query_string;
 			}
 
-			$this->base_url = rtrim($this->base_url, '/').'/';
+			$base_url = rtrim($base_url, '/').'/';
 		}
 
 		// Determine the current page number.
@@ -519,8 +528,8 @@ class CI_Pagination {
 			// Take the general parameters, and squeeze this pagination-page attr in for JS frameworks.
 			$attributes = sprintf('%s %s="%d"', $this->_attributes, $this->data_page_attr, 1);
 
-			$output .= $this->first_tag_open.'<a href="'.$this->first_url.'"'.$attributes.$this->_attr_rel('start').'>'
-				.$this->first_link.'</a>'.$this->first_tag_close;
+			$output .= $this->first_tag_open.'<a href="'.$first_url.'"'.$attributes.$this->_attr_rel('start').'>'
+				.$first_link.'</a>'.$this->first_tag_close;
 		}
 
 		// Render the "Previous" link.
@@ -533,13 +542,13 @@ class CI_Pagination {
 			if ($i === $base_page)
 			{
 				// First page
-				$output .= $this->prev_tag_open.'<a href="'.$this->first_url.'"'.$attributes.$this->_attr_rel('prev').'>'
+				$output .= $this->prev_tag_open.'<a href="'.$first_url.'"'.$attributes.$this->_attr_rel('prev').'>'
 					.$this->prev_link.'</a>'.$this->prev_tag_close;
 			}
 			else
 			{
 				$append = $this->prefix.$i.$this->suffix;
-				$output .= $this->prev_tag_open.'<a href="'.$this->base_url.$append.'"'.$attributes.$this->_attr_rel('prev').'>'
+				$output .= $this->prev_tag_open.'<a href="'.$base_url.$append.'"'.$attributes.$this->_attr_rel('prev').'>'
 					.$this->prev_link.'</a>'.$this->prev_tag_close;
 			}
 
@@ -565,13 +574,13 @@ class CI_Pagination {
 					elseif ($i === $base_page)
 					{
 						// First page
-						$output .= $this->num_tag_open.'<a href="'.$this->first_url.'"'.$attributes.$this->_attr_rel('start').'>'
+						$output .= $this->num_tag_open.'<a href="'.$first_url.'"'.$attributes.$this->_attr_rel('start').'>'
 							.$loop.'</a>'.$this->num_tag_close;
 					}
 					else
 					{
 						$append = $this->prefix.$i.$this->suffix;
-						$output .= $this->num_tag_open.'<a href="'.$this->base_url.$append.'"'.$attributes.$this->_attr_rel('start').'>'
+						$output .= $this->num_tag_open.'<a href="'.$base_url.$append.'"'.$attributes.$this->_attr_rel('start').'>'
 							.$loop.'</a>'.$this->num_tag_close;
 					}
 				}
@@ -585,7 +594,7 @@ class CI_Pagination {
 
 			$attributes = sprintf('%s %s="%d"', $this->_attributes, $this->data_page_attr, (int) $i);
 
-			$output .= $this->next_tag_open.'<a href="'.$this->base_url.$this->prefix.$i.$this->suffix.'"'.$attributes
+			$output .= $this->next_tag_open.'<a href="'.$base_url.$this->prefix.$i.$this->suffix.'"'.$attributes
 				.$this->_attr_rel('next').'>'.$this->next_link.'</a>'.$this->next_tag_close;
 		}
 
@@ -596,7 +605,7 @@ class CI_Pagination {
 
 			$attributes = sprintf('%s %s="%d"', $this->_attributes, $this->data_page_attr, (int) $i);
 
-			$output .= $this->last_tag_open.'<a href="'.$this->base_url.$this->prefix.$i.$this->suffix.'"'.$attributes.'>'
+			$output .= $this->last_tag_open.'<a href="'.$base_url.$this->prefix.$i.$this->suffix.'"'.$attributes.'>'
 				.$this->last_link.'</a>'.$this->last_tag_close;
 		}
 
