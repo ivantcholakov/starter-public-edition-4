@@ -1,4 +1,4 @@
-<?php
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['email_must_be_array'] = 'Email-адресът трябва да се предаде за валидиране чрез масив (array).';
 $lang['email_invalid_address'] = 'Грешен email-адрес: %s';

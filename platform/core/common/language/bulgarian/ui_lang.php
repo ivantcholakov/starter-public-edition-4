@@ -1,4 +1,4 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['ui_hello'] = 'Здравейте, %s.';
 $lang['ui_yes'] = 'Да';

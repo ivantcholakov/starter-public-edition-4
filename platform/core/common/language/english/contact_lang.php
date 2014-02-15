@@ -1,4 +1,4 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['contact_send_us_a_message'] = 'Send Us a Message';
 $lang['contact_subject'] = 'Subject';

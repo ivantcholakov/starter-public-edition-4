@@ -1,4 +1,4 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['mailer_disabled'] = 'E-mail service has not been activated.';
 $lang['mailer_disabled_error'] = 'We are sorry, e-mail service has not been activated. The message has not been sent.';

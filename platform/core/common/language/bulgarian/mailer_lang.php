@@ -1,4 +1,4 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['mailer_disabled'] = 'Пощенската услуга не е активирана.';
 $lang['mailer_disabled_error'] = 'Съжаляваме, пощенската услуга не е активирана. Съобщението не е изпратено.';

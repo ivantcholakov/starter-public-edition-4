@@ -1,4 +1,4 @@
-<?php
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['upload_userfile_not_set'] = 'Не може да се намери променлива с името на файла.';
 $lang['upload_file_exceeds_limit'] = 'Каченият файл надвишава максимално допустимия размер описан в конфигурационния файл.';

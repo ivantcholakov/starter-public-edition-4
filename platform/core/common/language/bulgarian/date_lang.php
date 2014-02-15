@@ -1,4 +1,4 @@
-<?php
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['date_year'] = 'Година';
 $lang['date_years'] = 'Години';

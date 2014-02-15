@@ -1,4 +1,4 @@
-<?php
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['imglib_source_image_required'] = 'Трябва да посочите източник на картинката във вашите настройки.';
 $lang['imglib_gd_required'] = 'Необходима е GD библиотека за тази функция.';

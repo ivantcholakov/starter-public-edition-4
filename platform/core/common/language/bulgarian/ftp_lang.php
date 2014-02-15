@@ -1,4 +1,4 @@
-<?php
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['ftp_no_connection'] = 'Не може да бъде намерена валидна ID връзка. Моля, проверете дали сте се свързали преди да извършите някакви действия с файла.';
 $lang['ftp_unable_to_connect'] = 'Не може да се свърже с вашия FTP сървър чрез предоставения хост.';
