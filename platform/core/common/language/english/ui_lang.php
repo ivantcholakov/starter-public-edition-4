@@ -7,6 +7,7 @@ $lang['ui_confirm'] = 'Confirm';
 $lang['ui_close'] = 'Close';
 $lang['ui_ok'] = 'OK';
 $lang['ui_cancel'] = 'Cancel';
+$lang['ui_help'] = 'Help';
 $lang['ui_information'] = 'Information';
 $lang['ui_confirmation'] = 'Confirmation';
 $lang['ui_warning'] = 'Warning';

@@ -7,6 +7,7 @@ $lang['ui_confirm'] = 'Потвърдете';
 $lang['ui_close'] = 'Затваряне';
 $lang['ui_ok'] = 'Добре';
 $lang['ui_cancel'] = 'Отказ';
+$lang['ui_help'] = 'Помощ';
 $lang['ui_information'] = 'Информация';
 $lang['ui_confirmation'] = 'Потвърждение';
 $lang['ui_warning'] = 'Предупреждение';
