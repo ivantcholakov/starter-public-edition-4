@@ -156,7 +156,7 @@ class Core_Lang extends MX_Lang {
         // i18n:alt
         // i18n:placeholder
         $string = preg_replace_callback(
-            '/i18n:(title|alt|placeholder|value)(\s*=\s*["\'])([^"\']+)(["\'])/im',
+            '/i18n:(title|alt|placeholder|value|data\-content)(\s*=\s*["\'])([^"\']+)(["\'])/im',
             array($this, '_parse_i18n_attributes_callback'),
             $string
         );
