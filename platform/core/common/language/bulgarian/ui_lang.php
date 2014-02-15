@@ -1,5 +1,16 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
+$lang['ui_hello'] = 'Здравейте, %s.';
+$lang['ui_yes'] = 'Да';
+$lang['ui_no'] = 'Не';
+$lang['ui_confirm'] = 'Потвърдете';
+$lang['ui_close'] = 'Затваряне';
+$lang['ui_ok'] = 'Добре';
+$lang['ui_cancel'] = 'Отказ';
+$lang['ui_information'] = 'Информация';
+$lang['ui_confirmation'] = 'Потвърждение';
+$lang['ui_warning'] = 'Предупреждение';
+$lang['ui_error'] = 'Грешка';
 $lang['ui_required_fields_note'] = 'Маркираните полета (*) задължително се попълват.';
 $lang['ui_toggle_navigation'] = 'Навигация';
 $lang['ui_see_a_lager_map'] = 'Вижте по-голяма карта';
@@ -11,3 +22,17 @@ $lang['ui_error_404_title'] = 'Страницата не е намерена (г
 $lang['ui_error_404_description'] = 'Заявената страница %s не съществува или не е достъпна поради някаква причина.';
 $lang['ui_go_to_homepage'] = 'Към началната страница';
 $lang['ui_go_to_top'] = 'Към началото на страницата';
+$lang['ui_to_public_site'] = 'Към публичния сайт';
+$lang['ui_signup'] = 'Регистрация';
+$lang['ui_login'] = 'Вход';
+$lang['ui_login_tip'] = 'Въведете потребителско име и парола и натиснете бутона "Вход".';
+$lang['ui_login_admin'] = 'Вход за администратори';
+$lang['ui_username'] = 'Потребителско име';
+$lang['ui_password'] = 'Парола';
+$lang['ui_logout'] = 'Изход';
+$lang['ui_profile'] = 'Профил';
+$lang['ui_change_password'] = 'Смяна на паролата';
+$lang['ui_change_password_of'] = 'Смяна на паролата на %s';
+$lang['ui_confirm_password'] = 'Потвърдете паролата';
+$lang['ui_wrong_username_or_password'] = 'Грешно потребителско име или грешна парола.';
+$lang['ui_change_password_success'] = 'Паролата на %s беше сменена успешно.';
