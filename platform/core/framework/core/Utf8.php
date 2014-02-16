@@ -51,7 +51,7 @@ class CI_Utf8 {
 		if (
 			defined('PREG_BAD_UTF8_ERROR')				// PCRE must support UTF-8
 			&& (ICONV_ENABLED === TRUE OR MB_ENABLED === TRUE)	// iconv or mbstring must be installed
-			&& strnatcasecmp(config_item('charset'), 'UTF-8') === 0	// Application charset must be UTF-8
+			&& strtoupper(config_item('charset')) === 'UTF-8'	// Application charset must be UTF-8
 			)
 		{
 			define('UTF8_ENABLED', TRUE);
@@ -73,14 +73,12 @@ class CI_Utf8 {
 	 *
 	 * Ensures strings contain only valid UTF-8 characters.
 	 *
-	 * @uses	CI_Utf8::_is_ascii()	Decide whether a conversion is needed
-	 *
 	 * @param	string	$str	String to clean
 	 * @return	string
 	 */
 	public function clean_string($str)
 	{
-		if ($this->_is_ascii($str) === FALSE)
+		if ($this->is_ascii($str) === FALSE)
 		{
 			if (ICONV_ENABLED)
 			{
@@ -147,7 +145,7 @@ class CI_Utf8 {
 	 * @param	string	$str	String to check
 	 * @return	bool
 	 */
-	protected function _is_ascii($str)
+	public function is_ascii($str)
 	{
 		return (preg_match('/[^\x00-\x7F]/S', $str) === 0);
 	}
