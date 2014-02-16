@@ -13,6 +13,7 @@ $lang['ui_information'] = 'Информация';
 $lang['ui_confirmation'] = 'Потвърждение';
 $lang['ui_warning'] = 'Предупреждение';
 $lang['ui_error'] = 'Грешка';
+$lang['ui_data_storage_error'] = 'Грешка при записа на данните.';
 $lang['ui_required_fields_note'] = 'Маркираните полета (*) задължително се попълват.';
 $lang['ui_toggle_navigation'] = 'Навигация';
 $lang['ui_see_a_lager_map'] = 'Вижте по-голяма карта';

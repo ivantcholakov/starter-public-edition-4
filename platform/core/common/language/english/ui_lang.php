@@ -13,6 +13,7 @@ $lang['ui_information'] = 'Information';
 $lang['ui_confirmation'] = 'Confirmation';
 $lang['ui_warning'] = 'Warning';
 $lang['ui_error'] = 'Error';
+$lang['ui_data_storage_error'] = 'Error on data storage.';
 $lang['ui_required_fields_note'] = '(*) denotes a required field.';
 $lang['ui_toggle_navigation'] = 'Toggle navigation';
 $lang['ui_see_a_lager_map'] = 'See a larger map';
