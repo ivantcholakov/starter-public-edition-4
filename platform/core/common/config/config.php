@@ -259,10 +259,11 @@ $config['log_date_format'] = 'Y-m-d H:i:s';
 |--------------------------------------------------------------------------
 |
 | Leave this BLANK unless you would like to set something other than the default
-| application/cache/ folder.  Use a full server path with trailing slash.
+| application/cache/ folder. Use a full server path with trailing slash.
 |
 */
-$config['cache_path'] = WRITABLEPATH.'cache/'.APPNAME.'/';
+// Cache should be activated for the default (public) site only.
+$config['cache_path'] = WRITABLEPATH.'cache/'.DEFAULTAPPNAME.'/';
 
 /*
 |--------------------------------------------------------------------------
