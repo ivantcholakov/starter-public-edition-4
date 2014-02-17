@@ -57,3 +57,4 @@ $lang['ui_metadata'] = 'Мета-данни';
 $lang['ui_title'] = 'Заглавие';
 $lang['ui_description'] = 'Описание';
 $lang['ui_keywords'] = 'Ключови думи';
+$lang['ui_permalink'] = 'Пермалинк';

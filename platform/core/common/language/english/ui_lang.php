@@ -57,3 +57,4 @@ $lang['ui_metadata'] = 'Metadata';
 $lang['ui_title'] = 'Title';
 $lang['ui_description'] = 'Description';
 $lang['ui_keywords'] = 'Keywords';
+$lang['ui_permalink'] = 'Permanent link';
