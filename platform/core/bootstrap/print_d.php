@@ -75,7 +75,6 @@ function print_d($var, $options = false)
 
 	if (!$options['recursive'])
 	{
-		//$t = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
 		$t = defined('DEBUG_BACKTRACE_IGNORE_ARGS') ? debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS) : debug_backtrace();
 
 		if (file_exists($t[0]['file']))
