@@ -164,6 +164,11 @@ class Core_Model extends CI_Model
     protected $_is_ci_3 = NULL;
 
     /**
+     * Compatibility checks.
+     */
+    protected $_function_exists_array_column = NULL;
+
+    /**
      * Driver info.
      */
     protected $_dbdriver = NULL;
@@ -190,6 +195,7 @@ class Core_Model extends CI_Model
         parent::__construct();
 
         $this->_is_ci_3 = (int) CI_VERSION >= 3;
+        $this->_function_exists_array_column = function_exists('array_column');
 
         $this->load->helper('inflector');
 
@@ -1015,11 +1021,18 @@ class Core_Model extends CI_Model
 
         $result = $this->_database->get($this->_table)->result_array();
 
-        $options = array();
-
-        foreach ($result as $row)
+        if ($this->_function_exists_array_column)
         {
-            $options[$row[$key]] = $row[$value];
+            $options = array_column($result, $value, $key);
+        }
+        else
+        {
+            $options = array();
+
+            foreach ($result as $row)
+            {
+                $options[$row[$key]] = $row[$value];
+            }
         }
 
         $options = $this->trigger('after_dropdown', $options);
