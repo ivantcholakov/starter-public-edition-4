@@ -96,7 +96,7 @@ class Email extends CI_Email {
             }
         }
 
-        $this->_safe_mode = ( ! is_php('5.4') && (bool) @ini_get('safe_mode'));
+        $this->_safe_mode = ( ! is_php('5.4') && ini_get('safe_mode'));
 
         log_message('debug', 'Email Class Initialized (Engine: '.$this->mailer_engine.')');
     }

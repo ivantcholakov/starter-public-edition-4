@@ -260,7 +260,7 @@ if ( ! function_exists('_exception_handler'))
         $_error->log_exception($severity, $message, $filepath, $line);
 
         // Should we display the error?
-        if ((bool) ini_get('display_errors') === TRUE)
+        if (ini_get('display_errors'))
         {
             $_error->show_php_error($severity, $message, $filepath, $line);
         }
