@@ -74,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	register_shutdown_function('_shutdown_handler');
 
 	// Kill magic quotes
-	is_php('5.4') OR @ini_set('magic_quotes_runtime', 0);
+	is_php('5.4') OR ini_set('magic_quotes_runtime', 0);
 
 /*
  * ------------------------------------------------------
@@ -191,6 +191,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	require_once(BASEPATH.'core/compat/mbstring.php');
 	require_once(BASEPATH.'core/compat/hash.php');
 	require_once(BASEPATH.'core/compat/password.php');
+	require_once(BASEPATH.'core/compat/array.php');
 
 /*
  * ------------------------------------------------------

@@ -589,8 +589,6 @@ if ( ! function_exists('_exception_handler'))
 			set_status_header(500);
 		}
 
-		$_error =& load_class('Exceptions', 'core');
-
 		// Should we ignore the error? We'll get the current error_reporting
 		// level and add its bits with the severity bits to find out.
 		if (($severity & error_reporting()) !== $severity)
@@ -598,6 +596,7 @@ if ( ! function_exists('_exception_handler'))
 			return;
 		}
 
+		$_error =& load_class('Exceptions', 'core');
 		$_error->log_exception($severity, $message, $filepath, $line);
 
 		// Should we display the error?
