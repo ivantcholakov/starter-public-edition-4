@@ -288,7 +288,7 @@ class Core_Config extends MX_Config {
      *
      * @param       string|string[]    $uri         URI string or an array of segments
      * @param       string              $protocol
-     * @return    string
+     * @return      string
      */
     public function site_url($uri = '', $protocol = NULL)
     {

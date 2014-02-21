@@ -48,7 +48,7 @@ class Core_Lang extends MX_Lang {
 
         $log_errors = (bool) $log_errors;
 
-        if ($line == '' || !isset($this->language[$line])) {
+        if (!isset($this->language[$line])) {
 
             $value = FALSE;
 
