@@ -77,3 +77,5 @@ $lang['ui_upload'] = 'Upload';
 $lang['ui_download'] = 'Download';
 $lang['ui_select_file'] = 'Select file';
 $lang['ui_text'] = 'Text';
+$lang['ui_level'] = 'Level';
+$lang['ui_main_level'] = 'Main level';

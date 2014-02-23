@@ -77,3 +77,5 @@ $lang['ui_upload'] = 'Качване';
 $lang['ui_download'] = 'Сваляне';
 $lang['ui_select_file'] = 'Избор на файл';
 $lang['ui_text'] = 'Текст';
+$lang['ui_level'] = 'Ниво';
+$lang['ui_main_level'] = 'Главно ниво';
