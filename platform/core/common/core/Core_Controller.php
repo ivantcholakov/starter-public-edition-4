@@ -183,6 +183,8 @@ class Core_Controller extends MX_Controller {
         if (method_exists($this->common_module_extender, $method)) {
             return call_user_func_array(array($this->common_module_extender, $method), $params);
         }
+
+        show_404();
     }
     
     /**
