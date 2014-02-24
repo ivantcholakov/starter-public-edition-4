@@ -130,7 +130,7 @@ if ( ! function_exists('load_class'))
 	 * @param	string	the class name prefix
 	 * @return	object
 	 */
-	function &load_class($class, $directory = 'libraries', $prefix = 'CI_')
+	function &load_class($class, $directory = 'libraries', $param = NULL)
 	{
 		static $_classes = array();
 
@@ -148,7 +148,7 @@ if ( ! function_exists('load_class'))
 		{
 			if (file_exists($path.$directory.'/'.$class.'.php'))
 			{
-				$name = $prefix.$class;
+				$name = 'CI_'.$class;
 
 				if (class_exists($name, FALSE) === FALSE)
 				{
@@ -166,7 +166,7 @@ if ( ! function_exists('load_class'))
 
 			if (class_exists($name, FALSE) === FALSE)
 			{
-				require_once(APPPATH.$directory.'/'.config_item('subclass_prefix').$class.'.php');
+				require_once(APPPATH.$directory.'/'.$name.'.php');
 			}
 		}
 
@@ -183,8 +183,16 @@ if ( ! function_exists('load_class'))
 		// Keep track of what we just loaded
 		is_loaded($class);
 
-		$_classes[$class] = new $name();
+		// Modified by Ivan Tcholakov, 24-FEB-2014.
+		// Suppressing notice "Only variable references should be returned by reference"
+		//return $_classes[$class] = isset($param)
+		//	? new $name($param)
+		//	: new $name();
+		$_classes[$class] = isset($param)
+			? new $name($param)
+			: new $name();
 		return $_classes[$class];
+		//
 	}
 }
 

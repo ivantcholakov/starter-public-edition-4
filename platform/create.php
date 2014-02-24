@@ -331,7 +331,7 @@ $URI =& load_class('URI', 'core');
  *  Instantiate the routing class and set the routing
  * ------------------------------------------------------
  */
-$RTR =& load_class('Router', 'core');
+$RTR =& load_class('Router', 'core', isset($routing) ? $routing : NULL);
 
 // Added by Ivan Tcholakov, 01-NOV-2013.
 if (NORMAL_MVC_EXECUTION)
@@ -383,12 +383,10 @@ $OUT =& load_class('Output', 'core');
  * ------------------------------------------------------
  */
 // Modified by Ivan Tcholakov.
-//if ($EXT->call_hook('cache_override') === FALSE
+//if ($EXT->call_hook('cache_override') === FALSE && $OUT->_display_cache($CFG, $URI) === TRUE)
 // Disable cache when core is not initialized normally.
-if (NORMAL_MVC_EXECUTION
-    && $EXT->call_hook('cache_override') === FALSE
+if (NORMAL_MVC_EXECUTION && $EXT->call_hook('cache_override') === FALSE&& $OUT->_display_cache($CFG, $URI) === TRUE)
 //
-    && $OUT->_display_cache($CFG, $URI) === TRUE)
 {
     exit;
 }
