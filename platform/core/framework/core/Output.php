@@ -44,10 +44,7 @@ class CI_Output {
 	 *
 	 * @var	string
 	 */
-	// Modified by Ivan Tcholakov, 24-FEB-2014.
-	//public $final_output;
-	public $final_output = NULL;
-	//
+	public $final_output;
 
 	/**
 	 * Cache expiration time
