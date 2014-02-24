@@ -44,7 +44,10 @@ class CI_Output {
 	 *
 	 * @var	string
 	 */
-	public $final_output;
+	// Modified by Ivan Tcholakov, 24-FEB-2014.
+	//public $final_output;
+	public $final_output = NULL;
+	//
 
 	/**
 	 * Cache expiration time
@@ -175,15 +178,7 @@ class CI_Output {
 	 */
 	public function append_output($output)
 	{
-		if (empty($this->final_output))
-		{
-			$this->final_output = $output;
-		}
-		else
-		{
-			$this->final_output .= $output;
-		}
-
+		$this->final_output .= $output;
 		return $this;
 	}
 

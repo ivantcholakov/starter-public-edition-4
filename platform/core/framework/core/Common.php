@@ -183,16 +183,10 @@ if ( ! function_exists('load_class'))
 		// Keep track of what we just loaded
 		is_loaded($class);
 
-		// Modified by Ivan Tcholakov, 24-FEB-2014.
-		// Suppressing notice "Only variable references should be returned by reference"
-		//return $_classes[$class] = isset($param)
-		//	? new $name($param)
-		//	: new $name();
 		$_classes[$class] = isset($param)
 			? new $name($param)
 			: new $name();
 		return $_classes[$class];
-		//
 	}
 }
 
