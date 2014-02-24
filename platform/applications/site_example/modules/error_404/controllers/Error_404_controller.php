@@ -1,4 +1,4 @@
-<?php if (!defined('BASEPATH')) { exit('No direct script access allowed.'); }
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Error_404_controller extends Base_Controller {
 
