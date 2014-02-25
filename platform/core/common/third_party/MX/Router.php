@@ -96,7 +96,7 @@ class MX_Router extends CI_Router
 
             if ($this->config->valid_language_uri_segment($segments[0])) {
 
-                $this->config->set_item('language', $this->config->language_by_uri_segment($segments[0]));
+                $this->config->set_current_language($this->config->language_by_uri_segment($segments[0]));
                 array_shift($segments);
 
                 if (empty($segments)) {

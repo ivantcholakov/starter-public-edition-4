@@ -7,19 +7,15 @@
 
 class Core_Lang extends MX_Lang {
 
+    protected $config;
+
     protected $common_module_extender;
 
     public function __construct() {
 
         parent::__construct();
 
-        global $URI;
-
-        $uri_segment = $this->get_uri_lang($URI->uri_string());
-
-        $language = $uri_segment ? $this->by_uri_segment($uri_segment['lang']) : null;
-
-        $this->set_current($language);
+        $this->config = load_class('Config', 'core');
     }
 
     /**
@@ -281,9 +277,7 @@ class Core_Lang extends MX_Lang {
     // Add language segment to $uri (if appropriate)
     function localized($uri) {
 
-        global $CFG;
-
-        return $CFG->localized($uri);
+        return $this->config->localized($uri);
     }
 
     // Added by Ivan Tcholakov, 22-JAN-2014.
@@ -291,161 +285,133 @@ class Core_Lang extends MX_Lang {
     // When true - returns an array with language segment + rest.
     public function get_uri_lang($uri = '') {
 
-        global $CFG;
-
-        return $CFG->get_uri_lang($uri);
+        return $this->config->get_uri_lang($uri);
     }
 
     // Added by Ivan Tcholakov, 21-JAN-2014.
     public function multilingual_site() {
 
-        global $CFG;
-
-        return $CFG->multilingual_site();
+        return $this->config->multilingual_site();
     }
 
     // Added by Ivan Tcholakov, 22-JAN-2014.
     public function hide_default_uri_segment() {
 
-        global $CFG;
-
-        return $CFG->hide_default_language_uri_segment();
+        return $this->config->hide_default_language_uri_segment();
     }
 
     // Added by Ivan Tcholakov, 23-JAN-2014.
     public function get($language) {
 
-        global $CFG;
-
-        return $CFG->get_language($language);
+        return $this->config->get_language($language);
     }
 
     // Added by Ivan Tcholakov, 22-JAN-2014.
     public function set_current($language) {
 
-        global $CFG;
-
-        $CFG->set_current_language($language);
+        $this->config->set_current_language($language);
     }
 
     // Added by Ivan Tcholakov, 22-JAN-2014.
     public function current() {
 
-        global $CFG;
-
-        return $CFG->current_language();
+        return $this->config->current_language();
     }
 
     // Added by Ivan Tcholakov, 21-JAN-2014.
     public function default_lang() {
 
-        global $CFG;
-
-        return $CFG->default_language();
+        return $this->config->default_language();
     }
 
     // Added by Ivan Tcholakov, 21-JAN-2014.
     public function default_code() {
 
-        global $CFG;
-
-        return $CFG->default_language_code();
+        return $this->config->default_language_code();
     }
 
     // Added by Ivan Tcholakov, 21-JAN-2014.
     public function default_uri_segment() {
 
-        global $CFG;
-
-        return $CFG->default_language_uri_segment();
+        return $this->config->default_language_uri_segment();
     }
 
     // Added by Ivan Tcholakov, 21-JAN-2014.
     public function enabled() {
 
-        global $CFG;
-
-        return $CFG->enabled_languages();
+        return $this->config->enabled_languages();
     }
 
     // Added by Ivan Tcholakov, 21-JAN-2014.
     public function enabled_codes() {
 
-        global $CFG;
-
-        return $CFG->enabled_languages_codes();
+        return $this->config->enabled_languages_codes();
     }
 
     // Added by Ivan Tcholakov, 21-JAN-2014.
     public function enabled_uri_segments() {
 
-        global $CFG;
-
-        return $CFG->enabled_languages_uri_segments();
+        return $this->config->enabled_languages_uri_segments();
     }
 
     // Added by Ivan Tcholakov, 21-JAN-2014.
     public function valid($language) {
 
-        global $CFG;
-
-        return $CFG->valid_language($language);
+        return $this->config->valid_language($language);
     }
 
     // Added by Ivan Tcholakov, 21-JAN-2014.
     public function valid_code($code) {
 
-        global $CFG;
-
-        return $CFG->valid_code($code);
+        return $this->config->valid_code($code);
     }
 
     // Added by Ivan Tcholakov, 21-JAN-2014.
     public function valid_uri_segment($uri_segment) {
 
-        global $CFG;
-
-        return $CFG->valid_language_uri_segment($uri_segment);
+        return $this->config->valid_language_uri_segment($uri_segment);
     }
 
     // Added by Ivan Tcholakov, 21-JAN-2014.
     public function by_code($code) {
 
-        global $CFG;
-
-        return $CFG->language_by_code($code);
+        return $this->config->language_by_code($code);
     }
 
     // Added by Ivan Tcholakov, 21-JAN-2014.
     public function by_uri_segment($uri_segment) {
 
-        global $CFG;
-
-        return $CFG->language_by_uri_segment($uri_segment);
+        return $this->config->language_by_uri_segment($uri_segment);
     }
 
     // Added by Ivan Tcholakov, 21-JAN-2014.
     public function code($language = null) {
 
-        global $CFG;
-
-        return $CFG->language_code($language);
+        return $this->config->language_code($language);
     }
 
     // Added by Ivan Tcholakov, 21-JAN-2014.
     public function uri_segment($language = null) {
 
-        global $CFG;
-
-        return $CFG->language_uri_segment($language);
+        return $this->config->language_uri_segment($language);
     }
 
     // Added by Ivan Tcholakov, 21-JAN-2014.
     public function direction($language = null) {
 
-        global $CFG;
+        return $this->config->language_direction($language);
+    }
 
-        return $CFG->language_direction($language);
+    // Added by Ivan Tcholakov, 25-FEB-2014.
+    public function ckeditor($language = null) {
+
+        return $this->config->ckeditor($language);
+    }
+
+    // Added by Ivan Tcholakov, 25-FEB-2014.
+    public function bc_id($language = null) {
+
+        return $this->config->language_bc_id($language);
     }
 
 }

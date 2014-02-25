@@ -65,6 +65,10 @@ class Core_Config extends MX_Config {
             if (!isset($value['uri_segment'])) {
                 $languages[$key]['uri_segment'] = $value['code'];
             }
+
+            if (!isset($value['ckeditor'])) {
+                $languages[$key]['ckeditor'] = $value['code'];
+            }
         }
 
         $c['languages'] = $languages;
@@ -149,102 +153,6 @@ class Core_Config extends MX_Config {
 
         log_message('debug', 'Config Class Initialized');
     }
-
-    // --------------------------------------------------------------------
-
-    /**
-     * Load Config File
-     *
-     * @param   string  $file               Configuration file name
-     * @param   bool    $use_sections       Whether configuration values should be loaded into their own section
-     * @param   bool    $fail_gracefully    Whether to just return FALSE or display an error message
-     * @return  bool                        TRUE if the file was loaded correctly or FALSE on failure
-     */
-    // TODO: This method overload is to be be decided whether it is needed.
-    // TODO: The fourth paramter $module is missing.
-    /*
-    public function load($file = '', $use_sections = FALSE, $fail_gracefully = FALSE) {
-
-        $file = ($file === '') ? 'config' : str_replace('.php', '', $file);
-
-        $loaded = FALSE;
-
-        foreach ($this->_config_paths as $path) {
-
-            foreach (array($file, ENVIRONMENT.'/'.$file) as $location) {
-
-                $file_path = $path.'config/'.$location.'.php';
-
-                if (in_array($file_path, $this->is_loaded, TRUE)) {
-                    return TRUE;
-                }
-
-                if (file_exists($file_path)) {
-
-                    include($file_path);
-
-                    if (isset($config)) {
-
-                        if (is_array($config)) {
-
-                            $loaded = TRUE;
-
-                            if ($use_sections === TRUE) {
-
-                                if (isset($this->config[$file])) {
-
-                                    $this->config[$file] = array_merge($this->config[$file], $config);
-
-                                } else {
-
-                                    $this->config[$file] = $config;
-                                }
-
-                            } else {
-
-                                $this->config = array_merge($this->config, $config);
-                            }
-
-                            $this->is_loaded[] = $file_path;
-
-                        } else {
-
-                            if ($loaded) {
-
-                                log_message('debug', 'Your '.$file_path.' file does not appear to contain a valid configuration array.');
-
-                            } else {
-
-                                if ($fail_gracefully === TRUE) {
-                                    return FALSE;
-                                }
-
-                                show_error('Your '.$file_path.' file does not appear to contain a valid configuration array.');
-                            }
-
-                        }
-
-                        unset($config);
-                    }
-
-                }
-
-            }
-
-        }
-
-        if (!$loaded) {
-
-            if ($fail_gracefully === TRUE) {
-                return FALSE;
-            }
-
-            show_error('The configuration file '.$file.'.php does not exist.');
-        }
-
-        return TRUE;
-    }
-    */
 
     // --------------------------------------------------------------------
 
@@ -638,7 +546,7 @@ class Core_Config extends MX_Config {
     public function language_code($language = null) {
 
         if ($language == '') {
-            $language = $this->default_language();
+            $language = $this->current_language();
         }
 
         if (array_key_exists($language, $this->config['languages'])) {
@@ -652,7 +560,7 @@ class Core_Config extends MX_Config {
     public function language_uri_segment($language = null) {
 
         if ($language == '') {
-            $language = $this->default_language();
+            $language = $this->current_language();
         }
 
         if (array_key_exists($language, $this->config['languages'])) {
@@ -666,11 +574,39 @@ class Core_Config extends MX_Config {
     public function language_direction($language = null) {
 
         if ($language == '') {
-            $language = $this->default_language();
+            $language = $this->current_language();
         }
 
         if (array_key_exists($language, $this->config['languages'])) {
             return $this->config['languages'][$language]['direction'];
+        }
+
+        return null;
+    }
+
+    // Added by Ivan Tcholakov, 25-FEB-2014.
+    public function language_ckeditor($language = null) {
+
+        if ($language == '') {
+            $language = $this->current_language();
+        }
+
+        if (array_key_exists($language, $this->config['languages'])) {
+            return $this->config['languages'][$language]['ckeditor'];
+        }
+
+        return null;
+    }
+
+    // Added by Ivan Tcholakov, 25-FEB-2014.
+    public function language_bc_id($language = null) {
+
+        if ($language == '') {
+            $language = $this->current_language();
+        }
+
+        if (array_key_exists($language, $this->config['languages'])) {
+            return $this->config['languages'][$language]['bc_id'];
         }
 
         return null;
