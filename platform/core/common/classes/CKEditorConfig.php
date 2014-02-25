@@ -31,7 +31,7 @@ class CKEditorConfig {
             return self::$config[$key];
         }
 
-        // Get editor's configureation.
+        // Get editor's configuration.
 
         $ci = get_instance();
 
