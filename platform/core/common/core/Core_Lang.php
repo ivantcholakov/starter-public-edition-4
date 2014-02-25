@@ -405,7 +405,7 @@ class Core_Lang extends MX_Lang {
     // Added by Ivan Tcholakov, 25-FEB-2014.
     public function ckeditor($language = null) {
 
-        return $this->config->ckeditor($language);
+        return $this->config->language_ckeditor($language);
     }
 
     // Added by Ivan Tcholakov, 25-FEB-2014.
