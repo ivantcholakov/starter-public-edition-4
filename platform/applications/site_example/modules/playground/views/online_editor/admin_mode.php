@@ -33,6 +33,7 @@ template_partial('subnavbar');
 <?php
 
 $config = CKEditorConfig::get('admin');
+$config['config']['height'] = '150';
 $ckeditor = new CKEditor($config['basePath']);
 $ckeditor->textareaAttributes = $config['textareaAttributes'];
 $ckeditor->initialized = true;
