@@ -119,7 +119,7 @@ class CI_DB_pdo_driver extends CI_DB {
 
 		try
 		{
-			return @new PDO($this->dsn, $this->username, $this->password, $this->options);
+			return new PDO($this->dsn, $this->username, $this->password, $this->options);
 		}
 		catch (PDOException $e)
 		{
@@ -130,18 +130,6 @@ class CI_DB_pdo_driver extends CI_DB {
 
 			return FALSE;
 		}
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Persistent database connection
-	 *
-	 * @return	object
-	 */
-	public function db_pconnect()
-	{
-		return $this->db_connect(TRUE);
 	}
 
 	// --------------------------------------------------------------------
