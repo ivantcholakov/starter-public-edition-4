@@ -5,8 +5,8 @@ $config['denyZipDownload'] = true;
 $config['denyUpdateCheck'] = true;
 $config['denyExtensionRename'] = true;
 $config['theme'] = 'oxygen';
-$config['uploadURL'] = resolve_path(BASE_URI.'editor/');
-$config['uploadDir'] = resolve_path(FCPATH.'editor/');
+$config['uploadURL'] = resolve_path(DEFAULT_BASE_URI.'editor/');
+$config['uploadDir'] = resolve_path(DEFAULTFCPATH.'editor/');
 $config['dirPerms'] = DIR_READ_MODE;
 $config['filePerms'] = FILE_READ_MODE;
 
