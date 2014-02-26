@@ -287,6 +287,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Bootstrap 3.1, http://getbootstrap.com/
 * Bootstrap Hover Dropdown Plugin, https://github.com/CWSpear/bootstrap-hover-dropdown
 * jQuery Validation Plugin, http://jqueryvalidation.org/
+* Extended JavaScript regular expressions XRegExp, http://xregexp.com/
 
 The Playground
 --------------
