@@ -78,7 +78,9 @@ if (!function_exists('build_validation_message'))
      */
     function build_validation_message($rule, $field = NULL, $param = NULL)
     {
-        $line = ci()->lang->line('form_validation_'.$rule);
+        get_instance()->lang->load('form_validation');
+
+        $line = get_instance()->lang->line('form_validation_'.$rule);
 
         return str_replace(array('{field}', '{param}'), array($field, $param), $line);
     }
