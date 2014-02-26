@@ -286,6 +286,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Registry library for CodeIgniter, https://github.com/ivantcholakov/codeigniter-registry
 * Bootstrap 3.1, http://getbootstrap.com/
 * Bootstrap Hover Dropdown Plugin, https://github.com/CWSpear/bootstrap-hover-dropdown
+* jQuery Validation Plugin, http://jqueryvalidation.org/
 
 The Playground
 --------------
