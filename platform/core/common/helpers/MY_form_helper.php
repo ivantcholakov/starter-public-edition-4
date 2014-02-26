@@ -62,3 +62,24 @@ if (!function_exists('validation_errors_array'))
         return $OBJ->error_array();
     }
 }
+
+if (!function_exists('build_validation_message'))
+{
+    /*
+     * This function might be useful for client-side validation - preparing messages.
+     * Sample JavaScript fragment for jQuery Validation Plugin:
+     * ...
+     * messages: {
+     *     name: {
+     *        required: <?php echo json_encode(build_validation_message('required', $this->lang->line('ui_title'))); ?>
+     *     },
+     * },
+     * ...
+     */
+    function build_validation_message($rule, $field = NULL, $param = NULL)
+    {
+        $line = ci()->lang->line('form_validation_'.$rule);
+
+        return str_replace(array('{field}', '{param}'), array($field, $param), $line);
+    }
+}
