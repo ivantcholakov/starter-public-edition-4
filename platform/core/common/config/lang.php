@@ -61,7 +61,6 @@ $config['languages'] = array(
         'name' => 'Español latinoamericano',
         'name_en' => 'Latin American Spanish',
         'flag' => 'MX',
-        'ckeditor' => 'es',         // Language code compatible with CKEditor.
     ),
 
     'french' => array(
@@ -98,7 +97,6 @@ $config['languages'] = array(
         'name' => 'Português do Brasil',
         'name_en' => 'Brazilian Portuguese',
         'flag' => 'BR',
-        'ckeditor' => 'pt-br',
     ),
 
     'russian' => array(

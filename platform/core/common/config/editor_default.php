@@ -3,9 +3,9 @@
 $config['basePath'] = DEFAULT_BASE_URL.'assets/js/ckeditor/';
 $config['config']['baseHref'] = http_build_url(DEFAULT_BASE_URL.'../');
 $config['config']['fullPage'] = false;
-$config['config']['language'] = get_instance()->lang->ckeditor();
+$config['config']['language'] = language_ckeditor();
 $config['config']['defaultLanguage'] = 'en';
-$config['config']['contentsLanguage'] = get_instance()->lang->ckeditor();
+$config['config']['contentsLanguage'] = language_ckeditor();
 $config['config']['contentsLangDirection'] = get_instance()->lang->direction();
 $config['config']['contentsCss'] = array();
 $config['config']['contentsCss'][] = DEFAULT_BASE_URL.'assets/css/lib/bootstrap-3/bootstrap.css';

@@ -65,10 +65,6 @@ class Core_Config extends MX_Config {
             if (!isset($value['uri_segment'])) {
                 $languages[$key]['uri_segment'] = $value['code'];
             }
-
-            if (!isset($value['ckeditor'])) {
-                $languages[$key]['ckeditor'] = $value['code'];
-            }
         }
 
         $c['languages'] = $languages;
@@ -579,34 +575,6 @@ class Core_Config extends MX_Config {
 
         if (array_key_exists($language, $this->config['languages'])) {
             return $this->config['languages'][$language]['direction'];
-        }
-
-        return null;
-    }
-
-    // Added by Ivan Tcholakov, 25-FEB-2014.
-    public function language_ckeditor($language = null) {
-
-        if ($language == '') {
-            $language = $this->current_language();
-        }
-
-        if (array_key_exists($language, $this->config['languages'])) {
-            return $this->config['languages'][$language]['ckeditor'];
-        }
-
-        return null;
-    }
-
-    // Added by Ivan Tcholakov, 25-FEB-2014.
-    public function language_bc_id($language = null) {
-
-        if ($language == '') {
-            $language = $this->current_language();
-        }
-
-        if (array_key_exists($language, $this->config['languages'])) {
-            return $this->config['languages'][$language]['bc_id'];
         }
 
         return null;

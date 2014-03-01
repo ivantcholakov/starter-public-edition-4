@@ -33,6 +33,7 @@ class Core_Controller extends MX_Controller {
             ->library('settings')
             ->helper('url')
             ->helper('language')
+            ->helper('language_extra')
             ->language('ui')
         ;
     }
