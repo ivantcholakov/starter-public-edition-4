@@ -8,7 +8,7 @@ ci()->load
     ->library('template')
 ;
     
-echo html_tag();
+echo html_tag('lang="'.ci()->lang->code().'" dir="'.ci()->lang->direction().'"');
 
 echo head_tag();
 echo meta_charset();
