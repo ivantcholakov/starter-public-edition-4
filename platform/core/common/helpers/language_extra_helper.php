@@ -40,3 +40,81 @@ if (!function_exists('language_ckeditor')) {
     }
 
 }
+
+if (!function_exists('language_jquery_ui')) {
+
+    function language_jquery_ui($language = null) {
+
+        $ci = get_instance();
+
+        $language = (string) $language;
+
+        if ($language == '') {
+            $language = $ci->lang->current();
+        }
+
+        $config = $ci->lang->get($language);
+        $code = $ci->lang->code($language);
+
+        if (empty($config) || $code == '') {
+            return 'en';
+        }
+
+        if (isset($config['jquery_validation'])) {
+            return $config['jquery_validation'];
+        }
+
+        $result = str_replace('_', '-', $code);
+
+        switch ($code) {
+
+            case 'es-419':
+                $result = 'es';
+                break;
+        }
+
+        return $result;
+    }
+
+}
+
+if (!function_exists('language_jquery_validation')) {
+
+    function language_jquery_validation($language = null) {
+
+        $ci = get_instance();
+
+        $language = (string) $language;
+
+        if ($language == '') {
+            $language = $ci->lang->current();
+        }
+
+        $config = $ci->lang->get($language);
+        $code = $ci->lang->code($language);
+
+        if (empty($config) || $code == '') {
+            return 'en';
+        }
+
+        if (isset($config['jquery_validation'])) {
+            return $config['jquery_validation'];
+        }
+
+        $result = $code;
+
+        switch ($code) {
+
+            case 'es_419':
+                $result = 'es';
+                break;
+
+            case 'pt':
+                $result = 'pt_PT';
+                break;
+        }
+
+        return $result;
+    }
+
+}
