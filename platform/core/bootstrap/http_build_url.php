@@ -167,10 +167,19 @@ if (!function_exists('http_build_url')) {
 
                 if (isset($parts[$key])) {
 
-                    $parts[$key] = (string) $parts[$key];
+                    if (is_array($parts[$key])) {
 
-                    if ($parts[$key] == '') {
-                        unset($parts[$key]);
+                        if (empty($parts[$key])) {
+                            unset($parts[$key]);
+                        }
+
+                    } else {
+
+                        $parts[$key] = (string) $parts[$key];
+
+                        if ($parts[$key] == '') {
+                            unset($parts[$key]);
+                        }
                     }
                 }
             }
