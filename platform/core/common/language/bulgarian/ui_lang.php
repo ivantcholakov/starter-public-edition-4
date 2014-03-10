@@ -64,6 +64,7 @@ $lang['ui_change_password_of'] = 'Смяна на паролата на %s';
 $lang['ui_confirm_password'] = 'Потвърдете паролата';
 $lang['ui_wrong_username_or_password'] = 'Грешно потребителско име или грешна парола.';
 $lang['ui_change_password_success'] = 'Паролата на %s беше сменена успешно.';
+$lang['ui_item_name'] = 'Име';
 $lang['ui_metadata'] = 'Мета-данни';
 $lang['ui_title'] = 'Заглавие';
 $lang['ui_description'] = 'Описание';
