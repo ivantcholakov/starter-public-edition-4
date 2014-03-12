@@ -21,7 +21,7 @@ if (!function_exists('detect_url')) {
                 && (($server_protocol == 'http'
                 && $_SERVER['SERVER_PORT'] != 80 ) || ($server_protocol == 'https' && $_SERVER['SERVER_PORT'] != 443))) {
 
-            $server_name_extra = ':' . $_SERVER['SERVER_PORT'];
+            $server_name_extra = $server_name.':'.$_SERVER['SERVER_PORT'];
 
         } else {
 
