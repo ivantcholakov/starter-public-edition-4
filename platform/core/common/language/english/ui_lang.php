@@ -15,6 +15,7 @@ $lang['ui_edit'] = 'Edit';
 $lang['ui_update'] = 'Update';
 $lang['ui_delete'] = 'Delete';
 $lang['ui_refresh'] = 'Refresh';
+$lang['ui_preview'] = 'Preview';
 $lang['ui_select'] = 'Select';
 $lang['ui_choose'] = 'Choose...';
 $lang['ui_change'] = 'Change';

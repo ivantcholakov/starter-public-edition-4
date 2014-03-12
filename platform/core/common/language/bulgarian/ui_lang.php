@@ -15,6 +15,7 @@ $lang['ui_edit'] = 'Редактиране';
 $lang['ui_update'] = 'Актуализиране';
 $lang['ui_delete'] = 'Изтриване';
 $lang['ui_refresh'] = 'Обновяване';
+$lang['ui_preview'] = 'Преглед';
 $lang['ui_select'] = 'Избор';
 $lang['ui_choose'] = 'Изберете...';
 $lang['ui_change'] = 'Промяна';
