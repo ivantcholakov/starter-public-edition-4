@@ -8,4 +8,5 @@
 $config['enabled_languages'] = array(
     'english',
     'bulgarian',
+    'french',
 );
