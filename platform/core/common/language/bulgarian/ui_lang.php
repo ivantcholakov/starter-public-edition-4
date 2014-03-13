@@ -93,3 +93,5 @@ $lang['ui_next_page'] = 'Следваща страница';
 $lang['ui_last_page'] = 'Последна страница';
 $lang['ui_all_pages'] = 'Всички страници';
 $lang['ui_per_page'] = '%s на страница';
+$lang['ui_noscript'] = 'Необходима е поддръжка на JavaScript, за да работи системата коректно. Моля, активирайте JavaScript чрез настройките на вашия браузър и презаредете страницата.';
+$lang['ui_unsupported_browser'] = 'Вашият браузер е много стар и <strong>не се поддържа</strong>. Моля, направете <a href="http://browsehappy.com/">ъпгрейд на браузъра</a>.';
