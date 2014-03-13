@@ -643,7 +643,14 @@ if (!function_exists('body_tag')) {
 if (!function_exists('noscript')) {
 
     // Added by Ivan Tcholakov. 25-OCT-2013.
-    function noscript() {
+    function noscript($alternative_message = null) {
+
+        if ($alternative_message != '') {
+
+                return
+'
+    <noscript>'.$alternative_message.'</noscript>';
+        }
 
         return
 '
@@ -655,11 +662,20 @@ if (!function_exists('noscript')) {
 if (!function_exists('unsupported_browser')) {
 
     // Added by Ivan Tcholakov. 25-OCT-2013.
-    function unsupported_browser() {
+    function unsupported_browser($alternative_message = null) {
 
         if (template_enable_oldie()) {
 
             $ie_min_supported = (int) config_item('ie_min_supported_version');
+
+            if ($alternative_message != '') {
+
+                return
+'
+    <!--[if lt IE '.$ie_min_supported.']>
+        '.$alternative_message.'
+    <![endif]-->';
+            }
 
             return
 '
