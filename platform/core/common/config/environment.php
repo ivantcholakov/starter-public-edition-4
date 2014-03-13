@@ -6,7 +6,7 @@
  *---------------------------------------------------------------
  */
 
-@date_default_timezone_set('Europe/Sofia');
+@date_default_timezone_set('Europe/Paris');
 
 ini_set('session.gc_maxlifetime', 4 * 60 * 60); // 4 hours
 //ini_set('session.gc_probability', 1);

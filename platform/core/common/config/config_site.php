@@ -5,9 +5,9 @@
 | Site Name & Contact Data
 |--------------------------------------------------------------------------
 */
-$config['site_name'] = 'Site Name';
-$config['contact_organization'] = 'Organization Name';
-$config['contact_address'] = 'Milky Way, Solar System, Planet Earth, Sofia, BULGARIA';
+$config['site_name'] = 'appDex';
+$config['contact_organization'] = '2O Minutes';
+$config['contact_address'] = '50-52, boulevard Haussmann, Paris, France';
 $config['contact_phone'] = '+359 2 00 00 00';
 $config['contact_fax'] = '';
 $config['contact_email'] = 'my@organization.com';
