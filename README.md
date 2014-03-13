@@ -311,7 +311,8 @@ Right now I am building a CMS, based upon this platform, it would not be publicl
 Credits
 -------
 
-* Many thanks to Irida Design OOD (http://iridadesign.com) for sponsoring this project.
+* Many thanks to Irida Design OOD (http://iridadesign.com) for sponsoring this project;
+* dev-ggallon (GitHub name) - for an important bug-fix about detect_url() and French translation.
 
 License Information
 -------------------
