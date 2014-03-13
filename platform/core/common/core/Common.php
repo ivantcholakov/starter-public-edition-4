@@ -54,7 +54,7 @@ if ( ! function_exists('get_config'))
             {
                 set_status_header(503);
                 echo 'The configuration file does not exist.';
-                exit(EXIT_CONFIG);
+                exit(3); // EXIT_CONFIG
             }
 
             // Does the $config array exist in the file?
@@ -62,7 +62,7 @@ if ( ! function_exists('get_config'))
             {
                 set_status_header(503);
                 echo 'Your config file does not appear to be formatted correctly.';
-                exit(EXIT_CONFIG);
+                exit(3); // EXIT_CONFIG
             }
 
             // references cannot be directly assigned to static variables, so we use an array
@@ -270,7 +270,7 @@ if ( ! function_exists('_exception_handler'))
         // default error handling. See http://www.php.net/manual/en/errorfunc.constants.php
         if ($is_error)
         {
-            exit(EXIT_ERROR);
+            exit(1); // EXIT_ERROR
         }
     }
 }

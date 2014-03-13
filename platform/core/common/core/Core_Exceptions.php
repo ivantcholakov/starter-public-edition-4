@@ -48,14 +48,14 @@ class Core_Exceptions extends CI_Exceptions {
             Modules::run($RTR->routes['404_override'].'/index');
             set_status_header(404);
             echo $this->ci->output->get_output();
-            exit(EXIT_UNKNOWN_FILE);
+            exit(4); // EXIT_UNKNOWN_FILE
         }
 
         set_status_header(404);
         //
 
         echo $this->show_error($heading, $message, 'error_404', 404);
-        exit(EXIT_UNKNOWN_FILE);
+        exit(4); // EXIT_UNKNOWN_FILE
     }
 
     // --------------------------------------------------------------------
