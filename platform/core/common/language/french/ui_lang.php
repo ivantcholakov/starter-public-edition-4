@@ -95,4 +95,5 @@ $lang['ui_all_pages'] = 'Toutes les pages';
 $lang['ui_per_page'] = '%s par page';
 $lang['ui_noscript'] = 'JavaScript est requis, de sorte que le système fonctionne correctement. S\'il vous plaît, activer Javascript dans les paramètres de votre navigateur et rechargez la page.';
 $lang['ui_unsupported_browser'] = 'Vous utilisez un navigateur <strong>dépassé</ strong>. S\'il vous plaît mettez à <a href="http://browsehappy.com/">niveau de votre navigateur</ a> pour améliorer votre expérience.';
-
+$lang['ui_more'] = 'More';
+$lang['ui_read_more'] = 'Read more';
