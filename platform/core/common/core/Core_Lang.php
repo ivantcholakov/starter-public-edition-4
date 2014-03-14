@@ -234,11 +234,17 @@ class Core_Lang extends MX_Lang {
         //
     }
 
-    function switch_uri($language) {
+    // base_url($this->lang->switch_uri('english'))     - swithes to the current page, the English version.
+    // base_url($this->lang->switch_uri('english', '')) - swithes to the home page, the English version.
+    function switch_uri($language, $uri = null) {
 
         global $URI;
 
-        $uri = (string) $URI->uri_string();
+        if ($uri === null) {
+            $uri = (string) $URI->uri_string();
+        } else {
+            $uri = (string) $uri;
+        }
 
         $lang = $this->uri_segment($language);
 

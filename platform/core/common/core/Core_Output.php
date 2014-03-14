@@ -92,7 +92,7 @@ class Core_Output extends CI_Output {
 
         if ($this->parse_exec_vars === TRUE)
         {
-            $memory    = round(memory_get_usage() / 1024 / 1024, 2).'MB';
+            $memory = round(memory_get_usage() / 1024 / 1024, 2).'MB';
             $output = str_replace(array('{elapsed_time}', '{memory_usage}'), array($elapsed, $memory), $output);
         }
 
@@ -218,7 +218,7 @@ class Core_Output extends CI_Output {
 
         $cache_path .= md5($uri);
 
-        if ( ! $fp = @fopen($cache_path, FOPEN_WRITE_CREATE_DESTRUCTIVE))
+        if ( ! $fp = @fopen($cache_path, 'w+b'))
         {
             log_message('error', 'Unable to write cache file: '.$cache_path);
             return;
@@ -247,29 +247,29 @@ class Core_Output extends CI_Output {
                 'headers' => $this->headers
             ));
 
-                $output = $cache_info.'ENDCI--->'.$output;
+            $output = $cache_info.'ENDCI--->'.$output;
 
-                for ($written = 0, $length = strlen($output); $written < $length; $written += $result)
+            for ($written = 0, $length = strlen($output); $written < $length; $written += $result)
+            {
+                if (($result = fwrite($fp, substr($output, $written))) === FALSE)
                 {
-                    if (($result = fwrite($fp, substr($output, $written))) === FALSE)
-                    {
-                        break;
-                    }
+                    break;
                 }
-
-                flock($fp, LOCK_UN);
-            }
-            else
-            {
-                log_message('error', 'Unable to secure a file lock for file at: '.$cache_path);
-                return;
             }
 
-            fclose($fp);
+            flock($fp, LOCK_UN);
+        }
+        else
+        {
+            log_message('error', 'Unable to secure a file lock for file at: '.$cache_path);
+            return;
+        }
 
-            if (is_int($result))
-            {
-                @chmod($cache_path, FILE_WRITE_MODE);
+        fclose($fp);
+
+        if (is_int($result))
+        {
+            @chmod($cache_path, 0666);
             log_message('debug', 'Cache file written: '.$cache_path);
 
             // Send HTTP cache-control headers to browser to match file cache settings.
@@ -310,7 +310,7 @@ class Core_Output extends CI_Output {
 
         $filepath = $cache_path.md5($uri);
 
-        if ( ! @file_exists($filepath) OR ! $fp = @fopen($filepath, FOPEN_READ))
+        if ( ! file_exists($filepath) OR ! $fp = @fopen($filepath, 'rb'))
         {
             return FALSE;
         }
