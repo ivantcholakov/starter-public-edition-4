@@ -89,5 +89,9 @@ echo js('site_example.js');
 
 echo div_debug();
 
+if ($this->settings->get('google_analytics_enabled')) {
+    file_partial('google_analytics');
+}
+
 echo body_close_tag();
 echo html_close_tag();

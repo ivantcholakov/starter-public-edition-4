@@ -95,3 +95,5 @@ $lang['ui_all_pages'] = 'All pages';
 $lang['ui_per_page'] = '%s per page';
 $lang['ui_noscript'] = 'JavaScript support is required, so the system to work properly. Please, activate Javascript support through your browser settings and reload this page.';
 $lang['ui_unsupported_browser'] = 'You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.';
+$lang['ui_more'] = 'More';
+$lang['ui_read_more'] = 'Read more';
