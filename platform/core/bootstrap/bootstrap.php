@@ -76,7 +76,7 @@ if (isset($FCPATH)) {
 if (FCPATH == '' || FCPATH == '/' || !is_dir(FCPATH)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your front controller folder path (FCPATH) does not appear to be set correctly.';
-    exit(3); // EXIT_* constants not yet defined; 3 is EXIT_CONFIG.
+    exit(3); // EXIT_CONFIG
 }
 
 if (isset($DEFAULTFCPATH)) {
@@ -89,7 +89,7 @@ if (isset($DEFAULTFCPATH)) {
 if (DEFAULTFCPATH == '' || DEFAULTFCPATH == '/' || !is_dir(DEFAULTFCPATH)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your front controller folder path of the default site (DEFAULTFCPATH) does not appear to be set correctly.';
-    exit(3); // EXIT_* constants not yet defined; 3 is EXIT_CONFIG.
+    exit(3); // EXIT_CONFIG
 }
 
 if (isset($PLATFORMPATH)) {
@@ -102,7 +102,7 @@ if (isset($PLATFORMPATH)) {
 if (PLATFORMPATH == '' || PLATFORMPATH == '/' || !is_dir(PLATFORMPATH)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your platform folder ($PLATFORMPATH) does not appear to be set correctly.';
-    exit(3); // EXIT_* constants not yet defined; 3 is EXIT_CONFIG.
+    exit(3); // EXIT_CONFIG
 }
 
 if (isset($PLATFORMRUN)) {
@@ -115,7 +115,7 @@ if (isset($PLATFORMRUN)) {
 if (PLATFORMRUN == '' || !is_file(PLATFORMRUN)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your platform starter file ($PLATFORMRUN) does not appear to be set correctly.';
-    exit(3); // EXIT_* constants not yet defined; 3 is EXIT_CONFIG.
+    exit(3); // EXIT_CONFIG
 }
 
 if (isset($PLATFORMCREATE)) {
@@ -128,7 +128,7 @@ if (isset($PLATFORMCREATE)) {
 if (PLATFORMCREATE == '' || !is_file(PLATFORMCREATE)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your platform initialization file ($PLATFORMCREATE) does not appear to be set correctly.';
-    exit(3); // EXIT_* constants not yet defined; 3 is EXIT_CONFIG.
+    exit(3); // EXIT_CONFIG
 }
 
 if (isset($PLATFORMDESTROY)) {
@@ -141,7 +141,7 @@ if (isset($PLATFORMDESTROY)) {
 if (PLATFORMDESTROY == '' || !is_file(PLATFORMDESTROY)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your platform destruction file ($PLATFORMDESTROY) does not appear to be set correctly.';
-    exit(3); // EXIT_* constants not yet defined; 3 is EXIT_CONFIG.
+    exit(3); // EXIT_CONFIG
 }
 
 define('APPSPATH', PLATFORMPATH.'applications/');
@@ -150,7 +150,7 @@ define('APPSPATH', PLATFORMPATH.'applications/');
 if (!is_dir(APPSPATH)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your application root folder path (APPSPATH) does not appear to be set correctly. Please, make corrections within the following file: '.__FILE__;
-    exit(3); // EXIT_* constants not yet defined; 3 is EXIT_CONFIG.
+    exit(3); // EXIT_CONFIG
 }
 
 if (isset($APPNAME)) {
@@ -163,7 +163,7 @@ if (isset($APPNAME)) {
 if (APPNAME == '') {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your application name ($APPNAME) does not appear to be set correctly.';
-    exit(3); // EXIT_* constants not yet defined; 3 is EXIT_CONFIG.
+    exit(3); // EXIT_CONFIG
 }
 
 if (isset($DEFAULTAPPNAME)) {
@@ -176,7 +176,7 @@ if (isset($DEFAULTAPPNAME)) {
 if (DEFAULTAPPNAME == '') {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your default application name ($DEFAULTAPPNAME) does not appear to be set correctly.';
-    exit(3); // EXIT_* constants not yet defined; 3 is EXIT_CONFIG.
+    exit(3); // EXIT_CONFIG
 }
 
 // The url segment of the application, counted from the root public directory of the site.
@@ -192,7 +192,7 @@ define('APPPATH', APPSPATH.APPNAME.'/');
 if (!is_dir(APPPATH)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your application name ($APPNAME) does not appear to be set correctly.';
-    exit(3); // EXIT_* constants not yet defined; 3 is EXIT_CONFIG.
+    exit(3); // EXIT_CONFIG
 }
 
 if (!isset($SELF)) {
@@ -205,7 +205,7 @@ if (!isset($SELF)) {
 if (!is_file(FCPATH.SELF)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your front controller file name ($SELF) does not appear to be set correctly.';
-    exit(3); // EXIT_* constants not yet defined; 3 is EXIT_CONFIG.
+    exit(3); // EXIT_CONFIG
 }
 
 // Path to the system folder
@@ -215,7 +215,7 @@ define('BASEPATH', rtrim(str_replace('\\', '/', realpath(dirname(__FILE__).'/../
 if (BASEPATH == '' || BASEPATH == '/' || !is_dir(BASEPATH)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your system folder path (BASEPATH) does not appear to be set correctly. Please, make corrections within the following file: '.__FILE__;
-    exit(3); // EXIT_* constants not yet defined; 3 is EXIT_CONFIG.
+    exit(3); // EXIT_CONFIG
 }
 
 // Name of the "system folder"
@@ -230,7 +230,7 @@ define('COMMONPATH', rtrim(str_replace('\\', '/', realpath(dirname(__FILE__).'/.
 if (COMMONPATH == '' || COMMONPATH == '/' || !is_dir(COMMONPATH)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your common folder path (COMMONPATH) does not appear to be set correctly. Please, make corrections within the following file: '.__FILE__;
-    exit(3); // EXIT_* constants not yet defined; 3 is EXIT_CONFIG.
+    exit(3); // EXIT_CONFIG
 }
 
 // This is the common writable folder to be used by this platform.
@@ -239,7 +239,7 @@ define('WRITABLEPATH', rtrim(str_replace('\\', '/', realpath(dirname(__FILE__).'
 if (WRITABLEPATH == '' || WRITABLEPATH == '/' || !is_dir(WRITABLEPATH)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'Your writable folder path (WRITABLEPATH) does not appear to be set correctly. Please, make corrections within the following file: '.__FILE__;
-    exit(3); // EXIT_* constants not yet defined; 3 is EXIT_CONFIG.
+    exit(3); // EXIT_CONFIG
 }
 
 

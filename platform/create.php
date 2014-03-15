@@ -88,13 +88,14 @@ switch (ENVIRONMENT)
 
     case 'testing':
     case 'production':
-        error_reporting(E_ALL ^ E_NOTICE ^ E_DEPRECATED ^ E_STRICT);
+        error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT);
         ini_set('display_errors', 0);
         break;
 
     default:
         header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
-        exit('The application environment is not set correctly.');
+        echo 'The application environment is not set correctly.';
+        exit(1); // EXIT_ERROR
 }
 
 
@@ -246,19 +247,19 @@ if (isset($assign_to_config) && is_array($assign_to_config))
 
 // CodeIgniter's cache folder.
 $cache_path = $CFG->item('cache_path') == '' ? APPPATH.'cache/' : $CFG->item('cache_path');
-file_exists($cache_path) OR @mkdir($cache_path, DIR_WRITE_MODE, TRUE);
+file_exists($cache_path) OR @mkdir($cache_path, 0777, TRUE);
 
 // For HTMLPurifier, no trailing slash.
 define('HTMLPURIFIER_CACHE_SERIALIZER_PATH', WRITABLEPATH.'htmlpurifier');
-file_exists(HTMLPURIFIER_CACHE_SERIALIZER_PATH) OR @mkdir(HTMLPURIFIER_CACHE_SERIALIZER_PATH, DIR_WRITE_MODE, TRUE);
+file_exists(HTMLPURIFIER_CACHE_SERIALIZER_PATH) OR @mkdir(HTMLPURIFIER_CACHE_SERIALIZER_PATH, 0777, TRUE);
 
 // For Mustache, with trailing slash.
 define('MUSTACHE_CACHE', WRITABLEPATH.'mustache/'.APPNAME.'/');
-file_exists(MUSTACHE_CACHE) OR @mkdir(MUSTACHE_CACHE, DIR_WRITE_MODE, TRUE);
+file_exists(MUSTACHE_CACHE) OR @mkdir(MUSTACHE_CACHE, 0777, TRUE);
 
 // For the LESS-compiler, with trailing slash.
 define('LESS_CACHE', WRITABLEPATH.'less/'.APPNAME.'/');
-file_exists(LESS_CACHE) OR @mkdir(LESS_CACHE, DIR_WRITE_MODE, TRUE);
+file_exists(LESS_CACHE) OR @mkdir(LESS_CACHE, 0777, TRUE);
 
 /*
  * ------------------------------------------------------

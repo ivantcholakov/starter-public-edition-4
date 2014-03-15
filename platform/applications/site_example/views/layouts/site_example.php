@@ -52,14 +52,14 @@ echo body_tag('id="page-top"');
 
 echo Modules::run('main_menu_widget');
 
-echo noscript();
-echo unsupported_browser();
-
 ?>
 
         <!-- Begin page content -->
         <div class="container">
 <?php
+
+echo noscript('<div class="alert alert-warning text-center">'.$this->lang->line('ui_noscript').'</div>');
+echo unsupported_browser('<div class="alert alert-warning text-center">'.$this->lang->line('ui_unsupported_browser').'</div>');
 
 template_body();
 
@@ -88,6 +88,10 @@ echo js('lib/google-code-prettify/prettify.js');
 echo js('site_example.js');
 
 echo div_debug();
+
+if ($this->settings->get('google_analytics_enabled')) {
+    file_partial('google_analytics');
+}
 
 echo body_close_tag();
 echo html_close_tag();
