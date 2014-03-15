@@ -22,6 +22,8 @@ class Base_Controller extends Core_Controller {
              $this->template->title($default_title);
         }
 
+        $this->template->set_metadata('robots', 'noindex,nofollow,noarchive');
+
         $this->public_site_url = http_build_url(BASE_URL, '../');
 
         $this->template
