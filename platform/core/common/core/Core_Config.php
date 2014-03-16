@@ -190,17 +190,22 @@ class Core_Config extends MX_Config {
      *
      * @uses        CI_Config::_uri_string()
      *
-     * @param       string|string[]    $uri         URI string or an array of segments
+     * @param       string|string[]     $uri         URI string or an array of segments
      * @param       string              $protocol
+     * @param       string              $language
      * @return      string
      */
-    public function site_url($uri = '', $protocol = NULL)
+    // Cloned/modified by Ivan Tcholakov, 16-MAR-2014.
+    public function site_url($uri = '', $protocol = NULL, $language = NULL)
     {
-        // Added by Ivan Tcholakov, 12-OCT-2013.
-        if (is_array($uri)) {
+        if (is_array($uri))
+        {
             $uri = implode('/', $uri);
         }
-        //
+
+        if ($language == '') {
+            $language = $this->current_language();
+        }
 
         $base_url = $this->slash_item('base_url');
 
@@ -209,22 +214,16 @@ class Core_Config extends MX_Config {
             $base_url = $protocol.substr($base_url, strpos($base_url, '://'));
         }
 
-        // Modified by Ivan Tcholakov, 21-JAN-2014.
-        //if (empty($uri))
-        //{
-        //    return $base_url.$this->item('index_page');
-        //}
         if ($uri == '')
         {
-            if ($this->hide_default_language_uri_segment() && $this->current_language() == $this->default_language()) {
+            if ($this->hide_default_language_uri_segment() && $language == $this->default_language()) {
                 return $base_url.$this->item('index_page');
             } else {
-                return $base_url.($this->item('index_page') != '' ? $this->item('index_page').'/' : '').$this->language_uri_segment($this->current_language()).'/';
+                return $base_url.($this->item('index_page') != '' ? $this->item('index_page').'/' : '').$this->language_uri_segment($language).'/';
             }
         }
 
-        $uri = $this->localized($uri);
-        //
+        $uri = $this->localized($uri, $language);
 
         $uri = $this->_uri_string($uri);
 
@@ -281,24 +280,26 @@ class Core_Config extends MX_Config {
     }
 
     // Added by Ivan Tcholakov, 09-NOV-2013.
-    public function site_uri($uri = '') {
+    public function site_uri($uri = '', $language = NULL) {
 
         if (is_array($uri)) {
             $uri = implode('/', $uri);
         }
 
-        // Modified by Ivan Tcholakov, 21-JAN-2014.
-        //if (empty($uri))
-        //{
-        //    return SITE_URI;
-        //}
-        if ($uri == '')
-        {
-            return SITE_URI;
+        if ($language == '') {
+            $language = $this->current_language();
         }
 
-        $uri = $this->localized($uri);
-        //
+        if ($uri == '')
+        {
+            if ($this->hide_default_language_uri_segment() && $language == $this->default_language()) {
+                return SITE_URI.$this->item('index_page');
+            } else {
+                return SITE_URI.($this->item('index_page') != '' ? $this->item('index_page').'/' : '').$this->language_uri_segment($language).'/';
+            }
+        }
+
+        $uri = $this->localized($uri, $language);
 
         $uri = $this->_uri_string($uri);
 
@@ -359,16 +360,20 @@ class Core_Config extends MX_Config {
     //--------------------------------------------------------------------------
 
     // Added by Ivan Tcholakov, 22-JAN-2014.
-    function localized($uri) {
+    function localized($uri, $language = NULL) {
+
+        if ($language == '') {
+            $language = $this->current_language();
+        }
 
         if ($uri != '') {
 
-            if (!($this->hide_default_language_uri_segment() && $this->current_language() == $this->default_language())) {
+            if (!($this->hide_default_language_uri_segment() && $language == $this->default_language())) {
 
                 if (!$this->get_uri_lang($uri)) {
 
                     if (!preg_match('/(.+)\.(([a-zA-Z0-9]{2,4})|([a-zA-Z0-9]{2}[\-_]{1}[a-zA-Z0-9]{2,3}))$/', $uri)) {
-                        $uri = $this->language_uri_segment($this->current_language()) . '/' . $uri;
+                        $uri = $this->language_uri_segment($language).'/'.$uri;
                     }
                 }
             }

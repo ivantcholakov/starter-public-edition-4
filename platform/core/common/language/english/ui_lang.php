@@ -97,3 +97,4 @@ $lang['ui_noscript'] = 'JavaScript support is required, so the system to work pr
 $lang['ui_unsupported_browser'] = 'You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.';
 $lang['ui_more'] = 'More';
 $lang['ui_read_more'] = 'Read more';
+$lang['ui_sitemap'] = 'Sitemap';
