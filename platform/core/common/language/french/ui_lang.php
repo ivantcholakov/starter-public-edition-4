@@ -97,4 +97,4 @@ $lang['ui_noscript'] = 'JavaScript est requis, de sorte que le système fonction
 $lang['ui_unsupported_browser'] = 'Vous utilisez un navigateur <strong>dépassé</ strong>. S\'il vous plaît mettez à <a href="http://browsehappy.com/">niveau de votre navigateur</ a> pour améliorer votre expérience.';
 $lang['ui_more'] = 'Plus';
 $lang['ui_read_more'] = 'Lire plus';
-$lang['ui_sitemap'] = 'Sitemap';
+$lang['ui_sitemap'] = 'Plan du site';
