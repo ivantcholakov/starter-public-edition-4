@@ -97,3 +97,4 @@ $lang['ui_noscript'] = 'Необходима е поддръжка на JavaScri
 $lang['ui_unsupported_browser'] = 'Вашият браузер е много стар и <strong>не се поддържа</strong>. Моля, направете <a href="http://browsehappy.com/">ъпгрейд на браузъра</a>.';
 $lang['ui_more'] = 'Още';
 $lang['ui_read_more'] = 'Прочете още';
+$lang['ui_sitemap'] = 'Карта на сайта';
