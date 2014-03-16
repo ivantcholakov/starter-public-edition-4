@@ -234,17 +234,23 @@ class Core_Lang extends MX_Lang {
         //
     }
 
-    // base_url($this->lang->switch_uri('english'))     - swithes to the current page, the English version.
-    // base_url($this->lang->switch_uri('english', '')) - swithes to the home page, the English version.
-    function switch_uri($language, $uri = null) {
+    // Added by Ivan Tcholakov, 16-MAR-2014.
+    public function site_url($uri = '', $protocol = NULL, $language = NULL) {
+
+        return $this->config->site_url($uri, $protocol, $language);
+    }
+
+    // Added by Ivan Tcholakov, 16-MAR-2014.
+    public function site_uri($uri = '', $language = NULL) {
+
+        return $this->config->site_uri($uri, $language);
+    }
+
+    function switch_uri($language) {
 
         global $URI;
 
-        if ($uri === null) {
-            $uri = (string) $URI->uri_string();
-        } else {
-            $uri = (string) $uri;
-        }
+        $uri = (string) $URI->uri_string();
 
         $lang = $this->uri_segment($language);
 
@@ -278,12 +284,6 @@ class Core_Lang extends MX_Lang {
         }
 
         return $result;
-    }
-
-    // Add language segment to $uri (if appropriate)
-    function localized($uri) {
-
-        return $this->config->localized($uri);
     }
 
     // Added by Ivan Tcholakov, 22-JAN-2014.

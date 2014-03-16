@@ -12,7 +12,7 @@ class Sitemap_controller extends Base_Controller {
 
             $node = $doc->addChild('url');
 
-            $loc = base_url($this->lang->switch_uri($lang, ''));
+            $loc = $this->lang->site_url(null, null, $lang);
 
             $node->addChild('loc', $loc);
 
@@ -26,7 +26,7 @@ class Sitemap_controller extends Base_Controller {
 
                 $link->addAttribute('rel', 'alternate');
                 $link->addAttribute('hreflang', $this->lang->code($lang_alt));
-                $link->addAttribute('href', base_url($this->lang->switch_uri($lang_alt, '')));
+                $link->addAttribute('href', $this->lang->site_url(null, null, $lang_alt));
             }
 
         }
