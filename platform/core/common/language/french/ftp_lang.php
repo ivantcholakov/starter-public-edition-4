@@ -1,14 +1,14 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-$lang['ftp_no_connection']          = 'Unable to locate a valid connection ID. Please make sure you are connected before performing any file routines.';
-$lang['ftp_unable_to_connect']      = 'Unable to connect to your FTP server using the supplied hostname.';
-$lang['ftp_unable_to_login']        = 'Unable to login to your FTP server. Please check your username and password.';
-$lang['ftp_unable_to_mkdir']        = 'Unable to create the directory you have specified.';
-$lang['ftp_unable_to_changedir']    = 'Unable to change directories.';
-$lang['ftp_unable_to_chmod']        = 'Unable to set file permissions. Please check your path.';
-$lang['ftp_unable_to_upload']       = 'Unable to upload the specified file. Please check your path.';
-$lang['ftp_unable_to_download']     = 'Unable to download the specified file. Please check your path.';
-$lang['ftp_no_source_file']         = 'Unable to locate the source file. Please check your path.';
-$lang['ftp_unable_to_rename']       = 'Unable to rename the file.';
-$lang['ftp_unable_to_delete']       = 'Unable to delete the file.';
-$lang['ftp_unable_to_move']         = 'Unable to move the file. Please make sure the destination directory exists.';
+$lang['ftp_no_connection'] = 'Impossible de d&eacute;terminer une connexion valable. Veuillez vous assurer que vous &ecirc;tes connect&eacute;(e) avant d\'ex&eacute;cuter une t&acirc;che sur un fichier.';
+$lang['ftp_unable_to_connect'] = 'Connexion au serveur FTP impossible avec le nom d\'h&ocirc;te (hostname) sp&eacute;cifi&eacute;.';
+$lang['ftp_unable_to_login'] = 'Connexion au serveur FTP impossible. Veuillez v&eacute;rifier vos identifiants de connexion.';
+$lang['ftp_unable_to_mkdir'] = 'Impossible de cr&eacute;er le dossier sp&eacute;cifi&eacute;.';
+$lang['ftp_unable_to_changedir'] = 'Impossible de changer de r&eacute;pertoire.';
+$lang['ftp_unable_to_chmod'] = 'Impossible de changer les permissions du fichier. Veuillez v&eacute;rifier le chemin d\'acc&egrave;s. Note: cette fonctionnalit&eacute; n\'est disponible qu\'avez PHP en version 5 ou sup&eacute;rieure.';
+$lang['ftp_unable_to_upload'] = 'Impossible d\'envoyer le fichier sp&eacute;cifi&eacute;. Veuillez v&eacute;rifier le chemin d\'acc&egrave;s.';
+$lang['ftp_unable_to_download'] = 'Impossible de téléchager le fichier spécifié. Veuillez vérifier votre chemin.';
+$lang['ftp_no_source_file'] = 'Impossible de localiser le fichier source. Veuillez v&eacute;rifier le chemin d\'acc&egrave;s.';
+$lang['ftp_unable_to_rename'] = 'Impossible de renommer le fichier.';
+$lang['ftp_unable_to_delete'] = 'Impossible de supprimer le fichier.';
+$lang['ftp_unable_to_move'] = 'Impossible de d&eacute;placer le fichier. Veuillez vous assurer que le r&eacute;pertoire de destination existe.';
