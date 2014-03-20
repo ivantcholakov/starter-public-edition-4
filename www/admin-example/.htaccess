@@ -20,7 +20,7 @@
     # Asset loader: When file not exists on local application "assets" folder, 
     # it is tried to be loaded from the common "assets" folder.
     RewriteCond %{REQUEST_URI} /assets/
-    RewriteCond %{REQUEST_URI} \.(js|css|less|gif|bmp|ico|jpg|jpeg|jpe|mov|qt|mp3|xml|mp4|m4v|mpeg|mpg|pdf|png|swf|tif|tiff|wav|wma|wri|zip|eot|svg|ttf|woff)$
+    RewriteCond %{REQUEST_URI} \.(js|css|less|gif|bmp|ico|jpg|jpeg|jpe|mov|qt|mp3|xml|mp4|m4v|mpeg|mpg|pdf|png|swf|tif|tiff|wav|wma|wri|zip|eot|svg|ttf|woff|lang)$
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^assets/(.*) ../assets/$1 [L,QSA]
 

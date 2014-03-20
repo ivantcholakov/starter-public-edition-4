@@ -61,6 +61,8 @@ $config['cc_email'] = '';
 /*
 |--------------------------------------------------------------------------
 | Google Analytics Settings
+|
+| Also, see the file robots.txt on how to enable sitemap.xml.
 |--------------------------------------------------------------------------
 */
 $config['google_analytics_enabled'] = false;
