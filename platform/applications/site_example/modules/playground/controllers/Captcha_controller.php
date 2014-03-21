@@ -18,6 +18,8 @@ class Captcha_controller extends Base_Controller {
         $this->template
             ->title('Captcha Test')
         ;
+
+        $this->registry->set('nav', 'playground/captcha');
     }
 
     public function index() {

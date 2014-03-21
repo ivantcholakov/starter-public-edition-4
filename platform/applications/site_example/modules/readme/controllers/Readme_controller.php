@@ -16,6 +16,8 @@ class Readme_controller extends Base_Controller {
         $this->template
             ->title('README')
         ;
+
+        $this->registry->set('nav', 'readme');
     }
 
     public function index() {
