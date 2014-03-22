@@ -32,7 +32,7 @@ class Main_menu_widget_controller extends Core_Controller {
     public function index() {
 
         $nav = array();
-        $active = '';
+        $active = $this->registry->get('nav');
 
         // The main menu items.
         $nav['home'] = array('label' => $this->lang->line('ui_home'), 'icon' => 'fa fa-home', 'location' => site_url());
@@ -50,46 +50,6 @@ class Main_menu_widget_controller extends Core_Controller {
         $nav['playground/mustache'] = array('label' => 'Mustache Parser Test', 'location' => 'playground/mustache', 'parent_id' => 'playground');
         $nav['playground/separator_2'] = array('blank' => true, 'parent_id' => 'playground');
         $nav['and_so_on'] = array('label' => 'And so on, see the Playground index page', 'location' => 'playground', 'parent_id' => 'playground');
-
-        $segment_base = 2;
-
-        if (!$this->lang->get_uri_lang($this->uri->uri_string())) {
-            $segment_base = 1;
-        }
-
-        $segment_1 = $this->uri->segment($segment_base);
-
-        switch ($segment_1) {
-
-            case '':
-            case 'welcome':
-                $active = 'home';
-                break;
-
-            case 'readme':
-                $active = 'readme';
-                break;
-
-            case 'contact-page-test':
-                $active = 'contact-page-test';
-                break;
-
-            case 'playground':
-                $active = 'playground';
-                break;
-        }
-
-        // TODO: This mess needs a revision.
-        switch ($this->uri->segment($segment_base + 1)) {
-            case 'captcha':
-                $active = 'playground/captcha';
-                break;
-            case 'mustache':
-                $active = 'playground/mustache';
-                break;
-        }
-        //
-
 
         $nav = $this->menu->render($nav, $active, NULL, 'data');
         $this->menu->reset();

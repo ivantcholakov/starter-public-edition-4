@@ -12,6 +12,8 @@ class Welcome_controller extends Base_Controller {
         parent::__construct();
 
         $this->lang->load('welcome');
+
+        $this->registry->set('nav', 'home');
     }
 
     public function index() {

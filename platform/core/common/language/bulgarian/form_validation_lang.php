@@ -1,6 +1,4 @@
-<?php
-
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['form_validation_required']           = 'Полето "{field}" е задължително.';
 $lang['form_validation_isset']              = 'Полето "{field}" трябва да има стойност.';
@@ -13,7 +11,7 @@ $lang['form_validation_max_length']         = 'Полето "{field}" трябв
 $lang['form_validation_exact_length']       = 'Полето "{field}" трябва да бъде дълго точно {param}s символа.';
 $lang['form_validation_alpha']              = 'Полето "{field}" може да съдържа само латински букви.';
 $lang['form_validation_alpha_numeric']      = 'Полето "{field}" може да съдържа само латински букви и цифри.';
-$lang['form_validation_alpha_numeric_spaces']	= 'Полето "{field}" може да съдържа само латински букви, цифри и интервали.';
+$lang['form_validation_alpha_numeric_spaces']   = 'Полето "{field}" може да съдържа само латински букви, цифри и интервали.';
 $lang['form_validation_alpha_dash']         = 'Полето "{field}" може да съдържа само латински букви, цифри, долна черта и тире.';
 $lang['form_validation_numeric']            = 'Полето "{field}" трябва да е десетично число.';
 $lang['form_validation_is_numeric']         = 'Полето "{field}" трябва да е число.';

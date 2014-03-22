@@ -16,6 +16,8 @@ class Mustache_controller extends Base_Controller {
         $this->template
             ->title('Mustache Test')
         ;
+
+        $this->registry->set('nav', 'playground/mustache');
     }
 
     public function index() {

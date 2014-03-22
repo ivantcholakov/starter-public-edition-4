@@ -14,6 +14,8 @@ class Playground_controller extends Base_Controller {
         $this->template
             ->title('The Playground')
         ;
+
+        $this->registry->set('nav', 'playground');
     }
 
     public function index() {

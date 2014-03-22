@@ -7,6 +7,8 @@ class Contact_page_test_controller extends Base_Controller {
         parent::__construct();
 
         $this->config->load('contact_page', FALSE, TRUE);
+
+        $this->registry->set('nav', 'contact-page-test');
     }
 
     public function index() {
