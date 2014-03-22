@@ -815,7 +815,11 @@ class Menu {
                 //
 
                 $subitems = $this->_get_menu_items($val['id']);
-                $new_key = (isset($val['nav_key'])) ? $val['nav_key'] : $val['location'];
+                // Modified by Ivan Tcholakov, 22-MAR-2014.
+                // A dirty workaround.
+                //$new_key = (isset($val['nav_key'])) ? $val['nav_key'] : $val['location'];
+                $new_key = (isset($val['nav_key'])) ? $val['nav_key'] : ($val['location'] != '#' ? $val['location'] : $val['id']);
+                //
                 $return[$new_key] = $val;
 
                 if (!empty($subitems))
