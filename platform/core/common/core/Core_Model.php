@@ -1154,6 +1154,17 @@ class Core_Model extends CI_Model
     }
 
     /**
+     * A setter for database object.
+     * Use case example: A cloned query builder may be set on a clone of this model.
+     */
+    public function set_database($db)
+    {
+        $this->_database = $db;
+
+        return $this;
+    }
+
+    /**
      * Getter for the table name
      */
     public function table()
