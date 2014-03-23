@@ -4,7 +4,7 @@
 
 <?php
 
-if (true || $this->settings->get('mailer_enabled')) {
+if ($this->settings->get('mailer_enabled')) {
 
 ?>
 
