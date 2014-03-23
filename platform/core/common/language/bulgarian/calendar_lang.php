@@ -1,4 +1,9 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
+/**
+ * @author      Ivan Tcholakov <ivantcholakov@gmail.com>, 2014.
+ * @license     The MIT License (MIT), http://opensource.org/licenses/MIT
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['cal_su'] = 'Не';
 $lang['cal_mo'] = 'По';

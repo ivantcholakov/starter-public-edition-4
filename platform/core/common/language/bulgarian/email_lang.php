@@ -1,4 +1,9 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
+/**
+ * @author      Ivan Tcholakov <ivantcholakov@gmail.com>, 2014.
+ * @license     The MIT License (MIT), http://opensource.org/licenses/MIT
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['email_must_be_array'] = 'Email-адресът трябва да се предаде за валидиране чрез масив (array).';
 $lang['email_invalid_address'] = 'Грешен email-адрес: %s';
@@ -11,7 +16,7 @@ $lang['email_send_failure_smtp'] = 'Съобщението не може да б
 $lang['email_sent'] = 'Вашето съобщение е изпратено успешно и използва следния протокол: %s';
 $lang['email_no_socket'] = 'Не може да се отвори връзка към Sendmail. Моля, проверете настройките.';
 $lang['email_no_hostname'] = 'Не сте посочили SMTP сървър.';
-$lang['email_smtp_error'] = 'Беше получена следната SMTP грешка: %s';
+$lang['email_smtp_error'] = 'Получи се следната SMTP грешка: %s';
 $lang['email_no_smtp_unpw'] = 'Грешка: Трябва да посочите име и парола за SMTP.';
 $lang['email_failed_smtp_login'] = 'Не може да се изпрати AUTH LOGIN. Грешка: %s';
 $lang['email_smtp_auth_un'] = 'Не може да се удостовери потребителското име. Грешка: %s';
