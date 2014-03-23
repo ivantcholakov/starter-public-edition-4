@@ -24,7 +24,7 @@
                         class="img-thumbnail"
                         src="<?php echo $this->captcha->src.'?nocache='.rand(100000000, 999999999); ?>"
                         style="cursor: pointer;"
-                        title="Click on the image if you want to change the proposed text."
+                        title="<?php echo $this->lang->line('captcha.tip'); ?>"
                     />
                 </div>
 

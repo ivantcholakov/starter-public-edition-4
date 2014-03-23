@@ -14,10 +14,9 @@ class Email_test_controller extends Base_Controller {
         $this->load
             ->language('mailer')
             ->library('kcaptcha', null, 'captcha')
+            ->language('captcha')
             ->parser()
         ;
-
-        $this->lang->load('captcha', '', FALSE, TRUE, '', 'captcha');
 
         $this->template
             ->title('Email Test')

@@ -13,6 +13,7 @@ class Captcha_controller extends Base_Controller {
 
         $this->load
             ->library('kcaptcha', null, 'captcha')
+            ->language('captcha')
         ;
 
         $this->template
