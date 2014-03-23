@@ -23,9 +23,9 @@ class Contact_form_widget_controller extends Core_Controller {
             ->language('contact')
             ->language('mailer')
             ->library('kcaptcha', null, 'captcha')
+            ->language('captcha')
         ;
 
-        $this->lang->load('captcha', '', FALSE, TRUE, '', 'captcha');
         $this->config->load('contact_page', FALSE, TRUE);
     }
 
