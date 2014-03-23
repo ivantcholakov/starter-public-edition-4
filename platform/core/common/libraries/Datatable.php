@@ -9,6 +9,11 @@
  * @link https://next.datatables.net
  * @link https://next.datatables.net/examples/server_side/
  *
+ * You may find a visually compatible with Bootstrap 3
+ * implementation of DataTables at:
+ * @link http://startbootstrap.com/sb-admin-v2
+ * @link https://github.com/IronSummitMedia/startbootstrap/tree/master/templates/sb-admin-v2
+ *
  * @author Ivan Tcholakov <ivantcholakov@gmail.com>, March 2014
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
