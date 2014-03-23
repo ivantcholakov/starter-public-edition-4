@@ -3,7 +3,6 @@
  * @author      Ivan Tcholakov <ivantcholakov@gmail.com>, 2014.
  * @license     The MIT License (MIT), http://opensource.org/licenses/MIT
  */
-
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['ftp_no_connection'] = 'Не може да бъде намерена валидна ID връзка. Моля, проверете дали сте се свързали преди да извършите някакви действия с файла.';
