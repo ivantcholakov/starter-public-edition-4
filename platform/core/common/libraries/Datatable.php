@@ -9,10 +9,15 @@
  * @link https://next.datatables.net
  * @link https://next.datatables.net/examples/server_side/
  *
- * You may find a visually compatible with Bootstrap 3
- * implementation of DataTables at:
+ * You may find a visually compatible with Bootstrap 3 integration for DataTables at:
  * @link http://startbootstrap.com/sb-admin-v2
  * @link https://github.com/IronSummitMedia/startbootstrap/tree/master/templates/sb-admin-v2
+ *
+ * Here is the original integration with Bootstrap:
+ * https://github.com/DataTables/Plugins/tree/master/integration/bootstrap
+ *
+ * For table responsiveness with server-side processing the following plugin is needed:
+ * @link https://github.com/Comanche/datatables-responsive
  *
  * @author Ivan Tcholakov <ivantcholakov@gmail.com>, March 2014
  * @license The MIT License, http://opensource.org/licenses/MIT
