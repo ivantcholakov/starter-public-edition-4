@@ -1,4 +1,9 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
+/**
+ * @author      Gwenaeël Gallon (GitHub : dev-ggallon), 2014.
+ * @license     The MIT License (MIT), http://opensource.org/licenses/MIT
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['ftp_no_connection'] = 'Impossible de d&eacute;terminer une connexion valable. Veuillez vous assurer que vous &ecirc;tes connect&eacute;(e) avant d\'ex&eacute;cuter une t&acirc;che sur un fichier.';
 $lang['ftp_unable_to_connect'] = 'Connexion au serveur FTP impossible avec le nom d\'h&ocirc;te (hostname) sp&eacute;cifi&eacute;.';

@@ -1,4 +1,13 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
+/**
+ * Based on the first tracduction
+ * @link https://github.com/EllisLab/CodeIgniter/wiki/French
+ * @link https://github.com/deathart/Language-System-Codeigniter-3.0-dev-FR
+ * 
+ * @author      Gwenaeël Gallon (GitHub : dev-ggallon), 2014.
+ * @license     The MIT License (MIT), http://opensource.org/licenses/MIT
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['email_must_be_array'] = 'La m&eacute;thode de validation d\'email n\'accepte que les tableaux associatifs (array).';
 $lang['email_invalid_address'] = 'Adresse email invalide : %s';

@@ -1,4 +1,9 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
+/**
+ * @author      Gwenaeël Gallon (GitHub : dev-ggallon), 2014.
+ * @license     The MIT License (MIT), http://opensource.org/licenses/MIT
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['mailer_disabled'] = 'Le service e-mail n\'a pas &eacute;t&eacute; activ&eacute;e.';
 $lang['mailer_disabled_error'] = 'Nous sommes d&eacute;sol&eacute;s, le service e-mail n\'a pas &eacute;t&eacute; activ&eacute;e. Le message n\'a pas &eacute;t&eacute; envoy&eacute;.';

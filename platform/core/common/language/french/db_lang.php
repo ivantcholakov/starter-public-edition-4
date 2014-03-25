@@ -1,4 +1,13 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
+/**
+ * Based on the first tracduction
+ * @link https://github.com/EllisLab/CodeIgniter/wiki/French
+ * @link https://github.com/deathart/Language-System-Codeigniter-3.0-dev-FR
+ * 
+ * @author      Gwenaeël Gallon (GitHub : dev-ggallon), 2014.
+ * @license     The MIT License (MIT), http://opensource.org/licenses/MIT
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['db_invalid_connection_str'] = 'Impossible de d&eacute;terminer les param&egrave;tres de la base de donn&eacute;es avec l\'instruction de connection donn&eacute;e.';
 $lang['db_unable_to_connect'] = 'Impossible de se connecter &agrave; la base de donn&eacute;es en utilisant les param&egrave;tres fournis.';
