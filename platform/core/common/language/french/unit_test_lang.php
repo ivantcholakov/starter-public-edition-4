@@ -1,10 +1,19 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
+/**
+ * Based on the first tracduction
+ * @link https://github.com/EllisLab/CodeIgniter/wiki/French
+ * @link https://github.com/deathart/Language-System-Codeigniter-3.0-dev-FR
+ * 
+ * @author      Gwenaeël Gallon (GitHub : dev-ggallon), 2014.
+ * @license     The MIT License (MIT), http://opensource.org/licenses/MIT
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['ut_test_name'] = 'Nom du test';
 $lang['ut_test_datatype'] = 'Base de donn&eacute;es du test';
 $lang['ut_res_datatype'] = 'Type de donn&eacute;es attendu';
 $lang['ut_result'] = 'R&eacute;sultat';
-$lang['ut_undefined']  = 'Nom de test non d&eacute;fini';
+$lang['ut_undefined'] = 'Nom du test non d&eacute;fini';
 $lang['ut_file'] = 'Nom du fichier';
 $lang['ut_line'] = 'Num&eacute;ro de ligne';
 $lang['ut_passed'] = 'Pass&eacute;';
@@ -16,7 +25,6 @@ $lang['ut_double'] = 'Float'; // can be the same as float
 $lang['ut_string'] = 'String';
 $lang['ut_array'] = 'Array';
 $lang['ut_object'] = 'Object';
-$lang['ut_resource']  = 'Resource';
+$lang['ut_resource'] = 'Resource';
 $lang['ut_null'] = 'Null';
 $lang['ut_notes'] = 'Notes';
-

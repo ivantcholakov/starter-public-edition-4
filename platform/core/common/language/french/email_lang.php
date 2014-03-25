@@ -1,4 +1,13 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
+/**
+ * Based on the first tracduction
+ * @link https://github.com/EllisLab/CodeIgniter/wiki/French
+ * @link https://github.com/deathart/Language-System-Codeigniter-3.0-dev-FR
+ * 
+ * @author      Gwenaeël Gallon (GitHub : dev-ggallon), 2014.
+ * @license     The MIT License (MIT), http://opensource.org/licenses/MIT
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['email_must_be_array'] = 'La m&eacute;thode de validation d\'email n\'accepte que les tableaux associatifs (array).';
 $lang['email_invalid_address'] = 'Adresse email invalide : %s';
@@ -6,7 +15,7 @@ $lang['email_attachment_missing'] = 'Impossible de localiser le fichier joint su
 $lang['email_attachment_unreadable'] = 'Impossible d\'ouvrir ce fichier joint : %s';
 $lang['email_no_recipients'] = 'Vous devez sp&eacute;cifier des destinataires : To, Cc, ou Bcc.';
 $lang['email_send_failure_phpmail'] = 'Impossible d\'envoyer des emails avec la fonction mail() de PHP. Votre serveur n\'est peut-&ecirc;tre pas configur&eacute; pour utiliser cette m&eacute;thode.';
-$lang['email_send_failure_sendmail'] = 'UImpossible d\'envoyer des emails avec la m&eacute;thode Sendmail de PHP. Votre serveur n\'est peut-&ecirc;tre pas configur&eacute; pour utiliser cette m&eacute;thode.';
+$lang['email_send_failure_sendmail'] = 'Impossible d\'envoyer des emails avec la m&eacute;thode Sendmail de PHP. Votre serveur n\'est peut-&ecirc;tre pas configur&eacute; pour utiliser cette m&eacute;thode.';
 $lang['email_send_failure_smtp'] = 'Impossible d\'envoyer des emails avec la m&eacute;thode SMTP de PHP. Votre serveur n\'est peut-&ecirc;tre pas configur&eacute; pour utiliser cette m&eacute;thode.';
 $lang['email_sent'] = 'Votre message a bien &eacute;t&eacute; exp&eacute;di&eacute; via le protocole suivant : %s';
 $lang['email_no_socket'] = 'Impossible d\'ouvrir un socket avec Sendmail. Veuillez v&eacute;rifier votre configuration.';
