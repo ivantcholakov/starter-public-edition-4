@@ -302,7 +302,7 @@ $config['encryption_key'] = 'MY_ENCRYPTION_KEY';
 */
 $config['sess_driver']          = 'native';
 $config['sess_valid_drivers']   = array();
-$config['sess_cookie_name']     = 'appdex';
+$config['sess_cookie_name']     = 'ac584bae';
 $config['sess_expiration']      = 4 * 60 * 60;  // 4 hours
 $config['sess_expire_on_close'] = FALSE;
 $config['sess_encrypt_cookie']  = FALSE;

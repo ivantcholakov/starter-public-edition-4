@@ -37,8 +37,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $config = array(
     'default' => array(
-        'hostname' => 'pub-memcache-12659.eu-west-1-1.2.ec2.garantiadata.com',
-        'port'     => '12659',
+        'hostname' => '127.0.0.1',
+        'port'     => '11211',
         'weight'   => '1',
     ),
 );
