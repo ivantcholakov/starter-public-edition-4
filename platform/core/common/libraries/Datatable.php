@@ -131,7 +131,12 @@ class Datatable {
         if (!empty($select)) {
 
             foreach ($select as $key => $field) {
-                $select[$key] = $this->db()->protect_identifiers($field);
+
+                if (trim($field) != '') {
+                    $select[$key] = $this->db()->protect_identifiers($field);
+                } else {
+                    $select[$key] = 'NULL';
+                }
             }
 
             $select = implode(', ', $select);
@@ -510,19 +515,25 @@ class Datatable {
 
             $str = $this->request['search']['value'];
 
+            $c = 0;
+
             for ($i = 0, $ien = count($this->request['columns']); $i < $ien; $i++) {
 
                 $requestColumn = $this->request['columns'][$i];
                 $columnIdx = array_search($requestColumn['data'], $dtColumns);
                 $column = $this->columns[$columnIdx];
 
-                if (isset($requestColumn['searchable']) && $requestColumn['searchable'] == 'true') {
+                $has_db_prop = isset($column['db']) && $column['db'] != '';
 
-                    if ($i == 0) {
+                if ($has_db_prop && isset($requestColumn['searchable']) && $requestColumn['searchable'] == 'true') {
+
+                    if ($c == 0) {
                         $this->like($column['db'], $str);
                     } else {
                         $this->or_like($column['db'], $str);
                     }
+
+                    $c++;
                 }
             }
 
@@ -541,7 +552,9 @@ class Datatable {
 
                 $str = isset($requestColumn['search']['value']) ? $requestColumn['search']['value'] : '';
 
-                if (isset($requestColumn['searchable']) && $requestColumn['searchable'] == 'true' && $str != '') {
+                $has_db_prop = isset($column['db']) && $column['db'] != '';
+
+                if ($has_db_prop && isset($requestColumn['searchable']) && $requestColumn['searchable'] == 'true' && $str != '') {
                     $this->like($column['db'], $str);
                 }
             }
@@ -562,11 +575,20 @@ class Datatable {
 
                 $column = $this->columns[$j];
 
-                // Is there a formatter?
-                if (isset($column['formatter'])) {
-                    $row[$column['dt']] = $column['formatter']($data[$i][$column['db']], $data[$i]);
+                $has_db_prop = isset($this->columns[$j]['db']) && $this->columns[$j]['db'] != '';
+
+                // Is there a formatter? (closures/lambda functions and array($object, 'method') callables)
+                $formatter = isset($column['formatter']) ? (is_callable($column['formatter']) ? $column['formatter'] : null) : null;
+
+                if (isset($formatter)) {
+                    
+                    $row[$column['dt']] = is_array($formatter)
+                        ? $formatter[0]->{$formatter[1]}($has_db_prop ? $data[$i][$column['db']] : null, $data[$i])
+                        : $formatter($has_db_prop ? $data[$i][$column['db']] : null, $data[$i]);
+
                 } else {
-                    $row[$column['dt']] = $data[$i][$this->columns[$j]['db']];
+
+                    $row[$column['dt']] = $has_db_prop ? $data[$i][$this->columns[$j]['db']] : null;
                 }
             }
 
@@ -589,7 +611,14 @@ class Datatable {
         $out = array();
 
         for ($i = 0, $len = count($a); $i < $len; $i++) {
-            $out[] = $a[$i][$prop];
+
+            $has_prop = isset($a[$i][$prop]) && $a[$i][$prop] != '';
+
+            if ($has_prop) {
+                $out[] = $a[$i][$prop];
+            } else {
+                $out[] = null;
+            }
         }
 
         return $out;
