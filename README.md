@@ -62,6 +62,7 @@ you would not be forced to rename them according to the new strict "ucfirst" nam
     modules/demo/controllers/page/Other.php    -> address: site_url/demo/page/other/[index/method]
 ```
 Deeper directory nesting as in CI 3 has not been implemented for now.
+
 * SEO Friendly URLs in CodeIgniter, http://www.einsteinseyes.com/blog/techno-babble/seo-friendly-urls-in-codeigniter-2-0-hmvc/
 * Hack 2. Prevent Model-Controller Name Collision, http://net.tutsplus.com/tutorials/php/6-codeigniter-hacks-for-the-masters/
 
