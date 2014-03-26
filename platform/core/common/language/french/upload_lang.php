@@ -1,4 +1,13 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
+/**
+ * Based on the first tracduction
+ * @link https://github.com/EllisLab/CodeIgniter/wiki/French
+ * @link https://github.com/deathart/Language-System-Codeigniter-3.0-dev-FR
+ * 
+ * @author      Gwenaeël Gallon (GitHub : dev-ggallon), 2014.
+ * @license     The MIT License (MIT), http://opensource.org/licenses/MIT
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['upload_userfile_not_set'] = 'Impossible de trouver une variable de type POST nomm&eacute;e userfile.';
 $lang['upload_file_exceeds_limit'] = 'Le fichier envoy&eacute; d&eacute;passe la taille limite d&eacute;finie dans votre fichier de configuration PHP.';
