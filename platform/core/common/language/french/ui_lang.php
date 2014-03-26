@@ -109,4 +109,4 @@ $lang['ui_slideshow_stop'] = 'Arr&ecirc;ter le diaporama';
 $lang['ui_slideshow_current'] = 'Image {current} sur {total}';
 $lang['ui_slideshow_previous'] = 'Pr&eacute;c&eacute;dent';
 $lang['ui_slideshow_next'] = 'Suivant';
-$lang['ui_loading_data_from_server'] = 'Loading data from server...';
+$lang['ui_loading_data_from_server'] = 'Chargement des donn&eacute;es depuis le serveur...';
