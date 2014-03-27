@@ -128,7 +128,7 @@ class MX_Loader extends CI_Loader
     public function database($params = '', $return = FALSE, $query_builder = NULL) {
 
         if (class_exists('CI_DB', FALSE) && $return === FALSE && $query_builder === NULL && isset(CI::$APP->db) && is_object(CI::$APP->db) && ! empty(CI::$APP->db->conn_id)) {
-            return;
+            return $this;
         }
 
         // Modified by Ivan Tcholakov, 25-DEC-2013.
@@ -154,7 +154,7 @@ class MX_Loader extends CI_Loader
 
         CI::$APP->db = DB($params, $query_builder);
 
-        return CI::$APP->db;
+        return $this;
     }
 
     /**
