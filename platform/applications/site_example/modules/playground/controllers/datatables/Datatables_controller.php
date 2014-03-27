@@ -7,6 +7,8 @@
 
 class Datatables_controller extends Base_Controller {
 
+    public $driver_ok = false;
+
     public function __construct() {
 
         parent::__construct();
@@ -16,11 +18,14 @@ class Datatables_controller extends Base_Controller {
         ;
 
         $this->registry->set('nav', 'playground/datatables');
+
+        $this->driver_ok = extension_loaded('pdo_sqlite');
     }
 
     public function index() {
 
         $this->template
+            ->set('driver_ok', $this->driver_ok)
             ->set_partial('css', 'datatables/datatables_css')
             ->set_partial('scripts', 'datatables/datatables_scripts')
             ->enable_parser_body('i18n') 

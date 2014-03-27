@@ -6,6 +6,18 @@
                 <h1>DataTables with Server-Side Processing</h1>
             </div>
 
+<?php
+
+if (!$driver_ok) {
+
+?>
+
+            <div class="alert alert-warning text-center">PDO+sqlite database driver is needed for this demo to work.</div>
+<?php
+}
+
+?>
+
             <div class="panel panel-default">
 
                 <div class="panel-body">
