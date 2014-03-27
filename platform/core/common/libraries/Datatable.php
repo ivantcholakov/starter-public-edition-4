@@ -145,8 +145,12 @@ class Datatable {
 
             $select = '*';
         }
-        
-        $this->select('SQL_CALC_FOUND_ROWS '.$select, false);
+
+        // A change by Ivan Tcholakov, 27-MAR-2014.
+        // Strange, the table works fine when $recordsFiltered = $recordsTotal
+        //$this->select('SQL_CALC_FOUND_ROWS '.$select, false);
+        $this->select($select, false);
+        //
 
         if ($this->is_custom_model()) {
             $data = $this->db->as_array()->find();
@@ -154,7 +158,11 @@ class Datatable {
             $data = $this->db->get()->result_array();
         }
 
-        $recordsFiltered = (int) $this->db()->query('SELECT FOUND_ROWS() AS cnt')->row()->cnt;
+        // A change by Ivan Tcholakov, 27-MAR-2014.
+        // Strange, the table works fine when $recordsFiltered = $recordsTotal
+        //$recordsFiltered = (int) $this->db()->query('SELECT FOUND_ROWS() AS cnt')->row()->cnt;
+        $recordsFiltered = $recordsTotal;
+        //
 
         $result = array(
             'draw'            => isset($this->request['draw']) ? (int) $this->request['draw'] : 0,
