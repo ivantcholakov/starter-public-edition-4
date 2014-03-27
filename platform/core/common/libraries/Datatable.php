@@ -501,7 +501,9 @@ class Datatable {
                 $columnIdx = array_search($requestColumn['data'], $dtColumns);
                 $column = $this->columns[$columnIdx];
 
-                if (isset($requestColumn['orderable']) && $requestColumn['orderable'] == 'true') {
+                $has_db_prop = isset($column['db']) && $column['db'] != '';
+
+                if ($has_db_prop && isset($requestColumn['orderable']) && $requestColumn['orderable'] == 'true') {
 
                     $dir = $this->request['order'][$i]['dir'] === 'asc' ? 'asc' : 'desc';
                     $this->order_by($column['db'], $dir);
