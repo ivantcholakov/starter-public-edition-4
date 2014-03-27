@@ -43,7 +43,8 @@ echo js('lib/dataTables/datatables.responsive.js');
                     'data': 'name'
                 },
                 {
-                    'data': 'flag'
+                    'data': 'flag',
+                    'orderable': false
                 },
                 {
                     'data': 'action_edit',
