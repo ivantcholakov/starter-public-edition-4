@@ -1,5 +1,30 @@
 # ChangeLog
 
+* Increase timeout to match RFC2821 section 4.5.3.2 and thus not fail greetdelays, fixes #104
+* Add timestamps to default debug output
+* Add connection events and new level 3 to debug output options
+* Chinese language update (Thanks to @binaryoung)
+* Allow custom Mailer types (thanks to @michield)
+* Cope with spaces around SMTP host specs
+* Fix processing of multiple hosts in connect string
+* Added Galician translation (Thanks to @donatorouco)
+* Autoloader now prepends
+* Minor docs update
+* Add Latvian translation (Thanks to @eddsstudio)
+* Add Belarusian translation (Thanks to @amaksymiuk)
+* Make autoloader work better on older PHP versions
+* Avoid double-encoding if mbstring is overloading mail()
+* Add Portuguese translation (Thanks to @Jonadabe)
+* Make quoted-printable encoder respect line ending setting
+* Improve Chinese translation (Thanks to @PeterDaveHello)
+* Add Georgian translation (Thanks to @akalongman)
+* Add Greek translation (Thanks to @lenasterg)
+* Fix serverHostname on PHP < 5.3
+* Improve performance of SMTP class
+* Implement automatic 7bit downgrade
+* Add Vietnamese translation (Thanks to @vinades)
+* Improve example images, switch to PNG
+
 ## Version 5.2.7 (September 12th 2013)
 * Add Ukranian translation from @Krezalis
 * Support for do_verp
@@ -295,31 +320,6 @@ Please note, this is BETA software
 * included example showing how to use PHPMailer with GMAIL
 * fixed the missing Cc in SendMail() and Mail()
 
-******************
-A note on sending bulk emails:
-
-If the email you are sending is not personalized, consider using the
-"undisclosed-recipient:;" strategy. That is, put all of your recipients
-in the Bcc field and set the To field to "undisclosed-recipients:;".
-It's a lot faster (only one send) and saves quite a bit on resources.
-Contrary to some opinions, this will not get you listed in spam engines -
-it's a legitimate way for you to send emails.
-
-A partial example for use with PHPMailer:
-
-```
-$mail->AddAddress("undisclosed-recipients:;");
-$mail->AddBCC("email1@anydomain.com,email2@anyotherdomain.com,email3@anyalternatedomain.com");
-```
-
-Many email service providers restrict the number of emails that can be sent
-in any given time period. Often that is between 50 - 60 emails maximum
-per hour or per send session.
-
-If that's the case, then break up your Bcc lists into chunks that are one
-less than your limit, and put a pause in your script.
-*******************
-
 ## Version 2.0.0 rc1 (Thu, Nov 08 2007), interim release
 * dramatically simplified using inline graphics ... it's fully automated and requires no user input
 * added automatic document type detection for attachments and pictures
@@ -332,26 +332,8 @@ less than your limit, and put a pause in your script.
 * added Estonian language file by Indrek P&auml;ri
 * added header injection patch
 * added "set" method to permit users to create their own pseudo-properties like 'X-Headers', etc.
-  example of use:
-
-```
-$mail->set('X-Priority', '3');
-$mail->set('X-MSMail-Priority', 'Normal');
-```
-
 * fixed warning message in SMTP get_lines method
-* added TLS/SSL SMTP support. Example of use:
-
-```
-$mail = new PHPMailer();
-$mail->Mailer = "smtp";
-$mail->Host = "smtp.example.com";
-$mail->SMTPSecure   = "tls"; // option
-//$mail->SMTPSecure   = "ssl";  // option
-...
-$mail->Send();
-```
-
+* added TLS/SSL SMTP support.
 * PHPMailer has been tested with PHP4 (4.4.7) and PHP5 (5.2.7)
 * Works with PHP installed as a module or as CGI-PHP
 NOTE: will NOT work with PHP5 in E_STRICT error mode
