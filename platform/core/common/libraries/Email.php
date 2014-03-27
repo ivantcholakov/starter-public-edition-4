@@ -612,12 +612,12 @@ class Email extends CI_Email {
     // Custom methods ----------------------------------------------------------
 
     // PHPMailer's SMTP debug info level
-    // 0 = off, 1 = commands, 2 = commands and data
+    // 0 = off, 1 = commands, 2 = commands and data, 3+ = more debug output info.
     public function set_smtp_debug($level) {
 
         $level = (int) $level;
 
-        if ($level < 0 || $level > 2) {
+        if ($level < 0) {
             $level = 0;
         }
 
