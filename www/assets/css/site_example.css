@@ -82,3 +82,92 @@ See http://appglobe.com/scroll-to-top-animation/
     top: 9px;
     font-size: 19px;
 }
+
+
+/* Tables */
+
+.table.table-valign-middle td,
+.table .table-valign-middle td,
+.table.table-valign-middle th,
+.table .table-valign-middle th {
+    vertical-align: middle;
+}
+
+.table th.table-actions{
+    width: 1%;
+}
+
+.table td.table-actions {
+    border-left: none;
+    border-right: none;
+}
+
+/* End Tables */
+
+
+/* Thumbnails */
+
+img.thumbnail-48 {
+    width: 48px;
+    max-width: 100%;
+    height: auto;
+}
+
+img.thumbnail-96 {
+    width: 96px;
+    max-width: 100%;
+    height: auto;
+}
+
+img.thumbnail-120 {
+    width: 120px;
+    max-width: 100%;
+    height: auto;
+}
+
+img.thumbnail-160 {
+    width: 160px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* End Thumbnails */
+
+
+/* Common-Purpose Styles */
+
+/* See http://www.tightcss.com/centering/center_variable_width.htm */
+
+.centered-block-container {
+    float: left;
+    position: relative;
+    margin-left: 50%;
+}
+
+.centered-block {
+    float: left;
+    position: relative;
+    left: -50%;
+}
+
+.nobr { 
+    white-space: nowrap;
+}
+
+.loud {
+    font-weight: bold;
+}
+
+.shrink {
+    width: 1%;
+}
+
+.expand {
+    width: 100%;
+}
+
+.center-text {
+    text-align: center;
+}
+
+/* End Common-Purpose Styles */
