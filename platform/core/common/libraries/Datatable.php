@@ -108,20 +108,15 @@ class Datatable {
             $clone = clone $this->db;
             $clone->set_database($clone_db);
 
+            // Ivan: I assume that DISTINCT is taken into account here.
+            $recordsTotal = $clone->count_all();
+
         } else {
 
             $clone = clone $this->db;
-        }
 
-        if ($this->is_custom_model($clone)) {
-
-            $clone->select('COUNT('.$clone_db->protect_identifiers($this->primary_key).')', false);
-            $recordsTotal = (int) $clone->as_value()->first();
-
-        } else {
-
-            $clone->select('COUNT('.$clone->protect_identifiers($this->primary_key).') AS cnt', false);
-            $recordsTotal = (int) $clone->get()->row()->cnt;
+            // Ivan: I assume that DISTINCT is taken into account here.
+            $recordsTotal = $clone->count_all_results();
         }
 
         $this->set_limit()->set_order();
@@ -141,16 +136,8 @@ class Datatable {
 
             $select = implode(', ', $select);
 
-        } else {
-
-            $select = '*';
+            $this->select($select, false);
         }
-
-        // A change by Ivan Tcholakov, 27-MAR-2014.
-        // Strange, the table works fine when $recordsFiltered = $recordsTotal
-        //$this->select('SQL_CALC_FOUND_ROWS '.$select, false);
-        $this->select($select, false);
-        //
 
         if ($this->is_custom_model()) {
             $data = $this->db->as_array()->find();
@@ -158,11 +145,8 @@ class Datatable {
             $data = $this->db->get()->result_array();
         }
 
-        // A change by Ivan Tcholakov, 27-MAR-2014.
-        // Strange, the table works fine when $recordsFiltered = $recordsTotal
-        //$recordsFiltered = (int) $this->db()->query('SELECT FOUND_ROWS() AS cnt')->row()->cnt;
+        // Ivan: Strange, the table works fine when $recordsFiltered = $recordsTotal
         $recordsFiltered = $recordsTotal;
-        //
 
         $result = array(
             'draw'            => isset($this->request['draw']) ? (int) $this->request['draw'] : 0,
