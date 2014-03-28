@@ -307,7 +307,7 @@ Real Life Usage
 ---------------
 
 There is no real life usage yet, the platform is fresh. Information in this regard will be updated.
-Right now I am building a CMS, based upon this platform, it would not be publicly available.
+I have built a CMS based upon this platform, it would not be publicly available.
 
 
 Credits
