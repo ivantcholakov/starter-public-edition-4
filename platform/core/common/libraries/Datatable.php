@@ -219,7 +219,10 @@ class Datatable {
         if (is_object($this->db)) {
 
             $this->db->from($from);
-            $this->primary_key = $primary_key;
+
+            if ($primary_key !== null) {
+                $this->primary_key = $primary_key;
+            }
 
         } else {
 
@@ -453,7 +456,7 @@ class Datatable {
             $this->db = null;
         }
 
-        $this->primary_key = null;
+        $this->primary_key = 'id';
         $this->columns = null;
     }
 

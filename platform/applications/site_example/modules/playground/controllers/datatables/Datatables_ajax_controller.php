@@ -48,7 +48,7 @@ class Datatables_ajax_controller extends Base_Ajax_Controller {
 
             $this->datatable
                 ->set_columns($columns)
-                //->from('countries', 'id') // This is how the pure query builder may be used.
+                //->from('countries') // This is how the pure query builder may be used.
                 ->from($this->countries)    // Using a model (that extends Core_Model).
                 ->generate()
         );
