@@ -49,7 +49,7 @@ if (!$driver_ok) {
 
             <div class="well">
                 <p>DataTables documentation: <a target="_blank" href="http://datatables.net">http://datatables.net</a></p>
-                <p>Integration for Bootstrap: <a target="_blank" href="https://github.com/DataTables/Plugins/tree/master/integration/bootstrap">https://github.com/DataTables/Plugins/tree/master/integration/bootstrap</a></p>
+                <p>Integration for Bootstrap 3: <a target="_blank" href="https://github.com/DataTables/Plugins/tree/master/integration/bootstrap/3">https://github.com/DataTables/Plugins/tree/master/integration/bootstrap/3</a></p>
                 <p>Visual responsiveness support for tables with server-side processing: <a target="_blank" href="https://github.com/Comanche/datatables-responsive">https://github.com/Comanche/datatables-responsive</a></p>
             </div>
 
