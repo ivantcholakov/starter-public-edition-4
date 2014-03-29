@@ -24,7 +24,7 @@ echo js('lib/dataTables/datatables.responsive.js');
         var tableContainer = $('#dataTables-container-example');
 
         tableElement.dataTable({
-            'pagingType': 'full_numbers',
+            'pagingType': 'simple_numbers',
             'stateSave': true,
             'processing': true,
             'serverSide': true,
