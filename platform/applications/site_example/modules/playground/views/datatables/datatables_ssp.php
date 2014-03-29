@@ -32,9 +32,9 @@ if (!$driver_ok) {
 
                             <thead>
                                 <tr>
-                                    <th rowspan="2">id</th>
-                                    <th rowspan="2">ISO-3166 Code</th>
-                                    <th rowspan="2">Country Name</th>
+                                    <th rowspan="2" class="col-sm-1">id</th>
+                                    <th rowspan="2" class="col-sm-3">ISO-3166 Code</th>
+                                    <th rowspan="2" class="col-sm-5">Country Name</th>
                                     <th rowspan="2" data-hide="phone">Flag</th>
                                     <th colspan="2" class="shrink"><i18n>ui_actions</i18n></th>
                                 </tr>
