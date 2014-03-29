@@ -20,10 +20,10 @@ echo js('lib/dataTables/datatables.responsive.js');
             tablet: 1024,
             phone : 480
         };
-        var tableElement = $('#dataTables-example');
-        var tableContainer = $('#dataTables-container-example');
 
-        tableElement.DataTable({
+        var table = $('#datatable');
+
+        table.DataTable({
             'pagingType': 'simple_numbers',
             'stateSave': true,
             'processing': true,
@@ -61,7 +61,7 @@ echo js('lib/dataTables/datatables.responsive.js');
             'preDrawCallback': function () {
                 // Initialize the responsive datatables helper once.
                 if (!responsiveHelper) {
-                    responsiveHelper = new ResponsiveDatatablesHelper(tableElement, breakpointDefinition);
+                    responsiveHelper = new ResponsiveDatatablesHelper(table, breakpointDefinition);
                 }
             },
             'rowCallback': function (nRow) {
