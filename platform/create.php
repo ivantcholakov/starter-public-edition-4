@@ -311,7 +311,6 @@ else
 require_once(BASEPATH.'core/compat/mbstring.php');
 require_once(BASEPATH.'core/compat/hash.php');
 require_once(BASEPATH.'core/compat/password.php');
-require_once(BASEPATH.'core/compat/array.php');
 
 /*
  * ------------------------------------------------------

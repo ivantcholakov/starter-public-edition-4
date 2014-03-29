@@ -13,11 +13,13 @@
  * --------------------------------------------------------------------
  */
 
-define('IS_PHP_5_1', version_compare(PHP_VERSION, '5.1.0', '>='));
-define('IS_PHP_5_2', version_compare(PHP_VERSION, '5.2.0', '>='));
-define('IS_PHP_5_3', version_compare(PHP_VERSION, '5.3.0', '>='));
-define('IS_PHP_5_4', version_compare(PHP_VERSION, '5.4.0', '>='));
-define('IS_PHP_5_5', version_compare(PHP_VERSION, '5.5.0', '>='));
+require BOOTSTRAPPATH.'is_php.php';
+
+define('IS_PHP_5_1', is_php('5.1.0'));
+define('IS_PHP_5_2', is_php('5.2.0'));
+define('IS_PHP_5_3', is_php('5.3.0'));
+define('IS_PHP_5_4', is_php('5.4.0'));
+define('IS_PHP_5_5', is_php('5.5.0'));
 define('IS_WINDOWS_OS', strtolower(substr(php_uname('s'), 0, 3 )) == 'win');
 define('IS_CLI', (PHP_SAPI == 'cli') or defined('STDIN'));
 define('IS_CLI_REQUEST', IS_CLI);   // Deprecated, use IS_CLI instead.
@@ -300,13 +302,7 @@ if (!function_exists('lcfirst')) {
     require BOOTSTRAPPATH.'lcfirst.php';
 }
 
-if (!function_exists('array_replace')) {
-    require BOOTSTRAPPATH.'array_replace.php';
-}
-
-if (!function_exists('array_replace_recursive')) {
-    require BOOTSTRAPPATH.'array_replace_recursive.php';
-}
+require BASEPATH.'core/compat/array.php';
 
 if (!function_exists('array_fill_keys')) {
     require BOOTSTRAPPATH.'array_fill_keys.php';
