@@ -23,7 +23,7 @@ echo js('lib/dataTables/datatables.responsive.js');
         var tableElement = $('#dataTables-example');
         var tableContainer = $('#dataTables-container-example');
 
-        tableElement.dataTable({
+        tableElement.DataTable({
             'pagingType': 'simple_numbers',
             'stateSave': true,
             'processing': true,
