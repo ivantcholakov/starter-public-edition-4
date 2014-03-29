@@ -12,7 +12,7 @@ if (!$driver_ok) {
 
 ?>
 
-            <div class="alert alert-warning text-center">PDO+sqlite database driver is needed for this demo to work.</div>
+            <div class="alert alert-warning text-center">pdo_sqlite database driver is needed for this demo to work.</div>
 <?php
 }
 
