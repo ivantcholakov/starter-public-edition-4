@@ -13,23 +13,50 @@ class Datatables_controller extends Base_Controller {
 
         parent::__construct();
 
-        $this->template
-            ->title('DataTables with Server-Side Processing')
-        ;
-
         $this->registry->set('nav', 'playground/datatables');
 
         $this->driver_ok = extension_loaded('pdo_sqlite');
+
+        $this->template->set_partial('subnavbar', 'playground/datatables/subnavbar');
     }
 
     public function index() {
 
+        
+        $csv = (string) @ file_get_contents(APPPATH.'demo_data/countries.csv');
+
+        $items = preg_split('/\r\n|\r|\n/m', $csv, null, PREG_SPLIT_NO_EMPTY);
+
+        $id = 0;
+
+        foreach ($items as & $item) {
+
+            $id++;
+
+            $values = explode(';', $item);
+            $item = (array('id' => $id, 'code' => $values[0], 'name' => $values[1]));
+        }
+
         $this->template
-            ->set('driver_ok', $this->driver_ok)
+            ->title('DataTables Simple Example')
+            ->set('subnavbar_item_active', 'simple-example')
+            ->set(compact('items'))
             ->set_partial('css', 'datatables/datatables_css')
             ->set_partial('scripts', 'datatables/datatables_scripts')
             ->enable_parser_body('i18n') 
             ->build('datatables/datatables');
+    }
+
+    public function ssp() {
+
+        $this->template
+            ->title('DataTables with Server-Side Processing')
+            ->set('subnavbar_item_active', 'ssp')
+            ->set('driver_ok', $this->driver_ok)
+            ->set_partial('css', 'datatables/datatables_css')
+            ->set_partial('scripts', 'datatables/datatables_ssp_scripts')
+            ->enable_parser_body('i18n') 
+            ->build('datatables/datatables_ssp');
     }
 
 }

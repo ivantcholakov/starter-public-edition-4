@@ -1,6 +1,10 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-echo js('lib/dataTables/jquery.dataTables.js');
+if (!$driver_ok) {
+    return;
+}
+
+echo js('lib/dataTables/jquery.dataTables.min.js');
 echo js('lib/dataTables/dataTables.bootstrap.js');
 echo js('lib/dataTables/datatables.responsive.js');
 
@@ -22,11 +26,40 @@ echo js('lib/dataTables/datatables.responsive.js');
         table.DataTable({
             'pagingType': 'simple_numbers',
             'stateSave': true,
-            'columnDefs': [{
-                'targets': [3, 4, 5],
-                'searchable': false,
-                'orderable': false
-              }],
+            'processing': true,
+            'serverSide': true,
+            'ajax': {
+                'url': '<?php echo site_url('playground/datatables/datatables-ssp-ajax'); ?>',
+                'type': 'post'
+            },
+            'columns': [
+                {
+                    'data': 'id'
+                },
+                {
+                    'data': 'code'
+                },
+                {
+                    'data': 'name'
+                },
+                {
+                    'data': 'flag',
+                    'searchable': false,
+                    'orderable': false
+                },
+                {
+                    'data': 'action_edit',
+                    'searchable': false,
+                    'orderable': false,
+                    'class': 'table-actions'
+                },
+                {
+                    'data': 'action_delete',
+                    'searchable': false,
+                    'orderable': false,
+                    'class': 'table-actions'
+                }
+            ],
             'language': <?php echo $this->lang->datatables(); ?>,
             // Making the table responsive.
             'autoWidth': false,

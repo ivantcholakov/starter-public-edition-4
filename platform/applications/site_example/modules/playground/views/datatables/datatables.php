@@ -2,21 +2,15 @@
 
         <section>
 
+<?php
+
+template_partial('subnavbar');
+
+?>
+
             <div class="page-header">
-                <h1>DataTables with Server-Side Processing</h1>
+                <h1>DataTables Simple Example</h1>
             </div>
-
-<?php
-
-if (!$driver_ok) {
-
-?>
-
-            <div class="alert alert-warning text-center">pdo_sqlite database driver is needed for this demo to work.</div>
-<?php
-}
-
-?>
 
             <div class="panel panel-default">
 
@@ -26,18 +20,62 @@ if (!$driver_ok) {
 
                             <thead>
                                 <tr>
-                                    <th>id</th>
-                                    <th>ISO-3166 Code</th>
-                                    <th>Country Name</th>
-                                    <th>Flag</th>
+                                    <th rowspan="2">id</th>
+                                    <th rowspan="2">ISO-3166 Code</th>
+                                    <th rowspan="2">Country Name</th>
+                                    <th rowspan="2">Flag</th>
                                     <th colspan="2" class="shrink"><i18n>ui_actions</i18n></th>
                                 </tr>
+                                <tr>
+                                    <th class="shrink" style="display: none;"></th>
+                                    <th class="shrink" style="display: none;"></th>
+                                </tr>
+
                             </thead>
 
                             <tbody>
+<?php
+
+if (!empty($items)) {
+
+    foreach ($items as $item) {
+
+?>
+
                                 <tr>
-                                    <td colspan="6" class="dataTables_empty"><i18n>ui_loading_data_from_server</i18n></td>
+
+                                    <td>
+                                        <?php echo $item['id']; ?>
+                                    </td>
+
+                                    <td>
+                                        <?php echo $item['code']; ?>
+                                    </td>
+
+                                    <td>
+                                        <?php echo $item['name']; ?>
+                                    </td>
+
+                                    <td>
+                                        <?php echo '<img src="'.BASE_URI.'assets/img/lib/flags/'.$item['code'].'.png" />'; ?>
+                                    </td>
+
+                                    <td class="table-actions">
+                                        <?php echo '<a href="javascript://" class="btn btn-info" title="'.$this->lang->line('ui_edit').'"><i class="fa fa-pencil fa-fw"></i></a>'; ?>
+                                    </td>
+
+                                    <td class="table-actions">
+                                        <?php echo '<a id="delete_action_'.$item['id'].'" href="javascript://" class="btn btn-danger delete_action" title="'.$this->lang->line('ui_delete').'"><i class="fa fa-trash-o fa-fw"></i></a>'; ?>
+                                    </td>
+
                                 </tr>
+<?php
+
+    }
+}
+
+?>
+
                             </tbody>
 
                         </table>
@@ -50,7 +88,7 @@ if (!$driver_ok) {
             <div class="well">
                 <p>DataTables documentation: <a target="_blank" href="http://datatables.net">http://datatables.net</a></p>
                 <p>Integration for Bootstrap 3: <a target="_blank" href="https://github.com/DataTables/Plugins/tree/master/integration/bootstrap/3">https://github.com/DataTables/Plugins/tree/master/integration/bootstrap/3</a></p>
-                <p>Visual responsiveness support for tables with server-side processing: <a target="_blank" href="https://github.com/Comanche/datatables-responsive">https://github.com/Comanche/datatables-responsive</a></p>
+                <p>Visual responsiveness support: <a target="_blank" href="https://github.com/Comanche/datatables-responsive">https://github.com/Comanche/datatables-responsive</a></p>
             </div>
 
         </section>

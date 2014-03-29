@@ -1,6 +1,11 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed.');
 
-class Datatables_ajax_controller extends Base_Ajax_Controller {
+/**
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @license The MIT License, http://opensource.org/licenses/MIT
+ */
+
+class Datatables_ssp_ajax_controller extends Base_Ajax_Controller {
 
     public function __construct() {
 
