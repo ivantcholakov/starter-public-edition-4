@@ -34,7 +34,7 @@ class Mustache_controller extends Base_Controller {
 
     protected function _get_data() {
 
-        $csv = (string) file_get_contents(dirname(__FILE__).'/countries.csv');
+        $csv = (string) @ file_get_contents(APPPATH.'demo_data/countries.csv');
 
         $items = preg_split('/\r\n|\r|\n/m', $csv, null, PREG_SPLIT_NO_EMPTY);
 

@@ -5,13 +5,13 @@ $query_builder = true;
 
 $db['default'] = array(
     'dsn'      => '',
-    'hostname' => 'sqlite:'.APPPATH.'database_demo/demo.sqlite',
+    'hostname' => 'sqlite:'.APPPATH.'demo_data/demo.sqlite',
     'username' => '',
     'password' => '',
     'database' => '',
     'dbdriver' => 'pdo',
     'dbprefix' => '',
-    'pconnect' => FALSE,
+    'pconnect' => TRUE,
     'db_debug' => TRUE,
     'cache_on' => FALSE,
     'cachedir' => '',
