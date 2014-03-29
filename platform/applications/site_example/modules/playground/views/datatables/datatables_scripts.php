@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-echo js('lib/dataTables/jquery.dataTables.js');
+echo js('lib/dataTables/jquery.dataTables.min.js');
 echo js('lib/dataTables/dataTables.bootstrap.js');
 echo js('lib/dataTables/datatables.responsive.js');
 
