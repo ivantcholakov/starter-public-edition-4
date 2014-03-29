@@ -35,7 +35,7 @@ if (!$driver_ok) {
                                     <th rowspan="2">id</th>
                                     <th rowspan="2">ISO-3166 Code</th>
                                     <th rowspan="2">Country Name</th>
-                                    <th rowspan="2">Flag</th>
+                                    <th rowspan="2" data-hide="phone">Flag</th>
                                     <th colspan="2" class="shrink"><i18n>ui_actions</i18n></th>
                                 </tr>
                                 <tr>
