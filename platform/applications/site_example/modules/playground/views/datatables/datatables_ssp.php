@@ -45,12 +45,12 @@ if (!$driver_ok) {
                                 </tr>
 
                                 <tr>
-                                    <td colspan="1" rowspan="1"><input type="text" i18n:placeholder="ui_search" class="form-control input-sm" style="width: 100%;" /></td>
-                                    <td colspan="1" rowspan="1"><input type="text" i18n:placeholder="ui_search" class="form-control input-sm" style="width: 100%;" /></td>
-                                    <td colspan="1" rowspan="1"><input type="text" i18n:placeholder="ui_search" class="form-control input-sm" style="width: 100%;" /></td>
-                                    <td colspan="1" rowspan="1"></td>
-                                    <td colspan="1" rowspan="1" class="table-actions"></td>
-                                    <td colspan="1" rowspan="1" class="table-actions"></td>
+                                    <td><input type="text" i18n:placeholder="ui_search" class="form-control input-sm" style="width: 100%;" /></td>
+                                    <td><input type="text" i18n:placeholder="ui_search" class="form-control input-sm" style="width: 100%;" /></td>
+                                    <td><input type="text" i18n:placeholder="ui_search" class="form-control input-sm" style="width: 100%;" /></td>
+                                    <td></td>
+                                    <td class="table-actions"></td>
+                                    <td class="table-actions"></td>
                                 </tr>
 
                             </thead>
