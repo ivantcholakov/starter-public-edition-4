@@ -21,15 +21,6 @@ template_partial('subnavbar');
                             <thead>
 
                                 <tr>
-                                    <td><input type="text" i18n:placeholder="ui_search" class="form-control input-sm" style="width: 100%;" /></td>
-                                    <td><input type="text" i18n:placeholder="ui_search" class="form-control input-sm" style="width: 100%;" /></td>
-                                    <td><input type="text" i18n:placeholder="ui_search" class="form-control input-sm" style="width: 100%;" /></td>
-                                    <td></td>
-                                    <td class="table-actions"></td>
-                                    <td class="table-actions"></td>
-                                </tr>
-
-                                <tr>
                                     <th rowspan="2" class="col-sm-1">id</th>
                                     <th rowspan="2" class="col-sm-3">ISO-3166 Code</th>
                                     <th rowspan="2" class="col-sm-5">Country Name</th>
@@ -39,6 +30,15 @@ template_partial('subnavbar');
                                 <tr>
                                     <th class="shrink" style="display: none;"></th>
                                     <th class="shrink" style="display: none;"></th>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="1" rowspan="1"><input type="text" i18n:placeholder="ui_search" class="form-control input-sm" style="width: 100%;" /></td>
+                                    <td colspan="1" rowspan="1"><input type="text" i18n:placeholder="ui_search" class="form-control input-sm" style="width: 100%;" /></td>
+                                    <td colspan="1" rowspan="1"><input type="text" i18n:placeholder="ui_search" class="form-control input-sm" style="width: 100%;" /></td>
+                                    <td colspan="1" rowspan="1"></td>
+                                    <td colspan="1" rowspan="1" class="table-actions"></td>
+                                    <td colspan="1" rowspan="1" class="table-actions"></td>
                                 </tr>
 
                             </thead>

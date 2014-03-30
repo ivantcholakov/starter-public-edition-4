@@ -20,6 +20,7 @@ echo js('lib/dataTables/datatables.responsive.js');
         var tableElement = $('#datatable');
 
         var table = tableElement.DataTable({
+            'orderCellsTop': true,
             'pagingType': 'simple_numbers',
             'stateSave': true,
             'columnDefs': [{
