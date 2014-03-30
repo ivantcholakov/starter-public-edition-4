@@ -46,12 +46,12 @@ echo js('lib/dataTables/datatables.responsive.js');
         });
 	
 	// Individual text-input filters.
-	$("#datatable thead input[type=text]").on('keyup change', function () {
+        $("#datatable thead input[type=text]").on('keyup change', function () {
             table
-                .column( $(this).parent().index()+':visible' )
-                .search( this.value )
+                .column($(this).parent().index() + ':visible')
+                .search(this.value)
                 .draw();
-	} );
+	});
 
     });
 
