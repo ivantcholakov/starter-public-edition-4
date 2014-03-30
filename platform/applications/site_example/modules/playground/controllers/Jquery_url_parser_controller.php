@@ -14,6 +14,8 @@ class Jquery_url_parser_controller extends Base_Controller {
         $this->template
             ->title('jQuery URL Parser Test')
         ;
+
+        $this->registry->set('nav', 'playground');
     }
 
     public function index() {

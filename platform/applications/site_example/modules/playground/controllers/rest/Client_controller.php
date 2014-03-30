@@ -15,6 +15,8 @@ class Client_controller extends Base_Controller {
             ->set_partial('subnavbar', 'rest/subnavbar')
             ->set('subnavbar_item_active', 'restclient')
         ;
+
+        $this->registry->set('nav', 'playground');
     }
 
     public function index() {

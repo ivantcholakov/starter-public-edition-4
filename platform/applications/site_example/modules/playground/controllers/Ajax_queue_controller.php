@@ -14,6 +14,8 @@ class Ajax_queue_controller extends Base_Controller {
         $this->template
             ->title('AJAX Queue Test')
         ;
+
+        $this->registry->set('nav', 'playground');
     }
 
     public function index() {

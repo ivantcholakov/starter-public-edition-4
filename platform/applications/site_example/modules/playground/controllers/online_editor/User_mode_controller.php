@@ -13,6 +13,8 @@ class User_mode_controller extends Base_Controller {
             ->set_partial('subnavbar', 'playground/online_editor/subnavbar')
             ->set('subnavbar_item_active', 'user-mode')
         ;
+
+        $this->registry->set('nav', 'playground');
     }
 
     public function index() {

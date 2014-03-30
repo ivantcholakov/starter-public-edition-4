@@ -14,6 +14,8 @@ class Random_controller extends Base_Controller {
         $this->template
             ->title('Random Values Test')
         ;
+
+        $this->registry->set('nav', 'playground');
     }
 
     public function index() {

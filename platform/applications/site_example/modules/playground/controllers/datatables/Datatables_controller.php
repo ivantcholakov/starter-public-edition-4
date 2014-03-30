@@ -18,6 +18,8 @@ class Datatables_controller extends Base_Controller {
         $this->driver_ok = extension_loaded('pdo_sqlite');
 
         $this->template->set_partial('subnavbar', 'playground/datatables/subnavbar');
+
+        $this->registry->set('nav', 'playground');
     }
 
     public function index() {

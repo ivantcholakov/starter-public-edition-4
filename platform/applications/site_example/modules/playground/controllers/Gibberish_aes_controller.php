@@ -17,6 +17,8 @@ class Gibberish_aes_controller extends Base_Controller {
         $this->template
             ->title('GibberishAES Test')
         ;
+
+        $this->registry->set('nav', 'playground');
     }
 
     public function index() {

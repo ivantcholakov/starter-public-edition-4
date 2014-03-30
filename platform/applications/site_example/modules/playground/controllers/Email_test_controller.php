@@ -21,6 +21,8 @@ class Email_test_controller extends Base_Controller {
         $this->template
             ->title('Email Test')
         ;
+
+        $this->registry->set('nav', 'playground');
     }
 
     public function index() {
