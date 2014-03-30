@@ -19,13 +19,7 @@ class MY_Lang extends Core_Lang {
             return '{}';
         }
 
-        $lang = @json_decode($lang);
-
-        if ($lang == '') {
-            return '{}';
-        }
-
-        return json_encode($lang);
+        return $lang;
     }
 
 }
