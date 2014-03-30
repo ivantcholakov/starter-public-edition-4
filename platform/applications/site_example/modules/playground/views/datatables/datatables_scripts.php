@@ -42,6 +42,16 @@ echo js('lib/dataTables/datatables.responsive.js');
             },
             'drawCallback': function (oSettings) {
                 responsiveHelper.respond();
+            },
+            // See http://odoepner.wordpress.com/2011/12/12/jquery-datatables-column-filters-state-saving/
+            'initComplete': function(oSettings, json) {
+                var cols = oSettings.aoPreSearchCols;
+                for (var i = 0; i < cols.length; i++) {
+                    var value = cols[i].sSearch;
+                    if (value.length > 0) {
+                        $("thead input[type=text]")[i].value = value;
+                    }
+                }
             }
         });
 
