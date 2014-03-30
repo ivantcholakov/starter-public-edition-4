@@ -110,3 +110,4 @@ $lang['ui_slideshow_current'] = 'Изображение {current} от {total}';
 $lang['ui_slideshow_previous'] = 'Предишно';
 $lang['ui_slideshow_next'] = 'Следващо';
 $lang['ui_loading_data_from_server'] = 'Зареждане на данни от сървъра...';
+$lang['ui_search'] = 'Търсене';
