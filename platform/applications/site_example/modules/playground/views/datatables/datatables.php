@@ -16,9 +16,19 @@ template_partial('subnavbar');
 
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover table-valign-middle" id="datatable">
-
+			<table class="table table-striped table-bordered table-hover table-valign-middle" id="datatable">
+ 
                             <thead>
+
+                                <tr>
+                                    <td><input type="text" i18n:placeholder="ui_search" class="form-control input-sm" style="width: 100%;" /></td>
+                                    <td><input type="text" i18n:placeholder="ui_search" class="form-control input-sm" style="width: 100%;" /></td>
+                                    <td><input type="text" i18n:placeholder="ui_search" class="form-control input-sm" style="width: 100%;" /></td>
+                                    <td></td>
+                                    <td class="table-actions"></td>
+                                    <td class="table-actions"></td>
+                                </tr>
+
                                 <tr>
                                     <th rowspan="2" class="col-sm-1">id</th>
                                     <th rowspan="2" class="col-sm-3">ISO-3166 Code</th>
@@ -32,6 +42,18 @@ template_partial('subnavbar');
                                 </tr>
 
                             </thead>
+
+                            <tfoot>
+
+                                <tr>
+                                    <th class="col-sm-1">id</th>
+                                    <th class="col-sm-3">ISO-3166 Code</th>
+                                    <th class="col-sm-5">Country Name</th>
+                                    <th data-hide="phone">Flag</th>
+                                    <th colspan="2" class="shrink"><i18n>ui_actions</i18n></th>
+                                </tr>
+
+                            </tfoot>
 
                             <tbody>
 <?php
@@ -78,7 +100,7 @@ if (!empty($items)) {
 
                             </tbody>
 
-                        </table>
+			</table>
                     </div>
 
                 </div>

@@ -17,23 +17,23 @@ echo js('lib/dataTables/datatables.responsive.js');
             phone : 480
         };
 
-        var table = $('#datatable');
+        var tableElement = $('#datatable');
 
-        table.DataTable({
+        var table = tableElement.DataTable({
             'pagingType': 'simple_numbers',
             'stateSave': true,
             'columnDefs': [{
                 'targets': [3, 4, 5],
                 'searchable': false,
                 'orderable': false
-              }],
+             }],
             'language': <?php echo $this->lang->datatables(); ?>,
             // Making the table responsive.
             'autoWidth': false,
             'preDrawCallback': function () {
                 // Initialize the responsive datatables helper once.
                 if (!responsiveHelper) {
-                    responsiveHelper = new ResponsiveDatatablesHelper(table, breakpointDefinition);
+                    responsiveHelper = new ResponsiveDatatablesHelper(tableElement, breakpointDefinition);
                 }
             },
             'rowCallback': function (nRow) {
@@ -43,6 +43,14 @@ echo js('lib/dataTables/datatables.responsive.js');
                 responsiveHelper.respond();
             }
         });
+	
+	// Individual text-input filters.
+	$("#datatable thead input[type=text]").on('keyup change', function () {
+            table
+                .column( $(this).parent().index()+':visible' )
+                .search( this.value )
+                .draw();
+	} );
 
     });
 
