@@ -44,14 +44,14 @@ echo js('lib/dataTables/datatables.responsive.js');
                 responsiveHelper.respond();
             }
         });
-	
-	// Individual text-input filters.
+
+        // Individual text-input filters.
         $("#datatable thead input[type=text]").on('keyup change', function () {
             table
                 .column($(this).parent().index() + ':visible')
                 .search(this.value)
                 .draw();
-	});
+        });
 
     });
 
