@@ -64,6 +64,12 @@ class Data_tables_ajax_controller extends Base_Ajax_Controller {
                 'db' => 'last_name',
                 'dt' => 'last_name'
             ),
+            // An example about using expressions:
+            array(
+                'db' => 'name',
+                'expression' => "CONCAT(first_name, ' ', last_name)",
+                'dt' => 'name'
+            ),
         );
 
         $this->output->set_output(
@@ -122,16 +128,28 @@ class Datatable {
         $this->set_limit()->set_order();
 
         $select = $this->pluck($this->columns, 'db');
+        $expressions = $this->pluck($this->columns, 'expression');
 
         if (!empty($select)) {
+
+            $i = 0;
 
             foreach ($select as $key => $field) {
 
                 if (trim($field) != '') {
-                    $select[$key] = $this->db()->protect_identifiers($field);
+
+                    if (isset($expressions[$i])) {
+                        $select[$key] = $expressions[$i].' AS '.$this->db()->protect_identifiers($field);
+                    } else {
+                        $select[$key] = $this->db()->protect_identifiers($field);
+                    }
+
                 } else {
+
                     $select[$key] = 'NULL';
                 }
+
+                $i++;
             }
 
             $select = implode(', ', $select);
@@ -524,10 +542,23 @@ class Datatable {
 
                 if ($has_db_prop && isset($requestColumn['searchable']) && $requestColumn['searchable'] == 'true') {
 
+                    $has_expression_prop = isset($column['expression']) && $column['expression'] != '';
+
                     if ($c == 0) {
-                        $this->like($column['db'], $str);
+
+                        if ($has_expression_prop) {
+                            $this->like('('.$column['expression'].')', $str);
+                        } else {
+                            $this->like($column['db'], $str);
+                        }
+
                     } else {
-                        $this->or_like($column['db'], $str);
+
+                        if ($has_expression_prop) {
+                            $this->or_like('('.$column['expression'].')', $str);
+                        } else {
+                            $this->or_like($column['db'], $str);
+                        }
                     }
 
                     $c++;
@@ -552,7 +583,14 @@ class Datatable {
                 $has_db_prop = isset($column['db']) && $column['db'] != '';
 
                 if ($has_db_prop && isset($requestColumn['searchable']) && $requestColumn['searchable'] == 'true' && $str != '') {
-                    $this->like($column['db'], $str);
+
+                    $has_expression_prop = isset($column['expression']) && $column['expression'] != '';
+
+                    if ($has_expression_prop) {
+                        $this->like('('.$column['expression'].')', $str);
+                    } else {
+                        $this->like($column['db'], $str);
+                    }
                 }
             }
         }
