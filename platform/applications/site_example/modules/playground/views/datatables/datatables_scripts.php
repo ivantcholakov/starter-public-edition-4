@@ -50,14 +50,20 @@ echo js('lib/dataTables/datatables.responsive.js');
                 for (var i = 0; i < cols.length; i++) {
                     var value = cols[i].sSearch;
                     if (value.length > 0) {
-                        $("thead input[type=text]")[i].value = value;
+                        if ($('thead input[type=text]').length) {
+                            if (typeof $('thead input[type=text]')[i] != 'undefined') {
+                                $('thead input[type=text]')[i].value = value;
+                            }
+                        }
                     }
                 }
             }
         });
 
         // Individual text-input filters.
+
         $("#datatable thead input[type=text]").on('keyup change', function () {
+ 
             table
                 .column($(this).parent().index() + ':visible')
                 .search(this.value)
