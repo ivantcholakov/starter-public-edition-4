@@ -113,4 +113,4 @@ $lang['ui_loading_data_from_server'] = 'Зареждане на данни от 
 $lang['ui_search'] = 'Търсене';
 $lang['ui_all'] = 'Всички';
 $lang['ui_clear_search'] = 'Изчистване на търсенето';
-$lang['ui_clear_ordering'] = 'Изчистване на сортирането';
+$lang['ui_clear_sort'] = 'Изчистване на сортирането';
