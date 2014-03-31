@@ -5,6 +5,7 @@ if (!$driver_ok) {
 }
 
 echo js('lib/dataTables/jquery.dataTables.min.js');
+echo js('lib/dataTables/plug-ins/api/sortNeutral.js');
 echo js('lib/dataTables/dataTables.bootstrap.js');
 echo js('lib/dataTables/datatables.responsive.js');
 
@@ -94,6 +95,30 @@ echo js('lib/dataTables/datatables.responsive.js');
                 .column($(this).parent().index() + ':visible')
                 .search(this.value)
                 .draw();
+        });
+
+        // Clear sort.
+        $('#clear_sort').on('click', function() {
+
+            table.sortNeutral();
+        });
+
+        // Clear search.
+        $('#clear_search').on('click', function() {
+
+            table.column(0).search('');
+            $('#search_id').val('');
+
+            table.column(1).search('');
+            $('#search_iso_code').val('');
+
+            table.column(2).search('');
+            $('#search_country_name').val('');
+
+            table.search('');
+            $('#datatable_filter input').val('');
+
+            table.draw();
         });
 
     });
