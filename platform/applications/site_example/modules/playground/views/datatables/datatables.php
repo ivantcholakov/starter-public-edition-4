@@ -38,10 +38,10 @@ template_partial('subnavbar');
                                     <td><input id="search_country_name" type="text" i18n:placeholder="ui_search" class="form-control" style="width: 100%;" /></td>
                                     <td></td>
                                     <td class="table-actions">
-                                        <button id="clear_search" class="btn btn-default" i18n:title="ui_clear_search"><i class="fa fa-search-minus fa-fw"></i></button>
+
                                     </td>
                                     <td class="table-actions">
-                                        <button id="clear_sort" class="btn btn-default" i18n:title="ui_clear_sort"><i class="fa fa-sort fa-fw"></i></button>
+
                                     </td>
                                 </tr>
 

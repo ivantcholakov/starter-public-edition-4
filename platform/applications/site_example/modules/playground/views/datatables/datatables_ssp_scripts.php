@@ -109,6 +109,10 @@ echo js('lib/dataTables/datatables.responsive.js');
                 .draw();
         });
 
+        // "Clear search" and "Clear sort" buttons.
+
+        $('#datatable_filter input').after(' <button id="clear_search" class="btn btn-default" title="<?php echo $this->lang->line('ui_clear_search'); ?>"><i class="fa fa-search-minus fa-fw"></i></button> <button id="clear_sort" class="btn btn-default" title="<?php echo $this->lang->line('ui_clear_sort'); ?>"><i class="fa fa-sort fa-fw"></i></button>');
+
         // Clear sort.
         $('#clear_sort').on('click', function() {
 
