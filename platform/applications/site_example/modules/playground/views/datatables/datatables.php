@@ -38,7 +38,7 @@ template_partial('subnavbar');
                                     <td><input id="search_country_name" type="text" i18n:placeholder="ui_search" class="form-control" style="width: 100%;" /></td>
                                     <td></td>
                                     <td class="table-actions">
-
+                                       <a href="javascript://" class="btn btn-success" i18n:title="ui_add"><i class="fa fa-plus-circle fa-fw"></i></a>
                                     </td>
                                     <td class="table-actions">
 
