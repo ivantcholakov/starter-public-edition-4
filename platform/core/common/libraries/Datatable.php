@@ -46,7 +46,8 @@ class Data_tables_ajax_controller extends Base_Ajax_Controller {
         $columns = array(
             array(
                 'db' => 'id',
-                'dt' => 'id'
+                'dt' => 'id',
+                'exact_match' => true   // An instruction to the individual filter, it forces WHERE instead of LIKE clause.
             ),
             array(
                 'db' => 'username',
@@ -499,7 +500,7 @@ class Datatable {
 
             for ($i = 0, $ien = count($this->request['order']); $i < $ien; $i++) {
 
-                // Convert the column index into the column data property
+                // Convert the column index into the column data property.
                 $columnIdx = intval($this->request['order'][$i]['column']);
                 $requestColumn = $this->request['columns'][$columnIdx];
 
@@ -585,11 +586,23 @@ class Datatable {
                 if ($has_db_prop && isset($requestColumn['searchable']) && $requestColumn['searchable'] == 'true' && $str != '') {
 
                     $has_expression_prop = isset($column['expression']) && $column['expression'] != '';
+                    $exact_match = !empty($column['exact_match']);
 
                     if ($has_expression_prop) {
-                        $this->like('('.$column['expression'].')', $str);
+
+                        if ($exact_match) {
+                            $this->where('('.$column['expression'].')', $str);
+                        } else {
+                            $this->like('('.$column['expression'].')', $str);
+                        }
+
                     } else {
-                        $this->like($column['db'], $str);
+
+                        if ($exact_match) {
+                            $this->where($column['db'], $str);
+                        } else {
+                            $this->like($column['db'], $str);
+                        }
                     }
                 }
             }

@@ -25,7 +25,8 @@ class Datatables_ssp_ajax_controller extends Base_Ajax_Controller {
         $columns = array(
             array(
                 'db' => 'id',
-                'dt' => 'id'
+                'dt' => 'id',
+                'exact_match' => true   // An instruction to the individual filter, it forces WHERE instead of LIKE clause.
             ),
             array(
                 'db' => 'code',
