@@ -50,10 +50,16 @@ echo js('lib/dataTables/datatables.responsive.js');
                 for (var i = 0; i < cols.length; i++) {
                     var value = cols[i].sSearch;
                     if (value.length > 0) {
-                        if ($('thead input[type=text]').length) {
-                            if (typeof $('thead input[type=text]')[i] != 'undefined') {
-                                $('thead input[type=text]')[i].value = value;
-                            }
+                        switch (i) {
+                            case 0:
+                                $('#search_id').val(value);
+                                break;
+                            case 1:
+                                $('#search_iso_code').val(value);
+                                break;
+                            case 2:
+                                $('#search_country_name').val(value);
+                                break;
                         }
                     }
                 }
