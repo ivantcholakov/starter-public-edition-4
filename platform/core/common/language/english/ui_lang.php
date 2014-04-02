@@ -114,3 +114,5 @@ $lang['ui_search'] = 'Search';
 $lang['ui_all'] = 'All';
 $lang['ui_clear_search'] = 'Clear search';
 $lang['ui_clear_sort'] = 'Clear sort';
+$lang['ui_mr'] = 'Mr.';
+$lang['ui_mrs'] = 'Mrs.';
