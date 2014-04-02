@@ -53,7 +53,7 @@ if (!function_exists('detect_url')) {
             $base_uri .= '/';
         }
 
-        $current_uri = $_SERVER['REQUEST_URI'];
+        $current_uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '/';  // $_SERVER['REQUEST_URI'] is always set by previous code. The additional check here is for peace.
         $current_url = $server_url.$current_uri;
 
         $server_url .= '/';
