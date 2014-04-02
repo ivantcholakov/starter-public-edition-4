@@ -116,3 +116,5 @@ $lang['ui_clear_search'] = 'Clear search';
 $lang['ui_clear_sort'] = 'Clear sort';
 $lang['ui_mr'] = 'Mr.';
 $lang['ui_mrs'] = 'Mrs.';
+$lang['ui_common_data'] = 'Common Data';
+$lang['ui_settings'] = 'Settings';

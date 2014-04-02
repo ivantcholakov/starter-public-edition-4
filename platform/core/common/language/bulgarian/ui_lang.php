@@ -116,3 +116,5 @@ $lang['ui_clear_search'] = 'Изчистване на търсенето';
 $lang['ui_clear_sort'] = 'Изчистване на сортирането';
 $lang['ui_mr'] = 'Г-н';
 $lang['ui_mrs'] = 'Г-жа';
+$lang['ui_common_data'] = 'Общи данни';
+$lang['ui_settings'] = 'Настройки';
