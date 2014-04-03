@@ -162,6 +162,11 @@ class Modules
             self::$registry[$key]->path = $location;
         }
 
+        // Added by Ivan Tcholakov, 03-APR-2014.
+        // A dirty workaround that is needed for Starter 4.
+        self::$registry[$key]->load->set_module(CI::$APP->router->fetch_module());
+        //
+
         return self::$registry[$key];
     }
 
