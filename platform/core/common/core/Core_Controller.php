@@ -17,9 +17,9 @@ class Core_Controller extends MX_Controller {
 
         $ci = get_instance();
 
-        $ci->module = $this->module = $this->router->fetch_module();
-        $ci->controller = $this->controller = $this->router->class;
-        $ci->method = $this->method = $this->router->method;
+        $this->module = $this->router->fetch_module();
+        $this->controller = $this->router->class;
+        $this->method = $this->router->method;
 
         $this->load->library('form_validation');
         $this->form_validation->CI =& $this;    // Hack to make form validation work properly with HMVC.
