@@ -38,13 +38,19 @@ require dirname(__FILE__).'/Base.php';
  **/
 class MX_Controller
 {
+    // Added by Ivan Tcholakov, 03-APR-2014.
+    public $path;
+    //
+
     public $autoload = array();
 
     public function __construct()
     {
         $class = str_replace(CI::$APP->config->item('controller_suffix'), '', get_class($this));
         log_message('debug', $class." MX_Controller Initialized");
-        Modules::$registry[strtolower($class)] = $this;
+        // Removed by Ivan Tcholakov, 03-APR-2014.
+        //Modules::$registry[strtolower($class)] = $this;
+        //
 
         /* copy a loader instance and initialize */
         $this->load = clone load_class('Loader');

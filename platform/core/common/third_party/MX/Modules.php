@@ -84,77 +84,85 @@ class Modules
 
         (is_array($module)) ? list($module, $params) = each($module) : $params = NULL;
 
+        //
+        // Removed by Ivan Tcholakov, 03-APR-2014.
+        // Uniqueness is not distinguished this way.
+        //
         /* get the requested controller class name */
-        $alias = strtolower(basename($module));
+        //$alias = strtolower(basename($module));
 
         /* create or return an existing controller from the registry */
-        if ( ! isset(self::$registry[$alias])) {
+        //if ( ! isset(self::$registry[$alias])) {
+        //
 
-            /* find the controller */
-            // Modified by Ivan Tcholakov, 21-JAN-2014.
-            //list($class) = CI::$APP->router->locate(explode('/', $module));
-            list($class) = CI::$APP->router->locate(explode('/', $module), false);
-            //
+        /* find the controller */
+        // Modified by Ivan Tcholakov, 21-JAN-2014.
+        //list($class) = CI::$APP->router->locate(explode('/', $module));
+        list($class) = CI::$APP->router->locate(explode('/', $module), false);
+        //
 
-            /* controller cannot be located */
-            if (empty($class)) {
-                return;
-            }
+        /* controller cannot be located */
+        if (empty($class)) {
+            return;
+        }
 
-            /* set the module directory */
-            // Modified by Ivan Tcholakov, 16-DEC-2013.
-            //$path = APPPATH.'controllers/'.CI::$APP->router->directory;
-            $path = resolve_path(APPPATH.'controllers/'.CI::$APP->router->directory).'/';
-            $path_common = resolve_path(COMMONPATH.'controllers/'.CI::$APP->router->directory).'/';
-            //
+        /* set the module directory */
+        // Modified by Ivan Tcholakov, 16-DEC-2013.
+        //$path = APPPATH.'controllers/'.CI::$APP->router->directory;
+        $path = resolve_path(APPPATH.'controllers/'.CI::$APP->router->directory).'/';
+        $path_common = resolve_path(COMMONPATH.'controllers/'.CI::$APP->router->directory).'/';
+        //
 
-            /* load the controller class */
-            // Modified by Ivan Tcholakov, 16-DEC-2013.
-            //$class = $class.CI::$APP->config->item('controller_suffix');
-            if (self::test_load_file(ucfirst($class).CI::$APP->config->item('controller_suffix'), $path)) {
-                $class = ucfirst($class).CI::$APP->config->item('controller_suffix');
-                self::load_file($class, $path);
-            }
-            elseif (self::test_load_file($class.CI::$APP->config->item('controller_suffix'), $path)) {
-                $class = $class.CI::$APP->config->item('controller_suffix');
-                self::load_file($class, $path);
-            }
-            elseif (self::test_load_file(ucfirst($class), $path)) {
-                $class = ucfirst($class);
-                self::load_file($class, $path);
-            }
-            elseif (self::test_load_file($class, $path)) {
-                self::load_file($class, $path);
-            }
-            else {
-                if (self::test_load_file(ucfirst($class).CI::$APP->config->item('controller_suffix'), $path_common)) {
-                    $class = ucfirst($class).CI::$APP->config->item('controller_suffix');
-                    self::load_file($class, $path_common);
-                }
-                elseif (self::test_load_file($class.CI::$APP->config->item('controller_suffix'), $path_common)) {
-                    $class = $class.CI::$APP->config->item('controller_suffix');
-                    self::load_file($class, $path_common);
-                }
-                elseif (self::test_load_file(ucfirst($class), $path_common)) {
-                    $class = ucfirst($class);
-                    self::load_file($class, $path_common);
-                }
-                elseif (self::test_load_file($class, $path_common)) {
-                    self::load_file($class, $path_common);
-                }
-                else {
-                    // Will cause an error, intentionally.
-                    self::load_file($class, $path);
-                }
-            }
-            //
+        /* load the controller class */
+        // Modified by Ivan Tcholakov, 16-DEC-2013.
+        //$class = $class.CI::$APP->config->item('controller_suffix');
+        if (self::test_load_file(ucfirst($class).CI::$APP->config->item('controller_suffix'), $path)) {
+            $class = ucfirst($class).CI::$APP->config->item('controller_suffix');
+        }
+        elseif (self::test_load_file($class.CI::$APP->config->item('controller_suffix'), $path)) {
+            $class = $class.CI::$APP->config->item('controller_suffix');
+        }
+        elseif (self::test_load_file(ucfirst($class), $path)) {
+            $class = ucfirst($class);
+        }
+        //elseif (self::test_load_file($class, $path)) {
+            // Do nothing.
+        //}
+        elseif (self::test_load_file(ucfirst($class).CI::$APP->config->item('controller_suffix'), $path_common)) {
+            $class = ucfirst($class).CI::$APP->config->item('controller_suffix');
+            $path = $path_common;
+        }
+        elseif (self::test_load_file($class.CI::$APP->config->item('controller_suffix'), $path_common)) {
+            $class = $class.CI::$APP->config->item('controller_suffix');
+            $path = $path_common;
+        }
+        elseif (self::test_load_file(ucfirst($class), $path_common)) {
+            $class = ucfirst($class);
+            $path = $path_common;
+        }
+        elseif (self::test_load_file($class, $path_common)) {
+            $path = $path_common;
+        }
+        //
+
+        // Modifications by Ivan Tcholakov, 03-APR-2014.
+        // The previous check for loaded controller was not precise.
+
+        $location = realpath($path.$class.'.php');
+        $key = strtolower($location);
+
+        // Check whether the controller has been loaded, based on its system path.
+        if (!isset(self::$registry[$key])) {
+
+            self::load_file($class, $path);
 
             /* create and register the new controller */
             $controller = ucfirst($class);
-            self::$registry[$alias] = new $controller($params);
+            self::$registry[$key] = new $controller($params);
+            self::$registry[$key]->path = $location;
         }
 
-        return self::$registry[$alias];
+        return self::$registry[$key];
     }
 
     /** Library base class autoload **/
