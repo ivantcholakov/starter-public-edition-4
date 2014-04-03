@@ -35,11 +35,7 @@
  **/
 class MX_Loader extends CI_Loader
 {
-    // Modified by Ivan Tcholakov 03-APR-2014.
-    // Changed the property accessor to public for debugging purpose.
-    //protected $_module;
-    public $_module;
-    //
+    protected $_module;
 
     public $_ci_plugins = array();
     public $_ci_cached_vars = array();
