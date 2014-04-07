@@ -118,3 +118,7 @@ $lang['ui_mr'] = 'Mr.';
 $lang['ui_mrs'] = 'Mrs.';
 $lang['ui_common_data'] = 'Common data';
 $lang['ui_settings'] = 'Settings';
+$lang['ui_created_at'] = 'Created at';
+$lang['ui_created_by'] = 'Created by';
+$lang['ui_updated_at'] = 'Updated at';
+$lang['ui_updated_by'] = 'Updated by';

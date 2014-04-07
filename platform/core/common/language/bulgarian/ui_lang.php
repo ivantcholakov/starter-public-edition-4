@@ -118,3 +118,7 @@ $lang['ui_mr'] = 'Г-н';
 $lang['ui_mrs'] = 'Г-жа';
 $lang['ui_common_data'] = 'Общи данни';
 $lang['ui_settings'] = 'Настройки';
+$lang['ui_created_at'] = 'Създаден на';
+$lang['ui_created_by'] = 'Създаден от';
+$lang['ui_updated_at'] = 'Променен на';
+$lang['ui_updated_by'] = 'Променен от';
