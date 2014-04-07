@@ -122,3 +122,6 @@ $lang['ui_created_at'] = 'Created at';
 $lang['ui_created_by'] = 'Created by';
 $lang['ui_updated_at'] = 'Updated at';
 $lang['ui_updated_by'] = 'Updated by';
+$lang['ui_deleted'] = 'Deleted';
+$lang['ui_deleted_at'] = 'Deleted at';
+$lang['ui_deleted_by'] = 'Deleted by';
