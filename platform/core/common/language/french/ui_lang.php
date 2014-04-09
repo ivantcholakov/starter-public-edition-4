@@ -67,6 +67,7 @@ $lang['ui_user_profile'] = 'Profil utilisateur';
 $lang['ui_user_profile_of'] = 'Profil utilisateur de %s';
 $lang['ui_change_password'] = 'Changer le mot de passe';
 $lang['ui_change_password_of'] = 'Changer le mot de passe de %s';
+$lang['ui_new_password'] = 'New password';
 $lang['ui_confirm_password'] = 'Confirmez le mot de passe';
 $lang['ui_wrong_username_or_password'] = 'Nom d\'utilisateur ou mot de passe incorrect.';
 $lang['ui_change_password_success'] = 'Le mot de passe de %s a &eacute;t&eacute; chang&eacute; avec succ&egrave;s.';

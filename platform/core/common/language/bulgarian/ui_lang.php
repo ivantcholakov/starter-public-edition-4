@@ -67,6 +67,7 @@ $lang['ui_user_profile'] = 'Потребителски профил';
 $lang['ui_user_profile_of'] = 'Профил на потребителя %s';
 $lang['ui_change_password'] = 'Смяна на паролата';
 $lang['ui_change_password_of'] = 'Смяна на паролата на %s';
+$lang['ui_new_password'] = 'Нова парола';
 $lang['ui_confirm_password'] = 'Потвърдете паролата';
 $lang['ui_wrong_username_or_password'] = 'Грешно потребителско име или грешна парола.';
 $lang['ui_change_password_success'] = 'Паролата на %s беше сменена успешно.';
