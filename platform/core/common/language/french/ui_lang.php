@@ -117,6 +117,7 @@ $lang['ui_clear_sort'] = 'Effacer le trie';
 $lang['ui_mr'] = 'M.';
 $lang['ui_mrs'] = 'Mme';
 $lang['ui_common_data'] = 'Donn&eacute;es communes';
+$lang['ui_main_data'] = 'Main Data';
 $lang['ui_settings'] = 'Pr&eacute;f&eacute;rences';
 $lang['ui_created_at'] = 'Created at';
 $lang['ui_created_by'] = 'Created by';

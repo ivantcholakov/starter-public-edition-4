@@ -117,6 +117,7 @@ $lang['ui_clear_sort'] = 'Clear sort';
 $lang['ui_mr'] = 'Mr.';
 $lang['ui_mrs'] = 'Mrs.';
 $lang['ui_common_data'] = 'Common Data';
+$lang['ui_main_data'] = 'Main Data';
 $lang['ui_settings'] = 'Settings';
 $lang['ui_created_at'] = 'Created at';
 $lang['ui_created_by'] = 'Created by';

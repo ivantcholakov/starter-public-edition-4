@@ -117,6 +117,7 @@ $lang['ui_clear_sort'] = 'Изчистване на сортирането';
 $lang['ui_mr'] = 'Г-н';
 $lang['ui_mrs'] = 'Г-жа';
 $lang['ui_common_data'] = 'Общи данни';
+$lang['ui_main_data'] = 'Основни данни';
 $lang['ui_settings'] = 'Настройки';
 $lang['ui_created_at'] = 'Създаден на';
 $lang['ui_created_by'] = 'Създаден от';
