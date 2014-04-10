@@ -15,6 +15,7 @@ $lang['ui_cancel'] = 'Cancel';
 $lang['ui_help'] = 'Help';
 $lang['ui_save'] = 'Save';
 $lang['ui_add'] = 'Add';
+$lang['ui_save_and_add_new'] = 'Save and add new';
 $lang['ui_create'] = 'Create';
 $lang['ui_edit'] = 'Edit';
 $lang['ui_update'] = 'Update';

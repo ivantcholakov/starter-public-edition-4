@@ -15,6 +15,7 @@ $lang['ui_cancel'] = 'Отказ';
 $lang['ui_help'] = 'Помощ';
 $lang['ui_save'] = 'Запис';
 $lang['ui_add'] = 'Добавяне';
+$lang['ui_save_and_add_new'] = 'Запис и ново добавяне';
 $lang['ui_create'] = 'Създаване';
 $lang['ui_edit'] = 'Редактиране';
 $lang['ui_update'] = 'Актуализиране';
