@@ -60,17 +60,17 @@ class Datatables_ssp_ajax_controller extends Base_Ajax_Controller {
         );
     }
 
-    public function _formatter_flag($d, $row) {
+    public function _formatter_flag($value, $row) {
 
         return '<img src="'.BASE_URI.'assets/img/lib/flags/'.$row['code'].'.png" />';
     }
 
-    public function _formatter_action_edit($d, $row) {
+    public function _formatter_action_edit($value, $row) {
 
         return '<a href="javascript://" class="btn btn-info" title="'.$this->lang->line('ui_edit').'"><i class="fa fa-pencil fa-fw"></i></a>';
     }
 
-    public function _formatter_action_delete($d, $row) {
+    public function _formatter_action_delete($value, $row) {
 
         return '<a id="delete_action_'.$row['id'].'" href="javascript://" class="btn btn-danger delete_action" title="'.$this->lang->line('ui_delete').'"><i class="fa fa-trash-o fa-fw"></i></a>';
     }
