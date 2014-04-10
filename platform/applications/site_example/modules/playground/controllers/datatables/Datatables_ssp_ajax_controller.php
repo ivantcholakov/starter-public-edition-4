@@ -30,7 +30,8 @@ class Datatables_ssp_ajax_controller extends Base_Ajax_Controller {
             ),
             array(
                 'db' => 'code',
-                'dt' => 'code'
+                'dt' => 'code',
+                'formatter' => array($this, '_formatter_code')
             ),
             array(
                 'db' => 'name',
@@ -58,6 +59,11 @@ class Datatables_ssp_ajax_controller extends Base_Ajax_Controller {
                 ->from($this->countries)    // Using a model (that extends Core_Model).
                 ->generate()
         );
+    }
+
+    public function _formatter_code($value, $row) {
+
+        return '<span class="loud">'.$value.'</span>';
     }
 
     public function _formatter_flag($value, $row) {

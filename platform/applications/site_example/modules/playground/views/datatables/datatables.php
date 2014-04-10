@@ -70,7 +70,7 @@ if (!empty($items)) {
 
                                 <tr>
                                     <td><?php echo $item['id']; ?></td>
-                                    <td><?php echo $item['code']; ?></td>
+                                    <td><span class="loud"><?php echo $item['code']; ?></span></td>
                                     <td><?php echo $item['name']; ?></td>
                                     <td><?php echo '<img src="'.BASE_URI.'assets/img/lib/flags/'.$item['code'].'.png" />'; ?></td>
                                     <td class="table-actions"><?php echo '<a href="javascript://" class="btn btn-info" title="'.$this->lang->line('ui_edit').'"><i class="fa fa-pencil fa-fw"></i></a>'; ?></td>
