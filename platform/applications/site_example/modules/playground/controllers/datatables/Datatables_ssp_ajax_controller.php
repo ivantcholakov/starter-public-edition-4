@@ -68,7 +68,7 @@ class Datatables_ssp_ajax_controller extends Base_Ajax_Controller {
 
     public function _formatter_flag($value, $row) {
 
-        return '<img src="'.BASE_URI.'assets/img/lib/flags/'.$row['code'].'.png" />';
+        return '<img src="'.BASE_URI.'assets/img/lib/flags-iso/flat/32/'.$row['code'].'.png" />';
     }
 
     public function _formatter_action_edit($value, $row) {
