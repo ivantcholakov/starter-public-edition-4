@@ -108,4 +108,22 @@ $config['languages'] = array(
         'flag' => 'RU',
     ),
 
+    'dutch' => array(
+        'code' => 'nl',
+        'direction' => 'ltr',
+        'uri_segment' => 'nl',
+        'name' => 'Nederlands',
+        'name_en' => 'Dutch',
+        'flag' => 'NL',
+    ),
+
+    'turkish' => array(
+        'code' => 'tr',
+        'direction' => 'ltr',
+        'uri_segment' => 'tr',
+        'name' => 'Türkçe',
+        'name_en' => 'Turkish',
+        'flag' => 'TR',
+    ),
+
 );
