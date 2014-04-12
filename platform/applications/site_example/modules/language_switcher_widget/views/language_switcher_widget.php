@@ -11,7 +11,7 @@ if (!empty($language_switcher)) {
         }
 
         if (isset($item['flag']) && $item['flag'] != '') {
-            $anchor = anchor($item['link'], image('lib/flags/'.$item['flag'].'.png').' '.$item['label']);
+            $anchor = anchor($item['link'], image('lib/flags-iso/flat/16/'.$item['flag'].'.png').' '.$item['label']);
         } else {
             $anchor = anchor($item['link'], $item['label']);
         }

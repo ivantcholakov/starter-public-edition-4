@@ -72,7 +72,7 @@ if (!empty($items)) {
                                     <td><?php echo $item['id']; ?></td>
                                     <td><span class="loud"><?php echo $item['code']; ?></span></td>
                                     <td><?php echo $item['name']; ?></td>
-                                    <td><?php echo '<img src="'.BASE_URI.'assets/img/lib/flags/'.$item['code'].'.png" />'; ?></td>
+                                    <td><?php echo '<img src="'.BASE_URI.'assets/img/lib/flags-iso/flat/32/'.$item['code'].'.png" />'; ?></td>
                                     <td class="table-actions"><?php echo '<a href="javascript://" class="btn btn-info" title="'.$this->lang->line('ui_edit').'"><i class="fa fa-pencil fa-fw"></i></a>'; ?></td>
                                     <td class="table-actions"><?php echo '<a id="delete_action_'.$item['id'].'" href="javascript://" class="btn btn-danger delete_action" title="'.$this->lang->line('ui_delete').'"><i class="fa fa-trash-o fa-fw"></i></a>'; ?></td>
                                 </tr>
