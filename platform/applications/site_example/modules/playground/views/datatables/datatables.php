@@ -50,10 +50,10 @@ template_partial('subnavbar');
                             <tfoot>
 
                                 <tr>
-                                    <th class="col-sm-1">id</th>
-                                    <th class="col-sm-3">ISO-3166 Code</th>
-                                    <th class="col-sm-5">Country Name</th>
-                                    <th data-hide="phone">Flag</th>
+                                    <th>id</th>
+                                    <th>ISO-3166 Code</th>
+                                    <th>Country Name</th>
+                                    <th>Flag</th>
                                     <th colspan="2" class="shrink"><i18n>ui_actions</i18n></th>
                                 </tr>
 
