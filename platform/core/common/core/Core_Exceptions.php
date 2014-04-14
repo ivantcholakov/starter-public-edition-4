@@ -75,6 +75,10 @@ class Core_Exceptions extends CI_Exceptions {
      */
     public function show_error($heading, $message, $template = 'error_general', $status_code = 500)
     {
+		$templates_path = config_item('error_views_path')
+			? config_item('error_views_path')
+			: VIEWPATH.'errors'.DIRECTORY_SEPARATOR;
+
         if (is_cli())
         {
             $message = "\t".(is_array($message) ? implode("\n\t", $message) : $message);
@@ -92,11 +96,11 @@ class Core_Exceptions extends CI_Exceptions {
             ob_end_flush();
         }
         ob_start();
-        // Modified by Ivan Tcholakov, 10-OCT-2013.
-        //include(VIEWPATH.'errors'.DIRECTORY_SEPARATOR.$template.'.php');
-        if (file_exists(VIEWPATH.'errors'.DIRECTORY_SEPARATOR.$template.'.php'))
+        // Modified by Ivan Tcholakov, 14-APR-2014.
+        //include($templates_path.$template.'.php');
+        if (file_exists($templates_path.$template.'.php'))
         {
-            include VIEWPATH.'errors'.DIRECTORY_SEPARATOR.$template.'.php';
+            include $templates_path.$template.'.php';
         }
         else
         {
@@ -121,6 +125,10 @@ class Core_Exceptions extends CI_Exceptions {
      */
     public function show_php_error($severity, $message, $filepath, $line)
     {
+		$templates_path = config_item('error_views_path')
+			? config_item('error_views_path')
+			: VIEWPATH.'errors'.DIRECTORY_SEPARATOR;
+
         $severity = isset($this->levels[$severity]) ? $this->levels[$severity] : $severity;
 
         // For safety reasons we don't show the full file path in non-CLI requests
@@ -145,11 +153,11 @@ class Core_Exceptions extends CI_Exceptions {
             ob_end_flush();
         }
         ob_start();
-        // Modified by Ivan Tcholakov, 10-OCT-2013.
-        //include(VIEWPATH.'errors/error_php.php');
-        if (file_exists(VIEWPATH.'errors/error_php.php'))
+        // Modified by Ivan Tcholakov, 14-APR-2014.
+        //include($templates_path.$template.'.php');
+        if (file_exists($templates_path.$template.'.php'))
         {
-            include VIEWPATH.'errors'.DIRECTORY_SEPARATOR.$template.'.php';
+            include $templates_path.$template.'.php';
         }
         else
         {

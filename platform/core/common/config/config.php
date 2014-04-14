@@ -223,7 +223,7 @@ $config['log_threshold'] = 0;
 |--------------------------------------------------------------------------
 |
 | Leave this BLANK unless you would like to set something other than the default
-| application/logs/ folder. Use a full server path with trailing slash.
+| application/logs/ directory. Use a full server path with trailing slash.
 |
 */
 $config['log_path'] = WRITABLEPATH.'logs/'.APPNAME.'/';
@@ -252,6 +252,17 @@ $config['log_file_extension'] = '';
 |
 */
 $config['log_date_format'] = 'Y-m-d H:i:s';
+
+/*
+|--------------------------------------------------------------------------
+| Error Views Directory Path
+|--------------------------------------------------------------------------
+|
+| Leave this BLANK unless you would like to set something other than the default
+| application/views/errors/ directory.  Use a full server path with trailing slash.
+|
+*/
+$config['error_views_path'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -342,7 +353,7 @@ $config['cookie_httponly']  = FALSE;
 | (usually \n) and Windows (\r\n).
 |
 */
-$config['standardize_newlines'] = TRUE;
+$config['standardize_newlines'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
