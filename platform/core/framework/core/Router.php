@@ -109,7 +109,10 @@ class CI_Router {
 	 *
 	 * @return	void
 	 */
+	// Modified by Ivan Tcholakov, 15-APR-2014.
+	//public function __construct($routing = NULL)
 	public function __construct()
+	//
 	{
 		// Removed by Ivan Tcholakov, 14-JAN-2014.
 		//global $routing;
@@ -135,9 +138,8 @@ class CI_Router {
 		//		$this->set_class($routing['controller']);
 		//	}
 		//
-		//	if (isset($routing['function']))
+		//	if ( ! empty($routing['function']))
 		//	{
-		//		$routing['function'] = empty($routing['function']) ? 'index' : $routing['function'];
 		//		$this->set_method($routing['function']);
 		//	}
 		//}
