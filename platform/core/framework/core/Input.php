@@ -62,7 +62,7 @@ class CI_Input {
 	 *
 	 * @var	bool
 	 */
-	protected $_standardize_newlines = FALSE;
+	protected $_standardize_newlines;
 
 	/**
 	 * Enable XSS flag
