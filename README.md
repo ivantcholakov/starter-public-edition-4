@@ -291,6 +291,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Extended JavaScript regular expressions XRegExp, http://xregexp.com/
 * DataTables jQuery plugin (http://datatables.net) and Datatable library for server-side processing support.
 * An icon subset of flags from GoSquared, https://www.gosquared.com/resources/flag-icons/
+* Bootstrap Vertical Tabs, https://github.com/dbtek/bootstrap-vertical-tabs
 
 The Playground
 --------------
