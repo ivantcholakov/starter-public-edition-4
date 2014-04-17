@@ -70,8 +70,8 @@ class Base_Controller extends Core_Controller {
         // Change this condition according to your system of authentication.
         if (!$this->session->userdata('user_logged')) {
 
-            if (IS_AJAX_REQUEST) {
-                exit(EXIT_ERROR);
+            if ($this->input->is_ajax_request()) {
+                exit;
             }
 
             redirect('login');
