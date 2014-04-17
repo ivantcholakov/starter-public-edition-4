@@ -130,3 +130,5 @@ $lang['ui_updated_by'] = 'Updated by';
 $lang['ui_deleted'] = 'Deleted';
 $lang['ui_deleted_at'] = 'Deleted at';
 $lang['ui_deleted_by'] = 'Deleted by';
+$lang['ui_missing_language_identificator'] = 'Language identificator is missing.';
+$lang['ui_invalid_language_identificator'] = 'Language identificator is invalid.';
