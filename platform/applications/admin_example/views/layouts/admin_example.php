@@ -16,6 +16,8 @@ echo apple_touch_icon_precomposed();
 echo cleartype_ie();
 
 echo css('lib/bootstrap-3/bootstrap.min.css');
+echo css('lib/jasny-bootstrap-3/jasny-bootstrap.min.css');
+echo css('lib/jasny-bootstrap-3/jasny-bootstrap_3.1.1_patch.css');
 echo css('lib/bootstrap-3/bootstrap-theme.min.css');
 echo css('lib/font-awesome-4/font-awesome.min.css');
 echo css('admin_example.css');
@@ -69,6 +71,7 @@ echo js_scale_fix_ios();
 echo js_imgsizer();
 
 echo js('lib/bootstrap-3/bootstrap.min.js');
+echo js('lib/jasny-bootstrap-3/jasny-bootstrap.min.js');
 
 file_partial('scripts');
 template_partial('scripts');

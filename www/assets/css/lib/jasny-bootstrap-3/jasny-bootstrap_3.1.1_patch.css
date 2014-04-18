@@ -1,0 +1,7 @@
+
+/* A Patch for Jasny Bootstrap 3.1.1 Only */
+/* See https://github.com/jasny/bootstrap/issues/224 */
+
+.btn-file > input {
+    width: auto;
+}
