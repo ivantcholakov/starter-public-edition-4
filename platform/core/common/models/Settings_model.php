@@ -9,13 +9,12 @@
  * Create a table with the following sample definition:
  *
  * CREATE TABLE IF NOT EXISTS `settings` (
- *     `id` int(11) NOT NULL AUTO_INCREMENT,
+ *   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
  *     `name` varchar(255) NOT NULL,
- *     `value` varchar(511) NOT NULL,
- *     PRIMARY KEY (`id`)
+ *   `value` varchar(511) DEFAULT NULL,
+ *   PRIMARY KEY (`id`),
+ *   KEY `name` (`name`)
  * ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
- *
- * ALTER TABLE `settings` ADD INDEX ( `name` );
  */
 
 class Settings_model extends Core_Model {
