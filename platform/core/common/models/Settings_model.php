@@ -6,8 +6,7 @@
  */
 
 /**
- * Create a table with the following sample definition
- * and fill it with settings that you intend to use:
+ * Create a table with the following sample definition:
  *
  * CREATE TABLE IF NOT EXISTS `settings` (
  *     `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -15,6 +14,8 @@
  *     `value` varchar(511) NOT NULL,
  *     PRIMARY KEY (`id`)
  * ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+ *
+ * ALTER TABLE `settings` ADD INDEX ( `name` );
  */
 
 class Settings_model extends Core_Model {
