@@ -133,3 +133,7 @@ $lang['ui_deleted_by'] = 'Изтрит от';
 $lang['ui_missing_language_identificator'] = 'Липсва идентификатор за език.';
 $lang['ui_invalid_language_identificator'] = 'Невалиден идентификатор за език.';
 $lang['ui_invalid_image_format'] = 'Изображението е с невалиден или несъвместим файлов формат.';
+$lang['ui_no_file_uploaded'] = 'Не е качен файл.';
+$lang['ui_no_image_uploaded'] = 'Не е качено изображение.';
+$lang['ui_file_upload_success'] = 'Файлът %s беше качен успешно.';
+$lang['ui_image_upload_success'] = 'Изображението %s беше качено успешно.';

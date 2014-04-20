@@ -133,3 +133,7 @@ $lang['ui_deleted_by'] = 'Supprimer par';
 $lang['ui_missing_language_identificator'] = 'Language identificator is missing.';
 $lang['ui_invalid_language_identificator'] = 'Language identificator is invalid.';
 $lang['ui_invalid_image_format'] = 'The image has invalid or incompatible file format.';
+$lang['ui_no_file_uploaded'] = 'No file has been uploaded.';
+$lang['ui_no_image_uploaded'] = 'No image has been uploaded.';
+$lang['ui_file_upload_success'] = 'The file %s has been uploaded successfully.';
+$lang['ui_image_upload_success'] = 'The image %s has been uploaded successfully.';
