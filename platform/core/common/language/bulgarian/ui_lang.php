@@ -132,3 +132,4 @@ $lang['ui_deleted_at'] = 'Изтрит на';
 $lang['ui_deleted_by'] = 'Изтрит от';
 $lang['ui_missing_language_identificator'] = 'Липсва идентификатор за език.';
 $lang['ui_invalid_language_identificator'] = 'Невалиден идентификатор за език.';
+$lang['ui_invalid_image_format'] = 'Изображението е с невалиден или несъвместим файлов формат.';

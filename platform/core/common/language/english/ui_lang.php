@@ -132,3 +132,4 @@ $lang['ui_deleted_at'] = 'Deleted at';
 $lang['ui_deleted_by'] = 'Deleted by';
 $lang['ui_missing_language_identificator'] = 'Language identificator is missing.';
 $lang['ui_invalid_language_identificator'] = 'Language identificator is invalid.';
+$lang['ui_invalid_image_format'] = 'The image has invalid or incompatible file format.';
