@@ -137,3 +137,7 @@ $lang['ui_no_file_uploaded'] = 'Не е качен файл.';
 $lang['ui_no_image_uploaded'] = 'Не е качено изображение.';
 $lang['ui_file_upload_success'] = 'Файлът %s беше качен успешно.';
 $lang['ui_image_upload_success'] = 'Изображението %s беше качено успешно.';
+$lang['ui_file_deletion_success'] = 'Файлът %s беше изтрит.';
+$lang['ui_image_deletion_success'] = 'Изображението %s беше изтрито.';
+$lang['ui_confirm_file_deletion'] = 'Наистина ли искате да изтриете файла %s? Моля, потвърдете.';
+$lang['ui_confirm_image_deletion'] = 'Наистина ли искате да изтриете изображението %s? Моля, потвърдете.';

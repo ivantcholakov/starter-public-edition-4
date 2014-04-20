@@ -137,3 +137,7 @@ $lang['ui_no_file_uploaded'] = 'No file has been uploaded.';
 $lang['ui_no_image_uploaded'] = 'No image has been uploaded.';
 $lang['ui_file_upload_success'] = 'The file %s has been uploaded successfully.';
 $lang['ui_image_upload_success'] = 'The image %s has been uploaded successfully.';
+$lang['ui_file_deletion_success'] = 'The file %s has been deleted.';
+$lang['ui_image_deletion_success'] = 'The image %s has been deleted.';
+$lang['ui_confirm_file_deletion'] = 'Do you really want to delete the file %s? Please, confirm this action.';
+$lang['ui_confirm_image_deletion'] = 'Do you really want to delete the image %s? Please, confirm this action.';
