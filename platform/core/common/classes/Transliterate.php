@@ -3,12 +3,13 @@
 /**
  * Transliteration class
  *
+ * @version 1.0
+ *
  * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2013.
  * @link https://github.com/ivantcholakov/transliterate
  *
  * @license The MIT License (MIT)
  * @link http://opensource.org/licenses/MIT
- *
  */
 
 if (!defined('ICONV_INSTALLED')) {
@@ -23,14 +24,21 @@ if (!defined('IS_CODEIGNITER')) {
 
 class Transliterate {
 
+    // Bulgarian
+    // See http://bg.wikipedia.org/wiki/Транслитерация_на_българските_букви_с_латински
+
+    // A correction by Ivan Tcholakov, 23-APR-2014: 'Ч' -> 'Ch', 'ч' -> 'ch'
+
     private static $cyr_bg                  = array('Щ',  'Ш', 'Ч',  'Ц', 'Ю', 'Я', 'Ж', 'А','Б','В','Г','Д','Е','Ё','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ь','Ы','Ъ','Э');
-    private static $lat_bg                  = array('Sht','Sh','Tch','Ts','Yu','Ya','Zh','A','B','V','G','D','E','E','Z','I','Y','K','L','M','N','O','P','R','S','T','U','F','H','Y','J','A','E');
+    private static $lat_bg                  = array('Sht','Sh','Ch','Ts','Yu','Ya','Zh','A','B','V','G','D','E','E','Z','I','Y','K','L','M','N','O','P','R','S','T','U','F','H','Y','J','A','E');
 
     private static $cyr_bg_lower            = array('щ',  'ш', 'ч',  'ц', 'ю', 'я', 'ж', 'а','б','в','г','д','е','ё','з','и','й','к','л','м','н','о','п','р','с','т','у','ф','х','ь','ы','ъ','э');
-    private static $lat_bg_lower            = array('sht','sh','tch','ts','yu','ya','zh','a','b','v','g','d','e','e','z','i','y','k','l','m','n','o','p','r','s','t','u','f','h','y','j','a','e');
+    private static $lat_bg_lower            = array('sht','sh','ch','ts','yu','ya','zh','a','b','v','g','d','e','e','z','i','y','k','l','m','n','o','p','r','s','t','u','f','h','y','j','a','e');
 
     private static $cyr_ru                  = array('Щ',  'Ш', 'Ч', 'Ц', 'Ю', 'Я', 'Ж', 'А','Б','В','Г','Д','Е','Ё','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ь', 'Ы','Ъ','Э');
     private static $lat_ru                  = array('Sch','Sh','Ch','Ts','Yu','Ya','Zh','A','B','V','G','D','E','E','Z','I','J','K','L','M','N','O','P','R','S','T','U','F','H','\'','Y','`','E');
+
+    // Russian
 
     private static $cyr_ru_lower            = array('щ',  'ш', 'ч', 'ц', 'ю', 'я', 'ж', 'а','б','в','г','д','е','ё','з','и','й','к','л','м','н','о','п','р','с','т','у','ф','х','ь', 'ы','ъ','э');
     private static $lat_ru_lower            = array('sch','sh','ch','ts','yu','ya','zh','a','b','v','g','d','e','e','z','i','j','k','l','m','n','o','p','r','s','t','u','f','h','\'','y','`','e');
@@ -63,7 +71,17 @@ class Transliterate {
                 break;
 
             default:
+
                 // Bulgarian variant of transliteration is by default.
+
+                // Added by Ivan Tcholakov, 23-APR-2014.
+                $string = preg_replace('/България/iu', 'Bulgaria', $string);
+                //
+
+                // Added by Ivan Tcholakov, 23-APR-2014.
+                $string = preg_replace('/ия([^\p{L}]|$)/u', 'ia$1', $string);
+                //
+
                 $string = str_replace(self::$cyr_bg, self::$lat_bg, $string);
                 $string = str_replace(self::$cyr_bg_lower, self::$lat_bg_lower, $string);
                 break;
@@ -91,7 +109,17 @@ class Transliterate {
                 break;
 
             default:
+
                 // Bulgarian variant of transliteration is by default.
+
+                // Added by Ivan Tcholakov, 23-APR-2014.
+                $string = preg_replace('/Bulgaria/iu', 'България', $string);
+                //
+
+                // Added by Ivan Tcholakov, 23-APR-2014.
+                $string = preg_replace('/ia([^\p{L}]|$)/u', 'ия$1', $string);
+                //
+
                 $string = str_replace(self::$lat_bg, self::$cyr_bg, $string);
                 $string = str_replace(self::$lat_bg_lower, self::$cyr_bg_lower, $string);
                 break;
