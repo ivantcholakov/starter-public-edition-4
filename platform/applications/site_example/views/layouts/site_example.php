@@ -17,7 +17,6 @@ echo cleartype_ie();
 
 echo css('lib/bootstrap-3/bootstrap.min.css');
 echo css('lib/jasny-bootstrap-3/jasny-bootstrap.min.css');
-echo css('lib/jasny-bootstrap-3/jasny-bootstrap_3.1.1_patch.css');
 echo css('lib/font-awesome-4/font-awesome.min.css');
 echo css('lib/google-code-prettify/prettify.css');
 echo css('site_example.css');

@@ -117,7 +117,7 @@ class Settings {
                 $value = $item['value'];
 
                 // Just in case, skip missing or duplicate keys.
-                if ($name == '' || isset($this->settings[$name])) {
+                if ($name == '' || array_key_exists($name, $this->settings)) {
                     continue;
                 }
 
