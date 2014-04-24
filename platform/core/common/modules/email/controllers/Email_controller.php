@@ -78,7 +78,7 @@ class Email_controller extends Core_Controller {
         }
 
         if (isset($data['return_path']) && $data['return_path'] != '') {
-            $return_path = $data['reply_to'];
+            $return_path = $data['return_path'];
         } else {
             $return_path = $this->settings->get('notification_email');
         }
