@@ -451,6 +451,24 @@ class Core_Config extends MX_Config {
         return $this->config['language'];
     }
 
+    // Added by Ivan Tcholakov, 26-APR-2014.
+    public function current_language_code() {
+
+        return $this->language_code($this->current_language());
+    }
+
+    // Added by Ivan Tcholakov, 26-APR-2014.
+    public function english_language() {
+
+        return 'english';
+    }
+
+    // Added by Ivan Tcholakov, 26-APR-2014.
+    public function english_language_code() {
+
+        return 'en';
+    }
+
     // Added by Ivan Tcholakov, 20-JAN-2014.
     public function default_language() {
 

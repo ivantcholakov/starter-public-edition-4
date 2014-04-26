@@ -324,6 +324,24 @@ class Core_Lang extends MX_Lang {
         return $this->config->current_language();
     }
 
+    // Added by Ivan Tcholakov, 26-APR-2014.
+    public function current_code() {
+
+        return $this->config->current_language_code();
+    }
+
+    // Added by Ivan Tcholakov, 26-APR-2014.
+    public function english() {
+
+        return $this->config->english_language();
+    }
+
+    // Added by Ivan Tcholakov, 26-APR-2014.
+    public function english_code() {
+
+        return $this->config->english_language_code();
+    }
+
     // Added by Ivan Tcholakov, 21-JAN-2014.
     public function default_lang() {
 
