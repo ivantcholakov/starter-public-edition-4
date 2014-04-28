@@ -629,7 +629,7 @@ class Datatable {
                 $formatter = isset($column['formatter']) ? (is_callable($column['formatter']) ? $column['formatter'] : null) : null;
 
                 if (isset($formatter)) {
-                    
+
                     $row[$column['dt']] = is_array($formatter)
                         ? $formatter[0]->{$formatter[1]}($has_db_prop ? $data[$i][$column['db']] : null, $data[$i])
                         : $formatter($has_db_prop ? $data[$i][$column['db']] : null, $data[$i]);
