@@ -147,7 +147,8 @@ class Datatable {
 
                 } else {
 
-                    $select[$key] = 'NULL';
+                    // TODO: Remove this permanently.
+                    //$select[$key] = 'NULL';
                 }
 
                 $i++;
@@ -621,9 +622,9 @@ class Datatable {
 
             for ($j = 0, $jen = count($this->columns); $j < $jen; $j++) {
 
-                $column = $this->columns[$j];
+                $column = & $this->columns[$j];
 
-                $has_db_prop = isset($this->columns[$j]['db']) && $this->columns[$j]['db'] != '';
+                $has_db_prop = isset($column['db']) && $column['db'] != '';
 
                 // Is there a formatter? (closures/lambda functions and array($object, 'method') callables)
                 $formatter = isset($column['formatter']) ? (is_callable($column['formatter']) ? $column['formatter'] : null) : null;
@@ -636,7 +637,7 @@ class Datatable {
 
                 } else {
 
-                    $row[$column['dt']] = $has_db_prop ? $data[$i][$this->columns[$j]['db']] : null;
+                    $row[$column['dt']] = $has_db_prop ? $data[$i][$column['db']] : null;
                 }
             }
 
