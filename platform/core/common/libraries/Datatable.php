@@ -103,6 +103,12 @@ class Datatable {
         $this->clear();
     }
 
+    // An empty method that keeps chaining, the parameter does the desired operation as a side-effect.
+    public function that($expression = NULL) {
+
+        return $this;
+    }
+
     public function generate($as_json = true) {
 
         $this->set_filters();
