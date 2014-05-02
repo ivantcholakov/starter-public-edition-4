@@ -549,7 +549,8 @@ class Datatable {
                     if ($c == 0) {
 
                         if ($has_expression_prop) {
-                            $this->like('('.$column['expression'].')', $str);
+                            //$this->like('('.$column['expression'].')', $str);
+                            $this->like($column['expression'], $str);
                         } else {
                             $this->like($column['db'], $str);
                         }
@@ -557,7 +558,8 @@ class Datatable {
                     } else {
 
                         if ($has_expression_prop) {
-                            $this->or_like('('.$column['expression'].')', $str);
+                            //$this->or_like('('.$column['expression'].')', $str);
+                            $this->or_like($column['expression'], $str);
                         } else {
                             $this->or_like($column['db'], $str);
                         }
@@ -592,9 +594,11 @@ class Datatable {
                     if ($has_expression_prop) {
 
                         if ($exact_match) {
-                            $this->where('('.$column['expression'].')', $str);
+                            //$this->where('('.$column['expression'].')', $str);
+                            $this->where($column['expression'], $str);
                         } else {
-                            $this->like('('.$column['expression'].')', $str);
+                            //$this->like('('.$column['expression'].')', $str);
+                            $this->like($column['expression'], $str);
                         }
 
                     } else {
