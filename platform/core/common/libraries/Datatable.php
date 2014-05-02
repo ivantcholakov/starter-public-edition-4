@@ -147,7 +147,8 @@ class Datatable {
 
                 } else {
 
-                    $select[$key] = 'NULL';
+                    // TODO: Remove this permanently.
+                    //$select[$key] = 'NULL';
                 }
 
                 $i++;
@@ -548,7 +549,8 @@ class Datatable {
                     if ($c == 0) {
 
                         if ($has_expression_prop) {
-                            $this->like('('.$column['expression'].')', $str);
+                            //$this->like('('.$column['expression'].')', $str);
+                            $this->like($column['expression'], $str);
                         } else {
                             $this->like($column['db'], $str);
                         }
@@ -556,7 +558,8 @@ class Datatable {
                     } else {
 
                         if ($has_expression_prop) {
-                            $this->or_like('('.$column['expression'].')', $str);
+                            //$this->or_like('('.$column['expression'].')', $str);
+                            $this->or_like($column['expression'], $str);
                         } else {
                             $this->or_like($column['db'], $str);
                         }
@@ -591,9 +594,11 @@ class Datatable {
                     if ($has_expression_prop) {
 
                         if ($exact_match) {
-                            $this->where('('.$column['expression'].')', $str);
+                            //$this->where('('.$column['expression'].')', $str);
+                            $this->where($column['expression'], $str);
                         } else {
-                            $this->like('('.$column['expression'].')', $str);
+                            //$this->like('('.$column['expression'].')', $str);
+                            $this->like($column['expression'], $str);
                         }
 
                     } else {
@@ -621,22 +626,22 @@ class Datatable {
 
             for ($j = 0, $jen = count($this->columns); $j < $jen; $j++) {
 
-                $column = $this->columns[$j];
+                $column = & $this->columns[$j];
 
-                $has_db_prop = isset($this->columns[$j]['db']) && $this->columns[$j]['db'] != '';
+                $has_db_prop = isset($column['db']) && $column['db'] != '';
 
                 // Is there a formatter? (closures/lambda functions and array($object, 'method') callables)
                 $formatter = isset($column['formatter']) ? (is_callable($column['formatter']) ? $column['formatter'] : null) : null;
 
                 if (isset($formatter)) {
-                    
+
                     $row[$column['dt']] = is_array($formatter)
                         ? $formatter[0]->{$formatter[1]}($has_db_prop ? $data[$i][$column['db']] : null, $data[$i])
                         : $formatter($has_db_prop ? $data[$i][$column['db']] : null, $data[$i]);
 
                 } else {
 
-                    $row[$column['dt']] = $has_db_prop ? $data[$i][$this->columns[$j]['db']] : null;
+                    $row[$column['dt']] = $has_db_prop ? $data[$i][$column['db']] : null;
                 }
             }
 
