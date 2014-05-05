@@ -69,4 +69,5 @@ noscript,
 script[type],
 html[xmlns],
 head[profile],
-body[alink|background|bgcolor|link|text|vlink]';
+body[alink|background|bgcolor|link|text|vlink]
+iframe[align|frameborder|height|londesc|marginheight|marginwidth|name|sandbox|scrolling|seamless|src|srcdoc|width|class|dir|id|lang|style|title|xml:lang]';
