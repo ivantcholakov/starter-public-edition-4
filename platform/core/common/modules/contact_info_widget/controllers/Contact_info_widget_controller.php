@@ -39,6 +39,46 @@ class Contact_info_widget_controller extends Core_Controller {
         $this->load->view('contact_info_widget', compact('contacts'), false, 'i18n');
     }
 
+    public function read_site_contact_info($language = null) {
+
+        $lang = $this->lang->code($language);
+
+        $info = $this->settings->get(array(
+            'contact_organization',
+            'contact_address',
+            'contact_phone',
+            'contact_fax',
+            'contact_email',
+            'contact_first_name',
+            'contact_last_name',
+            'contact_web_site',
+            'contact_facebook',
+            'contact_twitter',
+            'contact_google_plus',
+            'contact_linkedin',
+            'contact_github',
+        ));
+
+        $info_lang = $this->settings->get(array(
+            "contact_organization_$lang",
+            "contact_address_$lang",
+            "contact_first_name_$lang",
+            "contact_last_name_$lang",
+        ));
+
+        $info_lang = array_filter($info_lang, 'strlen');
+
+        $info_replace = array();
+
+        foreach ($info_lang as $key => $value) {
+            $info_replace[preg_replace('/'.preg_quote("_$lang").'$/', '', $key)] = $value;
+        }
+
+        $info = array_merge($info, $info_replace);
+
+        return $info;
+    }
+
     public function parse_contacts($contacts) {
         
         if (!is_array($contacts)) {
@@ -47,21 +87,7 @@ class Contact_info_widget_controller extends Core_Controller {
 
         if (empty($contacts)) {
 
-            $contacts[] = $this->settings->get(array(
-                'contact_organization',
-                'contact_address',
-                'contact_phone',
-                'contact_fax',
-                'contact_email',
-                'contact_first_name',
-                'contact_last_name',
-                'contact_web_site',
-                'contact_facebook',
-                'contact_twitter',
-                'contact_google_plus',
-                'contact_linkedin',
-                'contact_github',
-            ));
+            $contacts[] = $this->read_site_contact_info();
         }
 
         return $this->_prettify_contacts($contacts);
