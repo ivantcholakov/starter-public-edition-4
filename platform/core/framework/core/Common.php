@@ -226,9 +226,9 @@ if ( ! function_exists('get_config'))
 	 */
 	function &get_config(Array $replace = array())
 	{
-		static $_config;
+		static $config;
 
-		if (empty($_config))
+		if (empty($config))
 		{
 			$file_path = APPPATH.'config/config.php';
 			$found = FALSE;
@@ -257,18 +257,15 @@ if ( ! function_exists('get_config'))
 				echo 'Your config file does not appear to be formatted correctly.';
 				exit(3); // EXIT_CONFIG
 			}
-
-			// references cannot be directly assigned to static variables, so we use an array
-			$_config[0] =& $config;
 		}
 
 		// Are any values being dynamically added or replaced?
 		foreach ($replace as $key => $val)
 		{
-			$_config[0][$key] = $val;
+			$config[$key] = $val;
 		}
 
-		return $_config[0];
+		return $config;
 	}
 }
 
@@ -307,15 +304,22 @@ if ( ! function_exists('get_mimes'))
 	 */
 	function &get_mimes()
 	{
-		static $_mimes = array();
+		static $_mimes;
 
-		if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/mimes.php'))
+		if (empty($_mimes))
 		{
-			$_mimes = include(APPPATH.'config/'.ENVIRONMENT.'/mimes.php');
-		}
-		elseif (file_exists(APPPATH.'config/mimes.php'))
-		{
-			$_mimes = include(APPPATH.'config/mimes.php');
+			if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/mimes.php'))
+			{
+				$_mimes = include(APPPATH.'config/'.ENVIRONMENT.'/mimes.php');
+			}
+			elseif (file_exists(APPPATH.'config/mimes.php'))
+			{
+				$_mimes = include(APPPATH.'config/mimes.php');
+			}
+			else
+			{
+				$_mimes = array();
+			}
 		}
 
 		return $_mimes;
