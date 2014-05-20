@@ -443,12 +443,12 @@ if ( ! function_exists('word_wrap'))
 		// If the current word is surrounded by {unwrap} tags we'll
 		// strip the entire chunk and replace it with a marker.
 		$unwrap = array();
-		if (preg_match_all('|(\{unwrap\}.+?\{/unwrap\})|s', $str, $matches))
+		if (preg_match_all('|\{unwrap\}(.+?)\{/unwrap\}|s', $str, $matches))
 		{
 			for ($i = 0, $c = count($matches[0]); $i < $c; $i++)
 			{
 				$unwrap[] = $matches[1][$i];
-				$str = str_replace($matches[1][$i], '{{unwrapped'.$i.'}}', $str);
+				$str = str_replace($matches[0][$i], '{{unwrapped'.$i.'}}', $str);
 			}
 		}
 
@@ -473,7 +473,7 @@ if ( ! function_exists('word_wrap'))
 			while (mb_strlen($line) > $charlim)
 			{
 				// If the over-length word is a URL we won't wrap it
-				if (preg_match('!\[url.+\]|://|wwww.!', $line))
+				if (preg_match('!\[url.+\]|://|www\.!', $line))
 				{
 					break;
 				}
@@ -504,8 +504,7 @@ if ( ! function_exists('word_wrap'))
 			}
 		}
 
-		// Remove the unwrap tags and return
-		return str_replace(array('{unwrap}', '{/unwrap}'), '', $output);
+		return $output;
 	}
 }
 
