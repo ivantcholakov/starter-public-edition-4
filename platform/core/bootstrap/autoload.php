@@ -94,6 +94,18 @@ function _common_autoloader($class) {
         return true;
     }
 
+    // Autoload models (that are extended by other models).
+
+    if (is_file($location = APPPATH."models/$class.php")) {
+        require $location;
+        return true;
+    }
+
+    if (is_file($location = COMMONPATH."models/$class.php")) {
+        require $location;
+        return true;
+    }
+
     // Autoload custom classes, non-standard way.
 
     if (is_file($location = APPPATH."classes/$class.php")) {
