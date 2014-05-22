@@ -25,6 +25,7 @@ echo js('lib/dataTables/datatables.responsive.js');
         var tableElement = $('#datatable');
 
         var table = tableElement.DataTable({
+            "dom": '<"top"<"pull-left"l><"pull-right"f><"clearfix"><"pull-left"i><"pull-right"p><"clearfix">>rt<"bottom"<"pull-left"i><"pull-right"p><"clearix">>',
             'orderCellsTop': true,
             'pagingType': 'simple_numbers',
             'stateSave': true,
