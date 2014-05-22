@@ -61,6 +61,19 @@ if (!function_exists('fixed_basename')) {
 
 }
 
+if (!function_exists('add_basename_suffix')) {
+
+    function add_basename_suffix($path, $suffix) {
+
+        // See Image_lib::explode_name().
+        $ext = strrchr($path, '.');
+        $name = ($ext === FALSE) ? $path : substr($path, 0, -strlen($ext));
+
+        return $name.$suffix.$ext;
+    }
+
+}
+
 if (!function_exists('extension')) {
 
     function extension($path) {
