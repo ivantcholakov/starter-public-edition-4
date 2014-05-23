@@ -107,7 +107,7 @@ The technique of this hack is available, but it is not mandatory.
 * Markdownify - A HTML-to-text conversion tool, http://milianw.de/projects/markdownify/
 * Mustache, Logic-less templates, https://github.com/bobthecow/mustache.php
 * Less.php compiler, https://github.com/oyejorge/less.php
-* PHPMailer, http://phpmailer.worxware.com/, https://github.com/Synchro/PHPMailer
+* PHPMailer, http://phpmailer.worxware.com/, https://github.com/PHPMailer/PHPMailer
 * A CodeIgniter compatible email-library powered by PHPMailer, https://github.com/ivantcholakov/codeigniter-phpmailer
 * A PHP class for transliteration, https://github.com/ivantcholakov/transliterate
 * AES (256, 192, 128) Symmetric Encryption, Compatible with OpenSSL, https://github.com/ivantcholakov/gibberish-aes-php
