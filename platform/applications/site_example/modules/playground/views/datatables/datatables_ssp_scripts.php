@@ -29,7 +29,8 @@ echo js('lib/dataTables/datatables.responsive.js');
             'orderCellsTop': true,
             'pagingType': 'simple_numbers',
             'stateSave': true,
-            'processing': true,
+            //'processing': true,   // Needs to be fixed visually first.
+            'processing': false,
             'serverSide': true,
             'ajax': {
                 'url': '<?php echo site_url('playground/datatables/datatables-ssp-ajax'); ?>',
