@@ -31,7 +31,7 @@ class PHPMailer
      * The PHPMailer Version number.
      * @type string
      */
-    public $Version = '5.2.7';
+    public $Version = '5.2.8';
 
     /**
      * Email priority.
@@ -567,9 +567,6 @@ class PHPMailer
      */
     public function __construct($exceptions = false)
     {
-        if (version_compare(PHP_VERSION, '5.0.0', '<')) {
-            exit("Sorry, PHPMailer will only run on PHP version 5 or greater!\n");
-        }
         $this->exceptions = ($exceptions == true);
         //Make sure our autoloader is loaded
         if (version_compare(PHP_VERSION, '5.1.2', '>=')) {
@@ -683,8 +680,12 @@ class PHPMailer
      */
     public function isSendmail()
     {
-        if (!stristr(ini_get('sendmail_path'), 'sendmail')) {
+        $ini_sendmail_path = ini_get('sendmail_path');
+        
+        if (!stristr($ini_sendmail_path, 'sendmail')) {
             $this->Sendmail = '/usr/sbin/sendmail';
+        } else {
+            $this->Sendmail = $ini_sendmail_path;
         }
         $this->Mailer = 'sendmail';
     }
@@ -695,8 +696,12 @@ class PHPMailer
      */
     public function isQmail()
     {
-        if (!stristr(ini_get('sendmail_path'), 'qmail')) {
+        $ini_sendmail_path = ini_get('sendmail_path');
+        
+        if (!stristr($ini_sendmail_path, 'qmail')) {
             $this->Sendmail = '/var/qmail/bin/qmail-inject';
+        } else {
+            $this->Sendmail = $ini_sendmail_path;
         }
         $this->Mailer = 'qmail';
     }
@@ -850,11 +855,8 @@ class PHPMailer
      */
     public static function validateAddress($address, $patternselect = 'auto')
     {
-        if ($patternselect == 'auto') {
-            if (defined(
-                'PCRE_VERSION'
-            )
-            ) { //Check this constant so it works when extension_loaded() is disabled
+        if (!$patternselect or $patternselect == 'auto') {
+            if (defined('PCRE_VERSION')) { //Check this constant so it works when extension_loaded() is disabled
                 if (version_compare(PCRE_VERSION, '8.0') >= 0) {
                     $patternselect = 'pcre8';
                 } else {
@@ -911,8 +913,8 @@ class PHPMailer
                  * This is the pattern used in the HTML5 spec for validation of 'email' type form input elements.
                  * @link http://www.whatwg.org/specs/web-apps/current-work/#e-mail-state-(type=email)
                  */
-                return '/^[a-zA-Z0-9.!#$%&\'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])'.
-                    '?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/sD';
+                return (bool)preg_match('/^[a-zA-Z0-9.!#$%&\'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}' .
+                    '[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/sD', $address);
                 break;
             case 'php':
             default:
@@ -1628,10 +1630,10 @@ class PHPMailer
         $this->boundary[3] = 'b3_' . $uniq_id;
 
         if ($this->MessageDate == '') {
-            $result .= $this->headerLine('Date', self::rfcDate());
-        } else {
-            $result .= $this->headerLine('Date', $this->MessageDate);
+            $this->MessageDate = self::rfcDate();
         }
+        $result .= $this->headerLine('Date', $this->MessageDate);
+
 
         // To be created automatically by mail()
         if ($this->SingleTo === true) {
@@ -1768,8 +1770,8 @@ class PHPMailer
     /**
      * Returns the whole MIME message.
      * Includes complete headers and body.
-     * Only valid post PreSend().
-     * @see PHPMailer::PreSend()
+     * Only valid post preSend().
+     * @see PHPMailer::preSend()
      * @access public
      * @return string
      */

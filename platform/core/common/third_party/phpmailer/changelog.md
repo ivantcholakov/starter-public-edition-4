@@ -1,5 +1,8 @@
 # ChangeLog
 
+* Update html2text from https://github.com/mtibben/html2text
+
+## Version 5.2.8 (May 14th 2014)
 * Increase timeout to match RFC2821 section 4.5.3.2 and thus not fail greetdelays, fixes #104
 * Add timestamps to default debug output
 * Add connection events and new level 3 to debug output options
@@ -29,6 +32,15 @@
 * Fix language file loading if CWD has changed (@stephandesouza)
 * Add HTML5 email validation pattern
 * Improve Turkish translations (Thanks to @yasinaydin)
+* Improve Romanian translations (Thanks to @aflorea)
+* Check php.ini for path to sendmail/qmail before using default
+* Improve Farsi translation (Thanks to @MHM5000)
+* Don't use quoted-printable encoding for multipart types
+* Add Serbian translation (Thanks to ajevremovic at gmail.com)
+* Remove useless PHP5 check
+* Use SVG for build status badges
+* Store MessageDate on creation
+* Better default behaviour for validateAddress
 
 ## Version 5.2.7 (September 12th 2013)
 * Add Ukranian translation from @Krezalis
