@@ -1,11 +1,11 @@
-/*! DataTables 1.10.0-beta.3.dev
+/*! DataTables 1.10.0
  * ©2008-2014 SpryMedia Ltd - datatables.net/license
  */
 
 /**
  * @summary     DataTables
  * @description Paginate, search and order HTML tables
- * @version     1.10.0-beta.3.dev
+ * @version     1.10.0
  * @file        jquery.dataTables.js
  * @author      SpryMedia Ltd (www.sprymedia.co.uk)
  * @contact     www.sprymedia.co.uk/contact
@@ -29,16 +29,17 @@
 (function( factory ) {
 	"use strict";
 
-	// Define as an AMD module if possible
-	if ( typeof define === 'function' && define.amd )
-	{
+	if ( typeof define === 'function' && define.amd ) {
+		// Define as an AMD module if possible
 		define( 'datatables', ['jquery'], factory );
 	}
-	/* Define using browser globals otherwise
-	 * Prevent multiple instantiations if the script is loaded twice
-	 */
-	else if ( jQuery && !jQuery.fn.dataTable )
-	{
+    else if ( typeof exports === 'object' ) {
+        // Node/CommonJS
+        factory( require( 'jquery' ) );
+    }
+	else if ( jQuery && !jQuery.fn.dataTable ) {
+		// Define using browser globals otherwise
+		// Prevent multiple instantiations if the script is loaded twice
 		factory( jQuery );
 	}
 }
@@ -124,12 +125,16 @@
 		return !isNaN(integer) && isFinite(s) ? integer : null;
 	};
 	
+	// Convert from a formatted number with characters other than `.` as the
+	// decimal place, to a Javascript number
 	var _numToDecimal = function ( num, decimalPoint ) {
 		// Cache created regular expressions for speed as this function is called often
 		if ( ! _re_dic[ decimalPoint ] ) {
 			_re_dic[ decimalPoint ] = new RegExp( _fnEscapeRegex( decimalPoint ), 'g' );
 		}
-		return num.replace( /\./g, '' ).replace( _re_dic[ decimalPoint ], '.' );
+		return typeof num === 'string' ?
+			num.replace( /\./g, '' ).replace( _re_dic[ decimalPoint ], '.' ) :
+			num;
 	};
 	
 	
@@ -304,6 +309,7 @@
 				newKey = key.replace( match[0], match[2].toLowerCase() );
 				map[ newKey ] = key;
 	
+				//console.log( key, match );
 				if ( match[1] === 'o' )
 				{
 					_fnHungarianMap( o[key] );
@@ -328,8 +334,7 @@
 	 */
 	function _fnCamelToHungarian ( src, user, force )
 	{
-		if ( ! src._hungarianMap )
-		{
+		if ( ! src._hungarianMap ) {
 			_fnHungarianMap( src );
 		}
 	
@@ -340,11 +345,19 @@
 	
 			if ( hungarianKey !== undefined && (force || user[hungarianKey] === undefined) )
 			{
-				user[hungarianKey] = user[ key ];
-	
+				// For objects, we need to buzz down into the object to copy parameters
 				if ( hungarianKey.charAt(0) === 'o' )
 				{
-					_fnCamelToHungarian( src[hungarianKey], user[key] );
+					// Copy the camelCase options over to the hungarian
+					if ( ! user[ hungarianKey ] ) {
+						user[ hungarianKey ] = {};
+					}
+					$.extend( true, user[hungarianKey], user[key] );
+	
+					_fnCamelToHungarian( src[hungarianKey], user[hungarianKey], force );
+				}
+				else {
+					user[hungarianKey] = user[ key ];
 				}
 			}
 		} );
@@ -492,6 +505,41 @@
 		n.remove();
 	}
 	
+	
+	/**
+	 * Array.prototype reduce[Right] method, used for browsers which don't support
+	 * JS 1.6. Done this way to reduce code size, since we iterate either way
+	 *  @param {object} settings dataTables settings object
+	 *  @memberof DataTable#oApi
+	 */
+	function _fnReduce ( that, fn, init, start, end, inc )
+	{
+		var
+			i = start,
+			value,
+			isSet = false;
+	
+		if ( init !== undefined ) {
+			value = init;
+			isSet = true;
+		}
+	
+		while ( i !== end ) {
+			if ( ! that.hasOwnProperty(i) ) {
+				continue;
+			}
+	
+			value = isSet ?
+				fn( value, that[i], i, that ) :
+				that[i];
+	
+			isSet = true;
+			i += inc;
+		}
+	
+		return value;
+	}
+	
 	/**
 	 * Add a column to the list used for the table with default values
 	 *  @param {object} oSettings dataTables settings object
@@ -500,11 +548,10 @@
 	 */
 	function _fnAddColumn( oSettings, nTh )
 	{
+		// Add column to aoColumns array
 		var oDefaults = DataTable.defaults.column;
 		var iCol = oSettings.aoColumns.length;
 		var oCol = $.extend( {}, DataTable.models.oColumn, oDefaults, {
-			"sSortingClass": oSettings.oClasses.sSortable,
-			"sSortingClassJUI": oSettings.oClasses.sSortJUI,
 			"nTh": nTh ? nTh : document.createElement('th'),
 			"sTitle":    oDefaults.sTitle    ? oDefaults.sTitle    : nTh ? nTh.innerHTML : '',
 			"aDataSort": oDefaults.aDataSort ? oDefaults.aDataSort : [iCol],
@@ -513,33 +560,13 @@
 		} );
 		oSettings.aoColumns.push( oCol );
 	
-		/* Add a column specific filter */
-		if ( oSettings.aoPreSearchCols[ iCol ] === undefined || oSettings.aoPreSearchCols[ iCol ] === null )
-		{
-			oSettings.aoPreSearchCols[ iCol ] = $.extend( true, {}, DataTable.models.oSearch );
-		}
-		else
-		{
-			var oPre = oSettings.aoPreSearchCols[ iCol ];
+		// Add search object for column specific search. Note that the `searchCols[ iCol ]`
+		// passed into extend can be undefined. This allows the user to give a default
+		// with only some of the parameters defined, and also not give a default
+		var searchCols = oSettings.aoPreSearchCols;
+		searchCols[ iCol ] = $.extend( {}, DataTable.models.oSearch, searchCols[ iCol ] );
 	
-			/* Don't require that the user must specify bRegex, bSmart or bCaseInsensitive */
-			if ( oPre.bRegex === undefined )
-			{
-				oPre.bRegex = true;
-			}
-	
-			if ( oPre.bSmart === undefined )
-			{
-				oPre.bSmart = true;
-			}
-	
-			if ( oPre.bCaseInsensitive === undefined )
-			{
-				oPre.bCaseInsensitive = true;
-			}
-		}
-	
-		/* Use the column options function to initialise classes etc */
+		// Use the default column options function to initialise classes etc
 		_fnColumnOptions( oSettings, iCol, null );
 	}
 	
@@ -555,12 +582,11 @@
 	{
 		var oCol = oSettings.aoColumns[ iCol ];
 		var oClasses = oSettings.oClasses;
+		var th = $(oCol.nTh);
 	
 		// Try to get width information from the DOM. We can't get it from CSS
 		// as we'd need to parse the CSS stylesheet. `width` option can override
 		if ( ! oCol.sWidthOrig ) {
-			var th = $(oCol.nTh);
-	
 			// Width attribute
 			oCol.sWidthOrig = th.attr('width') || null;
 	
@@ -638,6 +664,7 @@
 		if ( !oSettings.oFeatures.bSort )
 		{
 			oCol.bSortable = false;
+			th.addClass( oClasses.sSortableNone ); // Have to add class here as order event isn't called
 		}
 	
 		/* Check that the class assignment is correct for sorting */
@@ -657,6 +684,11 @@
 		{
 			oCol.sSortingClass = oClasses.sSortableDesc;
 			oCol.sSortingClassJUI = oClasses.sSortJUIDescAllowed;
+		}
+		else
+		{
+			oCol.sSortingClass = oClasses.sSortable;
+			oCol.sSortingClassJUI = oClasses.sSortJUI;
 		}
 	}
 	
@@ -760,6 +792,11 @@
 	}
 	
 	
+	/**
+	 * Calculate the 'type' of a column
+	 *  @param {object} settings dataTables settings object
+	 *  @memberof DataTable#oApi
+	 */
 	function _fnColumnTypes ( settings )
 	{
 		var columns = settings.aoColumns;
@@ -827,6 +864,7 @@
 	function _fnApplyColumnDefs( oSettings, aoColDefs, aoCols, fn )
 	{
 		var i, iLen, j, jLen, k, kLen, def;
+		var columns = oSettings.aoColumns;
 	
 		// Column definitions with aTargets
 		if ( aoColDefs )
@@ -851,7 +889,7 @@
 					if ( typeof aTargets[j] === 'number' && aTargets[j] >= 0 )
 					{
 						/* Add columns that we don't yet know about */
-						while( oSettings.aoColumns.length <= aTargets[j] )
+						while( columns.length <= aTargets[j] )
 						{
 							_fnAddColumn( oSettings );
 						}
@@ -862,15 +900,15 @@
 					else if ( typeof aTargets[j] === 'number' && aTargets[j] < 0 )
 					{
 						/* Negative integer, right to left column counting */
-						fn( oSettings.aoColumns.length+aTargets[j], def );
+						fn( columns.length+aTargets[j], def );
 					}
 					else if ( typeof aTargets[j] === 'string' )
 					{
 						/* Class name matching on TH element */
-						for ( k=0, kLen=oSettings.aoColumns.length ; k<kLen ; k++ )
+						for ( k=0, kLen=columns.length ; k<kLen ; k++ )
 						{
 							if ( aTargets[j] == "_all" ||
-							     $(oSettings.aoColumns[k].nTh).hasClass( aTargets[j] ) )
+							     $(columns[k].nTh).hasClass( aTargets[j] ) )
 							{
 								fn( k, def );
 							}
@@ -1382,7 +1420,7 @@
 		// Are we reading last data from DOM or the data object?
 		if ( src === 'dom' || ((! src || src === 'auto') && row.src === 'dom') ) {
 			// Read the data from the DOM
-			row._aData = _fnGetRowElements( settings, row.nTr ).data;
+			row._aData = _fnGetRowElements( settings, row ).data;
 		}
 		else {
 			// Reading from data object, update the DOM
@@ -1420,7 +1458,8 @@
 	 * cells that are in the row.
 	 *
 	 * @param {object} settings DataTables settings object
-	 * @param {node} TR element from which to read data
+	 * @param {node|object} TR element from which to read data or existing row
+	 *   object from which to re-read the data from the cells
 	 * @returns {object} Object with two parameters: `data` the data read, in
 	 *   document order, and `cells` and array of nodes (they can be useful to the
 	 *   caller, so rather than needing a second traversal to get them, just return
@@ -1447,33 +1486,48 @@
 			}
 		};
 	
-		while ( td ) {
-			name = td.nodeName.toUpperCase();
+		var cellProcess = function ( cell ) {
+			col = columns[i];
+			contents = $.trim(cell.innerHTML);
 	
-			if ( name == "TD" || name == "TH" ) {
-				col = columns[i];
-				contents = $.trim(td.innerHTML);
+			if ( col && col._bAttrSrc ) {
+				o = {
+					display: contents
+				};
 	
-				if ( col && col._bAttrSrc ) {
-					o = {
-						display: contents
-					};
+				attr( col.mData.sort, o, cell );
+				attr( col.mData.type, o, cell );
+				attr( col.mData.filter, o, cell );
 	
-					attr( col.mData.sort, o, td );
-					attr( col.mData.type, o, td );
-					attr( col.mData.filter, o, td );
-	
-					d.push( o );
-				}
-				else {
-					d.push( contents );
-				}
-	
-				tds.push( td );
-				i++;
+				d.push( o );
+			}
+			else {
+				d.push( contents );
 			}
 	
-			td = td.nextSibling;
+			tds.push( cell );
+			i++;
+		};
+	
+		if ( td ) {
+			// `tr` element passed in
+			while ( td ) {
+				name = td.nodeName.toUpperCase();
+	
+				if ( name == "TD" || name == "TH" ) {
+					cellProcess( td );
+				}
+	
+				td = td.nextSibling;
+			}
+		}
+		else {
+			// Existing row object passed in
+			tds = row.anCells;
+			
+			for ( var j=0, jen=tds.length ; j<jen ; j++ ) {
+				cellProcess( tds[j] );
+			}
 		}
 	
 		return {
@@ -1555,6 +1609,10 @@
 	
 			_fnCallbackFire( oSettings, 'aoRowCreatedCallback', null, [nTr, rowData, iRow] );
 		}
+	
+		// Remove once webkit bug 131819 and Chromium bug 365619 have been resolved
+		// and deployed
+		row.nTr.setAttribute( 'role', 'row' );
 	}
 	
 	
@@ -1644,9 +1702,9 @@
 		if ( createHeader ) {
 			_fnDetectHeader( oSettings.aoHeader, thead );
 		}
-	
+		
 		/* ARIA role for the rows */
-		$(thead).find('>tr').attr('role', 'row');
+	 	$(thead).find('>tr').attr('role', 'row');
 	
 		/* Deal with the footer - add classes if required */
 		$(thead).find('>tr>th, >tr>td').addClass( classes.sHeaderTH );
@@ -1962,11 +2020,11 @@
 	
 		// All DataTables are wrapped in a div
 		var insert = $('<div/>', {
-			role:    'grid',
 			id:      oSettings.sTableId+'_wrapper',
 			'class': classes.sWrapper + (oSettings.nTFoot ? '' : ' '+classes.sNoFooter)
 		} );
 	
+		oSettings.nHolding = holding[0];
 		oSettings.nTableWrapper = insert[0];
 		oSettings.nTableReinsertBefore = oSettings.nTable.nextSibling;
 	
@@ -2227,8 +2285,9 @@
 		// Compatibility with 1.9-, allow fnServerData and event to manipulate
 		_fnCallbackFire( oSettings, 'aoServerParams', 'serverParams', [data] );
 	
-		// Convert to object based for 1.10+ if using the old scheme
-		if ( data && data.__legacy ) {
+		// Convert to object based for 1.10+ if using the old array scheme which can
+		// come from server-side processing or serverParams
+		if ( data && $.isArray(data) ) {
 			var tmp = {};
 			var rbracket = /(.*?)\[\]$/;
 	
@@ -2304,6 +2363,9 @@
 	
 		// Store the data submitted for the API
 		oSettings.oAjaxData = data;
+	
+		// Allow plug-ins and external processes to modify the data
+		_fnCallbackFire( oSettings, null, 'preXhr', [oSettings, data] );
 	
 		if ( oSettings.fnServerData )
 		{
@@ -2459,8 +2521,6 @@
 	
 			param( 'iSortingCols', sort.length );
 		}
-	
-		data.__legacy = true;
 	
 		// If the legacy.ajax parameter is null, then we automatically decide which
 		// form to use, based on sAjaxSource
@@ -2648,6 +2708,10 @@
 			oPrevSearch.bSmart = oFilter.bSmart;
 			oPrevSearch.bCaseInsensitive = oFilter.bCaseInsensitive;
 		};
+		var fnRegex = function ( o ) {
+			// Backwards compatibility with the bEscapeRegex option
+			return o.bEscapeRegex !== undefined ? !o.bEscapeRegex : o.bRegex;
+		};
 	
 		// Resolve any column types that are unknown due to addition or invalidation
 		// @todo As per sort - can this be moved into an event handler?
@@ -2657,13 +2721,13 @@
 		if ( _fnDataSource( oSettings ) != 'ssp' )
 		{
 			/* Global filter */
-			_fnFilter( oSettings, oInput.sSearch, iForce, oInput.bRegex, oInput.bSmart, oInput.bCaseInsensitive );
+			_fnFilter( oSettings, oInput.sSearch, iForce, fnRegex(oInput), oInput.bSmart, oInput.bCaseInsensitive );
 			fnSaveFilter( oInput );
 	
 			/* Now do the individual column filter */
 			for ( var i=0 ; i<aoPrevSearch.length ; i++ )
 			{
-				_fnFilterColumn( oSettings, aoPrevSearch[i].sSearch, i, aoPrevSearch[i].bRegex,
+				_fnFilterColumn( oSettings, aoPrevSearch[i].sSearch, i, fnRegex(aoPrevSearch[i]),
 					aoPrevSearch[i].bSmart, aoPrevSearch[i].bCaseInsensitive );
 			}
 	
@@ -2797,21 +2861,30 @@
 	 *  @returns {RegExp} constructed object
 	 *  @memberof DataTable#oApi
 	 */
-	function _fnFilterCreateSearch( sSearch, bRegex, bSmart, bCaseInsensitive )
+	function _fnFilterCreateSearch( search, regex, smart, caseInsensitive )
 	{
-		var asSearch,
-			sRegExpString = bRegex ? sSearch : _fnEscapeRegex( sSearch );
-	
-		if ( bSmart )
-		{
-			/* Generate the regular expression to use. Something along the lines of:
-			 * ^(?=.*?\bone\b)(?=.*?\btwo\b)(?=.*?\bthree\b).*$
+		search = regex ?
+			search :
+			_fnEscapeRegex( search );
+		
+		if ( smart ) {
+			/* For smart filtering we want to allow the search to work regardless of
+			 * word order. We also want double quoted text to be preserved, so word
+			 * order is important - a la google. So this is what we want to
+			 * generate:
+			 * 
+			 * ^(?=.*?\bone\b)(?=.*?\btwo three\b)(?=.*?\bfour\b).*$
 			 */
-			asSearch = sRegExpString.split( ' ' );
-			sRegExpString = '^(?=.*?'+asSearch.join( ')(?=.*?' )+').*$';
+			var a = $.map( search.match( /"[^"]+"|[^ ]+/g ) || '', function ( word ) {
+				return word.charAt(0) === '"' ?
+					word.match( /^"(.*)"$/ )[1] :
+					word;
+			} );
+	
+			search = '^(?=.*?'+a.join( ')(?=.*?' )+').*$';
 		}
 	
-		return new RegExp( sRegExpString, bCaseInsensitive ? "i" : "" );
+		return new RegExp( search, caseInsensitive ? 'i' : '' );
 	}
 	
 	
@@ -2913,9 +2986,8 @@
 			} );
 	
 			n
-				.attr( 'role', 'alert' )
-				.attr( 'aria-live', 'polite' )
-				.attr( 'aria-relevant', 'all' );
+				.attr( 'role', 'status' )
+				.attr( 'aria-live', 'polite' );
 	
 			// Table is described by our info div
 			$(settings.nTable).attr( 'aria-describedby', tid+'_info' );
@@ -3133,14 +3205,14 @@
 			div[0].id = tableId+'_length';
 		}
 	
-		// This split doesn't matter where _MENU_ is, we get three items back from it
 		var a = settings.oLanguage.sLengthMenu.split(/(_MENU_)/);
-		div.children()
-			.append( a[0] )
-			.append( select )
-			.append( a[2] );
+		div.children().append( a.length > 1 ?
+			[ a[0], select, a[2] ] :
+			a[0]
+		);
 	
-		select
+		// Can't use `select` variable, as user might provide their own select menu
+		$('select', div)
 			.val( settings._iDisplayLength )
 			.bind( 'change.DT', function(e) {
 				_fnLengthChange( settings, $(this).val() );
@@ -3149,7 +3221,7 @@
 	
 		// Update node value whenever anything changes the table's length
 		$(settings.nTable).bind( 'length.dt.DT', function (e, s, len) {
-			select.val( len );
+			$('select', div).val( len );
 		} );
 	
 		return div[0];
@@ -3283,10 +3355,12 @@
 		var changed = settings._iDisplayStart !== start;
 		settings._iDisplayStart = start;
 	
-		_fnCallbackFire( settings, null, 'page', [settings] );
+		if ( changed ) {
+			_fnCallbackFire( settings, null, 'page', [settings] );
 	
-		if ( redraw ) {
-			_fnDraw( settings );
+			if ( redraw ) {
+				_fnDraw( settings );
+			}
 		}
 	
 		return changed;
@@ -3320,7 +3394,7 @@
 	function _fnProcessingDisplay ( settings, show )
 	{
 		if ( settings.oFeatures.bProcessing ) {
-			$(settings.aanFeatures.r).css( 'visibility', show ? 'visible' : 'hidden' );
+			$(settings.aanFeatures.r).css( 'display', show ? 'block' : 'none' );
 		}
 	
 		_fnCallbackFire( settings, null, 'processing', [settings, show] );
@@ -3334,6 +3408,12 @@
 	 */
 	function _fnFeatureHtmlTable ( settings )
 	{
+		var table = $(settings.nTable);
+	
+		// Add the ARIA grid role to the table
+		table.attr( 'role', 'grid' );
+	
+		// Scrolling from here on in
 		var scroll = settings.oScroll;
 	
 		if ( scroll.sX === '' && scroll.sY === '' ) {
@@ -3343,7 +3423,6 @@
 		var scrollX = scroll.sX;
 		var scrollY = scroll.sY;
 		var classes = settings.oClasses;
-		var table = $(settings.nTable);
 		var caption = table.children('caption');
 		var captionSide = caption.length ? caption[0]._captionSide : null;
 		var headerClone = $( table[0].cloneNode(false) );
@@ -4267,12 +4346,14 @@
 			formatters = 0,
 			sortCol,
 			displayMaster = oSettings.aiDisplayMaster,
-			aSort = _fnSortFlatten( oSettings );
+			aSort;
 	
 		// Resolve any column types that are unknown due to addition or invalidation
 		// @todo Can this be moved into a 'data-ready' handler which is called when
 		//   data is going to be used in the table?
 		_fnColumnTypes( oSettings );
+	
+		aSort = _fnSortFlatten( oSettings );
 	
 		for ( i=0, ien=aSort.length ; i<ien ; i++ ) {
 			sortCol = aSort[i];
@@ -4509,18 +4590,24 @@
 				return;
 			}
 	
-			_fnProcessingDisplay( settings, true );
+			// If processing is enabled use a timeout to allow the processing
+			// display to be shown - otherwise to it synchronously
+			if ( settings.oFeatures.bProcessing ) {
+				_fnProcessingDisplay( settings, true );
 	
-			// Use a timeout to allow the processing display to be shown.
-			setTimeout( function() {
+				setTimeout( function() {
+					_fnSortListener( settings, colIdx, e.shiftKey, callback );
+	
+					// In server-side processing, the draw callback will remove the
+					// processing display
+					if ( _fnDataSource( settings ) !== 'ssp' ) {
+						_fnProcessingDisplay( settings, false );
+					}
+				}, 0 );
+			}
+			else {
 				_fnSortListener( settings, colIdx, e.shiftKey, callback );
-	
-				// In server-side processing, the draw callback will remove the
-				// processing display
-				if ( _fnDataSource( settings ) !== 'ssp' ) {
-					_fnProcessingDisplay( settings, false );
-				}
-			}, 0 );
+			}
 		} );
 	}
 	
@@ -4617,19 +4704,14 @@
 		/* Store the interesting variables */
 		var i, iLen;
 		var oState = {
-			"iCreate":      new Date().getTime(),
+			"iCreate":      +new Date(),
 			"iStart":       oSettings._iDisplayStart,
 			"iLength":      oSettings._iDisplayLength,
 			"aaSorting":    $.extend( true, [], oSettings.aaSorting ),
 			"oSearch":      $.extend( true, {}, oSettings.oPreviousSearch ),
 			"aoSearchCols": $.extend( true, [], oSettings.aoPreSearchCols ),
-			"abVisCols":    []
+			"abVisCols":    _pluck( oSettings.aoColumns, 'bVisible' )
 		};
-	
-		for ( i=0, iLen=oSettings.aoColumns.length ; i<iLen ; i++ )
-		{
-			oState.abVisCols.push( oSettings.aoColumns[i].bVisible );
-		}
 	
 		_fnCallbackFire( oSettings, "aoStateSaveParams", 'stateSaveParams', [oSettings, oState] );
 	
@@ -4648,14 +4730,12 @@
 		var i, ien;
 		var columns = oSettings.aoColumns;
 	
-		if ( !oSettings.oFeatures.bStateSave )
-		{
+		if ( ! oSettings.oFeatures.bStateSave ) {
 			return;
 		}
 	
 		var oData = oSettings.fnStateLoadCallback.call( oSettings.oInstance, oSettings );
-		if ( !oData )
-		{
+		if ( !oData ) {
 			return;
 		}
 	
@@ -4663,13 +4743,13 @@
 		 * cancelling of loading by returning false
 		 */
 		var abStateLoad = _fnCallbackFire( oSettings, 'aoStateLoadParams', 'stateLoadParams', [oSettings, oData] );
-		if ( $.inArray( false, abStateLoad ) !== -1 )
-		{
+		if ( $.inArray( false, abStateLoad ) !== -1 ) {
 			return;
 		}
 	
 		/* Reject old data */
-		if ( oData.iCreate < new Date().getTime() - (oSettings.iStateDuration*1000) ) {
+		var duration = oSettings.iStateDuration;
+		if ( duration > 0 && oData.iCreate < +new Date() - (duration*1000) ) {
 			return;
 		}
 	
@@ -4685,28 +4765,24 @@
 		oSettings._iDisplayStart    = oData.iStart;
 		oSettings.iInitDisplayStart = oData.iStart;
 		oSettings._iDisplayLength   = oData.iLength;
-		oSettings.aaSorting         = [];
-	
-		var savedSort = oData.aaSorting;
-		for ( i=0, ien=savedSort.length ; i<ien ; i++ ) {
-			oSettings.aaSorting.push( savedSort[i][0] >= columns.length ?
-				[ 0, savedSort[i][1] ] :
-				savedSort[i]
-			);
-		}
+		oSettings.aaSorting = $.map( oData.aaSorting, function ( col, i ) {
+			return col[0] >= columns.length ?
+				[ 0, col[1] ] :
+				col;
+		} );
 	
 		/* Search filtering  */
 		$.extend( oSettings.oPreviousSearch, oData.oSearch );
 		$.extend( true, oSettings.aoPreSearchCols, oData.aoSearchCols );
 	
 		/* Column visibility state */
-		for ( i=0, ien=oData.abVisCols.length ; i<ien ; i++ ) {
-			columns[i].bVisible = oData.abVisCols[i];
+		var visColumns = oData.abVisCols;
+		for ( i=0, ien=visColumns.length ; i<ien ; i++ ) {
+			columns[i].bVisible = visColumns[i];
 		}
 	
 		_fnCallbackFire( oSettings, 'aoStateLoaded', 'stateLoaded', [oSettings, oData] );
 	}
-	
 	
 	
 	/**
@@ -4856,12 +4932,14 @@
 					fn(e);
 				} )
 			.bind( 'keypress.DT', oData, function (e){
-				if ( e.which === 13 ) {
-					fn(e);
-				} } )
+					if ( e.which === 13 ) {
+						e.preventDefault();
+						fn(e);
+					}
+				} )
 			.bind( 'selectstart.DT', function () {
-				/* Take the brutal approach to cancelling text selection */
-				return false;
+					/* Take the brutal approach to cancelling text selection */
+					return false;
 				} );
 	}
 	
@@ -5409,7 +5487,7 @@
 					api.row( src ).data() || null;
 			}
 		
-			return api.data().flatten().toArray();
+			return api.data().toArray();
 		};
 		
 		
@@ -5930,13 +6008,15 @@
 			_fnCallbackReg( oSettings, 'aoInitComplete',       oInit.fnInitComplete,      'user' );
 			_fnCallbackReg( oSettings, 'aoPreDrawCallback',    oInit.fnPreDrawCallback,   'user' );
 			
+			var oClasses = oSettings.oClasses;
+			
 			// @todo Remove in 1.11
 			if ( oInit.bJQueryUI )
 			{
 				/* Use the JUI classes object for display. You could clone the oStdClasses object if
 				 * you want to have multiple tables with multiple independent classes
 				 */
-				$.extend( oSettings.oClasses, DataTable.ext.oJUIClasses, oInit.oClasses );
+				$.extend( oClasses, DataTable.ext.oJUIClasses, oInit.oClasses );
 			
 				if ( oInit.sDom === defaults.sDom && defaults.sDom === "lfrtip" )
 				{
@@ -5953,9 +6033,9 @@
 			}
 			else
 			{
-				$.extend( oSettings.oClasses, DataTable.ext.classes, oInit.oClasses );
+				$.extend( oClasses, DataTable.ext.classes, oInit.oClasses );
 			}
-			$(this).addClass( oSettings.oClasses.sTable );
+			$(this).addClass( oClasses.sTable );
 			
 			/* Calculate the scroll bar width and cache it for use later on */
 			if ( oSettings.oScroll.sX !== "" || oSettings.oScroll.sY !== "" )
@@ -6009,8 +6089,8 @@
 			if ( oInit.asStripeClasses === null )
 			{
 				oSettings.asStripeClasses =[
-					oSettings.oClasses.sStripeOdd,
-					oSettings.oClasses.sStripeEven
+					oClasses.sStripeOdd,
+					oClasses.sStripeEven
 				];
 			}
 			
@@ -6111,9 +6191,10 @@
 			// in case that has been altered, so the default sort reflects that option
 			if ( oInit.aaSorting === undefined )
 			{
-				for ( i=0, iLen=oSettings.aaSorting.length ; i<iLen ; i++ )
+				var sorting = oSettings.aaSorting;
+				for ( i=0, iLen=sorting.length ; i<iLen ; i++ )
 				{
-					oSettings.aaSorting[i][1] = oSettings.aoColumns[ i ].asSorting[0];
+					sorting[i][1] = oSettings.aoColumns[ i ].asSorting[0];
 				}
 			}
 			
@@ -6182,7 +6263,7 @@
 			}
 			
 			if ( tfoot.length === 0 || tfoot.children().length === 0 ) {
-				$(this).addClass( oSettings.oClasses.sNoFooter );
+				$(this).addClass( oClasses.sNoFooter );
 			}
 			else if ( tfoot.length > 0 ) {
 				oSettings.nTFoot = tfoot[0];
@@ -6634,56 +6715,15 @@
 		// Does not return an API instance
 		reduce: __arrayProto.reduce || function ( fn, init )
 		{
-			var
-				value,
-				isSet = false;
-	
-			if ( arguments.length > 1 ) {
-				value = init;
-				isSet = true;
-			}
-	
-			for ( var i=0, ien=this.length ; i<ien ; i++ ) {
-				if ( ! this.hasOwnProperty(i) ) {
-					continue;
-				}
-	
-				value = isSet ?
-					fn( value, this[i], i, this ) :
-					this[i];
-	
-				isSet = true;
-			}
-	
-			return value;
+			return _fnReduce( this, fn, init, 0, this.length, 1 );
 		},
 	
 	
 		reduceRight: __arrayProto.reduceRight || function ( fn, init )
 		{
-			var
-				value,
-				isSet = false;
-	
-			if ( arguments.length > 1 ) {
-				value = init;
-				isSet = true;
-			}
-	
-			for ( var i=this.length-1 ; i>=0 ; i-- ) {
-				if ( ! this.hasOwnProperty(i) ) {
-					continue;
-				}
-	
-				value = isSet ?
-					fn( value, this[i], i, this ) :
-					this[i];
-	
-				isSet = true;
-			}
-	
-			return value;
+			return _fnReduce( this, fn, init, this.length-1, -1, -1 );
 		},
+	
 	
 		reverse: __arrayProto.reverse,
 	
@@ -7246,7 +7286,9 @@
 			out = [], res,
 			a, i, ien, j, jen;
 	
-		if ( ! $.isArray( selector ) ) {
+		// Can't just check for isArray here, as an API or jQuery instance might be
+		// given with their array like look
+		if ( ! selector || typeof selector === 'string' || selector.length === undefined ) {
 			selector = [ selector ];
 		}
 	
@@ -7798,7 +7840,9 @@
 				];
 			}
 			else {
-				var match = s.match( __re_column_selector );
+				var match = typeof s === 'string' ?
+					s.match( __re_column_selector ) :
+					'';
 	
 				if ( match ) {
 					switch( match[2] ) {
@@ -8602,7 +8646,7 @@
 				} );
 			}
 	
-			if ( ! remove ) {
+			if ( ! remove && orig ) {
 				// insertBefore acts like appendChild if !arg[1]
 				orig.insertBefore( table, settings.nTableReinsertBefore );
 			}
@@ -8645,7 +8689,7 @@
 	 *  @type string
 	 *  @default Version number
 	 */
-	DataTable.version = "1.10.0-beta.3.dev";
+	DataTable.version = "1.10.0";
 
 	/**
 	 * Private data store, containing all of the settings objects that are
@@ -10175,7 +10219,9 @@
 		"fnStateLoadCallback": function ( settings ) {
 			try {
 				return JSON.parse(
-					localStorage.getItem('DataTables_'+settings.sInstance+'_'+window.location.pathname)
+					(settings.iStateDuration === -1 ? sessionStorage : localStorage).getItem(
+						'DataTables_'+settings.sInstance+'_'+location.pathname
+					)
 				);
 			} catch (e) {}
 		},
@@ -10274,9 +10320,9 @@
 		 */
 		"fnStateSaveCallback": function ( settings, data ) {
 			try {
-				localStorage.setItem(
-					'DataTables_'+settings.sInstance+'_'+window.location.pathname,
-					JSON.stringify(data)
+				(settings.iStateDuration === -1 ? sessionStorage : localStorage).setItem(
+					'DataTables_'+settings.sInstance+'_'+location.pathname,
+					JSON.stringify( data )
 				);
 			} catch (e) {}
 		},
@@ -13627,7 +13673,7 @@
 			_: function ( settings, host, idx, buttons, page, pages ) {
 				var classes = settings.oClasses;
 				var lang = settings.oLanguage.oPaginate;
-				var btnDisplay, btnClass;
+				var btnDisplay, btnClass, counter=0;
 	
 				var attach = function( container, buttons ) {
 					var i, ien, node, button;
@@ -13687,6 +13733,7 @@
 								node = $('<a>', {
 										'class': classes.sPageButton+' '+btnClass,
 										'aria-controls': settings.sTableId,
+										'data-dt-idx': counter,
 										'tabindex': settings.iTabIndex,
 										'id': idx === 0 && typeof button === 'string' ?
 											settings.sTableId +'_'+ button :
@@ -13698,12 +13745,24 @@
 								_fnBindAction(
 									node, {action: button}, clickHandler
 								);
+	
+								counter++;
 							}
 						}
 					}
 				};
 	
+				// Because this approach is destroying and recreating the paging
+				// elements, focus is lost on the select button which is bad for
+				// accessibility. So we want to restore focus once the draw has
+				// completed
+				var activeEl = $(document.activeElement).data('dt-idx');
+	
 				attach( $(host).empty(), buttons );
+	
+				if ( activeEl !== null ) {
+					$(host).find( '[data-dt-idx='+activeEl+']' ).focus();
+				}
 			}
 		}
 	} );
@@ -13778,9 +13837,11 @@
 	
 		// html
 		"html-pre": function ( a ) {
-			return a.replace ?
-				a.replace( /<.*?>/g, "" ).toLowerCase() :
-				a+'';
+			return ! a ?
+				'' :
+				a.replace ?
+					a.replace( /<.*?>/g, "" ).toLowerCase() :
+					a+'';
 		},
 	
 		// string
@@ -13936,7 +13997,7 @@
 						);
 	
 					cell
-						.find( 'span' )
+						.find( 'span.'+classes.sSortIcon )
 						.removeClass(
 							classes.sSortJUIAsc +" "+
 							classes.sSortJUIDesc +" "+
@@ -13953,7 +14014,6 @@
 			}
 		}
 	} );
-	
 	
 	/*
 	 * Public helper functions. These aren't used internally by DataTables, or
@@ -14319,3 +14379,4 @@
 }));
 
 }(window, document));
+

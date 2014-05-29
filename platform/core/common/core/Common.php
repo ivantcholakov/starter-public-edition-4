@@ -13,12 +13,13 @@ if ( ! function_exists('get_config'))
      */
     function &get_config(Array $replace = array())
     {
-        static $_config;
+        static $config;
+
         // Added by Ivan Tcholakov, 13-OCT-2013.
         global $DETECT_URL;
         //
 
-        if (empty($_config))
+        if (empty($config))
         {
             // Added by Ivan Tcholakov, 02-OCT-2013.
             // Loading the common configuration file first.
@@ -64,18 +65,15 @@ if ( ! function_exists('get_config'))
                 echo 'Your config file does not appear to be formatted correctly.';
                 exit(3); // EXIT_CONFIG
             }
-
-            // references cannot be directly assigned to static variables, so we use an array
-            $_config[0] =& $config;
         }
 
         // Are any values being dynamically added or replaced?
         foreach ($replace as $key => $val)
         {
-            $_config[0][$key] = $val;
+            $config[$key] = $val;
         }
 
-        return $_config[0];
+        return $config;
     }
 }
 
@@ -92,10 +90,10 @@ if ( ! function_exists('load_class'))
      *
      * @param       string      the class name being requested
      * @param       string      the directory where the class should be found
-     * @param       string      the class name prefix
+     * @param       string      an optional argument to pass to the class constructor
      * @return      object
      */
-    function &load_class($class, $directory = 'libraries', $prefix = 'CI_')
+    function &load_class($class, $directory = 'libraries', $param = NULL)
     {
         static $_classes = array();
 
@@ -113,7 +111,7 @@ if ( ! function_exists('load_class'))
         {
             if (file_exists($path.$directory.'/'.$class.'.php'))
             {
-                $name = $prefix.$class;
+                $name = 'CI_'.$class;
 
                 if (!class_exists($name, FALSE))
                 {
