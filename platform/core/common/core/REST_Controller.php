@@ -413,7 +413,9 @@ class REST_Controller extends Core_Controller {
     protected function _detect_method()
     {
         $method = strtolower($this->input->server('REQUEST_METHOD'));
-        $request_headers = apache_request_headers();
+
+        //$request_headers = apache_request_headers();
+        $request_headers = $this->input->request_headers();
 
         if ($this->config->item('enable_emulate_request'))
         {
