@@ -148,3 +148,4 @@ $lang['ui_width'] = 'Широчина';
 $lang['ui_height'] = 'Височина';
 $lang['ui_max_width'] = 'Широчина, max';
 $lang['ui_max_height'] = 'Височина, max';
+$lang['ui_options'] = 'Опции';

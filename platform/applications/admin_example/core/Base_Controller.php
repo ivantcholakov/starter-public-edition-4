@@ -24,7 +24,8 @@ class Base_Controller extends Core_Controller {
 
         $this->template->set_metadata('robots', 'noindex,nofollow,noarchive');
 
-        $this->public_site_url = http_build_url(BASE_URL, '../');
+        //$this->public_site_url = http_build_url(BASE_URL, '../'); // This is too tricky.
+        $this->public_site_url = default_base_url();    // This is the covenient way.
 
         $this->template
             ->prepend_title('Site Administrator')
