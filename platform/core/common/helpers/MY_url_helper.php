@@ -23,9 +23,9 @@ if (!function_exists('site_uri')) {
 if (!function_exists('default_base_url')) {
 
     // Added by Ivan Tcholakov, 13-JAN-2014.
-    function default_base_url($uri = '') {
+    function default_base_url($uri = '', $protocol = NULL) {
 
-        return get_instance()->config->default_base_url($uri);
+        return get_instance()->config->default_base_url($uri, $protocol);
     }
 
 }

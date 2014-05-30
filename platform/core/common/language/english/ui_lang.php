@@ -148,3 +148,4 @@ $lang['ui_width'] = 'Width';
 $lang['ui_height'] = 'Height';
 $lang['ui_max_width'] = 'Width, max';
 $lang['ui_max_height'] = 'Height, max';
+$lang['ui_options'] = 'Options';
