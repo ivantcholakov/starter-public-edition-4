@@ -631,4 +631,18 @@ class Core_Config extends MX_Config {
         return null;
     }
 
+    // Added by Ivan Tcholakov, 31-MAY-2014.
+    public function language_flag($language = null) {
+
+        if ($language == '') {
+            $language = $this->current_language();
+        }
+
+        if (array_key_exists($language, $this->config['languages'])) {
+            return $this->config['languages'][$language]['flag'];
+        }
+
+        return null;
+    }
+
 }
