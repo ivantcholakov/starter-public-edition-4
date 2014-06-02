@@ -240,6 +240,14 @@ class Modules
         $location = $path.$file.'.php';
 
         if (class_exists($file, FALSE)) {
+
+            // Added by Ivan Tcholakov, 02-JUN-2014.
+            // A durty workaround.
+            if ($file == 'Email') {
+                return false;
+            }
+            //
+
             return true;
         }
 
