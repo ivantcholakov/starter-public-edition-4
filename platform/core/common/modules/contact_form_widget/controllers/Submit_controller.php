@@ -199,6 +199,9 @@ class Submit_controller extends Core_Controller {
         $data['subject'] = '['.$this->settings->get('site_name').': '.$this->lang->line('mailer_a_message_has_been_received_from').' '.$data['contact_form_name'].'] '.$data['contact_form_subject'];
         $data['body'] = $this->parser->parse_string($data['email_template'], $data, true, 'mustache');
 
+        $this->load->library('email');
+        $data['body'] = $this->email->full_html($data['subject'], $data['body']);
+
         return $data;
     }
 
