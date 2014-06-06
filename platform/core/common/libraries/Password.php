@@ -16,6 +16,20 @@ class Password {
         log_message('debug', 'Password class initialized');
     }
 
+    public function hash($password) {
+
+        $hasher = new PasswordHash(8, false);
+
+        return $hasher->HashPassword((string) $password);
+    }
+
+    public function verify($password, $hash) {
+
+        $hasher = new PasswordHash(8, false);
+
+        return $hasher->CheckPassword((string) $password, (string) $hash) ? true : false;
+    }
+
     public function encrypt($password) {
 
         $password = (string) $password;
