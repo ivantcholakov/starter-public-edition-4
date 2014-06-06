@@ -293,6 +293,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * An icon subset of flags from GoSquared, https://www.gosquared.com/resources/flag-icons/
 * Bootstrap Vertical Tabs, https://github.com/dbtek/bootstrap-vertical-tabs
 * Jasny Bootstrap, The missing components for your favorite front-end framework, http://jasny.github.io/bootstrap/, https://github.com/jasny/bootstrap
+* phpass (PasswordHash class), http://www.openwall.com/phpass/
 
 The Playground
 --------------
