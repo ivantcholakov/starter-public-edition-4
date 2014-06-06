@@ -792,7 +792,10 @@ class CI_Form_validation {
 			if ($result === FALSE)
 			{
 				// Callable rules don't have named error messages
-				if ( ! is_callable($rule))
+				// Modified by Ivan Tcholakov, 06-JUN-2014.
+				//if ( ! is_callable($rule))
+				if ( ! is_callable($rule) || method_exists($this, $rule))
+				//
 				{
 					// Check if a custom message is defined
 					if (isset($this->_field_data[$row['field']]['errors'][$rule]))
