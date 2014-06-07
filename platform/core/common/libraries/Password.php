@@ -18,16 +18,29 @@ class Password {
 
     public function hash($password) {
 
+        $password = (string) $password;
+
+        if ($password == '') {
+            return '';
+        }
+
         $hasher = new PasswordHash(8, false);
 
-        return $hasher->HashPassword((string) $password);
+        return $hasher->HashPassword($password);
     }
 
     public function verify($password, $hash) {
 
+        $password = (string) $password;
+        $hash = (string) $hash;
+
+        if ($hash == '' && $password == '') {
+            return true;
+        }
+
         $hasher = new PasswordHash(8, false);
 
-        return $hasher->CheckPassword((string) $password, (string) $hash) ? true : false;
+        return $hasher->CheckPassword($password, $hash) ? true : false;
     }
 
     public function encrypt($password) {
