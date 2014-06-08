@@ -34,8 +34,9 @@ class Password {
         $password = (string) $password;
         $hash = (string) $hash;
 
-        if ($hash == '' && $password == '') {
-            return true;
+        // Don't allow empty passwords, on creation use validation for not accepting them.
+        if ($hash == '' || $password == '') {
+            return false;
         }
 
         $hasher = new PasswordHash(8, false);
