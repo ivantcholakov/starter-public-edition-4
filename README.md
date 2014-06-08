@@ -294,6 +294,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Bootstrap Vertical Tabs, https://github.com/dbtek/bootstrap-vertical-tabs
 * Jasny Bootstrap, The missing components for your favorite front-end framework, http://jasny.github.io/bootstrap/, https://github.com/jasny/bootstrap
 * phpass (PasswordHash class), http://www.openwall.com/phpass/
+* Gravatar library for CodeIgniter, https://github.com/rsmarshall/Codeigniter-Gravatar
 
 The Playground
 --------------
