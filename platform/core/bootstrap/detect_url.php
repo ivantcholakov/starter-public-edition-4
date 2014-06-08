@@ -22,10 +22,12 @@ if (!function_exists('detect_url')) {
                 && $_SERVER['SERVER_PORT'] != 80 ) || ($server_protocol == 'https' && $_SERVER['SERVER_PORT'] != 443))) {
 
             $server_name_extra = $server_name.':'.$_SERVER['SERVER_PORT'];
+            $port = $_SERVER['SERVER_PORT'];
 
         } else {
 
             $server_name_extra = $server_name;
+            $port = $is_https ? 443 : 80;
         }
 
         $server_url = $server_protocol.'://'.$server_name_extra;
@@ -68,7 +70,8 @@ if (!function_exists('detect_url')) {
             'server_protocol',
             'is_https',
             'script_name',
-            'script_path'
+            'script_path',
+            'port'
         );
     }
 

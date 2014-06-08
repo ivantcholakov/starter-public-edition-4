@@ -89,6 +89,12 @@ class Core_Config extends MX_Config {
         {
             $this->set_item('base_url', $DETECT_URL['base_url']);
         }
+        // For hard-coded configuration setting 'base_url'
+        // replace the protocol and the port with the actual detected values.
+        else
+        {
+            $this->set_item('base_url', http_build_url($this->config['base_url'], array('scheme' => $DETECT_URL['server_protocol'], 'port' => $DETECT_URL['port'])));
+        }
 
         if (!defined('BASE_URL')) {
             define('BASE_URL', $this->add_slash($this->base_url()));
