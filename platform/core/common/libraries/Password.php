@@ -21,6 +21,7 @@ class Password {
 
         $password = (string) $password;
 
+        // Don't allow empty passwords, on creation use validation for not accepting them.
         if ($password == '') {
             return '';
         }
@@ -30,7 +31,7 @@ class Password {
         return $hasher->HashPassword($password);
     }
 
-    // http://www.openwall.com/phpass/
+    // See http://www.openwall.com/phpass/
     public function verify($password, $hash) {
 
         $password = (string) $password;
