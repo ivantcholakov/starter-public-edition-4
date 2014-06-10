@@ -11,11 +11,12 @@ class Password {
 
     public function __construct() {
 
-        $this->key = config_item('encryption_key_for_passwords');
+        $this->key = (string) config_item('encryption_key_for_passwords');
 
         log_message('debug', 'Password class initialized');
     }
 
+    // See http://www.openwall.com/phpass/
     public function hash($password) {
 
         $password = (string) $password;
@@ -29,6 +30,7 @@ class Password {
         return $hasher->HashPassword($password);
     }
 
+    // http://www.openwall.com/phpass/
     public function verify($password, $hash) {
 
         $password = (string) $password;
@@ -44,10 +46,12 @@ class Password {
         return $hasher->CheckPassword($password, $hash) ? true : false;
     }
 
+    // See https://github.com/ivantcholakov/gibberish-aes-php
     public function encrypt($password) {
 
         $password = (string) $password;
 
+        // Don't allow empty passwords, on creation use validation for not accepting them.
         if ($password == '') {
             return '';
         }
@@ -62,10 +66,12 @@ class Password {
         return $result;
     }
 
+    // See https://github.com/ivantcholakov/gibberish-aes-php
     public function decrypt($password) {
 
         $password = (string) $password;
 
+        // Don't allow empty passwords, on creation use validation for not accepting them.
         if ($password == '') {
             return '';
         }
