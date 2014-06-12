@@ -64,43 +64,43 @@ class Submit_controller extends Core_Controller {
 
                     array(
                         'field' => 'contact_form_first_name',
-                        'label' => $this->lang->line('contact_first_name'),
+                        'label' => 'lang:contact_first_name',
                         'rules' => 'nohtml|trim|required'
                     ),
 
                     array(
                         'field' => 'contact_form_last_name',
-                        'label' => $this->lang->line('contact_last_name'),
+                        'label' => 'lang:contact_last_name',
                         'rules' => 'nohtml|trim|required'
                     ),
 
                     array(
                         'field' => 'contact_form_email',
-                        'label' => $this->lang->line('contact_email'),
+                        'label' => 'lang:contact_email',
                         'rules' => 'nohtml|trim|required|valid_email'
                     ),
 
                     array(
                         'field' => 'contact_form_phone',
-                        'label' => $this->lang->line('contact_phone'),
+                        'label' => 'lang:contact_phone',
                         'rules' => 'nohtml|trim'.($contact_form_phone_required ? '|required' : '')
                     ),
 
                     array(
                         'field' => 'contact_form_organization',
-                        'label' => $this->lang->line('contact_organization'),
+                        'label' => 'lang:contact_organization',
                         'rules' => 'nohtml|trim'.($contact_form_organization_required ? '|required' : '')
                     ),
 
                     array(
                         'field' => 'contact_form_subject',
-                        'label' => $this->lang->line('contact_subject'),
+                        'label' => 'lang:contact_subject',
                         'rules' => 'nohtml|trim|required'
                     ),
 
                     array(
                         'field' => 'contact_form_message',
-                        'label' => $this->lang->line('contact_message'),
+                        'label' => 'lang:contact_message',
                         'rules' => 'nohtml|trim|required|min_length[15]'
                     ),
 
