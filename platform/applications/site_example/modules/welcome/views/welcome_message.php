@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
             <div class="page-header">
-                <h1 class="my_section">Application Starter 4 Public Edition</h1>
+                <h1>Application Starter 4 Public Edition</h1>
             </div>
 
             <p>
