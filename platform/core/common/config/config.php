@@ -292,6 +292,20 @@ $config['encryption_key'] = 'MY_ENCRYPTION_KEY';
 
 /*
 |--------------------------------------------------------------------------
+| Encryption Key for Passwords
+|--------------------------------------------------------------------------
+|
+| This is a secret key for crypting passwords before they are stored within database.
+| This key is used for password decryption too. Don't share the key and don't loose it!
+|
+| Usually passwords are to be hashed, but there are rare cases when
+| symmetric encryption is needed. See the library Password.
+|
+*/
+$config['encryption_key_for_passwords'] = 'f@2M&';
+
+/*
+|--------------------------------------------------------------------------
 | Session Variables
 |--------------------------------------------------------------------------
 |

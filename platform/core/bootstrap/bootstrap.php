@@ -341,14 +341,6 @@ require BOOTSTRAPPATH.'arrays.php';
 
 
 /*
- *---------------------------------------------------------------
- * URL-based detection, stored within a global variable.
- *---------------------------------------------------------------
- */
-$DETECT_URL = detect_url();
-
-
-/*
  * --------------------------------------------------------------------
  * A custom PHP5-style autoloader
  * --------------------------------------------------------------------
@@ -368,3 +360,21 @@ if (IS_PHP_5_3) {
         require BOOTSTRAPPATH.'../../vendor/autoload.php';
     }
 }
+
+
+/*
+ * --------------------------------------------------------------------
+ * IDN functions - fallback PHP implementations.
+ * --------------------------------------------------------------------
+ */
+if (!defined('INTL_IDNA_VARIANT_2003')) {
+    require BOOTSTRAPPATH.'idn.php';
+}
+
+
+/*
+ *---------------------------------------------------------------
+ * URL-based detection, stored within a global variable.
+ *---------------------------------------------------------------
+ */
+$DETECT_URL = detect_url();

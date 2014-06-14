@@ -89,6 +89,12 @@ class Core_Config extends MX_Config {
         {
             $this->set_item('base_url', $DETECT_URL['base_url']);
         }
+        // For hard-coded configuration setting 'base_url'
+        // replace the protocol and the port with the actual detected values.
+        else
+        {
+            $this->set_item('base_url', http_build_url($this->config['base_url'], array('scheme' => $DETECT_URL['server_protocol'], 'port' => $DETECT_URL['port'])));
+        }
 
         if (!defined('BASE_URL')) {
             define('BASE_URL', $this->add_slash($this->base_url()));
@@ -626,6 +632,20 @@ class Core_Config extends MX_Config {
 
         if (array_key_exists($language, $this->config['languages'])) {
             return $this->config['languages'][$language]['name_en'];
+        }
+
+        return null;
+    }
+
+    // Added by Ivan Tcholakov, 31-MAY-2014.
+    public function language_flag($language = null) {
+
+        if ($language == '') {
+            $language = $this->current_language();
+        }
+
+        if (array_key_exists($language, $this->config['languages'])) {
+            return $this->config['languages'][$language]['flag'];
         }
 
         return null;

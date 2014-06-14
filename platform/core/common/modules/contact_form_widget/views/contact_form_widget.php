@@ -77,12 +77,22 @@ if ($this->settings->get('mailer_enabled')) {
 ?>
 
                             <div class="form-group">
-                                <img id="captcha_image"
-                                    src="<?php echo $this->captcha->src.'?nocache='.rand(100000000, 999999999); ?>"
-                                    class="thumbnail"
-                                    style="cursor: pointer;"
-                                    i18n:title="captcha.tip"
-                                />
+
+                                <div class="img-thumbnail">
+
+                                    <img id="captcha_image"
+                                        src="<?php echo $this->captcha->src.'?nocache='.rand(100000000, 999999999); ?>"
+                                        class="img-thumbnail"
+                                        style="cursor: pointer; margin-right: 5px; padding: 0; border-radius: 4px;"
+                                        i18n:title="captcha.tip"
+                                    /><button type="button" id="captcha_refresh" class="btn btn-default" i18n:title="ui_refresh"
+                                        style="vertical-align: middle; margin-top: 5px; margin-bottom: 5px; margin-right: 2px; outline: 0;"
+                                    >
+                                        <i id="captcha_refresh" class="fa fa-refresh"></i>
+                                    </button>
+
+                                </div>
+
                             </div>
 
                             <div class="form-group">
@@ -169,6 +179,10 @@ if ($this->settings->get('mailer_enabled')) {
                 $(function () {
 
                     $('#captcha_image').on('click', function() {
+                        refresh_captcha();
+                    });
+
+                    $('#captcha_refresh').on('click', function() {
                         refresh_captcha();
                     });
 

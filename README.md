@@ -285,7 +285,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Menu Library, https://github.com/nihaopaul/Spark-Menu, https://github.com/Barnabas/Spark-Menu (the original spark-source), https://github.com/daylightstudio/FUEL-CMS/blob/master/fuel/modules/fuel/libraries/Menu.php
 * Function print_d() (enhanced debug print), https://github.com/vikerlane/print_d
 * Registry library for CodeIgniter, https://github.com/ivantcholakov/codeigniter-registry
-* Bootstrap 3.1, http://getbootstrap.com/
+* Bootstrap, http://getbootstrap.com/
 * Bootstrap Hover Dropdown Plugin, https://github.com/CWSpear/bootstrap-hover-dropdown
 * jQuery Validation Plugin, http://jqueryvalidation.org/
 * Extended JavaScript regular expressions XRegExp, http://xregexp.com/
@@ -293,6 +293,8 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * An icon subset of flags from GoSquared, https://www.gosquared.com/resources/flag-icons/
 * Bootstrap Vertical Tabs, https://github.com/dbtek/bootstrap-vertical-tabs
 * Jasny Bootstrap, The missing components for your favorite front-end framework, http://jasny.github.io/bootstrap/, https://github.com/jasny/bootstrap
+* phpass (PasswordHash class), http://www.openwall.com/phpass/
+* Gravatar library for CodeIgniter, https://github.com/rsmarshall/Codeigniter-Gravatar
 
 The Playground
 --------------

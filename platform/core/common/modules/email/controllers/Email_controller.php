@@ -35,7 +35,9 @@ class Email_controller extends Core_Controller {
 
         $this->registry->delete('email_debugger');
 
-        if (!$this->settings->get('mailer_enabled')) {
+        $settings = get_email_settings();
+
+        if (!$settings['mailer_enabled']) {
 
             $debug_message = 'Send email: E-mail service has not been activated.';
 
@@ -44,6 +46,8 @@ class Email_controller extends Core_Controller {
 
             return false;
         }
+
+        $this->email->initialize($settings);
 
         if (isset($data['from']) && $data['from'] != '') {
 
@@ -57,7 +61,7 @@ class Email_controller extends Core_Controller {
 
         } else {
 
-            $from = $this->settings->get('site_email');
+            $from = $settings['site_email'];
             $from_name = $this->settings->get('site_name');
         }
 
@@ -73,14 +77,14 @@ class Email_controller extends Core_Controller {
 
         } else {
 
-            $reply_to = $this->settings->get('notification_email');
+            $reply_to = $settings['notification_email'];
             $reply_to_name = $this->settings->get('site_name');
         }
 
         if (isset($data['return_path']) && $data['return_path'] != '') {
             $return_path = $data['return_path'];
         } else {
-            $return_path = $this->settings->get('notification_email');
+            $return_path = $settings['notification_email'];
         }
 
         if (isset($data['to'])) {
@@ -90,15 +94,15 @@ class Email_controller extends Core_Controller {
             } elseif ($data['to'] != '') {
                 $to = $data['to'];
             } else {
-                $to = $this->settings->get('notification_email');
+                $to = $settings['notification_email'];
             }
 
         } else {
 
-            $to = $this->settings->get('notification_email');
+            $to = $settings['notification_email'];
         }
 
-        $cc_email = $this->settings->get('cc_email');
+        $cc_email = $settings['cc_email'];
 
         if (!is_array($cc_email)) {
 
@@ -197,6 +201,8 @@ class Email_controller extends Core_Controller {
             $result = (bool) $this->email->send();
 
             $debug_message = trim(strip_tags($this->email->print_debugger()));
+
+            $this->email->clear();
 
             $this->registry->set('email_debugger', $debug_message);
 

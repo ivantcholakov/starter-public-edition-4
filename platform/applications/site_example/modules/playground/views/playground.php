@@ -36,6 +36,7 @@
                         <span class="text-muted">This component might be used by HTMLPurifier, so let us have a look at its test.</span>
                     </li>
                     <li><a href="<?php echo base_url('non-mvc/normalize.css.php'); ?>">Testing normalize.css</a></li>
+                    <li><a href="<?php echo base_url('non-mvc/password_hash_test.php'); ?>">PasswordHash Test</a></li>
                 </ul>
 
                 <h4>Feature Tests</h4>

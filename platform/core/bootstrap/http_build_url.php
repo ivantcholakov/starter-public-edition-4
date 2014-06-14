@@ -356,7 +356,7 @@ if (!function_exists('http_build_url')) {
 
             if ($server_https) {
 
-                $url['scheme'] = 'http';
+                $url['scheme'] = 'https';
 
             } elseif (isset($url['port'])) {
 

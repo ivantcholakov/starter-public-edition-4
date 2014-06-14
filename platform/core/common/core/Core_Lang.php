@@ -438,4 +438,11 @@ class Core_Lang extends MX_Lang {
         return $this->config->language_name_en($language);
     }
 
+    // Added by Ivan Tcholakov, 31-MAY-2014.
+
+    public function flag($language = null) {
+
+        return $this->config->language_flag($language);
+    }
+
 }
