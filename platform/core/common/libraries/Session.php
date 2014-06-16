@@ -1,15 +1,9 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
-
-// See http://degreesofzero.com/article/55
-
-require_once BASEPATH.'libraries/Driver.php';
-require_once BASEPATH.'libraries/Session/Session.php';
-require_once BASEPATH.'libraries/Session/drivers/Session_native.php';
 
 class Session extends CI_Session {
 
@@ -20,48 +14,25 @@ class Session extends CI_Session {
 
     public function keep_flashdata($key = null) {
 
-        if ($key) {
-
-            // Mark individual flashdata as 'new' to preserve it from _flashdata_sweep().
+        if ($key !== null) {
 
             parent::keep_flashdata($key);
 
         } else {
 
-            // Mark all 'old' flashdata as 'new' (keep data from being deleted during next request).
-
-            $userdata = $this->userdata();
-
-            foreach ($userdata as $name => $value) {
-
-                $parts = explode(self::FLASHDATA_OLD, $name);
-
-                if (is_array($parts) && count($parts) === 2) {
-
-                    $new_name = self::FLASHDATA_KEY.self::FLASHDATA_NEW.$parts[1];
-                    $this->set_userdata($new_name, $value);
-                    $this->unset_userdata($name);
-                }
-            }
+            // An added feature: Keep all the flash data.
+            parent::keep_flashdata($this->get_flash_keys());
         }
     }
 
-    protected function _flashdata_mark() {
+    protected function _ci_init_vars() {
 
+        parent::_ci_init_vars();
+
+        // An added feature: Keep all the flash data on AJAX requests.
         if (IS_AJAX_REQUEST) {
-            return;
+            $this->keep_flashdata();
         }
-
-        parent::_flashdata_mark();
-    }
-
-    protected function _flashdata_sweep() {
-        
-        if (IS_AJAX_REQUEST) {
-            return;
-        }
-
-        parent::_flashdata_sweep();
     }
 
 }
