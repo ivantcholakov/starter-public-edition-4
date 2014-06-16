@@ -125,11 +125,20 @@ class CI_Session {
 
 		if ( ! class_exists('CI_Session_driver', FALSE))
 		{
+			// Modified by Ivan Tcholakov, 16-JUN-2014.
+			//require_once(
+			//	file_exists(APPPATH.'libraries/Session/Session_driver.php')
+			//		? APPPATH.'libraries/Session/Session_driver.php'
+			//		: BASEPATH.'libraries/Session/Session_driver.php'
+			//);
 			require_once(
 				file_exists(APPPATH.'libraries/Session/Session_driver.php')
 					? APPPATH.'libraries/Session/Session_driver.php'
-					: BASEPATH.'libraries/Session/Session_driver.php'
+					: (file_exists(COMMONPATH.'libraries/Session/Session_driver.php')
+					? COMMONPATH.'libraries/Session/Session_driver.php'
+					: BASEPATH.'libraries/Session/Session_driver.php')
 			);
+			//
 
 			if (file_exists($file_path = APPPATH.'libraries/Session/'.$prefix.'Session_driver.php'))
 			{
@@ -140,7 +149,10 @@ class CI_Session {
 		$class = 'Session_'.$driver.'_driver';
 		if ( ! class_exists('CI_'.$class, FALSE))
 		{
-			if (file_exists($file_path = APPPATH.'libraries/Session/drivers/'.$class.'.php') OR file_exists($file_path = BASEPATH.'libraries/Session/drivers/'.$class.'.php'))
+			// Modified by Ivan Tcholakov, 16-JUN-2014.
+			//if (file_exists($file_path = APPPATH.'libraries/Session/drivers/'.$class.'.php') OR file_exists($file_path = BASEPATH.'libraries/Session/drivers/'.$class.'.php'))
+			if (file_exists($file_path = APPPATH.'libraries/Session/drivers/'.$class.'.php') OR file_exists($file_path = COMMONPATH.'libraries/Session/drivers/'.$class.'.php') OR file_exists($file_path = BASEPATH.'libraries/Session/drivers/'.$class.'.php'))
+			//
 			{
 				require_once($file_path);
 			}
