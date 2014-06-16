@@ -8,16 +8,6 @@
 
 @date_default_timezone_set('Europe/Sofia');
 
-ini_set('session.gc_maxlifetime', 4 * 60 * 60); // 4 hours
-//ini_set('session.gc_probability', 1);
-//ini_set('session.gc_divisor', 1);
-
-// Use cookies to store the session ID on the client side.
-@ ini_set ('session.use_only_cookies', 1);
-// Disable transparent Session ID support.
-@ ini_set ('session.use_trans_sid', 0);
-
-
 ini_set('memory_limit', '512M');
 ini_set('post_max_size', '16M');
 
