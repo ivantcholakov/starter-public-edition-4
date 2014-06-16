@@ -86,7 +86,7 @@ $autoload['packages'] = array(COMMONPATH.'third_party', APPPATH.'third_party');
 */
 
 $autoload['libraries'] = array(
-    'session', // A temporary fix for extending CI_Session class.
+    'session',
     'events',
 );
 
@@ -101,12 +101,10 @@ $autoload['libraries'] = array(
 |
 | Prototype:
 |
-|    $autoload['drivers'] = array('session', 'cache');
+|    $autoload['drivers'] = array('cache');
 */
 
-$autoload['drivers'] = array(
-    //'session', // A temporary fix for extending CI_Session class.
-);
+$autoload['drivers'] = array();
 
 
 /*
