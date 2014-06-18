@@ -18,7 +18,7 @@ class Form_validation extends CI_Form_validation {
     // http://www.mahbubblog.com/php/form-validation-callbacks-in-hmvc-in-codeigniter/
     // ---------------------------------------------------------------------
 
-    function run($module = '', $group = '') {
+    public function run($module = '', $group = '') {
 
         (is_object($module)) AND $this->CI = &$module;
         return parent::run($group);
