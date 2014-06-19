@@ -1,6 +1,11 @@
 A PHP Application Starter, Version 4, Based on CodeIgniter
 ==========================================================
 
+Project Repository
+------------------
+
+https://github.com/ivantcholakov/starter-public-edition-4
+
 Note
 ----
 
@@ -58,7 +63,7 @@ you would not be forced to rename them according to the new strict "ucfirst" nam
 * In addition to the normal MVC execution, it is possible to run non-MVC scripts, look at the folder www/non-mvc/ for examples.
 * Adapted for HMVC rooting has been implemented. Within a module you are able to place controllers in this way:
 ```
-    modules/demo/controllers/page/Page.php     -> address: site_url/demo/page/[index/method]  
+    modules/demo/controllers/page/Page.php     -> address: site_url/demo/page/[index/method]
     modules/demo/controllers/page/Other.php    -> address: site_url/demo/page/other/[index/method]
 ```
 Deeper directory nesting as in CI 3 has not been implemented for now.
@@ -324,17 +329,17 @@ Credits
 License Information
 -------------------
 
-For my original code:  
-Author: Ivan Tcholakov ivantcholakov@gmail.com, 2012-2014.  
+For my original code:
+Author: Ivan Tcholakov ivantcholakov@gmail.com, 2012-2014.
 License: The MIT License (MIT), http://opensource.org/licenses/MIT
 
-CodeIgniter:  
-Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)  
+CodeIgniter:
+Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
 License: Open Software License (OSL 3.0), http://opensource.org/licenses/OSL-3.0
 
-CodeIgniter configuration file:  
-Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)  
+CodeIgniter configuration file:
+Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
 License: Academic Free License (AFL 3.0), http://opensource.org/licenses/AFL-3.0
 
-Third parties:  
+Third parties:
 License information is to be found directly within code and/or within additional files at corresponding folders.
