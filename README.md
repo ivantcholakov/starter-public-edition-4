@@ -329,17 +329,17 @@ Credits
 License Information
 -------------------
 
-For my original code:
-Author: Ivan Tcholakov ivantcholakov@gmail.com, 2012-2014.
+For original code in this project:  
+Author: Ivan Tcholakov ivantcholakov@gmail.com, 2012-2014, and other contributors.  
 License: The MIT License (MIT), http://opensource.org/licenses/MIT
 
-CodeIgniter:
-Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+CodeIgniter:  
+Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)  
 License: Open Software License (OSL 3.0), http://opensource.org/licenses/OSL-3.0
 
-CodeIgniter configuration file:
-Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+CodeIgniter configuration files:  
+Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)  
 License: Academic Free License (AFL 3.0), http://opensource.org/licenses/AFL-3.0
 
-Third parties:
+Third parties:  
 License information is to be found directly within code and/or within additional files at corresponding folders.
