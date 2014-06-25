@@ -313,9 +313,20 @@ class Template
             $template['body'] = $this->_body;
 
             // Find the main body and 3rd param means parse if its a theme view (only if parser is enabled)
-            // Modified by Ivan Tcholakov, 27-DEC-2013.
-            //$this->_body = self::_load_view('layouts/'.$this->_layout, $this->_data, true, self::_find_view_folder());
-            $this->_body = self::_load_view('layouts/'.$this->_layout, $this->_data, $this->_parsers, self::_find_view_folder());
+            // Modified by Ivan Tcholakov, 25-JUN-2014.
+            // A very dirty fix for https://github.com/ivantcholakov/starter-public-edition-4/issues/16
+            //// Modified by Ivan Tcholakov, 27-DEC-2013.
+            ////$this->_body = self::_load_view('layouts/'.$this->_layout, $this->_data, true, self::_find_view_folder());
+            //$this->_body = self::_load_view('layouts/'.$this->_layout, $this->_data, $this->_parsers, self::_find_view_folder());
+            ////
+            if (file_exists(self::_find_view_folder().'layouts/'.$this->_layout.self::_ext($this->_layout))) {
+                $this->_body = self::_load_view('layouts/'.$this->_layout, $this->_data, $this->_parsers, self::_find_view_folder());
+            } elseif (file_exists(self::_find_view_folder(true).'layouts/'.$this->_layout.self::_ext($this->_layout))) {
+                $this->_body = self::_load_view('layouts/'.$this->_layout, $this->_data, $this->_parsers, self::_find_view_folder(true));
+            } else {
+                // This probably would fail and show the error message.
+                $this->_body = self::_load_view('layouts/'.$this->_layout, $this->_data, $this->_parsers, self::_find_view_folder());
+            }
             //
         }
 
@@ -889,15 +900,24 @@ class Template
     }
 
     // find layout files, they could be mobile or web
-    private function _find_view_folder()
+    // Modified by Ivan Tcholakov. 25-JUN-2014.
+    //private function _find_view_folder()
+    private function _find_view_folder($in_common_application = false)
+    //
     {
-        if (isset($this->_ci->load->_ci_cached_vars['template_views']))
+        // Modified by Ivan Tcholakov. 25-JUN-2014.
+        //if (isset($this->_ci->load->_ci_cached_vars['template_views']))
+        if (!$in_common_application && isset($this->_ci->load->_ci_cached_vars['template_views']))
+        //
         {
             return $this->_ci->load->_ci_cached_vars['template_views'];
         }
 
         // Base view folder
-        $view_folder = APPPATH.'views/';
+        // Modified by Ivan Tcholakov. 25-JUN-2014.
+        //$view_folder = APPPATH.'views/';
+        $view_folder = $in_common_application ? COMMONPATH.'views/' : APPPATH.'views/';
+        //
 
         // Using a theme? Put the theme path in before the view folder
         if ( ! empty($this->_theme))
