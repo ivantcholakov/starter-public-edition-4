@@ -9,7 +9,7 @@ class Admin_mode_controller extends Base_Controller {
         $this->load->helper('html_filters');
 
         $this->template
-            ->append_metadata(js('ckeditor/ckeditor.js'))
+            ->append_metadata($this->load->view('partials/ckeditor', null, true))
             ->set_partial('subnavbar', 'playground/online_editor/subnavbar')
             ->set('subnavbar_item_active', 'admin-mode')
         ;
