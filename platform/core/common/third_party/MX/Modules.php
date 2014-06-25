@@ -298,6 +298,12 @@ class Modules
                 return array(APPPATH.$base.$path, $file);
             }
 
+            // Added by Ivan Tcholakov, 25-JUN-2014.
+            if (is_file(COMMONPATH.$base.$path.$file_ext)) {
+                return array(COMMONPATH.$base.$path, $file);
+            }
+            //
+
             show_error("Unable to locate the {$base} file: {$path}{$file_ext}");
         }
 
