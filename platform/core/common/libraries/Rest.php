@@ -184,7 +184,7 @@ class REST
         if ($name !== FALSE)
         {
             $this->api_name = $name;
-    }
+        }
 
     }
 
