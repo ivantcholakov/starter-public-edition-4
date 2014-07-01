@@ -13,7 +13,6 @@
  * @link            https://github.com/philsturgeon/codeigniter-restserver
  * @version         2.6.0
  */
-
 // Modified by Ivan Tcholakov, 14-FEB-2012.
 //abstract class REST_Controller extends CI_Controller
 abstract class REST_Controller extends Core_Controller
@@ -22,7 +21,7 @@ abstract class REST_Controller extends Core_Controller
     /**
      * This defines the rest format.
      * 
-     * Must be overriden it in a controller so that it is set.
+     * Must be overridden it in a controller so that it is set.
      *
      * @var string|null
      */
@@ -34,6 +33,13 @@ abstract class REST_Controller extends Core_Controller
      * @var array 
      */
     protected $methods = array();
+
+    /**
+     * List of allowed HTTP methods
+     *
+     * @var array
+     */
+    protected $allowed_http_methods = array('get', 'delete', 'post', 'put');
 
     /**
      * General request data and information.
@@ -146,6 +152,12 @@ abstract class REST_Controller extends Core_Controller
         $this->request = new stdClass();
         $this->request->method = $this->_detect_method();
 
+        // Create argument container, if nonexistent
+        if ( ! isset($this->{'_'.$this->request->method.'_args'}))
+        {
+            $this->{'_'.$this->request->method.'_args'} = array();
+        }
+
         // Set up our GET variables
         $this->_get_args = array_merge($this->_get_args, $this->uri->ruri_to_assoc());
 
@@ -160,42 +172,7 @@ abstract class REST_Controller extends Core_Controller
         // Some Methods cant have a body
         $this->request->body = NULL;
 
-        switch ($this->request->method)
-        {
-            case 'get':
-                // Grab proper GET variables
-                parse_str(parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY), $get);
-
-                // Merge both the URI segements and GET params
-                $this->_get_args = array_merge($this->_get_args, $get);
-                break;
-
-            case 'post':
-                $this->_post_args = $_POST;
-
-                $this->request->format and $this->request->body = file_get_contents('php://input');
-                break;
-
-            case 'put':
-                // It might be a HTTP body
-                if ($this->request->format)
-                {
-                    $this->request->body = file_get_contents('php://input');
-                }
-
-                // If no file type is provided, this is probably just arguments
-                else
-                {
-                    parse_str(file_get_contents('php://input'), $this->_put_args);
-                }
-
-                break;
-
-            case 'delete':
-                // Set up out DELETE variables (which shouldn't really exist, but sssh!)
-                parse_str(file_get_contents('php://input'), $this->_delete_args);
-                break;
-        }
+        $this->{'_parse_' . $this->request->method}();
 
         // Now we know all about our request, let's try and parse the body if it exists
         if ($this->request->format and $this->request->body)
@@ -206,7 +183,7 @@ abstract class REST_Controller extends Core_Controller
         }
 
         // Merge both for one mega-args variable
-        $this->_args = array_merge($this->_get_args, $this->_put_args, $this->_post_args, $this->_delete_args);
+        $this->_args = array_merge($this->_get_args, $this->_put_args, $this->_post_args, $this->_delete_args, $this->{'_'.$this->request->method.'_args'});
 
         // Which format should the data be returned in?
         $this->response = new stdClass();
@@ -238,6 +215,7 @@ abstract class REST_Controller extends Core_Controller
             }
         }
 
+        $this->rest = new StdClass();
         // Load DB if its enabled
         if (config_item('rest_database_group') AND (config_item('rest_enable_keys') OR config_item('rest_enable_logging')))
         {
@@ -341,7 +319,20 @@ abstract class REST_Controller extends Core_Controller
         }
 
         // And...... GO!
-        call_user_func_array(array($this, $controller_method), $arguments);
+        $this->_fire_method(array($this, $controller_method), $arguments);
+    }
+
+    /**
+     * Fire Method
+     *
+     * Fires the designated controller method with the given arguments.
+     *
+     * @param array $method The controller method to fire
+     * @param array $args The arguments to pass to the controller method
+     */
+    protected function _fire_method($method, $args)
+    {
+        call_user_func_array($method, $args);
     }
 
     /**
@@ -362,7 +353,7 @@ abstract class REST_Controller extends Core_Controller
             $http_code = 404;
 
             //create the output variable here in the case of $this->response(array());
-            $output = $data;
+            $output = NULL;
         }
 
         // Otherwise (if no data but 200 provided) or some data, carry on camping!
@@ -504,13 +495,13 @@ abstract class REST_Controller extends Core_Controller
                     // HTML or XML have shown up as a match
                     else
                     {
-                        // If it is truely HTML, it wont want any XML
+                        // If it is truly HTML, it wont want any XML
                         if ($format == 'html' AND strpos($this->input->server('HTTP_ACCEPT'), 'xml') === FALSE)
                         {
                             return $format;
                         }
 
-                        // If it is truely XML, it wont want any HTML
+                        // If it is truly XML, it wont want any HTML
                         elseif ($format == 'xml' AND strpos($this->input->server('HTTP_ACCEPT'), 'html') === FALSE)
                         {
                             return $format;
@@ -533,7 +524,7 @@ abstract class REST_Controller extends Core_Controller
     /**
      * Detect method
      *
-     * Detect which method (POST, PUT, GET, DELETE) is being used
+     * Detect which HTTP method is being used
      * 
      * @return string 
      */
@@ -553,7 +544,7 @@ abstract class REST_Controller extends Core_Controller
             }
         }
 
-        if (in_array($method, array('get', 'delete', 'post', 'put')))
+        if (in_array($method, $this->allowed_http_methods) && method_exists($this, '_parse_' . $method))
         {
             return $method;
         }
@@ -663,7 +654,7 @@ abstract class REST_Controller extends Core_Controller
      *
      * Check if the requests are coming in a tad too fast.
      *
-     * @param string $controller_method The method deing called.
+     * @param string $controller_method The method being called.
      * @return boolean 
      */
     protected function _check_limit($controller_method)
@@ -774,6 +765,55 @@ abstract class REST_Controller extends Core_Controller
         return false;
     }
 
+    /**
+     * Parse GET
+     */
+    protected function _parse_get()
+    {
+        // Grab proper GET variables
+        parse_str(parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY), $get);
+
+        // Merge both the URI segments and GET params
+        $this->_get_args = array_merge($this->_get_args, $get);
+    }
+
+    /**
+     * Parse POST
+     */
+    protected function _parse_post()
+    {
+        $this->_post_args = $_POST;
+
+        $this->request->format and $this->request->body = file_get_contents('php://input');
+    }
+
+    /**
+     * Parse PUT
+     */
+    protected function _parse_put()
+    {
+        // It might be a HTTP body
+        if ($this->request->format)
+        {
+            $this->request->body = file_get_contents('php://input');
+        }
+
+        // If no file type is provided, this is probably just arguments
+        else
+        {
+            parse_str(file_get_contents('php://input'), $this->_put_args);
+        }
+    }
+
+    /**
+     * Parse DELETE
+     */
+    protected function _parse_delete()
+    {
+        // Set up out DELETE variables (which shouldn't really exist, but sssh!)
+        parse_str(file_get_contents('php://input'), $this->_delete_args);
+    }
+
     // INPUT FUNCTION --------------------------------------------------------------
 
     /**
@@ -807,7 +847,7 @@ abstract class REST_Controller extends Core_Controller
             return $this->_post_args;
         }
 
-        return $this->input->post($key, $xss_clean);
+        return array_key_exists($key, $this->_post_args) ? $this->_xss_clean($this->_post_args[$key], $xss_clean) : FALSE;
     }
 
     /**
