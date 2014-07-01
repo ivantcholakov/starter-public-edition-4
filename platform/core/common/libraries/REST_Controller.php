@@ -3,7 +3,7 @@
 /**
  * REST_controller V 2.5.x
  *
- * @see https://github.com/philsturgeon/codeigniter-restserver
+ * @see https://github.com/chriskacerguis/codeigniter-restserver
  *
  */
 
