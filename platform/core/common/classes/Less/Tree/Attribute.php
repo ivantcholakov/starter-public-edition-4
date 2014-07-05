@@ -1,6 +1,11 @@
 <?php
 
-
+/**
+ * Attribute
+ *
+ * @package Less
+ * @subpackage tree
+ */
 class Less_Tree_Attribute extends Less_Tree{
 
 	public $key;
@@ -8,30 +13,40 @@ class Less_Tree_Attribute extends Less_Tree{
 	public $value;
 	public $type = 'Attribute';
 
-	function __construct($key, $op, $value){
+    public function __construct($key, $op, $value){
 		$this->key = $key;
 		$this->op = $op;
 		$this->value = $value;
 	}
 
-	function compile($env){
+    public function compile($env){
+
+		$key_obj = is_object($this->key);
+		$val_obj = is_object($this->value);
+
+		if( !$key_obj && !$val_obj ){
+			return $this;
+		}
 
 		return new Less_Tree_Attribute(
-			is_object($this->key) ? $this->key->compile($env) : $this->key ,
+			$key_obj ? $this->key->compile($env) : $this->key ,
 			$this->op,
-			is_object($this->value) ? $this->value->compile($env) : $this->value);
+			$val_obj ? $this->value->compile($env) : $this->value);
 	}
 
-	function genCSS( $env, &$strs ){
-		self::OutputAdd( $strs, $this->toCSS($env) );
+    /**
+     * @see Less_Tree::genCSS
+     */
+    public function genCSS( $output ){
+		$output->add( $this->toCSS() );
 	}
 
-	function toCSS($env = null){
+    public function toCSS(){
 		$value = $this->key;
 
 		if( $this->op ){
 			$value .= $this->op;
-			$value .= (is_object($this->value) ? $this->value->toCSS($env) : $this->value);
+			$value .= (is_object($this->value) ? $this->value->toCSS() : $this->value);
 		}
 
 		return '[' . $value . ']';

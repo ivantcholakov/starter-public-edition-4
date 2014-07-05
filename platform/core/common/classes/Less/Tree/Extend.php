@@ -1,6 +1,11 @@
 <?php
 
-
+/**
+ * Extend
+ *
+ * @package Less
+ * @subpackage tree
+ */
 class Less_Tree_Extend extends Less_Tree{
 
 	public $selector;
@@ -11,12 +16,16 @@ class Less_Tree_Extend extends Less_Tree{
 	public $allowAfter;
 	public $firstExtendOnThisSelectorPath;
 	public $type = 'Extend';
+	public $ruleset;
 
 
 	public $object_id;
 	public $parent_ids = array();
 
-	function __construct($selector, $option, $index){
+	/**
+	 * @param integer $index
+	 */
+    public function __construct($selector, $option, $index){
 		static $i = 0;
 		$this->selector = $selector;
 		$this->option = $option;
@@ -37,16 +46,18 @@ class Less_Tree_Extend extends Less_Tree{
 		$this->parent_ids = array($this->object_id);
 	}
 
-	function accept( $visitor ){
+    public function accept( $visitor ){
 		$this->selector = $visitor->visitObj( $this->selector );
 	}
 
-	function compile( $env ){
+    public function compile( $env ){
 		Less_Parser::$has_extends = true;
-		return new Less_Tree_Extend( $this->selector->compile($env), $this->option, $this->index);
+		$this->selector = $this->selector->compile($env);
+		return $this;
+		//return new Less_Tree_Extend( $this->selector->compile($env), $this->option, $this->index);
 	}
 
-	function findSelfSelectors( $selectors ){
+    public function findSelfSelectors( $selectors ){
 		$selfElements = array();
 
 
@@ -54,8 +65,8 @@ class Less_Tree_Extend extends Less_Tree{
 			$selectorElements = $selectors[$i]->elements;
 			// duplicate the logic in genCSS function inside the selector node.
 			// future TODO - move both logics into the selector joiner visitor
-			if( $i && $selectorElements && $selectorElements[0]->combinator->value === "") {
-				$selectorElements[0]->combinator->value = ' ';
+			if( $i && $selectorElements && $selectorElements[0]->combinator === "") {
+				$selectorElements[0]->combinator = ' ';
 			}
 			$selfElements = array_merge( $selfElements, $selectors[$i]->elements );
 		}

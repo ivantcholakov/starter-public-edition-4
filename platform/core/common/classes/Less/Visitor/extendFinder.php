@@ -1,33 +1,41 @@
 <?php
 
-
+/**
+ * Extend Finder Visitor
+ *
+ * @package Less
+ * @subpackage visitor
+ */
 class Less_Visitor_extendFinder extends Less_Visitor{
 
 	public $contexts = array();
 	public $allExtendsStack;
 	public $foundExtends;
 
-	function __construct(){
+	public function __construct(){
 		$this->contexts = array();
 		$this->allExtendsStack = array(array());
 		parent::__construct();
 	}
 
-	function run($root){
+	/**
+	 * @param Less_Tree_Ruleset $root
+	 */
+    public function run($root){
 		$root = $this->visitObj($root);
 		$root->allExtends =& $this->allExtendsStack[0];
 		return $root;
 	}
 
-	function visitRule($ruleNode, &$visitDeeper ){
+    public function visitRule($ruleNode, &$visitDeeper ){
 		$visitDeeper = false;
 	}
 
-	function visitMixinDefinition( $mixinDefinitionNode, &$visitDeeper ){
+    public function visitMixinDefinition( $mixinDefinitionNode, &$visitDeeper ){
 		$visitDeeper = false;
 	}
 
-	function visitRuleset($rulesetNode){
+    public function visitRuleset($rulesetNode){
 
 		if( $rulesetNode->root ){
 			return;
@@ -36,71 +44,69 @@ class Less_Visitor_extendFinder extends Less_Visitor{
 		$allSelectorsExtendList = array();
 
 		// get &:extend(.a); rules which apply to all selectors in this ruleset
-		$rules = $rulesetNode->rules;
-		$ruleCnt = count($rules);
-		for($i = 0; $i < $ruleCnt; $i++ ){
-			if( $rules[$i] instanceof Less_Tree_Extend ){
-				$allSelectorsExtendList[] = $rules[$i];
-				$rulesetNode->extendOnEveryPath = true;
+		if( $rulesetNode->rules ){
+			foreach($rulesetNode->rules as $rule){
+				if( $rule instanceof Less_Tree_Extend ){
+					$allSelectorsExtendList[] = $rule;
+					$rulesetNode->extendOnEveryPath = true;
+				}
 			}
 		}
 
 
-
 		// now find every selector and apply the extends that apply to all extends
 		// and the ones which apply to an individual extend
-		$paths = $rulesetNode->paths;
-		$paths_len = count($paths);
-		for($i = 0; $i < $paths_len; $i++ ){
-
-			$selectorPath = $paths[$i];
+		foreach($rulesetNode->paths as $selectorPath){
 			$selector = end($selectorPath); //$selectorPath[ count($selectorPath)-1];
 
-
-			$list = array_merge($selector->extendList, $allSelectorsExtendList);
-
-			$extendList = array();
-			foreach($list as $allSelectorsExtend){
-				$extendList[] = clone $allSelectorsExtend;
+			$j = 0;
+			foreach($selector->extendList as $extend){
+				$this->allExtendsStackPush($rulesetNode, $selectorPath, $extend, $j);
 			}
-
-			$extendList_len = count($extendList);
-			for($j = 0; $j < $extendList_len; $j++ ){
-				$this->foundExtends = true;
-				$extend = $extendList[$j];
-				$extend->findSelfSelectors( $selectorPath );
-				$extend->ruleset = $rulesetNode;
-				if( $j === 0 ){ $extend->firstExtendOnThisSelectorPath = true; }
-
-				$temp = count($this->allExtendsStack)-1;
-				$this->allExtendsStack[ $temp ][] = $extend;
+			foreach($allSelectorsExtendList as $extend){
+				$this->allExtendsStackPush($rulesetNode, $selectorPath, $extend, $j);
 			}
 		}
 
 		$this->contexts[] = $rulesetNode->selectors;
 	}
 
-	function visitRulesetOut( $rulesetNode ){
+    public function allExtendsStackPush($rulesetNode, $selectorPath, $extend, &$j){
+		$this->foundExtends = true;
+		$extend = clone $extend;
+		$extend->findSelfSelectors( $selectorPath );
+		$extend->ruleset = $rulesetNode;
+		if( $j === 0 ){
+			$extend->firstExtendOnThisSelectorPath = true;
+		}
+
+		$end_key = count($this->allExtendsStack)-1;
+		$this->allExtendsStack[$end_key][] = $extend;
+		$j++;
+	}
+
+
+    public function visitRulesetOut( $rulesetNode ){
 		if( !is_object($rulesetNode) || !$rulesetNode->root ){
 			array_pop($this->contexts);
 		}
 	}
 
-	function visitMedia( $mediaNode ){
+    public function visitMedia( $mediaNode ){
 		$mediaNode->allExtends = array();
 		$this->allExtendsStack[] =& $mediaNode->allExtends;
 	}
 
-	function visitMediaOut( $mediaNode ){
+    public function visitMediaOut(){
 		array_pop($this->allExtendsStack);
 	}
 
-	function visitDirective( $directiveNode ){
+    public function visitDirective( $directiveNode ){
 		$directiveNode->allExtends = array();
 		$this->allExtendsStack[] =& $directiveNode->allExtends;
 	}
 
-	function visitDirectiveOut( $directiveNode ){
+    public function visitDirectiveOut(){
 		array_pop($this->allExtendsStack);
 	}
 }

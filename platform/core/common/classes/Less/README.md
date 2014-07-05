@@ -1,32 +1,36 @@
 [Less.php](http://lessphp.gpeasy.com)
 ========
 
-The **dynamic** stylesheet language.
+This is a PHP port of the official LESS processor <http://lesscss.org>. [![Build Status](https://travis-ci.org/oyejorge/less.php.png?branch=master)](https://travis-ci.org/oyejorge/less.php)
 
-<http://lesscss.org>
+* [About](#about)
+* [Installation](#installation)
+* [Basic Use](#basic-use)
+* [Caching](#caching)
+* [Source Maps](#source-maps)
+* [Command Line](#command-line)
+* [Integration with other projects](#integration-with-other-projects)
+* [Transitioning from Leafo/lessphp](#transitioning-from-leafolessphp)
+* [Credits](#credits)
 
-about
------
 
-This is a PHP port of the official LESS processor <http://lesscss.org> and should produce the same results as LESS 1.4.2.
 
-Most of the code structure remains the same, which should allow for fairly easy updates in the future.
-Namespaces, anonymous functions and shorthand ternary operators - `?:` have been removed to make this package compatible with php 5.2+.
+About
+---
+The code structure of less.php mirrors that of the official processor which helps us ensure compatibility and allows for easy maintenance.
 
-There are still a few unsupported LESS features:
+Please note, there are a few unsupported LESS features:
 
 - Evaluation of JavaScript expressions within back-ticks (for obvious reasons).
-- Definition of custom functions - will be added to the `Less_Environment` class.
+- Definition of custom functions.
 
 
-use
+Installation
 ---
 
-### Installation
+You can install the library with composer or manually.
 
-You can install the library by composer or manually.
-
-##### Composer
+#### Composer
 
 Step 1. Edit your `composer.json`:
 
@@ -45,28 +49,31 @@ $ curl -sS https://getcomposer.org/installer | php
 $ php composer.phar install
 ```
 
-
-##### Manually
+#### Manually From Release
 
 Step 1. [Download the latest release](https://github.com/oyejorge/less.php/releases) and upload the php files to your server.
 
-Step 2. Include the library through autoloader:
+Step 2. Include the library:
 
 ```php
-require_once '[path to less.php]/lib/Less/Autoloader.php';
+require_once '[path to less.php]/Less.php';
+```
+
+#### Manually From Source
+
+Step 1. [Download the source](https://github.com/oyejorge/less.php/archive/master.zip) and upload the files in /lib/Less to a folder on your server.
+
+Step 2. Include the library and register the Autoloader
+
+```php
+require_once '[path to less.php]/Autoloader.php';
 Less_Autoloader::register();
 ```
 
+Basic Use
+---
 
-### Autoloading
-Use the Autoloader if you're not using composer or one of the [prepackaged releases](https://github.com/oyejorge/less.php/releases).
-
-```php
-require_once 'lib/Less/Autoloader.php';
-Less_Autoloader::register();
-```
-
-### Parsing Strings
+#### Parsing Strings
 
 ```php
 $parser = new Less_Parser();
@@ -75,7 +82,7 @@ $css = $parser->getCss();
 ```
 
 
-### Parsing Less Files
+#### Parsing Less Files
 The parseFile() function takes two arguments:
 
 1. The absolute path of the .less file to be parsed
@@ -88,7 +95,7 @@ $css = $parser->getCss();
 ```
 
 
-### Handling Invalid Less
+#### Handling Invalid Less
 An exception will be thrown if the compiler encounters invalid less
 
 ```php
@@ -102,8 +109,8 @@ try{
 ```
 
 
-### Parsing Multiple Sources
-php.less can parse multiple sources to generate a single css file
+#### Parsing Multiple Sources
+less.php can parse multiple sources to generate a single css file
 
 ```php
 $parser = new Less_Parser();
@@ -112,22 +119,8 @@ $parser->parse( '@color: #4D926F; #header { color: @color; } h2 { color: @color;
 $css = $parser->getCss();
 ```
 
-
-### Caching CSS
-Use the Less_Cache class to save and reuse the results of compiled less files.
-This method we check the modified time of each less file (including imported files) and regenerate when changes are found.
-Note: When changes are found, this method will return a different file name for the new cached content.
-
-```php
-$to_cache = array( '/var/www/mysite/bootstrap.less' => '/mysite/' );
-Less_Cache::$cache_dir = '/var/www/writable_folder';
-$css_file_name = Less_Cache::Get( $to_cache );
-$compiled = file_get_contents( '/var/www/writable_folder/'.$css_file_name );
-```
-
-
-### Getting Info About The Parsed Files
-php.less can tell you which .less files were imported and parsed.
+#### Getting Info About The Parsed Files
+less.php can tell you which .less files were imported and parsed.
 
 ```php
 $parser = new Less_Parser();
@@ -137,7 +130,7 @@ $imported_files = $parser->allParsedFiles();
 ```
 
 
-### Compressing Output
+#### Compressing Output
 You can tell less.php to remove comments and whitespace to generate minimized css files.
 
 ```php
@@ -147,10 +140,20 @@ $parser->parseFile( '/var/www/mysite/bootstrap.less', '/mysite/' );
 $css = $parser->getCss();
 ```
 
+#### Setting Variables
+You can use the ModifyVars() method to customize your css if you have variables stored in php associative arrays
 
-### Import Directories
-By default, php.less will look for @imports in the directory of the file passed to parsefile().
-If you're using parse() or if @imports reside in different directories, you can tell php.less where to look.
+```php
+$parser = new Less_Parser();
+$parser->parseFile( '/var/www/mysite/bootstrap.less', '/mysite/' );
+$parser->ModifyVars( array('font-size-base'=>'16px') );
+$css = $parser->getCss();
+```
+
+
+#### Import Directories
+By default, less.php will look for @imports in the directory of the file passed to parsefile().
+If you're using parse() or if @imports reside in different directories, you can tell less.php where to look.
 
 ```php
 $directories = array( '/var/www/mysite/bootstrap/' => '/mysite/bootstrap/' );
@@ -161,20 +164,91 @@ $css = $parser->getCss();
 ```
 
 
-### Parser Caching
-php.less will save serialized parser data for each .less file if a writable folder is passed to the SetCacheDir() method.
-Note: This feature only caches intermediate parsing results to improve the performance of repeated css generation.
-Your application should cache any css generated by php.less.
+Caching
+---
+Compiling less code into css is a time consuming process, caching your results is highly recommended.
+
+
+#### Caching CSS
+Use the Less_Cache class to save and reuse the results of compiled less files.
+This method will check the modified time and size of each less file (including imported files) and regenerate a new css file when changes are found.
+Note: When changes are found, this method will return a different file name for the new cached content.
 
 ```php
-$parser = new Less_Parser();
-$parser->SetCacheDir( '/var/www/writable_folder' );
+$less_files = array( '/var/www/mysite/bootstrap.less' => '/mysite/' );
+$options = array( 'cache_dir' => '/var/www/writable_folder' );
+$css_file_name = Less_Cache::Get( $less_files, $options );
+$compiled = file_get_contents( '/var/www/writable_folder/'.$css_file_name );
+```
+
+#### Caching CSS With Variables
+Passing options to Less_Cache::Get()
+
+```php
+$less_files = array( '/var/www/mysite/bootstrap.less' => '/mysite/' );
+$options = array( 'cache_dir' => '/var/www/writable_folder' );
+$variables = array( 'width' => '100px' );
+$css_file_name = Less_Cache::Get( $less_files, $options, $variables );
+$compiled = file_get_contents( '/var/www/writable_folder/'.$css_file_name );
+```
+
+
+#### Parser Caching
+less.php will save serialized parser data for each .less file if a writable folder is passed to the SetCacheDir() method.
+Note: This feature only caches intermediate parsing results to improve the performance of repeated css generation.
+Your application should cache any css generated by less.php.
+
+```php
+$options = array('cache_dir'=>'/var/www/writable_folder');
+$parser = new Less_Parser( $options );
+$parser->parseFile( '/var/www/mysite/bootstrap.less', '/mysite/' );
+$css = $parser->getCss();
+```
+
+You can specify the caching technique used by changing the ```cache_method``` option. Supported methods are:
+* ```php```: Creates valid PHP files which can be included without any changes (default method).
+* ```var_export```: Like "php", but using PHPs ```var_export()``` function without any optimizations.
+  It's recommended to use "php" instead.
+* ```serialize```: Faster, but pretty memory-intense.
+* ```callback```: Use custom callback functions to implement your own caching method. Give the "cache_callback_get" and
+  "cache_callback_set" options with callables (see PHPs ```call_user_func()``` and ```is_callable()``` functions). less.php
+  will pass the parser object (class ```Less_Parser```), the path to the parsed .less file ("/some/path/to/file.less") and
+  an identifier that will change every time the .less file is modified. The ```get``` callback must return the ruleset
+  (an array with ```Less_Tree``` objects) provided as fourth parameter of the ```set``` callback. If something goes wrong,
+  return ```NULL``` (cache doesn't exist) or ```FALSE```.
+
+
+
+Source Maps
+---
+Less.php supports v3 sourcemaps
+
+#### Inline
+The sourcemap will be appended to the generated css file.
+
+```php
+$options = array( 'sourceMap' => true );
+$parser = new Less_Parser($options);
+$parser->parseFile( '/var/www/mysite/bootstrap.less', '/mysite/' );
+$css = $parser->getCss();
+```
+
+#### Saving to Map File
+
+```php
+$options = array(
+	'sourceMap'			=> true,
+	'sourceMapWriteTo'	=> '/var/www/mysite/writable_folder/filename.map',
+	'sourceMapURL'		=> '/mysite/writable_folder/filename.map',
+	);
+$parser = new Less_Parser($options);
 $parser->parseFile( '/var/www/mysite/bootstrap.less', '/mysite/' );
 $css = $parser->getCss();
 ```
 
 
-### Command line
+Command line
+---
 An additional script has been included to use the compiler from the command line.
 In the simplest invocation, you specify an input file and the compiled css is written to standard out:
 
@@ -196,16 +270,53 @@ For more help, run `lessc --help`
 Integration with other projects
 ---
 
-### Drupal 7
+#### Drupal 7
 
 This library can be used as drop-in replacement of lessphp to work with [Drupal 7 less module](https://drupal.org/project/less).
 
 How to install:
 
-1. [Download the latest release](https://github.com/oyejorge/less.php/releases) and unpack it so that 'lessc.inc.php' is located at 'sites/all/libraries/lessphp/lessc.inc.php'.
+1. [Download the less.php source code](https://github.com/oyejorge/less.php/archive/master.zip) and unzip it so that 'lessc.inc.php' is located at 'sites/all/libraries/lessphp/lessc.inc.php'.
 2. Download and install [Drupal 7 less module](https://drupal.org/project/less) as usual.
 3. That's it :)
 
-credits
+#### JBST WordPress theme
+
+JBST has a built-in LESS compiler based on lessphp. Customize your WordPress theme with LESS.
+
+How to use / install:
+
+1. [Download the latest release](https://github.com/bassjobsen/jamedo-bootstrap-start-theme) copy the files to your {wordpress/}wp-content/themes folder and activate it.
+2. Find the compiler under Appearance > LESS Compiler in your WordPress dashboard
+3. Enter your LESS code in the text area and press (re)compile
+
+Use the built-in compiler to:
+- set any [Bootstrap](http://getbootstrap.com/customize/) variable or use Bootstrap's mixins:
+	-`@navbar-default-color: blue;`
+        - create a custom button: `.btn-custom {
+  .button-variant(white; red; blue);
+}`
+- set any built-in LESS variable: for example `@footer_bg_color: black;` sets the background color of the footer to black
+- use built-in mixins: - add a custom font: `.include-custom-font(@family: arial,@font-path, @path: @custom-font-dir, @weight: normal, @style: normal);`
+
+The compiler can also be download as [plugin](http://wordpress.org/plugins/wp-less-to-css/)
+
+#### WordPress
+
+This simple plugin will simply make the library available to other plugins and themes and can be used as a dependency using the [TGM Library](http://tgmpluginactivation.com/)
+
+How to install:
+
+1. Install the plugin from your WordPress Dashboard: http://wordpress.org/plugins/lessphp/
+2. That's it :)
+
+
+Transitioning from Leafo/lessphp
 ---
-php.less was originally ported to php by [Matt Agar](https://github.com/agar) and then updated by [Martin Jantošovič](https://github.com/Mordred).
+Projects looking for an easy transition from leafo/lessphp can use the lessc.inc.php adapter. To use, [Download the less.php source code](https://github.com/oyejorge/less.php/archive/master.zip) and unzip the files into your project so that the new 'lessc.inc.php' replaces the existing 'lessc.inc.php'.
+
+Note, the 'setPreserveComments', 'registerFunction' and 'unregisterFunction' will no longer have any effect on the compiled less.
+
+Credits
+---
+less.php was originally ported to php by [Matt Agar](https://github.com/agar) and then updated by [Martin Jantošovič](https://github.com/Mordred).
