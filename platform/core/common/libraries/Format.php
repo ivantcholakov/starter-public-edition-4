@@ -26,7 +26,7 @@ class Format {
      */
     public function factory($data, $from_type = null)
     {
-        // Stupid stuff to emulate the "new static()" stuff in this libraries PHP 5.3 equivilent
+        // Stupid stuff to emulate the "new static()" stuff in this libraries PHP 5.3 equivalent
         $class = __CLASS__;
         return new $class($data, $from_type);
     }
@@ -59,7 +59,7 @@ class Format {
 
     public function to_array($data = null)
     {
-        // If not just null, but nopthing is provided
+        // If not just null, but nothing is provided
         if ($data === null and ! func_num_args())
         {
             $data = $this->_data;
@@ -110,6 +110,13 @@ class Format {
 
         foreach ($data as $key => $value)
         {
+
+            //change false/true to 0/1
+            if(is_bool($value))
+            {
+                $value = (int) $value;
+            }
+
             // no numeric keys in our xml please!
             if (is_numeric($key))
             {
@@ -120,15 +127,24 @@ class Format {
             // replace anything not alpha numeric
             $key = preg_replace('/[^a-z_\-0-9]/i', '', $key);
 
-            // if there is another array found recrusively call this function
-            if (is_array($value) || is_object($value))
+            if ($key === '_attributes' && (is_array($value) || is_object($value)))
+            {
+                $attributes = $value;
+                if (is_object($attributes)) $attributes = get_object_vars($attributes);
+                
+                foreach ($attributes as $attributeName => $attributeValue)
+                {
+                    $structure->addAttribute($attributeName, $attributeValue);
+                }
+            }
+            // if there is another array found recursively call this function
+            else if (is_array($value) || is_object($value))
             {
                 $node = $structure->addChild($key);
 
-                // recrusive call.
+                // recursive call.
                 $this->to_xml($value, $node, $key);
             }
-
             else
             {
                 // add single node.
@@ -144,10 +160,10 @@ class Format {
     // Format HTML for output
     public function to_html()
     {
-        $data = $this->_data;
+        $data = (array)$this->_data;
 
-        // Multi-dimentional array
-        if (isset($data[0]))
+        // Multi-dimensional array
+        if (isset($data[0]) && is_array($data[0]))
         {
             $headings = array_keys($data[0]);
         }
@@ -172,13 +188,13 @@ class Format {
         return $ci->table->generate();
     }
 
-    // Format HTML for output
+    // Format CSV for output
     public function to_csv()
     {
-        $data = $this->_data;
+        $data = (array)$this->_data;
 
-        // Multi-dimentional array
-        if (isset($data[0]))
+        // Multi-dimensional array
+        if (isset($data[0]) && is_array($data[0]))
         {
             $headings = array_keys($data[0]);
         }
@@ -190,12 +206,17 @@ class Format {
             $data = array($data);
         }
 
-        $output = implode(',', $headings).PHP_EOL;
+        $output = '"'.implode('","', $headings).'"'.PHP_EOL;
         foreach ($data as &$row)
         {
-            // Modified by Ivan Tcholakov, 14-FEB-2011.
-            //$output .= '"'.implode('","', $row).'"'.PHP_EOL;
-            @ $output .= '"'.implode('","', $row).'"'.PHP_EOL;
+            // Modified by Ivan Tcholakov, 01-JUJ-2014.
+            //if (is_array($row)) {
+            //    throw new Exception('Format class does not support multi-dimensional arrays');
+            //} else {
+            //    $row = str_replace('"', '""', $row); // Escape dbl quotes per RFC 4180
+            //    $output .= '"'.implode('","', $row).'"'.PHP_EOL;                
+            //}
+            @ $output .= '"'.implode('","', str_replace('"', '""', $row)).'"'.PHP_EOL;
             //
         }
 
@@ -205,7 +226,37 @@ class Format {
     // Encode as JSON
     public function to_json()
     {
-        return json_encode($this->_data);
+        $callback = isset($_GET['callback']) ? $_GET['callback'] : '';
+        if ($callback === '')
+        {
+            // Removed by Ivan Tcholakov, 02-JUL-2014: Non-UTF-8 specific code.
+            //$str = $this->_data;
+            //array_walk_recursive($str, function(&$item, $key) 
+            //{
+            //    if(!mb_detect_encoding($item, 'utf-8', true)) 
+            //    {
+            //        $item = utf8_encode($item);
+            //    }
+            //});
+            //
+            //return json_encode($str);
+            //
+            return json_encode($this->_data);
+        }
+
+        // we only honour jsonp callback which are valid javascript identifiers
+        else if (preg_match('/^[a-z_\$][a-z0-9\$_]*(\.[a-z_\$][a-z0-9\$_]*)*$/i', $callback))
+        {
+            // this is a jsonp request, the content-type must be updated to be text/javascript
+            header("Content-Type: application/javascript");
+            return $callback . "(" . json_encode($this->_data) . ");";
+        }
+        else
+        {
+            // we have an invalid jsonp callback identifier, we'll return plain json with a warning field
+            $this->_data['warning'] = "invalid jsonp callback provided: ".$callback;
+            return json_encode($this->_data);
+        }
     }
 
     // Encode as Serialized array
@@ -226,7 +277,7 @@ class Format {
         return $string ? (array) simplexml_load_string($string, 'SimpleXMLElement', LIBXML_NOCDATA) : array();
     }
 
-    // Format HTML for output
+    // Format CSV for output
     // This function is DODGY! Not perfect CSV support but works with my REST_Controller
     protected function _from_csv($string)
     {

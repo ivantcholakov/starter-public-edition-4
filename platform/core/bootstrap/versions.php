@@ -11,4 +11,4 @@
  * Platform (Application Starter) Version
  * @var    string
  */
- define('PLATFORM_VERSION', '4.0.0-dev');
+ define('PLATFORM_VERSION', '4.0.0-rc1');

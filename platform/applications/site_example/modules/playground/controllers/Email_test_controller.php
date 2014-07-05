@@ -76,11 +76,6 @@ class Email_test_controller extends Base_Controller {
             true,
             'mustache'
         );
-        
-        // Added by Ivan Tcholakov, 15-JAN-2014.
-        // TODO: This is a workaround, fix it.
-        $this->load->set_module('playground');
-        //
 
         $this->template
             ->set(compact('success', 'messages', 'subject', 'body'))

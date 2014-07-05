@@ -8,7 +8,8 @@ $config['config']['defaultLanguage'] = 'en';
 $config['config']['contentsLanguage'] = language_ckeditor();
 $config['config']['contentsLangDirection'] = get_instance()->lang->direction();
 $config['config']['contentsCss'] = array();
-$config['config']['contentsCss'][] = DEFAULT_BASE_URL.'assets/css/lib/bootstrap-3/bootstrap.css';
+$config['config']['contentsCss'][] = DEFAULT_BASE_URL.'assets/css/lib/bootstrap-3/bootstrap.min.css';
+$config['config']['contentsCss'][] = DEFAULT_BASE_URL.'assets/css/lib/font-awesome-4/font-awesome.min.css';
 $config['config']['contentsCss'][] = DEFAULT_BASE_URL.'assets/css/lib/editor.css';
 
 $config['config']['width'] = '';
