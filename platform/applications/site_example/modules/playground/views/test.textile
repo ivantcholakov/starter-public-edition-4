@@ -1,0 +1,81 @@
+Source: "https://github.com/sorenbs/Git-Code-Press/blob/master/markup-test.textile":https://github.com/sorenbs/Git-Code-Press/blob/master/markup-test.textile
+
+h2{color:green}. This is a title
+
+h3. This is a subhead
+
+p{color:red}. This is some text of dubious character. Isn't the use of "quotes" just lazy writing -- and theft of 'intellectual property' besides? I think the time has come to see a block quote.
+
+bq[fr]. This is a block quote. I'll admit it's not the most exciting block quote ever devised.
+
+Simple list:
+
+#{color:blue} one
+# two
+# three
+
+Multi-level list:
+
+# one
+## aye
+## bee
+## see
+# two
+## x
+## y
+# three
+
+Mixed list:
+
+* Point one
+* Point two
+## Step 1
+## Step 2
+## Step 3
+* Point three
+** Sub point 1
+** Sub point 2
+
+
+Well, that went well. How about we insert an <a href="/" title="watch out">old-fashioned hypertext link</a>? Will the quote marks in the tags get messed up? No!
+
+"This is a link (optional title)":http://www.textism.com
+
+table{border:1px solid black}.
+|_. this|_. is|_. a|_. header|
+<{background:gray}. |\2. this is|{background:red;width:200px}. a|^<>{height:200px}. row|
+|this|<>{padding:10px}. is|^. another|(bob#bob). row|
+
+An image:
+
+!BASE_URLapple-touch-icon-precomposed.png(optional alt text)!
+
+# Librarians rule
+# Yes they do
+# But you knew that
+
+Some more text of dubious character. Here is a noisome string of CAPITAL letters. Here is something we want to _emphasize_. 
+That was a linebreak. And something to indicate *strength*. Of course I could use <em>my own HTML tags</em> if I <strong>felt</strong> like it.
+
+h3. Coding
+
+This <code>is some code, "isn't it"</code>. Watch those quote marks! Now for some preformatted text:
+
+<pre>
+<code>
+	$text = str_replace("<p>%::%</p>","",$text);
+	$text = str_replace("%::%</p>","",$text);
+	$text = str_replace("%::%","",$text);
+
+</code>
+</pre>
+
+This isn't code.
+
+
+So you see, my friends:
+
+* The time is now
+* The time is not later
+* The time is not yesterday
+* We must act

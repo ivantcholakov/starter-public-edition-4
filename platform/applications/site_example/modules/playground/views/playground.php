@@ -44,6 +44,7 @@
                 <ul>
                     <li><a href="<?php echo site_url('playground/captcha'); ?>">Captcha Test</a></li>
                     <li><a href="<?php echo site_url('playground/mustache'); ?>">Mustache Parser Test</a></li>
+                    <li><a href="<?php echo site_url('playground/textile'); ?>">Textile Parser Test</a></li>
                     <li><a href="<?php echo site_url('playground/gibberish-aes'); ?>">GibberishAES Test</a></li>
                     <li><a href="<?php echo site_url('playground/random'); ?>">Random Values Test</a></li>
                     <li><a href="<?php echo site_url('playground/ajax-queue'); ?>">AJAX Queue Test</a></li>
