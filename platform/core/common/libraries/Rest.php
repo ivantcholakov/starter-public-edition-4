@@ -2,12 +2,13 @@
 /**
  * CodeIgniter REST Class
  *
- * Mske REST requests to RESTful services with simple syntax.
+ * Make REST requests to RESTful services with simple syntax.
  *
  * @package         CodeIgniter
  * @subpackage      Libraries
  * @category        Libraries
  * @author          Philip Sturgeon
+ * @author          Chris Kacerguis
  * @created         04/06/2009
  * @license         http://philsturgeon.co.uk/code/dbad-license
  * @link            http://getsparks.org/packages/restclient/show
@@ -43,6 +44,12 @@ class REST
     protected $http_user = null;
     protected $http_pass = null;
 
+    protected $api_name  = 'X-API-KEY';
+    protected $api_key   = null;
+
+    protected $ssl_verify_peer  = null;
+    protected $ssl_cainfo       = null;
+
     protected $response_string;
 
     function __construct($config = array())
@@ -54,12 +61,11 @@ class REST
         | If you are going to be a stick in the mud then do it the old fashioned way
 
         $this->_ci->load->library('curl');
-
         */
         $this->_ci->load->library('curl');  // Enabled by Ivan Tcholakov, 14-FEB-2012.
 
         // Load the cURL spark which this is dependant on
-        //$this->_ci->load->spark('curl/1.2.0'); // Disabled by Ivan Tcholakov, 15-FEB-2012.
+        //$this->_ci->load->spark('curl/1.2.1'); // Disabled by Ivan Tcholakov, 15-FEB-2012.
 
         // If a URL was passed to the library
         empty($config) OR $this->initialize($config);
@@ -70,6 +76,14 @@ class REST
         $this->_ci->curl->set_defaults();
     }
 
+    /**
+     * initialize
+     *
+     * @access      public
+     * @author      Phil Sturgeon
+     * @author      Chris Kacerguis
+     * @version     1.0
+     */
     public function initialize($config)
     {
         $this->rest_server = @$config['server'];
@@ -79,12 +93,25 @@ class REST
             $this->rest_server .= '/';
         }
 
+        isset($config['api_name']) && $this->api_name = $config['api_name'];
+        isset($config['api_key']) && $this->api_key = $config['api_key'];
+
         isset($config['http_auth']) && $this->http_auth = $config['http_auth'];
         isset($config['http_user']) && $this->http_user = $config['http_user'];
         isset($config['http_pass']) && $this->http_pass = $config['http_pass'];
+
+        isset($config['ssl_verify_peer']) && $this->ssl_verify_peer = $config['ssl_verify_peer'];
+        isset($config['ssl_cainfo']) && $this->ssl_cainfo = $config['ssl_cainfo'];
+
     }
 
-
+    /**
+     * get
+     *
+     * @access      public
+     * @author      Phil Sturgeon
+     * @version     1.0
+     */
     public function get($uri, $params = array(), $format = NULL)
     {
         if ($params)
@@ -95,29 +122,79 @@ class REST
         return $this->_call('get', $uri, NULL, $format);
     }
 
-
+    /**
+     * post
+     *
+     * @access      public
+     * @author      Phil Sturgeon
+     * @version     1.0
+     */
     public function post($uri, $params = array(), $format = NULL)
     {
         return $this->_call('post', $uri, $params, $format);
     }
 
-
+    /**
+     * put
+     *
+     * @access      public
+     * @author      Phil Sturgeon
+     * @version     1.0
+     */
     public function put($uri, $params = array(), $format = NULL)
     {
         return $this->_call('put', $uri, $params, $format);
     }
 
+    /**
+     * patch
+     *
+     * @access      public
+     * @author      Dmitry Serzhenko
+     * @version     1.0
+     */
+    public function patch($uri, $params = array(), $format = NULL)
+    {
+        return $this->_call('patch', $uri, $params, $format);
+    }
 
+    /**
+     * delete
+     *
+     * @access      public
+     * @author      Phil Sturgeon
+     * @version     1.0
+     */
     public function delete($uri, $params = array(), $format = NULL)
     {
         return $this->_call('delete', $uri, $params, $format);
     }
 
-    public function api_key($key, $name = 'X-API-KEY')
+    /**
+     * api_key
+     *
+     * @access      public
+     * @author      Phil Sturgeon
+     * @version     1.0
+     */
+    public function api_key($key, $name = FALSE)
     {
-        $this->_ci->curl->http_header($name, $key);
+        $this->api_key     = $key;
+        
+        if ($name !== FALSE)
+        {
+            $this->api_name = $name;
+        }
+
     }
 
+    /**
+     * language
+     *
+     * @access      public
+     * @author      Phil Sturgeon
+     * @version     1.0
+     */
     public function language($lang)
     {
         if (is_array($lang))
@@ -128,6 +205,25 @@ class REST
         $this->_ci->curl->http_header('Accept-Language', $lang);
     }
 
+    /**
+     * header
+     *
+     * @access      public
+     * @author      David Genelid
+     * @version     1.0
+     */    
+    public function header($header)
+    {
+        $this->_ci->curl->http_header($header);
+    }
+
+    /**
+     * _call
+     *
+     * @access      protected
+     * @author      Phil Sturgeon
+     * @version     1.0
+     */
     protected function _call($method, $uri, $params = array(), $format = NULL)
     {
         if ($format !== NULL)
@@ -135,16 +231,39 @@ class REST
             $this->format($format);
         }
 
-        $this->_set_headers();
+        $this->http_header('Accept', $this->mime_type);
 
         // Initialize cURL session
         $this->_ci->curl->create($this->rest_server.$uri);
+
+
+        // If using ssl set the ssl verification value and cainfo
+        // contributed by: https://github.com/paulyasi
+        if ($this->ssl_verify_peer === FALSE)
+        {
+            $this->_ci->curl->ssl(FALSE);
+        }
+        elseif ($this->ssl_verify_peer === TRUE)
+        {
+            $this->ssl_cainfo = getcwd() . $this->ssl_cainfo;
+            $this->_ci->curl->ssl(TRUE, 2, $this->ssl_cainfo);
+        }
 
         // If authentication is enabled use it
         if ($this->http_auth != '' && $this->http_user != '')
         {
             $this->_ci->curl->http_login($this->http_user, $this->http_pass, $this->http_auth);
         }
+
+        // If we have an API Key, then use it
+        if ($this->api_key != '')
+        {
+            $this->_ci->curl->http_header($this->api_name, $this->api_key);
+        }
+
+        // Set the Content-Type (contributed by https://github.com/eriklharper)
+        $this->http_header('Content-type', $this->mime_type);
+
 
         // We still want the response even if there is an error code over 400
         $this->_ci->curl->option('failonerror', FALSE);
@@ -159,8 +278,15 @@ class REST
         return $this->_format_response($response);
     }
 
-
-    // If a type is passed in that is not supported, use it as a mime type
+    /**
+     * initialize
+     *
+     * If a type is passed in that is not supported, use it as a mime type
+     *
+     * @access      public
+     * @author      Phil Sturgeon
+     * @version     1.0
+     */
     public function format($format)
     {
         if (array_key_exists($format, $this->supported_formats))
@@ -177,6 +303,13 @@ class REST
         return $this;
     }
 
+    /**
+     * debug
+     *
+     * @access      public
+     * @author      Phil Sturgeon
+     * @version     1.0
+     */
     public function debug()
     {
         $request = $this->_ci->curl->debug_request();
@@ -217,29 +350,71 @@ class REST
     }
 
 
+    /**
+     * status
+     *
+     * @access      public
+     * @author      Phil Sturgeon
+     * @version     1.0
+     */
     // Return HTTP status code
     public function status()
     {
         return $this->info('http_code');
     }
 
-    // Return curl info by specified key, or whole array
+    /**
+     * info
+     *
+     * Return curl info by specified key, or whole array
+     *
+     * @access      public
+     * @author      Phil Sturgeon
+     * @version     1.0
+     */
     public function info($key = null)
     {
         return $key === null ? $this->_ci->curl->info : @$this->_ci->curl->info[$key];
     }
 
-    // Set custom options
+    /**
+     * option
+     *
+     * Set custom CURL options
+     *
+     * @access      public
+     * @author      Phil Sturgeon
+     * @version     1.0
+     */
+    // 
     public function option($code, $value)
     {
         $this->_ci->curl->option($code, $value);
     }
 
-    protected function _set_headers()
+    /**
+     * http_header
+     *
+     * @access      public
+     * @author      Phil Sturgeon
+     * @version     1.0
+     */
+    public function http_header($header, $content = NULL)
     {
-        $this->_ci->curl->http_header('Accept: '.$this->mime_type);
+        // Did they use a single argument or two?
+        $params = $content ? array($header, $content) : array($header);
+
+        // Pass these attributes on to the curl library
+        call_user_func_array(array($this->_ci->curl, 'http_header'), $params);
     }
 
+    /**
+     * _format_response
+     *
+     * @access      public
+     * @author      Phil Sturgeon
+     * @version     1.0
+     */
     protected function _format_response($response)
     {
         $this->response_string =& $response;
@@ -253,7 +428,7 @@ class REST
         // Find out what format the data was returned in
         $returned_mime = @$this->_ci->curl->info['content_type'];
 
-        // If they sent through more than just mime, stip it off
+        // If they sent through more than just mime, strip it off
         if (strpos($returned_mime, ';'))
         {
             list($returned_mime)=explode(';', $returned_mime);
@@ -269,15 +444,30 @@ class REST
         return $response;
     }
 
-
-    // Format XML for output
+    /**
+     * _xml
+     *
+     * Format XML for output
+     *
+     * @access      public
+     * @author      Phil Sturgeon
+     * @version     1.0
+     */
     protected function _xml($string)
     {
         return $string ? (array) simplexml_load_string($string, 'SimpleXMLElement', LIBXML_NOCDATA) : array();
     }
 
-    // Format HTML for output
-    // This function is DODGY! Not perfect CSV support but works with my REST_Controller
+    /**
+     * _csv
+     *
+     * Format HTML for output. This function is DODGY! Not perfect CSV support but works 
+     * with my REST_Controller (https://github.com/philsturgeon/codeigniter-restserver)
+     *
+     * @access      public
+     * @author      Phil Sturgeon
+     * @version     1.0
+     */
     protected function _csv($string)
     {
         $data = array();
@@ -290,7 +480,7 @@ class REST
             // The substr removes " from start and end
             $data_fields = explode('","', trim(substr($row, 1, -1)));
 
-            if (count($data_fields) == count($headings))
+            if (count($data_fields) === count($headings))
             {
                 $data[] = array_combine($headings, $data_fields);
             }
@@ -300,19 +490,43 @@ class REST
         return $data;
     }
 
-    // Encode as JSON
+    /**
+     * _json
+     *
+     * Encode as JSON
+     *
+     * @access      public
+     * @author      Phil Sturgeon
+     * @version     1.0
+     */
     protected function _json($string)
     {
         return json_decode(trim($string));
     }
 
-    // Encode as Serialized array
+    /**
+     * _serialize
+     *
+     * Encode as Serialized array
+     * 
+     * @access      public
+     * @author      Phil Sturgeon
+     * @version     1.0
+     */
     protected function _serialize($string)
     {
         return unserialize(trim($string));
     }
 
-    // Encode raw PHP
+    /**
+     * _php
+     *
+     * Encode raw PHP
+     *
+     * @access      public
+     * @author      Phil Sturgeon
+     * @version     1.0
+     */
     protected function _php($string)
     {
         $string = trim($string);
@@ -324,3 +538,4 @@ class REST
 }
 
 /* End of file REST.php */
+/* Location: ./application/libraries/REST.php */

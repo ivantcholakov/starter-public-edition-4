@@ -55,6 +55,10 @@ class Modules
     **/
     public static function run($module) {
 
+        // Added by Ivan Tcholakov, 25-JUN-2014.
+        $old_module = get_instance()->load->get_module();
+        //
+
         $method = 'index';
 
         if (($pos = strrpos($module, '/')) != FALSE) {
@@ -72,9 +76,17 @@ class Modules
                 $output = call_user_func_array(array($class, $method), array_slice($args, 1));
                 $buffer = ob_get_clean();
 
+                // Added by Ivan Tcholakov, 25-JUN-2014.
+                get_instance()->load->set_module($old_module);
+                //
+
                 return ($output !== NULL) ? $output : $buffer;
             }
         }
+
+        // Added by Ivan Tcholakov, 25-JUN-2014.
+        get_instance()->load->set_module($old_module);
+        //
 
         log_message('error', "Module controller failed to run: {$module}/{$method}");
     }
@@ -297,6 +309,12 @@ class Modules
             if (is_file(APPPATH.$base.$path.$file_ext)) {
                 return array(APPPATH.$base.$path, $file);
             }
+
+            // Added by Ivan Tcholakov, 25-JUN-2014.
+            if (is_file(COMMONPATH.$base.$path.$file_ext)) {
+                return array(COMMONPATH.$base.$path, $file);
+            }
+            //
 
             show_error("Unable to locate the {$base} file: {$path}{$file_ext}");
         }

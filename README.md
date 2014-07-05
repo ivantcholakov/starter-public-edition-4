@@ -1,6 +1,11 @@
 A PHP Application Starter, Version 4, Based on CodeIgniter
 ==========================================================
 
+Project Repository
+------------------
+
+https://github.com/ivantcholakov/starter-public-edition-4
+
 Note
 ----
 
@@ -58,7 +63,7 @@ you would not be forced to rename them according to the new strict "ucfirst" nam
 * In addition to the normal MVC execution, it is possible to run non-MVC scripts, look at the folder www/non-mvc/ for examples.
 * Adapted for HMVC rooting has been implemented. Within a module you are able to place controllers in this way:
 ```
-    modules/demo/controllers/page/Page.php     -> address: site_url/demo/page/[index/method]  
+    modules/demo/controllers/page/Page.php     -> address: site_url/demo/page/[index/method]
     modules/demo/controllers/page/Other.php    -> address: site_url/demo/page/other/[index/method]
 ```
 Deeper directory nesting as in CI 3 has not been implemented for now.
@@ -100,6 +105,8 @@ The technique of this hack is available, but it is not mandatory.
 * Some basic javascripts + normalize.css.
 * Internationalization, initially based on CodeIgniter 2.1 internationalization i18n, https://github.com/EllisLab/CodeIgniter/wiki/CodeIgniter-2.1-internationalization-i18n, but totally reworked.
 * cURL library for CodeIgniter, https://github.com/philsturgeon/codeigniter-curl
+* CodeIgniter-REST Client, https://github.com/philsturgeon/codeigniter-restclient
+* CodeIgniter Rest Server, https://github.com/chriskacerguis/codeigniter-restserver
 * A simple Event System for CodeIgniter, https://github.com/ericbarnes/CodeIgniter-Events
 * Support for database stored settings (Settings library).
 * Textile, A Humane Web Text Generator, http://textile.thresholdstate.com/
@@ -324,15 +331,15 @@ Credits
 License Information
 -------------------
 
-For my original code:  
-Author: Ivan Tcholakov ivantcholakov@gmail.com, 2012-2014.  
+For original code in this project:  
+Author: Ivan Tcholakov ivantcholakov@gmail.com, 2012-2014, and other contributors.  
 License: The MIT License (MIT), http://opensource.org/licenses/MIT
 
 CodeIgniter:  
 Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)  
 License: Open Software License (OSL 3.0), http://opensource.org/licenses/OSL-3.0
 
-CodeIgniter configuration file:  
+CodeIgniter configuration files:  
 Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)  
 License: Academic Free License (AFL 3.0), http://opensource.org/licenses/AFL-3.0
 
