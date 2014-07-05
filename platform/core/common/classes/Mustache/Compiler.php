@@ -3,7 +3,7 @@
 /*
  * This file is part of Mustache.php.
  *
- * (c) 2012 Justin Hileman
+ * (c) 2010-2014 Justin Hileman
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -16,7 +16,6 @@
  */
 class Mustache_Compiler
 {
-
     private $sections;
     private $source;
     private $indentNextLine;
@@ -33,9 +32,9 @@ class Mustache_Compiler
      * @param string $tree            Parse tree of Mustache tokens
      * @param string $name            Mustache Template class name
      * @param bool   $customEscape    (default: false)
-     * @param int    $entityFlags     (default: ENT_COMPAT)
      * @param string $charset         (default: 'UTF-8')
      * @param bool   $strictCallables (default: false)
+     * @param int    $entityFlags     (default: ENT_COMPAT)
      *
      * @return string Generated PHP source code
      */
@@ -178,7 +177,8 @@ class Mustache_Compiler
 
     const SECTION_CALL = '
         // %s section
-        $buffer .= $this->section%s($context, $indent, $context->%s(%s));
+        $value = $context->%s(%s);%s
+        $buffer .= $this->section%s($context, $indent, $value);
     ';
 
     const SECTION = '
@@ -187,9 +187,14 @@ class Mustache_Compiler
             $buffer = \'\';
             if (%s) {
                 $source = %s;
-                $buffer .= $this->mustache
-                    ->loadLambda((string) call_user_func($value, $source, $this->lambdaHelper)%s)
-                    ->renderInternal($context);
+                $result = call_user_func($value, $source, $this->lambdaHelper);
+                if (strpos($result, \'{{\') === false) {
+                    $buffer .= $result;
+                } else {
+                    $buffer .= $this->mustache
+                        ->loadLambda((string) $result%s)
+                        ->renderInternal($context);
+                }
             } elseif (!empty($value)) {
                 $values = $this->isIterable($value) ? $value : array($value);
                 foreach ($values as $value) {
@@ -216,6 +221,12 @@ class Mustache_Compiler
      */
     private function section($nodes, $id, $start, $end, $otag, $ctag, $level)
     {
+        $filters = '';
+
+        if (isset($this->pragmas[Mustache_Engine::PRAGMA_FILTERS])) {
+            list($id, $filters) = $this->getFilters($id, $level);
+        }
+
         $method   = $this->getFindMethod($id);
         $id       = var_export($id, true);
         $source   = var_export(substr($this->source, $start, $end - $start), true);
@@ -233,12 +244,12 @@ class Mustache_Compiler
             $this->sections[$key] = sprintf($this->prepare(self::SECTION), $key, $callable, $source, $delims, $this->walk($nodes, 2));
         }
 
-        return sprintf($this->prepare(self::SECTION_CALL, $level), $id, $key, $method, $id);
+        return sprintf($this->prepare(self::SECTION_CALL, $level), $id, $method, $id, $filters, $key);
     }
 
     const INVERTED_SECTION = '
         // %s inverted section
-        $value = $context->%s(%s);
+        $value = $context->%s(%s);%s
         if (empty($value)) {
             %s
         }';
@@ -254,15 +265,21 @@ class Mustache_Compiler
      */
     private function invertedSection($nodes, $id, $level)
     {
+        $filters = '';
+
+        if (isset($this->pragmas[Mustache_Engine::PRAGMA_FILTERS])) {
+            list($id, $filters) = $this->getFilters($id, $level);
+        }
+
         $method = $this->getFindMethod($id);
         $id     = var_export($id, true);
 
-        return sprintf($this->prepare(self::INVERTED_SECTION, $level), $id, $method, $id, $this->walk($nodes, $level));
+        return sprintf($this->prepare(self::INVERTED_SECTION, $level), $id, $method, $id, $filters, $this->walk($nodes, $level));
     }
 
     const PARTIAL = '
         if ($partial = $this->mustache->loadPartial(%s)) {
-            $buffer .= $partial->renderInternal($context, %s);
+            $buffer .= $partial->renderInternal($context, $indent . %s);
         }
     ';
 

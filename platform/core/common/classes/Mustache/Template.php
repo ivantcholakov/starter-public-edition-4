@@ -3,7 +3,7 @@
 /*
  * This file is part of Mustache.php.
  *
- * (c) 2012 Justin Hileman
+ * (c) 2010-2014 Justin Hileman
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -16,7 +16,6 @@
  */
 abstract class Mustache_Template
 {
-
     /**
      * @var Mustache_Engine
      */
@@ -158,9 +157,9 @@ abstract class Mustache_Template
      *
      * Invoke the value if it is callable, otherwise return the value.
      *
-     * @param  mixed            $value
-     * @param  Mustache_Context $context
-     * @param  string           $indent
+     * @param mixed            $value
+     * @param Mustache_Context $context
+     * @param string           $indent
      *
      * @return string
      */
