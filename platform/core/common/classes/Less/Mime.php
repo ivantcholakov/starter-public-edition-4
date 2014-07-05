@@ -1,7 +1,11 @@
 <?php
 
-//less.js : lib/less/functions.js
-
+/**
+ * Mime lookup
+ *
+ * @package Less
+ * @subpackage node
+ */
 class Less_Mime{
 
 	// this map is intentionally incomplete
@@ -12,10 +16,15 @@ class Less_Mime{
 	        '.gif' => 'image/gif',
 	        '.jpg' => 'image/jpeg',
 	        '.jpeg'=> 'image/jpeg',
-	        '.png' => 'image/png'
+	        '.png' => 'image/png',
+	        '.ttf' => 'application/x-font-ttf',
+	        '.otf' => 'application/x-font-otf',
+	        '.eot' => 'application/vnd.ms-fontobject',
+	        '.woff' => 'application/x-font-woff',
+	        '.svg' => 'image/svg+xml',
 	        );
 
-	static function lookup( $filepath ){
+	public static function lookup( $filepath ){
 		$parts = explode('.',$filepath);
 		$ext = '.'.strtolower(array_pop($parts));
 
@@ -25,7 +34,7 @@ class Less_Mime{
 		return self::$_types[$ext];
 	}
 
-	static function charsets_lookup( $type = false ){
+	public static function charsets_lookup( $type = null ){
 		// assumes all text types are UTF-8
 		return $type && preg_match('/^text\//',$type) ? 'UTF-8' : '';
 	}
