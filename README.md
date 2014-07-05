@@ -326,7 +326,7 @@ Credits
 -------
 
 * Many thanks to Irida Design OOD (http://iridadesign.com) for sponsoring this project;
-* Gwenaeël Gallon (GitHub : dev-ggallon) - for an important bug-fix about detect_url() and French translation.
+* Gwenaeël Gallon (GitHub : dev-ggallon) - for an important bug-fix about detect_url(), French translation, and various component updates.
 
 License Information
 -------------------
