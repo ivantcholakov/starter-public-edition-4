@@ -27,6 +27,7 @@
 echo htmlspecialchars(str_replace('BASE_URL', base_url(), @ file_get_contents($this->load->path('test.textile'))), ENT_QUOTES, 'UTF-8');
 
 ?>
+
                         </pre>
 
                     </div>
