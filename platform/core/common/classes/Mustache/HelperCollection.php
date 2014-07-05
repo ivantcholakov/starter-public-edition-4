@@ -3,7 +3,7 @@
 /*
  * This file is part of Mustache.php.
  *
- * (c) 2012 Justin Hileman
+ * (c) 2010-2014 Justin Hileman
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -27,14 +27,16 @@ class Mustache_HelperCollection
      */
     public function __construct($helpers = null)
     {
-        if ($helpers !== null) {
-            if (!is_array($helpers) && !$helpers instanceof Traversable) {
-                throw new Mustache_Exception_InvalidArgumentException('HelperCollection constructor expects an array of helpers');
-            }
+        if ($helpers === null) {
+            return;
+        }
 
-            foreach ($helpers as $name => $helper) {
-                $this->add($name, $helper);
-            }
+        if (!is_array($helpers) && !$helpers instanceof Traversable) {
+            throw new Mustache_Exception_InvalidArgumentException('HelperCollection constructor expects an array of helpers');
+        }
+
+        foreach ($helpers as $name => $helper) {
+            $this->add($name, $helper);
         }
     }
 
