@@ -196,8 +196,6 @@ if ( ! function_exists('anchor_popup'))
 			return '<a href="'.$site_url.'" onclick="window.open(\''.$site_url."', '_blank'); return false;\">".$title.'</a>';
 		}
 
-		$window_name = '';
-
 		if ( ! is_array($attributes))
 		{
 			$attributes = array($attributes);
@@ -209,6 +207,10 @@ if ( ! function_exists('anchor_popup'))
 		{
 			$window_name = $attributes['window_name'];
 			unset($attributes['window_name']);
+		}
+		else
+		{
+			$window_name = '_blank';
 		}
 
 		foreach (array('width' => '800', 'height' => '600', 'scrollbars' => 'yes', 'status' => 'yes', 'resizable' => 'yes', 'screenx' => '0', 'screeny' => '0') as $key => $val)
