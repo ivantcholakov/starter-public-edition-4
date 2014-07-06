@@ -174,7 +174,7 @@ class Submit_controller extends Core_Controller {
         $data['site_name'] = $this->settings->get('site_name');
         $data['site_url'] = $this->settings->get('contact_web_site');
         $data['contact_form_name'] = "{$data['contact_form_first_name']} {$data['contact_form_last_name']}";
-        $data['contact_form_message'] = $this->parser->parse_string($data['contact_form_message'], null, true, 'textile');
+        $data['contact_form_message'] = $this->parser->parse_string($data['contact_form_message'], null, true, array('textile' => array('restricted_mode' => true)));
 
         return $data;
     }

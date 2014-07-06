@@ -27,6 +27,7 @@ class CI_Parser_textile extends CI_Parser_driver {
         $this->config = array(
             'doctype' => 'xhtml',
             'full_path' => FALSE,
+            'restricted_mode' => FALSE,
         );
 
         if ($this->ci->config->load('parser_textile', TRUE, TRUE))
@@ -75,7 +76,15 @@ class CI_Parser_textile extends CI_Parser_driver {
         $template = @ file_get_contents($template);
 
         $parser = new Textile($config['doctype']);
-        $template = $parser->textileThis($template);
+
+        if ($config['restricted_mode'])
+        {
+            $template = $parser->textileRestricted($template);
+        }
+        else
+        {
+            $template = $parser->textileThis($template);
+        }
 
         return $this->output($template, $return, $ci, $is_mx);
     }
@@ -98,7 +107,15 @@ class CI_Parser_textile extends CI_Parser_driver {
         }
 
         $parser = new Textile($config['doctype']);
-        $template = $parser->textileThis($template);
+
+        if ($config['restricted_mode'])
+        {
+            $template = $parser->textileRestricted($template);
+        }
+        else
+        {
+            $template = $parser->textileThis($template);
+        }
 
         return $this->output($template, $return, $ci, $is_mx);
     }
