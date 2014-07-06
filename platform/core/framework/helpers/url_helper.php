@@ -196,6 +196,8 @@ if ( ! function_exists('anchor_popup'))
 			return '<a href="'.$site_url.'" onclick="window.open(\''.$site_url."', '_blank'); return false;\">".$title.'</a>';
 		}
 
+		$window_name = '';
+
 		if ( ! is_array($attributes))
 		{
 			$attributes = array($attributes);
