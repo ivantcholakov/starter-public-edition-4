@@ -109,7 +109,7 @@ The technique of this hack is available, but it is not mandatory.
 * CodeIgniter Rest Server, https://github.com/chriskacerguis/codeigniter-restserver
 * A simple Event System for CodeIgniter, https://github.com/ericbarnes/CodeIgniter-Events
 * Support for database stored settings (Settings library).
-* Textile, A Humane Web Text Generator, http://textile.thresholdstate.com/
+* Textile, A Humane Web Text Generator, http://textile.thresholdstate.com/, https://github.com/textile/php-textile
 * Markdown Extra - A text-to-HTML conversion tool, http://michelf.com/projects/php-markdown/
 * Markdownify - A HTML-to-text conversion tool, http://milianw.de/projects/markdownify/
 * Mustache, Logic-less templates, https://github.com/bobthecow/mustache.php
@@ -300,7 +300,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * An icon subset of flags from GoSquared, https://www.gosquared.com/resources/flag-icons/
 * Bootstrap Vertical Tabs, https://github.com/dbtek/bootstrap-vertical-tabs
 * Jasny Bootstrap, The missing components for your favorite front-end framework, http://jasny.github.io/bootstrap/, https://github.com/jasny/bootstrap
-* phpass (PasswordHash class), http://www.openwall.com/phpass/
+* phpass (PasswordHash class), http://www.openwall.com/phpass/, http://cvsweb.openwall.com/cgi/cvsweb.cgi/projects/phpass/PasswordHash.php
 * Gravatar library for CodeIgniter, https://github.com/rsmarshall/Codeigniter-Gravatar
 
 The Playground
@@ -326,7 +326,7 @@ Credits
 -------
 
 * Many thanks to Irida Design OOD (http://iridadesign.com) for sponsoring this project;
-* Gwenaeël Gallon (GitHub : dev-ggallon) - for an important bug-fix about detect_url() and French translation.
+* Gwenaeël Gallon (GitHub : dev-ggallon) - for an important bug-fix about detect_url(), French translation, and various component updates.
 
 License Information
 -------------------
