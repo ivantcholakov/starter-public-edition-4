@@ -12,7 +12,7 @@ class Textile_controller extends Base_Controller {
         parent::__construct();
 
         $this->template
-            ->title('Textile Test')
+            ->title('Textile Parser Test')
         ;
 
         $this->registry->set('nav', 'playground');

@@ -5,14 +5,14 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class LESS_controller extends Base_Controller {
+class Less_controller extends Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
         $this->template
-            ->title('LESS Test')
+            ->title('Less Compiler Test')
         ;
 
         $this->registry->set('nav', 'playground');
