@@ -14,7 +14,7 @@ class Mustache_controller extends Base_Controller {
         $this->load->parser();
 
         $this->template
-            ->title('Mustache Test')
+            ->title('Mustache Parser Test')
         ;
 
         $this->registry->set('nav', 'playground/mustache');
