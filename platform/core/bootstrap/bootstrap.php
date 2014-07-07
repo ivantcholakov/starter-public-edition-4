@@ -302,7 +302,7 @@ if (!function_exists('lcfirst')) {
     require BOOTSTRAPPATH.'lcfirst.php';
 }
 
-require BASEPATH.'core/compat/array.php';
+require BASEPATH.'core/compat/standard.php';
 
 if (!function_exists('array_fill_keys')) {
     require BOOTSTRAPPATH.'array_fill_keys.php';
