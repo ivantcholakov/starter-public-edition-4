@@ -353,11 +353,11 @@ require BOOTSTRAPPATH.'autoload.php';
  * Composer autoloader
  * --------------------------------------------------------------------
  */
-if (IS_PHP_5_3) {
+if (version_compare(PHP_VERSION, '5.3.0') >= 0) {
 
     // Using Composer packages is optional.
-    if (file_exists(BOOTSTRAPPATH.'../../vendor/autoload.php')) {
-        require BOOTSTRAPPATH.'../../vendor/autoload.php';
+    if (file_exists(PLATFORMPATH.'vendor/autoload.php')) {
+        require_once PLATFORMPATH.'vendor/autoload.php';
     }
 }
 
