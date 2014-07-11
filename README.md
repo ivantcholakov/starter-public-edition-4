@@ -318,8 +318,7 @@ http://ellislab.com/codeigniter/user-guide/
 Real Life Usage
 ---------------
 
-There is no real life usage yet, the platform is fresh. Information in this regard will be updated.
-I have built a CMS based upon this platform, it would not be publicly available.
+* http://blitz-club.com/, designer: Irina Stancheva
 
 
 Credits
