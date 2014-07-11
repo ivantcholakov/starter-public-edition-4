@@ -350,20 +350,6 @@ require BOOTSTRAPPATH.'autoload.php';
 
 /*
  * --------------------------------------------------------------------
- * Composer autoloader
- * --------------------------------------------------------------------
- */
-if (version_compare(PHP_VERSION, '5.3.0') >= 0) {
-
-    // Using Composer packages is optional.
-    if (file_exists(PLATFORMPATH.'vendor/autoload.php')) {
-        require_once PLATFORMPATH.'vendor/autoload.php';
-    }
-}
-
-
-/*
- * --------------------------------------------------------------------
  * IDN functions - fallback PHP implementations.
  * --------------------------------------------------------------------
  */
