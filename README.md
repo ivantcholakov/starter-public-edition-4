@@ -318,15 +318,15 @@ http://ellislab.com/codeigniter/user-guide/
 Real Life Usage
 ---------------
 
-There is no real life usage yet, the platform is fresh. Information in this regard will be updated.
-I have built a CMS based upon this platform, it would not be publicly available.
+* http://blitz-club.com/, designer: Irina Stancheva
 
 
 Credits
 -------
 
-* Many thanks to Irida Design OOD (http://iridadesign.com) for sponsoring this project;
-* Gwenaeël Gallon (GitHub : dev-ggallon) - for an important bug-fix about detect_url(), French translation, and various component updates.
+* Many thanks to Irida Design OOD, http://iridadesign.com - for sponsoring this project;
+* Gwenaeël Gallon, https://github.com/dev-ggallon - for an important bug-fix about detect_url(), French translation, and various component updates.
+* GitHub : quasiperfect, https://github.com/quasiperfect - for various suggestions and bug-reports.
 
 License Information
 -------------------

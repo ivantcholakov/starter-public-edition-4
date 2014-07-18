@@ -288,6 +288,23 @@ if (isset($assign_to_config) && is_array($assign_to_config))
 
 /*
  * ------------------------------------------------------
+ *  Should we use a Composer autoloader?
+ * ------------------------------------------------------
+ */
+if (($composer_autoload = config_item('composer_autoload')) !== FALSE)
+{
+    if ($composer_autoload === TRUE && file_exists(PLATFORMPATH.'vendor/autoload.php'))
+    {
+        require_once(PLATFORMPATH.'vendor/autoload.php');
+    }
+    elseif (file_exists($composer_autoload))
+    {
+        require_once($composer_autoload);
+    }
+}
+
+/*
+ * ------------------------------------------------------
  *  Initialize writable folders.
  * ------------------------------------------------------
  */
