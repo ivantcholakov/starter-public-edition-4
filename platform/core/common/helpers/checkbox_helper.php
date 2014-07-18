@@ -30,7 +30,7 @@ if (!function_exists('fix_unchecked'))
         }
         */
 
-        if (empty($_POST) || !is_array($_POST))
+        if (get_instance()->input->method() != 'post')
         {
             return;
         }
@@ -38,7 +38,6 @@ if (!function_exists('fix_unchecked'))
         if (!is_array($name)) 
         {
             $name = array($name);
-
         }
 
         foreach ($name as $item)
@@ -46,7 +45,6 @@ if (!function_exists('fix_unchecked'))
             if (!ci()->input->post($item))
             {
                 $_POST[$item] = 0;
-
             }
         }
 

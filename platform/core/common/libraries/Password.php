@@ -16,6 +16,35 @@ class Password {
         log_message('debug', 'Password class initialized');
     }
 
+    // Added by Ivan Tcholakov, 11-JUL-2014.
+    // $min_length is not allowed to be less than 4.
+    // If it not set, $max_length is assumed to be equal to $min_length.
+    public function create($min_length = 10, $max_length = null) {
+
+        $min_length = (int) $min_length;
+
+        if ($min_length < 4) {
+            $min_length = 4;
+        }
+
+        if ($max_length === null) {
+
+            $max_length = $min_length;
+
+        } else {
+
+            $max_length = (int) $max_length;
+
+            if ($max_length < $min_length) {
+                $max_length = $min_length;
+            }
+        }
+
+        $length = mt_rand($min_length, $max_length);
+
+        return substr(base64_encode(openssl_random_pseudo_bytes($length)), 0, $length);
+    }
+
     // See http://www.openwall.com/phpass/
     public function hash($password) {
 
