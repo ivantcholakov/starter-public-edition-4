@@ -179,6 +179,13 @@ class Core_Model extends CI_Model
      */
     protected $_count_string = 'SELECT COUNT(*) AS ';
 
+    /**
+     * User ID getter for the observers 'created_by', 'updated_by' and 'deleted_by'.
+     * It should be a callable type (function() or array($object, 'method))
+     * without parameters. If it is not set, User ID is assumed to be null value.
+     */
+    protected $user_id_getter = NULL;
+
     /* Common module extender object (Xavier Perez) */
     protected $common_module_extender;
 
@@ -1319,7 +1326,20 @@ class Core_Model extends CI_Model
      * ------------------------------------------------------------ */
 
     /**
-     * MySQL DATETIME created_at and updated_at
+     * For supporting the observers below, the table definition should
+     * contatin a part of or all the following definitions (MySQL sysntax),
+     * depending on which observers you choose to use:
+     *  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+     *  `created_by` int(11) unsigned NOT NULL DEFAULT '0',
+     *  `updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+     *  `updated_by` int(11) unsigned NOT NULL DEFAULT '0',
+     *  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+     *  `deleted_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+     *  `deleted_by` int(11) unsigned NOT NULL DEFAULT '0',
+     */
+
+    /**
+     * A timestamp observer, 'before_create' only.
      */
     public function created_at($row)
     {
@@ -1335,6 +1355,9 @@ class Core_Model extends CI_Model
         return $row;
     }
 
+    /**
+     * A timestamp observer, 'before_create' and 'before_update' only.
+     */
     public function updated_at($row)
     {
         if (is_object($row))
@@ -1347,6 +1370,62 @@ class Core_Model extends CI_Model
         }
 
         return $row;
+    }
+
+    /**
+     * A timestamp observer, 'before_delete' only.
+     */
+    public function deleted_at($parameter)
+    {
+        if ($this->soft_delete)
+        {
+            $this->_database->set($this->_table.'.'.'deleted_at', date('Y-m-d H:i:s'));
+        }
+    }
+
+    /**
+     * A user identification observer, 'before_create' only.
+     */
+    public function created_by($row)
+    {
+        if (is_object($row))
+        {
+            $row->created_by = $this->_get_user_id();
+        }
+        else
+        {
+            $row['created_by'] = $this->_get_user_id();
+        }
+
+        return $row;
+    }
+
+    /**
+     * A user identification observer, 'before_create' and 'before_update' only.
+     */
+    public function updated_by($row)
+    {
+        if (is_object($row))
+        {
+            $row->updated_by = $this->_get_user_id();
+        }
+        else
+        {
+            $row['updated_by'] = $this->_get_user_id();
+        }
+
+        return $row;
+    }
+
+    /**
+     * A user identification observer, 'before_delete' only.
+     */
+    public function deleted_by($parameter)
+    {
+        if ($this->soft_delete)
+        {
+            $this->_database->set($this->_table.'.'.'deleted_by', $this->_get_user_id());
+        }
     }
 
     /**
@@ -2088,7 +2167,6 @@ class Core_Model extends CI_Model
     /**
      * Resets all internal state flags and temporary scope data>
      */
-
     protected function _reset_state()
     {
         $this->_with = array();
@@ -2099,6 +2177,21 @@ class Core_Model extends CI_Model
         $this->qb_as_sql = FALSE;
         $this->qb_distinct = FALSE;
         $this->_as_json = FALSE;
+    }
+
+    /**
+     * Returns the current user ID.
+     */
+    protected function _get_user_id()
+    {
+        if (is_callable($this->user_id_getter))
+        {
+            return is_array($this->user_id_getter)
+                    ? $this->user_id_getter[0]->{$this->user_id_getter[1]}()
+                    : $this->user_id_getter();
+        }
+
+        return NULL;
     }
 
     // --------------------------------------------------------------
@@ -2128,7 +2221,7 @@ class Core_Model extends CI_Model
             return CI::$APP->$myVar;
         }
 
-        throw new Exception('No such var: ' . $myVar);        
+        throw new Exception('There is no such property: ' . $myVar);        
     }
 
     /**
@@ -2169,7 +2262,7 @@ class Core_Model extends CI_Model
             return call_user_func_array(array(CI::$APP, $name), $arguments);
         }
 
-        throw new Exception('No such method: ' . $name);        
+        throw new Exception('There is no such method: ' . $name);        
     }
     
     /**
