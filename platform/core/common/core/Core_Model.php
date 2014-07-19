@@ -97,6 +97,11 @@ class Core_Model extends CI_Model
     protected $callback_parameters = array();
 
     /**
+     * Support for skip_observers() scope.
+     */
+    protected $_temporary_skip_observers = FALSE;
+
+    /**
      * Protected, non-modifiable attributes
      */
     protected $protected_attributes = array();
@@ -884,6 +889,9 @@ class Core_Model extends CI_Model
         return $this;
     }
 
+    // This observer is to be suppressed by skip_observers() scope too.
+    // This might change if there is a good/valid use-case, but let us not
+    // complicate code for now.
     public function relate($row)
     {
         if (empty($row))
@@ -1315,9 +1323,21 @@ class Core_Model extends CI_Model
         return $this;
     }
 
+    /**
+     * Forces returning JSON encoded data as a result.
+     */
     public function as_json()
     {
         $this->_as_json = TRUE;
+        return $this;
+    }
+
+    /**
+     * Disables triggering of all the attached/registered observers.
+     */
+    public function skip_observers()
+    {
+        $this->_temporary_skip_observers = TRUE;
         return $this;
     }
 
@@ -1922,7 +1942,7 @@ class Core_Model extends CI_Model
      */
     public function trigger($event, $data = FALSE, $last = TRUE)
     {
-        if (isset($this->$event) && is_array($this->$event))
+        if (!$this->_temporary_skip_observers && isset($this->$event) && is_array($this->$event))
         {
             foreach ($this->$event as $method)
             {
@@ -2177,6 +2197,7 @@ class Core_Model extends CI_Model
         $this->qb_as_sql = FALSE;
         $this->qb_distinct = FALSE;
         $this->_as_json = FALSE;
+        $this->_temporary_skip_observers = FALSE;
     }
 
     /**
