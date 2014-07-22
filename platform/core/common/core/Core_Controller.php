@@ -121,11 +121,11 @@ class Core_Controller extends MX_Controller {
      */
     public function __get($myVar)
     {
-        if (isset($this->common_module_extender->$myVar)) {
+        if (isset($this->common_module_extender) && (isset($this->common_module_extender->$myVar) || property_exists($this->common_module_extender, $myVar))) {
             return $this->common_module_extender->$myVar;
         }
 
-        if (isset(CI::$APP->$myVar)) {
+        if (isset(CI::$APP->$myVar) || property_exists(CI::$APP, $myVar)) {
             return CI::$APP->$myVar;
         }
 
@@ -140,7 +140,7 @@ class Core_Controller extends MX_Controller {
      */
     public function __set($myVar, $myValue = '')
     {
-        if (isset($this->common_module_extender->$myVar)) {
+        if (isset($this->common_module_extender) && (isset($this->common_module_extender->$myVar) || property_exists($this->common_module_extender, $myVar))) {
             $this->common_module_extender->$myVar = $myValue;
         } else {
             CI::$APP->$myVar = $myValue;
