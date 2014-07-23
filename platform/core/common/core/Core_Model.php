@@ -186,7 +186,7 @@ class Core_Model extends CI_Model
 
     /**
      * User ID getter for the observers 'created_by', 'updated_by' and 'deleted_by'.
-     * It should be a callable type (function() or array($object, 'method))
+     * It should be a callable type (function() or array($object, 'method'))
      * without parameters. If it is not set, User ID is assumed to be null value.
      */
     protected $user_id_getter = NULL;
@@ -2209,7 +2209,7 @@ class Core_Model extends CI_Model
         {
             return is_array($this->user_id_getter)
                     ? $this->user_id_getter[0]->{$this->user_id_getter[1]}()
-                    : $this->user_id_getter();
+                    : call_user_func($this->user_id_getter);
         }
 
         return NULL;
