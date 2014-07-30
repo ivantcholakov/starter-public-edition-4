@@ -16,6 +16,14 @@ Live Demo
 
 http://iridadesign.com/starter-public-edition-4/www/
 
+CodeIgniter 3.0-dev Documentation
+---------------------------------
+
+Since CodeIgniter 3.0 has not been officially released yet, its documentation may be temporarily accessed these ways:
+
+* From the repository source: https://github.com/EllisLab/CodeIgniter/tree/develop/user_guide_src
+* From the CodeIgniter 3 Documentation Nightlies supported by Lonnie Ezell: http://ci3docs.cibonfire.com/
+
 Requirements
 ------------
 
