@@ -97,6 +97,11 @@ class Core_Model extends CI_Model
     protected $callback_parameters = array();
 
     /**
+     * Support for skip_observers() scope.
+     */
+    protected $_temporary_skip_observers = FALSE;
+
+    /**
      * Protected, non-modifiable attributes
      */
     protected $protected_attributes = array();
@@ -151,7 +156,8 @@ class Core_Model extends CI_Model
     /**
      * Additional scope that enforces JSON presentation of the returned result.
      */
-    protected $_as_json = NULL;
+    protected $_as_json = FALSE;
+    protected $_as_json_options = 0;
 
     /**
      * A flag indicating $this->distinct() usage.
@@ -178,6 +184,13 @@ class Core_Model extends CI_Model
      * Driver specific SQL fragments.
      */
     protected $_count_string = 'SELECT COUNT(*) AS ';
+
+    /**
+     * User ID getter for the observers 'created_by', 'updated_by' and 'deleted_by'.
+     * It should be a callable type (function() or array($object, 'method'))
+     * without parameters. If it is not set, User ID is assumed to be null value.
+     */
+    protected $user_id_getter = NULL;
 
     /* Common module extender object (Xavier Perez) */
     protected $common_module_extender;
@@ -301,14 +314,12 @@ class Core_Model extends CI_Model
             return $this->_return_value($row);
         }
 
-        $as_json = $this->_as_json;
+        if ($this->_as_json)
+        {
+            return $this->_return_json($row);
+        }
 
         $this->_reset_state();
-
-        if ($as_json)
-        {
-            return json_encode($row);
-        }
 
         return $row;
     }
@@ -382,14 +393,12 @@ class Core_Model extends CI_Model
             $row = $this->trigger('after_get', $row, ($key == count($result) - 1));
         }
 
-        $as_json = $this->_as_json;
+        if ($this->_as_json)
+        {
+            return $this->_return_json($result);
+        }
 
         $this->_reset_state();
-
-        if ($as_json)
-        {
-            return json_encode($result);
-        }
 
         return $result;
     }
@@ -425,6 +434,8 @@ class Core_Model extends CI_Model
 
             $this->trigger('after_create', $insert_id);
 
+            $this->_reset_state();
+
             return $insert_id;
         }
 
@@ -439,12 +450,14 @@ class Core_Model extends CI_Model
     public function insert_many($data, $skip_validation = FALSE, $escape = NULL)
     {
         $return_sql = $this->qb_as_sql;
+        $skip_observers = $this->_temporary_skip_observers;
 
         $ids = array();
 
         foreach ($data as $key => $row)
         {
             $this->qb_as_sql = $return_sql;
+            $this->_temporary_skip_observers = $skip_observers;
 
             // A correction by Ivan Tcholakov, 14-DEC-2012.
             //$ids[] = $this->insert($row, $skip_validation, ($key == count($data) - 1));
@@ -877,6 +890,9 @@ class Core_Model extends CI_Model
         return $this;
     }
 
+    // This observer is to be suppressed by skip_observers() scope too.
+    // This might change if there is a good/valid use-case, but let us not
+    // complicate code for now.
     public function relate($row)
     {
         if (empty($row))
@@ -971,14 +987,12 @@ class Core_Model extends CI_Model
 
         $result = isset($row[$this->primary_key]);
 
-        $as_json = $this->_as_json;
+        if ($this->_as_json)
+        {
+            return $this->_return_json($result);
+        }
 
         $this->_reset_state();
-
-        if ($as_json)
-        {
-            return json_encode($result);
-        }
 
         return $result;
     }
@@ -1001,14 +1015,12 @@ class Core_Model extends CI_Model
 
         $row = $this->trigger('after_get', $row);
 
-        $as_json = $this->_as_json;
+        if ($this->_as_json)
+        {
+            return $this->_return_json($row);
+        }
 
         $this->_reset_state();
-
-        if ($as_json)
-        {
-            return json_encode($row);
-        }
 
         return $row;
     }
@@ -1063,14 +1075,12 @@ class Core_Model extends CI_Model
 
         $options = $this->trigger('after_dropdown', $options);
 
-        $as_json = $this->_as_json;
+        if ($this->_as_json)
+        {
+            return $this->_return_json($options);
+        }
 
         $this->_reset_state();
-
-        if ($as_json)
-        {
-            return json_encode($options);
-        }
 
         return $options;
     }
@@ -1131,14 +1141,12 @@ class Core_Model extends CI_Model
 
         $result = $this->_database->count_all_results($this->_table);
 
-        $as_json = $this->_as_json;
+        if ($this->_as_json)
+        {
+            return $this->_return_json($result);
+        }
 
         $this->_reset_state();
-
-        if ($as_json)
-        {
-            return json_encode($result);
-        }
 
         return $result;
     }
@@ -1308,9 +1316,25 @@ class Core_Model extends CI_Model
         return $this;
     }
 
-    public function as_json()
+    /**
+     * Forces returning JSON encoded data as a result.
+     * @param int $options  Same parameter as in json_encode() function (PHP >= 5.3.0)
+     * @link http://php.net/manual/en/function.json-encode.php
+     * @link http://php.net/manual/en/json.constants.php
+     */
+    public function as_json($options = 0)
     {
         $this->_as_json = TRUE;
+        $this->_as_json_options = $options;
+        return $this;
+    }
+
+    /**
+     * Disables triggering of all the attached/registered observers.
+     */
+    public function skip_observers()
+    {
+        $this->_temporary_skip_observers = TRUE;
         return $this;
     }
 
@@ -1319,7 +1343,20 @@ class Core_Model extends CI_Model
      * ------------------------------------------------------------ */
 
     /**
-     * MySQL DATETIME created_at and updated_at
+     * For supporting the observers below, the table definition should
+     * contatin a part of or all the following definitions (MySQL sysntax),
+     * depending on which observers you choose to use:
+     *  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+     *  `created_by` int(11) unsigned NOT NULL DEFAULT '0',
+     *  `updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+     *  `updated_by` int(11) unsigned NOT NULL DEFAULT '0',
+     *  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+     *  `deleted_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+     *  `deleted_by` int(11) unsigned NOT NULL DEFAULT '0',
+     */
+
+    /**
+     * A timestamp observer, 'before_create' only.
      */
     public function created_at($row)
     {
@@ -1335,6 +1372,9 @@ class Core_Model extends CI_Model
         return $row;
     }
 
+    /**
+     * A timestamp observer, 'before_create' and 'before_update' only.
+     */
     public function updated_at($row)
     {
         if (is_object($row))
@@ -1347,6 +1387,62 @@ class Core_Model extends CI_Model
         }
 
         return $row;
+    }
+
+    /**
+     * A timestamp observer, 'before_delete' only.
+     */
+    public function deleted_at($parameter)
+    {
+        if ($this->soft_delete)
+        {
+            $this->_database->set($this->_table.'.'.'deleted_at', date('Y-m-d H:i:s'));
+        }
+    }
+
+    /**
+     * A user identification observer, 'before_create' only.
+     */
+    public function created_by($row)
+    {
+        if (is_object($row))
+        {
+            $row->created_by = $this->_get_user_id();
+        }
+        else
+        {
+            $row['created_by'] = $this->_get_user_id();
+        }
+
+        return $row;
+    }
+
+    /**
+     * A user identification observer, 'before_create' and 'before_update' only.
+     */
+    public function updated_by($row)
+    {
+        if (is_object($row))
+        {
+            $row->updated_by = $this->_get_user_id();
+        }
+        else
+        {
+            $row['updated_by'] = $this->_get_user_id();
+        }
+
+        return $row;
+    }
+
+    /**
+     * A user identification observer, 'before_delete' only.
+     */
+    public function deleted_by($parameter)
+    {
+        if ($this->soft_delete)
+        {
+            $this->_database->set($this->_table.'.'.'deleted_by', $this->_get_user_id());
+        }
     }
 
     /**
@@ -1843,7 +1939,7 @@ class Core_Model extends CI_Model
      */
     public function trigger($event, $data = FALSE, $last = TRUE)
     {
-        if (isset($this->$event) && is_array($this->$event))
+        if (!$this->_temporary_skip_observers && isset($this->$event) && is_array($this->$event))
         {
             foreach ($this->$event as $method)
             {
@@ -1995,10 +2091,6 @@ class Core_Model extends CI_Model
      */
     protected function _return_value(& $row)
     {
-        $as_json = $this->_as_json;
-
-        $this->_reset_state();
-
         $result = NULL;
 
         if (is_array($row))
@@ -2018,12 +2110,23 @@ class Core_Model extends CI_Model
             }
         }
 
-        if ($as_json)
+        if ($this->_as_json)
         {
-            return json_encode($result);
+            return $this->_return_json($result);
         }
 
+        $this->_reset_state();
+
         return $result;
+    }
+
+    protected function _return_json(& $data)
+    {
+        $as_json_options = $this->_as_json_options;
+
+        $this->_reset_state();
+
+        return is_php('5.3.0') ? json_encode($data, $as_json_options) : json_encode($data);
     }
 
     /**
@@ -2086,9 +2189,8 @@ class Core_Model extends CI_Model
     }
 
     /**
-     * Resets all internal state flags and temporary scope data>
+     * Resets all internal state flags and temporary scope data.
      */
-
     protected function _reset_state()
     {
         $this->_with = array();
@@ -2099,6 +2201,23 @@ class Core_Model extends CI_Model
         $this->qb_as_sql = FALSE;
         $this->qb_distinct = FALSE;
         $this->_as_json = FALSE;
+        $this->_as_json_options = 0;
+        $this->_temporary_skip_observers = FALSE;
+    }
+
+    /**
+     * Returns the current user ID.
+     */
+    protected function _get_user_id()
+    {
+        if (is_callable($this->user_id_getter))
+        {
+            return is_array($this->user_id_getter)
+                ? $this->user_id_getter[0]->{$this->user_id_getter[1]}()
+                : call_user_func($this->user_id_getter);
+        }
+
+        return NULL;
     }
 
     // --------------------------------------------------------------
@@ -2118,17 +2237,17 @@ class Core_Model extends CI_Model
      */
     public function __get($myVar)
     {
-        if (isset($this->common_module_extender->$myVar))
+        if (isset($this->common_module_extender) && (isset($this->common_module_extender->$myVar) || property_exists($this->common_module_extender, $myVar)))
         {
             return $this->common_module_extender->$myVar;
         }
 
-        if (isset(CI::$APP->$myVar))
+        if (isset(CI::$APP->$myVar) || property_exists(CI::$APP, $myVar))
         {
             return CI::$APP->$myVar;
         }
 
-        throw new Exception('No such var: ' . $myVar);        
+        throw new Exception('There is no such property: ' . $myVar);        
     }
 
     /**
@@ -2139,7 +2258,7 @@ class Core_Model extends CI_Model
      */
     public function __set($myVar, $myValue = '')
     {
-        if (isset($this->common_module_extender->$myVar))
+        if (isset($this->common_module_extender) && (isset($this->common_module_extender->$myVar) || property_exists($this->common_module_extender, $myVar)))
         {
             $this->common_module_extender->$myVar = $myValue;
         }
@@ -2169,7 +2288,7 @@ class Core_Model extends CI_Model
             return call_user_func_array(array(CI::$APP, $name), $arguments);
         }
 
-        throw new Exception('No such method: ' . $name);        
+        throw new Exception('There is no such method: ' . $name);        
     }
     
     /**
