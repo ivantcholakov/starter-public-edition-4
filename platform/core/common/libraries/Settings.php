@@ -63,6 +63,52 @@ class Settings {
         return $this->ci->config->item($key);
     }
 
+    // This is a language sensitive setting reader/getter.
+    // Example:
+    // Let there are the settings defined as 'site_name' and 'site_name_en'.
+    // The returned value:
+    // $returned_valie = $this->settings->lang('site_name', 'english');
+    // is tried to be got from 'site_name_en' (if exists) first and then
+    // from 'site_name'.
+    // $language is assumed to the current language value, if it is not set.
+    public function lang($key, $language = null) {
+
+        if (is_array($key)) {
+
+            $result = array();
+
+            foreach ($key as $k) {
+                $result[$k] = $this->lang($k, $language);
+            }
+
+            return $result;
+        }
+
+        $key = (string) $key;
+
+        if ($key == '') {
+            return null;
+        }
+
+        $key_lang = $key.'_'.$this->ci->lang->code($language);
+
+        if (array_key_exists($key_lang, $this->settings)) {
+            return $this->settings[$key_lang];
+        }
+
+        if (array_key_exists($key, $this->settings)) {
+            return $this->settings[$key];
+        }
+
+        $result = $this->ci->config->item($key_lang);
+
+        if ($result !== null) {
+            return $result;
+        }
+
+        return $this->ci->config->item($key);
+    }
+
     // Sets a database stored setting.
     // Database table should be created in order to use this method.
     // See Settings_model class for information about table structure.
