@@ -59,7 +59,7 @@ class Base_Controller extends Core_Controller {
         $this->session->sess_destroy();
     }
 
-    private function _check_access() {
+    protected function _check_access() {
 
         $ignored_pages = array('login', 'logout');
         $current_page = $this->uri->rsegment(1, '');
@@ -72,6 +72,9 @@ class Base_Controller extends Core_Controller {
         if (!$this->session->userdata('user_logged')) {
 
             if ($this->input->is_ajax_request()) {
+
+                set_status_header(403);
+
                 exit;
             }
 
