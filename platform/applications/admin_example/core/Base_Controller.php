@@ -8,8 +8,6 @@ class Base_Controller extends Core_Controller {
 
         parent::__construct();
 
-        $this->_check_access();
-
         $this->load->library('template');
 
         $this->template->set_layout('admin_example');
@@ -60,13 +58,6 @@ class Base_Controller extends Core_Controller {
     }
 
     protected function _check_access() {
-
-        $ignored_pages = array('login', 'logout');
-        $current_page = $this->uri->rsegment(1, '');
-
-        if (in_array($current_page, $ignored_pages)) {
-            return true;
-        }
 
         // Change this condition according to your system of authentication.
         if (!$this->session->userdata('user_logged')) {
