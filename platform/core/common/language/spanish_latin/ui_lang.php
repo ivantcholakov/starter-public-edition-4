@@ -150,3 +150,4 @@ $lang['ui_max_width'] = 'Width, max';
 $lang['ui_max_height'] = 'Height, max';
 $lang['ui_options'] = 'Options';
 $lang['ui_session_expired'] = 'Your session has expired. Please, login again.';
+$lang['ui_admin_panel'] = 'Administrative Panel';
