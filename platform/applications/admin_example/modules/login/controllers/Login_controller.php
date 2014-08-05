@@ -28,7 +28,7 @@ class Login_controller extends Base_Controller {
 
         $this->form_validation->set_rules($login_rules);
 
-        $error_message = '';
+        $error_message = $this->session->flashdata('error_message');
 
         if ($this->form_validation->run()) {
 

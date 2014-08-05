@@ -69,6 +69,8 @@ class Base_Controller extends Core_Controller {
                 exit;
             }
 
+            $this->session->set_flashdata('error_message', $this->lang->line('ui_session_expired'));
+
             redirect('login');
         }
 
