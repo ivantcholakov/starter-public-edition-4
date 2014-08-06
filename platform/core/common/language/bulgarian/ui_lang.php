@@ -149,5 +149,5 @@ $lang['ui_height'] = 'Височина';
 $lang['ui_max_width'] = 'Широчина, max';
 $lang['ui_max_height'] = 'Височина, max';
 $lang['ui_options'] = 'Опции';
-$lang['ui_session_expired'] = 'Вашата сесия изтече, моля, влезте в системата отново.';
+$lang['ui_session_expired'] = 'Вашата сесия e изтекла, моля, влезте в системата отново.';
 $lang['ui_admin_panel'] = 'Административен панел';
