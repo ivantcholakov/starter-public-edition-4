@@ -22,7 +22,7 @@ if ($error_message != '') {
                 </p>
 
                 <p class="help-block">
-                    Back to the public site: <a href="<?php echo $public_site_url; ?>"><?php echo $public_site_url; ?></a>
+                    Back to the public site: <a href="<?php echo default_base_url(); ?>"><?php echo default_base_url(); ?></a>
                 </p>
 
             <?php echo form_close(); ?>
