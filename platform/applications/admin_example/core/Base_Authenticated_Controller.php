@@ -6,6 +6,8 @@ class Base_Authenticated_Controller extends Base_Controller {
 
         parent::__construct();
 
+        $this->template->set_partial('handle_unauthenticated_ajax', 'partials/handle_unauthenticated_ajax');
+
         $this->_check_access();
     }
 

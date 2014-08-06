@@ -64,6 +64,8 @@ class Base_Controller extends Core_Controller {
 
             if ($this->input->is_ajax_request()) {
 
+                $this->session->set_flashdata('error_message', $this->lang->line('ui_session_expired'));
+
                 set_status_header(403);
 
                 exit;

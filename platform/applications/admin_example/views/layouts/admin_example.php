@@ -75,6 +75,8 @@ echo js('lib/jasny-bootstrap-3/jasny-bootstrap.min.js');
 file_partial('scripts');
 template_partial('scripts');
 
+template_partial('handle_unauthenticated_ajax');
+
 echo div_debug();
 
 echo body_close_tag();
