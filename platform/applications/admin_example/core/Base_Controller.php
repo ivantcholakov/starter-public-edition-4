@@ -67,7 +67,7 @@ class Base_Controller extends Core_Controller {
 
             if ($this->uri->total_segments() != 0) {
 
-                // Session expiration message is not to be shown when
+                // Session expiration message is not to be shown
                 // when we are comming from the protected home page.
                 $this->session->set_flashdata('error_message', $this->lang->line('ui_session_expired'));
             }
