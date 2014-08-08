@@ -472,13 +472,28 @@ class Template
         switch($type)
         {
             case 'meta':
-                $this->_metadata[$name] =
-'<meta name="'.$name.'" content="'.$content.'" />';
+
+                if (strpos($name, 'og:') === 0)
+                {
+                    // A Facebook's Open Graph meta tag.
+                    $this->_metadata[$name] = '
+<meta property="'.$name.'" content="'.$content.'" />';
+
+                }
+                else
+                {
+                    // A normal meta tag.
+                    $this->_metadata[$name] = '
+<meta name="'.$name.'" content="'.$content.'" />';
+                }
+
             break;
 
             case 'link':
-                $this->_metadata[$content] =
-'<link rel="'.$name.'" href="'.$content.'" />';
+
+                $this->_metadata[$content] = '
+<link rel="'.$name.'" href="'.$content.'" />';
+
             break;
         }
 

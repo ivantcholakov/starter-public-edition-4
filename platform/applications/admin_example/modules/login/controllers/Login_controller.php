@@ -6,6 +6,11 @@ class Login_controller extends Base_Controller {
 
         parent::__construct();
 
+        $this->load
+            ->library('kcaptcha', null, 'captcha')
+            ->language('captcha')
+        ;
+
         $this->template->set_layout('admin_example_login');
     }
 
@@ -24,11 +29,16 @@ class Login_controller extends Base_Controller {
                 'label' => 'Password',
                 'rules' => 'trim|required'
             ),
+            array(
+                'field' => 'captcha',
+                'label' => 'Captcha',
+                'rules' => 'nohtml|trim|callback__captcha'
+            ),
         );
 
         $this->form_validation->set_rules($login_rules);
 
-        $error_message = '';
+        $error_message = $this->session->flashdata('error_message');
 
         if ($this->form_validation->run()) {
 
@@ -54,7 +64,21 @@ class Login_controller extends Base_Controller {
         $this->template
             ->prepend_title('Login')
             ->set('error_message', $error_message)
+            ->set_partial('scripts', 'login_scripts')
+            ->enable_parser_body('i18n')
             ->build('login');
+    }
+
+    public function _captcha($string) {
+
+        if (!$this->captcha->valid($string)) {
+
+            $this->form_validation->set_message('_captcha', $this->lang->line('captcha.validation_error'));
+
+            return false;
+        }
+
+        return true;
     }
 
 }

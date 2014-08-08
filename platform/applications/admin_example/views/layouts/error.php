@@ -16,13 +16,23 @@ echo apple_touch_icon_precomposed();
 echo cleartype_ie();
 
 echo css('lib/bootstrap-3/bootstrap.min.css');
-echo css('lib/jasny-bootstrap-3/jasny-bootstrap.min.css');
 echo css('lib/bootstrap-3/bootstrap-theme.min.css');
 echo css('lib/font-awesome-4/font-awesome.min.css');
-echo css('admin_example.css');
+echo css('login.css');
 
 file_partial('css');
 template_partial('css');
+
+echo js('lib/phpjs/echo.js');
+echo js('lib/phpjs/var_dump.js');
+echo js('lib/phpjs/trim.js');
+echo js('lib/phpjs/htmlspecialchars.js');
+echo js('lib/phpjs/htmlspecialchars_decode.js');
+echo js('lib/phpjs/number_format.js');
+echo js('lib/phpjs/floatval.js');
+echo js('lib/phpjs/round.js');
+echo js('lib/phpjs/sprintf.js');
+echo js('lib/phpjs/vsprintf.js');
 
 echo js_platform();
 echo js_selectivizr();
@@ -41,16 +51,14 @@ echo body_tag('id="page-top"');
     <div id="wrap">
 <?php
 
-file_partial('admin_example_navbar');
+echo noscript();
+echo unsupported_browser();
 
 ?>
 
         <!-- Begin page content -->
         <div class="container">
 <?php
-
-echo noscript('<div class="alert alert-warning text-center">'.$this->lang->line('ui_noscript').'</div>');
-echo unsupported_browser('<div class="alert alert-warning text-center">'.$this->lang->line('ui_unsupported_browser').'</div>');
 
 template_body();
 
@@ -61,8 +69,6 @@ template_body();
 
 <?php
 
-file_partial('admin_example_footer');
-
 echo js_jquery_extra_selectors();
 echo js_bp_plugins();
 echo js_mbp_helper();
@@ -70,12 +76,9 @@ echo js_scale_fix_ios();
 echo js_imgsizer();
 
 echo js('lib/bootstrap-3/bootstrap.min.js');
-echo js('lib/jasny-bootstrap-3/jasny-bootstrap.min.js');
 
 file_partial('scripts');
 template_partial('scripts');
-
-template_partial('handle_unauthenticated_ajax');
 
 echo div_debug();
 
