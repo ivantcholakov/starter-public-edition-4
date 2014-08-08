@@ -19,5 +19,5 @@ if ($confirmation_message != '') {
             </p>
 
             <p>
-                Back to the public site: <a href="<?php echo $public_site_url; ?>"><?php echo $public_site_url; ?></a>
+                Back to the public site: <a href="<?php echo default_base_url(); ?>"><?php echo default_base_url(); ?></a>
             </p>

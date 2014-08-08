@@ -2,13 +2,9 @@
 
 class Base_Controller extends Core_Controller {
 
-    protected $public_site_url = null;
-
     public function __construct() {
 
         parent::__construct();
-
-        $this->_check_access();
 
         $this->load->library('template');
 
@@ -24,12 +20,8 @@ class Base_Controller extends Core_Controller {
 
         $this->template->set_metadata('robots', 'noindex,nofollow,noarchive');
 
-        //$this->public_site_url = http_build_url(BASE_URL, '../'); // This is too tricky.
-        $this->public_site_url = default_base_url();    // This is the covenient way.
-
         $this->template
             ->prepend_title('Site Administrator')
-            ->set('public_site_url', $this->public_site_url)
         ;
     }
 
@@ -59,20 +51,25 @@ class Base_Controller extends Core_Controller {
         $this->session->sess_destroy();
     }
 
-    private function _check_access() {
-
-        $ignored_pages = array('login', 'logout');
-        $current_page = $this->uri->rsegment(1, '');
-
-        if (in_array($current_page, $ignored_pages)) {
-            return true;
-        }
+    protected function _check_access() {
 
         // Change this condition according to your system of authentication.
         if (!$this->session->userdata('user_logged')) {
 
             if ($this->input->is_ajax_request()) {
+
+                $this->session->set_flashdata('error_message', $this->lang->line('ui_session_expired'));
+
+                set_status_header(403);
+
                 exit;
+            }
+
+            if ($this->uri->total_segments() != 0) {
+
+                // Session expiration message is not to be shown
+                // when we are comming from the protected home page.
+                $this->session->set_flashdata('error_message', $this->lang->line('ui_session_expired'));
             }
 
             redirect('login');
