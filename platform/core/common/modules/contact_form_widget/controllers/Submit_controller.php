@@ -116,8 +116,6 @@ class Submit_controller extends Core_Controller {
 
                 if ($this->form_validation->run()) {
 
-                    $this->captcha->clear();
-
                     $data = $this->_prepare_data($data);
                     $data = $this->_load_email_template($data);
                     $data = $this->_create_email($data);
@@ -223,14 +221,14 @@ class Submit_controller extends Core_Controller {
 
     public function _captcha($string) {
 
-        if (!$this->captcha->valid($string)) {
+        $captcha_valid = $this->captcha->valid($string);
+        $this->captcha->clear();
 
+        if (!$captcha_valid) {
             $this->form_validation->set_message('_captcha', $this->lang->line('captcha.validation_error'));
-
-            return false;
         }
 
-        return true;
+        return $captcha_valid;
     }
 
 }

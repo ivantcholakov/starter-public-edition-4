@@ -42,8 +42,6 @@ class Email_test_controller extends Base_Controller {
 
         if ($this->form_validation->run()) {
 
-            $this->captcha->clear();
-
             $success = (bool) Events::trigger('email_test', $this->settings->get('notification_email'));
 
             if ($success) {
@@ -64,8 +62,6 @@ class Email_test_controller extends Base_Controller {
             $messages = validation_errors_array();
         }
 
-        $this->captcha->clear();
-
         extract(Modules::run('email/test/get_message'));
 
         $has_logo = file_exists(DEFAULTFCPATH.'apple-touch-icon-precomposed.png');
@@ -77,6 +73,8 @@ class Email_test_controller extends Base_Controller {
             'mustache'
         );
 
+        $this->captcha->clear();
+
         $this->template
             ->set(compact('success', 'messages', 'subject', 'body'))
             ->enable_parser_body('i18n')
@@ -85,14 +83,14 @@ class Email_test_controller extends Base_Controller {
 
     public function _captcha($string) {
 
-        if (!$this->captcha->valid($string)) {
+        $captcha_valid = $this->captcha->valid($string);
+        $this->captcha->clear();
 
+        if (!$captcha_valid) {
             $this->form_validation->set_message('_captcha', $this->lang->line('captcha.validation_error'));
-
-            return false;
         }
 
-        return true;
+        return $captcha_valid;
     }
 
 }
