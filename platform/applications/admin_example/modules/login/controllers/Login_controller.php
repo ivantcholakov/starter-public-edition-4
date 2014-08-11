@@ -42,6 +42,8 @@ class Login_controller extends Base_Controller {
 
         if ($this->form_validation->run()) {
 
+            $this->captcha->clear();
+
             $username = $this->input->post('username');
             $password = $this->input->post('password');
 
@@ -60,6 +62,8 @@ class Login_controller extends Base_Controller {
 
             $error_message = '<ul>'.validation_errors('<li>', '</li>').'</ul>';
         }
+
+        $this->captcha->clear();
 
         $this->template
             ->prepend_title('Login')
