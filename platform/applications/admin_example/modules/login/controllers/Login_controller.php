@@ -61,6 +61,8 @@ class Login_controller extends Base_Controller {
             $error_message = '<ul>'.validation_errors('<li>', '</li>').'</ul>';
         }
 
+        $this->captcha->clear();
+
         $this->template
             ->prepend_title('Login')
             ->set('error_message', $error_message)
