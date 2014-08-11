@@ -42,8 +42,6 @@ class Login_controller extends Base_Controller {
 
         if ($this->form_validation->run()) {
 
-            $this->captcha->clear();
-
             $username = $this->input->post('username');
             $password = $this->input->post('password');
 
@@ -63,8 +61,6 @@ class Login_controller extends Base_Controller {
             $error_message = '<ul>'.validation_errors('<li>', '</li>').'</ul>';
         }
 
-        $this->captcha->clear();
-
         $this->template
             ->prepend_title('Login')
             ->set('error_message', $error_message)
@@ -75,14 +71,14 @@ class Login_controller extends Base_Controller {
 
     public function _captcha($string) {
 
-        if (!$this->captcha->valid($string)) {
+        $captcha_valid = $this->captcha->valid($string);
+        $this->captcha->clear();
 
+        if (!$captcha_valid) {
             $this->form_validation->set_message('_captcha', $this->lang->line('captcha.validation_error'));
-
-            return false;
         }
 
-        return true;
+        return $captcha_valid;
     }
 
 }
