@@ -2,7 +2,7 @@
 
 // Load the url helper too!
 if (!function_exists('url_title')) {
-    ci()->load->helper('url');
+    load_class('Loader', 'core')->helper('url');
 }
 
 if (!function_exists('clean_file_name')) {
