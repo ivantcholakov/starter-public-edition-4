@@ -313,6 +313,10 @@ if (($composer_autoload = config_item('composer_autoload')) !== FALSE)
 $cache_path = $CFG->item('cache_path') == '' ? APPPATH.'cache/' : $CFG->item('cache_path');
 file_exists($cache_path) OR @mkdir($cache_path, 0777, TRUE);
 
+// CodeIgniter's database cache folder.
+define('CACHE_DB_PATH', WRITABLEPATH.'cache_db/'.APPNAME.'/');
+file_exists(CACHE_DB_PATH) OR @mkdir(CACHE_DB_PATH, 0777, TRUE);
+
 // For HTMLPurifier, no trailing slash.
 define('HTMLPURIFIER_CACHE_SERIALIZER_PATH', WRITABLEPATH.'htmlpurifier');
 file_exists(HTMLPURIFIER_CACHE_SERIALIZER_PATH) OR @mkdir(HTMLPURIFIER_CACHE_SERIALIZER_PATH, 0777, TRUE);
