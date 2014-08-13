@@ -224,7 +224,6 @@ class CI_Cache_redis extends CI_Driver
 			'expire' => time() + $this->_redis->ttl($key),
 			'data' => $value
 		);
-
 	}
 
 	// ------------------------------------------------------------------------
@@ -306,7 +305,6 @@ class CI_Cache_redis extends CI_Driver
 	// ------------------------------------------------------------------------
 
 	/**
-
 	 * Class destructor
 	 *
 	 * Closes the connection to Redis if present.
