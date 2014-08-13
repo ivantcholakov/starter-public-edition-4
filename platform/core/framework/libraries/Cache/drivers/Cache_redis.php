@@ -83,8 +83,6 @@ class CI_Cache_redis extends CI_Driver
 			{
 				return unserialize($value);
 			}
-
-			$value = $value === FALSE ? FALSE : unserialize($value);
 		}
 
 		return $value;
