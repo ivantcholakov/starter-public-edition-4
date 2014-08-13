@@ -78,6 +78,12 @@ class CI_Cache_redis extends CI_Driver
 		if ($value === FALSE)
 		{
 			$value = $this->_redis->get($key.self::KEY_SUFFIX_FOR_SERIALIZATION);
+
+			if ($value !== FALSE)
+			{
+				return unserialize($value);
+			}
+
 			$value = $value === FALSE ? FALSE : unserialize($value);
 		}
 
@@ -97,7 +103,7 @@ class CI_Cache_redis extends CI_Driver
 	 */
 	public function save($id, $data, $ttl = 60, $raw = FALSE)
 	{
-		if (is_array($data) || is_object($data))
+		if (is_array($data) OR is_object($data))
 		{
 			$this->_redis->delete($id);
 
@@ -120,12 +126,7 @@ class CI_Cache_redis extends CI_Driver
 	 */
 	public function delete($key)
 	{
-		if ($this->_redis->delete($key) === 1)
-		{
-			return TRUE;
-		}
-		
-		return ($this->_redis->delete($key.self::KEY_SUFFIX_FOR_SERIALIZATION) === 1);
+		return ($this->_redis->delete($key) OR $this->_redis->delete($key.self::KEY_SUFFIX_FOR_SERIALIZATION));
 	}
 
 	// ------------------------------------------------------------------------
