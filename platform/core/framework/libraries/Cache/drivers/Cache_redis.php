@@ -40,7 +40,7 @@ class CI_Cache_redis extends CI_Driver
 	/**
 	 * A key-suffix for distinguishing serialized values.
 	 */
-	const KEY_SUFFIX_FOR_SERIALIZATION = '_ci_driver_serialized';
+	const KEY_PREFIX_FOR_SERIALIZATION = '_ci_redis_serialized:';
 
 	/**
 	 * Default config
@@ -77,7 +77,7 @@ class CI_Cache_redis extends CI_Driver
 
 		if ($value === FALSE)
 		{
-			$value = $this->_redis->get($key.self::KEY_SUFFIX_FOR_SERIALIZATION);
+			$value = $this->_redis->get(self::KEY_PREFIX_FOR_SERIALIZATION.$key);
 
 			if ($value !== FALSE)
 			{
@@ -106,7 +106,7 @@ class CI_Cache_redis extends CI_Driver
 			$this->_redis->delete($id);
 
 			$data = serialize($data);
-			$id .= self::KEY_SUFFIX_FOR_SERIALIZATION;
+			$id = self::KEY_PREFIX_FOR_SERIALIZATION.$id;
 		}
 
 		return ($ttl)
@@ -124,7 +124,7 @@ class CI_Cache_redis extends CI_Driver
 	 */
 	public function delete($key)
 	{
-		return ($this->_redis->delete($key) OR $this->_redis->delete($key.self::KEY_SUFFIX_FOR_SERIALIZATION));
+		return ($this->_redis->delete($key) OR $this->_redis->delete(self::KEY_PREFIX_FOR_SERIALIZATION.$key));
 	}
 
 	// ------------------------------------------------------------------------
@@ -138,7 +138,7 @@ class CI_Cache_redis extends CI_Driver
 	 */
 	public function increment($id, $offset = 1)
 	{
-		if ($this->_redis->exists($id.self::KEY_SUFFIX_FOR_SERIALIZATION))
+		if ($this->_redis->exists(self::KEY_PREFIX_FOR_SERIALIZATION.$id))
 		{
 			return FALSE;
 		}
@@ -157,7 +157,7 @@ class CI_Cache_redis extends CI_Driver
 	 */
 	public function decrement($id, $offset = 1)
 	{
-		if ($this->_redis->exists($id.self::KEY_SUFFIX_FOR_SERIALIZATION))
+		if ($this->_redis->exists(self::KEY_PREFIX_FOR_SERIALIZATION.$id))
 		{
 			return FALSE;
 		}
@@ -208,7 +208,7 @@ class CI_Cache_redis extends CI_Driver
 
 		if ($value === FALSE)
 		{
-			$key .= self::KEY_SUFFIX_FOR_SERIALIZATION;
+			$key = self::KEY_PREFIX_FOR_SERIALIZATION.$key;
 			$value = $this->_redis->get($key);
 
 			if ($value === FALSE)
