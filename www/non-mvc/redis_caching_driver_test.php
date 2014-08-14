@@ -87,7 +87,12 @@ echo '<br />';
 echo 'Making a native Redis class instance: ';
 echo '<br />';
 
-$redis = new Redis() or die('Can not load redis.'); 
+if (!class_exists('Redis')) {
+    die('Can not load redis.');
+}
+
+$redis = new Redis() or die('Can not load redis.');
+
 $redis->connect('127.0.0.1'); 
 
 $redis_server_info = $redis->info();
