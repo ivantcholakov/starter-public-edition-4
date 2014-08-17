@@ -54,6 +54,22 @@ class Login_controller extends Base_Controller {
             } else {
 
                 $error_message = 'Wrong username or password.';
+                // Code for the real authentication system.
+                //switch ($this->_last_login_error()) {
+                //
+                //    case LOGIN_USER_UNVERIFIED:
+                //        $error_message = 'The user account has not been verified by e-mail.';
+                //        break;
+                //
+                //    case LOGIN_USER_SUSPENDED:
+                //        $error_message = 'The user has been suspended';
+                //        break;
+                //
+                //    default:
+                //        $error_message = $error_message = 'Wrong username or password.';
+                //        break;
+                //}
+
             }
 
         } elseif (validation_errors()) {
