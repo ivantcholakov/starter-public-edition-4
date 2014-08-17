@@ -1,5 +1,11 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @license The MIT License, http://opensource.org/licenses/MIT
+ * Inspired by A3M project, see https://github.com/donjakobo/A3M
+ */
+
 // Sample minimal scheme for 'users' table:
 /*
 CREATE TABLE IF NOT EXISTS `users` (
