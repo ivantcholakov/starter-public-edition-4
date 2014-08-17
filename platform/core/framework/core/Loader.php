@@ -561,7 +561,10 @@ class CI_Loader {
 				$base_helper = BASEPATH.'helpers/'.$helper.'.php';
 				if ( ! file_exists($base_helper))
 				{
-					show_error('Unable to load the requested file: helpers/'.$helper.'.php');
+					// Modified by Ivan Tcholakov, 17-AUG-2014.
+					//show_error('Unable to load the requested file: helpers/'.$helper.'.php');
+					continue;
+					//
 				}
 
 				include_once($base_helper);
