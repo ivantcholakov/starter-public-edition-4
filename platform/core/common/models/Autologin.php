@@ -229,7 +229,7 @@ class Autologin extends Core_Model {
      */
     protected function get_private_token($user_id, $series_id) {
 
-        return $this->select('token')->where('user_id', (int) $user_id)->where('series_id', $series_id)->as_value()->first();
+        return $this->where('user_id', (int) $user_id)->where('series_id', $series_id)->value('token');
     }
 
     /**
