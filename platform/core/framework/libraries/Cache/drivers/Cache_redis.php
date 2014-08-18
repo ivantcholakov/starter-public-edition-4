@@ -38,11 +38,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class CI_Cache_redis extends CI_Driver
 {
 	/**
-	 * The name of the Redis set that is to store keys of serialized values.
-	 */
-	const KEY_SET_FOR_SERIALIZATION = '_ci_redis_serialization_set';
-
-	/**
 	 * Default config
 	 *
 	 * @static
@@ -68,7 +63,7 @@ class CI_Cache_redis extends CI_Driver
 	 *
 	 * @var	array
 	 */
-	protected $_serialized;
+	protected $_serialized = array();
 
 	// ------------------------------------------------------------------------
 
@@ -82,7 +77,7 @@ class CI_Cache_redis extends CI_Driver
 	{
 		$value = $this->_redis->get($key);
 
-		if ($value !== FALSE AND in_array($key, $this->_serialized))
+		if ($value !== FALSE && isset($this->_serialized[$key]))
 		{
 			return unserialize($value);
 		}
@@ -105,23 +100,18 @@ class CI_Cache_redis extends CI_Driver
 	{
 		if (is_array($data) OR is_object($data))
 		{
+			if ( ! $this->_redis->sAdd('_ci_redis_serialized', $id))
+			{
+				return FALSE;
+			}
+
+			isset($this->_serialized[$id]) OR $this->_serialized[$id] = TRUE;
 			$data = serialize($data);
-
-			if (($index_key = array_search($id, $this->_serialized)) === FALSE)
-			{
-				$this->_serialized[] = $id;
-			}
-
-			$this->_redis->sAdd(self::KEY_SET_FOR_SERIALIZATION, $id);
 		}
-		else
+		elseif (isset($this->_serialized[$id]))
 		{
-			if (($index_key = array_search($id, $this->_serialized)) !== FALSE)
-			{
-				unset($this->_serialized[$index_key]);
-			}
-
-			$this->_redis->sRemove(self::KEY_SET_FOR_SERIALIZATION, $id);
+			$this->_serialized[$id] = NULL;
+			$this->_redis->sRemove('_ci_redis_serialized', $id);
 		}
 
 		return ($ttl)
@@ -139,14 +129,18 @@ class CI_Cache_redis extends CI_Driver
 	 */
 	public function delete($key)
 	{
-		if (($index_key = array_search($key, $this->_serialized)) !== FALSE)
+		if ($this->_redis->delete($key) !== 1)
 		{
-			unset($this->_serialized[$index_key]);
+			return FALSE;
 		}
 
-		$this->_redis->sRemove(self::KEY_SET_FOR_SERIALIZATION, $key);
+		if (isset($this->_serialized[$key]))
+		{
+			$this->_serialized[$key] = NULL;
+			$this->_redis->sRemove('_ci_redis_serialized', $key);
+		}
 
-		return ($this->_redis->delete($key) === 1);
+		return TRUE;
 	}
 
 	// ------------------------------------------------------------------------
@@ -302,13 +296,11 @@ class CI_Cache_redis extends CI_Driver
 			$this->_redis->auth($config['password']);
 		}
 
-		// Initialize the index of selialized values.
-		$this->_serialized = $this->_redis->sMembers(self::KEY_SET_FOR_SERIALIZATION);
-
-		if (empty($this->_serialized))
+		// Initialize the index of serialized values.
+		$serialized = $this->_redis->sMembers('_ci_redis_serialized');
+		if ( ! empty($serialized))
 		{
-			// On error FALSE is returned, ensure array type for empty index.
-			$this->_serialized = array();
+			$this->_serialized = array_flip($serialized);
 		}
 
 		return TRUE;
