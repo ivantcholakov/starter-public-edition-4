@@ -962,6 +962,20 @@ class Core_Model extends CI_Model
      * ------------------------------------------------------------ */
 
     /**
+     * Returns directly a single specified value from the first selected row.
+     * Instead of:
+     * $user_id = $this->users->select('id')->where('user_id', $user_id)->or_where('email', $email)->as_value()->first();
+     * you may write the following simpler expression:
+     * $user_id = $this->users->where('username', $username)->or_where('email', $email)->value('id');
+     * (username and email are assumed as unique in this example)
+     * NULL value is returned if no record has been found.
+     */
+    public function value($select = '*', $escape = NULL)
+    {
+        return $this->select($select, $escape)->as_value()->first();
+    }
+
+    /**
      * Checks whether a single record based on the primary key exists.
      * @param   mixed    $primary_value
      * @return  boolean
