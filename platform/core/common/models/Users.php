@@ -62,6 +62,7 @@ class Users extends Core_Model {
         parent::__construct();
 
         $this->load->config('users');
+        $this->load->helper('current_user');
 
         $this->user_id_getter = 'user_id_getter_for_models';
 
