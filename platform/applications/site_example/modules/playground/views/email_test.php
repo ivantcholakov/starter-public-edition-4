@@ -54,6 +54,7 @@ if ($this->settings->get('mailer_enabled')) {
 
                             <div class="form-group">
                                 <div class="input-group" style="width: 100%; max-width: 300px;">
+                                    <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
                                     <input type="text" id="email_test_form_captcha" name="email_test_form_captcha" class="form-control" i18n:placeholder="captcha.label|* " maxlength="<?php echo $this->captcha->length; ?>" />
                                 </div>
                             </div>
