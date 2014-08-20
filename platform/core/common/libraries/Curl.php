@@ -23,6 +23,7 @@ class Curl {
     public $error_code;             // Error code returned as an int
     public $error_string;           // Error message returned as a string
     public $info;                   // Returned after request (elapsed time, etc)
+    public $last_response;
 
     function __construct($url = '')
     {
