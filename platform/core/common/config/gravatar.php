@@ -1,4 +1,4 @@
-<?php
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
