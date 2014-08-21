@@ -427,4 +427,14 @@ class Current_user extends CI_Model {
         }
     }
 
+    /**
+     * Gets the URL of the current user's photo/avatar.
+     * @see User_photo::get()
+     * @see Users::photo()
+     */
+    public function photo($options) {
+
+        return $this->users->photo($this->get(), $options);
+    }
+
 }

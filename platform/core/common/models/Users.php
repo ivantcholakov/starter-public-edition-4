@@ -288,4 +288,15 @@ class Users extends Core_Model {
         $this->skip_observers()->update((int) $id, array('verified_at' => null));
     }
 
+    /**
+     * Gets the URL of a user's photo/avatar.
+     * @see User_photo::get()
+     */
+    public function photo($user, $options = null) {
+
+        $this->load->model('user_photo');
+
+        return $this->user_photo->get($user, $options);
+    }
+
 }
