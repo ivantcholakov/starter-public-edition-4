@@ -21,12 +21,12 @@ class Login_controller extends Base_Controller {
         $login_rules = array(
             array(
                 'field' => 'username',
-                'label' => 'Username',
+                'label' => $this->lang->line('ui_username').' / '.'E-mail',
                 'rules' => 'trim|required'
             ),
             array(
                 'field' => 'password',
-                'label' => 'Password',
+                'label' => 'lang:ui_password',
                 'rules' => 'trim|required'
             ),
             array(
@@ -37,8 +37,6 @@ class Login_controller extends Base_Controller {
         );
 
         $this->form_validation->set_rules($login_rules);
-
-        $error_message = $this->session->flashdata('error_message');
 
         if ($this->form_validation->run()) {
 
@@ -70,18 +68,19 @@ class Login_controller extends Base_Controller {
                 //        break;
                 //}
 
+                $this->template->set('error_message', $error_message);
             }
 
         } elseif (validation_errors()) {
 
-            $error_message = '<ul>'.validation_errors('<li>', '</li>').'</ul>';
+            $this->template->set('error_message', '<ul>'.validation_errors('<li>', '</li>').'</ul>');
+            $this->template->set('validation_errors', validation_errors_array());
         }
 
         $this->captcha->clear();
 
         $this->template
             ->prepend_title('Login')
-            ->set('error_message', $error_message)
             ->set_partial('scripts', 'login_scripts')
             ->enable_parser_body('i18n')
             ->build('login');

@@ -38,13 +38,16 @@ echo body_tag('id="page-top"');
 
     <!-- Wrap all page content here -->
     <div id="wrap">
-
-        <!-- Begin page content -->
-        <div class="container">
 <?php
 
 echo noscript('<div class="alert alert-warning text-center">'.$this->lang->line('ui_noscript').'</div>');
 echo unsupported_browser('<div class="alert alert-warning text-center">'.$this->lang->line('ui_unsupported_browser').'</div>');
+
+?>
+
+        <!-- Begin page content -->
+        <div class="container">
+<?php
 
 template_body();
 
