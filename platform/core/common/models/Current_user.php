@@ -215,24 +215,27 @@ class Current_user extends CI_Model {
 
     public function username() {
 
-        $data = $this->get();
-
-        if (empty($data)) {
-            return null;
-        }
-
-        return $data['username'];
+        return isset($this->data['username']) ? $this->data['username'] : null;
     }
 
     public function email() {
 
-        $data = $this->get();
+        return isset($this->data['email']) ? $this->data['email'] : null;
+    }
 
-        if (empty($data)) {
-            return null;
-        }
+    public function first_name() {
 
-        return $data['email'];
+        return isset($this->data['first_name']) ? $this->data['first_name'] : null;
+    }
+
+    public function middle_name() {
+
+        return isset($this->data['middle_name']) ? $this->data['middle_name'] : null;
+    }
+
+    public function last_name() {
+
+        return isset($this->data['last_name']) ? $this->data['last_name'] : null;
     }
 
     public function login($username, $password, $remember_me = false) {
