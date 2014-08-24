@@ -272,3 +272,25 @@ if ( ! function_exists('_exception_handler'))
         }
     }
 }
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('html_escape'))
+{
+    /**
+     * Returns HTML escaped variable.
+     * $double_encode set to FALSE prevents escaping twice.
+     *
+     * @param       mixed
+     * @param       bool
+     * @return      mixed
+     */
+    function html_escape($var, $double_encode = TRUE)
+    {
+        $double_encode = (bool) $double_encode;
+
+        return is_array($var)
+            ? ($double_encode === FALSE ? array_map('html_escape', $var, array_fill(0, count($var), FALSE)) : array_map('html_escape', $var))
+            : htmlspecialchars($var, ENT_QUOTES, config_item('charset'), $double_encode);
+    }
+}
