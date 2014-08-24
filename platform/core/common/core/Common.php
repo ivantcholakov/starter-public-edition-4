@@ -291,6 +291,9 @@ if ( ! function_exists('html_escape'))
 
         return is_array($var)
             ? ($double_encode === FALSE ? array_map('html_escape', $var, array_fill(0, count($var), FALSE)) : array_map('html_escape', $var))
-            : htmlspecialchars($var, ENT_QUOTES, config_item('charset'), $double_encode);
+            // Ivan, 24-AUG-2014: I still have a server under PHP 5.2.0 to support, suppressing the warning message.
+            //: htmlspecialchars($var, ENT_QUOTES, config_item('charset'), $double_encode);
+            : (is_php('5.2.3') ? htmlspecialchars($var, ENT_QUOTES, config_item('charset'), $double_encode) : htmlspecialchars($var, ENT_QUOTES, config_item('charset')));
+            //
     }
 }
