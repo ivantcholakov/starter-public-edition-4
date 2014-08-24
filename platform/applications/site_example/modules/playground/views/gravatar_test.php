@@ -19,7 +19,7 @@
 
                     <div class="col-md-4">
 
-                        <h3>Reguest:</h3>
+                        <h3>Request:</h3>
 
                         <?php echo form_open('', 'id="gravatar_test_form" method="post" role="form"'); ?>
 <?php
