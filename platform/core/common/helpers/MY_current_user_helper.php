@@ -11,7 +11,7 @@ if (!function_exists('user_id_getter_for_models')) {
     // Don't reuse it for other purposes except for model observers!
     function user_id_getter_for_models() {
 
-        return (int) load_class('Loader', 'core')->model('current_user')->current_user->id();
+        return (int) get_instance()->current_user->id();
     }
 
 }
