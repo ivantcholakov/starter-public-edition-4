@@ -6,14 +6,10 @@
 
 <?php
 
-if ($confirmation_message != '') {
+echo Modules::run('feedback_messages/feedback_messages_widget/index');
 
 ?>
-            <div class="alert alert-success"><?php echo $confirmation_message; ?></div>
-<?php
-}
 
-?>
             <p>
                 You have to build your administration interface here.
             </p>
