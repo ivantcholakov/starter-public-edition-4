@@ -279,21 +279,33 @@ if ( ! function_exists('html_escape'))
 {
     /**
      * Returns HTML escaped variable.
-     * $double_encode set to FALSE prevents escaping twice.
      *
-     * @param       mixed
-     * @param       bool
-     * @return      mixed
+     * @param       mixed   $var            The input string or array of strings to be escaped.
+     * @param       bool    $double_encode  $double_encode set to FALSE prevents escaping twice.
+     * @return      mixed                   The escaped string or array of strings as a result.
      */
     function html_escape($var, $double_encode = TRUE)
     {
         $double_encode = (bool) $double_encode;
 
-        return is_array($var)
-            ? ($double_encode === FALSE ? array_map('html_escape', $var, array_fill(0, count($var), FALSE)) : array_map('html_escape', $var))
-            // Ivan, 24-AUG-2014: I still have a server under PHP 5.2.0 to support, suppressing the warning message.
-            //: htmlspecialchars($var, ENT_QUOTES, config_item('charset'), $double_encode);
-            : (is_php('5.2.3') ? htmlspecialchars($var, ENT_QUOTES, config_item('charset'), $double_encode) : htmlspecialchars($var, ENT_QUOTES, config_item('charset')));
-            //
+        if (is_array($var))
+        {
+            if ($double_encode)
+            {
+                return array_map('html_escape', $var);
+            }
+
+            return array_map('html_escape', $var, array_fill(0, count($var), FALSE));
+        }
+
+        // Added by Ivan Tcholakov, 25-AUG-2014.
+        // Ivan: I still have a server under PHP 5.2.0 to support, suppressing the warning message.
+        if ( ! is_php('5.2.3'))
+        {
+            return htmlspecialchars($var, ENT_QUOTES, config_item('charset'));
+        }
+        //
+
+        return htmlspecialchars($var, ENT_QUOTES, config_item('charset'), $double_encode);
     }
 }
