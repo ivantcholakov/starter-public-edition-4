@@ -286,16 +286,9 @@ if ( ! function_exists('html_escape'))
      */
     function html_escape($var, $double_encode = TRUE)
     {
-        $double_encode = (bool) $double_encode;
-
         if (is_array($var))
         {
-            if ($double_encode)
-            {
-                return array_map('html_escape', $var);
-            }
-
-            return array_map('html_escape', $var, array_fill(0, count($var), FALSE));
+            return array_map('html_escape', $var, array_fill(0, count($var), $double_encode));
         }
 
         // Added by Ivan Tcholakov, 25-AUG-2014.
