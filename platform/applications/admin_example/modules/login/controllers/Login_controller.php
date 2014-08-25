@@ -22,12 +22,12 @@ class Login_controller extends Base_Controller {
             array(
                 'field' => 'username',
                 'label' => $this->lang->line('ui_username').' / '.'E-mail',
-                'rules' => 'trim|required'
+                'rules' => 'nohtml|trim|required'
             ),
             array(
                 'field' => 'password',
                 'label' => 'lang:ui_password',
-                'rules' => 'trim|required'
+                'rules' => 'nohtml|trim|required'
             ),
             array(
                 'field' => 'captcha',
