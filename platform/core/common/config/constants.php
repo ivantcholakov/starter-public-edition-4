@@ -52,7 +52,7 @@ if (!defined('DIR_READ_MODE')) {
 }
 
 if (!defined('DIR_WRITE_MODE')) {
-    define('DIR_WRITE_MODE', 0777);
+    define('DIR_WRITE_MODE', 0755);
 }
 
 

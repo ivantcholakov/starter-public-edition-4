@@ -25,7 +25,7 @@ class Image_lib extends CI_Image_lib
         {
             if ($this->source_image !== $this->new_image && @copy($this->full_src_path, $this->full_dst_path))
             {
-                @chmod($this->full_dst_path, 0666);
+                @chmod($this->full_dst_path, $this->file_permissions);
             }
 
             return TRUE;
@@ -121,8 +121,7 @@ class Image_lib extends CI_Image_lib
         imagedestroy($dst_img);
         imagedestroy($src_img);
 
-        // Set the file to 666
-        @chmod($this->full_dst_path, 0666);
+        @chmod($this->full_dst_path, $this->file_permissions);
 
         return TRUE;
     }
