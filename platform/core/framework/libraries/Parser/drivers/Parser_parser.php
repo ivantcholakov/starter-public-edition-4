@@ -251,7 +251,7 @@ class CI_Parser_parser extends CI_Parser_driver {
 				{
 					if (is_array($val))
 					{
-						$pair = $this->_parse_pair($key, $val, $temp);
+						$pair = $this->_parse_pair($key, $val, $match[1]);
 						if ( ! empty($pair))
 						{
 							$temp = array_merge($temp, $pair);
