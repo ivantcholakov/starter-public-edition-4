@@ -127,7 +127,7 @@ if (!function_exists('random_pseudo_bytes')) {
 
         //----------------------------------------------------------------------
 
-        // A PHP fallback code is the last option.
+        // A PHP fallback piece of code is the last option.
 
         $crypto_strong = false;
         $detected_method = 'php_fallback';
