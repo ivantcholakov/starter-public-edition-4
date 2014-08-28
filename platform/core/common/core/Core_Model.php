@@ -2244,7 +2244,7 @@ class Core_Model extends CI_Model
 
     /**
      * Get properties from the common module, otherwise, from $APP
-     * 
+     *
      * @param type $myVar
      * @return var
      * @throws Exception
@@ -2261,12 +2261,12 @@ class Core_Model extends CI_Model
             return CI::$APP->$myVar;
         }
 
-        throw new Exception('There is no such property: ' . $myVar);        
+        throw new Exception('There is no such property: ' . $myVar);
     }
 
     /**
      * Set properties to a var inside the common module, only if exists
-     * 
+     *
      * @param type $myVar
      * @param type $myValue
      */
@@ -2284,7 +2284,7 @@ class Core_Model extends CI_Model
 
     /**
      * Call any method inside common module, else call $APP method
-     * 
+     *
      * @param type $name
      * @param array $arguments
      * @return type
@@ -2302,9 +2302,9 @@ class Core_Model extends CI_Model
             return call_user_func_array(array(CI::$APP, $name), $arguments);
         }
 
-        throw new Exception('There is no such method: ' . $name);        
+        throw new Exception('There is no such method: ' . $name);
     }
-    
+
     /**
      * Common module extender.
      *
@@ -2355,8 +2355,8 @@ class Core_Model extends CI_Model
             $moduleExtends = str_ireplace('class '.$class, 'class '.ucfirst($class).'_common', $moduleExtends);
             $moduleExtends = preg_replace("/<\?php|<\?|\?>/", '', $moduleExtends);
             eval($moduleExtends);
-            
-            $newclass = ucfirst($class).'_common'; 
+
+            $newclass = ucfirst($class).'_common';
             $this->common_module_extender = new $newclass($params);
 
             // Added by Ivan Tcholakov, 26-NOV-2013.
@@ -2368,5 +2368,5 @@ class Core_Model extends CI_Model
             //
         }
     }
-    
+
 }
