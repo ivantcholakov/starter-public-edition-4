@@ -312,8 +312,8 @@ if (!function_exists('htmlspecialchars_decode')) {
     require BOOTSTRAPPATH.'htmlspecialchars_decode.php';
 }
 
-if (!function_exists('openssl_random_pseudo_bytes')) {
-    require BOOTSTRAPPATH.'openssl_random_pseudo_bytes.php';
+if (!function_exists('random_pseudo_bytes')) {
+    require BOOTSTRAPPATH.'random_pseudo_bytes.php';
 }
 
 if (!function_exists('gethostname')) {

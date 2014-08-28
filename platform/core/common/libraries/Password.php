@@ -42,7 +42,7 @@ class Password {
 
         $length = mt_rand($min_length, $max_length);
 
-        return substr(base64_encode(openssl_random_pseudo_bytes($length)), 0, $length);
+        return substr(base64_encode(random_pseudo_bytes($length)), 0, $length);
     }
 
     // See http://www.openwall.com/phpass/
