@@ -21,6 +21,8 @@ if (!function_exists('random_pseudo_bytes')) {
 
         static $detected_method = null;
         static $is_windows = null;
+        static $is_php_5_3_0 = null;
+        static $is_php_5_3_4 = null;
 
         if (!isset($is_windows)) {
             $is_windows = strtolower(substr(php_uname('s'), 0, 3 )) === 'win';
