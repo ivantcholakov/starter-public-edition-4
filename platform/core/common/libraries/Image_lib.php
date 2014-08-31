@@ -94,7 +94,11 @@ class Image_lib extends CI_Image_lib
             $transparencyIndex = imagecolortransparent($src_img);
             $transparencyColor = array('red' => 255, 'green' => 255, 'blue' => 255);
 
-            if ( $transparencyIndex >= 0 )
+            // Modified by Ivan Tcholakov, 31-AUG-2014.
+            // Dealing with "Color index out of range" error.
+            //if ($transparencyIndex >= 0)
+            if ($transparencyIndex >= 0 && imagecolorstotal($src_img) > $transparencyIndex)
+            //
             {
                 $transparencyColor    = imagecolorsforindex($src_img, $transparencyIndex);
             }
