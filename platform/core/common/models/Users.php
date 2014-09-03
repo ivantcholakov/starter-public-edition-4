@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   KEY `suspended_by` (`suspended_by`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
-INSERT INTO `users_test` (`id`, `username`, `password`, `email`, `group_id`, `first_name`, `last_name`, `middle_name`, `active`, `suspended_at`, `suspended_by`, `last_login_at`, `previous_login_at`, `verified_at`, `verification_request_at`, `password_reset_request_at`, `created_at`, `created_by`, `updated_at`, `updated_by`, `deleted`, `deleted_at`, `deleted_by`) VALUES
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `group_id`, `first_name`, `last_name`, `middle_name`, `active`, `suspended_at`, `suspended_by`, `last_login_at`, `previous_login_at`, `verified_at`, `verification_request_at`, `password_reset_request_at`, `created_at`, `created_by`, `updated_at`, `updated_by`, `deleted`, `deleted_at`, `deleted_by`) VALUES
 (1, 'admin', '$2a$08$iw1j31k0EzRwZbZVTdCQ8O2W3VAJvtsUmjZ3mHpnhNC.tg5vU9LBa', 'your@email.com', 1, 'Master', 'Commander', 'And', 1, NULL, 0, '2014-08-17 14:51:25', '2014-08-17 14:51:04', '2014-08-11 09:08:31', '2014-08-11 09:07:55', NULL, '2014-03-29 08:44:11', 0, '2014-08-10 22:52:34', 0, 0, '0000-00-00 00:00:00', 0);
 */
 // Username: admin
