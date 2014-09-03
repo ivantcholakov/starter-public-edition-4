@@ -647,7 +647,9 @@ class Datatable {
 
                 } else {
 
-                    $row[$column['dt']] = $has_db_prop ? $data[$i][$column['db']] : null;
+                    if (isset($column['dt'])) {
+                        $row[$column['dt']] = $has_db_prop ? $data[$i][$column['db']] : null;
+                    }
                 }
             }
 
