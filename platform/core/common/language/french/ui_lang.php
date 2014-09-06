@@ -151,3 +151,4 @@ $lang['ui_max_height'] = 'Hauteur, max';
 $lang['ui_options'] = 'Options';
 $lang['ui_session_expired'] = 'Votre session a expiré. Veuillez vous reconnecter';
 $lang['ui_admin_panel'] = 'Panneau d\'administration';
+$lang['ui_list'] = 'List';
