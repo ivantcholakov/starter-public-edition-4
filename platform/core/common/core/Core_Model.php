@@ -165,6 +165,11 @@ class Core_Model extends CI_Model
     protected $qb_distinct = NULL;
 
     /**
+     * A flag indicating that select() method of this object has been called.
+     */
+    protected $_select_called = FALSE;
+
+    /**
      * CodeIgniter version check.
      */
     protected $_is_ci_3 = NULL;
@@ -249,7 +254,7 @@ class Core_Model extends CI_Model
      * $for_male = true;    // Assign this using the user input.
      *
      * $found_products = $this->products
-     *     ->select('id', 'name')
+     *     ->select('id, name')
      *     ->where('in_stock', 1)
      *     ->that($for_male ? $this->products->where('for_male', 1) : null)
      *     ->limit(20)
@@ -972,6 +977,13 @@ class Core_Model extends CI_Model
      */
     public function value($select = '*', $escape = NULL)
     {
+        if ($this->_select_called) {
+
+            // If select() was previously called,
+            // then ignore the arguments, don't call select() twice.
+            return $this->as_value()->first();
+        }
+
         return $this->select($select, $escape)->as_value()->first();
     }
 
@@ -1590,6 +1602,8 @@ class Core_Model extends CI_Model
     public function select($select = '*', $escape = NULL)
     {
         $this->_database->select($select, $escape);
+        $this->_select_called = TRUE;
+
         return $this;
     }
 
@@ -2217,6 +2231,7 @@ class Core_Model extends CI_Model
         $this->_as_json = FALSE;
         $this->_as_json_options = 0;
         $this->_temporary_skip_observers = FALSE;
+        $this->_select_called = FALSE;
     }
 
     /**
