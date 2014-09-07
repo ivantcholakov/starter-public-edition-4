@@ -357,4 +357,22 @@ class Core_Lang_Model extends Core_Model {
         return $this;
     }
 
+    /**
+     * Deletes all the translations specified by the id from the parent table.
+     * Useful for testing purposes.
+     *
+     * @param int           $id                         The id from the parent table.
+     * @return objext                                   Returns this instance.
+     */
+    public function delete_langs($id) {
+
+        $id = (int) $id;
+
+        $this
+            ->where($this->external_key_field, $id)
+            ->delete_many_by();
+
+        return $this;
+    }
+
 }
