@@ -207,7 +207,7 @@ class Core_Model extends CI_Model
      * The instance of the language model that is to serve language translations.
      * See Core_Lang_Model.
      */
-    protected $lang_model = NULL;
+    public $lang_model = NULL;
 
     /* Common module extender object (Xavier Perez) */
     protected $common_module_extender;
@@ -2035,7 +2035,6 @@ class Core_Model extends CI_Model
 
     /**
      * Deletes all the translations, specified primary key value from this table.
-     * Useful for testing purposes.
      *
      * @param int           $id                         The id from the parent table.
      * @return objext                                   Returns this instance.

@@ -359,7 +359,6 @@ class Core_Lang_Model extends Core_Model {
 
     /**
      * Deletes all the translations specified by the id from the parent table.
-     * Useful for testing purposes.
      *
      * @param int           $id                         The id from the parent table.
      * @return objext                                   Returns this instance.
