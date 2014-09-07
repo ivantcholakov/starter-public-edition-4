@@ -309,7 +309,7 @@ class Core_Lang_Model extends Core_Model {
 
         } else {
 
-            $primary_id = (int) $record['id'];
+            $primary_id = (int) $record[$this->primary_key];
 
             $data = array_replace(array_only($record, $this->translations), $data);
 
