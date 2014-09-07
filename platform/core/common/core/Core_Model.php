@@ -197,6 +197,18 @@ class Core_Model extends CI_Model
      */
     protected $user_id_getter = NULL;
 
+    /**
+     * The name of the language model that is to serve language translations.
+     * The language model should be in extended type from Core_Lang_Model.
+     */
+    protected $lang_model_name = NULL;
+
+    /**
+     * The instance of the language model that is to serve language translations.
+     * See Core_Lang_Model.
+     */
+    protected $lang_model = NULL;
+
     /* Common module extender object (Xavier Perez) */
     protected $common_module_extender;
 
@@ -243,6 +255,12 @@ class Core_Model extends CI_Model
 
         if ($this->_dbdriver == 'oci8' || $this->_subdriver = 'oci') {
             $this->_count_string = 'SELECT COUNT(1) AS ';
+        }
+
+        if ($this->lang_model_name != '') {
+
+            $this->load->model($this->lang_model_name);
+            $this->lang_model = $this->{$this->lang_model_name};
         }
     }
 
@@ -1954,6 +1972,65 @@ class Core_Model extends CI_Model
         }
 
         return $this->_database->table_exists($table_name);
+    }
+
+    /* --------------------------------------------------------------
+     * I18N
+     * ------------------------------------------------------------ */
+
+    /**
+     * Read @link http://www.apphp.com/tutorials/index.php?page=multilanguage-database-design-in-mysql
+     * "Multilanguage Database Design in MySQL" by Leumas Naypoka
+     * "4. Additional Translation Table Approach"
+     */
+
+    /**
+     * Gets translated string from the specified field by the specified primary key value from this table.
+     * See Core_Lang_Model.
+     *
+     * @param int           $primary_value              The primary key value from the table, associated with this model.
+     * @param string/array  $field                      The target translated field, or an array of target field names.
+     * @param string        $language                   The desired language (the current language if nothing has been specified).
+     * @param boolean       $with_translation_fallback  Turn on/off translation fallback.
+     * @param string        $fall_back_template         A template for the returned value if fallback translation fails. Example: '{field} #{id}'
+     * @return string/array                             Returns the translated string or an associative array of translated strings.
+     */
+    public function get_lang($primary_value, $field, $language = null, $with_translation_fallback = true, $fall_back_template = null) {
+
+        return $this->lang_model->get_lang($primary_value, $field, $language, $with_translation_fallback, $fall_back_template);
+    }
+
+    /**
+     * Sets translated string on the specified field at tthe specified primary key value from this table.
+     * An associated array of strings can be set too.
+     * See Core_Lang_Model.
+     *
+     * @param int           $primary_value              The primary key value from the table, associated with this model.
+     * @param string/array  $field                      The target translated field, or an array of target field names.
+     * @param string        $value                      The string in correspondent language.
+     * @param string        $language                   The desired language (the current language if nothing has been specified).
+     * @return objext                                   Returns this instance.
+     */
+    public function set_lang($primary_value, $field, $value = null, $language = null) {
+
+        $this->lang_model->set_lang($primary_value, $field, $value, $language);
+
+        return $this;
+    }
+
+    /**
+     * Deletes a whole translation, specified by the specified primary key value from this table and language.
+     * See Core_Lang_Model.
+     *
+     * @param int           $primary_value              The primary key value from the table, associated with this model.
+     * @param string        $language                   The desired language (the current language if nothing has been specified).
+     * @return objext                                   Returns this instance.
+     */
+    public function delete_lang($primary_value, $language = null) {
+
+        $this->lang_model->delete_lang($primary_value, $language);
+
+        return $this;
     }
 
     /* --------------------------------------------------------------
