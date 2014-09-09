@@ -152,3 +152,4 @@ $lang['ui_options'] = 'Options';
 $lang['ui_session_expired'] = 'Your session has expired. Please, login again.';
 $lang['ui_admin_panel'] = 'Administrative Panel';
 $lang['ui_list'] = 'List';
+$lang['ui_name'] = 'Name';

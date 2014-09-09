@@ -152,3 +152,4 @@ $lang['ui_options'] = 'Опции';
 $lang['ui_session_expired'] = 'Вашата сесия e изтекла, моля, влезте в системата отново.';
 $lang['ui_admin_panel'] = 'Административен панел';
 $lang['ui_list'] = 'Списък';
+$lang['ui_name'] = 'Име';
