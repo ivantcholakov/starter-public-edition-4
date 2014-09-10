@@ -17,6 +17,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `first_name` varchar(128) NOT NULL,
   `last_name` varchar(128) NOT NULL,
   `middle_name` varchar(128) NOT NULL,
+  `photo_source` varchar(20) DEFAULT NULL,
+  `photo` varchar(255) DEFAULT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '0',
   `suspended_at` datetime DEFAULT NULL,
   `suspended_by` int(11) unsigned NOT NULL DEFAULT '0',
