@@ -1,0 +1,25 @@
+<IfModule mod_rewrite.c>
+
+    #Options +FollowSymlinks
+    #Options +SymLinksIfOwnerMatch
+
+    RewriteEngine On
+
+    DirectoryIndex index.php index.html
+
+    #RewriteBase /
+
+    # Search favorite icons at the upper directory if not found at the current.
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)favicon\.ico$ $1../favicon\.ico [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)apple-touch-icon\.png$ $1../apple-touch-icon\.png [L]
+
+    # Remove index.php segment from the URL.
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond $1 !\.php$
+    RewriteCond $1 !^(index\.php|robots\.txt|favicon\.ico|apple-touch-icon-precomposed\.png)
+    RewriteRule ^(.*)$ ./index.php/$1 [L,QSA]
+
+</IfModule>
