@@ -153,6 +153,44 @@ class Core_Config extends MX_Config {
         }
         //
 
+        // Common Purpose File System Repositories
+
+        $public_upload_path = $this->add_slash(
+            isset($this->config['public_upload_path']) && $this->config['public_upload_path'] != ''
+                ? $this->config['public_upload_path']
+                : DEFAULTFCPATH.'upload/'
+        );
+
+        $this->set_item('public_upload_path', $public_upload_path);
+
+        if (!defined('PUBLIC_UPLOAD_PATH')) {
+            define('PUBLIC_UPLOAD_PATH', $public_upload_path);
+        }
+
+        $public_upload_url = $this->add_slash(
+            isset($this->config['public_upload_url']) && $this->config['public_upload_url'] != ''
+                ? str_replace(array('{default_base_url}', '{base_url}'), array(DEFAULT_BASE_URL, BASE_URL), $this->config['public_upload_url'])
+                : DEFAULT_BASE_URL.'upload/'
+        );
+
+        $this->set_item('public_upload_url', $public_upload_url);
+
+        if (!defined('PUBLIC_UPLOAD_URL')) {
+            define('PUBLIC_UPLOAD_URL', $public_upload_url);
+        }
+
+        $platform_upload_path = $this->add_slash(
+            isset($this->config['platform_upload_path']) && $this->config['platform_upload_path'] != ''
+                ? $this->config['platform_upload_path']
+                : PLATFORMPATH.'upload/'
+        );
+
+        $this->set_item('platform_upload_path', $platform_upload_path);
+
+        if (!defined('PLATFORM_UPLOAD_PATH')) {
+            define('PLATFORM_UPLOAD_PATH', $platform_upload_path);
+        }
+
         log_message('debug', 'Config Class Initialized');
     }
 

@@ -32,6 +32,16 @@ class Welcome_controller extends Base_Controller {
                     'path' => WRITABLEPATH,
                     'is_writable' => NULL
                 ),
+            'platform/upload/' =>
+                array(
+                    'path' => PLATFORM_UPLOAD_PATH,
+                    'is_writable' => NULL
+                ),
+            'www/upload/' =>
+                array(
+                    'path' => PUBLIC_UPLOAD_PATH,
+                    'is_writable' => NULL
+                ),
         );
 
         foreach ($writable_folders as $key => $folder) {

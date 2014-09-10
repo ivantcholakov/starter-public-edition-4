@@ -485,6 +485,7 @@ if (!function_exists('js_platform')) {
         var ASSET_IMG_URI = '".image_path('')."';
         var ASSET_JS_URI = '".js_path('')."';
         var ASSET_CSS_URI = '".css_path('')."';
+        var PUBLIC_UPLOAD_URL = '".PUBLIC_UPLOAD_URL."';
     //]]>
     </script>";
     }
