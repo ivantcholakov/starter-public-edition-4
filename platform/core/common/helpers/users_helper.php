@@ -5,9 +5,14 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
+// Load the html helper too.
+if (!function_exists('img')) {
+    load_class('Loader', 'core')->helper('html');
+}
+
 if (!function_exists('display_user')) {
 
-    function display_user($user_id, $photo_size = null) {
+    function display_user($user_id, $photo_size = null, $attributes = null, $show_names = true) {
 
         $ci = get_instance();
         $ci->load->model('users');
@@ -26,8 +31,22 @@ if (!function_exists('display_user')) {
             return null;
         }
 
-        return '<img src="'.$ci->user_photo->get($user, $photo_size).'" /> '.
-            $user['first_name'].' '.$user['last_name'].' ('.$user['username'].')';
+        $result = img($ci->user_photo->get($user, $photo_size), false, $attributes);
+
+        if ($show_names) {
+            $result .= ' '.$user['first_name'].' '.$user['last_name'].' ('.$user['username'].')';
+        }
+
+        return $result;
+    }
+
+}
+
+if (!function_exists('display_user_photo')) {
+
+    function display_user_photo($user_id, $photo_size = null, $attributes = null) {
+
+        return display_user($user_id, $photo_size, $attributes, false);
     }
 
 }
