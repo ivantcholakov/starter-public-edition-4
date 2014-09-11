@@ -8,11 +8,10 @@
 class User_photo_manager extends CI_Model {
 
     protected $upload_path;
-    protected $setting_key;
-    protected $allowed_types;
-    protected $max_size;
-    protected $max_width;
-    protected $max_height;
+    protected $allowed_types = 'png|jpg|jpeg|gif';
+    protected $max_size = 512;      // KB
+    protected $max_width = 500;     // px
+    protected $max_height = 500;    // px
 
     protected $data = array();
     protected $errors = array();
@@ -37,10 +36,25 @@ class User_photo_manager extends CI_Model {
             $this->upload_path = PLATFORM_UPLOAD_PATH.'userphotos/';
         }
 
-        $this->allowed_types = 'gif|jpg|jpeg|png';
-        $this->max_size = 512;
-        $this->max_width = 500;
-        $this->max_height = 500;
+        $allowed_types = (string) $this->config->item('custom_user_photo_upload_types');
+
+        if ($allowed_types != '') {
+            $this->allowed_types = $allowed_types;
+        }
+
+        $max_file_size = (int) $this->config->item('custom_user_photo_upload_max_file_size');
+
+        if ($max_file_size > 0) {
+            $this->max_size = $max_file_size;
+        }
+
+        $max_px_size = (int) $this->config->item('custom_user_photo_upload_max_px_size');
+
+        if ($max_px_size > 0) {
+
+            $this->max_width = $max_px_size;
+            $this->max_height = $max_px_size;
+        }
     }
 
     public function upload($user_id, $field = 'userfile') {
