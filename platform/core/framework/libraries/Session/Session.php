@@ -579,7 +579,7 @@ class CI_Session {
 		{
 			foreach ($key as $k)
 			{
-				unset($_SESSION[$key]);
+				unset($_SESSION[$k]);
 			}
 
 			return;
