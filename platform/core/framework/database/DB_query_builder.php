@@ -663,13 +663,15 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 			}
 			else
 			{
-				$operator = trim($this->_get_operator($k));
-
-				// '<>' and '!=' conversion into IS NOT NULL
-				// Don't break WHERE clause passed using the "custom string" method.
-				if (($operator === '<>' OR $operator === '!=') && substr(trim($k), -2) === $operator)
+				$operator = $this->_get_operator($k);
+				if (stripos($operator, 'NULL') === FALSE)
 				{
-					$k = str_replace($operator, ' IS NOT NULL', $k);
+					$op = strrpos($k, $operator);
+					if (strlen($k) === ($op + strlen($operator)))
+					{
+						$operator = strtr($operator, array('<>' => 'IS NOT', '!=' => 'IS NOT'));
+						$k = substr($k, 0, $op).rtrim($operator).' NULL';
+					}
 				}
 			}
 
