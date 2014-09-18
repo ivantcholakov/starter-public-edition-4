@@ -1,0 +1,47 @@
+[
+    {
+        "name": "fg/multiplayer",
+        "version": "1.1.0",
+        "version_normalized": "1.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/felixgirault/multiplayer.git",
+            "reference": "6cb6ffbe0f3e5a7e19ece7cc99e23b3d544f17d7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/felixgirault/multiplayer/zipball/6cb6ffbe0f3e5a7e19ece7cc99e23b3d544f17d7",
+            "reference": "6cb6ffbe0f3e5a7e19ece7cc99e23b3d544f17d7",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2014-03-29 12:52:27",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Multiplayer": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Félix Girault",
+                "email": "felix.girault@gmail.com",
+                "homepage": "http://www.felix-girault.fr",
+                "role": "Developer"
+            }
+        ],
+        "description": "Builds customizable video embed codes from any URL.",
+        "homepage": "http://github.com/felixgirault/multiplayer",
+        "keywords": [
+            "embed",
+            "html",
+            "media",
+            "player",
+            "video"
+        ]
+    }
+]
