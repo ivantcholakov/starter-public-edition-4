@@ -56,6 +56,7 @@
                     <li><a href="<?php echo site_url('playground/email-test'); ?>">Email Test</a></li>
                     <li><a href="<?php echo site_url('playground/datatables'); ?>">DataTables</a></li>
                     <li><a href="<?php echo site_url('playground/gravatar-test'); ?>">Gravatar Test</a></li>
+                    <li><a href="<?php echo site_url('playground/multiplayer'); ?>">Multiplayer Library Test</a></li>
                 </ul>
 
             </div>
