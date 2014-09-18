@@ -291,7 +291,8 @@ if (isset($assign_to_config) && is_array($assign_to_config))
  *  Should we use a Composer autoloader?
  * ------------------------------------------------------
  */
-if (($composer_autoload = config_item('composer_autoload')) !== FALSE)
+// See https://getcomposer.org/doc/00-intro.md#system-requirements
+if (($composer_autoload = config_item('composer_autoload')) !== FALSE && is_php('5.3.2'))
 {
     if ($composer_autoload === TRUE && file_exists(PLATFORMPATH.'vendor/autoload.php'))
     {
