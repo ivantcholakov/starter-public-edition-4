@@ -183,7 +183,7 @@ class Core_Tree_Model extends Core_Model {
         return $this->cache[$id]['children_count'];
     }
 
-    public function get_children($id = null, $select = '', $where = array(), $order_by = array()) {
+    public function get_children($id = null, $select = '', $where = array(), $order_by = array(), $depth = null) {
 
         $id = (int) $id;
 
@@ -195,6 +195,15 @@ class Core_Tree_Model extends Core_Model {
 
             $level = $this->get_level($id);
             $level++;
+        }
+
+        if ($depth !== null) {
+
+            $depth = (int) $depth;
+
+            if ($depth < $level) {
+                return null;
+            }
         }
 
         if (!is_array($select)) {
@@ -318,18 +327,8 @@ class Core_Tree_Model extends Core_Model {
     public function get_tree($id = null, $select = '', $where = array(), $order_by = array(), $depth = null) {
 
         $id = (int) $id;
-        $level = empty($id) ? 0 : $this->get_level($id);
 
-        if (!is_null($depth)) {
-
-            $depth = (int) $depth;
-
-            if ($depth < $level) {
-                return null;
-            }
-        }
-
-        $result = $this->get_children($id, $select, $where, $order_by);
+        $result = $this->get_children($id, $select, $where, $order_by, $depth);
 
         if (!empty($result)) {
 
