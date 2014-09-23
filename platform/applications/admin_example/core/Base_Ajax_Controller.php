@@ -10,6 +10,10 @@ class Base_Ajax_Controller extends Core_Controller {
 
         parent::__construct();
 
+        $this->load
+            ->helper('asset')
+        ;
+
         // Code for the real authentication system.
         //$this->load
         //    ->model('current_user')
