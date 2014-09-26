@@ -279,6 +279,17 @@ class CI_Loader {
 			load_class('Model', 'core');
 		}
 
+		// Added by Ivan Tcholakov, 26-SEP-2014.
+		// Proposed by actors315 (GitHub name).
+		// "Avoid problems caused by recursive calls"
+		// See https://github.com/EllisLab/CodeIgniter/pull/3253
+		if (class_exists($model, FALSE))
+		{
+			//log_message('debug', $model.' has been loaded, no need to re-load.');
+			return $this;
+		}
+		//
+
 		$model = ucfirst(strtolower($model));
 
 		foreach ($this->_ci_model_paths as $mod_path)

@@ -503,6 +503,18 @@ class MX_Loader extends CI_Loader
             Modules::load_file($_model, $path);
 
             $model = ucfirst($_model);
+
+            // Added by Ivan Tcholakov, 26-SEP-2014.
+            // Proposed by actors315 (GitHub name).
+            // "Avoid problems caused by recursive calls"
+            // See https://github.com/EllisLab/CodeIgniter/pull/3253
+            if (class_exists($model, FALSE))
+            {
+                //log_message('debug', $model.' has been loaded, no need to re-load.');
+                return $this;
+            }
+            //
+
             CI::$APP->$_alias = new $model();
 
             $this->_ci_models[] = $_alias;
@@ -574,6 +586,17 @@ class MX_Loader extends CI_Loader
         {
             load_class('Model', 'core');
         }
+
+        // Added by Ivan Tcholakov, 26-SEP-2014.
+        // Proposed by actors315 (GitHub name).
+        // "Avoid problems caused by recursive calls"
+        // See https://github.com/EllisLab/CodeIgniter/pull/3253
+        if (class_exists($model, FALSE))
+        {
+            //log_message('debug', $model.' has been loaded, no need to re-load.');
+            return;
+        }
+        //
 
         $model = ucfirst(strtolower($model));
 
