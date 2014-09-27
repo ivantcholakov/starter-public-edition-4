@@ -275,6 +275,7 @@ if (!function_exists('get_email_settings')) {
         $config['newline'] = array_key_exists('newline', $config) ? $config['newline'] : "\n";
         $config['bcc_batch_mode'] = array_key_exists('bcc_batch_mode', $config) ? $config['bcc_batch_mode'] : false;
         $config['bcc_batch_size'] = array_key_exists('bcc_batch_size', $config) ? $config['bcc_batch_size'] : 200;
+        $config['encoding'] = array_key_exists('encoding', $config) ? $config['encoding'] : '8bit';
 
         $config['mailer_enabled'] = array_key_exists('mailer_enabled', $config) ? $config['mailer_enabled'] : false;
         $config['site_email'] = array_key_exists('site_email', $config) ? $config['site_email'] : '';
@@ -304,6 +305,7 @@ if (!function_exists('get_email_settings')) {
             'email_newline',
             'email_bcc_batch_mode',
             'email_bcc_batch_size',
+            'email_encoding',
 
             'mailer_enabled',
             'site_email',
@@ -331,6 +333,7 @@ if (!function_exists('get_email_settings')) {
         $config['newline'] = isset($settings['email_newline']) ? (string) $settings['email_newline'] : $config['newline'];
         $config['bcc_batch_mode'] = isset($settings['email_bcc_batch_mode']) ? !empty($settings['email_bcc_batch_mode']) : $config['bcc_batch_mode'];
         $config['bcc_batch_size'] = isset($settings['email_bcc_batch_size']) ? (int) $settings['email_bcc_batch_size'] : $config['bcc_batch_size'];
+        $config['encoding'] = isset($settings['email_encoding']) ? (int) $settings['email_encoding'] : $config['encoding'];
 
         $config['mailer_enabled'] = isset($settings['mailer_enabled']) ? !empty($settings['mailer_enabled']) : $config['mailer_enabled'];
         $config['site_email'] = isset($settings['site_email']) ? (string) $settings['site_email'] : $config['site_email'];
