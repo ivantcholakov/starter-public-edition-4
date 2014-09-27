@@ -44,6 +44,10 @@ if ($this->settings->get('mailer_enabled')) {
                         <?php echo form_open('', 'id="email_test_form" method="post" role="form"'); ?>
 
                             <div class="form-group">
+                                <textarea id="custom_text" name="custom_text" class="form-control" rows="5" placeholder="Enter here your text, if you wish."><?php echo set_value('custom_text', '', true); ?></textarea>
+                            </div>
+
+                            <div class="form-group">
                                 <img id="captcha_image"
                                     src="<?php echo $this->captcha->src.'?nocache='.rand(100000000, 999999999); ?>"
                                     class="thumbnail"

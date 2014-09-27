@@ -29,9 +29,9 @@ class Common_Events_Email {
         return Modules::run('email/index', $data);
     }
 
-    public function email_test($to = null) {
+    public function email_test($data = array()) {
 
-        return Modules::run('email/test/index', $to);
+        return Modules::run('email/test/index', $data);
     }
 
 }

@@ -21,11 +21,15 @@ class Test_controller extends Core_Controller {
         show_404();
     }
 
-    public function index($to = null) {
+    public function index($data = array()) {
 
-        $to = $to == '' ? null : $to;
+        if (!is_array($data)) {
+            $data = $data !== null ? array('to' => (string) $data) : array();
+        }
 
-        extract($this->get_message());
+        $custom_text = isset($data['custom_text']) ? $data['custom_text'] : null;
+
+        extract($this->get_message($custom_text));
 
         $logo = DEFAULTFCPATH.'apple-touch-icon-precomposed.png';
         $has_logo = file_exists($logo);
@@ -52,10 +56,12 @@ class Test_controller extends Core_Controller {
         $this->load->library('email');
         $body = $this->email->full_html($subject, $body);
 
-        return Events::trigger('email', compact('subject', 'body', 'attach', 'to'));
+        $data = array_merge($data, compact('subject', 'body', 'attach'));
+
+        return Events::trigger('email', $data);
     }
 
-    public function get_message() {
+    public function get_message($custom_text = null) {
 
         $subject = '['.$this->settings->get('site_name').'] '.'Test Message';
         $body =
@@ -64,6 +70,13 @@ class Test_controller extends Core_Controller {
     <p><img src="{{logo_src}}" /></p>
     {{/has_logo}}
     <h1>This is a message for testing purpose</h1>
+';
+
+        if ($custom_text != '') {
+            $body .= $custom_text;
+        }
+
+        $body .= '
     <p>Greetings from the team of <a href="'.default_base_url().'">'.$this->settings->get('site_name').'</a>.</p>
 ';
 

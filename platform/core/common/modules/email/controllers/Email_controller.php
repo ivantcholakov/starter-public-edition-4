@@ -33,9 +33,19 @@ class Email_controller extends Core_Controller {
      */
     public function index($data = array()) {
 
+        if (!is_array($data)) {
+            $data = array();
+        }
+
         $this->registry->delete('email_debugger');
 
         $settings = get_email_settings();
+
+        if (!is_array($settings)) {
+            $settings = array();
+        }
+
+        $settings = array_replace($settings, $data);
 
         if (!$settings['mailer_enabled']) {
 

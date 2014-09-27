@@ -27,6 +27,8 @@ class Email_test_controller extends Base_Controller {
 
     public function index() {
 
+        $this->load->parser();
+
         $validation_rules = array(
             array(
                 'field' => 'email_test_form_captcha',
@@ -42,7 +44,10 @@ class Email_test_controller extends Base_Controller {
 
         if ($this->form_validation->run()) {
 
-            $success = (bool) Events::trigger('email_test', $this->settings->get('notification_email'));
+            $custom_text = $this->input->post('custom_text');
+            $custom_html = trim($custom_text) != '' ? $this->parser->parse_string($custom_text, null, true, array('textile' => array('restricted_mode' => true))) : '';
+
+            $success = (bool) Events::trigger('email_test', array('custom_text' => $custom_html));
 
             if ($success) {
 
