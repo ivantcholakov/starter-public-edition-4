@@ -203,6 +203,10 @@ if (!function_exists('set_email_settings')) {
             $ci->settings->set('email_bcc_batch_size', (int) $config['bcc_batch_size']);
         }
 
+        if (array_key_exists('encoding', $config)) {
+            $ci->settings->set('email_encoding', (string) $config['encoding']);
+        }
+
         //----------------------------------------------------------------------
 
         if (array_key_exists('mailer_enabled', $config)) {
