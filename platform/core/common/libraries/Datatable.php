@@ -600,8 +600,8 @@ class Datatable {
                     if ($has_expression_prop) {
 
                         if ($exact_match) {
-                            //$this->where('('.$column['expression'].')', $str);
-                            $this->where($column['expression'], $str);
+                            //$this->where('('.$column['expression'].') =', $str);
+                            $this->where($column['expression'].' =', $str);
                         } else {
                             //$this->like('('.$column['expression'].')', $str);
                             $this->like($column['expression'], $str);
