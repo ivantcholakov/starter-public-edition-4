@@ -661,6 +661,11 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 				// value appears not to have been set, assign the test to IS NULL
 				$k .= ' IS NULL';
 			}
+			// Added by Ivan Tcholakov, 29-SEP-2014.
+			// Methods ``where()``, ``or_where()``, ``having()`` and ``or_having()`` now convert the operators *<>* and *!=* into *IS NOT NULL* when the supplied for comparison value is equal to *NULL*.
+			// Probably this feature is going to be rejected.
+			// See https://github.com/EllisLab/CodeIgniter/issues/3194
+			// TODO: Fix https://github.com/EllisLab/CodeIgniter/pull/3257
 			else
 			{
 				$operator = $this->_get_operator($k);
@@ -674,6 +679,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 					}
 				}
 			}
+			//
 
 			$this->{$qb_key}[] = array('condition' => $prefix.$k.$v, 'escape' => $escape);
 			if ($this->qb_caching === TRUE)
