@@ -664,19 +664,41 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 			// Added by Ivan Tcholakov, 29-SEP-2014.
 			// Methods ``where()``, ``or_where()``, ``having()`` and ``or_having()`` now convert the operators *<>* and *!=* into *IS NOT NULL* when the supplied for comparison value is equal to *NULL*.
 			// Probably this feature is going to be rejected.
-			// See https://github.com/EllisLab/CodeIgniter/issues/3194
-			// TODO: Fix https://github.com/EllisLab/CodeIgniter/pull/3257
+			// https://github.com/EllisLab/CodeIgniter/issues/3194
+			// https://github.com/EllisLab/CodeIgniter/pull/3198
+			// https://github.com/EllisLab/CodeIgniter/issues/3238
+			// https://github.com/EllisLab/CodeIgniter/pull/3239
+			// https://github.com/EllisLab/CodeIgniter/pull/3257
+			// A previous attempt:
+			//else
+			//{
+			//	$operator = $this->_get_operator($k);
+			//	if (stripos($operator, 'NULL') === FALSE && strncasecmp(ltrim($operator), 'IN', 2) !== 0)
+			//	{
+			//		$op = strrpos($k, $operator);
+			//		if (strlen($k) === ($op + strlen($operator)))
+			//		{
+			//			$operator = strtr($operator, array('<>' => 'IS NOT', '!=' => 'IS NOT'));
+			//			$k = substr($k, 0, $op).rtrim($operator).' NULL';
+			//		}
+			//	}
+			//}
+			// Ivan: The good solution IMO.
 			else
 			{
-				$operator = $this->_get_operator($k);
-				if (stripos($operator, 'NULL') === FALSE && strncasecmp(ltrim($operator), 'IN', 2) !== 0)
+				$operator = trim($this->_get_operator($k));
+				$krt = rtrim($k);
+
+				// Beware not to break WHERE clause passed using the "custom string" method.
+				// '<>' and '!=' conversion into IS NOT NULL
+				if (($operator === '<>' OR $operator === '!=') && substr($krt, -2) === $operator)
 				{
-					$op = strrpos($k, $operator);
-					if (strlen($k) === ($op + strlen($operator)))
-					{
-						$operator = strtr($operator, array('<>' => 'IS NOT', '!=' => 'IS NOT'));
-						$k = substr($k, 0, $op).rtrim($operator).' NULL';
-					}
+					$k = $this->_str_replace_last($operator, ' IS NOT NULL', $k);
+				}
+				// '=' conversion into IS NULL
+				elseif ($operator === '=' && substr($krt, -1) === $operator)
+				{
+					$k = $this->_str_replace_last($operator, ' IS NULL', $k);
 				}
 			}
 			//
@@ -692,6 +714,94 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 
 		return $this;
 	}
+
+	// Added by Ivan Tcholakov, 29-SEP-2014.
+	protected function _str_replace_last($search, $replace, $str)
+	{
+		if (($pos = strrpos($str, $search)) !== FALSE)
+		{
+			$str = substr_replace($str, $replace, $pos, strlen($search));
+		}
+
+		return $str;
+	}
+	//
+
+	/*
+	// Feature 3194 Sample Tests
+	//=====================================================================
+
+	// IN and NOT IN checks
+	//---------------------------------------------------------------------
+
+	$sql = $this->db
+		->from('products')
+		->where('id IN(1, 2, 3)')
+		->get_compiled_select();
+
+	echo $sql;
+
+	echo '<br />';
+
+	$sql = $this->db
+		->from('products')
+		->where('id IN (1, 2, 3)')
+		->get_compiled_select();
+
+	echo $sql;
+
+	echo '<br />';
+
+	$sql = $this->db
+		->from('products')
+		->where('id NOT IN(1, 2, 3)')
+		->get_compiled_select();
+
+	echo $sql;
+
+	echo '<br />';
+
+	$sql = $this->db
+		->from('products')
+		->where('id NOT IN (1, 2, 3)')
+		->get_compiled_select();
+
+	echo $sql;
+
+	echo '<br />';
+
+	// IS NULL checks.
+	//---------------------------------------------------------------------
+
+	$sql = $this->db
+		->from('products')
+		->where('category_id', NULL)
+		->get_compiled_select();
+
+	echo $sql;
+
+	echo '<br />';
+
+	$sql = $this->db
+		->from('products')
+		->where('category_id =', NULL)
+		->get_compiled_select();
+
+	echo $sql;
+
+	echo '<br />';
+
+	$sql = $this->db
+		->from('products')
+		->where('category_id IS NULL')
+		->get_compiled_select();
+
+	echo $sql;
+
+	echo '<br />';
+
+	//---------------------------------------------------------------------
+	*/
 
 	// --------------------------------------------------------------------
 
