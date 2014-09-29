@@ -661,28 +661,10 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 				// value appears not to have been set, assign the test to IS NULL
 				$k .= ' IS NULL';
 			}
-			// Added by Ivan Tcholakov, 29-SEP-2014.
-			// Methods ``where()``, ``or_where()``, ``having()`` and ``or_having()`` now convert the operators *<>* and *!=* into *IS NOT NULL* when the supplied for comparison value is equal to *NULL*.
-			// https://github.com/EllisLab/CodeIgniter/issues/3194
-			else
+			elseif (preg_match('/\s*(!?=|<>)\s*$/i', $k, $match, PREG_OFFSET_CAPTURE))
 			{
-				$krt = rtrim($k);
-				$o1 = substr($krt, -1);
-				$o2 = substr($krt, -2);
-
-				// Beware not to break WHERE clause passed using the "custom string" method.
-				// '<>' and '!=' conversion into IS NOT NULL
-				if ($o2 === '<>' OR $o2 === '!=')
-				{
-					$k = $this->_str_replace_last($o2, ' IS NOT NULL', $k);
-				}
-				// '=' conversion into IS NULL
-				elseif ($o1 === '=')
-				{
-					$k = $this->_str_replace_last($o1, ' IS NULL', $k);
-				}
+				$k = substr($k, 0, $match[0][1]).($match[1][0] === '=' ? ' IS NULL' : ' IS NOT NULL');
 			}
-			//
 
 			$this->{$qb_key}[] = array('condition' => $prefix.$k.$v, 'escape' => $escape);
 			if ($this->qb_caching === TRUE)
@@ -695,18 +677,6 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 
 		return $this;
 	}
-
-	// Added by Ivan Tcholakov, 29-SEP-2014.
-	protected function _str_replace_last($search, $replace, $str)
-	{
-		if (($pos = strrpos($str, $search)) !== FALSE)
-		{
-			$str = substr_replace($str, $replace, $pos, strlen($search));
-		}
-
-		return $str;
-	}
-	//
 
 	// --------------------------------------------------------------------
 
