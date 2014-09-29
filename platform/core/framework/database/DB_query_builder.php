@@ -666,19 +666,20 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 			// https://github.com/EllisLab/CodeIgniter/issues/3194
 			else
 			{
-				$operator = trim($this->_get_operator($k));
 				$krt = rtrim($k);
+				$o1 = substr($krt, -1);
+				$o2 = substr($krt, -2);
 
 				// Beware not to break WHERE clause passed using the "custom string" method.
 				// '<>' and '!=' conversion into IS NOT NULL
-				if (($operator === '<>' OR $operator === '!=') && substr($krt, -2) === $operator)
+				if ($o2 === '<>' OR $o2 === '!=')
 				{
-					$k = $this->_str_replace_last($operator, ' IS NOT NULL', $k);
+					$k = $this->_str_replace_last($o2, ' IS NOT NULL', $k);
 				}
 				// '=' conversion into IS NULL
-				elseif ($operator === '=' && substr($krt, -1) === $operator)
+				elseif ($o1 === '=')
 				{
-					$k = $this->_str_replace_last($operator, ' IS NULL', $k);
+					$k = $this->_str_replace_last($o1, ' IS NULL', $k);
 				}
 			}
 			//
