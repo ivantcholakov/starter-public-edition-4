@@ -159,3 +159,4 @@ $lang['ui_confirm_video_deletion'] = 'Наистина ли искате да и
 $lang['ui_video_deletion_success'] = 'Видеото %s е изтрито.';
 $lang['ui_no_video_uploaded'] = 'Не е качено видео.';
 $lang['ui_no_video'] = 'Няма видео.';
+$lang['ui_no_records'] = 'Няма записи.';

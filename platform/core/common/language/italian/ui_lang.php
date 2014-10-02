@@ -159,3 +159,4 @@ $lang['ui_confirm_video_deletion'] = 'Do you really want to delete the video %s?
 $lang['ui_video_deletion_success'] = 'The video %s has been deleted.';
 $lang['ui_no_video_uploaded'] = 'No video has been uploaded.';
 $lang['ui_no_video'] = 'There is no video.';
+$lang['ui_no_records'] = 'There are no records.';
