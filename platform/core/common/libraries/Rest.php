@@ -50,6 +50,7 @@ class REST
     protected $ssl_verify_peer  = null;
     protected $ssl_cainfo       = null;
 
+    protected $send_cookies = null;
     protected $response_string;
 
     function __construct($config = array())
@@ -92,6 +93,8 @@ class REST
         {
             $this->rest_server .= '/';
         }
+
+        isset($config['send_cookies']) && $this->send_cookies = $config['send_cookies'];
 
         isset($config['api_name']) && $this->api_name = $config['api_name'];
         isset($config['api_key']) && $this->api_key = $config['api_key'];
@@ -259,6 +262,12 @@ class REST
         if ($this->api_key != '')
         {
             $this->_ci->curl->http_header($this->api_name, $this->api_key);
+        }
+
+        // Send cookies with curl
+        if ($this->send_cookies != '')
+        {
+            $this->_ci->curl->set_cookies($_COOKIE);      
         }
 
         // Set the Content-Type (contributed by https://github.com/eriklharper)
