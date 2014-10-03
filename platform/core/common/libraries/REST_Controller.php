@@ -10,7 +10,7 @@
  * @category        Libraries
  * @author          Phil Sturgeon, Chris Kacerguis
  * @license         MIT
- * @link			https://github.com/chriskacerguis/codeigniter-restserver
+ * @link            https://github.com/chriskacerguis/codeigniter-restserver
  * @version         3.0.0-pre
  */
 // Modified by Ivan Tcholakov, 14-FEB-2012.
