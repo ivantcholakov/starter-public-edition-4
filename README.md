@@ -115,7 +115,7 @@ The technique of this hack is available, but it is not mandatory.
 * cURL library for CodeIgniter, https://github.com/philsturgeon/codeigniter-curl
 * CodeIgniter-REST Client, https://github.com/philsturgeon/codeigniter-restclient
 * CodeIgniter Rest Server, https://github.com/chriskacerguis/codeigniter-restserver
-* A simple Event System for CodeIgniter, https://github.com/ericbarnes/CodeIgniter-Events
+* A simple Event System for CodeIgniter, https://github.com/nathanmac/CodeIgniter-Events, https://github.com/ericbarnes/CodeIgniter-Events
 * Support for database stored settings (Settings library).
 * Textile, A Humane Web Text Generator, http://textile.thresholdstate.com/, https://github.com/textile/php-textile
 * Markdown Extra - A text-to-HTML conversion tool, http://michelf.com/projects/php-markdown/
