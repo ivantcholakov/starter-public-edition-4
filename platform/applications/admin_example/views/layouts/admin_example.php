@@ -71,6 +71,7 @@ echo js_imgsizer();
 
 echo js('lib/bootstrap-3/bootstrap.min.js');
 echo js('lib/jasny-bootstrap-3/jasny-bootstrap.min.js');
+echo js('lib/jquery-ajax-queue/jquery-ajax-queue.js');
 
 file_partial('scripts');
 template_partial('scripts');
