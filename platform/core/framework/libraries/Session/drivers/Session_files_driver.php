@@ -261,13 +261,23 @@ class CI_Session_files_driver extends CI_Session_driver implements SessionHandle
 			// If the filename doesn't match this pattern, it's either not a session file or is not ours
 			if ( ! preg_match('/(?:[0-9a-f]{32})?[0-9a-f]{40}$/i', $file)
 				OR ! is_file($this->_config['save_path'].DIRECTORY_SEPARATOR.$file)
-				OR ($mtime = filemtime($this->_config['save_path'].DIRECTORY_SEPARATOR.$file)) === FALSE
+				// Modified by Ivan Tcholakov, 06-OCT-2014.
+				// I saw again warning messages on my testing server.
+				// See https://github.com/bcit-ci/CodeIgniter/issues/3073
+				//OR ($mtime = filemtime($this->_config['save_path'].DIRECTORY_SEPARATOR.$file)) === FALSE
+				OR ($mtime = @ filemtime($this->_config['save_path'].DIRECTORY_SEPARATOR.$file)) === FALSE
+				//
 				OR $mtime > $ts)
 			{
 				continue;
 			}
 
-			unlink($this->_config['save_path'].DIRECTORY_SEPARATOR.$file);
+			// Modified by Ivan Tcholakov, 06-OCT-2014.
+			// I saw again warning messages on my testing server.
+			// See https://github.com/bcit-ci/CodeIgniter/issues/3073
+			//unlink($this->_config['save_path'].DIRECTORY_SEPARATOR.$file);
+			@ unlink($this->_config['save_path'].DIRECTORY_SEPARATOR.$file);
+			//
 		}
 
 		return TRUE;
