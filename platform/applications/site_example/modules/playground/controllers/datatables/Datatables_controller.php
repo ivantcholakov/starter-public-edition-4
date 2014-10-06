@@ -24,7 +24,6 @@ class Datatables_controller extends Base_Controller {
 
     public function index() {
 
-        
         $csv = (string) @ file_get_contents(APPPATH.'demo_data/countries.csv');
 
         $items = preg_split('/\r\n|\r|\n/m', $csv, null, PREG_SPLIT_NO_EMPTY);

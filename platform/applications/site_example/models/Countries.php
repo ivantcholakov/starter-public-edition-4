@@ -7,13 +7,9 @@ class Countries extends Core_Model {
     protected $_table = 'countries';
     protected $return_type = 'array';
 
-    protected $ci;
-
     public function __construct() {
 
         parent::__construct();
-
-        $this->ci = get_instance();
     }
 
 }
