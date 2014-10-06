@@ -27,6 +27,7 @@ $config['password_reset_secret'] = '2wuAevO3oZ3vlFIhLLQFTld4yvAo5dO9FYX75DwqwJhS
 $config['password_reset_expiration_time'] = 1000;   // In seconds.
 
 $config['autologin_enabled'] = false;
+$config['autologin_database_table_name'] = 'autologin';
 $config['autologin_cookie_name'] = 'autologin';
 $config['autologin_expiration_time'] = 5184000; // In seconds.
 $config['autologin_hash_algorithm'] = 'sha256';

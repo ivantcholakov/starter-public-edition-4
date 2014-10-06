@@ -54,6 +54,12 @@ class Autologin extends Core_Model {
         $enabled = $this->config->item('autologin_enabled');
         $this->enabled = !empty($enabled) && !is_cli();
 
+        $database_table_name = $this->config->item('autologin_database_table_name');
+
+        if ($database_table_name != '') {
+            $this->_table = $database_table_name;
+        }
+
         $cookie_name = $this->config->item('autologin_cookie_name');
 
         if ($cookie_name != '') {
