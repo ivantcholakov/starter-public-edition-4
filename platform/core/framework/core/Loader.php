@@ -279,21 +279,6 @@ class CI_Loader {
 			load_class('Model', 'core');
 		}
 
-		// Disabled temporarily by Ivan Tcholakov, 06-OCT-2014.
-		// See https://github.com/ivantcholakov/starter-public-edition-4/issues/34
-		/*
-		// Added by Ivan Tcholakov, 26-SEP-2014.
-		// Proposed by actors315 (GitHub name).
-		// "Avoid problems caused by recursive calls"
-		// See https://github.com/EllisLab/CodeIgniter/pull/3253
-		if (class_exists($model, FALSE))
-		{
-			//log_message('debug', $model.' has been loaded, no need to re-load.');
-			return $this;
-		}
-		//
-		*/
-
 		$model = ucfirst(strtolower($model));
 
 		foreach ($this->_ci_model_paths as $mod_path)
@@ -305,8 +290,14 @@ class CI_Loader {
 
 			require_once($mod_path.'models/'.$path.$model.'.php');
 
-			$CI->$name = new $model();
+			// Modified by Ivan Tcholakov, 07-OCT-2014.
+			// An alternative implementation of "Avoid problems caused by recursive calls"
+			// See https://github.com/bcit-ci/CodeIgniter/pull/3253
+			//$CI->$name = new $model();
+			//$this->_ci_models[] = $name;
 			$this->_ci_models[] = $name;
+			$CI->$name = new $model();
+			//
 			return $this;
 		}
 
