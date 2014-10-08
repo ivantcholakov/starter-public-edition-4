@@ -504,14 +504,9 @@ class MX_Loader extends CI_Loader
 
             $model = ucfirst($_model);
 
-            // Modified by Ivan Tcholakov, 07-OCT-2014.
-            // An alternative implementation of "Avoid problems caused by recursive calls"
             // See https://github.com/bcit-ci/CodeIgniter/pull/3253
-            //CI::$APP->$_alias = new $model();
-            //$this->_ci_models[] = $_alias;
             $this->_ci_models[] = $_alias;
             CI::$APP->$_alias = new $model();
-            //
         }
 
         // Modified by Ivan Tcholakov, 12-DEC-2013.
@@ -603,14 +598,10 @@ class MX_Loader extends CI_Loader
             $model = ucfirst($model);
             //
 
-            // Modified by Ivan Tcholakov, 07-OCT-2014.
-            // An alternative implementation of "Avoid problems caused by recursive calls"
             // See https://github.com/bcit-ci/CodeIgniter/pull/3253
-            //$CI->$name = new $model();
-            //$this->_ci_models[] = $name;
             $this->_ci_models[] = $name;
             $CI->$name = new $model();
-            //
+
             return;
         }
 
