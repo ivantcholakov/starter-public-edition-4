@@ -324,15 +324,6 @@ $config['languages'] = array(
         'flag' => 'CZ',
     ),
 
-    'czech' => array(
-        'code' => 'cs',
-        'direction' => 'ltr',
-        'uri_segment' => 'cs',
-        'name' => 'Čeština',
-        'name_en' => 'Czech',
-        'flag' => 'CZ',
-    ),
-
     'swedish' => array(
         'code' => 'sv',
         'direction' => 'ltr',
