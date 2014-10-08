@@ -224,7 +224,7 @@ class Core_Lang_Model extends Core_Model {
                 // Try to find an existing value in some language.
                 $result = $this
                     ->where($this->external_key_field, $id)
-                    ->order_by('id', 'asc')
+                    ->order_by($this->primary_key, 'asc')
                     ->value($field);
 
                 if ($result === null) {
