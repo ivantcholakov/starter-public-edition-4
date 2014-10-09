@@ -179,7 +179,6 @@ $config['composer_autoload'] = PLATFORMPATH.'vendor/autoload.php';
 */
 $config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-=+';
 
-
 /*
 |--------------------------------------------------------------------------
 | Enable Query Strings
@@ -397,9 +396,9 @@ CREATE TABLE `ci_sessions` (
 |
 | 'cookie_prefix'   = Set a prefix if you need to avoid collisions
 | 'cookie_domain'   = Set to .your-domain.com for site-wide cookies
-| 'cookie_path'     =  Typically will be a forward slash
-| 'cookie_secure'   =  Cookies will only be set if a secure HTTPS connection exists.
-| 'cookie_httponly' = Cookie will only be accessible via HTTP(S) (no javascript) 
+| 'cookie_path'     = Typically will be a forward slash
+| 'cookie_secure'   = Cookies will only be set if a secure HTTPS connection exists.
+| 'cookie_httponly' = Cookie will only be accessible via HTTP(S) (no javascript)
 |
 */
 $config['cookie_prefix']    = '';
@@ -527,7 +526,6 @@ $config['minify_output'] = FALSE;
 */
 $config['time_reference'] = 'local';
 
-
 /*
 |--------------------------------------------------------------------------
 | Rewrite PHP Short Tags
@@ -577,7 +575,6 @@ $config['parser_valid_drivers'] = array(
 | Array:            array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
-
 
 /*
 |--------------------------------------------------------------------------

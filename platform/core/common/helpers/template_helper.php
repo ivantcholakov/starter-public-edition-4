@@ -60,7 +60,9 @@ if (!function_exists('template_body')) {
 
 if (!function_exists('template_partial')) {
 
-    function template_partial($name = '') {
+    function template_partial($name) {
+
+        $name = (string) $name;
 
         $data =& ci()->load->_ci_cached_vars;
 
@@ -73,7 +75,9 @@ if (!function_exists('template_partial')) {
 
 if (!function_exists('template_partial_exists')) {
 
-    function template_partial_exists($name = '') {
+    function template_partial_exists($name) {
+
+        $name = (string) $name;
 
         $data =& ci()->load->_ci_cached_vars;
 
@@ -84,7 +88,14 @@ if (!function_exists('template_partial_exists')) {
 
 if (!function_exists('file_partial')) {
 
-    function file_partial($file = '', $ext = 'php') {
+    function file_partial($file, $ext = null) {
+
+        $file = (string) $file;
+        $ext = (string) $ext;
+
+        if ($ext == '') {
+            $ext = 'php';
+        }
 
         $data =& ci()->load->_ci_cached_vars;
 
