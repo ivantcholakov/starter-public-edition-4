@@ -163,3 +163,4 @@ $lang['ui_no_records'] = 'There are no records.';
 $lang['ui_icon'] = 'Icon';
 $lang['ui_icons'] = 'Icons';
 $lang['ui_font_icon'] = 'Font icon';
+$lang['ui_homepage'] = 'Homepage';

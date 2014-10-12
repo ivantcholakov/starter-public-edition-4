@@ -163,3 +163,4 @@ $lang['ui_no_records'] = 'Няма записи.';
 $lang['ui_icon'] = 'Икона';
 $lang['ui_icons'] = 'Икони';
 $lang['ui_font_icon'] = 'Шрифт-икона';
+$lang['ui_homepage'] = 'Начална страница';
