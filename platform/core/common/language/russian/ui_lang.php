@@ -160,3 +160,6 @@ $lang['ui_video_deletion_success'] = 'The video %s has been deleted.';
 $lang['ui_no_video_uploaded'] = 'No video has been uploaded.';
 $lang['ui_no_video'] = 'There is no video.';
 $lang['ui_no_records'] = 'There are no records.';
+$lang['ui_icon'] = 'Icon';
+$lang['ui_icons'] = 'Icons';
+$lang['ui_font_icon'] = 'Font icon';

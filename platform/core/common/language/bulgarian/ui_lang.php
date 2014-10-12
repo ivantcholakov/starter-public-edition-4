@@ -160,3 +160,6 @@ $lang['ui_video_deletion_success'] = 'Видеото %s е изтрито.';
 $lang['ui_no_video_uploaded'] = 'Не е качено видео.';
 $lang['ui_no_video'] = 'Няма видео.';
 $lang['ui_no_records'] = 'Няма записи.';
+$lang['ui_icon'] = 'Икона';
+$lang['ui_icons'] = 'Икони';
+$lang['ui_font_icon'] = 'Шрифт-икона';
