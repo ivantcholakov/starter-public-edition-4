@@ -165,3 +165,4 @@ $lang['ui_icons'] = 'Icons';
 $lang['ui_font_icon'] = 'Font icon';
 $lang['ui_homepage'] = 'Homepage';
 $lang['ui_keyword'] = 'Keyword';
+$lang['ui_site'] = 'Site';
