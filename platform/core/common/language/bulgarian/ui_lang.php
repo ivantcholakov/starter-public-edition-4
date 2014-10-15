@@ -164,3 +164,4 @@ $lang['ui_icon'] = 'Икона';
 $lang['ui_icons'] = 'Икони';
 $lang['ui_font_icon'] = 'Шрифт-икона';
 $lang['ui_homepage'] = 'Начална страница';
+$lang['ui_keyword'] = 'Ключова дума';
