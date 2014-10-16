@@ -166,3 +166,4 @@ $lang['ui_font_icon'] = 'Шрифт-икона';
 $lang['ui_homepage'] = 'Начална страница';
 $lang['ui_keyword'] = 'Ключова дума';
 $lang['ui_site'] = 'Сайт';
+$lang['ui_site_name'] = 'Име на сайта';
