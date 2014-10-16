@@ -178,6 +178,38 @@ class Settings {
         return $this;
     }
 
+    // This is a language sensitive setting setter.
+    // Example:
+    // $this->settings->set_lang('site_name', 'My Site', 'english');
+    // The value 'My Site' is atually stored under the 'site_name_en' key.
+    // $language is assumed to the current language value, if it is not set.
+    // Note:
+    // Use the complementar method lang() to extract the value from the example:
+    // $site_name = $this->settings->lang('site_name', 'english');
+    public function set_lang($key, $value = null, $language = null) {
+
+        if (is_array($key)) {
+
+            foreach ($key as $k => $v) {
+                $this->set_lang($k, $v, $language);
+            }
+
+            return $this;
+        }
+
+        $key = (string) $key;
+
+        if ($key == '') {
+            return $this;
+        }
+
+        $key_lang = $key.'_'.$this->ci->lang->code($language);
+
+        $this->set($key_lang, $value);
+
+        return $this;
+    }
+
     // Reads all the settings from database and holds them within memory.
     public function refresh() {
 
