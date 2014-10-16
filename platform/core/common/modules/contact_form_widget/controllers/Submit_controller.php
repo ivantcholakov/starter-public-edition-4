@@ -169,7 +169,7 @@ class Submit_controller extends Core_Controller {
             )
         );
 
-        $data['site_name'] = $this->settings->get('site_name');
+        $data['site_name'] = $this->settings->lang('site_name');
         $data['site_url'] = $this->settings->get('contact_web_site');
         $data['contact_form_name'] = "{$data['contact_form_first_name']} {$data['contact_form_last_name']}";
         $data['contact_form_message'] = $this->parser->parse_string($data['contact_form_message'], null, true, array('textile' => array('restricted_mode' => true)));
@@ -187,9 +187,9 @@ class Submit_controller extends Core_Controller {
 
     protected function _create_email($data) {
 
-        $data['to'] = name_email_format($this->settings->get('site_name'), $this->settings->get('contact_email'));
+        $data['to'] = name_email_format($this->settings->lang('site_name'), $this->settings->get('contact_email'));
         $data['reply_to'] = name_email_format($data['contact_form_name'], $data['contact_form_email']);
-        $data['subject'] = '['.$this->settings->get('site_name').': '.$this->lang->line('mailer_a_message_has_been_received_from').' '.$data['contact_form_name'].'] '.$data['contact_form_subject'];
+        $data['subject'] = '['.$this->settings->lang('site_name').': '.$this->lang->line('mailer_a_message_has_been_received_from').' '.$data['contact_form_name'].'] '.$data['contact_form_subject'];
         $data['body'] = $this->parser->parse_string($data['email_template'], $data, true, 'mustache');
 
         $this->load->library('email');

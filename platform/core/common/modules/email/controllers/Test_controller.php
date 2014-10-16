@@ -63,7 +63,7 @@ class Test_controller extends Core_Controller {
 
     public function get_message($custom_text = null) {
 
-        $subject = '['.$this->settings->get('site_name').'] '.'Test Message';
+        $subject = '['.$this->settings->lang('site_name').'] '.'Test Message';
         $body =
 '
     {{#has_logo}}
@@ -77,7 +77,7 @@ class Test_controller extends Core_Controller {
         }
 
         $body .= '
-    <p>Greetings from the team of <a href="'.default_base_url().'">'.$this->settings->get('site_name').'</a>.</p>
+    <p>Greetings from the team of <a href="'.default_base_url().'">'.$this->settings->lang('site_name').'</a>.</p>
 ';
 
         return compact('subject', 'body');

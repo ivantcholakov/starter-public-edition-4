@@ -72,7 +72,7 @@ class Email_controller extends Core_Controller {
         } else {
 
             $from = $settings['site_email'];
-            $from_name = $this->settings->get('site_name');
+            $from_name = $this->settings->lang('site_name');
         }
 
         if (isset($data['reply_to']) && $data['reply_to'] != '') {
@@ -88,7 +88,7 @@ class Email_controller extends Core_Controller {
         } else {
 
             $reply_to = $settings['notification_email'];
-            $reply_to_name = $this->settings->get('site_name');
+            $reply_to_name = $this->settings->lang('site_name');
         }
 
         if (isset($data['return_path']) && $data['return_path'] != '') {
