@@ -31,6 +31,12 @@ if (!function_exists('display_user')) {
             return null;
         }
 
+        $attributes = _stringify_attributes($attributes);
+
+        if (!$show_names) {
+            $attributes .= ' title="'.html_escape($user['first_name'].' '.$user['last_name'].' ('.$user['username'].')').'"';
+        }
+
         $result = img($ci->user_photo->get($user, $photo_size), false, $attributes);
 
         if ($show_names) {
