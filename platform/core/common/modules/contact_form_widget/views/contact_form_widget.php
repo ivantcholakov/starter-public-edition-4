@@ -41,7 +41,7 @@ if ($this->settings->get('mailer_enabled')) {
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-                                    <input type="text" id="contact_form_email" name="contact_form_email" class="form-control" i18n:placeholder="contact_email|* " />
+                                    <input type="email" id="contact_form_email" name="contact_form_email" class="form-control" i18n:placeholder="contact_email|* " />
                                 </div>
                             </div>
 
