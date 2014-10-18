@@ -82,18 +82,18 @@ class Slides extends Core_Model {
         $this->before_update[] = 'updated_by';
     }
 
-    public function get_name($id, $language = null, $with_translation_fallback = true, $fall_back_template = null) {
+    public function get_name($id, $language = null, $with_translation_fallback = false, $fall_back_template = null) {
 
         if ($fall_back_template === null) {
             $fall_back_template = 'Slide #{id}';
         }
 
-        return $this->get_lang($id, 'name', $language, $with_translation_fallback, $fall_back_template);
+        return $this->lang($id, 'name', $language, $with_translation_fallback, $fall_back_template);
     }
 
-    public function get_content($id, $language = null, $with_translation_fallback = true, $fall_back_template = null) {
+    public function get_content($id, $language = null, $with_translation_fallback = false, $fall_back_template = null) {
 
-        return $this->get_lang($id, 'content', $language, $with_translation_fallback, $fall_back_template);
+        return $this->lang($id, 'content', $language, $with_translation_fallback, $fall_back_template);
     }
 
 }
@@ -122,19 +122,19 @@ $id = 1;    // The current slide to be processed.
 
 // Get some translations - the generic method, examples.
 
-$name = $this->slides->get_lang($id, 'name');               // This is the name of the slide in the current language.
-$name = $this->slides->get_lang($id, 'name', 'bulgarian');  // This is the name of the slide in Bulgarian language.
-$name = $this->slides->get_name($id, 'name', 'bulgarian', false);   // Skip translation fallback.
-$name = $this->slides->get_name($id, 'name', null, false);  // Skip translation fallback, the language is the current one.
+$name = $this->slides->lang($id, 'name');               // This is the name of the slide in the current language.
+$name = $this->slides->lang($id, 'name', 'bulgarian');  // This is the name of the slide in Bulgarian language.
+$name = $this->slides->lang($id, 'name', 'bulgarian', true);   // Enforce translation fallback.
+$name = $this->slides->lang($id, 'name', null, true, 'Slide #{id}');  // Enforce translation fallback with template failed translation, the language is the current one.
 
-$translations = $this->slides->get_lang($id, array('name', 'content')); // Get translated values as an associative array.
+$translations = $this->slides->lang($id, array('name', 'content')); // Get translated values as an associative array.
 
 // Get some translations - custom methods (not mandatory to be defined and used).
 
 $name = $this->slides->get_name($id);
 $name = $this->slides->get_name($id, 'bulgarian');
-$name = $this->slides->get_name($id, 'bulgarian', false);
-$name = $this->slides->get_name($id, null, false);
+$name = $this->slides->get_name($id, 'bulgarian', true);
+$name = $this->slides->get_name($id, null, true);
 
 $content = $this->slides->get_content($id);                 // Etc.
 
@@ -181,6 +181,7 @@ class Core_Lang_Model extends Core_Model {
 
     /**
      * Gets translated string from the specified field by the specified parent id.
+     * @deprecated Use lang() method instead.
      *
      * @param int           $id                         The id from the parent table.
      * @param string/array  $field                      The target translated field, or an array of target field names.
@@ -191,12 +192,27 @@ class Core_Lang_Model extends Core_Model {
      */
     public function get_lang($id, $field, $language = null, $with_translation_fallback = true, $fall_back_template = null) {
 
+        return $this->lang($id, $f, $language, $with_translation_fallback, $fall_back_template);
+    }
+
+    /**
+     * Gets translated string from the specified field by the specified parent id.
+     *
+     * @param int           $id                         The id from the parent table.
+     * @param string/array  $field                      The target translated field, or an array of target field names.
+     * @param string        $language                   The desired language (the current language if nothing has been specified).
+     * @param boolean       $with_translation_fallback  Turn on/off translation fallback.
+     * @param string        $fall_back_template         A template for the returned value if fallback translation fails. Example: '{field} #{id}'
+     * @return string/array                             Returns the translated string or an associative array of translated strings.
+     */
+    public function lang($id, $field, $language = null, $with_translation_fallback = false, $fall_back_template = null) {
+
         if (is_array($field)) {
 
             $result = array();
 
             foreach ($field as $f) {
-                $result[$f] = $this->get_lang($id, $f, $language, $with_translation_fallback, $fall_back_template);
+                $result[$f] = $this->lang($id, $f, $language, $with_translation_fallback, $fall_back_template);
             }
 
             return $result;
@@ -217,7 +233,7 @@ class Core_Lang_Model extends Core_Model {
         if ($result === null && $with_translation_fallback) {
 
             // Try to find the value in English language.
-            $result = $this->get_lang($id, $field, $this->lang->english(), false);
+            $result = $this->lang($id, $field, $this->lang->english(), false);
 
             if ($result === null) {
 
@@ -244,20 +260,6 @@ class Core_Lang_Model extends Core_Model {
         }
 
         return $result;
-    }
-
-    /**
-     * Gets translated string from the specified field by the specified parent id.
-     * This is a simplified language getter without translation fallback.
-     *
-     * @param int           $id                         The id from the parent table.
-     * @param string/array  $field                      The target translated field, or an array of target field names.
-     * @param string        $language                   The desired language (the current language if nothing has been specified).
-     * @return string/array                             Returns the translated string or an associative array of translated strings.
-     */
-    public function lang($id, $field, $language = null) {
-
-        return $this->get_lang($id, $field, $language, false);
     }
 
     /**
