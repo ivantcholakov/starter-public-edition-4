@@ -247,6 +247,20 @@ class Core_Lang_Model extends Core_Model {
     }
 
     /**
+     * Gets translated string from the specified field by the specified parent id.
+     * This is a simplified language getter without translation fallback.
+     *
+     * @param int           $id                         The id from the parent table.
+     * @param string/array  $field                      The target translated field, or an array of target field names.
+     * @param string        $language                   The desired language (the current language if nothing has been specified).
+     * @return string/array                             Returns the translated string or an associative array of translated strings.
+     */
+    public function lang($id, $field, $language = null) {
+
+        return $this->get_lang($id, $field, $language, false);
+    }
+
+    /**
      * Sets translated string on the specified field at the specified parent id.
      * An associated array of strings can be set too.
      *

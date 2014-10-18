@@ -2001,6 +2001,21 @@ class Core_Model extends CI_Model
     }
 
     /**
+     * Gets translated string from the specified field by the specified primary key value from this table.
+     * This is a simplified language getter without translation fallback.
+     * See Core_Lang_Model.
+     *
+     * @param int           $primary_value              The primary key value from the table, associated with this model.
+     * @param string/array  $field                      The target translated field, or an array of target field names.
+     * @param string        $language                   The desired language (the current language if nothing has been specified).
+     * @return string/array                             Returns the translated string or an associative array of translated strings.
+     */
+    public function lang($primary_value, $field, $language = null) {
+
+        return $this->lang_model->get_lang($primary_value, $field, $language, false);
+    }
+
+    /**
      * Sets translated string on the specified field at tthe specified primary key value from this table.
      * An associated array of strings can be set too.
      * See Core_Lang_Model.
