@@ -2013,7 +2013,7 @@ class Core_Model extends CI_Model
      */
     public function lang($primary_value, $field, $language = null, $with_translation_fallback = false, $fall_back_template = null) {
 
-        return $this->lang_model->lang($primary_value, $field, $language, false);
+        return $this->lang_model->lang($primary_value, $field, $language, $with_translation_fallback, $fall_back_template);
     }
 
     /**
