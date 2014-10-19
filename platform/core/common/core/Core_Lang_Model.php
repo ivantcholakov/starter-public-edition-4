@@ -220,10 +220,6 @@ class Core_Lang_Model extends Core_Model {
 
         $id = (int) $id;
 
-        if ($language == '') {
-            $language = $this->lang->current();
-        }
-
         // Try to find the value in the specified language.
         $result = $this
             ->where($this->external_key_field, $id)
@@ -275,10 +271,6 @@ class Core_Lang_Model extends Core_Model {
     public function set_lang($id, $field, $value = null, $language = null) {
 
         $id = (int) $id;
-
-        if ($language == '') {
-            $language = $this->lang->current();
-        }
 
         $lang = $this->lang->code($language);
 
@@ -361,10 +353,6 @@ class Core_Lang_Model extends Core_Model {
 
         $id = (int) $id;
 
-        if ($language == '') {
-            $language = $this->lang->current();
-        }
-
         $this
             ->where($this->external_key_field, $id)
             ->where($this->lang_field, $this->lang->code($language))
@@ -388,6 +376,26 @@ class Core_Lang_Model extends Core_Model {
             ->delete_many_by();
 
         return $this;
+    }
+
+    /**
+     * Checks whether a translation exists, specified by the id from the parent table and language.
+     *
+     * @param int           $id                         The id from the parent table.
+     * @param string        $language                   The desired language (the current language if nothing has been specified).
+     * @return boolean
+     */
+    public function lang_exists($id, $language = null) {
+
+        $id = (int) $id;
+
+        $row = $this
+            ->select($this->external_key_field)
+            ->where($this->external_key_field, $id)
+            ->where('lang', $this->lang->code($language))
+            ->first();
+
+        return !empty($row);
     }
 
 }

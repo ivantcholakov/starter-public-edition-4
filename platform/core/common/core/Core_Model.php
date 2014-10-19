@@ -2051,8 +2051,9 @@ class Core_Model extends CI_Model
 
     /**
      * Deletes all the translations, specified primary key value from this table.
+     * See Core_Lang_Model.
      *
-     * @param int           $id                         The id from the parent table.
+     * @param int           $primary_value              The primary key value from the table, associated with this model.
      * @return objext                                   Returns this instance.
      */
     public function delete_langs($primary_value) {
@@ -2060,6 +2061,19 @@ class Core_Model extends CI_Model
         $this->lang_model->delete_langs($primary_value);
 
         return $this;
+    }
+
+    /**
+     * Checks whether a translation exists, specified primary key value from this table and language.
+     * See Core_Lang_Model.
+     *
+     * @param int           $primary_value              The primary key value from the table, associated with this model.
+     * @param string        $language                   The desired language (the current language if nothing has been specified).
+     * @return boolean
+     */
+    public function lang_exists($primary_value, $language = null) {
+
+        return $this->lang_model->lang_exists($primary_value, $language);
     }
 
     /* --------------------------------------------------------------
