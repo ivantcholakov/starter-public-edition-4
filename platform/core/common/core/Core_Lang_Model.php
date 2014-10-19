@@ -393,6 +393,7 @@ class Core_Lang_Model extends Core_Model {
             ->select($this->external_key_field)
             ->where($this->external_key_field, $id)
             ->where('lang', $this->lang->code($language))
+            ->as_array()
             ->first();
 
         return !empty($row);
