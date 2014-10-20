@@ -283,6 +283,11 @@ class Core_Lang extends MX_Lang {
             }
         }
 
+        // Added by Ivan Tcholakov, 21-OCT-2014.
+        // Query strings should not be cut.
+        $result = isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] != '' ? $result.'?'.$_SERVER['QUERY_STRING'] : $result;
+        //
+
         return $result;
     }
 
