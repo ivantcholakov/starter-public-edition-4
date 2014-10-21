@@ -167,3 +167,6 @@ $lang['ui_homepage'] = 'Начална страница';
 $lang['ui_keyword'] = 'Ключова дума';
 $lang['ui_site'] = 'Сайт';
 $lang['ui_site_name'] = 'Име на сайта';
+$lang['ui_delete_translation'] = 'Изтриване на превода';
+$lang['ui_confirm_translation_deletion'] = 'Наистина ли искате да изтриете превода на %s? Моля, потвърдете.';
+$lang['ui_translation_deletion_success'] = 'Преводът на %s беше изтрит.';
