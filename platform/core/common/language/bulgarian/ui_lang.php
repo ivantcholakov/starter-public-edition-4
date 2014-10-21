@@ -170,3 +170,4 @@ $lang['ui_site_name'] = 'Име на сайта';
 $lang['ui_delete_translation'] = 'Изтриване на превода';
 $lang['ui_confirm_translation_deletion'] = 'Наистина ли искате да изтриете превода на %s? Моля, потвърдете.';
 $lang['ui_translation_deletion_success'] = 'Преводът на %s беше изтрит.';
+$lang['ui_back'] = 'Обратно';

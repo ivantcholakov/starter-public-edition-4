@@ -170,3 +170,4 @@ $lang['ui_site_name'] = 'Site name';
 $lang['ui_delete_translation'] = 'Delete translation';
 $lang['ui_confirm_translation_deletion'] = 'Do you really want to delete the translation in %s? Please, confirm this action.';
 $lang['ui_translation_deletion_success'] = 'The translation in %s has been deleted.';
+$lang['ui_back'] = 'Back';
