@@ -192,7 +192,7 @@ class Core_Lang_Model extends Core_Model {
      */
     public function get_lang($id, $field, $language = null, $with_translation_fallback = true, $fall_back_template = null) {
 
-        return $this->lang($id, $f, $language, $with_translation_fallback, $fall_back_template);
+        return $this->lang($id, $field, $language, $with_translation_fallback, $fall_back_template);
     }
 
     /**
