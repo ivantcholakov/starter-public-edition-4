@@ -240,7 +240,7 @@ class Image_lib extends CI_Image_lib
             if ($this->gd_version() !== FALSE)
             {
                 $gd_version = str_replace('0', '', $this->gd_version());
-                $v2_override = ($gd_version === 2);
+                $v2_override = ($gd_version == 2);
             }
         }
         else
