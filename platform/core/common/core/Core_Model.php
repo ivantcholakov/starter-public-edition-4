@@ -2025,7 +2025,7 @@ class Core_Model extends CI_Model
      * @param string/array  $field                      The target translated field, or an array of target field names.
      * @param string        $value                      The string in correspondent language.
      * @param string        $language                   The desired language (the current language if nothing has been specified).
-     * @return objext                                   Returns this instance.
+     * @return object                                   Returns this instance.
      */
     public function set_lang($primary_value, $field, $value = null, $language = null) {
 
@@ -2040,7 +2040,7 @@ class Core_Model extends CI_Model
      *
      * @param int           $primary_value              The primary key value from the table, associated with this model.
      * @param string        $language                   The desired language (the current language if nothing has been specified).
-     * @return objext                                   Returns this instance.
+     * @return object                                   Returns this instance.
      */
     public function delete_lang($primary_value, $language = null) {
 
@@ -2054,7 +2054,7 @@ class Core_Model extends CI_Model
      * See Core_Lang_Model.
      *
      * @param int           $primary_value              The primary key value from the table, associated with this model.
-     * @return objext                                   Returns this instance.
+     * @return object                                   Returns this instance.
      */
     public function delete_langs($primary_value) {
 

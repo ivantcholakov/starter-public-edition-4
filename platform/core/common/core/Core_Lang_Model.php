@@ -266,7 +266,7 @@ class Core_Lang_Model extends Core_Model {
      * @param string/array  $field                      The target translated field, or an array of target field names.
      * @param string        $value                      The string in correspondent language.
      * @param string        $language                   The desired language (the current language if nothing has been specified).
-     * @return objext                                   Returns this instance.
+     * @return object                                   Returns this instance.
      */
     public function set_lang($id, $field, $value = null, $language = null) {
 
@@ -288,7 +288,7 @@ class Core_Lang_Model extends Core_Model {
             return $this;
         }
 
-        $record = $this        
+        $record = $this
             ->where($this->external_key_field, $id)
             ->where($this->lang_field, $lang)
             ->as_array()
@@ -347,7 +347,7 @@ class Core_Lang_Model extends Core_Model {
      *
      * @param int           $id                         The id from the parent table.
      * @param string        $language                   The desired language (the current language if nothing has been specified).
-     * @return objext                                   Returns this instance.
+     * @return object                                   Returns this instance.
      */
     public function delete_lang($id, $language = null) {
 
@@ -365,7 +365,7 @@ class Core_Lang_Model extends Core_Model {
      * Deletes all the translations specified by the id from the parent table.
      *
      * @param int           $id                         The id from the parent table.
-     * @return objext                                   Returns this instance.
+     * @return object                                   Returns this instance.
      */
     public function delete_langs($id) {
 
