@@ -6,3 +6,4 @@
  */
 
 echo css('lib/chosen/chosen.min.css');
+echo css('lib/chosen-image/chosenImage.css');

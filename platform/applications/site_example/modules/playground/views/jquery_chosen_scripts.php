@@ -6,6 +6,7 @@
  */
 
 echo js('lib/chosen/chosen.jquery.min.js');
+echo js('lib/chosen-image/chosenImage.jquery.js');
 
 ?>
 
@@ -14,11 +15,11 @@ echo js('lib/chosen/chosen.jquery.min.js');
 
     $(function() {
 
-        $('#country_1').chosen(
-        );
+        $('#country_1').chosen();
 
-        $('#country_2').chosen(
-        );
+        $('#country_2').chosenImage({
+            disable_search: true    // disable_search: false - it does not work well, there is no proper event to be listened.
+        });
 
     });
 

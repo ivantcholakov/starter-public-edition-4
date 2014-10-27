@@ -48,13 +48,16 @@ if (!$driver_ok) {
 
                                         <div class="col-sm-9">
 
-                                            <?php
+<?php
+
     echo form_dropdown(
         'country_1',
-        array('' => '-- '.$this->lang->line('ui_choose').' --') + $country_options,
+        array('' => '-- '.$this->lang->line('ui_choose').' --') + $country_names,
         set_value('country_1', $country_1),
         'id="country_1" class="form-control"'
-    ); ?>
+    );
+
+?>
 
                                         </div>
 
@@ -68,13 +71,32 @@ if (!$driver_ok) {
 
                                         <div class="col-sm-9">
 
-                                            <?php
-    echo form_dropdown(
-        'country_2',
-        array('' => '-- '.$this->lang->line('ui_choose').' --') + $country_options,
-        set_value('country_2', $country_2),
-        'id="country_2" class="form-control"'
-    ); ?>
+<?php
+
+    $country_2_selected = set_value('country_2', $country_2);
+
+?>
+                                            <select name="country_2" id="country_2" class="form-control" tabindex="2">
+                                                <option value=""<?php if ($country_2_selected == '') { ?> selected="selected"<?php } ?>>-- <i18n>ui_choose</i18n>  --</option>
+<?php
+
+    if (!empty($country_names)) {
+
+        foreach ($country_names as $key => $name) {
+
+            $flag = $country_codes[$key];
+
+            if ($flag != '') {
+                $flag = image_path('lib/flags-iso/flat/32/'.$flag.'.png');
+            }
+?>
+                                                <option value="<?php echo form_prep($key); ?>"<?php if ($country_2_selected == $key) { ?> selected="selected"<?php } ?><?php if ($flag != '') { ?> data-img-src="<?php echo $flag; ?>"<?php }?>><?php echo $name; ?></option>
+<?php
+        }
+    }
+
+?>
+                                            </select>
 
                                         </div>
 
