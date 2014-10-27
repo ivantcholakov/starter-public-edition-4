@@ -76,7 +76,7 @@ if (!$driver_ok) {
     $country_2_selected = set_value('country_2', $country_2);
 
 ?>
-                                            <select name="country_2" id="country_2" class="form-control" tabindex="2">
+                                            <select name="country_2" id="country_2" class="form-control">
                                                 <option value=""<?php if ($country_2_selected == '') { ?> selected="selected"<?php } ?>>-- <i18n>ui_choose</i18n>  --</option>
 <?php
 

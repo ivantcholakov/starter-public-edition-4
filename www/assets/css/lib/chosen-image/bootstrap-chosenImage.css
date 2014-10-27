@@ -9,9 +9,9 @@ License: The MIT License, http://opensource.org/licenses/MIT
 
 .chosenImage-container .chosen-results li,
 .chosenImage-container .chosen-single span {
-    background-position: 4px 45%;
+    background-position: 6px 45%;
     background-size: auto 24px;
-    padding-left: 32px;
+    padding-left: 34px;
 }
 
 .chosenImage-container .chosen-single span {
