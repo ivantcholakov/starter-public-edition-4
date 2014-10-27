@@ -82,6 +82,7 @@ class Jquery_chosen_controller extends Base_Controller {
         } elseif (validation_errors()) {
 
             $messages = validation_errors_array();
+            $this->template->set('validation_errors', $messages);
         }
 
         $this->template

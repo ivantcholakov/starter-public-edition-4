@@ -5,5 +5,7 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-echo css('lib/chosen/chosen.min.css');
-echo css('lib/chosen-image/chosenImage.css');
+//echo css('lib/chosen/chosen.min.css');
+//echo css('lib/chosen-image/chosenImage.css');
+echo css('lib/bootstrap-chosen/bootstrap-chosen.min.css');
+echo css('lib/chosen-image/bootstrap-chosenImage.css');
