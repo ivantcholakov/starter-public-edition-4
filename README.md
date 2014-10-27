@@ -314,6 +314,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Multiplayer - A tiny library to build nice HTML embed codes for videos, https://github.com/felixgirault/multiplayer, https://packagist.org/packages/fg/multiplayer
 * jQuery Chosen Plugin, http://harvesthq.github.com/chosen/, https://github.com/harvesthq/chosen/
 * jQuery Chosen Image Plugin (with modifications for jQuery Chosen 1.2 compatibility), https://github.com/djgrant/chosen-image
+* An alternate stylesheet for Chosen that integrates with Bootstrap, https://github.com/alxlit/bootstrap-chosen
 
 The Playground
 --------------
