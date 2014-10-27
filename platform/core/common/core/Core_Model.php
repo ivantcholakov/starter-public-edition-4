@@ -2187,13 +2187,15 @@ class Core_Model extends CI_Model
         // No DB group specified, use the default connection.
         else
         {
+            $db = @ get_instance()->db;
+
             // Has the default connection been loaded yet?
-            if ( ! isset($this->db) OR ! is_object($this->db) OR empty($this->db->conn_id))
+            if ( ! isset($db) OR ! is_object($db) OR empty($db->conn_id))
             {
-                $this->load->database('', FALSE, TRUE);
+                get_instance()->load->database('', FALSE, TRUE);
             }
 
-            $this->_database = $this->db;
+            $this->_database = get_instance()->db;
         }
     }
 
