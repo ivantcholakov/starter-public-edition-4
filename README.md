@@ -350,11 +350,8 @@ License: The MIT License (MIT), http://opensource.org/licenses/MIT
 
 CodeIgniter:  
 Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)  
-License: Open Software License (OSL 3.0), http://opensource.org/licenses/OSL-3.0
-
-CodeIgniter configuration files:  
-Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)  
-License: Academic Free License (AFL 3.0), http://opensource.org/licenses/AFL-3.0
+Copyright (c) 2014, British Columbia Institute of Technology (http://bcit.ca/)  
+License: The MIT License (MIT), http://opensource.org/licenses/MIT
 
 Third parties:  
 License information is to be found directly within code and/or within additional files at corresponding folders.
