@@ -32,30 +32,37 @@
  * @copyright   Copyright (c) 2014, British Columbia Institute of Technology (http://bcit.ca/)
  * @license     http://opensource.org/licenses/MIT    MIT License
  * @link        http://codeigniter.com
- * @since       Version 3.0.0
+ * @since       Version 1.0.0
  * @filesource
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
-A PHP Error was encountered
+<div style="border:1px solid #990000;padding-left:20px;margin:0 0 10px 0;">
 
-Severity: <?php echo $severity;?>
-Message:  <?php echo $message;?>
-Filename: <?php echo $filepath;?>
-Line Number: <?php echo $line;?>
+<h4>An uncaught Exception was encountered</h4>
+
+<p>Type: <?php echo get_class($exception); ?></p>
+<p>Message: <?php echo $message; ?></p>
+<p>Filename: <?php echo $exception->getFile(); ?></p>
+<p>Line Number: <?php echo $exception->getLine(); ?></p>
 
 <?php if (defined('SHOW_DEBUG_BACKTRACE') && SHOW_DEBUG_BACKTRACE === TRUE): ?>
 
-Backtrace:
-	<?php foreach (debug_backtrace() as $error): ?>
+	<p>Backtrace:</p>
+	<?php foreach ($exception->getTrace() as $error): ?>
+
 		<?php if (isset($error['file']) && strpos($error['file'], realpath(BASEPATH)) !== 0): ?>
 
-	File: <?php echo $error['file'];?>
-	Line: <?php echo $error['line'];?>
-	Function: <?php echo $error['function'];?>
-
+			<p style="margin-left:10px">
+			File: <?php echo $error['file']; ?><br />
+			Line: <?php echo $error['line']; ?><br />
+			Function: <?php echo $error['function']; ?>
+			</p>
 		<?php endif ?>
 
 	<?php endforeach ?>
+
 <?php endif ?>
+
+</div>
