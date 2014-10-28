@@ -11,7 +11,7 @@
  * Some snippets by Sébastien Corne have been used.
  * @link https://github.com/Seebz/Snippets/blob/master/php/http_build_url.php
  *
- * @version 1.7.6
+ * @version 1.7.6.1
  * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
  * @license The MIT License, http://opensource.org/licenses/MIT
  *
@@ -30,6 +30,10 @@
  * A quick test:
  * 
  * echo http_build_url();
+ *
+ * An important note: Don't use host autodetection (or more generally base url autodetection)
+ * implemented by this function, it relies first on $_SERVER['HTTP_HOST'].
+ * See http://carlos.bueno.org/2008/06/host-header-injection.html
  */
 
 if (!function_exists('http_build_url')) {
@@ -83,8 +87,10 @@ if (!function_exists('http_build_url')) {
 
         if (!isset($default_host)) {
 
+            // Avoid this autodetection, it is copy-exact from C code, but $_SERVER['HTTP_HOST'] is vulnerable.
+
             $default_host =
-                isset($_SERVER['HOSTNAME']) ? $_SERVER['HOSTNAME']
+                isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST']
                 : (isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : '');
 
             if ($default_host == '') {
