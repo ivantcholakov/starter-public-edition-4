@@ -77,7 +77,7 @@ if (!$driver_ok) {
 
 ?>
                                             <select name="country_2" id="country_2" class="form-control">
-                                                <option value=""<?php if ($country_2_selected == '') { ?> selected="selected"<?php } ?>>-- <i18n>ui_choose</i18n>  --</option>
+                                                <option value=""<?php if ($country_2_selected == '') { ?> selected="selected"<?php } ?> data-img-src="<?php echo image_path('lib/flags-iso/flat/24/_unknown.png'); ?>">-- <i18n>ui_choose</i18n>  --</option>
 <?php
 
     if (!empty($country_names)) {
@@ -87,7 +87,7 @@ if (!$driver_ok) {
             $flag = $country_codes[$key];
 
             if ($flag != '') {
-                $flag = image_path('lib/flags-iso/flat/32/'.$flag.'.png');
+                $flag = image_path('lib/flags-iso/flat/24/'.$flag.'.png');
             }
 ?>
                                                 <option value="<?php echo form_prep($key); ?>"<?php if ($country_2_selected == $key) { ?> selected="selected"<?php } ?><?php if ($flag != '') { ?> data-img-src="<?php echo $flag; ?>"<?php }?>><?php echo $name; ?></option>
