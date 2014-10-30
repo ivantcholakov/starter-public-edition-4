@@ -43,7 +43,7 @@ class Core_Exceptions extends CI_Exceptions {
         global $RTR;
 
         if (is_object($this->ci) && is_object($this->ci) && !empty($RTR->routes['404_override'])) {
- 
+
             $this->ci->load->set_module('error_404');
             Modules::run($RTR->routes['404_override'].'/index');
             set_status_header(404);
@@ -110,6 +110,47 @@ class Core_Exceptions extends CI_Exceptions {
         $buffer = ob_get_contents();
         ob_end_clean();
         return $buffer;
+    }
+
+    // --------------------------------------------------------------------
+
+    public function show_exception(Exception $exception)
+    {
+        $templates_path = config_item('error_views_path');
+        if (empty($templates_path))
+        {
+            $templates_path = VIEWPATH.'errors'.DIRECTORY_SEPARATOR;
+        }
+
+        // Modified by Ivan Tcholakov, 30-OCT-2014.
+        //$message = $exception->getMessage();
+        $message = is_object($exception) ? $exception->getMessage() : null;
+        //
+        if (empty($message))
+        {
+            $message = '(null)';
+        }
+
+        if (is_cli())
+        {
+            $templates_path .= 'cli'.DIRECTORY_SEPARATOR;
+        }
+        else
+        {
+            set_status_header(500);
+            $templates_path .= 'html'.DIRECTORY_SEPARATOR;
+        }
+
+        if (ob_get_level() > $this->ob_level + 1)
+        {
+            ob_end_flush();
+        }
+
+        ob_start();
+        include($templates_path.'error_exception.php');
+        $buffer = ob_get_contents();
+        ob_end_clean();
+        echo $buffer;
     }
 
     // --------------------------------------------------------------------
