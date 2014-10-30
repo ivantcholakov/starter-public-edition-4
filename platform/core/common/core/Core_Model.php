@@ -1974,6 +1974,18 @@ class Core_Model extends CI_Model
         return $this->_database->table_exists($table_name);
     }
 
+    /**
+     * A wrapper to CodeIgniter 3 $this->_database->reset_query()
+     */
+    public function reset_query() {
+
+        if ($this->_is_ci_3) {
+            $this->_database->reset_query();
+        }
+
+        $this->_reset_state();
+    }
+
     /* --------------------------------------------------------------
      * I18N
      * ------------------------------------------------------------ */
