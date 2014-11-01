@@ -64,6 +64,16 @@ abstract class CI_Session_driver implements SessionHandlerInterface {
 	 */
 	protected $_lock = FALSE;
 
+	/**
+	 * Read session ID
+	 *
+	 * Used to detect session_regenerate_id() calls because PHP only calls
+	 * write() after regenerating the ID.
+	 *
+	 * @var	string
+	 */
+	protected $_session_id;
+
 	// ------------------------------------------------------------------------
 
 	/**
