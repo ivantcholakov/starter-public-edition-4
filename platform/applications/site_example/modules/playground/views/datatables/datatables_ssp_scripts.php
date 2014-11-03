@@ -58,6 +58,18 @@ echo js('lib/dataTables/datatables.responsive.js');
                     'class': 'table-actions'
                 },
                 {
+                    'data': 'action_map',
+                    'searchable': false,
+                    'orderable': false,
+                    'class': 'table-actions'
+                },
+                {
+                    'data': 'action_info',
+                    'searchable': false,
+                    'orderable': false,
+                    'class': 'table-actions'
+                },
+                {
                     'data': 'action_delete',
                     'searchable': false,
                     'orderable': false,
@@ -104,7 +116,7 @@ echo js('lib/dataTables/datatables.responsive.js');
         // Individual text-input filters.
 
         $("#datatable thead input[type=text]").on('keyup change', function () {
- 
+
             table
                 .column($(this).parent().index() + ':visible')
                 .search(this.value)

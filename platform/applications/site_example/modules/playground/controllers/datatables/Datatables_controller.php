@@ -44,19 +44,22 @@ class Datatables_controller extends Base_Controller {
             ->set(compact('items'))
             ->set_partial('css', 'datatables/datatables_css')
             ->set_partial('scripts', 'datatables/datatables_scripts')
-            ->enable_parser_body('i18n') 
+            ->enable_parser_body('i18n')
             ->build('datatables/datatables');
     }
 
     public function ssp() {
 
+        $readme = $this->load->view('datatables/README.md', null, true, array('markdown', 'auto_link'));
+
         $this->template
             ->title('DataTables with Server-Side Processing')
             ->set('subnavbar_item_active', 'ssp')
             ->set('driver_ok', $this->driver_ok)
+            ->set('readme', $readme)
             ->set_partial('css', 'datatables/datatables_css')
             ->set_partial('scripts', 'datatables/datatables_ssp_scripts')
-            ->enable_parser_body('i18n') 
+            ->enable_parser_body('i18n')
             ->build('datatables/datatables_ssp');
     }
 

@@ -46,6 +46,19 @@ class Datatables_ssp_ajax_controller extends Base_Ajax_Controller {
                 'formatter' => array($this, '_formatter_action_edit')
             ),
             array(
+                'db' => 'location',
+                //'expression' => "CONCAT(latitude, ',', longitude)", // MySQL
+                'expression' => "latitude || ',' || longitude",    // SQLite
+                'dt' => 'action_map',
+                'formatter' => array($this, '_formatter_action_map')
+            ),
+            array(
+                'db' => 'link',
+                'expression' => "link",
+                'dt' => 'action_info',
+                'formatter' => array($this, '_formatter_action_info')
+            ),
+            array(
                 'dt' => 'action_delete',
                 'formatter' => array($this, '_formatter_action_delete')
             ),
@@ -74,6 +87,25 @@ class Datatables_ssp_ajax_controller extends Base_Ajax_Controller {
     public function _formatter_action_edit($value, $row) {
 
         return '<a href="javascript://" class="btn btn-info" title="'.$this->lang->line('ui_edit').'"><i class="fa fa-pencil fa-fw"></i></a>';
+    }
+
+    public function _formatter_action_map($value, $item) {
+
+        if (count(explode(',', $value)) != 2) {
+            return '';
+        }
+
+        $link = http_build_url('https://maps.google.com/maps', array('query' => array('q' => $value, 'z' => 6)));
+        return '<a href="'.$link.'" class="btn btn-default" title="'.$this->lang->line('map').'" target="_blank"><i class="fa fa-map-marker fa-fw"></i></a>';
+    }
+
+    public function _formatter_action_info($value, $item) {
+
+        if ($value == '') {
+            return '';
+        }
+
+        return '<a href="'.$value.'" class="btn btn-default" title="'.$this->lang->line('ui_information').'" target="_blank"><i class="fa fa-external-link fa-fw"></i></a>';
     }
 
     public function _formatter_action_delete($value, $row) {

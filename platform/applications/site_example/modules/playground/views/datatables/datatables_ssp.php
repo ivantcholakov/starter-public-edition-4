@@ -38,7 +38,7 @@ if (!$driver_ok) {
                                     <th rowspan="2" class="col-sm-3">ISO-3166 Code</th>
                                     <th rowspan="2" class="col-sm-5">Country Name</th>
                                     <th rowspan="2" data-hide="phone">Flag</th>
-                                    <th colspan="2" class="shrink"><i18n>ui_actions</i18n></th>
+                                    <th colspan="4" class="shrink"><i18n>ui_actions</i18n></th>
                                 </tr>
                                 <tr>
                                     <th class="shrink" style="display: none;"></th>
@@ -67,7 +67,7 @@ if (!$driver_ok) {
                                     <th>ISO-3166 Code</th>
                                     <th>Country Name</th>
                                     <th>Flag</th>
-                                    <th colspan="2"><i18n>ui_actions</i18n></th>
+                                    <th colspan="4"><i18n>ui_actions</i18n></th>
                                 </tr>
 
                             </tfoot>
@@ -82,6 +82,15 @@ if (!$driver_ok) {
                     </div>
 
                 </div>
+
+            </div>
+
+            <div class='well'>
+<?php
+
+echo $readme;
+
+?>
 
             </div>
 
