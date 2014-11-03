@@ -58,6 +58,7 @@
                     <li><a href="<?php echo site_url('playground/gravatar-test'); ?>">Gravatar Test</a></li>
                     <li><a href="<?php echo site_url('playground/multiplayer'); ?>">Multiplayer Library Test</a></li>
                     <li><a href="<?php echo site_url('playground/jquery-chosen'); ?>">jQuery Chosen Test</a></li>
+                    <li><a href="<?php echo site_url('playground/google-maps-v3'); ?>">Google Maps JavaScript API v3 Demo</a></li>
                 </ul>
 
             </div>
