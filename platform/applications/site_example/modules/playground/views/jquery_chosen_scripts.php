@@ -15,9 +15,12 @@ echo js('lib/chosen-image/chosenImage.jquery.js');
 
     $(function() {
 
-        $('#country_1').chosen();
+        $('#country_1').chosen({
+            width: '100%'   // This makes the control responsive.
+        });
 
         $('#country_2').chosenImage({
+            width: '100%',
             disable_search: true    // disable_search: false - it does not work well, there is no proper event to be listened.
         });
 
