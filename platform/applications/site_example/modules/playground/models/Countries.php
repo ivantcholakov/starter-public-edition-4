@@ -12,4 +12,17 @@ class Countries extends Core_Model {
         parent::__construct();
     }
 
+    public function get_dropdown($language = null) {
+
+        // Note: The parameter $language is not used here,
+        // translation of country names is not supported by this demo code.
+
+        return $this->dropdown('id', 'name');
+    }
+
+    public function get_dropdown_codes() {
+
+        return $this->dropdown('id', 'code');
+    }
+
 }

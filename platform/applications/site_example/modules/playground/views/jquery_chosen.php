@@ -73,30 +73,9 @@ if (!$driver_ok) {
 
 <?php
 
-    $country_2_selected = set_value('country_2', $country_2);
+echo Modules::run('playground/country_dropdown_widget/index', array('element_name' => 'country_2', 'element_class' => 'form-control', 'value' => set_value('country_2', $country_2)));
 
 ?>
-                                            <select name="country_2" id="country_2" class="form-control">
-                                                <option value=""<?php if ($country_2_selected == '') { ?> selected="selected"<?php } ?> data-img-src="<?php echo image_path('lib/flags-iso/flat/24/_unknown.png'); ?>">-- <i18n>ui_choose</i18n>  --</option>
-<?php
-
-    if (!empty($country_names)) {
-
-        foreach ($country_names as $key => $name) {
-
-            $flag = $country_codes[$key];
-
-            if ($flag != '') {
-                $flag = image_path('lib/flags-iso/flat/24/'.$flag.'.png');
-            }
-?>
-                                                <option value="<?php echo form_prep($key); ?>"<?php if ($country_2_selected == $key) { ?> selected="selected"<?php } ?><?php if ($flag != '') { ?> data-img-src="<?php echo $flag; ?>"<?php }?>><?php echo $name; ?></option>
-<?php
-        }
-    }
-
-?>
-                                            </select>
 
                                         </div>
 
