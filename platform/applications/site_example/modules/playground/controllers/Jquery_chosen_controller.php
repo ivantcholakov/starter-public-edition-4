@@ -47,12 +47,9 @@ class Jquery_chosen_controller extends Base_Controller {
         $country_2 = null;
 
         $country_names = array();
-        $country_codes = array();
 
         if ($this->driver_ok) {
-
             $country_names = $this->countries->dropdown('id', 'name');
-            $country_codes = $this->countries->dropdown('id', 'code');
         }
 
         $this->form_validation->set_rules($validation_rules);
@@ -86,7 +83,7 @@ class Jquery_chosen_controller extends Base_Controller {
         }
 
         $this->template
-            ->set(compact('success', 'messages', 'country_1', 'country_2', 'country_names', 'country_codes'))
+            ->set(compact('success', 'messages', 'country_1', 'country_2', 'country_names'))
             ->set('driver_ok', $this->driver_ok)
             ->set_partial('css', 'jquery_chosen_css')
             ->set_partial('scripts', 'jquery_chosen_scripts')
