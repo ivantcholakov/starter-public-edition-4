@@ -90,7 +90,7 @@ class CI_DB_mysqli_forge extends CI_DB_forge {
 	 *
 	 * @var	string
 	 */
-	protected $_null		= 'NULL';
+	protected $_null = 'NULL';
 
 	// --------------------------------------------------------------------
 
@@ -195,6 +195,7 @@ class CI_DB_mysqli_forge extends CI_DB_forge {
 			.$field['default']
 			.$field['auto_increment']
 			.$field['unique']
+			.(empty($field['comment']) ? '' : ' COMMENT '.$field['comment'])
 			.$extra_clause;
 	}
 
