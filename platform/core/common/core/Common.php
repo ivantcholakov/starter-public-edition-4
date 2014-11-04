@@ -275,45 +275,6 @@ if ( ! function_exists('_error_handler'))
 
 // ------------------------------------------------------------------------
 
-if ( ! function_exists('_exception_handler'))
-{
-    /**
-     * Exception Handler
-     *
-     * Sends uncaught exceptions to the logger and displays them
-     * only if display_errors is On so that they don't show up in
-     * production environments.
-     *
-     * @param       Exception   $exception
-     * @return      void
-     */
-    function _exception_handler($exception)
-    {
-        $_error =& load_class('Exceptions', 'core');
-        // Modified by Ivan Tcholakov, 30-OCT-2014.
-        //$_error->log_exception('error', 'Exception: '.$exception->getMessage(), $exception->getFile(), $exception->getLine());
-        if (is_object($exception)) {
-            $_error->log_exception('error', 'Exception: '.$exception->getMessage(), $exception->getFile(), $exception->getLine());
-        } else {
-            $_error->log_exception('error', 'Exception: '.'(null)', '(null)', 0);
-        }
-        //
-
-        // Should we display the error?
-        if (ini_get('display_errors'))
-        {
-            // Modified by Ivan Tcholakov, 30-OCT-2014.
-            //$_error->show_exception($exception);
-            @ $_error->show_exception($exception);
-            //
-        }
-
-        exit(1); // EXIT_ERROR
-    }
-}
-
-// ------------------------------------------------------------------------
-
 if ( ! function_exists('html_escape'))
 {
     /**
