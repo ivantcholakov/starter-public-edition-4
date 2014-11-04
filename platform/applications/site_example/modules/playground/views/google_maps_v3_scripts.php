@@ -52,6 +52,8 @@ echo js('lib/chosen-image/chosenImage.jquery.js');
                 } else {
                     map_marker.setPosition(position);
                 }
+
+                map_marker.setVisible(data.found);
             }
         });
     }
