@@ -133,9 +133,24 @@ class CI_Session {
 
 		session_start();
 
+		// Is session ID auto-regeneration configured? (ignoring ajax requests)
+		if ( ! empty($_SERVER['HTTP_X_REQUESTED_WITH'])
+			&& strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest'
+			&& ($regenerate_time = config_item('sess_time_to_update')) > 0
+		)
+		{
+			if ( ! isset($_SESSION['__ci_last_regenerate']))
+			{
+				$_SESSION['__ci_last_regenerate'] = time();
+			}
+			elseif ($_SESSION['__ci_last_regenerate'] < (time() - $regenerate_time))
+			{
+				$this->sess_regenerate(FALSE);
+			}
+		}
 		// Another work-around ... PHP doesn't seem to send the session cookie
 		// unless it is being currently created or regenerated
-		if (isset($_COOKIE[$this->_config['cookie_name']]) && $_COOKIE[$this->_config['cookie_name']] === session_id())
+		elseif (isset($_COOKIE[$this->_config['cookie_name']]) && $_COOKIE[$this->_config['cookie_name']] === session_id())
 		{
 			setcookie(
 				$this->_config['cookie_name'],
@@ -149,7 +164,6 @@ class CI_Session {
 		}
 
 		$this->_ci_init_vars();
-
 /*
 		Need to test if this is necessary for a custom driver or if it's only
 		relevant to PHP's own files handler.
@@ -595,6 +609,7 @@ class CI_Session {
 	 */
 	public function sess_regenerate($destroy = FALSE)
 	{
+		$_SESSION['__ci_last_regenerate'] = time();
 		session_regenerate_id($destroy);
 	}
 
