@@ -39,7 +39,7 @@ echo js('lib/chosen-image/chosenImage.jquery.js');
                         mapTypeId: google.maps.MapTypeId.ROADMAP
                     };
 
-                    map = new google.maps.Map(document.getElementById("map_canvas"), options);
+                    map = new google.maps.Map(document.getElementById('map_canvas'), options);
 
                 } else {
 
