@@ -332,7 +332,8 @@ http://ellislab.com/codeigniter/user-guide/
 Real Life Usage
 ---------------
 
-* http://blitz-club.com/, designer: Irina Stancheva
+* http://blitz-club.com/ (casino clubs), designer: Irina Stancheva
+* http://glassbricks.org/ (family counseling), designer: Irina Stancheva
 
 
 Credits
