@@ -95,6 +95,8 @@ class Datatable {
     protected $db;
     protected $primary_key;
     protected $columns;
+    protected $has_order;
+    protected $has_filter;
 
     public function __construct() {
 
@@ -259,6 +261,101 @@ class Datatable {
         return $this;
     }
 
+    // Checks whether ordering has been requested.
+    public function has_order() {
+
+        if (isset($this->has_order)) {
+            return $this->has_order;
+        }
+
+        if (isset($this->request['order']) && count($this->request['order'])) {
+
+            $dtColumns = $this->pluck($this->columns, 'dt');
+
+            for ($i = 0, $ien = count($this->request['order']); $i < $ien; $i++) {
+
+                // Convert the column index into the column data property.
+                $columnIdx = intval($this->request['order'][$i]['column']);
+                $requestColumn = $this->request['columns'][$columnIdx];
+
+                $columnIdx = array_search($requestColumn['data'], $dtColumns);
+                $column = $this->columns[$columnIdx];
+
+                $has_db_prop = isset($column['db']) && $column['db'] != '';
+
+                if ($has_db_prop && isset($requestColumn['orderable']) && $requestColumn['orderable'] == 'true') {
+
+                    $this->has_order = true;
+
+                    return true;
+                }
+            }
+        }
+
+        $this->has_order = false;
+
+        return false;
+    }
+
+    // Checks whether global filter or at least one indivifual filter
+    // has been requested.
+    public function has_filter() {
+
+        if (isset($this->has_filter)) {
+            return $this->has_filter;
+        }
+
+        $dtColumns = $this->pluck($this->columns, 'dt');
+
+        if (isset($this->request['columns']) && isset($this->request['search'])
+            && isset($this->request['search']['value']) && $this->request['search']['value'] != '') {
+
+            $str = $this->request['search']['value'];
+
+            for ($i = 0, $ien = count($this->request['columns']); $i < $ien; $i++) {
+
+                $requestColumn = $this->request['columns'][$i];
+                $columnIdx = array_search($requestColumn['data'], $dtColumns);
+                $column = $this->columns[$columnIdx];
+
+                $has_db_prop = isset($column['db']) && $column['db'] != '';
+
+                if ($has_db_prop && isset($requestColumn['searchable']) && $requestColumn['searchable'] == 'true') {
+
+                    $this->has_filter = true;
+
+                    return true;
+                }
+            }
+        }
+
+        // Individual column filtering
+
+        if (isset($this->request['columns'])) {
+
+            for ($i = 0, $ien = count($this->request['columns']); $i < $ien; $i++) {
+
+                $requestColumn = $this->request['columns'][$i];
+                $columnIdx = array_search($requestColumn['data'], $dtColumns);
+                $column = $this->columns[$columnIdx];
+
+                $str = isset($requestColumn['search']['value']) ? $requestColumn['search']['value'] : '';
+
+                $has_db_prop = isset($column['db']) && $column['db'] != '';
+
+                if ($has_db_prop && isset($requestColumn['searchable']) && $requestColumn['searchable'] == 'true' && $str != '') {
+
+                    $this->has_filter = true;
+
+                    return true;
+                }
+            }
+        }
+
+        $this->has_filter = false;
+
+        return false;
+    }
 
     // Model/query builder method wrappers.
     //--------------------------------------------------------------------------
@@ -413,7 +510,7 @@ class Datatable {
     }
 
     public function group_start($not = '', $type = 'AND ') {
-        
+
         $this->db->group_start($not, $type);
 
         return $this;
@@ -502,7 +599,6 @@ class Datatable {
 
         if (isset($this->request['order']) && count($this->request['order'])) {
 
-            $orderBy = array();
             $dtColumns = $this->pluck($this->columns, 'dt');
 
             for ($i = 0, $ien = count($this->request['order']); $i < $ien; $i++) {
@@ -660,7 +756,7 @@ class Datatable {
     }
 
     /**
-     * Pull a particular property from each assoc. array in a numeric array, 
+     * Pull a particular property from each assoc. array in a numeric array,
      * returning and array of the property values from each item.
      *
      *  @param  array  $a    Array to get data from
@@ -688,7 +784,7 @@ class Datatable {
     protected function is_custom_model($object = null, $strict_check = false) {
 
         if (!is_object($object)) {
- 
+
             if ($strict_check) {
                 return false;
             }
