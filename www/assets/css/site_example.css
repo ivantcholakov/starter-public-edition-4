@@ -102,6 +102,10 @@ See http://appglobe.com/scroll-to-top-animation/
     border-right: none;
 }
 
+.table-responsive table {
+    width: 99.9%;   /* A fix for Datatables JavaScript. */
+}
+
 /* End Tables */
 
 
