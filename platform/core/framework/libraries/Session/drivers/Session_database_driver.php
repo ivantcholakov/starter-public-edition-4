@@ -32,7 +32,7 @@
  * @copyright	Copyright (c) 2014, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	http://codeigniter.com
- * @since	Version 2.0.0
+ * @since	Version 3.0.0
  * @filesource
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -40,11 +40,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * CodeIgniter Session Database Driver
  *
- * @package		CodeIgniter
+ * @package	CodeIgniter
  * @subpackage	Libraries
  * @category	Sessions
- * @author		Andrey Andreev
- * @link		http://codeigniter.com/user_guide/libraries/sessions.html
+ * @author	Andrey Andreev
+ * @link	http://codeigniter.com/user_guide/libraries/sessions.html
  */
 class CI_Session_database_driver extends CI_Session_driver implements SessionHandlerInterface {
 
