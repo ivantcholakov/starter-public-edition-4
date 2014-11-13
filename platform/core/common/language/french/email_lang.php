@@ -13,6 +13,7 @@ $lang['email_must_be_array'] = 'La m&eacute;thode de validation d\'email n\'acce
 $lang['email_invalid_address'] = 'Adresse email invalide : %s';
 $lang['email_attachment_missing'] = 'Impossible de localiser le fichier joint suivant : %s';
 $lang['email_attachment_unreadable'] = 'Impossible d\'ouvrir ce fichier joint : %s';
+$lang['email_no_from'] = 'Cannot send mail with no "From" header.';
 $lang['email_no_recipients'] = 'Vous devez sp&eacute;cifier des destinataires : To, Cc, ou Bcc.';
 $lang['email_send_failure_phpmail'] = 'Impossible d\'envoyer des emails avec la fonction mail() de PHP. Votre serveur n\'est peut-&ecirc;tre pas configur&eacute; pour utiliser cette m&eacute;thode.';
 $lang['email_send_failure_sendmail'] = 'Impossible d\'envoyer des emails avec la m&eacute;thode Sendmail de PHP. Votre serveur n\'est peut-&ecirc;tre pas configur&eacute; pour utiliser cette m&eacute;thode.';

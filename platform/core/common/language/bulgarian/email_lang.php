@@ -9,6 +9,7 @@ $lang['email_must_be_array'] = 'Email-адресът трябва да се пр
 $lang['email_invalid_address'] = 'Грешен email-адрес: %s';
 $lang['email_attachment_missing'] = 'Не може да се намери прикачения файл: %s';
 $lang['email_attachment_unreadable'] = 'Не може да се отвори прикачения файл: %s';
+$lang['email_no_from'] = 'Не е посочен подателят на съобщението (From).';
 $lang['email_no_recipients'] = 'Трябва да включите получателите: To, Cc или Bcc';
 $lang['email_send_failure_phpmail'] = 'Съобщението не може да бъде изпратено чрез PHP mail(). Вашият сървър може да не е конфигуриран да изпраща поща, използвайки този метод.';
 $lang['email_send_failure_sendmail'] = 'Съобщението не може да бъде изпратено чрез PHP Sendmail. Вашият сървър може да не е конфигуриран да изпраща поща, използвайки този метод.';
