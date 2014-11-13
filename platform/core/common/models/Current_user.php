@@ -389,6 +389,18 @@ class Current_user extends CI_Model {
         return $this->logout_info;
     }
 
+    // This method is needed for auto-logged-in user before he/she makes a critical action.
+    public function verify_password($password) {
+
+        if (!$this->is_logged_in()) {
+            return false;
+        }
+
+        $password_derivate = $this->users->skip_observers()->select('password')->as_value()->get($this->id());
+
+        return $this->users->verify_password($password, $password_derivate);
+    }
+
     // Autologin
     //--------------------------------------------------------------------------
 
