@@ -317,6 +317,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * jQuery Chosen Image Plugin (with modifications for jQuery Chosen 1.2 compatibility), https://github.com/djgrant/chosen-image
 * An alternate stylesheet for Chosen that integrates with Bootstrap, https://github.com/alxlit/bootstrap-chosen
 * Smiley Icons, http://thuthuatvietnam.com/sites/default/files/uploads/files/2013/08/huong-dan-su-dung-smiley-helper-tren-codeigniter.zip, http://thuthuatvietnam.com/huong-dan-su-dung-smileys-helper-tren-codeigniter.html
+* Smiley Icons from Django-emoticons, https://github.com/Fantomas42/django-emoticons
 
 The Playground
 --------------
