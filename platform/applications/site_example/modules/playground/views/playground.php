@@ -60,6 +60,7 @@
                     <li><a href="<?php echo site_url('playground/jquery-chosen'); ?>">jQuery Chosen Test</a></li>
                     <li><a href="<?php echo site_url('playground/google-maps-v3'); ?>">Google Maps JavaScript API v3 Demo</a></li>
                     <li><a href="<?php echo site_url('playground/smileys'); ?>">Smiley Test</a></li>
+                    <li><a href="<?php echo site_url('playground/file-type-icons'); ?>">Testing File Type Icons</a></li>
                 </ul>
 
             </div>
