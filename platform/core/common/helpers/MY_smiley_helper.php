@@ -17,7 +17,7 @@ if (!function_exists('_get_smiley_array')) {
 
         static $_smileys;
 
-        if (!isset($smileys) || !is_array($smileys)) {
+        if (!isset($_smileys)) {
 
             if (file_exists(COMMONPATH.'config/smileys.php')) {
                 include(COMMONPATH.'config/smileys.php');
@@ -35,12 +35,11 @@ if (!function_exists('_get_smiley_array')) {
                 include(APPPATH.'config/'.ENVIRONMENT.'/smileys.php');
             }
 
-            if (empty($smileys) OR ! is_array($smileys)) {
-                $_smileys = array();
-                return FALSE;
+            if (empty($smileys) OR !is_array($smileys)) {
+                $_smileys = FALSE;
+            } else {
+                $_smileys = $smileys;
             }
-
-            $_smileys = $smileys;
         }
 
         return $_smileys;
