@@ -5,6 +5,23 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
+// It is not to be placed here, I know.
+function _force_htmlentities($string) {
+
+    $arr = preg_split('/(?<!^)(?!$)/u', $string);  // An array of every multi-byte characters.
+
+    $result = '';
+
+    if (!empty($arr)) {
+
+        foreach ($arr as $c) {
+            $result .= '&#'.ord($c);
+        }
+    }
+
+    return $result;
+}
+
 ?>
 
         <section>
@@ -55,7 +72,7 @@ if (!empty($smileys)) {
 ?>
 
                                 <tr>
-                                    <td><?php echo $key; ?></td>
+                                    <td><?php echo _force_htmlentities($key); ?></td>
                                     <td><?php echo $item[0]; ?></td>
                                     <td><?php echo parse_smileys($key, image_url('lib/smileys/')); ?></td>
                                 </tr>
