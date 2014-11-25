@@ -15,7 +15,7 @@ function _force_htmlentities($string) {
     if (!empty($arr)) {
 
         foreach ($arr as $c) {
-            $result .= '&#'.ord($c);
+            $result .= '&#'.ord($c).';';
         }
     }
 
