@@ -172,3 +172,5 @@ $lang['ui_confirm_translation_deletion'] = 'Voulez-vous réellement supprimer la
 $lang['ui_translation_deletion_success'] = 'La traduction %s a été supprimer.';
 $lang['ui_back'] = 'Retour';
 $lang['ui_map'] = 'Map';
+$lang['ui_show_all'] = 'Show All';
+$lang['ui_hide_all'] = 'Hide All';

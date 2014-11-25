@@ -172,3 +172,5 @@ $lang['ui_confirm_translation_deletion'] = 'Наистина ли искате �
 $lang['ui_translation_deletion_success'] = 'Преводът на %s беше изтрит.';
 $lang['ui_back'] = 'Обратно';
 $lang['ui_map'] = 'Карта';
+$lang['ui_show_all'] = 'Покажи всички';
+$lang['ui_hide_all'] = 'Скрий всички';
