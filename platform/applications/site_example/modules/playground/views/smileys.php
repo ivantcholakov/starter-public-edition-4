@@ -74,7 +74,7 @@ if (!empty($smileys)) {
                                 <tr>
                                     <td><?php echo _force_htmlentities($key); ?></td>
                                     <td><?php echo $item[0]; ?></td>
-                                    <td><?php echo $key; ?></td>
+                                    <td> <?php echo $key; ?> </td>
                                 </tr>
 <?php
 
