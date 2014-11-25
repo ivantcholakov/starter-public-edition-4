@@ -11,10 +11,6 @@ class Smileys_controller extends Base_Controller {
 
         parent::__construct();
 
-        $this->load
-            ->helper('smiley')
-        ;
-
         $this->template
             ->title('Smiley Test')
         ;
@@ -24,10 +20,12 @@ class Smileys_controller extends Base_Controller {
 
     public function index() {
 
+        $this->load->helper('smiley');  // This is needed only for calling _get_smiley_array().
         $smileys = _get_smiley_array();
 
         $this->template
             ->set('smileys', $smileys)
+            ->enable_parser_body(array('i18n', 'smileys'))
             ->build('smileys');
     }
 
