@@ -174,3 +174,4 @@ $lang['ui_back'] = 'Обратно';
 $lang['ui_map'] = 'Карта';
 $lang['ui_show_all'] = 'Покажи всички';
 $lang['ui_hide_all'] = 'Скрий всички';
+$lang['ui_slogan'] = 'Слоган';

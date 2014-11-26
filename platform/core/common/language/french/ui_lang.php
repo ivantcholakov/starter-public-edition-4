@@ -174,3 +174,4 @@ $lang['ui_back'] = 'Retour';
 $lang['ui_map'] = 'Map';
 $lang['ui_show_all'] = 'Show All';
 $lang['ui_hide_all'] = 'Hide All';
+$lang['ui_slogan'] = 'Slogan';
