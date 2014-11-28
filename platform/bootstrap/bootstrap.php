@@ -211,7 +211,7 @@ if (!is_file(FCPATH.SELF)) {
 }
 
 // Path to the system folder
-define('BASEPATH', rtrim(str_replace('\\', '/', realpath(dirname(__FILE__).'/../framework')), '/').'/');
+define('BASEPATH', rtrim(str_replace('\\', '/', realpath(dirname(__FILE__).'/../system')), '/').'/');
 
 // Is the system path correct?
 if (BASEPATH == '' || BASEPATH == '/' || !is_dir(BASEPATH)) {
@@ -236,7 +236,7 @@ if (COMMONPATH == '' || COMMONPATH == '/' || !is_dir(COMMONPATH)) {
 }
 
 // This is the common writable folder to be used by this platform.
-define('WRITABLEPATH', rtrim(str_replace('\\', '/', realpath(dirname(__FILE__).'/../../writable')), '/').'/');
+define('WRITABLEPATH', rtrim(str_replace('\\', '/', realpath(dirname(__FILE__).'/../writable')), '/').'/');
 
 if (WRITABLEPATH == '' || WRITABLEPATH == '/' || !is_dir(WRITABLEPATH)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);

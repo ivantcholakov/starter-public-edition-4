@@ -40,7 +40,7 @@
  * The Bootstrap folder, for a custom initialization.
  *---------------------------------------------------------------
  */
-define('BOOTSTRAPPATH', rtrim(str_replace('\\', '/', realpath(dirname(__FILE__).'/core/bootstrap')), '/').'/');
+define('BOOTSTRAPPATH', rtrim(str_replace('\\', '/', realpath(dirname(__FILE__).'/bootstrap')), '/').'/');
 
 if (BOOTSTRAPPATH == '' || BOOTSTRAPPATH == '/' || !is_dir(BOOTSTRAPPATH)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
