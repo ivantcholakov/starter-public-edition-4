@@ -569,6 +569,7 @@ $config['parser_valid_drivers'] = array(
     'auto_link',
     'i18n',
     'less',
+    'smileys',
 );
 
 /*
