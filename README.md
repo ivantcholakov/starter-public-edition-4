@@ -51,10 +51,10 @@ Don't forget to check platform/writable folder, it should be writable.
 
 Have a look at the files .htaccess and robots.txt and adjust them for your site.
 Within the folder platform/applications you will by default two applications - "site_example" and "admin_example".
-Have a look at their configuration files. Also, The common PHP configuration files you may find at platform/core/common/config/ folder.
+Have a look at their configuration files. Also, the common PHP configuration files you may find at platform/common/config/ folder.
 
 The platform auto-detects its base URL address nevertheless its public part is on the document root of the web-server or not.
-I don't expect you to be forced to set it up manually within platform/core/common/config/config.php.
+I don't expect you to be forced to set it up manually within platform/common/config/config.php.
 
 Features
 --------
@@ -234,8 +234,8 @@ echo $this->less->parse_string('@color: #4D926F; #header { color: @color; } h2 {
 echo $this->less->parse(DEFAULTFCPATH.'assets/less/lib/bootstrap-3/bootstrap.less', NULL, TRUE);
 ```
 
-Within the folder platform/core/common/libraries/Parser/drivers/ you may see all the additional parser drivers implemented.
-Also within the folder platform/core/common/config/ you may find the corresponding configuration files for the drivers,
+Within the folder platform/common/libraries/Parser/drivers/ you may see all the additional parser drivers implemented.
+Also within the folder platform/common/config/ you may find the corresponding configuration files for the drivers,
 name by convention parser_*driver_name*.php. Better don't tweak the default configuration options, you may alter them
 directly on parser call where it is needed.
 
@@ -282,7 +282,7 @@ $this->template
 * CodeIgniter Checkbox Helper, https://gist.github.com/mikedfunk/4004986
 * Configured LESS-assets compiler has been added.
 
-Have a look at platform/core/common/config/less_compile.php file. It contains a list of files (sources, destinations)
+Have a look at platform/common/config/less_compile.php file. It contains a list of files (sources, destinations)
 to be used for LESS to CSS compilation. You may edit this list according to your needs. Before compilation, make sure
 that destination files (if exist) are writable and their containing folders are writable too.
 
@@ -294,7 +294,7 @@ php cli.php less compile
 ```
 
 * A way for database classes/drivers modification: Files under platform/core/framework/database/ folder may be copied
-into platform/core/common/database/ (the prefered location) or platform/applications/{application_name}/database.
+into platform/common/database/ (the prefered location) or platform/applications/{application_name}/database.
 The copied files can be modified/customized. See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
 * CodeIgniter Cache Helper, https://github.com/stevenbenner/codeigniter-cache-helper
 * auto_link() helper accepts attributes, https://github.com/bcit-ci/CodeIgniter/wiki/auto-link
