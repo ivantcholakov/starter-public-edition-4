@@ -293,6 +293,12 @@ command:
 php cli.php less compile
 ```
 
+Or, you may choose which LESS-sources to compile by pointing at their names:
+
+```bash
+php cli.php less compile bootstrap-3 bootstrap-3-min
+```
+
 * A way for database classes/drivers modification: Files under platform/core/framework/database/ folder may be copied
 into platform/common/database/ (the prefered location) or platform/applications/{application_name}/database.
 The copied files can be modified/customized. See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
