@@ -32,7 +32,18 @@ class Compile_controller extends Core_Controller {
 
     public function index() {
 
+        $args = array_slice($this->uri->rsegment_array(), 2);
+
         foreach ($this->items as $item) {
+
+            $name = isset($item['name']) ? (string) $item['name'] : null;
+
+            if (!empty($args)) {
+
+                if (!in_array($name, $args)) {
+                    continue;
+                }
+            }
 
             $source = isset($item['source']) ? (string) $item['source'] : '';
             $destination = isset($item['destination']) ? (string) $item['destination'] : '';
