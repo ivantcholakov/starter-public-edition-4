@@ -324,6 +324,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * An alternate stylesheet for Chosen that integrates with Bootstrap, https://github.com/alxlit/bootstrap-chosen
 * Smiley Icons, http://thuthuatvietnam.com/sites/default/files/uploads/files/2013/08/huong-dan-su-dung-smiley-helper-tren-codeigniter.zip, http://thuthuatvietnam.com/huong-dan-su-dung-smileys-helper-tren-codeigniter.html
 * Smiley Icons from Django-emoticons, https://github.com/Fantomas42/django-emoticons
+* Yet another megamenu for Bootstrap 3, https://github.com/geedmo/yamm3
 
 The Playground
 --------------

@@ -72,4 +72,17 @@ $config['less_compile'] = array(
         'compress' => true
     ),
 
+    array(
+        'name' => 'yamm3',
+        'source' => DEFAULTFCPATH.'assets/less/lib/yamm3/yamm.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/yamm3/yamm.css',
+        'compress' => false
+    ),
+    array(
+        'name' => 'yamm3-min',
+        'source' => DEFAULTFCPATH.'assets/less/lib/yamm3/yamm.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/yamm3/yamm.min.css',
+        'compress' => true
+    ),
+
 );
