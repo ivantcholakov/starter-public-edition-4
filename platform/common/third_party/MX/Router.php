@@ -335,16 +335,22 @@ class MX_Router extends CI_Router
         {
             if (isset($_GET[$this->config->item('directory_trigger')]) && is_string($_GET[$this->config->item('directory_trigger')]))
             {
-                $this->set_directory(trim($this->uri->filter_uri($_GET[$this->config->item('directory_trigger')])));
+                $_d = trim($_GET[$this->config->item('directory_trigger')]);
+                $this->uri->filter_uri($_d);
+                $this->set_directory($_d);
                 $segments[] = $this->directory;
             }
 
-            $this->set_class(trim($this->uri->filter_uri($_GET[$this->config->item('controller_trigger')])));
+            $_c = trim($_GET[$this->config->item('controller_trigger')]);
+            $this->uri->filter_uri($_c);
+            $this->set_class($_c);
             $segments[] = $this->class;
 
             if ( ! empty($_GET[$this->config->item('function_trigger')]) && is_string($_GET[$this->config->item('function_trigger')]))
             {
-                $this->set_method(trim($this->uri->filter_uri($_GET[$this->config->item('function_trigger')])));
+                $_f = trim($_GET[$this->config->item('function_trigger')]);
+                $this->uri->filter_uri($_f);
+                $this->set_method($_f);
                 $segments[] = $this->method;
             }
         }
@@ -468,8 +474,9 @@ class MX_Router extends CI_Router
         // Compile the segments into an array
         foreach (explode('/', preg_replace('|/*(.+?)/*$|', '\\1', $this->uri->uri_string)) as $val)
         {
+            $val = trim($val);
             // Filter segments for security
-            $val = trim($this->uri->filter_uri($val));
+            $this->uri->filter_uri($val);
 
             if ($val !== '')
             {
