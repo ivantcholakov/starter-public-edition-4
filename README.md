@@ -358,7 +358,9 @@ License Information
 -------------------
 
 For original code in this project:  
-Author: Ivan Tcholakov ivantcholakov@gmail.com, 2012-2014, and other contributors.  
+Copyright (c) 2012 - 2014:  
+Ivan Tcholakov (the initial author) ivantcholakov@gmail.com,  
+Gwenaeël Gallon.  
 License: The MIT License (MIT), http://opensource.org/licenses/MIT
 
 CodeIgniter:  
