@@ -325,6 +325,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Smiley Icons, http://thuthuatvietnam.com/sites/default/files/uploads/files/2013/08/huong-dan-su-dung-smiley-helper-tren-codeigniter.zip, http://thuthuatvietnam.com/huong-dan-su-dung-smileys-helper-tren-codeigniter.html
 * Smiley Icons from Django-emoticons, https://github.com/Fantomas42/django-emoticons
 * Yet another megamenu for Bootstrap 3, https://github.com/geedmo/yamm3
+* Breakpoints at 480px and 384px for Bootstrap 3, https://github.com/auipga/bootstrap-xxs, see also this request at Bootstrap's repository: https://github.com/twbs/bootstrap/issues/10203
 
 The Playground
 --------------
