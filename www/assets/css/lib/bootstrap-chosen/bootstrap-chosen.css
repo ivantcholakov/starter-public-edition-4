@@ -62,7 +62,7 @@
   display: list-item;
 }
 .chosen-container .chosen-results li.highlighted {
-  background-color: #428bca;
+  background-color: #337ab7;
   background-image: none;
   color: white;
 }
