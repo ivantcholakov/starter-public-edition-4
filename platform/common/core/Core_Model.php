@@ -1599,8 +1599,14 @@ class Core_Model extends CI_Model
     /**
      * A wrapper to $this->_database->limit()
      */
-    public function limit($limit, $offset = FALSE)
+    public function limit($limit, $offset = 0)
     {
+        if (!$this->_is_ci_3)
+        {
+            // Adjust the default value of $offset to match the definition in CI 2.x.
+            $offset = empty($offset) ? '' : $offset;
+        }
+
         $this->_database->limit($limit, $offset);
         return $this;
     }
