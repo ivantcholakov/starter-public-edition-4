@@ -98,4 +98,17 @@ $config['less_compile'] = array(
         'compress' => true
     ),
 
+    array(
+        'name' => 'bootstrap-social',
+        'source' => DEFAULTFCPATH.'assets/less/lib/bootstrap-social/bootstrap-social-default.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/bootstrap-social/bootstrap-social.css',
+        'compress' => false
+    ),
+    array(
+        'name' => 'bootstrap-social-min',
+        'source' => DEFAULTFCPATH.'assets/less/lib/bootstrap-social/bootstrap-social-default.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/bootstrap-social/bootstrap-social.min.css',
+        'compress' => true
+    ),
+
 );
