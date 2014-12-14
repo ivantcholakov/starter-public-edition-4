@@ -353,7 +353,7 @@ Credits
 -------
 
 * Many thanks to Irida Design OOD, http://iridadesign.com - for sponsoring this project;
-* Gwenaeël Gallon, https://github.com/dev-ggallon - for an important bug-fix about detect_url(), French translation, and various component updates.
+* Gwenaël Gallon, https://github.com/dev-ggallon - for an important bug-fix about detect_url(), French translation, and various component updates.
 * GitHub : quasiperfect, https://github.com/quasiperfect - for various suggestions and bug-reports.
 
 License Information
@@ -362,7 +362,7 @@ License Information
 For original code in this project:  
 Copyright (c) 2012 - 2014:  
 Ivan Tcholakov (the initial author) ivantcholakov@gmail.com,  
-Gwenaeël Gallon.  
+Gwenaël Gallon.  
 License: The MIT License (MIT), http://opensource.org/licenses/MIT
 
 CodeIgniter:  
