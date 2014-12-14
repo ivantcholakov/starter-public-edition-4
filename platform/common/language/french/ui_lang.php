@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $lang['ui_hello'] = 'Bonjour, %s.';
 $lang['ui_yes'] = 'Oui';
-$lang['ui_no'] = 'Non';
+$lang['ui_no']  = 'Non';
 $lang['ui_confirm'] = 'Confirmer';
 $lang['ui_close'] = 'Fermer';
 $lang['ui_ok'] = 'OK';
@@ -17,7 +17,7 @@ $lang['ui_save'] = 'Enregistrer';
 $lang['ui_add'] = 'Ajouter';
 $lang['ui_save_and_add_new'] = 'Enregistrer et créer une entrée';
 $lang['ui_create'] = 'Créer';
-$lang['ui_edit'] = 'Éditer';
+$lang['ui_edit'] = 'éditer';
 $lang['ui_update'] = 'Mettre à jour';
 $lang['ui_delete'] = 'Supprimer';
 $lang['ui_refresh'] = 'Actualiser';
@@ -172,6 +172,6 @@ $lang['ui_confirm_translation_deletion'] = 'Voulez-vous réellement supprimer la
 $lang['ui_translation_deletion_success'] = 'La traduction %s a été supprimer.';
 $lang['ui_back'] = 'Retour';
 $lang['ui_map'] = 'Map';
-$lang['ui_show_all'] = 'Show All';
-$lang['ui_hide_all'] = 'Hide All';
+$lang['ui_show_all'] = 'Tout afficher';
+$lang['ui_hide_all'] = 'Tout masquer';
 $lang['ui_slogan'] = 'Slogan';
