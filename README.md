@@ -327,6 +327,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Yet another megamenu for Bootstrap 3, https://github.com/geedmo/yamm3
 * Breakpoints at 480px and 384px for Bootstrap 3, https://github.com/auipga/bootstrap-xxs, see also this request at Bootstrap's repository: https://github.com/twbs/bootstrap/issues/10203
 * metisMenu, Easy menu jQuery plugin for Twitter Bootstrap 3, https://github.com/onokumus/metisMenu
+* Social Buttons for Bootstrap, https://github.com/lipis/bootstrap-social
 
 The Playground
 --------------
