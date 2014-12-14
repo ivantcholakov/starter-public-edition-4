@@ -1,6 +1,6 @@
 <?php
 /**
- * @author      Gwenaeël Gallon (GitHub : dev-ggallon), 2014.
+ * @author      Gwenaël Gallon (GitHub : dev-ggallon), 2014.
  * @license     The MIT License (MIT), http://opensource.org/licenses/MIT
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -18,7 +18,6 @@ $lang['imglib_rotate_unsupported']      = 'La rotation d\'images n\'est pas supp
 $lang['imglib_libpath_invalid']         = 'Le chemin d\'accès à votre librairie de traitement d\'image n\'est pas correct. Veuillez indiquer le chemin correct dans vos préférences.';
 $lang['imglib_image_process_failed']    = 'Le traitement de l\'image a échoué. Veuillez vérifier que votre serveur supporte le protocole choisi et que le chemin d\'accès à votre librairie de traitement d\'image est correct.';
 $lang['imglib_rotation_angle_required'] = 'Un angle de rotation doit être indiqué pour tourner l\'image.';
-$lang['imglib_writing_failed_gif']      = 'Image GIF.';
 $lang['imglib_invalid_path']            = 'Le chemin d\'accès à l\'image est incorrect.';
 $lang['imglib_copy_failed']             = 'Le processus de copie d\'image a échoué.';
 $lang['imglib_missing_font']            = 'Impossible de trouver une police d\'écriture utilisable.';

@@ -1,11 +1,11 @@
 <?php
 /**
- * @author      Gwenaeël Gallon (GitHub : dev-ggallon), 2014.
+ * @author      Gwenaël Gallon (GitHub : dev-ggallon), 2014.
  * @license     The MIT License (MIT), http://opensource.org/licenses/MIT
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$lang['db_invalid_connection_str']     = 'Impossible de déterminer les paramètres de la base de données avec l\'instruction de connection donnée.';
+$lang['db_invalid_connection_str']     = 'Impossible de déterminer les paramètres d\'accès à la base de données avec les informations de connection que vous avez soumis.';
 $lang['db_unable_to_connect']          = 'Impossible de se connecter à la base de données en utilisant les paramètres fournis.';
 $lang['db_unable_to_select']           = 'Impossible de sélectionner la base de données demandée : %s';
 $lang['db_unable_to_create']           = 'Impossible de créer la base de données demandée : %s';
