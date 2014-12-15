@@ -528,18 +528,6 @@ $config['parse_i18n'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
-| Minify
-|--------------------------------------------------------------------------
-|
-| Removes extra characters (usually unnecessary spaces) from your
-| output for faster page load speeds.  Makes your outputted HTML source
-| code less readable.
-|
-*/
-$config['minify_output'] = FALSE;
-
-/*
-|--------------------------------------------------------------------------
 | Master Time Reference
 |--------------------------------------------------------------------------
 |
@@ -550,7 +538,6 @@ $config['minify_output'] = FALSE;
 |
 */
 $config['time_reference'] = 'local';
-
 
 /*
 |--------------------------------------------------------------------------
