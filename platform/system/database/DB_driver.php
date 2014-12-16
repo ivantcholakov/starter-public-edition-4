@@ -992,7 +992,7 @@ abstract class CI_DB_driver {
 	 * Calculate the aggregate query elapsed time
 	 *
 	 * @param	int	The number of decimal places
-	 * @return	int
+	 * @return	string
 	 */
 	public function elapsed_time($decimals = 6)
 	{
@@ -1062,7 +1062,7 @@ abstract class CI_DB_driver {
 	/**
 	 * Escape String
 	 *
-	 * @param	string	$str
+	 * @param	string|string[]	$str
 	 * @param	bool	$like	Whether or not the string will be used in a LIKE condition
 	 * @return	string
 	 */
@@ -1131,7 +1131,7 @@ abstract class CI_DB_driver {
 	 * position is the primary key
 	 *
 	 * @param	string	the table name
-	 * @return	string
+	 * @return	mixed
 	 */
 	public function primary($table = '')
 	{
@@ -1174,7 +1174,7 @@ abstract class CI_DB_driver {
 	 * Returns an array of table names
 	 *
 	 * @param	string	$constrain_by_prefix = FALSE
-	 * @return	array
+	 * @return	mixed
 	 */
 	public function list_tables($constrain_by_prefix = FALSE)
 	{
@@ -1242,7 +1242,7 @@ abstract class CI_DB_driver {
 	 * Fetch Field Names
 	 *
 	 * @param	string	the table name
-	 * @return	array
+	 * @return	mixed
 	 */
 	public function list_fields($table = '')
 	{
