@@ -996,62 +996,73 @@ class MX_Loader extends CI_Loader
 
             if (is_array($config_component->_config_paths))
             {
-                // Modified by Ivan Tcholakov, 18-OCT-2013.
-                //// Break on the first found file, thus package files
-                //// are not overridden by default paths
+                // Modified by Ivan Tcholakov, 18-DEC-2014.
+                //$found = FALSE;
                 //foreach ($config_component->_config_paths as $path)
                 //{
                 //    // We test for both uppercase and lowercase, for servers that
-                //    // are case-sensitive with regard to file names. Check for environment
-                //    // first, global next
-                //    if (file_exists($path.'config/'.ENVIRONMENT.'/'.strtolower($class).'.php'))
-                //    {
-                //        include($path.'config/'.ENVIRONMENT.'/'.strtolower($class).'.php');
-                //        break;
-                //    }
-                //    elseif (file_exists($path.'config/'.ENVIRONMENT.'/'.ucfirst(strtolower($class)).'.php'))
-                //    {
-                //        include($path.'config/'.ENVIRONMENT.'/'.ucfirst(strtolower($class)).'.php');
-                //        break;
-                //    }
-                //    elseif (file_exists($path.'config/'.strtolower($class).'.php'))
+                //    // are case-sensitive with regard to file names. Load global first,
+                //    // override with environment next
+                //    if (file_exists($path.'config/'.strtolower($class).'.php'))
                 //    {
                 //        include($path.'config/'.strtolower($class).'.php');
-                //        break;
+                //        $found = TRUE;
                 //    }
                 //    elseif (file_exists($path.'config/'.ucfirst(strtolower($class)).'.php'))
                 //    {
                 //        include($path.'config/'.ucfirst(strtolower($class)).'.php');
+                //        $found = TRUE;
+                //    }
+                //
+                //    if (file_exists($path.'config/'.ENVIRONMENT.'/'.strtolower($class).'.php'))
+                //    {
+                //        include($path.'config/'.ENVIRONMENT.'/'.strtolower($class).'.php');
+                //        $found = TRUE;
+                //    }
+                //    elseif (file_exists($path.'config/'.ENVIRONMENT.'/'.ucfirst(strtolower($class)).'.php'))
+                //    {
+                //        include($path.'config/'.ENVIRONMENT.'/'.ucfirst(strtolower($class)).'.php');
+                //        $found = TRUE;
+                //    }
+                //
+                //    // Break on the first found configuration, thus package
+                //    // files are not overridden by default paths
+                //    if ($found === TRUE)
+                //    {
                 //        break;
                 //    }
                 //}
-                // Break on the first found file, thus package files
-                // are not overridden by default paths
                 //
-                // Ivan Tcholakov, 18-OCT-2013:
+                // Ivan Tcholakov, 18-DEC-2014:
                 // The common configuration files can be overriden.
                 // TODO: A little-bit dirty implementation of this idea.
                 //
+                $found = FALSE;
                 foreach ($config_component->_config_paths as $path)
                 {
                     // We test for both uppercase and lowercase, for servers that
-                    // are case-sensitive with regard to file names. Check for environment
-                    // first, global next
-                    if (file_exists($path.'config/'.ENVIRONMENT.'/'.strtolower($class).'.php'))
-                    {
-                        include($path.'config/'.ENVIRONMENT.'/'.strtolower($class).'.php');
-                    }
-                    elseif (file_exists($path.'config/'.ENVIRONMENT.'/'.ucfirst(strtolower($class)).'.php'))
-                    {
-                        include($path.'config/'.ENVIRONMENT.'/'.ucfirst(strtolower($class)).'.php');
-                    }
-                    elseif (file_exists($path.'config/'.strtolower($class).'.php'))
+                    // are case-sensitive with regard to file names. Load global first,
+                    // override with environment next
+                    if (file_exists($path.'config/'.strtolower($class).'.php'))
                     {
                         include($path.'config/'.strtolower($class).'.php');
+                        $found = TRUE;
                     }
                     elseif (file_exists($path.'config/'.ucfirst(strtolower($class)).'.php'))
                     {
                         include($path.'config/'.ucfirst(strtolower($class)).'.php');
+                        $found = TRUE;
+                    }
+
+                    if (file_exists($path.'config/'.ENVIRONMENT.'/'.strtolower($class).'.php'))
+                    {
+                        include($path.'config/'.ENVIRONMENT.'/'.strtolower($class).'.php');
+                        $found = TRUE;
+                    }
+                    elseif (file_exists($path.'config/'.ENVIRONMENT.'/'.ucfirst(strtolower($class)).'.php'))
+                    {
+                        include($path.'config/'.ENVIRONMENT.'/'.ucfirst(strtolower($class)).'.php');
+                        $found = TRUE;
                     }
 
                     if (strpos($path, COMMONPATH) !== 0) {
