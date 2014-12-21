@@ -46,7 +46,7 @@
  * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2014.
  * Code repository: @link https://github.com/ivantcholakov/gibberish-aes-php
  *
- * @version 1.1
+ * @version 1.1.1
  *
  * @license The MIT License (MIT)
  * @link http://opensource.org/licenses/MIT
@@ -58,6 +58,7 @@ class GibberishAES {
     protected static $valid_key_sizes = array(128, 192, 256);   // Sizes in bits
 
     protected static $openssl_random_pseudo_bytes_exists = null;
+    protected static $mcrypt_dev_urandom_exists = null;
     protected static $openssl_encrypt_exists = null;
     protected static $openssl_decrypt_exists = null;
     protected static $mcrypt_exists = null;
@@ -199,16 +200,29 @@ class GibberishAES {
 
     protected static function random_pseudo_bytes($length) {
 
-        // Added temporarily by Ivan Tcholakov, 21-DEC-2014.
-        return secure_random_bytes($length);
-        //
-
         if (!isset(self::$openssl_random_pseudo_bytes_exists)) {
-            self::$openssl_random_pseudo_bytes_exists = function_exists('openssl_random_pseudo_bytes');
+
+            self::$openssl_random_pseudo_bytes_exists = function_exists('openssl_random_pseudo_bytes') &&
+                (version_compare(PHP_VERSION, '5.3.4') >= 0 || substr(PHP_OS, 0, 3) !== 'WIN');
         }
 
         if (self::$openssl_random_pseudo_bytes_exists) {
             return openssl_random_pseudo_bytes($length);
+        }
+
+        if (!isset(self::$mcrypt_dev_urandom_exists)) {
+
+            self::$mcrypt_dev_urandom_exists = function_exists('mcrypt_create_iv') &&
+                (version_compare(PHP_VERSION, '5.3.7') >= 0 || substr(PHP_OS, 0, 3) !== 'WIN');
+        }
+
+        if (self::$mcrypt_dev_urandom_exists) {
+
+            $rnd = mcrypt_create_iv($length, MCRYPT_DEV_URANDOM);
+
+            if ($rnd !== false) {
+                return $rnd;
+            }
         }
 
         // Borrowed from http://phpseclib.com/
