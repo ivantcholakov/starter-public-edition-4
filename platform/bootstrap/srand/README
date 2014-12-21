@@ -1,0 +1,39 @@
+The PHP core lacks any cryptographically secure pseudorandom number generators.
+Therefore, applications that need crypto level randomness should rely either on
+randomness provided through some operating system interface or through some
+PHP functions available in some extensions such as the openssl and mcrypt 
+extensions.
+
+However, these extensions may not be available in all PHP installations and
+furthermore, older PHP versions had buggy implementations of these functions
+which sometimes caused them to be painfully slow. Thus, even when using these
+functions one should to be aware of the PHP version and OS used.
+
+Finally, in installations that lack openssl or mcrypt extensions and no 
+randomness can be obtained from the operating system, we need a way to
+extract sufficient randomness for cryptographic purposes. For this purpose
+we exploit the fact that due to schedule and other non deterministic events
+the time that a CPU intensive operation will take will vary from one execution
+to another. Therefore counting the time such events will take contains some
+bits of entropy (although we need to be extremely cautious on how many bits 
+we assume to extract from each execution).
+
+secure_random_bytes function implements a secure randomness generator using 
+the ideas described above. In summary, it first attempt to use one of the PHP 
+functions from the openssl and mcrypt extensions if the PHP version used does
+not contain a bug in the implementation of these functions. Otherwise, it 
+attempts to gather entropy either from /dev/urandom or by measuring the time 
+needed to complete the calculation of a certain number of sha1 hashes. In 
+order to keep the running time low while keeping our security level, we define
+a constant time that we want our operation to take on average. This time 
+should not be too large in order to keep the running time low, nor too low
+in order to have a sufficient time variation between different executions. 
+
+We tested this function in Windows XP/2003, Sun Solaris and Debian/Ubuntu Linux,
+where it provided as many bits of entropy as requested by the user while keeping
+the running time relatively low. 
+
+This software was written based on research funded by the ERC project CODAMODA
+and is released under the New BSD License.
+
+

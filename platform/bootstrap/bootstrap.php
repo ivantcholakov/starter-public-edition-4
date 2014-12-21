@@ -312,6 +312,10 @@ if (!function_exists('htmlspecialchars_decode')) {
     require BOOTSTRAPPATH.'htmlspecialchars_decode.php';
 }
 
+if (!function_exists('secure_random_bytes')) {
+    require BOOTSTRAPPATH.'srand/srand.php';
+}
+
 if (!function_exists('random_pseudo_bytes')) {
     require BOOTSTRAPPATH.'random_pseudo_bytes.php';
 }
