@@ -328,6 +328,8 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Breakpoints at 480px and 384px for Bootstrap 3, https://github.com/auipga/bootstrap-xxs, see also this request at Bootstrap's repository: https://github.com/twbs/bootstrap/issues/10203
 * metisMenu, Easy menu jQuery plugin for Twitter Bootstrap 3, https://github.com/onokumus/metisMenu
 * Social Buttons for Bootstrap, https://github.com/lipis/bootstrap-social
+* Secure Random Bytes in PHP, https://github.com/GeorgeArgyros/Secure-random-bytes-in-PHP
+* php-passgen - A library for generating cryptographically secure passwords in PHP, https://github.com/defuse/php-passgen
 
 The Playground
 --------------

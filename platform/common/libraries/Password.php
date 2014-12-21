@@ -19,7 +19,9 @@ class Password {
     // Added by Ivan Tcholakov, 11-JUL-2014.
     // $min_length is not allowed to be less than 4.
     // If it not set, $max_length is assumed to be equal to $min_length.
-    public function create($min_length = 10, $max_length = null) {
+    // $characters is a string representing the set of charactes that a password may contain.
+    // if $characters is not set, then a custom string of the allowed charaters is used internally.
+    public function create($min_length = 10, $max_length = null, $characters = null) {
 
         $min_length = (int) $min_length;
 
@@ -42,7 +44,13 @@ class Password {
 
         $length = mt_rand($min_length, $max_length);
 
-        return substr(base64_encode(secure_random_bytes($length)), 0, $length);
+        $characters = (string) $characters;
+
+        if ($characters == '') {
+            $characters = "!#$%+-0123456789=?@ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        }
+
+        return PasswordGenerator::getCustomPassword(str_split($characters), $length);
     }
 
     // See http://www.openwall.com/phpass/
