@@ -316,10 +316,6 @@ if (!function_exists('secure_random_bytes')) {
     require BOOTSTRAPPATH.'srand/srand.php';
 }
 
-if (!function_exists('random_pseudo_bytes')) {
-    require BOOTSTRAPPATH.'random_pseudo_bytes.php';
-}
-
 if (!function_exists('gethostname')) {
     require BOOTSTRAPPATH.'gethostname.php';
 }
