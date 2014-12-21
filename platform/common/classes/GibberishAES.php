@@ -12,11 +12,11 @@
  *
  * OpenSSL functions installed and PHP version >= 5.3.3 (preferred case)
  * or
- * Mcrypt functions installed. 
+ * Mcrypt functions installed.
  *
  * If none of these functions exist, the class will try to use openssl
  * from the command line (avoid this case).
- * 
+ *
  * Usage:
  *
  * // This is a secret key, keep it in a safe place and don't loose it.
@@ -42,7 +42,7 @@
  * $decrypted_string = GibberishAES::dec($encrypted_string, $key);
  * GibberishAES::size($old_key_size);
  * echo $decrypted_string;
- * 
+ *
  * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2014.
  * Code repository: @link https://github.com/ivantcholakov/gibberish-aes-php
  *
@@ -198,6 +198,10 @@ class GibberishAES {
     // Non-public methods ------------------------------------------------------
 
     protected static function random_pseudo_bytes($length) {
+
+        // Added temporarily by Ivan Tcholakov, 21-DEC-2014.
+        return secure_random_bytes($length);
+        //
 
         if (!isset(self::$openssl_random_pseudo_bytes_exists)) {
             self::$openssl_random_pseudo_bytes_exists = function_exists('openssl_random_pseudo_bytes');
