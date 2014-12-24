@@ -70,7 +70,10 @@ class CI_Config {
 	 * @used-by	CI_Loader
 	 * @var		array
 	 */
-	public $_config_paths =	array(APPPATH);
+	// Modified by Ivan Tcholakov, 24-DEC-2014.
+	//public $_config_paths =	array(APPPATH);
+	public $_config_paths =	array(COMMONPATH, APPPATH);
+	//
 
 	/**
 	 * Class constructor
@@ -126,7 +129,11 @@ class CI_Config {
 
 				if (in_array($file_path, $this->is_loaded, TRUE))
 				{
-					return TRUE;
+					// Modified by Ivan Tcholakov, 24-DEC-2014.
+					//return TRUE;
+					$loaded = TRUE;
+					continue 2;
+					//
 				}
 
 				if ( ! file_exists($file_path))
@@ -163,11 +170,20 @@ class CI_Config {
 				log_message('debug', 'Config file loaded: '.$file_path);
 			}
 
-			if ($loaded === TRUE)
-			{
-				return TRUE;
-			}
+			// Removed by Ivan Tcholakov, 24-DEC-2014.
+			//if ($loaded === TRUE)
+			//{
+			//	return TRUE;
+			//}
+			//
 		}
+
+		// Added by Ivan Tcholakov, 24-DEC-2014.
+		if ($loaded === TRUE)
+		{
+			return TRUE;
+		}
+		//
 
 		if ($fail_gracefully === TRUE)
 		{
