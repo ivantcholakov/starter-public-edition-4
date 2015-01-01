@@ -54,7 +54,7 @@ $config['languages'] = array(
         'flag' => 'ES',
     ),
 
-    'spanish_latin' => array(
+    'spanish-latin' => array(
         'code' => 'es_419',
         'direction' => 'ltr',
         'uri_segment' => 'es-419',
@@ -90,7 +90,7 @@ $config['languages'] = array(
         'flag' => 'PT',
     ),
 
-    'brazilian_portuguese' => array(
+    'portuguese-brazilian' => array(
         'code' => 'pt_BR',
         'direction' => 'ltr',
         'uri_segment' => 'pt-br',
