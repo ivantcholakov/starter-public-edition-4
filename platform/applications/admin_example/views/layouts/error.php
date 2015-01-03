@@ -33,6 +33,7 @@ echo js('lib/phpjs/floatval.js');
 echo js('lib/phpjs/round.js');
 echo js('lib/phpjs/sprintf.js');
 echo js('lib/phpjs/vsprintf.js');
+echo js('lib/phpjs/print_r.js');
 
 echo js_platform();
 echo js_selectivizr();

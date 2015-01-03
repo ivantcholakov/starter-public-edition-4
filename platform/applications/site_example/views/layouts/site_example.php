@@ -32,6 +32,7 @@ echo js('lib/phpjs/htmlspecialchars_decode.js');
 echo js('lib/phpjs/number_format.js');
 echo js('lib/phpjs/floatval.js');
 echo js('lib/phpjs/round.js');
+echo js('lib/phpjs/print_r.js');
 
 echo js_platform();
 echo js_selectivizr();
