@@ -143,6 +143,42 @@ class Core_Tree_Model extends Core_Model {
         return $this->contains($id, $child_id);
     }
 
+    public function contains_one($id, $children_ids) {
+
+        $id = (int) $id;
+
+        if (!is_array($children_ids)) {
+            $children_ids = array($children_ids);
+        }
+
+        foreach ($children_ids as $child_id) {
+
+            if ($this->contains($id, $child_id)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function contains_all($id, $children_ids) {
+
+        $id = (int) $id;
+
+        if (!is_array($children_ids)) {
+            $children_ids = array($children_ids);
+        }
+
+        foreach ($children_ids as $child_id) {
+
+            if (!$this->contains($id, $child_id)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public function has_children($id) {
 
         $id = (int) $id;
