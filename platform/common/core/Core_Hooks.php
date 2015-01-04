@@ -21,20 +21,20 @@ class Core_Hooks extends CI_Hooks {
             return;
         }
 
-        if (file_exists(APPPATH.'config/hooks.php')) {
-            include(APPPATH.'config/hooks.php');
-        }
-
-        if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/hooks.php')) {
-            include(APPPATH.'config/'.ENVIRONMENT.'/hooks.php');
-        }
-
         if (file_exists(COMMONPATH.'config/hooks.php')) {
             include(COMMONPATH.'config/hooks.php');
         }
 
         if (file_exists(COMMONPATH.'config/'.ENVIRONMENT.'/hooks.php')) {
             include(COMMONPATH.'config/'.ENVIRONMENT.'/hooks.php');
+        }
+
+        if (file_exists(APPPATH.'config/hooks.php')) {
+            include(APPPATH.'config/hooks.php');
+        }
+
+        if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/hooks.php')) {
+            include(APPPATH.'config/'.ENVIRONMENT.'/hooks.php');
         }
 
         if (!isset($hook) || !is_array($hook)) {
