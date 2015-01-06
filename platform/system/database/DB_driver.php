@@ -456,9 +456,23 @@ abstract class CI_DB_driver {
 	// --------------------------------------------------------------------
 
 	/**
+	 * DB connect
+	 *
+	 * This is just a dummy method that all drivers will override.
+	 *
+	 * @return      mixed
+	 */
+	public function db_connect()
+	{
+		return TRUE;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
 	 * Persistent database connection
 	 *
-	 * @return	resource
+	 * @return	mixed
 	 */
 	public function db_pconnect()
 	{
@@ -1062,7 +1076,7 @@ abstract class CI_DB_driver {
 	/**
 	 * Escape String
 	 *
-	 * @param	string|string[]	$str
+	 * @param	string|string[]	$str	Input string
 	 * @param	bool	$like	Whether or not the string will be used in a LIKE condition
 	 * @return	string
 	 */
@@ -1130,10 +1144,10 @@ abstract class CI_DB_driver {
 	 * Retrieves the primary key. It assumes that the row in the first
 	 * position is the primary key
 	 *
-	 * @param	string	the table name
-	 * @return	mixed
+	 * @param	string	$table	Table name
+	 * @return	string
 	 */
-	public function primary($table = '')
+	public function primary($table)
 	{
 		$fields = $this->list_fields($table);
 		return is_array($fields) ? current($fields) : FALSE;
@@ -1174,7 +1188,7 @@ abstract class CI_DB_driver {
 	 * Returns an array of table names
 	 *
 	 * @param	string	$constrain_by_prefix = FALSE
-	 * @return	mixed
+	 * @return	array
 	 */
 	public function list_tables($constrain_by_prefix = FALSE)
 	{
@@ -1242,19 +1256,14 @@ abstract class CI_DB_driver {
 	 * Fetch Field Names
 	 *
 	 * @param	string	the table name
-	 * @return	mixed
+	 * @return	array
 	 */
-	public function list_fields($table = '')
+	public function list_fields($table)
 	{
 		// Is there a cached result?
 		if (isset($this->data_cache['field_names'][$table]))
 		{
 			return $this->data_cache['field_names'][$table];
-		}
-
-		if ($table === '')
-		{
-			return ($this->db_debug) ? $this->display_error('db_field_param_missing') : FALSE;
 		}
 
 		if (FALSE === ($sql = $this->_list_columns($table)))
@@ -1310,18 +1319,13 @@ abstract class CI_DB_driver {
 	/**
 	 * Returns an object with field data
 	 *
-	 * @param	string	the table name
-	 * @return	object
+	 * @param	string	$table	the table name
+	 * @return	array
 	 */
-	public function field_data($table = '')
+	public function field_data($table)
 	{
-		if ($table === '')
-		{
-			return ($this->db_debug) ? $this->display_error('db_field_param_missing') : FALSE;
-		}
-
 		$query = $this->query($this->_field_data($this->protect_identifiers($table, TRUE, NULL, FALSE)));
-		return $query->field_data();
+		return ($query) ? $query->field_data() : FALSE;
 	}
 
 	// --------------------------------------------------------------------
