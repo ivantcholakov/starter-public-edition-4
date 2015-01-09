@@ -8,7 +8,7 @@
  *
  * Code repository: @link https://github.com/ivantcholakov/Codeigniter-Gravatar
  *
- * @version 1.0
+ * @version 1.0.1
  *
  * @license The MIT License (MIT)
  * @link http://opensource.org/licenses/MIT
@@ -242,15 +242,22 @@ class Gravatar {
                 CURLOPT_USERAGENT, $this->useragent,
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_POST => true,
+                CURLOPT_POSTFIELDS => array(),
                 CURLOPT_URL => $url,
                 CURLOPT_TIMEOUT => 3,
             );
+
+            if (!ini_get('safe_mode') && !ini_get('open_basedir')) {
+                $options[CURLOPT_FOLLOWLOCATION] = true;
+            }
 
             curl_setopt_array($ch, $options);
 
             $result = curl_exec($ch);
 
-            $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $code = @ curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+            @ curl_close($ch);
 
             if ($code != 200) {
 
