@@ -14,7 +14,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 CREATE TABLE IF NOT EXISTS `hits` (
     `pageid` varchar(100) NOT NULL,
     `isunique` tinyint(1) NOT NULL,
-    `hitcount` int(10) unsigned NOT NULL,
+    `hitcount` int(11) unsigned NOT NULL,
     KEY `pageid` (`pageid`)
 ) DEFAULT CHARSET=utf8;
 
