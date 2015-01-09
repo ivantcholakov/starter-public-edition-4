@@ -43,6 +43,7 @@ class Gravatar_test_controller extends Base_Controller {
         $email = null;
         $gravatar = null;
         $profile = null;
+        $last_error = 0;
 
         $this->form_validation->set_rules($validation_rules);
 
@@ -52,6 +53,7 @@ class Gravatar_test_controller extends Base_Controller {
 
             $gravatar = $this->gravatar->get($email);
             $profile = $this->gravatar->get_profile_data($email);
+            $last_error = $this->gravatar->last_error($email);
 
         } elseif (validation_errors()) {
 
@@ -62,7 +64,7 @@ class Gravatar_test_controller extends Base_Controller {
         $this->captcha->clear();
 
         $this->template
-            ->set(compact('email', 'gravatar', 'profile'))
+            ->set(compact('email', 'gravatar', 'profile', 'last_error'))
             ->enable_parser_body('i18n')
             ->build('gravatar_test');
     }

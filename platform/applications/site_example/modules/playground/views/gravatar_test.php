@@ -124,6 +124,10 @@ if ($this->input->method() == 'post' && empty($error_message)) {
 
                         <div class="clearfix"></div>
 
+                        <?php echo print_d($last_error); ?>
+
+                        <div class="clearfix"></div>
+
 <?php
 
 }
