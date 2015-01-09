@@ -316,7 +316,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Bootstrap Vertical Tabs, https://github.com/dbtek/bootstrap-vertical-tabs
 * Jasny Bootstrap, The missing components for your favorite front-end framework, http://jasny.github.io/bootstrap/, https://github.com/jasny/bootstrap
 * phpass (PasswordHash class), http://www.openwall.com/phpass/, http://cvsweb.openwall.com/cgi/cvsweb.cgi/projects/phpass/PasswordHash.php
-* Gravatar library for CodeIgniter, https://github.com/rsmarshall/Codeigniter-Gravatar
+* Gravatar Library for CodeIgniter, https://github.com/ivantcholakov/Codeigniter-Gravatar
 * CodeIgniter Advanced Images (Smart Resize and Crop), https://github.com/jenssegers/codeigniter-advanced-images/
 * Multiplayer - A tiny library to build nice HTML embed codes for videos, https://github.com/felixgirault/multiplayer, https://packagist.org/packages/fg/multiplayer
 * jQuery Chosen Plugin, http://harvesthq.github.com/chosen/, https://github.com/harvesthq/chosen/

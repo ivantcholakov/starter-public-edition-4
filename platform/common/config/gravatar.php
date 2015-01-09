@@ -1,7 +1,9 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * Gravatar Library for CodeIgniter - Configuration
+ *
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -19,5 +21,5 @@ $config['gravatar_force_default_image'] = false;
 $config['gravatar_rating'] = '';  // '', 'g' (default), 'pg', 'r', 'x'.
 
 // Useragent string for server-made requests.
-// It is in order not get 403 forbidden response.
+// It is for not getting 403 forbidden response.
 $config['gravatar_useragent'] = 'PHP Gravatar Library';
