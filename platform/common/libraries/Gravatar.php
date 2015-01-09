@@ -250,6 +250,14 @@ class Gravatar {
 
             $result = curl_exec($ch);
 
+            $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+            if ($code != 200) {
+
+                $this->last_error = GRAVATAR_CANT_CONNECT;
+                return null;
+            }
+
         } elseif ($this->allow_url_fopen) {
 
             $url = $this->base_url.$this->create_hash($email).$format;
