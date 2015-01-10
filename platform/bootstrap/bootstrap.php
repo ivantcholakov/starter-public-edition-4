@@ -27,7 +27,7 @@ define('IS_AJAX_REQUEST', isset($_SERVER['HTTP_X_REQUESTED_WITH'])
     && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
 
 define('ICONV_INSTALLED', function_exists('iconv'));
-define('MBSTRING_INSTALLED', function_exists('mb_strlen'));
+define('MBSTRING_INSTALLED', extension_loaded('mbstring'));
 define('PCRE_UTF8_INSTALLED', @preg_match('/./u', 'é') === 1);
 define('INTL_INSTALLED', function_exists('intl_get_error_code'));
 
