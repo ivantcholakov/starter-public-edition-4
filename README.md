@@ -369,7 +369,7 @@ License: The MIT License (MIT), http://opensource.org/licenses/MIT
 
 CodeIgniter:  
 Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)  
-Copyright (c) 2014, British Columbia Institute of Technology (http://bcit.ca/)  
+Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)  
 License: The MIT License (MIT), http://opensource.org/licenses/MIT
 
 Third parties:  
