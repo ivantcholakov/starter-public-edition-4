@@ -23,7 +23,7 @@ if (!defined('ICONV_INSTALLED')) {
 }
 
 if (!defined('MBSTRING_INSTALLED')) {
-    define('MBSTRING_INSTALLED', function_exists('mb_strlen'));
+    define('MBSTRING_INSTALLED', extension_loaded('mbstring'));
 }
 
 if (!class_exists('Kohana', false)) {
