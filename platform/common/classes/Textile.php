@@ -946,7 +946,10 @@ class Textile
         $this->c = "(?:$this->clas|$this->styl|$this->lnge|$this->hlgn)*";
         $this->lc = "(?:$this->clas|$this->styl|$this->lnge)*";
 
-        $this->mb = is_callable('mb_strlen');
+        // Modified by Ivan Tcholakov, 11-JAN-2015.
+        //$this->mb = is_callable('mb_strlen');
+        $this->mb = extension_loaded('mbstring');
+        //
 
         if (@preg_match('/\pL/u', 'a')) {
             $this->regex_snippets = array(
