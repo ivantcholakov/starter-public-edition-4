@@ -177,3 +177,7 @@ $lang['ui_hide_all'] = 'Скрий всички';
 $lang['ui_slogan'] = 'Слоган';
 $lang['ui_search_results'] = 'Резултати от търсенето';
 $lang['ui_sort_by'] = 'Подреди по';
+$lang['ui_date_of_registration'] = 'Дата на регистрация';
+$lang['ui_rating'] = 'Рейтинг';
+$lang['ui_visits'] = 'Посещения';
+$lang['ui_unique_visitors'] = 'Уникални посетители';

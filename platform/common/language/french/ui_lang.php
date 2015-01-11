@@ -177,3 +177,7 @@ $lang['ui_hide_all'] = 'Tout masquer';
 $lang['ui_slogan'] = 'Slogan';
 $lang['ui_search_results'] = 'Search Results';
 $lang['ui_sort_by'] = 'Sort by';
+$lang['ui_date_of_registration'] = 'Date of registration';
+$lang['ui_rating'] = 'Rating';
+$lang['ui_visits'] = 'Visits';
+$lang['ui_unique_visitors'] = 'Unique visitors';
