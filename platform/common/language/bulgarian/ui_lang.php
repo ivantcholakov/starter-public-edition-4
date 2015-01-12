@@ -181,3 +181,4 @@ $lang['ui_date_of_registration'] = 'Дата на регистрация';
 $lang['ui_rating'] = 'Рейтинг';
 $lang['ui_visits'] = 'Посещения';
 $lang['ui_unique_visitors'] = 'Уникални посетители';
+$lang['ui_no_results_found'] = 'Няма намерени резултати.';
