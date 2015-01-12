@@ -65,6 +65,7 @@ $lang['form_validation_less_than']		= 'Das {field} Formularfeld muss einen Zahle
 $lang['form_validation_less_than_equal_to']	= 'Das {field} Formularfeld muss einen Zahlenwert enthalten der kleiner oder gleich {param} ist.';
 $lang['form_validation_greater_than']		= 'Das {field} Formularfeld muss einen Zahlenwert enthalten der gößer als {param} ist.';
 $lang['form_validation_greater_than_equal_to']	= 'Das {field} Formularfeld muss einen Wert enthalten, der größer oder gleich {param} ist.';
+$lang['form_validation_error_message_not_set'] = 'Unable to access an error message corresponding to your field name {field}.';
 
 /* End of file form_validation_lang.php */
 /* Location: ./application/language/german/form_validation_lang.php */
