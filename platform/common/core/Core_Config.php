@@ -105,7 +105,7 @@ class Core_Config extends MX_Config {
         }
 
         if (!defined('SERVER_URL')) {
-            define('SERVER_URL', $this->add_slash(str_replace(BASE_URI, '', BASE_URL)));
+            define('SERVER_URL', $this->add_slash(substr(BASE_URL, 0, strlen(BASE_URL) - strlen(BASE_URI))));
         }
 
         if (!defined('SITE_URL')) {
@@ -440,7 +440,7 @@ class Core_Config extends MX_Config {
             $uri_expl = explode('/', $uri, 2);
 
             $result['lang'] = NULL;
-            $result['parts'] = $uri_expl;  
+            $result['parts'] = $uri_expl;
 
             if ($this->valid_language_uri_segment($uri_expl[0])) {
 
