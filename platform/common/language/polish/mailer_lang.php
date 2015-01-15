@@ -5,11 +5,11 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$lang['mailer_disabled'] = 'E-mail service has not been activated.';
-$lang['mailer_disabled_error'] = 'We are sorry, e-mail service has not been activated. The message has not been sent.';
-$lang['mailer_error'] = 'We are sorry, your message has not been sent due to a technical problem.';
-$lang['mailer_a_message_has_been_received'] = 'A message has been received';
-$lang['mailer_a_message_has_been_received_from'] = 'A message from';
-$lang['mailer_your_message_has_been_sent'] = "Thank you! Your message has been sent.";
-$lang['mailer_confirmation_for_a_received_message'] = 'Confirmation for a received message';
-$lang['mailer_confirmation_for_a_received_message_from'] = 'Confirmation for a received message from';
+$lang['mailer_disabled'] = 'Usługa E-mail nie została aktywowana.';
+$lang['mailer_disabled_error'] = 'Przepraszamy, usługa e-mail nie jest aktywna. Wiadomość nie została wysłana.';
+$lang['mailer_error'] = 'Przepraszamy, twoja wiadomość nie została wysłana z powodu przyczyn technicznych.';
+$lang['mailer_a_message_has_been_received'] = 'Wiadomość została odebrana.';
+$lang['mailer_a_message_has_been_received_from'] = 'Wiadomość od';
+$lang['mailer_your_message_has_been_sent'] = "Dziękujemy! Twoja wiadomość została wysłana.";
+$lang['mailer_confirmation_for_a_received_message'] = 'Potwierdzenie o odebranej wiadomości';
+$lang['mailer_confirmation_for_a_received_message_from'] = 'Potwierdzenie o odebranej wiadomości od';
