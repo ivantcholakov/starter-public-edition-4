@@ -5,6 +5,6 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$lang['captcha.label'] = '%sEnter the text shown in the image';
-$lang['captcha.tip'] = 'Click the image if you are not able to read the proposed text.';
-$lang['captcha.validation_error'] = 'Please, enter correctly the text from the image.';
+$lang['captcha.label'] = '%sWprowadź tekst z obrazka';
+$lang['captcha.tip'] = 'Kliknij w obrazek jeżeli nie jesteś w stanie odczytać tekstu.';
+$lang['captcha.validation_error'] = 'Wprowadź poprawnie tekst z obrazka.';
