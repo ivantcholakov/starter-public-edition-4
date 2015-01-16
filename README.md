@@ -355,8 +355,9 @@ Credits
 -------
 
 * Many thanks to Irida Design OOD, http://iridadesign.com - for sponsoring this project;
-* Gwenaël Gallon, https://github.com/dev-ggallon - for an important bug-fix about detect_url(), French translation, and various component updates.
-* GitHub : quasiperfect, https://github.com/quasiperfect - for various suggestions and bug-reports.
+* Gwenaël Gallon, https://github.com/dev-ggallon - for an important bug-fix about detect_url(), French translation, and various component updates;
+* quasiperfect (GitHub name), https://github.com/quasiperfect - for various suggestions and bug-reports;
+* Exelord (GitHub name), https://github.com/Exelord - for Polish translation.
 
 License Information
 -------------------
