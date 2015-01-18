@@ -30,7 +30,7 @@
  * @author	EllisLab Dev Team
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
- * @license	http://opensource.org/licenses/MIT	MIT License
+ * @license	http://opensource.org/licenses/MIT MIT License
  * @link	http://codeigniter.com
  * @since	Version 1.0.0
  * @filesource
@@ -64,7 +64,7 @@ $lang['form_validation_less_than'] = 'Поле {field} должно содерж
 $lang['form_validation_less_than_equal_to'] = 'Поле {field} должно содержать значение меньше или равно {param}.';
 $lang['form_validation_greater_than'] = 'Поле {field} должно содержать значение больше {param}.';
 $lang['form_validation_greater_than_equal_to'] = 'Поле {field} должно содержать значение больше или равно {param}.';
-$lang['form_validation_error_message_not_set'] = 'Unable to access an error message corresponding to your field name {field}.';
+$lang['form_validation_error_message_not_set']  = 'Для поля {field} не установлено сообщение об ошибке.';
 
 /* End of file form_validation_lang.php */
 /* Location: ./application/language/russian/form_validation_lang.php */
