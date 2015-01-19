@@ -337,11 +337,10 @@ $config['cache_query_string'] = FALSE;
 | Encryption Key
 |--------------------------------------------------------------------------
 |
-| If you use the Encryption class or the Session class you
-| MUST set an encryption key.  See the user guide for info.
+| If you use the Encryption class, you must set the an encryption key.
+| See the user guide for more info.
 |
 | http://codeigniter.com/user_guide/libraries/encryption.html
-| http://codeigniter.com/user_guide/libraries/sessions.html
 |
 */
 $config['encryption_key'] = 'MY_ENCRYPTION_KEY';
@@ -380,7 +379,11 @@ $config['encryption_key_for_passwords'] = 'f@2M&';
 |
 | 'sess_save_path'
 |
-|    The location to save sessions to, driver dependant.
+|    The location to save sessions to, driver dependant
+|
+|    For the 'files' driver, it's a path to a directory.
+|    For the 'database' driver, it's a table name.
+|    Please read up the manual for the format with other session drivers.
 |
 | 'sess_match_ip'
 |
@@ -391,7 +394,7 @@ $config['encryption_key_for_passwords'] = 'f@2M&';
 |    How many seconds between CI regenerating the session ID.
 |
 | Other session cookie settings are shared with the rest of the application,
-| except for 'cookie_prefix', which is ignored here.
+| except for 'cookie_prefix' and 'cookie_httponly', which are ignored here.
 |
 */
 $config['sess_driver']          = 'files';
@@ -401,29 +404,19 @@ $config['sess_save_path']       = NULL;
 $config['sess_match_ip']        = FALSE;
 $config['sess_time_to_update']  = 300;
 
-// See https://github.com/EllisLab/CodeIgniter/issues/3073
-// For 'database' session driver and MySQL here's a working DB schema:
-/*
-CREATE TABLE `ci_sessions` (
-  `id` varchar(40) NOT NULL,
-  `ip_address` varchar(45) NOT NULL,
-  `timestamp` int(11) NOT NULL,
-  `data` blob NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `ip_address` (`ip_address`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-*/
-
 /*
 |--------------------------------------------------------------------------
 | Cookie Related Variables
 |--------------------------------------------------------------------------
 |
-| 'cookie_prefix'   = Set a prefix if you need to avoid collisions
+| 'cookie_prefix'   = Set a cookie name prefix if you need to avoid collisions
 | 'cookie_domain'   = Set to .your-domain.com for site-wide cookies
 | 'cookie_path'     = Typically will be a forward slash
-| 'cookie_secure'   = Cookies will only be set if a secure HTTPS connection exists.
+| 'cookie_secure'   = Cookie will only be set if a secure HTTPS connection exists.
 | 'cookie_httponly' = Cookie will only be accessible via HTTP(S) (no javascript)
+|
+| Note: These settings (with the exception of 'cookie_prefix' and
+|    'cookie_httponly') will also affect sessions.
 |
 */
 $config['cookie_prefix']    = '';
