@@ -48,6 +48,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class CI_Session {
 
+	/**
+	 * Userdata array
+	 *
+	 * Just a reference to $_SESSION, for BC purposes.
+	 */
+	public $userdata;
+
 	protected $_driver = 'files';
 	protected $_config;
 
@@ -172,6 +179,16 @@ class CI_Session {
 
 	// ------------------------------------------------------------------------
 
+	/**
+	 * CI Load Classes
+	 *
+	 * An internal method to load all possible dependency and extension
+	 * classes. It kind of emulates the CI_Driver library, but is
+	 * self-sufficient.
+	 *
+	 * @param	string	$driver	Driver name
+	 * @return	string	Driver class name
+	 */
 	protected function _ci_load_classes($driver)
 	{
 		// PHP 5.4 compatibility
@@ -368,6 +385,8 @@ class CI_Session {
 				unset($_SESSION['__ci_vars']);
 			}
 		}
+
+		$this->userdata =& $_SESSION;
 	}
 
 	// ------------------------------------------------------------------------
