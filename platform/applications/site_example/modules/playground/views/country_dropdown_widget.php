@@ -14,7 +14,7 @@ if (!empty($options)) {
             $flag = image_path('lib/flags-iso/flat/24/'.$flag.'.png');
         }
 ?>
-                                                <option value="<?php echo form_prep($key); ?>"<?php if ($value == $key) { ?> selected="selected"<?php } ?><?php if ($flag != '') { ?> data-img-src="<?php echo $flag; ?>"<?php }?>><?php echo $option; ?></option>
+                                                <option value="<?php echo $key; ?>"<?php if ($value == $key) { ?> selected="selected"<?php } ?><?php if ($flag != '') { ?> data-img-src="<?php echo $flag; ?>"<?php }?>><?php echo $option; ?></option>
 <?php
     }
 }
