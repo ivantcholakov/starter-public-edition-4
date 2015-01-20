@@ -48,7 +48,7 @@ class CI_Parser_markdownify extends CI_Parser_driver {
             }
         }
 
-        log_message('debug', 'CI_Parser_markdownify Class Initialized');
+        log_message('info', 'CI_Parser_markdownify Class Initialized');
     }
 
     public function parse($template, $data = array(), $return = FALSE, $config = array())
@@ -95,7 +95,7 @@ class CI_Parser_markdownify extends CI_Parser_driver {
         }
 
         $config = array_merge($this->config, $config);
-        
+
         $ci = $this->ci;
         $is_mx = false;
 

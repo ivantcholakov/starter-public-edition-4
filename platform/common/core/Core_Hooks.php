@@ -15,7 +15,7 @@ class Core_Hooks extends CI_Hooks {
 
         $CFG =& load_class('Config', 'core');
 
-        log_message('debug', 'Hooks Class Initialized');
+        log_message('info', 'Hooks Class Initialized');
 
         if ($CFG->item('enable_hooks') === FALSE) {
             return;

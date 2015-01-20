@@ -56,7 +56,7 @@ class REST
     function __construct($config = array())
     {
         $this->_ci =& get_instance();
-        log_message('debug', 'REST Class Initialized');
+        log_message('info', 'REST Class Initialized');
 
         /* Not using Sparks? You bloody well should be.
         | If you are going to be a stick in the mud then do it the old fashioned way
@@ -183,7 +183,7 @@ class REST
     public function api_key($key, $name = FALSE)
     {
         $this->api_key     = $key;
-        
+
         if ($name !== FALSE)
         {
             $this->api_name = $name;
@@ -214,7 +214,7 @@ class REST
      * @access      public
      * @author      David Genelid
      * @version     1.0
-     */    
+     */
     public function header($header)
     {
         $this->_ci->curl->http_header($header);
@@ -267,7 +267,7 @@ class REST
         // Send cookies with curl
         if ($this->send_cookies != '')
         {
-            $this->_ci->curl->set_cookies($_COOKIE);      
+            $this->_ci->curl->set_cookies($_COOKIE);
         }
 
         // Set the Content-Type (contributed by https://github.com/eriklharper)
@@ -395,7 +395,7 @@ class REST
      * @author      Phil Sturgeon
      * @version     1.0
      */
-    // 
+    //
     public function option($code, $value)
     {
         $this->_ci->curl->option($code, $value);
@@ -470,7 +470,7 @@ class REST
     /**
      * _csv
      *
-     * Format HTML for output. This function is DODGY! Not perfect CSV support but works 
+     * Format HTML for output. This function is DODGY! Not perfect CSV support but works
      * with my REST_Controller (https://github.com/philsturgeon/codeigniter-restserver)
      *
      * @access      public
@@ -517,7 +517,7 @@ class REST
      * _serialize
      *
      * Encode as Serialized array
-     * 
+     *
      * @access      public
      * @author      Phil Sturgeon
      * @version     1.0
