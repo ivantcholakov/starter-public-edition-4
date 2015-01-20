@@ -1,11 +1,12 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
 echo js('ckeditor/ckeditor.js?t='.CKEditor::timestamp);
+echo js('ckeditor/adapters/jquery.js?t='.CKEditor::timestamp);
 
 ?>
 
