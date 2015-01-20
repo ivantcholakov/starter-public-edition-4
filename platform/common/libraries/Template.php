@@ -75,7 +75,7 @@ class Template
             $this->initialize($config);
         }
 
-        log_message('debug', 'Template class Initialized');
+        log_message('info', 'Template class Initialized');
     }
 
     // --------------------------------------------------------------------
@@ -650,7 +650,7 @@ class Template
 
                 $is_bool = true;
                 $parsers = false;
-                
+
             } elseif (is_numeric($parsers)) {
 
                 $is_bool = true;

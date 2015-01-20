@@ -41,7 +41,7 @@ class CI_Parser_auto_link extends CI_Parser_driver {
             }
         }
 
-        log_message('debug', 'CI_Parser_auto_link Class Initialized');
+        log_message('info', 'CI_Parser_auto_link Class Initialized');
     }
 
     public function parse($template, $data = array(), $return = FALSE, $config = array())

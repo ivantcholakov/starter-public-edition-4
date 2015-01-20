@@ -37,7 +37,7 @@ class CI_Parser_i18n extends CI_Parser_driver {
             }
         }
 
-        log_message('debug', 'CI_Parser_i18n Class Initialized');
+        log_message('info', 'CI_Parser_i18n Class Initialized');
     }
 
     public function parse($template, $data = array(), $return = FALSE, $config = array())
