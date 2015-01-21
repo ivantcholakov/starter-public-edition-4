@@ -349,6 +349,7 @@ Real Life Usage
 * http://blitz-club.com/ (casino clubs), designer: Irina Stancheva
 * http://glassbricks.org/ (family counseling), designer: Irina Stancheva
 * http://unicontrol.eu/ (remote monitoring and control of machines and equipment, SCADA), designer: Irina Stancheva
+* http://techmi-mg.com (services and products based on marble and granite), designer: Irina Stancheva
 
 
 Credits
