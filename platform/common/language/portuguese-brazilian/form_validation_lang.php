@@ -30,7 +30,7 @@
  * @author	EllisLab Dev Team
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
  * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
- * @license	http://opensource.org/licenses/MIT	MIT License
+ * @license	http://opensource.org/licenses/MIT MIT License
  * @link	http://codeigniter.com
  * @since	Version 1.0.0
  * @filesource
@@ -64,7 +64,7 @@ $lang['form_validation_less_than'] = 'O campo {field} deve conter um número men
 $lang['form_validation_less_than_equal_to'] = 'O campo {field} deve conter um número menor ou igual que {param}.';
 $lang['form_validation_greater_than'] = 'O campo {field} deve conter um número maior que {param}.';
 $lang['form_validation_greater_than_equal_to'] = 'O campo {field} deve conter um número maior ou igual que {param}.';
-$lang['form_validation_error_message_not_set'] = 'Unable to access an error message corresponding to your field name {field}.';
+$lang['form_validation_error_message_not_set']  = 'Não existe uma mensagem de erro para o campo com o nome {field}.';
 
 /* End of file form_validation_lang.php */
 /* Location: ./application/language/portuguese-brazilian/form_validation_lang.php */
