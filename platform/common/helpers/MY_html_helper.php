@@ -107,7 +107,7 @@ if (!function_exists('nohtml')) {
             $config = HTMLPurifier_Config::createDefault();
 
             $config->set('Cache.SerializerPath', HTMLPURIFIER_CACHE_SERIALIZER_PATH);
-            $config->set('Core.Encoding', 'utf-8');
+            $config->set('Core.Encoding', config_item('charset'));
             $config->set('HTML.Doctype', 'XHTML 1.0 Transitional');
             $config->set('HTML.TidyLevel', 'light');
             $config->set('Core.ConvertDocumentToFragment', false);
@@ -117,7 +117,7 @@ if (!function_exists('nohtml')) {
             $purifier = @ new HTMLPurifier($config);
         }
 
-        return trim(@ $purifier->purify($string), " \t\n\r\0\x0B");
+        return trim(@ $purifier->purify(strip_tags($string)), " \t\n\r\0\x0B");
     }
 
 }
