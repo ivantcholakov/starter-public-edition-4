@@ -284,6 +284,3 @@ class CI_Parser_parser extends CI_Parser_driver {
 	}
 
 }
-
-/* End of file Parser.php */
-/* Location: ./system/libraries/Parser/drivers/Parser_parser.php */

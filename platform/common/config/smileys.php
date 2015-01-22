@@ -318,6 +318,3 @@ $smileys = array(
     '(heart)'       => array('heart.gif',           '19',   '19',   'heart'),
     '(love)'        => array('heart.gif',           '19',   '19',   'heart'),
 );
-
-/* End of file smileys.php */
-/* Location: ./application/config/smileys.php */

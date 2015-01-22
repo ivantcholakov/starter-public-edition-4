@@ -35,7 +35,7 @@ if (!function_exists('fix_unchecked'))
             return;
         }
 
-        if (!is_array($name)) 
+        if (!is_array($name))
         {
             $name = array($name);
         }
@@ -52,8 +52,6 @@ if (!function_exists('fix_unchecked'))
     }
 
 }
-/* End of file checkbox.php */
-/* Location: ./application/helpers/checkbox.php */
 
 /* README.md
 

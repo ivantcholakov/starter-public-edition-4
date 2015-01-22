@@ -229,6 +229,3 @@ if ( ! function_exists('get_cache_expiration'))
         }
     }
 }
-
-/* End of file cache_helper.php */
-/* Location: ./application/helpers/cache_helper.php */

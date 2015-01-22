@@ -63,7 +63,3 @@ $config['post'] = true;
 $config['queries'] = true;
 $config['uri_string'] = true;
 $config['query_toggle_count'] = 25;
-
-
-/* End of file profiler.php */
-/* Location: ./application/config/profiler.php */

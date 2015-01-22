@@ -375,6 +375,3 @@ class CI_Config {
 	}
 
 }
-
-/* End of file Config.php */
-/* Location: ./system/core/Config.php */

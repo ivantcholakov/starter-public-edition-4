@@ -545,6 +545,3 @@ class REST
     }
 
 }
-
-/* End of file REST.php */
-/* Location: ./application/libraries/REST.php */

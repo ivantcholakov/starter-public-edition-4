@@ -264,5 +264,3 @@ class Events {
         return FALSE;
     }
 }
-
-/* End of file Events.php */

@@ -393,5 +393,3 @@ class Asset {
     }
 
 }
-
-/* End of file Asset.php */
