@@ -86,11 +86,38 @@ if (!function_exists('build_validation_message'))
     }
 }
 
+if ( ! function_exists('form_value'))
+{
+    /**
+     * Form Value (Raw)
+     *
+     * Grabs a value from the POST array for the specified field so you can
+     * re-populate fields in some special or cutting-edge cases. If Form Validation
+     * is active it retrieves the info from the validation class.
+     *
+     * Important: The result is not HTML-escaped or HTML-attribute-escaped,
+     * you might need to do it additionaly according to the context of usage.
+     *
+     * @param       string      $field          Field name
+     * @param       string      $default        Default value
+     * @return      string
+     */
+    function form_value($field, $default = '')
+    {
+        $CI =& get_instance();
+
+        $value = (isset($CI->form_validation) && is_object($CI->form_validation) && $CI->form_validation->has_rule($field))
+            ? $CI->form_validation->set_value($field, $default)
+            : $CI->input->post($field, FALSE);
+
+        return $value === NULL ? $default : $value;
+    }
+}
+
 
 // Functions for BC compatibility with CI development before 21-JAN-2015.
 // See: https://github.com/bcit-ci/CodeIgniter/issues/1953
 // See: https://github.com/bcit-ci/CodeIgniter/issues/2477
-// TODO: These functions should be revised later again.
 // ------------------------------------------------------------------------
 
 if ( ! function_exists('form_open'))
@@ -359,10 +386,10 @@ if ( ! function_exists('form_prep'))
 
         if ($is_textarea === TRUE)
         {
-            return str_replace(array('<', '>'), array('&lt;', '&gt;'), stripslashes($str));
+            return html_escape($str);
         }
 
-        return str_replace(array("'", '"'), array('&#39;', '&quot;'), stripslashes($str));
+        return str_replace(array("'", '"'), array('&#39;', '&quot;'), html_escape($str));
     }
 }
 
