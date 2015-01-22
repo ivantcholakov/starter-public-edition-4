@@ -9,14 +9,14 @@
 // Important note: This feature requires Session library/driver to be loaded.
 
 // Captcha image width in pixels.
-$config['width'] = 160;
+$config['width'] = 120;
 
 // Captcha image height in pixels.
 // If $config['show_credits'] = true then the actual height increases with 12 px.
 $config['height'] = 80;
 
 // The length in characters of the generated captcha keystring.
-$config['length'] = 6;
+$config['length'] = 4;
 
 // The foreground color as a RGB triad (RGB, 0-255).
 // Example: $config['foreground_color'] = array(0, 0, 0);
@@ -39,4 +39,4 @@ $config['white_noise_density']  = 0;
 $config['black_noise_density']  = 0;
 
 // Whether a link to the site of KCAPTCH creator to be shown (true/false).
-$config['show_credits'] = true;
+$config['show_credits'] = false;
