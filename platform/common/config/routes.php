@@ -91,6 +91,3 @@ $route['translate_uri_dashes'] = TRUE;
 
 // A route for the command-line LESS compiler.
 $route['less/compile/(.+)'] = 'less/compile/index/$1';
-
-/* End of file routes.php */
-/* Location: ./application/config/routes.php */

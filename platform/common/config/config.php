@@ -626,7 +626,3 @@ $config['public_upload_url'] = '{default_base_url}'.'upload/';
 
 // Aslo defines PLATFORM_UPLOAD_PATH constant.
 $config['platform_upload_path'] = PLATFORMPATH.'upload/';
-
-
-/* End of file config.php */
-/* Location: ./application/config/config.php */

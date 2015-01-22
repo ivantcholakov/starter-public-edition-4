@@ -567,6 +567,3 @@ abstract class CI_Parser_driver extends CI_Driver {
 	}
 
 }
-
-/* End of file Parser.php */
-/* Location: ./system/libraries/Parser/Parser.php */

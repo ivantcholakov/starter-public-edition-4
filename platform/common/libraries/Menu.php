@@ -74,7 +74,7 @@ class Menu {
     protected $_active_items = array(); // the active menu items
     protected $_reset_params = array(); // reset params
 
-    
+
     // --------------------------------------------------------------------
 
     /**
@@ -114,7 +114,7 @@ class Menu {
         $this->reset();
         $this->set_params($params);
     }
-    
+
     // --------------------------------------------------------------------
 
     /**
@@ -721,7 +721,7 @@ class Menu {
     {
         // filter out hidden ones first. Need to do in seperate loop in case there is a hidden one at the end
         $menu = $this->_filter_hidden($menu);
-        
+
         if ($this->container_tag !== FALSE)
         {
             $this->container_tag = 'div';
@@ -1191,11 +1191,8 @@ class Menu {
         }
 
         return $filtered_menu;
-        
+
     }
 
 
 }
-
-/* End of file Menu.php */
-/* Location: ./modules/fuel/libraries/Menu.php */

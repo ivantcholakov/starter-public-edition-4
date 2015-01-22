@@ -127,15 +127,15 @@ $config['auth_library_function'] = '';
 |
 | Set as many config entries as needed.  Any methods not set will use the default 'rest_auth' config value.
 |
-| example:  
-| 
+| example:
+|
 |            $config['auth_override_class_method']['deals']['view'] = 'none';
 |            $config['auth_override_class_method']['deals']['insert'] = 'digest';
-|            $config['auth_override_class_method']['accounts']['user'] = 'basic'; 
+|            $config['auth_override_class_method']['accounts']['user'] = 'basic';
 |            $config['auth_override_class_method']['dashboard']['*'] = 'none|digest|basic';
 |
 | Here 'deals', 'accounts' and 'dashboard' are controller names, 'view', 'insert' and 'user' are methods within. An asterisk may also be used to specify an authentication method for an entire classes methods. Ex: $config['auth_override_class_method']['dashboard']['*'] = 'basic'; (NOTE: leave off the '_get' or '_post' from the end of the method name)
-| Acceptable values are; 'none', 'digest' and 'basic'.  
+| Acceptable values are; 'none', 'digest' and 'basic'.
 |
 */
 // $config['auth_override_class_method']['deals']['view'] = 'none';
@@ -355,12 +355,12 @@ $config['rest_access_table'] = 'access';
 
 /*
 |--------------------------------------------------------------------------
-| REST Method Access Control 
+| REST Method Access Control
 |--------------------------------------------------------------------------
 |
-| When set to true REST_Controller will check the access table to see if 
+| When set to true REST_Controller will check the access table to see if
 | the API KEY can access that controller.  rest_enable_keys *must* be enabled
-| to use this. 
+| to use this.
 |
 |    FALSE
 |
@@ -441,15 +441,12 @@ $config['rest_ignore_http_accept'] = FALSE;
 | REST AJAX Only
 |--------------------------------------------------------------------------
 |
-| Set to TRUE to only allow AJAX requests. If TRUE and the request is not 
-| coming from AJAX, a 505 response with the error message "Only AJAX 
-| requests are accepted." will be returned. This is good for production 
-| environments. Set to FALSE to also accept HTTP requests. 
+| Set to TRUE to only allow AJAX requests. If TRUE and the request is not
+| coming from AJAX, a 505 response with the error message "Only AJAX
+| requests are accepted." will be returned. This is good for production
+| environments. Set to FALSE to also accept HTTP requests.
 |
 |    FALSE
 |
 */
 $config['rest_ajax_only'] = FALSE;
-
-/* End of file config.php */
-/* Location: ./system/application/config/rest.php */
