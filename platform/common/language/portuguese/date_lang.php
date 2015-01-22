@@ -92,3 +92,4 @@ $lang['UP12']   = '(UTC +12:00) Fiji, Ilhas Gilbert, Zona de Kamchatka, Nova Zel
 $lang['UP1275'] = '(UTC +12:45) Ilhas Chatham';
 $lang['UP13']   = '(UTC +13:00) Ilhas Fénix, Tonga';
 $lang['UP14']   = '(UTC +14:00) Ilhas da linha';
+
