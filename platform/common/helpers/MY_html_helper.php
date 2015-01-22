@@ -100,6 +100,7 @@ if (!function_exists('nohtml')) {
 
     function nohtml($string) {
 
+/*
         static $purifier;
 
         if (!isset($purifier)) {
@@ -118,6 +119,9 @@ if (!function_exists('nohtml')) {
         }
 
         return trim(@ $purifier->purify(strip_tags($string)), " \t\n\r\0\x0B");
+*/
+
+        return get_instance()->security->xss_clean(strip_tags($string));
     }
 
 }
