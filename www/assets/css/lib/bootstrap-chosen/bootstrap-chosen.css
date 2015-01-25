@@ -384,6 +384,18 @@
   direction: rtl;
   padding: 4px 5px 4px 20px;
 }
+.input-group .chosen-container:last-child .chosen-single,
+.input-group .chosen-container:last-child .chosen-default,
+.input-group .chosen-container:last-child .chosen-choices {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+.input-group .chosen-container:not(:last-child) .chosen-single,
+.input-group .chosen-container:not(:last-child) .chosen-default,
+.input-group .chosen-container:not(:last-child) .chosen-choices {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 2dppx) {
   .chosen-rtl .chosen-search input[type="text"],
   .chosen-container-single .chosen-single abbr,
