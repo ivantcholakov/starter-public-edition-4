@@ -96,6 +96,17 @@ class Form_validation extends CI_Form_validation {
     // Added validation rules.
     // ---------------------------------------------------------------------
 
+    /**
+     * XSS Clean
+     * @deprecated  Removed since CodeIgniter 3.0, kept here for backward compatibility.
+     *
+     * @param       string
+     * @return      string
+     */
+    public function xss_clean($str)
+    {
+        return $this->CI->security->xss_clean($str);
+    }
 
     // The following rule has been "borrowed" from
     // Bonfire application starter, http://cibonfire.com/
