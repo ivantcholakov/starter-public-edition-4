@@ -125,6 +125,8 @@ class CI_DB_mysqli_driver extends CI_DB {
 		$client_flags = ($this->compress === TRUE) ? MYSQLI_CLIENT_COMPRESS : 0;
 		$mysqli = mysqli_init();
 
+		$mysqli->options(MYSQLI_OPT_CONNECT_TIMEOUT, 10);
+
 		if ($this->stricton)
 		{
 			$mysqli->options(MYSQLI_INIT_COMMAND, 'SET SESSION sql_mode="STRICT_ALL_TABLES"');
