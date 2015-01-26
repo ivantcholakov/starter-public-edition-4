@@ -16,20 +16,16 @@ Live Demo
 
 http://iridadesign.com/starter-public-edition-4/www/
 
-CodeIgniter 3.0-dev Documentation
----------------------------------
+CodeIgniter 3.0 Documentation
+-----------------------------
 
-Since CodeIgniter 3.0 has not been officially released yet, its documentation may be temporarily accessed these ways:
-
-* from this announced as official link: http://www.codeigniter.com/userguide3/
-* from the repository source: https://github.com/bcit-ci/CodeIgniter/tree/develop/user_guide_src
-* from the CodeIgniter 3 Documentation Nightlies supported by Lonnie Ezell: http://ci3docs.cibonfire.com/
+http://www.codeigniter.com/userguide3/
 
 Requirements
 ------------
 
 PHP 5.2.4+ (officially, actually the platform works on PHP 5.2.0), Apache 2.2 - 2.4 (mod_rewrite should be enabled).
-For database support seek information within CodeIgniter 3.0-dev documentation.
+For database support seek information within CodeIgniter 3.0 documentation.
 
 For UTF-8 encoded sites it is highly recommendabe the following PHP extensions to be installed:
 
@@ -59,7 +55,7 @@ I don't expect you to be forced to set it up manually within platform/common/con
 Features
 --------
 
-* CodeIgniter 3.0-dev, http://codeigniter.com/, https://github.com/bcit-ci/CodeIgniter
+* CodeIgniter 3.0, http://codeigniter.com/, https://github.com/bcit-ci/CodeIgniter
 * On a web-server you can place your site (www folder) within a subdirectory.
 * Codeigniter Cross Modular Extensions - XHMVC,
 https://bitbucket.org/xperez/codeigniter-cross-modular-extensions-xhmvc,
