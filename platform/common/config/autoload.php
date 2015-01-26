@@ -52,7 +52,7 @@ $autoload['packages'] = array(COMMONPATH.'third_party', APPPATH.'third_party');
 |
 | Prototype:
 |
-|   $autoload['libraries'] = array('database', 'email', 'xmlrpc');
+|   $autoload['libraries'] = array('database', 'email', 'session');
 |
 | You can also supply an alternative library name to be assigned
 | in the controller:
