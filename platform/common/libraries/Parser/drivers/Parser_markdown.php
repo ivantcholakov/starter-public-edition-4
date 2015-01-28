@@ -27,6 +27,7 @@ class CI_Parser_markdown extends CI_Parser_driver {
         // Default configuration options.
 
         $this->config = array(
+            'markdown_implementation' => 'php-markdown',
             'detect_code_blocks' => TRUE,
             'full_path' => FALSE,
         );
@@ -76,14 +77,33 @@ class CI_Parser_markdown extends CI_Parser_driver {
         // For security reasons don't parse PHP content.
         $template = @ file_get_contents($template);
 
-        if (!empty($config['detect_code_blocks']))
-        {
-            $template = preg_replace('/`{3,}[a-z]*/i', '~~~', $template);
+        switch ($config['detect_code_blocks']) {
+
+            case 'parsedown':
+
+                $parser = new ParsedownExtra();
+                $template = @ $parser->text($template);
+
+                break;
+
+            default:
+
+                if (!empty($config['detect_code_blocks']))
+                {
+                    $template = preg_replace('/`{3,}[a-z]*/i', '~~~', $template);
+                }
+
+                $parser = new MarkdownExtra_Parser();
+                $template = @ $parser->transform($template);
+
+                if (!empty($config['apply_autolink']))
+                {
+                    $this->ci->load->helper('url');
+                    $template = auto_link($template);
+                }
+
+                break;
         }
-
-        $parser = new MarkdownExtra_Parser();
-
-        $template = @ $parser->transform($template);
 
         return $this->output($template, $return, $ci, $is_mx);
     }
@@ -105,14 +125,33 @@ class CI_Parser_markdown extends CI_Parser_driver {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
-        if (!empty($config['detect_code_blocks']))
-        {
-            $template = preg_replace('/`{3,}[a-z]*/i', '~~~', $template);
+        switch ($config['detect_code_blocks']) {
+
+            case 'parsedown':
+
+                $parser = new ParsedownExtra();
+                $template = @ $parser->text($template);
+
+                break;
+
+            default:
+
+                if (!empty($config['detect_code_blocks']))
+                {
+                    $template = preg_replace('/`{3,}[a-z]*/i', '~~~', $template);
+                }
+
+                $parser = new MarkdownExtra_Parser();
+                $template = @ $parser->transform($template);
+
+                if (!empty($config['apply_autolink']))
+                {
+                    $this->ci->load->helper('url');
+                    $template = auto_link($template);
+                }
+
+                break;
         }
-
-        $parser = new MarkdownExtra_Parser();
-
-        $template = @ $parser->transform($template);
 
         return $this->output($template, $return, $ci, $is_mx);
     }
