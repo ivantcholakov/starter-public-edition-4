@@ -5,7 +5,7 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-// A coice of the Markdown implementation to be used:
+// A choice of the Markdown implementation to be used:
 // 'php-markdown' - http://michelf.ca/projects/php-markdown
 // 'parsedown' - https://github.com/erusev/parsedown
 $config['markdown_implementation'] = 'parsedown';
