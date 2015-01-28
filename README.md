@@ -117,6 +117,8 @@ The technique of this hack is available, but it is not mandatory.
 * Textile, A Humane Web Text Generator, http://textile.thresholdstate.com/, https://github.com/textile/php-textile
 * Markdown Extra - A text-to-HTML conversion tool, http://michelf.com/projects/php-markdown/
 * Markdownify - A HTML-to-text conversion tool, http://milianw.de/projects/markdownify/
+* Parsedown - Better Markdown Parser in PHP - https://github.com/erusev/parsedown
+* Parsedown Extra - An extension of Parsedown that adds support for Markdown Extra - https://github.com/erusev/parsedown-extra
 * Mustache, Logic-less templates, https://github.com/bobthecow/mustache.php
 * Less.php compiler, https://github.com/oyejorge/less.php
 * PHPMailer, http://phpmailer.worxware.com/, https://github.com/PHPMailer/PHPMailer

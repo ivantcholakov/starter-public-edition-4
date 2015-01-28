@@ -20,7 +20,7 @@ $content = $path != '' ? @ file_get_contents($path) : '';
 
 <?php
 
-echo $this->parser->parse_string($content, null, true, array('markdown', 'auto_link'));
+echo $this->parser->parse_string($content, null, true, array('markdown'));
 
 ?>
 

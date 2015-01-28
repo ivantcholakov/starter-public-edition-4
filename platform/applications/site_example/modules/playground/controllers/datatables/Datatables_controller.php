@@ -50,7 +50,7 @@ class Datatables_controller extends Base_Controller {
 
     public function ssp() {
 
-        $readme = $this->load->view('datatables/README.md', null, true, array('markdown', 'auto_link'));
+        $readme = $this->load->view('datatables/README.md', null, true, array('markdown'));
 
         $this->template
             ->title('DataTables with Server-Side Processing')
