@@ -265,7 +265,7 @@ if ( ! empty($assign_to_config['subclass_prefix']))
  * ------------------------------------------------------
  */
 // See https://getcomposer.org/doc/00-intro.md#system-requirements
-if (is_php('5.3.2') && ($composer_autoload = config_item('composer_autoload')))
+if (($composer_autoload = config_item('composer_autoload')) && is_php('5.3.2'))
 {
     if ($composer_autoload === TRUE)
     {
