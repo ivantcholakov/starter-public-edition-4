@@ -261,6 +261,30 @@ if ( ! empty($assign_to_config['subclass_prefix']))
 
 /*
  * ------------------------------------------------------
+ *  Should we use a Composer autoloader?
+ * ------------------------------------------------------
+ */
+// See https://getcomposer.org/doc/00-intro.md#system-requirements
+if (is_php('5.3.2') && ($composer_autoload = config_item('composer_autoload')))
+{
+    if ($composer_autoload === TRUE)
+    {
+        file_exists(PLATFORMPATH.'vendor/autoload.php')
+            ? require_once(PLATFORMPATH.'vendor/autoload.php')
+            : log_message('error', '$config[\'composer_autoload\'] is set to TRUE but '.PLATFORMPATH.'vendor/autoload.php was not found.');
+    }
+    elseif (file_exists($composer_autoload))
+    {
+        require_once($composer_autoload);
+    }
+    else
+    {
+        log_message('error', 'Could not find the specified $config[\'composer_autoload\'] path: '.$composer_autoload);
+    }
+}
+
+/*
+ * ------------------------------------------------------
  *  Start the timer... tick tock tick tock...
  * ------------------------------------------------------
  */
@@ -300,24 +324,6 @@ if (isset($assign_to_config) && is_array($assign_to_config))
     foreach ($assign_to_config as $key => $value)
     {
         $CFG->set_item($key, $value);
-    }
-}
-
-/*
- * ------------------------------------------------------
- *  Should we use a Composer autoloader?
- * ------------------------------------------------------
- */
-// See https://getcomposer.org/doc/00-intro.md#system-requirements
-if (($composer_autoload = config_item('composer_autoload')) && is_php('5.3.2'))
-{
-    if ($composer_autoload === TRUE && file_exists(PLATFORMPATH.'vendor/autoload.php'))
-    {
-        require_once(PLATFORMPATH.'vendor/autoload.php');
-    }
-    elseif (file_exists($composer_autoload))
-    {
-        require_once($composer_autoload);
     }
 }
 
