@@ -1696,7 +1696,7 @@ abstract class CI_DB_driver {
 	/**
 	 * Close DB Connection
 	 *
-	 * This method would be overriden by most of the drivers.
+	 * This method would be overridden by most of the drivers.
 	 *
 	 * @return	void
 	 */
