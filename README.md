@@ -348,6 +348,7 @@ Real Life Usage
 * http://glassbricks.org/ (family counseling), designer: Irina Stancheva
 * http://unicontrol.eu/ (remote monitoring and control of machines and equipment, SCADA), designer: Irina Stancheva
 * http://techmi-mg.com (services and products based on marble and granite), designer: Irina Stancheva
+* http://euroauto.bg (car dealership, leasing of cars), designer: Irina Stancheva
 
 
 Credits
