@@ -343,11 +343,13 @@ $config['encryption_key_for_passwords'] = 'f@2M&';
 |
 | 'sess_save_path'
 |
-|    The location to save sessions to, driver dependant
+|    The location to save sessions to, driver dependant.
 |
-|    For the 'files' driver, it's a path to a directory.
+|    For the 'files' driver, it's a path to a writable directory.
 |    For the 'database' driver, it's a table name.
 |    Please read up the manual for the format with other session drivers.
+|
+|    IMPORTANT: You are REQUIRED to set a valid save path!
 |
 | 'sess_match_ip'
 |
