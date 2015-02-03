@@ -4,7 +4,7 @@
  * CodeIgniter Version
  * @var    string
  */
-define('CI_VERSION', '3.0rc');
+define('CI_VERSION', '3.0rc2');
 
 
 /**
