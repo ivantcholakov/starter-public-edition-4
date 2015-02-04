@@ -95,7 +95,7 @@ class Datatables_ssp_ajax_controller extends Base_Ajax_Controller {
             return '';
         }
 
-        $link = http_build_url('https://maps.google.com/maps', http_build_query(array('query' => array('q' => $value, 'z' => 6))));
+        $link = http_build_url('https://maps.google.com/maps', array('query' => http_build_query(array('q' => $value, 'z' => 6))));
         return '<a href="'.$link.'" class="btn btn-default" title="'.$this->lang->line('ui_map').'" target="_blank"><i class="fa fa-map-marker fa-fw"></i></a>';
     }
 
