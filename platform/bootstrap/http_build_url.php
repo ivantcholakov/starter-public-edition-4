@@ -11,8 +11,8 @@
  * Some snippets by Sébastien Corne have been used.
  * @link https://github.com/Seebz/Snippets/blob/master/php/http_build_url.php
  *
- * @version 1.7.6.1
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @version 1.7.6.3
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2015
  * @license The MIT License, http://opensource.org/licenses/MIT
  *
  * Code repository:
@@ -28,7 +28,7 @@
  *
  * After that, the functions http_build_url() and http_build_str() would be callable.
  * A quick test:
- * 
+ *
  * echo http_build_url();
  *
  * An important note: Don't use host autodetection (or more generally base url autodetection)
@@ -91,7 +91,7 @@ if (!function_exists('http_build_url')) {
 
             $default_host =
                 isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST']
-                : (isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : '');
+                : (isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME']: '');
 
             if ($default_host == '') {
                 $default_host = function_exists('gethostname') ? gethostname() : php_uname('n');
@@ -139,6 +139,16 @@ if (!function_exists('http_build_url')) {
         $url = array_intersect_key($url, $all_keys_flipped);
         $parts = array_intersect_key($parts, $all_keys_flipped);
 
+        // Unfortunately the 'query' part can not be an array or object type.
+        if (isset($url['query']) && !is_string($url['query'])) {
+            unset($url['query']);
+        }
+
+        // Unfortunately the 'query' part can not be an array or object type.
+        if (isset($parts['query']) && !is_string($parts['query'])) {
+            unset($parts['query']);
+        }
+
         foreach ($all_keys as $key) {
 
             if ($key == 'port') {
@@ -165,10 +175,19 @@ if (!function_exists('http_build_url')) {
 
                 if (isset($url[$key])) {
 
-                    $url[$key] = (string) $url[$key];
+                    if (is_array($url[$key])) {
 
-                    if ($url[$key] == '') {
-                        unset($url[$key]);
+                        if (empty($url[$key])) {
+                            unset($url[$key]);
+                        }
+
+                    } else {
+
+                        $url[$key] = (string) $url[$key];
+
+                        if ($url[$key] == '') {
+                            unset($url[$key]);
+                        }
                     }
                 }
 
@@ -324,22 +343,26 @@ if (!function_exists('http_build_url')) {
 
                 //---------------------------------------------------------------------
 
-           } else {
+            } else {
 
                 if (isset($parts['query'])) {
- 
+
                     $query = $parts['query'];
                 }
             }
 
             if (isset($query)) {
-                
+
                 if (is_array($query)) {
                     $query = http_build_str($query);
                 }
 
                 $url['query'] = $query;
             }
+        }
+
+        if (isset($url['query']) && is_array($url['query'])) {
+            $url['query'] = http_build_str($url['query']);
         }
 
         // Fragment
