@@ -160,7 +160,7 @@ class CI_Encryption {
 
 		if ( ! $this->_drivers['mcrypt'] && ! $this->_drivers['openssl'])
 		{
-			return show_error('Encryption: Unable to find an available encryption driver.');
+			show_error('Encryption: Unable to find an available encryption driver.');
 		}
 
 		isset(self::$func_override) OR self::$func_override = (extension_loaded('mbstring') && ini_get('mbstring.func_override'));
@@ -299,7 +299,7 @@ class CI_Encryption {
 			$params['mode'] = strtolower($params['mode']);
 			if ( ! isset($this->_modes['openssl'][$params['mode']]))
 			{
-				log_message('error', 'Encryption: OpenSSL mode '.strtotupper($params['mode']).' is not available.');
+				log_message('error', 'Encryption: OpenSSL mode '.strtoupper($params['mode']).' is not available.');
 			}
 			else
 			{
