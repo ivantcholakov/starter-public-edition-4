@@ -1374,7 +1374,7 @@ class CI_Image_lib {
 				imagestring($src_img, $this->wm_font_size, $x_shad, $y_shad, $this->wm_text, $drp_color);
 			}
 		}
-		
+
 		/* Set RGB values for text
 		 *
 		 * First character is #, so we don't really need it.
