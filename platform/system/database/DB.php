@@ -102,6 +102,7 @@ function &DB($params = '', $query_builder_override = NULL)
 				//if ($path !== APPPATH)
 				if ($path !== APPPATH && $path != COMMONPATH)
 				//
+				{
 					if (file_exists($file_path = $path.'config/'.ENVIRONMENT.'/database.php'))
 					{
 						include($file_path);
