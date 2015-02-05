@@ -101,16 +101,11 @@ if ( ! function_exists('form_value'))
      * @param       string      $field          Field name
      * @param       string      $default        Default value
      * @return      string
+     * @deprecated
      */
     function form_value($field, $default = '')
     {
-        $CI =& get_instance();
-
-        $value = (isset($CI->form_validation) && is_object($CI->form_validation) && $CI->form_validation->has_rule($field))
-            ? $CI->form_validation->set_value($field, $default)
-            : $CI->input->post($field, FALSE);
-
-        return $value === NULL ? $default : $value;
+        return set_value($field, $default, FALSE);
     }
 }
 
@@ -406,10 +401,10 @@ if ( ! function_exists('set_value'))
      *
      * @param       string      $field          Field name
      * @param       string      $default        Default value
-     * @param       bool        $is_textarea    Whether the field is a textarea element
+     * @param       bool        $escape         Whether to escape HTML/attribute or not: TRUE/'html' = html escape, 'attr' = attribute escape, FALSE = no escape.
      * @return      string
      */
-    function set_value($field = '', $default = '', $is_textarea = FALSE)
+    function set_value($field = '', $default = '', $escape = 'attr')
     {
         $CI =& get_instance();
 
@@ -417,7 +412,16 @@ if ( ! function_exists('set_value'))
             ? $CI->form_validation->set_value($field, $default)
             : $CI->input->post($field, FALSE);
 
-        return form_prep($value === NULL ? $default : $value, $is_textarea);
+        if ($escape === FALSE)
+        {
+            return $value;
+        }
+        elseif ($escape === 'attr')
+        {
+            return str_replace(array("'", '"'), array('&#39;', '&quot;'), html_escape($value));
+        }
+
+        return html_escape($value);
     }
 }
 
