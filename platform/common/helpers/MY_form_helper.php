@@ -412,6 +412,8 @@ if ( ! function_exists('set_value'))
             ? $CI->form_validation->set_value($field, $default)
             : $CI->input->post($field, FALSE);
 
+        isset($value) OR $value = $default;
+
         if ($escape === FALSE)
         {
             return $value;
