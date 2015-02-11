@@ -273,6 +273,8 @@ class Current_user extends CI_Model {
             return $this->login_failed(LOGIN_NO_PASSWORD_MATCH);
         }
 
+        Events::trigger('before_user_login', array('id' => $id));
+
         $result = $this->login_by_id($id);
 
         if ($result) {
@@ -290,6 +292,8 @@ class Current_user extends CI_Model {
     public function login_by_id($id) {
 
         $id = (int) $id;
+
+        Events::trigger('before_user_login_by_id', array('id' => $id));
 
         $this->assign(null);
         $this->last_login_error = LOGIN_NO_ERROR;
@@ -363,6 +367,8 @@ class Current_user extends CI_Model {
 
     public function logout() {
 
+        Events::trigger('before_user_logout', $this->get());
+
         $this->last_login_error = LOGIN_NO_ERROR;
         $this->set_authentication_method(AUTHENTICATION_NONE);
         $this->delete_autologin();
@@ -378,6 +384,8 @@ class Current_user extends CI_Model {
                 $this->session->sess_destroy();
             }
         }
+
+        Events::trigger('after_user_logout', $this->logout_info);
     }
 
     public function logout_info() {
