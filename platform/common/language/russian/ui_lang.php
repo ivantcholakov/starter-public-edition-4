@@ -182,3 +182,6 @@ $lang['ui_rating'] = 'Rating';
 $lang['ui_visits'] = 'Visits';
 $lang['ui_unique_visitors'] = 'Unique visitors';
 $lang['ui_no_results_found'] = 'No matching results found.';
+$lang['ui_backward'] = 'Backward';
+$lang['ui_forward'] = 'Forward';
+$lang['ui_continue'] = 'Continue';
