@@ -284,6 +284,8 @@ class Current_user extends CI_Model {
             } else {
                 $this->delete_autologin();
             }
+
+            Events::trigger('after_user_login', $this->get());
         }
 
         return $result;
@@ -356,6 +358,8 @@ class Current_user extends CI_Model {
         $this->last_login_error = $login_error;
         $this->set_authentication_method(AUTHENTICATION_NONE);
         $this->delete_autologin();
+
+        Events::trigger('user_login_failure', array('error' => $this->last_login_error));
 
         return false;
     }
