@@ -182,6 +182,7 @@ $lang['ui_rating'] = 'Ocena';
 $lang['ui_visits'] = 'Odwiedziny';
 $lang['ui_unique_visitors'] = 'Unikalni odwiedzający';
 $lang['ui_no_results_found'] = 'Nie znaleziono takiego wyniku.';
-$lang['ui_backward'] = 'Backward';
-$lang['ui_forward'] = 'Forward';
-$lang['ui_continue'] = 'Continue';
+$lang['ui_backward'] = 'Wstecz';
+$lang['ui_forward'] = 'Do przodu';
+$lang['ui_continue'] = 'Kontynuuj';
+
