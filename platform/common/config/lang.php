@@ -378,6 +378,16 @@ $config['languages'] = array(
         'flag' => 'CN',
     ),
 
+    'thai' => array(
+        'code' => 'th',
+        'direction' => 'ltr',
+        'uri_segment' => 'th',
+        'name' => 'ไทย',
+        'name_en' => 'Thai',
+        'flag' => 'TH',
+
+    ),
+
     'traditional-chinese' => array(
         'code' => 'zh-Hant',
         'direction' => 'ltr',
