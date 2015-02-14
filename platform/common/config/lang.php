@@ -55,7 +55,7 @@ $config['languages'] = array(
     ),
 
     'spanish-latin' => array(
-        'code' => 'es_419',
+        'code' => 'es-419',
         'direction' => 'ltr',
         'uri_segment' => 'es-419',
         'name' => 'Español latinoamericano',
@@ -91,7 +91,7 @@ $config['languages'] = array(
     ),
 
     'portuguese-brazilian' => array(
-        'code' => 'pt_BR',
+        'code' => 'pt-BR',
         'direction' => 'ltr',
         'uri_segment' => 'pt-br',
         'name' => 'Português do Brasil',
@@ -331,6 +331,69 @@ $config['languages'] = array(
         'name' => 'Svenska',
         'name_en' => 'Swedish',
         'flag' => 'SE',
+    ),
+
+    'indonesian' => array(
+        'code' => 'id',
+        'direction' => 'ltr',
+        'uri_segment' => 'id',
+        'name' => 'Bahasa Indonesia',
+        'name_en' => 'Indonesian',
+        'flag' => 'ID',
+    ),
+
+    'japanese' => array(
+        'code' => 'ja',
+        'direction' => 'ltr',
+        'uri_segment' => 'ja',
+        'name' => '日本語',
+        'name_en' => 'Japanese',
+        'flag' => 'JP',
+    ),
+
+    'korean' => array(
+        'code' => 'ko',
+        'direction' => 'ltr',
+        'uri_segment' => 'ko',
+        'name' => '한국어',
+        'name_en' => 'Korean',
+        'flag' => 'KR',
+    ),
+
+    'norwegian' => array(
+        'code' => 'no',
+        'direction' => 'ltr',
+        'uri_segment' => 'no',
+        'name' => 'Norsk Bokmål',
+        'name_en' => 'Norwegian',
+        'flag' => 'NO',
+    ),
+
+    'persian' => array(
+        'code' => 'fa',
+        'direction' => 'rtl',
+        'uri_segment' => 'fa',
+        'name' => 'فارسی',
+        'name_en' => 'Persian',
+        'flag' => 'IR',
+    ),
+
+    'simplified-chinese' => array(
+        'code' => 'zh-Hans',
+        'direction' => 'ltr',
+        'uri_segment' => 'zh-cn',
+        'name' => '简体中文',
+        'name_en' => 'Simplified Chinese',
+        'flag' => 'CN',
+    ),
+
+    'traditional-chinese' => array(
+        'code' => 'zh-Hant',
+        'direction' => 'ltr',
+        'uri_segment' => 'zh-tw',
+        'name' => '繁體中文',
+        'name_en' => 'Traditional Chinese',
+        'flag' => 'TW',
     ),
 
 );
