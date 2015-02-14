@@ -385,7 +385,6 @@ $config['languages'] = array(
         'name' => 'ไทย',
         'name_en' => 'Thai',
         'flag' => 'TH',
-
     ),
 
     'traditional-chinese' => array(
