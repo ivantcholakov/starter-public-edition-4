@@ -360,15 +360,6 @@ $config['languages'] = array(
         'flag' => 'KR',
     ),
 
-    'norwegian' => array(
-        'code' => 'no',
-        'direction' => 'ltr',
-        'uri_segment' => 'no',
-        'name' => 'Norsk Bokmål',
-        'name_en' => 'Norwegian',
-        'flag' => 'NO',
-    ),
-
     'persian' => array(
         'code' => 'fa',
         'direction' => 'rtl',
