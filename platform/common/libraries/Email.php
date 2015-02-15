@@ -85,6 +85,9 @@ class Email extends CI_Email {
             $this->phpmailer = new PHPMailer();
             $this->phpmailer->PluginDir = COMMONPATH.'third_party/phpmailer/';
 
+            // Added by Ivan Tcholakov, 16-FEB-2015.
+            $this->phpmailer->setLanguage($this->CI->lang->custom_code('phpmailer'));
+
             $this->_copy_property_to_phpmailer('charset');
         }
 
