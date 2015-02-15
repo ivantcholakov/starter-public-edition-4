@@ -61,6 +61,7 @@ $config['languages'] = array(
         'name' => 'Español latinoamericano',
         'name_en' => 'Latin American Spanish',
         'flag' => 'MX',
+        'phpmailer' => 'es',
     ),
 
     'french' => array(
@@ -97,6 +98,7 @@ $config['languages'] = array(
         'name' => 'Português do Brasil',
         'name_en' => 'Brazilian Portuguese',
         'flag' => 'BR',
+        'phpmailer' => 'br',
     ),
 
     'russian' => array(
@@ -169,6 +171,7 @@ $config['languages'] = array(
         'name' => 'Dansk',
         'name_en' => 'Danish',
         'flag' => 'DK',
+        'phpmailer' => 'dk',
     ),
 
     'estonian' => array(
@@ -322,6 +325,7 @@ $config['languages'] = array(
         'name' => 'Čeština',
         'name_en' => 'Czech',
         'flag' => 'CZ',
+        'phpmailer' => 'cz',
     ),
 
     'swedish' => array(
@@ -331,6 +335,7 @@ $config['languages'] = array(
         'name' => 'Svenska',
         'name_en' => 'Swedish',
         'flag' => 'SE',
+        'phpmailer' => 'se',
     ),
 
     'indonesian' => array(
@@ -376,6 +381,7 @@ $config['languages'] = array(
         'name' => '简体中文',
         'name_en' => 'Simplified Chinese',
         'flag' => 'CN',
+        'phpmailer' => 'zh_cn',
     ),
 
     'thai' => array(
@@ -394,6 +400,7 @@ $config['languages'] = array(
         'name' => '繁體中文',
         'name_en' => 'Traditional Chinese',
         'flag' => 'TW',
+        'phpmailer' => 'zh',
     ),
 
 );
