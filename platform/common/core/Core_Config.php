@@ -641,7 +641,7 @@ class Core_Config extends MX_Config {
      *
      * @param string        $key        The key for accessing the custom code.
      * @param string/null   $language   The language.
-     * @return string/null              Returns the custom code or if not found - the conventional language code.
+     * @return string/null              Returns the custom code or if not found - the conventional (CLDR) language code.
      */
     public function language_custom_code($key, $language = null) {
 
