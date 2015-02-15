@@ -619,6 +619,50 @@ class Core_Config extends MX_Config {
         return null;
     }
 
+    /**
+     * Retrieves a custom language code that exist within the configuration data under the specified key.
+     * This is for serving addins that identify languages with their own sets of codes.
+     *
+     * Example: $phpmailer_lang = $this->config->language_custom_code('phpmailer', 'bulgarian);
+     * For this example there must be 'phpmailer' configuration item (non-mandatory) for the corredponding language
+     * within the configuration file lang.php:
+     *
+     * ...
+     * 'bulgarian' => array(
+     *     'code' => 'bg',              // CLDR language code.
+     *     'direction' => 'ltr',        // This is the value by default, you may omit it.
+     *     'uri_segment' => 'bg',       // If this value == value[code], you may omit it.
+     *     'name' => 'Български',       // Native name.
+     *     'name_en' => 'Bulgarian',    // Name in English.
+     *     'flag' => 'BG',              // Flag (country code).
+     *     'phpmailer' => 'bg',         // Language code used by PHPMailer, in this specific language it can be omited.
+     * ),
+     * ...
+     *
+     * @param string        $key        The key for accessing the custom code.
+     * @param string/null   $language   The language.
+     * @return string/null              Returns the custom code or if not found - the conventional language code.
+     */
+    public function language_custom_code($key, $language = null) {
+
+        $key = (string) $key;
+
+        if ($language == '') {
+            $language = $this->current_language();
+        }
+
+        if (array_key_exists($language, $this->config['languages'])) {
+
+            if (array_key_exists($key, $this->config['languages'][$language])) {
+                return $this->config['languages'][$language][$key];
+            }
+
+            return $this->config['languages'][$language]['code'];
+        }
+
+        return null;
+    }
+
     // Added by Ivan Tcholakov, 20-JAN-2014.
     public function language_uri_segment($language = null) {
 

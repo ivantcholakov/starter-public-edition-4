@@ -419,6 +419,35 @@ class Core_Lang extends MX_Lang {
         return $this->config->language_code($language);
     }
 
+    /**
+     * Retrieves a custom language code that exist within the configuration data under the specified key.
+     * This is for serving addins that identify languages with their own sets of codes.
+     *
+     * Example: $phpmailer_lang = $this->lang->custom_code('phpmailer', 'bulgarian);
+     * For this example there must be 'phpmailer' configuration item (non-mandatory) for the corredponding language
+     * within the configuration file lang.php:
+     *
+     * ...
+     * 'bulgarian' => array(
+     *     'code' => 'bg',              // CLDR language code.
+     *     'direction' => 'ltr',        // This is the value by default, you may omit it.
+     *     'uri_segment' => 'bg',       // If this value == value[code], you may omit it.
+     *     'name' => 'Български',       // Native name.
+     *     'name_en' => 'Bulgarian',    // Name in English.
+     *     'flag' => 'BG',              // Flag (country code).
+     *     'phpmailer' => 'bg',         // Language code used by PHPMailer, in this specific language it can be omited.
+     * ),
+     * ...
+     *
+     * @param string        $key        The key for accessing the custom code.
+     * @param string/null   $language   The language.
+     * @return string/null              Returns the custom code or if not found - the conventional language code.
+     */
+    public function custom_code($key, $language = null) {
+
+        return $this->config->language_custom_code($key, $language);
+    }
+
     // Added by Ivan Tcholakov, 21-JAN-2014.
     public function uri_segment($language = null) {
 
