@@ -185,4 +185,5 @@ $lang['ui_no_results_found'] = 'Nie znaleziono takiego wyniku.';
 $lang['ui_backward'] = 'Wstecz';
 $lang['ui_forward'] = 'Do przodu';
 $lang['ui_continue'] = 'Kontynuuj';
-
+$lang['ui_publication_date'] = 'Publication date';
+$lang['ui_expiration_date'] = 'Expiration date';

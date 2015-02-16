@@ -185,3 +185,5 @@ $lang['ui_no_results_found'] = 'Няма намерени резултати.';
 $lang['ui_backward'] = 'Назад';
 $lang['ui_forward'] = 'Напред';
 $lang['ui_continue'] = 'Продължи';
+$lang['ui_publication_date'] = 'Дата на публикуване';
+$lang['ui_expiration_date'] = 'Дата на изтичане';

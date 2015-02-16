@@ -185,3 +185,5 @@ $lang['ui_no_results_found'] = 'No matching results found.';
 $lang['ui_backward'] = 'Backward';
 $lang['ui_forward'] = 'Forward';
 $lang['ui_continue'] = 'Continue';
+$lang['ui_publication_date'] = 'Publication date';
+$lang['ui_expiration_date'] = 'Expiration date';
