@@ -187,3 +187,4 @@ $lang['ui_forward'] = 'Do przodu';
 $lang['ui_continue'] = 'Kontynuuj';
 $lang['ui_publication_date'] = 'Publication date';
 $lang['ui_expiration_date'] = 'Expiration date';
+$lang['ui_expired'] = 'Expired';
