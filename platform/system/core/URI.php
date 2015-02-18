@@ -206,7 +206,10 @@ class CI_URI {
 
 		$uri = parse_url($_SERVER['REQUEST_URI']);
 		$query = isset($uri['query']) ? $uri['query'] : '';
-		$uri = isset($uri['path']) ? $uri['path'] : '';
+		// Modified by Ivan Tcholakov, 19-FEB-2015.
+		//$uri = isset($uri['path']) ? $uri['path'] : '';
+		$uri = isset($uri['path']) ? rawurldecode($uri['path']) : '';
+		//
 
 		if (strpos($uri, $_SERVER['SCRIPT_NAME']) === 0)
 		{
@@ -222,7 +225,10 @@ class CI_URI {
 		if (trim($uri, '/') === '' && strncmp($query, '/', 1) === 0)
 		{
 			$query = explode('?', $query, 2);
-			$uri = $query[0];
+			// Modified by Ivan Tcholakov, 19-FEB-2015.
+			//$uri = $query[0];
+			$uri = rawurldecode($query[0]);
+			//
 			$_SERVER['QUERY_STRING'] = isset($query[1]) ? $query[1] : '';
 		}
 		else
@@ -262,7 +268,10 @@ class CI_URI {
 		{
 			$uri = explode('?', $uri, 2);
 			$_SERVER['QUERY_STRING'] = isset($uri[1]) ? $uri[1] : '';
-			$uri = $uri[0];
+			// Modified by Ivan Tcholakov, 19-FEB-2015.
+			//$uri = $uri[0];
+			$uri = rawurldecode($uri[0]);
+			//
 		}
 
 		parse_str($_SERVER['QUERY_STRING'], $_GET);
