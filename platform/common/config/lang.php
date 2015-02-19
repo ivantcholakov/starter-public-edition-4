@@ -403,4 +403,13 @@ $config['languages'] = array(
         'phpmailer' => 'zh',
     ),
 
+    'catalan' => array(
+        'code' => 'ca',
+        'direction' => 'ltr',
+        'uri_segment' => 'ca',
+        'name' => 'Català',
+        'name_en' => 'Catalan',
+        'flag' => 'ES',
+    ),
+
 );
