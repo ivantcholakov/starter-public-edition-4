@@ -398,7 +398,10 @@ class MX_Router extends CI_Router
         // If it's a CLI request, ignore the configuration
         if (is_cli())
         {
-            $uri = $this->_parse_argv();
+            // Modified by Ivan Tcholakov, 19-FEB-2015.
+            //$uri = $this->_parse_argv();
+            $uri = $this->uri->_parse_argv();
+            //
         }
         else
         {
