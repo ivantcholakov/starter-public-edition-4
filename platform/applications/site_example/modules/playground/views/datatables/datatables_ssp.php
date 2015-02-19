@@ -56,6 +56,12 @@ if (!$driver_ok) {
                                     <td class="table-actions">
 
                                     </td>
+                                    <td class="table-actions">
+
+                                    </td>
+                                    <td class="table-actions">
+
+                                    </td>
                                 </tr>
 
                             </thead>
