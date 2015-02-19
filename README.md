@@ -350,6 +350,7 @@ Real Life Usage
 * http://techmi-mg.com (services and products based on marble and granite), designer: Irina Stancheva
 * http://euroauto.bg (car dealership, leasing of cars), designer: Irina Stancheva
 * http://hotel-salvia.com (a family hotel), designer: Irina Stancheva
+* http://yasla-valshebstvo.com (nursery), designer: Irina Stancheva
 
 
 Credits
