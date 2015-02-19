@@ -492,12 +492,10 @@ if ( ! function_exists('set_status_header'))
 	 */
 	function set_status_header($code = 200, $text = '')
 	{
-		// Added by Ivan Tcholakov 19-FEB-2015.
 		if (is_cli())
 		{
 			return;
 		}
-		//
 
 		$stati = array(
 			200	=> 'OK',
