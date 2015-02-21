@@ -299,13 +299,21 @@ class CI_Session_files_driver extends CI_Session_driver implements SessionHandle
 	{
 		if ($this->close())
 		{
-			return @ unlink($this->_file_path.$session_id) && $this->_cookie_destroy();
+			return file_exists($this->_file_path.$session_id)
+				// Modified by Ivan Tcholakov, 21-FEB-2015.
+				//? (unlink($this->_file_path.$session_id) && $this->_cookie_destroy())
+				? (@ unlink($this->_file_path.$session_id) && $this->_cookie_destroy())
+				//
+				: TRUE;
 		}
 		elseif ($this->_file_path !== NULL)
 		{
 			clearstatcache();
 			return file_exists($this->_file_path.$session_id)
+				// Modified by Ivan Tcholakov, 21-FEB-2015.
+				//? (unlink($this->_file_path.$session_id) && $this->_cookie_destroy())
 				? (@ unlink($this->_file_path.$session_id) && $this->_cookie_destroy())
+				//
 				: TRUE;
 		}
 
