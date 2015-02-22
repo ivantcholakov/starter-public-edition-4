@@ -1,20 +1,33 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed.');
 
-if (!function_exists('form_open'))
+if ( ! function_exists('form_open'))
 {
+    /**
+     * Form Declaration
+     *
+     * Creates the opening portion of the form.
+     *
+     * @param       string      the URI segments of the form destination
+     * @param       array       a key/value pair of attributes
+     * @param       array       a key/value pair hidden data
+     * @return      string
+     */
     function form_open($action = '', $attributes = array(), $hidden = array())
     {
         $CI =& get_instance();
 
-        // If an action is not a full URL then turn it into one
-        if ($action && strpos($action, '://') === FALSE)
+        // If no action is provided then set to the current url
+        if ( ! $action)
         {
-                $action = $CI->config->site_url($action);
+            // Modified by Ivan Tcholakov, 23-FEB-2015.
+            //$action = $CI->config->site_url($CI->uri->uri_string());
+            $action = CURRENT_URL;
+            //
         }
-        elseif ( ! $action)
+        // If an action is not a full URL then turn it into one
+        elseif (strpos($action, '://') === FALSE)
         {
-            // If no action is provided then set to the current url
-            $action = $CI->config->site_url($CI->uri->uri_string());
+            $action = $CI->config->site_url($action);
         }
 
         $attributes = _attributes_to_string($attributes);
@@ -33,24 +46,26 @@ if (!function_exists('form_open'))
 
         // Add CSRF field if enabled, but leave it out for GET requests and requests to external websites
         // Modified by Ivan Tcholakov, 04-NOV-2011.
-        //if ($CI->config->item('csrf_protection') === TRUE && ! (strpos($action, $CI->config->base_url()) === FALSE OR stripos($form, 'method="get"') !== FALSE))
+        //if ($CI->config->item('csrf_protection') === TRUE && strpos($action, $CI->config->base_url()) !== FALSE && ! stripos($form, 'method="get"'))
         // Aways add the hidden value for protecting AJAX requests, when the global configuration option 'csrf_protection' is off.
-        if ( ! (strpos($action, $CI->config->site_url()) === FALSE OR stripos($form, 'method="get"') !== FALSE))
-        //
+        if (strpos($action, $CI->config->base_url()) !== FALSE && ! stripos($form, 'method="get"'))        //
         {
-                $hidden[$CI->security->get_csrf_token_name()] = $CI->security->get_csrf_hash();
+            $hidden[$CI->security->get_csrf_token_name()] = $CI->security->get_csrf_hash();
         }
 
-            if (is_array($hidden) && count($hidden) > 0)
+        if (is_array($hidden))
         {
-                $form .= '<div style="display:none;">'.form_hidden($hidden).'</div>';
+            foreach ($hidden as $name => $value)
+            {
+                $form .= '<input type="hidden" name="'.$name.'" value="'.form_prep($value).'" style="display:none;" />'."\n";
+            }
         }
 
         return $form;
     }
 }
 
-if (!function_exists('validation_errors_array'))
+if ( ! function_exists('validation_errors_array'))
 {
     function validation_errors_array()
     {
@@ -63,7 +78,7 @@ if (!function_exists('validation_errors_array'))
     }
 }
 
-if (!function_exists('build_validation_message'))
+if ( ! function_exists('build_validation_message'))
 {
     /*
      * This function might be useful for client-side validation - preparing messages.
@@ -113,67 +128,6 @@ if ( ! function_exists('form_value'))
 // Functions for BC compatibility with CI development before 21-JAN-2015.
 // See: https://github.com/bcit-ci/CodeIgniter/issues/1953
 // See: https://github.com/bcit-ci/CodeIgniter/issues/2477
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('form_open'))
-{
-    /**
-     * Form Declaration
-     *
-     * Creates the opening portion of the form.
-     *
-     * @param       string      the URI segments of the form destination
-     * @param       array       a key/value pair of attributes
-     * @param       array       a key/value pair hidden data
-     * @return      string
-     */
-    function form_open($action = '', $attributes = array(), $hidden = array())
-    {
-        $CI =& get_instance();
-
-        // If no action is provided then set to the current url
-        if ( ! $action)
-        {
-            $action = $CI->config->site_url($CI->uri->uri_string());
-        }
-        // If an action is not a full URL then turn it into one
-        elseif (strpos($action, '://') === FALSE)
-        {
-            $action = $CI->config->site_url($action);
-        }
-
-        $attributes = _attributes_to_string($attributes);
-
-        if (stripos($attributes, 'method=') === FALSE)
-        {
-            $attributes .= ' method="post"';
-        }
-
-        if (stripos($attributes, 'accept-charset=') === FALSE)
-        {
-            $attributes .= ' accept-charset="'.strtolower(config_item('charset')).'"';
-        }
-
-        $form = '<form action="'.$action.'"'.$attributes.">\n";
-
-        // Add CSRF field if enabled, but leave it out for GET requests and requests to external websites
-        if ($CI->config->item('csrf_protection') === TRUE && strpos($action, $CI->config->base_url()) !== FALSE && ! stripos($form, 'method="get"'))
-        {
-            $hidden[$CI->security->get_csrf_token_name()] = $CI->security->get_csrf_hash();
-        }
-
-        if (is_array($hidden))
-        {
-            foreach ($hidden as $name => $value)
-            {
-                $form .= '<input type="hidden" name="'.$name.'" value="'.form_prep($value).'" style="display:none;" />'."\n";
-            }
-        }
-
-        return $form;
-    }
-}
-
 // ------------------------------------------------------------------------
 
 if ( ! function_exists('form_hidden'))
