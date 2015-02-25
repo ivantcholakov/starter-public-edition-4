@@ -156,9 +156,15 @@ class Current_user extends CI_Model {
         return $this->refresh();
     }
 
-    public function get() {
+    public function get($key = null) {
 
-        return $this->data;
+        $key = (string) $key;
+
+        if ($key == '') {
+            return $this->data;
+        }
+
+        return isset($this->data[$key]) ? $this->data[$key] : null;
     }
 
     public function id() {
