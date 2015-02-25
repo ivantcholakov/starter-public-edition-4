@@ -188,3 +188,4 @@ $lang['ui_continue'] = 'Продължи';
 $lang['ui_publication_date'] = 'Дата на публикуване';
 $lang['ui_expiration_date'] = 'Дата на изтичане';
 $lang['ui_expired'] = 'Изтекла валидност';
+$lang['ui_registered_at'] = 'Регистриран на';
