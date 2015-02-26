@@ -46,6 +46,8 @@ $config['less_compile'] = array(
         'compress' => true
     ),
 
+    // php cli.php less compile font-awesome-4 font-awesome-4-min
+
     array(
         'name' => 'font-awesome-4',
         'source' => DEFAULTFCPATH.'assets/less/lib/font-awesome-4/font-awesome.less',
