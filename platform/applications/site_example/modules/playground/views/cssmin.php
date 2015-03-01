@@ -28,7 +28,7 @@ file_partial('messages');
                         <?php echo form_open('', 'id="test_form" method="post" role="form"'); ?>
 
                             <div class="form-group">
-                                <label for="input">Input CSS source:</label>
+                                <label for="input">The input, CSS source:</label>
                                 <textarea id="input" name="input" class="form-control" rows="10" placeholder="Copy/paste your CSS source here."><?php echo set_value('input', '', true); ?></textarea>
                             </div>
 
@@ -39,7 +39,7 @@ file_partial('messages');
                             </div>
 
                             <div class="form-group">
-                                <label for="output">The result minified CSS:</label>
+                                <label for="output">The result, minified CSS:</label>
                                 <textarea id="output" class="form-control" rows="10"><?php echo form_prep($output, true); ?></textarea>
                             </div>
 
