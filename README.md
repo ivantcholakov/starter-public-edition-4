@@ -328,6 +328,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Social Buttons for Bootstrap, https://github.com/lipis/bootstrap-social
 * Secure Random Bytes in PHP, https://github.com/GeorgeArgyros/Secure-random-bytes-in-PHP
 * php-passgen - A library for generating cryptographically secure passwords in PHP, https://github.com/defuse/php-passgen
+* A PHP port of the YUI CSS compressor, https://github.com/tubalmartin/YUI-CSS-compressor-PHP-port
 
 The Playground
 --------------
