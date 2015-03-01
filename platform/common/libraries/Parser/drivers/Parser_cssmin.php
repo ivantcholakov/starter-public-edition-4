@@ -71,21 +71,26 @@ class CI_Parser_cssmin extends CI_Parser_driver {
 
         $parser = new CSSmin($config['raise_php_limits']);
 
-        if ($config['raise_php_limits']) {
+        if ($config['raise_php_limits'])
+        {
 
-            if ($config['memory_limit'] != '') {
+            if ($config['memory_limit'] != '')
+            {
                 $parser->set_memory_limit($config['memory_limit']);
             }
 
-            if ($config['max_execution_time'] != '') {
+            if ($config['max_execution_time'] != '')
+            {
                 $parser->set_max_execution_time($config['max_execution_time']);
             }
 
-            if ($config['pcre_backtrack_limit'] != '') {
+            if ($config['pcre_backtrack_limit'] != '')
+            {
                 $parser->set_pcre_backtrack_limit($config['pcre_backtrack_limit']);
             }
 
-            if ($config['pcre_recursion_limit'] != '') {
+            if ($config['pcre_recursion_limit'] != '')
+            {
                 $parser->set_pcre_recursion_limit($config['pcre_recursion_limit']);
             }
         }
@@ -121,19 +126,23 @@ class CI_Parser_cssmin extends CI_Parser_driver {
 
         if ($config['raise_php_limits']) {
 
-            if ($config['memory_limit'] != '') {
+            if ($config['memory_limit'] != '')
+            {
                 $parser->set_memory_limit($config['memory_limit']);
             }
 
-            if ($config['max_execution_time'] != '') {
+            if ($config['max_execution_time'] != '')
+            {
                 $parser->set_max_execution_time($config['max_execution_time']);
             }
 
-            if ($config['pcre_backtrack_limit'] != '') {
+            if ($config['pcre_backtrack_limit'] != '')
+            {
                 $parser->set_pcre_backtrack_limit($config['pcre_backtrack_limit']);
             }
 
-            if ($config['pcre_recursion_limit'] != '') {
+            if ($config['pcre_recursion_limit'] != '')
+            {
                 $parser->set_pcre_recursion_limit($config['pcre_recursion_limit']);
             }
         }
