@@ -62,6 +62,7 @@
                     <li><a href="<?php echo site_url('playground/smileys'); ?>">Smiley Test</a></li>
                     <li><a href="<?php echo site_url('playground/file-type-icons'); ?>">Testing File Type Icons</a></li>
                     <li><a href="<?php echo site_url('playground/cssmin'); ?>">CSS Minification Test</a></li>
+                    <li><a href="<?php echo site_url('playground/jsmin'); ?>">JavaScript Minification Test</a></li>
                 </ul>
 
             </div>
