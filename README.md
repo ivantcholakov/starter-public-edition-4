@@ -329,6 +329,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Secure Random Bytes in PHP, https://github.com/GeorgeArgyros/Secure-random-bytes-in-PHP
 * php-passgen - A library for generating cryptographically secure passwords in PHP, https://github.com/defuse/php-passgen
 * A PHP port of the YUI CSS compressor, https://github.com/tubalmartin/YUI-CSS-compressor-PHP-port
+* JSMinPlus - a JavaScript minifier, https://github.com/mrclay/minify/blob/2.2.0/min/lib/JSMinPlus.php
 
 The Playground
 --------------
