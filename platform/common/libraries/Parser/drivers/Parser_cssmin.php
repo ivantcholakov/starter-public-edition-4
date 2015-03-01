@@ -124,7 +124,8 @@ class CI_Parser_cssmin extends CI_Parser_driver {
 
         $parser = new CSSmin($config['raise_php_limits']);
 
-        if ($config['raise_php_limits']) {
+        if ($config['raise_php_limits'])
+        {
 
             if ($config['memory_limit'] != '')
             {
