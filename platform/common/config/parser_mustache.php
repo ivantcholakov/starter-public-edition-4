@@ -7,6 +7,3 @@
 
 $config['charset'] = 'UTF-8';
 $config['entityFlags'] = ENT_COMPAT;
-
-// This option enforces template full paths to be given for method parse().
-$config['full_path'] = FALSE;

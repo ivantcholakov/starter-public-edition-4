@@ -10,9 +10,6 @@
 // 'parsedown' - https://github.com/erusev/parsedown
 $config['markdown_implementation'] = 'parsedown';
 
-// This option enforces template full paths to be given for method parse().
-$config['full_path'] = FALSE;
-
 // php-markdown specific options -----------------------------------------------
 
 // A workaround for ```php kind of blocks detection.

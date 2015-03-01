@@ -13,6 +13,3 @@ $config['bodyWidth'] = FALSE;
 
 // Wether to keep non markdownable HTML or to discard it.
 $config['keepHTML'] = FALSE;
-
-// This option enforces template full paths to be given for method parse().
-$config['full_path'] = FALSE;
