@@ -33,7 +33,7 @@ file_partial('messages');
                             </div>
 
                             <div class="form-group">
-                                <button id="test_form_submit" name="test_form_submit" type="submit" class="btn btn-primary btn-lg">
+                                <button id="test_form_submit" name="test_form_submit" type="submit" class="btn btn-primary">
                                     Submit
                                 </button>
                             </div>
