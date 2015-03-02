@@ -20,6 +20,8 @@
 
 $config['less_compile'] = array(
 
+    // php cli.php less compile bootstrap-3 bootstrap-3-min
+
     array(
         'name' => 'bootstrap-3',
         'source' => DEFAULTFCPATH.'assets/less/lib/bootstrap-3/bootstrap.less',
@@ -32,6 +34,8 @@ $config['less_compile'] = array(
         'destination' => DEFAULTFCPATH.'assets/css/lib/bootstrap-3/bootstrap.min.css',
         'compress' => true
     ),
+
+    // php cli.php less compile bootstrap-3-theme bootstrap-3-theme-min
 
     array(
         'name' => 'bootstrap-3-theme',
@@ -61,6 +65,8 @@ $config['less_compile'] = array(
         'compress' => true
     ),
 
+    // php cli.php less compile bootstrap-chosen bootstrap-chosen-min
+
     array(
         'name' => 'bootstrap-chosen',
         'source' => DEFAULTFCPATH.'assets/less/lib/bootstrap-chosen/bootstrap-chosen.less',
@@ -73,6 +79,8 @@ $config['less_compile'] = array(
         'destination' => DEFAULTFCPATH.'assets/css/lib/bootstrap-chosen/bootstrap-chosen.min.css',
         'compress' => true
     ),
+
+    // php cli.php less compile yamm3 yamm3-min
 
     array(
         'name' => 'yamm3',
@@ -87,6 +95,8 @@ $config['less_compile'] = array(
         'compress' => true
     ),
 
+    // php cli.php less compile jasny-bootstrap-3 jasny-bootstrap-3-min
+
     array(
         'name' => 'jasny-bootstrap-3',
         'source' => DEFAULTFCPATH.'assets/less/lib/jasny-bootstrap-3/jasny-bootstrap-default.less',
@@ -99,6 +109,8 @@ $config['less_compile'] = array(
         'destination' => DEFAULTFCPATH.'assets/css/lib/jasny-bootstrap-3/jasny-bootstrap.min.css',
         'compress' => true
     ),
+
+    // php cli.php less compile bootstrap-social bootstrap-social-min
 
     array(
         'name' => 'bootstrap-social',
