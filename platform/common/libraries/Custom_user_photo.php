@@ -88,7 +88,7 @@ class Custom_user_photo {
         }
 
         if (!empty($query)) {
-            $url = http_build_url($url, array('query' => $query));
+            $url = http_build_url($url, array('query' => http_build_query($query)));
         }
 
         return $url;
