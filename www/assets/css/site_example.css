@@ -140,20 +140,6 @@ img.thumbnail-160 {
 
 /* Common-Purpose Styles */
 
-/* See http://www.tightcss.com/centering/center_variable_width.htm */
-
-.centered-block-container {
-    float: left;
-    position: relative;
-    margin-left: 50%;
-}
-
-.centered-block {
-    float: left;
-    position: relative;
-    left: -50%;
-}
-
 .nobr { 
     white-space: nowrap;
 }

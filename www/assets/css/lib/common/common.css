@@ -1,3 +1,13 @@
+.centered-block-container {
+  float: left;
+  position: relative;
+  margin-left: 50%;
+}
+.centered-block {
+  float: left;
+  position: relative;
+  left: -50%;
+}
 /*
 <!-- How to Make Google Maps Embeds Responsive -->
 <!-- See http://www.labnol.org/internet/embed-responsive-google-maps/28333/ by Amit Agarwal -->
