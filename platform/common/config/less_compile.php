@@ -80,6 +80,21 @@ $config['less_compile'] = array(
         'compress' => true
     ),
 
+    // php cli.php less compile bootstrap-chosen-image bootstrap-chosen-image-min
+
+    array(
+        'name' => 'bootstrap-chosen-image',
+        'source' => DEFAULTFCPATH.'assets/less/lib/chosen-image/bootstrap-chosenImage.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/chosen-image/bootstrap-chosenImage.css',
+        'compress' => false
+    ),
+    array(
+        'name' => 'bootstrap-chosen-image-min',
+        'source' => DEFAULTFCPATH.'assets/less/lib/chosen-image/bootstrap-chosenImage.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/chosen-image/bootstrap-chosenImage.min.css',
+        'compress' => true
+    ),
+
     // php cli.php less compile yamm3 yamm3-min
 
     array(

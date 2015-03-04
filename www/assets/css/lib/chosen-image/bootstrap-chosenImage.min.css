@@ -1,0 +1,5 @@
+/*!
+ * Bootstrap 3 integration for Chosen Image plugin, https://github.com/djgrant/chosen-image
+ * Author: Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * License: The MIT License, http://opensource.org/licenses/MIT
+ */.chosen-container-single .chosen-single{padding: 0 0 0 10px}.chosenImage-container .chosen-results li,.chosenImage-container .chosen-single span{background-position: 6px 45%;background-size: auto 24px;padding-left: 34px}.chosenImage-container .chosen-single span{background-position: 0px 45%;padding-left: 28px}
