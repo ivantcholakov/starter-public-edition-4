@@ -55,9 +55,13 @@ class Compile_controller extends Core_Controller {
 
             $dir = pathinfo($destination, PATHINFO_DIRNAME);
             file_exists($dir) OR mkdir($dir, 0755, TRUE);
-            write_file($destination, $this->less->parse($source, null, true, array('full_path' => true, 'compress' => $compress)));
-        }
 
+            try {
+                write_file($destination, $this->less->parse($source, null, true, array('full_path' => true, 'compress' => $compress)));
+            } catch(Exception $e) {
+                echo $e->getMessage().PHP_EOL;
+            }
+        }
     }
 
 }
