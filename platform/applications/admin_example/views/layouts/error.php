@@ -18,7 +18,7 @@ echo cleartype_ie();
 echo css('lib/bootstrap-3/bootstrap.min.css');
 echo css('lib/bootstrap-3/bootstrap-theme.min.css');
 echo css('lib/font-awesome-4/font-awesome.min.css');
-echo css('login.css');
+echo css('lib/common/common.min.css');
 
 file_partial('css');
 template_partial('css');
