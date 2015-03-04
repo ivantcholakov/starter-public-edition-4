@@ -14,16 +14,21 @@ ini_set('post_max_size', '16M');
 ini_set('upload_max_filesize', '16M');
 ini_set('max_file_uploads', 20);
 
-ini_set('max_execution_time', 300);
 ini_set('max_input_time', 60);
 
 ini_set('auto_detect_line_endings', true);
 
 if (IS_CLI) {
 
+    ini_set('max_execution_time', 0);
+
     ini_set('html_errors', 0);
     ini_set('error_prepend_string', '');
     ini_set('error_append_string', '');
 
     ignore_user_abort(true);
+
+} else {
+
+    ini_set('max_execution_time', 300);
 }
