@@ -8,14 +8,6 @@
   position: relative;
   left: -50%;
 }
-/*
-<!-- How to Make Google Maps Embeds Responsive -->
-<!-- See http://www.labnol.org/internet/embed-responsive-google-maps/28333/ by Amit Agarwal -->
-<!-- Sample markup for testing: -->
-<div class="google-maps">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7098.94326104394!2d78.0430654485247!3d27.172909818538997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1385710909804" width="600" height="450" frameborder="0" style="border:0"></iframe>
-</div>
-*/
 .google-maps {
   position: relative;
   padding-bottom: 56%;
@@ -28,4 +20,31 @@
   left: 0;
   width: 100% !important;
   height: 100% !important;
+}
+#scroll-top {
+  position: fixed;
+  z-index: 9999;
+  bottom: 10px;
+  right: 5px;
+  width: 36px;
+  height: 36px;
+  display: inline-block;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  color: #fafafa;
+  text-decoration: none;
+  border: 1px solid transparent;
+  background-color: #39b5e9;
+  outline: 0;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+#scroll-top i {
+  color: #fff;
+  margin: 0;
+  position: relative;
+  left: 8px;
+  top: 7px;
+  font-size: 19px;
 }

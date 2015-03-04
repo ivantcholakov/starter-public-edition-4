@@ -47,43 +47,6 @@ code {
 }
 
 
-/* Scroll To Top Link
-See http://appglobe.com/scroll-to-top-animation/
--------------------------------------------------- */
-
-/* 
- * Scroll top link inside footer, but fixed relative to viewport.
- */
-#footer #scroll-top {
-    position: fixed; 
-    z-index: 9999; 
-    bottom: 10px;
-    right: 10px;
-    width: 40px;
-    height: 40px;
-    display: inline-block;
-    -webkit-border-radius: 20px; 
-    -moz-border-radius: 20px; 
-    border-radius: 20px;
-    color: #fafafa;
-    text-decoration: none;
-    border: 1px solid transparent;
-    background: #39b5e9;
-    outline: 0;
-    opacity: 0.5;
-    filter: alpha(opacity=50);
-}
-
-#footer #scroll-top i {
-    color :#fff;
-    margin: 0;
-    position: relative;
-    left: 10px;
-    top: 9px;
-    font-size: 19px;
-}
-
-
 /* Tables */
 
 .table.table-valign-middle td,
