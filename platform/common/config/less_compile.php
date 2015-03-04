@@ -140,4 +140,34 @@ $config['less_compile'] = array(
         'compress' => true
     ),
 
+    // php cli.php less compile datatables-bootstrap datatables-bootstrap-min
+
+    array(
+        'name' => 'datatables-bootstrap',
+        'source' => DEFAULTFCPATH.'assets/less/lib/dataTables/dataTables.bootstrap.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/dataTables/dataTables.bootstrap.css',
+        'compress' => false
+    ),
+    array(
+        'name' => 'datatables-bootstrap-min',
+        'source' => DEFAULTFCPATH.'assets/less/lib/dataTables/dataTables.bootstrap.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/dataTables/dataTables.bootstrap.min.css',
+        'compress' => true
+    ),
+
+    // php cli.php less compile datatables-responsive datatables-responsive-min
+
+    array(
+        'name' => 'datatables-responsive',
+        'source' => DEFAULTFCPATH.'assets/less/lib/dataTables/datatables.responsive.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/dataTables/datatables.responsive.css',
+        'compress' => false
+    ),
+    array(
+        'name' => 'datatables-responsive-min',
+        'source' => DEFAULTFCPATH.'assets/less/lib/dataTables/datatables.responsive.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/dataTables/datatables.responsive.min.css',
+        'compress' => true
+    ),
+
 );
