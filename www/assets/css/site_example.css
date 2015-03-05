@@ -99,28 +99,3 @@ img.thumbnail-160 {
 }
 
 /* End Thumbnails */
-
-
-/* Common-Purpose Styles */
-
-.nobr { 
-    white-space: nowrap;
-}
-
-.loud {
-    font-weight: bold;
-}
-
-.shrink {
-    width: 1%;
-}
-
-.expand {
-    width: 100%;
-}
-
-.center-text {
-    text-align: center;
-}
-
-/* End Common-Purpose Styles */

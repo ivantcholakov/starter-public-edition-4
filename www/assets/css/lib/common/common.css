@@ -1,3 +1,144 @@
+.block {
+  display: block;
+}
+.inline-block {
+  display: inline-block;
+}
+.none {
+  display: none;
+}
+.zero-width {
+  width: .01%;
+}
+.shrink {
+  width: .01%;
+}
+.full-width {
+  width: 100%;
+}
+.expand {
+  width: 100%;
+}
+.full-height {
+  padding-bottom: 9999px !important;
+  margin-bottom: -9999px !important;
+}
+.center {
+  text-align: center;
+}
+.center-text {
+  text-align: center;
+}
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.nowrap {
+  white-space: nowrap;
+}
+.nobr {
+  white-space: nowrap;
+}
+.linewrap {
+  white-space: pre-line;
+}
+.word-break {
+  word-break: break-all;
+}
+.no-text-decoration {
+  text-decoration: none;
+}
+.no-text-decoration-hover:hover {
+  text-decoration: none;
+}
+.line-through {
+  text-decoration: line-through;
+}
+.text-upper {
+  text-transform: uppercase;
+}
+.loud {
+  font-weight: bold;
+}
+.semi-bold {
+  font-weight: 600;
+}
+.font-light {
+  font-weight: 300;
+}
+.font-normal {
+  font-weight: 400;
+}
+.font-semi-bold {
+  font-weight: 600;
+}
+.font-ultra-bold {
+  font-weight: 900;
+}
+.font-italic {
+  font-style: italic;
+}
+.no-margin {
+  margin: 0 !important;
+}
+.no-margin-left {
+  margin-left: 0;
+}
+.no-margin-right {
+  margin-right: 0;
+}
+.no-margin-top {
+  margin-top: 0;
+}
+.no-margin-bottom {
+  margin-bottom: 0;
+}
+.no-padding {
+  padding: 0;
+}
+.no-padding-left {
+  padding-left: 0;
+}
+.no-padding-right {
+  padding-right: 0;
+}
+.no-padding-top {
+  padding-top: 0;
+}
+.no-padding-bottom {
+  padding-bottom: 0;
+}
+.vertical-top {
+  vertical-align: top;
+}
+.vertical-middle {
+  vertical-align: middle;
+}
+.middle {
+  vertical-align: middle !important;
+}
+.relative {
+  position: relative;
+}
+.overflow-hidden {
+  overflow: hidden !important;
+}
+.pointer {
+  cursor: pointer;
+}
+.no-shadow {
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.circular {
+  border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  -webkit-border-radius: 50% !important;
+}
 .centered-block-container {
   float: left;
   position: relative;
