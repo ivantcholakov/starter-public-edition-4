@@ -53,6 +53,11 @@ class Password {
         return PasswordGenerator::getCustomPassword(str_split($characters), $length);
     }
 
+    //--------------------------------------------------------------------------
+
+    // An important note: Use the methods hash() and verify() for dealing with
+    // users' passwords. Users' passwords should be hashed, not encrypted.
+
     // See http://www.openwall.com/phpass/
     public function hash($password) {
 
@@ -83,6 +88,14 @@ class Password {
 
         return $hasher->CheckPassword($password, $hash) ? true : false;
     }
+
+    //--------------------------------------------------------------------------
+
+    // An important note: Use the methods encrypt() and decrypt() for passwords
+    // that the system should pass to other systems. For example, you may choose
+    // to store the SMTP password as a setting within the database, preferably
+    // not in plain text.
+    // Don't use these methods for dealing with users' passwords!
 
     // See https://github.com/ivantcholakov/gibberish-aes-php
     public function encrypt($password) {
