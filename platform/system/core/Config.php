@@ -129,7 +129,6 @@ class CI_Config {
 			foreach (array($file, ENVIRONMENT.'/'.$file) as $location)
 			{
 				$file_path = $path.'config/'.$location.'.php';
-
 				if (in_array($file_path, $this->is_loaded, TRUE))
 				{
 					// Modified by Ivan Tcholakov, 24-DEC-2014.
@@ -172,23 +171,13 @@ class CI_Config {
 				$loaded = TRUE;
 				log_message('debug', 'Config file loaded: '.$file_path);
 			}
-
-			// Removed by Ivan Tcholakov, 24-DEC-2014.
-			//if ($loaded === TRUE)
-			//{
-			//	return TRUE;
-			//}
-			//
 		}
 
-		// Added by Ivan Tcholakov, 24-DEC-2014.
 		if ($loaded === TRUE)
 		{
 			return TRUE;
 		}
-		//
-
-		if ($fail_gracefully === TRUE)
+		elseif ($fail_gracefully === TRUE)
 		{
 			return FALSE;
 		}
