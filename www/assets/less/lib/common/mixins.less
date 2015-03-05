@@ -1,0 +1,33 @@
+
+// Common Mixins
+
+.round-corners (@radius: 5px) {
+    -moz-border-radius: @radius;
+    -ms-border-radius: @radius;
+    border-radius: @radius;
+}
+
+.box-shadow (@shadow: none) {
+    -moz-box-shadow: @shadow;
+    -webkit-box-shadow: @shadow;
+    box-shadow: @shadow;
+}
+
+.transition (@transition: background .1s linear) {
+    -moz-transition: @transition;
+    -webkit-transition: @transition;
+    transition: @transition;
+}
+
+.box-sizing (@box-sizing: border-box) {
+    -moz-box-sizing: @box-sizing; 
+    -webkit-box-sizing: @box-sizing;  
+    -ms-box-sizing: @box-sizing;
+    box-sizing: @box-sizing;
+}
+
+.background-clip (@background-clip: padding-box) {
+    -moz-background-clip: @background-clip;
+    -webkit-background-clip: @background-clip;
+    background-clip: @background-clip;
+}
