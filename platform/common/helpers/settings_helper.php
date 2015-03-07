@@ -16,3 +16,15 @@ if (!function_exists('settings')) {
     }
 
 }
+
+if (!function_exists('settings_lang')) {
+
+    function settings_lang($key, $language = null) {
+
+        $ci = get_instance();
+        $ci->load->library('settings');
+
+        return $ci->settings->get($key, $language);
+    }
+
+}
