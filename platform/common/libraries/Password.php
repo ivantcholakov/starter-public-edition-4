@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed.');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2015.
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -97,7 +97,13 @@ class Password {
     // not in plain text.
     // Don't use these methods for dealing with users' passwords!
 
-    // See https://github.com/ivantcholakov/gibberish-aes-php
+    // An important note 2: The methods encrypt() and decrypt() are deprecated
+    // here for not giving wrong ideas.
+    // Encryption capability will be implemented within the Settings library.
+
+    /**
+     * @deprecated
+     */
     public function encrypt($password) {
 
         $password = (string) $password;
@@ -117,7 +123,9 @@ class Password {
         return $result;
     }
 
-    // See https://github.com/ivantcholakov/gibberish-aes-php
+    /**
+     * @deprecated
+     */
     public function decrypt($password) {
 
         $password = (string) $password;
