@@ -1,5 +1,7 @@
 <?php
 
+// See https://github.com/GeorgeArgyros/Secure-random-bytes-in-PHP
+
 /*
  * Author:
  * George Argyros <argyros.george@gmail.com>
@@ -36,10 +38,8 @@
  * The execution time should be at most 10-20 ms in any system.
  */
 
-// Modified by Ivan Tcholakov, 21-DEC-2014.
-//function secure_random_bytes($len = 10)
-function secure_random_bytes($len) {
-//
+function secure_random_bytes($len = 10) {
+
     // Added by Ivan Tcholakov, 21-DEC-2014.
     if (!(ctype_digit((string) $len) && ($len = (int) $len) > 0)) {
         return false;
