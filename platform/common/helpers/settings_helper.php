@@ -24,7 +24,7 @@ if (!function_exists('settings_lang')) {
         $ci = get_instance();
         $ci->load->library('settings');
 
-        return $ci->settings->get($key, $language);
+        return $ci->settings->lang($key, $language);
     }
 
 }
