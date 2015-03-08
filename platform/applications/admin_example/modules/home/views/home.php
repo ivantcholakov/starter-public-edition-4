@@ -6,7 +6,7 @@
 
 <?php
 
-echo Modules::run('feedback_messages/feedback_messages_widget/index');
+echo Modules::run('feedback_messages_widget/index', array('full_width' => false));
 
 ?>
 

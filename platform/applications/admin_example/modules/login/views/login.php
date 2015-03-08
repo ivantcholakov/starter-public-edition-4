@@ -9,7 +9,7 @@
 
 <?php
 
-echo Modules::run('feedback_messages/feedback_messages_widget/index', array('feedback_message_expand' => true));
+echo Modules::run('feedback_messages_widget/index', array('with_javascript' => false));
 
 ?>
 

@@ -29,13 +29,14 @@ $error_message = $error_message != '' ? $error_message : trim(ci()->registry->ge
 
 if ($feedback_message_target == $feedback_message_id && $normal_message != '') {
 
-    if ($feedback_message_expand) {
+    if ($feedback_message_full_width) {
 
 ?>
 
                     <div class="alert alert-info alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         <?php echo $normal_message; ?>
+
                     </div>
 
 <?php
@@ -48,6 +49,7 @@ if ($feedback_message_target == $feedback_message_id && $normal_message != '') {
                         <div class="alert alert-info alert-dismissable centered-block">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <?php echo $normal_message; ?>
+
                         </div>
                     </div>
 <?php
@@ -56,13 +58,14 @@ if ($feedback_message_target == $feedback_message_id && $normal_message != '') {
 
 if ($feedback_message_target == $feedback_message_id && $confirmation_message != '') {
 
-    if ($feedback_message_expand) {
+    if ($feedback_message_full_width) {
 
 ?>
 
                     <div class="alert alert-success alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         <?php echo $confirmation_message; ?>
+
                     </div>
 <?php
 
@@ -74,6 +77,7 @@ if ($feedback_message_target == $feedback_message_id && $confirmation_message !=
                         <div class="alert alert-success alert-dismissable centered-block">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <?php echo $confirmation_message; ?>
+
                         </div>
                     </div>
 <?php
@@ -82,13 +86,14 @@ if ($feedback_message_target == $feedback_message_id && $confirmation_message !=
 
 if ($feedback_message_target == $feedback_message_id && $warning_message != '') {
 
-    if ($feedback_message_expand) {
+    if ($feedback_message_full_width) {
 
 ?>
 
                     <div class="alert alert-warning alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         <?php echo $warning_message; ?>
+
                     </div>
 <?php
 
@@ -100,6 +105,7 @@ if ($feedback_message_target == $feedback_message_id && $warning_message != '') 
                         <div class="alert alert-warning alert-dismissable centered-block">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <?php echo $warning_message; ?>
+
                         </div>
                     </div>
 <?php
@@ -108,13 +114,14 @@ if ($feedback_message_target == $feedback_message_id && $warning_message != '') 
 
 if ($feedback_message_target == $feedback_message_id && $error_message != '') {
 
-    if ($feedback_message_expand) {
+    if ($feedback_message_full_width) {
 
 ?>
 
                     <div class="alert alert-danger alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         <?php echo $error_message; ?>
+
                     </div>
 <?php
 
@@ -126,6 +133,7 @@ if ($feedback_message_target == $feedback_message_id && $error_message != '') {
                         <div class="alert alert-danger alert-dismissable centered-block">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <?php echo $error_message; ?>
+
                         </div>
                     </div>
 <?php
@@ -135,6 +143,12 @@ if ($feedback_message_target == $feedback_message_id && $error_message != '') {
 ?>
 
                 </div>
+
+<?php
+
+if ($feedback_message_with_javascript) {
+
+?>
 
     <script type="text/javascript">
     //<![CDATA[
@@ -149,21 +163,21 @@ if ($feedback_message_target == $feedback_message_id && $error_message != '') {
 
 <?php
 
-if ($feedback_message_expand) {
+    if ($feedback_message_full_width) {
 
 ?>
 
             var visual_class = 'alert alert-info alert-dismissable';
 <?php
 
-} else {
+    } else {
 
 ?>
 
             var visual_class = 'alert alert-info alert-dismissable centered-block';
 <?php
 
-}
+    }
 
 ?>
 
@@ -174,21 +188,21 @@ if ($feedback_message_expand) {
                 case 'confirmation_message':
 <?php
 
-if ($feedback_message_expand) {
+    if ($feedback_message_full_width) {
 
 ?>
 
                     visual_class = 'alert alert-success alert-dismissable';
 <?php
 
-} else {
+    } else {
 
 ?>
 
                     visual_class = 'alert alert-success alert-dismissable centered-block';
 <?php
 
-}
+    }
 
 ?>
 
@@ -198,21 +212,21 @@ if ($feedback_message_expand) {
                 case 'warning_message':
 <?php
 
-if ($feedback_message_expand) {
+    if ($feedback_message_full_width) {
 
 ?>
 
                     visual_class = 'alert alert-warning alert-dismissable';
 <?php
 
-} else {
+    } else {
 
 ?>
 
                     visual_class = 'alert alert-warning alert-dismissable centered-block';
 <?php
 
-}
+    }
 
 ?>
 
@@ -222,21 +236,21 @@ if ($feedback_message_expand) {
                 case 'error_message':
 <?php
 
-if ($feedback_message_expand) {
+    if ($feedback_message_full_width) {
 
 ?>
 
                     visual_class = 'alert alert-danger alert-dismissable';
 <?php
 
-} else {
+    } else {
 
 ?>
 
                     visual_class = 'alert alert-danger alert-dismissable centered-block';
 <?php
 
-}
+    }
 
 ?>
 
@@ -245,21 +259,21 @@ if ($feedback_message_expand) {
 
 <?php
 
-if ($feedback_message_expand) {
+    if ($feedback_message_full_width) {
 
 ?>
 
             $('#<?php echo $feedback_message_id; ?>').html('<div class="' +  visual_class + '"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> ' +  message + ' </div>');
 <?php
 
-} else {
+    } else {
 
 ?>
 
             $('#<?php echo $feedback_message_id; ?>').html('<div class="centered-block-container"><div class="' +  visual_class + '"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> ' +  message + ' </div></div>');
 <?php
 
-}
+    }
 
 ?>
 
@@ -272,3 +286,7 @@ if ($feedback_message_expand) {
 
     //]]>
     </script>
+
+<?php
+
+}
