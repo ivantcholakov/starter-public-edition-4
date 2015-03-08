@@ -1,6 +1,7 @@
 <?php
 
 // See https://github.com/GeorgeArgyros/Secure-random-bytes-in-PHP
+// Reference: http://framework.zend.com/security/advisory/ZF2013-02
 
 /*
  * Author:
