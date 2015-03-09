@@ -353,6 +353,7 @@ Real Life Usage
 * http://euroauto.bg (car dealership, leasing of cars), designer: Irina Stancheva
 * http://hotel-salvia.com (a family hotel), designer: Irina Stancheva
 * http://yasla-valshebstvo.com (nursery), designer: Irina Stancheva
+* http://evita-clinic.com (medical and dental services, one page site so far), designer: Irina Stancheva
 
 
 Credits
