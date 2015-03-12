@@ -189,3 +189,6 @@ $lang['ui_publication_date'] = 'Publication date';
 $lang['ui_expiration_date'] = 'Expiration date';
 $lang['ui_expired'] = 'Expired';
 $lang['ui_registered_at'] = 'Registered at';
+$lang['ui_data_language'] = 'Data language';
+$lang['ui_interface_language'] = 'User interface language';
+$lang['ui_validation_errors'] = 'There is missing or incorrect data within the form. Please, fill or correct data and submit the form again.';

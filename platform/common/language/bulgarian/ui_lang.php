@@ -189,3 +189,6 @@ $lang['ui_publication_date'] = 'Дата на публикуване';
 $lang['ui_expiration_date'] = 'Дата на изтичане';
 $lang['ui_expired'] = 'Изтекла валидност';
 $lang['ui_registered_at'] = 'Регистриран на';
+$lang['ui_data_language'] = 'Език на данните';
+$lang['ui_interface_language'] = 'Език на потребителския интерфейс';
+$lang['ui_validation_errors'] = 'Във формуляра липсват данни или са въведени погрешно. Моля, допълнете или коригирайте данните.';
