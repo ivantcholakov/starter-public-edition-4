@@ -345,6 +345,8 @@ $config['encryption_key_for_passwords'] = 'f@2M&';
 |    The location to save sessions to, driver dependant.
 |
 |    For the 'files' driver, it's a path to a writable directory.
+|    WARNING: Only absolute paths are supported!
+|
 |    For the 'database' driver, it's a table name.
 |    Please read up the manual for the format with other session drivers.
 |
