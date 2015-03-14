@@ -192,3 +192,5 @@ $lang['ui_registered_at'] = 'Registered at';
 $lang['ui_data_language'] = 'Data language';
 $lang['ui_interface_language'] = 'User interface language';
 $lang['ui_validation_errors'] = 'There is missing or incorrect data within the form. Please, fill or correct data and submit the form again.';
+$lang['ui_slide'] = 'Slide';
+$lang['ui_slides'] = 'Slides';
