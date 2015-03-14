@@ -48,6 +48,9 @@
 .word-break {
   word-break: break-all;
 }
+.break-word {
+  word-wrap: break-word;
+}
 .no-text-decoration {
   text-decoration: none;
 }
