@@ -15,6 +15,7 @@ class Datatables_ssp_ajax_controller extends Base_Ajax_Controller {
             ->database()
             ->library('datatable')
             ->model('countries')
+            ->helper('url')
         ;
     }
 
@@ -91,11 +92,18 @@ class Datatables_ssp_ajax_controller extends Base_Ajax_Controller {
 
     public function _formatter_action_map($value, $item) {
 
-        if (count(explode(',', $value)) != 2) {
+        $value = explode(',', $value);
+
+        if (count($value) != 2) {
             return '';
         }
 
-        $link = http_build_url('https://maps.google.com/maps', array('query' => http_build_query(array('q' => $value, 'z' => 6))));
+        $link = gmap_url($value[0], $value[1], 6);
+
+        if ($link == '') {
+            return '';
+        }
+
         return '<a href="'.$link.'" class="btn btn-default" title="'.$this->lang->line('ui_map').'" target="_blank"><i class="fa fa-map-marker fa-fw"></i></a>';
     }
 
