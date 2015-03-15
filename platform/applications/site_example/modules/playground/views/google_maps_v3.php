@@ -62,6 +62,8 @@ echo Modules::run('playground/country_dropdown_widget/index', array('element_nam
 
                                             <div id="map_canvas" class="google-maps"></div>
 
+                                            <p class="help-block" id="larger_map" style="display: none;"></p>
+
                                         </div>
 
                                     </div>

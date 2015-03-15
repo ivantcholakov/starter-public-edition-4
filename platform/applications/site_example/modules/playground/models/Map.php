@@ -6,7 +6,10 @@ class Map extends CI_Model {
 
         parent::__construct();
 
-        $this->load->model('countries');
+        $this->load
+            ->helper('url')
+            ->model('countries')
+        ;
     }
 
     public function guess($known_data) {
@@ -58,6 +61,7 @@ class Map extends CI_Model {
             'latitude' => (double) $latitude,
             'longitude' => (double) $longitude,
             'zoom' => (double) $zoom,
+            'link' => $found ? gmap_url($latitude, $longitude, $zoom) : '',
             'found' => $found,
         );
 

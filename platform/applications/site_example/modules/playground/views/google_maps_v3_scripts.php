@@ -54,6 +54,17 @@ echo js('lib/chosen-image/chosenImage.jquery.js');
                 }
 
                 map_marker.setVisible(data.found);
+
+                if (data.found) {
+
+                    $('#larger_map').html('<a href="' + data.link + '" target="_blank">' + <?php echo json_encode((string) $this->lang->line('ui_see_a_larger_map')); ?> + '</a>');
+                    $('#larger_map').show();
+
+                } else {
+
+                    $('#larger_map').hide();
+                    $('#larger_map').html('');
+                }
             }
         });
     }
