@@ -145,6 +145,92 @@ if (!function_exists('trim_html')) {
 
 }
 
+if (!function_exists('gmap')) {
+
+    /**
+     * Shows a simple Google Map at a given location and puts a marker on it.
+     * Uses Coogle Maps API version 3.
+     *
+     * @param   float       $latitude       The location's latitude.
+     * @param   float       $longitude      The location's longitude.
+     * @param   int         $zoom           The map zooming.
+     * @param   string      $element_id     The HTML id of the map containing element.
+     * @return  string                      Return HTML and JavaScript for displaying the map.
+     *
+     * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015
+     * @license The MIT License, http://opensource.org/licenses/MIT
+     */
+    function gmap($latitude, $longitude, $zoom = null, $element_id = null, $element_class = null) {
+
+        $latitude = (string) $latitude;
+        $longitude = (string) $longitude;
+
+        if ($latitude == '' || !is_numeric($latitude) || $longitude == '' || !is_numeric($longitude)) {
+            return;
+        }
+
+        $zoom = (int) $zoom;
+
+        if ($zoom <= 0) {
+            $zoom = 6;
+        }
+
+        $element_id = (string) $element_id;
+
+        if ($element_id == '') {
+            $element_id = 'map_canvas';
+        }
+
+        $element_class = (string) $element_class;
+
+        if ($element_class == '') {
+            $element_class = 'google-maps';
+        }
+
+        $prefix = str_replace('-', '_', $element_id).'_';
+
+        ob_start();
+
+?><div id="<?php echo $element_id; ?>" class="<?php echo $element_class; ?>"></div>
+
+<script type="text/javascript">
+//<![CDATA[
+
+if (typeof google == 'undefined' || typeof google.maps == 'undefined' ) {
+    document.write('<script type="text/javascript" src="<?php echo is_https() ? 'https:' : 'http:'; ?>//maps.google.com/maps/api/js?sensor=false">\x3C/script>');
+}
+
+$(function () {
+
+    var <?php echo $prefix; ?>latitude = <?php echo json_encode($latitude); ?>;
+    var <?php echo $prefix; ?>longitude = <?php echo json_encode($longitude); ?>;
+    var <?php echo $prefix; ?>zoom = <?php echo json_encode($zoom); ?>;
+
+    var <?php echo $prefix; ?>position = new google.maps.LatLng(<?php echo $prefix; ?>latitude, <?php echo $prefix; ?>longitude);
+
+    var <?php echo $prefix; ?>options = {
+         center: <?php echo $prefix; ?>position,
+         zoom: <?php echo $prefix; ?>zoom,
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+     };
+
+     var <?php echo $prefix; ?>map = new google.maps.Map(document.getElementById('<?php echo $element_id; ?>'), <?php echo $prefix; ?>options);
+     var <?php echo $prefix; ?>map_marker = new google.maps.Marker({map: <?php echo $prefix; ?>map, position: <?php echo $prefix; ?>position});
+});
+
+//]]>
+</script>
+
+<?php
+
+        $result = ob_get_contents();
+        ob_end_clean();
+
+        return $result;
+    }
+
+}
+
 
 //------------------------------------------------------------------------------
 
@@ -153,7 +239,7 @@ if (!function_exists('trim_html')) {
  * Adaptation by Ivan Tcholakov, OCT-2013.
  * Code is rewritten in procedural style,
  * it is less effective than the original.
- * 
+ *
  * The original work is from a PEAR package:
  * @category HTML
  * @package  HTML_Common2
