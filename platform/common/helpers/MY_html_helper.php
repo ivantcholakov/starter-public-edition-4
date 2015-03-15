@@ -151,11 +151,12 @@ if (!function_exists('gmap')) {
      * Shows a simple Google Map at a given location and puts a marker on it.
      * Uses Coogle Maps API version 3.
      *
-     * @param   float       $latitude       The location's latitude.
-     * @param   float       $longitude      The location's longitude.
-     * @param   int         $zoom           The map zooming.
-     * @param   string      $element_id     The HTML id of the map containing element.
-     * @return  string                      Return HTML and JavaScript for displaying the map.
+     * @param   float       $latitude           The location's latitude.
+     * @param   float       $longitude          The location's longitude.
+     * @param   int         $zoom               The map zooming.
+     * @param   string      $element_id         The id HTML attribute the map containing element.
+     * @param   string      $element_class      The class HTML attribute the map containing element.
+     * @return  string                          Return HTML and JavaScript for displaying the map.
      *
      * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015
      * @license The MIT License, http://opensource.org/licenses/MIT
