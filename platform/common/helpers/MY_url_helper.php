@@ -166,8 +166,8 @@ if ( ! function_exists('auto_link'))
      *
      * This array is supplied as the third argument, replacing the
      * optional argument $pop in the original helper.
-     * 
-     * This modified helper attempts to be backward compatible with the use of the 
+     *
+     * This modified helper attempts to be backward compatible with the use of the
      * original helper by accepting TRUE and FALSE as possible values for the $attributes
      * argument, and giving output identical to the original usage of the helper.
      *
@@ -182,8 +182,8 @@ if ( ! function_exists('auto_link'))
      * @see url_helper
      * @link http://codeigniter.com/user_guide/helpers/url_helper.html
      * @param string $str
-     * @param string $type 
-     * @param mixed $attributes 
+     * @param string $type
+     * @param mixed $attributes
      * @return string
      */
     function auto_link($str, $type = 'both', $attributes = '')
@@ -308,6 +308,48 @@ if (!function_exists('url_title') && IS_UTF8_CHARSET) {
         }
 
         return trim(trim($str, $separator));
+    }
+
+}
+
+if (!function_exists('gmap_url')) {
+
+    /**
+     * Returns a link for showing a Google Map at a given location.
+     *
+     * @param   float       $latitude           The location's latitude.
+     * @param   float       $longitude          The location's longitude.
+     * @param   int         $zoom               The map zooming.
+     * @param   boolean     $show_marker        TRUE - show a marker at the location, FALSE - don't show a marker.
+     * @return  string                          Returns a link to be opened with a browser.
+     *
+     * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015
+     * @license The MIT License, http://opensource.org/licenses/MIT
+     */
+    function gmap_url($latitude, $longitude, $zoom = null, $show_marker = true) {
+
+        $latitude = trim($latitude);
+        $longitude = trim($longitude);
+
+        if ($latitude == '' || !is_numeric($latitude) || $longitude == '' || !is_numeric($longitude)) {
+            return;
+        }
+
+        $zoom = (int) $zoom;
+
+        if ($zoom <= 0) {
+            $zoom = 1;
+        }
+
+        $show_marker = !empty($show_marker);
+
+        if ($show_marker) {
+            $result = "https://www.google.com/maps/place/$latitude+$longitude/@$latitude,$longitude,{$zoom}z";
+        } else {
+            $result = "https://www.google.com/maps/@$latitude,$longitude,{$zoom}z";
+        }
+
+        return $result;
     }
 
 }
