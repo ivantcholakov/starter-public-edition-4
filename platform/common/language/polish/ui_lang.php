@@ -196,3 +196,5 @@ $lang['ui_slide'] = 'Slide';
 $lang['ui_slides'] = 'Slides';
 $lang['ui_latest_users'] = 'Latest Registered Users';
 $lang['ui_view_all'] = 'View All';
+$lang['ui_note'] = 'Note';
+$lang['ui_notes'] = 'Notes';

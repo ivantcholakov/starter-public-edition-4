@@ -196,3 +196,5 @@ $lang['ui_slide'] = 'Кадър';
 $lang['ui_slides'] = 'Кадри';
 $lang['ui_latest_users'] = 'Последно регистрирани потребители';
 $lang['ui_view_all'] = 'Виж всички';
+$lang['ui_note'] = 'Забележка';
+$lang['ui_notes'] = 'Забележки';
