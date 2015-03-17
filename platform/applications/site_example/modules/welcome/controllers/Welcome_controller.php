@@ -80,14 +80,14 @@ class Welcome_controller extends Base_Controller {
             $diagnostics[] = 'Mailer service - <span style="color: red">disabled. Check $config[\'mailer_enabled\'] option within platform/core/common/config/config_site.php. Check also the mailer settings within platform/core/common/config/email.php.</span>';
         }
 
-        $diagnostics[] = '<br /><strong>UTF-8 Support:</strong>';
+        $diagnostics[] = '<br /><strong>UTF-8 support:</strong>';
         $diagnostics[] = 'IS_UTF8_CHARSET - '.(IS_UTF8_CHARSET ? $yes : $no);
         $diagnostics[] = 'MBSTRING_INSTALLED - '.(MBSTRING_INSTALLED ? $yes : $no);
         $diagnostics[] = 'ICONV_INSTALLED - '.(ICONV_INSTALLED ? $yes : $no);
         $diagnostics[] = 'PCRE_UTF8_INSTALLED - '.(PCRE_UTF8_INSTALLED ? $yes : $no);
         $diagnostics[] = 'INTL_INSTALLED (optional) - '.(INTL_INSTALLED ? $yes : $no);
 
-        $diagnostics[] = '<br /><strong>Cryptography Support:</strong>';
+        $diagnostics[] = '<br /><strong>Cryptography support:</strong>';
 
         $diagnostics[] = '\'openssl\' installed - '.(extension_loaded('openssl') ? $yes : $no);
         $diagnostics[] = 'or \'mcrypt\' installed - '.(defined('MCRYPT_DEV_URANDOM') ? $yes : $no);
