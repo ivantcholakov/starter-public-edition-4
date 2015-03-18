@@ -264,6 +264,20 @@ class Core_Model extends CI_Model
         }
     }
 
+    public function __clone()
+    {
+        if (is_object($this->_database))
+        {
+            // Make a clone of the query builder, so the state of the original one to be preserved.
+            $this->_database = clone $this->_database;
+        }
+
+        if (is_object($this->lang_model))
+        {
+            $this->lang_model = clone $this->lang_model;
+        }
+    }
+
     /**
      * An empty method that keeps chaining, the parameter does the desired operation as a side-effect.
      *
