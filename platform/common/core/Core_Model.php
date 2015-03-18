@@ -6,7 +6,7 @@
  * @link http://github.com/jamierumbelow/codeigniter-base-model
  * @copyright Copyright (c) 2012, Jamie Rumbelow <http://jamierumbelow.net>
  *
- * Some Modifications have been implemented by Ivan Tcholakov, 2012-2013
+ * Some modifications have been implemented by Ivan Tcholakov, 2012-2015
  * @link https://github.com/ivantcholakov/codeigniter-base-model
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy

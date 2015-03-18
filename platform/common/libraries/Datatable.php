@@ -19,7 +19,7 @@
  * For table responsiveness with server-side processing the following plugin is needed:
  * @link https://github.com/Comanche/datatables-responsive
  *
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, March 2014
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2015
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -117,11 +117,7 @@ class Datatable {
 
         if ($this->is_custom_model()) {
 
-            $db = $this->db->database();
-            $clone_db = clone $db;
-
             $clone = clone $this->db;
-            $clone->set_database($clone_db);
 
             // Ivan: I assume that DISTINCT is taken into account here.
             $recordsTotal = $clone->count_all();
