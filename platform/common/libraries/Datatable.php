@@ -115,20 +115,8 @@ class Datatable {
 
         $this->set_filters();
 
-        if ($this->is_custom_model()) {
-
-            $clone = clone $this->db;
-
-            // Ivan: I assume that DISTINCT is taken into account here.
-            $recordsTotal = $clone->count_all();
-
-        } else {
-
-            $clone = clone $this->db;
-
-            // Ivan: I assume that DISTINCT is taken into account here.
-            $recordsTotal = $clone->count_all_results();
-        }
+        $db = clone $this->db;
+        $recordsTotal = $db->count_all_results();
 
         $this->set_limit()->set_order();
 

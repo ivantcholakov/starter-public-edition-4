@@ -1210,6 +1210,14 @@ class Core_Model extends CI_Model
     }
 
     /**
+     * An alias of count_all();
+     */
+    public function count_all_results()
+    {
+        return $this->count_all();
+    }
+
+    /**
      * Tell the class to skip the insert validation
      */
     public function skip_validation()
