@@ -412,4 +412,58 @@ $config['languages'] = array(
         'flag' => 'ES',
     ),
 
+    'bangla' => array(
+        'code' => 'bn',
+        'direction' => 'ltr',
+        'uri_segment' => 'bn',
+        'name' => 'বাংলা',
+        'name_en' => 'Bengali',
+        'flag' => 'IN',
+    ),
+
+    'filipino' => array(
+        'code' => 'fil',
+        'direction' => 'ltr',
+        'uri_segment' => 'fil',
+        'name' => 'Filipino',
+        'name_en' => 'Filipino',
+        'flag' => 'PH',
+    ),
+
+    'gujarati' => array(
+        'code' => 'gu',
+        'direction' => 'ltr',
+        'uri_segment' => 'gu',
+        'name' => 'ગુજરાતી',
+        'name_en' => 'Gujarati',
+        'flag' => 'IN',
+    ),
+
+    'khmer' => array(
+        'code' => 'km',
+        'direction' => 'ltr',
+        'uri_segment' => 'km',
+        'name' => 'ខ្មែរ',
+        'name_en' => 'Khmer',
+        'flag' => 'KH',
+    ),
+
+    'tamil' => array(
+        'code' => 'ta',
+        'direction' => 'ltr',
+        'uri_segment' => 'ta',
+        'name' => 'தமிழ்',
+        'name_en' => 'Tamil',
+        'flag' => 'LK',
+    ),
+
+    'urdu' => array(
+        'code' => 'ur',
+        'direction' => 'rtl',
+        'uri_segment' => 'ur',
+        'name' => 'اردو',
+        'name_en' => 'Urdu',
+        'flag' => 'PK',
+    ),
+
 );
