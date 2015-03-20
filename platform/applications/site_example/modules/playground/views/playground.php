@@ -35,7 +35,10 @@
                         <br />
                         <span class="text-muted">This component might be used by HTMLPurifier, so let us have a look at its test.</span>
                     </li>
-                    <li><a href="<?php echo base_url('non-mvc/normalize.css.php'); ?>">Testing normalize.css</a></li>
+                    <li><a href="<?php echo base_url('non-mvc/normalize-v1.css.php'); ?>">Testing normalize.css, v1.x</a></li>
+                    <li><a href="<?php echo base_url('non-mvc/normalize-v2.css.php'); ?>">Testing normalize.css, v2.x</a></li>
+                    <li><a href="<?php echo base_url('non-mvc/normalize-v3.css.php'); ?>">Testing normalize.css, v3.x</a></li>
+                    <li><a href="<?php echo base_url('non-mvc/normalize-v3.css-2.php'); ?>">Testing normalize.css, v3.x, the test is from v2.x</a></li>
                     <li><a href="<?php echo base_url('non-mvc/password_hash_test.php'); ?>">PasswordHash Test</a></li>
                     <li><a href="<?php echo base_url('non-mvc/redis_caching_driver_test.php'); ?>">Redis Caching Driver Test</a> (Redis server and phpredis extension must be set up first)</li>
                 </ul>

@@ -23,7 +23,8 @@ echo favicon();
 echo apple_touch_icon_precomposed();
 echo cleartype_ie();
 
-echo css_normalize();
+echo css('lib/normalize-2/normalize.css');
+echo js('lib/html5shiv/html5shiv.min.js');
 
 ?>
 
@@ -42,7 +43,7 @@ echo css_normalize();
 
 echo js_platform();
 echo js_selectivizr();
-echo js_modernizr();
+//echo js_modernizr();
 echo js_respond();
 echo js_jquery();
 
