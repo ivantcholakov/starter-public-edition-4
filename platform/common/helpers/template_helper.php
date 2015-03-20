@@ -291,7 +291,7 @@ if (!function_exists('html_tag')) {
     <html'.$attributes.'>
     <!--<![endif]-->';
         }
-            
+
         return
 "<!DOCTYPE html>
 <html$attributes>";
@@ -455,7 +455,8 @@ if (!function_exists('css_normalize')) {
             return css('lib/normalize-1/normalize.css');
         }
 
-        return css('lib/normalize-2/normalize.css');
+        //return css('lib/normalize-2/normalize.css');
+        return css('lib/normalize-3/normalize.css');
     }
 }
 
