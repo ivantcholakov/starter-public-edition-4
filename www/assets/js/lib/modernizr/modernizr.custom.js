@@ -1,4 +1,4 @@
-/* Modernizr 2.6.2 (Custom Build) | MIT & BSD
+/* Modernizr 2.8.3 (Custom Build) | MIT & BSD
  * Build: http://modernizr.com/download/#-fontface-backgroundsize-borderimage-borderradius-boxshadow-flexbox-hsla-multiplebgs-opacity-rgba-textshadow-cssanimations-csscolumns-generatedcontent-cssgradients-cssreflections-csstransforms-csstransforms3d-csstransitions-applicationcache-canvas-canvastext-draganddrop-hashchange-history-audio-video-indexeddb-input-inputtypes-localstorage-postmessage-sessionstorage-websockets-websqldatabase-webworkers-geolocation-inlinesvg-smil-svg-svgclippaths-touch-webgl-printshiv-mq-cssclasses-addtest-teststyles-testprop-testallprops-hasevent-prefixes-domprefixes-cookies-css_backgroundrepeat-css_backgroundsizecover-css_boxsizing-css_cubicbezierrange-css_displaytable-css_overflow_scrolling-css_pointerevents-css_userselect-custom_protocol_handler-dom_createElement_attrs-elem_details-elem_progress_meter-emoji-event_deviceorientation_motion-file_api-forms_placeholder-img_webp-url_data_uri-webgl_extensions-window_framed-workers_sharedworkers-load
  */
 ;
@@ -7,7 +7,7 @@
 
 window.Modernizr = (function( window, document, undefined ) {
 
-    var version = '2.6.2',
+    var version = '2.8.3',
 
     Modernizr = {},
 
@@ -91,7 +91,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
       var matchMedia = window.matchMedia || window.msMatchMedia;
       if ( matchMedia ) {
-        return matchMedia(mq).matches;
+        return matchMedia(mq) && matchMedia(mq).matches || false;
       }
 
       var bool;
@@ -652,17 +652,22 @@ window.Modernizr = (function( window, document, undefined ) {
     return Modernizr;
 
 })(this, this.document);
-/*! HTML5 Shiv v3.6 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed */
+/**
+* @preserve HTML5 Shiv prev3.7.1 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed
+*/
 ;(function(window, document) {
 /*jshint evil:true */
+  /** version */
+  var version = '3.7.0';
+
   /** Preset options */
   var options = window.html5 || {};
 
   /** Used to skip problem elements */
   var reSkip = /^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i;
 
-  /** Not all elements can be cloned in IE (this list can be shortend) **/
-  var saveClones = /^<|^(?:a|b|button|code|div|fieldset|form|h1|h2|h3|h4|h5|h6|i|iframe|img|input|label|li|link|ol|option|p|param|q|script|select|span|strong|style|table|tbody|td|textarea|tfoot|th|thead|tr|ul)$/i;
+  /** Not all elements can be cloned in IE **/
+  var saveClones = /^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i;
 
   /** Detect whether the browser supports default html5 styles */
   var supportsHtml5Styles;
@@ -697,6 +702,7 @@ window.Modernizr = (function( window, document, undefined ) {
           );
         }());
     } catch(e) {
+      // assign a false positive if detection fails => unable to shiv
       supportsHtml5Styles = true;
       supportsUnknownElements = true;
     }
@@ -729,7 +735,7 @@ window.Modernizr = (function( window, document, undefined ) {
     var elements = html5.elements;
     return typeof elements == 'string' ? elements.split(' ') : elements;
   }
-  
+
     /**
    * Returns the data associated to the given document
    * @private
@@ -781,7 +787,7 @@ window.Modernizr = (function( window, document, undefined ) {
     //   a 403 response, will cause the tab/window to crash
     // * Script elements appended to fragments will execute when their `src`
     //   or `text` property is set
-    return node.canHaveChildren && !reSkip.test(nodeName) ? data.frag.appendChild(node) : node;
+    return node.canHaveChildren && !reSkip.test(nodeName) && !node.tagUrn ? data.frag.appendChild(node) : node;
   }
 
   /**
@@ -861,9 +867,11 @@ window.Modernizr = (function( window, document, undefined ) {
     if (html5.shivCSS && !supportsHtml5Styles && !data.hasCSS) {
       data.hasCSS = !!addStyleSheet(ownerDocument,
         // corrects block display not defined in IE6/7/8/9
-        'article,aside,figcaption,figure,footer,header,hgroup,nav,section{display:block}' +
+        'article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}' +
         // adds styling not present in IE6/7/8/9
-        'mark{background:#FF0;color:#000}'
+        'mark{background:#FF0;color:#000}' +
+        // hides non-rendered elements
+        'template{display:none}'
       );
     }
     if (!supportsUnknownElements) {
@@ -890,7 +898,12 @@ window.Modernizr = (function( window, document, undefined ) {
      * @memberOf html5
      * @type Array|String
      */
-    'elements': options.elements || 'abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup mark meter nav output progress section summary time video',
+    'elements': options.elements || 'abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video',
+
+    /**
+     * current version of html5shiv
+     */
+    'version': version,
 
     /**
      * A flag to indicate that the HTML5 style sheet should be inserted.
@@ -1137,19 +1150,11 @@ window.Modernizr = (function( window, document, undefined ) {
   // shiv for print
   shivPrint(document);
 
-}(this, document));/*yepnope1.5.4|WTFPL*/
+}(this, document));
+/*yepnope1.5.4|WTFPL*/
 (function(a,b,c){function d(a){return"[object Function]"==o.call(a)}function e(a){return"string"==typeof a}function f(){}function g(a){return!a||"loaded"==a||"complete"==a||"uninitialized"==a}function h(){var a=p.shift();q=1,a?a.t?m(function(){("c"==a.t?B.injectCss:B.injectJs)(a.s,0,a.a,a.x,a.e,1)},0):(a(),h()):q=0}function i(a,c,d,e,f,i,j){function k(b){if(!o&&g(l.readyState)&&(u.r=o=1,!q&&h(),l.onload=l.onreadystatechange=null,b)){"img"!=a&&m(function(){t.removeChild(l)},50);for(var d in y[c])y[c].hasOwnProperty(d)&&y[c][d].onload()}}var j=j||B.errorTimeout,l=b.createElement(a),o=0,r=0,u={t:d,s:c,e:f,a:i,x:j};1===y[c]&&(r=1,y[c]=[]),"object"==a?l.data=c:(l.src=c,l.type=a),l.width=l.height="0",l.onerror=l.onload=l.onreadystatechange=function(){k.call(this,r)},p.splice(e,0,u),"img"!=a&&(r||2===y[c]?(t.insertBefore(l,s?null:n),m(k,j)):y[c].push(l))}function j(a,b,c,d,f){return q=0,b=b||"j",e(a)?i("c"==b?v:u,a,b,this.i++,c,d,f):(p.splice(this.i++,0,a),1==p.length&&h()),this}function k(){var a=B;return a.loader={load:j,i:0},a}var l=b.documentElement,m=a.setTimeout,n=b.getElementsByTagName("script")[0],o={}.toString,p=[],q=0,r="MozAppearance"in l.style,s=r&&!!b.createRange().compareNode,t=s?l:n.parentNode,l=a.opera&&"[object Opera]"==o.call(a.opera),l=!!b.attachEvent&&!l,u=r?"object":l?"script":"img",v=l?"script":u,w=Array.isArray||function(a){return"[object Array]"==o.call(a)},x=[],y={},z={timeout:function(a,b){return b.length&&(a.timeout=b[0]),a}},A,B;B=function(a){function b(a){var a=a.split("!"),b=x.length,c=a.pop(),d=a.length,c={url:c,origUrl:c,prefixes:a},e,f,g;for(f=0;f<d;f++)g=a[f].split("="),(e=z[g.shift()])&&(c=e(c,g));for(f=0;f<b;f++)c=x[f](c);return c}function g(a,e,f,g,h){var i=b(a),j=i.autoCallback;i.url.split(".").pop().split("?").shift(),i.bypass||(e&&(e=d(e)?e:e[a]||e[g]||e[a.split("/").pop().split("?")[0]]),i.instead?i.instead(a,e,f,g,h):(y[i.url]?i.noexec=!0:y[i.url]=1,f.load(i.url,i.forceCSS||!i.forceJS&&"css"==i.url.split(".").pop().split("?").shift()?"c":c,i.noexec,i.attrs,i.timeout),(d(e)||d(j))&&f.load(function(){k(),e&&e(i.origUrl,h,g),j&&j(i.origUrl,h,g),y[i.url]=2})))}function h(a,b){function c(a,c){if(a){if(e(a))c||(j=function(){var a=[].slice.call(arguments);k.apply(this,a),l()}),g(a,j,b,0,h);else if(Object(a)===a)for(n in m=function(){var b=0,c;for(c in a)a.hasOwnProperty(c)&&b++;return b}(),a)a.hasOwnProperty(n)&&(!c&&!--m&&(d(j)?j=function(){var a=[].slice.call(arguments);k.apply(this,a),l()}:j[n]=function(a){return function(){var b=[].slice.call(arguments);a&&a.apply(this,b),l()}}(k[n])),g(a[n],j,b,n,h))}else!c&&l()}var h=!!a.test,i=a.load||a.both,j=a.callback||f,k=j,l=a.complete||f,m,n;c(h?a.yep:a.nope,!!i),i&&c(i)}var i,j,l=this.yepnope.loader;if(e(a))g(a,0,l,0);else if(w(a))for(i=0;i<a.length;i++)j=a[i],e(j)?g(j,0,l,0):w(j)?B(j):Object(j)===j&&h(j,l);else Object(a)===a&&h(a,l)},B.addPrefix=function(a,b){z[a]=b},B.addFilter=function(a){x.push(a)},B.errorTimeout=1e4,null==b.readyState&&b.addEventListener&&(b.readyState="loading",b.addEventListener("DOMContentLoaded",A=function(){b.removeEventListener("DOMContentLoaded",A,0),b.readyState="complete"},0)),a.yepnope=k(),a.yepnope.executeStack=h,a.yepnope.injectJs=function(a,c,d,e,i,j){var k=b.createElement("script"),l,o,e=e||B.errorTimeout;k.src=a;for(o in d)k.setAttribute(o,d[o]);c=j?h:c||f,k.onreadystatechange=k.onload=function(){!l&&g(k.readyState)&&(l=1,c(),k.onload=k.onreadystatechange=null)},m(function(){l||(l=1,c(1))},e),i?k.onload():n.parentNode.insertBefore(k,n)},a.yepnope.injectCss=function(a,c,d,e,g,i){var e=b.createElement("link"),j,c=i?h:c||f;e.href=a,e.rel="stylesheet",e.type="text/css";for(j in d)e.setAttribute(j,d[j]);g||(n.parentNode.insertBefore(e,n),m(c,0))}})(this,document);
 Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0));};
 
-// developer.mozilla.org/en/CSS/background-size
-
-Modernizr.testStyles( '#modernizr{background-size:cover}', function( elem ) {
-	var style = window.getComputedStyle ?
-		window.getComputedStyle( elem, null )
-		: elem.currentStyle;
-		
-	Modernizr.addTest( 'bgsizecover', style.backgroundSize == 'cover' );
-});
 // by tauren
 // https://github.com/Modernizr/Modernizr/issues/191
 
@@ -1196,6 +1201,59 @@ Modernizr.testStyles(' #modernizr { background-repeat: space; } ', function(elem
 
 })();
 
+// developer.mozilla.org/en/CSS/background-size
+
+Modernizr.testStyles( '#modernizr{background-size:cover}', function( elem ) {
+	var style = window.getComputedStyle ?
+		window.getComputedStyle( elem, null )
+		: elem.currentStyle;
+		
+	Modernizr.addTest( 'bgsizecover', style.backgroundSize == 'cover' );
+});
+// developer.mozilla.org/en/CSS/box-sizing
+// github.com/Modernizr/Modernizr/issues/248
+
+Modernizr.addTest("boxsizing",function(){
+    return Modernizr.testAllProps("boxSizing") && (document.documentMode === undefined || document.documentMode > 7);
+});
+
+
+// cubic-bezier values can't be > 1 for Webkit until bug #45761 (https://bugs.webkit.org/show_bug.cgi?id=45761) is fixed
+// By @calvein
+
+Modernizr.addTest('cubicbezierrange', function() {
+    var el = document.createElement('div');
+    el.style.cssText = Modernizr._prefixes.join('transition-timing-function' + ':cubic-bezier(1,0,0,1.1); ');
+    return !!el.style.length;
+});
+// display: table and table-cell test. (both are tested under one name "table-cell" )
+// By @scottjehl
+
+// all additional table display values are here: http://pastebin.com/Gk9PeVaQ though Scott has seen some IE false positives with that sort of weak detection.
+// more testing neccessary perhaps.
+
+Modernizr.addTest( "display-table",function(){
+  
+  var doc   = window.document,
+      docElem = doc.documentElement,   
+      parent  = doc.createElement( "div" ),
+      child = doc.createElement( "div" ),
+      childb  = doc.createElement( "div" ),
+      ret;
+  
+  parent.style.cssText = "display: table";
+  child.style.cssText = childb.style.cssText = "display: table-cell; padding: 10px";    
+          
+  parent.appendChild( child );
+  parent.appendChild( childb );
+  docElem.insertBefore( parent, docElem.firstChild );
+  
+  ret = child.offsetLeft < childb.offsetLeft;
+  docElem.removeChild(parent);
+  return ret; 
+});
+
+
 // johanbrook.com/browsers/native-momentum-scrolling-ios-5/
 // introduced in iOS5b2. Possible API may change...
 
@@ -1229,7 +1287,62 @@ Modernizr.addTest('pointerevents', function(){
     documentElement.removeChild(element);
     return !!supports;
 });
-//By Stefan Wallin
+// -moz-user-select:none test.
+
+// by ryan seddon
+//https://github.com/Modernizr/Modernizr/issues/250
+
+
+Modernizr.addTest("userselect",function(){
+    return Modernizr.testAllProps("user-select");
+});
+
+/*
+	Custom protocol handler support
+	http://developers.whatwg.org/timers.html#custom-handlers
+	
+	Added by @benschwarz
+*/
+
+Modernizr.addTest('customprotocolhandler', function () {
+    return !!navigator.registerProtocolHandler;
+});
+// by james a rosen.
+// https://github.com/Modernizr/Modernizr/issues/258
+
+Modernizr.addTest('createelement-attrs', function() {
+  try {
+    return document.createElement("<input name='test' />").getAttribute('name') == 'test';
+  } catch(e) {
+    return false;
+  }
+});
+
+// By @mathias, based on http://mths.be/axh
+Modernizr.addTest('details', function() {
+    var doc = document,
+        el = doc.createElement('details'),
+        fake,
+        root,
+        diff;
+    if (!('open' in el)) { // return early if possible; thanks @aFarkas!
+        return false;
+    }
+    root = doc.body || (function() {
+        var de = doc.documentElement;
+        fake = true;
+        return de.insertBefore(doc.createElement('body'), de.firstElementChild || de.firstChild);
+    }());
+    el.innerHTML = '<summary>a</summary>b';
+    el.style.display = 'block';
+    root.appendChild(el);
+    diff = el.offsetHeight;
+    el.open = true;
+    diff = diff != el.offsetHeight;
+    root.removeChild(el);
+    fake && root.parentNode.removeChild(root);
+    return diff;
+});//By Stefan Wallin
 
 //tests for progressbar-support. All browsers that don't support progressbar returns undefined =)
 Modernizr.addTest("progressbar",function(){
@@ -1250,7 +1363,59 @@ Modernizr.addTest('emoji', function() {
   ctx.font = '32px Arial';
   ctx.fillText('\ud83d\ude03', 0, 0); // "smiling face with open mouth" emoji
   return ctx.getImageData(16, 16, 1, 1).data[0] !== 0;
-});// data uri test.
+});//By Shi Chuan
+//Part of Device Access aspect of HTML5, same category as geolocation
+//W3C Editor's Draft at http://dev.w3.org/geo/api/spec-source-orientation.html
+//Implementation by iOS Safari at http://goo.gl/fhce3 and http://goo.gl/rLKz8
+
+
+//test for Device Motion Event support, returns boolean value true/false
+Modernizr.addTest('devicemotion', ('DeviceMotionEvent' in window) );
+
+//test for Device Orientation Event support, returns boolean value true/false
+Modernizr.addTest('deviceorientation', ('DeviceOrientationEvent' in window) );
+/**
+ * file tests for the File API specification
+ *   Tests for objects specific to the File API W3C specification without
+ *   being redundant (don't bother testing for Blob since it is assumed
+ *   to be the File object's prototype.
+ *
+ *   Will fail in Safari 5 due to its lack of support for the standards
+ *   defined FileReader object
+ */
+Modernizr.addTest('filereader', function () {
+    return !!(window.File && window.FileList && window.FileReader);
+});
+// testing for placeholder attribute in inputs and textareas
+// re-using Modernizr.input if available
+
+Modernizr.addTest('placeholder', function(){
+
+  return !!( 'placeholder' in ( Modernizr.input    || document.createElement('input')    ) && 
+             'placeholder' in ( Modernizr.textarea || document.createElement('textarea') )
+           );
+
+});
+// code.google.com/speed/webp/
+// by rich bradshaw, ryan seddon, and paul irish
+
+
+// This test is asynchronous. Watch out.
+
+(function(){
+
+  var image = new Image();
+
+  image.onerror = function() {
+      Modernizr.addTest('webp', false);
+  };  
+  image.onload = function() {
+      Modernizr.addTest('webp', function() { return image.width == 1; });
+  };
+
+  image.src = 'data:image/webp;base64,UklGRiwAAABXRUJQVlA4ICAAAAAUAgCdASoBAAEAL/3+/3+CAB/AAAFzrNsAAP5QAAAAAA==';
+
+}());// data uri test.
 // https://github.com/Modernizr/Modernizr/issues/14
 
 // This test is asynchronous. Watch out.
@@ -1276,35 +1441,6 @@ Modernizr.addTest('emoji', function() {
   datauri.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
 
 })();
-// -moz-user-select:none test.
-
-// by ryan seddon
-//https://github.com/Modernizr/Modernizr/issues/250
-
-
-Modernizr.addTest("userselect",function(){
-    return Modernizr.testAllProps("user-select");
-});
-
-//By Shi Chuan
-//Part of Device Access aspect of HTML5, same category as geolocation
-//W3C Editor's Draft at http://dev.w3.org/geo/api/spec-source-orientation.html
-//Implementation by iOS Safari at http://goo.gl/fhce3 and http://goo.gl/rLKz8
-
-
-//test for Device Motion Event support, returns boolean value true/false
-Modernizr.addTest('devicemotion', ('DeviceMotionEvent' in window) );
-
-//test for Device Orientation Event support, returns boolean value true/false
-Modernizr.addTest('deviceorientation', ('DeviceOrientationEvent' in window) );
-
-// tests if page is iframed
-
-// github.com/Modernizr/Modernizr/issues/242
-
-Modernizr.addTest('framed', function(){
-  return window.location != top.location;
-});
 
 // Grab the WebGL extensions currently supported and add to the Modernizr.webgl object
 // spec: www.khronos.org/registry/webgl/specs/latest/#5.13.14
@@ -1346,136 +1482,14 @@ Modernizr.addTest('framed', function(){
     }
 
     canvas = undefined;
-})();Modernizr.addTest('sharedworkers', function(){
+})();
+// tests if page is iframed
+
+// github.com/Modernizr/Modernizr/issues/242
+
+Modernizr.addTest('framed', function(){
+  return window.location != top.location;
+});
+Modernizr.addTest('sharedworkers', function(){
   return !!window.SharedWorker;
-});// display: table and table-cell test. (both are tested under one name "table-cell" )
-// By @scottjehl
-
-// all additional table display values are here: http://pastebin.com/Gk9PeVaQ though Scott has seen some IE false positives with that sort of weak detection.
-// more testing neccessary perhaps.
-
-Modernizr.addTest( "display-table",function(){
-  
-  var doc   = window.document,
-      docElem = doc.documentElement,   
-      parent  = doc.createElement( "div" ),
-      child = doc.createElement( "div" ),
-      childb  = doc.createElement( "div" ),
-      ret;
-  
-  parent.style.cssText = "display: table";
-  child.style.cssText = childb.style.cssText = "display: table-cell; padding: 10px";    
-          
-  parent.appendChild( child );
-  parent.appendChild( childb );
-  docElem.insertBefore( parent, docElem.firstChild );
-  
-  ret = child.offsetLeft < childb.offsetLeft;
-  docElem.removeChild(parent);
-  return ret; 
-});
-
-// By @mathias, based on http://mths.be/axh
-Modernizr.addTest('details', function() {
-    var doc = document,
-        el = doc.createElement('details'),
-        fake,
-        root,
-        diff;
-    if (!('open' in el)) { // return early if possible; thanks @aFarkas!
-        return false;
-    }
-    root = doc.body || (function() {
-        var de = doc.documentElement;
-        fake = true;
-        return de.insertBefore(doc.createElement('body'), de.firstElementChild || de.firstChild);
-    }());
-    el.innerHTML = '<summary>a</summary>b';
-    el.style.display = 'block';
-    root.appendChild(el);
-    diff = el.offsetHeight;
-    el.open = true;
-    diff = diff != el.offsetHeight;
-    root.removeChild(el);
-    fake && root.parentNode.removeChild(root);
-    return diff;
-});// cubic-bezier values can't be > 1 for Webkit until bug #45761 (https://bugs.webkit.org/show_bug.cgi?id=45761) is fixed
-// By @calvein
-
-Modernizr.addTest('cubicbezierrange', function() {
-    var el = document.createElement('div');
-    el.style.cssText = Modernizr._prefixes.join('transition-timing-function' + ':cubic-bezier(1,0,0,1.1); ');
-    return !!el.style.length;
-});
-// by james a rosen.
-// https://github.com/Modernizr/Modernizr/issues/258
-
-Modernizr.addTest('createelement-attrs', function() {
-  try {
-    return document.createElement("<input name='test' />").getAttribute('name') == 'test';
-  } catch(e) {
-    return false;
-  }
-});
-
-// testing for placeholder attribute in inputs and textareas
-// re-using Modernizr.input if available
-
-Modernizr.addTest('placeholder', function(){
-
-  return !!( 'placeholder' in ( Modernizr.input    || document.createElement('input')    ) && 
-             'placeholder' in ( Modernizr.textarea || document.createElement('textarea') )
-           );
-
-});
-
-// developer.mozilla.org/en/CSS/box-sizing
-// github.com/Modernizr/Modernizr/issues/248
-
-Modernizr.addTest("boxsizing",function(){
-    return Modernizr.testAllProps("boxSizing") && (document.documentMode === undefined || document.documentMode > 7);
-});
-
-
-// code.google.com/speed/webp/
-// by rich bradshaw, ryan seddon, and paul irish
-
-
-// This test is asynchronous. Watch out.
-
-(function(){
-
-  var image = new Image();
-
-  image.onerror = function() {
-      Modernizr.addTest('webp', false);
-  };  
-  image.onload = function() {
-      Modernizr.addTest('webp', function() { return image.width == 1; });
-  };
-
-  image.src = 'data:image/webp;base64,UklGRiwAAABXRUJQVlA4ICAAAAAUAgCdASoBAAEAL/3+/3+CAB/AAAFzrNsAAP5QAAAAAA==';
-
-}());/**
- * file tests for the File API specification
- *   Tests for objects specific to the File API W3C specification without
- *   being redundant (don't bother testing for Blob since it is assumed
- *   to be the File object's prototype.
- *
- *   Will fail in Safari 5 due to its lack of support for the standards
- *   defined FileReader object
- */
-Modernizr.addTest('filereader', function () {
-    return !!(window.File && window.FileList && window.FileReader);
-});
-/*
-	Custom protocol handler support
-	http://developers.whatwg.org/timers.html#custom-handlers
-	
-	Added by @benschwarz
-*/
-
-Modernizr.addTest('customprotocolhandler', function () {
-    return !!navigator.registerProtocolHandler;
-});
-;
+});;
