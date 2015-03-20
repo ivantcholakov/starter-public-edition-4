@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2015
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -11,36 +11,34 @@ class Gibberish_aes_controller extends Base_Controller {
 
         parent::__construct();
 
-        $this->encryption_key = 'my secret key (таен ключ)';
+        $this->pass = 'my secret long pass-phrase (тайна парола) qiYV3xmL5uW1bUeGe6gZH1aaaA4HFgwkwux2uKSKcSmCW6XprmNmkEKdma76Zr1';
         $this->secret_string = 'my secret message (тайно съобщение)';
 
-        $this->template
-            ->title('GibberishAES Test')
-        ;
+        $this->template->title('GibberishAES Test');
 
         $this->registry->set('nav', 'playground');
     }
 
     public function index() {
 
-        $key = $this->encryption_key;
+        $pass = $this->pass;
         $secret_string = $this->secret_string;
 
         $old_key_size = GibberishAES::size();
         GibberishAES::size(256);
-        $encrypted_secret_string_256 = GibberishAES::enc($secret_string, $key);
-        $decrypted_secret_string_256 = GibberishAES::dec($encrypted_secret_string_256, $key);
+        $encrypted_secret_string_256 = GibberishAES::enc($secret_string, $pass);
+        $decrypted_secret_string_256 = GibberishAES::dec($encrypted_secret_string_256, $pass);
         GibberishAES::size(192);
-        $encrypted_secret_string_192 = GibberishAES::enc($secret_string, $key);
-        $decrypted_secret_string_192 = GibberishAES::dec($encrypted_secret_string_192, $key);
+        $encrypted_secret_string_192 = GibberishAES::enc($secret_string, $pass);
+        $decrypted_secret_string_192 = GibberishAES::dec($encrypted_secret_string_192, $pass);
         GibberishAES::size(128);
-        $encrypted_secret_string_128 = GibberishAES::enc($secret_string, $key);
-        $decrypted_secret_string_128 = GibberishAES::dec($encrypted_secret_string_128, $key);
+        $encrypted_secret_string_128 = GibberishAES::enc($secret_string, $pass);
+        $decrypted_secret_string_128 = GibberishAES::dec($encrypted_secret_string_128, $pass);
         GibberishAES::size($old_key_size);
 
         $this->template
             ->set(compact(
-                'key',
+                'pass',
                 'secret_string',
                 'encrypted_secret_string_256',
                 'decrypted_secret_string_256',
@@ -60,7 +58,7 @@ class Gibberish_aes_controller extends Base_Controller {
 
         $this->output->set_header('Content-Type: application/json; charset=utf-8', true);
 
-        $key = $this->encryption_key;
+        $pass = $this->pass;
 
         $encrypted_secret_string_256 = $this->input->post('encrypted_secret_string_256');
         $encrypted_secret_string_192 = $this->input->post('encrypted_secret_string_192');
@@ -68,11 +66,11 @@ class Gibberish_aes_controller extends Base_Controller {
 
         $old_key_size = GibberishAES::size();
         GibberishAES::size(256);
-        $decrypted_secret_string_256 = GibberishAES::dec($encrypted_secret_string_256, $key);
+        $decrypted_secret_string_256 = GibberishAES::dec($encrypted_secret_string_256, $pass);
         GibberishAES::size(192);
-        $decrypted_secret_string_192 = GibberishAES::dec($encrypted_secret_string_192, $key);
+        $decrypted_secret_string_192 = GibberishAES::dec($encrypted_secret_string_192, $pass);
         GibberishAES::size(128);
-        $decrypted_secret_string_128 = GibberishAES::dec($encrypted_secret_string_128, $key);
+        $decrypted_secret_string_128 = GibberishAES::dec($encrypted_secret_string_128, $pass);
         GibberishAES::size($old_key_size);
 
         $this->output->set_output(

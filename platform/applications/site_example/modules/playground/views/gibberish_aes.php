@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2015
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -23,11 +23,11 @@
 
                         <p><a href="https://github.com/mdp/gibberish-aes" target="_blank">https://github.com/mdp/gibberish-aes</a></p>
 
-                        <pre><?php echo htmlspecialchars('var key = \''.$key.'\';
+                        <pre><?php echo htmlspecialchars('var pass = \''.$pass.'\';
 var secret_string = \''.$secret_string.'\';
 GibberishAES.size(256);    // Also 192, 128
-var encrypted_secret_string = GibberishAES.enc(secret_string, key);
-var decrypted_secret_string = GibberishAES.dec(encrypted_secret_string, key);
+var encrypted_secret_string = GibberishAES.enc(secret_string, pass);
+var decrypted_secret_string = GibberishAES.dec(encrypted_secret_string, pass);
 GibberishAES.size(256);  // Restore the default key size.', ENT_QUOTES, 'UTF-8') ?></pre>
 
                         <table class="table table-bordered table-striped" style="table-layout: fixed; word-wrap: break-word;">
@@ -85,12 +85,12 @@ GibberishAES.size(256);  // Restore the default key size.', ENT_QUOTES, 'UTF-8')
 
                         <p><a href="https://github.com/ivantcholakov/gibberish-aes-php" target="_blank">https://github.com/ivantcholakov/gibberish-aes-php</a></p>
 
-                        <pre><?php echo htmlspecialchars('$key = \''.$key.'\';
+                        <pre><?php echo htmlspecialchars('$pass = \''.$pass.'\';
 $secret_string = \''.$secret_string.'\';
 $old_key_size = GibberishAES::size();
 GibberishAES::size(256);    // Also 192, 128
-$encrypted_secret_string = GibberishAES::enc($secret_string, $key);
-$decrypted_secret_string = GibberishAES::dec($encrypted_secret_string, $key);
+$encrypted_secret_string = GibberishAES::enc($secret_string, $pass);
+$decrypted_secret_string = GibberishAES::dec($encrypted_secret_string, $pass);
 GibberishAES::size($old_key_size);  // Restore the old key size.', ENT_QUOTES, 'UTF-8') ?></pre>
 
                         <table class="table table-bordered table-striped" style="table-layout: fixed; word-wrap: break-word;">
