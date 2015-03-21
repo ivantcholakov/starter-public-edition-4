@@ -466,4 +466,13 @@ $config['languages'] = array(
         'flag' => 'PK',
     ),
 
+    'hindi' => array(
+        'code' => 'hi',
+        'direction' => 'ltr',
+        'uri_segment' => 'hi',
+        'name' => 'हिंदी',
+        'name_en' => 'Hindi',
+        'flag' => 'IN',
+    ),
+
 );
