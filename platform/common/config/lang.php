@@ -412,15 +412,6 @@ $config['languages'] = array(
         'flag' => 'ES',
     ),
 
-    'bangla' => array(
-        'code' => 'bn',
-        'direction' => 'ltr',
-        'uri_segment' => 'bn',
-        'name' => 'বাংলা',
-        'name_en' => 'Bengali',
-        'flag' => 'IN',
-    ),
-
     'filipino' => array(
         'code' => 'fil',
         'direction' => 'ltr',
@@ -473,6 +464,15 @@ $config['languages'] = array(
         'name' => 'हिंदी',
         'name_en' => 'Hindi',
         'flag' => 'IN',
+    ),
+
+    'azerbaijani' => array(
+        'code' => 'az',
+        'direction' => 'ltr',
+        'uri_segment' => 'az',
+        'name' => 'Azərbaycan',
+        'name_en' => 'Azerbaijani',
+        'flag' => 'AZ',
     ),
 
 );
