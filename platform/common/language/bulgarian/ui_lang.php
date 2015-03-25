@@ -198,3 +198,4 @@ $lang['ui_latest_users'] = 'Последно регистрирани потре
 $lang['ui_view_all'] = 'Виж всички';
 $lang['ui_note'] = 'Забележка';
 $lang['ui_notes'] = 'Забележки';
+$lang['ui_contact_us'] = 'За контакти';

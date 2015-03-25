@@ -198,3 +198,4 @@ $lang['ui_latest_users'] = 'Latest Registered Users';
 $lang['ui_view_all'] = 'View All';
 $lang['ui_note'] = 'Note';
 $lang['ui_notes'] = 'Notes';
+$lang['ui_contact_us'] = 'Contact Us';
