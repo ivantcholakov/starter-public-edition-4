@@ -199,3 +199,4 @@ $lang['ui_view_all'] = 'Виж всички';
 $lang['ui_note'] = 'Забележка';
 $lang['ui_notes'] = 'Забележки';
 $lang['ui_contact_us'] = 'За контакти';
+$lang['ui_send'] = 'Изпращане';

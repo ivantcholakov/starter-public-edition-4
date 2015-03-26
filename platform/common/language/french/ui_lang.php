@@ -199,3 +199,4 @@ $lang['ui_view_all'] = 'View All';
 $lang['ui_note'] = 'Note';
 $lang['ui_notes'] = 'Notes';
 $lang['ui_contact_us'] = 'Contact Us';
+$lang['ui_send'] = 'Send';
