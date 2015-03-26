@@ -44,7 +44,6 @@ class Main_menu_widget_controller extends Core_Controller {
         $nav['non_mvc_page'] = array('label' => 'Non-MVC Page Demonstration', 'location' => 'non-mvc/demo.php', 'parent_id' => 'playground');
         $nav['http_build_url'] = array('label' => 'Testing http_build_url()', 'location' => 'non-mvc/http_build_url_test.php', 'parent_id' => 'playground');
         $nav['idna_test'] = array('label' => 'IDNA Converter Test', 'location' => 'non-mvc/idna.php', 'parent_id' => 'playground');
-        $nav['normalize_css'] = array('label' => 'Testing normalize.css', 'location' => 'non-mvc/normalize.css.php', 'parent_id' => 'playground');
         $nav['playground/separator_1'] = array('blank' => true, 'parent_id' => 'playground');
         $nav['playground/captcha'] = array('label' => 'Captcha Test', 'location' => 'playground/captcha', 'parent_id' => 'playground');
         $nav['playground/mustache'] = array('label' => 'Mustache Parser Test', 'location' => 'playground/mustache', 'parent_id' => 'playground');
