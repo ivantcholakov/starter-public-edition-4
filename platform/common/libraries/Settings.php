@@ -177,9 +177,12 @@ class Settings {
         if ($encrypt) {
 
             $this->settings_model->delete_many_by('name', $key);
-
             $key = $key.'__encrypted';
             $value = $this->encryption->encrypt($value);
+
+        } else {
+
+            $this->settings_model->delete_many_by('name', $key.'__encrypted');
         }
 
         $id = $this->settings_model->select('id')->where('name', $key)->as_value()->first();
