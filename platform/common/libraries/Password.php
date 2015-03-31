@@ -7,11 +7,7 @@
 
 class Password {
 
-    protected $key;
-
     public function __construct() {
-
-        $this->key = (string) config_item('encryption_key_for_passwords');
 
         log_message('debug', 'Password class initialized');
     }
@@ -55,8 +51,7 @@ class Password {
 
     //--------------------------------------------------------------------------
 
-    // An important note: Use the methods hash() and verify() for dealing with
-    // users' passwords. Users' passwords should be hashed, not encrypted.
+    // Users' passwords should be hashed, not encrypted.
 
     // See http://www.openwall.com/phpass/
     public function hash($password) {
@@ -87,62 +82,6 @@ class Password {
         $hasher = new PasswordHash(8, false);
 
         return $hasher->CheckPassword($password, $hash) ? true : false;
-    }
-
-    //--------------------------------------------------------------------------
-
-    // An important note: Use the methods encrypt() and decrypt() for passwords
-    // that the system should pass to other systems. For example, you may choose
-    // to store the SMTP password as a setting within the database, preferably
-    // not in plain text.
-    // Don't use these methods for dealing with users' passwords!
-
-    // An important note 2: The methods encrypt() and decrypt() are deprecated
-    // here for not giving wrong ideas.
-    // Encryption capability will be implemented within the Settings library.
-
-    /**
-     * @deprecated
-     */
-    public function encrypt($password) {
-
-        $password = (string) $password;
-
-        // Don't allow empty passwords, on creation use validation for not accepting them.
-        if ($password == '') {
-            return '';
-        }
-
-        $old_key_size = GibberishAES::size();
-        GibberishAES::size(256);
-
-        $result = GibberishAES::enc($password, $this->key);
-
-        GibberishAES::size($old_key_size);
-
-        return $result;
-    }
-
-    /**
-     * @deprecated
-     */
-    public function decrypt($password) {
-
-        $password = (string) $password;
-
-        // Don't allow empty passwords, on creation use validation for not accepting them.
-        if ($password == '') {
-            return '';
-        }
-
-        $old_key_size = GibberishAES::size();
-        GibberishAES::size(256);
-
-        $result = GibberishAES::dec($password, $this->key);
-
-        GibberishAES::size($old_key_size);
-
-        return $result;
     }
 
 }

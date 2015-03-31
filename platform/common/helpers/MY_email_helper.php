@@ -138,7 +138,7 @@ if (!function_exists('set_email_settings')) {
         if (array_key_exists('protocol', $config)) {
             $ci->settings->set('email_protocol', (string) $config['protocol']);
         }
-        
+
         if (array_key_exists('mailpath', $config)) {
             $ci->settings->set('email_mailpath', (string) $config['mailpath']);
         }
@@ -152,7 +152,7 @@ if (!function_exists('set_email_settings')) {
         }
 
         if (array_key_exists('smtp_pass', $config)) {
-            $ci->settings->set('email_smtp_pass', (string) $ci->password->encrypt((string) $config['smtp_pass']));
+            $ci->settings->set('email_smtp_pass', (string) $config['smtp_pass'], true);
         }
 
         if (array_key_exists('smtp_port', $config)) {
@@ -262,7 +262,7 @@ if (!function_exists('get_email_settings')) {
             'mailer_enabled' => config_item('mailer_enabled'),
             'site_email' => config_item('site_email'),
             'notification_email' => config_item('notification_email'),
-            'cc_email' => config_item('cc_email'),            
+            'cc_email' => config_item('cc_email'),
         );
 
         // Ensure default values presence.
@@ -330,7 +330,7 @@ if (!function_exists('get_email_settings')) {
         $config['mailpath'] = isset($settings['email_mailpath']) ? (string) $settings['email_mailpath'] : $config['mailpath'];
         $config['smtp_host'] = isset($settings['email_smtp_host']) ? (string) $settings['email_smtp_host'] : $config['smtp_host'];
         $config['smtp_user'] = isset($settings['email_smtp_user']) ? (string) $settings['email_smtp_user'] : $config['smtp_user'];
-        $config['smtp_pass'] = isset($settings['email_smtp_pass']) ? (string) $ci->password->decrypt((string) $settings['email_smtp_pass']) : $config['smtp_pass'];
+        $config['smtp_pass'] = isset($settings['email_smtp_pass']) ? (string) $settings['email_smtp_pass'] : $config['smtp_pass'];
         $config['smtp_port'] = isset($settings['email_smtp_port']) ? (int) $settings['email_smtp_port'] : $config['smtp_port'];
         $config['smtp_timeout'] = isset($settings['email_smtp_timeout']) ? (int) $settings['email_smtp_timeout'] : $config['smtp_timeout'];
         $config['smtp_crypto'] = isset($settings['email_smtp_crypto']) ? (string) $settings['email_smtp_crypto'] : $config['smtp_crypto'];

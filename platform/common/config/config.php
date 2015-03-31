@@ -306,21 +306,22 @@ $config['cache_query_string'] = FALSE;
 | http://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = 'MY_ENCRYPTION_KEY';
+// Replace these keys with your own!
+$config['encryption_key'] = hex2bin('292d622cd2da4737e7590949cf00f25d'); // 16 bytes
+$config['encryption_key_256'] = hex2bin('02c888cc38329f6a03060a970b777b3b5440abda41f0acc4a584b0c14a3b4de2'); // 32 bytes
 
 /*
 |--------------------------------------------------------------------------
-| Encryption Key for Passwords
+| Encryption Key for Settings
 |--------------------------------------------------------------------------
 |
-| This is a secret key for crypting passwords before they are stored within database.
-| This key is used for password decryption too. Don't share the key and don't loose it!
-|
-| Usually passwords are to be hashed, but there are rare cases when
-| symmetric encryption is needed. See the library Password.
+| This is a secret key for crypting settings before they are stored within
+| the database, using the algorithm aes-128-cbc. The length in bytes is 16.
+| Don't reuse this key for other purposes.
 |
 */
-$config['encryption_key_for_passwords'] = 'f@2M&';
+// Replace this key with your own!
+$config['encryption_key_for_settings'] = hex2bin('f7f04794cfeb2e5ee5c417ea4159da0e'); // 16 bytes
 
 /*
 |--------------------------------------------------------------------------

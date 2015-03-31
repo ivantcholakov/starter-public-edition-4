@@ -4,7 +4,7 @@
  * GibberishAES 256-bit, Integration for CodeIgniter.
  * See https://github.com/ivantcholakov/gibberish-aes-php
  *
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2015
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -14,7 +14,7 @@ class Gibberish {
 
     public function __construct() {
 
-        $this->key = (string) config_item('encryption_key');
+        $this->key = bin2hex(config_item('encryption_key_256'));
 
         log_message('debug', 'Gibberish class initialized');
     }

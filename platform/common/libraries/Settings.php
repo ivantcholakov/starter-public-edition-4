@@ -1,11 +1,13 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed.');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2015
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
 class Settings {
+
+    public $encryption;
 
     protected $settings;
 
@@ -20,6 +22,12 @@ class Settings {
         $this->settings_model = $this->ci->settings_model;
 
         $this->ci->load->helper('settings');
+
+        $this->ci->load->library('encryption', null, 'settings_encryption');
+        $this->encryption = $this->ci->settings_encryption;
+
+        $encryption_key = $this->ci->config->item('encryption_key_for_settings');
+        $this->encryption->initialize(array('cipher' => 'aes-128', 'mode' => 'cbc', 'key' => $encryption_key));
 
         $this->refresh();
     }
@@ -149,12 +157,12 @@ class Settings {
     // Sets a database stored setting.
     // Database table should be created in order to use this method.
     // See Settings_model class for information about table structure.
-    public function set($key, $value = null) {
+    public function set($key, $value = null, $encrypt = false) {
 
         if (is_array($key)) {
 
             foreach ($key as $k => $v) {
-                $this->set($k, $v);
+                $this->set($k, $v, $encrypt);
             }
 
             return $this;
@@ -164,6 +172,14 @@ class Settings {
 
         if ($key == '') {
             return $this;
+        }
+
+        if ($encrypt) {
+
+            $this->settings_model->delete_many_by('name', $key);
+
+            $key = $key.'__encrypted';
+            $value = $this->encryption->encrypt($value);
         }
 
         $id = $this->settings_model->select('id')->where('name', $key)->as_value()->first();
@@ -231,8 +247,29 @@ class Settings {
                 $name = (string) $item['name'];
                 $value = $item['value'];
 
-                // Just in case, skip missing or duplicate keys.
-                if ($name == '' || array_key_exists($name, $this->settings)) {
+                // Just in case, skip missing keys.
+                if ($name == '') {
+                    continue;
+                }
+
+                if (preg_match('/__encrypted$/', $name)) {
+
+                    $original_name = preg_replace('/__encrypted$/', '', $name);
+
+                    if ($original_name == '') {
+                        continue;
+                    }
+
+                    if (array_key_exists($original_name, $this->settings)) {
+                        unset($this->settings[$original_name]);
+                    }
+
+                    $name = $original_name;
+                    $value = $this->encryption->decrypt($value);
+                }
+
+                // Just in case, skip duplicate keys.
+                if (array_key_exists($name, $this->settings)) {
                     continue;
                 }
 
