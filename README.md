@@ -358,6 +358,7 @@ Real Life Usage
 * http://hotel-salvia.com (a family hotel), designer: Irina Stancheva
 * http://yasla-valshebstvo.com (nursery), designer: Irina Stancheva
 * http://evita-clinic.com (medical and dental services, one page site so far), designer: Irina Stancheva
+* http://index-bg.org (social activities, drug prevention), designer: Irina Stancheva
 
 
 Credits
