@@ -334,6 +334,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * A PHP port of the YUI CSS compressor, https://github.com/tubalmartin/YUI-CSS-compressor-PHP-port
 * JSMinPlus - a JavaScript minifier, https://github.com/mrclay/minify/blob/2.2.0/min/lib/JSMinPlus.php
 * iCheck plugin, Highly customizable checkboxes and radio buttons (jQuery & Zepto), https://github.com/fronteed/iCheck
+* less.js script for client-side usage (for learning and development purposes, for production compile less assets before deploying), https://github.com/less/less.js
 
 The Playground
 --------------
@@ -359,7 +360,6 @@ Real Life Usage
 * http://yasla-valshebstvo.com (nursery), designer: Irina Stancheva
 * http://evita-clinic.com (medical and dental services, one page site so far), designer: Irina Stancheva
 * http://index-bg.org (social activities, drug prevention), designer: Irina Stancheva
-
 
 Credits
 -------
