@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -17,33 +17,44 @@
 
                 <div class="row">
 
-                    <div class="col-md-6">
+                    <div class="col-md-12">
 
-                        <h4>The Less Source</h4>
-
-                        <pre class="lang-css">
 <?php
 
-echo htmlspecialchars(@ file_get_contents($this->load->path('test.less')), ENT_QUOTES, 'UTF-8');
+file_partial('messages');
 
 ?>
 
-                        </pre>
+                        <?php echo form_open('', 'id="test_form" method="post" role="form"'); ?>
 
-                    </div>
+                            <div class="form-group">
+                                <label for="input">The input, Less source:</label>
+                                <textarea id="input" name="input" class="form-control" rows="10" placeholder="Copy/paste your Less source here."><?php echo $clear_form || $is_example ? form_prep($input, true) : set_value('input', $input, true); ?></textarea>
+                            </div>
 
-                    <div class="col-md-6">
+                            <div class="form-group">
+                                <button id="test_form_submit" name="test_form_submit" type="submit" class="btn btn-primary">
+                                    Submit
+                                </button>
+                                <button id="test_form_submit" name="test_form_clear" type="submit" value="1" class="btn btn-danger">
+                                    Clear
+                                </button>
+                                <button id="test_form_submit" name="test_form_example" type="submit" value="1" class="btn btn-info">
+                                    Show Me an Example
+                                </button>
+                            </div>
 
-                        <h4>The Result CSS</h4>
+                            <div class="form-group">
+                                <label for="output">The result, CSS:</label>
+                                <textarea id="output" class="form-control" rows="10"><?php echo form_prep($output, true); ?></textarea>
+                            </div>
 
-                        <pre class="lang-css">
-<?php
+                            <div class="form-group">
+                                <label for="output_min">The result, minified CSS:</label>
+                                <textarea id="output_min" class="form-control" rows="10"><?php echo form_prep($output_min, true); ?></textarea>
+                            </div>
 
-echo htmlspecialchars($this->load->view('test.less', null, true, 'less'), ENT_QUOTES, 'UTF-8');
-
-?>
-
-                        </pre>
+                        <?php echo form_close(); ?>
 
                     </div>
 
