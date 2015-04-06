@@ -1,5 +1,54 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed.');
 
+if (!function_exists('form_per_page')) {
+
+    // For serving pagination: A select box for choosing number of items to be shown per page.
+    function form_per_page($name = null, $options = null, $selected = null, $extra_attributes = null, $min = null, $max = null) {
+
+        $ci = get_instance();
+
+        if (empty($options) || !is_array($options)) {
+            $options = array(5, 10, 20, 30, 40, 50, 100, 200, 300, 400, 500, 1000);
+        }
+
+        $min = (int) $min;
+
+        if ($min <= 0) {
+            $min = $options[0];
+        }
+
+        $all = $max == 'all';
+
+        $max = (int) $max;
+
+        if ($max <= 0) {
+            $max = $options[count($options) - 1];
+        }
+
+        if ($max < $min) {
+            $max = $min;
+        }
+
+        $result_options = array();
+
+        foreach ($options as $option) {
+
+            if ($option >= $min && $option <= $max) {
+                $result_options[(string) $option] = $ci->lang->line('ui_per_page', $option);
+            }
+        }
+
+        if ($all) {
+            $result_options['all'] = '-- '.$ci->lang->line('ui_all').' --';
+        }
+
+        return form_dropdown($name, $result_options, $selected, $extra_attributes);
+    }
+
+}
+
+//------------------------------------------------------------------------------
+
 if ( ! function_exists('form_open'))
 {
     /**
