@@ -758,7 +758,10 @@ class CI_Image_lib {
 		{
 			if ($this->source_image !== $this->new_image && @copy($this->full_src_path, $this->full_dst_path))
 			{
+				// Modified by Ivan Tcholakov, 12-APR-2015.
+				//chmod($this->full_dst_path, $this->file_permissions);
 				@chmod($this->full_dst_path, $this->file_permissions);
+				//
 			}
 
 			return TRUE;
@@ -834,7 +837,10 @@ class CI_Image_lib {
 		imagedestroy($dst_img);
 		imagedestroy($src_img);
 
+		// Modified by Ivan Tcholakov, 12-APR-2015.
+		//chmod($this->full_dst_path, $this->file_permissions);
 		@chmod($this->full_dst_path, $this->file_permissions);
+		//
 
 		return TRUE;
 	}
@@ -903,7 +909,10 @@ class CI_Image_lib {
 			return FALSE;
 		}
 
+		// Modified by Ivan Tcholakov, 12-APR-2015.
+		//chmod($this->full_dst_path, $this->file_permissions);
 		@chmod($this->full_dst_path, $this->file_permissions);
+		//
 
 		return TRUE;
 	}
@@ -991,7 +1000,10 @@ class CI_Image_lib {
 		// we have to rename the temp file.
 		copy($this->dest_folder.'netpbm.tmp', $this->full_dst_path);
 		unlink($this->dest_folder.'netpbm.tmp');
+		// Modified by Ivan Tcholakov, 12-APR-2015.
+		//chmod($this->full_dst_path, $this->file_permissions);
 		@chmod($this->full_dst_path, $this->file_permissions);
+		//
 
 		return TRUE;
 	}
@@ -1035,7 +1047,10 @@ class CI_Image_lib {
 		imagedestroy($dst_img);
 		imagedestroy($src_img);
 
+		// Modified by Ivan Tcholakov, 12-APR-2015.
+		//chmod($this->full_dst_path, $this->file_permissions);
 		@chmod($this->full_dst_path, $this->file_permissions);
+		//
 
 		return TRUE;
 	}
@@ -1107,7 +1122,10 @@ class CI_Image_lib {
 		// Kill the file handles
 		imagedestroy($src_img);
 
+		// Modified by Ivan Tcholakov, 12-APR-2015.
+		//chmod($this->full_dst_path, $this->file_permissions);
 		@chmod($this->full_dst_path, $this->file_permissions);
+		//
 
 		return TRUE;
 	}

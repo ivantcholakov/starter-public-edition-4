@@ -221,7 +221,10 @@ class CI_Log {
 
 		if (isset($newfile) && $newfile === TRUE)
 		{
+			// Modified by Ivan Tcholakov, 12-APR-2015.
+			//chmod($filepath, $this->_file_permissions);
 			@chmod($filepath, $this->_file_permissions);
+			//
 		}
 
 		return is_int($result);
