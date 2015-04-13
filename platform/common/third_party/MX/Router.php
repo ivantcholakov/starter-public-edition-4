@@ -80,7 +80,7 @@ class MX_Router extends CI_Router
 
     // Override this method in an extension class.
     // You may use it for slug support.
-    public function remap($segments, $http_request = true) {
+    public function remap($segments, $router_initialization = true) {
 
         return $segments;
     }
@@ -88,26 +88,74 @@ class MX_Router extends CI_Router
     /** Locate the controller **/
     // Modified by Ivan Tcholakov, 21-JAN-2014.
     //public function locate($segments) {
-    public function locate($segments, $http_request = true) {
+    public function locate($segments, $router_initialization = true) {
     //
 
         // Resolving the language.
-        if ($http_request && !empty($segments)) {
+        if ($router_initialization) {
 
-            if ($this->config->valid_language_uri_segment($segments[0])) {
+            if (!empty($segments) && $this->config->valid_language_uri_segment($segments[0])) {
 
-                $this->config->set_current_language($this->config->language_by_uri_segment($segments[0]));
+                $language = $this->config->language_by_uri_segment($segments[0]);
+
                 array_shift($segments);
+
+                // SEO: Check for a duplicate route and make 301 redirection if it is necessary.
+                if (
+                    $this->config->hide_default_language_uri_segment()
+                    &&
+                    $language == $this->config->current_language()
+                    &&
+                    !is_cli()
+                    &&
+                    isset($_SERVER['REQUEST_METHOD']) && strtolower($_SERVER['REQUEST_METHOD']) == 'get'
+                    &&
+                    !(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest')
+                ) {
+
+                    $url = BASE_URL.(implode('/', $segments));
+                    $url = isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] != '' ? $url.'?'.$_SERVER['QUERY_STRING'] : $url;
+
+                    header('Location: '.$url, TRUE, 301);
+                    exit;
+                }
+
+                $this->config->set_current_language($this->config->language_by_uri_segment($language));
 
                 if (empty($segments)) {
                     $segments = array($this->default_controller, 'index');
+                }
+
+            } else {
+
+                // SEO: Check for a duplicate route and make 301 redirection if it is necessary.
+                if (
+                    !$this->config->hide_default_language_uri_segment()
+                    &&
+                    !is_cli()
+                    &&
+                    isset($_SERVER['REQUEST_METHOD']) && strtolower($_SERVER['REQUEST_METHOD']) == 'get'
+                    &&
+                    !(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest')
+                ) {
+
+                    if ($segments === array($this->default_controller, 'index')) {
+                        $segments = array();
+                    }
+
+                    $url = empty($segments) ? '' : implode('/', $segments);
+                    $url = isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] != '' ? $url.'?'.$_SERVER['QUERY_STRING'] : $url;
+                    $url = $this->config->site_url($url);
+
+                    header('Location: '.$url, TRUE, 301);
+                    exit;
                 }
             }
         }
 
         // Processing slugs, if there are any.
-        if ($http_request) {
-            $segments = $this->remap($segments, $http_request);
+        if ($router_initialization) {
+            $segments = $this->remap($segments, $router_initialization);
         }
 
         $this->module = '';
