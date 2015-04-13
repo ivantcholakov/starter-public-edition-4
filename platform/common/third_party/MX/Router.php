@@ -104,7 +104,7 @@ class MX_Router extends CI_Router
                 if (
                     $this->config->hide_default_language_uri_segment()
                     &&
-                    $language == $this->config->current_language()
+                    $language == $this->config->default_language()
                     &&
                     !is_cli()
                     &&
@@ -120,7 +120,7 @@ class MX_Router extends CI_Router
                     exit;
                 }
 
-                $this->config->set_current_language($this->config->language_by_uri_segment($language));
+                $this->config->set_current_language($language);
 
                 if (empty($segments)) {
                     $segments = array($this->default_controller, 'index');
