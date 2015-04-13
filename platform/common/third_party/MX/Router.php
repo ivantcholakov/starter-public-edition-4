@@ -101,6 +101,7 @@ class MX_Router extends CI_Router
                 array_shift($segments);
 
                 // SEO: Check for a duplicate route and make 301 redirection if it is necessary.
+                // TODO: Deprecated code, remove this, use canonical URLs.
                 if (
                     $this->config->hide_default_language_uri_segment()
                     &&
@@ -119,6 +120,7 @@ class MX_Router extends CI_Router
                     header('Location: '.$url, TRUE, 301);
                     exit;
                 }
+                //
 
                 $this->config->set_current_language($language);
 
@@ -129,6 +131,7 @@ class MX_Router extends CI_Router
             } else {
 
                 // SEO: Check for a duplicate route and make 301 redirection if it is necessary.
+                // TODO: Deprecated code, remove this, use canonical URLs.
                 if (
                     !$this->config->hide_default_language_uri_segment()
                     &&
@@ -150,6 +153,7 @@ class MX_Router extends CI_Router
                     header('Location: '.$url, TRUE, 301);
                     exit;
                 }
+                //
             }
         }
 
