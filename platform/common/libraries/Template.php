@@ -477,14 +477,14 @@ class Template
                 {
                     // A Facebook's Open Graph meta tag.
                     $this->_metadata[$name] = '
-<meta property="'.$name.'" content="'.$content.'" />';
+    <meta property="'.$name.'" content="'.$content.'" />';
 
                 }
                 else
                 {
                     // A normal meta tag.
                     $this->_metadata[$name] = '
-<meta name="'.$name.'" content="'.$content.'" />';
+    <meta name="'.$name.'" content="'.$content.'" />';
                 }
 
             break;
@@ -492,7 +492,7 @@ class Template
             case 'link':
 
                 $this->_metadata[$content] = '
-<link rel="'.$name.'" href="'.$content.'" />';
+    <link rel="'.$name.'" href="'.$content.'" />';
 
             break;
         }
@@ -500,6 +500,24 @@ class Template
         return $this;
     }
 
+    /**
+     * Sets the canonical URL of the current page.
+     *
+     * @param       string      $url
+     * @return      object      $this
+     * @link        http://moz.com/learn/seo/canonicalization
+     * @link        https://support.google.com/webmasters/answer/139066?hl=en
+     */
+    public function set_canonical_url($url) {
+
+        $url = (string) $url;
+
+        if (strpos($url, '://')) {
+            $this->set_metadata('canonical', $url, 'link');
+        }
+
+        return $this;
+    }
 
     /**
      * Which theme are we using here?
