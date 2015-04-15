@@ -97,63 +97,12 @@ class MX_Router extends CI_Router
             if (!empty($segments) && $this->config->valid_language_uri_segment($segments[0])) {
 
                 $language = $this->config->language_by_uri_segment($segments[0]);
-
                 array_shift($segments);
-
-                // SEO: Check for a duplicate route and make 301 redirection if it is necessary.
-                // TODO: Deprecated code, remove this, use canonical URLs.
-                if (
-                    $this->config->hide_default_language_uri_segment()
-                    &&
-                    $language == $this->config->default_language()
-                    &&
-                    !is_cli()
-                    &&
-                    isset($_SERVER['REQUEST_METHOD']) && strtolower($_SERVER['REQUEST_METHOD']) == 'get'
-                    &&
-                    !(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest')
-                ) {
-
-                    $url = BASE_URL.(implode('/', $segments));
-                    $url = isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] != '' ? $url.'?'.$_SERVER['QUERY_STRING'] : $url;
-
-                    header('Location: '.$url, TRUE, 301);
-                    exit;
-                }
-                //
-
                 $this->config->set_current_language($language);
 
                 if (empty($segments)) {
                     $segments = array($this->default_controller, 'index');
                 }
-
-            } else {
-
-                // SEO: Check for a duplicate route and make 301 redirection if it is necessary.
-                // TODO: Deprecated code, remove this, use canonical URLs.
-                if (
-                    !$this->config->hide_default_language_uri_segment()
-                    &&
-                    !is_cli()
-                    &&
-                    isset($_SERVER['REQUEST_METHOD']) && strtolower($_SERVER['REQUEST_METHOD']) == 'get'
-                    &&
-                    !(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest')
-                ) {
-
-                    if ($segments === array($this->default_controller, 'index')) {
-                        $segments = array();
-                    }
-
-                    $url = empty($segments) ? '' : implode('/', $segments);
-                    $url = isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] != '' ? $url.'?'.$_SERVER['QUERY_STRING'] : $url;
-                    $url = $this->config->site_url($url);
-
-                    header('Location: '.$url, TRUE, 301);
-                    exit;
-                }
-                //
             }
         }
 
