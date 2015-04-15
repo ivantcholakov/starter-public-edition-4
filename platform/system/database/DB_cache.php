@@ -190,7 +190,10 @@ class CI_DB_Cache {
 			return FALSE;
 		}
 
+		// Modified by Ivan Tcholakov, 15-APR-2015.
+		//chmod($dir_path.$filename, 0640);
 		@chmod($dir_path.$filename, 0640);
+		//
 		return TRUE;
 	}
 
