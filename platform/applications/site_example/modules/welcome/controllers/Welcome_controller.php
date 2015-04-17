@@ -95,7 +95,14 @@ class Welcome_controller extends Base_Controller {
         $diagnostics = implode('<br />', $diagnostics);
 
         $this->template
+
+            // This is the canonical URL for the home page only.
+            // For the other pages create their corresponding canonical URLs,
+            // for example site_url('contact-us'), etc.
+            // See http://moz.com/learn/seo/canonicalization
+            // See https://support.google.com/webmasters/answer/139066?hl=en
             ->set_canonical_url(site_url())
+
             ->set('diagnostics', $diagnostics)
             ->build('welcome_message');
     }
