@@ -68,7 +68,7 @@ class Format {
     public function to_array($data = NULL)
     {
         // If not just NULL, but nothing is provided
-        if ($data === NULL and ! func_num_args())
+        if ($data === NULL && ! func_num_args())
         {
             $data = $this->_data;
         }
@@ -77,7 +77,7 @@ class Format {
 
         foreach ((array) $data as $key => $value)
         {
-            if (is_object($value) or is_array($value))
+            if (is_object($value) || is_array($value))
             {
                 $array[$key] = $this->to_array($value);
             }
@@ -101,7 +101,7 @@ class Format {
      */
     public function to_xml($data = NULL, $structure = NULL, $basenode = 'xml')
     {
-        if ($data === NULL and ! func_num_args())
+        if ($data === NULL && ! func_num_args())
         {
             $data = $this->_data;
         }
@@ -118,7 +118,7 @@ class Format {
         }
 
         // Force it to be something useful
-        if ( ! is_array($data) AND ! is_object($data))
+        if ( ! is_array($data) && ! is_object($data))
         {
             $data = (array) $data;
         }
