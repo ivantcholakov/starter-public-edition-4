@@ -337,6 +337,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * less.js script for client-side usage (for learning and development purposes, for production compile less assets before deploying), https://github.com/less/less.js
 * Ellipsis (jQuery version) - A plugin to truncate strings that are too long, https://github.com/danbeam/ellipsis/
 * Bootstrap Star Rating - A simple yet powerful JQuery star rating plugin with fractional rating support, https://github.com/kartik-v/bootstrap-star-rating
+* Facebook PHP SDK v4 for CodeIgniter - Library for integration of Facebook PHP SDK v4 with CodeIgniter 3, https://github.com/darkwhispering/facebook-sdk-v4-codeigniter
 
 The Playground
 --------------
@@ -369,7 +370,8 @@ Credits
 * Many thanks to Irida Design OOD, http://iridadesign.com - for sponsoring this project;
 * Gwenaël Gallon, https://github.com/dev-ggallon - for an important bug-fix about detect_url(), French translation, and various component updates;
 * quasiperfect (GitHub name), https://github.com/quasiperfect - for various suggestions and bug-reports;
-* Exelord (GitHub name), https://github.com/Exelord - for Polish translation.
+* Exelord (GitHub name), https://github.com/Exelord - for Polish translation;
+* Krishna Guragai, https://github.com/krishnaguragain - for drafting the Facebook PHP SDK v4 integration.
 
 License Information
 -------------------
