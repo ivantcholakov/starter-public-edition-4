@@ -203,3 +203,4 @@ $lang['ui_send'] = 'Send';
 $lang['ui_clear'] = 'Clear';
 $lang['ui_comment'] = 'Comment';
 $lang['ui_comments'] = 'Comments';
+$lang['ui_not_rated'] = 'Not Rated';

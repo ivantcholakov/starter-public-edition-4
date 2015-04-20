@@ -203,3 +203,4 @@ $lang['ui_send'] = 'Изпращане';
 $lang['ui_clear'] = 'Изчистване';
 $lang['ui_comment'] = 'Коментар';
 $lang['ui_comments'] = 'Коментари';
+$lang['ui_not_rated'] = 'Няма рейтинг';
