@@ -200,3 +200,6 @@ $lang['ui_note'] = 'Забележка';
 $lang['ui_notes'] = 'Забележки';
 $lang['ui_contact_us'] = 'За контакти';
 $lang['ui_send'] = 'Изпращане';
+$lang['ui_clear'] = 'Изчистване';
+$lang['ui_comment'] = 'Коментар';
+$lang['ui_comments'] = 'Коментари';
