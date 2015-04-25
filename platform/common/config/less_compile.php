@@ -185,4 +185,19 @@ $config['less_compile'] = array(
         'compress' => true
     ),
 
+    // php cli.php less compile bootstrap3-dialog bootstrap3-dialog-min
+
+    array(
+        'name' => 'bootstrap3-dialog',
+        'source' => DEFAULTFCPATH.'assets/less/lib/bootstrap3-dialog/bootstrap-dialog.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/bootstrap3-dialog/bootstrap-dialog.css',
+        'compress' => false
+    ),
+    array(
+        'name' => 'bootstrap3-dialog-min',
+        'source' => DEFAULTFCPATH.'assets/less/lib/bootstrap3-dialog/bootstrap-dialog.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/bootstrap3-dialog/bootstrap-dialog.min.css',
+        'compress' => true
+    ),
+
 );
