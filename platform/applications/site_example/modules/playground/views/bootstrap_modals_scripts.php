@@ -23,16 +23,15 @@ echo js('lib/bootstrap3-dialog/bootstrap-dialog.min.js');
         //BootstrapDialog.DEFAULT_TEXTS['CANCEL'] = 'Cancel';
         //BootstrapDialog.DEFAULT_TEXTS['CONFIRM'] = 'Confirmation';
 
-        // Provide language translations here if there are any.
-        BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DEFAULT] = 'Information';
-        BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_INFO] = 'Information';
-        BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_PRIMARY] = 'Information';
-        BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_SUCCESS] = 'Success';
-        BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_WARNING] = 'Warning';
-        BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DANGER] = 'Danger';
-        BootstrapDialog.DEFAULT_TEXTS['OK'] = 'OK';
-        BootstrapDialog.DEFAULT_TEXTS['CANCEL'] = 'Cancel';
-        BootstrapDialog.DEFAULT_TEXTS['CONFIRM'] = 'Confirmation';
+        BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DEFAULT] = <?php echo json_encode($this->lang->line('ui_information')); ?>;
+        BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_INFO] = <?php echo json_encode($this->lang->line('ui_information')); ?>;
+        BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_PRIMARY] = <?php echo json_encode($this->lang->line('ui_information')); ?>;
+        BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_SUCCESS] = <?php echo json_encode($this->lang->line('ui_success')); ?>;
+        BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_WARNING] = <?php echo json_encode($this->lang->line('ui_warning')); ?>;
+        BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DANGER] = <?php echo json_encode($this->lang->line('ui_danger')); ?>;
+        BootstrapDialog.DEFAULT_TEXTS['OK'] = <?php echo json_encode($this->lang->line('ui_ok')); ?>;
+        BootstrapDialog.DEFAULT_TEXTS['CANCEL'] = <?php echo json_encode($this->lang->line('ui_cancel')); ?>;
+        BootstrapDialog.DEFAULT_TEXTS['CONFIRM'] = <?php echo json_encode($this->lang->line('ui_confirm')); ?>;
 
         $('#simple_test').on('click', function() {
 
