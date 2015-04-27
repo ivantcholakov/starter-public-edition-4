@@ -338,7 +338,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Ellipsis (jQuery version) - A plugin to truncate strings that are too long, https://github.com/danbeam/ellipsis/
 * Bootstrap Star Rating - A simple yet powerful JQuery star rating plugin with fractional rating support, https://github.com/kartik-v/bootstrap-star-rating
 * Facebook PHP SDK v4 for CodeIgniter - Library for integration of Facebook PHP SDK v4 with CodeIgniter 3, https://github.com/darkwhispering/facebook-sdk-v4-codeigniter
-* Bootstrap Modal Dialogs - Make use of Twitter Bootstrap's modal more monkey-friendly, http://nakupanda.github.io/bootstrap3-dialog/
+* Bootstrap Modal Dialogs - Make use of Twitter Bootstrap's modal more monkey-friendly, https://github.com/nakupanda/bootstrap3-dialog, http://nakupanda.github.io/bootstrap3-dialog/
 
 The Playground
 --------------
