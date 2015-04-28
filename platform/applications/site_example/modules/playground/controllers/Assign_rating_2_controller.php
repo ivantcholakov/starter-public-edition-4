@@ -5,7 +5,7 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Assign_rating_controller extends Base_Controller {
+class Assign_rating_2_controller extends Base_Controller {
 
     public function __construct() {
 
@@ -17,7 +17,7 @@ class Assign_rating_controller extends Base_Controller {
 
         $this->template
             ->set_partial('subnavbar', 'assign_rating_subnavbar')
-            ->set('subnavbar_item_active', 'v1')
+            ->set('subnavbar_item_active', 'v2')
         ;
 
         $this->registry->set('nav', 'playground');
@@ -26,9 +26,9 @@ class Assign_rating_controller extends Base_Controller {
     public function index() {
 
         $this->template
-            ->inject_partial('css', css('lib/bootstrap3-dialog/bootstrap-dialog.min.css').css('lib/bootstrap-star-rating/star-rating.min.css'))
-            ->set_partial('scripts', 'assign_rating_scripts')
-            ->build('assign_rating');
+            ->inject_partial('css', css('lib/bootstrap-star-rating/star-rating.min.css'))
+            ->set_partial('scripts', 'assign_rating_2_scripts')
+            ->build('assign_rating_2');
     }
 
 }

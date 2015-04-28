@@ -406,6 +406,15 @@ template_partial('subnavbar');
 
                         </form>
 
+                        <div id="confirm_deletion_alert" class="alert alert-danger hide" role="alert" style="margin-top: 25px;">
+                            <h4><?php echo $this->lang->line('ui_confirm'); ?></h4>
+                            <p>Do you really want to delete the ratings?</p>
+                            <p>
+                                <button id="delete_ratings_ok" type="button" class="btn btn-danger"><i class="fa fa-trash fa-fw"></i> <?php echo $this->lang->line('ui_yes'); ?></button>
+                                <button id="delete_ratings_cancel" type="button" class="btn btn-default"><i class="fa fa-ban fa-fw"></i> <?php echo $this->lang->line('ui_no'); ?></button>
+                            </p>
+                        </div>
+
                     </div>
 
                     <div class="modal-footer">
