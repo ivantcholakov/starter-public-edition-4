@@ -212,3 +212,5 @@ $lang['ui_danger'] = 'Danger';
 $lang['ui_caution'] = 'Caution';
 $lang['ui_success'] = 'Success';
 $lang['ui_must_register_and_login'] = 'To contunue you must be a registered user and logged in.';
+$lang['ui_confirm_rating_deletion'] = 'Do you really want to delete the rating? Please, confirm this action.';
+$lang['ui_confirm_deletion'] = 'Do you really want to delete? Please, confirm this action.';
