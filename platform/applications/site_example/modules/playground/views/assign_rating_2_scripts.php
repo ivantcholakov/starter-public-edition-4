@@ -52,8 +52,8 @@ echo js('lib/bootstrap-star-rating/star-rating.min.js');
                 return 'label label-success';
             },
             hoverOnClear: false,
-            clearCaption: "Not Rated",
-            clearButtonTitle: "Clear"
+            clearCaption: <?php echo json_encode($this->lang->line('ui_not_rated')); ?>,
+            clearButtonTitle: <?php echo json_encode($this->lang->line('ui_clear')); ?>
         });
     }
 

@@ -65,8 +65,8 @@ echo js('lib/bootstrap3-dialog/bootstrap-dialog.js');   // For testing purposes,
                 return 'label label-success';
             },
             hoverOnClear: false,
-            clearCaption: "Not Rated",
-            clearButtonTitle: "Clear"
+            clearCaption: <?php echo json_encode($this->lang->line('ui_not_rated')); ?>,
+            clearButtonTitle: <?php echo json_encode($this->lang->line('ui_clear')); ?>
         });
     }
 
@@ -110,14 +110,14 @@ echo js('lib/bootstrap3-dialog/bootstrap-dialog.js');   // For testing purposes,
         $('#delete_ratings').on('click', function (e) {
 
             BootstrapDialog.show({
-                title: "Confirm",
-                message: 'Do you really want to delete the ratings?',
+                title: <?php echo json_encode($this->lang->line('ui_confirm')); ?>,
+                message: <?php echo json_encode($this->lang->line('ui_confirm_rating_deletion')); ?>,
                 type: BootstrapDialog.TYPE_DANGER,
                 size: BootstrapDialog.SIZE_SMALL,
                 closable: true,
                 draggable: true,
                 buttons: [{
-                    label: "Yes",
+                    label: <?php echo json_encode($this->lang->line('ui_yes')); ?>,
                     icon: 'fa fa-trash fa-fw',
                     cssClass: 'btn-danger',
                     action: function(dialog) {
@@ -125,7 +125,7 @@ echo js('lib/bootstrap3-dialog/bootstrap-dialog.js');   // For testing purposes,
                         dialog.close();
                     }
                 }, {
-                    label: "No",
+                    label: <?php echo json_encode($this->lang->line('ui_no')); ?>,
                     icon: 'fa fa-ban fa-fw',
                     action: function(dialog) {
                         dialog.close();

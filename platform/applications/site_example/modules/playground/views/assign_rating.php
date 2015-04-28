@@ -28,7 +28,7 @@ template_partial('subnavbar');
                 </div>
 
                 <div class="text-center" style="margin-bottom: 20px;">
-                    <button class="btn btn-default btn-sm" data-toggle="modal" id="assign_ratings" data-target="#ratings_modal"><i class="fa fa-star-o"></i> Assign Ratings</button>
+                    <button class="btn btn-default btn-sm" data-toggle="modal" id="assign_ratings" data-target="#ratings_modal"><i class="fa fa-star-o"></i> <?php echo $this->lang->line('ui_assign_rating'); ?></button>
                 </div>
 
                 <div class="row">
@@ -383,8 +383,8 @@ template_partial('subnavbar');
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="ratings_modal_label">Assign Ratings</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="<?php echo $this->lang->line('ui_close'); ?>"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="ratings_modal_label"><?php echo $this->lang->line('ui_assign_rating'); ?></h4>
                     </div>
 
                     <div class="modal-body">
@@ -392,26 +392,26 @@ template_partial('subnavbar');
                         <form action="javascript: return false;" method="post" role="form">
 
                             <label>Politeness</label>
-                            <input id="input-r1" class="rating-entry" data-size="sm" />
+                            <input id="input-r1" class="rating-entry" data-size="xs" />
 
                             <hr />
 
                             <label>Quality</label>
-                            <input id="input-r2" class="rating-entry" data-size="sm" />
+                            <input id="input-r2" class="rating-entry" data-size="xs" />
 
                             <hr />
 
                             <label>Price</label>
-                            <input id="input-r3" class="rating-entry" data-size="sm" />
+                            <input id="input-r3" class="rating-entry" data-size="xs" />
 
                         </form>
 
                     </div>
 
                     <div class="modal-footer">
-                        <button id="save_ratings" type="button" class="btn btn-primary"><i class="fa fa-check fa-fw"></i> Save</button>
-                        <button id="delete_ratings" type="button" class="btn btn-danger"><i class="fa fa-trash fa-fw"></i> Delete</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban fa-fw"></i> Cancel</button>
+                        <button id="save_ratings" type="button" class="btn btn-primary"><i class="fa fa-check fa-fw"></i> <?php echo $this->lang->line('ui_save'); ?></button>
+                        <button id="delete_ratings" type="button" class="btn btn-danger"><i class="fa fa-trash fa-fw"></i> <?php echo $this->lang->line('ui_delete'); ?></button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban fa-fw"></i> <?php echo $this->lang->line('ui_cancel'); ?></button>
                     </div>
 
                 </div>
