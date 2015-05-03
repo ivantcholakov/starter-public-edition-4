@@ -214,3 +214,6 @@ $lang['ui_success'] = 'Success';
 $lang['ui_must_register_and_login'] = 'To contunue you must be a registered user and logged in.';
 $lang['ui_confirm_rating_deletion'] = 'Do you really want to delete the rating? Please, confirm this action.';
 $lang['ui_confirm_deletion'] = 'Do you really want to delete? Please, confirm this action.';
+$lang['ui_none'] = 'None';
+$lang['ui_gross_rating'] = 'Gross rating';
+$lang['ui_specific_rating'] = 'Specific rating';
