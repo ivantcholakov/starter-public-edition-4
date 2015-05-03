@@ -25,6 +25,42 @@ class Form_validation extends CI_Form_validation {
     }
 
 
+    // The following method has been taken form CodeIgniter 2.2 for backward compatibility about
+    // a very specific case "foo[1]". See https://github.com/bcit-ci/CodeIgniter/issues/3816
+    /**
+     * Traverse a multidimensional $_POST array index until the data is found
+     *
+     * @access      private
+     * @param       array
+     * @param       array
+     * @param       integer
+     * @return      mixed
+     */
+    protected function _reduce_array($array, $keys, $i = 0)
+    {
+        if (is_array($array))
+        {
+            if (isset($keys[$i]))
+            {
+                if (isset($array[$keys[$i]]))
+                {
+                    $array = $this->_reduce_array($array[$keys[$i]], $keys, ($i+1));
+                }
+                else
+                {
+                    return NULL;
+                }
+            }
+            else
+            {
+                return $array;
+            }
+        }
+
+        return $array;
+    }
+
+
     // ---------------------------------------------------------------------
     // Reworked validation rules.
     // ---------------------------------------------------------------------
