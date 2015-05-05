@@ -27,7 +27,7 @@ Requirements
 PHP 5.2.4+ (officially, actually the platform works on PHP 5.2.0), Apache 2.2 - 2.4 (mod_rewrite should be enabled).
 For database support seek information within CodeIgniter 3.0 documentation.
 
-For UTF-8 encoded sites it is highly recommendabe the following PHP extensions to be installed:
+For UTF-8 encoded sites it is highly recommendable the following PHP extensions to be installed:
 
 * **mbstring**;
 * **iconv**;
@@ -42,7 +42,7 @@ Open the site with a browser on an address like this: http://localhost/starter-p
 
 On your web-server you may move one level up the content of the folder www, so the segment www from the address to disappear.
 Also you can move the folder platform to a folder outside the document root of the web server for increased security.
-After such a rearangement open the file config.php (www/config.php before rearrangement), find the setting $PLATFORMPATH and change this path accordingly.
+After such a rearrangement open the file config.php (www/config.php before rearrangement), find the setting $PLATFORMPATH and change this path accordingly.
 Don't forget to check platform/writable folder, it should be writable.
 
 Have a look at the files .htaccess and robots.txt and adjust them for your site.
@@ -166,7 +166,7 @@ $this->parse_i18n = TRUE; // or FALSE
 Parsing of <i18n> tags is done on the final output buffer only when
 the MIME-type is 'text/html'.
 
-**Note:** Enablig globally the i18n parser maybe is not the best idea. If you use HMVC, maybe it would
+**Note:** Enabling globally the i18n parser maybe is not the best idea. If you use HMVC, maybe it would
 be better i18n-parsing to be done selectively for particular html-fragments. See below on how to use the
 Parser class for this purpose.
 
