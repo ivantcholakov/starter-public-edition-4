@@ -30,7 +30,7 @@ template_partial('subnavbar');
                     <div class="col-md-12">
 
                         <div class="pull-left" style="margin-right: 20px; margin-bottom: 20px;">
-                            <img src="<?php echo image_url('lib/bootstrap3-dialog/pig.ico'); ?>" />
+                            <img src="<?php echo image_url('lib/bootstrap3-dialog/pig.png'); ?>" />
                         </div>
 
                         <p>

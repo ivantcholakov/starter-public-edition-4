@@ -422,7 +422,7 @@ echo js('lib/bootstrap3-dialog/bootstrap-dialog.min.js');
 
             var $textAndPic = $('<div></div>');
             $textAndPic.append('Who\'s this? <br />');
-            $textAndPic.append('<img src="<?php echo image_url('lib/bootstrap3-dialog/pig.ico'); ?>" />');
+            $textAndPic.append('<img src="<?php echo image_url('lib/bootstrap3-dialog/pig.png'); ?>" />');
 
             BootstrapDialog.show({
                 title: 'Guess who that is',
