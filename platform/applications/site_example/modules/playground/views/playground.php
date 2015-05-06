@@ -70,6 +70,7 @@
                     <li><a href="<?php echo site_url('playground/fb'); ?>">Facebook PHP SDK v4 for CodeIgniter</a></li>
                     <li><a href="<?php echo site_url('playground/bootstrap-modals'); ?>">Bootstrap Modal Dialogs</a></li>
                     <li><a href="<?php echo site_url('playground/assign-rating'); ?>">Assign Rating Example</a></li>
+                    <li><a href="<?php echo site_url('playground/print-test'); ?>">Print Test</a></li>
                 </ul>
 
             </div>
