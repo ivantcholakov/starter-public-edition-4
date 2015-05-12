@@ -363,11 +363,11 @@ template_partial('subnavbar');
                         </p>
 
                         <p>
-                            <a href="https://github.com/nakupanda/bootstrap3-dialog" target="_blank">https://github.com/nakupanda/bootstrap3-dialog</a>
+                            <a href="https://github.com/kartik-v/bootstrap-star-rating" target="_blank">https://github.com/kartik-v/bootstrap-star-rating</a>
                         </p>
 
                         <p>
-                            <a href="https://github.com/kartik-v/bootstrap-star-rating" target="_blank">https://github.com/kartik-v/bootstrap-star-rating</a>
+                            <a href="https://github.com/nakupanda/bootstrap3-dialog" target="_blank">https://github.com/nakupanda/bootstrap3-dialog</a>
                         </p>
 
                     </div>
