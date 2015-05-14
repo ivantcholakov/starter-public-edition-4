@@ -96,6 +96,9 @@
 .font-italic {
   font-style: italic;
 }
+.font-size-normal {
+  font-size: 100%;
+}
 .no-margin {
   margin: 0 !important;
 }
