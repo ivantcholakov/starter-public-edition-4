@@ -301,4 +301,40 @@ class Users extends Core_Model {
         return $this->user_photo->get($user, $options);
     }
 
+    // Use the following methods outside cycles for not increasing database
+    // queries number too much, use them for testing for example..
+    //
+    // For getting several properties simultaneously the following example is more effective:
+    //
+    // $user = $this->select('username, email')->with_deleted()->get((int) $id);
+    // if (!empty($user)) {
+    //     var_dump($user['username']);
+    //     var_dump($user['email']);
+    // }
+
+    public function username($id) {
+
+        return $this->select('username')->with_deleted()->as_value()->get((int) $id);
+    }
+
+    public function email($id) {
+
+        return $this->select('email')->with_deleted()->as_value()->get((int) $id);
+    }
+
+    public function first_name($id) {
+
+        return $this->select('first_name')->with_deleted()->as_value()->get((int) $id);
+    }
+
+    public function middle_name($id) {
+
+        return $this->select('middle_name')->with_deleted()->as_value()->get((int) $id);
+    }
+
+    public function last_name($id) {
+
+        return $this->select('last_name')->with_deleted()->as_value()->get((int) $id);
+    }
+
 }
