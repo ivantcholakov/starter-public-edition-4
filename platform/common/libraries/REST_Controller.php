@@ -423,7 +423,20 @@ abstract class REST_Controller extends Core_Controller
         }
 
         // and...... GO!
-        $this->_fire_method(array($this, $controller_method), $arguments);
+        try {
+            $this->_fire_method(array($this, $controller_method), $arguments);
+        }
+        catch(Exception $ex) {
+            $response = array(
+                config_item('rest_status_field_name') => FALSE,
+                config_item('rest_message_field_name') => array(
+                    'classname' => get_class($ex), 'message' => $ex->getMessage()
+                )
+            );
+            $this->response($response, 500);
+        }
+
+        // should not get here.
     }
 
     /**
