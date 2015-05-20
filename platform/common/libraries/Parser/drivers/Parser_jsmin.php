@@ -100,7 +100,7 @@ class CI_Parser_jsmin extends CI_Parser_driver {
 
         ob_start();
 
-        $template = $template = JSMinPlus::minify($template);
+        $template = JSMinPlus::minify($template);
 
         $exception_message = ob_get_contents();
         ob_end_clean();
