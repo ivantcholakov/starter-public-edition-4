@@ -38,15 +38,10 @@ class Jsmin_controller extends Base_Controller {
 
         if ($this->form_validation->run()) {
 
-            ob_start();
-
-            $output = $this->parser->parse_string($this->input->post('input'), null, true, 'jsmin');
-
-            $exception_message = ob_get_contents();
-            ob_end_clean();
-
-            if ($exception_message != '') {
-                $output = $exception_message;
+            try {
+                $output = $this->parser->parse_string($this->input->post('input'), null, true, 'jsmin');
+            } catch (Exception $e) {
+                $output = $e->getMessage();
             }
 
         } elseif (validation_errors()) {

@@ -67,7 +67,16 @@ class CI_Parser_jsmin extends CI_Parser_driver {
         // For security reasons don't parse PHP content.
         $template = @ file_get_contents($template);
 
+        ob_start();
+
         $template = JSMinPlus::minify($template, $filename);
+
+        $exception_message = ob_get_contents();
+        ob_end_clean();
+
+        if ($exception_message != '') {
+            throw new Exception($exception_message);
+        }
 
         return $this->output($template, $return, $ci, $is_mx);
     }
@@ -89,7 +98,16 @@ class CI_Parser_jsmin extends CI_Parser_driver {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
-        $template = JSMinPlus::minify($template);
+        ob_start();
+
+        $template = $template = JSMinPlus::minify($template);
+
+        $exception_message = ob_get_contents();
+        ob_end_clean();
+
+        if ($exception_message != '') {
+            throw new Exception($exception_message);
+        }
 
         return $this->output($template, $return, $ci, $is_mx);
     }
