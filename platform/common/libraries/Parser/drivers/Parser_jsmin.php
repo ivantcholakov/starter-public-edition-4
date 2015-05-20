@@ -75,7 +75,7 @@ class CI_Parser_jsmin extends CI_Parser_driver {
         ob_end_clean();
 
         if ($exception_message != '') {
-            throw new Exception($exception_message);
+            throw new Exception('JSMinPlus: '.$exception_message);
         }
 
         return $this->output($template, $return, $ci, $is_mx);
@@ -106,7 +106,7 @@ class CI_Parser_jsmin extends CI_Parser_driver {
         ob_end_clean();
 
         if ($exception_message != '') {
-            throw new Exception($exception_message);
+            throw new Exception('JSMinPlus: '.$exception_message);
         }
 
         return $this->output($template, $return, $ci, $is_mx);
