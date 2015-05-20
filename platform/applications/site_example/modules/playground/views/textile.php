@@ -38,8 +38,11 @@ echo htmlspecialchars(str_replace('BASE_URL', base_url(), @ file_get_contents($t
 
 <?php
 
-//$this->load->view('test.textile', null, false, 'textile');
-echo str_replace('BASE_URL', base_url(), $this->load->view('test.textile', null, true, 'textile'));
+try {
+    echo str_replace('BASE_URL', base_url(), $this->load->view('test.textile', null, true, 'textile'));
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
 
 ?>
 
