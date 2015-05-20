@@ -217,3 +217,5 @@ $lang['ui_confirm_deletion'] = 'Do you really want to delete? Please, confirm th
 $lang['ui_none'] = 'None';
 $lang['ui_gross_rating'] = 'Gross rating';
 $lang['ui_specific_rating'] = 'Specific rating';
+$lang['ui_location'] = 'Location';
+$lang['ui_general_info'] = 'General Information';
