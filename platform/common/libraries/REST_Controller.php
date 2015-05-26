@@ -427,13 +427,7 @@ abstract class REST_Controller extends Core_Controller
             $this->_fire_method(array($this, $controller_method), $arguments);
         }
         catch(Exception $ex) {
-            $response = array(
-                config_item('rest_status_field_name') => FALSE,
-                config_item('rest_message_field_name') => array(
-                    'classname' => get_class($ex), 'message' => $ex->getMessage()
-                )
-            );
-            $this->response($response, 500);
+            $this->_server_error_response($ex);
         }
 
         // should not get here.
@@ -554,6 +548,24 @@ abstract class REST_Controller extends Core_Controller
             return (isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']));
     }
 
+    /**
+     * Return server response
+     *
+     * Method to send a response to the client in the event of a server error.
+     *
+     * @access public
+     * @param  object $ex
+     */
+    protected function _server_error_response($ex)
+    {
+        $response = array(
+                config_item('rest_status_field_name') => FALSE,
+                config_item('rest_message_field_name') => array(
+                        'classname' => get_class($ex), 'message' => $ex->getMessage()
+                )
+        );
+        $this->response($response, 500);
+    }
 
     /**
      * Detect input format
@@ -1417,7 +1429,7 @@ abstract class REST_Controller extends Core_Controller
     {
         $key = $this->config->item('auth_source');
         if (!$this->session->userdata($key)) {
-            $this->response(array('status' => FALSE, 'error' => 'Not Authorized'), 401);
+            $this->response(array(config_item('rest_status_field_name') => FALSE, config_item('rest_message_field_name') => 'Not Authorized'), 401);
         }
     }
 
