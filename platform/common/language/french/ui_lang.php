@@ -241,3 +241,5 @@ $lang['ui_confirm_item_deletion'] = 'Do you really want to delete %s? Please, co
 $lang['ui_recipients'] = 'Recipients';
 $lang['ui_recipient'] = 'Recipients';
 $lang['ui_delete_all'] = 'Delete All';
+$lang['ui_ref_no'] = 'Ref. No.';
+$lang['ui_reference_number'] = 'Reference Number';

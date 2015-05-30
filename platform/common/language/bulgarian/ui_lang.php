@@ -241,3 +241,5 @@ $lang['ui_confirm_item_deletion'] = 'Наистина ли искате да и�
 $lang['ui_recipients'] = 'Получатели';
 $lang['ui_recipient'] = 'Получател';
 $lang['ui_delete_all'] = 'Изтрий всички';
+$lang['ui_ref_no'] = 'Реф. №';
+$lang['ui_reference_number'] = 'Референтен номер';
