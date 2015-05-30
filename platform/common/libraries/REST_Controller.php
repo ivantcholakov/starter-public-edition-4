@@ -200,6 +200,15 @@ abstract class REST_Controller extends Core_Controller
     {
         parent::__construct();
 
+        // Check to see if this is CI 3.x
+        // Modified by Ivan Tcholakov, 30-MAY-2015.
+        //if(explode('.', CI_VERSION, 2)[0] > 2)
+        if ((int) CI_VERSION < 3)
+        //
+        {
+            die('REST Server requires CodeIgniter 3.x');
+        }
+
         // Start the timer for how long the request takes
         $this->_start_rtime = microtime(TRUE);
 
