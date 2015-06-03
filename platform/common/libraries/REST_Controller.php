@@ -202,7 +202,7 @@ abstract class REST_Controller extends Core_Controller
 
         // Check to see if this is CI 3.x
         // Modified by Ivan Tcholakov, 30-MAY-2015.
-        //if(explode('.', CI_VERSION, 2)[0] > 2)
+        //if(explode('.', CI_VERSION, 2)[0] < 3)
         if ((int) CI_VERSION < 3)
         //
         {
@@ -1225,10 +1225,6 @@ abstract class REST_Controller extends Core_Controller
      */
     protected function _xss_clean($val, $process)
     {
-        if (CI_VERSION < 2) {
-            return $process ? $this->input->xss_clean($val) : $val;
-        }
-
         return $process ? $this->security->xss_clean($val) : $val;
     }
 
