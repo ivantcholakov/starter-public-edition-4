@@ -243,3 +243,6 @@ $lang['ui_recipient'] = 'Получател';
 $lang['ui_delete_all'] = 'Изтрий всички';
 $lang['ui_ref_no'] = 'Реф. №';
 $lang['ui_reference_number'] = 'Референтен номер';
+$lang['ui_duration_date'] = 'Валидност до';
+$lang['ui_status'] = 'Статус';
+$lang['ui_public_page'] = 'Публична страница';

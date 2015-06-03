@@ -243,3 +243,6 @@ $lang['ui_recipient'] = 'Recipients';
 $lang['ui_delete_all'] = 'Delete All';
 $lang['ui_ref_no'] = 'Ref. No.';
 $lang['ui_reference_number'] = 'Reference Number';
+$lang['ui_duration_date'] = 'Duration Date';
+$lang['ui_status'] = 'Status';
+$lang['ui_public_page'] = 'Public Page';
