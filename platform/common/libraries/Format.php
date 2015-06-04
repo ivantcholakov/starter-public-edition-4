@@ -256,10 +256,7 @@ class Format {
         $callback = isset($_GET['callback']) ? $_GET['callback'] : '';
         if ($callback === '')
         {
-            // Modified by Ivan Tcholakov, 30-MAY-2015.
-            //return json_encode($this->_data, JSON_NUMERIC_CHECK);
-            return is_php('5.3.3') ? json_encode($this->_data, JSON_NUMERIC_CHECK) : json_encode($this->_data);
-            //
+            return json_encode($this->_data);
 
             /* Had to take out this code, it doesn't work on Objects.
             $str = $this->_data;
@@ -280,19 +277,13 @@ class Format {
         {
             // this is a jsonp request, the content-type must be updated to be text/javascript
             header("Content-Type: application/javascript");
-            // Modified by Ivan Tcholakov, 30-MAY-2015.
-            //return $callback . "(" . json_encode($this->_data, JSON_NUMERIC_CHECK) . ");";
-            return $callback . "(" . (is_php('5.3.3') ? json_encode($this->_data, JSON_NUMERIC_CHECK) : json_encode($this->_data)) . ");";
-            //
+            return $callback . '(' . json_encode($this->_data) . ');';
         }
         else
         {
             // we have an invalid jsonp callback identifier, we'll return plain json with a warning field
             $this->_data['warning'] = "invalid jsonp callback provided: ".$callback;
-            // Modified by Ivan Tcholakov, 30-MAY-2015.
-            //return json_encode($this->_data, JSON_NUMERIC_CHECK);
-            return is_php('5.3.3') ? json_encode($this->_data, JSON_NUMERIC_CHECK) : json_encode($this->_data);
-            //
+            return json_encode($this->_data);
         }
     }
 
