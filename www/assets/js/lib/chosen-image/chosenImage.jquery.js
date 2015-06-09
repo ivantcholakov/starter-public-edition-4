@@ -69,8 +69,23 @@
                 //
             });
 
-            $select.trigger('change');
-
+            // Removed by Ivan Tcholakov, 08-JUN-2015.
+            //$select.trigger('change');
+            //
+            // Added by Ivan Tcholakov, 08-JUN-2015.
+            $container.find('.chosen-single span').css(cssObj(
+                $select.find('option:selected').attr('data-img-src')
+                ? $select.find('option:selected').attr('data-img-src')
+                : ''
+            ));
+            $select.on('chosen:updated', function() {
+                $container.find('.chosen-single span').css(cssObj(
+                    $select.find('option:selected').attr('data-img-src')
+                    ? $select.find('option:selected').attr('data-img-src')
+                    : ''
+                ));
+            });
+            //
 
             // Utilties
             function cssObj(imgSrc) {
