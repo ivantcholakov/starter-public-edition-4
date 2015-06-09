@@ -246,3 +246,6 @@ $lang['ui_reference_number'] = 'Reference Number';
 $lang['ui_duration_date'] = 'Duration Date';
 $lang['ui_status'] = 'Status';
 $lang['ui_public_page'] = 'Public Page';
+$lang['ui_rating_saved'] = 'The rating has been saved.';
+$lang['ui_rating_deleted'] = 'The rating has been deleted.';
+$lang['ui_no_comments'] = 'There are no comments.';

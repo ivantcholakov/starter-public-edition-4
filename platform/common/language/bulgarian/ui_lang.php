@@ -246,3 +246,6 @@ $lang['ui_reference_number'] = 'Референтен номер';
 $lang['ui_duration_date'] = 'Валидност до';
 $lang['ui_status'] = 'Статус';
 $lang['ui_public_page'] = 'Публична страница';
+$lang['ui_rating_saved'] = 'Рейтингът е записан.';
+$lang['ui_rating_deleted'] = 'Рейтингът е изтрит.';
+$lang['ui_no_comments'] = 'Няма коментари.';
