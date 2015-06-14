@@ -251,3 +251,5 @@ $lang['ui_rating_deleted'] = 'The rating has been deleted.';
 $lang['ui_no_comments'] = 'There are no comments.';
 $lang['ui_save_note_0'] = 'Data will be saved after pressing the button %s.';
 $lang['ui_save_note_1'] = 'Data for the corresponding language will be saved after pressing the button %s.';
+$lang['ui_example'] = 'Example';
+$lang['ui_examples'] = 'Examples';
