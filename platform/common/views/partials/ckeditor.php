@@ -19,5 +19,9 @@ echo js('ckeditor/adapters/jquery.js?t='.CKEditor::timestamp);
         CKEDITOR.config.protectedSource.push(/<i[^>]><\/i>/g);
         CKEDITOR.dtd.$removeEmpty['i'] = false;
 
+        // Protect Google AdSense tags.
+        CKEDITOR.config.protectedSource.push(/<ins[^>]><\/ins>/g);
+        CKEDITOR.dtd.$removeEmpty['ins'] = false;
+
     //]]>
     </script>
