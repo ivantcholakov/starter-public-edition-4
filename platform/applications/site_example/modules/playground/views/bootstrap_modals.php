@@ -72,6 +72,20 @@
                             <button class="btn btn-default" id="confirm_with_customizations">Confirm with customizations</button>
                         </p>
 
+                        <hr />
+
+                        <div id="modal-container"></div><!-- For "Append modal to div" example -->
+
+                        <p>
+                            <button class="btn btn-default" id="append_modal_to_div">Append modal to div</button>
+                            <button class="btn btn-default" id="button_event">Button Event</button>
+                            <button class="btn btn-default" id="custom_dialog_id">Custom Dialog ID</button>
+                            <button class="btn btn-default" id="custom_spinning_icon">Custom Spinning Icon</button>
+                            <button class="btn btn-default" id="custom_tabindex">Custom Tabindex</button>
+                        </p>
+
+                        <hr />
+
                         <p>
                             Project repository: <a href="https://github.com/nakupanda/bootstrap3-dialog" target="_blank">https://github.com/nakupanda/bootstrap3-dialog</a>
                         </p>

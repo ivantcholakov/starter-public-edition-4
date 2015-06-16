@@ -710,6 +710,79 @@ echo js('lib/bootstrap3-dialog/bootstrap-dialog.min.js');
             });
         });
 
+        $('#append_modal_to_div').on('click', function() {
+
+            var dialog = new BootstrapDialog({
+                title: 'Not in body',
+                message: 'But somewhere else.'
+            });
+            dialog.realize();
+            $('#modal-container').append(dialog.getModal());
+            dialog.open();
+        });
+
+        $('#button_event').on('click', function() {
+
+            var dialog = new BootstrapDialog({
+                closable: true,
+                buttons: [{
+                        label: 'Button 1',
+                        action: function(dialog, event) {
+                            // this.data('button') is the original button config
+                            console.log(this.data('button'));
+
+                            // Stop bubbling. 'event' here is the original event object of 'click'.
+                            event.stopPropagation();
+                        }
+                    }, {
+                        label: 'Button 2',
+                        action: function(dialog) {
+                            // Does nothing
+                        }
+                    }],
+                onshown: function(dialog) {
+                    var $footer = dialog.getModalFooter();
+                    $footer.on('click', function(event) {
+                        alert('Footer was hit.');
+                    });
+                }
+            });
+            dialog.open();
+        });
+
+        $('#custom_dialog_id').on('click', function() {
+
+            var dialogId = 'my-dialog-1';
+            var dialog = new BootstrapDialog({
+                id: dialogId,
+                title: 'Set custom id for your dialog',
+                message: 'Check out the dialog you have created and see if the id is set as expected.'
+            });
+            dialog.open();
+        });
+
+        $('#custom_spinning_icon').on('click', function() {
+
+            var dialog = new BootstrapDialog({
+                message: 'Custom spinning icon.',
+                spinicon: 'fa fa-spinner fa-fw',
+                buttons: [{
+                    label: 'Spin',
+                    autospin: true
+                }]
+            });
+            dialog.open();
+        });
+
+        $('#custom_tabindex').on('click', function() {
+
+            var dialog = new BootstrapDialog({
+                message: 'Custom tabindex.',
+                tabindex: 10
+            });
+            dialog.open();
+        });
+
     });
 
     //]]>
