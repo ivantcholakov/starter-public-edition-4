@@ -125,13 +125,15 @@ class Current_user extends CI_Model {
 
             $this->data = $this->users->get($this->id());
 
-            unset($this->data['password']);
-
             if (empty($this->data)) {
 
                 $this->assign(null);
 
                 return false;
+
+            } else {
+
+                unset($this->data['password']);
             }
         }
 
@@ -299,6 +301,10 @@ class Current_user extends CI_Model {
 
     public function login_by_id($id) {
 
+        if (!is_cli()) {
+            $this->session->sess_regenerate(false);
+        }
+
         $id = (int) $id;
 
         Events::trigger('before_user_login_by_id', array('id' => $id));
@@ -389,10 +395,7 @@ class Current_user extends CI_Model {
         if (!is_cli()) {
 
             $logout_destroys_session = $this->config->item('logout_destroys_session');
-
-            if (!empty($logout_destroys_session)) {
-                $this->session->sess_destroy();
-            }
+            $this->session->sess_regenerate(!empty($logout_destroys_session));
         }
 
         Events::trigger('after_user_logout', $this->logout_info);
