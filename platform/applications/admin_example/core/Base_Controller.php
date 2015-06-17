@@ -104,7 +104,11 @@ class Base_Controller extends Core_Controller {
                 $this->session->set_flashdata('error_message', $this->lang->line('ui_session_expired'));
             }
 
-            redirect('login');
+            if ($this->input->method() != 'get') {
+                redirect('login');
+            }
+
+            redirect(http_build_url(site_url('login'), array('query' => http_build_query(array('continue' => CURRENT_URL)))));
         }
 
         return true;

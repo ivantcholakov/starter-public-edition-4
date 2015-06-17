@@ -46,6 +46,10 @@ class Login_controller extends Base_Controller {
             // Implement your own login system.
             if ($this->_login($username, $password)) {
 
+                if ($this->input->get('continue')) {
+                    redirect($this->input->get('continue'));
+                }
+
                 $this->session->set_flashdata('confirmation_message', '<nobr>Hello, <strong>'.$username.'</strong>.</nobr>');
                 redirect(site_url());
 

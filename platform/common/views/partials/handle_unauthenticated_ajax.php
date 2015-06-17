@@ -9,7 +9,8 @@
     $(function () {
         $(document).ajaxError(function(e, request) {
             if (request.status == 403) {
-                window.location.href = site_url + 'login';
+                //window.location.href = site_url + 'login';
+                window.location.href = site_url + 'login?continue=' + encodeURIComponent(CURRENT_URL);
             }
         });
     });
