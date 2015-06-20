@@ -393,7 +393,7 @@ $config['sess_regenerate_destroy'] = FALSE;
 |
 */
 $config['cookie_prefix']    = '';
-$config['cookie_domain']    = (IS_CLI || $_SERVER['SERVER_NAME'] == 'localhost') ? '' : $_SERVER['SERVER_NAME'];
+$config['cookie_domain']    = (IS_CLI || $_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == gethostname()) ? '' : $_SERVER['SERVER_NAME'];
 $config['cookie_path']      = $DETECT_URL['base_uri'];
 $config['cookie_secure']    = FALSE;
 $config['cookie_httponly']  = FALSE;
