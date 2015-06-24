@@ -783,6 +783,17 @@ echo js('lib/bootstrap3-dialog/bootstrap-dialog.min.js');
             dialog.open();
         });
 
+        // Create your dialog but do not open it.
+        var dialog = new BootstrapDialog({
+            title: 'Your dialog',
+            message: 'This dialog can be opened and closed again and again.',
+            autodestroy: false
+        });
+
+        $('#reopen_dialog').on('click', {dialog: dialog}, function(event) {
+            event.data.dialog.open();
+        });
+
     });
 
     //]]>

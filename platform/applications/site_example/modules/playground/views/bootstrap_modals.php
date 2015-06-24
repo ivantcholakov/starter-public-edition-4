@@ -82,6 +82,7 @@
                             <button class="btn btn-default" id="custom_dialog_id">Custom Dialog ID</button>
                             <button class="btn btn-default" id="custom_spinning_icon">Custom Spinning Icon</button>
                             <button class="btn btn-default" id="custom_tabindex">Custom Tabindex</button>
+                            <button class="btn btn-default" id="reopen_dialog">Reopen Dialog</button>
                         </p>
 
                         <hr />
