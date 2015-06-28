@@ -1,4 +1,6 @@
-<?php defined('BASEPATH') or exit('No direct script access allowed');
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * CodeIgniter Rest Controller
@@ -11,7 +13,7 @@
  * @author          Phil Sturgeon, Chris Kacerguis
  * @license         MIT
  * @link            https://github.com/chriskacerguis/codeigniter-restserver
- * @version         3.0.0-pre
+ * @version         3.0.0
  */
 // Modified by Ivan Tcholakov, 14-FEB-2012.
 //abstract class REST_Controller extends CI_Controller
@@ -167,8 +169,8 @@ abstract class REST_Controller extends Core_Controller
      * @var array
      */
     protected $_supported_formats   = array(
-        'xml'           => 'application/xml',
         'json'          => 'application/json',
+        'xml'           => 'application/xml',
         'jsonp'         => 'application/javascript',
         'serialized'    => 'application/vnd.php.serialized',
         'php'           => 'text/plain',
@@ -195,7 +197,9 @@ abstract class REST_Controller extends Core_Controller
     protected $_enable_xss = FALSE;
 
     /**
-     * Developers can extend this class and add a check in here.
+     * Extend this function to apply additional checking early on in the process
+     *
+     * @access protected
      */
     protected function early_checks()
     {
@@ -203,9 +207,10 @@ abstract class REST_Controller extends Core_Controller
     }
 
     /**
-     * Constructor function
-     * @todo Document more please.
-     * @access public
+     * Constructor for the REST API
+     *
+     * @param string $config Configuration filename minus the file extension
+     * e.g: my_rest.php is passed as 'my_rest'
      */
     public function __construct($config = 'rest')
     {
@@ -214,8 +219,14 @@ abstract class REST_Controller extends Core_Controller
         // disable XML Entity (security vulnerability)
         libxml_disable_entity_loader(true);
 
-        // Set the default value of global xss filtering. Same approach as CodeIgniter 3
-        $this->_enable_xss = (config_item('global_xss_filtering') === TRUE);
+        // Removed by Ivan Tcholakov, 28-JUN-2015.
+        // Check to see if PHP is equal to or greater than 5.4.x
+        //if (is_php('5.4') === FALSE)
+        //{
+        //    // CodeIgniter 3 is recommended for v5.4 or above
+        //    exit('Using PHP v' . PHP_VERSION . ', though PHP v5.4 or greater is required');
+        //}
+        //
 
         // Check to see if this is CI 3.x
         // Modified by Ivan Tcholakov, 30-MAY-2015.
@@ -223,8 +234,11 @@ abstract class REST_Controller extends Core_Controller
         if ((int) CI_VERSION < 3)
         //
         {
-            die('REST Server requires CodeIgniter 3.x');
+            exit('REST Server requires CodeIgniter 3.x');
         }
+
+        // Set the default value of global xss filtering. Same approach as CodeIgniter 3
+        $this->_enable_xss = (config_item('global_xss_filtering') === TRUE);
 
         // Start the timer for how long the request takes
         $this->_start_rtime = microtime(TRUE);
@@ -296,10 +310,8 @@ abstract class REST_Controller extends Core_Controller
         // Which format should the data be returned in?
         $this->response->lang   = $this->_detect_lang();
 
-        // Developers can extend this class and add a check in here
+        // Extend this function to apply additional checking early on in the process
         $this->early_checks();
-
-        $this->rest             = new StdClass();
 
         // Load DB if its enabled
         if (config_item('rest_database_group') && (config_item('rest_enable_keys') || config_item('rest_enable_logging'))) {
@@ -1540,25 +1552,29 @@ abstract class REST_Controller extends Core_Controller
     }
 
     /**
-     * Check if the client's ip is in the 'rest_ip_blacklist' config
+     * Checks if the client's ip is in the 'rest_ip_blacklist' config and generates a 401 response
      *
      * @access protected
      */
     protected function _check_blacklist_auth()
     {
-        $blacklist = explode(',', config_item('rest_ip_blacklist'));
+        // Match an ip address in a blacklist e.g. 127.0.0.0, 0.0.0.0
+        $pattern = sprintf('/(?:,\s*|^)\Q%s\E(?=,\s*|$)/m', $this->input->ip_address());
 
-        foreach ($blacklist AS &$ip) {
-            $ip = trim($ip);
-        }
-
-        if (in_array($this->input->ip_address(), $blacklist)) {
-            $this->response(array('status' => FALSE, 'error' => 'IP Denied'), 401);
+        // Returns 1, 0 or FALSE (on error only). Therefore implicitly convert 1 to TRUE
+        if (preg_match($pattern, config_item('rest_ip_blacklist')))
+        {
+            // Display an error response
+            $this->response(array(
+                'status' => FALSE,
+                'error' => 'IP Denied'
+            ),
+            401);
         }
     }
 
     /**
-     * Check if the client's ip is in the 'rest_ip_whitelist' config
+     * Check if the client's ip is in the 'rest_ip_whitelist' config and generates a 401 response
      *
      * @access protected
      */
