@@ -204,7 +204,10 @@ class CI_Log {
 			$date = date($this->_date_fmt);
 		}
 
-		$message .= $level.' - '.$date.' --> '.$msg."\n";
+		// Added by Ivan Tcholakov, URL recording feature, 28-JUN-2015.
+		//$message .= $level.' - '.$date.' --> '.$msg."\n";
+		$message .= $level.' - '.$date.' --> '.$msg.(!is_cli() ? ' --> URL: '.CURRENT_URL : '')."\n";
+		//
 
 		flock($fp, LOCK_EX);
 
