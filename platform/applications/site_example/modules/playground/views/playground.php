@@ -71,6 +71,7 @@
                     <li><a href="<?php echo site_url('playground/star-rating'); ?>">Bootstrap Star Rating Examples</a></li>
                     <li><a href="<?php echo site_url('playground/assign-rating'); ?>">Assign Rating Example</a></li>
                     <li><a href="<?php echo site_url('playground/print-test'); ?>">Print Test</a></li>
+                    <li><a href="<?php echo site_url('playground/social-buttons'); ?>">Social Buttons for Bootstrap</a></li>
                 </ul>
 
             </div>
