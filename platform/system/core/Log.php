@@ -206,7 +206,7 @@ class CI_Log {
 
 		// Added by Ivan Tcholakov, URL recording feature, 28-JUN-2015.
 		//$message .= $level.' - '.$date.' --> '.$msg."\n";
-		$message .= $level.' - '.$date.' --> '.$msg.(!is_cli() ? ' --> URL: '.CURRENT_URL : '')."\n";
+		$message .= $level.' - '.$date.' --> '.$msg.(!is_cli() ? ' --> URL: '.CURRENT_URL : (isset($_SERVER['argv']) && is_array($_SERVER['argv']) ? ' --> Command: '.implode(' ', $_SERVER['argv']) : ''))."\n";
 		//
 
 		flock($fp, LOCK_EX);
