@@ -1,7 +1,7 @@
 /*
  * Social Buttons for Bootstrap
  *
- * Copyright 2013-2014 Panayiotis Lipiridis
+ * Copyright 2013-2015 Panayiotis Lipiridis
  * Licensed under the MIT License
  *
  * https://github.com/lipis/bootstrap-social
@@ -28,7 +28,7 @@
 .btn-social.btn-lg {
   padding-left: 61px;
 }
-.btn-social.btn-lg :first-child {
+.btn-social.btn-lg > :first-child {
   line-height: 45px;
   width: 45px;
   font-size: 1.8em;
@@ -36,7 +36,7 @@
 .btn-social.btn-sm {
   padding-left: 38px;
 }
-.btn-social.btn-sm :first-child {
+.btn-social.btn-sm > :first-child {
   line-height: 28px;
   width: 28px;
   font-size: 1.4em;
@@ -44,7 +44,7 @@
 .btn-social.btn-xs {
   padding-left: 30px;
 }
-.btn-social.btn-xs :first-child {
+.btn-social.btn-xs > :first-child {
   line-height: 20px;
   width: 20px;
   font-size: 1.2em;
@@ -74,7 +74,7 @@
 .btn-social-icon.btn-lg {
   padding-left: 61px;
 }
-.btn-social-icon.btn-lg :first-child {
+.btn-social-icon.btn-lg > :first-child {
   line-height: 45px;
   width: 45px;
   font-size: 1.8em;
@@ -82,7 +82,7 @@
 .btn-social-icon.btn-sm {
   padding-left: 38px;
 }
-.btn-social-icon.btn-sm :first-child {
+.btn-social-icon.btn-sm > :first-child {
   line-height: 28px;
   width: 28px;
   font-size: 1.4em;
@@ -90,12 +90,12 @@
 .btn-social-icon.btn-xs {
   padding-left: 30px;
 }
-.btn-social-icon.btn-xs :first-child {
+.btn-social-icon.btn-xs > :first-child {
   line-height: 20px;
   width: 20px;
   font-size: 1.2em;
 }
-.btn-social-icon :first-child {
+.btn-social-icon > :first-child {
   border: none;
   text-align: center;
   width: 100% !important;
@@ -643,6 +643,72 @@ fieldset[disabled] .btn-google-plus.active {
   border-color: rgba(0, 0, 0, 0.2);
 }
 .btn-google-plus .badge {
+  color: #dd4b39;
+  background-color: #ffffff;
+}
+.btn-google {
+  color: #ffffff;
+  background-color: #dd4b39;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.btn-google:focus,
+.btn-google.focus {
+  color: #ffffff;
+  background-color: #c23321;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.btn-google:hover {
+  color: #ffffff;
+  background-color: #c23321;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.btn-google:active,
+.btn-google.active,
+.open > .dropdown-toggle.btn-google {
+  color: #ffffff;
+  background-color: #c23321;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.btn-google:active:hover,
+.btn-google.active:hover,
+.open > .dropdown-toggle.btn-google:hover,
+.btn-google:active:focus,
+.btn-google.active:focus,
+.open > .dropdown-toggle.btn-google:focus,
+.btn-google:active.focus,
+.btn-google.active.focus,
+.open > .dropdown-toggle.btn-google.focus {
+  color: #ffffff;
+  background-color: #a32b1c;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.btn-google:active,
+.btn-google.active,
+.open > .dropdown-toggle.btn-google {
+  background-image: none;
+}
+.btn-google.disabled,
+.btn-google[disabled],
+fieldset[disabled] .btn-google,
+.btn-google.disabled:hover,
+.btn-google[disabled]:hover,
+fieldset[disabled] .btn-google:hover,
+.btn-google.disabled:focus,
+.btn-google[disabled]:focus,
+fieldset[disabled] .btn-google:focus,
+.btn-google.disabled.focus,
+.btn-google[disabled].focus,
+fieldset[disabled] .btn-google.focus,
+.btn-google.disabled:active,
+.btn-google[disabled]:active,
+fieldset[disabled] .btn-google:active,
+.btn-google.disabled.active,
+.btn-google[disabled].active,
+fieldset[disabled] .btn-google.active {
+  background-color: #dd4b39;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.btn-google .badge {
   color: #dd4b39;
   background-color: #ffffff;
 }
