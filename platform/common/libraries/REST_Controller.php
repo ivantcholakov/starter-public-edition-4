@@ -493,10 +493,10 @@ abstract class REST_Controller extends Core_Controller
             $this->response(
                 array(
                     config_item('rest_status_field_name') => FALSE,
-                    config_item('rest_message_field_name') => [
+                    config_item('rest_message_field_name') => array(
                         'classname' => get_class($ex),
                         'message' => $ex->getMessage()
-                    ]
+                    )
                 ), 500);
         }
     }
