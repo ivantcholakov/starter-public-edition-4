@@ -11,8 +11,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class Format {
 
-    protected $_data = array();   // Array to convert
-    protected $_from_type = NULL; // View filename
+    /**
+     * CodeIgniter instance
+     *
+     * @var object
+     */
+    private $_ci;
+
+    /**
+     * Array to convert
+     *
+     * @var array
+     */
+    protected $_data = array();
+
+    /**
+     * Type to convert from
+     *
+     * @var string
+     */
+    protected $_from_type = NULL;
 
     /**
      * DO NOT CALL THIS DIRECTLY, USE factory()
@@ -22,9 +40,14 @@ class Format {
      *
      * @throws Exception
      */
+
     public function __construct($data = NULL, $from_type = NULL)
     {
-        get_instance()->load->helper('inflector');
+        // Get the CodeIgniter reference
+        $this->_ci = &get_instance();
+
+        // Load the inflector helper
+        $this->_ci->load->helper('inflector');
 
         // If the provided data is already formatted we should probably convert it to an array
         if ($from_type !== NULL)
@@ -62,17 +85,15 @@ class Format {
     // FORMATING OUTPUT ---------------------------------------------------------
 
     /**
-     * to_array
+     * Encode as JSON
      *
-     * @param null $data
-     *
-     * @return array
+     * @return string JSON representation of a value
      */
-    public function to_array($data = NULL)
+    public function to_array()
     {
         // As the return value should be a string, it makes no sense
         // to return an array datatype as that will result in an error or sorts
-        return $this->to_json($data);
+        return $this->to_json();
     }
 
     /**
@@ -151,7 +172,7 @@ class Format {
             else
             {
                 // add single node.
-                $value = htmlspecialchars(html_entity_decode($value, ENT_QUOTES, 'UTF-8'), ENT_QUOTES, "UTF-8");
+                $value = htmlspecialchars(html_entity_decode($value, ENT_QUOTES, 'UTF-8'), ENT_QUOTES, 'UTF-8');
 
                 $structure->addChild($key, $value);
             }
@@ -167,7 +188,8 @@ class Format {
      */
     public function to_html()
     {
-        $data = (array) $this->_data;
+        // Cast as an array if no already
+        is_array($this->_data) || $data = (array) $this->_data;
 
         // Multi-dimensional array
         if (isset($data[0]) && is_array($data[0]))
@@ -182,17 +204,18 @@ class Format {
             $data = array($data);
         }
 
-        $ci = get_instance();
-        $ci->load->library('table');
+        // Load the table library
+        $this->_ci->load->library('table');
 
-        $ci->table->set_heading($headings);
+        $this->_ci->table->set_heading($headings);
 
+        // Should row used as a reference?
         foreach ($data as &$row)
         {
-            $ci->table->add_row($row);
+            $this->_ci->table->add_row($row);
         }
 
-        return $ci->table->generate();
+        return $this->_ci->table->generate();
     }
 
     /**
@@ -202,7 +225,8 @@ class Format {
      */
     public function to_csv()
     {
-        $data = (array) $this->_data;
+        // Cast as an array if no already
+        $data = is_array($this->_data) ? $this->_data : (array) $this->_data;
 
         // Multi-dimensional array
         if (isset($data[0]) && is_array($data[0]))
@@ -233,14 +257,13 @@ class Format {
     /**
      * Encode as JSON
      *
-     * @return mixed
+     * @return string JSON representation of a value
      */
     public function to_json()
     {
-        // Modified by Ivan Tcholakov, 28-JUN-2015.
-        //$callback = $this->input->get('callback');
-        $callback = get_instance()->input->get('callback');
-        //
+        // Get the callback parameter (if set)
+        $callback = $this->_ci->input->get('callback');
+
         if (empty($callback) === TRUE)
         {
             // Modified by Ivan Tcholakov, 28-JUN-2015.
@@ -249,11 +272,11 @@ class Format {
             //
         }
 
-        // We only honour jsonp callback which are valid javascript identifiers
+        // We only honour a jsonp callback which are valid javascript identifiers
         elseif (preg_match('/^[a-z_\$][a-z0-9\$_]*(\.[a-z_\$][a-z0-9\$_]*)*$/i', $callback))
         {
             // Set the content type
-            header("Content-Type: application/javascript");
+            header('Content-Type: application/javascript');
 
             // Return the data as encoded json with a callback
             return $callback . '(' . json_encode($this->_data) . ');';
@@ -337,7 +360,6 @@ class Format {
     {
         return unserialize(trim($string));
     }
-
 
     /**
      * @param $string
