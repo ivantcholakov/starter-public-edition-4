@@ -21,7 +21,7 @@
 
 <?php
 
-echo js('lib/mustache/mustache.js');
+echo js('lib/mustache/mustache.min.js');
 
 ?>
 
