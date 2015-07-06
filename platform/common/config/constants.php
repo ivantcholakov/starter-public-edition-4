@@ -39,8 +39,6 @@ if (!defined('DIR_WRITE_MODE')) {
 | These modes are used when working with fopen()/popen()
 |
 */
-
-
 if (!defined('FOPEN_READ')) {
     define('FOPEN_READ',                            'rb');
 }
