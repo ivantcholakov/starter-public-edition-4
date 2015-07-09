@@ -2,8 +2,9 @@
 
 /**
  * UTF-8 string support for CodeIgniter based on Kohana's implementation.
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013 (for this file)
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013-2015 (for this file)
  * @license The MIT License (for this file)
+ * @version 1.0.0
  * Code repository: https://github.com/ivantcholakov/codeigniter-utf8
  *
  * See the file application/third_party/kohana/Kohana_UTF8.php for
@@ -42,24 +43,31 @@ class UTF8 extends Kohana_UTF8 {
     public static $aliases = array('UTF-8', 'WINDOWS-65001', 'CP65001', 'WIN-65001', 'WIN65001', '65001');
 
     public static function encode($string, $from_encoding) {
+
         $from_encoding = strtoupper($from_encoding);
+
         if (in_array($from_encoding, self::$aliases)) {
             return $string;
         }
+
         if (ICONV_INSTALLED) {
             return @ (string) iconv($from_encoding, 'UTF-8', $string);
         }
         elseif (MBSTRING_INSTALLED) {
             return @ (string) mb_convert_encoding($string, 'UTF-8', $from_encoding);
         }
+
         return $string;
     }
 
     public static function decode($string, $to_encoding) {
+
         $to_encoding = strtoupper($to_encoding);
+
         if (in_array($to_encoding, self::$aliases)) {
             return $string;
         }
+
         if (ICONV_INSTALLED) {
             return @ (string) iconv('UTF-8', $to_encoding, $string);
         }
@@ -69,10 +77,12 @@ class UTF8 extends Kohana_UTF8 {
     }
 
     public static function is($string) {
+
         return preg_match('//u', $string);
     }
 
     public static function is_alias($encoding) {
+
         return in_array(strtoupper($encoding), self::$aliases);
     }
 
