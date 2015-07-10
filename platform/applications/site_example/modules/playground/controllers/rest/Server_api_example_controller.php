@@ -13,7 +13,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @license         MIT
  * @link            https://github.com/chriskacerguis/codeigniter-restserver
  */
-
 class Server_api_example_controller extends REST_Controller {
 
     function __construct()
@@ -74,7 +73,7 @@ class Server_api_example_controller extends REST_Controller {
         // $this->some_model->delete_something($this->get('id'));
         $message = array(
             'id' => $this->get('id'),
-            'message' => 'DELETED!'
+            'message' => 'Deleted the resource'
         );
 
         $this->response($message, 204); // 204 being the HTTP response code
@@ -82,7 +81,7 @@ class Server_api_example_controller extends REST_Controller {
 
     function users_get()
     {
-        //$users = $this->some_model->getSomething( $this->get('limit') );
+        // $users = $this->some_model->get_something($this->get('limit'));
         $users = array(
             array('id' => 1, 'name' => 'Some Guy', 'email' => 'example1@example.com'),
             array('id' => 2, 'name' => 'Person Face', 'email' => 'example2@example.com'),

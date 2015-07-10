@@ -221,9 +221,15 @@ class Restserver_api_key_controller extends REST_Controller {
         do
         {
             // Generate a random salt
-            // Modified by Ivan Tcholakov, 28-JUN-2015.
-            //$salt = mcrypt_create_iv(16, MCRYPT_DEV_URANDOM);
-            $salt = secure_random_bytes(16);
+            // Modified by Ivan Tcholakov, 10-JUL-2015.
+            //$salt = $this->security->get_random_bytes(64);
+            //
+            //// If an error occurred, then fall back to the previous method
+            //if ($salt === FALSE)
+            //{
+            //    $salt = hash('sha256', time() . mt_rand());
+            //}
+            $salt = secure_random_bytes(64);
             //
             $new_key = substr($salt, 0, config_item('rest_key_length'));
         }
@@ -253,7 +259,6 @@ class Restserver_api_key_controller extends REST_Controller {
 
     private function _insert_key($key, $data)
     {
-
         $data[config_item('rest_key_column')] = $key;
         $data['date_created'] = function_exists('now') ? now() : time();
 

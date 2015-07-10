@@ -115,7 +115,7 @@ class Format {
         $array = array();
         foreach ((array) $data as $key => $value)
         {
-            if (is_object($value) || is_array($value))
+            if (is_object($value) === TRUE || is_array($value) === TRUE)
             {
                 $array[$key] = $this->to_array($value);
             }
@@ -157,7 +157,7 @@ class Format {
         }
 
         // Force it to be something useful
-        if (!is_array($data) && !is_object($data))
+        if (is_array($data) === FALSE && is_object($data) === FALSE)
         {
             $data = (array) $data;
         }
