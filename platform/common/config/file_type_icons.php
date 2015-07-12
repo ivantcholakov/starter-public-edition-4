@@ -16,7 +16,7 @@ $icons = array(
     'pdf'        => array('pdf'),
     'powerpoint' => array('pot','ppt','pptx','key'),
     'code'       => array('ahk','as','asp','aspx','bat','c','cfm','clj','cmd','cpp','css','el','erb','g','hml','java','js','json','jsp','less','nsh','nsi','php','php3','pl','py','rb','rhtml','sass','scala','scm','scpt','scptd','scss','sh','shtml','wsh','xml','yml'),
-    'text'       => array('ans','asc','ascii','csv','diz','latex','log','markdown','md','nfo','rst','rtf','tex','text','txt'),
+    'text'       => array('ans','asc','ascii','csv','diz','latex','log','markdown','md','fbmd','nfo','rst','rtf','tex','text','txt'),
     'video'      => array('3g2','3gp','3gp2','3gpp','asf','avi','bik','bup','divx','flv','ifo','m4v','mkv','mkv','mov','mp4','mpeg','mpg','rm','rv','ogv','qt','smk','swf','vob','webm','wmv','xvid'),
     'word'       => array('doc','docm','docs','docx','dot','pages'),
 );
