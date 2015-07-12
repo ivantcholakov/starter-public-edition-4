@@ -192,7 +192,7 @@ if (!function_exists('set_email_settings')) {
         }
 
         if (array_key_exists('priority', $config)) {
-            $ci->settings->set('email_priority', (int) $config['priority']);
+            $ci->settings->set('email_priority', empty($config['priority']) ? null : (int) $config['priority']);
         }
 
         if (array_key_exists('crlf', $config)) {
@@ -282,7 +282,7 @@ if (!function_exists('get_email_settings')) {
         $config['mailtype'] = array_key_exists('mailtype', $config) ? $config['mailtype'] : 'html';
         $config['charset'] = array_key_exists('charset', $config) ? $config['charset'] : 'utf-8';
         $config['validate'] = array_key_exists('validate', $config) ? $config['validate'] : true;
-        $config['priority'] = array_key_exists('priority', $config) ? $config['priority'] : 3;
+        $config['priority'] = array_key_exists('priority', $config) ? (empty($config['priority']) ? null : (int) $config['priority']) : null;
         $config['crlf'] = array_key_exists('crlf', $config) ? $config['crlf'] : "\n";
         $config['newline'] = array_key_exists('newline', $config) ? $config['newline'] : "\n";
         $config['bcc_batch_mode'] = array_key_exists('bcc_batch_mode', $config) ? $config['bcc_batch_mode'] : false;
@@ -340,7 +340,7 @@ if (!function_exists('get_email_settings')) {
         $config['mailtype'] = isset($settings['email_mailtype']) ? (string) $settings['email_mailtype'] : $config['mailtype'];
         $config['charset'] = isset($settings['email_charset']) ? (string) $settings['email_charset'] : $config['charset'];
         $config['validate'] = isset($settings['email_validate']) ? !empty($settings['email_validate']) : $config['validate'];
-        $config['priority'] = isset($settings['email_priority']) ? (int) $settings['email_priority'] : $config['priority'];
+        $config['priority'] = array_key_exists('priority', $settings) ? (empty($settings['email_priority']) ? null : (int) $settings['email_priority']) : $config['priority'];
         $config['crlf'] = isset($settings['email_crlf']) ? (string) $settings['email_crlf'] : $config['crlf'];
         $config['newline'] = isset($settings['email_newline']) ? (string) $settings['email_newline'] : $config['newline'];
         $config['bcc_batch_mode'] = isset($settings['email_bcc_batch_mode']) ? !empty($settings['email_bcc_batch_mode']) : $config['bcc_batch_mode'];
