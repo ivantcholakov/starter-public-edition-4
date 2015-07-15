@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') || exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013-2015
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -29,8 +29,9 @@ class CI_Parser_mustache extends CI_Parser_driver {
             'extension' => '.mustache',
             'cache' => MUSTACHE_CACHE,
             'cache_file_mode' => FILE_WRITE_MODE,
-            'charset' => 'UTF-8',
-            'entityFlags' => ENT_COMPAT,
+            'escape' => null,
+            'charset' => null,
+            'entity_flags' => ENT_COMPAT,
             'full_path' => FALSE,
         );
 
@@ -62,6 +63,11 @@ class CI_Parser_mustache extends CI_Parser_driver {
         }
 
         $config = array_merge($this->config, $config);
+
+        if (!isset($config['charset']) || trim($config['charset']) == '')
+        {
+            $config['charset'] = $this->ci->config->item('charset');
+        }
 
         if (!is_array($data))
         {
@@ -102,6 +108,11 @@ class CI_Parser_mustache extends CI_Parser_driver {
         }
 
         $config = array_merge($this->config, $config);
+
+        if (!isset($config['charset']) || trim($config['charset']) == '')
+        {
+            $config['charset'] = $this->ci->config->item('charset');
+        }
 
         if (!is_array($data))
         {
