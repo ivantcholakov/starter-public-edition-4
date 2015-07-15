@@ -69,6 +69,8 @@ class CI_Parser_mustache extends CI_Parser_driver {
             $config['charset'] = $this->ci->config->item('charset');
         }
 
+        $config['charset'] = strtoupper($config['charset']);
+
         if (!is_array($data))
         {
             $data = array();
@@ -113,6 +115,8 @@ class CI_Parser_mustache extends CI_Parser_driver {
         {
             $config['charset'] = $this->ci->config->item('charset');
         }
+
+        $config['charset'] = strtoupper($config['charset']);
 
         if (!is_array($data))
         {
