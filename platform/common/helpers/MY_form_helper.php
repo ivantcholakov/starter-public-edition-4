@@ -258,7 +258,7 @@ if ( ! function_exists('form_textarea'))
             unset($data['value']); // textareas don't use the value attribute
         }
 
-        return '<textarea '._parse_form_attributes($data, $defaults).$extra.'>'.form_prep($val, TRUE)."</textarea>\n";
+        return '<textarea '._parse_form_attributes($data, $defaults)._attributes_to_string($extra).'>'.form_prep($val, TRUE)."</textarea>\n";
     }
 }
 
@@ -319,7 +319,7 @@ if ( ! function_exists('form_dropdown'))
 
         $extra = _attributes_to_string($extra);
 
-        $multiple = (count($selected) > 1 && strpos($extra, 'multiple') === FALSE) ? ' multiple="multiple"' : '';
+        $multiple = (count($selected) > 1 && stripos($extra, 'multiple') === FALSE) ? ' multiple="multiple"' : '';
 
         $form = '<select '.rtrim(_parse_form_attributes($data, $defaults)).$extra.$multiple.">\n";
 
