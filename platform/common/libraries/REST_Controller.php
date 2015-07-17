@@ -18,6 +18,140 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //abstract class REST_Controller extends CI_Controller {
 abstract class REST_Controller extends Core_Controller {
 //
+
+    // Note: Only the widley used HTTP status codes are documented
+
+    // Informational
+
+    const HTTP_CONTINUE = 100;
+    const HTTP_SWITCHING_PROTOCOLS = 101;
+    const HTTP_PROCESSING = 102;            // RFC2518
+
+    // Success
+
+    /**
+     * The request has succeeded
+     */
+    const HTTP_OK = 200;
+
+    /**
+     * The server successfully created a new resource
+     */
+    const HTTP_CREATED = 201;
+    const HTTP_ACCEPTED = 202;
+    const HTTP_NON_AUTHORITATIVE_INFORMATION = 203;
+
+    /**
+     * The server successfully processed the request, though no content is returned
+     */
+    const HTTP_NO_CONTENT = 204;
+    const HTTP_RESET_CONTENT = 205;
+    const HTTP_PARTIAL_CONTENT = 206;
+    const HTTP_MULTI_STATUS = 207;          // RFC4918
+    const HTTP_ALREADY_REPORTED = 208;      // RFC5842
+    const HTTP_IM_USED = 226;               // RFC3229
+
+    // Redirection
+
+    const HTTP_MULTIPLE_CHOICES = 300;
+    const HTTP_MOVED_PERMANENTLY = 301;
+    const HTTP_FOUND = 302;
+    const HTTP_SEE_OTHER = 303;
+
+    /**
+     * The resource has not been modified since the last request
+     */
+    const HTTP_NOT_MODIFIED = 304;
+    const HTTP_USE_PROXY = 305;
+    const HTTP_RESERVED = 306;
+    const HTTP_TEMPORARY_REDIRECT = 307;
+    const HTTP_PERMANENTLY_REDIRECT = 308;  // RFC7238
+
+    // Client Error
+
+    /**
+     * The request cannot be fulfilled due to multiple errors
+     */
+    const HTTP_BAD_REQUEST = 400;
+
+    /**
+     * The user is unauthorized to access the requested resource
+     */
+    const HTTP_UNAUTHORIZED = 401;
+    const HTTP_PAYMENT_REQUIRED = 402;
+
+    /**
+     * The requested resource is unavailable at this present time
+     */
+    const HTTP_FORBIDDEN = 403;
+
+    /**
+     * The requested resource could not be found
+     *
+     * Note: This is sometimes used to mask if there was an UNAUTHORIZED (401) or
+     * FORBIDDEN (403) error, for security reasons
+     */
+    const HTTP_NOT_FOUND = 404;
+
+    /**
+     * The request method is not supported by the following resource
+     */
+    const HTTP_METHOD_NOT_ALLOWED = 405;
+
+    /**
+     * The request was not acceptable
+     */
+    const HTTP_NOT_ACCEPTABLE = 406;
+    const HTTP_PROXY_AUTHENTICATION_REQUIRED = 407;
+    const HTTP_REQUEST_TIMEOUT = 408;
+
+    /**
+     * The request could not be completed due to a conflict with the current state
+     * of the resource
+     */
+    const HTTP_CONFLICT = 409;
+    const HTTP_GONE = 410;
+    const HTTP_LENGTH_REQUIRED = 411;
+    const HTTP_PRECONDITION_FAILED = 412;
+    const HTTP_REQUEST_ENTITY_TOO_LARGE = 413;
+    const HTTP_REQUEST_URI_TOO_LONG = 414;
+    const HTTP_UNSUPPORTED_MEDIA_TYPE = 415;
+    const HTTP_REQUESTED_RANGE_NOT_SATISFIABLE = 416;
+    const HTTP_EXPECTATION_FAILED = 417;
+    const HTTP_I_AM_A_TEAPOT = 418;                                               // RFC2324
+    const HTTP_UNPROCESSABLE_ENTITY = 422;                                        // RFC4918
+    const HTTP_LOCKED = 423;                                                      // RFC4918
+    const HTTP_FAILED_DEPENDENCY = 424;                                           // RFC4918
+    const HTTP_RESERVED_FOR_WEBDAV_ADVANCED_COLLECTIONS_EXPIRED_PROPOSAL = 425;   // RFC2817
+    const HTTP_UPGRADE_REQUIRED = 426;                                            // RFC2817
+    const HTTP_PRECONDITION_REQUIRED = 428;                                       // RFC6585
+    const HTTP_TOO_MANY_REQUESTS = 429;                                           // RFC6585
+    const HTTP_REQUEST_HEADER_FIELDS_TOO_LARGE = 431;                             // RFC6585
+
+    // Server Error
+
+    /**
+     * The server encountered an unexpected error
+     *
+     * Note: This is a generic error message when no specific message
+     * is suitable
+     */
+    const HTTP_INTERNAL_SERVER_ERROR = 500;
+
+    /**
+     * The server does not recognise the request method
+     */
+    const HTTP_NOT_IMPLEMENTED = 501;
+    const HTTP_BAD_GATEWAY = 502;
+    const HTTP_SERVICE_UNAVAILABLE = 503;
+    const HTTP_GATEWAY_TIMEOUT = 504;
+    const HTTP_VERSION_NOT_SUPPORTED = 505;
+    const HTTP_VARIANT_ALSO_NEGOTIATES_EXPERIMENTAL = 506;                        // RFC2295
+    const HTTP_INSUFFICIENT_STORAGE = 507;                                        // RFC4918
+    const HTTP_LOOP_DETECTED = 508;                                               // RFC5842
+    const HTTP_NOT_EXTENDED = 510;                                                // RFC2774
+    const HTTP_NETWORK_AUTHENTICATION_REQUIRED = 511;
+
     /**
      * This defines the rest format.
      * Must be overridden it in a controller so that it is set.
@@ -205,106 +339,27 @@ abstract class REST_Controller extends Core_Controller {
      */
     protected $_enable_xss = FALSE;
 
-    // Success
-
-    /**
-     * The request has succeeded
-     */
-    const OK = 200;
-
-    /**
-     * The server successfully created a new resource
-     */
-    const CREATED = 201;
-
-    /**
-     * The server successfully processed the request, though no content is returned
-     */
-    const NO_CONTENT = 204;
-
-    // Redirection
-
-    /**
-     * The resource has not been modified since the last request
-     */
-    const NOT_MODIFIED = 304;
-
-    // Client Error
-
-    /**
-     * The request cannot be fulfilled due to multiple errors
-     */
-    const BAD_REQUEST = 400;
-
-    /**
-     * The user is unauthorized to access the requested resource
-     */
-    const UNAUTHORIZED = 401;
-
-    /**
-     * The requested resource is unavailable at this present time
-     */
-    const FORBIDDEN = 403;
-
-    /**
-     * The requested resource could not be found
-     *
-     * Note: This is sometimes used to mask if there was an UNAUTHORIZED (401) or
-     * FORBIDDEN (403) error, for security reasons
-     */
-    const NOT_FOUND = 404;
-
-    /**
-     * The request method is not supported by the following resource
-     */
-    const METHOD_NOT_ALLOWED = 405;
-
-    /**
-     * The request was not acceptable
-     */
-    const NOT_ACCEPTABLE = 406;
-
-    /**
-     * The request could not be completed due to a conflict with the current state
-     * of the resource
-     */
-    const CONFLICT = 409;
-
-    // Server Error
-
-    /**
-     * The server encountered an unexpected error
-     *
-     * Note: This is a generic error message when no specific message
-     * is suitable
-     */
-    const INTERNAL_SERVER_ERROR = 500;
-
-    /**
-     * The server does not recognised the request method
-     */
-    const NOT_IMPLEMENTED = 501;
-
     /**
      * HTTP status codes and their respective description
+     * Note: Only the widley used HTTP status codes are used
      *
      * @var array
      * @link http://www.restapitutorial.com/httpstatuscodes.html
      */
     protected $http_status_codes = array(
-        self::OK => 'OK',
-        self::CREATED => 'CREATED',
-        self::NO_CONTENT => 'NO CONTENT',
-        self::NOT_MODIFIED => 'NOT MODIFIED',
-        self::BAD_REQUEST => 'BAD REQUEST',
-        self::UNAUTHORIZED => 'UNAUTHORIZED',
-        self::FORBIDDEN => 'FORBIDDEN',
-        self::NOT_FOUND => 'NOT FOUND',
-        self::METHOD_NOT_ALLOWED => 'METHOD NOT ALLOWED',
-        self::NOT_ACCEPTABLE => 'NOT ACCEPTABLE',
-        self::CONFLICT => 'CONFLICT',
-        self::INTERNAL_SERVER_ERROR => 'INTERNAL SERVER ERROR',
-        self::NOT_IMPLEMENTED => 'NOT IMPLEMENTED'
+        self::HTTP_OK => 'OK',
+        self::HTTP_CREATED => 'CREATED',
+        self::HTTP_NO_CONTENT => 'NO CONTENT',
+        self::HTTP_NOT_MODIFIED => 'NOT MODIFIED',
+        self::HTTP_BAD_REQUEST => 'BAD REQUEST',
+        self::HTTP_UNAUTHORIZED => 'UNAUTHORIZED',
+        self::HTTP_FORBIDDEN => 'FORBIDDEN',
+        self::HTTP_NOT_FOUND => 'NOT FOUND',
+        self::HTTP_METHOD_NOT_ALLOWED => 'METHOD NOT ALLOWED',
+        self::HTTP_NOT_ACCEPTABLE => 'NOT ACCEPTABLE',
+        self::HTTP_CONFLICT => 'CONFLICT',
+        self::HTTP_INTERNAL_SERVER_ERROR => 'INTERNAL SERVER ERROR',
+        self::HTTP_NOT_IMPLEMENTED => 'NOT IMPLEMENTED'
     );
 
     /**
@@ -460,7 +515,7 @@ abstract class REST_Controller extends Core_Controller {
             $this->response(array(
                     $this->config->item('rest_status_field_name') => FALSE,
                     $this->config->item('rest_message_field_name') => 'Only AJAX requests are acceptable'
-                ), self::NOT_ACCEPTABLE);
+                ), self::HTTP_NOT_ACCEPTABLE);
         }
 
         // When there is no specific override for the current class/method, use the default auth value set in the config
@@ -519,7 +574,7 @@ abstract class REST_Controller extends Core_Controller {
         // Should we answer if not over SSL?
         if ($this->config->item('force_https') && $this->request->ssl === FALSE)
         {
-            $this->response(array($this->config->item('rest_status_field_name') => FALSE, $this->config->item('rest_message_field_name') => 'Unsupported protocol'), self::FORBIDDEN);
+            $this->response(array($this->config->item('rest_status_field_name') => FALSE, $this->config->item('rest_message_field_name') => 'Unsupported protocol'), self::HTTP_FORBIDDEN);
         }
 
         // Remove the supported format from the function name e.g. index.json => index
@@ -541,7 +596,7 @@ abstract class REST_Controller extends Core_Controller {
                 $this->_log_request();
             }
 
-            $this->response(array($this->config->item('rest_status_field_name') => FALSE, $this->config->item('rest_message_field_name') => 'Invalid API Key '.$this->rest->key), self::FORBIDDEN);
+            $this->response(array($this->config->item('rest_status_field_name') => FALSE, $this->config->item('rest_message_field_name') => 'Invalid API Key '.$this->rest->key), self::HTTP_FORBIDDEN);
         }
 
         // Check to see if this key has access to the requested controller.
@@ -552,13 +607,13 @@ abstract class REST_Controller extends Core_Controller {
                 $this->_log_request();
             }
 
-            $this->response(array($this->config->item('rest_status_field_name') => FALSE, $this->config->item('rest_message_field_name') => 'This API key does not have access to the requested controller.'), self::UNAUTHORIZED);
+            $this->response(array($this->config->item('rest_status_field_name') => FALSE, $this->config->item('rest_message_field_name') => 'This API key does not have access to the requested controller.'), self::HTTP_UNAUTHORIZED);
         }
 
         // Sure it exists, but can they do anything with it?
         if (method_exists($this, $controller_method) === FALSE)
         {
-            $this->response(array($this->config->item('rest_status_field_name') => FALSE, $this->config->item('rest_message_field_name') => 'Unknown method.'), self::NOT_FOUND);
+            $this->response(array($this->config->item('rest_status_field_name') => FALSE, $this->config->item('rest_message_field_name') => 'Unknown method.'), self::HTTP_NOT_FOUND);
         }
 
         // Doing key related stuff? Can only do it if they have a key right?
@@ -568,7 +623,7 @@ abstract class REST_Controller extends Core_Controller {
             if ($this->config->item('rest_enable_limits') && $this->_check_limit($controller_method) === FALSE)
             {
                 $response = array($this->config->item('rest_status_field_name') => FALSE, $this->config->item('rest_message_field_name') => 'This API key has reached the time limit for this method.');
-                $this->response($response, self::UNAUTHORIZED);
+                $this->response($response, self::HTTP_UNAUTHORIZED);
             }
 
             // If no level is set use 0, they probably aren't using permissions
@@ -585,7 +640,7 @@ abstract class REST_Controller extends Core_Controller {
 
             // They don't have good enough perms
             $response = array($this->config->item('rest_status_field_name') => FALSE, $this->config->item('rest_message_field_name') => 'This API key does not have enough permissions.');
-            $authorized || $this->response($response, self::UNAUTHORIZED);
+            $authorized || $this->response($response, self::HTTP_UNAUTHORIZED);
         }
 
         // No key stuff, but record that stuff is happening
@@ -608,7 +663,7 @@ abstract class REST_Controller extends Core_Controller {
                         'classname' => get_class($ex),
                         'message' => $ex->getMessage()
                     )
-                ), self::INTERNAL_SERVER_ERROR);
+                ), self::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -636,7 +691,7 @@ abstract class REST_Controller extends Core_Controller {
         // If data is NULL and no HTTP status code provided, then display, error and exit
         if ($data === NULL && $http_code === NULL)
         {
-            $http_code = self::NOT_FOUND;
+            $http_code = self::HTTP_NOT_FOUND;
         }
 
         // If data is not NULL and a HTTP status code provided, then continue
@@ -687,7 +742,7 @@ abstract class REST_Controller extends Core_Controller {
         // If not greater than zero, then set the HTTP status code as 200 by default
         // Though perhaps 500 should be set instead, for the developer not passing a
         // correct HTTP status code
-        $http_code > 0 || $http_code = 200;
+        $http_code > 0 || $http_code = self::HTTP_OK;
 
         set_status_header($http_code);
 
@@ -1740,7 +1795,7 @@ abstract class REST_Controller extends Core_Controller {
             $this->response(array(
                     $this->config->item('rest_status_field_name') => FALSE,
                     $this->config->item('rest_message_field_name') => 'Not Authorized'
-                ), self::UNAUTHORIZED);
+                ), self::HTTP_UNAUTHORIZED);
         }
     }
 
@@ -1842,7 +1897,7 @@ abstract class REST_Controller extends Core_Controller {
             $this->response(array(
                     $this->config->item('rest_status_field_name') => 0,
                     $this->config->item('rest_message_field_name') => 'Invalid credentials'
-                ), self::UNAUTHORIZED);
+                ), self::HTTP_UNAUTHORIZED);
         }
     }
 
@@ -1865,7 +1920,7 @@ abstract class REST_Controller extends Core_Controller {
                     'status' => FALSE,
                     'error' => 'IP Denied'
                 ),
-                self::UNAUTHORIZED);
+                self::HTTP_UNAUTHORIZED);
         }
     }
 
@@ -1888,7 +1943,7 @@ abstract class REST_Controller extends Core_Controller {
 
         if (in_array($this->input->ip_address(), $whitelist) === FALSE)
         {
-            $this->response(array($this->config->item('rest_status_field_name') => FALSE, $this->config->item('rest_message_field_name') => 'IP not authorized'), self::UNAUTHORIZED);
+            $this->response(array($this->config->item('rest_status_field_name') => FALSE, $this->config->item('rest_message_field_name') => 'IP not authorized'), self::HTTP_UNAUTHORIZED);
         }
     }
 
@@ -1922,7 +1977,7 @@ abstract class REST_Controller extends Core_Controller {
         $this->response(array(
                 $this->config->item('rest_status_field_name') => FALSE,
                 $this->config->item('rest_message_field_name') => 'Not authorized'
-            ), self::UNAUTHORIZED);
+            ), self::HTTP_UNAUTHORIZED);
     }
 
     /**
