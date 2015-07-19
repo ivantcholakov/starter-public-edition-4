@@ -98,27 +98,4 @@ class Server_api_example_controller extends REST_Controller {
         }
     }
 
-    public function send_post()
-    {
-        ob_start();
-
-        var_dump($this->request->body);
-
-        $data = ob_get_contents();
-        ob_end_clean();
-
-        $this->set_response($data, REST_Controller::HTTP_CREATED);
-    }
-
-    public function send_put()
-    {
-        ob_start();
-
-        var_dump($this->put('foo'));
-
-        $data = ob_get_contents();
-        ob_end_clean();
-
-        $this->set_response($data, REST_Controller::HTTP_CREATED);
-    }
 }
