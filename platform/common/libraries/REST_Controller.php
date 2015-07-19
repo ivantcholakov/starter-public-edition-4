@@ -758,7 +758,7 @@ abstract class REST_Controller extends Core_Controller {
      */
     public function set_response($data = NULL, $http_code = NULL)
     {
-        $this->response($data = NULL, $http_code = NULL, TRUE);
+        $this->response($data, $http_code, TRUE);
     }
 
     /**
