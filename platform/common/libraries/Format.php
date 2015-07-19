@@ -294,10 +294,40 @@ class Format {
         // Should row used as a reference?
         foreach ($data as &$row)
         {
+            // Added by Ivan Tcholakov, 19-JUL-2015.
+            // Suppressing "array to string conversion" notice.
+            $row = @ array_map('strval', $row);
+            //
+
             $this->_ci->table->add_row($row);
         }
 
         return $this->_ci->table->generate();
+    }
+
+    /**
+     * Format data as HTML - debug preview.
+     *
+     * @param mixed|NULL $data Optional data to pass, so as to override the data passed
+     * to the constructor
+     * @return string
+     */
+    public function to_debug($data = NULL)
+    {
+        // If no data is passed as a parameter, then use the data passed
+        // via the constructor
+        if ($data === NULL && func_num_args() === 0)
+        {
+            $data = $this->_data;
+        }
+
+        // Cast as an array if not already
+        if (is_array($data) === FALSE)
+        {
+            $data = (array) $data;
+        }
+
+        return print_d($data);
     }
 
     /**

@@ -42,6 +42,8 @@ template_partial('subnavbar');
                             <li><a href="<?php echo site_url('playground/rest/server-api-example/user/id/1'); ?>">User #1</a> - defaulting to JSON</li>
                             <li><a href="<?php echo site_url('playground/rest/server-api-example/user/id/1/format/xml'); ?>">User #1</a> - get it in XML</li>
                             <li><a id="ajax" href="<?php echo site_url('playground/rest/server-api-example/users/format/json'); ?>">Users</a> - get it in JSON (AJAX request)</li>
+                            <li><a href="<?php echo site_url('playground/rest/server-api-example/users/format/html'); ?>">Users</a> - get it in HTML</li>
+                            <li><a href="<?php echo site_url('playground/rest/server-api-example/users/format/debug'); ?>">Users</a> - get it as a debugging HTML preview</li>
                         </ul>
 
                     </div>
