@@ -487,7 +487,7 @@ $OUT =& load_class('Output', 'core');
 // Modified by Ivan Tcholakov.
 //if ($EXT->call_hook('cache_override') === FALSE && $OUT->_display_cache($CFG, $URI) === TRUE)
 // Disable cache when core is not initialized normally.
-if (NORMAL_MVC_EXECUTION && $EXT->call_hook('cache_override') === FALSE&& $OUT->_display_cache($CFG, $URI) === TRUE)
+if (NORMAL_MVC_EXECUTION && $EXT->call_hook('cache_override') === FALSE && $OUT->_display_cache($CFG, $URI) === TRUE)
 //
 {
     exit;
