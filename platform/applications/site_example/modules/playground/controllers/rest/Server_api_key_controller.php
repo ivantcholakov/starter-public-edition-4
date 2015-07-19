@@ -41,14 +41,14 @@ class Restserver_api_key_controller extends REST_Controller {
         // Insert the new key
         if (self::_insert_key($key, array('level' => $level, 'ignore_limits' => $ignore_limits)))
         {
-            $this->response(array(
+            $this->set_response(array(
                 'status' => 1,
                 'key' => $key
             ), REST_Controller::HTTP_CREATED); // CREATED (201) being the HTTP response code
         }
         else
         {
-            $this->response(array(
+            $this->set_response(array(
                 'status' => 0,
                 'error' => 'Could not save the key'
             ), REST_Controller::HTTP_INTERNAL_SERVER_ERROR); // INTERNAL_SERVER_ERROR (500) being the HTTP response code
@@ -72,16 +72,18 @@ class Restserver_api_key_controller extends REST_Controller {
         if (!self::_key_exists($key))
         {
             // It doesn't appear the key exists
-            $this->response(array(
+            $this->set_response(array(
                 'error' => 'Invalid API Key'
             ), REST_Controller::HTTP_BAD_REQUEST); // BAD_REQUEST (400) being the HTTP response code
+
+            return;
         }
 
         // Destroy it
         self::_delete_key($key);
 
         // Respond that the key was destroyed
-        $this->response(array(
+        $this->set_response(array(
             'status' => 1,
             'success' => 'API Key was deleted'
             ), REST_Controller::HTTP_NO_CONTENT); // NO_CONTENT (204) being the HTTP response code
@@ -105,22 +107,24 @@ class Restserver_api_key_controller extends REST_Controller {
         if (!self::_key_exists($key))
         {
             // It doesn't appear the key exists
-            $this->response(array(
+            $this->set_response(array(
                 'error' => 'Invalid API Key'
             ), REST_Controller::HTTP_BAD_REQUEST); // BAD_REQUEST (400) being the HTTP response code
+
+            return;
         }
 
         // Update the key level
         if (self::_update_key($key, array('level' => $new_level)))
         {
-            $this->response(array(
+            $this->set_response(array(
                 'status' => 1,
                 'success' => 'API Key was updated'
             ), REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
         }
         else
         {
-            $this->response(array(
+            $this->set_response(array(
                 'status' => 0,
                 'error' => 'Could not update the key level'
             ), REST_Controller::HTTP_INTERNAL_SERVER_ERROR); // INTERNAL_SERVER_ERROR (500) being the HTTP response code
@@ -144,22 +148,24 @@ class Restserver_api_key_controller extends REST_Controller {
         if (!self::_key_exists($key))
         {
             // It doesn't appear the key exists
-            $this->response(array(
+            $this->set_response(array(
                 'error' => 'Invalid API Key'
             ), REST_Controller::HTTP_BAD_REQUEST); // BAD_REQUEST (400) being the HTTP response code
+
+            return;
         }
 
         // Update the key level
         if (self::_update_key($key, array('level' => 0)))
         {
-            $this->response(array(
+            $this->set_response(array(
                 'status' => 1,
                 'success' => 'Key was suspended'
             ), REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
         }
         else
         {
-            $this->response(array(
+            $this->set_response(array(
                 'status' => 0,
                 'error' => 'Could not suspend the user'
             ), REST_Controller::HTTP_INTERNAL_SERVER_ERROR); // INTERNAL_SERVER_ERROR (500) being the HTTP response code
@@ -184,9 +190,11 @@ class Restserver_api_key_controller extends REST_Controller {
         if (!$key_details)
         {
             // It doesn't appear the key exists
-            $this->response(array(
+            $this->set_response(array(
                 'error' => 'Invalid API Key'
             ), REST_Controller::HTTP_BAD_REQUEST); // BAD_REQUEST (400) being the HTTP response code
+
+            return;
         }
 
         // Build a new key
@@ -198,14 +206,14 @@ class Restserver_api_key_controller extends REST_Controller {
             // Suspend old key
             self::_update_key($old_key, array('level' => 0));
 
-            $this->response(array(
+            $this->set_response(array(
                 'status' => 1,
                 'key' => $new_key
             ), REST_Controller::HTTP_CREATED); // CREATED (201) being the HTTP response code
         }
         else
         {
-            $this->response(array(
+            $this->set_response(array(
                 'status' => 0,
                 'error' => 'Could not save the key'
             ), REST_Controller::HTTP_INTERNAL_SERVER_ERROR); // INTERNAL_SERVER_ERROR (500) being the HTTP response code
