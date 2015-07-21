@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Format class
  * Help convert between various formats such as XML, JSON, CSV, etc.
  *
- * @author    Phil Sturgeon, Chris Kacerguis
+ * @author    Phil Sturgeon, Chris Kacerguis, @softwarespot
  * @license   http://www.dbad-license.org/
  */
 class Format {
@@ -273,15 +273,15 @@ class Format {
             $data = (array) $data;
         }
 
-        // Multi-dimensional array
-        if (isset($data[0]) && is_array($data[0]))
+        // Check if it's a multi-dimensional array
+        if (isset($data[0]) && count($data) !== count($data, COUNT_RECURSIVE))
         {
+            // Multi-dimensional array
             $headings = array_keys($data[0]);
         }
-
-        // Single array
         else
         {
+            // Single array
             $headings = array_keys($data);
             $data = array($data);
         }
@@ -291,8 +291,7 @@ class Format {
 
         $this->_ci->table->set_heading($headings);
 
-        // Should row used as a reference?
-        foreach ($data as &$row)
+        foreach ($data as $row)
         {
             // Added by Ivan Tcholakov, 19-JUL-2015.
             // Suppressing "array to string conversion" notice.

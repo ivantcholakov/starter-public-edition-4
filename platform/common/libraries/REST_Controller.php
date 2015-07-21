@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 abstract class REST_Controller extends Core_Controller {
 //
 
-    // Note: Only the widley used HTTP status codes are documented
+    // Note: Only the widely used HTTP status codes are documented
 
     // Informational
 
@@ -335,7 +335,7 @@ abstract class REST_Controller extends Core_Controller {
 
     /**
      * HTTP status codes and their respective description
-     * Note: Only the widley used HTTP status codes are used
+     * Note: Only the widely used HTTP status codes are used
      *
      * @var array
      * @link http://www.restapitutorial.com/httpstatuscodes.html
@@ -399,12 +399,12 @@ abstract class REST_Controller extends Core_Controller {
             exit('REST Server requires CodeIgniter 3.x');
         }
 
-        // Don't try to parse template variables like {elapsed_time} and {memory_usage}
-        // when output is displyed for not damaging data accidentally.
-        $this->output->parse_exec_vars = FALSE;
-
         // Set the default value of global xss filtering. Same approach as CodeIgniter 3
         $this->_enable_xss = ($this->config->item('global_xss_filtering') === TRUE);
+
+        // Don't try to parse template variables like {elapsed_time} and {memory_usage}
+        // when output is displayed for not damaging data accidentally
+        $this->output->parse_exec_vars = FALSE;
 
         // Start the timer for how long the request takes
         $this->_start_rtime = microtime(TRUE);
@@ -579,10 +579,10 @@ abstract class REST_Controller extends Core_Controller {
         $controller_method = $object_called . '_' . $this->request->method;
 
         // Do we want to log this method (if allowed by config)?
-        $log_method = !(isset($this->methods[$controller_method]['log']) && $this->methods[$controller_method]['log'] == FALSE);
+        $log_method = !(isset($this->methods[$controller_method]['log']) && $this->methods[$controller_method]['log'] === FALSE);
 
         // Use keys for this method?
-        $use_key = !(isset($this->methods[$controller_method]['key']) && $this->methods[$controller_method]['key'] == FALSE);
+        $use_key = !(isset($this->methods[$controller_method]['key']) && $this->methods[$controller_method]['key'] === FALSE);
 
         // They provided a key, but it wasn't valid, so get them out of here.
         if ($this->config->item('rest_enable_keys') && $use_key && $this->_allow === FALSE)
@@ -592,7 +592,7 @@ abstract class REST_Controller extends Core_Controller {
                 $this->_log_request();
             }
 
-            $this->response(array($this->config->item('rest_status_field_name') => FALSE, $this->config->item('rest_message_field_name') => 'Invalid API Key '.$this->rest->key), self::HTTP_FORBIDDEN);
+            $this->response(array($this->config->item('rest_status_field_name') => FALSE, $this->config->item('rest_message_field_name') => 'Invalid API Key ' . $this->rest->key), self::HTTP_FORBIDDEN);
         }
 
         // Check to see if this key has access to the requested controller.
@@ -653,7 +653,7 @@ abstract class REST_Controller extends Core_Controller {
         catch (Exception $ex)
         {
             // If the method doesn't exist, then the error will be caught and an error response shown
-            $this->response( array(
+            $this->response(array(
                     $this->config->item('rest_status_field_name') => FALSE,
                     $this->config->item('rest_message_field_name') => array(
                         'classname' => get_class($ex),
@@ -698,7 +698,6 @@ abstract class REST_Controller extends Core_Controller {
             {
                 // Set the format header
                 $this->output->set_content_type($this->_supported_formats[$this->response->format], strtolower($this->config->item('charset')));
-
                 $output = $this->format->factory($data)->{'to_' . $this->response->format}();
 
                 // An array must be parsed as a string, so as not to cause an array to string error.
@@ -804,31 +803,17 @@ abstract class REST_Controller extends Core_Controller {
      */
     protected function _detect_output_format()
     {
+        // Concatenate formats to a regex pattern e.g. \.(csv|json|xml)
         $pattern = '/\.(' . implode('|', array_keys($this->_supported_formats)) . ')$/';
 
-        // Check if a file extension is used when no get arguments provided
+        // Check if a file extension is used e.g. http://example.com/api/index.json?param1=param2
         $matches = array();
-        if (!$this->_get_args && preg_match($pattern, $this->uri->uri_string(), $matches))
+        if (preg_match($pattern, $this->uri->uri_string(), $matches))
         {
             return $matches[1];
         }
 
-        // Check if a file extension is used
-        elseif ($this->_get_args && is_array(end($this->_get_args)) === FALSE && preg_match($pattern, end($this->_get_args), $matches))
-        {
-            //elseif ($this->_get_args and is_array(end($this->_get_args)) === FALSE and preg_match($pattern, end(array_keys($this->_get_args)), $matches)) {
-            // The key of the last argument
-            $arg_keys = array_keys($this->_get_args);
-            $last_key = end($arg_keys);
-
-            // Remove the extension from arguments too
-            $this->_get_args[$last_key] = preg_replace($pattern, '', $this->_get_args[$last_key]);
-            $this->_args[$last_key] = preg_replace($pattern, '', $this->_args[$last_key]);
-
-            return $matches[1];
-        }
-
-        // Get the format
+        // Get the format via the GET parameter labelled 'format'
         $format = isset($this->_get_args['format']) ? strtolower($this->_get_args['format']) : NULL;
 
         // A format has been passed as an argument in the URL and it is supported
@@ -837,47 +822,45 @@ abstract class REST_Controller extends Core_Controller {
             return $format;
         }
 
-        // Otherwise, check the HTTP_ACCEPT (if it exists and we are allowed)
-        if ($this->config->item('rest_ignore_http_accept') === FALSE && $this->input->server('HTTP_ACCEPT'))
+        // Get the HTTP_ACCEPT server variable
+        $http_accept = $this->input->server('HTTP_ACCEPT');
+
+        // Otherwise, check the HTTP_ACCEPT server variable
+        if ($this->config->item('rest_ignore_http_accept') === FALSE && $http_accept !== NULL)
         {
             // Check all formats against the HTTP_ACCEPT header
             foreach (array_keys($this->_supported_formats) as $format)
             {
                 // Has this format been requested?
-                if (strpos($this->input->server('HTTP_ACCEPT'), $format) !== FALSE)
+                if (strpos($http_accept, $format) !== FALSE)
                 {
-                    // If not HTML or XML assume its right and send it on its way
                     if ($format !== 'html' && $format !== 'xml')
                     {
+                        // If not HTML or XML assume it's correct
                         return $format;
                     }
-
-                    // HTML or XML have shown up as a match
-                    else
+                    elseif ($format === 'html' && strpos($http_accept, 'xml') === FALSE)
                     {
+                        // HTML or XML have shown up as a match
                         // If it is truly HTML, it wont want any XML
-                        if ($format === 'html' && strpos($this->input->server('HTTP_ACCEPT'), 'xml') === FALSE)
-                        {
-                            return $format;
-                        }
-
+                        return $format;
+                    }
+                    else if ($format === 'xml' && strpos($http_accept, 'html') === FALSE)
+                    {
                         // If it is truly XML, it wont want any HTML
-                        elseif ($format === 'xml' && strpos($this->input->server('HTTP_ACCEPT'), 'html') === FALSE)
-                        {
-                            return $format;
-                        }
+                        return $format;
                     }
                 }
             }
-        } // End HTTP_ACCEPT checking
+        }
 
-        // Well, none of that has worked! Let's see if the controller has a default
+        // Check if the controller has a default format
         if (empty($this->rest_format) === FALSE)
         {
             return $this->rest_format;
         }
 
-        // Just use the default format
+        // Obtain the default format from the configuration
         return $this->config->item('rest_default_format');
     }
 
@@ -963,7 +946,7 @@ abstract class REST_Controller extends Core_Controller {
 
                     foreach ($list_ip_addresses as $ip_address)
                     {
-                        if ($this->input->ip_address() == trim($ip_address))
+                        if ($this->input->ip_address() === trim($ip_address))
                         {
                             // there is a match, set the the value to TRUE and break out of the loop
                             $found_address = TRUE;
@@ -988,19 +971,20 @@ abstract class REST_Controller extends Core_Controller {
     }
 
     /**
-     * What language do they want it in?
+     * Preferred return language
      *
      * @access protected
-     * @return NULL|string The language code.
+     * @return string|NULL The language code
      */
     protected function _detect_lang()
     {
-        if (!$lang = $this->input->server('HTTP_ACCEPT_LANGUAGE'))
+        $lang = $this->input->server('HTTP_ACCEPT_LANGUAGE');
+        if ($lang === NULL)
         {
             return NULL;
         }
 
-        // They might have sent a few, make it an array
+        // It appears more than one language has been sent using a comma delimiter
         if (strpos($lang, ',') !== FALSE)
         {
             $langs = explode(',', $lang);
@@ -1008,7 +992,7 @@ abstract class REST_Controller extends Core_Controller {
             $return_langs = array();
             foreach ($langs as $lang)
             {
-                // Remove weight and strip space
+                // Remove weight and trim leading and trailing whitespace
                 list($lang) = explode(';', $lang);
                 $return_langs[] = trim($lang);
             }
@@ -1016,7 +1000,7 @@ abstract class REST_Controller extends Core_Controller {
             return $return_langs;
         }
 
-        // Nope, just return the string
+        // Otherwise simply return as a string
         return $lang;
     }
 
@@ -1067,13 +1051,13 @@ abstract class REST_Controller extends Core_Controller {
             return TRUE;
         }
 
-        // How many times can you get to this method in a defined timelimit (default: 1hr)?
+        // How many times can you get to this method in a defined time_limit (default: 1 hour)?
         $limit = $this->methods[$controller_method]['limit'];
 
         $uri_noext = $this->uri->uri_string();
         if (strpos(strrev($this->uri->uri_string()), strrev($this->response->format)) === 0)
         {
-            $uri_noext = substr($this->uri->uri_string(),0, -strlen($this->response->format)-1);
+            $uri_noext = substr($this->uri->uri_string(),0, -strlen($this->response->format) - 1);
         }
 
         // Get data about a keys' usage and limit to one row
@@ -1083,7 +1067,7 @@ abstract class REST_Controller extends Core_Controller {
             ->get($this->config->item('rest_limits_table'))
             ->row();
 
-        $timelimit = (isset($this->methods[$controller_method]['time']) ? $this->methods[$controller_method]['time'] : 60 * 60);
+        $time_limit = (isset($this->methods[$controller_method]['time']) ? $this->methods[$controller_method]['time'] : 3600);
 
         // No calls have been made for this key
         if ($result === NULL)
@@ -1098,7 +1082,7 @@ abstract class REST_Controller extends Core_Controller {
         }
 
         // Been a time limit (or by default an hour) since they called
-        elseif ($result->hour_started < (time() - $timelimit))
+        elseif ($result->hour_started < (time() - $time_limit))
         {
             // Reset the started period and count
             $this->rest->db
@@ -1130,7 +1114,7 @@ abstract class REST_Controller extends Core_Controller {
     }
 
     /**
-     * Check if there is a specific auth type set for the current class/method being called
+     * Check if there is a specific auth type set for the current class/method/HTTP-method being called
      *
      * @access protected
      * @return bool
@@ -1138,86 +1122,154 @@ abstract class REST_Controller extends Core_Controller {
     protected function _auth_override_check()
     {
         // Assign the class/method auth type override array from the config
-        $this->overrides_array = $this->config->item('auth_override_class_method');
+        $auth_override_class_method = $this->config->item('auth_override_class_method');
 
-        // Check to see if the override array is even populated, otherwise return FALSE
-        if (empty($this->overrides_array))
+        // Check to see if the override array is even populated
+        if (!empty($auth_override_class_method))
         {
-            return FALSE;
-        }
-
-        // check for wildcard flag for rules for classes
-        if (empty($this->overrides_array[$this->router->class]['*']) === FALSE) // Check for class overrides
-        {
-            // None auth override found, prepare nothing but send back a TRUE override flag
-            if ($this->overrides_array[$this->router->class]['*'] == 'none')
+            // check for wildcard flag for rules for classes
+            if (!empty($auth_override_class_method[$this->router->class]['*'])) // Check for class overrides
             {
-                return TRUE;
+                // None auth override found, prepare nothing but send back a TRUE override flag
+                if ($auth_override_class_method[$this->router->class]['*'] == 'none')
+                {
+                    return TRUE;
+                }
+
+                // Basic auth override found, prepare basic
+                if ($auth_override_class_method[$this->router->class]['*'] == 'basic')
+                {
+                    $this->_prepare_basic_auth();
+
+                    return TRUE;
+                }
+
+                // Digest auth override found, prepare digest
+                if ($auth_override_class_method[$this->router->class]['*'] == 'digest')
+                {
+                    $this->_prepare_digest_auth();
+
+                    return TRUE;
+                }
+
+                // Whitelist auth override found, check client's ip against config whitelist
+                if ($auth_override_class_method[$this->router->class]['*'] == 'whitelist')
+                {
+                    $this->_check_whitelist_auth();
+
+                    return TRUE;
+                }
             }
 
-            // Basic auth override found, prepare basic
-            if ($this->overrides_array[$this->router->class]['*'] == 'basic')
+            // Check to see if there's an override value set for the current class/method being called
+            if (!empty($auth_override_class_method[$this->router->class][$this->router->method]))
             {
-                $this->_prepare_basic_auth();
+                // None auth override found, prepare nothing but send back a TRUE override flag
+                if ($auth_override_class_method[$this->router->class][$this->router->method] == 'none')
+                {
+                    return TRUE;
+                }
 
-                return TRUE;
+                // Basic auth override found, prepare basic
+                if ($auth_override_class_method[$this->router->class][$this->router->method] == 'basic')
+                {
+                    $this->_prepare_basic_auth();
+
+                    return TRUE;
+                }
+
+                // Digest auth override found, prepare digest
+                if ($auth_override_class_method[$this->router->class][$this->router->method] == 'digest')
+                {
+                    $this->_prepare_digest_auth();
+
+                    return TRUE;
+                }
+
+                // Whitelist auth override found, check client's ip against config whitelist
+                if ($auth_override_class_method[$this->router->class][$this->router->method] == 'whitelist')
+                {
+                    $this->_check_whitelist_auth();
+
+                    return TRUE;
+                }
+            }
+        }
+
+        // Assign the class/method/HTTP-method auth type override array from the config
+        $auth_override_class_method_http = $this->config->item('auth_override_class_method_http');
+
+        // Check to see if the override array is even populated
+        if (!empty($auth_override_class_method_http))
+        {
+            // check for wildcard flag for rules for classes
+            if(!empty($auth_override_class_method_http[$this->router->class]['*'][$this->request->method]))
+            {
+                // None auth override found, prepare nothing but send back a TRUE override flag
+                if ($auth_override_class_method_http[$this->router->class]['*'][$this->request->method] == 'none')
+                {
+                    return TRUE;
+                }
+
+                // Basic auth override found, prepare basic
+                if ($auth_override_class_method_http[$this->router->class]['*'][$this->request->method] == 'basic')
+                {
+                    $this->_prepare_basic_auth();
+
+                    return TRUE;
+                }
+
+                // Digest auth override found, prepare digest
+                if ($auth_override_class_method_http[$this->router->class]['*'][$this->request->method] == 'digest')
+                {
+                    $this->_prepare_digest_auth();
+
+                    return TRUE;
+                }
+
+                // Whitelist auth override found, check client's ip against config whitelist
+                if ($auth_override_class_method_http[$this->router->class]['*'][$this->request->method] == 'whitelist')
+                {
+                    $this->_check_whitelist_auth();
+
+                    return TRUE;
+                }
             }
 
-            // Digest auth override found, prepare digest
-            if ($this->overrides_array[$this->router->class]['*'] == 'digest')
+            // Check to see if there's an override value set for the current class/method/HTTP-method being called
+            if(!empty($auth_override_class_method_http[$this->router->class][$this->router->method][$this->request->method]))
             {
-                $this->_prepare_digest_auth();
+                // None auth override found, prepare nothing but send back a TRUE override flag
+                if ($auth_override_class_method_http[$this->router->class][$this->router->method][$this->request->method] == 'none')
+                {
+                    return TRUE;
+                }
 
-                return TRUE;
+                // Basic auth override found, prepare basic
+                if ($auth_override_class_method_http[$this->router->class][$this->router->method][$this->request->method] == 'basic')
+                {
+                    $this->_prepare_basic_auth();
+
+                    return TRUE;
+                }
+
+                // Digest auth override found, prepare digest
+                if ($auth_override_class_method_http[$this->router->class][$this->router->method][$this->request->method] == 'digest')
+                {
+                    $this->_prepare_digest_auth();
+
+                    return TRUE;
+                }
+
+                // Whitelist auth override found, check client's ip against config whitelist
+                if ($auth_override_class_method_http[$this->router->class][$this->router->method][$this->request->method] == 'whitelist')
+                {
+                    $this->_check_whitelist_auth();
+
+                    return TRUE;
+                }
             }
-
-            // Whitelist auth override found, check client's ip against config whitelist
-            if ($this->overrides_array[$this->router->class]['*'] == 'whitelist')
-            {
-                $this->_check_whitelist_auth();
-
-                return TRUE;
-            }
         }
-
-        // Check to see if there's an override value set for the current class/method being called
-        if (empty($this->overrides_array[$this->router->class][$this->router->method]))
-        {
-            return FALSE;
-        }
-
-        // None auth override found, prepare nothing but send back a TRUE override flag
-        if ($this->overrides_array[$this->router->class][$this->router->method] == 'none')
-        {
-            return TRUE;
-        }
-
-        // Basic auth override found, prepare basic
-        if ($this->overrides_array[$this->router->class][$this->router->method] == 'basic')
-        {
-            $this->_prepare_basic_auth();
-
-            return TRUE;
-        }
-
-        // Digest auth override found, prepare digest
-        if ($this->overrides_array[$this->router->class][$this->router->method] == 'digest')
-        {
-            $this->_prepare_digest_auth();
-
-            return TRUE;
-        }
-
-        // Whitelist auth override found, check client's ip against config whitelist
-        if ($this->overrides_array[$this->router->class][$this->router->method] == 'whitelist')
-        {
-            $this->_check_whitelist_auth();
-
-            return TRUE;
-        }
-
-        // Return FALSE when there is an override value set but it does not match
-        // 'basic', 'digest', or 'none'. (the value was misspelled)
         return FALSE;
     }
 
@@ -1382,7 +1434,7 @@ abstract class REST_Controller extends Core_Controller {
      * @param NULL $key Key to retrieve from the GET request
      * If NULL an array of arguments is returned
      * @param NULL $xss_clean Whether to apply XSS filtering
-     * @return array|string|FALSE Value from the GET request; otherwise, FALSE
+     * @return array|string|NULL Value from the GET request; otherwise, NULL
      */
     public function get($key = NULL, $xss_clean = NULL)
     {
@@ -1391,7 +1443,7 @@ abstract class REST_Controller extends Core_Controller {
             return $this->_get_args;
         }
 
-        return array_key_exists($key, $this->_get_args) ? $this->_xss_clean($this->_get_args[$key], $xss_clean) : FALSE;
+        return isset($this->_get_args[$key]) ? $this->_xss_clean($this->_get_args[$key], $xss_clean) : NULL;
     }
 
     /**
@@ -1401,7 +1453,7 @@ abstract class REST_Controller extends Core_Controller {
      * @param NULL $key Key to retrieve from the OPTIONS request.
      * If NULL an array of arguments is returned
      * @param NULL $xss_clean Whether to apply XSS filtering
-     * @return array|string|FALSE Value from the OPTIONS request; otherwise, FALSE
+     * @return array|string|NULL Value from the OPTIONS request; otherwise, NULL
      */
     public function options($key = NULL, $xss_clean = NULL)
     {
@@ -1410,7 +1462,7 @@ abstract class REST_Controller extends Core_Controller {
             return $this->_options_args;
         }
 
-        return array_key_exists($key, $this->_options_args) ? $this->_xss_clean($this->_options_args[$key], $xss_clean) : FALSE;
+        return isset($this->_options_args[$key]) ? $this->_xss_clean($this->_options_args[$key], $xss_clean) : NULL;
     }
 
     /**
@@ -1420,7 +1472,7 @@ abstract class REST_Controller extends Core_Controller {
      * @param NULL $key Key to retrieve from the HEAD request
      * If NULL an array of arguments is returned
      * @param NULL $xss_clean Whether to apply XSS filtering
-     * @return array|string|FALSE Value from the HEAD request; otherwise, FALSE
+     * @return array|string|NULL Value from the HEAD request; otherwise, NULL
      */
     public function head($key = NULL, $xss_clean = NULL)
     {
@@ -1429,7 +1481,7 @@ abstract class REST_Controller extends Core_Controller {
             return $this->head_args;
         }
 
-        return array_key_exists($key, $this->head_args) ? $this->_xss_clean($this->head_args[$key], $xss_clean) : FALSE;
+        return isset($this->head_args[$key]) ? $this->_xss_clean($this->head_args[$key], $xss_clean) : NULL;
     }
 
     /**
@@ -1439,7 +1491,7 @@ abstract class REST_Controller extends Core_Controller {
      * @param NULL $key Key to retrieve from the POST request
      * If NULL an array of arguments is returned
      * @param NULL $xss_clean Whether to apply XSS filtering
-     * @return array|string|FALSE Value from the POST request; otherwise, FALSE
+     * @return array|string|NULL Value from the POST request; otherwise, NULL
      */
     public function post($key = NULL, $xss_clean = NULL)
     {
@@ -1448,7 +1500,7 @@ abstract class REST_Controller extends Core_Controller {
             return $this->_post_args;
         }
 
-        return array_key_exists($key, $this->_post_args) ? $this->_xss_clean($this->_post_args[$key], $xss_clean) : FALSE;
+        return isset($this->_post_args[$key]) ? $this->_xss_clean($this->_post_args[$key], $xss_clean) : NULL;
     }
 
     /**
@@ -1458,7 +1510,7 @@ abstract class REST_Controller extends Core_Controller {
      * @param NULL $key Key to retrieve from the PUT request
      * If NULL an array of arguments is returned
      * @param NULL $xss_clean Whether to apply XSS filtering
-     * @return array|string|FALSE Value from the PUT request; otherwise, FALSE
+     * @return array|string|NULL Value from the PUT request; otherwise, NULL
      */
     public function put($key = NULL, $xss_clean = NULL)
     {
@@ -1467,7 +1519,7 @@ abstract class REST_Controller extends Core_Controller {
             return $this->_put_args;
         }
 
-        return array_key_exists($key, $this->_put_args) ? $this->_xss_clean($this->_put_args[$key], $xss_clean) : FALSE;
+        return isset($this->_put_args[$key]) ? $this->_xss_clean($this->_put_args[$key], $xss_clean) : NULL;
     }
 
     /**
@@ -1477,7 +1529,7 @@ abstract class REST_Controller extends Core_Controller {
      * @param NULL $key Key to retrieve from the DELETE request
      * If NULL an array of arguments is returned
      * @param NULL $xss_clean Whether to apply XSS filtering
-     * @return array|string|FALSE Value from the DELETE request; otherwise, FALSE
+     * @return array|string|NULL Value from the DELETE request; otherwise, NULL
      */
     public function delete($key = NULL, $xss_clean = NULL)
     {
@@ -1486,7 +1538,7 @@ abstract class REST_Controller extends Core_Controller {
             return $this->_delete_args;
         }
 
-        return array_key_exists($key, $this->_delete_args) ? $this->_xss_clean($this->_delete_args[$key], $xss_clean) : FALSE;
+        return isset($this->_delete_args[$key]) ? $this->_xss_clean($this->_delete_args[$key], $xss_clean) : NULL;
     }
 
     /**
@@ -1496,7 +1548,7 @@ abstract class REST_Controller extends Core_Controller {
      * @param NULL $key Key to retrieve from the PATCH request
      * If NULL an array of arguments is returned
      * @param NULL $xss_clean Whether to apply XSS filtering
-     * @return array|string|FALSE Value from the PATCH request; otherwise, FALSE
+     * @return array|string|NULL Value from the PATCH request; otherwise, NULL
      */
     public function patch($key = NULL, $xss_clean = NULL)
     {
@@ -1505,7 +1557,7 @@ abstract class REST_Controller extends Core_Controller {
             return $this->_patch_args;
         }
 
-        return array_key_exists($key, $this->_patch_args) ? $this->_xss_clean($this->_patch_args[$key], $xss_clean) : FALSE;
+        return isset($this->_patch_args[$key]) ? $this->_xss_clean($this->_patch_args[$key], $xss_clean) : NULL;
     }
 
     /**
@@ -1515,7 +1567,7 @@ abstract class REST_Controller extends Core_Controller {
      * @param NULL $key Key to retrieve from the query parameters
      * If NULL an array of arguments is returned
      * @param NULL $xss_clean Whether to apply XSS filtering
-     * @return array|string|FALSE Value from the query parameters; otherwise, FALSE
+     * @return array|string|NULL Value from the query parameters; otherwise, NULL
      */
     public function query($key = NULL, $xss_clean = NULL)
     {
@@ -1524,7 +1576,7 @@ abstract class REST_Controller extends Core_Controller {
             return $this->_query_args;
         }
 
-        return array_key_exists($key, $this->_query_args) ? $this->_xss_clean($this->_query_args[$key], $xss_clean) : FALSE;
+        return isset($this->_query_args[$key]) ? $this->_xss_clean($this->_query_args[$key], $xss_clean) : NULL;
     }
 
     /**
@@ -1571,11 +1623,10 @@ abstract class REST_Controller extends Core_Controller {
         if (empty($username))
         {
             log_message('debug', 'LDAP Auth: failure, empty username');
-
             return FALSE;
         }
 
-        log_message('debug', 'LDAP Auth: Loading Config');
+        log_message('debug', 'LDAP Auth: Loading configuration');
 
         $this->config->load('ldap.php', TRUE);
 
@@ -1590,12 +1641,8 @@ abstract class REST_Controller extends Core_Controller {
 
         log_message('debug', 'LDAP Auth: Connect to ' . (isset($ldaphost) ? $ldaphost : '[ldap not configured]'));
 
-        // Appears to be unused
-        // $ldapconfig['authrealm'] = $this->config->item('domain', 'ldap');
-
-        // connect to ldap server
+        // Connect to the ldap server
         $ldapconn = ldap_connect($ldap['host'], $ldap['port']);
-
         if ($ldapconn)
         {
             log_message('debug', 'Setting timeout to ' . $ldap['timeout'] . ' seconds');
@@ -1604,27 +1651,23 @@ abstract class REST_Controller extends Core_Controller {
 
             log_message('debug', 'LDAP Auth: Binding to ' . $ldap['host'] . ' with dn ' . $ldap['rdn']);
 
-            // binding to ldap server
+            // Binding to the ldap server
             $ldapbind = ldap_bind($ldapconn, $ldap['rdn'], $ldap['pass']);
 
-            // verify binding
-            if ($ldapbind)
+            // Verify the binding
+            if ($ldapbind === FALSE)
             {
-                log_message('debug', 'LDAP Auth: bind successful');
-            }
-            else
-            {
-                log_message('error', 'LDAP Auth: bind unsuccessful');
-
+                log_message('error', 'LDAP Auth: bind was unsuccessful');
                 return FALSE;
             }
+
+            log_message('debug', 'LDAP Auth: bind successful');
         }
 
-        // search for user
-        if (($res_id = ldap_search($ldapconn, $ldap['basedn'], "uid=$username")) == FALSE)
+        // Search for user
+        if (($res_id = ldap_search($ldapconn, $ldap['basedn'], "uid=$username")) === FALSE)
         {
             log_message('error', 'LDAP Auth: User ' . $username . ' not found in search');
-
             return FALSE;
         }
 
@@ -1633,36 +1676,33 @@ abstract class REST_Controller extends Core_Controller {
         if (ldap_count_entries($ldapconn, $res_id) != 1)
         //
         {
-            log_message('error', 'LDAP Auth: failure, username ' . $username . 'found more than once');
-
+            log_message('error', 'LDAP Auth: Failure, username ' . $username . 'found more than once');
             return FALSE;
         }
 
-        if (($entry_id = ldap_first_entry($ldapconn, $res_id)) == FALSE)
+        if (($entry_id = ldap_first_entry($ldapconn, $res_id)) === FALSE)
         {
-            log_message('error', 'LDAP Auth: failure, entry of searchresult could not be fetched');
-
+            log_message('error', 'LDAP Auth: Failure, entry of search result could not be fetched');
             return FALSE;
         }
 
-        if (($user_dn = ldap_get_dn($ldapconn, $entry_id)) == FALSE)
+        if (($user_dn = ldap_get_dn($ldapconn, $entry_id)) === FALSE)
         {
-            log_message('error', 'LDAP Auth: failure, user-dn could not be fetched');
-
+            log_message('error', 'LDAP Auth: Failure, user-dn could not be fetched');
             return FALSE;
         }
 
         // User found, could not authenticate as user
-        if (($link_id = ldap_bind($ldapconn, $user_dn, $password)) == FALSE)
+        if (($link_id = ldap_bind($ldapconn, $user_dn, $password)) === FALSE)
         {
-            log_message('error', 'LDAP Auth: failure, username/password did not match: ' . $user_dn);
-
+            log_message('error', 'LDAP Auth: Failure, username/password did not match: ' . $user_dn);
             return FALSE;
         }
 
         log_message('debug', 'LDAP Auth: Success ' . $user_dn . ' authenticated successfully');
 
         $this->_user_ldap_dn = $user_dn;
+
         ldap_close($ldapconn);
 
         return TRUE;
@@ -1680,8 +1720,7 @@ abstract class REST_Controller extends Core_Controller {
     {
         if (empty($username))
         {
-            log_message('error', 'Library Auth: failure, empty username');
-
+            log_message('error', 'Library Auth: Failure, empty username');
             return FALSE;
         }
 
@@ -1690,15 +1729,13 @@ abstract class REST_Controller extends Core_Controller {
 
         if (empty($auth_library_class))
         {
-            log_message('debug', 'Library Auth: failure, empty auth_library_class');
-
+            log_message('debug', 'Library Auth: Failure, empty auth_library_class');
             return FALSE;
         }
 
         if (empty($auth_library_function))
         {
-            log_message('debug', 'Library Auth: failure, empty auth_library_function');
-
+            log_message('debug', 'Library Auth: Failure, empty auth_library_function');
             return FALSE;
         }
 
