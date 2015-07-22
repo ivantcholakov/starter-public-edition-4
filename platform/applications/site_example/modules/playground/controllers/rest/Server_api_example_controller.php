@@ -27,7 +27,7 @@ class Server_api_example_controller extends REST_Controller {
         $this->methods['user_delete']['limit'] = 50; // 50 requests per hour per user/key
     }
 
-    public function user_get($id)
+    public function user_get($id = null)
     {
         if ($this->get('id') !== NULL)
         {
