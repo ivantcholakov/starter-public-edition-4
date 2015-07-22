@@ -804,22 +804,39 @@ abstract class REST_Controller extends Core_Controller {
     protected function _detect_output_format()
     {
         // Concatenate formats to a regex pattern e.g. \.(csv|json|xml)
-        $pattern = '/\.(' . implode('|', array_keys($this->_supported_formats)) . ')$/';
+        $pattern = '/\.(' . implode('|', array_keys($this->_supported_formats)) . ')[$|\/]/';
+        $matches = array();
 
         // Check if a file extension is used e.g. http://example.com/api/index.json?param1=param2
-        $matches = array();
         if (preg_match($pattern, $this->uri->uri_string(), $matches))
         {
             return $matches[1];
         }
 
-        // Get the format via the GET parameter labelled 'format'
-        $format = isset($this->_get_args['format']) ? strtolower($this->_get_args['format']) : NULL;
-
-        // A format has been passed as an argument in the URL and it is supported
-        if ($format !== NULL && isset($this->_supported_formats[$format]))
+        if (!empty($this->_get_args))
         {
-            return $format;
+            // Get the format parameter named as 'format'
+            if (isset($this->_get_args['format']))
+            {
+                $format = strtolower($this->_get_args['format']);
+
+                if (isset($this->_supported_formats[$format]))
+                {
+                    return $format;
+                }
+            }
+
+            // A special case: users/1.json
+            elseif (count($this->_get_args) == 1 && reset($this->_get_args) === NULL)
+            {
+                $pattern = '/\.(' . implode('|', array_keys($this->_supported_formats)) . ')$/';
+                $matches = array();
+
+                if (preg_match($pattern, key($this->_get_args), $matches))
+                {
+                    return $matches[1];
+                }
+            }
         }
 
         // Get the HTTP_ACCEPT server variable
