@@ -275,7 +275,7 @@ class CI_Loader {
 		$CI =& get_instance();
 		if (isset($CI->$name))
 		{
-			show_error('The model name you are loading is the name of a resource that is already being used: '.$name);
+			throw new RuntimeException('The model name you are loading is the name of a resource that is already being used: '.$name);
 		}
 
 		if ($db_conn !== FALSE && ! class_exists('CI_DB', FALSE))
@@ -294,23 +294,37 @@ class CI_Loader {
 		}
 
 		$model = ucfirst(strtolower($model));
-
-		foreach ($this->_ci_model_paths as $mod_path)
+		if ( ! class_exists($model))
 		{
-			if ( ! file_exists($mod_path.'models/'.$path.$model.'.php'))
+			foreach ($this->_ci_model_paths as $mod_path)
 			{
-				continue;
+				if ( ! file_exists($mod_path.'models/'.$path.$model.'.php'))
+				{
+					continue;
+				}
+
+				require_once($mod_path.'models/'.$path.$model.'.php');
+				if ( ! class_exists($model, FALSE))
+				{
+					throw new RuntimeException($mod_path."models/".$path.$model.".php exists, but doesn't declare class ".$model);
+				}
+
+				break;
 			}
 
-			require_once($mod_path.'models/'.$path.$model.'.php');
-
-			$this->_ci_models[] = $name;
-			$CI->$name = new $model();
-			return $this;
+			if ( ! class_exists($model, FALSE))
+			{
+				throw new RuntimeException('Unable to locate the model you have specified: '.$model);
+			}
+		}
+		elseif ( ! is_subclass_of($model, 'CI_Model'))
+		{
+			throw new RuntimeException("Class ".$model." already exists and doesn't extend CI_Model");
 		}
 
-		// couldn't find the model
-		show_error('Unable to locate the model you have specified: '.$model);
+		$this->_ci_models[] = $name;
+		$CI->$name = new $model();
+		return $this;
 	}
 
 	// --------------------------------------------------------------------
@@ -911,7 +925,7 @@ class CI_Loader {
 		// If the PHP installation does not support short tags we'll
 		// do a little string replacement, changing the short tags
 		// to standard PHP echo statements.
-		if ( ! is_php('5.4') && ! ini_get('short_open_tag') && config_item('rewrite_short_tags') === TRUE && function_usable('eval'))
+		if ( ! is_php('5.4') && ! ini_get('short_open_tag') && config_item('rewrite_short_tags') === TRUE)
 		{
 			echo eval('?>'.preg_replace('/;*\s*\?>/', '; ?>', str_replace('<?=', '<?php echo ', file_get_contents($_ci_path))));
 		}

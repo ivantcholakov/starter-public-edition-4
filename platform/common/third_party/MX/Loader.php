@@ -42,9 +42,9 @@ class MX_Loader extends CI_Loader
 
     /**
      * CORE LOAD CONSTRUCTOR
-     * 
+     *
      * Assigns all CI paths to allow common functionality
-     * 
+     *
      */
     public function __construct()
     {
@@ -847,7 +847,7 @@ class MX_Loader extends CI_Loader
 
         if (empty($_ci_parsers)) {
 
-            if (!is_php('5.4') && ! ini_get('short_open_tag') && CI::$APP->config->item('rewrite_short_tags') == TRUE && function_usable('eval')) {
+            if (!is_php('5.4') && ! ini_get('short_open_tag') && CI::$APP->config->item('rewrite_short_tags') === TRUE) {
                 echo eval('?>'.preg_replace("/;*\s*\?>/", "; ?>", str_replace('<?=', '<?php echo ', file_get_contents($_ci_path))));
             } else {
                 include($_ci_path);
@@ -863,7 +863,7 @@ class MX_Loader extends CI_Loader
 
             ob_start();
 
-            if (!is_php('5.4') && ! ini_get('short_open_tag') && CI::$APP->config->item('rewrite_short_tags') == TRUE && function_usable('eval')) {
+            if (!is_php('5.4') && ! ini_get('short_open_tag') && CI::$APP->config->item('rewrite_short_tags') === TRUE) {
                 echo eval('?>'.preg_replace("/;*\s*\?>/", "; ?>", str_replace('<?=', '<?php echo ', file_get_contents($_ci_path))));
             } else {
                 include($_ci_path);
