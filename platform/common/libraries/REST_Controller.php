@@ -804,7 +804,7 @@ abstract class REST_Controller extends Core_Controller {
     protected function _detect_output_format()
     {
         // Concatenate formats to a regex pattern e.g. \.(csv|json|xml)
-        $pattern = '/\.(' . implode('|', array_keys($this->_supported_formats)) . ')[$|\/]/';
+        $pattern = '/\.(' . implode('|', array_keys($this->_supported_formats)) . ')($|\/)/';
         $matches = array();
 
         // Check if a file extension is used e.g. http://example.com/api/index.json?param1=param2
