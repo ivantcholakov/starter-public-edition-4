@@ -475,7 +475,7 @@ abstract class REST_Controller extends Core_Controller {
         // Which format should the data be returned in?
         $this->response->format = $this->_detect_output_format();
 
-        // Which format should the data be returned in?
+        // Which language should the data be returned in?
         $this->response->lang = $this->_detect_lang();
 
         // Extend this function to apply additional checking early on in the process
@@ -570,7 +570,10 @@ abstract class REST_Controller extends Core_Controller {
         // Should we answer if not over SSL?
         if ($this->config->item('force_https') && $this->request->ssl === FALSE)
         {
-            $this->response(array($this->config->item('rest_status_field_name') => FALSE, $this->config->item('rest_message_field_name') => 'Unsupported protocol'), self::HTTP_FORBIDDEN);
+            $this->response(array(
+                    $this->config->item('rest_status_field_name') => FALSE,
+                    $this->config->item('rest_message_field_name') => 'Unsupported protocol'
+                ), self::HTTP_FORBIDDEN);
         }
 
         // Remove the supported format from the function name e.g. index.json => index
@@ -592,7 +595,10 @@ abstract class REST_Controller extends Core_Controller {
                 $this->_log_request();
             }
 
-            $this->response(array($this->config->item('rest_status_field_name') => FALSE, $this->config->item('rest_message_field_name') => 'Invalid API Key ' . $this->rest->key), self::HTTP_FORBIDDEN);
+            $this->response(array(
+                    $this->config->item('rest_status_field_name') => FALSE,
+                    $this->config->item('rest_message_field_name') => 'Invalid API Key ' . $this->rest->key
+                ), self::HTTP_FORBIDDEN);
         }
 
         // Check to see if this key has access to the requested controller.
@@ -603,13 +609,19 @@ abstract class REST_Controller extends Core_Controller {
                 $this->_log_request();
             }
 
-            $this->response(array($this->config->item('rest_status_field_name') => FALSE, $this->config->item('rest_message_field_name') => 'This API key does not have access to the requested controller.'), self::HTTP_UNAUTHORIZED);
+            $this->response(array(
+                    $this->config->item('rest_status_field_name') => FALSE,
+                    $this->config->item('rest_message_field_name') => 'This API key does not have access to the requested controller.'
+                ), self::HTTP_UNAUTHORIZED);
         }
 
         // Sure it exists, but can they do anything with it?
         if (method_exists($this, $controller_method) === FALSE)
         {
-            $this->response(array($this->config->item('rest_status_field_name') => FALSE, $this->config->item('rest_message_field_name') => 'Unknown method.'), self::HTTP_NOT_FOUND);
+            $this->response(array(
+                    $this->config->item('rest_status_field_name') => FALSE,
+                    $this->config->item('rest_message_field_name') => 'Unknown method.'
+                ), self::HTTP_NOT_FOUND);
         }
 
         // Doing key related stuff? Can only do it if they have a key right?
@@ -770,9 +782,9 @@ abstract class REST_Controller extends Core_Controller {
     protected function _detect_input_format()
     {
         // Get the CONTENT-TYPE value from the SERVER variable
-        $contentType = $this->input->server('CONTENT_TYPE');
+        $content_type = $this->input->server('CONTENT_TYPE');
 
-        if (empty($contentType) === FALSE)
+        if (empty($content_type) === FALSE)
         {
             // Check all formats against the HTTP_ACCEPT header
             foreach ($this->_supported_formats as $key => $value)
@@ -782,10 +794,10 @@ abstract class REST_Controller extends Core_Controller {
 
                 // If a semi-colon exists in the string, then explode by ; and get the value of where
                 // the current array pointer resides. This will generally be the first element of the array
-                $contentType = (strpos($contentType, ';') !== FALSE ? current(explode(';', $contentType)) : $contentType);
+                $content_type = (strpos($content_type, ';') !== FALSE ? current(explode(';', $content_type)) : $content_type);
 
                 // If both the mime types match, then return the format
-                if ($contentType === $value)
+                if ($content_type === $value)
                 {
                     return $key;
                 }
@@ -813,21 +825,21 @@ abstract class REST_Controller extends Core_Controller {
             return $matches[1];
         }
 
-        if (!empty($this->_get_args))
+        if (empty($this->_get_args) === FALSE)
         {
             // Get the format parameter named as 'format'
-            if (isset($this->_get_args['format']))
+            if (isset($this->_get_args['format']) === TRUE)
             {
                 $format = strtolower($this->_get_args['format']);
 
-                if (isset($this->_supported_formats[$format]))
+                if (isset($this->_supported_formats[$format]) === TRUE)
                 {
                     return $format;
                 }
             }
 
             // A special case: users/1.json
-            elseif (count($this->_get_args) == 1 && reset($this->_get_args) === NULL)
+            elseif (count($this->_get_args) === 1 && reset($this->_get_args) === NULL)
             {
                 $pattern = '/\.(' . implode('|', array_keys($this->_supported_formats)) . ')$/';
                 $matches = array();
@@ -1031,7 +1043,7 @@ abstract class REST_Controller extends Core_Controller {
     protected function _log_request($authorized = FALSE)
     {
         // Insert the request into the log table
-        $isInserted = $this->rest->db
+        $is_inserted = $this->rest->db
             ->insert(
                 $this->config->item('rest_logs_table'), array(
                 'uri' => $this->uri->uri_string(),
@@ -1049,7 +1061,7 @@ abstract class REST_Controller extends Core_Controller {
         // Get the last insert id to update at a later stage of the request
         $this->_insert_id = $this->rest->db->insert_id();
 
-        return $isInserted;
+        return $is_inserted;
     }
 
     /**
@@ -1062,36 +1074,60 @@ abstract class REST_Controller extends Core_Controller {
     protected function _check_limit($controller_method)
     {
         // They are special, or it might not even have a limit
-        if (empty($this->rest->ignore_limits) === FALSE || isset($this->methods[$controller_method]['limit']) === FALSE)
+        if (empty($this->rest->ignore_limits) === FALSE)
+        {
+            // Everything is fine
+            return TRUE;
+        }
+
+        switch ($this->config->item('rest_limits_method'))
+        {
+          case 'API_KEY':
+            $limited_uri = 'api-key:' . (isset($this->rest->key) ? $this->rest->key : '');
+            $limited_method_name = isset($this->rest->key) ? $this->rest->key : '';
+            break;
+
+          case 'METHOD_NAME':
+            $limited_uri = 'method-name:' . $controller_method;
+            $limited_method_name =  $controller_method;
+            break;
+
+          case 'ROUTED_URL':
+          default:
+            $limited_uri = $this->uri->ruri_string();
+            if (strpos(strrev($limited_uri), strrev($this->response->format)) === 0)
+            {
+                $limited_uri = substr($limited_uri,0, -strlen($this->response->format) - 1);
+            }
+            $limited_uri = 'uri:' . $limited_uri . ':' . $this->request->method; // It's good to differentiate GET from PUT
+            $limited_method_name = $controller_method;
+            break;
+        }
+
+        if (isset($this->methods[$limited_method_name]['limit']) === FALSE )
         {
             // Everything is fine
             return TRUE;
         }
 
         // How many times can you get to this method in a defined time_limit (default: 1 hour)?
-        $limit = $this->methods[$controller_method]['limit'];
+        $limit = $this->methods[$limited_method_name]['limit'];
 
-        $uri_noext = $this->uri->uri_string();
-        if (strpos(strrev($this->uri->uri_string()), strrev($this->response->format)) === 0)
-        {
-            $uri_noext = substr($this->uri->uri_string(),0, -strlen($this->response->format) - 1);
-        }
+        $timelimit = (isset($this->methods[$limited_method_name]['time']) ? $this->methods[$limited_method_name]['time'] : 3600); // 3600 = 60 * 60
 
         // Get data about a keys' usage and limit to one row
         $result = $this->rest->db
-            ->where('uri', $uri_noext)
+            ->where('uri', $limited_uri)
             ->where('api_key', $this->rest->key)
             ->get($this->config->item('rest_limits_table'))
             ->row();
-
-        $time_limit = (isset($this->methods[$controller_method]['time']) ? $this->methods[$controller_method]['time'] : 3600);
 
         // No calls have been made for this key
         if ($result === NULL)
         {
             // Create a new row for the following key
             $this->rest->db->insert($this->config->item('rest_limits_table'), array(
-                'uri' => $this->uri->uri_string(),
+                'uri' => $limited_uri,
                 'api_key' => isset($this->rest->key) ? $this->rest->key : '',
                 'count' => 1,
                 'hour_started' => time()
@@ -1103,7 +1139,7 @@ abstract class REST_Controller extends Core_Controller {
         {
             // Reset the started period and count
             $this->rest->db
-                ->where('uri', $uri_noext)
+                ->where('uri', $limited_uri)
                 ->where('api_key', isset($this->rest->key) ? $this->rest->key : '')
                 ->set('hour_started', time())
                 ->set('count', 1)
@@ -1121,7 +1157,7 @@ abstract class REST_Controller extends Core_Controller {
 
             // Increase the count by one
             $this->rest->db
-                ->where('uri', $uri_noext)
+                ->where('uri', $limited_uri)
                 ->where('api_key', $this->rest->key)
                 ->set('count', 'count + 1', FALSE)
                 ->update($this->config->item('rest_limits_table'));
@@ -1607,7 +1643,7 @@ abstract class REST_Controller extends Core_Controller {
      */
     protected function _xss_clean($value, $xss_clean)
     {
-        is_bool($xss_clean) OR $xss_clean = $this->_enable_xss;
+        is_bool($xss_clean) || $xss_clean = $this->_enable_xss;
 
         return $xss_clean === TRUE ? $this->security->xss_clean($value) : $value;
     }
@@ -1900,23 +1936,19 @@ abstract class REST_Controller extends Core_Controller {
 
         // We need to test which server authentication variable to use,
         // because the PHP ISAPI module in IIS acts different from CGI
-        $digest_string = '';
-        if ($this->input->server('PHP_AUTH_DIGEST'))
-        {
-            $digest_string = $this->input->server('PHP_AUTH_DIGEST');
-        }
-        elseif ($this->input->server('HTTP_AUTHORIZATION'))
+        $digest_string = $this->input->server('PHP_AUTH_DIGEST');
+        if ($digest_string === NULL)
         {
             $digest_string = $this->input->server('HTTP_AUTHORIZATION');
         }
 
-        $uniqueId = uniqid();
+        $unique_id = uniqid();
 
         // The $_SESSION['error_prompted'] variable is used to ask the password
         // again if none given or if the user enters wrong auth information
         if (empty($digest_string))
         {
-            $this->_force_login($uniqueId);
+            $this->_force_login($unique_id);
         }
 
         // We need to retrieve authentication data from the $digest_string variable
@@ -1925,14 +1957,14 @@ abstract class REST_Controller extends Core_Controller {
         $digest = (empty($matches[1]) || empty($matches[2])) ? array() : array_combine($matches[1], $matches[2]);
 
         // For digest authentication the library function should return already stored md5(username:restrealm:password) for that username @see rest.php::auth_library_function config
-        $A1 = $this->_check_login($digest['username'], TRUE);
-        if (array_key_exists('username', $digest) === FALSE || $A1 === FALSE)
+        $username = $this->_check_login($digest['username'], TRUE);
+        if (array_key_exists('username', $digest) === FALSE || $username === FALSE)
         {
             $this->_force_login($uniqueId);
         }
 
-        $A2 = md5(strtoupper($this->request->method) . ':' . $digest['uri']);
-        $valid_response = md5($A1 . ':' . $digest['nonce'] . ':' . $digest['nc'] . ':' . $digest['cnonce'] . ':' . $digest['qop'] . ':' . $A2);
+        $md5 = md5(strtoupper($this->request->method) . ':' . $digest['uri']);
+        $valid_response = md5($username . ':' . $digest['nonce'] . ':' . $digest['nc'] . ':' . $digest['cnonce'] . ':' . $digest['qop'] . ':' . $md5);
 
         // Check if the string don't compare (case-insensitive)
         if (strcasecmp($digest['response'], $valid_response) !== 0)
@@ -1963,8 +1995,7 @@ abstract class REST_Controller extends Core_Controller {
             $this->response(array(
                     'status' => FALSE,
                     'error' => 'IP Denied'
-                ),
-                self::HTTP_UNAUTHORIZED);
+                ), self::HTTP_UNAUTHORIZED);
         }
     }
 
@@ -1980,14 +2011,19 @@ abstract class REST_Controller extends Core_Controller {
 
         array_push($whitelist, '127.0.0.1', '0.0.0.0');
 
-        foreach ($whitelist AS &$ip)
+        foreach ($whitelist as &$ip)
         {
+            // As $ip is a reference, trim leading and trailing whitespace, then store the new value
+            // using the reference
             $ip = trim($ip);
         }
 
         if (in_array($this->input->ip_address(), $whitelist) === FALSE)
         {
-            $this->response(array($this->config->item('rest_status_field_name') => FALSE, $this->config->item('rest_message_field_name') => 'IP not authorized'), self::HTTP_UNAUTHORIZED);
+            $this->response(array(
+                    $this->config->item('rest_status_field_name') => FALSE,
+                    $this->config->item('rest_message_field_name') => 'IP not authorized'
+                ), self::HTTP_UNAUTHORIZED);
         }
     }
 
@@ -2001,20 +2037,20 @@ abstract class REST_Controller extends Core_Controller {
      */
     protected function _force_login($nonce = '')
     {
-        $restAuth = $this->config->item('rest_auth');
-        $restRealm = $this->config->item('rest_realm');
-        if (strtolower($restAuth) === 'basic')
+        $rest_auth = $this->config->item('rest_auth');
+        $rest_realm = $this->config->item('rest_realm');
+        if (strtolower($rest_auth) === 'basic')
         {
             // See http://tools.ietf.org/html/rfc2617#page-5
-            header('WWW-Authenticate: Basic realm="' . $restRealm . '"');
+            header('WWW-Authenticate: Basic realm="' . $rest_realm . '"');
         }
-        elseif (strtolower($restAuth) === 'digest')
+        elseif (strtolower($rest_auth) === 'digest')
         {
             // See http://tools.ietf.org/html/rfc2617#page-18
             header(
-                'WWW-Authenticate: Digest realm="' . $restRealm
+                'WWW-Authenticate: Digest realm="' . $rest_realm
                 . '", qop="auth", nonce="' . $nonce
-                . '", opaque="' . md5($restRealm) . '"');
+                . '", opaque="' . md5($rest_realm) . '"');
         }
 
         // Display an error response
@@ -2035,8 +2071,7 @@ abstract class REST_Controller extends Core_Controller {
     {
         $payload['rtime'] = $this->_end_rtime - $this->_start_rtime;
 
-        return $this->rest->db
-            ->update(
+        return $this->rest->db->update(
                  $this->config->item('rest_logs_table'), $payload, array(
                 'id' => $this->_insert_id
             ));
