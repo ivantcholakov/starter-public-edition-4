@@ -20,15 +20,15 @@
 
                     url: $(this).attr("href"), // URL from the link that was clicked on.
 
-                    success: function(data, textStatus, jqXHR) {
+                }).done(function (data) {
 
-                        // The 'data' parameter is an array of objects that can be looped over.
-                        alert($.JSON.encode(data));
-                    },
+                    // The 'data' parameter is an array of objects that can be looped over.
 
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        alert('Oh no! A problem with the AJAX request!');
-                    }
+                    alert(window.JSON.stringify(data));
+
+                }).fail(function () {
+
+                    alert('Oh no! A problem with the AJAX request!');
                 });
             });
         });

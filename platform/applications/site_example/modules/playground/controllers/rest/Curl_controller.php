@@ -29,11 +29,11 @@ class Curl_controller extends Base_Controller {
 
         $this->load->library(\'curl\');
 
-        $this->curl->create(site_url(\'playground/rest/server-api-example/user/id/\'.$user_id.\'/format/json\'));
-  
+        $this->curl->create(site_url(\'playground/rest/server-api-example/users/id/\'.$user_id.\'/format/json\'));
+
         // Optional, delete this line if your API is open
         $this->curl->http_login($username, $password);
-  
+
         $this->curl->get();
 
         $result = $this->curl->execute();
@@ -59,11 +59,11 @@ class Curl_controller extends Base_Controller {
 
         $this->load->library('curl');
 
-        $this->curl->create(site_url('playground/rest/server-api-example/user/id/'.$user_id.'/format/json'));
-  
+        $this->curl->create(site_url('playground/rest/server-api-example/users/id/'.$user_id.'/format/json'));
+
         // Optional, delete this line if your API is open
         $this->curl->http_login($username, $password);
-  
+
         $this->curl->get();
 
         $result = $this->curl->execute();

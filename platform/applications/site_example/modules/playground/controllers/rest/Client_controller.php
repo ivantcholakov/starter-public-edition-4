@@ -31,7 +31,7 @@ class Client_controller extends Base_Controller {
             //\'http_auth\' => \'basic\' // or \'digest\'
         ));
 
-        $result = $this->rest->get(\'user/id/\'.$user_id.\'/format/json\');
+        $result = $this->rest->get(\'users/id/\'.$user_id.\'/format/json\');
 
         return $result;
     }
@@ -60,7 +60,7 @@ class Client_controller extends Base_Controller {
             //'http_auth' => 'basic' // or 'digest'
         ));
 
-        $result = $this->rest->get('user/id/'.$user_id.'/format/json');
+        $result = $this->rest->get('users/id/'.$user_id.'/format/json');
 
         return $result;
     }

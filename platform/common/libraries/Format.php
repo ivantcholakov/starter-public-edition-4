@@ -293,10 +293,9 @@ class Format {
 
         foreach ($data as $row)
         {
-            // Added by Ivan Tcholakov, 19-JUL-2015.
-            // Suppressing "array to string conversion" notice.
+            // Suppressing the "array to string conversion" notice.
+            // Keep the "evil" @ here.
             $row = @ array_map('strval', $row);
-            //
 
             $this->_ci->table->add_row($row);
         }
@@ -398,10 +397,9 @@ class Format {
                 break;
             }
 
-            // Added by Ivan Tcholakov, 16-JUL-2015.
-            // Suppressing "array to string conversion" notice.
+            // Suppressing the "array to string conversion" notice.
+            // Keep the "evil" @ here.
             $record = @ array_map('strval', $record);
-            //
 
             // Returns the length of the string written or FALSE
             fputcsv($handle, $record, $delimiter, $enclosure);
