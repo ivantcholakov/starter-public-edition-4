@@ -6,7 +6,7 @@
 /*global define: false Mustache: true*/
 
 (function defineMustache (global, factory) {
-  if (typeof exports === 'object' && exports) {
+  if (typeof exports === 'object' && exports && typeof exports.nodeName !== 'string') {
     factory(exports); // CommonJS
   } else if (typeof define === 'function' && define.amd) {
     define(['exports'], factory); // AMD
@@ -23,6 +23,14 @@
 
   function isFunction (object) {
     return typeof object === 'function';
+  }
+
+  /**
+   * More correct typeof string handling array
+   * which normally returns typeof 'object'
+   */
+  function typeStr (obj) {
+    return isArray(obj) ? 'array' : typeof obj;
   }
 
   function escapeRegExp (string) {
@@ -557,7 +565,7 @@
   };
 
   mustache.name = 'mustache.js';
-  mustache.version = '2.1.2';
+  mustache.version = '2.1.3';
   mustache.tags = [ '{{', '}}' ];
 
   // All high-level mustache.* functions use this writer.
@@ -584,6 +592,12 @@
    * default writer.
    */
   mustache.render = function render (template, view, partials) {
+    if (typeof template !== 'string') {
+      throw new TypeError('Invalid template! Template should be a "string" ' +
+                          'but "' + typeStr(template) + '" was given as the first ' +
+                          'argument for mustache#render(template, view, partials)');
+    }
+
     return defaultWriter.render(template, view, partials);
   };
 

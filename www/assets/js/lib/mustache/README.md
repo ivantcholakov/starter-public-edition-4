@@ -20,7 +20,7 @@ mustache.js ships with support for both the [CommonJS](http://www.commonjs.org/)
 
 And this will be your templates after you use Mustache:
 
-!['stache](http://d24w6bsrhbeh9d.cloudfront.net/photo/aZPNGon_460sa.gif)
+!['stache](https://cloud.githubusercontent.com/assets/288977/8779228/a3cf700e-2f02-11e5-869a-300312fb7a00.gif)
 
 ## Who uses mustache.js?
 
@@ -106,6 +106,8 @@ The most basic tag type is a simple variable. A `{{name}}` tag renders the value
 
 All variables are HTML-escaped by default. If you want to render unescaped HTML, use the triple mustache: `{{{name}}}`. You can also use `&` to unescape a variable.
 
+To print `{{name}}` as a string literal, the default delimiters must be changed. See the ["Set Delimiter'](https://github.com/janl/mustache.js#set-delimiter) section for more information about custom delimiters.
+
 View:
 
 ```json
@@ -123,6 +125,9 @@ Template:
 * {{company}}
 * {{{company}}}
 * {{&company}}
+{{=<% %>=}}
+* {{company}}
+<%={{ }}=%>
 ```
 
 Output:
@@ -133,6 +138,7 @@ Output:
 * &lt;b&gt;GitHub&lt;/b&gt;
 * <b>GitHub</b>
 * <b>GitHub</b>
+* {{company}}
 ```
 
 JavaScript's dot notation may be used to access keys that are properties of objects in a view.
