@@ -18,7 +18,7 @@ template_partial('subnavbar');
 ?>
 
                 <div class="page-header">
-                    <h1>Accessing the REST Server Using Curl Library</h1>
+                    <h1>Accessing the REST Server Using the Curl Library</h1>
                 </div>
 
                 <div class="row">
@@ -35,7 +35,7 @@ template_partial('subnavbar');
                         <h3>Code:</h3>
 
                         <pre><code><?php echo htmlspecialchars($code, ENT_QUOTES, 'UTF-8'); ?></code></pre>
-       
+
                         <h3>Result (for $user_id = 1):</h3>
 
                         <pre><?php echo htmlspecialchars($result, ENT_QUOTES, 'UTF-8'); ?></pre>
