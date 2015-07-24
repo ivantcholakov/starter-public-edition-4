@@ -16,12 +16,9 @@ class Core_URI extends CI_URI {
         }
     }
 
-    // Downgrading (CI2) this method in order it to work properly with the Modular Extensions.
-    // A change: No leading slash.
     public function ruri_string()
     {
-        //return '/'.implode('/', $this->rsegment_array());
-        return implode('/', $this->rsegment_array());
+        return ltrim(load_class('Router', 'core')->rdir, '/').implode('/', $this->rsegments);
     }
 
 }

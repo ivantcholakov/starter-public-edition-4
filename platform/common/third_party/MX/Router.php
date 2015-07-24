@@ -43,6 +43,9 @@ require dirname(__FILE__).'/Modules.php';
 
 class MX_Router extends CI_Router
 {
+    // A public property for assisting proper calculation of $ci->uri->ruri_string();
+    public $rdir = '';
+
     protected $module;
 
     public function fetch_module() {
@@ -219,17 +222,32 @@ class MX_Router extends CI_Router
                     $this->directory = $subdirectory;
                     if ($is_module_directory_default_controller) {
                         $result = array_slice($segments, 1);
+                        if ($router_initialization) {
+                            $this->rdir = $segment0.'/';
+                        }
                     } elseif ($is_module_directory_controller) {
                         $result = array_slice($segments, 2);
+                        if ($router_initialization) {
+                            $this->rdir = $segment0.'/'.$segment1.'/';
+                        }
                     }
                 } elseif ($is_module_controller) {
                     $result = array_slice($segments, 1);
+                    if ($router_initialization) {
+                        $this->rdir = $segment0.'/';
+                    }
                 } elseif ($is_module_directory) {
                     $this->directory = $subdirectory;
                     if ($is_module_directory_controller) {
                         $result = array_slice($segments, 2);
+                        if ($router_initialization) {
+                            $this->rdir = $segment0.'/'.$segment1.'/';
+                        }
                     } elseif ($is_module_directory_default_controller) {
                         $result = array_slice($segments, 1);
+                        if ($router_initialization) {
+                            $this->rdir = $segment0.'/';
+                        }
                     }
                 } elseif ($is_module_default_controller) {
                     $result = $segments;
@@ -274,6 +292,9 @@ class MX_Router extends CI_Router
                 )
             ) {
             $this->directory = $segment0.'/';
+            if ($router_initialization) {
+                $this->rdir = $segment0.'/';
+            }
             return array_slice($segments, 1);
         }
 
