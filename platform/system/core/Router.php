@@ -175,15 +175,15 @@ class CI_Router {
 		{
 			// If the directory is set at this time, it means an override exists, so skip the checks
 			if ( ! isset($this->directory))
-		{
-			$_d = $this->config->item('directory_trigger');
-			$_d = isset($_GET[$_d]) ? trim($_GET[$_d], " \t\n\r\0\x0B/") : '';
-
-			if ($_d !== '')
 			{
-				$this->uri->filter_uri($_d);
-				$this->set_directory($_d);
-			}
+				$_d = $this->config->item('directory_trigger');
+				$_d = isset($_GET[$_d]) ? trim($_GET[$_d], " \t\n\r\0\x0B/") : '';
+
+				if ($_d !== '')
+				{
+					$this->uri->filter_uri($_d);
+					$this->set_directory($_d);
+				}
 			}
 
 			$_c = trim($this->config->item('controller_trigger'));
@@ -595,7 +595,7 @@ class CI_Router {
 	 * Set directory name
 	 *
 	 * @param	string	$dir	Directory name
-	 * @param	bool	$appent	Whether we're appending rather than setting the full value
+	 * @param	bool	$append	Whether we're appending rather than setting the full value
 	 * @return	void
 	 */
 	public function set_directory($dir, $append = FALSE)
