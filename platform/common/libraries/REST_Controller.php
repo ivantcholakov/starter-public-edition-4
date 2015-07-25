@@ -977,7 +977,7 @@ abstract class REST_Controller extends Core_Controller {
                 }
             }
 
-            return $row;
+            return TRUE;
         }
 
         // No key has been sent
