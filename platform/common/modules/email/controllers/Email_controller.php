@@ -6,7 +6,7 @@
  */
 
 class Email_controller extends Core_Controller {
-    
+
     public function __construct() {
 
         parent::__construct();
@@ -148,6 +148,13 @@ class Email_controller extends Core_Controller {
         $alt_body = isset($data['alt_body']) ? $data['alt_body'] : '';
 
         if ($subject != '' && trim($body) != '') {
+
+            if (isset($data['headers']) && is_array($data['headers'])) {
+
+                foreach ($data['headers'] as $header_name => $header_value) {
+                    $this->email->set_header((string) $header_name, (string) $header_value);
+                }
+            }
 
             if (!empty($cc)) {
                 $this->email->cc($cc);
