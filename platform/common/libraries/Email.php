@@ -2,15 +2,15 @@
 
 /**
  * CodeIgniter compatible email-library powered by PHPMailer.
- * Version: 1.1.11
+ * Version: 1.1.12
  * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2015.
  * @license The MIT License (MIT), http://opensource.org/licenses/MIT
  * @link https://github.com/ivantcholakov/codeigniter-phpmailer
  *
  * This library is intended to be compatible with CI 2.x and CI 3.x.
  *
- * Tested on production sites with CodeIgniter 3.0.0+ (July 16, 2015) and
- * PHPMailer Version 5.2.10+ (July 16, 2015).
+ * Tested on production sites with CodeIgniter 3.0.1rc2 (August 1, 2015) and
+ * PHPMailer Version 5.2.10+ (August 1, 2015).
  */
 
 class Email extends CI_Email {
@@ -302,7 +302,12 @@ class Email extends CI_Email {
 
         if ($this->mailer_engine == 'phpmailer') {
 
-           $this->phpmailer->Subject = $subject;
+            // Modified by Ivan Tcholakov, 01-AUG-2015.
+            // See https://github.com/ivantcholakov/codeigniter-phpmailer/issues/8
+            // This change probably is not needed, done anyway.
+            //$this->phpmailer->Subject = $subject;
+            $this->phpmailer->Subject = str_replace(array('{unwrap}', '{/unwrap}'), '', $subject);
+            //
 
         } else {
 
@@ -318,7 +323,11 @@ class Email extends CI_Email {
 
         if ($this->mailer_engine == 'phpmailer') {
 
-            $this->phpmailer->Body = $body;
+            // Modified by Ivan Tcholakov, 01-AUG-2015.
+            // See https://github.com/ivantcholakov/codeigniter-phpmailer/issues/8
+            //$this->phpmailer->Body = $body;
+            $this->phpmailer->Body = str_replace(array('{unwrap}', '{/unwrap}'), '', $body);
+            //
         }
 
         parent::message($body);
@@ -451,6 +460,20 @@ class Email extends CI_Email {
     }
     //
 
+    public function set_header($header, $value) {
+
+        $header = (string) $header;
+        $value = (string) $value;
+
+        if ($this->mailer_engine == 'phpmailer') {
+            $this->phpmailer->addCustomHeader($header, str_replace(array("\n", "\r"), '', $value));
+        }
+
+        parent::set_header($header, $value);
+
+        return $this;
+    }
+
     public function send($auto_clear = true) {
 
         $auto_clear = !empty($auto_clear);
@@ -458,7 +481,12 @@ class Email extends CI_Email {
         if ($this->mailer_engine == 'phpmailer') {
 
             if ($this->mailtype == 'html') {
-                $this->phpmailer->AltBody = $this->_get_alt_message();
+
+                // Modified by Ivan Tcholakov, 01-AUG-2015.
+                // See https://github.com/ivantcholakov/codeigniter-phpmailer/issues/8
+                //$this->phpmailer->AltBody = $this->_get_alt_message();
+                $this->phpmailer->AltBody = str_replace(array('{unwrap}', '{/unwrap}'), '', $this->_get_alt_message());
+                //
             }
 
             $result = (bool) $this->phpmailer->send();
@@ -828,18 +856,20 @@ class Email extends CI_Email {
 
     protected function _get_alt_message() {
 
-        if (!empty($this->alt_message)) {
+        $alt_message = (string) $this->alt_message;
 
-            return ($this->wordwrap)
-                ? $this->word_wrap($this->alt_message, 76)
-                : $this->alt_message;
+        if ($alt_message == '') {
+            $alt_message = $this->_plain_text($this->_body);
         }
 
-        $body = $this->_plain_text($this->_body);
+        if ($this->mailer_engine == 'phpmailer') {
+            // PHPMailer would do the word wrapping.
+            return $alt_message;
+        }
 
         return ($this->wordwrap)
-            ? $this->word_wrap($body, 76)
-            : $body;
+            ? $this->word_wrap($alt_message, 76)
+            : $alt_message;
     }
 
     protected function _plain_text($html) {
