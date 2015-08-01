@@ -151,6 +151,7 @@ class Email_controller extends Core_Controller {
 
             if (isset($data['headers']) && is_array($data['headers'])) {
 
+                // An example: $data['headers'] = array('X-MSMail-Priority' => 'High');
                 foreach ($data['headers'] as $header_name => $header_value) {
                     $this->email->set_header((string) $header_name, (string) $header_value);
                 }
