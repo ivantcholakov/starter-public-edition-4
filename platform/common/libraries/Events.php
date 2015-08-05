@@ -37,10 +37,16 @@ class Events {
 
     //------- Additional piece of code by Ivan Tcholakov, DEC-2013 -------------
 
+    protected static $_initialized = false;
+
     public function __construct()
     {
-        self::_scan_modules();
-        self::_scan_common_modules();
+        if (!self::$_initialized)
+        {
+            self::_scan_modules();
+            self::_scan_common_modules();
+            self::$_initialized = true;
+        }
     }
 
     private static function _scan_modules()
@@ -73,17 +79,35 @@ class Events {
             foreach ($module_dirs as $dir)
             {
                 $events_file = APPPATH.'modules/'.$dir.'/events.php';
-                $class = 'Events_'.ucfirst(strtolower($dir));
 
-                if (is_file($events_file) && !class_exists($class, false))
+                // Modified by Ivan Tcholakov, 05-AUG-2015.
+                // See https://github.com/ivantcholakov/starter-public-edition-4/issues/59
+                //$class = 'Events_'.ucfirst(strtolower($dir));
+                //
+                //if (is_file($events_file) && !class_exists($class, false))
+                //{
+                //    include_once $events_file;
+                //
+                //    if (class_exists($class, false))
+                //    {
+                //        new $class;
+                //    }
+                //}
+                if (is_file($events_file))
                 {
+                    $classes = get_declared_classes();
                     include_once $events_file;
+                    $classes = array_diff(get_declared_classes(), $classes);
 
-                    if (class_exists($class, false))
+                    if (!empty($classes))
                     {
+                        // No class name convention is enforced.
+                        // Choose class names carefully for avoiding name collisions.
+                        $class = array_shift($classes);
                         new $class;
                     }
                 }
+                //
             }
         }
 
@@ -120,17 +144,35 @@ class Events {
             foreach ($module_dirs as $dir)
             {
                 $events_file = COMMONPATH.'modules/'.$dir.'/events.php';
-                $class = 'Common_Events_'.ucfirst(strtolower($dir));
 
-                if (is_file($events_file) && !class_exists($class, false))
+                // Modified by Ivan Tcholakov, 05-AUG-2015.
+                // See https://github.com/ivantcholakov/starter-public-edition-4/issues/59
+                //$class = 'Common_Events_'.ucfirst(strtolower($dir));
+                //
+                //if (is_file($events_file) && !class_exists($class, false))
+                //{
+                //    include_once $events_file;
+                //
+                //    if (class_exists($class, false))
+                //    {
+                //        new $class;
+                //    }
+                //}
+                if (is_file($events_file))
                 {
+                    $classes = get_declared_classes();
                     include_once $events_file;
+                    $classes = array_diff(get_declared_classes(), $classes);
 
-                    if (class_exists($class, false))
+                    if (!empty($classes))
                     {
+                        // No class name convention is enforced.
+                        // Choose class names carefully for avoiding name collisions.
+                        $class = array_shift($classes);
                         new $class;
                     }
                 }
+                //
             }
         }
 
