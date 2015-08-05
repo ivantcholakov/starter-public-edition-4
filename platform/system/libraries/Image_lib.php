@@ -788,7 +788,7 @@ class CI_Image_lib {
 			$this->y_axis = 0;
 		}
 
-		//  Create the image handle
+		// Create the image handle
 		if ( ! ($src_img = $this->image_create_gd()))
 		{
 			return FALSE;
@@ -1219,7 +1219,7 @@ class CI_Image_lib {
 			$x_axis += $this->orig_width - $wm_width;
 		}
 
-		//  Build the finalized image
+		// Build the finalized image
 		if ($wm_img_type === 3 && function_exists('imagealphablending'))
 		{
 			@imagealphablending($src_img, TRUE);
