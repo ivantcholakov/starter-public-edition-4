@@ -29,9 +29,9 @@ class Client_controller extends Base_Controller {
             //\'http_user\' => \'admin\',
             //\'http_pass\' => \'1234\',
             //\'http_auth\' => \'basic\' // or \'digest\'
-        ));
+        ), \'rest_client\');
 
-        $result = $this->rest->get(\'users/id/\'.$user_id.\'/format/json\');
+        $result = $this->rest_client->get(\'users/id/\'.$user_id.\'/format/json\');
 
         return $result;
     }
@@ -58,9 +58,9 @@ class Client_controller extends Base_Controller {
             //'http_user' => 'admin',
             //'http_pass' => '1234',
             //'http_auth' => 'basic' // or 'digest'
-        ));
+        ), 'rest_client');
 
-        $result = $this->rest->get('users/id/'.$user_id.'/format/json');
+        $result = $this->rest_client->get('users/id/'.$user_id.'/format/json');
 
         return $result;
     }
