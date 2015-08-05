@@ -35,17 +35,23 @@ class Events {
      */
     protected static $_listeners = array();
 
-    //------- Additional piece of code by Ivan Tcholakov, DEC-2013 -------------
+    //------- Additional piece of code by Ivan Tcholakov, 2013-2015 ------------
 
     protected static $_initialized = false;
 
-    public function __construct()
+    public function __construct($config = array())
     {
         if (!self::$_initialized)
         {
-            self::_load_class(APPPATH.'events.php');
+            if (!empty($config['event_registration_classes']) && is_array($config['event_registration_classes']))
+            {
+                foreach ($config['event_registration_classes'] as $file_name)
+                {
+                    self::_load_class($file_name);
+                }
+            }
+
             self::_scan_modules();
-            self::_load_class(COMMONPATH.'events.php');
             self::_scan_common_modules();
             self::$_initialized = true;
         }
