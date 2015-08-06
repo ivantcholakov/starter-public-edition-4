@@ -20,6 +20,22 @@
             }
         </style>
 
+        <style type="text/css">
+            .floating-menu {
+                background-color: gray;
+                border: 1px solid blue;
+                padding: 20px;
+                position: absolute;
+                top: 60px;
+                right: 10px;
+                z-index: 9999;
+            }
+        </style>
+
+        <div class="floating-menu">
+            <button class="btn btn-primary" id="open_only_one_dialog">Open only one dialog</button>
+        </div>
+
         <section>
 
             <div class="container">

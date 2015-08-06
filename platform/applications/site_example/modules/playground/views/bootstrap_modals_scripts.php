@@ -784,14 +784,30 @@ echo js('lib/bootstrap3-dialog/bootstrap-dialog.min.js');
         });
 
         // Create your dialog but do not open it.
-        var dialog = new BootstrapDialog({
+        var dialog_reopen = new BootstrapDialog({
             title: 'Your dialog',
             message: 'This dialog can be opened and closed again and again.',
             autodestroy: false
         });
 
-        $('#reopen_dialog').on('click', {dialog: dialog}, function(event) {
+        $('#reopen_dialog').on('click', {dialog: dialog_reopen}, function(event) {
             event.data.dialog.open();
+        });
+
+        // See how to limit only one dialog can be opened at a time.
+        var btn_open_only_one_dialog = $('#open_only_one_dialog');
+        btn_open_only_one_dialog.on('click', function(event) {
+            // The previous example "Create your dialog but do not open it"
+            // causes the error "Cannot read property 'modal' of undefined"
+            // within BootstrapDialog.closeAll();
+            try {
+                BootstrapDialog.closeAll();
+            }
+            catch (err) {}
+            var dialog = new BootstrapDialog({
+                message: 'The only one.'
+            });
+            dialog.open();
         });
 
     });
