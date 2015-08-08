@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2015
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -21,54 +21,29 @@ class Curl_controller extends Base_Controller {
 
     public function index() {
 
-        $code =
-'    private function ci_curl($user_id) {
+        $code_example = <<<EOT
 
-        $username = \'admin\';
-        $password = \'1234\';
+        \$user_id = 1;
 
-        $this->load->library(\'curl\');
+        \$this->load->helper('url');
+        \$this->load->library('curl');
 
-        $this->curl->create(site_url(\'playground/rest/server-api-example/users/id/\'.$user_id.\'/format/json\'));
+        \$this->curl->create(site_url('playground/rest/server-api-example/users/id/'.\$user_id.'/format/json'));
 
-        // Optional, delete this line if your API is open
-        $this->curl->http_login($username, $password);
+        // Optional, delete this line if your API is open.
+        \$username = 'admin';
+        \$password = '1234';
+        \$this->curl->http_login(\$username, \$password);
 
-        $this->curl->get();
+        \$result = \$this->curl->get()->execute();
 
-        $result = $this->curl->execute();
+EOT;
 
-        return $result;
-    }
-';
-        $result = $this->ci_curl(1);
+        eval($code_example);
 
         $this->template
-            ->set('code', $code)
-            ->set('result', $result)
-        ;
-
-        $this->template->build('rest/curl');
-
-    }
-
-    private function ci_curl($user_id) {
-
-        $username = 'admin';
-        $password = '1234';
-
-        $this->load->library('curl');
-
-        $this->curl->create(site_url('playground/rest/server-api-example/users/id/'.$user_id.'/format/json'));
-
-        // Optional, delete this line if your API is open
-        $this->curl->http_login($username, $password);
-
-        $this->curl->get();
-
-        $result = $this->curl->execute();
-
-        return $result;
+            ->set(compact('code_example', 'result'))
+            ->build('rest/curl');
     }
 
 }

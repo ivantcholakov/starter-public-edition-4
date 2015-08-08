@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 /**
- * CodeIgniter REST Class
+ * CodeIgniter REST Client Class
  *
  * Make REST requests to RESTful services with simple syntax.
  *
@@ -14,7 +14,11 @@
  * @link            http://getsparks.org/packages/restclient/show
  */
 
-class REST
+// Modified by Ivan Tcholakov, 08-AUG-2015.
+// See https://github.com/chriskacerguis/codeigniter-restserver/issues/69
+//class REST
+class Rest_client
+//
 {
     protected $_ci;
 
@@ -105,7 +109,6 @@ class REST
 
         isset($config['ssl_verify_peer']) && $this->ssl_verify_peer = $config['ssl_verify_peer'];
         isset($config['ssl_cainfo']) && $this->ssl_cainfo = $config['ssl_cainfo'];
-
     }
 
     /**
@@ -189,6 +192,7 @@ class REST
             $this->api_name = $name;
         }
 
+        return $this;
     }
 
     /**
@@ -218,6 +222,8 @@ class REST
     public function header($header)
     {
         $this->_ci->curl->http_header($header);
+
+        return $this;
     }
 
     /**
@@ -399,6 +405,8 @@ class REST
     public function option($code, $value)
     {
         $this->_ci->curl->option($code, $value);
+
+        return $this;
     }
 
     /**
@@ -415,6 +423,8 @@ class REST
 
         // Pass these attributes on to the curl library
         call_user_func_array(array($this->_ci->curl, 'http_header'), $params);
+
+        return $this;
     }
 
     /**
@@ -431,7 +441,7 @@ class REST
         // It is a supported format, so just run its formatting method
         if (array_key_exists($this->format, $this->supported_formats))
         {
-            return $this->{"_".$this->format}($response);
+            return $this->{'_'.$this->format}($response);
         }
 
         // Find out what format the data was returned in
@@ -440,7 +450,7 @@ class REST
         // If they sent through more than just mime, strip it off
         if (strpos($returned_mime, ';'))
         {
-            list($returned_mime)=explode(';', $returned_mime);
+            list($returned_mime) = explode(';', $returned_mime);
         }
 
         $returned_mime = trim($returned_mime);
