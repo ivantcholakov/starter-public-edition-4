@@ -27,8 +27,8 @@ template_partial('subnavbar');
 
                         <p>
                             See
-                            <a href="https://github.com/guzzle/guzzle" target="_blank">https://github.com/rmccue/Requests</a>,
-                            <a href="http://guzzlephp.org/" target="_blank">http://requests.ryanmccue.info</a>
+                            <a href="https://github.com/rmccue/Requests" target="_blank">https://github.com/rmccue/Requests</a>,
+                            <a href="http://requests.ryanmccue.info" target="_blank">http://requests.ryanmccue.info</a>
                         </p>
 
                         <h3>Code:</h3>
