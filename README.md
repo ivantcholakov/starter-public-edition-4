@@ -340,6 +340,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Facebook PHP SDK v4 for CodeIgniter - Library for integration of Facebook PHP SDK v4 with CodeIgniter 3, https://github.com/darkwhispering/facebook-sdk-v4-codeigniter
 * Bootstrap Modal Dialogs - Make use of Twitter Bootstrap's modal more monkey-friendly, https://github.com/nakupanda/bootstrap3-dialog, http://nakupanda.github.io/bootstrap3-dialog/
 * Roave Security Advisories - This package ensures that your application doesn't have installed dependencies with known security vulnerabilities, https://github.com/Roave/SecurityAdvisories
+* Requests for PHP - A HTTP library written in PHP, for human beings, https://github.com/rmccue/Requests, http://requests.ryanmccue.info
 
 The Playground
 --------------
