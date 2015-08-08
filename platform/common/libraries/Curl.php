@@ -113,6 +113,14 @@ class Curl {
      * Use these methods to build up more complex queries
      * ================================================================================= */
 
+    // Added by Ivan Tcholakov, 08-AUG-2015.
+    public function get()
+    {
+        // Do nothing, just support method chaining.
+        return $this;
+    }
+    //
+
     public function post($params = array(), $options = array())
     {
         // If its an array (instead of a query string) then format it correctly
@@ -128,6 +136,8 @@ class Curl {
 
         $this->option(CURLOPT_POST, TRUE);
         $this->option(CURLOPT_POSTFIELDS, $params);
+
+        return $this;
     }
 
     public function put($params = array(), $options = array())
@@ -146,6 +156,8 @@ class Curl {
 
         // Override method, I think this overrides $_POST with PUT data but... we'll see eh?
         $this->option(CURLOPT_HTTPHEADER, array('X-HTTP-Method-Override: PUT'));
+
+        return $this;
     }
 
     public function patch($params = array(), $options = array())
@@ -164,6 +176,8 @@ class Curl {
 
         // Override method, I think this overrides $_POST with PATCH data but... we'll see eh?
         $this->option(CURLOPT_HTTPHEADER, array('X-HTTP-Method-Override: PATCH'));
+
+        return $this;
     }
 
     public function delete($params, $options = array())
@@ -180,6 +194,8 @@ class Curl {
         $this->http_method('delete');
 
         $this->option(CURLOPT_POSTFIELDS, $params);
+
+        return $this;
     }
 
     public function set_cookies($params = array())
@@ -391,6 +407,8 @@ class Curl {
         $this->error_code = NULL;
         $this->error_string = '';
         $this->session = NULL;
+
+        return $this;
     }
 
 }
