@@ -12,6 +12,7 @@ class Client_controller extends Base_Controller {
         parent::__construct();
 
         $this->template
+            ->title('Accessing the REST Server Using the Rest Client Library')
             ->set_partial('subnavbar', 'rest/subnavbar')
             ->set('subnavbar_item_active', 'restclient')
         ;
