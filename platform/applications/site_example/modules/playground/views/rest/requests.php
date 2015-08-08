@@ -18,7 +18,7 @@ template_partial('subnavbar');
 ?>
 
                 <div class="page-header">
-                    <h1>Accessing the REST Server Using the Guzzle HTTP Client</h1>
+                    <h1>Accessing the REST Server Using the Requests HTTP Library</h1>
                 </div>
 
                 <div class="row">
@@ -27,19 +27,13 @@ template_partial('subnavbar');
 
                         <p>
                             See
-                            <a href="https://github.com/guzzle/guzzle" target="_blank">https://github.com/guzzle/guzzle</a>,
-                            <a href="http://guzzlephp.org/" target="_blank">http://guzzlephp.org/</a>
+                            <a href="https://github.com/guzzle/guzzle" target="_blank">https://github.com/rmccue/Requests</a>,
+                            <a href="http://guzzlephp.org/" target="_blank">http://requests.ryanmccue.info</a>
                         </p>
 
                         <h3>Code:</h3>
 
                         <pre><code><?php echo html_escape($code_example); ?></code></pre>
-
-<?php
-
-if (is_php($php_required)) {
-
-?>
 
                         <h3>Result:</h3>
 
@@ -56,19 +50,6 @@ if (is_php($php_required)) {
                         <h3>Content Type:</h3>
 
                         <?php echo print_d($content_type); ?>
-
-<?php
-
-} else {
-
-?>
-
-                        <div class="alert alert-warning">PHP <?php echo $php_required ?> is required for this demo to work.</div>
-<?php
-
-}
-
-?>
 
                     </div>
 

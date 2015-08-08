@@ -36,7 +36,7 @@ template_partial('subnavbar');
 
                         <pre><code><?php echo html_escape($code_example); ?></code></pre>
 
-                        <h3>Result (for $user_id = 1):</h3>
+                        <h3>Result:</h3>
 
                         <?php echo print_d($result); ?>
 
