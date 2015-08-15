@@ -24,13 +24,17 @@ class Pjax_controller extends Base_Controller {
     public function index() {
 
         $this->registry->set('pjax_subnavbar_active', 'home');
-        $this->template->build('pjax/pjax');
+        $this->template
+            ->title('Pjax - Home Page')
+            ->build('pjax/pjax');
     }
 
     public function page_1() {
 
         $this->registry->set('pjax_subnavbar_active', 'page_1');
-        $this->template->build('pjax/page_1');
+        $this->template
+            ->title('Pjax - Test Page 1')
+            ->build('pjax/page_1');
     }
 
     public function page_2() {
@@ -48,6 +52,7 @@ class Pjax_controller extends Base_Controller {
         $this->template
             ->set('video', $video)
             ->set('php_required', $php_required)
+            ->title('Pjax - Test Page 2')
             ->build('pjax/page_2');
     }
 
