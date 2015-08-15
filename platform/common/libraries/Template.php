@@ -332,6 +332,21 @@ class Template
             }
             //
         }
+        // Added by Ivan Tcholakov, 15-AUG-2015.
+        elseif ($this->_ci->input->get_request_header('X-PJAX'))
+        {
+            if ($this->_title != '')
+            {
+                $charset = config_item('charset');
+                // Ivan, 15-AUG-2015:
+                // This makes not valid HTML, title tag should not exist within the returned
+                // HTML fragment, but I can't the make other way to work.
+                $this->_body = '
+    <title>'.htmlspecialchars(strip_tags($this->_title), ENT_QUOTES, $charset).'</title>
+'.$this->_body;
+            }
+        }
+        //
 
         if ($this->_minify_enabled && function_exists('process_data_jmr1'))
         {
