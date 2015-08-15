@@ -50,7 +50,7 @@ echo Modules::run('main_menu_widget');
 ?>
 
         <!-- Begin page content -->
-        <div class="container">
+        <div class="container" id="content-container">
 <?php
 
 echo noscript('<div class="alert alert-warning text-center">'.$this->lang->line('ui_noscript').'</div>');
