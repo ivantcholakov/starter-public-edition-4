@@ -335,7 +335,7 @@ class Template
         // Added by Ivan Tcholakov, 15-AUG-2015.
         elseif ($this->_ci->input->get_request_header('X-PJAX'))
         {
-            if ($this->_title != '')
+            if (strpos($this->_ci->input->get_request_header('Accept'), 'text/html') !== false && $this->_title != '')
             {
                 $charset = config_item('charset');
                 // Ivan, 15-AUG-2015:
