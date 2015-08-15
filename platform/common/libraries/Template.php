@@ -307,7 +307,10 @@ class Template
         //
 
         // Want this file wrapped with a layout file?
-        if ($this->_layout)
+        if (
+                !$this->_ci->input->get_request_header('X-PJAX')    // See https://github.com/defunkt/jquery-pjax
+                &&
+                $this->_layout)
         {
             // Added to $this->_data['template'] by refference
             $template['body'] = $this->_body;
