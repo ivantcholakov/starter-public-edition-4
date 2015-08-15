@@ -803,7 +803,11 @@ class CI_Input {
 
 		if ( ! isset($headers))
 		{
-			empty($this->headers) OR $this->request_headers();
+			// Modified by Ivan Tcholakov, 15-AUG-2015.
+                        // See https://github.com/bcit-ci/CodeIgniter/issues/4056
+			//empty($this->headers) OR $this->request_headers();
+			! empty($this->headers) OR $this->request_headers();
+			//
 			foreach ($this->headers as $key => $value)
 			{
 				$headers[strtolower($key)] = $value;
