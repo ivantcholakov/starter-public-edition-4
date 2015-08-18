@@ -472,6 +472,7 @@ if (!function_exists('js_platform')) {
     function js_platform() {
 
         ci()->load->helper('asset');
+        ci()->load->helper('user_agent');
 
         $asset_uri = config_item('asset_dir');
         $asset_img_uri = image_path('');
@@ -498,6 +499,7 @@ if (!function_exists('js_platform')) {
         var ASSET_JS_URI = '".js_path('')."';
         var ASSET_CSS_URI = '".css_path('')."';
         var PUBLIC_UPLOAD_URL = '".PUBLIC_UPLOAD_URL."';
+        var UA_IS_MOBILE = ".(user_agent_is_mobile() ? 'true' : 'false').";
     //]]>
     </script>";
     }
