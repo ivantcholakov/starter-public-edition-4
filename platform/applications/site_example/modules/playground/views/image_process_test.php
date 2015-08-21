@@ -8,9 +8,13 @@
 // Place the following function within a helper file and load it.
 if (!function_exists('image_process')) {
 
-    function image_process($src, $width = null, $height = null) {
+    function image_process($src, $width = null, $height = null, $no_crop = null) {
 
-        return http_build_url(site_url('playground/image-process'), array('query' => http_build_query(array('src' => $src, 'w' => $width, 'h' => $height))), HTTP_URL_JOIN_QUERY);
+        if ($no_crop !== null) {
+            $no_crop = empty($no_crop) ? 0 : 1;
+        }
+
+        return http_build_url(site_url('playground/image-process'), array('query' => http_build_query(array('src' => $src, 'w' => $width, 'h' => $height, 'no_crop' => $no_crop))), HTTP_URL_JOIN_QUERY);
     }
 }
 
@@ -18,6 +22,23 @@ if (!function_exists('image_process')) {
 $my_image = image_url('playground.jpg');
 
 ?>
+
+    <style>
+        .image-container {
+            border: 1px solid blue;
+            display:table-cell;
+            vertical-align:middle;
+            text-align: center;
+        }
+        .image-container-120x180 {
+            width: 120px;
+            height: 180px;
+        }
+        .image-container-180x120 {
+            width: 180px;
+            height: 120px;
+        }
+    </style>
 
         <section>
 
@@ -27,7 +48,7 @@ $my_image = image_url('playground.jpg');
                     <h1>Image Manipulations Test</h1>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-6">
 
                     <h3>Fit Image by Width</h3>
 
@@ -38,14 +59,14 @@ $my_image = image_url('playground.jpg');
                     </p>
 
                     <p>
-                        <img src="<?php echo image_process($my_image, 160); ?>" />
+                        <img src="<?php echo image_process($my_image, 180); ?>" />
                         <br />
-                        width = 160px
+                        width = 180px
                     </p>
 
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-6">
 
                     <h3>Fit Image by Height</h3>
 
@@ -56,32 +77,53 @@ $my_image = image_url('playground.jpg');
                     </p>
 
                     <p>
-                        <img src="<?php echo image_process($my_image, null, 160); ?>" />
+                        <img src="<?php echo image_process($my_image, null, 180); ?>" />
                         <br />
-                        height = 160px
+                        height = 180px
                     </p>
 
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-6">
 
                     <h3>Fit Image by Width and Height</h3>
                     <h4 style="margin-bottom: 10px;">(the image is cropped for ratio maintaining)</h4>
 
                     <p>
-                        <img src="<?php echo image_process($my_image, 160, 120); ?>" />
+                        <img src="<?php echo image_process($my_image, 180, 120); ?>" />
                         <br />
-                        width = 160px, height = 120px
+                        width = 180px, height = 120px
                     </p>
 
                     <p>
-                        <img src="<?php echo image_process($my_image, 120, 160); ?>" />
+                        <img src="<?php echo image_process($my_image, 120, 180); ?>" />
                         <br />
-                        width = 120px, height = 160px
+                        width = 120px, height = 180px
                     </p>
 
                 </div>
 
+                <div class="col-md-6">
+
+                    <h3>Resize Image Within Width and Height</h3>
+                    <h4 style="margin-bottom: 10px;">(the image is not being cropped)</h4>
+
+                    <p>
+                        <div class="image-container image-container-180x120">
+                            <img src="<?php echo image_process($my_image, 180, 120, true); ?>" />
+                        </div>
+
+                        width = 180px, height = 120px
+                    </p>
+
+                    <p>
+                        <div class="image-container image-container-120x180">
+                            <img src="<?php echo image_process($my_image, 120, 180, true); ?>" />
+                        </div>
+                        width = 120px, height = 180px
+                    </p>
+
+                </div>
 
             </div>
 

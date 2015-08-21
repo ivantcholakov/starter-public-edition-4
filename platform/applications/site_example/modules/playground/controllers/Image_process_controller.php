@@ -36,6 +36,9 @@ class Image_process_controller extends Base_Controller {
         $w = $this->input->get('w');
         $h = $this->input->get('h');
 
+        $no_crop = $this->input->get('no_crop');
+        $no_crop = !empty($no_crop);
+
         if ($w > 0) {
 
             $resize_operation = 'fit_width';
@@ -48,7 +51,7 @@ class Image_process_controller extends Base_Controller {
 
         if ($h > 0) {
 
-            $resize_operation = $resize_operation == 'fit_width' ? 'fit' : 'fit_height';
+            $resize_operation = $resize_operation == 'fit_width' ? ($no_crop ? 'fit_inner' : 'fit') : 'fit_height';
             $h = (int) $h;
 
         } else {
@@ -81,7 +84,11 @@ class Image_process_controller extends Base_Controller {
             exit;
         }
 
-        $this->image_lib->fit();
+        if ($resize_operation == 'fit_inner') {
+            $this->image_lib->resize();
+        } else {
+            $this->image_lib->fit();
+        }
     }
 
 }
