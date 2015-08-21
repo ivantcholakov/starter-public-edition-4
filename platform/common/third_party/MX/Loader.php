@@ -576,7 +576,7 @@ class MX_Loader extends CI_Loader
             load_class('Model', 'core');
         }
 
-        $model = ucfirst(strtolower($model));
+        $model = ucfirst($model);
 
         foreach ($this->_ci_model_paths as $mod_path)
         {
