@@ -8,13 +8,17 @@
 // Place the following function within a helper file and load it.
 if (!function_exists('image_process')) {
 
-    function image_process($src, $width = null, $height = null, $no_crop = null) {
+    function image_process($src, $width = null, $height = null, $no_crop = null, $keep_canvas_size = null) {
 
         if ($no_crop !== null) {
             $no_crop = empty($no_crop) ? 0 : 1;
         }
 
-        return http_build_url(site_url('playground/image-process'), array('query' => http_build_query(array('src' => $src, 'w' => $width, 'h' => $height, 'no_crop' => $no_crop))), HTTP_URL_JOIN_QUERY);
+        if ($keep_canvas_size !== null) {
+            $keep_canvas_size = empty($keep_canvas_size) ? 0 : 1;
+        }
+
+        return http_build_url(site_url('playground/image-process'), array('query' => http_build_query(array('src' => $src, 'w' => $width, 'h' => $height, 'no_crop' => $no_crop, 'keep_canvas_size' => $keep_canvas_size))), HTTP_URL_JOIN_QUERY);
     }
 }
 
@@ -50,7 +54,7 @@ $my_image = image_url('playground.jpg');
 
                 <div class="col-md-6">
 
-                    <h3>Fit Image by Width</h3>
+                    <h3>Fit an Image by Width</h3>
 
                     <p>
                         <img src="<?php echo image_process($my_image, 120); ?>" />
@@ -68,7 +72,7 @@ $my_image = image_url('playground.jpg');
 
                 <div class="col-md-6">
 
-                    <h3>Fit Image by Height</h3>
+                    <h3>Fit an Image by Height</h3>
 
                     <p>
                         <img src="<?php echo image_process($my_image, null, 120); ?>" />
@@ -86,7 +90,7 @@ $my_image = image_url('playground.jpg');
 
                 <div class="col-md-6">
 
-                    <h3>Fit Image by Width and Height</h3>
+                    <h3>Fit an Image by Width and Height</h3>
                     <h4 style="margin-bottom: 10px;">(the image is cropped for ratio maintaining)</h4>
 
                     <p>
@@ -105,7 +109,7 @@ $my_image = image_url('playground.jpg');
 
                 <div class="col-md-6">
 
-                    <h3>Resize Image Within Width and Height</h3>
+                    <h3>Resize an Image Within Width and Height</h3>
                     <h4 style="margin-bottom: 10px;">(the image is not being cropped)</h4>
 
                     <p>
@@ -119,6 +123,28 @@ $my_image = image_url('playground.jpg');
                     <p>
                         <div class="image-container image-container-120x180">
                             <img src="<?php echo image_process($my_image, 120, 180, true); ?>" />
+                        </div>
+                        width = 120px, height = 180px
+                    </p>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <h3>Fit an Image Within a Canvas with Given Width and Height</h3>
+                    <h4 style="margin-bottom: 10px;">(the image fits within a canvas with a given backgrond color)</h4>
+
+                    <p>
+                        <div class="image-container image-container-180x120">
+                            <img src="<?php echo image_process($my_image, 180, 120, true, true); ?>" />
+                        </div>
+
+                        width = 180px, height = 120px
+                    </p>
+
+                    <p>
+                        <div class="image-container image-container-120x180">
+                            <img src="<?php echo image_process($my_image, 120, 180, true, true); ?>" />
                         </div>
                         width = 120px, height = 180px
                     </p>

@@ -31,4 +31,7 @@ if (IS_CLI) {
 } else {
 
     ini_set('max_execution_time', 300);
+
+    // http://www.controlstyle.com/articles/programming/text/if-mod-since-php/
+    session_cache_limiter('private_no_expire');
 }

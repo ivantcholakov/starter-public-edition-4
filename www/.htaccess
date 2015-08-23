@@ -235,6 +235,20 @@ AddDefaultCharset utf-8
     RewriteRule ^(.*)$ ./index.php?/$1 [L,QSA]
     #
 
+    # http://www.controlstyle.com/articles/programming/text/if-mod-since-php/
+    # for php5-cgi
+    <IfModule mod_fcgid.c>
+        RewriteRule .* - [E=HTTP_IF_MODIFIED_SINCE:%{HTTP:If-Modified-Since}]
+        RewriteRule .* - [E=HTTP_IF_NONE_MATCH:%{HTTP:If-None-Match}]
+    </IfModule>
+    <IfModule !mod_fcgid.c>
+        # for Apache FCGI installations
+        <IfModule !mod_php5.c>
+            RewriteRule .* - [E=HTTP_IF_MODIFIED_SINCE:%{HTTP:If-Modified-Since}]
+            RewriteRule .* - [E=HTTP_IF_NONE_MATCH:%{HTTP:If-None-Match}]
+        </IfModule>
+    </IfModule>
+
 </IfModule>
 
 # ------------------------------------------------------------------------------
