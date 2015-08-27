@@ -62,6 +62,9 @@
                     <a class="btn btn-block btn-social btn-microsoft">
                       <i class="fa fa-windows"></i> Sign in with Microsoft
                     </a>
+                    <a class="btn btn-block btn-social btn-odnoklassniki">
+                        <i class="fa fa-odnoklassniki"></i> Sign in with Odnoklassniki
+                    </a>
                     <a class="btn btn-block btn-social btn-openid">
                       <i class="fa fa-openid"></i> Sign in with OpenID
                     </a>
@@ -104,6 +107,7 @@
                       <a class="btn btn-social-icon btn-instagram"><i class="fa fa-instagram"></i></a>
                       <a class="btn btn-social-icon btn-linkedin"><i class="fa fa-linkedin"></i></a>
                       <a class="btn btn-social-icon btn-microsoft"><i class="fa fa-windows"></i></a>
+                      <a class="btn btn-social-icon btn-odnoklassniki"><i class="fa fa-odnoklassniki"></i></a>
                       <a class="btn btn-social-icon btn-openid"><i class="fa fa-openid"></i></a>
                       <a class="btn btn-social-icon btn-pinterest"><i class="fa fa-pinterest"></i></a>
                       <a class="btn btn-social-icon btn-reddit"><i class="fa fa-reddit"></i></a>
@@ -130,6 +134,7 @@
                       <li data-code="instagram" data-name="Instagram"><code>btn-instagram</code> <span class="social-hex">#3F729B</span></li>
                       <li data-code="linkedin" data-name="LinkedIn"><code>btn-linkedin</code> <span class="social-hex">#007BB6</span></li>
                       <li data-code="microsoft" data-icon="windows" data-name="Microsoft"><code>btn-microsoft</code> <span class="social-hex">#2672EC</span></li>
+                      <li data-code="odnoklassniki" data-name="Odnoklassniki"><code>btn-odnoklassniki</code> <span class="social-hex">#F4731C</span></li>
                       <li data-code="openid" data-name="OpenID"><code>btn-openid</code> <span class="social-hex">#F7931E</span></li>
                       <li data-code="pinterest" data-name="Pinterest"><code>btn-pinterest</code> <span class="social-hex">#CB2027</span></li>
                       <li data-code="reddit" data-name="Reddit"><code>btn-reddit</code> <span class="social-hex">#EFF7FF</span></li>

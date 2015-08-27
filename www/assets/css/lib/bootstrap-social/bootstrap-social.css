@@ -910,6 +910,72 @@ fieldset[disabled] .btn-microsoft.active {
   color: #2672ec;
   background-color: #ffffff;
 }
+.btn-odnoklassniki {
+  color: #ffffff;
+  background-color: #f4731c;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.btn-odnoklassniki:focus,
+.btn-odnoklassniki.focus {
+  color: #ffffff;
+  background-color: #d35b0a;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.btn-odnoklassniki:hover {
+  color: #ffffff;
+  background-color: #d35b0a;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.btn-odnoklassniki:active,
+.btn-odnoklassniki.active,
+.open > .dropdown-toggle.btn-odnoklassniki {
+  color: #ffffff;
+  background-color: #d35b0a;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.btn-odnoklassniki:active:hover,
+.btn-odnoklassniki.active:hover,
+.open > .dropdown-toggle.btn-odnoklassniki:hover,
+.btn-odnoklassniki:active:focus,
+.btn-odnoklassniki.active:focus,
+.open > .dropdown-toggle.btn-odnoklassniki:focus,
+.btn-odnoklassniki:active.focus,
+.btn-odnoklassniki.active.focus,
+.open > .dropdown-toggle.btn-odnoklassniki.focus {
+  color: #ffffff;
+  background-color: #b14c09;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.btn-odnoklassniki:active,
+.btn-odnoklassniki.active,
+.open > .dropdown-toggle.btn-odnoklassniki {
+  background-image: none;
+}
+.btn-odnoklassniki.disabled,
+.btn-odnoklassniki[disabled],
+fieldset[disabled] .btn-odnoklassniki,
+.btn-odnoklassniki.disabled:hover,
+.btn-odnoklassniki[disabled]:hover,
+fieldset[disabled] .btn-odnoklassniki:hover,
+.btn-odnoklassniki.disabled:focus,
+.btn-odnoklassniki[disabled]:focus,
+fieldset[disabled] .btn-odnoklassniki:focus,
+.btn-odnoklassniki.disabled.focus,
+.btn-odnoklassniki[disabled].focus,
+fieldset[disabled] .btn-odnoklassniki.focus,
+.btn-odnoklassniki.disabled:active,
+.btn-odnoklassniki[disabled]:active,
+fieldset[disabled] .btn-odnoklassniki:active,
+.btn-odnoklassniki.disabled.active,
+.btn-odnoklassniki[disabled].active,
+fieldset[disabled] .btn-odnoklassniki.active {
+  background-color: #f4731c;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.btn-odnoklassniki .badge {
+  color: #f4731c;
+  background-color: #ffffff;
+}
 .btn-openid {
   color: #ffffff;
   background-color: #f7931e;
