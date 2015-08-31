@@ -797,13 +797,7 @@ echo js('lib/bootstrap3-dialog/bootstrap-dialog.min.js');
         // See how to limit only one dialog can be opened at a time.
         var btn_open_only_one_dialog = $('#open_only_one_dialog');
         btn_open_only_one_dialog.on('click', function(event) {
-            // The previous example "Create your dialog but do not open it"
-            // causes the error "Cannot read property 'modal' of undefined"
-            // within BootstrapDialog.closeAll();
-            try {
-                BootstrapDialog.closeAll();
-            }
-            catch (err) {}
+            BootstrapDialog.closeAll();
             var dialog = new BootstrapDialog({
                 message: 'The only one.'
             });
