@@ -1518,8 +1518,8 @@ abstract class CI_DB_driver {
 				'\s+BETWEEN\s+\S+\s+AND\s+\S+',	// BETWEEN value AND value
 				'\s+IN\s*\([^\)]+\)',		// IN(list)
 				'\s+NOT IN\s*\([^\)]+\)',	// NOT IN (list)
-				'\s+LIKE\s+\S+'.$_les,		// LIKE 'expr'[ ESCAPE '%s']
-				'\s+NOT LIKE\s+\S+'.$_les	// NOT LIKE 'expr'[ ESCAPE '%s']
+				'\s+LIKE\s+\S.*('.$_les.')?',    // LIKE 'expr'[ ESCAPE '%s']
+				'\s+NOT LIKE\s+\S.*('.$_les.')?' // NOT LIKE 'expr'[ ESCAPE '%s']
 			);
 
 		}
