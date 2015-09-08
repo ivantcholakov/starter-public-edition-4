@@ -368,6 +368,7 @@ Real Life Usage
 * http://evita-clinic.com (medical and dental services, one page site so far), designer: Irina Stancheva
 * http://index-bg.org (social activities, drug prevention), designer: Irina Stancheva
 * http://vsichkiremonti.bg (repair services), the design is based on AdminLTE project.
+* http://mominidvori.com (a hotel in Bansko, Bulgaria), designer: Irina Stancheva
 
 Credits
 -------
