@@ -24,7 +24,7 @@ class HTMLPurifier_Injector_SafeObject extends HTMLPurifier_Injector
     /**
      * @type array
      */
-    protected $paramStack  = array();
+    protected $paramStack = array();
 
     /**
      * Keep this synchronized with AttrTransform/SafeParam.php.
