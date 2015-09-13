@@ -92,7 +92,7 @@ class Less_Cache{
 				$compiled_name = self::CompiledName($list);
 
 				// if $cached_name != $compiled_name, we know we need to recompile
-				if( !$cached_name || $cached_name === $compiled_name ){
+				if( !$cached_name || $cached_name !== $compiled_name ){
 
 					$output_file = self::OutputFile($compiled_name, $parser_options );
 
