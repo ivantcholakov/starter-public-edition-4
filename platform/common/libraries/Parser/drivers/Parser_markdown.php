@@ -77,7 +77,7 @@ class CI_Parser_markdown extends CI_Parser_driver {
         // For security reasons don't parse PHP content.
         $template = @ file_get_contents($template);
 
-        switch ($config['detect_code_blocks']) {
+        switch ($config['markdown_implementation']) {
 
             case 'parsedown':
 
@@ -125,7 +125,7 @@ class CI_Parser_markdown extends CI_Parser_driver {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
-        switch ($config['detect_code_blocks']) {
+        switch ($config['markdown_implementation']) {
 
             case 'parsedown':
 
