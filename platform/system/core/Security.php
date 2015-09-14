@@ -436,7 +436,7 @@ class CI_Security {
 		$words = array(
 			'javascript', 'expression', 'vbscript', 'jscript', 'wscript',
 			'vbs', 'script', 'base64', 'applet', 'alert', 'document',
-			'write', 'cookie', 'window', 'confirm', 'prompt'
+			'write', 'cookie', 'window', 'confirm', 'prompt', 'eval'
 		);
 
 		foreach ($words as $word)
@@ -480,11 +480,7 @@ class CI_Security {
 			}
 		}
 		while ($original !== $str);
-
 		unset($original);
-
-		// Remove evil attributes such as style, onclick and xmlns
-		$str = $this->_remove_evil_attributes($str, $is_image);
 
 		/*
 		 * Sanitize naughty HTML elements
@@ -497,6 +493,7 @@ class CI_Security {
 		 */
 		$pattern = '#'
 			.'<((/*\s*)([a-z0-9]+)(?=[^a-z0-9])' // tag start and name, followed by a non-tag character
+			.'[^>a-z0-9]*' // a valid attribute character immediately after the tag would count as a separator
 			// optional attributes
 			.'([\s\042\047/=]+' // non-attribute characters, excluding > (tag close) for obvious reasons
 			.'[^\s\042\047>/=]+' // attribute characters
@@ -517,6 +514,9 @@ class CI_Security {
 		}
 		while ($old_str !== $str);
 		unset($old_str);
+
+		// Remove evil attributes such as style, onclick and xmlns
+		$str = $this->_remove_evil_attributes($str, $is_image);
 
 		/*
 		 * Sanitize naughty scripting elements
@@ -805,6 +805,7 @@ class CI_Security {
 
 		$pattern = '#(' // catch everything in the tag preceeding the evil attribute
 			.'<[a-z0-9]+(?=[^>a-z0-9])' // tag start and name, followed by a non-tag character
+			.'[^>a-z0-9]*' // a valid attribute character immediately after the tag would count as a separator
 			// optional attributes
 			.'([\s\042\047/=]+' // non-attribute characters, excluding > (tag close) for obvious reasons
 			.'[^\s\042\047>/=]+' // attribute characters
@@ -822,7 +823,8 @@ class CI_Security {
 			.')' // end evil attribute
 			.'#isS';
 
-		do {
+		do
+		{
 			$count = 0;
 			$str = preg_replace($pattern, '$1 [removed]', $str, -1, $count);
 		}
@@ -903,12 +905,15 @@ class CI_Security {
 	 */
 	protected function _js_img_removal($match)
 	{
-		return str_replace($match[1],
-					preg_replace('#src=.*?(?:(?:alert|prompt|confirm)(?:\(|&\#40;)|javascript:|livescript:|mocha:|charset=|window\.|document\.|\.cookie|<script|<xss|base64\s*,)#si',
-							'',
-							$this->_filter_attributes(str_replace(array('<', '>'), '', $match[1]))
-					),
-					$match[0]);
+		return str_replace(
+			$match[1],
+			preg_replace(
+				'#src=.*?(?:(?:alert|prompt|confirm|eval)(?:\(|&\#40;)|javascript:|livescript:|mocha:|charset=|window\.|document\.|\.cookie|<script|<xss|base64\s*,)#si',
+				'',
+				$this->_filter_attributes(str_replace(array('<', '>'), '', $match[1]))
+			),
+			$match[0]
+		);
 	}
 
 	// --------------------------------------------------------------------
