@@ -346,38 +346,10 @@ class MX_Router extends CI_Router
      */
     public function _set_routing()
     {
-        // Are query strings enabled in the config file? Normally CI doesn't utilize query strings
-        // since URI segments are more search-engine friendly, but they can optionally be used.
-        // If this feature is enabled, we will gather the directory/class/method a little differently
-        $segments = array();
-        if ($this->config->item('enable_query_strings') === TRUE
-            && ! empty($_GET[$this->config->item('controller_trigger')])
-            && is_string($_GET[$this->config->item('controller_trigger')])
-        )
-        {
-            if (isset($_GET[$this->config->item('directory_trigger')]) && is_string($_GET[$this->config->item('directory_trigger')]))
-            {
-                $_d = trim($_GET[$this->config->item('directory_trigger')]);
-                $this->uri->filter_uri($_d);
-                $this->set_directory($_d);
-                $segments[] = $this->directory;
-            }
+        // Load the routes.php file. It would be great if we could
+        // skip this for enable_query_strings = TRUE, but then
+        // default_controller would be empty ...
 
-            $_c = trim($_GET[$this->config->item('controller_trigger')]);
-            $this->uri->filter_uri($_c);
-            $this->set_class($_c);
-            $segments[] = $this->class;
-
-            if ( ! empty($_GET[$this->config->item('function_trigger')]) && is_string($_GET[$this->config->item('function_trigger')]))
-            {
-                $_f = trim($_GET[$this->config->item('function_trigger')]);
-                $this->uri->filter_uri($_f);
-                $this->set_method($_f);
-                $segments[] = $this->method;
-            }
-        }
-
-        // Load the routes.php file.
         // Added by Ivan Tcholakov, 08-OCT-2013.
         if (file_exists(COMMONPATH.'config/routes.php'))
         {
@@ -407,6 +379,37 @@ class MX_Router extends CI_Router
             isset($route['translate_uri_dashes']) && $this->translate_uri_dashes = $route['translate_uri_dashes'];
             unset($route['default_controller'], $route['translate_uri_dashes']);
             $this->routes = $route;
+        }
+
+        // Are query strings enabled in the config file? Normally CI doesn't utilize query strings
+        // since URI segments are more search-engine friendly, but they can optionally be used.
+        // If this feature is enabled, we will gather the directory/class/method a little differently
+        $segments = array();
+        if ($this->config->item('enable_query_strings') === TRUE
+            && ! empty($_GET[$this->config->item('controller_trigger')])
+            && is_string($_GET[$this->config->item('controller_trigger')])
+        )
+        {
+            if (isset($_GET[$this->config->item('directory_trigger')]) && is_string($_GET[$this->config->item('directory_trigger')]))
+            {
+                $_d = trim($_GET[$this->config->item('directory_trigger')]);
+                $this->uri->filter_uri($_d);
+                $this->set_directory($_d);
+                $segments[] = $this->directory;
+            }
+
+            $_c = trim($_GET[$this->config->item('controller_trigger')]);
+            $this->uri->filter_uri($_c);
+            $this->set_class($_c);
+            $segments[] = $this->class;
+
+            if ( ! empty($_GET[$this->config->item('function_trigger')]) && is_string($_GET[$this->config->item('function_trigger')]))
+            {
+                $_f = trim($_GET[$this->config->item('function_trigger')]);
+                $this->uri->filter_uri($_f);
+                $this->set_method($_f);
+                $segments[] = $this->method;
+            }
         }
 
         // Were there any query string segments? If so, we'll validate them and bail out since we're done.
