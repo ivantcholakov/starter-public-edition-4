@@ -369,6 +369,7 @@ Real Life Usage
 * http://index-bg.org (social activities, drug prevention), designer: Irina Stancheva
 * http://vsichkiremonti.bg (repair services), the design is based on AdminLTE project.
 * http://mominidvori.com (a hotel in Bansko, Bulgaria), designer: Irina Stancheva
+* http://hotel-classic.eu (a hotel in Sofia, Bulgaria), designer: Irina Stancheva
 
 Credits
 -------
