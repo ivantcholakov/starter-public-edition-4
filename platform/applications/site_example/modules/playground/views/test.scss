@@ -1,0 +1,6 @@
+$site_width: 960px;
+$column_width: $site_width / 12;
+
+aside {
+    width: $column_width * 2;
+}
