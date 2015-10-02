@@ -343,6 +343,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Requests for PHP - A HTTP library written in PHP, for human beings, https://github.com/rmccue/Requests, http://requests.ryanmccue.info
 * Pjax jQuery plugin - pushState + ajax = pjax, https://github.com/defunkt/jquery-pjax, http://pjax.herokuapp.com
 * scssphp, a compiler for SCSS written in PHP, https://github.com/leafo/scssphp, http://leafo.github.io/scssphp/
+* TSCompiler (the PHP implementation), https://github.com/ComFreek/TSCompiler
 
 The Playground
 --------------

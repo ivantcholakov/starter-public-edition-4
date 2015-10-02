@@ -333,6 +333,10 @@ if (isset($assign_to_config) && is_array($assign_to_config))
  * ------------------------------------------------------
  */
 
+// A folder that is to contain temporary files only, with a trailing slash.
+define('TMP_PATH', WRITABLEPATH.'tmp/');
+file_exists(TMP_PATH) OR @mkdir(TMP_PATH, 0755, TRUE);
+
 // CodeIgniter's cache folder.
 $cache_path = $CFG->item('cache_path') == '' ? APPPATH.'cache/' : $CFG->item('cache_path');
 file_exists($cache_path) OR @mkdir($cache_path, 0755, TRUE);
@@ -345,11 +349,11 @@ file_exists(CACHE_DB_PATH) OR @mkdir(CACHE_DB_PATH, 0755, TRUE);
 define('HTMLPURIFIER_CACHE_SERIALIZER_PATH', WRITABLEPATH.'htmlpurifier');
 file_exists(HTMLPURIFIER_CACHE_SERIALIZER_PATH) OR @mkdir(HTMLPURIFIER_CACHE_SERIALIZER_PATH, 0755, TRUE);
 
-// For Mustache, with trailing slash.
+// For Mustache, with a trailing slash.
 define('MUSTACHE_CACHE', WRITABLEPATH.'mustache/'.APPNAME.'/');
 file_exists(MUSTACHE_CACHE) OR @mkdir(MUSTACHE_CACHE, 0755, TRUE);
 
-// For the LESS-compiler, with trailing slash.
+// For the LESS-compiler, with a trailing slash.
 define('LESS_CACHE', WRITABLEPATH.'less/'.APPNAME.'/');
 file_exists(LESS_CACHE) OR @mkdir(LESS_CACHE, 0755, TRUE);
 
