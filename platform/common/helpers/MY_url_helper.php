@@ -1,5 +1,56 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed.');
 
+if (!function_exists('redirect'))
+{
+    function redirect($uri = '', $method = 'auto', $code = NULL)
+    {
+        if ( ! preg_match('#^(\w+:)?//#i', $uri))
+        {
+            $uri = site_url($uri);
+        }
+
+        // IIS environment likely? Use 'refresh' for better compatibility
+        if ($method === 'auto' && isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS') !== FALSE)
+        {
+            $method = 'refresh';
+        }
+        elseif ($method !== 'refresh' && (empty($code) OR ! is_numeric($code)))
+        {
+            if (isset($_SERVER['SERVER_PROTOCOL'], $_SERVER['REQUEST_METHOD']) && $_SERVER['SERVER_PROTOCOL'] === 'HTTP/1.1')
+            {
+                $code = ($_SERVER['REQUEST_METHOD'] !== 'GET')
+                    ? 303    // reference: http://en.wikipedia.org/wiki/Post/Redirect/Get
+                    : 307;
+            }
+            else
+            {
+                $code = 302;
+            }
+        }
+
+        switch ($method)
+        {
+            case 'refresh':
+                header('Refresh:0;url='.$uri);
+                break;
+            default:
+                // Added by Ivan Tcholakov, 03-OCT-2015.
+                if (in_array($code, array(302, 303, 307)))
+                {
+                    header('Expires: Sat, 01 Jan 2000 00:00:01 GMT', true);
+                    header('Cache-Control: no-store, no-cache, must-revalidate', true);
+                    header('Cache-Control: post-check=0, pre-check=0, max-age=0', false);
+                    header('Last-Modified: ' . gmdate( 'D, d M Y H:i:s' ) . ' GMT', true);
+                    header('Pragma: no-cache', true);
+                }
+                //
+                header('Location: '.$uri, TRUE, $code);
+                break;
+        }
+        exit;
+    }
+}
+
 if (!function_exists('base_uri')) {
 
     // Added by Ivan Tcholakov, 09-NOV-2013.
