@@ -227,7 +227,7 @@ AddDefaultCharset utf-8
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond $1 !\.php$
-    RewriteCond $1 !^(index\.php|robots\.txt|favicon\.ico)
+    RewriteCond $1 !^(index\.php|robots\.txt|favicon\.ico|apple-touch-icon\.png|apple-touch-icon-precomposed\.png)
     # Modified by Ivan Tcholakov, 23-OCT-2014.
     # Avoiding "No input file specified" error.
     # See http://expressionengine.stackexchange.com/questions/11672/no-input-file-specified-htaccess/13376#13376
