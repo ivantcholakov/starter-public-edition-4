@@ -29,6 +29,8 @@
     RewriteRule ^(.*)favicon\.ico$ $1../favicon\.ico [L]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^(.*)apple-touch-icon\.png$ $1../apple-touch-icon\.png [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)apple-touch-icon-precomposed\.png$ $1../apple-touch-icon-precomposed\.png [L]
 
     # Remove index.php segment from the URL.
     RewriteCond %{REQUEST_FILENAME} !-f
