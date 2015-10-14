@@ -917,6 +917,10 @@
 		}
 	};
 
+	publicMethod.reload = function () {
+		load();
+	}
+
 	function load () {
 		var href, setResize, prep = publicMethod.prep, $inline, request = ++requests;
 
