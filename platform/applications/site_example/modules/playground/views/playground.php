@@ -76,6 +76,7 @@
                     <li><a href="<?php echo site_url('playground/image-process-test'); ?>">Image Manipulations Test</a></li>
                     <li><a href="<?php echo site_url('playground/pjax'); ?>">Pjax jQuery plugin Test</a></li>
                     <li><a href="<?php echo site_url('playground/typescript'); ?>">TypeScript Compiler Test</a></li>
+                    <li><a href="<?php echo site_url('playground/colorbox'); ?>">Colorbox Test</a></li>
                 </ul>
 
             </div>
@@ -89,5 +90,3 @@
         </div>
 
     </section>
-
-
