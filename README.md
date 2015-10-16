@@ -345,6 +345,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * scssphp, a compiler for SCSS written in PHP, https://github.com/leafo/scssphp, http://leafo.github.io/scssphp/
 * TSCompiler (the PHP implementation), https://github.com/ComFreek/TSCompiler
 * Colorbox, a light-weight, customizable lightbox plugin for jQuery, https://github.com/jackmoore/colorbox
+* php-json-minify, a JSON minifier and uncommenter written in PHP, https://github.com/T1st3/php-json-minify
 
 The Playground
 --------------
