@@ -52,12 +52,12 @@ function _common_autoloader($class) {
             require $location;
             return true;
         }
-    
+
         if (is_file($location = BASEPATH.'libraries/'.substr($class, 3).'.php')) {
             require $location;
             return true;
         }
-    
+
         if (is_file($location = BASEPATH.'libraries/'.substr($class, 3).'/'.substr($class, 3).'.php')) {
             require $location;
             return true;
@@ -120,12 +120,12 @@ function _common_autoloader($class) {
 
     // PSR-0 autoloading.
 
-    if (is_file($location = APPPATH.'classes/'.str_replace('_', DIRECTORY_SEPARATOR, $class).'.php')) {
+    if (is_file($location = APPPATH.'classes/'.str_replace(array('_', '\\'), DIRECTORY_SEPARATOR, $class).'.php')) {
         require $location;
         return true;
     }
 
-    if (is_file($location = COMMONPATH.'classes/'.str_replace('_', DIRECTORY_SEPARATOR, $class).'.php')) {
+    if (is_file($location = COMMONPATH.'classes/'.str_replace(array('_', '\\'), DIRECTORY_SEPARATOR, $class).'.php')) {
         require $location;
         return true;
     }
