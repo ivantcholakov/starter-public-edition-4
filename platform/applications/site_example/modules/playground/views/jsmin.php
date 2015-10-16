@@ -29,7 +29,7 @@ file_partial('messages');
 
                             <div class="form-group">
                                 <label for="input">The input, JavaScript source:</label>
-                                <textarea id="input" name="input" class="form-control" rows="10" placeholder="Copy/paste your CSS source here."><?php echo set_value('input', '', true); ?></textarea>
+                                <textarea id="input" name="input" class="form-control" rows="10" placeholder="Copy/paste your JavaScript source here."><?php echo set_value('input', '', true); ?></textarea>
                             </div>
 
                             <div class="form-group">
