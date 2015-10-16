@@ -5,6 +5,7 @@
         "This file is @generated automatically"
     ],
     "hash": "99ecaf7905950ba19e3d374caa439d31",
+    "content-hash": "ea39ce146e7f3e7c94027373c5e6004c",
     "packages": [
         {
             "name": "facebook/php-sdk-v4",
