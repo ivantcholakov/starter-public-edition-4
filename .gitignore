@@ -1,14 +1,32 @@
+# OSX
+#-------------------------
 .DS_Store
 
-platform/writable/**
+
+# Windows
+#-------------------------
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+
+# Project
+#-------------------------
+
+platform/writable/*
 !platform/writable/.htaccess
 !platform/writable/index.html
 
-www/editor/**
+www/editor/*
 !www/editor/.gitkeep
 
-www/upload/**
+www/upload/*
 !www/upload/.gitkeep
+
 
 # IDE Files
 #-------------------------
