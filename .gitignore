@@ -9,3 +9,7 @@ www/editor/**
 
 www/upload/**
 !www/upload/.gitkeep
+
+# IDE Files
+#-------------------------
+/nbproject/
