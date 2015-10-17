@@ -1,0 +1,11 @@
+.DS_Store
+
+platform/writable/**
+!platform/writable/.htaccess
+!platform/writable/index.html
+
+www/editor/**
+!www/editor/.gitkeep
+
+www/upload/**
+!www/upload/.gitkeep
