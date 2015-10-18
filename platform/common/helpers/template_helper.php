@@ -581,7 +581,7 @@ if (!function_exists('js_jquery')) {
         ci()->load->helper('asset');
         ci()->load->helper('user_agent');
 
-        $jquery_version = '1.10.2';
+        $jquery_version = '1.11.3';
 
         $browser = user_agent_ie();
 
