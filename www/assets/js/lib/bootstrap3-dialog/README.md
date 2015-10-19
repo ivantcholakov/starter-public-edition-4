@@ -11,11 +11,11 @@ Thanks for [akinoniku](https://github.com/akinoniku)'s suggestions on dialog app
 
 ================
 
-## The newer, the better!
+## Ask a question
 
-We have been adding too much for making BootstrapDialog being compatible with older version of Bootstrap Modal, that's not cool. 
-
-We encourage you always choose the latest Bootstrap and BootstrapDialog.
+It's recommended to provide online examples when asking questions or reporting bugs.
+Fork this all-ready jsfiddle and start writing your example:
+<a href="https://jsfiddle.net/o5k0eaws/1/">http://jsfiddle.net/o5k0eaws/1/</a>
 
 ================
 
