@@ -114,6 +114,24 @@ if ( ! function_exists('form_open'))
     }
 }
 
+if ( ! function_exists('has_validation_error'))
+{
+    // Added by Ivan Tcholakov, 20-OCT-2015.
+    /**
+     * This function informs whether there is at least one error after validation.
+     * @return bool     TRUE if there is an error (or errors), FALSE otherwise.
+     */
+    function has_validation_error()
+    {
+        if (FALSE === ($OBJ =& _get_validation_object()))
+        {
+            return FALSE;
+        }
+
+        return $OBJ->has_error();
+    }
+}
+
 if ( ! function_exists('validation_errors_array'))
 {
     function validation_errors_array()

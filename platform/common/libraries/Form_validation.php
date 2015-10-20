@@ -60,6 +60,15 @@ class Form_validation extends CI_Form_validation {
         return $array;
     }
 
+    // Added by Ivan Tcholakov, 20-OCT-2015.
+    /**
+     * Informs whether there is at least one error after validation.
+     * @return bool     TRUE if there is an error (or errors), FALSE otherwise.
+     */
+    public function has_error()
+    {
+        return count($this->_error_array) === 0;
+    }
 
     // ---------------------------------------------------------------------
     // Reworked validation rules.
