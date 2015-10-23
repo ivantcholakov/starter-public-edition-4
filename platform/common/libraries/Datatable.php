@@ -373,7 +373,7 @@ class Datatable {
         return $this;
     }
 
-    public function limit($limit, $offset = FALSE) {
+    public function limit($limit, $offset = 0) {
 
         $this->db->limit($limit, $offset);
 
