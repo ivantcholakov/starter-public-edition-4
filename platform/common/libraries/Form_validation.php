@@ -67,7 +67,7 @@ class Form_validation extends CI_Form_validation {
      */
     public function has_error()
     {
-        return count($this->_error_array) === 0;
+        return count($this->_error_array) !== 0;
     }
 
     // ---------------------------------------------------------------------
