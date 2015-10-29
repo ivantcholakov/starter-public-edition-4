@@ -286,19 +286,41 @@ if ( ! function_exists('html_escape'))
      */
     function html_escape($var, $double_encode = TRUE)
     {
-        if (is_array($var))
+        if (empty($var))
         {
-            return array_map('html_escape', $var, array_fill(0, count($var), $double_encode));
+            return $var;
         }
 
-        // Added by Ivan Tcholakov, 25-AUG-2014.
-        // Ivan: I still have a server under PHP 5.2.0 to support, suppressing the warning message.
-        if ( ! is_php('5.2.3'))
-        {
-            return htmlspecialchars($var, ENT_QUOTES, config_item('charset'));
-        }
+        $charset = config_item('charset');
+
+        // Added by Ivan Tcholakov, 25-AUG-2015.
+        // Ivan: For supporting PHP 5.2.0, unofficially.
+        $is_php_5_2_3 = is_php('5.2.3');
         //
 
-        return htmlspecialchars($var, ENT_QUOTES, config_item('charset'), $double_encode);
+        if (is_array($var))
+        {
+            array_walk_recursive($var, '_html_escape_callback', array($charset, $double_encode, $is_php_5_2_3));
+            return $var;
+        }
+
+        if ($is_php_5_2_3)
+        {
+            return htmlspecialchars($var, ENT_QUOTES, $charset, $double_encode);
+        }
+
+        return htmlspecialchars($var, ENT_QUOTES, $charset);
+    }
+
+    function _html_escape_callback(& $value, $key, $options)
+    {
+        if ($options[2])
+        {
+            $value = htmlspecialchars($value, ENT_QUOTES, $options[0], $options[1]);
+        }
+        else
+        {
+            $value = htmlspecialchars($value, ENT_QUOTES, $options[0]);
+        }
     }
 }
