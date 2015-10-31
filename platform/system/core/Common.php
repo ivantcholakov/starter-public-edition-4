@@ -743,22 +743,6 @@ if ( ! function_exists('html_escape'))
 	 * @param	bool	$double_encode	$double_encode set to FALSE prevents escaping twice.
 	 * @return	mixed			The escaped string or array of strings as a result.
 	 */
-	// Modified by Ivan Tcholakov, 29-OCT-2015.
-	// See https://github.com/bcit-ci/CodeIgniter/issues/3201
-	//function html_escape($var, $double_encode = TRUE)
-	//{
-	//	if (empty($var))
-	//	{
-	//		return $var;
-	//	}
-	//
-	//	if (is_array($var))
-	//	{
-	//		return array_map('html_escape', $var, array_fill(0, count($var), $double_encode));
-	//	}
-	//
-	//	return htmlspecialchars($var, ENT_QUOTES, config_item('charset'), $double_encode);
-	//}
 	function html_escape($var, $double_encode = TRUE)
 	{
 		if (empty($var))
@@ -766,22 +750,18 @@ if ( ! function_exists('html_escape'))
 			return $var;
 		}
 
-		$charset = config_item('charset');
-
 		if (is_array($var))
 		{
-			array_walk_recursive($var, '_html_escape_callback', array($charset, $double_encode));
+			foreach (array_keys($var) as $key)
+			{
+				$var[$key] = html_escape($var[$key], $double_encode);
+			}
+
 			return $var;
 		}
 
-		return htmlspecialchars($var, ENT_QUOTES, $charset, $double_encode);
+		return htmlspecialchars($var, ENT_QUOTES, config_item('charset'), $double_encode);
 	}
-
-	function _html_escape_callback(& $value, $key, $options)
-	{
-		$value = htmlspecialchars($value, ENT_QUOTES, $options[0], $options[1]);
-	}
-	//
 }
 
 // ------------------------------------------------------------------------
