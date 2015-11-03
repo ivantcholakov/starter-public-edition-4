@@ -87,7 +87,7 @@ class Less_Parser{
 		// mbstring.func_overload > 1 bugfix
 		// The encoding value must be set for each source file,
 		// therefore, to conserve resources and improve the speed of this design is taken here
-		if (ini_get('mbstring.func_overload')) {			
+		if (ini_get('mbstring.func_overload')) {
 			$this->mb_internal_encoding = ini_get('mbstring.internal_encoding');
 			@ini_set('mbstring.internal_encoding', 'ascii');
 		}
@@ -220,7 +220,7 @@ class Less_Parser{
 		@ini_set('precision',$precision);
 		setlocale(LC_NUMERIC, $locale);
 
-		// If you previously defined $this->mb_internal_encoding 
+		// If you previously defined $this->mb_internal_encoding
 		// is required to return the encoding as it was before
 		if ($this->mb_internal_encoding != '') {
 			@ini_set("mbstring.internal_encoding", $this->mb_internal_encoding);

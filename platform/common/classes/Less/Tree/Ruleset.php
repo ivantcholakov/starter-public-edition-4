@@ -264,7 +264,7 @@ class Less_Tree_Ruleset extends Less_Tree{
 
 		$important_rules = array();
 		foreach($this->rules as $rule){
-			if( $rule instanceof Less_Tree_Rule || $rule instanceof Less_Tree_Ruleset ){
+			if( $rule instanceof Less_Tree_Rule || $rule instanceof Less_Tree_Ruleset || $rule instanceof Less_Tree_NameValue ){
 				$important_rules[] = $rule->makeImportant();
 			}else{
 				$important_rules[] = $rule;
