@@ -790,10 +790,18 @@ class Menu {
                         in_array($active, $this->_active_items)))
                 {
                     $val['is_active'] = true;
+
+                    // Added by Ivan Tcholakov, 04-NOV-2015.
+                    $val['has_active'] = $this->active != $active;
+                    //
                 }
                 else
                 {
                     $val['is_active'] = false;
+
+                    // Added by Ivan Tcholakov, 04-NOV-2015.
+                    $val['has_active'] = false;
+                    //
                 }
 
                 if (preg_match('#^(\w+:)?//#i', $val['location']))
@@ -1193,6 +1201,5 @@ class Menu {
         return $filtered_menu;
 
     }
-
 
 }
