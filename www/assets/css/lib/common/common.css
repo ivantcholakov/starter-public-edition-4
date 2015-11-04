@@ -1,3 +1,227 @@
+.turquoise,
+.green-sea,
+.sun-flower,
+.orange,
+.emerald,
+.nephrits,
+.carrot,
+.pumkin,
+.peter-river,
+.belize-hole,
+.alizarin,
+.pomegranate,
+.amethyst,
+.wisteria,
+.clouds .silver,
+.wet-asphalt,
+.midnight-blue,
+.concrete,
+.asbestos {
+  color: #fff;
+}
+.turquoise h1,
+.green-sea h1,
+.sun-flower h1,
+.orange h1,
+.emerald h1,
+.nephrits h1,
+.carrot h1,
+.pumkin h1,
+.peter-river h1,
+.belize-hole h1,
+.alizarin h1,
+.pomegranate h1,
+.amethyst h1,
+.wisteria h1,
+.clouds .silver h1,
+.wet-asphalt h1,
+.midnight-blue h1,
+.concrete h1,
+.asbestos h1,
+.turquoise h2,
+.green-sea h2,
+.sun-flower h2,
+.orange h2,
+.emerald h2,
+.nephrits h2,
+.carrot h2,
+.pumkin h2,
+.peter-river h2,
+.belize-hole h2,
+.alizarin h2,
+.pomegranate h2,
+.amethyst h2,
+.wisteria h2,
+.clouds .silver h2,
+.wet-asphalt h2,
+.midnight-blue h2,
+.concrete h2,
+.asbestos h2,
+.turquoise h3,
+.green-sea h3,
+.sun-flower h3,
+.orange h3,
+.emerald h3,
+.nephrits h3,
+.carrot h3,
+.pumkin h3,
+.peter-river h3,
+.belize-hole h3,
+.alizarin h3,
+.pomegranate h3,
+.amethyst h3,
+.wisteria h3,
+.clouds .silver h3,
+.wet-asphalt h3,
+.midnight-blue h3,
+.concrete h3,
+.asbestos h3,
+.turquoise h4,
+.green-sea h4,
+.sun-flower h4,
+.orange h4,
+.emerald h4,
+.nephrits h4,
+.carrot h4,
+.pumkin h4,
+.peter-river h4,
+.belize-hole h4,
+.alizarin h4,
+.pomegranate h4,
+.amethyst h4,
+.wisteria h4,
+.clouds .silver h4,
+.wet-asphalt h4,
+.midnight-blue h4,
+.concrete h4,
+.asbestos h4,
+.turquoise h5,
+.green-sea h5,
+.sun-flower h5,
+.orange h5,
+.emerald h5,
+.nephrits h5,
+.carrot h5,
+.pumkin h5,
+.peter-river h5,
+.belize-hole h5,
+.alizarin h5,
+.pomegranate h5,
+.amethyst h5,
+.wisteria h5,
+.clouds .silver h5,
+.wet-asphalt h5,
+.midnight-blue h5,
+.concrete h5,
+.asbestos h5,
+.turquoise h6,
+.green-sea h6,
+.sun-flower h6,
+.orange h6,
+.emerald h6,
+.nephrits h6,
+.carrot h6,
+.pumkin h6,
+.peter-river h6,
+.belize-hole h6,
+.alizarin h6,
+.pomegranate h6,
+.amethyst h6,
+.wisteria h6,
+.clouds .silver h6,
+.wet-asphalt h6,
+.midnight-blue h6,
+.concrete h6,
+.asbestos h6 {
+  color: #fff;
+}
+.turquoise small,
+.green-sea small,
+.sun-flower small,
+.orange small,
+.emerald small,
+.nephrits small,
+.carrot small,
+.pumkin small,
+.peter-river small,
+.belize-hole small,
+.alizarin small,
+.pomegranate small,
+.amethyst small,
+.wisteria small,
+.clouds .silver small,
+.wet-asphalt small,
+.midnight-blue small,
+.concrete small,
+.asbestos small {
+  color: rgba(255, 255, 255, 0.8);
+}
+.turquoise {
+  background-color: #1abc9c;
+}
+.green-sea {
+  background-color: #16a085;
+}
+.sun-flower {
+  background-color: #f1c40f;
+}
+.orange {
+  background-color: #f39c12;
+}
+.emerald {
+  background-color: #2ecc71;
+}
+.nephritis {
+  background-color: #27ae60;
+}
+.carrot {
+  background-color: #e67e22;
+}
+.pumkin {
+  background-color: #d35400;
+}
+.peter-river {
+  background-color: #3498db;
+}
+.belize-hole {
+  background-color: #2980b9;
+}
+.alizarin {
+  background-color: #e74c3c;
+}
+.pomegranate {
+  background-color: #c0392b;
+}
+.amethyst {
+  background-color: #9b59b6;
+}
+.wisteria {
+  background-color: #8e44ad;
+}
+.clouds {
+  background-color: #ecf0f1;
+}
+.silver {
+  background-color: #bdc3c7;
+}
+.wet-asphalt {
+  background-color: #34495e;
+}
+.wet-asphalt a:not(.btn) {
+  color: #bdc3c7;
+}
+.wet-asphalt a:not(.btn):hover {
+  color: #d9534f;
+}
+.midnight-blue {
+  background-color: #2c3e50;
+}
+.concrete {
+  background-color: #95a5a6;
+}
+.asbestos {
+  background-color: #7f8c8d;
+}
 .block {
   display: block;
 }
@@ -114,6 +338,12 @@
 .no-margin-bottom {
   margin-bottom: 0;
 }
+.gap {
+  margin-bottom: 50px;
+}
+.big-gap {
+  margin-bottom: 100px;
+}
 .no-padding {
   padding: 0;
 }
@@ -211,4 +441,22 @@
   left: 8px;
   top: 7px;
   font-size: 19px;
+}
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16/9 ratio */
+  padding-top: 30px;
+  /* IE6 workaround*/
+  height: 0;
+  overflow: hidden;
+}
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
