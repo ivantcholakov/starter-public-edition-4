@@ -54,7 +54,7 @@ if (!empty($nav)) {
                                 <i class="fa fa-caret-down"></i>
                             </a>
                             <ul class="dropdown-menu pull-right">
-                                <li<?php if (!empty($item['is_active'])) { ?> class="active"<?php } ?>><a href="<?php echo $item['link']; ?>"<?php echo _stringify_attributes($item['attributes']); ?>><?php if ($item['icon'] != '') { ?><i class="<?php echo $item['icon']; ?>"></i>&nbsp; <?php } echo $item['label']; ?></a></li>
+                                <li<?php if (!empty($item['is_active']) && empty($item['has_active'])) { ?> class="active"<?php } ?>><a href="<?php echo $item['link']; ?>"<?php echo _stringify_attributes($item['attributes']); ?>><?php if ($item['icon'] != '') { ?><i class="<?php echo $item['icon']; ?>"></i>&nbsp; <?php } echo $item['label']; ?></a></li>
                                 <li class="divider"></li>
 <?php
             _main_menu_widget_display_children($item['children']);
