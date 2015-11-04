@@ -42,7 +42,7 @@
                 settings = $.extend(true, {}, defaults, options, data),
                 timeout;
 
-            $parent.hover(function(event) { /* Added by Ivan Tcholakov, 19-JAN-2014. */ if ($(window).width() < 768) { return; }
+            $parent.hover(function(event) { /* Added by Ivan Tcholakov, 04-NOV-2015. */ if ($(window).width() < 992) { return; }
                 // so a neighbor can't open the dropdown
                 if(!$parent.hasClass('open') && !$this.is(event.target)) {
                     return true;
@@ -55,14 +55,14 @@
                 $parent.addClass('open');
                 $parent.trigger($.Event('show.bs.dropdown'));
             }, function() {
-                timeout = window.setTimeout(function() { /* Added by Ivan Tcholakov, 19-JAN-2014. */ if ($(window).width() < 768) { return; }
+                timeout = window.setTimeout(function() { /* Added by Ivan Tcholakov, 04-NOV-2015. */ if ($(window).width() < 992) { return; }
                     $parent.removeClass('open');
                     $parent.trigger('hide.bs.dropdown');
                 }, settings.delay);
             });
 
             // this helps with button groups!
-            $this.hover(function() { /* Added by Ivan Tcholakov, 19-JAN-2014. */ if ($(window).width() < 768) { return; }
+            $this.hover(function() { /* Added by Ivan Tcholakov, 04-NOV-2015. */ if ($(window).width() < 992) { return; }
                 if(settings.instantlyCloseOthers === true)
                     $allDropdowns.removeClass('open');
 
