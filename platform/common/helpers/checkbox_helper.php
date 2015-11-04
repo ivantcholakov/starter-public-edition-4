@@ -57,7 +57,11 @@ if (!function_exists('fix_unchecked'))
 
 # Checkbox Helper
 
-Just a tiny helper to help with checkboxes. When you uncheck a checkbox, it's value does not get sent in the form values. Instead of telling CodeIgniter you want to set this value to 0, it says "don't change it." This fixes that, one by one, by setting the value of the associated $_POST array item to zero. You can also pass in an array of checkbox names and it will do each one.
+Just a tiny helper to help with checkboxes. When you uncheck a checkbox, it's value
+does not get sent in the form values. Instead of telling CodeIgniter you want to set
+this value to 0, it says "don't change it." This fixes that, one by one, by setting
+the value of the associated $_POST array item to zero. You can also pass in an array
+of checkbox names and it will do each one.
 
 ## Usage
 
