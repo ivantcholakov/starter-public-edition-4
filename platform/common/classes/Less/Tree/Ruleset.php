@@ -365,8 +365,8 @@ class Less_Tree_Ruleset extends Less_Tree{
 		$tabRuleStr = $tabSetStr = '';
 		if( !Less_Parser::$options['compress'] ){
 			if( Less_Environment::$tabLevel ){
-				$tabRuleStr = "\n".str_repeat( '  ' , Less_Environment::$tabLevel );
-				$tabSetStr = "\n".str_repeat( '  ' , Less_Environment::$tabLevel-1 );
+				$tabRuleStr = "\n".str_repeat( Less_Parser::$options['indentation'] , Less_Environment::$tabLevel );
+				$tabSetStr = "\n".str_repeat( Less_Parser::$options['indentation'] , Less_Environment::$tabLevel-1 );
 			}else{
 				$tabSetStr = $tabRuleStr = "\n";
 			}

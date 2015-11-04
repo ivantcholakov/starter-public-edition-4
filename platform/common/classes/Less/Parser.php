@@ -35,6 +35,8 @@ class Less_Parser{
 		'sourceMapWriteTo'		=> null,
 		'sourceMapURL'			=> null,
 
+		'indentation' 			=> '  ',
+
 		'plugins'				=> array(),
 
 	);
