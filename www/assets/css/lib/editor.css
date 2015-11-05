@@ -9,5 +9,6 @@ html, body {
 }
 
 body {
+    display: block;
     padding: 10px 10px 10px 10px;
 }
