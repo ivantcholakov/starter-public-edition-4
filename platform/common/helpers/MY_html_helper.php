@@ -140,7 +140,7 @@ if (!function_exists('trim_html')) {
 
     function trim_html($string) {
 
-        return nohtml($string) == '' ? '' : $string;
+        return trim(nohtml($string), " \t\n\r\0\x0B") == '' ? '' : $string;
     }
 
 }
