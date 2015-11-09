@@ -21,4 +21,5 @@ if (!isset($subnavbar_item_active)) {
                     <li<?php if ($subnavbar_item_active == 'guzzle_client') { ?> class="active"<?php } ?>><a href="<?php echo site_url('playground/rest/guzzle'); ?>">Guzzle HTTP Client</a></li>
 */ ?>
 
+                    <li<?php if ($subnavbar_item_active == 'post_test') { ?> class="active"<?php } ?>><a href="<?php echo site_url('playground/rest/post-test'); ?>">Testing a POST request</a></li>
                 </ul>
