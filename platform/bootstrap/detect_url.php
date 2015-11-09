@@ -2,7 +2,7 @@
 
 /**
  * A Url Detection Routine
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013-2015
  * @license The MIT License, http://opensource.org/licenses/MIT
  *
  * @depends detect_https(), detect_host(), merge_paths()
@@ -17,7 +17,7 @@ if (!function_exists('detect_url')) {
         $server_protocol = $is_https ? 'https' : 'http';
         $server_name = detect_host();
 
-        if (isset($_SERVER['SERVER_PORT']) && !strpos($server_name, ':')
+        if (isset($_SERVER['SERVER_PORT']) && !(strpos($server_name, '::') === FALSE ? strpos($server_name, ':') === FALSE : strpos($server_name, ']:') === FALSE)
                 && (($server_protocol == 'http'
                 && $_SERVER['SERVER_PORT'] != 80 ) || ($server_protocol == 'https' && $_SERVER['SERVER_PORT'] != 443))) {
 

@@ -14,7 +14,7 @@ if (!function_exists('detect_host')) {
 
             isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME']
                 : (isset($_SERVER['HOSTNAME']) ? $_SERVER['HOSTNAME']
-                : (isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR']
+                : (isset($_SERVER['SERVER_ADDR']) ? (strpos($_SERVER['SERVER_ADDR'], '::') === FALSE ? $_SERVER['SERVER_ADDR'] : '['.$_SERVER['SERVER_ADDR'].']')
                 : 'localhost'));
     }
 
