@@ -78,6 +78,7 @@
                     <li><a href="<?php echo site_url('playground/typescript'); ?>">TypeScript Compiler Test</a></li>
                     <li><a href="<?php echo site_url('playground/colorbox'); ?>">Colorbox Test</a></li>
                     <li><a href="<?php echo site_url('playground/jsonmin'); ?>">JSON Minification Test</a></li>
+                    <li><a href="<?php echo site_url('playground/animate'); ?>">Animate,css Test</a></li>
                 </ul>
 
             </div>
