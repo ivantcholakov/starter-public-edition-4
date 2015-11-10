@@ -346,6 +346,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * TSCompiler (the PHP implementation), https://github.com/ComFreek/TSCompiler
 * Colorbox, a light-weight, customizable lightbox plugin for jQuery, https://github.com/jackmoore/colorbox
 * php-json-minify, a JSON minifier and uncommenter written in PHP, https://github.com/T1st3/php-json-minify
+* Animate.css, a bunch of cool, fun, and cross-browser animations for you to use in your projects, https://github.com/daneden/animate.css, http://daneden.github.io/animate.css/
 
 The Playground
 --------------
