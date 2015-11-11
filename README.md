@@ -401,3 +401,9 @@ License: The MIT License (MIT), http://opensource.org/licenses/MIT
 
 Third parties:  
 License information is to be found directly within code and/or within additional files at corresponding folders.
+
+Donations
+---------
+
+Ivan Tcholakov, November 11-th, 2015: No donations are accepted here. If you wish to help, you need the time and the skills of being a direct contributor,
+by providing code/documentation and reporting issues. Period.
