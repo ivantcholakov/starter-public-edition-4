@@ -3,9 +3,9 @@
 /**
  * Transliteration class
  *
- * @version 1.0
+ * @version 1.1
  *
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2013.
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2015.
  * @link https://github.com/ivantcholakov/transliterate
  *
  * @license The MIT License (MIT)
@@ -14,6 +14,10 @@
 
 if (!defined('ICONV_INSTALLED')) {
     define('ICONV_INSTALLED', function_exists('iconv'));
+}
+
+if (!defined('INTL_INSTALLED')) {
+    define('INTL_INSTALLED', function_exists('intl_get_error_code'));
 }
 
 if (!defined('IS_CODEIGNITER')) {
@@ -141,6 +145,79 @@ class Transliterate {
 
         $string = self::cyr_to_lat($string, $language);
 
+        static $transliterator_ids = array();
+
+        if (INTL_INSTALLED && class_exists('Transliterator', false)) {
+
+            if (empty($transliterator_ids)) {
+                $transliterator_ids = Transliterator::listIDs();
+            }
+
+            $transliterator_id = null;
+
+            switch ($language) {
+
+                case 'ar':
+                    $transliterator_id = 'Arabic-Latin';
+                    break;
+
+                case 'el':
+                    $transliterator_id = 'Greek-Latin';
+                    break;
+
+                case 'mk':
+                    $transliterator_id = 'Macedonian-Latin/BGN';
+                    break;
+
+                case 'sr':
+                    $transliterator_id = 'Serbian-Latin/BGN';
+                    break;
+
+                case 'uk':
+                    $transliterator_id = 'Ukrainian-Latin/BGN';
+                    break;
+
+                case 'ko':
+                    $transliterator_id = 'Korean-Latin/BGN';
+                    break;
+
+                case 'th':
+                    $transliterator_id = 'Thai-Latin';
+                    break;
+
+                case 'gu':
+                    $transliterator_id = 'Gujarati-Latin';
+                    break;
+
+                case 'ta':
+                    $transliterator_id = 'Tamil-Latin';
+                    break;
+
+                case 'az':
+                    $transliterator_id = 'Azerbaijani-Latin/BGN';
+                    break;
+            }
+
+            if (!in_array($transliterator_id, $transliterator_ids)) {
+                $transliterator_id = null;
+            }
+
+            if ($transliterator_id == '') {
+                $transliterator_id = 'Any-Latin; Latin-ASCII';
+            } else {
+                $transliterator_id .= '; Any-Latin; Latin-ASCII';
+            }
+
+            $transliterator = Transliterator::create($transliterator_id);
+            $new_string = @ $transliterator->transliterate($string);
+
+            if ($new_string !== false) {
+                $string = $new_string;
+            }
+
+            unset($new_string);
+        }
+
         static $search;
         static $replace;
 
@@ -195,19 +272,278 @@ class Transliterate {
      */
     private static function detect_language($language) {
 
-        $language = strtolower($language);
+        if ($language == '') {
 
-        switch ($language) {
+            if (IS_CODEIGNITER) {
+
+                $ci = & get_instance();
+                $language = $ci->config->item('language');
+            }
+        }
+
+        $l = strtolower($language);
+
+        switch ($l) {
 
             case 'bulgarian':
             case 'bg':
-                $language = 'bg';
+                $l = 'bg';
                 break;
 
             case 'russian':
             case 'ru':
-                $language = 'ru';
+                $l = 'ru';
                 break;
+
+            case 'english':
+            case 'en':
+                $l = 'en';
+                break;
+
+            case 'german':
+            case 'de':
+                $l = 'de';
+                break;
+
+            case 'spanish':
+            case 'es':
+                $l = 'es';
+                break;
+
+            case 'spanish-latin':
+            case 'es-419':
+                $l = 'es-419';
+                break;
+
+            case 'french':
+            case 'fr':
+                $l = 'fr';
+                break;
+
+            case 'italian':
+            case 'it':
+                $l = 'it';
+                break;
+
+            case 'portuguese':
+            case 'pt':
+                $l = 'pt';
+                break;
+
+            case 'portuguese-brazilian':
+            case 'pt-br':
+                $l = 'pt-BR';
+                break;
+
+            case 'dutch':
+            case 'nl':
+                $l = 'nl';
+                break;
+
+            case 'turkish':
+            case 'tr':
+                $l = 'tr';
+                break;
+
+            case 'albanian':
+            case 'sq':
+                $l = 'sq';
+                break;
+
+            case 'arabic':
+            case 'ar':
+                $l = 'ar';
+                break;
+
+            case 'bosnian':
+            case 'bs':
+                $l = 'bs';
+                break;
+
+            case 'greek':
+            case 'el':
+                $l = 'el';
+                break;
+
+            case 'danish':
+            case 'da':
+                $l = 'da';
+                break;
+
+            case 'estonian':
+            case 'et':
+                $l = 'et';
+                break;
+
+            case 'irish':
+            case 'ga':
+                $l = 'ga';
+                break;
+
+            case 'icelandic':
+            case 'is':
+                $l = 'is';
+                break;
+
+            case 'latvian':
+            case 'lv':
+                $l = 'lv';
+                break;
+
+            case 'lithuanian':
+            case 'lt':
+                $l = 'lt';
+                break;
+
+            case 'macedonian':
+            case 'mk':
+                $l = 'mk';
+                break;
+
+            case 'norwegian':
+            case 'no':
+                $l = 'no';
+                break;
+
+            case 'polish':
+            case 'pl':
+                $l = 'pl';
+                break;
+
+            case 'romanian':
+            case 'ro':
+                $l = 'ro';
+                break;
+
+            case 'slovak':
+            case 'sk':
+                $l = 'sk';
+                break;
+
+            case 'slovenian':
+            case 'sl':
+                $l = 'sl';
+                break;
+
+            case 'serbian':
+            case 'sr':
+                $l = 'sr';
+                break;
+
+            case 'ukrainian':
+            case 'uk':
+                $l = 'uk';
+                break;
+
+            case 'hungarian':
+            case 'hu':
+                $l = 'hu';
+                break;
+
+            case 'finnish':
+            case 'fi':
+                $l = 'fi';
+                break;
+
+            case 'croatian':
+            case 'hr':
+                $l = 'hr';
+                break;
+
+            case 'czech':
+            case 'cs':
+                $l = 'cs';
+                break;
+
+            case 'swedish':
+            case 'sv':
+                $l = 'sv';
+                break;
+
+            case 'indonesian':
+            case 'id':
+                $l = 'id';
+                break;
+
+            case 'japanese':
+            case 'ja':
+                $l = 'ja';
+                break;
+
+            case 'korean':
+            case 'ko':
+                $l = 'ko';
+                break;
+
+            case 'persian':
+            case 'fa':
+                $l = 'fa';
+                break;
+
+            case 'simplified-chinese':
+            case 'zh-hans':
+            case 'zh-cn':
+                $l = 'zh-Hans';
+                break;
+
+            case 'thai':
+            case 'th':
+                $l = 'th';
+                break;
+
+            case 'traditional-chinese':
+            case 'zh-hant';
+            case 'zh-tw':
+                $l = 'zh-Hant';
+                break;
+
+            case 'catalan':
+            case 'ca':
+                $l = 'ca';
+                break;
+
+            case 'filipino':
+            case 'fil':
+                $l = 'fil';
+                break;
+
+            case 'gujarati':
+            case 'gu':
+                $l = 'gu';
+                break;
+
+            case 'khmer':
+            case 'km':
+                $l = 'km';
+                break;
+
+            case 'tamil':
+            case 'ta':
+                $l = 'ta';
+                break;
+
+            case 'urdu':
+            case 'ur':
+                $l = 'ur';
+                break;
+
+            case 'hindi':
+            case 'hi':
+                $l = 'hi';
+                break;
+
+            case 'azerbaijani':
+            case 'az':
+                $l = 'az';
+                break;
+
+            default:
+                $l = null;
+                break;
+        }
+
+        if ($l != '') {
+            $language = $l;
         }
 
         return $language;
