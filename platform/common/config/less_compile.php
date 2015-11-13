@@ -200,4 +200,19 @@ $config['less_compile'] = array(
         'compress' => true
     ),
 
+    // php cli.php less compile bootstrap-3-pull bootstrap-3-pull-min
+
+    array(
+        'name' => 'bootstrap-3-pull',
+        'source' => DEFAULTFCPATH.'assets/less/lib/bootstrap-3-pull/bootstrap-pull-standalone.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/bootstrap-3-pull/bootstrap-pull.css',
+        'compress' => false
+    ),
+    array(
+        'name' => 'bootstrap-3-pull-min',
+        'source' => DEFAULTFCPATH.'assets/less/lib/bootstrap-3-pull/bootstrap-pull-standalone.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/bootstrap-3-pull/bootstrap-pull.min.css',
+        'compress' => true
+    ),
+
 );
