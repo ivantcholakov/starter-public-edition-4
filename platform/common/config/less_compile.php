@@ -202,6 +202,21 @@ $config['less_compile'] = array(
         'compress' => true
     ),
 
+    // php cli.php less compile boostrap-star-rating boostrap-star-rating-min
+
+    array(
+        'name' => 'boostrap-star-rating',
+        'source' => DEFAULTFCPATH.'assets/less/lib/bootstrap-star-rating/star-rating.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/bootstrap-star-rating/star-rating.css',
+        'compress' => false
+    ),
+    array(
+        'name' => 'boostrap-star-rating-min',
+        'source' => DEFAULTFCPATH.'assets/less/lib/bootstrap-star-rating/star-rating.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/bootstrap-star-rating/star-rating.min.css',
+        'compress' => true
+    ),
+
     // php cli.php less compile bootstrap-3-pull bootstrap-3-pull-min
 
     array(
