@@ -21,3 +21,6 @@ $config['uri_root'] = '';
 
 // Indentation characters for the output css content, if it is not to be compressed.
 $config['indentation'] = '  ';
+
+// For the full list of possible options see https://github.com/oyejorge/less.php
+// Probably most of them should not be defined here, globally.

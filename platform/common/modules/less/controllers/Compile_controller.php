@@ -34,9 +34,9 @@ class Compile_controller extends Core_Controller {
 
         $args = array_slice($this->uri->rsegment_array(), 2);
 
-        foreach ($this->items as $item) {
+        foreach ($this->items as $options) {
 
-            $name = isset($item['name']) ? (string) $item['name'] : null;
+            $name = isset($options['name']) ? (string) $options['name'] : null;
 
             if (!empty($args)) {
 
@@ -45,19 +45,22 @@ class Compile_controller extends Core_Controller {
                 }
             }
 
-            $source = isset($item['source']) ? (string) $item['source'] : '';
-            $destination = isset($item['destination']) ? (string) $item['destination'] : '';
-            $compress = !empty($item['compress']);
+            $source = isset($options['source']) ? (string) $options['source'] : '';
+            $destination = isset($options['destination']) ? (string) $options['destination'] : '';
 
             if ($source == '' || $destination == '') {
                 continue;
             }
 
+            unset($options['source']);
+            unset($options['destination']);
+            $options['full_path'] = true;
+
             $dir = pathinfo($destination, PATHINFO_DIRNAME);
             file_exists($dir) OR mkdir($dir, 0755, TRUE);
 
             try {
-                write_file($destination, $this->less->parse($source, null, true, array('full_path' => true, 'compress' => $compress)));
+                write_file($destination, $this->less->parse($source, null, true, $options));
             } catch(Exception $e) {
                 echo $e->getMessage().PHP_EOL;
             }

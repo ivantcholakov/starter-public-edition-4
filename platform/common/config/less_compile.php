@@ -16,6 +16,8 @@
  * If you want to compile only chosen sources, then write a command like this:
  *
  * php cli.php less compile bootstrap-3 bootstrap-3-min
+ *
+ * For all of the LESS parser options ('compress', etc.) see https://github.com/oyejorge/less.php
  */
 
 $config['less_compile'] = array(
