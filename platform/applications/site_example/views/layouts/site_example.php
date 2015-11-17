@@ -15,9 +15,11 @@ echo favicon();
 echo apple_touch_icon_precomposed();
 echo cleartype_ie();
 
+echo js_platform();
+file_partial('webfontloader');
+
 echo css('lib/bootstrap-3/bootstrap.min.css');
 echo css('lib/jasny-bootstrap-3/jasny-bootstrap.min.css');
-echo css('lib/font-awesome-4/font-awesome.min.css');
 echo css('lib/google-code-prettify/prettify.css');
 echo css('lib/common/common.min.css');
 echo css('site_example.css');
@@ -27,7 +29,6 @@ template_partial('css');
 
 echo js('lib/phpjs/phpjs.min.js');
 
-echo js_platform();
 echo js_selectivizr();
 echo js_modernizr();
 echo js_respond();

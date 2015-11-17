@@ -15,17 +15,18 @@ echo favicon();
 echo apple_touch_icon_precomposed();
 echo cleartype_ie();
 
+echo js_platform();
+file_partial('webfontloader');
+
 echo css('lib/bootstrap-3/bootstrap.min.css');
 echo css('lib/jasny-bootstrap-3/jasny-bootstrap.min.css');
 echo css('lib/bootstrap-3/bootstrap-theme.min.css');
-echo css('lib/font-awesome-4/font-awesome.min.css');
 echo css('lib/common/common.min.css');
 echo css('admin_example.css');
 
 file_partial('css');
 template_partial('css');
 
-echo js_platform();
 echo js_selectivizr();
 echo js_modernizr();
 echo js_respond();
