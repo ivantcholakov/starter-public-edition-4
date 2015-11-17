@@ -52,6 +52,36 @@ $config['less_compile'] = array(
         'compress' => true
     ),
 
+    // php cli.php less compile bootstrap-3 bootstrap-3-min
+
+    array(
+        'name' => 'bootstrap-3-no-font-face',
+        'source' => DEFAULTFCPATH.'assets/less/lib/bootstrap-3/bootstrap-no-font-face.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/bootstrap-3/bootstrap-no-font-face.css',
+        'compress' => false
+    ),
+    array(
+        'name' => 'bootstrap-3-no-font-face-min',
+        'source' => DEFAULTFCPATH.'assets/less/lib/bootstrap-3/bootstrap-no-font-face.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/bootstrap-3/bootstrap-no-font-face.min.css',
+        'compress' => true
+    ),
+
+    // php cli.php less compile bootstrap-3 bootstrap-3-min
+
+    array(
+        'name' => 'bootstrap-3-font-face',
+        'source' => DEFAULTFCPATH.'assets/less/lib/bootstrap-3/glyphicons-font-face.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/bootstrap-3/bootstrap-font-face.css',
+        'compress' => false
+    ),
+    array(
+        'name' => 'bootstrap-3-font-face-min',
+        'source' => DEFAULTFCPATH.'assets/less/lib/bootstrap-3/glyphicons-font-face.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/bootstrap-3/bootstrap-font-face.min.css',
+        'compress' => true
+    ),
+
     // php cli.php less compile bootstrap-3-theme bootstrap-3-theme-min
 
     array(
