@@ -15,10 +15,12 @@
         WebFont.load({
             custom: {
                 families: [
-                    'FontAwesome'
+                    'FontAwesome',
+                    'Glyphicons Halflings'
                 ],
                 urls: [
-                    ASSET_CSS_URI + 'lib/font-awesome-4/font-awesome.min.css'
+                    ASSET_CSS_URI + 'lib/font-awesome-4/font-awesome.min.css',
+                    ASSET_CSS_URI + 'lib/bootstrap-3/bootstrap-font-face.min.css'
                 ],
                 timeout: 2000
             }

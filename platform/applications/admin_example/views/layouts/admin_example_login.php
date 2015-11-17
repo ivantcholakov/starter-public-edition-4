@@ -18,7 +18,7 @@ echo cleartype_ie();
 echo js_platform();
 file_partial('webfontloader');
 
-echo css('lib/bootstrap-3/bootstrap.min.css');
+echo css('lib/bootstrap-3/bootstrap-no-font-face.min.css');
 echo css('lib/bootstrap-3/bootstrap-theme.min.css');
 echo css('lib/common/common.min.css');
 echo css('admin_example_login.css');
