@@ -348,6 +348,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * php-json-minify, a JSON minifier and uncommenter written in PHP, https://github.com/T1st3/php-json-minify
 * Animate.css, a bunch of cool, fun, and cross-browser animations for you to use in your projects, https://github.com/daneden/animate.css, http://daneden.github.io/animate.css/
 * Bootstrap pull 3.x, adds pull-right and pull-left for Bootstrap v3 for xs, sm, md, lg media, https://github.com/Natshah/bootstrap-pull
+* Web Font Loader, gives you added control when using linked fonts via @font-face, https://github.com/typekit/webfontloader
 
 The Playground
 --------------
