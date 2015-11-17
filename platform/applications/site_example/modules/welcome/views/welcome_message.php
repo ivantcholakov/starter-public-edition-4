@@ -12,6 +12,9 @@
                 <i class="fa fa-exclamation-circle"></i> Here you can start developing the administration part of your site: <strong><a href="<?php echo base_url('admin-example'); ?>"><?php echo base_url('admin-example'); ?></a></strong>
             </div>
 
+            <p>A Font Awesome icon: <i class="fa fa-star"></i></p>
+            <p>A Glyphicon: <span class="glyphicon glyphicon-star"></span></p>
+
             <h2>Self-Diagnostics</h2>
 
             <p><?php echo $diagnostics; ?></p>
