@@ -115,11 +115,6 @@ class Datatable {
 
         $this->set_filters();
 
-        $db = clone $this->db;
-        $recordsTotal = $db->count_all_results();
-
-        $this->set_limit()->set_order();
-
         $select = $this->pluck($this->columns, 'db');
         $expressions = $this->pluck($this->columns, 'expression');
 
@@ -150,6 +145,11 @@ class Datatable {
 
             $this->select($select, false);
         }
+
+        $db = clone $this->db;
+        $recordsTotal = $db->count_all_results();
+
+        $this->set_limit()->set_order();
 
         if ($this->is_custom_model()) {
             $data = $this->db->as_array()->find();
