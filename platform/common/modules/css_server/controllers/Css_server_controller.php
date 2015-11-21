@@ -1,13 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * Front Theme Developer's LESS Compiler
- *
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015
- * @license The MIT License, http://opensource.org/licenses/MIT
- */
-
-/**
  * Easing LESS development - compilation "on-the-fly" with caching.
  *
  * All the CSS files defined within the configuration file
@@ -18,6 +11,9 @@
  * When development ends, before uploading the site on the production
  * server, use the command-line less compiler as it has been described
  * within config/less_compile.php for producing the final static CSS files.
+ *
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015
+ * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
 class Css_server_controller extends Core_Controller {
