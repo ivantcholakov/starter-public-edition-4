@@ -21,7 +21,6 @@ class Star_rating_controller extends Base_Controller {
     public function index() {
 
         $this->template
-            ->inject_partial('css', css('lib/bootstrap-star-rating/star-rating.min.css'))
             ->inject_partial('head', js('lib/bootstrap-star-rating/star-rating.min.js'))
             ->set_partial('scripts', 'star_rating_scripts')
             ->build('star_rating');

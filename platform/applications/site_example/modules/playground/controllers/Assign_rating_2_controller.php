@@ -26,7 +26,6 @@ class Assign_rating_2_controller extends Base_Controller {
     public function index() {
 
         $this->template
-            ->inject_partial('css', css('lib/bootstrap-star-rating/star-rating.min.css'))
             ->set_partial('scripts', 'assign_rating_2_scripts')
             ->build('assign_rating_2');
     }

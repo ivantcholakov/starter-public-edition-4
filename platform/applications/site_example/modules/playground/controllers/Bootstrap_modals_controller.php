@@ -21,7 +21,6 @@ class Bootstrap_modals_controller extends Base_Controller {
     public function index() {
 
         $this->template
-            ->inject_partial('css', css('lib/bootstrap3-dialog/bootstrap-dialog.min.css'))
             ->set_partial('scripts', 'bootstrap_modals_scripts')
             ->build('bootstrap_modals');
     }

@@ -10,7 +10,7 @@ class Base_Controller extends Core_Controller {
             ->library('template')
         ;
 
-        $this->template->set_layout('site_example');
+        $this->template->set_layout('front_theme_bs');
 
         //$default_title = config_item('default_title');
         $default_title = 'Application Starter 4 Public Edition';

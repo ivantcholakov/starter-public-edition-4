@@ -21,7 +21,6 @@ class Social_buttons_controller extends Base_Controller {
     public function index() {
 
         $this->template
-            ->inject_partial('css', css('lib/bootstrap-social/bootstrap-social.min.css'))
             ->set_partial('scripts', 'social_buttons_scripts')
             ->build('social_buttons');
     }

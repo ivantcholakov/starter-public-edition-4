@@ -262,4 +262,14 @@ $config['less_compile'] = array(
         'compress' => true
     ),
 
+    // php cli.php less compile front-theme-bs-min
+
+    array(
+        'name' => 'front-theme-min',
+        'source' => DEFAULTFCPATH.'assets/less/front-theme-bs/index.less',
+        'destination' => DEFAULTFCPATH.'assets/css/front-theme-bs.min.css',
+        'compress' => true,
+        'relativeUrls' => false,
+    ),
+
 );

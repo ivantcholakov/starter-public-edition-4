@@ -1,8 +1,4 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
-
-echo css('lib/animate/animate.min.css');
-
-?>
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 <style>
 

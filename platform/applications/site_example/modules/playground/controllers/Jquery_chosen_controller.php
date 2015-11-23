@@ -85,7 +85,6 @@ class Jquery_chosen_controller extends Base_Controller {
         $this->template
             ->set(compact('success', 'messages', 'country_1', 'country_2', 'country_names'))
             ->set('driver_ok', $this->driver_ok)
-            ->set_partial('css', 'jquery_chosen_css')
             ->set_partial('scripts', 'jquery_chosen_scripts')
             ->enable_parser_body('i18n')
             ->build('jquery_chosen');

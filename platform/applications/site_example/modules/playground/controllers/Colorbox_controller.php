@@ -37,7 +37,6 @@ class Colorbox_controller extends Base_Controller {
 
         $this->template
             ->set('images', $images)
-            ->set_partial('css', 'colorbox_css')
             ->set_partial('scripts', 'colorbox_scripts')
             ->build('colorbox');
     }

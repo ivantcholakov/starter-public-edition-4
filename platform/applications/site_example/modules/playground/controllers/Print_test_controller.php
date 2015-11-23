@@ -22,11 +22,6 @@ class Print_test_controller extends Base_Controller {
             ->title('Print Test')
         ;
 
-        if ($this->registry->get('print')) {
-
-            $this->template->set_layout('site_example_print');
-        }
-
         $this->registry->set('nav', 'playground');
     }
 
