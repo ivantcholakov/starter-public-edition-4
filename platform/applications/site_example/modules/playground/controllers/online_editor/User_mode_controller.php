@@ -9,7 +9,7 @@ class User_mode_controller extends Base_Controller {
         $this->load->helper('html_filters');
 
         $this->template
-            ->append_metadata($this->load->view('partials/ckeditor', null, true))
+            ->set_partial('ckeditor', 'partials/ckeditor')
             ->set_partial('subnavbar', 'playground/online_editor/subnavbar')
             ->set('subnavbar_item_active', 'user-mode')
         ;

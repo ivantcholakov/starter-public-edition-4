@@ -30,6 +30,7 @@ echo js_modernizr();
 echo js_respond();
 echo js_jquery();
 echo js('lib/jquery-json/jquery.json.js');
+template_partial('ckeditor');
 
 template_partial('head');
 
