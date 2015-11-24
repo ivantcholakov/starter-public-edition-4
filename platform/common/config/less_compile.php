@@ -112,6 +112,21 @@ $config['less_compile'] = array(
         'compress' => true
     ),
 
+    // php cli.php less compile material-icons material-icons-min
+
+    array(
+        'name' => 'material-icons',
+        'source' => DEFAULTFCPATH.'assets/less/lib/material-icons/material-icons.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/material-icons/material-icons.css',
+        'compress' => false
+    ),
+    array(
+        'name' => 'material-icons-min',
+        'source' => DEFAULTFCPATH.'assets/less/lib/material-icons/material-icons.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/material-icons/material-icons.min.css',
+        'compress' => true
+    ),
+
     // php cli.php less compile bootstrap-chosen bootstrap-chosen-min
 
     array(
