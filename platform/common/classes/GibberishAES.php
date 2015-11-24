@@ -7,6 +7,10 @@ defined('BASEPATH') OR exit('No direct script access allowed.');
  *
  * See Gibberish AES javascript encryption library, @link https://github.com/mdp/gibberish-aes
  *
+ * An important note: The complementary JavaScript project Gibberish AES has been
+ * deprecated, see https://github.com/mdp/gibberish-aes/issues/25
+ * Consider finding alternative PHP and JavaScript solutions.
+ *
  * This implementation is based on initial code proposed by nbari at dalmp dot com
  * @link http://www.php.net/manual/en/function.openssl-decrypt.php#107210
  *
@@ -45,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed.');
  * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2015.
  * Code repository: @link https://github.com/ivantcholakov/gibberish-aes-php
  *
- * @version 1.2.0
+ * @version 1.2.1
  *
  * @license The MIT License (MIT)
  * @link http://opensource.org/licenses/MIT
@@ -59,6 +63,7 @@ class GibberishAES {
     // The allowed key sizes in bits.
     protected static $valid_key_sizes = array(128, 192, 256);
 
+    protected static $php7_random_bytes_exists = null;
     protected static $openssl_random_pseudo_bytes_exists = null;
     protected static $mcrypt_dev_urandom_exists = null;
     protected static $openssl_encrypt_exists = null;
@@ -95,7 +100,7 @@ class GibberishAES {
         $key_size = self::$key_size;
 
         // Set a random salt.
-        $salt = self::random_pseudo_bytes(8);
+        $salt = self::random_bytes(8);
 
         $salted = '';
         $dx = '';
@@ -207,6 +212,15 @@ class GibberishAES {
 
     // Non-public methods ------------------------------------------------------
 
+    protected static function php7_random_bytes_exists() {
+
+        if (!isset(self::$php7_random_bytes_exists)) {
+            self::$php7_random_bytes_exists = version_compare(PHP_VERSION, '7.0.0', '>=') && function_exists('random_bytes');
+        }
+
+        return self::$php7_random_bytes_exists;
+    }
+
     protected static function openssl_random_pseudo_bytes_exists() {
 
         if (!isset(self::$openssl_random_pseudo_bytes_exists)) {
@@ -304,10 +318,28 @@ class GibberishAES {
         return isset($length) ? substr($str, $start, $length) : substr($str, $start);
     }
 
-    protected static function random_pseudo_bytes($length) {
+    protected static function random_bytes($length) {
+
+        $length = (int) $length;
+
+        if (self::php7_random_bytes_exists()) {
+
+            try
+            {
+                return random_bytes($length);
+            }
+            catch (Exception $e) {
+                // Do nothing, continue.
+            }
+        }
 
         if (self::openssl_random_pseudo_bytes_exists()) {
-            return openssl_random_pseudo_bytes($length);
+
+            $rnd = openssl_random_pseudo_bytes($length, $crypto_strong);
+
+            if ($crypto_strong) {
+                return $rnd;
+            }
         }
 
         if (self::mcrypt_dev_urandom_exists()) {
@@ -325,7 +357,7 @@ class GibberishAES {
         /*
          * The following code fragment has been taken from Secure-random-bytes-in-PHP
          * project, released under the New BSD License.
-         * @see https://github.com/ivantcholakov/Secure-random-bytes-in-PHP
+         * @see https://github.com/GeorgeArgyros/Secure-random-bytes-in-PHP
          *
          *
          *
