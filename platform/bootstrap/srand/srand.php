@@ -47,6 +47,18 @@ function secure_random_bytes($len = 10) {
     }
     //
 
+    // Added by Ivan Tcholakov, 24-NOV-2015.
+    if (version_compare(PHP_VERSION, '7.0.0', '>=') && function_exists('random_bytes')) {
+
+        try {
+            return random_bytes($len);
+        }
+        catch (Exception $e) {
+            // Do nothing, continue.
+        }
+    }
+    //
+
     /*
      * Our primary choice for a cryptographic strong randomness function is
      * openssl_random_pseudo_bytes.
