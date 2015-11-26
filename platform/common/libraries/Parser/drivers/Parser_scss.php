@@ -13,7 +13,7 @@ class CI_Parser_scss extends CI_Parser_driver {
 
     public function initialize()
     {
-        $php_min = '5.3.2';
+        $php_min = '5.4';
 
         if (!is_php($php_min))
         {
