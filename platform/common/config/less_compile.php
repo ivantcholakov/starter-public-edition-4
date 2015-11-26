@@ -8,7 +8,6 @@
 /**
  * How to recompile these LESS-sources:
  *
- * Make sure the destination folders and files are writable.
  * Open a terminal at the folder platform/www/ and write the following command:
  *
  * php cli.php less compile
