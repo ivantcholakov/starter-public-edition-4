@@ -53,6 +53,9 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = TRUE;
 
+// A route for the command-line SCSS compiler.
+$route['scss/compile/(.+)'] = 'scss/compile/index/$1';
+
 // A route for the command-line LESS compiler.
 $route['less/compile/(.+)'] = 'less/compile/index/$1';
 
