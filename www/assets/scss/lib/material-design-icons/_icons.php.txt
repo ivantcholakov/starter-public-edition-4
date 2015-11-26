@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015
+ * @license The MIT License, http://opensource.org/licenses/MIT
+ *
+ * Use this script on updating the font Material Icons,
+ * the list of the codepoints is expected to be changed.
+ *
+ * php _icons.php
+ */
+
+$is_cli = (PHP_SAPI == 'cli') or defined('STDIN');
+
+if (!$is_cli) {
+    exit('Only CLI is alliwed.');
+}
+
+$current_dir = dirname(__FILE__);
+$source_dir = rtrim(str_replace('\\', '/', realpath($current_dir.'/../../../fonts/material-icons/')), '/').'/';
+$destination_dir = rtrim(str_replace('\\', '/', realpath($current_dir)), '/').'/';
+
+$source_file = $source_dir.'codepoints';
+$destination_file = $destination_dir.'_icons.scss';
+
+$source = @ (string) file_get_contents($source_file);
+
+if ($source == '') {
+    exit('Can not read from the source file.');
+}
+
+$items = preg_split('/\r\n|\r|\n/m', $source, null, PREG_SPLIT_NO_EMPTY);
+
+if (empty($items)) {
+    exit('Can not read from the source file.');
+}
+
+foreach ($items as $key => $item) {
+
+    $item = explode(' ', $item);
+    $item = array('name' => $item[0], 'codepoint' => $item[1]);
+    $items[$key] = $item;
+}
+
+$result = '';
+
+foreach ($items as $item) {
+
+    $result .= '.#{$md-css-prefix}-'.str_replace('_', '-', $item['name']).':before { content: "\\'.$item['codepoint'].'"; }'."\n";
+}
+
+file_put_contents($destination_file, $result);
