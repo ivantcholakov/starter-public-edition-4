@@ -26,7 +26,7 @@ class Compile_controller extends Core_Controller {
             ? $this->config->config['scss_compile']
             : array();
 
-        $this->load->parser('scss');
+        $this->load->parser();
         $this->load->helper('file');
     }
 
@@ -60,7 +60,7 @@ class Compile_controller extends Core_Controller {
             file_exists($dir) OR mkdir($dir, 0755, TRUE);
 
             try {
-                write_file($destination, $this->scss->parse($source, null, true, $options));
+                write_file($destination, $this->parser->parse($source, null, true, array('scss' => $options)));
             } catch(Exception $e) {
                 echo $e->getMessage().PHP_EOL;
             }
