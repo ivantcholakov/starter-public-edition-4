@@ -85,6 +85,7 @@ class CI_Parser_scss extends CI_Parser_driver {
         $parser = $parser_reflection->newInstance();
 
         $parser->setImportPaths($config['import_paths']);
+        $parser->addImportPath(dirname($template));
         $parser->setNumberPrecision($config['number_precision']);
 
         $formatter = $config['formatter'];
@@ -99,7 +100,7 @@ class CI_Parser_scss extends CI_Parser_driver {
 
         $parser->setLineNumberStyle($config['line_number_style']);
 
-        $template = $parser->compile($template);
+        $template = $parser->compile(@ file_get_contents($template));
 
         return $this->output($template, $return, $ci, $is_mx);
     }
