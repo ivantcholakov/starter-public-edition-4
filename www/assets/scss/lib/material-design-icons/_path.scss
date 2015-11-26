@@ -1,0 +1,13 @@
+/* FONT PATH
+ * -------------------------- */
+
+@font-face {
+    font-family: 'Material Icons';
+    src: url('#{$md-font-path}/MaterialIcons-Regular.eot');
+    src: url('#{$md-font-path}/MaterialIcons-Regular.eot?#iefix') format('embedded-opentype'),
+    url('#{$md-font-path}/MaterialIcons-Regular.woff2') format('woff2'),
+    url('#{$md-font-path}/MaterialIcons-Regular.woff') format('woff'),
+    url('#{$md-font-path}/MaterialIcons-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+}

@@ -350,6 +350,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Bootstrap pull 3.x, adds pull-right and pull-left for Bootstrap v3 for xs, sm, md, lg media, https://github.com/Natshah/bootstrap-pull
 * Web Font Loader, gives you added control when using linked fonts via @font-face, https://github.com/typekit/webfontloader
 * Material Design icons by Google https://github.com/google/material-design-icons, http://google.github.io/material-design-icons/
+* Material Design icons with Bootstrap-like styling, https://github.com/mervick/material-design-icons
 
 The Playground
 --------------
