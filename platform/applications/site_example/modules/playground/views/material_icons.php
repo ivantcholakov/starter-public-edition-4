@@ -20,6 +20,8 @@
                     <div class="col-md-12">
 
                         <p>
+                            <a href="https://github.com/mervick/material-design-icons" target="_blank">https://github.com/mervick/material-design-icons</a>
+                            <br />
                             <a href="http://google.github.io/material-design-icons/#icon-font-for-the-web" target="_blank">http://google.github.io/material-design-icons/#icon-font-for-the-web</a>,
                             <a href="https://www.google.com/design/icons/" target="_blank">https://www.google.com/design/icons/</a>
                         </p>
@@ -30,14 +32,14 @@ if (!empty($items)) {
 ?>
 
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover table-valign-middle" id="datatable">
+                        <table class="table table-striped table-bordered table-hover table-condensed table-valign-middle" id="datatable">
 
                             <thead>
 
                                 <tr>
-                                    <th class="col-xs-2 col-sm-3">Icon</th>
-                                    <th class="col-xs-8 col-sm-3">Name</th>
-                                    <th class="col-xs-2 col-sm-3">Codepoint</th>
+                                    <th class="col-sm-2">Icon (size 4x)</th>
+                                    <th class="col-sm-5">Bootstrap-Like Tag (additional features are possible)</th>
+                                    <th class="col-sm-5">Tag with Ligature</th>
                                 </tr>
 
                             </thead>
@@ -45,9 +47,9 @@ if (!empty($items)) {
                             <tfoot>
 
                                 <tr>
-                                    <th>Icon</th>
-                                    <th>Name</th>
-                                    <th>Codepoint</th>
+                                    <th>Icon (size 4x)</th>
+                                    <th>Bootstrap-Like Tag (additional features are possible)</th>
+                                    <th>Tag with Ligature</th>
                                 </tr>
 
                             </tfoot>
@@ -60,9 +62,9 @@ if (!empty($items)) {
 ?>
 
                                 <tr>
-                                    <td><i class="material-icons"><?php echo $item['name']; ?></i></td>
-                                    <td><?php echo $item['name']; ?></td>
-                                    <td><?php echo html_escape('&#x'.strtoupper($item['codepoint']).';'); ?></td>
+                                    <td><i class="mdi mdi-<?php echo str_replace('_', '-', $item['name']); ?> mdi-4x"></i></td>
+                                    <td><?php echo html_escape('<i class="mdi mdi-'.str_replace('_', '-', $item['name']).'"></i>'); ?></td>
+                                    <td><?php echo html_escape('<i class="material-icons">'.$item['name'].'</i>'); ?></td>
                                 </tr>
 <?php
 
