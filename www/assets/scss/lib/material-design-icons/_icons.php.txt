@@ -13,7 +13,7 @@
 $is_cli = (PHP_SAPI == 'cli') or defined('STDIN');
 
 if (!$is_cli) {
-    exit('Only CLI is alliwed.');
+    exit('Only CLI is allowed.');
 }
 
 $current_dir = dirname(__FILE__);
