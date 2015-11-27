@@ -279,7 +279,7 @@ $config['less_compile'] = array(
     // php cli.php less compile front-theme-bs-min
 
     array(
-        'name' => 'front-theme-min',
+        'name' => 'front-theme-bs-min',
         'source' => DEFAULTFCPATH.'assets/less/front-theme-bs/index.less',
         'destination' => DEFAULTFCPATH.'assets/css/front-theme-bs.min.css',
         'compress' => true,
