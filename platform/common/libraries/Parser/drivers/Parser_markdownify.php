@@ -9,7 +9,7 @@
 // Sample class loading if you have no your own way.
 if (!class_exists('Markdownify_Extra', FALSE))
 {
-    require APPPATH.'third_party/markdownify/markdownify_extra.php';
+    require COMMONPATH.'third_party/markdownify/markdownify_extra.php';
 }
 */
 

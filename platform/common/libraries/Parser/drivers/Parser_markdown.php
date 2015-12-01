@@ -9,7 +9,7 @@
 // Sample class loading if you have no your own way.
 if (!class_exists('MarkdownExtra_Parser', FALSE))
 {
-    require APPPATH.'third_party/markdown/markdown.php';
+    require COMMONPATH.'third_party/markdown/markdown.php';
 }
 */
 

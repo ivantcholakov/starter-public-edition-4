@@ -366,19 +366,19 @@ class Gravatar {
     }
 
     /**
-    * get_gravatar_url
-    *
-    * @see http://en.gravatar.com/site/implement/images/ for available options
-    *
-    * @param string $rating defaults to g
-    * @param string $size defaults to 80
-    * @param string $default_image default sets can be found on the above link
-    * @param boolean $secure set to TRUE if a secure url is required
-    *
-    * @return string gratavar url
+     * get_gravatar_url
+     *
+     * @see http://en.gravatar.com/site/implement/images/ for available options
+     *
+     * @param string $rating defaults to g
+     * @param string $size defaults to 80
+     * @param string $default_image default sets can be found on the above link
+     * @param boolean $secure set to TRUE if a secure url is required
+     *
+     * @return string gratavar url
      *
      * @deprecated
-    */
+     */
     public function get_gravatar($email, $rating = NULL, $size = NULL, $default_image = NULL, $secure = NULL)
     {
         $hash = $this->set_email($email);
