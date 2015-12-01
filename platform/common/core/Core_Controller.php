@@ -42,7 +42,7 @@ class Core_Controller extends MX_Controller {
 
     /**
      * Generic callback used to call callback methods for form validation.
-     * 
+     *
      * @param string
      *        - the value to be validated
      * @param string
@@ -50,7 +50,7 @@ class Core_Controller extends MX_Controller {
      *          and any optional values to send to the method as a single parameter.
      *          First value is the name of the model.
      *          Second value is the name of the method.
-     *          Any additional values are values to be send in an array to the method. 
+     *          Any additional values are values to be send in an array to the method.
      *
      *      EXAMPLE RULE:
      *  callback_external_callbacks[some_model,some_method,some_string,another_string]
@@ -61,7 +61,7 @@ class Core_Controller extends MX_Controller {
      *
      * CodeIgniter 2.1.0 form validation external callbacks.
      *
-     * This is part of MY_Controller.php in Community Auth, which is an open 
+     * This is part of MY_Controller.php in Community Auth, which is an open
      * source authentication application for CodeIgniter 2.1.0
      *
      * @package     Community Auth
@@ -72,7 +72,7 @@ class Core_Controller extends MX_Controller {
      */
     public function external_callbacks( $postdata, $param ) {
 
-        $param_values = explode( ',', $param ); 
+        $param_values = explode( ',', $param );
 
         // Make sure the model is loaded.
         $model = $param_values[0];
@@ -103,7 +103,7 @@ class Core_Controller extends MX_Controller {
 
         return $callback_result;
     }
-    
+
     // --------------------------------------------------------------
 
     /**
@@ -114,7 +114,7 @@ class Core_Controller extends MX_Controller {
 
     /**
      * Get properties from the common module, otherwise, from $APP
-     * 
+     *
      * @param type $myVar
      * @return var
      * @throws Exception
@@ -129,12 +129,12 @@ class Core_Controller extends MX_Controller {
             return CI::$APP->$myVar;
         }
 
-        throw new Exception('There is no such property: ' . $myVar);        
+        throw new Exception('There is no such property: ' . $myVar);
     }
-    
+
     /**
      * Set properties to a var inside the common module, only if exists
-     * 
+     *
      * @param type $myVar
      * @param type $myValue
      */
@@ -149,7 +149,7 @@ class Core_Controller extends MX_Controller {
 
     /**
      * Call any method inside common module, else call $APP method
-     * 
+     *
      * @param type $name
      * @param array $arguments
      * @return type
@@ -165,12 +165,12 @@ class Core_Controller extends MX_Controller {
             return call_user_func_array(array(CI::$APP, $name), $arguments);
         }
 
-        throw new Exception('There is no such method: ' . $name);        
+        throw new Exception('There is no such method: ' . $name);
     }
-    
+
     /**
      * Remap any call to an existing method in common module
-     * 
+     *
      * @param type $method
      * @param type $params
      * @return type
@@ -187,10 +187,10 @@ class Core_Controller extends MX_Controller {
 
         show_404();
     }
-    
+
     /**
      * Common module extender
-     * 
+     *
      * @param type $class
      * @param type $module
      * @param type $params
@@ -211,8 +211,8 @@ class Core_Controller extends MX_Controller {
             $moduleExtends = str_ireplace('class '.$class, 'class '.ucfirst($class).'_common', $moduleExtends);
             $moduleExtends = preg_replace("/<\?php|<\?|\?>/", '', $moduleExtends);
             eval($moduleExtends);
-            
-            $newclass = ucfirst($class).'_common'; 
+
+            $newclass = ucfirst($class).'_common';
             $this->common_module_extender = new $newclass($params);
         }
 
