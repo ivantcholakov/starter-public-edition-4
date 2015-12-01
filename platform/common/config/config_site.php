@@ -5,7 +5,7 @@
 | Site Name & Contact Data
 |--------------------------------------------------------------------------
 */
-$config['site_name'] = 'Site Name';
+$config['site_name'] = 'Starter 4';
 $config['contact_organization'] = 'Organization Name';
 $config['contact_address'] = 'Milky Way, Solar System, Planet Earth, Sofia, BULGARIA';
 $config['contact_phone'] = '+359 2 00 00 00';
