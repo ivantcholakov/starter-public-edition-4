@@ -7,7 +7,7 @@ ci()->load
     ->helper('url')
     ->library('template')
 ;
-    
+
 echo html_tag('lang="'.ci()->lang->code().'" dir="'.ci()->lang->direction().'"');
 
 echo head_tag();
@@ -93,7 +93,7 @@ if (!class_exists('Redis')) {
 
 $redis = new Redis() or die('Can not load redis.');
 
-$redis->connect('127.0.0.1'); 
+$redis->connect('127.0.0.1');
 
 $redis_server_info = $redis->info();
 $redis_server_version = $redis_server_info['redis_version'];
