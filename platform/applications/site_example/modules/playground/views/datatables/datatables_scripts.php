@@ -30,7 +30,7 @@ echo js('lib/dataTables/datatables.responsive.js');
                 'searchable': false,
                 'orderable': false
              }],
-            'language': <?php echo $this->lang->datatables(); ?>,
+            'language': <?php echo language_datatables(); ?>,
             // Making the table responsive.
             'autoWidth': false,
             'preDrawCallback': function () {
@@ -70,7 +70,7 @@ echo js('lib/dataTables/datatables.responsive.js');
         // Individual text-input filters.
 
         $("#datatable thead input[type=text]").on('keyup change', function () {
- 
+
             table
                 .column($(this).parent().index() + ':visible')
                 .search(this.value)

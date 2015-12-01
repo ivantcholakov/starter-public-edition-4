@@ -76,7 +76,7 @@ echo js('lib/dataTables/datatables.responsive.js');
                     'class': 'table-actions'
                 }
             ],
-            'language': <?php echo $this->lang->datatables(); ?>,
+            'language': <?php echo language_datatables(); ?>,
             // Making the table responsive.
             'autoWidth': false,
             'preDrawCallback': function () {

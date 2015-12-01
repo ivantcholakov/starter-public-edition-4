@@ -118,3 +118,26 @@ if (!function_exists('language_jquery_validation')) {
     }
 
 }
+
+if (!function_exists('language_datatables')) {
+
+    function language_datatables($language = null) {
+
+        $ci = get_instance();
+
+        $language = (string) $language;
+
+        if ($language == '') {
+            $language = $ci->lang->current();
+        }
+
+        $lang = @ file_get_contents(DEFAULTFCPATH.'assets/js/lib/dataTables/i18n/'.$language.'.lang', false);
+
+        if ($lang == '') {
+            return '{}';
+        }
+
+        return $lang;
+    }
+
+}
