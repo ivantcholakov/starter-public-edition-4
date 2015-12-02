@@ -1,6 +1,6 @@
 <?php
 
-$APPNAME = 'admin_example';
+$APPNAME = 'admin';
 $FCPATH = dirname(__FILE__);
 
 require dirname(__FILE__).'/../config.php';
