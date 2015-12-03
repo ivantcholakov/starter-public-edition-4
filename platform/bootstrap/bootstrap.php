@@ -193,7 +193,7 @@ define('APPPATH', APPSPATH.APPNAME.'/');
 // Check the path to the application folder.
 if (!is_dir(APPPATH)) {
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
-    echo 'Your application root folder path (APPPATH) does not appear to be set correctly.';
+    echo 'Your application name ($APPNAME) does not appear to be set correctly.';
     exit(3); // EXIT_CONFIG
 }
 
