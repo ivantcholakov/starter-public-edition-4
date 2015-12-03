@@ -43,9 +43,9 @@ $config['copyright_note'] = 'Copyright &copy; 2012 - {year} Ivan Tcholakov and o
 | Default Metadata: Title, Description, and Keywords.
 |--------------------------------------------------------------------------
 */
-$config['default_title'] = 'Default title';
-$config['default_description'] = 'Default description';
-$config['default_keywords'] = 'Default keywords';
+$config['default_title'] = 'Application Starter 4 Public Edition';
+$config['default_description'] = '';
+$config['default_keywords'] = '';
 
 
 /*
