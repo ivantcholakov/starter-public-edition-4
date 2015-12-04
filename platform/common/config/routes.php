@@ -59,5 +59,5 @@ $route['scss/compile/(.+)'] = 'scss/compile/index/$1';
 // A route for the command-line LESS compiler.
 $route['less/compile/(.+)'] = 'less/compile/index/$1';
 
-// A route for the "on-the-fly" LESS compiler.
+// A route for the "on-the-fly" SCSS/LESS compiler.
 $route['(assets/css/[a-zA-Z0-9_\-\./]+\.css)'] = 'css_server/index/$1';
