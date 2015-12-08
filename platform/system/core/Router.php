@@ -118,6 +118,7 @@ class CI_Router {
 	 *
 	 * Runs the route mapping function.
 	 *
+	 * @param	array	$routing
 	 * @return	void
 	 */
 	// Modified by Ivan Tcholakov, 15-APR-2014.
