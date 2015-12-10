@@ -99,7 +99,18 @@ if (!function_exists('file_partial')) {
 
         $data =& ci()->load->_ci_cached_vars;
 
-        $base_path = isset($data['template_views']) ? $data['template_views'] : VIEWPATH;
+        if (isset($data['template_views'])) {
+
+            $base_path = $data['template_views'];
+
+            if (!file_exists($base_path.'partials/'.$file.'.'.$ext)) {
+                $base_path = VIEWPATH;
+            }
+
+        } else {
+
+            $base_path = VIEWPATH;
+        }
 
         if (!file_exists($base_path.'partials/'.$file.'.'.$ext)) {
             $base_path = COMMONPATH.'views/';
