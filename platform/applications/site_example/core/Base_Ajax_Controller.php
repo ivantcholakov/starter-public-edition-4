@@ -6,7 +6,7 @@ class Base_Ajax_Controller extends Base_Controller {
 
         parent::__construct();
 
-        if (!IS_AJAX_REQUEST) {
+        if (!$this->input->is_ajax_request()) {
             exit(EXIT_ERROR);
         }
     }
