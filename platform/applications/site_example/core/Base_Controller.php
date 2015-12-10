@@ -22,7 +22,7 @@ class Base_Controller extends Core_Controller {
             redirect(http_build_url(current_url(), array('query' => http_build_query($query))));
         }
 
-        $this->template->set_layout($this->visual_themes->get_current());
+        $this->template->set_theme($this->visual_themes->get_current());
 
         $default_title = config_item('default_title');
         $default_description = config_item('default_description');
