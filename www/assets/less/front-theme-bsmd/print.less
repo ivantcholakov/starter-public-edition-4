@@ -1,0 +1,10 @@
+
+// Printing
+
+// http://www.itsupportguides.com/tech-tips-tricks/how-to-hide-urlhref-when-printing-bootstrap-website/
+// http://stackoverflow.com/questions/7301989/need-to-remove-href-values-when-printing-in-chrome
+@media print {
+    a[href]:after {
+        content: none !important;
+    }
+}

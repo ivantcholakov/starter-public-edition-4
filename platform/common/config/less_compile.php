@@ -286,4 +286,14 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
     ),
 
+    // php cli.php less compile front-theme-bsmd-min
+
+    array(
+        'name' => 'front-theme-bsmd-min',
+        'source' => DEFAULTFCPATH.'assets/less/front-theme-bsmd/index.less',
+        'destination' => DEFAULTFCPATH.'assets/css/front-theme-bsmd.min.css',
+        'compress' => true,
+        'relativeUrls' => false,
+    ),
+
 );

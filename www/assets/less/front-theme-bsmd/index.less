@@ -1,0 +1,317 @@
+
+/* 
+    Created on : 2015-10-30
+    Author     : Ivan Tcholakov
+    License    : MIT
+*/
+
+
+// front-theme
+
+
+// Directories
+@base-path:                     "";
+@theme-path:                    "./";
+@default-assets-path:           "../../";
+@default-assets-less-path:      "@{default-assets-path}less/";
+@default-assets-less-lib-path:  "@{default-assets-less-path}lib/";
+@default-assets-css-path:       "@{default-assets-path}css/";
+@default-assets-css-lib-path:   "@{default-assets-css-path}lib/";
+
+
+// Variables and Mixins --------------------------------------------------------
+
+// Common-Purpose Theme Variables
+@import "@{theme-path}variables-common-purpose.less";
+
+// Common mixins
+@import "@{default-assets-less-lib-path}common/mixins.less";
+
+// Boostrap + Material Design variables
+@import "@{theme-path}variables-bootstrap-material-design.less";
+
+// Boostrap mixins
+@import "@{default-assets-less-lib-path}bootstrap-3/mixins.less";
+
+// Bootstrap Material Design mixins
+@import "@{default-assets-less-lib-path}bootstrap-material-design/_mixins.less";
+
+// Site Structure Variables
+@import "@{theme-path}variables-site-structure.less";
+
+// Colorbox Variables
+@import "@{theme-path}variables-colorbox.less";
+
+// Scroll To Top Link
+@import "@{theme-path}variables-scroll-top.less";
+
+// End Variables and Mixins ----------------------------------------------------
+
+
+/*!
+ *  Bootstrap 3
+ */
+
+// Reset and dependencies
+@import "@{default-assets-less-lib-path}bootstrap-3/normalize.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/print.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/glyphicons-no-font-face.less";
+
+// Core CSS
+@import "@{default-assets-less-lib-path}bootstrap-3/scaffolding.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/type.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/code.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/grid.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/tables.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/forms.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/buttons.less";
+
+// Components
+@import "@{default-assets-less-lib-path}bootstrap-3/component-animations.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/dropdowns.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/button-groups.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/input-groups.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/navs.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/navbar.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/breadcrumbs.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/pagination.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/pager.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/labels.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/badges.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/jumbotron.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/thumbnails.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/alerts.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/progress-bars.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/media.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/list-group.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/panels.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/responsive-embed.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/wells.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/close.less";
+
+// Components w/ JavaScript
+@import "@{default-assets-less-lib-path}bootstrap-3/modals.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/tooltip.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/popovers.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/carousel.less";
+
+// Utility classes
+@import "@{default-assets-less-lib-path}bootstrap-3/utilities.less";
+@import "@{default-assets-less-lib-path}bootstrap-3/responsive-utilities.less";
+
+
+// Bootstrap Material Design
+
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/_shadows.less";
+
+/*
+body {
+  background-color: @body-bg;
+  &.inverse {
+    background: #333333;
+    &, .form-control {
+      color: @mdb-text-color-light;
+    }
+    .modal,
+    .panel-default,
+    .card {
+      &,
+      .form-control {
+        background-color: initial;
+        color: initial;
+      }
+    }
+
+  }
+}
+
+
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
+  font-family: @font-family-sans-serif;
+  font-weight: 300;
+}
+
+h5, h6{
+  font-weight: 400;
+}
+
+a, a:hover, a:focus {
+  color: @brand-primary;
+
+  & .material-icons {
+    vertical-align: middle;
+  }
+}
+
+*/
+
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/_form.less";
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/_welljumbo.less";
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/_buttons.less";
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/_checkboxes.less";
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/_togglebutton.less";
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/_radios.less";
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/_inputs.less";
+
+/*
+
+legend {
+  border-bottom: 0;
+}
+
+*/
+
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/_lists.less";
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/_navbar.less";
+
+/*
+
+.dropdown-menu {
+  border: 0;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  .divider {
+    background-color: rgba(229, 229, 229, 0.12);
+  }
+  li {
+    overflow: hidden;
+    position: relative;
+    a:hover {
+      background-color: transparent;
+      color: @brand-primary;
+    }
+  }
+}
+
+*/
+
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/_alerts.less";
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/_progress.less";
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/_typography.less";
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/_tabs.less";
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/_popups.less";
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/_cards.less";
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/_dialogs.less";
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/_panels.less";
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/_dividers.less";
+
+// Prevent highlight on mobile
+/*
+* {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
+  &:focus {
+    outline: 0;
+  }
+}
+
+*/
+
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/_themes.less";
+
+// External plugins
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/plugins/_plugin-snackbarjs.less";
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/plugins/_plugin-nouislider.less";
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/plugins/_plugin-selectize.less";
+//@import "@{default-assets-less-lib-path}bootstrap-material-design/plugins/_plugin-dropdownjs.less";
+
+/*!
+ *  Material Design Icons, https://github.com/google/material-design-icons
+ *  Guarantee the same typography regardless from where the font has been loaded.
+ */
+@import "@{default-assets-less-lib-path}material-icons/typography.less";
+@import (less) "@{default-assets-css-lib-path}material-design-icons/material-icons.css";
+
+
+/*!
+ *  http://github.com/alxlit/bootstrap-chosen
+ *  An alternate stylesheet for Chosen (http://harvesthq.github.com/chosen/).
+ */
+@import "@{default-assets-less-lib-path}bootstrap-chosen/bootstrap-chosen-variables.less";
+@import "@{theme-path}variables-bootstrap-chosen.less";
+@import "@{default-assets-less-lib-path}bootstrap-chosen/bootstrap-chosen-source.less";
+@import "@{default-assets-less-lib-path}chosen-image/bootstrap-chosenImage.less";
+@import "@{theme-path}bootstrap-chosen.less";
+
+
+/*!
+ *  Jasny Bootstrap, http://jasny.github.io/bootstrap/
+ */
+// Core variables and mixins
+@import "@{default-assets-less-lib-path}jasny-bootstrap-3/variables.less";
+
+// Core CSS
+//@import "@{default-assets-less-lib-path}jasny-bootstrap-3/grid-container-smooth.less";
+//@import "@{default-assets-less-lib-path}jasny-bootstrap-3/button-labels.less";
+
+// Components
+//@import "@{default-assets-less-lib-path}jasny-bootstrap-3/nav-tab-alignment.less";
+//@import "@{default-assets-less-lib-path}jasny-bootstrap-3/navmenu.less";
+//@import "@{default-assets-less-lib-path}jasny-bootstrap-3/alerts-fixed.less";
+
+// Components w/ JavaScript
+//@import "@{default-assets-less-lib-path}jasny-bootstrap-3/offcanvas.less";
+//@import "@{default-assets-less-lib-path}jasny-bootstrap-3/rowlink.less";
+@import "@{default-assets-less-lib-path}jasny-bootstrap-3/fileinput.less";
+
+
+/*!
+ *  DataTables - Bootstrap 3 Integration
+ */
+@import "@{theme-path}variables-datatables.less";
+@import "@{default-assets-less-lib-path}dataTables/dataTables.bootstrap-source.less";
+@import "@{default-assets-less-lib-path}dataTables/datatables.responsive-source.less";
+
+
+/*!
+ *  Social Buttons for Bootstrap, https://github.com/lipis/bootstrap-social
+ */
+@import "@{default-assets-less-lib-path}bootstrap-social/bootstrap-social.less";
+
+
+/*!
+ *  Bootstrap Modal Dialogs, https://github.com/nakupanda/bootstrap3-dialog
+ */
+@import "@{default-assets-less-lib-path}bootstrap3-dialog/bootstrap-dialog-source.less";
+@import "@{theme-path}bootstrap-dialog.less";
+
+
+// bootstrap-star-rating
+@import "@{default-assets-less-lib-path}bootstrap-star-rating/star-rating-variables.less";
+@import "@{theme-path}variables-bootstrap-star-rating.less";
+@import "@{default-assets-less-lib-path}bootstrap-star-rating/star-rating-source.less";
+@import "@{theme-path}bootstrap-star-rating.less";
+
+
+/*!
+ *  Common Purpose Styles
+ */
+@import "@{default-assets-less-lib-path}common/common.less";
+@import "@{default-assets-less-lib-path}bootstrap-3-pull/bootstrap-pull.less";
+@import (less) "@{default-assets-css-lib-path}animate/animate.css";
+@import (less) "@{default-assets-css-lib-path}google-code-prettify/prettify.css";
+
+
+/*!
+ *  Customizations
+ */
+
+// Site Structure
+@import "@{theme-path}site-structure.less";
+
+// Scroll To Top Link
+@import "@{theme-path}scroll-top.less";
+
+// Tables
+@import "@{theme-path}tables.less";
+
+// Forms
+@import "@{theme-path}forms.less";
+
+// Images
+@import "@{theme-path}images.less";
+
+// Colorbox
+@import "@{theme-path}colorbox.less";
+
+// Printing
+@import "@{theme-path}print.less";
