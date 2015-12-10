@@ -83,6 +83,7 @@ if (!empty($nav)) {
 }
 
 echo Modules::run('language_switcher_widget/index', 'navbar');
+echo Modules::run('theme_switcher_widget/index', 'navbar');
 
 ?>
 
