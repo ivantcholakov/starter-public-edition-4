@@ -1,13 +1,12 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2015
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
 ?>
 
-        <!-- Fixed navbar -->
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
 
             <div class="container">
@@ -39,23 +38,32 @@ if (!empty($nav)) {
 
         if (empty($item['children'])) {
 
+            $classes = '';
+
+            if (!empty($item['is_active'])) {
+                $classes = ' active';
+            }
+
+            $classes = trim($classes);
+
 ?>
 
-                        <li<?php if (!empty($item['is_active'])) { ?> class="active"<?php } ?>><a href="<?php echo $item['link']; ?>"<?php echo _stringify_attributes($item['attributes']); ?>><?php if ($item['icon'] != '') { ?><i class="<?php echo $item['icon']; ?>"></i>&nbsp; <?php } echo $item['label']; ?></a></li>
+                        <li<?php if ($classes != '') { ?> class="<?php echo $classes; ?>"<?php } ?>><a href="<?php echo $item['link']; ?>"><?php if ($item['icon'] != '') { ?><i class="<?php echo $item['icon']; ?> hidden-md"></i>&nbsp; <?php } echo $item['label']; ?></a></li>
 <?php
 
         } else {
 
 ?>
 
-                        <li class="dropdown-split-left<?php if (!empty($item['is_active'])) { ?> active<?php } ?>"><a href="<?php echo $item['link']; ?>"<?php echo _stringify_attributes($item['attributes']); ?>><?php if ($item['icon'] != '') { ?><i class="<?php echo $item['icon']; ?>"></i>&nbsp; <?php } echo $item['label']; ?></a></li>
                         <li class="dropdown dropdown-split-right">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
-                                <i class="fa fa-caret-down"></i>
+                                <?php if ($item['icon'] != '') { ?><i class="<?php echo $item['icon']; ?> hidden-sm"></i>&nbsp; <?php } echo $item['label']; ?> <i class="fa fa-caret-down"></i>
                             </a>
-                            <ul class="dropdown-menu pull-right">
-                                <li<?php if (!empty($item['is_active']) && empty($item['has_active'])) { ?> class="active"<?php } ?>><a href="<?php echo $item['link']; ?>"<?php echo _stringify_attributes($item['attributes']); ?>><?php if ($item['icon'] != '') { ?><i class="<?php echo $item['icon']; ?>"></i>&nbsp; <?php } echo $item['label']; ?></a></li>
+                            <ul class="dropdown-menu pull-right-sm">
+
+                                <li<?php if (!empty($item['is_active']) && empty($item['has_active'])) { ?> class="active"<?php } ?>><a href="<?php echo $item['link']; ?>"><?php if ($item['icon'] != '') { ?><i class="<?php echo $item['icon']; ?>"></i>&nbsp; <?php } echo $item['label']; ?></a></li>
                                 <li class="divider"></li>
+
 <?php
             _main_menu_widget_display_children($item['children']);
 ?>
