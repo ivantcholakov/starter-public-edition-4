@@ -61,6 +61,7 @@ if (!empty($nav)) {
                             </a>
                             <ul class="dropdown-menu pull-right-sm">
 
+                                <li class="divider"></li>
                                 <li<?php if (!empty($item['is_active']) && empty($item['has_active'])) { ?> class="active"<?php } ?>><a href="<?php echo $item['link']; ?>"><?php if ($item['icon'] != '') { ?><i class="<?php echo $item['icon']; ?>"></i>&nbsp; <?php } echo $item['label']; ?></a></li>
                                 <li class="divider"></li>
 
