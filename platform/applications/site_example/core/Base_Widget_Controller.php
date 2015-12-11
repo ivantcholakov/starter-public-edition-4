@@ -11,7 +11,7 @@ class Base_Widget_Controller extends Core_Controller {
         ;
     }
 
-    public function _remap() {
+    public function _remap($method, $params = array()) {
 
         show_404();
     }

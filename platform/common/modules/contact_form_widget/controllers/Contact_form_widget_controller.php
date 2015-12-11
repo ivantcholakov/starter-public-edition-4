@@ -29,7 +29,7 @@ class Contact_form_widget_controller extends Core_Controller {
         $this->config->load('contact_page', FALSE, TRUE);
     }
 
-    public function _remap() {
+    public function _remap($method, $params = array()) {
 
         show_404();
     }

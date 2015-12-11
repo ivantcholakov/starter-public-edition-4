@@ -23,7 +23,7 @@ class Contact_info_widget_controller extends Core_Controller {
         ;
     }
 
-    public function _remap() {
+    public function _remap($method, $params = array()) {
 
         show_404();
     }
@@ -40,7 +40,7 @@ class Contact_info_widget_controller extends Core_Controller {
     }
 
     public function parse_contacts($contacts) {
-        
+
         if (!is_array($contacts)) {
             $contacts = array();
         }

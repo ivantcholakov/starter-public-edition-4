@@ -16,7 +16,7 @@ class Email_controller extends Core_Controller {
         $this->load->library('registry');
     }
 
-    public function _remap() {
+    public function _remap($method, $params = array()) {
 
         show_404();
     }

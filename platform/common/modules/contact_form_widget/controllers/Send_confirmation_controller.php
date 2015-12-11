@@ -18,7 +18,7 @@ class Send_confirmation_controller extends Core_Controller {
         ;
     }
 
-    public function _remap() {
+    public function _remap($method, $params = array()) {
 
         show_404();
     }
