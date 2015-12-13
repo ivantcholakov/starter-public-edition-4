@@ -380,6 +380,11 @@ Real Life Usage
 * http://mominidvori.com (a hotel in Bansko, Bulgaria), designer: Irina Stancheva
 * http://hotel-classic.eu (a hotel in Sofia, Bulgaria), designer: Irina Stancheva
 
+Reported by Webnice Ltd., http://webnicebg.com
+
+* http://katonovi.com (an online store)
+* http://lvhalsokost.se
+
 Credits
 -------
 
