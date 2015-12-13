@@ -21,6 +21,7 @@ file_partial('webfontloader');
 echo css('front-theme-bsmd.min.css');
 
 file_partial('css');
+file_partial('theme_css');
 template_partial('css');
 
 echo js('lib/phpjs/phpjs.min.js');
