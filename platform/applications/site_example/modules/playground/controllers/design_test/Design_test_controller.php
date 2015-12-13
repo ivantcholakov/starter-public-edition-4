@@ -21,6 +21,7 @@ class Design_test_controller extends Base_Controller {
     public function index() {
 
         $this->template
+            ->set_partial('css', 'design_test/design_test_css')
             ->build('design_test/design_test');
     }
 

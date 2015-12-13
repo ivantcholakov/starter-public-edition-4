@@ -1,149 +1,189 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * A Bootstrap visual theming preview,
- * HTML code has been partly taken from
- * https://github.com/thomaspark/bootswatch/
- * License: MIT
- */
-
-?>
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
         <div class="container">
 
             <div class="page-header" id="banner">
                 <div class="row">
-                    <div class="col-lg-8 col-md-7 col-sm-6">
+                    <div class="col-sm-12">
                         <h1>Design Test</h1>
                         <p class="lead">
-                            A Bootstrap visual theming preview,
+                            A Bootstrap visual theming preview.
                             <br />
-                            HTML code has been partly taken from
-                            <br />
-                            <a href="https://github.com/thomaspark/bootswatch/" target="_blank">https://github.com/thomaspark/bootswatch/</a>
+                            HTML code has been taken and adapted from
+                            <a href="https://github.com/FezVrasta/bootstrap-material-design" target="_blank">https://github.com/FezVrasta/bootstrap-material-design</a>
                         </p>
                     </div>
-                    <div class="col-lg-4 col-md-5 col-sm-6">
-
-                    </div>
                 </div>
-<?php /*
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-4">
-                        <div class="list-group table-of-contents">
-                            <a class="list-group-item" href="<?php echo CURRENT_URI; ?>#navbar">Navbar</a>
-                            <a class="list-group-item" href="<?php echo CURRENT_URI; ?>#buttons">Buttons</a>
-                            <a class="list-group-item" href="<?php echo CURRENT_URI; ?>#typography">Typography</a>
-                            <a class="list-group-item" href="<?php echo CURRENT_URI; ?>#tables">Tables</a>
-                            <a class="list-group-item" href="<?php echo CURRENT_URI; ?>#forms">Forms</a>
-                            <a class="list-group-item" href="<?php echo CURRENT_URI; ?>#navs">Navs</a>
-                            <a class="list-group-item" href="<?php echo CURRENT_URI; ?>#indicators">Indicators</a>
-                            <a class="list-group-item" href="<?php echo CURRENT_URI; ?>#progress-bars">Progress bars</a>
-                            <a class="list-group-item" href="<?php echo CURRENT_URI; ?>#containers">Containers</a>
-                            <a class="list-group-item" href="<?php echo CURRENT_URI; ?>#dialogs">Dialogs</a>
-                        </div>
-                    </div>
-                </div>
-*/ ?>
-
-            </div>
+            </div
 
             <!-- Navbar
-            ================================================== -->
+          ================================================== -->
             <div class="bs-docs-section clearfix">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-md-12">
                         <div class="page-header">
                             <h1 id="navbar">Navbar</h1>
                         </div>
 
                         <div class="bs-component">
-                            <nav class="navbar navbar-default">
+                            <div class="navbar navbar-default">
                                 <div class="container-fluid">
                                     <div class="navbar-header">
-                                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="<?php echo CURRENT_URI; ?>#bs-example-navbar-collapse-1">
-                                            <span class="sr-only">Toggle navigation</span>
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
                                             <span class="icon-bar"></span>
                                             <span class="icon-bar"></span>
                                             <span class="icon-bar"></span>
                                         </button>
-                                        <a class="navbar-brand" href="<?php echo CURRENT_URI; ?>#">Brand</a>
+                                        <a class="navbar-brand" href="javascript:void(0)">Brand</a>
                                     </div>
-
-                                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <div class="navbar-collapse collapse navbar-responsive-collapse">
                                         <ul class="nav navbar-nav">
-                                            <li class="active"><a href="<?php echo CURRENT_URI; ?>#">Link <span class="sr-only">(current)</span></a></li>
-                                            <li><a href="<?php echo CURRENT_URI; ?>#">Link</a></li>
+                                            <li class="active"><a href="javascript:void(0)">Active</a></li>
+                                            <li><a href="javascript:void(0)">Link</a></li>
                                             <li class="dropdown">
-                                                <a href="<?php echo CURRENT_URI; ?>#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                                                <ul class="dropdown-menu" role="menu">
-                                                    <li><a href="<?php echo CURRENT_URI; ?>#">Action</a></li>
-                                                    <li><a href="<?php echo CURRENT_URI; ?>#">Another action</a></li>
-                                                    <li><a href="<?php echo CURRENT_URI; ?>#">Something else here</a></li>
+                                                <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                                                    <b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="javascript:void(0)">Action</a></li>
+                                                    <li><a href="javascript:void(0)">Another action</a></li>
+                                                    <li><a href="javascript:void(0)">Something else here</a></li>
                                                     <li class="divider"></li>
-                                                    <li><a href="<?php echo CURRENT_URI; ?>#">Separated link</a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="<?php echo CURRENT_URI; ?>#">One more separated link</a></li>
+                                                    <li class="dropdown-header">Dropdown header</li>
+                                                    <li><a href="javascript:void(0)">Separated link</a></li>
+                                                    <li><a href="javascript:void(0)">One more separated link</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
-                                        <form class="navbar-form navbar-left" role="search">
+                                        <form class="navbar-form navbar-left">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Search">
+                                                <input type="text" class="form-control col-md-8" placeholder="Search">
                                             </div>
-                                            <button type="submit" class="btn btn-default">Submit</button>
                                         </form>
                                         <ul class="nav navbar-nav navbar-right">
-                                            <li><a href="<?php echo CURRENT_URI; ?>#">Link</a></li>
+                                            <li><a href="javascript:void(0)">Link</a></li>
+                                            <li class="dropdown">
+                                                <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                                                    <b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="javascript:void(0)">Action</a></li>
+                                                    <li><a href="javascript:void(0)">Another action</a></li>
+                                                    <li><a href="javascript:void(0)">Something else here</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="javascript:void(0)">Separated link</a></li>
+                                                </ul>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
-                            </nav>
+                            </div>
                         </div>
 
                         <div class="bs-component">
-                            <nav class="navbar navbar-inverse">
+                            <div class="navbar navbar-inverse">
                                 <div class="container-fluid">
                                     <div class="navbar-header">
-                                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="<?php echo CURRENT_URI; ?>#bs-example-navbar-collapse-2">
-                                            <span class="sr-only">Toggle navigation</span>
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
                                             <span class="icon-bar"></span>
                                             <span class="icon-bar"></span>
                                             <span class="icon-bar"></span>
                                         </button>
-                                        <a class="navbar-brand" href="<?php echo CURRENT_URI; ?>#">Brand</a>
+                                        <a class="navbar-brand" href="javascript:void(0)">Brand</a>
                                     </div>
-
-                                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                                    <div class="navbar-collapse collapse navbar-inverse-collapse">
                                         <ul class="nav navbar-nav">
-                                            <li class="active"><a href="<?php echo CURRENT_URI; ?>#">Link <span class="sr-only">(current)</span></a></li>
-                                            <li><a href="<?php echo CURRENT_URI; ?>#">Link</a></li>
+                                            <li class="active"><a href="javascript:void(0)">Active</a></li>
+                                            <li><a href="javascript:void(0)">Link</a></li>
                                             <li class="dropdown">
-                                                <a href="<?php echo CURRENT_URI; ?>#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                                                <ul class="dropdown-menu" role="menu">
-                                                    <li><a href="<?php echo CURRENT_URI; ?>#">Action</a></li>
-                                                    <li><a href="<?php echo CURRENT_URI; ?>#">Another action</a></li>
-                                                    <li><a href="<?php echo CURRENT_URI; ?>#">Something else here</a></li>
+                                                <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                                                    <b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="javascript:void(0)">Action</a></li>
+                                                    <li><a href="javascript:void(0)">Another action</a></li>
+                                                    <li><a href="javascript:void(0)">Something else here</a></li>
                                                     <li class="divider"></li>
-                                                    <li><a href="<?php echo CURRENT_URI; ?>#">Separated link</a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="<?php echo CURRENT_URI; ?>#">One more separated link</a></li>
+                                                    <li class="dropdown-header">Dropdown header</li>
+                                                    <li><a href="javascript:void(0)">Separated link</a></li>
+                                                    <li><a href="javascript:void(0)">One more separated link</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
-                                        <form class="navbar-form navbar-left" role="search">
+                                        <form class="navbar-form navbar-left">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Search">
+                                                <input type="text" class="form-control col-md-8" placeholder="Search">
                                             </div>
-                                            <button type="submit" class="btn btn-default">Submit</button>
                                         </form>
                                         <ul class="nav navbar-nav navbar-right">
-                                            <li><a href="<?php echo CURRENT_URI; ?>#">Link</a></li>
+                                            <li><a href="javascript:void(0)">Link</a></li>
+                                            <li class="dropdown">
+                                                <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                                                    <b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="javascript:void(0)">Action</a></li>
+                                                    <li><a href="javascript:void(0)">Another action</a></li>
+                                                    <li><a href="javascript:void(0)">Something else here</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="javascript:void(0)">Separated link</a></li>
+                                                </ul>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
-                            </nav>
-                        </div><!-- /example -->
+                            </div>
+                        </div>
+
+                        <div class="bs-component">
+                            <div class="navbar navbar-warning">
+                                <div class="container-fluid">
+                                    <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-warning-collapse">
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="javascript:void(0)">Brand</a>
+                                    </div>
+                                    <div class="navbar-collapse collapse navbar-warning-collapse">
+                                        <ul class="nav navbar-nav">
+                                            <li class="active"><a href="javascript:void(0)">Active</a></li>
+                                            <li><a href="javascript:void(0)">Link</a></li>
+                                            <li class="dropdown">
+                                                <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                                                    <b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="javascript:void(0)">Action</a></li>
+                                                    <li><a href="javascript:void(0)">Another action</a></li>
+                                                    <li><a href="javascript:void(0)">Something else here</a></li>
+                                                    <li class="divider"></li>
+                                                    <li class="dropdown-header">Dropdown header</li>
+                                                    <li><a href="javascript:void(0)">Separated link</a></li>
+                                                    <li><a href="javascript:void(0)">One more separated link</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <form class="navbar-form navbar-left">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control col-md-8" placeholder="Search">
+                                            </div>
+                                        </form>
+                                        <ul class="nav navbar-nav navbar-right">
+                                            <li><a href="javascript:void(0)">Link</a></li>
+                                            <li class="dropdown">
+                                                <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                                                    <b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="javascript:void(0)">Action</a></li>
+                                                    <li><a href="javascript:void(0)">Another action</a></li>
+                                                    <li><a href="javascript:void(0)">Something else here</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="javascript:void(0)">Separated link</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
 
                     </div>
                 </div>
@@ -151,153 +191,256 @@
 
 
             <!-- Buttons
-            ================================================== -->
+          ================================================== -->
             <div class="bs-docs-section">
                 <div class="page-header">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-md-12">
                             <h1 id="buttons">Buttons</h1>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-7">
+                    <div class="col-md-6">
 
+                        <h3>Flat buttons <small>default - no class needed</small></h3>
                         <p class="bs-component">
-                            <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-default">Default</a>
-                            <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-primary">Primary</a>
-                            <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-success">Success</a>
-                            <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-info">Info</a>
-                            <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-warning">Warning</a>
-                            <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-danger">Danger</a>
-                            <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-link">Link</a>
-                        </p>
-
-                        <p class="bs-component">
-                            <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-default disabled">Default</a>
-                            <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-primary disabled">Primary</a>
-                            <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-success disabled">Success</a>
-                            <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-info disabled">Info</a>
-                            <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-warning disabled">Warning</a>
-                            <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-danger disabled">Danger</a>
-                            <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-link disabled">Link</a>
+                            <a href="javascript:void(0)" class="btn"><code>btn</code> only</a>
+                            <a href="javascript:void(0)" class="btn active"><code>.active</code></a>
+                            <a href="javascript:void(0)" class="btn btn-default">Default</a>
+                            <a href="javascript:void(0)" class="btn btn-primary">Primary</a>
+                            <a href="javascript:void(0)" class="btn btn-success">Success</a>
+                            <a href="javascript:void(0)" class="btn btn-info">Info</a>
+                            <a href="javascript:void(0)" class="btn btn-warning">Warning</a>
+                            <a href="javascript:void(0)" class="btn btn-danger">Danger</a>
+                            <a href="javascript:void(0)" class="btn btn-link">Link</a>
                         </p>
 
 
-                        <div style="margin-bottom: 15px;">
-                            <div class="btn-toolbar bs-component" style="margin: 0;">
-                                <div class="btn-group">
-                                    <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-default">Default</a>
-                                    <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Action</a></li>
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Another action</a></li>
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Something else here</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Separated link</a></li>
-                                    </ul>
-                                </div>
+                        <h3>Raised buttons <small><code>.btn-raised</code></small></h3>
+                        <p class="bs-component">
+                            <a href="javascript:void(0)" class="btn btn-raised active"><code>.active</code></a>
+                            <a href="javascript:void(0)" class="btn btn-raised btn-default">Default</a>
+                            <a href="javascript:void(0)" class="btn btn-raised btn-primary">Primary</a>
+                            <a href="javascript:void(0)" class="btn btn-raised btn-success">Success</a>
+                            <a href="javascript:void(0)" class="btn btn-raised btn-info">Info</a>
+                            <a href="javascript:void(0)" class="btn btn-raised btn-warning">Warning</a>
+                            <a href="javascript:void(0)" class="btn btn-raised btn-danger">Danger</a>
+                            <a href="javascript:void(0)" class="btn btn-raised btn-link">Link</a>
+                        </p>
 
-                                <div class="btn-group">
-                                    <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-primary">Primary</a>
-                                    <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Action</a></li>
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Another action</a></li>
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Something else here</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Separated link</a></li>
-                                    </ul>
-                                </div>
 
-                                <div class="btn-group">
-                                    <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-success">Success</a>
-                                    <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-success dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Action</a></li>
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Another action</a></li>
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Something else here</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Separated link</a></li>
-                                    </ul>
-                                </div>
+                        <h3>Disabled buttons</h3>
 
-                                <div class="btn-group">
-                                    <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-info">Info</a>
-                                    <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Action</a></li>
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Another action</a></li>
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Something else here</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Separated link</a></li>
-                                    </ul>
-                                </div>
+                        <fieldset disabled>
 
-                                <div class="btn-group">
-                                    <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-warning">Warning</a>
-                                    <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Action</a></li>
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Another action</a></li>
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Something else here</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Separated link</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                            <h3><small>flat - default - no class needed</small></h3>
+                            <p class="bs-component">
+                                <a href="javascript:void(0)" class="btn"><code>btn</code> only</a>
+                                <a href="javascript:void(0)" class="btn btn-default">Default</a>
+                                <a href="javascript:void(0)" class="btn btn-primary">Primary</a>
+                                <a href="javascript:void(0)" class="btn btn-success">Success</a>
+                                <a href="javascript:void(0)" class="btn btn-info">Info</a>
+                                <a href="javascript:void(0)" class="btn btn-warning">Warning</a>
+                                <a href="javascript:void(0)" class="btn btn-danger">Danger</a>
+                                <a href="javascript:void(0)" class="btn btn-link">Link</a>
+                            </p>
+
+
+                            <h3><small><code>.btn-raised</code></small></h3>
+                            <p class="bs-component">
+                                <a href="javascript:void(0)" class="btn btn-raised btn-default">Default</a>
+                                <a href="javascript:void(0)" class="btn btn-raised btn-primary">Primary</a>
+                                <a href="javascript:void(0)" class="btn btn-raised btn-success">Success</a>
+                                <a href="javascript:void(0)" class="btn btn-raised btn-info">Info</a>
+                                <a href="javascript:void(0)" class="btn btn-raised btn-warning">Warning</a>
+                                <a href="javascript:void(0)" class="btn btn-raised btn-danger">Danger</a>
+                                <a href="javascript:void(0)" class="btn btn-raised btn-link">Link</a>
+                            </p>
+                        </fieldset>
+
+                        <h3>Button sizes</h3>
 
                         <p class="bs-component">
-                            <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-primary btn-lg">Large button</a>
-                            <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-primary">Default button</a>
-                            <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-primary btn-sm">Small button</a>
-                            <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-primary btn-xs">Mini button</a>
+                            <a href="javascript:void(0)" class="btn btn-raised btn-lg">Large button</a>
+                            <a href="javascript:void(0)" class="btn btn-raised">Default button</a>
+                            <a href="javascript:void(0)" class="btn btn-raised btn-sm">Small button</a>
+                            <a href="javascript:void(0)" class="btn btn-raised btn-xs">xs button</a>
+                        </p>
+
+                        <h3>Floating action buttons <small>a.k.a fab</small></h3>
+                        <p class="bs-component">
+                            <a href="javascript:void(0)" class="btn btn-default btn-fab"><i class="material-icons">grade</i></a>
+                            <a href="javascript:void(0)" class="btn btn-primary btn-fab"><i class="material-icons">grade</i></a>
+                            <a href="javascript:void(0)" class="btn btn-success btn-fab"><i class="material-icons">grade</i></a>
+                            <a href="javascript:void(0)" class="btn btn-info btn-fab"><i class="material-icons">grade</i></a>
+                            <a href="javascript:void(0)" class="btn btn-warning btn-fab"><i class="material-icons">grade</i></a>
+                            <a href="javascript:void(0)" class="btn btn-danger btn-fab"><i class="material-icons">grade</i></a>
+                        </p>
+                        <h4><small><code>.btn-group-sm .btn-fab</code> or <code>.btn-fab-mini</code></small></h4>
+                        <p class="bs-component btn-group-sm">
+                            <a href="javascript:void(0)" class="btn btn-default btn-fab"><i class="material-icons">grade</i></a>
+                            <a href="javascript:void(0)" class="btn btn-primary btn-fab"><i class="material-icons">grade</i></a>
+                            <a href="javascript:void(0)" class="btn btn-success btn-fab"><i class="material-icons">grade</i></a>
+                            <a href="javascript:void(0)" class="btn btn-info btn-fab"><i class="material-icons">grade</i></a>
+                            <a href="javascript:void(0)" class="btn btn-warning btn-fab"><i class="material-icons">grade</i></a>
+                            <a href="javascript:void(0)" class="btn btn-danger btn-fab"><i class="material-icons">grade</i></a>
                         </p>
 
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-md-6">
+                        <h2>Group variations with <small><code>.btn-raised</code></small></h2>
 
-                        <p class="bs-component">
-                            <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-default btn-lg btn-block">Block level button</a>
-                        </p>
+                        <h3>Button groups</h3>
+                        <div style="margin-bottom: 15px;">
+                            <div class="btn-toolbar bs-component" style="margin: 0;">
+
+                                <div class="btn-group">
+                                    <a href="javascript:void(0)" class="btn">btn only</a>
+                                    <a href="bootstrap-elements.html" data-target="#" class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="javascript:void(0)">Action</a></li>
+                                        <li><a href="javascript:void(0)">Another action</a></li>
+                                        <li><a href="javascript:void(0)">Something else here</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="javascript:void(0)">Separated link</a></li>
+                                    </ul>
+                                </div>
 
 
-                        <div class="bs-component" style="margin-bottom: 15px;">
-                            <div class="btn-group btn-group-justified">
-                                <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-default">Left</a>
-                                <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-default">Middle</a>
-                                <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-default">Right</a>
+
+                                <div class="btn-group">
+                                    <a href="javascript:void(0)" class="btn btn-default btn-raised">Default raised</a>
+                                    <a href="bootstrap-elements.html" data-target="#" class="btn btn-default btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="javascript:void(0)">Action</a></li>
+                                        <li><a href="javascript:void(0)">Another action</a></li>
+                                        <li><a href="javascript:void(0)">Something else here</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="javascript:void(0)">Separated link</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="btn-group">
+                                    <a href="javascript:void(0)" class="btn btn-primary btn-raised">Primary raised</a>
+                                    <a href="bootstrap-elements.html" data-target="#" class="btn btn-primary btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="javascript:void(0)">Action</a></li>
+                                        <li><a href="javascript:void(0)">Another action</a></li>
+                                        <li><a href="javascript:void(0)">Something else here</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="javascript:void(0)">Separated link</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="btn-group">
+                                    <a href="javascript:void(0)" class="btn btn-success">Success</a>
+                                    <a href="bootstrap-elements.html" data-target="#" class="btn btn-success dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="javascript:void(0)">Action</a></li>
+                                        <li><a href="javascript:void(0)">Another action</a></li>
+                                        <li><a href="javascript:void(0)">Something else here</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="javascript:void(0)">Separated link</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="btn-group">
+                                    <a href="javascript:void(0)" class="btn btn-info">Info</a>
+                                    <a href="bootstrap-elements.html" data-target="#" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="javascript:void(0)">Action</a></li>
+                                        <li><a href="javascript:void(0)">Another action</a></li>
+                                        <li><a href="javascript:void(0)">Something else here</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="javascript:void(0)">Separated link</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="btn-group">
+                                    <a href="javascript:void(0)" class="btn btn-warning">Warning</a>
+                                    <a href="bootstrap-elements.html" data-target="#" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="javascript:void(0)">Action</a></li>
+                                        <li><a href="javascript:void(0)">Another action</a></li>
+                                        <li><a href="javascript:void(0)">Something else here</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="javascript:void(0)">Separated link</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="btn-group">
+                                    <a href="javascript:void(0)" class="btn btn-danger">Danger</a>
+                                    <a href="bootstrap-elements.html" data-target="#" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="javascript:void(0)">Action</a></li>
+                                        <li><a href="javascript:void(0)">Another action</a></li>
+                                        <li><a href="javascript:void(0)">Something else here</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="javascript:void(0)">Separated link</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
+
+
+                        <h3><small><code>btn-lg.btn-block.btn-raised</code></small></h3>
+                        <div class="bs-component">
+                            <a href="javascript:void(0)" class="btn btn-default btn-lg btn-block btn-raised">Block level button</a>
+                            <fieldset disabled>
+                                <a href="javascript:void(0)" class="btn btn-default btn-lg btn-block btn-raised">Block level button disabled</a>
+                            </fieldset>
+                        </div>
+
+
                         <div class="bs-component" style="margin-bottom: 15px;">
+                            <h3><small><code>btn-group.btn-group-justified.btn-group-raised</code></small></h3>
+                            <div class="btn-group btn-group-justified btn-group-raised">
+                                <a href="javascript:void(0)" class="btn ">Left</a>
+                                <a href="javascript:void(0)" class="btn ">Middle</a>
+                                <a href="javascript:void(0)" class="btn ">Right</a>
+                            </div>
+
+                            <h3><small>disabled <code>btn-group.btn-group-justified.btn-group-raised</code></small></h3>
+                            <fieldset disabled>
+                                <div class="btn-group btn-group-justified btn-group-raised">
+                                    <a href="javascript:void(0)" class="btn ">Left</a>
+                                    <a href="javascript:void(0)" class="btn ">Middle</a>
+                                    <a href="javascript:void(0)" class="btn ">Right</a>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="bs-component" style="margin-bottom: 15px;">
+                            <h3><small><code>btn-toolbar</code></small></h3>
                             <div class="btn-toolbar">
                                 <div class="btn-group">
-                                    <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-default">1</a>
-                                    <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-default">2</a>
-                                    <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-default">3</a>
-                                    <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-default">4</a>
+                                    <a href="javascript:void(0)" class="btn">1</a>
+                                    <a href="javascript:void(0)" class="btn">2</a>
+                                    <a href="javascript:void(0)" class="btn">3</a>
+                                    <a href="javascript:void(0)" class="btn">4</a>
                                 </div>
 
                                 <div class="btn-group">
-                                    <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-default">5</a>
-                                    <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-default">6</a>
-                                    <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-default">7</a>
+                                    <a href="javascript:void(0)" class="btn btn-raised">5</a>
+                                    <a href="javascript:void(0)" class="btn btn-raised">6</a>
+                                    <a href="javascript:void(0)" class="btn btn-raised">7</a>
                                 </div>
 
                                 <div class="btn-group">
-                                    <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-default">8</a>
+                                    <a href="javascript:void(0)" class="btn btn-raised">8</a>
+
                                     <div class="btn-group">
-                                        <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                        <a href="bootstrap-elements.html" data-target="#" class="btn btn-raised dropdown-toggle" data-toggle="dropdown">
                                             Dropdown
                                             <span class="caret"></span>
                                         </a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="<?php echo CURRENT_URI; ?>#">Dropdown link</a></li>
-                                            <li><a href="<?php echo CURRENT_URI; ?>#">Dropdown link</a></li>
-                                            <li><a href="<?php echo CURRENT_URI; ?>#">Dropdown link</a></li>
+                                            <li><a href="javascript:void(0)">Dropdown link</a></li>
+                                            <li><a href="javascript:void(0)">Dropdown link</a></li>
+                                            <li><a href="javascript:void(0)">Dropdown link</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -305,25 +448,27 @@
                         </div>
 
                         <div class="bs-component">
+                            <h3><small><code>.btn-group-vertical</code></small></h3>
                             <div class="btn-group-vertical">
-                                <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-default">Button</a>
-                                <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-default">Button</a>
-                                <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-default">Button</a>
-                                <a href="<?php echo CURRENT_URI; ?>#" class="btn btn-default">Button</a>
+                                <a href="javascript:void(0)" class="btn btn-raised">Button</a>
+                                <a href="javascript:void(0)" class="btn btn-raised">Button</a>
+                                <a href="javascript:void(0)" class="btn btn-raised">Button</a>
+                                <a href="javascript:void(0)" class="btn btn-raised">Button</a>
                             </div>
                         </div>
+
 
                     </div>
                 </div>
             </div>
 
             <!-- Typography
-            ================================================== -->
+          ================================================== -->
             <div class="bs-docs-section">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-md-12">
                         <div class="page-header">
-                            <h1 id="typography">Typography</h1>
+                            <h1 id="type">Typography</h1>
                         </div>
                     </div>
                 </div>
@@ -331,36 +476,53 @@
                 <!-- Headings -->
 
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <div class="bs-component">
                             <h1>Heading 1</h1>
+
                             <h2>Heading 2</h2>
+
                             <h3>Heading 3</h3>
                             <h4>Heading 4</h4>
                             <h5>Heading 5</h5>
                             <h6>Heading 6</h6>
+
                             <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <div class="bs-component">
                             <h2>Example body text</h2>
-                            <p>Nullam quis risus eget <a href="<?php echo CURRENT_URI; ?>#">urna mollis ornare</a> vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
-                            <p><small>This line of text is meant to be treated as fine print.</small></p>
+
+                            <p>Nullam quis risus eget
+                                <a href="javascript:void(0)">urna mollis ornare</a> vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.
+                            </p>
+
+                            <p>
+                                <small>This line of text is meant to be treated as fine print.</small>
+                            </p>
                             <p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
+
                             <p>The following snippet of text is <em>rendered as italicized text</em>.</p>
+
                             <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
                         </div>
 
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <div class="bs-component">
                             <h2>Emphasis classes</h2>
+
                             <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+
                             <p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+
                             <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
+
                             <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
+
                             <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+
                             <p class="text-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
                         </div>
 
@@ -370,12 +532,12 @@
                 <!-- Blockquotes -->
 
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-md-12">
                         <h2 id="type-blockquotes">Blockquotes</h2>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-md-6">
                         <div class="bs-component">
                             <blockquote>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -383,9 +545,9 @@
                             </blockquote>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-md-6">
                         <div class="bs-component">
-                            <blockquote class="blockquote-reverse">
+                            <blockquote class="pull-right">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
                                 <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
                             </blockquote>
@@ -394,12 +556,37 @@
                 </div>
             </div>
 
-            <!-- Tables
-            ================================================== -->
+            <!-- Icons
+          ================================================== -->
             <div class="bs-docs-section">
 
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-md-12">
+                        <div class="page-header">
+                            <h1 id="icon">Icons</h1>
+
+                            <p>Bootstrap Material Design supports the full range of original Material Design icons!<br>
+                                <a href="https://www.google.com/design/icons/">See the full set of material design icons at the material icons library.</a>
+                            </p>
+                            <p>
+                                It’s easy to incorporate icons into your web page. Here’s a small example:
+                                <br>
+                                <code>&lt;i class="material-icons"&gt;face&lt;/i&gt;</code>
+                                <i class="material-icons">face</i>
+                            </p>
+                            <p>Please be sure that the fonts are properly setup, see <a href="https://github.com/FezVrasta/bootstrap-material-design#getting-started">Getting Started</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Tables
+          ================================================== -->
+            <div class="bs-docs-section">
+
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="page-header">
                             <h1 id="tables">Tables</h1>
                         </div>
@@ -465,10 +652,10 @@
             </div>
 
             <!-- Forms
-            ================================================== -->
+          ================================================== -->
             <div class="bs-docs-section">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-md-12">
                         <div class="page-header">
                             <h1 id="forms">Forms</h1>
                         </div>
@@ -476,45 +663,91 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-md-6">
                         <div class="well bs-component">
                             <form class="form-horizontal">
                                 <fieldset>
                                     <legend>Legend</legend>
                                     <div class="form-group">
-                                        <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-                                        <div class="col-lg-10">
-                                            <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                                        <label for="inputEmail" class="col-md-2 control-label">Email</label>
+
+                                        <div class="col-md-10">
+                                            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-                                        <div class="col-lg-10">
+                                        <label for="inputPassword" class="col-md-2 control-label">Password</label>
+
+                                        <div class="col-md-10">
                                             <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+
+                                            <!--
+                                            <div class="checkbox">
+                                              <label>
+                                                <input type="checkbox"> Checkbox
+                                              </label>
+                                              <label>
+                                                <input type="checkbox" disabled> Disabled Checkbox
+                                              </label>
+                                            </div>
+                                            <br>
+
+                                            <div class="togglebutton">
+                                              <label>
+                                                <input type="checkbox" checked> Toggle button
+                                              </label>
+                                            </div>
+                                            -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style="margin-top: 0;"> <!-- inline style is just to demo custom css to put checkbox below input above -->
+                                        <div class="col-md-offset-2 col-md-10">
                                             <div class="checkbox">
                                                 <label>
                                                     <input type="checkbox"> Checkbox
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" disabled> Disabled Checkbox
                                                 </label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="textArea" class="col-lg-2 control-label">Textarea</label>
-                                        <div class="col-lg-10">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <div class="togglebutton">
+                                                <label>
+                                                    <input type="checkbox" checked> Toggle button
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputFile" class="col-md-2 control-label">File</label>
+
+                                        <div class="col-md-10">
+                                            <input type="text" readonly class="form-control" placeholder="Browse...">
+                                            <input type="file" id="inputFile" multiple>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="textArea" class="col-md-2 control-label">Textarea</label>
+
+                                        <div class="col-md-10">
                                             <textarea class="form-control" rows="3" id="textArea"></textarea>
                                             <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-lg-2 control-label">Radios</label>
-                                        <div class="col-lg-10">
-                                            <div class="radio">
+                                        <label class="col-md-2 control-label">Radios</label>
+
+                                        <div class="col-md-10">
+                                            <div class="radio radio-primary">
                                                 <label>
                                                     <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
                                                     Option one is this
                                                 </label>
                                             </div>
-                                            <div class="radio">
+                                            <div class="radio radio-primary">
                                                 <label>
                                                     <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
                                                     Option two can be something else
@@ -523,17 +756,10 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="select" class="col-lg-2 control-label">Selects</label>
-                                        <div class="col-lg-10">
-                                            <select class="form-control" id="select">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                            <br>
-                                            <select multiple="" class="form-control">
+                                        <label for="select111" class="col-md-2 control-label">Select</label>
+
+                                        <div class="col-md-10">
+                                            <select id="select111" class="form-control">
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
@@ -543,8 +769,21 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-lg-10 col-lg-offset-2">
-                                            <button type="reset" class="btn btn-default">Cancel</button>
+                                        <label for="select222" class="col-md-2 control-label">Select Multiple</label>
+
+                                        <div class="col-md-10">
+                                            <select id="select222" multiple="" class="form-control">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-10 col-md-offset-2">
+                                            <button type="button" class="btn btn-default">Cancel</button>
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                         </div>
                                     </div>
@@ -552,12 +791,18 @@
                             </form>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-lg-offset-1">
+                    <div class="col-md-4 col-md-offset-1">
 
                         <form class="bs-component">
-                            <div class="form-group">
-                                <label class="control-label" for="focusedInput">Focused input</label>
-                                <input class="form-control" id="focusedInput" type="text" value="This is focused...">
+                            <div class="form-group label-floating">
+                                <label class="control-label" for="focusedInput1">Write something to make the label float</label>
+                                <input class="form-control" id="focusedInput1" type="text">
+                            </div>
+
+                            <div class="form-group label-floating">
+                                <label class="control-label" for="focusedInput2">Focus to show the help-block</label>
+                                <input class="form-control" id="focusedInput2" type="text">
+                                <p class="help-block">You should really write something here</p>
                             </div>
 
                             <div class="form-group">
@@ -596,15 +841,56 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label">Input addons</label>
+                                <label class="control-label" for="addon1">Default label w/input addons</label>
                                 <div class="input-group">
                                     <span class="input-group-addon">$</span>
-                                    <input type="text" class="form-control">
+                                    <input type="text" id="addon1" class="form-control">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">Button</button>
+                                        <button class="btn btn-primary" type="button">Button</button>
                                     </span>
                                 </div>
                             </div>
+
+                            <div class="form-group label-floating">
+                                <div class="input-group">
+                                    <span class="input-group-addon">$</span>
+                                    <label class="control-label" for="addon3a">Floating label w/2 addons</label>
+                                    <input type="text" id="addon3a" class="form-control">
+                                    <p class="help-block">The label is inside the <code>input-group</code> so that it is positioned properly as a placeholder.</p>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-fab btn-fab-mini">
+                                            <i class="material-icons">send</i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group label-floating">
+
+                                <label class="control-label" for="addon2">Floating label w/right addon</label>
+                                <div class="input-group">
+                                    <input type="text" id="addon2" class="form-control">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-fab btn-fab-mini">
+                                            <i class="material-icons">functions</i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="file" id="inputFile4" multiple>
+                                <div class="input-group">
+                                    <input type="text" readonly class="form-control" placeholder="Placeholder w/file chooser...">
+                                    <span class="input-group-btn input-group-sm">
+                                        <button type="button" class="btn btn-fab btn-fab-mini">
+                                            <i class="material-icons">attach_file</i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+
+
                         </form>
 
                     </div>
@@ -612,33 +898,34 @@
             </div>
 
             <!-- Navs
-            ================================================== -->
+          ================================================== -->
             <div class="bs-docs-section">
 
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-md-12">
                         <div class="page-header">
-                            <h1 id="navs">Navs</h1>
+                            <h1 id="nav">Navs</h1>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <h2 id="nav-tabs">Tabs</h2>
+
                         <div class="bs-component">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="<?php echo CURRENT_URI; ?>#home" data-toggle="tab">Home</a></li>
-                                <li><a href="<?php echo CURRENT_URI; ?>#profile" data-toggle="tab">Profile</a></li>
+                            <ul class="nav nav-tabs" style="margin-bottom: 15px;">
+                                <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+                                <li><a href="#profile" data-toggle="tab">Profile</a></li>
                                 <li class="disabled"><a>Disabled</a></li>
                                 <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo CURRENT_URI; ?>#">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="bootstrap-elements.html" data-target="#">
                                         Dropdown <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="<?php echo CURRENT_URI; ?>#dropdown1" data-toggle="tab">Action</a></li>
+                                        <li><a href="#dropdown1" data-toggle="tab">Action</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="<?php echo CURRENT_URI; ?>#dropdown2" data-toggle="tab">Another action</a></li>
+                                        <li><a href="#dropdown2" data-toggle="tab">Another action</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -658,63 +945,66 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <h2 id="nav-pills">Pills</h2>
+
                         <div class="bs-component">
                             <ul class="nav nav-pills">
-                                <li class="active"><a href="<?php echo CURRENT_URI; ?>#">Home</a></li>
-                                <li><a href="<?php echo CURRENT_URI; ?>#">Profile</a></li>
-                                <li class="disabled"><a href="<?php echo CURRENT_URI; ?>#">Disabled</a></li>
+                                <li class="active"><a href="javascript:void(0)">Home</a></li>
+                                <li><a href="javascript:void(0)">Profile</a></li>
+                                <li class="disabled"><a href="javascript:void(0)">Disabled</a></li>
                                 <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo CURRENT_URI; ?>#">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="bootstrap-elements.html" data-target="#">
                                         Dropdown <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Action</a></li>
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Another action</a></li>
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Something else here</a></li>
+                                        <li><a href="javascript:void(0)">Action</a></li>
+                                        <li><a href="javascript:void(0)">Another action</a></li>
+                                        <li><a href="javascript:void(0)">Something else here</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Separated link</a></li>
+                                        <li><a href="javascript:void(0)">Separated link</a></li>
                                     </ul>
                                 </li>
                             </ul>
                         </div>
                         <br>
+
                         <div class="bs-component">
-                            <ul class="nav nav-pills nav-stacked">
-                                <li class="active"><a href="<?php echo CURRENT_URI; ?>#">Home</a></li>
-                                <li><a href="<?php echo CURRENT_URI; ?>#">Profile</a></li>
-                                <li class="disabled"><a href="<?php echo CURRENT_URI; ?>#">Disabled</a></li>
+                            <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+                                <li class="active"><a href="javascript:void(0)">Home</a></li>
+                                <li><a href="javascript:void(0)">Profile</a></li>
+                                <li class="disabled"><a href="javascript:void(0)">Disabled</a></li>
                                 <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo CURRENT_URI; ?>#">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="bootstrap-elements.html" data-target="#">
                                         Dropdown <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Action</a></li>
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Another action</a></li>
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Something else here</a></li>
+                                        <li><a href="javascript:void(0)">Action</a></li>
+                                        <li><a href="javascript:void(0)">Another action</a></li>
+                                        <li><a href="javascript:void(0)">Something else here</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="<?php echo CURRENT_URI; ?>#">Separated link</a></li>
+                                        <li><a href="javascript:void(0)">Separated link</a></li>
                                     </ul>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <h2 id="nav-breadcrumbs">Breadcrumbs</h2>
+
                         <div class="bs-component">
                             <ul class="breadcrumb">
                                 <li class="active">Home</li>
                             </ul>
 
                             <ul class="breadcrumb">
-                                <li><a href="<?php echo CURRENT_URI; ?>#">Home</a></li>
+                                <li><a href="javascript:void(0)">Home</a></li>
                                 <li class="active">Library</li>
                             </ul>
 
-                            <ul class="breadcrumb">
-                                <li><a href="<?php echo CURRENT_URI; ?>#">Home</a></li>
-                                <li><a href="<?php echo CURRENT_URI; ?>#">Library</a></li>
+                            <ul class="breadcrumb" style="margin-bottom: 5px;">
+                                <li><a href="javascript:void(0)">Home</a></li>
+                                <li><a href="javascript:void(0)">Library</a></li>
                                 <li class="active">Data</li>
                             </ul>
                         </div>
@@ -724,64 +1014,66 @@
 
 
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <h2 id="pagination">Pagination</h2>
+
                         <div class="bs-component">
                             <ul class="pagination">
-                                <li class="disabled"><a href="<?php echo CURRENT_URI; ?>#">&laquo;</a></li>
-                                <li class="active"><a href="<?php echo CURRENT_URI; ?>#">1</a></li>
-                                <li><a href="<?php echo CURRENT_URI; ?>#">2</a></li>
-                                <li><a href="<?php echo CURRENT_URI; ?>#">3</a></li>
-                                <li><a href="<?php echo CURRENT_URI; ?>#">4</a></li>
-                                <li><a href="<?php echo CURRENT_URI; ?>#">5</a></li>
-                                <li><a href="<?php echo CURRENT_URI; ?>#">&raquo;</a></li>
+                                <li class="disabled"><a href="javascript:void(0)">&laquo;</a></li>
+                                <li class="active"><a href="javascript:void(0)">1</a></li>
+                                <li><a href="javascript:void(0)">2</a></li>
+                                <li><a href="javascript:void(0)">3</a></li>
+                                <li><a href="javascript:void(0)">4</a></li>
+                                <li><a href="javascript:void(0)">5</a></li>
+                                <li><a href="javascript:void(0)">&raquo;</a></li>
                             </ul>
 
                             <ul class="pagination pagination-lg">
-                                <li class="disabled"><a href="<?php echo CURRENT_URI; ?>#">&laquo;</a></li>
-                                <li class="active"><a href="<?php echo CURRENT_URI; ?>#">1</a></li>
-                                <li><a href="<?php echo CURRENT_URI; ?>#">2</a></li>
-                                <li><a href="<?php echo CURRENT_URI; ?>#">3</a></li>
-                                <li><a href="<?php echo CURRENT_URI; ?>#">&raquo;</a></li>
+                                <li class="disabled"><a href="javascript:void(0)">&laquo;</a></li>
+                                <li class="active"><a href="javascript:void(0)">1</a></li>
+                                <li><a href="javascript:void(0)">2</a></li>
+                                <li><a href="javascript:void(0)">3</a></li>
+                                <li><a href="javascript:void(0)">&raquo;</a></li>
                             </ul>
 
                             <ul class="pagination pagination-sm">
-                                <li class="disabled"><a href="<?php echo CURRENT_URI; ?>#">&laquo;</a></li>
-                                <li class="active"><a href="<?php echo CURRENT_URI; ?>#">1</a></li>
-                                <li><a href="<?php echo CURRENT_URI; ?>#">2</a></li>
-                                <li><a href="<?php echo CURRENT_URI; ?>#">3</a></li>
-                                <li><a href="<?php echo CURRENT_URI; ?>#">4</a></li>
-                                <li><a href="<?php echo CURRENT_URI; ?>#">5</a></li>
-                                <li><a href="<?php echo CURRENT_URI; ?>#">&raquo;</a></li>
+                                <li class="disabled"><a href="javascript:void(0)">&laquo;</a></li>
+                                <li class="active"><a href="javascript:void(0)">1</a></li>
+                                <li><a href="javascript:void(0)">2</a></li>
+                                <li><a href="javascript:void(0)">3</a></li>
+                                <li><a href="javascript:void(0)">4</a></li>
+                                <li><a href="javascript:void(0)">5</a></li>
+                                <li><a href="javascript:void(0)">&raquo;</a></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <h2 id="pager">Pager</h2>
+
                         <div class="bs-component">
                             <ul class="pager">
-                                <li><a href="<?php echo CURRENT_URI; ?>#">Previous</a></li>
-                                <li><a href="<?php echo CURRENT_URI; ?>#">Next</a></li>
+                                <li><a class="withripple" href="javascript:void(0)">Previous</a></li>
+                                <li><a class="withripple" href="javascript:void(0)">Next</a></li>
                             </ul>
 
                             <ul class="pager">
-                                <li class="previous disabled"><a href="<?php echo CURRENT_URI; ?>#">&larr; Older</a></li>
-                                <li class="next"><a href="<?php echo CURRENT_URI; ?>#">Newer &rarr;</a></li>
+                                <li class="previous disabled"><a href="javascript:void(0)">&larr; Older</a></li>
+                                <li class="next"><a class="withripple" href="javascript:void(0)">Newer &rarr;</a></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
 
                     </div>
                 </div>
             </div>
 
             <!-- Indicators
-            ================================================== -->
+          ================================================== -->
             <div class="bs-docs-section">
 
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-md-12">
                         <div class="page-header">
                             <h1 id="indicators">Indicators</h1>
                         </div>
@@ -789,46 +1081,53 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-md-12">
                         <h2>Alerts</h2>
+
                         <div class="bs-component">
                             <div class="alert alert-dismissible alert-warning">
                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                                 <h4>Warning!</h4>
-                                <p>Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, <a href="<?php echo CURRENT_URI; ?>#" class="alert-link">vel scelerisque nisl consectetur et</a>.</p>
+
+                                <p>Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna,
+                                    <a href="javascript:void(0)" class="alert-link">vel scelerisque nisl consectetur et</a>.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <div class="bs-component">
                             <div class="alert alert-dismissible alert-danger">
                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <strong>Oh snap!</strong> <a href="<?php echo CURRENT_URI; ?>#" class="alert-link">Change a few things up</a> and try submitting again.
+                                <strong>Oh snap!</strong>
+                                <a href="javascript:void(0)" class="alert-link">Change a few things up</a> and try submitting again.
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <div class="bs-component">
                             <div class="alert alert-dismissible alert-success">
                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <strong>Well done!</strong> You successfully read <a href="<?php echo CURRENT_URI; ?>#" class="alert-link">this important alert message</a>.
+                                <strong>Well done!</strong> You successfully read
+                                <a href="javascript:void(0)" class="alert-link">this important alert message</a>.
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <div class="bs-component">
                             <div class="alert alert-dismissible alert-info">
                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <strong>Heads up!</strong> This <a href="<?php echo CURRENT_URI; ?>#" class="alert-link">alert needs your attention</a>, but it's not super important.
+                                <strong>Heads up!</strong> This
+                                <a href="javascript:void(0)" class="alert-link">alert needs your attention</a>, but it's not super important.
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <h2>Labels</h2>
+
                         <div class="bs-component" style="margin-bottom: 40px;">
                             <span class="label label-default">Default</span>
                             <span class="label label-primary">Primary</span>
@@ -838,13 +1137,14 @@
                             <span class="label label-info">Info</span>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <h2>Badges</h2>
+
                         <div class="bs-component">
                             <ul class="nav nav-pills">
-                                <li class="active"><a href="<?php echo CURRENT_URI; ?>#">Home <span class="badge">42</span></a></li>
-                                <li><a href="<?php echo CURRENT_URI; ?>#">Profile <span class="badge"></span></a></li>
-                                <li><a href="<?php echo CURRENT_URI; ?>#">Messages <span class="badge">3</span></a></li>
+                                <li class="active"><a href="javascript:void(0)">Home <span class="badge">42</span></a></li>
+                                <li><a href="javascript:void(0)">Profile <span class="badge"></span></a></li>
+                                <li><a href="javascript:void(0)">Messages <span class="badge">3</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -852,16 +1152,17 @@
             </div>
 
             <!-- Progress bars
-            ================================================== -->
+          ================================================== -->
             <div class="bs-docs-section">
 
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-md-12">
                         <div class="page-header">
-                            <h1 id="progress-bars">Progress bars</h1>
+                            <h1 id="progress">Progress bars</h1>
                         </div>
 
                         <h3 id="progress-basic">Basic</h3>
+
                         <div class="bs-component">
                             <div class="progress">
                                 <div class="progress-bar" style="width: 60%;"></div>
@@ -869,6 +1170,7 @@
                         </div>
 
                         <h3 id="progress-alternatives">Contextual alternatives</h3>
+
                         <div class="bs-component">
                             <div class="progress">
                                 <div class="progress-bar progress-bar-info" style="width: 20%"></div>
@@ -888,6 +1190,7 @@
                         </div>
 
                         <h3 id="progress-striped">Striped</h3>
+
                         <div class="bs-component">
                             <div class="progress progress-striped">
                                 <div class="progress-bar progress-bar-info" style="width: 20%"></div>
@@ -907,6 +1210,7 @@
                         </div>
 
                         <h3 id="progress-animated">Animated</h3>
+
                         <div class="bs-component">
                             <div class="progress progress-striped active">
                                 <div class="progress-bar" style="width: 45%"></div>
@@ -914,6 +1218,7 @@
                         </div>
 
                         <h3 id="progress-stacked">Stacked</h3>
+
                         <div class="bs-component">
                             <div class="progress">
                                 <div class="progress-bar progress-bar-success" style="width: 35%"></div>
@@ -925,19 +1230,49 @@
                 </div>
             </div>
 
+            <!-- Sliders (noUiSlider)
+          ================================================== -->
+
+            <div class="bs-docs-section">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="page-header">
+                            <h1 id="slider">Sliders <span style="font-size: 50%">(with noUiSlider)</span></h1>
+                        </div>
+                        <div class="bs-component">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="slider shor"></div>
+                                    <div class="slider shor slider-success"></div>
+                                    <div class="slider shor slider-material-pink"></div>
+                                </div>
+                                <div class="col-sm-6" style="height: 150px">
+                                    <div class="slider svert"></div>
+                                    <div class="slider svert slider-success"></div>
+                                    <div class="slider svert slider-material-pink"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p>Read more about <a href="http://refreshless.com/nouislider/">noUiSlider here</a>.</p>
+                    </div>
+                </div>
+            </div>
+
             <!-- Containers
-            ================================================== -->
+          ================================================== -->
             <div class="bs-docs-section">
 
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-md-12">
                         <div class="page-header">
-                            <h1 id="containers">Containers</h1>
+                            <h1 id="container">Containers</h1>
                         </div>
                         <div class="bs-component">
                             <div class="jumbotron">
                                 <h1>Jumbotron</h1>
+
                                 <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+
                                 <p><a class="btn btn-primary btn-lg">Learn more</a></p>
                             </div>
                         </div>
@@ -946,53 +1281,131 @@
 
 
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-md-12">
                         <h2>List groups</h2>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4">
-                        <div class="bs-component">
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <span class="badge">14</span>
-                                    Cras justo odio
-                                </li>
-                                <li class="list-group-item">
-                                    <span class="badge">2</span>
-                                    Dapibus ac facilisis in
-                                </li>
-                                <li class="list-group-item">
-                                    <span class="badge">1</span>
-                                    Morbi leo risus
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <div class="bs-component">
                             <div class="list-group">
-                                <a href="<?php echo CURRENT_URI; ?>#" class="list-group-item active">
-                                    Cras justo odio
-                                </a>
-                                <a href="<?php echo CURRENT_URI; ?>#" class="list-group-item">Dapibus ac facilisis in
-                                </a>
-                                <a href="<?php echo CURRENT_URI; ?>#" class="list-group-item">Morbi leo risus
-                                </a>
+                                <div class="list-group-item">
+                                    <div class="row-action-primary">
+                                        <i class="material-icons">folder</i>
+                                    </div>
+                                    <div class="row-content">
+                                        <div class="least-content">15m</div>
+                                        <h4 class="list-group-item-heading">Tile with a label</h4>
+
+                                        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
+                                    </div>
+                                </div>
+                                <div class="list-group-separator"></div>
+                                <div class="list-group-item">
+                                    <div class="row-action-primary">
+                                        <i class="material-icons">folder</i>
+                                    </div>
+                                    <div class="row-content">
+                                        <div class="least-content">10m</div>
+                                        <h4 class="list-group-item-heading">Tile with a label</h4>
+
+                                        <p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
+                                    </div>
+                                </div>
+                                <div class="list-group-separator"></div>
+                                <div class="list-group-item">
+                                    <div class="row-action-primary">
+                                        <i class="material-icons">folder</i>
+                                    </div>
+                                    <div class="row-content">
+                                        <div class="least-content">8m</div>
+                                        <h4 class="list-group-item-heading">Tile with a label</h4>
+
+                                        <p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
+                                    </div>
+                                </div>
+                                <div class="list-group-separator"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <div class="bs-component">
                             <div class="list-group">
-                                <a href="<?php echo CURRENT_URI; ?>#" class="list-group-item">
-                                    <h4 class="list-group-item-heading">List group item heading</h4>
-                                    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                </a>
-                                <a href="<?php echo CURRENT_URI; ?>#" class="list-group-item">
-                                    <h4 class="list-group-item-heading">List group item heading</h4>
-                                    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                </a>
+                                <div class="list-group-item">
+                                    <div class="row-action-primary">
+                                        <i class="material-icons">folder</i>
+                                    </div>
+                                    <div class="row-content">
+                                        <div class="action-secondary"><i class="material-icons">info</i></div>
+                                        <h4 class="list-group-item-heading">Tile with an icon</h4>
+
+                                        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
+                                    </div>
+                                </div>
+                                <div class="list-group-separator"></div>
+                                <div class="list-group-item">
+                                    <div class="row-action-primary">
+                                        <i class="material-icons">folder</i>
+                                    </div>
+                                    <div class="row-content">
+                                        <div class="action-secondary"><i class="material-icons">info</i></div>
+                                        <h4 class="list-group-item-heading">Tile with an icon</h4>
+
+                                        <p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
+                                    </div>
+                                </div>
+                                <div class="list-group-separator"></div>
+                                <div class="list-group-item">
+                                    <div class="row-action-primary">
+                                        <i class="material-icons">folder</i>
+                                    </div>
+                                    <div class="row-content">
+                                        <div class="action-secondary"><i class="material-icons">info</i></div>
+                                        <h4 class="list-group-item-heading">Tile with an icon</h4>
+
+                                        <p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
+                                    </div>
+                                </div>
+                                <div class="list-group-separator"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="bs-component">
+                            <div class="list-group">
+                                <div class="list-group-item">
+                                    <div class="row-picture">
+                                        <img class="circle" src="http://lorempixel.com/56/56/people/1" alt="icon">
+                                    </div>
+                                    <div class="row-content">
+                                        <h4 class="list-group-item-heading">Tile with avatar</h4>
+
+                                        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus</p>
+                                    </div>
+                                </div>
+                                <div class="list-group-separator"></div>
+                                <div class="list-group-item">
+                                    <div class="row-picture">
+                                        <img class="circle" src="http://lorempixel.com/56/56/people/6" alt="icon">
+                                    </div>
+                                    <div class="row-content">
+                                        <h4 class="list-group-item-heading">Tile with another avatar</h4>
+
+                                        <p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
+                                    </div>
+                                </div>
+                                <div class="list-group-separator"></div>
+                                <div class="list-group-item">
+                                    <div class="row-action-primary checkbox">
+                                        <label><input type="checkbox"></label>
+                                    </div>
+                                    <div class="row-content">
+                                        <h4 class="list-group-item-heading">Tile with a checkbox in it</h4>
+
+                                        <p class="list-group-item-text">Donec id elit non mi risus varius blandit.</p>
+                                    </div>
+                                </div>
+                                <div class="list-group-separator"></div>
                             </div>
                         </div>
                     </div>
@@ -1000,12 +1413,12 @@
 
 
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-md-12">
                         <h2>Panels</h2>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <div class="bs-component">
                             <div class="panel panel-default">
                                 <div class="panel-body">
@@ -1028,7 +1441,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <div class="bs-component">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
@@ -1058,7 +1471,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <div class="bs-component">
                             <div class="panel panel-danger">
                                 <div class="panel-heading">
@@ -1082,26 +1495,26 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-md-12">
                         <h2>Wells</h2>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <div class="bs-component">
                             <div class="well">
                                 Look, I'm in a well!
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <div class="bs-component">
                             <div class="well well-sm">
                                 Look, I'm in a small well!
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <div class="bs-component">
                             <div class="well well-lg">
                                 Look, I'm in a large well!
@@ -1112,19 +1525,20 @@
             </div>
 
             <!-- Dialogs
-            ================================================== -->
+          ================================================== -->
             <div class="bs-docs-section">
 
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-md-12">
                         <div class="page-header">
                             <h1 id="dialogs">Dialogs</h1>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-md-6">
                         <h2>Modals</h2>
+
                         <div class="bs-component">
                             <div class="modal">
                                 <div class="modal-dialog">
@@ -1145,19 +1559,22 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-md-6">
                         <h2>Popovers</h2>
+
                         <div class="bs-component">
                             <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Left</button>
 
                             <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Top</button>
 
                             <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
-                                    sagittis lacus vel augue laoreet rutrum faucibus.">Bottom</button>
+                                    sagittis lacus vel augue laoreet rutrum faucibus.">Bottom
+                            </button>
 
                             <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Right</button>
                         </div>
                         <h2>Tooltips</h2>
+
                         <div class="bs-component">
                             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="" data-original-title="Tooltip on left">Left</button>
 
@@ -1169,9 +1586,23 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>Snackbars and toasts <span style="font-size: 50%">(with SnackbarJS)</span></h2>
+
+                        <p>SnackbarJS is the ad-hoc developed plugin to create snackbars and toasts, read more about it on the
+                            <a href="http://fezvrasta.github.io/snackbarjs/">official page</a> of the project.</p>
+
+                        <div class="bs-component">
+                            <button type="button" class="btn btn-default" data-content="This is a snackbar! Lorem lipsum dolor sit amet..." data-toggle="snackbar" data-timeout="0">Show snackbar</button>
+
+                            <button type="button" class="btn btn-default" data-style="toast" data-content="This is a toast! Lorem lipsum dolor sit amet..." data-toggle="snackbar" data-timeout="0">Show toast</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div id="source-modal" class="modal fade">
+            <div id="source-modal" class="modal fade" tabindex="-1">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
