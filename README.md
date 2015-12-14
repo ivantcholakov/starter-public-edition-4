@@ -353,6 +353,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Material Design icons with Bootstrap-like styling, https://github.com/mervick/material-design-icons
 * SnackbarJS, Create snackbars and toasts with ease, https://github.com/FezVrasta/snackbarjs, http://fezvrasta.github.io/snackbarjs/
 * noUiSlider, a lightweight JavaScript range slider, https://github.com/leongersen/noUiSlider/, http://refreshless.com/nouislider/
+* Material design theme for Bootstrap 3, https://github.com/FezVrasta/bootstrap-material-design, http://fezvrasta.github.io/bootstrap-material-design/
 
 The Playground
 --------------
