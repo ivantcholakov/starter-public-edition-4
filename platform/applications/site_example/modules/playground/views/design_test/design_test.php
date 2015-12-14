@@ -41,7 +41,7 @@
                                             <li class="active"><a href="javascript:void(0)">Active</a></li>
                                             <li><a href="javascript:void(0)">Link</a></li>
                                             <li class="dropdown">
-                                                <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                                                <a href="javascript:void(0)" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
                                                     <b class="caret"></b></a>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="javascript:void(0)">Action</a></li>
@@ -62,7 +62,7 @@
                                         <ul class="nav navbar-nav navbar-right">
                                             <li><a href="javascript:void(0)">Link</a></li>
                                             <li class="dropdown">
-                                                <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                                                <a href="javascript:void(0)" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
                                                     <b class="caret"></b></a>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="javascript:void(0)">Action</a></li>
@@ -94,7 +94,7 @@
                                             <li class="active"><a href="javascript:void(0)">Active</a></li>
                                             <li><a href="javascript:void(0)">Link</a></li>
                                             <li class="dropdown">
-                                                <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                                                <a href="javascript:void(0)" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
                                                     <b class="caret"></b></a>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="javascript:void(0)">Action</a></li>
@@ -115,7 +115,7 @@
                                         <ul class="nav navbar-nav navbar-right">
                                             <li><a href="javascript:void(0)">Link</a></li>
                                             <li class="dropdown">
-                                                <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                                                <a href="javascript:void(0)" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
                                                     <b class="caret"></b></a>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="javascript:void(0)">Action</a></li>
@@ -147,7 +147,7 @@
                                             <li class="active"><a href="javascript:void(0)">Active</a></li>
                                             <li><a href="javascript:void(0)">Link</a></li>
                                             <li class="dropdown">
-                                                <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                                                <a href="javascript:void(0)" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
                                                     <b class="caret"></b></a>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="javascript:void(0)">Action</a></li>
@@ -168,7 +168,7 @@
                                         <ul class="nav navbar-nav navbar-right">
                                             <li><a href="javascript:void(0)">Link</a></li>
                                             <li class="dropdown">
-                                                <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                                                <a href="javascript:void(0)" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
                                                     <b class="caret"></b></a>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="javascript:void(0)">Action</a></li>
@@ -298,7 +298,7 @@
 
                                 <div class="btn-group">
                                     <a href="javascript:void(0)" class="btn">btn only</a>
-                                    <a href="bootstrap-elements.html" data-target="#" class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                                    <a href="javascript:void(0)" data-target="#" class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="javascript:void(0)">Action</a></li>
                                         <li><a href="javascript:void(0)">Another action</a></li>
@@ -312,7 +312,7 @@
 
                                 <div class="btn-group">
                                     <a href="javascript:void(0)" class="btn btn-default btn-raised">Default raised</a>
-                                    <a href="bootstrap-elements.html" data-target="#" class="btn btn-default btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                                    <a href="javascript:void(0)" data-target="#" class="btn btn-default btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="javascript:void(0)">Action</a></li>
                                         <li><a href="javascript:void(0)">Another action</a></li>
@@ -324,7 +324,7 @@
 
                                 <div class="btn-group">
                                     <a href="javascript:void(0)" class="btn btn-primary btn-raised">Primary raised</a>
-                                    <a href="bootstrap-elements.html" data-target="#" class="btn btn-primary btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                                    <a href="javascript:void(0)" data-target="#" class="btn btn-primary btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="javascript:void(0)">Action</a></li>
                                         <li><a href="javascript:void(0)">Another action</a></li>
@@ -336,7 +336,7 @@
 
                                 <div class="btn-group">
                                     <a href="javascript:void(0)" class="btn btn-success">Success</a>
-                                    <a href="bootstrap-elements.html" data-target="#" class="btn btn-success dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                                    <a href="javascript:void(0)" data-target="#" class="btn btn-success dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="javascript:void(0)">Action</a></li>
                                         <li><a href="javascript:void(0)">Another action</a></li>
@@ -348,7 +348,7 @@
 
                                 <div class="btn-group">
                                     <a href="javascript:void(0)" class="btn btn-info">Info</a>
-                                    <a href="bootstrap-elements.html" data-target="#" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                                    <a href="javascript:void(0)" data-target="#" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="javascript:void(0)">Action</a></li>
                                         <li><a href="javascript:void(0)">Another action</a></li>
@@ -360,7 +360,7 @@
 
                                 <div class="btn-group">
                                     <a href="javascript:void(0)" class="btn btn-warning">Warning</a>
-                                    <a href="bootstrap-elements.html" data-target="#" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                                    <a href="javascript:void(0)" data-target="#" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="javascript:void(0)">Action</a></li>
                                         <li><a href="javascript:void(0)">Another action</a></li>
@@ -372,7 +372,7 @@
 
                                 <div class="btn-group">
                                     <a href="javascript:void(0)" class="btn btn-danger">Danger</a>
-                                    <a href="bootstrap-elements.html" data-target="#" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                                    <a href="javascript:void(0)" data-target="#" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="javascript:void(0)">Action</a></li>
                                         <li><a href="javascript:void(0)">Another action</a></li>
@@ -433,7 +433,7 @@
                                     <a href="javascript:void(0)" class="btn btn-raised">8</a>
 
                                     <div class="btn-group">
-                                        <a href="bootstrap-elements.html" data-target="#" class="btn btn-raised dropdown-toggle" data-toggle="dropdown">
+                                        <a href="javascript:void(0)" data-target="#" class="btn btn-raised dropdown-toggle" data-toggle="dropdown">
                                             Dropdown
                                             <span class="caret"></span>
                                         </a>
@@ -574,7 +574,6 @@
                                 <code>&lt;i class="material-icons"&gt;face&lt;/i&gt;</code>
                                 <i class="material-icons">face</i>
                             </p>
-                            <p>Please be sure that the fonts are properly setup, see <a href="https://github.com/FezVrasta/bootstrap-material-design#getting-started">Getting Started</a>.</p>
                         </div>
                     </div>
                 </div>
@@ -919,7 +918,7 @@
                                 <li><a href="#profile" data-toggle="tab">Profile</a></li>
                                 <li class="disabled"><a>Disabled</a></li>
                                 <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="bootstrap-elements.html" data-target="#">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" data-target="#">
                                         Dropdown <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu">
@@ -954,7 +953,7 @@
                                 <li><a href="javascript:void(0)">Profile</a></li>
                                 <li class="disabled"><a href="javascript:void(0)">Disabled</a></li>
                                 <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="bootstrap-elements.html" data-target="#">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" data-target="#">
                                         Dropdown <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu">
@@ -975,7 +974,7 @@
                                 <li><a href="javascript:void(0)">Profile</a></li>
                                 <li class="disabled"><a href="javascript:void(0)">Disabled</a></li>
                                 <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="bootstrap-elements.html" data-target="#">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" data-target="#">
                                         Dropdown <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu">
@@ -1375,7 +1374,7 @@
                             <div class="list-group">
                                 <div class="list-group-item">
                                     <div class="row-picture">
-                                        <img class="circle" src="http://lorempixel.com/56/56/people/1" alt="icon">
+                                        <img class="circle" src="<?php echo image_url('lib/examples/user1-128x128.jpg'); ?>" alt="icon">
                                     </div>
                                     <div class="row-content">
                                         <h4 class="list-group-item-heading">Tile with avatar</h4>
@@ -1386,7 +1385,7 @@
                                 <div class="list-group-separator"></div>
                                 <div class="list-group-item">
                                     <div class="row-picture">
-                                        <img class="circle" src="http://lorempixel.com/56/56/people/6" alt="icon">
+                                        <img class="circle" src="<?php echo image_url('lib/examples/user3-128x128.jpg'); ?>" alt="icon">
                                     </div>
                                     <div class="row-content">
                                         <h4 class="list-group-item-heading">Tile with another avatar</h4>
