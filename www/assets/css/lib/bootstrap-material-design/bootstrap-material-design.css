@@ -2651,6 +2651,12 @@ hr.on-light {
 *:focus {
   outline: 0;
 }
+#snackbar-container {
+  position: fixed;
+  left: 20px;
+  bottom: 0;
+  z-index: 99999;
+}
 .snackbar {
   background-color: #323232;
   color: rgba(255,255,255, 0.84);
