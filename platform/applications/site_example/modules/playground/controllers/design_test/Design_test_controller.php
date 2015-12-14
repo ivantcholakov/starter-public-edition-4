@@ -22,6 +22,7 @@ class Design_test_controller extends Base_Controller {
 
         $this->template
             ->set_partial('css', 'design_test/design_test_css')
+            ->set_partial('scripts', 'design_test/design_test_scripts')
             ->build('design_test/design_test');
     }
 

@@ -74,8 +74,11 @@ echo js_imgsizer();
 echo js('lib/bootstrap-3/bootstrap.min.js');
 echo js('lib/jasny-bootstrap-3/jasny-bootstrap.min.js');
 echo js('lib/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js');
+echo js('lib/snackbar/snackbar.min.js');
+echo js('lib/nouislider/nouislider.min.js');
 
 file_partial('scripts');
+file_partial('theme_scripts');
 template_partial('scripts');
 
 echo js('lib/google-code-prettify/prettify.js');

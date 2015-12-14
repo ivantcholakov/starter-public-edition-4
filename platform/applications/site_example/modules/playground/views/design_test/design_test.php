@@ -1242,14 +1242,14 @@
                         <div class="bs-component">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <div class="slider shor"></div>
-                                    <div class="slider shor slider-success"></div>
-                                    <div class="slider shor slider-material-pink"></div>
+                                    <div class="slider shor" id="slider_1"></div>
+                                    <div class="slider shor slider-success" id="slider_2"></div>
+                                    <div class="slider shor slider-material-pink" id="slider_3"></div>
                                 </div>
                                 <div class="col-sm-6" style="height: 150px">
-                                    <div class="slider svert"></div>
-                                    <div class="slider svert slider-success"></div>
-                                    <div class="slider svert slider-material-pink"></div>
+                                    <div class="slider svert" id="slider_4"></div>
+                                    <div class="slider svert slider-success" id="slider_5"></div>
+                                    <div class="slider svert slider-material-pink" id="slider_6"></div>
                                 </div>
                             </div>
                         </div>
