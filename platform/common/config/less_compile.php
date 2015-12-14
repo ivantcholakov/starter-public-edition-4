@@ -276,6 +276,21 @@ $config['less_compile'] = array(
         'compress' => true
     ),
 
+    // php cli.php less compile bootstrap-material-design bootstrap-material-design-min
+
+    array(
+        'name' => 'bootstrap-material-design',
+        'source' => DEFAULTFCPATH.'assets/less/lib/bootstrap-material-design/bootstrap-material-design.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/bootstrap-material-design/bootstrap-material-design.css',
+        'compress' => false
+    ),
+    array(
+        'name' => 'bootstrap-material-design-min',
+        'source' => DEFAULTFCPATH.'assets/less/lib/bootstrap-material-design/bootstrap-material-design.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/bootstrap-material-design/bootstrap-material-design.min.css',
+        'compress' => true
+    ),
+
     // php cli.php less compile front-theme-bs-min
 
     array(
