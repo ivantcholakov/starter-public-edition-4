@@ -276,6 +276,19 @@ $config['less_compile'] = array(
         'compress' => true
     ),
 
+    array(
+        'name' => 'snackbar',
+        'source' => DEFAULTFCPATH.'assets/less/lib/snackbar/snackbar.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/snackbar/snackbar.css',
+        'compress' => false
+    ),
+    array(
+        'name' => 'snackbar-min',
+        'source' => DEFAULTFCPATH.'assets/less/lib/snackbar/snackbar.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/snackbar/snackbar.min.css',
+        'compress' => true
+    ),
+
     // php cli.php less compile bootstrap-material-design bootstrap-material-design-min
 
     array(
