@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+echo js('lib/bootstrap-material-design/ripples.min.js');
 echo js('lib/bootstrap-material-design/material.min.js');
 
 ?>
