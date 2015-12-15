@@ -25,7 +25,7 @@
 
             <div class="col-sm-8">
 
-                <div class="list-group">
+                <!--<div class="list-group">-->
 
                     <h3 class="list-group-item no-margin-top">Standalone Pages</h3>
                     <a class="list-group-item" href="<?php echo base_url('non-mvc/demo.php'); ?>">Non-MVC Page Demonstration</a>
@@ -75,7 +75,7 @@
                     <a class="list-group-item" href="<?php echo site_url('playground/material-icons-test'); ?>">Material Icons Test</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/design-test'); ?>">Design Test</a>
 
-                </div>
+                <!--</div>-->
 
             </div>
 
@@ -86,5 +86,8 @@
             </div>
 
         </div>
+
+        <br />
+        <br />
 
     </section>
