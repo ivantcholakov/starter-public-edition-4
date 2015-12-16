@@ -26,6 +26,7 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         $this->config = array(
             'scope_glue' => '.',
+            'cumulative_noparse' => false,
         );
 
         if ($this->ci->config->load('parser_lex', TRUE, TRUE))
@@ -74,6 +75,7 @@ class CI_Parser_lex extends CI_Parser_driver {
         $parser = $parser_reflection->newInstance();
 
         $parser->scopeGlue($config['scope_glue']);
+        $parser->cumulativeNoparse($config['cumulative_noparse']);
 
         $template = $parser->compile(@ file_get_contents($template), $data);
 
@@ -101,6 +103,7 @@ class CI_Parser_lex extends CI_Parser_driver {
         $parser = $parser_reflection->newInstance();
 
         $parser->scopeGlue($config['scope_glue']);
+        $parser->cumulativeNoparse($config['cumulative_noparse']);
 
         $template = $parser->parse($template, $data);
 
