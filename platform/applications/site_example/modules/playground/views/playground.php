@@ -74,6 +74,7 @@
                     <a class="list-group-item" href="<?php echo site_url('playground/animate'); ?>">Animate,css Test</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/material-icons-test'); ?>">Material Icons Test</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/design-test'); ?>">Design Test</a>
+                    <a class="list-group-item" href="<?php echo site_url('playground/lex-parser'); ?>">Lex Parser Test</a>
 
                 <!--</div>-->
 
