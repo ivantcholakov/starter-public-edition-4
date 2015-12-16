@@ -9,4 +9,4 @@
 
 // The character(s) used by Lex to trigger a scope change. A scope change is,
 // for instance accessing a nested variable inside and array/object,
-$config['scope_glue'] = '';
+$config['scope_glue'] = '.';
