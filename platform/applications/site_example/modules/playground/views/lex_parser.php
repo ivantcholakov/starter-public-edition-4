@@ -11,8 +11,6 @@ $data = array('name' => 'John');
 $parser = new Lex\Parser();
 echo $parser->parse($template, $data);
 
-echo $result;
-
 echo '<br />';
 
 echo $this->parser->parse_string($template, $data, true, 'lex');
