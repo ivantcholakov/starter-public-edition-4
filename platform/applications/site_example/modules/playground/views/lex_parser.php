@@ -15,4 +15,8 @@ echo '<br />';
 
 echo $this->parser->parse_string($template, $data, true, 'lex');
 
+echo '<br />';
+
+echo $this->load->view('test.lex', $data, true, 'lex');
+
 ?>
