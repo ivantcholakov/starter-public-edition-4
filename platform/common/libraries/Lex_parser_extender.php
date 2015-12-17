@@ -29,7 +29,7 @@ class Lex_parser_extender {
      */
     public function parser_callback($name, $attributes, $content) {
 
-        return null;    // For now.
+        return 'Testing Lex parser callback';    // For now.
     }
 
     public function set_scope_glue($value) {
