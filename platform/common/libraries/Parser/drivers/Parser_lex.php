@@ -8,8 +8,8 @@
 class CI_Parser_lex extends CI_Parser_driver {
 
     protected $config;
-    protected $allowed_formatters;
     private $ci;
+    private $extender;
 
     public function initialize()
     {
@@ -22,11 +22,13 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         $this->ci = get_instance();
 
+        $this->ci->load->library('lex_parser_extender');
+        $this->extender = $this->ci->lex_parser_extender;
+
         // Default configuration options.
 
         $this->config = array(
             'scope_glue' => '.',
-            'callback' => false,
             'allow_php' => false,
         );
 
@@ -76,9 +78,12 @@ class CI_Parser_lex extends CI_Parser_driver {
         $parser = $parser_reflection->newInstance();
 
         $parser->scopeGlue($config['scope_glue']);
-        //$parser->cumulativeNoparse($config['cumulative_noparse']);
+        $parser->cumulativeNoparse(true);
 
-        $template = $parser->compile(@ file_get_contents($template), $data, $config['callback'], $config['allow_php']);
+        $this->extender->set_scope_glue($config['scope_glue']);
+        $this->extender->set_allow_php($config['allow_php']);
+
+        $template = $parser->compile(@ file_get_contents($template), $data, array($this->extender, 'parser_callback'), $config['allow_php']);
 
         return $this->output($template, $return, $ci, $is_mx);
     }
@@ -104,9 +109,12 @@ class CI_Parser_lex extends CI_Parser_driver {
         $parser = $parser_reflection->newInstance();
 
         $parser->scopeGlue($config['scope_glue']);
-        //$parser->cumulativeNoparse($config['cumulative_noparse']);
+        $parser->cumulativeNoparse(true);
 
-        $template = $parser->parse($template, $data, $config['callback'], $config['allow_php']);
+        $this->extender->set_scope_glue($config['scope_glue']);
+        $this->extender->set_allow_php($config['allow_php']);
+
+        $template = $parser->parse($template, $data, array($this->extender, 'parser_callback'), $config['allow_php']);
 
         return $this->output($template, $return, $ci, $is_mx);
     }
