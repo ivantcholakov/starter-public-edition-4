@@ -1,3 +1,8 @@
+
+<h1>{{ template:title }}</h1>
+
+<br />
+
 Hello, {{name}}
 
 <br />

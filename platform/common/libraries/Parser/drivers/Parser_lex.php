@@ -83,6 +83,20 @@ class CI_Parser_lex extends CI_Parser_driver {
         $this->extender->set_scope_glue($config['scope_glue']);
         $this->extender->set_allow_php($config['allow_php']);
 
+        if (!is_array($data))
+        {
+            if (empty($data))
+            {
+                $data = array();
+            }
+            else
+            {
+                $data = (array) $data;
+            }
+        }
+
+        $data = array_merge($data, $ci->load->_ci_cached_vars);
+
         $template = $parser->compile(@ file_get_contents($template), $data, array($this->extender, 'parser_callback'), $config['allow_php']);
 
         return $this->output($template, $return, $ci, $is_mx);
@@ -113,6 +127,20 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         $this->extender->set_scope_glue($config['scope_glue']);
         $this->extender->set_allow_php($config['allow_php']);
+
+        if (!is_array($data))
+        {
+            if (empty($data))
+            {
+                $data = array();
+            }
+            else
+            {
+                $data = (array) $data;
+            }
+        }
+
+        $data = array_merge($data, $ci->load->_ci_cached_vars);
 
         $template = $parser->parse($template, $data, array($this->extender, 'parser_callback'), $config['allow_php']);
 
