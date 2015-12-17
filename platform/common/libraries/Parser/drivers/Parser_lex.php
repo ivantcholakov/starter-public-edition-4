@@ -75,7 +75,7 @@ class CI_Parser_lex extends CI_Parser_driver {
         $parser_reflection = new ReflectionClass('Lex\Parser');
         $parser = $parser_reflection->newInstance();
 
-        $parser->scopeGlue($this->config['scope_glue']);    // We do not want altering this configuration option.
+        $parser->scopeGlue($config['scope_glue']);
         //$parser->cumulativeNoparse($config['cumulative_noparse']);
 
         $template = $parser->compile(@ file_get_contents($template), $data, $config['callback'], $config['allow_php']);
@@ -103,7 +103,7 @@ class CI_Parser_lex extends CI_Parser_driver {
         $parser_reflection = new ReflectionClass('Lex\Parser');
         $parser = $parser_reflection->newInstance();
 
-        $parser->scopeGlue($this->config['scope_glue']);    // We do not want altering this configuration option.
+        $parser->scopeGlue($config['scope_glue']);
         //$parser->cumulativeNoparse($config['cumulative_noparse']);
 
         $template = $parser->parse($template, $data, $config['callback'], $config['allow_php']);

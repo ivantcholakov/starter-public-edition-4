@@ -9,6 +9,9 @@ class Lex_parser_extender {
 
     protected $ci;
 
+    protected $scope_glue = '.';
+    protected $allow_php = false;
+
     public function __construct() {
 
         $this->ci = & get_instance();
@@ -27,6 +30,26 @@ class Lex_parser_extender {
     public function parser_callback($name, $attributes, $content) {
 
         return null;    // For now.
+    }
+
+    public function set_scope_glue($value) {
+
+        $this->scope_glue = (string) $value;
+    }
+
+    public function get_scope_glue() {
+
+        return $this->scope_glue;
+    }
+
+    public function set_allow_php($value) {
+
+        $this->allow_php = (bool) $value;
+    }
+
+    public function get_allow_php() {
+
+        return $this->allow_php;
     }
 
 }
