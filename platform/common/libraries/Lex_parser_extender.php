@@ -29,6 +29,8 @@ class Lex_parser_extender {
      */
     public function parser_callback($name, $attributes, $content) {
 
+        $this->ci->load->library('lex_extensions');
+
         return 'Testing Lex parser callback';    // For now.
     }
 
