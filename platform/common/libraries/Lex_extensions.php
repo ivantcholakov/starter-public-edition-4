@@ -10,6 +10,19 @@ class Lex_extensions {
     public function __construct() {
 
         $this->ci = & get_instance();
+
+        $this->ci->load->library('lex_extender');
+        $this->extender = $this->ci->lex_extender;
+    }
+
+    public function locate($name, $attributes, $content) {
+
+        $scope_glue = $this->extender->get_scope_glue();
+
+        if (strpos($name, $scope_glue) === false) {
+            return false;
+        }
+
     }
 
 }

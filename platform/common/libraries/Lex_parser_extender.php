@@ -31,7 +31,13 @@ class Lex_parser_extender {
 
         $this->ci->load->library('lex_extensions');
 
-        return 'Testing Lex parser callback';    // For now.
+        $data = $this->ci->lex_extensions->locate($name, $attributes, $content);
+
+        if (is_array($data) && $data) {
+
+        }
+
+        return $data ? $data : null;
     }
 
     public function set_scope_glue($value) {
