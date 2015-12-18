@@ -55,6 +55,7 @@ require BOOTSTRAPPATH.'print_d.php';
  * --------------------------------------------------------------------
  */
 
+require BOOTSTRAPPATH.'str_to_bool.php';
 require BOOTSTRAPPATH.'resolve_path.php';
 require BOOTSTRAPPATH.'merge_paths.php';
 require BOOTSTRAPPATH.'detect_https.php';
