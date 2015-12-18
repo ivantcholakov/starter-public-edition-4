@@ -22,8 +22,18 @@ class Lex_parser_controller extends Base_Controller {
 
     public function index() {
 
+        $php_min = '5.3';
+
+        if (!is_php($php_min)) {
+
+            $this->output->set_output('PHP '.$php_min.' is required for Lex parser.');
+            return;
+        }
+
         $this->template
-            ->build('lex_parser');
+            ->set('name', 'John')
+            ->enable_parser_body('lex')
+            ->build('lex_parser.lex.html');
     }
 
 }

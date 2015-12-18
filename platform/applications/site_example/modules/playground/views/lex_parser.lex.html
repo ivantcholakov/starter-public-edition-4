@@ -1,0 +1,77 @@
+
+{{#
+Author: Ivan Tcholakov <ivantcholakov@gmail.com>, 2015
+License: The MIT License, http://opensource.org/licenses/MIT
+#}}
+
+        <section>
+
+            <div class="container">
+
+                <div class="page-header">
+                    <h1>{{ template:title }}</h1>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+
+                                <thead>
+
+                                    <tr>
+                                        <th class="col-sm-6">Lex Code</th>
+                                        <th class="col-sm-6">Result</th>
+                                    </tr>
+
+                                </thead>
+
+                                <tfoot>
+
+                                    <tr>
+                                        <th>Lex Code</th>
+                                        <th>Result</th>
+                                    </tr>
+
+                                </tfoot>
+
+                                <tbody>
+
+                                    <tr>
+                                        <td colspan="2">
+                                            <strong>Accessing Variables</strong>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            {{ noparse }}Hello, {{ name }}!{{ /noparse }}
+                                        </td>
+                                        <td>
+                                            Hello, {{ name }}!
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            {{ noparse }}{{ template:title }}{{ /noparse }}
+                                        </td>
+                                        <td>
+                                            {{ template:title }}
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
