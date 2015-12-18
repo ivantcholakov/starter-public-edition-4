@@ -78,7 +78,7 @@ class CI_Parser_lex extends CI_Parser_driver {
         $parser = $parser_reflection->newInstance();
 
         $parser->scopeGlue($config['scope_glue']);
-        $parser->cumulativeNoparse(true);
+        //$parser->cumulativeNoparse(true);
 
         $this->extender->set_scope_glue($config['scope_glue']);
         $this->extender->set_allow_php($config['allow_php']);
@@ -123,7 +123,7 @@ class CI_Parser_lex extends CI_Parser_driver {
         $parser = $parser_reflection->newInstance();
 
         $parser->scopeGlue($config['scope_glue']);
-        $parser->cumulativeNoparse(true);
+        //$parser->cumulativeNoparse(true);
 
         $this->extender->set_scope_glue($config['scope_glue']);
         $this->extender->set_allow_php($config['allow_php']);
