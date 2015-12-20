@@ -95,10 +95,10 @@ class Parser_lex_extensions {
         }
 
         $object = new $class_name;
-        $object->set_path($path);
-        $object->set_class($class);
-        $object->set_method($method);
-        $object->set_data($content, $attributes);
+        $object->_set_path($path);
+        $object->_set_class($class);
+        $object->_set_method($method);
+        $object->_set_data($content, $attributes);
 
         if (
                 $class == 'helper'

@@ -44,22 +44,22 @@ abstract class Parser_Lex_Extension {
         return null;
     }
 
-    public function set_path($path) {
+    public function _set_path($path) {
 
         $this->parser_lex_path = $path;
     }
 
-    public function set_class($class) {
+    public function _set_class($class) {
 
         $this->parser_lex_class = $class;
     }
 
-    public function set_method($method) {
+    public function _set_method($method) {
 
         $this->parser_lex_method = $method;
     }
 
-    public function set_data($content, $attributes) {
+    public function _set_data($content, $attributes) {
 
         $content AND $this->content = $content;
 

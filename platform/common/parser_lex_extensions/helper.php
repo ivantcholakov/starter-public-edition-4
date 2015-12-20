@@ -16,11 +16,11 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     }
 
-    public function set_data($content, $attributes) {
+    public function _set_data($content, $attributes) {
 
         $attributes['parse_params'] = false;
 
-        return parent::set_data($content, $attributes);
+        return parent::_set_data($content, $attributes);
     }
 
     protected function _prepare_attributes() {
