@@ -72,7 +72,13 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return $this->_function_not_found($name);
     }
 
-    public function func_empty() {
+    public function _func_empty() {
+
+        $name = 'empty';
+
+        if (!in_array($name, $this->parser_lex_allowed_functions)) {
+            return $this->_function_not_found($name);
+        }
 
         $attributes = $this->_prepare_attributes();
 
@@ -86,32 +92,21 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return true;
     }
 
-    public function func_isset() {
+    public function _func_isset() {
 
-        $attributes = $this->attributes();
+        $name = 'isset';
 
-        if (isset($attributes['parse_params'])) {
-            unset($attributes['parse_params']);
+        if (!in_array($name, $this->parser_lex_allowed_functions)) {
+            return $this->_function_not_found($name);
         }
 
-        if (isset($attributes['parse-params'])) {
-            unset($attributes['parse-params']);
-        }
+        $attributes = $this->_prepare_attributes();
 
         if (!empty($attributes)) {
 
             foreach ($attributes as $value) {
 
-                if (strpos($value, '[') !== false || strpos($value, '{') !== false) {
-
-                    $value = trim($value, "[]{} \t\n\r\0\x0B");
-
-                    if (!isset(${$value})) {
-                        return false;
-                    }
-
-                } else {
-
+                if (!isset($value)) {
                     return false;
                 }
             }

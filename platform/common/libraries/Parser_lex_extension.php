@@ -141,7 +141,7 @@ abstract class Parser_Lex_Extension {
 
         $attributes = $this->attributes();
 
-        foreach ($attributes as $attribute => &$value) {
+        foreach ($attributes as $attribute => & $value) {
 
             $default = isset($defaults[$attribute]) ? $defaults[$attribute] : null;
             $value = $this->get_attribute($attribute);

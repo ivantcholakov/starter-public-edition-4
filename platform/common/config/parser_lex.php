@@ -21,6 +21,7 @@ $config['cumulative_noparse'] = false;
 $config['allowed_functions'] = array(
     'character_limiter',
     'count',
+    'empty',
     'explode',
     'html_entity_decode',
     'htmlentities',
@@ -32,6 +33,7 @@ $config['allowed_functions'] = array(
     'is_int',
     'is_integer',
     'is_string',
+    'isset',
     'ltrim',
     'md5',
     'money_format',

@@ -109,7 +109,7 @@ class Parser_lex_extensions {
                     $method == 'isset'
                 )
         ) {
-            $method = 'func_'.$method;
+            $method = '_func_'.$method;
         }
 
         if (!is_callable(array($object, $method))) {
