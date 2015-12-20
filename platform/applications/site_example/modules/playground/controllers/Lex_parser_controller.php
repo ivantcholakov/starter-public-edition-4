@@ -35,7 +35,8 @@ class Lex_parser_controller extends Base_Controller {
 
         $this->template
             ->set('name', 'John')
-            ->set('array', array('one', 'two', 'three', array('four', 'five')))
+            ->set('array_1', array('one', 'two', 'three'))
+            ->set('array_2', array('one', 'two', 'three', array('four', 'five')))
             ->set('very_long_text', 'Very long text. Very long text. Very long text. Very long text.')
             ->set('value_0', 0)
             ->set('value_1', 1)
