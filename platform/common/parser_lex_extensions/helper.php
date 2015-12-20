@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Lex_Extension_Helper extends Lex_Extension {
+class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     public static $_counter_increment = true;
     protected $parser_lex_allowed_functions;

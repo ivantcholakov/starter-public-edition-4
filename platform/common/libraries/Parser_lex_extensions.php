@@ -5,6 +5,8 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
+require_once dirname(__FILE__).'/Parser_lex_extension.php';
+
 class Parser_lex_extensions {
 
     protected $loaded = array();
@@ -37,7 +39,7 @@ class Parser_lex_extensions {
     protected function _process($path, $class, $method, $attributes, $content) {
 
         $class = strtolower($class);
-        $class_name = 'Lex_Extension_'.ucfirst($class);
+        $class_name = 'Parser_Lex_Extension_'.ucfirst($class);
 
         if (!isset($this->loaded[$class])) {
 
@@ -47,7 +49,7 @@ class Parser_lex_extensions {
 
         if (!class_exists($class_name, false)) {
 
-            log_message('error', 'Lex_Extension class "'.$class_name.'" does not exist.');
+            log_message('error', 'Parser_Lex_Extension class "'.$class_name.'" does not exist.');
             return false;
         }
 
@@ -75,7 +77,7 @@ class Parser_lex_extensions {
                 return true;
             }
 
-            log_message('error', 'Lex_Extension method "'.$method.'" does not exist on class "'.$class_name.'".');
+            log_message('error', 'Parser_Lex_Extension method "'.$method.'" does not exist on class "'.$class_name.'".');
             return false;
         }
 

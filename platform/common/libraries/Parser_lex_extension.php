@@ -7,7 +7,7 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-abstract class Lex_Extension {
+abstract class Parser_Lex_Extension {
 
     protected $attributes = array();
     protected $content = array();
