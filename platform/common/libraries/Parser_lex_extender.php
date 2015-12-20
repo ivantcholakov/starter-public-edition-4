@@ -5,9 +5,8 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Lex_parser_extender {
+class Parser_lex_extender {
 
-    public $options;
     protected $ci;
 
     public function __construct() {
@@ -27,9 +26,9 @@ class Lex_parser_extender {
      */
     public function parser_callback($name, $attributes, $content) {
 
-        $this->ci->load->library('lex_extensions');
+        $this->ci->load->library('parser_lex_extensions');
 
-        $data = $this->ci->lex_extensions->locate($name, $attributes, $content);
+        $data = $this->ci->parser_lex_extensions->locate($name, $attributes, $content);
 
         if (is_array($data) && $data) {
 

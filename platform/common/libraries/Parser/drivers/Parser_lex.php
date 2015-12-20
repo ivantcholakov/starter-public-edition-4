@@ -22,8 +22,8 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         $this->ci = get_instance();
 
-        $this->ci->load->library('lex_parser_extender');
-        $this->extender = $this->ci->lex_parser_extender;
+        $this->ci->load->library('parser_lex_extender');
+        $this->extender = $this->ci->parser_lex_extender;
 
         // Default configuration options.
 
