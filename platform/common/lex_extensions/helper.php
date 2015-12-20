@@ -16,27 +16,14 @@ class Lex_Extension_Helper extends Lex_Extension {
 
     }
 
-    public function __call($name, $args) {
+    public function set_data($content, $attributes) {
 
-        if (function_exists($name) && in_array($name, $this->parser_lex_allowed_functions)) {
+        $attributes['parse_params'] = false;
 
-            $attributes = $this->attributes();
-
-            if (isset($attributes['parse_params'])) {
-                unset($attributes['parse_params']);
-            }
-
-            if (isset($attributes['parse-params'])) {
-                unset($attributes['parse-params']);
-            }
-
-            return call_user_func_array($name, $attributes);
-        }
-
-        return 'The function '.$name.'() has not been found or it is not allowed.';
+        return parent::set_data($content, $attributes);
     }
 
-    public function func_empty() {
+    protected function _prepare_attributes() {
 
         $attributes = $this->attributes();
 
@@ -47,6 +34,47 @@ class Lex_Extension_Helper extends Lex_Extension {
         if (isset($attributes['parse-params'])) {
             unset($attributes['parse-params']);
         }
+
+        if (!empty($attributes)) {
+
+            foreach ($attributes as $key => $value) {
+
+                if (strpos($value, '{') !== false || strpos($value, '[') !== false ) {
+
+                    $value = trim($value, "[]{} \t\n\r\0\x0B");
+
+                    if (isset($this->lex_parser_extender->options['data'][$value])) {
+                        $attributes[$key] = $this->lex_parser_extender->options['data'][$value];
+                    } else {
+                        $attributes[$key] = null;
+                    }
+                }
+            }
+        }
+
+        return $attributes;
+    }
+
+    protected function _function_not_found($name) {
+
+        return 'The function '.$name.'() has not been found or it is not allowed.';
+    }
+
+    public function __call($name, $args) {
+
+        if (function_exists($name) && in_array($name, $this->parser_lex_allowed_functions)) {
+
+            $attributes = $this->_prepare_attributes();
+
+            return call_user_func_array($name, $attributes);
+        }
+
+        return $this->_function_not_found($name);
+    }
+
+    public function func_empty() {
+
+        $attributes = $this->_prepare_attributes();
 
         if (!empty($attributes)) {
 

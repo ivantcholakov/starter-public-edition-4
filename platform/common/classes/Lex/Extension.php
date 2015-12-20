@@ -15,6 +15,7 @@ abstract class Lex_Extension {
     protected $parser_lex_path;
     protected $parser_lex_class;
     protected $parser_lex_method;
+    protected $lex_parser_extender;
 
     public function __construct() {
 
@@ -23,6 +24,8 @@ abstract class Lex_Extension {
         $ci->load
             ->parser()
             ->library('lex_parser_extender');
+
+        $this->lex_parser_extender = $ci->lex_parser_extender;
 
         if ($ci->config->load('parser_lex', TRUE, TRUE)) {
             $this->parser_lex_config = $ci->config->item('parser_lex');
