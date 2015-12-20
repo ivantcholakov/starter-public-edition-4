@@ -9,8 +9,8 @@
 
 abstract class Parser_Lex_Extension {
 
-    protected $attributes = array();
-    protected $content = array();
+    protected $parser_lex_attributes = array();
+    protected $parser_lex_content = array();
     protected $parser_lex_extensions;
     protected $parser_lex_config;
     protected $parser_lex_path;
@@ -61,7 +61,7 @@ abstract class Parser_Lex_Extension {
 
     public function _set_data($content, $attributes) {
 
-        $content AND $this->content = $content;
+        $content AND $this->parser_lex_content = $content;
 
         if ($attributes) {
 
@@ -87,23 +87,23 @@ abstract class Parser_Lex_Extension {
                 }
             }
 
-            $this->attributes = $attributes;
+            $this->parser_lex_attributes = $attributes;
         }
     }
 
     public function content() {
 
-        return $this->content;
+        return $this->parser_lex_content;
     }
 
     public function attributes() {
 
-        return $this->attributes;
+        return $this->parser_lex_attributes;
     }
 
     public function attribute($attribute, $default = null) {
 
-        return isset($this->attributes[$attribute]) ? $this->attributes[$attribute] : $default;
+        return isset($this->parser_lex_attributes[$attribute]) ? $this->parser_lex_attributes[$attribute] : $default;
     }
 
     public function get_attribute($attribute, $default = null) {
@@ -139,7 +139,7 @@ abstract class Parser_Lex_Extension {
 
     public function get_attributes($defaults = array()) {
 
-        $attributes = $this->attributes();
+        $attributes = $this->parser_lex_attributes();
 
         foreach ($attributes as $attribute => & $value) {
 
@@ -152,7 +152,7 @@ abstract class Parser_Lex_Extension {
 
     public function set_attribute($attribute, $value) {
 
-        $this->attributes[$attribute] = $value;
+        $this->parser_lex_attributes[$attribute] = $value;
     }
 
 }
