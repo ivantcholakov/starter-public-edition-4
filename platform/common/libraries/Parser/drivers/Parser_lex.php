@@ -28,6 +28,7 @@ class CI_Parser_lex extends CI_Parser_driver {
         // Default configuration options.
 
         $this->config = array(
+            'cumulative_noparse' => false,
             'scope_glue' => '.',
             'allow_php' => false,
         );
@@ -61,6 +62,8 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         $config = array_merge($this->config, $config);
 
+        $config['cumulative_noparse'] = !empty($config['cumulative_noparse']);
+
         $ci = $this->ci;
         $is_mx = false;
 
@@ -76,12 +79,10 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         $parser_reflection = new ReflectionClass('Lex\Parser');
         $parser = $parser_reflection->newInstance();
+        $parser_class_name = get_class($parser);
 
         $parser->scopeGlue($config['scope_glue']);
-        //$parser->cumulativeNoparse(true);
-
-        $this->extender->set_scope_glue($config['scope_glue']);
-        $this->extender->set_allow_php($config['allow_php']);
+        $parser->cumulativeNoparse($config['cumulative_noparse']);
 
         if (!is_array($data))
         {
@@ -97,7 +98,14 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         $data = array_merge($data, $ci->load->_ci_cached_vars);
 
-        $template = $parser->compile(@ file_get_contents($template), $data, array($this->extender, 'parser_callback'), $config['allow_php']);
+        $this->extender->options = $config;
+        $this->extender->options['data'] = & $data;
+
+        $template = $parser->parse(@ file_get_contents($template), $data, array($this->extender, 'parser_callback'), $config['allow_php']);
+
+        if ($config['cumulative_noparse']) {
+            $template = $parser_class_name::injectNoparse($template);
+        }
 
         return $this->output($template, $return, $ci, $is_mx);
     }
@@ -111,6 +119,8 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         $config = array_merge($this->config, $config);
 
+        $config['cumulative_noparse'] = !empty($config['cumulative_noparse']);
+
         $ci = $this->ci;
         $is_mx = false;
 
@@ -121,12 +131,10 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         $parser_reflection = new ReflectionClass('Lex\Parser');
         $parser = $parser_reflection->newInstance();
+        $parser_class_name = get_class($parser);
 
         $parser->scopeGlue($config['scope_glue']);
-        //$parser->cumulativeNoparse(true);
-
-        $this->extender->set_scope_glue($config['scope_glue']);
-        $this->extender->set_allow_php($config['allow_php']);
+        $parser->cumulativeNoparse($config['cumulative_noparse']);
 
         if (!is_array($data))
         {
@@ -142,7 +150,14 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         $data = array_merge($data, $ci->load->_ci_cached_vars);
 
+        $this->extender->options = $config;
+        $this->extender->options['data'] = & $data;
+
         $template = $parser->parse($template, $data, array($this->extender, 'parser_callback'), $config['allow_php']);
+
+        if ($config['cumulative_noparse']) {
+            $template = $parser_class_name::injectNoparse($template);
+        }
 
         return $this->output($template, $return, $ci, $is_mx);
     }

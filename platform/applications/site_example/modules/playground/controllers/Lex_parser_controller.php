@@ -11,7 +11,10 @@ class Lex_parser_controller extends Base_Controller {
 
         parent::__construct();
 
-        $this->load->parser();
+        $this->load
+            ->language('welcome')
+            ->helper('text')
+        ;
 
         $this->template
             ->title('Lex Parser Test')
@@ -32,6 +35,12 @@ class Lex_parser_controller extends Base_Controller {
 
         $this->template
             ->set('name', 'John')
+            ->set('array', array('one', 'two', 'three', array('four', 'five')))
+            ->set('very_long_text', 'Very long text. Very long text. Very long text. Very long text.')
+            ->set('value_0', 0)
+            ->set('value_1', 1)
+            ->set('value_2', 2)
+            ->set('value_3', 3)
             ->enable_parser_body('lex')
             ->build('lex_parser.lex.html');
     }

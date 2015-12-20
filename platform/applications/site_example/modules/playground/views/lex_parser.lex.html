@@ -1,6 +1,6 @@
 
 {{#
-Author: Ivan Tcholakov <ivantcholakov@gmail.com>, 2015
+Author: Ivan Tcholakov, ivantcholakov@gmail.com, 2015
 License: The MIT License, http://opensource.org/licenses/MIT
 #}}
 
@@ -24,8 +24,8 @@ License: The MIT License, http://opensource.org/licenses/MIT
                                 <thead>
 
                                     <tr>
-                                        <th class="col-sm-6">Lex Code</th>
-                                        <th class="col-sm-6">Result</th>
+                                        <th class="col-sm-8">Lex Code</th>
+                                        <th class="col-sm-4">Result</th>
                                     </tr>
 
                                 </thead>
@@ -41,27 +41,149 @@ License: The MIT License, http://opensource.org/licenses/MIT
 
                                 <tbody>
 
-                                    <tr>
+                                    <tr class="info">
                                         <td colspan="2">
-                                            <strong>Accessing Variables</strong>
+                                            <h4>Accessing Variables</h4>
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-                                            {{ noparse }}Hello, {{ name }}!{{ /noparse }}
+<pre><code>{{ noparse }}Hello, {{ name }}!{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
-                                            Hello, {{ name }}!
+Hello, {{ name }}!
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-                                            {{ noparse }}{{ template:title }}{{ /noparse }}
+<pre><code>{{ noparse }}{{ value_0 }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
-                                            {{ template:title }}
+{{ value_0 }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ value_1 }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ value_1 }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ value_2 }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ value_2 }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ value_3 }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ value_3 }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ template:title }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ template:title }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="info">
+                                        <td colspan="2">
+                                            <h4>Helper Functions</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>lang</strong> line="welcome.hello" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:lang line="welcome.hello" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>character_limiter</strong> str="Very long text. Very long text." n="10" }}
+&lt;br /&gt;
+{{ helper:<strong>character_limiter</strong> str="[[very_long_text]]" n="10" end_char="&amp;#8230;" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:character_limiter str="Very long text. Very long text." n="10" }}
+<br />
+{{ helper:character_limiter str="[[very_long_text]]" n="10" end_char="&#8230;" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ if {helper:<strong>empty</strong> value="[[value_0]]"} }}
+{{ helper:lang line="ui_yes" }}
+{{ else }}
+{{ helper:lang line="ui_no" }}
+{{ endif }}
+&lt;br /&gt;
+{{ if {helper:<strong>empty</strong> value="[[value_1]]"} }}
+{{ helper:lang line="ui_yes" }}
+{{ else }}
+{{ helper:lang line="ui_no" }}
+{{ endif }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ if {helper:empty value="[[value_0]]"} }}
+{{ helper:lang line="ui_yes" }}
+{{ else }}
+{{ helper:lang line="ui_no" }}
+{{ endif }}
+<br />
+{{ if {helper:empty value="[[value_1]]"} }}
+{{ helper:lang line="ui_yes" }}
+{{ else }}
+{{ helper:lang line="ui_no" }}
+{{ endif }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ if <strong>exists</strong> value_0 }}
+{{ helper:lang line="ui_yes" }}
+{{ else }}
+{{ helper:lang line="ui_no" }}
+{{ endif }}
+&lt;br /&gt;
+{{ if <strong>exists</strong> value_not_set }}
+{{ helper:lang line="ui_yes" }}
+{{ else }}
+{{ helper:lang line="ui_no" }}
+{{ endif }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ if exists value_0 }}
+{{ helper:lang line="ui_yes" }}
+{{ else }}
+{{ helper:lang line="ui_no" }}
+{{ endif }}
+<br />
+{{ if exists value_not_set }}
+{{ helper:lang line="ui_yes" }}
+{{ else }}
+{{ helper:lang line="ui_no" }}
+{{ endif }}
                                         </td>
                                     </tr>
 

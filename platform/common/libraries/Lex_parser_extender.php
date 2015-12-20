@@ -7,10 +7,8 @@
 
 class Lex_parser_extender {
 
+    public $options;
     protected $ci;
-
-    protected $scope_glue = '.';
-    protected $allow_php = false;
 
     public function __construct() {
 
@@ -40,24 +38,25 @@ class Lex_parser_extender {
         return $data ? $data : null;
     }
 
-    public function set_scope_glue($value) {
+    protected function is_multi_array($array) {
 
-        $this->scope_glue = (string) $value;
+        return (count($array) != count($array, 1));
     }
 
-    public function get_scope_glue() {
+    protected function make_multi_array($array, $i = 0) {
 
-        return $this->scope_glue;
-    }
+        $result = array();
 
-    public function set_allow_php($value) {
+        foreach ($array as $key => $value) {
 
-        $this->allow_php = (bool) $value;
-    }
+            if (is_object($value)) {
+                $result[$key] = (array) $value;
+            } else {
+                $result[$i][$key] = $value;
+            }
+        }
 
-    public function get_allow_php() {
-
-        return $this->allow_php;
+        return $result;
     }
 
 }
