@@ -24,6 +24,7 @@ $config['allowed_functions'] = array(
     'empty',
     'explode',
     'html_entity_decode',
+    'html_escape',
     'htmlentities',
     'htmlspecialchars',
     'htmlspecialchars_decode',

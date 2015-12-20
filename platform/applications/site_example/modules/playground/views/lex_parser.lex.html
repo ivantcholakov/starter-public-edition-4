@@ -189,10 +189,18 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ helper:<strong>count</strong> array="[[ array_1 ]]" }}{{ /noparse }}</code></pre>
+<pre><code>{{ noparse }}{{ helper:<strong>count</strong> array="[[ array_1 ]]" }}
+&lt;br /&gt;
+{{ helper:<strong>count</strong> array="[[ array_2 ]]" }}
+&lt;br /&gt;
+{{ helper:<strong>count</strong> array="[[ array_2 ]]" mode="1" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
 {{ helper:count array="[[ array_1 ]]" }}
+<br />
+{{ helper:count array="[[ array_2 ]]" }}
+<br />
+{{ helper:count array="[[ array_2 ]]" mode="1" }}
                                         </td>
                                     </tr>
 
