@@ -174,7 +174,7 @@ class Parser
                     // Modified by Ivan Tcholakov, 20-DEC-2015.
                     //$text = str_replace($data_matches[0][$index], $val, $text);
                     // Don't try to parse array and object types.
-                    // Interpretatio of these types is to be done later.
+                    // Interpretation of these types is to be done later.
                     if (is_scalar($val)) {
                         $text = str_replace($data_matches[0][$index], $val, $text);
                     }
