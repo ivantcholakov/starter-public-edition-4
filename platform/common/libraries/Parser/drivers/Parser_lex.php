@@ -9,7 +9,7 @@ class CI_Parser_lex extends CI_Parser_driver {
 
     protected $config;
     private $ci;
-    private $extender;
+    private $extensions;
 
     public function initialize()
     {
@@ -22,8 +22,8 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         $this->ci = get_instance();
 
-        $this->ci->load->library('parser_lex_extender');
-        $this->extender = $this->ci->parser_lex_extender;
+        $this->ci->load->library('parser_lex_extensions');
+        $this->extensions = $this->ci->parser_lex_extensions;
 
         // Default configuration options.
 
@@ -98,10 +98,10 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         $data = array_merge($data, $ci->load->_ci_cached_vars);
 
-        $this->extender->options = $config;
-        $this->extender->options['data'] = & $data;
+        $this->extensions->options = $config;
+        $this->extensions->options['data'] = & $data;
 
-        $template = $parser->parse(@ file_get_contents($template), $data, array($this->extender, 'parser_callback'), $config['allow_php']);
+        $template = $parser->parse(@ file_get_contents($template), $data, array($this->extensions, 'parser_callback'), $config['allow_php']);
 
         if ($config['cumulative_noparse']) {
             $template = $parser_class_name::injectNoparse($template);
@@ -150,10 +150,10 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         $data = array_merge($data, $ci->load->_ci_cached_vars);
 
-        $this->extender->options = $config;
-        $this->extender->options['data'] = & $data;
+        $this->extensions->options = $config;
+        $this->extensions->options['data'] = & $data;
 
-        $template = $parser->parse($template, $data, array($this->extender, 'parser_callback'), $config['allow_php']);
+        $template = $parser->parse($template, $data, array($this->extensions, 'parser_callback'), $config['allow_php']);
 
         if ($config['cumulative_noparse']) {
             $template = $parser_class_name::injectNoparse($template);

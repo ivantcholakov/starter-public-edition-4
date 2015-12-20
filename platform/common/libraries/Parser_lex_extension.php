@@ -11,21 +11,20 @@ abstract class Parser_Lex_Extension {
 
     protected $attributes = array();
     protected $content = array();
+    protected $parser_lex_extensions;
     protected $parser_lex_config;
     protected $parser_lex_path;
     protected $parser_lex_class;
     protected $parser_lex_method;
-    protected $parser_lex_extender;
 
     public function __construct() {
 
         $ci = & get_instance();
 
         $ci->load
-            ->parser()
-            ->library('parser_lex_extender');
+            ->library('parser_lex_extensions');
 
-        $this->parser_lex_extender = $ci->parser_lex_extender;
+        $this->parser_lex_extensions = $ci->parser_lex_extensions;
 
         if ($ci->config->load('parser_lex', TRUE, TRUE)) {
             $this->parser_lex_config = $ci->config->item('parser_lex');
@@ -125,13 +124,13 @@ abstract class Parser_Lex_Extension {
 ;
             $parser = new \Lex\Parser;
 
-            $parser->scopeGlue($ci->parser_lex_extender->options['scope_glue']);
-            $parser->cumulativeNoparse($ci->parser_lex_extender->options['cumulative_noparse']);
+            $parser->scopeGlue($ci->parser_lex_extensions->options['scope_glue']);
+            $parser->cumulativeNoparse($ci->parser_lex_extensions->options['cumulative_noparse']);
 
             $attribute = $parser->parse($attribute,
-                $ci->parser_lex_extender->options['data'],
-                array($ci->parser_lex_extender, 'parser_callback'),
-                $ci->parser_lex_extender->options['allow_php']
+                $ci->parser_lex_extensions->options['data'],
+                array($ci->parser_lex_extensions, 'parser_callback'),
+                $ci->parser_lex_extensions->options['allow_php']
             );
         }
 

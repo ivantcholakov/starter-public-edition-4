@@ -43,8 +43,8 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
                     $value = trim($value, "[]{} \t\n\r\0\x0B");
 
-                    if (isset($this->parser_lex_extender->options['data'][$value])) {
-                        $attributes[$key] = $this->parser_lex_extender->options['data'][$value];
+                    if (isset($this->parser_lex_extensions->options['data'][$value])) {
+                        $attributes[$key] = $this->parser_lex_extensions->options['data'][$value];
                     } else {
                         $attributes[$key] = null;
                     }
