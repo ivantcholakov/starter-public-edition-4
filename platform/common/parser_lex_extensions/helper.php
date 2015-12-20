@@ -16,45 +16,6 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     }
 
-    public function _set_data($content, $attributes) {
-
-        $attributes['parse_params'] = false;
-
-        return parent::_set_data($content, $attributes);
-    }
-
-    protected function _prepare_attributes() {
-
-        $attributes = $this->attributes();
-
-        if (isset($attributes['parse_params'])) {
-            unset($attributes['parse_params']);
-        }
-
-        if (isset($attributes['parse-params'])) {
-            unset($attributes['parse-params']);
-        }
-
-        if (!empty($attributes)) {
-
-            foreach ($attributes as $key => $value) {
-
-                if (strpos($value, '{') !== false || strpos($value, '[') !== false ) {
-
-                    $value = trim($value, "[]{} \t\n\r\0\x0B");
-
-                    if (isset($this->parser_lex_extensions->options['data'][$value])) {
-                        $attributes[$key] = $this->parser_lex_extensions->options['data'][$value];
-                    } else {
-                        $attributes[$key] = null;
-                    }
-                }
-            }
-        }
-
-        return $attributes;
-    }
-
     protected function _function_not_found($name) {
 
         return 'The function '.$name.'() has not been found or it is not allowed.';
@@ -64,7 +25,7 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
         if (function_exists($name) && in_array($name, $this->parser_lex_allowed_functions)) {
 
-            $attributes = $this->_prepare_attributes();
+            $attributes = $this->_get_attributes();
 
             return call_user_func_array($name, $attributes);
         }
@@ -80,7 +41,7 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
             return $this->_function_not_found($name);
         }
 
-        $attributes = $this->_prepare_attributes();
+        $attributes = $this->_get_attributes();
 
         if (!empty($attributes)) {
 
@@ -100,7 +61,7 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
             return $this->_function_not_found($name);
         }
 
-        $attributes = $this->_prepare_attributes();
+        $attributes = $this->_get_attributes();
 
         if (!empty($attributes)) {
 
@@ -119,14 +80,14 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     public function lang() {
 
-        $line = $this->attribute('line');
+        $line = $this->_get_attribute('line');
 
         return $this->lang->line($line);
     }
 
     public function config() {
 
-        $item = $this->attribute('item');
+        $item = $this->_get_attribute('item');
 
         return config_item($item);
     }
@@ -135,15 +96,15 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
         $this->load->helper('date');
 
-        $format = $this->attribute('format');
-        $timestamp = $this->attribute('timestamp', time());
+        $format = $this->_get_attribute('format');
+        $timestamp = $this->_get_attribute('timestamp', time());
 
         return format_date($timestamp, $format);
     }
 
     public function timespan() {
 
-        $timespan = date($this->attribute('timestamp', now()));
+        $timespan = date($this->_get_attribute('timestamp', now()));
 
         return timespan($timespan, time());
     }
@@ -152,17 +113,17 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
         static $count = array();
 
-        $key = $this->attribute('identifier', 'default');
+        $key = $this->_get_attribute('identifier', 'default');
 
         if (!isset($count[$key])) {
-            $count[$key] = $this->attribute('start', 1);
+            $count[$key] = $this->_get_attribute('start', 1);
         } elseif (self::$_counter_increment) {
-            ($this->attribute('mode') == 'subtract') ? $count[$key]-- : $count[$key]++;
+            ($this->_get_attribute('mode') == 'subtract') ? $count[$key]-- : $count[$key]++;
         }
 
         self::$_counter_increment = true;
 
-        return (str_to_bool($this->attribute('return', true))) ? $count[$key] : null;
+        return (str_to_bool($this->_get_attribute('return', true))) ? $count[$key] : null;
     }
 
     public function show_counter() {

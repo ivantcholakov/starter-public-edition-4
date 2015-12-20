@@ -80,77 +80,79 @@ abstract class Parser_Lex_Extension {
                 }
             }
 
-            if ($parse_params) {
+            foreach ($attributes as $key => $value) {
 
-                foreach ($attributes as $key => $attr) {
-                    $attributes[$key] = $this->parse_attribute($attr);
+                $value = (string) $value;
+
+                if (
+                    (strpos($value, '{{') !== false && strpos($value, '}}') !== false)
+                    ||
+                    (strpos($value, '[[') !== false && strpos($value, ']]') !== false)
+                ) {
+
+                    if ($parse_params) {
+
+                        $parser = new \Lex\Parser;
+
+                        $parser->scopeGlue($this->parser_lex_extensions->options['scope_glue']);
+                        $parser->cumulativeNoparse(false);
+
+                        $attribute_test = $parser->parse($value,
+                            $this->parser_lex_extensions->options['data'],
+                            array($this->parser_lex_extensions, 'parser_callback'),
+                            $this->parser_lex_extensions->options['allow_php']
+                        );
+
+                    } else {
+
+                        $attribute_test = $value;
+                    }
+
+                    // Check whether the attribute is probaly a single non-scalar value.
+                    if (preg_match('/^(\{\{|\[\[)(.+)(\}\}|\]\])$/m', trim($attribute_test))) {
+
+                        $attribute_test = trim($attribute_test, "[]{} \t\n\r\0\x0B");
+
+                        if (isset($this->parser_lex_extensions->options['data'][$attribute_test])) {
+
+                            // Assign the raw variable value.
+                            $attributes[$key] = $this->parser_lex_extensions->options['data'][$attribute_test];
+
+                        } else {
+
+                            // Give up, leave the attribute as it is.
+                            $attributes[$key] = $value;
+                        }
+
+                    } else {
+
+                        // The parsed attribute likely represents a scalar value, assign it.
+                        $attributes['key'] = $attribute_test;
+                    }
                 }
             }
-
-            $this->parser_lex_attributes = $attributes;
         }
+
+        $this->parser_lex_attributes = $attributes;
     }
 
-    public function content() {
+    public function _get_content() {
 
         return $this->parser_lex_content;
     }
 
-    public function attributes() {
+    public function _get_attributes() {
 
         return $this->parser_lex_attributes;
     }
 
-    public function attribute($attribute, $default = null) {
+    public function _get_attribute($attribute, $default = null) {
 
         return isset($this->parser_lex_attributes[$attribute]) ? $this->parser_lex_attributes[$attribute] : $default;
     }
 
-    public function get_attribute($attribute, $default = null) {
 
-        $attribute = $this->attribute($attribute, $default);
-
-        return $this->parse_attribute($attribute);
-    }
-
-    public function parse_attribute($attribute) {
-
-        // Parse variables, check for brackets.
-        if (strpos($attribute, '[[') !== false) {
-
-            $attribute = str_replace(array('[[', ']]'), array('{{', '}}'), $attribute);
-
-            $ci = & get_instance();
-;
-            $parser = new \Lex\Parser;
-
-            $parser->scopeGlue($ci->parser_lex_extensions->options['scope_glue']);
-            $parser->cumulativeNoparse($ci->parser_lex_extensions->options['cumulative_noparse']);
-
-            $attribute = $parser->parse($attribute,
-                $ci->parser_lex_extensions->options['data'],
-                array($ci->parser_lex_extensions, 'parser_callback'),
-                $ci->parser_lex_extensions->options['allow_php']
-            );
-        }
-
-        return $attribute;
-    }
-
-    public function get_attributes($defaults = array()) {
-
-        $attributes = $this->parser_lex_attributes();
-
-        foreach ($attributes as $attribute => & $value) {
-
-            $default = isset($defaults[$attribute]) ? $defaults[$attribute] : null;
-            $value = $this->get_attribute($attribute);
-        }
-
-        return $attributes;
-    }
-
-    public function set_attribute($attribute, $value) {
+    public function _set_attribute($attribute, $value) {
 
         $this->parser_lex_attributes[$attribute] = $value;
     }
