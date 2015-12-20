@@ -38,6 +38,7 @@ class Lex_parser_controller extends Base_Controller {
             ->set('name', 'John')
             ->set('array_1', array('one', 'two', 'three'))
             ->set('array_2', array('one', 'two', 'three', array('four', 'five')))
+            ->set('string_123', 'one, two, three')
             ->set('very_long_text', 'Very long text. Very long text. Very long text. Very long text.')
             ->set('value_0', 0)
             ->set('value_1', 1)

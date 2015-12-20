@@ -49,6 +49,15 @@ License: The MIT License, http://opensource.org/licenses/MIT
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ template:title }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ template:title }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}Hello, {{ name }}!{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
@@ -94,10 +103,10 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ template:title }}{{ /noparse }}</code></pre>
+<pre><code>{{ noparse }}{{ string_123 }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
-{{ template:title }}
+{{ string_123 }}
                                         </td>
                                     </tr>
 
@@ -201,6 +210,15 @@ Hello, {{ name }}!
 {{ helper:count array="[[ array_2 ]]" }}
 <br />
 {{ helper:count array="[[ array_2 ]]" mode="1" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:implode glue=";" pieces="[[ helper:<strong>explode</strong> delimiter="," string="1, 2, 3" ]]" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:implode glue=";" pieces="[[ helper:explode delimiter="," string="1, 2, 3" ]]" }}
                                         </td>
                                     </tr>
 
