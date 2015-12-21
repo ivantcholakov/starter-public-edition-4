@@ -296,6 +296,19 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ helper:<strong>humanize</strong> string="FILE_READ_MODE" }}
+&lt;br /&gt;
+{{ helper:<strong>humanize</strong> string="FILE_READ_MODE" separator="_" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:humanize string="FILE_READ_MODE" }}
+<br />
+{{ helper:humanize string="FILE_READ_MODE" separator="_" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}{{ helper:<strong>lang</strong> line="welcome.hello" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
