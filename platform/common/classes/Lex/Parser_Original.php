@@ -364,7 +364,10 @@ class Parser
     public function parseRecursives($text, $orig_text, $callback)
     {
         // Is there a {{ *recursive [array_key]* }} tag here, let's loop through it.
-        if (preg_match($this->recursiveRegex, $text, $match)) {
+        // Modified by Ivan Tcholakov, 20-DEC-2015.
+        //if (preg_match($this->recursiveRegex, $text, $match)) {
+        if (is_scalar($text) && preg_match($this->recursiveRegex, $text, $match)) {
+        //
             $array_key = $match[1];
             $tag = $match[0];
             $next_tag = null;
