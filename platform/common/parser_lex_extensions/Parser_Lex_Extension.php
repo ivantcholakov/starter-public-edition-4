@@ -128,8 +128,8 @@ abstract class Parser_Lex_Extension {
 
                         } else {
 
-                            // Give up, leave the attribute as it is.
-                            $attributes[$key] = $value;
+                            // Give up, set the attribute to NULL.
+                            $attributes[$key] = null;
                         }
 
                     } else {
