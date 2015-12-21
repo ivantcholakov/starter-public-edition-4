@@ -78,13 +78,19 @@ abstract class Parser_Lex_Extension {
                 }
             }
 
+            if (isset($attributes['parse_params'])) {
+                unset($attributes['parse_params']);
+            }
+
+            if (isset($attributes['parse-params'])) {
+                unset($attributes['parse-params']);
+            }
+
             foreach ($attributes as $key => $value) {
 
                 $value = (string) $value;
 
                 if (
-                    (strpos($value, '{{') !== false && strpos($value, '}}') !== false)
-                    ||
                     (strpos($value, '[[') !== false && strpos($value, ']]') !== false)
                 ) {
 
@@ -111,7 +117,7 @@ abstract class Parser_Lex_Extension {
                     }
 
                     // Check whether the attribute is probaly a single non-scalar value.
-                    if (preg_match('/^(\{\{|\[\[)(.+)(\}\}|\]\])$/m', trim($attribute_test))) {
+                    if (preg_match('/^(\{\{|\[\[)(.+)(\}\}|\]\])$/ms', trim($attribute_test))) {
 
                         $attribute_test = trim($attribute_test, "[]{} \t\n\r\0\x0B");
 

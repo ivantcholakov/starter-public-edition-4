@@ -22,7 +22,7 @@ $config['allowed_functions'] = array(
     'character_limiter',
     'count',
     'empty',
-    'explode',
+    //'explode',
     'html_entity_decode',
     'html_escape',
     'htmlentities',
