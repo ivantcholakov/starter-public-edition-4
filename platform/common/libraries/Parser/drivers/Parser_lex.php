@@ -5,6 +5,8 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
+require_once COMMONPATH.'parser_lex_extensions/Parser_Lex_Extensions.php';
+
 class CI_Parser_lex extends CI_Parser_driver {
 
     protected $config;
@@ -22,8 +24,7 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         $this->ci = get_instance();
 
-        $this->ci->load->library('parser_lex_extensions');
-        $this->extensions = $this->ci->parser_lex_extensions;
+        $this->extensions = new Parser_Lex_Extensions;
 
         // Default configuration options.
 

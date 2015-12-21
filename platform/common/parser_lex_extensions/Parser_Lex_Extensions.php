@@ -5,12 +5,13 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-require_once dirname(__FILE__).'/Parser_lex_extension.php';
+require_once dirname(__FILE__).'/Parser_Lex_Extension.php';
 
-class Parser_lex_extensions {
+class Parser_Lex_Extensions {
 
     public $options; // Used for accessing data from Parser_lex driver.
-    protected $loaded = array();
+    protected $ci;
+    protected static $loaded = array();
 
     public function __construct() {
 
@@ -72,29 +73,37 @@ class Parser_lex_extensions {
         foreach (array(APPPATH, COMMONPATH) as $directory) {
 
             if (file_exists($path = $directory.'parser_lex_extensions/'.$class.'.php')) {
-                return $this->_process($path, $class, $method, $attributes, $content);
+                return $this->process($path, $class, $method, $attributes, $content);
             }
         }
     }
 
-    protected function _process($path, $class, $method, $attributes, $content) {
+    protected function process($path, $class, $method, $attributes, $content) {
 
         $class = strtolower($class);
         $class_name = 'Parser_Lex_Extension_'.ucfirst($class);
 
-        if (!isset($this->loaded[$class])) {
+        if (!isset(self::$loaded[$class])) {
 
             include_once $path;
-            $this->loaded[$class] = true;
+            self::$loaded[$class] = true;
         }
 
         if (!class_exists($class_name, false)) {
 
-            log_message('error', 'Parser_Lex_Extension class "'.$class_name.'" does not exist.');
+            log_message('error', 'Class '.$class_name.' does not exist.');
             return false;
         }
 
         $object = new $class_name;
+
+        if (@ !is_a($object, 'Parser_Lex_Extension')) {
+
+            log_message('error', 'Class '.$class_name.' has not been derived from Parser_Lex_Extension class.');
+            return false;
+        }
+
+        $object->_set_creator($this);
         $object->_set_path($path);
         $object->_set_class($class);
         $object->_set_method($method);
@@ -118,7 +127,7 @@ class Parser_lex_extensions {
                 return true;
             }
 
-            log_message('error', 'Parser_Lex_Extension method "'.$method.'" does not exist on class "'.$class_name.'".');
+            log_message('error', 'Method '.$method.'() does not exist on the class "'.$class_name.'".');
             return false;
         }
 

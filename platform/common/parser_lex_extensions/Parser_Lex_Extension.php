@@ -19,15 +19,8 @@ abstract class Parser_Lex_Extension {
 
     public function __construct() {
 
-        $ci = & get_instance();
-
-        $ci->load
-            ->library('parser_lex_extensions');
-
-        $this->parser_lex_extensions = $ci->parser_lex_extensions;
-
-        if ($ci->config->load('parser_lex', TRUE, TRUE)) {
-            $this->parser_lex_config = $ci->config->item('parser_lex');
+        if ($this->config->load('parser_lex', TRUE, TRUE)) {
+            $this->parser_lex_config = $this->config->item('parser_lex');
         } else {
             $this->parser_lex_config = array();
         }
@@ -42,6 +35,11 @@ abstract class Parser_Lex_Extension {
         }
 
         return null;
+    }
+
+    public function _set_creator($object) {
+
+        $this->parser_lex_extensions = $object;
     }
 
     public function _set_path($path) {
@@ -92,15 +90,19 @@ abstract class Parser_Lex_Extension {
 
                     if ($parse_params) {
 
-                        $parser = new \Lex\Parser;
+                        $this->load->parser();
 
-                        $parser->scopeGlue($this->parser_lex_extensions->options['scope_glue']);
-                        $parser->cumulativeNoparse(false);
-
-                        $attribute_test = $parser->parse($value,
+                        $attribute_test = $this->parser->parse_string(
+                            $value,
                             $this->parser_lex_extensions->options['data'],
-                            array($this->parser_lex_extensions, 'parser_callback'),
-                            $this->parser_lex_extensions->options['allow_php']
+                            true,
+                            array(
+                                'lex' => array(
+                                    'cumulative_noparse' => false,
+                                    'scope_glue' => $this->parser_lex_extensions->options['scope_glue'],
+                                    'allow_php' => $this->parser_lex_extensions->options['allow_php'],
+                                )
+                            )
                         );
 
                     } else {
@@ -127,7 +129,7 @@ abstract class Parser_Lex_Extension {
                     } else {
 
                         // The parsed attribute likely represents a scalar value, assign it.
-                        $attributes['key'] = $attribute_test;
+                        $attributes[$key] = $attribute_test;
                     }
                 }
             }
@@ -150,7 +152,6 @@ abstract class Parser_Lex_Extension {
 
         return isset($this->parser_lex_attributes[$attribute]) ? $this->parser_lex_attributes[$attribute] : $default;
     }
-
 
     public function _set_attribute($attribute, $value) {
 
