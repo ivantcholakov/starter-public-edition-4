@@ -166,6 +166,20 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ countries_10 }}
+{{ helper:<strong>counter</strong> }} -- ({{ code }}) {{ name }}&lt;br /&gt;
+{{ /countries_10 }}
+{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ countries_10 }}
+{{ helper:counter }} -- ({{ code }}) {{ name }}<br />
+{{ /countries_10 }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}{{ if {helper:<strong>empty</strong> value="[[value_0]]"} }}
 {{ helper:lang line="ui_yes" }}
 {{ else }}

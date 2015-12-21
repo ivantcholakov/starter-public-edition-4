@@ -33,6 +33,9 @@ class Lex_parser_controller extends Base_Controller {
             return;
         }
 
+        $countries = $this->_get_country_data();
+        $countries_10 = array_slice($countries, 0, 10);
+
         $this->template
             ->set('br', '<br />')
             ->set('name', 'John')
@@ -46,8 +49,25 @@ class Lex_parser_controller extends Base_Controller {
             ->set('value_3', 3)
             ->set('dog', "I'll \"walk\" the <b>dog</b> now.")
             ->set('dog_entities', htmlentities("I'll \"walk\" the <b>dog</b> now.", ENT_QUOTES, 'UTF-8'))
+            ->set('countries', $countries)
+            ->set('countries_10', $countries_10)
             ->enable_parser_body('lex')
             ->build('lex_parser.lex.html');
+    }
+
+    protected function _get_country_data() {
+
+        $csv = (string) @ file_get_contents(APPPATH.'demo_data/countries.csv');
+
+        $items = preg_split('/\r\n|\r|\n/m', $csv, null, PREG_SPLIT_NO_EMPTY);
+
+        foreach ($items as & $item) {
+
+            $values = explode(';', $item);
+            $item = (array('code' => $values[0], 'name' => $values[1]));
+        }
+
+        return $items;
     }
 
 }
