@@ -287,6 +287,15 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ helper:<strong>htmlspecialchars_decode</strong> string="[[ dog_entities ]]" flags="3" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:htmlspecialchars_decode string="[[ dog_entities ]]" flags="3" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}{{ helper:<strong>lang</strong> line="welcome.hello" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
