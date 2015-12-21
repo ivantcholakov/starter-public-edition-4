@@ -136,15 +136,6 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ helper:<strong>lang</strong> line="welcome.hello" }}{{ /noparse }}</code></pre>
-                                        </td>
-                                        <td>
-{{ helper:lang line="welcome.hello" }}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
 <pre><code>{{ noparse }}{{ helper:<strong>character_limiter</strong> str="Very long text. Very long text." n="10" }}
 &lt;br /&gt;
 {{ helper:<strong>character_limiter</strong> str="[[very_long_text]]" n="10" end_char="&amp;#8230;" }}{{ /noparse }}</code></pre>
@@ -153,6 +144,23 @@ Hello, {{ name }}!
 {{ helper:character_limiter str="Very long text. Very long text." n="10" }}
 <br />
 {{ helper:character_limiter str="[[very_long_text]]" n="10" end_char="&#8230;" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>count</strong> array="[[ array_1 ]]" }}
+&lt;br /&gt;
+{{ helper:<strong>count</strong> array="[[ array_2 ]]" }}
+&lt;br /&gt;
+{{ helper:<strong>count</strong> array="[[ array_2 ]]" mode="1" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:count array="[[ array_1 ]]" }}
+<br />
+{{ helper:count array="[[ array_2 ]]" }}
+<br />
+{{ helper:count array="[[ array_2 ]]" mode="1" }}
                                         </td>
                                     </tr>
 
@@ -216,27 +224,19 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ helper:<strong>count</strong> array="[[ array_1 ]]" }}
-&lt;br /&gt;
-{{ helper:<strong>count</strong> array="[[ array_2 ]]" }}
-&lt;br /&gt;
-{{ helper:<strong>count</strong> array="[[ array_2 ]]" mode="1" }}{{ /noparse }}</code></pre>
+<pre><code>{{ noparse }}{{ helper:<strong>htmlentities</strong> string="[[ dog ]]" flags="3" encoding="UTF-8" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
-{{ helper:count array="[[ array_1 ]]" }}
-<br />
-{{ helper:count array="[[ array_2 ]]" }}
-<br />
-{{ helper:count array="[[ array_2 ]]" mode="1" }}
+{{ helper:htmlentities string="[[ dog ]]" flags="3" encoding="UTF-8" }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ helper:<strong>htmlentities</strong> string="[[ dog ]]" flags="3" encoding="UTF-8" }}{{ /noparse }}</code></pre>
+<pre><code>{{ noparse }}{{ helper:<strong>lang</strong> line="welcome.hello" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
-{{ helper:htmlentities string="[[ dog ]]" flags="3" encoding="UTF-8" }}
+{{ helper:lang line="welcome.hello" }}
                                         </td>
                                     </tr>
 
