@@ -370,6 +370,33 @@ Hello, {{ name }}!
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>ltrim</strong> str="****STRING****" character_mask="*" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:ltrim str="****STRING****" character_mask="*" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>rtrim</strong> str="****STRING****" character_mask="*" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:rtrim str="****STRING****" character_mask="*" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>trim</strong> str="****STRING****" character_mask="*" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:trim str="****STRING****" character_mask="*" }}
+                                        </td>
+                                    </tr>
+
                                 </tbody>
 
                             </table>

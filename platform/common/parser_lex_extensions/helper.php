@@ -133,4 +133,49 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return self::counter();
     }
 
+    public function ltrim() {
+
+        $name = 'ltrim';
+
+        if (!in_array($name, $this->parser_lex_allowed_functions)) {
+            return $this->_function_not_found($name);
+        }
+
+        $attributes = $this->_get_attributes();
+
+        return IS_UTF8_CHARSET
+            ? call_user_func_array(array('UTF8', $name), $attributes)
+            : call_user_func_array($name, $attributes);
+    }
+
+    public function rtrim() {
+
+        $name = 'rtrim';
+
+        if (!in_array($name, $this->parser_lex_allowed_functions)) {
+            return $this->_function_not_found($name);
+        }
+
+        $attributes = $this->_get_attributes();
+
+        return IS_UTF8_CHARSET
+            ? call_user_func_array(array('UTF8', $name), $attributes)
+            : call_user_func_array($name, $attributes);
+    }
+
+    public function trim() {
+
+        $name = 'trim';
+
+        if (!in_array($name, $this->parser_lex_allowed_functions)) {
+            return $this->_function_not_found($name);
+        }
+
+        $attributes = $this->_get_attributes();
+
+        return IS_UTF8_CHARSET
+            ? call_user_func_array(array('UTF8', $name), $attributes)
+            : call_user_func_array($name, $attributes);
+    }
+
 }
