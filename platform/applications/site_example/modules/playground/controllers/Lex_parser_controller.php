@@ -38,6 +38,7 @@ class Lex_parser_controller extends Base_Controller {
 
         $this->template
             ->set('br', '<br />')
+            ->set('hr', '<hr />')
             ->set('name', 'John')
             ->set('array_1', array('one', 'two', 'three'))
             ->set('array_2', array('one', 'two', 'three', array('four', 'five')))

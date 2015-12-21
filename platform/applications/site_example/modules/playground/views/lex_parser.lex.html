@@ -169,12 +169,25 @@ Hello, {{ name }}!
 <pre><code>{{ noparse }}{{ countries_10 }}
 {{ helper:<strong>counter</strong> }} -- ({{ code }}) {{ name }}&lt;br /&gt;
 {{ /countries_10 }}
-{{ /noparse }}</code></pre>
+&lt;hr /&gt;
+{{ countries_10 }}
+{{ helper:<strong>counter</strong> identifier="countries_2" return="false" }}{{ helper:<strong>counter</strong> identifier="countries_3" mode="subtract" start="10" }} -- ({{ code }}) {{ name }}&lt;br /&gt;
+{{ /countries_10 }}
+----------------------------
+&lt;br /&gt;
+{{ helper:<strong>show_counter</strong> identifier="countries_2" }} countries.{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
 {{ countries_10 }}
 {{ helper:counter }} -- ({{ code }}) {{ name }}<br />
 {{ /countries_10 }}
+<hr />
+{{ countries_10 }}
+{{ helper:counter identifier="countries_2" return="false" }}{{ helper:counter identifier="countries_3" mode="subtract" start="10" }} -- ({{ code }}) {{ name }}<br />
+{{ /countries_10 }}
+----------------------------
+<br />
+{{ helper:show_counter identifier="countries_2" }} countries.
                                         </td>
                                     </tr>
 
