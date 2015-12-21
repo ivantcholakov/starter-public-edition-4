@@ -44,6 +44,8 @@ class Lex_parser_controller extends Base_Controller {
             ->set('value_1', 1)
             ->set('value_2', 2)
             ->set('value_3', 3)
+            ->set('dog', "I'll \"walk\" the <b>dog</b> now.")
+            ->set('dog_entities', htmlentities("I'll \"walk\" the <b>dog</b> now.", ENT_QUOTES, 'UTF-8'))
             ->enable_parser_body('lex')
             ->build('lex_parser.lex.html');
     }

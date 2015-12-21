@@ -110,6 +110,24 @@ Hello, {{ name }}!
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ dog }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ dog }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ dog_entities }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ dog_entities }}
+                                        </td>
+                                    </tr>
+
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>Helper Functions</h4>
@@ -210,6 +228,15 @@ Hello, {{ name }}!
 {{ helper:count array="[[ array_2 ]]" }}
 <br />
 {{ helper:count array="[[ array_2 ]]" mode="1" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>htmlentities</strong> string="[[ dog ]]" flags="3" encoding="UTF-8" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:htmlentities string="[[ dog ]]" flags="3" encoding="UTF-8" }}
                                         </td>
                                     </tr>
 
