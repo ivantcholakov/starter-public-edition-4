@@ -381,6 +381,42 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ helper:<strong>md5</strong> str="****STRING****" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:md5 str="****STRING****" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>money_format</strong> format="%i" number="1234.56" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:money_format format="%i" number="1234.56" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>nl2br</strong> string="[[ with_a_new_line ]]" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:nl2br string="[[ with_a_new_line ]]" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>number_format</strong> number="1234.56" decimals="2" dec_point="," thousands_sep=" " }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:number_format number="1234.56" decimals="2" dec_point="," thousands_sep=" " }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}{{ helper:<strong>rtrim</strong> str="****STRING****" character_mask="*" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
