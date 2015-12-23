@@ -5,13 +5,10 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-require_once COMMONPATH.'parser_lex_extensions/Parser_Lex_Extensions.php';
-
 class CI_Parser_lex extends CI_Parser_driver {
 
     protected $config;
     private $ci;
-    private $extensions;
 
     public function initialize()
     {
@@ -24,8 +21,6 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         $this->ci = get_instance();
 
-        $this->extensions = new Parser_Lex_Extensions;
-
         // Default configuration options.
 
         $this->config = array(
@@ -36,7 +31,14 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         if ($this->ci->config->load('parser_lex', TRUE, TRUE))
         {
-            $this->config = array_merge($this->config, $this->ci->config->item('parser_lex'));
+            $defaults = $this->ci->config->item('parser_lex');
+
+            if (array_key_exists('allowed_functions', $defaults))
+            {
+                unset($defaults['allowed_functions']);
+            }
+
+            $this->config = array_merge($this->config, $defaults);
         }
 
         // Injecting configuration options directly.
@@ -78,9 +80,7 @@ class CI_Parser_lex extends CI_Parser_driver {
             $template = $ci->load->path($template);
         }
 
-        $parser_reflection = new ReflectionClass('Lex\Parser');
-        $parser = $parser_reflection->newInstance();
-        $parser_class_name = get_class($parser);
+        $parser = new Parser_Lex_Extensions;
 
         $parser->scopeGlue($config['scope_glue']);
         $parser->cumulativeNoparse($config['cumulative_noparse']);
@@ -99,13 +99,13 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         $data = array_merge($data, $ci->load->_ci_cached_vars);
 
-        $this->extensions->options = $config;
-        $this->extensions->options['data'] = & $data;
+        $parser->parser_options = $config;
 
-        $template = $parser->parse(@ file_get_contents($template), $data, array($this->extensions, 'parser_callback'), $config['allow_php']);
+        $template = $parser->parse(@ file_get_contents($template), $data, array($parser, 'parser_callback'), $config['allow_php']);
 
-        if ($config['cumulative_noparse']) {
-            $template = $parser_class_name::injectNoparse($template);
+        if ($config['cumulative_noparse'])
+        {
+            $template = Parser_Lex_Extensions::injectNoparse($template);
         }
 
         return $this->output($template, $return, $ci, $is_mx);
@@ -130,9 +130,7 @@ class CI_Parser_lex extends CI_Parser_driver {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
-        $parser_reflection = new ReflectionClass('Lex\Parser');
-        $parser = $parser_reflection->newInstance();
-        $parser_class_name = get_class($parser);
+        $parser = new Parser_Lex_Extensions;
 
         $parser->scopeGlue($config['scope_glue']);
         $parser->cumulativeNoparse($config['cumulative_noparse']);
@@ -151,13 +149,13 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         $data = array_merge($data, $ci->load->_ci_cached_vars);
 
-        $this->extensions->options = $config;
-        $this->extensions->options['data'] = & $data;
+        $parser->parser_options = $config;
 
-        $template = $parser->parse($template, $data, array($this->extensions, 'parser_callback'), $config['allow_php']);
+        $template = $parser->parse($template, $data, array($parser, 'parser_callback'), $config['allow_php']);
 
-        if ($config['cumulative_noparse']) {
-            $template = $parser_class_name::injectNoparse($template);
+        if ($config['cumulative_noparse'])
+        {
+            $template = Parser_Lex_Extensions::injectNoparse($template);
         }
 
         return $this->output($template, $return, $ci, $is_mx);

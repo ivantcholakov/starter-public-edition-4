@@ -128,6 +128,57 @@ Hello, {{ name }}!
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>var</strong> name="dog" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:var name="dog" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="info">
+                                        <td colspan="2">
+                                            <h4>Variables - Debugging Previews</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>var</strong> name="array_1" mode="var_dump" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:var name="array_1" mode="var_dump" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>var</strong> name="array_1" mode="var_export" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:var name="array_1" mode="var_export" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>var</strong> name="array_1" mode="print_r" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:var name="array_1" mode="print_r" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>var</strong> name="array_1" mode="print_d" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:var name="array_1" mode="print_d" }}
+                                        </td>
+                                    </tr>
+
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>Helper Functions</h4>
@@ -412,6 +463,45 @@ Hello, {{ name }}!
                                         </td>
                                         <td>
 {{ helper:number_format number="1234.56" decimals="2" dec_point="," thousands_sep=" " }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>preg_match</strong> pattern="/^(\.*)def/" subject="abcdef" matches="matches" flags="0" offset="0" }}
+&lt;br /&gt;
+Matches:
+&lt;br /&gt;
+{{ helper:var name="matches" mode="print_d" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:preg_match pattern="/^(\.*)def/" subject="abcdef" matches="matches" flags="0" offset="0" }}
+<br />
+Matches:
+<br />
+{{ helper:var name="matches" mode="print_d" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>preg_match_all</strong> pattern="/def/" subject="abcdefabcdef" matches="" flags="0" offset="0" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:preg_match_all pattern="/def/" subject="abcdefabcdef" matches="" flags="0" offset="0" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>preg_replace</strong> pattern="/def/" replacement="defg" subject="abcdefabcdef" limit="-1" count="replacement_count" }}
+&lt;br /&gt;
+Replacement count: {{ helper:var name="replacement_count" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:preg_replace pattern="/def/" replacement="defg" subject="abcdefabcdef" limit="-1" count="replacement_count" }}
+<br />
+Replacement count: {{ helper:var name="replacement_count" }}
                                         </td>
                                     </tr>
 

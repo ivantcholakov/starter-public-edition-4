@@ -41,6 +41,7 @@ $config['allowed_functions'] = array(
     'nl2br',
     'number_format',
     'preg_match',
+    'preg_match_all',
     'preg_replace',
     'rand_string',
     'rtrim',

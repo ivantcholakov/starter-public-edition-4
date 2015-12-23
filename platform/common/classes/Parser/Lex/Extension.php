@@ -9,20 +9,20 @@
 
 abstract class Parser_Lex_Extension {
 
-    protected $parser_lex_attributes = array();
-    protected $parser_lex_content = array();
-    protected $parser_lex_extensions;
-    protected $parser_lex_config;
-    protected $parser_lex_path;
-    protected $parser_lex_class;
-    protected $parser_lex_method;
+    protected $parsed_attributes = array();
+    protected $parsed_content = array();
+    protected $parser_instance;
+    protected $extension_config;
+    protected $extension_path;
+    protected $extension_class;
+    protected $extension_method;
 
     public function __construct() {
 
         if ($this->config->load('parser_lex', TRUE, TRUE)) {
-            $this->parser_lex_config = $this->config->item('parser_lex');
+            $this->extension_config = $this->config->item('parser_lex');
         } else {
-            $this->parser_lex_config = array();
+            $this->extension_config = array();
         }
     }
 
@@ -37,29 +37,29 @@ abstract class Parser_Lex_Extension {
         return null;
     }
 
-    public function _set_creator($object) {
+    public function set_parser_instance($object) {
 
-        $this->parser_lex_extensions = $object;
+        $this->parser_instance = $object;
     }
 
-    public function _set_path($path) {
+    public function set_extension_path($path) {
 
-        $this->parser_lex_path = $path;
+        $this->extension_path = $path;
     }
 
-    public function _set_class($class) {
+    public function set_extension_class($class) {
 
-        $this->parser_lex_class = $class;
+        $this->extension_class = $class;
     }
 
-    public function _set_method($method) {
+    public function set_extension_method($method) {
 
-        $this->parser_lex_method = $method;
+        $this->extension_method = $method;
     }
 
-    public function _set_data($content, $attributes) {
+    public function set_extension_data($content, $attributes) {
 
-        $content AND $this->parser_lex_content = $content;
+        $content AND $this->parsed_content = $content;
 
         if ($attributes) {
 
@@ -96,19 +96,16 @@ abstract class Parser_Lex_Extension {
 
                     if ($parse_params) {
 
-                        $this->load->parser();
+                        $parser = new Parser_Lex_Extensions;
 
-                        $attribute_test = $this->parser->parse_string(
+                        $parser->scopeGlue($this->parser_instance->parser_options['scope_glue']);
+                        $parser->cumulativeNoparse($this->parser_instance->parser_options['cumulative_noparse']);
+
+                        $attribute_test = $parser->parse(
                             $value,
-                            $this->parser_lex_extensions->options['data'],
-                            true,
-                            array(
-                                'lex' => array(
-                                    'cumulative_noparse' => false,
-                                    'scope_glue' => $this->parser_lex_extensions->options['scope_glue'],
-                                    'allow_php' => $this->parser_lex_extensions->options['allow_php'],
-                                )
-                            )
+                            $this->parser_instance->parser_data,
+                            array($this->parser_instance, 'parser_callback'),
+                            $this->parser_instance->parser_options['allow_php']
                         );
 
                     } else {
@@ -121,10 +118,10 @@ abstract class Parser_Lex_Extension {
 
                         $attribute_test = trim($attribute_test, "[]{} \t\n\r\0\x0B");
 
-                        if (isset($this->parser_lex_extensions->options['data'][$attribute_test])) {
+                        if (isset($this->parser_instance->parser_data[$attribute_test])) {
 
                             // Assign the raw variable value.
-                            $attributes[$key] = $this->parser_lex_extensions->options['data'][$attribute_test];
+                            $attributes[$key] = $this->parser_instance->parser_data[$attribute_test];
 
                         } else {
 
@@ -141,27 +138,27 @@ abstract class Parser_Lex_Extension {
             }
         }
 
-        $this->parser_lex_attributes = $attributes;
+        $this->parsed_attributes = $attributes;
     }
 
-    public function _get_content() {
+    public function get_content() {
 
-        return $this->parser_lex_content;
+        return $this->parsed_content;
     }
 
-    public function _get_attributes() {
+    public function get_attributes() {
 
-        return $this->parser_lex_attributes;
+        return $this->parsed_attributes;
     }
 
-    public function _get_attribute($attribute, $default = null) {
+    public function get_attribute($attribute, $default = null) {
 
-        return isset($this->parser_lex_attributes[$attribute]) ? $this->parser_lex_attributes[$attribute] : $default;
+        return isset($this->parsed_attributes[$attribute]) ? $this->parsed_attributes[$attribute] : $default;
     }
 
-    public function _set_attribute($attribute, $value) {
+    public function set_attribute($attribute, $value) {
 
-        $this->parser_lex_attributes[$attribute] = $value;
+        $this->parsed_attributes[$attribute] = $value;
     }
 
 }
