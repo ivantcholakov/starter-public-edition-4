@@ -363,6 +363,16 @@ if (!function_exists('url_title') && IS_UTF8_CHARSET) {
 
 }
 
+if (!function_exists('slugify')) {
+
+    // A function for compatibility with PyroCMS.
+    function slugify($str, $separator = '-') {
+
+        return url_title($str, $separator, true);
+    }
+
+}
+
 if (!function_exists('gmap_url')) {
 
     /**

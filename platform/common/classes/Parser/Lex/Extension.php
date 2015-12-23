@@ -151,6 +151,15 @@ abstract class Parser_Lex_Extension {
         return $this->parsed_attributes;
     }
 
+    public function get_attribute_values() {
+
+        if (empty($this->parsed_attributes) || !is_array($this->parsed_attributes)) {
+            return array();
+        }
+
+        return array_values($this->parsed_attributes);
+    }
+
     public function get_attribute($attribute, $default = null) {
 
         return isset($this->parsed_attributes[$attribute]) ? $this->parsed_attributes[$attribute] : $default;

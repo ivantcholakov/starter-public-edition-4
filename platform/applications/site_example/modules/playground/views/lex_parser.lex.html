@@ -302,6 +302,15 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}&lt;a href="{{ helper:<strong>gmap_url</strong> latitude='42.66667' longitude='25.25' zoom='6' show_marker='true' }}" target="_blank"&gt;Bulgaria&lt;/a&gt;{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+<a href="{{ helper:gmap_url latitude='42.66667' longitude='25.25' zoom='6' show_marker='true' }}" target="_blank">Bulgaria</a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}{{ helper:<strong>html_entity_decode</strong> string="[[ dog_entities ]]" flags="3" encoding="UTF-8" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
@@ -373,6 +382,78 @@ Hello, {{ name }}!
                                         </td>
                                         <td>
 {{ helper:is_array var="[[ array_1 ]]" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}&lt;div id=&quot;map_canvas&quot; class=&quot;google-maps&quot;&gt;&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;{{ if helper:<strong>is_https</strong> }}https:{{ else }}http:{{ endif }}//maps.google.com/maps/api/js?sensor=false&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+//&lt;![CDATA[
+
+$(function() {
+
+    var map;
+    var map_marker;
+
+    var data = {
+        latitude: 42.66667,
+        longitude: 25.25,
+        zoom: 6
+    }
+
+    var position = new google.maps.LatLng(data.latitude, data.longitude);
+
+    var options = {
+         center: position,
+         zoom: data.zoom,
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+     };
+
+     map = new google.maps.Map(document.getElementById(&#039;map_canvas&#039;), options);
+     map_marker = new google.maps.Marker({map: map, position: position});
+});
+
+//]]&gt;
+&lt;/script&gt;{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+<div id="map_canvas" class="google-maps"></div>
+
+<script type="text/javascript" src="{{ if helper:is_https }}https:{{ else }}http:{{ endif }}//maps.google.com/maps/api/js?sensor=false"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+
+$(function() {
+
+    var map;
+    var map_marker;
+
+    var data = {
+        latitude: 42.66667,
+        longitude: 25.25,
+        zoom: 6
+    }
+
+    var position = new google.maps.LatLng(data.latitude, data.longitude);
+
+    var options = {
+         center: position,
+         zoom: data.zoom,
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+     };
+
+     map = new google.maps.Map(document.getElementById('map_canvas'), options);
+     map_marker = new google.maps.Marker({map: map, position: position});
+});
+
+//]]>
+</script>
+
                                         </td>
                                     </tr>
 
@@ -516,10 +597,45 @@ Replacement count: {{ helper:var name="replacement_count" }}
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ helper:<strong>safe_mailto</strong> email="contact@example.com" title=="Contact Us" attributes='alt="Contact Us"' }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:safe_mailto email="contact@example.com" title=="Contact Us" attributes='alt="Contact Us"' }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>slugify</strong> str="Pink Floyd" separator="-" }}
+&lt;br /&gt;
+{{ helper:<strong>slugify</strong> str="Пинк Флойд" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:slugify str="Pink Floyd" separator="-" }}
+<br />
+{{ helper:slugify str="Пинк Флойд" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}{{ helper:<strong>trim</strong> str="****STRING****" character_mask="*" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
 {{ helper:trim str="****STRING****" character_mask="*" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>url_title</strong> str="Limp Bizkit" separator="-" lowercase="true" }}
+&lt;br /&gt;
+{{ helper:<strong>url_title</strong> str="Лимп Бизкит" separator="-" lowercase="true" transliterate_to_ascii="true" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:url_title str="Limp Bizkit" separator="-" lowercase="true" }}
+<br />
+{{ helper:url_title str="Лимп Бизкит" separator="-" lowercase="true" transliterate_to_ascii="true" }}
                                         </td>
                                     </tr>
 

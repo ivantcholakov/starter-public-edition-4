@@ -41,16 +41,9 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
             return $this->_function_not_found($name);
         }
 
-        $attributes = $this->get_attributes();
+        $attributes = $this->get_attribute_values();
 
-        if (!empty($attributes)) {
-
-            foreach ($attributes as $value) {
-                return empty($value);
-            }
-        }
-
-        return true;
+        return empty($attributes[0]);
     }
 
     public function _func_isset() {

@@ -15,6 +15,7 @@ class Lex_parser_controller extends Base_Controller {
             ->language('welcome')
             ->helper('text')
             ->helper('inflector')
+            ->helper('url')
         ;
 
         $this->template
