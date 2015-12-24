@@ -270,6 +270,44 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return call_user_func_array($name, $attributes);
     }
 
+    public function str_replace() {
+
+        $name = 'str_replace';
+
+        if (!in_array($name, $this->parser_allowed_functions)) {
+            return $this->_function_not_found($name);
+        }
+
+        $attributes = $this->get_attributes();
+
+        if (count($attributes) >= 4) {
+
+            $i = 0;
+
+            foreach ($attributes as $key => $count_attr) {
+
+                if ($i == 3) {
+                    break;
+                }
+
+                $i++;
+            }
+
+            if (!str_to_bool($count_attr) || str_to_bool($count_attr, true)) {
+
+                $count = 0;
+                $attributes[$key] = & $count;
+
+            } else {
+
+                $this->parser_instance->parser_data[$count_attr] = 0;
+                $attributes[$key] = & $this->parser_instance->parser_data[$count_attr];
+            }
+        }
+
+        return call_user_func_array($name, $attributes);
+    }
+
     // Shows a variable value. This helper is needed for displaying changed/created
     // by callbacks variables during the template parsing.
     // Generally, variables are parsed first, callbacks are parsed later.

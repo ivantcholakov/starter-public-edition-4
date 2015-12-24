@@ -619,6 +619,28 @@ Replacement count: {{ helper:var name="replacement_count" }}
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ helper:<strong>sprintf</strong> format="There are %d monkeys in the %s." arg1="5" arg2="tree" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:sprintf format="There are %d monkeys in the %s." arg1="5" arg2="tree" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>str_replace</strong> search="def" replace="defg" subject="abcdefabcdef" count="str_replace_count" }}
+&lt;br /&gt;
+Replacement count: {{ helper:var name="str_replace_count" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:str_replace search="def" replace="defg" subject="abcdefabcdef" count="str_replace_count" }}
+<br />
+Replacement count: {{ helper:var name="str_replace_count" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}{{ helper:<strong>trim</strong> str="****STRING****" character_mask="*" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>

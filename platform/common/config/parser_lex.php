@@ -23,6 +23,7 @@ $config['allowed_functions'] = array(
     'count',
     'empty',
     //'explode',
+    'highlight_phrase',
     'html_entity_decode',
     'html_escape',
     'htmlentities',
@@ -50,7 +51,6 @@ $config['allowed_functions'] = array(
     'slugify',
     'sprintf',
     'str_replace',
-    'str_word_count',
     'strip_tags',
     'strpos',
     'strtolower',
@@ -61,7 +61,6 @@ $config['allowed_functions'] = array(
     'ucwords',
     'url_title',
     'gmap_url',
-    'word_censor',
     'word_limiter',
     'word_wrap',
 );
