@@ -236,12 +236,103 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ helper:<strong>assign</strong> name="my_var" value="1" type="boolean" }}
+&lt;br /&gt;
+{{ helper:var name="my_var" mode="print_d" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:assign name="my_var" value="1" type="boolean" }}
+<br />
+{{ helper:var name="my_var" mode="print_d" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>assign</strong> name="my_var" value="[[helper:var name='array_1']]" type="integer" }}
+&lt;br /&gt;
+{{ helper:var name="my_var" mode="print_d" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:assign name="my_var" value="[[helper:var name='array_1']]" type="integer" }}
+<br />
+{{ helper:var name="my_var" mode="print_d" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>assign</strong> name="my_var" value="250.5" type="float" }}
+&lt;br /&gt;
+{{ helper:var name="my_var" mode="print_d" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:assign name="my_var" value="250.5" type="float" }}
+<br />
+{{ helper:var name="my_var" mode="print_d" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}{{ helper:<strong>assign</strong> name="my_var" value="[[helper:var name='array_1']]" type="string" }}
 &lt;br /&gt;
 {{ helper:var name="my_var" mode="print_d" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
 {{ helper:assign name="my_var" value="[[helper:var name='array_1']]" type="string" }}
+<br />
+{{ helper:var name="my_var" mode="print_d" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>assign</strong> name="my_var" value="250.5" type="array" }}
+&lt;br /&gt;
+{{ helper:var name="my_var" mode="print_d" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:assign name="my_var" value="250.5" type="array" }}
+<br />
+{{ helper:var name="my_var" mode="print_d" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>assign</strong> name="my_var" value="250.5" type="object" }}
+&lt;br /&gt;
+{{ helper:var name="my_var" mode="print_d" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:assign name="my_var" value="250.5" type="object" }}
+<br />
+{{ helper:var name="my_var" mode="print_d" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>assign</strong> name="my_var" value="250.5" type="null" }}
+&lt;br /&gt;
+{{ helper:var name="my_var" mode="print_d" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:assign name="my_var" value="250.5" type="null" }}
+<br />
+{{ helper:var name="my_var" mode="print_d" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>assign</strong> name="my_var" }}
+&lt;br /&gt;
+{{ helper:var name="my_var" mode="print_d" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:assign name="my_var" }}
 <br />
 {{ helper:var name="my_var" mode="print_d" }}
                                         </td>
