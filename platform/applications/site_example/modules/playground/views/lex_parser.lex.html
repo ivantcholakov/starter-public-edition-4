@@ -24,7 +24,7 @@ License: The MIT License, http://opensource.org/licenses/MIT
                                 <thead>
 
                                     <tr>
-                                        <th class="col-sm-8">Lex Code</th>
+                                        <th class="col-sm-8" style="min-width: 300px;">Lex Code</th>
                                         <th class="col-sm-4">Result</th>
                                     </tr>
 
@@ -130,10 +130,19 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ helper:<strong>var</strong> name="dog" }}{{ /noparse }}</code></pre>
+<pre><code>{{ noparse }}{{ helper:count var="[[ countries ]]" }} &lt;!-- Accessing within an attribute --&gt;{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
-{{ helper:var name="dog" }}
+{{ helper:count var="[[ countries ]]" }} <!-- Accessing within an attribute -->
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>var</strong> name="dog" }} &lt;!-- Accessing by using the helper function var --&gt;{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:var name="dog" }} <!-- Accessing by using the helper function var -->
                                         </td>
                                     </tr>
 
@@ -181,6 +190,65 @@ Hello, {{ name }}!
 
                                     <tr class="info">
                                         <td colspan="2">
+                                            <h4>Assigning Variables</h4>
+                                            <p>Note: Only <strong>helper:var</strong> can access variables assigned within a template.</p>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>assign</strong> name="my_var" value="my variable" }}
+&lt;br /&gt;
+{{ helper:var name="my_var" mode="print_d" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:assign name="my_var" value="my variable" }}
+<br />
+{{ helper:var name="my_var" mode="print_d" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>assign</strong> name="my_var" value="[[ array_1 ]]" }}
+&lt;br /&gt;
+{{ helper:var name="my_var" mode="print_d" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:assign name="my_var" value="[[ array_1 ]]" }}
+<br />
+{{ helper:var name="my_var" mode="print_d" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>assign</strong> name="my_var" value="[[helper:var name='array_1']]" }}
+&lt;br /&gt;
+{{ helper:var name="my_var" mode="print_d" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:assign name="my_var" value="[[helper:var name='array_1']]" }}
+<br />
+{{ helper:var name="my_var" mode="print_d" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>assign</strong> name="my_var" value="[[helper:var name='array_1']]" type="string" }}
+&lt;br /&gt;
+{{ helper:var name="my_var" mode="print_d" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:assign name="my_var" value="[[helper:var name='array_1']]" type="string" }}
+<br />
+{{ helper:var name="my_var" mode="print_d" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="info">
+                                        <td colspan="2">
                                             <h4>Helper Functions</h4>
                                         </td>
                                     </tr>
@@ -207,11 +275,11 @@ Hello, {{ name }}!
 {{ helper:<strong>count</strong> array="[[ array_2 ]]" mode="1" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
-{{ helper:count array="[[ array_1 ]]" }}
+{{ helper:count var="[[ array_1 ]]" }}
 <br />
-{{ helper:count array="[[ array_2 ]]" }}
+{{ helper:count var="[[ array_2 ]]" }}
 <br />
-{{ helper:count array="[[ array_2 ]]" mode="1" }}
+{{ helper:count var="[[ array_2 ]]" mode="1" }}
                                         </td>
                                     </tr>
 

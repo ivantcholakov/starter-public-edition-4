@@ -33,6 +33,55 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return $this->_function_not_found($name);
     }
 
+    public function assign() {
+
+        $attributes = $this->get_attribute_values();
+
+        if (count($attributes) < 1) {
+            return;
+        }
+
+        $name = @ (string) $attributes[0];
+        $value = isset($attributes[1]) ? $attributes[1] : null;
+
+        // "boolean" (or, since PHP 4.2.0, "bool")
+        // "integer" (or, since PHP 4.2.0, "int")
+        // "float" (only possible since PHP 4.2.0, for older versions use the deprecated variant "double")
+        // "string"
+        // "array"
+        // "object"
+        // "null" (since PHP 4.2.0)
+        $type = isset($attributes[2]) ? (strtolower(@ (string) $attributes[2])) : null;
+
+        if ($type === null) {
+
+            $this->parser_instance->parser_data[$name] = $value;
+            return;
+        }
+
+        switch ($type) {
+
+            case 'bool':
+
+                $type = 'boolean';
+                break;
+
+            case 'int':
+
+                $type = 'integer';
+                break;
+
+            case 'double':
+
+                $type = 'float';
+                break;
+        }
+
+        $success = @ settype($value, $type);
+
+        $this->parser_instance->parser_data[$name] = $value;
+    }
+
     public function _func_empty() {
 
         $name = 'empty';

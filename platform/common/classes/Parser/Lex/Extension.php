@@ -86,53 +86,50 @@ abstract class Parser_Lex_Extension {
                 unset($attributes['parse-params']);
             }
 
-            foreach ($attributes as $key => $value) {
+            $no_value = new Parser_Lex_No_Value;
 
-                $value = (string) $value;
+            foreach ($attributes as $key => $attr) {
 
-                if (
-                    (strpos($value, '[[') !== false && strpos($value, ']]') !== false)
-                ) {
+                if (is_string($attr)) {
 
-                    if ($parse_params) {
+                    if ($this->parser_instance->is_serialized(trim($attr), $result)) {
 
-                        $parser = new Parser_Lex_Extensions;
+                        $attributes[$key] = $result;
 
-                        $parser->scopeGlue($this->parser_instance->parser_options['scope_glue']);
-                        $parser->cumulativeNoparse($this->parser_instance->parser_options['cumulative_noparse']);
+                    } elseif (preg_match('/^\s*\[\[(.*)\]\]\s*$/ms', $attr, $matches)) {
 
-                        $attribute_test = $parser->parse(
-                            $value,
+                        $value = $this->parser_instance->getVariable(
+                            trim($matches[1]),
                             $this->parser_instance->parser_data,
-                            array($this->parser_instance, 'parser_callback'),
-                            $this->parser_instance->parser_options['allow_php']
+                            $no_value
                         );
 
-                    } else {
+                        if ($value !== $no_value) {
 
-                        $attribute_test = $value;
-                    }
+                            $attributes[$key] = $value;
 
-                    // Check whether the attribute is probaly a single non-scalar value.
-                    if (preg_match('/^(\{\{|\[\[)(.+)(\}\}|\]\])$/ms', trim($attribute_test))) {
+                        } elseif ($parse_params) {
 
-                        $attribute_test = trim($attribute_test, "[]{} \t\n\r\0\x0B");
+                            if (strpos($attr, '[[') !== false && strpos($attr, ']]') !== false) {
 
-                        if (isset($this->parser_instance->parser_data[$attribute_test])) {
+                                $parser = new Parser_Lex_Extensions;
 
-                            // Assign the raw variable value.
-                            $attributes[$key] = $this->parser_instance->parser_data[$attribute_test];
+                                $parser->is_attribute_being_parsed = true;
+                                $parser->scopeGlue($this->parser_instance->parser_options['scope_glue']);
+                                $parser->cumulativeNoparse($this->parser_instance->parser_options['cumulative_noparse']);
 
-                        } else {
+                                $value = $parser->parse(
+                                    str_replace(array('[[', ']]'), array('{{', '}}'), $attr),
+                                    $this->parser_instance->parser_data,
+                                    array($this->parser_instance, 'parser_callback'),
+                                    $this->parser_instance->parser_options['allow_php']
+                                );
 
-                            // Give up, set the attribute to NULL.
-                            $attributes[$key] = null;
+                                $attributes[$key] = $this->parser_instance->is_serialized(trim($value), $result)
+                                    ? $result
+                                    : $value;
+                            }
                         }
-
-                    } else {
-
-                        // The parsed attribute likely represents a scalar value, assign it.
-                        $attributes[$key] = $attribute_test;
                     }
                 }
             }
@@ -162,7 +159,7 @@ abstract class Parser_Lex_Extension {
 
     public function get_attribute($attribute, $default = null) {
 
-        return isset($this->parsed_attributes[$attribute]) ? $this->parsed_attributes[$attribute] : $default;
+        return array_key_exists($attribute, $this->parsed_attributes) ? $this->parsed_attributes[$attribute] : $default;
     }
 
     public function set_attribute($attribute, $value) {

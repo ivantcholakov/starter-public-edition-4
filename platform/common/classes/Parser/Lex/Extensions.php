@@ -10,9 +10,12 @@ class Parser_Lex_Extensions extends Lex\Parser {
     public $parser_options = array();
     public $parser_data = null;
     public $parser_callback_data = array();
+    public $is_attribute_being_parsed = false;
 
     protected $ci;
     protected static $loaded = array();  // Used for tracking loaded extension classes.
+
+    public $variableRegex = '';
 
     public function __construct() {
 
@@ -141,6 +144,20 @@ class Parser_Lex_Extensions extends Lex\Parser {
         return call_user_func(array($extension, $method));
     }
 
+    public function serialize($value) {
+
+        return base64_encode(serialize($value));
+    }
+
+    public function is_serialized($value, & $result = null) {
+
+        if (($value = base64_decode($value)) !== false) {
+            return is_serialized($value, $result);
+        }
+
+        return false;
+    }
+
     //--------------------------------------------------------------------------
     // Overriden Methods
     //--------------------------------------------------------------------------
@@ -261,18 +278,21 @@ class Parser_Lex_Extensions extends Lex\Parser {
          * $data_matches[1] is the data variable (dot notated)
          */
         if (preg_match_all($this->variableTagRegex, $text, $data_matches)) {
+            // Modified by Ivan Tcholakov, 24-DEC-2015.
+            //foreach ($data_matches[1] as $index => $var) {
+            //    if (($val = $this->getVariable($var, $data, '__lex_no_value__')) !== '__lex_no_value__') {
+            //        $text = str_replace($data_matches[0][$index], $val, $text);
+            //    }
+            //}
+            $no_value = new Parser_Lex_No_Value;
             foreach ($data_matches[1] as $index => $var) {
-                if (($val = $this->getVariable($var, $data, '__lex_no_value__')) !== '__lex_no_value__') {
-                    // Modified by Ivan Tcholakov, 20-DEC-2015.
-                    //$text = str_replace($data_matches[0][$index], $val, $text);
-                    // Don't try to parse array and object types.
-                    // Interpretation of these types is to be done later.
-                    if (is_scalar($val)) {
+                if (($val = $this->getVariable($var, $data, $no_value)) !== $no_value) {
+                    if (is_null($val) || is_scalar($val)) {
                         $text = str_replace($data_matches[0][$index], $val, $text);
                     }
-                    //
                 }
             }
+            //
         }
 
         return $text;
@@ -342,6 +362,11 @@ class Parser_Lex_Extensions extends Lex\Parser {
             }
 
             $replacement = call_user_func_array($callback, array($name, $parameters, $content));
+            // Added by Ivan Tcholakov, 23-DEC-2015.
+            if ($this->is_attribute_being_parsed && !$inCondition && !is_scalar($replacement) && !is_null($replacement)) {
+                $replacement = $this->serialize($replacement);
+            }
+            //
             $replacement = $this->parseRecursives($replacement, $content, $callback);
 
             if ($inCondition) {
@@ -355,6 +380,97 @@ class Parser_Lex_Extensions extends Lex\Parser {
             $text = preg_replace('/'.preg_quote($tag, '/').'/m', addcslashes($replacement, '\\$'), $text, 1);
             $text = $this->injectExtractions($text, 'nested_looped_tags');
         }
+
+        return $text;
+    }
+
+    /**
+     * Parses all conditionals, then executes the conditionals.
+     *
+     * @param  string $text     Text to parse
+     * @param  mixed  $data     Data to use when executing conditionals
+     * @param  mixed  $callback The callback to be used for tags
+     * @return string
+     */
+    public function parseConditionals($text, $data, $callback)
+    {
+        $this->setupRegex();
+        preg_match_all($this->conditionalRegex, $text, $matches, PREG_SET_ORDER);
+
+        $this->conditionalData = $data;
+
+        /**
+         * $matches[][0] = Full Match
+         * $matches[][1] = Either 'if', 'unless', 'elseif', 'elseunless'
+         * $matches[][2] = Condition
+         */
+        foreach ($matches as $match) {
+            $this->inCondition = true;
+
+            $condition = $match[2];
+
+            // Extract all literal string in the conditional to make it easier
+            if (preg_match_all('/(["\']).*?(?<!\\\\)\1/', $condition, $str_matches)) {
+                foreach ($str_matches[0] as $m) {
+                    $condition = $this->createExtraction('__cond_str', $m, $m, $condition);
+                }
+            }
+            $condition = preg_replace($this->conditionalNotRegex, '$1!$2', $condition);
+
+            if (preg_match_all($this->conditionalExistsRegex, $condition, $existsMatches, PREG_SET_ORDER)) {
+                foreach ($existsMatches as $m) {
+                    $exists = 'true';
+                    if ($this->getVariable($m[2], $data, '__doesnt_exist__') === '__doesnt_exist__') {
+                        $exists = 'false';
+                    }
+                    $condition = $this->createExtraction('__cond_exists', $m[0], $m[1].$exists.$m[3], $condition);
+                }
+            }
+
+            $condition = preg_replace_callback('/\b('.$this->variableRegex.')\b/', array($this, 'processConditionVar'), $condition);
+
+            if ($callback) {
+                $condition = preg_replace('/\b(?!\{\s*)('.$this->callbackNameRegex.')(?!\s+.*?\s*\})\b/', '{$1}', $condition);
+                $condition = $this->parseCallbackTags($condition, $data, $callback);
+            }
+
+            // Re-extract the strings that have now been possibly added.
+            if (preg_match_all('/(["\']).*?(?<!\\\\)\1/', $condition, $str_matches)) {
+                foreach ($str_matches[0] as $m) {
+                    $condition = $this->createExtraction('__cond_str', $m, $m, $condition);
+                }
+            }
+
+
+            // Re-process for variables, we trick processConditionVar so that it will return null
+            $this->inCondition = false;
+            $condition = preg_replace_callback('/\b('.$this->variableRegex.')\b/', array($this, 'processConditionVar'), $condition);
+            $this->inCondition = true;
+
+            // Re-inject any strings we extracted
+            $condition = $this->injectExtractions($condition, '__cond_str');
+            $condition = $this->injectExtractions($condition, '__cond_exists');
+
+            $conditional = '<?php ';
+
+            if ($match[1] == 'unless') {
+                $conditional .= 'if ( ! ('.$condition.'))';
+            } elseif ($match[1] == 'elseunless') {
+                $conditional .= 'elseif ( ! ('.$condition.'))';
+            } else {
+                $conditional .= $match[1].' ('.$condition.')';
+            }
+
+            $conditional .= ': ?>';
+
+            $text = preg_replace('/'.preg_quote($match[0], '/').'/m', addcslashes($conditional, '\\$'), $text, 1);
+        }
+
+        $text = preg_replace($this->conditionalElseRegex, '<?php else: ?>', $text);
+        $text = preg_replace($this->conditionalEndRegex, '<?php endif; ?>', $text);
+
+        $text = $this->parsePhp($text);
+        $this->inCondition = false;
 
         return $text;
     }
@@ -431,12 +547,10 @@ class Parser_Lex_Extensions extends Lex\Parser {
     public function scopeGlue($glue = null)
     {
         if ($glue !== null) {
-            $this->regexSetup = false;
-            $this->scopeGlue = $glue;
             $this->parser_options['scope_glue'] = $glue;
         }
 
-        return $this->scopeGlue;
+        return parent::scopeGlue($glue);
     }
 
     /**
@@ -447,8 +561,83 @@ class Parser_Lex_Extensions extends Lex\Parser {
      */
     public function cumulativeNoparse($mode)
     {
-        $this->cumulativeNoparse = $mode;
         $this->parser_options['cumulative_noparse'] = $mode;
+
+        return parent::cumulativeNoparse($mode);
+    }
+
+    /**
+     * This is used as a callback for the conditional parser.  It takes a variable
+     * and returns the value of it, properly formatted.
+     *
+     * @param  array  $match A match from preg_replace_callback
+     * @return string
+     */
+    protected function processConditionVar($match)
+    {
+        $var = is_array($match) ? $match[0] : $match;
+        if (in_array(strtolower($var), array('true', 'false', 'null', 'or', 'and')) or
+            strpos($var, '__cond_str') === 0 or
+            strpos($var, '__cond_exists') === 0 or
+            is_numeric($var))
+        {
+            return $var;
+        }
+
+        $value = $this->getVariable($var, $this->conditionalData, '__processConditionVar__');
+
+        if ($value === '__processConditionVar__') {
+            return $this->inCondition ? $var : 'null';
+        }
+
+        return $this->valueToLiteral($value);
+    }
+
+    /**
+     * Sets up all the global regex to use the correct Scope Glue.
+     *
+     * @return void
+     */
+    public function setupRegex()
+    {
+        return parent::setupRegex();
+    }
+
+    /**
+     * Takes a dot-notated key and finds the value for it in the given
+     * array or object.
+     *
+     * @param  string       $key     Dot-notated key to find
+     * @param  array|object $data    Array or object to search
+     * @param  mixed        $default Default value to use if not found
+     * @return mixed
+     */
+    public function getVariable($key, $data, $default = null)
+    {
+        if (strpos($key, $this->scopeGlue) === false) {
+            $parts = explode('.', $key);
+        } else {
+            $parts = explode($this->scopeGlue, $key);
+        }
+        foreach ($parts as $key_part) {
+            if (is_array($data)) {
+                if ( ! array_key_exists($key_part, $data)) {
+                    return $default;
+                }
+
+                $data = $data[$key_part];
+            } elseif (is_object($data)) {
+                if ( ! isset($data->{$key_part})) {
+                    return $default;
+                }
+
+                $data = $data->{$key_part};
+            } else {
+                return $default;
+            }
+        }
+
+        return $data;
     }
 
 }
