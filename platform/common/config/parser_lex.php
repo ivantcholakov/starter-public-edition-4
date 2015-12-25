@@ -19,7 +19,6 @@ $config['cumulative_noparse'] = false;
 
 // A whitelist of functions that Lex parser can execute.
 $config['allowed_functions'] = array(
-    'assign',
     'character_limiter',
     'count',
     'empty',
@@ -56,6 +55,8 @@ $config['allowed_functions'] = array(
     'preg_match',
     'preg_match_all',
     'preg_replace',
+    'print_d',
+    'print_r',
     'rand_string',
     'rtrim',
     'safe_mailto',
@@ -72,6 +73,8 @@ $config['allowed_functions'] = array(
     'ucfirst',
     'ucwords',
     'url_title',
+    'var_dump',
+    'var_export',
     'word_limiter',
     'word_wrap',
 );

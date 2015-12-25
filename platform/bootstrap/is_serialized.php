@@ -54,8 +54,8 @@ if (!function_exists('is_serialized'))
         $length    = strlen($value);
         $end    = '';
 
-        // Added by Ivan Tcholakov, 24-DEC-2015.
-        if ($length < 3)
+        // Added by Ivan Tcholakov, 26-DEC-2015.
+        if (!isset($value[0]))
         {
             return false;
         }
@@ -64,6 +64,14 @@ if (!function_exists('is_serialized'))
         switch ($value[0])
         {
             case 's':
+
+                // Added by Ivan Tcholakov, 26-DEC-2015.
+                if (!isset($value[$length - 2]))
+                {
+                    return false;
+                }
+                //
+
                 if ($value[$length - 2] !== '"')
                 {
                     return false;
@@ -77,10 +85,24 @@ if (!function_exists('is_serialized'))
             case 'O':
                 $end .= '}';
 
+                // Added by Ivan Tcholakov, 26-DEC-2015.
+                if (!isset($value[1]))
+                {
+                    return false;
+                }
+                //
+
                 if ($value[1] !== ':')
                 {
                     return false;
                 }
+
+                // Added by Ivan Tcholakov, 26-DEC-2015.
+                if (!isset($value[2]))
+                {
+                    return false;
+                }
+                //
 
                 switch ($value[2])
                 {
@@ -101,6 +123,13 @@ if (!function_exists('is_serialized'))
                 }
             case 'N':
                 $end .= ';';
+
+                // Added by Ivan Tcholakov, 26-DEC-2015.
+                if (!isset($value[$length - 1]))
+                {
+                    return false;
+                }
+                //
 
                 if ($value[$length - 1] !== $end[0])
                 {

@@ -126,6 +126,10 @@ class Parser_Lex_Extensions extends Lex\Parser {
                     $method == 'isset'
                     ||
                     $method == 'var'
+                    ||
+                    $method == 'array'
+                    ||
+                    $method == 'null'
                 )
         ) {
             $method = '_func_'.$method;
@@ -363,7 +367,7 @@ class Parser_Lex_Extensions extends Lex\Parser {
 
             $replacement = call_user_func_array($callback, array($name, $parameters, $content));
             // Added by Ivan Tcholakov, 23-DEC-2015.
-            if ($this->is_attribute_being_parsed && !$inCondition && !is_scalar($replacement) && !is_null($replacement)) {
+            if ($this->is_attribute_being_parsed && !$inCondition) {
                 $replacement = $this->serialize($replacement);
             }
             //

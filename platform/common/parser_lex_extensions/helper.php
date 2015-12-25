@@ -16,11 +16,6 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     }
 
-    protected function _function_not_found($name) {
-
-        return 'The function '.$name.'() has not been found or it is not allowed.';
-    }
-
     public function __call($name, $args) {
 
         if (function_exists($name) && in_array($name, $this->parser_allowed_functions)) {
@@ -33,16 +28,12 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return $this->_function_not_found($name);
     }
 
-    public function assign() {
+    protected function _function_not_found($name) {
 
-        $attributes = $this->get_attribute_values();
+        return 'The function '.$name.'() has not been found or it is not allowed.';
+    }
 
-        if (count($attributes) < 1) {
-            return;
-        }
-
-        $name = @ (string) $attributes[0];
-        $value = isset($attributes[1]) ? $attributes[1] : null;
+    protected function _set_type(& $value, $type) {
 
         // "boolean" (or, since PHP 4.2.0, "bool")
         // "integer" (or, since PHP 4.2.0, "int")
@@ -51,12 +42,10 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         // "array"
         // "object"
         // "null" (since PHP 4.2.0)
-        $type = isset($attributes[2]) ? (strtolower(@ (string) $attributes[2])) : null;
+        $type = isset($type) ? (trim(strtolower(@ (string) $type))) : null;
 
         if ($type === null) {
-
-            $this->parser_instance->parser_data[$name] = $value;
-            return;
+            return true;
         }
 
         switch ($type) {
@@ -77,9 +66,88 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
                 break;
         }
 
-        $success = @ settype($value, $type);
+        return @ settype($value, $type);
+    }
 
-        $this->parser_instance->parser_data[$name] = $value;
+    protected function _set_display(& $value, $mode) {
+
+        // "print_d"
+        // "print_r"
+        // "var_dump"
+        // "var_export"
+        $mode = isset($mode) ? (strtolower(@ (string) $mode)) : null;
+
+        switch ($mode) {
+
+            case 'print_d':
+
+                $value = print_d($value, true);
+                break;
+
+            case 'print_r':
+
+                $value = print_r($value, true);
+                break;
+
+            case 'var_dump':
+
+                ob_start();
+                var_dump($value);
+                $result = ob_get_clean();
+                $value = $result;
+                break;
+
+            case 'var_export':
+
+                $value = var_export($value, true);
+                break;
+        }
+    }
+
+    protected function _type($type) {
+
+        $attributes = $this->get_attribute_values();
+
+        $value = isset($attributes[0]) ? $attributes[0] : null;
+        $display = isset($attributes[1]) ? $attributes[1] : null;
+
+        $this->_set_type($value, $type);
+        $this->_set_display($value, $display);
+
+        return $value;
+    }
+
+    protected function _display($display) {
+
+        $attributes = $this->get_attribute_values();
+
+        $value = isset($attributes[0]) ? $attributes[0] : null;
+
+        $this->_set_display($value, $display);
+
+        return $value;
+    }
+
+    //--------------------------------------------------------------------------
+
+    public function _func_array() {
+
+        return $this->_type('array');
+    }
+
+    public function bool() {
+
+        return $this->_type('boolean');
+    }
+
+    public function boolean() {
+
+        return $this->_type('boolean');
+    }
+
+    public function double() {
+
+        return $this->_type('float');
     }
 
     public function _func_empty() {
@@ -93,6 +161,46 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         $attributes = $this->get_attribute_values();
 
         return empty($attributes[0]);
+    }
+
+    public function float() {
+
+        return $this->_type('float');
+    }
+
+    public function get() {
+
+        $attributes = $this->get_attribute_values();
+
+        $name = isset($attributes[0]) ? (trim(@ (string) $attributes[0])) : null;
+        $value = null;
+
+        if (isset($name)) {
+
+            $no_value = new Parser_Lex_No_Value;
+
+            $var = $this->parser_instance->getVariable(
+                $name,
+                $this->parser_instance->parser_data,
+                $no_value
+            );
+
+            if ($var !== $no_value) {
+                $value = $var;
+            }
+        }
+
+        return $value;
+    }
+
+    public function int() {
+
+        return $this->_type('integer');
+    }
+
+    public function integer() {
+
+        return $this->_type('integer');
     }
 
     public function _func_isset() {
@@ -190,19 +298,14 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
             : call_user_func_array($name, $attributes);
     }
 
-    public function rtrim() {
+    public function _func_null() {
 
-        $name = 'rtrim';
+        return $this->_type('null');
+    }
 
-        if (!in_array($name, $this->parser_allowed_functions)) {
-            return $this->_function_not_found($name);
-        }
+    public function object() {
 
-        $attributes = $this->get_attributes();
-
-        return IS_UTF8_CHARSET
-            ? call_user_func_array(array('UTF8', $name), $attributes)
-            : call_user_func_array($name, $attributes);
+        return $this->_type('object');
     }
 
     public function preg_match() {
@@ -319,6 +422,60 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return call_user_func_array($name, $attributes);
     }
 
+    public function print_d() {
+
+        $name = 'print_d';
+
+        if (!in_array($name, $this->parser_allowed_functions)) {
+            return $this->_function_not_found($name);
+        }
+
+        return $this->_display($name);
+    }
+
+    public function print_r() {
+
+        $name = 'print_r';
+
+        if (!in_array($name, $this->parser_allowed_functions)) {
+            return $this->_function_not_found($name);
+        }
+
+        return $this->_display($name);
+    }
+
+    public function rtrim() {
+
+        $name = 'rtrim';
+
+        if (!in_array($name, $this->parser_allowed_functions)) {
+            return $this->_function_not_found($name);
+        }
+
+        $attributes = $this->get_attributes();
+
+        return IS_UTF8_CHARSET
+            ? call_user_func_array(array('UTF8', $name), $attributes)
+            : call_user_func_array($name, $attributes);
+    }
+
+    public function set() {
+
+        $attributes = $this->get_attribute_values();
+
+        if (count($attributes) < 1) {
+            return;
+        }
+
+        $name = @ (string) $attributes[0];
+        $value = isset($attributes[1]) ? $attributes[1] : null;
+        $type = isset($attributes[2]) ? ($attributes[2]) : null;
+
+        $success = $this->_set_type($value, $type);
+
+        $this->parser_instance->parser_data[$name] = $value;
+    }
+
     public function str_replace() {
 
         $name = 'str_replace';
@@ -357,62 +514,9 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return call_user_func_array($name, $attributes);
     }
 
-    // Shows a variable value. This helper is needed for displaying changed/created
-    // by callbacks variables during the template parsing.
-    // Generally, variables are parsed first, callbacks are parsed later.
-    // Debugging preview modes are allowed.
-    public function _func_var() {
+    public function string() {
 
-        $attributes = $this->get_attributes();
-
-        $var = null;
-        $mode = '';
-
-        if (!empty($attributes)) {
-
-            $i = 0;
-
-            foreach ($attributes as $attr) {
-
-                if ($i == 0 && isset($this->parser_instance->parser_data[$attr])) {
-                    $var = $this->parser_instance->parser_data[$attr];
-                }
-
-                if ($i == 1) {
-                    $mode = $attr;
-                }
-
-                $i++;
-            }
-        }
-
-        switch ($mode) {
-
-            case 'var_dump':
-
-                ob_start();
-                var_dump($var);
-                $result = ob_get_clean();
-                $var = $result;
-                break;
-
-            case 'var_export':
-
-                $var = var_export($var, true);
-                break;
-
-            case 'print_r':
-
-                $var = print_r($var, true);
-                break;
-
-            case 'print_d':
-
-                $var = print_d($var, true);
-                break;
-        }
-
-        return $var;
+        return $this->_type('string');
     }
 
     public function trim() {
@@ -428,6 +532,28 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return IS_UTF8_CHARSET
             ? call_user_func_array(array('UTF8', $name), $attributes)
             : call_user_func_array($name, $attributes);
+    }
+
+    public function var_export() {
+
+        $name = 'var_export';
+
+        if (!in_array($name, $this->parser_allowed_functions)) {
+            return $this->_function_not_found($name);
+        }
+
+        return $this->_display($name);
+    }
+
+    public function var_dump() {
+
+        $name = 'var_dump';
+
+        if (!in_array($name, $this->parser_allowed_functions)) {
+            return $this->_function_not_found($name);
+        }
+
+        return $this->_display($name);
     }
 
 }
