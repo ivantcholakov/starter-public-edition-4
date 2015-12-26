@@ -316,30 +316,21 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
             return $this->_function_not_found($name);
         }
 
-        $attributes = $this->get_attributes();
+        $attributes = $this->get_attribute_values();
 
         if (count($attributes) >= 3) {
 
-            $i = 0;
-
-            foreach ($attributes as $key => $matches_attr) {
-
-                if ($i == 2) {
-                    break;
-                }
-
-                $i++;
-            }
+            $matches_attr = trim(@ (string) $attributes[2]);
 
             if (!str_to_bool($matches_attr) || str_to_bool($matches_attr, true)) {
 
                 $matches = array();
-                $attributes[$key] = & $matches;
+                $attributes[2] = & $matches;
 
             } else {
 
-                $this->parser_instance->parser_data[$matches_attr] = array();
-                $attributes[$key] = & $this->parser_instance->parser_data[$matches_attr];
+                $attributes[2] = & $this->parser_instance->getVariableRef($matches_attr, $this->parser_instance->parser_data);
+                $attributes[2] = array();
             }
         }
 
@@ -354,30 +345,21 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
             return $this->_function_not_found($name);
         }
 
-        $attributes = $this->get_attributes();
+        $attributes = $this->get_attribute_values();
 
         if (count($attributes) >= 3) {
 
-            $i = 0;
-
-            foreach ($attributes as $key => $matches_attr) {
-
-                if ($i == 2) {
-                    break;
-                }
-
-                $i++;
-            }
+            $matches_attr = trim(@ (string) $attributes[2]);
 
             if (!str_to_bool($matches_attr) || str_to_bool($matches_attr, true)) {
 
                 $matches = array();
-                $attributes[$key] = & $matches;
+                $attributes[2] = & $matches;
 
             } else {
 
-                $this->parser_instance->parser_data[$matches_attr] = array();
-                $attributes[$key] = & $this->parser_instance->parser_data[$matches_attr];
+                $attributes[2] = & $this->parser_instance->getVariableRef($matches_attr, $this->parser_instance->parser_data);
+                $attributes[2] = array();
             }
         }
 
@@ -392,30 +374,21 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
             return $this->_function_not_found($name);
         }
 
-        $attributes = $this->get_attributes();
+        $attributes = $this->get_attribute_values();
 
         if (count($attributes) >= 5) {
 
-            $i = 0;
-
-            foreach ($attributes as $key => $count_attr) {
-
-                if ($i == 4) {
-                    break;
-                }
-
-                $i++;
-            }
+            $count_attr = trim(@ (string) $attributes[4]);
 
             if (!str_to_bool($count_attr) || str_to_bool($count_attr, true)) {
 
                 $count = 0;
-                $attributes[$key] = & $count;
+                $attributes[4] = & $count;
 
             } else {
 
-                $this->parser_instance->parser_data[$count_attr] = 0;
-                $attributes[$key] = & $this->parser_instance->parser_data[$count_attr];
+                $attributes[4] = & $this->parser_instance->getVariableRef($count_attr, $this->parser_instance->parser_data);
+                $attributes[4] = 0;
             }
         }
 
@@ -473,7 +446,7 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
         $success = $this->_set_type($value, $type);
 
-        $this->parser_instance->parser_data[$name] = $value;
+        $this->parser_instance->setVariable($name, $value, $this->parser_instance->parser_data);
     }
 
     public function str_replace() {

@@ -625,9 +625,22 @@ class Parser_Lex_Extensions extends Lex\Parser {
         }
         foreach ($parts as $key_part) {
             if (is_array($data)) {
-                if ( ! array_key_exists($key_part, $data)) {
+
+                // Modified by Ivan Tcholakov, 26-DEC-2015.
+                //if ( ! array_key_exists($key_part, $data)) {
+                //    return $default;
+                //}
+                $key_part_int = filter_var($key_part, FILTER_VALIDATE_INT);
+                $key_part_is_int = $key_part_int !== false;
+
+                if ($key_part_is_int && !array_key_exists($key_part, $data)) {
+                    $key_part = $key_part_int;
+                }
+
+                if (!array_key_exists($key_part, $data)) {
                     return $default;
                 }
+                //
 
                 $data = $data[$key_part];
             } elseif (is_object($data)) {
@@ -642,6 +655,150 @@ class Parser_Lex_Extensions extends Lex\Parser {
         }
 
         return $data;
+    }
+
+    //--------------------------------------------------------------------------
+
+    // Added by Ivan Tcholakov, 26-DEC-2015.
+    public function & getVariableRef($key, & $data) {
+
+        if (strpos($key, $this->scopeGlue) === false) {
+            $parts = explode('.', $key);
+        } else {
+            $parts = explode($this->scopeGlue, $key);
+        }
+
+        $i = 0;
+        $count = count($parts);
+        $d = & $data;
+
+        while ($i < $count) {
+
+            $key_part = $parts[$i];
+            $key_part_int = filter_var($key_part, FILTER_VALIDATE_INT);
+            $key_part_is_int = $key_part_int !== false;
+            $get_ref = ($i + 1) == $count;
+
+            if ($key_part_is_int && is_object($d)) {
+                $d = (array) $d;
+            }
+
+            if (!is_array($d) && !is_object($d)) {
+                $d = array();
+            }
+
+            if (is_array($d)) {
+
+                if ($key_part_is_int && !array_key_exists($key_part, $d)) {
+                    $key_part = $key_part_int;
+                }
+
+                if ($get_ref) {
+
+                    if (!array_key_exists($key_part, $d)) {
+                        $d[$key_part] = null;
+                    }
+
+                    return $d[$key_part];
+
+                } else {
+
+                    if (!isset($d[$key_part])) {
+                        $d[$key_part] = array();
+                    }
+
+                    $d = & $d[$key_part];
+                }
+
+            } else {
+
+                if ($get_ref) {
+
+                    if (!property_exists($d, $key_part)) {
+                        $d->{$key_part} = null;
+                    }
+
+                    return $d->{$key_part};
+
+                } else {
+
+                    if (!property_exists($d, $key_part)) {
+                        $d->{$key_part} = array();
+                    }
+
+                    $d = & $d->{$key_part};
+                }
+            }
+
+            $i++;
+        }
+    }
+
+    // Added by Ivan Tcholakov, 26-DEC-2015.
+    public function setVariable($key, $value, & $data) {
+
+        if (strpos($key, $this->scopeGlue) === false) {
+            $parts = explode('.', $key);
+        } else {
+            $parts = explode($this->scopeGlue, $key);
+        }
+
+        $i = 0;
+        $count = count($parts);
+        $d = & $data;
+
+        while ($i < $count) {
+
+            $key_part = $parts[$i];
+            $key_part_int = filter_var($key_part, FILTER_VALIDATE_INT);
+            $key_part_is_int = $key_part_int !== false;
+            $set_value = ($i + 1) == $count;
+
+            if ($key_part_is_int && is_object($d)) {
+                $d = (array) $d;
+            }
+
+            if (!is_array($d) && !is_object($d)) {
+                $d = array();
+            }
+
+            if (is_array($d)) {
+
+                if ($key_part_is_int && !array_key_exists($key_part, $d)) {
+                    $key_part = $key_part_int;
+                }
+
+                if ($set_value) {
+
+                    $d[$key_part] = $value;
+
+                } else {
+
+                    if (!isset($d[$key_part])) {
+                        $d[$key_part] = array();
+                    }
+
+                    $d = & $d[$key_part];
+                }
+
+            } else {
+
+                if ($set_value) {
+
+                    $d->{$key_part} = $value;
+
+                } else {
+
+                    if (!property_exists($d, $key_part)) {
+                        $d->{$key_part} = array();
+                    }
+
+                    $d = & $d->{$key_part};
+                }
+            }
+
+            $i++;
+        }
     }
 
 }
