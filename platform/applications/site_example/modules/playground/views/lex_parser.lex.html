@@ -770,6 +770,29 @@ $(function() {
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ helper:set name="one_two_three" value="[[ helper:json_decode string='[[ json_123 ]]' ]]" }}
+{{ helper:print_d value="[[ one_two_three ]]" }}
+&lt;div class="clearfix"&gt;&lt;/div&gt;
+{{ helper:get name="one_two_three:0" }}
+&lt;br /&gt;
+{{ helper:get name="one_two_three:1" }}
+&lt;br /&gt;
+{{ helper:get name="one_two_three:2" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:set name="one_two_three" value="[[ helper:json_decode string='[[ json_123 ]]' ]]" }}
+{{ helper:print_d value="[[ one_two_three ]]" }}
+<div class="clearfix"></div>
+{{ helper:get name="one_two_three:0" }}
+<br />
+{{ helper:get name="one_two_three:1" }}
+<br />
+{{ helper:get name="one_two_three:2" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}{{ helper:<strong>lang</strong> line="welcome.hello" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
@@ -828,7 +851,11 @@ $(function() {
 &lt;br /&gt;
 Matches:
 &lt;br /&gt;
-{{ helper:print_d value="[[ matches ]]" }}{{ /noparse }}</code></pre>
+{{ helper:print_d value="[[ matches ]]" }}
+&lt;div class="clearfix"&gt;&lt;/div&gt;
+{{ helper:get name="matches:0" }}
+&lt;br /&gt;
+{{ helper:get name="matches:1" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
 {{ helper:preg_match pattern="/^(\.*)def/" subject="abcdef" matches="matches" flags="0" offset="0" }}
@@ -836,6 +863,10 @@ Matches:
 Matches:
 <br />
 {{ helper:print_d value="[[ matches ]]" }}
+<div class="clearfix"></div>
+{{ helper:get name="matches:0" }}
+<br />
+{{ helper:get name="matches:1" }}
                                         </td>
                                     </tr>
 

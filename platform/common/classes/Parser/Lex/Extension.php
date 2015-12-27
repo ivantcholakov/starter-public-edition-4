@@ -92,44 +92,52 @@ abstract class Parser_Lex_Extension {
 
                 if (is_string($attr)) {
 
-                    if ($this->parser_instance->is_serialized(trim($attr), $result)) {
+                    if ($this->parser_instance->is_serialized(trim($attr), $value)) {
 
-                        $attributes[$key] = $result;
+                        $attributes[$key] = $value;
 
-                    } elseif (preg_match('/^\s*\[\[(.*)\]\]\s*$/ms', $attr, $matches)) {
+                    } elseif (
+                        preg_match('/^\s*\[\[(.*)\]\]\s*$/ms', $attr, $matches)
+                        &&
+                        (
+                            ($value = $this->parser_instance->getVariable(
+                                trim($matches[1]),
+                                $this->parser_instance->parser_data,
+                                $no_value))
+                            !== $no_value
+                        )
+                    ) {
 
-                        $value = $this->parser_instance->getVariable(
-                            trim($matches[1]),
+                        $attributes[$key] = $value;
+
+                    } elseif (
+                        $parse_params
+                        &&
+                        strpos($attr, '[[') !== false && strpos($attr, ']]') !== false
+                    ) {
+
+                        if (preg_match('/^\s*\[\[(.*)\]\]\s*$/ms', $attr, $matches)) {
+                            $a = trim(str_replace(array('[[', ']]'), array('{{', '}}'), $attr));
+                        } else {
+                            $a = '{{'.$attr.'}}';
+                        }
+
+                        $parser = new Parser_Lex_Extensions;
+
+                        $parser->is_attribute_being_parsed = true;
+                        $parser->scopeGlue($this->parser_instance->parser_options['scope_glue']);
+                        $parser->cumulativeNoparse($this->parser_instance->parser_options['cumulative_noparse']);
+
+                        $value = $parser->parse(
+                            $a,
                             $this->parser_instance->parser_data,
-                            $no_value
+                            array($this->parser_instance, 'parser_callback'),
+                            $this->parser_instance->parser_options['allow_php']
                         );
 
-                        if ($value !== $no_value) {
-
-                            $attributes[$key] = $value;
-
-                        } elseif ($parse_params) {
-
-                            if (strpos($attr, '[[') !== false && strpos($attr, ']]') !== false) {
-
-                                $parser = new Parser_Lex_Extensions;
-
-                                $parser->is_attribute_being_parsed = true;
-                                $parser->scopeGlue($this->parser_instance->parser_options['scope_glue']);
-                                $parser->cumulativeNoparse($this->parser_instance->parser_options['cumulative_noparse']);
-
-                                $value = $parser->parse(
-                                    str_replace(array('[[', ']]'), array('{{', '}}'), $attr),
-                                    $this->parser_instance->parser_data,
-                                    array($this->parser_instance, 'parser_callback'),
-                                    $this->parser_instance->parser_options['allow_php']
-                                );
-
-                                $attributes[$key] = $this->parser_instance->is_serialized(trim($value), $result)
-                                    ? $result
-                                    : $value;
-                            }
-                        }
+                        $attributes[$key] = $this->parser_instance->is_serialized(trim($value), $result)
+                            ? $result
+                            : $value;
                     }
                 }
             }
