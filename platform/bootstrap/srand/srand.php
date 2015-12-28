@@ -59,6 +59,12 @@ function secure_random_bytes($len = 10) {
     }
     //
 
+    // Added by Ivan Tcholakov, 28-DEC-2015.
+    // For deaking with mbstring.func_overload activated.
+    $mb_strlen_exists = function_exists('mb_strlen');
+    $mb_substr_exists = function_exists('mb_substr');
+    //
+
     /*
      * Our primary choice for a cryptographic strong randomness function is
      * openssl_random_pseudo_bytes.
@@ -66,7 +72,10 @@ function secure_random_bytes($len = 10) {
     $SSLstr = '4'; // http://xkcd.com/221/
     if (function_exists('openssl_random_pseudo_bytes') &&
             (version_compare(PHP_VERSION, '5.3.4') >= 0 ||
-            substr(PHP_OS, 0, 3) !== 'WIN')) {
+            // Modified by Ivan Tcholakov, 28-DEC-2015.
+            //substr(PHP_OS, 0, 3) !== 'WIN')) {
+            ($mb_substr_exists ? mb_substr(PHP_OS, 0, 3, '8bit') : substr(PHP_OS, 0, 3)) !== 'WIN')) {
+            //
         $SSLstr = openssl_random_pseudo_bytes($len, $strong);
         if ($strong) {
             return $SSLstr;
@@ -83,7 +92,10 @@ function secure_random_bytes($len = 10) {
      */
     if (function_exists('mcrypt_create_iv') &&
             (version_compare(PHP_VERSION, '5.3.7') >= 0 ||
-            substr(PHP_OS, 0, 3) !== 'WIN')) {
+            // Modified by Ivan Tcholakov, 28-DEC-2015.
+            //substr(PHP_OS, 0, 3) !== 'WIN')) {
+            ($mb_substr_exists ? mb_substr(PHP_OS, 0, 3, '8bit') : substr(PHP_OS, 0, 3)) !== 'WIN')) {
+            //
         $str = mcrypt_create_iv($len, MCRYPT_DEV_URANDOM);
         if ($str !== false) {
             return $str;
@@ -156,11 +168,17 @@ function secure_random_bytes($len = 10) {
         }
         // We assume sha1 is a deterministic extractor for the $entropy variable.
         $str .= sha1($entropy, true);
-    } while ($len > strlen($str));
+    // Modified by Ivan Tcholakov, 28-DEC-2015.
+    //} while ($len > strlen($str));
+    } while ($len > ($mb_strlen_exists ? mb_strlen($str, '8bit') : strlen($str)));
+    //
 
     if ($handle) {
         @fclose($handle);
     }
 
-    return substr($str, 0, $len);
+    // Modified by Ivan Tcholakov, 28-DEC-2015.
+    //return substr($str, 0, $len);
+    return $mb_substr_exists ? mb_substr($str, 0, $len, '8bit') : substr($str, 0, $len);
+    //
 }
