@@ -662,6 +662,15 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ helper:<strong>is_bool</strong> value="[[ boolean_true ]]" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:is_bool value="[[ boolean_true ]]" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}&lt;div id=&quot;map_canvas&quot; class=&quot;google-maps&quot;&gt;&lt;/div&gt;
 
 &lt;script type=&quot;text/javascript&quot; src=&quot;{{ if helper:<strong>is_https</strong> }}https:{{ else }}http:{{ endif }}//maps.google.com/maps/api/js?sensor=false&quot;&gt;&lt;/script&gt;
@@ -752,6 +761,42 @@ $(function() {
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ helper:<strong>is_null</strong> value="[[ value_null ]]" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:is_null value="[[ value_null ]]" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>is_numeric</strong> value="[[ string_10 ]]" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:is_numeric value="[[ string_10 ]]" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>is_object</strong> value="[[ object_123 ]]" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:is_object value="[[ object_123 ]]" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>is_scalar</strong> value="[[ string_123 ]]" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:is_scalar value="[[ string_123 ]]" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}{{ helper:<strong>is_string</strong> value="[[ string_123 ]]" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
@@ -770,7 +815,7 @@ $(function() {
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ helper:set name="one_two_three" value="[[ helper:json_decode string='[[ json_123 ]]' ]]" }}
+<pre><code>{{ noparse }}{{ helper:set name="one_two_three" value="[[ helper:<strong>json_decode</strong> string='[[ json_123 ]]' ]]" }}
 {{ helper:print_d value="[[ one_two_three ]]" }}
 &lt;div class="clearfix"&gt;&lt;/div&gt;
 {{ helper:get name="one_two_three:0" }}
