@@ -948,6 +948,19 @@ Replacement count: {{ helper:get name="replacement_count" }}
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ helper:<strong>rand_string</strong> }}
+&lt;br /&gt;
+{{ helper:<strong>rand_string</strong> length="20" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:rand_string }}
+<br />
+{{ helper:rand_string length="20" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}{{ helper:<strong>rtrim</strong> str="****STRING****" character_mask="*" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>

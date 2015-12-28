@@ -417,6 +417,21 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return $this->_display($name);
     }
 
+    public function rand_string() {
+
+        $name = 'rand_string';
+
+        if (!in_array($name, $this->parser_allowed_functions)) {
+            return $this->_function_not_found($name);
+        }
+
+        $attributes = $this->get_attribute_values();
+
+        $length = isset($attributes[0]) ? $attributes[0] : 10;
+
+        return rand_string($length);
+    }
+
     public function rtrim() {
 
         $name = 'rtrim';
