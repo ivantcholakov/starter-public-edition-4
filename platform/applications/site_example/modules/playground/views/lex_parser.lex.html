@@ -979,6 +979,15 @@ Replacement count: {{ helper:get name="replacement_count" }}
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ helper:<strong>sha1</strong> str="apple" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:sha1 str="apple" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}{{ helper:<strong>slugify</strong> str="Pink Floyd" separator="-" }}
 &lt;br /&gt;
 {{ helper:<strong>slugify</strong> str="Пинк Флойд" }}{{ /noparse }}</code></pre>
