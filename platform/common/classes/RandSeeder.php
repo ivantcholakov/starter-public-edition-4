@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed.');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013-2015
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -25,7 +25,7 @@ class RandSeeder {
             //if ((PHP_SAPI == 'cli') or defined('STDIN')) {
             if (IS_CLI) {   // CodeIgniter specific implementation.
 
-                self::$rand_seeder = rand();
+                self::$rand_seeder = Random::int(0, 2147483647);
 
             } else {
 
@@ -43,7 +43,7 @@ class RandSeeder {
 
                     } else {
 
-                        self::$rand_seeder = rand();
+                        self::$rand_seeder = Random::int(0, 2147483647);
                         $ci->session->set_userdata('rand_seeder', self::$rand_seeder);
                     }
 
