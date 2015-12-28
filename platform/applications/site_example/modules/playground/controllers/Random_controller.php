@@ -21,7 +21,6 @@ class Random_controller extends Base_Controller {
     public function index() {
 
         $this->template
-            ->set_partial('scripts', 'random_scripts')
             ->build('random');
     }
 
