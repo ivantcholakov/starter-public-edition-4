@@ -1041,6 +1041,15 @@ Replacement count: {{ helper:get name="str_replace_count" }}
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ helper:<strong>strip_tags</strong> str="[[ dog ]]" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:strip_tags str="[[ dog ]]" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}{{ helper:<strong>strpos</strong> haystack="abcdef" needle="def" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
@@ -1068,10 +1077,37 @@ Replacement count: {{ helper:get name="str_replace_count" }}
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ helper:<strong>substr</strong> string="abcdef" start="3" length="3" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:substr string="abcdef" start="3" length="3" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}{{ helper:<strong>trim</strong> str="****STRING****" character_mask="*" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
 {{ helper:trim str="****STRING****" character_mask="*" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>ucfirst</strong> string="abcdef" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:ucfirst string="abcdef" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>ucwords</strong> string="abcdef abcdef" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:ucwords string="abcdef abcdef" }}
                                         </td>
                                     </tr>
 

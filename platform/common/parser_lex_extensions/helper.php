@@ -525,6 +525,11 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return $this->_utf8(__FUNCTION__);
     }
 
+    public function substr() {
+
+        return $this->_utf8(__FUNCTION__);
+    }
+
     public function trim() {
 
         return $this->_utf8(__FUNCTION__);
@@ -550,6 +555,16 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         }
 
         return $this->_display($name);
+    }
+
+    public function ucfirst() {
+
+        return $this->_utf8(__FUNCTION__);
+    }
+
+    public function ucwords() {
+
+        return $this->_utf8(__FUNCTION__);
     }
 
 }
