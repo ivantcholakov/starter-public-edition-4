@@ -1023,6 +1023,33 @@ Replacement count: {{ helper:get name="str_replace_count" }}
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ helper:<strong>stripos</strong> haystack="abcdEf" needle="deF" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:stripos haystack="abcdef" needle="def" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>strlen</strong> string="abcdef" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:strlen string="abcdef" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>strpos</strong> haystack="abcdef" needle="def" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:strpos haystack="abcdef" needle="def" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}{{ helper:<strong>trim</strong> str="****STRING****" character_mask="*" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>

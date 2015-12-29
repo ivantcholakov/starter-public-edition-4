@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 /**
- * A port of [phputf8](http://phputf8.sourceforge.net/) to a unified set
+ * A port of [phputf8](http://sourceforge.net/projects/phputf8/) to a unified set
  * of files. Provides multi-byte aware replacement string functions.
  *
  * For UTF-8 support to work correctly, the following requirements must be met:
@@ -209,6 +209,36 @@ class Kohana_UTF8 {
 		}
 
 		return _strpos($str, $search, $offset);
+	}
+
+	/**
+	 * Finds position of first occurrence of a UTF-8 string in case insensitive way.
+	 * This is a UTF8-aware version of [stripos](http://php.net/stripos).
+	 *
+	 *     $position = UTF8::stripos($str, $search);
+	 *
+	 * @author  Ivan Tcholakov <ivantcholakov@gmail.com>
+	 * @param   string   haystack
+	 * @param   string   needle
+	 * @param   integer  offset from which character in haystack to start searching
+	 * @return  integer  position of needle
+	 * @return  boolean  FALSE if the needle is not found
+	 * @uses    UTF8::$server_utf8
+	 */
+	public static function stripos($str, $search, $offset = 0)
+	{
+		if (UTF8::$server_utf8)
+			return mb_stripos($str, $search, $offset, Kohana::$charset);
+
+		if ( ! isset(self::$called[__FUNCTION__]))
+		{
+			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+
+			// Function has been called
+			self::$called[__FUNCTION__] = TRUE;
+		}
+
+		return _stripos($str, $search, $offset);
 	}
 
 	/**

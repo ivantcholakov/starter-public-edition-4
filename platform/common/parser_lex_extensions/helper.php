@@ -507,6 +507,51 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return $this->_type('string');
     }
 
+    public function stripos() {
+
+        $name = 'stripos';
+
+        if (!in_array($name, $this->parser_allowed_functions)) {
+            return $this->_function_not_found($name);
+        }
+
+        $attributes = $this->get_attributes();
+
+        return IS_UTF8_CHARSET
+            ? call_user_func_array(array('UTF8', $name), $attributes)
+            : call_user_func_array($name, $attributes);
+    }
+
+    public function strlen() {
+
+        $name = 'strlen';
+
+        if (!in_array($name, $this->parser_allowed_functions)) {
+            return $this->_function_not_found($name);
+        }
+
+        $attributes = $this->get_attributes();
+
+        return IS_UTF8_CHARSET
+            ? call_user_func_array(array('UTF8', $name), $attributes)
+            : call_user_func_array($name, $attributes);
+    }
+
+    public function strpos() {
+
+        $name = 'strpos';
+
+        if (!in_array($name, $this->parser_allowed_functions)) {
+            return $this->_function_not_found($name);
+        }
+
+        $attributes = $this->get_attributes();
+
+        return IS_UTF8_CHARSET
+            ? call_user_func_array(array('UTF8', $name), $attributes)
+            : call_user_func_array($name, $attributes);
+    }
+
     public function trim() {
 
         $name = 'trim';

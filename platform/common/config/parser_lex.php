@@ -65,6 +65,8 @@ $config['allowed_functions'] = array(
     'sprintf',
     'str_replace',
     'strip_tags',
+    'stripos',
+    'strlen',
     'strpos',
     'strtolower',
     'strtoupper',
