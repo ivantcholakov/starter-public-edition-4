@@ -1135,10 +1135,19 @@ Replacement count: {{ helper:get name="str_replace_count" }}
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ helper:<strong>wordwrap</strong> str="The quick brown fox jumped over the lazy dog." width="20" break="&lt;br /&gt;" }}{{ /noparse }}</code></pre>
+<pre><code>{{ noparse }}{{ helper:nl2br string="[[ helper:<strong>word_wrap</strong> str='The quick brown fox jumped over the lazy dog.' charlim='20' ]]" }} &lt;!-- CodeIgniter --&gt;{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
-{{ helper:wordwrap str="The quick brown fox jumped over the lazy dog." width="20" break="<br />" }}
+{{ helper:nl2br string="[[ helper:word_wrap str='The quick brown fox jumped over the lazy dog.' charlim='20' ]]" }} <!-- CodeIgniter -->
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>wordwrap</strong> str="The quick brown fox jumped over the lazy dog." width="20" break="&lt;br /&gt;" }} &lt;!-- PHP --&gt;{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:wordwrap str="The quick brown fox jumped over the lazy dog." width="20" break="<br />" }} <!-- PHP -->
                                         </td>
                                     </tr>
 

@@ -115,6 +115,102 @@ if (!function_exists('ellipsize') && IS_UTF8_CHARSET)
     }
 }
 
+
+if ( ! function_exists('word_wrap') && IS_UTF8_CHARSET)
+{
+    /**
+     * Word Wrap
+     *
+     * Wraps text at the specified character. Maintains the integrity of words.
+     * Anything placed between {unwrap}{/unwrap} will not be word wrapped, nor
+     * will URLs.
+     *
+     * @param       string      $str                the text string
+     * @param       int         $charlim = 76       the number of characters to wrap at
+     * @return      string
+     */
+    function word_wrap($str, $charlim = 76)
+    {
+        // Set the character limit
+        is_numeric($charlim) OR $charlim = 76;
+
+        // Reduce multiple spaces
+        $str = preg_replace('| +|'.(IS_UTF8_CHARSET && PCRE_UTF8_INSTALLED ? 'u' : ''), ' ', $str);
+
+        // Standardize newlines
+        if (strpos($str, "\r") !== FALSE)
+        {
+            $str = str_replace(array("\r\n", "\r"), "\n", $str);
+        }
+
+        // If the current word is surrounded by {unwrap} tags we'll
+        // strip the entire chunk and replace it with a marker.
+        $unwrap = array();
+        if (preg_match_all('|\{unwrap\}(.+?)\{/unwrap\}|s'.(IS_UTF8_CHARSET && PCRE_UTF8_INSTALLED ? 'u' : ''), $str, $matches))
+        {
+            for ($i = 0, $c = count($matches[0]); $i < $c; $i++)
+            {
+                $unwrap[] = $matches[1][$i];
+                $str = str_replace($matches[0][$i], '{{unwrapped'.$i.'}}', $str);
+            }
+        }
+
+        // Use PHP's native function to do the initial wordwrap.
+        // We set the cut flag to FALSE so that any individual words that are
+        // too long get left alone. In the next step we'll deal with them.
+        $str = UTF8::wordwrap($str, $charlim, "\n", FALSE);
+
+        // Split the string into individual lines of text and cycle through them
+        $output = '';
+        foreach (explode("\n", $str) as $line)
+        {
+            // Is the line within the allowed character count?
+            // If so we'll join it to the output and continue
+            if (UTF8::strlen($line) <= $charlim)
+            {
+                $output .= $line."\n";
+                continue;
+            }
+
+            $temp = '';
+            while (UTF8::strlen($line) > $charlim)
+            {
+                // If the over-length word is a URL we won't wrap it
+                if (preg_match('!\[url.+\]|://|www\.!'.(IS_UTF8_CHARSET && PCRE_UTF8_INSTALLED ? 'u' : ''), $line))
+                {
+                    break;
+                }
+
+                // Trim the word down
+                $temp .= UTF8::substr($line, 0, $charlim - 1);
+                $line = UTF8::substr($line, $charlim - 1);
+            }
+
+            // If $temp contains data it means we had to split up an over-length
+            // word into smaller chunks so we'll add it back to our current line
+            if ($temp !== '')
+            {
+                $output .= $temp."\n".$line."\n";
+            }
+            else
+            {
+                $output .= $line."\n";
+            }
+        }
+
+        // Put our markers back
+        if (count($unwrap) > 0)
+        {
+            foreach ($unwrap as $key => $val)
+            {
+                $output = str_replace('{{unwrapped'.$key.'}}', $val, $output);
+            }
+        }
+
+        return $output;
+    }
+}
+
 if (!function_exists('word_limiter') && IS_UTF8_CHARSET) {
 
     /**
