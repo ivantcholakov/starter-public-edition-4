@@ -1050,6 +1050,24 @@ Replacement count: {{ helper:get name="str_replace_count" }}
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ helper:<strong>strtolower</strong> string="aBcDeF" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:strtolower string="aBcDeF" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>strtoupper</strong> string="aBcDeF" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:strtoupper string="aBcDeF" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}{{ helper:<strong>trim</strong> str="****STRING****" character_mask="*" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>

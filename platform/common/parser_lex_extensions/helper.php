@@ -128,6 +128,19 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return $value;
     }
 
+    protected function _utf8($function) {
+
+        if (!in_array($function, $this->parser_allowed_functions)) {
+            return $this->_function_not_found($function);
+        }
+
+        $attributes = $this->get_attributes();
+
+        return IS_UTF8_CHARSET
+            ? call_user_func_array(array('UTF8', $function), $attributes)
+            : call_user_func_array($function, $attributes);
+    }
+
     //--------------------------------------------------------------------------
 
     public function _func_array() {
@@ -285,17 +298,7 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     public function ltrim() {
 
-        $name = 'ltrim';
-
-        if (!in_array($name, $this->parser_allowed_functions)) {
-            return $this->_function_not_found($name);
-        }
-
-        $attributes = $this->get_attributes();
-
-        return IS_UTF8_CHARSET
-            ? call_user_func_array(array('UTF8', $name), $attributes)
-            : call_user_func_array($name, $attributes);
+        return $this->_utf8(__FUNCTION__);
     }
 
     public function _func_null() {
@@ -434,17 +437,7 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     public function rtrim() {
 
-        $name = 'rtrim';
-
-        if (!in_array($name, $this->parser_allowed_functions)) {
-            return $this->_function_not_found($name);
-        }
-
-        $attributes = $this->get_attributes();
-
-        return IS_UTF8_CHARSET
-            ? call_user_func_array(array('UTF8', $name), $attributes)
-            : call_user_func_array($name, $attributes);
+        return $this->_utf8(__FUNCTION__);
     }
 
     public function set() {
@@ -509,62 +502,32 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     public function stripos() {
 
-        $name = 'stripos';
-
-        if (!in_array($name, $this->parser_allowed_functions)) {
-            return $this->_function_not_found($name);
-        }
-
-        $attributes = $this->get_attributes();
-
-        return IS_UTF8_CHARSET
-            ? call_user_func_array(array('UTF8', $name), $attributes)
-            : call_user_func_array($name, $attributes);
+        return $this->_utf8(__FUNCTION__);
     }
 
     public function strlen() {
 
-        $name = 'strlen';
-
-        if (!in_array($name, $this->parser_allowed_functions)) {
-            return $this->_function_not_found($name);
-        }
-
-        $attributes = $this->get_attributes();
-
-        return IS_UTF8_CHARSET
-            ? call_user_func_array(array('UTF8', $name), $attributes)
-            : call_user_func_array($name, $attributes);
+        return $this->_utf8(__FUNCTION__);
     }
 
     public function strpos() {
 
-        $name = 'strpos';
+        return $this->_utf8(__FUNCTION__);
+    }
 
-        if (!in_array($name, $this->parser_allowed_functions)) {
-            return $this->_function_not_found($name);
-        }
+    public function strtolower() {
 
-        $attributes = $this->get_attributes();
+        return $this->_utf8(__FUNCTION__);
+    }
 
-        return IS_UTF8_CHARSET
-            ? call_user_func_array(array('UTF8', $name), $attributes)
-            : call_user_func_array($name, $attributes);
+    public function strtoupper() {
+
+        return $this->_utf8(__FUNCTION__);
     }
 
     public function trim() {
 
-        $name = 'trim';
-
-        if (!in_array($name, $this->parser_allowed_functions)) {
-            return $this->_function_not_found($name);
-        }
-
-        $attributes = $this->get_attributes();
-
-        return IS_UTF8_CHARSET
-            ? call_user_func_array(array('UTF8', $name), $attributes)
-            : call_user_func_array($name, $attributes);
+        return $this->_utf8(__FUNCTION__);
     }
 
     public function var_export() {
