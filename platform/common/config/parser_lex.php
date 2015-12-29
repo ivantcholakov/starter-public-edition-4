@@ -78,5 +78,6 @@ $config['allowed_functions'] = array(
     'var_dump',
     'var_export',
     'word_limiter',
-    'word_wrap',
+    'word_wrap', // CodeIgniter
+    'wordwrap',  // PHP
 );

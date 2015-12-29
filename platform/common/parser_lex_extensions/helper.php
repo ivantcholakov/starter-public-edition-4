@@ -567,4 +567,9 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return $this->_utf8(__FUNCTION__);
     }
 
+    public function wordwrap() {
+
+        return $this->_utf8(__FUNCTION__);
+    }
+
 }

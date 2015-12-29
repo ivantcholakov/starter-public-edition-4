@@ -788,6 +788,29 @@ class Kohana_UTF8 {
 		return _from_unicode($arr);
 	}
 
+	/**
+	 * UTF8::wordwrap
+	 *
+	 * @author      Ivan Tcholakov <ivantcholakov@gmail.com>
+	 * @param       string          The input string.
+	 * @param       int             The number of characters at which the string will be wrapped.
+	 * @param       string          The line is broken using the optional break parameter.
+	 * @param       bool            If the cut is set to TRUE, the string is always wrapped at or before the specified width.
+	 * @return      string|false
+	 */
+	public static function wordwrap($string, $width = 75, $break = "\n", $cut = false)
+	{
+		if ( ! isset(self::$called[__FUNCTION__]))
+		{
+			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+
+			// Function has been called
+			self::$called[__FUNCTION__] = TRUE;
+		}
+
+		return _wordwrap($string, $width, $break, $cut);
+	}
+
 } // End UTF8
 
 if (Kohana_UTF8::$server_utf8 === NULL)

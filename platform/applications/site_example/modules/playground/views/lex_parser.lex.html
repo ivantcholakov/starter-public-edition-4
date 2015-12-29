@@ -1133,6 +1133,15 @@ Replacement count: {{ helper:get name="str_replace_count" }}
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>wordwrap</strong> str="The quick brown fox jumped over the lazy dog." width="20" break="&lt;br /&gt;" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:wordwrap str="The quick brown fox jumped over the lazy dog." width="20" break="<br />" }}
+                                        </td>
+                                    </tr>
+
                                 </tbody>
 
                             </table>
