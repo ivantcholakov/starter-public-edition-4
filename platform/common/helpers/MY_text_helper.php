@@ -2,7 +2,7 @@
 
 /**
  * UTF-8 alternatives to CodeIgniter's text helper functions
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013-2015
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -113,4 +113,35 @@ if (!function_exists('ellipsize') && IS_UTF8_CHARSET)
 
         return $beg.$ellipsis.$end;
     }
+}
+
+if (!function_exists('word_limiter') && IS_UTF8_CHARSET) {
+
+    /**
+     * Word Limiter, UTF-8 version.
+     *
+     * Limits a string to X number of words.
+     *
+     * @param       string
+     * @param       int
+     * @param       string    The end character. Usually an ellipsis
+     * @return      string
+     */
+    function word_limiter($str, $limit = 100, $end_char = '&#8230;')
+    {
+        if (UTF8::trim($str) === '')
+        {
+            return $str;
+        }
+
+        preg_match('/^\s*+(?:\S++\s*+){1,'.(int) $limit.'}/'.(IS_UTF8_CHARSET && PCRE_UTF8_INSTALLED ? 'u' : ''), $str, $matches);
+
+        if (UTF8::strlen($str) === UTF8::strlen($matches[0]))
+        {
+            $end_char = '';
+        }
+
+        return UTF8::rtrim($matches[0]).$end_char;
+    }
+
 }

@@ -1124,6 +1124,15 @@ Replacement count: {{ helper:get name="str_replace_count" }}
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>word_limiter</strong> str="abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef" limit="5" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:word_limiter str="abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef" limit="5" }}
+                                        </td>
+                                    </tr>
+
                                 </tbody>
 
                             </table>
