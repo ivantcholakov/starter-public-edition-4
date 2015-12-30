@@ -1262,6 +1262,34 @@ Replacement count: {{ helper:get name="str_replace_count" }}
                                         </td>
                                     </tr>
 
+                                    <tr class="info">
+                                        <td colspan="2">
+                                            <h4>Formatters, Parsers</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>format:markdown</strong> }} Formatted **text** {{ <strong>/format:markdown</strong> }}
+{{ <strong>format:markdown</strong> content="[[ string_markdown ]]" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ format:markdown }} Formatted **text** {{ /format:markdown }}
+{{ format:markdown content="[[ string_markdown ]]" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>format:textile</strong> }} Formatted _text_ {{ <strong>/format:textile</strong> }}
+{{ <strong>format:textile</strong> content="[[ string_textile ]]" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ format:textile }} Formatted _text_ {{ /format:textile }}
+{{ format:textile content="[[ string_textile ]]" }}
+                                        </td>
+                                    </tr>
+
                                 </tbody>
 
                             </table>

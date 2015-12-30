@@ -62,6 +62,8 @@ class Lex_parser_controller extends Base_Controller {
             ->set('countries_10', $countries_10)
             ->set('with_a_new_line', "a new\nline")
             ->set('my_image', image_url('playground.jpg'))
+            ->set('string_markdown', 'Formatted **text**')
+            ->set('string_textile', 'Formatted _text_')
             ->enable_parser_body('lex')
             ->build('lex_parser.lex.html');
     }

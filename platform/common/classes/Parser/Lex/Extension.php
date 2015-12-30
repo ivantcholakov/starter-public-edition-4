@@ -167,6 +167,15 @@ abstract class Parser_Lex_Extension {
 
     public function get_attribute($attribute, $default = null) {
 
+        $index = filter_var($attribute, FILTER_VALIDATE_INT);
+
+        if ($index !== false) {
+
+            $attributes = $this->get_attribute_values();
+
+            return array_key_exists($index, $attributes) ? $attributes[$index] : $default;
+        }
+
         return array_key_exists($attribute, $this->parsed_attributes) ? $this->parsed_attributes[$attribute] : $default;
     }
 
