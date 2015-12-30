@@ -37,3 +37,31 @@ if (!function_exists('str_to_bool')) {
     }
 
 }
+
+/**
+ * Checks whether a given value can be a strict string representation of a boolean value.
+ *
+ * @param string    $value      The given value.
+ * @return bool
+ *
+ * @author Ivan Tcholakov, 2015
+ * @license MIT
+ */
+
+if (!function_exists('is_str_to_bool')) {
+
+    function is_str_to_bool($value, $strict = false) {
+
+        if (!$strict) {
+
+            $value_test = @ (string) $value;
+
+            if (is_numeric($value_test)) {
+                return true;
+            }
+        }
+
+        return !str_to_bool($value) || str_to_bool($value, true);
+    }
+
+}
