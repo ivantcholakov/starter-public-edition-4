@@ -158,6 +158,47 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return $this->_type('boolean');
     }
 
+    public function config() {
+
+        $item = $this->get_attribute('item');
+
+        return config_item($item);
+    }
+
+    public function counter() {
+
+        static $count = array();
+
+        $key = $this->get_attribute('identifier', 'default');
+
+        if (!isset($count[$key])) {
+            $count[$key] = $this->get_attribute('start', 1);
+        } elseif (self::$_counter_increment) {
+            ($this->get_attribute('mode') == 'subtract') ? $count[$key]-- : $count[$key]++;
+        }
+
+        self::$_counter_increment = true;
+
+        return (str_to_bool($this->get_attribute('return', true))) ? $count[$key] : null;
+    }
+
+    public function show_counter() {
+
+        self::$_counter_increment = false;
+
+        return self::counter();
+    }
+
+    public function date() {
+
+        $this->load->helper('date');
+
+        $format = $this->get_attribute('format');
+        $timestamp = $this->get_attribute('timestamp', time());
+
+        return format_date($timestamp, $format);
+    }
+
     public function double() {
 
         return $this->_type('float');
@@ -248,57 +289,35 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return $this->lang->line($line);
     }
 
-    public function config() {
-
-        $item = $this->get_attribute('item');
-
-        return config_item($item);
-    }
-
-    public function date() {
-
-        $this->load->helper('date');
-
-        $format = $this->get_attribute('format');
-        $timestamp = $this->get_attribute('timestamp', time());
-
-        return format_date($timestamp, $format);
-    }
-
-    public function timespan() {
-
-        $timespan = date($this->get_attribute('timestamp', now()));
-
-        return timespan($timespan, time());
-    }
-
-    public function counter() {
-
-        static $count = array();
-
-        $key = $this->get_attribute('identifier', 'default');
-
-        if (!isset($count[$key])) {
-            $count[$key] = $this->get_attribute('start', 1);
-        } elseif (self::$_counter_increment) {
-            ($this->get_attribute('mode') == 'subtract') ? $count[$key]-- : $count[$key]++;
-        }
-
-        self::$_counter_increment = true;
-
-        return (str_to_bool($this->get_attribute('return', true))) ? $count[$key] : null;
-    }
-
-    public function show_counter() {
-
-        self::$_counter_increment = false;
-
-        return self::counter();
-    }
-
     public function ltrim() {
 
         return $this->_utf8(__FUNCTION__);
+    }
+
+    // Image Processing Demo.
+    // Rework this method or create a similar one according to the
+    // concrete image processing implementation.
+    public function my_image_url() {
+
+        $attributes = $this->get_attribute_values();
+
+        $src = (isset($attributes[0]) && $attributes[0] != '') ? $attributes[0] : image_url('lib/blank.png');
+        $width = (isset($attributes[1]) && $attributes[1] != '') ? $attributes[1] : null;
+        $height = (isset($attributes[2]) && $attributes[2] != '') ? $attributes[2] : null;
+        $no_crop = (isset($attributes[3]) && $attributes[3] != '') ? str_to_bool($attributes[3]) : null;
+        $keep_canvas_size = (isset($attributes[4]) && $attributes[4] != '') ? str_to_bool($attributes[4]) : null;
+
+        return http_build_url(
+            site_url('playground/image-process'),
+            array('query' => http_build_query(array(
+                'src' => $src,
+                'w' => $width,
+                'h' => $height,
+                'no_crop' => $no_crop,
+                'keep_canvas_size' => $keep_canvas_size
+            ))),
+            HTTP_URL_JOIN_QUERY
+        );
     }
 
     public function _func_null() {
@@ -528,6 +547,13 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
     public function substr() {
 
         return $this->_utf8(__FUNCTION__);
+    }
+
+    public function timespan() {
+
+        $timespan = date($this->get_attribute('timestamp', now()));
+
+        return timespan($timespan, time());
     }
 
     public function trim() {

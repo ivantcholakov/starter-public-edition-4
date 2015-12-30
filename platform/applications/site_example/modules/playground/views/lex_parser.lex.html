@@ -4,6 +4,23 @@ Author: Ivan Tcholakov, ivantcholakov@gmail.com, 2015
 License: The MIT License, http://opensource.org/licenses/MIT
 #}}
 
+        <style>
+            .image-container {
+                border: 1px solid blue;
+                display:table-cell;
+                vertical-align:middle;
+                text-align: center;
+            }
+            .image-container-120x180 {
+                width: 120px;
+                height: 180px;
+            }
+            .image-container-180x120 {
+                width: 180px;
+                height: 120px;
+            }
+        </style>
+
         <section>
 
             <div class="container">
@@ -878,6 +895,91 @@ $(function() {
                                         </td>
                                         <td>
 {{ helper:money_format format="%i" number="1234.56" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}Fit an Image by Width
+&lt;br /&gt;
+&lt;img src=&quot;{{ helper:&lt;strong&gt;my_image_url&lt;/strong&gt; src=&quot;[[ my_image ]]&quot; width=&quot;120&quot; }}&quot; /&gt;
+&lt;br &gt;
+width = 120px
+
+&lt;hr /&gt;
+
+Fit an Image by Height
+&lt;br /&gt;
+&lt;img src=&quot;{{ helper:&lt;strong&gt;my_image_url&lt;/strong&gt; src=&quot;[[ my_image ]]&quot; width=&quot;&quot; height=&quot;120&quot; }}&quot; /&gt;
+&lt;br &gt;
+height = 120px
+
+&lt;hr /&gt;
+
+Fit an Image by Width and Height
+&lt;br /&gt;
+&lt;img src=&quot;{{ helper:&lt;strong&gt;my_image_url&lt;/strong&gt; src=&quot;[[ my_image ]]&quot; width=&quot;180&quot; height=&quot;120&quot; }}&quot; /&gt;
+&lt;br &gt;
+width = 180px, height = 120px
+
+&lt;hr /&gt;
+
+Resize an Image Within Width and Height
+&lt;br /&gt;
+&lt;div class=&quot;image-container image-container-180x120&quot;&gt;
+    &lt;img src=&quot;{{ helper:&lt;strong&gt;my_image_url&lt;/strong&gt; src=&quot;[[ my_image ]]&quot; width=&quot;180&quot; height=&quot;120&quot; no_crop=&quot;yes&quot; }}&quot; /&gt;
+&lt;/div&gt;
+width = 180px, height = 120px
+
+&lt;hr /&gt;
+
+Fit an Image Within a Canvas with Given Width and Height
+&lt;br /&gt;
+&lt;div class=&quot;image-container image-container-180x120&quot;&gt;
+    &lt;img src=&quot;{{ helper:&lt;strong&gt;my_image_url&lt;/strong&gt; src=&quot;[[ my_image ]]&quot; width=&quot;180&quot; height=&quot;120&quot; no_crop=&quot;yes&quot; keep_canvas_size=&quot;yes&quot; }}&quot; /&gt;
+&lt;/div&gt;
+width = 180px, height = 120px{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+Fit an Image by Width
+<br />
+<img src="{{ helper:my_image_url src="[[ my_image ]]" width="120" }}" />
+<br >
+width = 120px
+
+<hr />
+
+Fit an Image by Height
+<br />
+<img src="{{ helper:my_image_url src="[[ my_image ]]" width="" height="120" }}" />
+<br >
+height = 120px
+
+<hr />
+
+Fit an Image by Width and Height
+<br />
+<img src="{{ helper:my_image_url src="[[ my_image ]]" width="180" height="120" }}" />
+<br >
+width = 180px, height = 120px
+
+<hr />
+
+Resize an Image Within Width and Height
+<br />
+<div class="image-container image-container-180x120">
+    <img src="{{ helper:my_image_url src="[[ my_image ]]" width="180" height="120" no_crop="yes" }}" />
+</div>
+width = 180px, height = 120px
+
+<hr />
+
+Fit an Image Within a Canvas with Given Width and Height
+<br />
+<div class="image-container image-container-180x120">
+    <img src="{{ helper:my_image_url src="[[ my_image ]]" width="180" height="120" no_crop="yes" keep_canvas_size="yes" }}" />
+</div>
+width = 180px, height = 120px
                                         </td>
                                     </tr>
 
