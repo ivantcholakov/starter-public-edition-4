@@ -174,6 +174,17 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return $this->_type('boolean');
     }
 
+    public function character_limiter() {
+
+        if (!$this->_is_function_allowed($name = __FUNCTION__, $message)) {
+            return $message;
+        }
+
+        $this->load->helper('text');
+
+        return call_user_func_array($name, $this->get_attributes());
+    }
+
     public function config() {
 
         $item = $this->get_attribute('item');
