@@ -159,6 +159,19 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     //--------------------------------------------------------------------------
 
+    public function add() {
+
+        $name = $this->get_attribute(0);
+        $value = $this->get_attribute(1, 0);
+
+        if (!isset($name)) {
+            return;
+        }
+
+        $var = & $this->parser_instance->getVariableRef($name, $this->parser_instance->parser_data);
+        $var = $var + $value;
+    }
+
     public function _func_array() {
 
         return $this->_type('array');
@@ -573,6 +586,19 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
     public function strtoupper() {
 
         return $this->_utf8(__FUNCTION__);
+    }
+
+    public function sub() {
+
+        $name = $this->get_attribute(0);
+        $value = $this->get_attribute(1, 0);
+
+        if (!isset($name)) {
+            return;
+        }
+
+        $var = & $this->parser_instance->getVariableRef($name, $this->parser_instance->parser_data);
+        $var = $var - $value;
     }
 
     public function substr() {

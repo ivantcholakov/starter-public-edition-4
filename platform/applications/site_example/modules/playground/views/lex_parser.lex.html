@@ -443,6 +443,19 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ helper:<strong>add</strong> name="var_1" value="1" }}{{ helper:get name="var_1" }}
+&lt;br /&gt;
+{{ helper:<strong>add</strong> name="var_1" value="[[ value_1]]" }}{{ helper:get name="var_1" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:add name="var_1" value="1" }}{{ helper:get name="var_1" }}
+<br />
+{{ helper:add name="var_1" value="[[ value_1]]" }}{{ helper:get name="var_1" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}{{ helper:<strong>character_limiter</strong> str="Very long text. Very long text." n="10" }}
 &lt;br /&gt;
 {{ helper:<strong>character_limiter</strong> str="[[very_long_text]]" n="10" end_char="&amp;#8230;" }}{{ /noparse }}</code></pre>
@@ -1205,6 +1218,19 @@ Replacement count: {{ helper:get name="str_replace_count" }}
                                         </td>
                                         <td>
 {{ helper:strtoupper string="aBcDeF" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>sub</strong> name="var_2" value="1" }}{{ helper:get name="var_2" }}
+&lt;br /&gt;
+{{ helper:<strong>sub</strong> name="var_2" value="[[ value_1]]" }}{{ helper:get name="var_2" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:sub name="var_2" value="1" }}{{ helper:get name="var_2" }}
+<br />
+{{ helper:sub name="var_2" value="[[ value_1]]" }}{{ helper:get name="var_2" }}
                                         </td>
                                     </tr>
 
