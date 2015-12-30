@@ -23,7 +23,7 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     public function __call($name, $args) {
 
-        if (function_exists($name) && in_array($name, $this->parser_allowed_functions)) {
+        if (function_exists($name) && $this->_is_function_allowed($name)) {
 
             $attributes = $this->get_attributes();
 
@@ -31,6 +31,17 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         }
 
         return $this->_function_not_found($name);
+    }
+
+    protected function _is_function_allowed($name, & $message = null) {
+
+        if (in_array($name, $this->parser_allowed_functions)) {
+            return true;
+        }
+
+        $message = $this->_function_not_found($name);
+
+        return false;
     }
 
     protected function _function_not_found($name) {
@@ -135,8 +146,8 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     protected function _utf8($function) {
 
-        if (!in_array($function, $this->parser_allowed_functions)) {
-            return $this->_function_not_found($function);
+        if (!$this->_is_function_allowed($function, $message)) {
+            return $message;
         }
 
         $attributes = $this->get_attributes();
@@ -211,10 +222,8 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     public function _func_empty() {
 
-        $name = 'empty';
-
-        if (!in_array($name, $this->parser_allowed_functions)) {
-            return $this->_function_not_found($name);
+        if (!$this->_is_function_allowed('empty', $message)) {
+            return $message;
         }
 
         $attributes = $this->get_attribute_values();
@@ -282,10 +291,8 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     public function _func_isset() {
 
-        $name = 'isset';
-
-        if (!in_array($name, $this->parser_allowed_functions)) {
-            return $this->_function_not_found($name);
+        if (!$this->_is_function_allowed('isset', $message)) {
+            return $message;
         }
 
         $attributes = $this->get_attributes();
@@ -355,10 +362,8 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     public function preg_match() {
 
-        $name = 'preg_match';
-
-        if (!in_array($name, $this->parser_allowed_functions)) {
-            return $this->_function_not_found($name);
+        if (!$this->_is_function_allowed($name = __FUNCTION__, $message)) {
+            return $message;
         }
 
         $attributes = $this->get_attribute_values();
@@ -384,10 +389,8 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     public function preg_match_all() {
 
-        $name = 'preg_match_all';
-
-        if (!in_array($name, $this->parser_allowed_functions)) {
-            return $this->_function_not_found($name);
+        if (!$this->_is_function_allowed($name = __FUNCTION__, $message)) {
+            return $message;
         }
 
         $attributes = $this->get_attribute_values();
@@ -413,10 +416,8 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     public function preg_replace() {
 
-        $name = 'preg_replace';
-
-        if (!in_array($name, $this->parser_allowed_functions)) {
-            return $this->_function_not_found($name);
+        if (!$this->_is_function_allowed($name = __FUNCTION__, $message)) {
+            return $message;
         }
 
         $attributes = $this->get_attribute_values();
@@ -442,10 +443,8 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     public function print_d() {
 
-        $name = 'print_d';
-
-        if (!in_array($name, $this->parser_allowed_functions)) {
-            return $this->_function_not_found($name);
+        if (!$this->_is_function_allowed($name = __FUNCTION__, $message)) {
+            return $message;
         }
 
         return $this->_display($name);
@@ -453,10 +452,8 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     public function print_r() {
 
-        $name = 'print_r';
-
-        if (!in_array($name, $this->parser_allowed_functions)) {
-            return $this->_function_not_found($name);
+        if (!$this->_is_function_allowed($name = __FUNCTION__, $message)) {
+            return $message;
         }
 
         return $this->_display($name);
@@ -464,10 +461,8 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     public function rand_string() {
 
-        $name = 'rand_string';
-
-        if (!in_array($name, $this->parser_allowed_functions)) {
-            return $this->_function_not_found($name);
+        if (!$this->_is_function_allowed($name = __FUNCTION__, $message)) {
+            return $message;
         }
 
         $attributes = $this->get_attribute_values();
@@ -501,10 +496,8 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     public function str_replace() {
 
-        $name = 'str_replace';
-
-        if (!in_array($name, $this->parser_allowed_functions)) {
-            return $this->_function_not_found($name);
+        if (!$this->_is_function_allowed($name = __FUNCTION__, $message)) {
+            return $message;
         }
 
         $attributes = $this->get_attributes();
@@ -586,10 +579,8 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     public function var_export() {
 
-        $name = 'var_export';
-
-        if (!in_array($name, $this->parser_allowed_functions)) {
-            return $this->_function_not_found($name);
+        if (!$this->_is_function_allowed($name = __FUNCTION__, $message)) {
+            return $message;
         }
 
         return $this->_display($name);
@@ -597,10 +588,8 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     public function var_dump() {
 
-        $name = 'var_dump';
-
-        if (!in_array($name, $this->parser_allowed_functions)) {
-            return $this->_function_not_found($name);
+        if (!$this->_is_function_allowed($name = __FUNCTION__, $message)) {
+            return $message;
         }
 
         return $this->_display($name);
