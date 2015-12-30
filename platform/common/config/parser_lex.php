@@ -21,6 +21,7 @@ $config['cumulative_noparse'] = false;
 $config['allowed_functions'] = array(
     'character_limiter',
     'count',
+    'date',
     'empty',
     'explode',
     'gettype',

@@ -230,16 +230,6 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return self::counter();
     }
 
-    public function date() {
-
-        $this->load->helper('date');
-
-        $format = $this->get_attribute('format');
-        $timestamp = $this->get_attribute('timestamp', time());
-
-        return format_date($timestamp, $format);
-    }
-
     public function double() {
 
         return $this->_type('float');

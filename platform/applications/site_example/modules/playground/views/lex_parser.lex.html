@@ -509,6 +509,19 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ helper:<strong>date</strong> format="Y" }}
+&lt;br /&gt;
+{{ helper:<strong>date</strong> format="Y" timestamp="2524608000" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:date format="Y" }}
+<br />
+{{ helper:date format="Y" timestamp="2524608000" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}{{ if {helper:<strong>empty</strong> value="[[value_0]]"} }}
 {{ helper:lang line="ui_yes" }}
 {{ else }}
