@@ -184,4 +184,39 @@ abstract class Parser_Lex_Extension {
         $this->parsed_attributes[$attribute] = $value;
     }
 
+    public function detect_boolean_attributes($attr_list) {
+
+        if (empty($this->parsed_attributes) || !is_array($this->parsed_attributes)) {
+            return;
+        }
+
+        if (!is_array($attr_list)) {
+            $attr_list = (array) $attr_list;
+        }
+
+        if (empty($attr_list)) {
+            return;
+        }
+
+        foreach ($attr_list as $key => $value) {
+
+            $index = filter_var($attribute, FILTER_VALIDATE_INT);
+
+            if ($index !== false) {
+                $attr_list[$key] = $index;
+            }
+        }
+
+        $i = 0;
+
+        foreach ($this->parsed_attributes as $key => $value) {
+
+            if (in_array($i, $attr_list, true) || in_array($key, $attr_list, true)) {
+                $this->parsed_attributes[$key] = str_to_bool($value);
+            }
+
+            $i++;
+        }
+    }
+
 }
