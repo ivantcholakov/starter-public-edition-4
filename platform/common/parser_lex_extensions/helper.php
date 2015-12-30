@@ -247,6 +247,24 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return $value;
     }
 
+    public function gravatar() {
+
+        $this->load->library('gravatar');
+
+        $email = $this->get_attribute('email', '');
+        $size = $this->get_attribute('size', '50');
+        $rating = $this->get_attribute('rating', 'g');
+        $url_only = str_to_bool($this->get_attribute('url-only', false));
+
+        $gravatar_url = $this->gravatar->get($email, $size, null, null, $rating);
+
+        if ($url_only) {
+            return $gravatar_url;
+        }
+
+        return '<img src="'.$gravatar_url.'" alt="Gravatar" class="gravatar" />';
+    }
+
     public function int() {
 
         return $this->_type('integer');
