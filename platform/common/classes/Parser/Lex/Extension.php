@@ -200,7 +200,7 @@ abstract class Parser_Lex_Extension {
 
         foreach ($attr_list as $key => $value) {
 
-            $index = filter_var($attribute, FILTER_VALIDATE_INT);
+            $index = filter_var($value, FILTER_VALIDATE_INT);
 
             if ($index !== false) {
                 $attr_list[$key] = $index;

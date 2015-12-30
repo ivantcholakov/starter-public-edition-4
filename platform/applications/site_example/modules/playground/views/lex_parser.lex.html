@@ -456,18 +456,27 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ <strong>helper:config</strong> item="language" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:config item="language" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}{{ helper:<strong>count</strong> array="[[ array_1 ]]" }}
 &lt;br /&gt;
 {{ helper:<strong>count</strong> array="[[ array_2 ]]" }}
 &lt;br /&gt;
-{{ helper:<strong>count</strong> array="[[ array_2 ]]" mode="1" }}{{ /noparse }}</code></pre>
+{{ helper:<strong>count</strong> array="[[ array_2 ]]" recursive="yes" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
 {{ helper:count value="[[ array_1 ]]" }}
 <br />
 {{ helper:count value="[[ array_2 ]]" }}
 <br />
-{{ helper:count value="[[ array_2 ]]" mode="1" }}
+{{ helper:count value="[[ array_2 ]]" recursive="yes" }}
                                         </td>
                                     </tr>
 

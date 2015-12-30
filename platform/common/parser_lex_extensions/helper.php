@@ -187,9 +187,23 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     public function config() {
 
-        $item = $this->get_attribute('item');
+        return config_item($this->get_attribute(0));
+    }
 
-        return config_item($item);
+    public function count() {
+
+        if (!$this->_is_function_allowed($name = __FUNCTION__, $message)) {
+            return $message;
+        }
+
+        $this->detect_boolean_attributes(array(1));
+        $attributes = $this->get_attribute_values();
+
+        if (isset($attributes[1])) {
+            $attributes[1] = $attributes[1] ? 1 : 0;
+        }
+
+        return call_user_func_array($name, $attributes);
     }
 
     public function counter() {
