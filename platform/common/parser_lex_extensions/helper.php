@@ -168,7 +168,17 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
             return;
         }
 
-        $var = & $this->parser_instance->getVariableRef($name, $this->parser_instance->parser_data);
+        $name = trim(@ (string) $name);
+
+        if ($name == '') {
+            return;
+        }
+
+        $var = & $this->parser_instance->getVariableRef(
+            $name,
+            $this->parser_instance->parser_data
+        );
+
         $var = $var + $value;
     }
 
@@ -271,7 +281,7 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         $name = isset($attributes[0]) ? (trim(@ (string) $attributes[0])) : null;
         $value = null;
 
-        if (isset($name)) {
+        if ($name != '') {
 
             $no_value = new Parser_Lex_No_Value;
 
@@ -407,7 +417,10 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
             } else {
 
-                $attributes[2] = & $this->parser_instance->getVariableRef($matches_attr, $this->parser_instance->parser_data);
+                $attributes[2] = & $this->parser_instance->getVariableRef(
+                    $matches_attr,
+                    $this->parser_instance->parser_data
+                );
                 $attributes[2] = array();
             }
         }
@@ -434,7 +447,10 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
             } else {
 
-                $attributes[2] = & $this->parser_instance->getVariableRef($matches_attr, $this->parser_instance->parser_data);
+                $attributes[2] = & $this->parser_instance->getVariableRef(
+                    $matches_attr,
+                    $this->parser_instance->parser_data
+                );
                 $attributes[2] = array();
             }
         }
@@ -461,7 +477,10 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
             } else {
 
-                $attributes[4] = & $this->parser_instance->getVariableRef($count_attr, $this->parser_instance->parser_data);
+                $attributes[4] = & $this->parser_instance->getVariableRef(
+                    $count_attr,
+                    $this->parser_instance->parser_data
+                );
                 $attributes[4] = 0;
             }
         }
@@ -513,13 +532,22 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
             return;
         }
 
-        $name = @ (string) $attributes[0];
+        $name = trim(@ (string) $attributes[0]);
+
+        if ($name == '') {
+            return;
+        }
+
         $value = isset($attributes[1]) ? $attributes[1] : null;
         $type = isset($attributes[2]) ? ($attributes[2]) : null;
 
         $success = $this->_set_type($value, $type);
 
-        $this->parser_instance->setVariable($name, $value, $this->parser_instance->parser_data);
+        $this->parser_instance->setVariable(
+            $name,
+            $value,
+            $this->parser_instance->parser_data
+        );
     }
 
     public function str_replace() {
@@ -597,7 +625,17 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
             return;
         }
 
-        $var = & $this->parser_instance->getVariableRef($name, $this->parser_instance->parser_data);
+        $name = trim(@ (string) $name);
+
+        if ($name == '') {
+            return;
+        }
+
+        $var = & $this->parser_instance->getVariableRef(
+            $name,
+            $this->parser_instance->parser_data
+        );
+
         $var = $var - $value;
     }
 
