@@ -1360,6 +1360,51 @@ Replacement count: {{ helper:get name="str_replace_count" }}
                                         </td>
                                     </tr>
 
+                                    <tr class="info">
+                                        <td colspan="2">
+                                            <h4>Session</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>session:data</strong> name="sess_var_1" value="test_1" }} &lt;!-- Set --&gt;
+{{ <strong>session:data</strong> name="sess_var_1" }} &lt;!-- Get --&gt;{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ session:data name="sess_var_1" value="test_1" }} <!-- Set -->
+{{ session:data name="sess_var_1" }} <!-- Get -->
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>session:flash</strong> name="sess_var_2" value="test_2" }} &lt;!-- Set --&gt;
+{{ <strong>session:flash</strong> name="sess_var_2" }} &lt;!-- Get --&gt;{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ session:flash name="sess_var_2" value="test_2" }} <!-- Set -->
+{{ session:flash name="sess_var_2" }} <!-- Get -->
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>session:temp</strong> name="sess_var_3" value="test_3" }} &lt;!-- Set --&gt;
+{{ <strong>session:temp</strong> name="sess_var_3" }} &lt;!-- Get --&gt;
+&lt;br /&gt;
+{{ <strong>session:temp</strong> name="sess_var_4" value="test_4" ttl="1000" }} &lt;!-- Set with TTL in seconds, the default is 300 --&gt;
+{{ <strong>session:temp</strong> name="sess_var_4" }} &lt;!-- Get --&gt;{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ session:temp name="sess_var_3" value="test_3" }} <!-- Set -->
+{{ session:temp name="sess_var_3" }} <!-- Get -->
+<br />
+{{ session:temp name="sess_var_4" value="test_4" ttl="1000" }} <!-- Set with TTL in seconds, the default is 300 -->
+{{ session:temp name="sess_var_4" }} <!-- Get -->
+                                        </td>
+                                    </tr>
+
                                 </tbody>
 
                             </table>
