@@ -17,6 +17,10 @@ $config['cumulative_noparse'] = false;
 
 // Lex Parser Extensions
 
+// A whitelist of constants that Lex parser can access.
+$config['allowed_constants'] = array(
+);
+
 // A whitelist of functions that Lex parser can execute.
 $config['allowed_functions'] = array(
     'character_limiter',
