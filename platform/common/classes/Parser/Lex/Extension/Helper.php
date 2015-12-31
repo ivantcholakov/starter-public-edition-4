@@ -18,7 +18,6 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
             isset($this->extension_config['allowed_functions'])
                 ? $this->extension_config['allowed_functions']
                 : array();
-
     }
 
     public function __call($name, $args) {

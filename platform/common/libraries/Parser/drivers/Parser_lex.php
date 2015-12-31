@@ -38,9 +38,9 @@ class CI_Parser_lex extends CI_Parser_driver {
                 unset($defaults['allowed_functions']);
             }
 
-            if (array_key_exists('allowed_constants', $defaults))
+            if (array_key_exists('allowed_globals', $defaults))
             {
-                unset($defaults['allowed_constants']);
+                unset($defaults['allowed_globals']);
             }
 
             $this->config = array_merge($this->config, $defaults);

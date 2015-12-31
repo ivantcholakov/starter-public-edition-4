@@ -18,7 +18,8 @@ $config['cumulative_noparse'] = false;
 // Lex Parser Extensions
 
 // A whitelist of constants that Lex parser can access.
-$config['allowed_constants'] = array(
+$config['allowed_globals'] = array(
+    'BASE_URL',
 );
 
 // A whitelist of functions that Lex parser can execute.
