@@ -410,7 +410,7 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
             $matches_attr = trim(@ (string) $attributes[2]);
 
-            if (!str_to_bool($matches_attr) || str_to_bool($matches_attr, true)) {
+            if (is_str_to_bool($matches_attr)) {
 
                 $matches = array();
                 $attributes[2] = & $matches;
@@ -440,7 +440,7 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
             $matches_attr = trim(@ (string) $attributes[2]);
 
-            if (!str_to_bool($matches_attr) || str_to_bool($matches_attr, true)) {
+            if (is_str_to_bool($matches_attr)) {
 
                 $matches = array();
                 $attributes[2] = & $matches;
@@ -470,7 +470,7 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
             $count_attr = trim(@ (string) $attributes[4]);
 
-            if (!str_to_bool($count_attr) || str_to_bool($count_attr, true)) {
+            if (is_str_to_bool($count_attr)) {
 
                 $count = 0;
                 $attributes[4] = & $count;
@@ -571,15 +571,18 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
                 $i++;
             }
 
-            if (!str_to_bool($count_attr) || str_to_bool($count_attr, true)) {
+            if (is_str_to_bool($count_attr)) {
 
                 $count = 0;
                 $attributes[$key] = & $count;
 
             } else {
 
-                $this->parser_instance->parser_data[$count_attr] = 0;
-                $attributes[$key] = & $this->parser_instance->parser_data[$count_attr];
+                $attributes[$key] = & $this->parser_instance->getVariableRef(
+                    $count_attr,
+                    $this->parser_instance->parser_data
+                );
+                $attributes[$key] = 0;
             }
         }
 
