@@ -26,6 +26,10 @@ $config['allowed_globals'] = array(
     'SITE_URI',
     'CURRENT_SITE_URL',
     'CURRENT_SITE_URI',
+    'CURRENT_URL',
+    'CURRENT_URI',
+    'DEFAULT_BASE_URL',
+    'DEFAULT_BASE_URI',
 );
 
 // A whitelist of functions that Lex parser can execute.
