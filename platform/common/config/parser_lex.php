@@ -20,6 +20,10 @@ $config['cumulative_noparse'] = false;
 // A whitelist of constants that Lex parser can access.
 $config['allowed_globals'] = array(
     'BASE_URL',
+    'BASE_URI',
+    'SERVER_URL',
+    'SITE_URL',
+    'SITE_URI',
 );
 
 // A whitelist of functions that Lex parser can execute.
