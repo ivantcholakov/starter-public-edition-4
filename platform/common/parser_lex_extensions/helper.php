@@ -393,9 +393,21 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     public function lang() {
 
-        $line = $this->get_attribute('line');
+        $attributes = $this->get_attribute_values();
 
-        return $this->lang->line($line);
+        if (count($attributes) < 1) {
+            return null;
+        }
+
+        $line = $attributes[0];
+
+        if (count($attributes) == 1) {
+            return $this->lang->line($line);
+        }
+
+        $params = array_slice($attributes, 1);
+
+        return $this->lang->line($line, $params);
     }
 
     public function ltrim() {

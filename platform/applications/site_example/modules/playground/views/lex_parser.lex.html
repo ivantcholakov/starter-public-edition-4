@@ -917,10 +917,14 @@ $(function() {
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ helper:<strong>lang</strong> line="welcome.hello" }}{{ /noparse }}</code></pre>
+<pre><code>{{ noparse }}{{ helper:<strong>lang</strong> line="welcome.hello" }}
+&lt;br /&gt;
+{{ helper:<strong>lang</strong> line="ui_file_upload_success" param1="&lt;strong&gt;photo.png&lt;/strong&gt;" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
 {{ helper:lang line="welcome.hello" }}
+<br />
+{{ helper:lang line="ui_file_upload_success" param1="<strong>photo.png</strong>" }}
                                         </td>
                                     </tr>
 
