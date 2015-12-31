@@ -125,10 +125,8 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         $attributes = $this->get_attribute_values();
 
         $value = isset($attributes[0]) ? $attributes[0] : null;
-        $display = isset($attributes[1]) ? $attributes[1] : null;
 
         $this->_set_type($value, $type);
-        $this->_set_display($value, $display);
 
         return $value;
     }
@@ -299,14 +297,30 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return $value;
     }
 
+    public function gmap_url() {
+
+        if (!$this->_is_function_allowed($name = __FUNCTION__, $message)) {
+            return $message;
+        }
+
+        $this->load->helper('url');
+
+        $this->detect_boolean_attributes(array(3));
+        $attributes = $this->get_attribute_values();
+
+        return call_user_func_array($name, $attributes);
+    }
+
     public function gravatar() {
 
         $this->load->library('gravatar');
 
+        $this->detect_boolean_attributes(array('url-only'));
+
         $email = $this->get_attribute('email', '');
         $size = $this->get_attribute('size', '50');
         $rating = $this->get_attribute('rating', 'g');
-        $url_only = str_to_bool($this->get_attribute('url-only', false));
+        $url_only = $this->get_attribute('url-only', false);
 
         $gravatar_url = $this->gravatar->get($email, $size, null, null, $rating);
 
@@ -315,6 +329,19 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         }
 
         return '<img src="'.$gravatar_url.'" alt="Gravatar" class="gravatar" />';
+    }
+
+    public function highlight_phrase() {
+
+        if (!$this->_is_function_allowed($name = __FUNCTION__, $message)) {
+            return $message;
+        }
+
+        $this->load->helper('text');
+
+        $attributes = $this->get_attribute_values();
+
+        return call_user_func_array($name, $attributes);
     }
 
     public function int() {
@@ -367,13 +394,14 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
     // concrete image processing implementation.
     public function my_image_url() {
 
+        $this->detect_boolean_attributes(array(3, 4));
         $attributes = $this->get_attribute_values();
 
         $src = (isset($attributes[0]) && $attributes[0] != '') ? $attributes[0] : image_url('lib/blank.png');
         $width = (isset($attributes[1]) && $attributes[1] != '') ? $attributes[1] : null;
         $height = (isset($attributes[2]) && $attributes[2] != '') ? $attributes[2] : null;
-        $no_crop = (isset($attributes[3]) && $attributes[3] != '') ? str_to_bool($attributes[3]) : null;
-        $keep_canvas_size = (isset($attributes[4]) && $attributes[4] != '') ? str_to_bool($attributes[4]) : null;
+        $no_crop = isset($attributes[3]) ? $attributes[3] : null;
+        $keep_canvas_size = isset($attributes[4]) ? $attributes[4] : null;
 
         return http_build_url(
             site_url('playground/image-process'),
