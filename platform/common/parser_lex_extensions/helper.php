@@ -142,12 +142,13 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return $value;
     }
 
-    protected function _utf8($function) {
+    protected function _utf8($function, $bool_detect_list = array()) {
 
         if (!$this->_is_function_allowed($function, $message)) {
             return $message;
         }
 
+        $this->detect_boolean_attributes($bool_detect_list);
         $attributes = $this->get_attributes();
 
         return IS_UTF8_CHARSET
@@ -339,7 +340,20 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
         $this->load->helper('text');
 
-        $attributes = $this->get_attribute_values();
+        $attributes = $this->get_attributes();
+
+        return call_user_func_array($name, $attributes);
+    }
+
+    public function humanize() {
+
+        if (!$this->_is_function_allowed($name = __FUNCTION__, $message)) {
+            return $message;
+        }
+
+        $this->load->helper('inflector');
+
+        $attributes = $this->get_attributes();
 
         return call_user_func_array($name, $attributes);
     }
@@ -393,6 +407,8 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
     // Rework this method or create a similar one according to the
     // concrete image processing implementation.
     public function my_image_url() {
+
+        $this->load->helper('asset');
 
         $this->detect_boolean_attributes(array(3, 4));
         $attributes = $this->get_attribute_values();
@@ -540,6 +556,8 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
             return $message;
         }
 
+        $this->load->helper('string');
+
         $attributes = $this->get_attribute_values();
 
         $length = isset($attributes[0]) ? $attributes[0] : 10;
@@ -550,6 +568,19 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
     public function rtrim() {
 
         return $this->_utf8(__FUNCTION__);
+    }
+
+    public function safe_mailto() {
+
+        if (!$this->_is_function_allowed($name = __FUNCTION__, $message)) {
+            return $message;
+        }
+
+        $this->load->helper('url');
+
+        $attributes = $this->get_attributes();
+
+        return call_user_func_array($name, $attributes);
     }
 
     public function set() {
@@ -576,6 +607,19 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
             $value,
             $this->parser_instance->parser_data
         );
+    }
+
+    public function slugify() {
+
+        if (!$this->_is_function_allowed($name = __FUNCTION__, $message)) {
+            return $message;
+        }
+
+        $this->load->helper('url');
+
+        $attributes = $this->get_attributes();
+
+        return call_user_func_array($name, $attributes);
     }
 
     public function str_replace() {
@@ -677,7 +721,13 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     public function timespan() {
 
-        $timespan = date($this->get_attribute('timestamp', now()));
+        if (!$this->_is_function_allowed($name = __FUNCTION__, $message)) {
+            return $message;
+        }
+
+        $this->load->helper('date');
+
+        $timespan = date($this->get_attribute(0, now()));
 
         return timespan($timespan, time());
     }
@@ -715,9 +765,49 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return $this->_utf8(__FUNCTION__);
     }
 
+    public function url_title() {
+
+        if (!$this->_is_function_allowed($name = __FUNCTION__, $message)) {
+            return $message;
+        }
+
+        $this->load->helper('url');
+
+        $this->detect_boolean_attributes(array(2, 3));
+        $attributes = $this->get_attributes();
+
+        return call_user_func_array($name, $attributes);
+    }
+
+    public function word_limiter() {
+
+        if (!$this->_is_function_allowed($name = __FUNCTION__, $message)) {
+            return $message;
+        }
+
+        $this->load->helper('text');
+
+        $attributes = $this->get_attributes();
+
+        return call_user_func_array($name, $attributes);
+    }
+
+    public function word_wrap() {
+
+        if (!$this->_is_function_allowed($name = __FUNCTION__, $message)) {
+            return $message;
+        }
+
+        $this->load->helper('text');
+
+        $attributes = $this->get_attributes();
+
+        return call_user_func_array($name, $attributes);
+    }
+
     public function wordwrap() {
 
-        return $this->_utf8(__FUNCTION__);
+        return $this->_utf8(__FUNCTION__, array(3));
     }
 
 }

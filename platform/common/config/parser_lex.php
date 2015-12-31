@@ -72,6 +72,7 @@ $config['allowed_functions'] = array(
     'strtolower',
     'strtoupper',
     'substr',
+    'timespan',
     'trim',
     'ucfirst',
     'ucwords',

@@ -1254,6 +1254,15 @@ Replacement count: {{ helper:get name="str_replace_count" }}
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ helper:<strong>timespan</strong> timestamp="1451529295" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:timespan timestamp="1451529295" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}{{ helper:<strong>trim</strong> str="****STRING****" character_mask="*" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
@@ -1281,14 +1290,14 @@ Replacement count: {{ helper:get name="str_replace_count" }}
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ helper:<strong>url_title</strong> str="Limp Bizkit" separator="-" lowercase="true" }}
+<pre><code>{{ noparse }}{{ helper:<strong>url_title</strong> str="Limp Bizkit" separator="-" lowercase="yes" }}
 &lt;br /&gt;
-{{ helper:<strong>url_title</strong> str="Лимп Бизкит" separator="-" lowercase="true" transliterate_to_ascii="true" }}{{ /noparse }}</code></pre>
+{{ helper:<strong>url_title</strong> str="Лимп Бизкит" separator="-" lowercase="yes" transliterate_to_ascii="yes" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
-{{ helper:url_title str="Limp Bizkit" separator="-" lowercase="true" }}
+{{ helper:url_title str="Limp Bizkit" separator="-" lowercase="yes" }}
 <br />
-{{ helper:url_title str="Лимп Бизкит" separator="-" lowercase="true" transliterate_to_ascii="true" }}
+{{ helper:url_title str="Лимп Бизкит" separator="-" lowercase="yes" transliterate_to_ascii="yes" }}
                                         </td>
                                     </tr>
 
