@@ -498,9 +498,11 @@ if (!function_exists('js_platform')) {
         var BASE_URI = '".BASE_URI."';
         var SERVER_URL = '".SERVER_URL."';
         var SITE_URL = '".SITE_URL."';
-        var site_url = '".site_url()."'; // The language segment is added.
+        var site_url = '".site_url()."'; // The language segment is added. Kept here for BC, replaced by CURRENT_SITE_URL.
+        var CURRENT_SITE_URL = '".CURRENT_SITE_URL."'; // The language segment is added and index.php/ sement if it is not hidden.
         var SITE_URI = '".SITE_URI."';
-        var site_uri = '".site_uri()."'; // The language segment is added.
+        var site_uri = '".site_uri()."'; // The language segment is added. Kept here for BC, replaced by CURRENT_SITE_URI.
+        var CURRENT_SITE_URI = '".CURRENT_SITE_URI."'; // The language segment is added and index.php/ sement if it is not hidden.
         var CURRENT_URL = '".CURRENT_URL."';
         var CURRENT_URI = '".CURRENT_URI."';
         var DEFAULT_BASE_URL = '".DEFAULT_BASE_URL."';

@@ -478,6 +478,14 @@ else
 
 /*
  * ------------------------------------------------------
+ *  Define constants after the target route is known
+ * ------------------------------------------------------
+ */
+defined('CURRENT_SITE_URL') or define('CURRENT_SITE_URL', $CFG->site_url());
+defined('CURRENT_SITE_URI') or define('CURRENT_SITE_URI', $CFG->site_uri());
+
+/*
+ * ------------------------------------------------------
  *  Instantiate the output class
  * ------------------------------------------------------
  */
