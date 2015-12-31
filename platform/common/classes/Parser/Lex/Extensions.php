@@ -13,7 +13,6 @@ class Parser_Lex_Extensions extends Lex\Parser {
     public $is_attribute_being_parsed = false;
 
     protected $ci;
-    protected static $loaded = array();  // Used for tracking loaded extension classes.
 
     public $variableRegex = '';
 
@@ -38,7 +37,79 @@ class Parser_Lex_Extensions extends Lex\Parser {
      */
     public function parser_callback($name, $attributes, $content) {
 
-        $data = $this->locate($name, $attributes, $content);
+        $data = false;
+
+        $scope_glue = $this->parser_options['scope_glue'];
+
+        if (strpos($name, $scope_glue) === false) {
+
+            return $data;
+        }
+
+        list($class, $method) = explode($scope_glue, $name);
+
+        $class = strtolower($class);
+        $class_name = 'Parser_Lex_Extension_'.implode('_', array_map('ucfirst', explode('_', $class)));
+        $path = null;
+
+        if (class_exists($class_name, true)) {
+
+            $extension = new $class_name;
+
+            if (@ !is_a($extension, 'Parser_Lex_Extension')) {
+
+                log_message('error', 'Class '.$class_name.' has not been derived from Parser_Lex_Extension class.');
+
+                return $data;
+            }
+
+            $path = $extension->get_file_path();
+
+            $extension->set_parser_instance($this);
+            $extension->set_extension_path($path);
+            $extension->set_extension_class($class);
+            $extension->set_extension_method($method);
+            $extension->set_extension_data($content, $attributes);
+
+            if (
+                    $class == 'helper'
+                    &&
+                    (
+                        $method == 'empty'
+                        ||
+                        $method == 'isset'
+                        ||
+                        $method == 'var'
+                        ||
+                        $method == 'array'
+                        ||
+                        $method == 'null'
+                    )
+            ) {
+                $method = '_func_'.$method;
+            }
+
+            if (!is_callable(array($extension, $method))) {
+
+                //if (property_exists($extension, $method)) {
+                //
+                //    // Indicate that a property under the given name exists.
+                //    return true;
+                //}
+
+                log_message('error', 'Method '.$method.'() does not exist on the class "'.$class_name.'".');
+
+                return $data;
+            }
+
+            $data = call_user_func(array($extension, $method));
+
+        } else {
+
+            log_message('error', 'Class '.$class_name.' does not exist.');
+
+            return $data;
+        }
 
         if (is_array($data) && $data) {
 
@@ -66,86 +137,6 @@ class Parser_Lex_Extensions extends Lex\Parser {
         }
 
         return $result;
-    }
-
-    public function locate($name, $attributes, $content) {
-
-        $scope_glue = $this->parser_options['scope_glue'];
-
-        if (strpos($name, $scope_glue) === false) {
-            return false;
-        }
-
-        list($class, $method) = explode($scope_glue, $name);
-
-        foreach (array(APPPATH, COMMONPATH) as $directory) {
-
-            if (file_exists($path = $directory.'parser_lex_extensions/'.$class.'.php')) {
-                return $this->process($path, $class, $method, $attributes, $content);
-            }
-        }
-    }
-
-    protected function process($path, $class, $method, $attributes, $content) {
-
-        $class = strtolower($class);
-        $class_name = 'Parser_Lex_Extension_'.ucfirst($class);
-
-        if (!isset(self::$loaded[$class])) {
-
-            include_once $path;
-            self::$loaded[$class] = true;
-        }
-
-        if (!class_exists($class_name, false)) {
-
-            log_message('error', 'Class '.$class_name.' does not exist.');
-            return false;
-        }
-
-        $extension = new $class_name;
-
-        if (@ !is_a($extension, 'Parser_Lex_Extension')) {
-
-            log_message('error', 'Class '.$class_name.' has not been derived from Parser_Lex_Extension class.');
-            return false;
-        }
-
-        $extension->set_parser_instance($this);
-        $extension->set_extension_path($path);
-        $extension->set_extension_class($class);
-        $extension->set_extension_method($method);
-        $extension->set_extension_data($content, $attributes);
-
-        if (
-                $class == 'helper'
-                &&
-                (
-                    $method == 'empty'
-                    ||
-                    $method == 'isset'
-                    ||
-                    $method == 'var'
-                    ||
-                    $method == 'array'
-                    ||
-                    $method == 'null'
-                )
-        ) {
-            $method = '_func_'.$method;
-        }
-
-        if (!is_callable(array($extension, $method))) {
-
-            if (property_exists($extension, $method)) {
-                return true;
-            }
-
-            log_message('error', 'Method '.$method.'() does not exist on the class "'.$class_name.'".');
-            return false;
-        }
-
-        return call_user_func(array($extension, $method));
     }
 
     public function serialize($value) {

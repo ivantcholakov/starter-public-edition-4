@@ -37,6 +37,17 @@ abstract class Parser_Lex_Extension {
         return null;
     }
 
+    public function get_file_name() {
+
+        $reflection = new ReflectionClass(get_class($this));
+        return $reflection->getFileName();
+    }
+
+    public function get_file_path() {
+
+        return rtrim(str_replace('\\', '/', realpath(dirname($this->get_file_name()))), '/').'/';
+    }
+
     public function set_parser_instance($object) {
 
         $this->parser_instance = $object;
