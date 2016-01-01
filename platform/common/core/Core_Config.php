@@ -191,6 +191,55 @@ class Core_Config extends MX_Config {
             define('PLATFORM_UPLOAD_PATH', $platform_upload_path);
         }
 
+        // Assets
+
+        $c = array();
+        $config = array();
+
+        if (file_exists(COMMONPATH.'config/asset.php')) {
+
+            require COMMONPATH.'config/asset.php';
+            $c = array_replace_recursive($c, $config);
+            $config = array();
+        }
+
+        if (file_exists(COMMONPATH.'config/'.ENVIRONMENT.'/asset.php')) {
+
+            require COMMONPATH.'config/'.ENVIRONMENT.'/asset.php';
+            $c = array_replace_recursive($c, $config);
+            $config = array();
+        }
+
+        if (file_exists(APPPATH.'config/asset.php')) {
+
+            require APPPATH.'config/asset.php';
+            $c = array_replace_recursive($c, $config);
+            $config = array();
+        }
+
+        if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/asset.php')) {
+
+            require APPPATH.'config/'.ENVIRONMENT.'/asset.php';
+            $c = array_replace_recursive($c, $config);
+            $config = array();
+        }
+
+        if (!defined('ASSET_URL')) {
+            define('ASSET_URL', $c['asset_url']);
+        }
+
+        if (!defined('ASSET_URI')) {
+            define('ASSET_URI', $c['asset_dir']);
+        }
+
+        if (!defined('THEME_ASSET_URL')) {
+            define('THEME_ASSET_URL', $c['theme_asset_url']);
+        }
+
+        if (!defined('THEME_ASSET_URI')) {
+            define('THEME_ASSET_URI', $c['theme_asset_dir']);
+        }
+
         log_message('info', 'Config Class Initialized');
     }
 

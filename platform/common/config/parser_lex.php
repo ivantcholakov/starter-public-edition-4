@@ -30,6 +30,10 @@ $config['allowed_globals'] = array(
     'CURRENT_URI',
     'DEFAULT_BASE_URL',
     'DEFAULT_BASE_URI',
+    'ASSET_URL',
+    'ASSET_URI',
+    'THEME_ASSET_URL',
+    'THEME_ASSET_URI',
 );
 
 // A whitelist of functions that Lex parser can execute.

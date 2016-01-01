@@ -485,11 +485,6 @@ if (!function_exists('js_platform')) {
         ci()->load->helper('asset');
         ci()->load->helper('user_agent');
 
-        $asset_uri = config_item('asset_dir');
-        $asset_img_uri = image_path('');
-        $asset_js_uri = js_path('');
-        $asset_css_dir = css_path('');
-
         return
 "
     <script type=\"text/javascript\">
@@ -507,7 +502,10 @@ if (!function_exists('js_platform')) {
         var CURRENT_URI = '".CURRENT_URI."';
         var DEFAULT_BASE_URL = '".DEFAULT_BASE_URL."';
         var DEFAULT_BASE_URI = '".DEFAULT_BASE_URI."';
-        var ASSET_URI = '".config_item('asset_dir')."';
+        var ASSET_URL = '".ASSET_URL."';
+        var ASSET_URI = '".ASSET_URI."';
+        var THEME_ASSET_URL = '".THEME_ASSET_URL."';
+        var THEME_ASSET_URI = '".THEME_ASSET_URI."';
         var ASSET_IMG_URI = '".image_path('')."';
         var ASSET_JS_URI = '".js_path('')."';
         var ASSET_CSS_URI = '".css_path('')."';
