@@ -50,6 +50,8 @@ $config['allowed_globals'] = array(
     'UA_IS_MOBILE',
     'UA_IS_ROBOT',
     'UA_IS_REFERRAL',
+    'CI_VERSION',
+    'PLATFORM_VERSION',
 );
 
 // A whitelist of functions that Lex parser can execute.
