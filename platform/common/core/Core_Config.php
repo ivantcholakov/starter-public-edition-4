@@ -225,19 +225,43 @@ class Core_Config extends MX_Config {
         }
 
         if (!defined('ASSET_URL')) {
-            define('ASSET_URL', $c['asset_url']);
+            define('ASSET_URL', $this->add_slash($c['asset_url']));
         }
 
         if (!defined('ASSET_URI')) {
-            define('ASSET_URI', $c['asset_dir']);
+            define('ASSET_URI', $this->add_slash($c['asset_dir']));
         }
 
         if (!defined('THEME_ASSET_URL')) {
-            define('THEME_ASSET_URL', $c['theme_asset_url']);
+            define('THEME_ASSET_URL', $this->add_slash($c['theme_asset_url']));
         }
 
         if (!defined('THEME_ASSET_URI')) {
-            define('THEME_ASSET_URI', $c['theme_asset_dir']);
+            define('THEME_ASSET_URI', $this->add_slash($c['theme_asset_dir']));
+        }
+
+        if (!defined('ASSET_IMG_URL')) {
+            define('ASSET_IMG_URL', ASSET_URL.$this->add_slash($c['asset_img_dir']));
+        }
+
+        if (!defined('ASSET_IMG_URI')) {
+            define('ASSET_IMG_URI', ASSET_URI.$this->add_slash($c['asset_img_dir']));
+        }
+
+        if (!defined('ASSET_JS_URL')) {
+            define('ASSET_JS_URL', ASSET_URL.$this->add_slash($c['asset_js_dir']));
+        }
+
+        if (!defined('ASSET_JS_URI')) {
+            define('ASSET_JS_URI', ASSET_URI.$this->add_slash($c['asset_js_dir']));
+        }
+
+        if (!defined('ASSET_CSS_URL')) {
+            define('ASSET_CSS_URL', ASSET_URL.$this->add_slash($c['asset_css_dir']));
+        }
+
+        if (!defined('ASSET_CSS_URI')) {
+            define('ASSET_CSS_URI', ASSET_URI.$this->add_slash($c['asset_css_dir']));
         }
 
         log_message('info', 'Config Class Initialized');
