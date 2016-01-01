@@ -115,7 +115,8 @@ class Parser_Lex_Extensions extends Lex\Parser {
 
         }
 
-        return $data ? $data : null;
+        //return $data ? $data : null;
+        return $data;
     }
 
     protected function is_multi_array($array) {

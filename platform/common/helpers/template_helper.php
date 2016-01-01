@@ -512,8 +512,16 @@ if (!function_exists('js_platform')) {
         var ASSET_JS_URI = '".ASSET_JS_URI."';
         var ASSET_CSS_URL = '".ASSET_CSS_URL."';
         var ASSET_CSS_URI = '".ASSET_CSS_URI."';
+        var THEME_IMG_URL = '".THEME_IMG_URL."';
+        var THEME_IMG_URI = '".THEME_IMG_URI."';
+        var THEME_JS_URL = '".THEME_JS_URL."';
+        var THEME_JS_URI = '".THEME_JS_URI."';
+        var THEME_CSS_URL = '".THEME_CSS_URL."';
+        var THEME_CSS_URI = '".THEME_CSS_URI."';
         var PUBLIC_UPLOAD_URL = '".PUBLIC_UPLOAD_URL."';
-        var UA_IS_MOBILE = ".(user_agent_is_mobile() ? 'true' : 'false').";
+        var UA_IS_MOBILE = ".(UA_IS_MOBILE ? 'true' : 'false').";
+        var UA_IS_ROBOT = ".(UA_IS_ROBOT ? 'true' : 'false').";
+        var UA_IS_REFERRAL = ".(UA_IS_REFERRAL ? 'true' : 'false').";
     //]]>
     </script>";
     }

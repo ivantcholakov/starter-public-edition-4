@@ -264,6 +264,30 @@ class Core_Config extends MX_Config {
             define('ASSET_CSS_URI', ASSET_URI.$this->add_slash($c['asset_css_dir']));
         }
 
+        if (!defined('THEME_IMG_URL')) {
+            define('THEME_IMG_URL', THEME_ASSET_URL.$this->add_slash($c['asset_img_dir']));
+        }
+
+        if (!defined('THEME_IMG_URI')) {
+            define('THEME_IMG_URI', THEME_ASSET_URI.$this->add_slash($c['asset_img_dir']));
+        }
+
+        if (!defined('THEME_JS_URL')) {
+            define('THEME_JS_URL', THEME_ASSET_URL.$this->add_slash($c['asset_js_dir']));
+        }
+
+        if (!defined('THEME_JS_URI')) {
+            define('THEME_JS_URI', THEME_ASSET_URI.$this->add_slash($c['asset_js_dir']));
+        }
+
+        if (!defined('THEME_CSS_URL')) {
+            define('THEME_CSS_URL', THEME_ASSET_URL.$this->add_slash($c['asset_css_dir']));
+        }
+
+        if (!defined('THEME_CSS_URI')) {
+            define('THEME_CSS_URI', THEME_ASSET_URI.$this->add_slash($c['asset_css_dir']));
+        }
+
         log_message('info', 'Config Class Initialized');
     }
 

@@ -10,6 +10,18 @@ class User_agent extends CI_User_agent {
     public function __construct() {
 
         parent::__construct();
+
+        if (!defined('UA_IS_MOBILE')) {
+            define('UA_IS_MOBILE', $this->is_mobile());
+        }
+
+        if (!defined('UA_IS_ROBOT')) {
+            define('UA_IS_ROBOT', $this->is_robot());
+        }
+
+        if (!defined('UA_IS_REFERRAL')) {
+            define('UA_IS_REFERRAL', $this->is_referral());
+        }
     }
 
     /**
