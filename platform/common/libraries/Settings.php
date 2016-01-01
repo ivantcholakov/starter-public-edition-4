@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed.');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2015
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -9,7 +9,8 @@ class Settings {
 
     public $encryption;
 
-    protected $settings;
+    protected $settings = array();
+    protected $encrypted_settings = array();
 
     protected $ci;
     protected $settings_model;
@@ -33,10 +34,14 @@ class Settings {
     }
 
     // Reads all the setting from database only.
-    public function get_all() {
+    public function get_all($hide_encrypted = false) {
 
         if (!$this->settings_model->table_exists()) {
             return false;
+        }
+
+        if ($hide_encrypted) {
+            return array_diff_key($this->settings, $this->encrypted_settings);
         }
 
         return $this->settings;
@@ -45,14 +50,14 @@ class Settings {
     // Reads a setting from the database.
     // If the settings is not found, then a setting from the configuration
     // files under the same name will be tried to be returned.
-    public function get($key) {
+    public function get($key, $hide_encrypted = false) {
 
         if (is_array($key)) {
 
             $result = array();
 
             foreach ($key as $k) {
-                $result[$k] = $this->get($k);
+                $result[$k] = $this->get($k, $hide_encrypted);
             }
 
             return $result;
@@ -61,6 +66,10 @@ class Settings {
         $key = (string) $key;
 
         if ($key == '') {
+            return null;
+        }
+
+        if ($hide_encrypted && array_key_exists($key, $this->encrypted_settings)) {
             return null;
         }
 
@@ -79,14 +88,14 @@ class Settings {
     // is tried to be got from 'site_name_en' (if exists) first and then
     // from 'site_name'.
     // $language is assumed to the current language value, if it is not set.
-    public function lang($key, $language = null) {
+    public function lang($key, $language = null, $hide_encrypted = false) {
 
         if (is_array($key)) {
 
             $result = array();
 
             foreach ($key as $k) {
-                $result[$k] = $this->lang($k, $language);
+                $result[$k] = $this->lang($k, $language, $hide_encrypted);
             }
 
             return $result;
@@ -100,8 +109,16 @@ class Settings {
 
         $key_lang = $key.'_'.$this->ci->lang->code($language);
 
+        if ($hide_encrypted && array_key_exists($key_lang, $this->encrypted_settings)) {
+            return null;
+        }
+
         if (array_key_exists($key_lang, $this->settings)) {
             return $this->settings[$key_lang];
+        }
+
+        if ($hide_encrypted && array_key_exists($key, $this->encrypted_settings)) {
+            return null;
         }
 
         if (array_key_exists($key, $this->settings)) {
@@ -168,19 +185,27 @@ class Settings {
             return $this;
         }
 
-        $key = (string) $key;
+        $key = trim($key);
 
         if ($key == '') {
             return $this;
         }
 
+        $this->settings[$key] = $this->detect_setting_type($value);
+
         if ($encrypt) {
+
+            $this->encrypted_settings[$key] = true;
 
             $this->settings_model->delete_many_by('name', $key);
             $key = $key.'__encrypted';
             $value = $this->encryption->encrypt($value);
 
         } else {
+
+            if (array_key_exists($key, $this->encrypted_settings)) {
+                unset($this->encrypted_settings[$key]);
+            }
 
             $this->settings_model->delete_many_by('name', $key.'__encrypted');
         }
@@ -205,12 +230,12 @@ class Settings {
     // Note:
     // Use the complementar method lang() to extract the value from the example:
     // $site_name = $this->settings->lang('site_name', 'english');
-    public function set_lang($key, $value = null, $language = null) {
+    public function set_lang($key, $value = null, $language = null, $encrypt = false) {
 
         if (is_array($key)) {
 
             foreach ($key as $k => $v) {
-                $this->set_lang($k, $v, $language);
+                $this->set_lang($k, $v, $language, $encrypt);
             }
 
             return $this;
@@ -224,7 +249,7 @@ class Settings {
 
         $key_lang = $key.'_'.$this->ci->lang->code($language);
 
-        $this->set($key_lang, $value);
+        $this->set($key_lang, $value, $encrypt);
 
         return $this;
     }
@@ -233,6 +258,7 @@ class Settings {
     public function refresh() {
 
         $this->settings = array();
+        $this->encrypted_settings = array();
 
         if (!$this->settings_model->table_exists()) {
             return $this;
@@ -255,8 +281,11 @@ class Settings {
                     continue;
                 }
 
+                $ncrypted = false;
+
                 if (preg_match('/__encrypted$/', $name)) {
 
+                    $encrypted = true;
                     $original_name = preg_replace('/__encrypted$/', '', $name);
 
                     if ($original_name == '') {
@@ -276,29 +305,35 @@ class Settings {
                     continue;
                 }
 
-                if (is_string($value) && is_numeric($value)) {
-
-                    if (ctype_digit($value)) {
-
-                        if (strlen($value) == 1 || strpos($value, '0') !== 0) {
-                            $this->settings[$name] = (int) $value;
-                        } else {
-                            $this->settings[$name] = $value;
-                        }
-
-                    } else {
-
-                        $this->settings[$name] = (double) $value;
-                    }
-
-                } else {
-
-                    $this->settings[$name] = $value;
+                if ($encrypted) {
+                    $this->encrypted_settings[$name] = true;
                 }
+
+                $this->settings[$name] = $this->detect_setting_type($value);
             }
         }
 
         return $this;
+    }
+
+    protected function detect_setting_type($value) {
+
+        if (is_string($value) && is_numeric($value)) {
+
+            if (ctype_digit($value)) {
+
+                if (strlen($value) == 1 || strpos($value, '0') !== 0) {
+                    $value = (int) $value;
+                }
+
+            } else {
+
+                $value = (double) $value;
+            }
+
+        }
+
+        return $value;
     }
 
 }

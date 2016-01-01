@@ -1708,6 +1708,30 @@ Replacement count: {{ helper:get name="str_replace_count" }}
                                         </td>
                                     </tr>
 
+                                    <tr class="info">
+                                        <td colspan="2">
+                                            <h4>Configuration, Settings</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>config:get</strong> item="contact_address" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ config:get item="contact_address" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>setting:get</strong> item="contact_address" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ setting:get item="contact_address" }}
+                                        </td>
+                                    </tr>
+
                                 </tbody>
 
                             </table>
