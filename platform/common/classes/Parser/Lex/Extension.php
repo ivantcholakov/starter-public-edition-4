@@ -3,7 +3,7 @@
 /**
  * This is an integration class for CodeIgniter.
  *
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015-2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -226,6 +226,58 @@ abstract class Parser_Lex_Extension {
         }
     }
 
+    protected function _is_function_allowed($name, & $message = null) {
+
+        static $whitelist = null;
+
+        if (!is_array($whitelist)) {
+
+            $whitelist =
+                isset($this->extension_config['allowed_functions'])
+                    ? $this->extension_config['allowed_functions']
+                    : array();
+
+            if (!is_array($whitelist)) {
+                $whitelist = array();
+            }
+        }
+
+        if ($name != '' && in_array($name, $whitelist)) {
+            return true;
+        }
+
+        $message = $this->_function_not_found($name);
+
+        return false;
+    }
+
+    protected function _function_not_found($name) {
+
+        return 'The function '.$name.'() has not been found or it is not allowed.';
+    }
+
+    protected function _is_global_allowed($name) {
+
+        static $whitelist = null;
+
+        if (!is_array($whitelist)) {
+
+            $whitelist =
+                isset($this->extension_config['allowed_globals'])
+                    ? (is_array($this->extension_config['allowed_globals'])
+                        ? array_map('strtolower', $this->extension_config['allowed_globals'])
+                        : array()
+                    )
+                    : array();
+        }
+
+        if ($name != '' && in_array(strtolower($name), $whitelist)) {
+            return true;
+        }
+
+        return false;
+    }
+
     protected function is_blacklisted_config_setting($item_name) {
 
         static $blacklist = null;
@@ -254,6 +306,10 @@ abstract class Parser_Lex_Extension {
         } else {
 
             $blacklist = array();
+        }
+
+        if ($item_name == '') {
+            return true;
         }
 
         if (empty($blacklist)) {

@@ -7,21 +7,16 @@
 
 class Parser_Lex_Extension_Global extends Parser_Lex_Extension {
 
-    protected $parser_allowed_globals;
-
     public function __construct() {
 
         parent::__construct();
-
-        $this->parser_allowed_globals =
-            isset($this->extension_config['allowed_globals'])
-                ? $this->extension_config['allowed_globals']
-                : array();
     }
 
     public function __call($name, $data) {
 
-        if (in_array(strtolower($name), array_map('strtolower', $this->parser_allowed_globals))) {
+        $name = trim(@ (string) $name);
+
+        if ($this->_is_global_allowed($name)) {
 
             if (defined(strtoupper($name))) {
 

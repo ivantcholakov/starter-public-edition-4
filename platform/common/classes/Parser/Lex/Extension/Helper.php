@@ -8,16 +8,10 @@
 class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     public static $_counter_increment = true;
-    protected $parser_allowed_functions;
 
     public function __construct() {
 
         parent::__construct();
-
-        $this->parser_allowed_functions =
-            isset($this->extension_config['allowed_functions'])
-                ? $this->extension_config['allowed_functions']
-                : array();
     }
 
     public function __call($name, $args) {
@@ -30,22 +24,6 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         }
 
         return $this->_function_not_found($name);
-    }
-
-    protected function _is_function_allowed($name, & $message = null) {
-
-        if (in_array($name, $this->parser_allowed_functions)) {
-            return true;
-        }
-
-        $message = $this->_function_not_found($name);
-
-        return false;
-    }
-
-    protected function _function_not_found($name) {
-
-        return 'The function '.$name.'() has not been found or it is not allowed.';
     }
 
     protected function _set_type(& $value, $type) {

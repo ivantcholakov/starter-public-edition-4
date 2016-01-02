@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015-2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -133,7 +133,6 @@ class Parser_Lex_Extensions extends Lex\Parser {
 
         }
 
-        //return $data ? $data : null;
         return $data;
     }
 
