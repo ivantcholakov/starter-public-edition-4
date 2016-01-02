@@ -387,7 +387,7 @@ if (!function_exists('html_attr_remove')) {
 
 if (!function_exists('html_attr_has_class')) {
 
-    function html_attr_has_clas($attributes, $class) {
+    function html_attr_has_class($attributes, $class) {
 
         $attr = new HTML_Attributes($attributes);
 
