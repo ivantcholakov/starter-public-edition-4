@@ -327,6 +327,52 @@ if ( ! function_exists('html_escape'))
 
 // ------------------------------------------------------------------------
 
+if ( ! function_exists('_stringify_attributes'))
+{
+    /**
+     * Stringify attributes for use in HTML tags.
+     *
+     * Helper function used to convert a string, array, or object
+     * of attributes to a string.
+     *
+     * @param       mixed       string, array, object
+     * @param       bool
+     * @return      string
+     */
+    function _stringify_attributes($attributes, $js = FALSE)
+    {
+        $atts = NULL;
+
+        if (empty($attributes))
+        {
+            return $atts;
+        }
+
+        // Added by Ivan Tcholakov, 03-JAN-2016.
+        if (!$js)
+        {
+            return html_attr($attributes);
+        }
+        //
+
+        if (is_string($attributes))
+        {
+            return ' '.$attributes;
+        }
+
+        $attributes = (array) $attributes;
+
+        foreach ($attributes as $key => $val)
+        {
+            $atts .= ($js) ? $key.'='.$val.',' : ' '.$key.'="'.$val.'"';
+        }
+
+        return rtrim($atts, ',');
+    }
+}
+
+// ------------------------------------------------------------------------
+
 // Processing HTML Attributes
 // Ivan Tcholakov, 2016.
 
