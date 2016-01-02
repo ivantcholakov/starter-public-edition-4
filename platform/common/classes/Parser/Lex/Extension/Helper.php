@@ -208,7 +208,23 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
     public function config() {
 
-        return config_item($this->get_attribute(0));
+        $item = $this->get_attribute(0);
+
+        if (!isset($item)) {
+            return;
+        }
+
+        $item = trim(@ (string) $item);
+
+        if ($item == '') {
+            return;
+        }
+
+        if ($this->is_blacklisted_config_setting($item)) {
+            return;
+        }
+
+        return config_item($item);
     }
 
     public function count() {

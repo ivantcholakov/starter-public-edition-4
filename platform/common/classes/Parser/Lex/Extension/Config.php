@@ -26,6 +26,10 @@ class Parser_Lex_Extension_Config extends Parser_Lex_Extension {
             return;
         }
 
+        if ($this->is_blacklisted_config_setting($item)) {
+            return;
+        }
+
         return config_item($item);
     }
 

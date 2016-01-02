@@ -7,6 +7,8 @@
 
 class Parser_Lex_Extensions extends Lex\Parser {
 
+    public static $parser_config;
+
     public $parser_options = array();
     public $parser_data = null;
     public $parser_callback_data = array();
@@ -19,6 +21,22 @@ class Parser_Lex_Extensions extends Lex\Parser {
     public function __construct() {
 
         $this->ci = & get_instance();
+
+        if (!is_array(self::$parser_config)) {
+
+            if ($this->ci->config->load('parser_lex', TRUE, TRUE)) {
+
+                self::$parser_config = $this->ci->config->item('parser_lex');
+
+                if (!is_array(self::$parser_config)) {
+                    self::$parser_config = array();
+                }
+
+            } else {
+
+                self::$parser_config = array();
+            }
+        }
 
         $this->parser_options['scope_glue'] = $this->scopeGlue;
         $this->parser_options['cumulative_noparse'] = $this->cumulativeNoparse;

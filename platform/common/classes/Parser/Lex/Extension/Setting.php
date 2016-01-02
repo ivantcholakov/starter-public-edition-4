@@ -28,6 +28,10 @@ class Parser_Lex_Extension_Setting extends Parser_Lex_Extension {
             return;
         }
 
+        if ($this->is_blacklisted_config_setting($item)) {
+            return;
+        }
+
         return $this->settings->lang($item, null, true);
     }
 

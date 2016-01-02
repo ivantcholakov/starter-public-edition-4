@@ -43,6 +43,11 @@ class CI_Parser_lex extends CI_Parser_driver {
                 unset($defaults['allowed_globals']);
             }
 
+            if (array_key_exists('disabled_config_settings', $defaults))
+            {
+                unset($defaults['disabled_config_settings']);
+            }
+
             $this->config = array_merge($this->config, $defaults);
         }
 

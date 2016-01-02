@@ -19,11 +19,7 @@ abstract class Parser_Lex_Extension {
 
     public function __construct() {
 
-        if ($this->config->load('parser_lex', TRUE, TRUE)) {
-            $this->extension_config = $this->config->item('parser_lex');
-        } else {
-            $this->extension_config = array();
-        }
+        $this->extension_config = & Parser_Lex_Extensions::$parser_config;
     }
 
     public function __get($variable) {
@@ -228,6 +224,50 @@ abstract class Parser_Lex_Extension {
 
             $i++;
         }
+    }
+
+    protected function is_blacklisted_config_setting($item_name) {
+
+        static $blacklist = null;
+
+        if (!is_array($blacklist)) {
+
+            $blacklist = isset($this->extension_config['disabled_config_settings'])
+                ? $this->extension_config['disabled_config_settings']
+                : array();
+
+            if (!is_array($blacklist)) {
+                $blacklist = array();
+            }
+
+            if (!empty($blacklist)) {
+
+                $list = array_chunk($blacklist, 50);
+
+                foreach ($list as $key => $items) {
+                    $list[$key] = implode('|', array_map('preg_quote', $items));
+                }
+
+                $blacklist = $list;
+            }
+
+        } else {
+
+            $blacklist = array();
+        }
+
+        if (empty($blacklist)) {
+            return false;
+        }
+
+        foreach ($blacklist as $items) {
+
+            if (preg_match('/('.$items.')/', $item_name)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }
