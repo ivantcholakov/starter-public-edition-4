@@ -324,3 +324,100 @@ if ( ! function_exists('html_escape'))
         }
     }
 }
+
+// ------------------------------------------------------------------------
+
+// Processing HTML Attributes
+// Ivan Tcholakov, 2016.
+
+if (!function_exists('html_attr')) {
+
+    function html_attr($attributes) {
+
+        $attr = new HTML_Attributes($attributes);
+
+        return (string) $attr;
+    }
+
+}
+
+if (!function_exists('html_attr_get')) {
+
+    function html_attr_get($attributes, $name) {
+
+        $attr = new HTML_Attributes($attributes);
+
+        return $attr->getAttribute($name);
+    }
+
+}
+
+if (!function_exists('html_attr_set')) {
+
+    function html_attr_set($attributes, $name, $value = null) {
+
+        $attr = new HTML_Attributes($attributes);
+
+        return (string) $attr->setAttribute($name, $value);
+    }
+
+}
+
+if (!function_exists('html_attr_merge')) {
+
+    function html_attr_merge($attributes1, $attributes2) {
+
+        $attr = new HTML_Attributes($attributes1);
+
+        return (string) $attr->mergeAttributes($attributes2);
+    }
+
+}
+
+if (!function_exists('html_attr_remove')) {
+
+    function html_attr_remove($attributes, $name) {
+
+        $attr = new HTML_Attributes($attributes);
+
+        return (string) $attr->removeAttribute($name);
+    }
+
+}
+
+if (!function_exists('html_attr_has_class')) {
+
+    function html_attr_has_clas($attributes, $class) {
+
+        $attr = new HTML_Attributes($attributes);
+
+        return $attr->hasClass($class);
+    }
+
+}
+
+if (!function_exists('html_attr_add_class')) {
+
+    function html_attr_add_class($attributes, $class) {
+
+        $attr = new HTML_Attributes($attributes);
+
+        return (string) $attr->addClass($class);
+    }
+
+}
+
+if (!function_exists('html_attr_remove_class')) {
+
+    function html_attr_remove_class($attributes, $class) {
+
+        $attr = new HTML_Attributes($attributes);
+
+        return (string) $attr->removeClass($class);
+    }
+
+}
+
+// End Processing HTML Attributes
+
+// ------------------------------------------------------------------------
