@@ -124,6 +124,30 @@ class Core_Config extends MX_Config {
             define('CURRENT_URL', rtrim(SERVER_URL, '/').CURRENT_URI);
         }
 
+        if (!defined('CURRENT_URL_IS_HTTPS')) {
+            define('CURRENT_URL_IS_HTTPS', $DETECT_URL['is_https']);
+        }
+
+        if (!defined('CURRENT_URL_PROTOCOL')) {
+            define('CURRENT_URL_PROTOCOL', $DETECT_URL['server_protocol']);
+        }
+
+        if (!defined('CURRENT_URL_HOST')) {
+            define('CURRENT_URL_HOST', $DETECT_URL['server_name']);
+        }
+
+        if (!defined('CURRENT_URL_PORT')) {
+            define('CURRENT_URL_PORT', $DETECT_URL['port']);
+        }
+
+        if (!defined('CURRENT_URI_STRING')) {
+            define('CURRENT_URI_STRING', $DETECT_URL['current_uri_string']);
+        }
+
+        if (!defined('CURRENT_QUERY_STRING')) {
+            define('CURRENT_QUERY_STRING', $DETECT_URL['current_query_string']);
+        }
+
         // Added by Ivan Tcholakov, 13-JAN-2014.
         if (!defined('DEFAULT_BASE_URL')) {
 

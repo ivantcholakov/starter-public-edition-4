@@ -22,7 +22,7 @@ if (!function_exists('detect_url')) {
                 && $_SERVER['SERVER_PORT'] != 80 ) || ($server_protocol == 'https' && $_SERVER['SERVER_PORT'] != 443))) {
 
             $server_name_extra = $server_name.':'.$_SERVER['SERVER_PORT'];
-            $port = $_SERVER['SERVER_PORT'];
+            $port = (int) $_SERVER['SERVER_PORT'];
 
         } else {
 
@@ -60,11 +60,16 @@ if (!function_exists('detect_url')) {
 
         $server_url .= '/';
 
+        $current_uri_string = parse_url($current_url, PHP_URL_PATH);
+        $current_query_string = parse_url($current_url, PHP_URL_QUERY);
+
         return compact(
             'base_url',
             'base_uri',
             'current_url',
             'current_uri',
+            'current_uri_string',
+            'current_query_string',
             'server_url',
             'server_name',
             'server_protocol',

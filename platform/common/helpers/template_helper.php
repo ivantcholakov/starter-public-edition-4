@@ -480,50 +480,71 @@ if (!function_exists('css_normalize')) {
 if (!function_exists('js_platform')) {
 
     // Added by Ivan Tcholakov. 22-OCT-2013.
+    // Modified by Ivan Tcholakov, 02-JAN-2016.
     function js_platform() {
 
         ci()->load->helper('asset');
         ci()->load->helper('user_agent');
 
+        $constants = array(
+            'BASE_URL',
+            'BASE_URI',
+            'SERVER_URL',
+            'SITE_URL',
+            'CURRENT_SITE_URL',
+            'SITE_URI',
+            'CURRENT_SITE_URI',
+            'CURRENT_URL',
+            'CURRENT_URI',
+            'CURRENT_URL_IS_HTTPS',
+            'CURRENT_URL_PROTOCOL',
+            'CURRENT_URL_HOST',
+            'CURRENT_URL_PORT',
+            'CURRENT_URI_STRING',
+            'CURRENT_QUERY_STRING',
+            'DEFAULT_BASE_URL',
+            'DEFAULT_BASE_URI',
+            'ASSET_URL',
+            'ASSET_URI',
+            'THEME_ASSET_URL',
+            'THEME_ASSET_URI',
+            'ASSET_IMG_URL',
+            'ASSET_IMG_URI',
+            'ASSET_JS_URL',
+            'ASSET_JS_URI',
+            'ASSET_CSS_URL',
+            'ASSET_CSS_URI',
+            'THEME_IMG_URL',
+            'THEME_IMG_URI',
+            'THEME_JS_URL',
+            'THEME_JS_URI',
+            'THEME_CSS_URL',
+            'THEME_CSS_URI',
+            'PUBLIC_UPLOAD_URL',
+            'UA_IS_MOBILE',
+            'UA_IS_ROBOT',
+            'UA_IS_REFERRAL',
+        );
+
+        $constants_js = array();
+
+        foreach ($constants as $name) {
+
+            $constants_js[] = '        var '.$name.' = '.json_encode(constant($name)).';
+';
+        }
+
+        $constants_js = implode('', $constants_js);
+
         return
-"
-    <script type=\"text/javascript\">
+'
+    <script type="text/javascript">
     //<![CDATA[
-        var BASE_URL = '".BASE_URL."';
-        var BASE_URI = '".BASE_URI."';
-        var SERVER_URL = '".SERVER_URL."';
-        var SITE_URL = '".SITE_URL."';
-        var site_url = '".site_url()."'; // The language segment is added. Kept here for BC, replaced by CURRENT_SITE_URL.
-        var CURRENT_SITE_URL = '".CURRENT_SITE_URL."'; // The language segment is added and index.php/ sement if it is not hidden.
-        var SITE_URI = '".SITE_URI."';
-        var site_uri = '".site_uri()."'; // The language segment is added. Kept here for BC, replaced by CURRENT_SITE_URI.
-        var CURRENT_SITE_URI = '".CURRENT_SITE_URI."'; // The language segment is added and index.php/ sement if it is not hidden.
-        var CURRENT_URL = '".CURRENT_URL."';
-        var CURRENT_URI = '".CURRENT_URI."';
-        var DEFAULT_BASE_URL = '".DEFAULT_BASE_URL."';
-        var DEFAULT_BASE_URI = '".DEFAULT_BASE_URI."';
-        var ASSET_URL = '".ASSET_URL."';
-        var ASSET_URI = '".ASSET_URI."';
-        var THEME_ASSET_URL = '".THEME_ASSET_URL."';
-        var THEME_ASSET_URI = '".THEME_ASSET_URI."';
-        var ASSET_IMG_URL = '".ASSET_IMG_URL."';
-        var ASSET_IMG_URI = '".ASSET_IMG_URI."';
-        var ASSET_JS_URL = '".ASSET_JS_URL."';
-        var ASSET_JS_URI = '".ASSET_JS_URI."';
-        var ASSET_CSS_URL = '".ASSET_CSS_URL."';
-        var ASSET_CSS_URI = '".ASSET_CSS_URI."';
-        var THEME_IMG_URL = '".THEME_IMG_URL."';
-        var THEME_IMG_URI = '".THEME_IMG_URI."';
-        var THEME_JS_URL = '".THEME_JS_URL."';
-        var THEME_JS_URI = '".THEME_JS_URI."';
-        var THEME_CSS_URL = '".THEME_CSS_URL."';
-        var THEME_CSS_URI = '".THEME_CSS_URI."';
-        var PUBLIC_UPLOAD_URL = '".PUBLIC_UPLOAD_URL."';
-        var UA_IS_MOBILE = ".(UA_IS_MOBILE ? 'true' : 'false').";
-        var UA_IS_ROBOT = ".(UA_IS_ROBOT ? 'true' : 'false').";
-        var UA_IS_REFERRAL = ".(UA_IS_REFERRAL ? 'true' : 'false').";
+'.$constants_js.'
+        var site_url = '.json_encode(CURRENT_SITE_URL).'; // The language segment is added. Kept here for BC, replaced by CURRENT_SITE_URL.
+        var site_uri = '.json_encode(CURRENT_SITE_URI).'; // The language segment is added. Kept here for BC, replaced by CURRENT_SITE_URI.
     //]]>
-    </script>";
+    </script>';
     }
 
 }

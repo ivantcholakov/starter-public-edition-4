@@ -1494,6 +1494,60 @@ Replacement count: {{ helper:get name="str_replace_count" }}
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ helper:print_d value="[[ global:<strong>CURRENT_URL_IS_HTTPS</strong> ]]" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:print_d value="[[ global:CURRENT_URL_IS_HTTPS ]]" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ global:<strong>CURRENT_URL_PROTOCOL</strong> }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ global:CURRENT_URL_PROTOCOL }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ global:<strong>CURRENT_URL_HOST</strong> }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ global:CURRENT_URL_HOST }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ global:<strong>CURRENT_URL_PORT</strong> }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ global:CURRENT_URL_PORT }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ global:<strong>CURRENT_URI_STRING</strong> }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ global:CURRENT_URI_STRING }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ global:<strong>CURRENT_QUERY_STRING</strong> }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ global:CURRENT_QUERY_STRING }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}{{ global:<strong>DEFAULT_BASE_URL</strong> }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
@@ -1725,10 +1779,10 @@ Replacement count: {{ helper:get name="str_replace_count" }}
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ <strong>setting:get</strong> item="contact_address" }}{{ /noparse }}</code></pre>
+<pre><code>{{ noparse }}{{ <strong>setting:get</strong> item="contact_address" }} &lt;!-- This result is language-sensitive. --&gt;{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
-{{ setting:get item="contact_address" }}
+{{ setting:get item="contact_address" }} <!-- This result is language-sensitive. -->
                                         </td>
                                     </tr>
 
