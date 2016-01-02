@@ -177,6 +177,10 @@ class Core_Config extends MX_Config {
         }
         //
 
+        // Added by Ivan Tcholakov, 02-JAN-2016.
+        HTML_Common2::setOption('charset', $this->config['charset']);
+        //
+
         // Common Purpose File System Repositories
 
         $public_upload_path = $this->add_slash(
