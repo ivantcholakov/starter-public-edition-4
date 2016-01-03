@@ -4,22 +4,22 @@ Author: Ivan Tcholakov, ivantcholakov@gmail.com, 2015
 License: The MIT License, http://opensource.org/licenses/MIT
 #}}
 
-        <style>
-            .image-container {
-                border: 1px solid blue;
-                display:table-cell;
-                vertical-align:middle;
-                text-align: center;
-            }
-            .image-container-120x180 {
-                width: 120px;
-                height: 180px;
-            }
-            .image-container-180x120 {
-                width: 180px;
-                height: 120px;
-            }
-        </style>
+{{ asset:css_inline }}
+.image-container {
+    border: 1px solid blue;
+    display:table-cell;
+    vertical-align:middle;
+    text-align: center;
+}
+.image-container-120x180 {
+    width: 120px;
+    height: 180px;
+}
+.image-container-180x120 {
+    width: 180px;
+    height: 120px;
+}
+{{ /asset:css_inline }}
 
         <section>
 
@@ -1800,7 +1800,7 @@ Replacement count: {{ helper:get name="str_replace_count" }}
     color: red;
 }
 {{ <strong>/asset:css_inline</strong> }}
-&lt;span id="test_element_1"&gt;Text Text Text&lt;/span&gt;{{ /noparse }}</code></pre>
+&lt;span id="test_element_1"&gt;Hello World!&lt;/span&gt;{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
 {{ asset:css_inline }}
@@ -1809,7 +1809,20 @@ Replacement count: {{ helper:get name="str_replace_count" }}
     color: red;
 }
 {{ /asset:css_inline }}
-<span id="test_element_1">Text Text Text</span>
+<span id="test_element_1">Hello World!</span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>asset:js_inline</strong> }}
+document.write("Hello World!");
+{{ <strong>/asset:js_inline</strong> }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ asset:js_inline }}
+document.write("Hello World!");
+{{ /asset:js_inline }}
                                         </td>
                                     </tr>
 

@@ -38,6 +38,12 @@ class Asset {
 
     // ------------------------------------------------------------------------
 
+    // Added by Ivan Tcholakov, 03-JAN-2016.
+    public function css_inline($content)
+    {
+        return html_tag('style', array('type' => 'text/css'), PHP_EOL.$content.PHP_EOL).PHP_EOL;
+    }
+
     /**
      * CSS
      *
@@ -169,6 +175,12 @@ class Asset {
     }
 
     // ------------------------------------------------------------------------
+
+    // Added by Ivan Tcholakov, 03-JAN-2016.
+    public function js_inline($content)
+    {
+        return html_tag('script', array('type' => 'text/javascript'), PHP_EOL.'//<![CDATA['.PHP_EOL.$content.PHP_EOL.'//]]>'.PHP_EOL).PHP_EOL;
+    }
 
     /**
      * JS

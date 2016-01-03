@@ -10,11 +10,17 @@ class Parser_Lex_Extension_Asset extends Parser_Lex_Extension {
     public function __construct() {
 
         parent::__construct();
+
+        $this->load->library('asset');
     }
 
     public function css_inline() {
 
-        return html_tag('style', array('type' => 'text/css'), PHP_EOL.$this->get_content().PHP_EOL).PHP_EOL;
+        return $this->asset->css_inline($this->get_content());
     }
 
+    public function js_inline() {
+
+        return $this->asset->js_inline($this->get_content());
+    }
 }
