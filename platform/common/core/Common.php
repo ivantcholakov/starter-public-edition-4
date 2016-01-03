@@ -494,3 +494,15 @@ if (!function_exists('html_attr_remove_class')) {
 // End Processing HTML Attributes
 
 // ------------------------------------------------------------------------
+
+// Added by Ivan Tcholakov, 03-JAN-2016.
+if (!function_exists('htmltag')) {
+
+    function htmltag($tag, $attributes = array(), $content = false) {
+
+        $has_content = $content !== false && $content !== null;
+
+        return '<'.$tag.html_attr($attributes).($has_content ? '>'.$content.'</'.$tag.'>' : ' />');
+    }
+
+}
