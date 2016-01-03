@@ -1786,6 +1786,33 @@ Replacement count: {{ helper:get name="str_replace_count" }}
                                         </td>
                                     </tr>
 
+                                    <tr class="info">
+                                        <td colspan="2">
+                                            <h4>Web Assets</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>asset:css_inline</strong> }}
+#test_element_1 {
+    font-weight: bold;
+    color: red;
+}
+{{ <strong>/asset:css_inline</strong> }}
+&lt;span id="test_element_1"&gt;Text Text Text&lt;/span&gt;{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ asset:css_inline }}
+#test_element_1 {
+    font-weight: bold;
+    color: red;
+}
+{{ /asset:css_inline }}
+<span id="test_element_1">Text Text Text</span>
+                                        </td>
+                                    </tr>
+
                                 </tbody>
 
                             </table>

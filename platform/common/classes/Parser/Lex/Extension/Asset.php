@@ -12,4 +12,9 @@ class Parser_Lex_Extension_Asset extends Parser_Lex_Extension {
         parent::__construct();
     }
 
+    public function css_inline() {
+
+        return html_tag('style', array('type' => 'text/css'), PHP_EOL.$this->get_content().PHP_EOL).PHP_EOL;
+    }
+
 }
