@@ -522,6 +522,14 @@ if (!function_exists('html_tag')) {
 
         $has_content = $content !== false && $content !== null;
 
+        switch (strtolower($tag)) {
+
+            case 'script':
+
+                $has_content = true;
+                break;
+        }
+
         return '<'.$tag.html_attr($attributes).($has_content ? '>'.$content.'</'.$tag.'>' : ' />');
     }
 
