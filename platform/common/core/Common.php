@@ -413,9 +413,14 @@ if (!function_exists('html_attr_merge')) {
 
     function html_attr_merge($attributes1, $attributes2) {
 
-        $attr = new HTML_Attributes($attributes1);
+        $attr1 = new HTML_Attributes($attributes1);
+        $attr2 = new HTML_Attributes($attributes2);
 
-        return (string) $attr->mergeAttributes($attributes2);
+        $class2 = $attr2->getAttribute('class');
+        $attr2->removeAttribute('class');
+        $attr1->addClass($class2);
+
+        return (string) $attr1->mergeAttributes((string) $attr2);
     }
 
 }
