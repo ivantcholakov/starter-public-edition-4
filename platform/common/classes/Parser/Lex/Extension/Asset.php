@@ -50,4 +50,17 @@ class Parser_Lex_Extension_Asset extends Parser_Lex_Extension {
         return $this->asset->js($file, null, $attributes);
     }
 
+    public function image() {
+
+        $file = $this->get_attribute('file');
+
+        $attributes = $this->get_attributes();
+
+        if (isset($attributes['file'])) {
+            unset($attributes['file']);
+        }
+
+        return $this->asset->image($file, null, $attributes);
+    }
+
 }

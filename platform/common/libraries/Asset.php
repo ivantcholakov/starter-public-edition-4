@@ -125,7 +125,10 @@ class Asset {
         if (!html_attr_has($attributes, 'alt')) {
 
             list($alt) = explode('.', $asset_name); // TODO: Improve this for URL type asset name.
-            $attributes = html_attr_set($attributes, 'alt', $alt);
+
+            if (stripos($asset_name, 'data:') !== 0) {
+                $attributes = html_attr_set($attributes, 'alt', $alt);
+            }
         }
 
         $optional = $location_type && (substr($location_type, -1) === '?') AND (($location_type = substr($location_type, 0, -1)) === 'path');
@@ -260,7 +263,7 @@ class Asset {
     private function _other_asset_location($asset_name, $module_name = NULL, $asset_type = NULL, $location_type = 'url')
     {
         // Check whether the given name is a full URL or an absolute path.
-        if (strpos($asset_name, '://') !== FALSE || strpos($asset_name, '//') === 0 || strpos($asset_name, '/') === 0)
+        if (strpos($asset_name, '://') !== FALSE || strpos($asset_name, '//') === 0 || strpos($asset_name, '/') === 0 || stripos($asset_name, 'data:') === 0)
         {
             return $asset_name;
         }
