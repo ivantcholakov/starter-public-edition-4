@@ -259,9 +259,9 @@ if ( ! function_exists('auto_link'))
             $attributes = '';
         }
 
-        if ($attributes != '')
+        if (!empty($attributes))
         {
-            $attributes = ' '.get_attributes_string($attributes);
+            $attributes = html_attr($attributes);
         }
 
         // Find and replace any URLs.

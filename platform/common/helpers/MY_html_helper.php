@@ -258,6 +258,8 @@ if (!function_exists('parse_attributes')) {
      * @param string $attrString HTML attribute string
      *
      * @return array An associative array of attributes
+     *
+     * @deprecated Don't use.
      */
     function parse_attributes($attrString)
     {
@@ -295,6 +297,8 @@ if (!function_exists('prepare_attributes')) {
      * @param string|array $attributes Array of attributes or HTML attribute string
      *
      * @return array An associative array of attributes
+     *
+     * @deprecated Don't use.
      */
     function prepare_attributes($attributes)
     {
@@ -325,29 +329,12 @@ if (!function_exists('get_attributes_string')) {
      * @param string|array $attributes Attribute array
      *
      * @return string Attribute string
+     *
+     * @deprecated Use html_attr().
      */
     function get_attributes_string($attributes)
     {
-        static $charset;
-
-        if (!isset($charset)) {
-
-            $charset = config_item('charset');
-
-            if ($charset == '') {
-                $charset = 'utf-8';
-            }
-        }
-
-        if (!is_array($attributes)) {
-            $attributes = prepare_attributes((string) $attributes);
-        }
-
-        $str = '';
-        foreach ($attributes as $key => $value) {
-            $str .= ' ' . $key . '="' . htmlspecialchars($value, ENT_QUOTES, $charset) . '"';
-        }
-        return $str;
+        return html_attr($attributes);
     }
 
 }
@@ -363,13 +350,12 @@ if (!function_exists('merge_attributes')) {
      *                                 or HTML attribute string
      *
      * @return string A string containing merged attributes
+     *
+     * @deprecated Use html_attr_merge().
      */
     function merge_attributes($attributes, $extra_attributes)
     {
-        $attributes = prepare_attributes($attributes);
-        $extra_attributes = prepare_attributes($extra_attributes);
-
-        return get_attributes_string(array_merge($attributes, $extra_attributes));
+        return html_attr_merge($attributes, $extra_attributes);
     }
 
 }
@@ -383,17 +369,12 @@ if (!function_exists('remove_attribute')) {
      * @param string $attribute Name of attribute to remove
      *
      * @return string A string with the rest of the attributes
+     *
+     * @deprecated Use html_attr_remove().
      */
     function remove_attribute($attributes, $name)
     {
-        $name = strtolower($name);
-        $attributes = prepare_attributes($attributes);
-
-        if (isset($attributes[$name])) {
-            unset($attributes[$name]);
-        }
-
-        return get_attributes_string($attributes);
+        return html_attr_remove($attributes, $name);
     }
 
 }
@@ -408,26 +389,12 @@ if (!function_exists('set_attribute')) {
      * @param string $value Attribute value (will be set to $name if omitted)
      *
      * @return string A string containing result attributes
+     *
+     * @deprecated Use html_attr_set().
      */
     function set_attribute($attributes, $name, $value = null)
     {
-        $name = strtolower($name);
-        $attributes = prepare_attributes($attributes);
-
-        if (is_null($value)) {
-            $value = $name;
-        }
-
-        $attributes[$name] = (string) $value;
-
-        if ($name == 'class') {
-
-            if ($attributes[$name] == '') {
-                return remove_attribute($value, $name);
-            }
-        }
-
-        return get_attributes_string($attributes);
+        return html_attr_set($attributes, $name, $value);
     }
 
 }
@@ -441,13 +408,12 @@ if (!function_exists('get_attribute')) {
      * @param string $name Attribute name
      *
      * @return string|null Attribute value, null if attribute does not exist
+     *
+     * @deprecated Use html_attr_get().
      */
     function get_attribute($attributes, $name)
     {
-        $name = strtolower($name);
-        $attributes = prepare_attributes($attributes);
-
-        return isset($attributes[$name])? $attributes[$name]: null;
+        return html_attr_get($attributes, $name);
     }
 
 }
