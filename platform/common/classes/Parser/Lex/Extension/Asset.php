@@ -32,6 +32,20 @@ class Parser_Lex_Extension_Asset extends Parser_Lex_Extension {
         return $this->asset->css($file, null, $attributes);
     }
 
+    public function css_path() {
+
+        $file = $this->get_attribute('file');
+
+        return $this->asset->css_path($file);
+    }
+
+    public function css_url() {
+
+        $file = $this->get_attribute('file');
+
+        return $this->asset->css_url($file);
+    }
+
     public function js_inline() {
 
         return $this->asset->js_inline($this->get_content());
@@ -50,6 +64,20 @@ class Parser_Lex_Extension_Asset extends Parser_Lex_Extension {
         return $this->asset->js($file, null, $attributes);
     }
 
+    public function js_path() {
+
+        $file = $this->get_attribute('file');
+
+        return $this->asset->js_path($file);
+    }
+
+    public function js_url() {
+
+        $file = $this->get_attribute('file');
+
+        return $this->asset->js_url($file);
+    }
+
     public function image() {
 
         $file = $this->get_attribute('file');
@@ -61,6 +89,20 @@ class Parser_Lex_Extension_Asset extends Parser_Lex_Extension {
         }
 
         return $this->asset->image($file, null, $attributes);
+    }
+
+    public function image_path() {
+
+        $file = $this->get_attribute('file');
+
+        return $this->asset->image_path($file);
+    }
+
+    public function image_url() {
+
+        $file = $this->get_attribute('file');
+
+        return $this->asset->image_url($file);
     }
 
 }
