@@ -1,14 +1,14 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Code Igniter
+ * CodeIgniter
  *
- * An open source application development framework for PHP 4.3.2 or newer
+ * An open source application development framework for PHP
  *
  * @package     CodeIgniter
  * @author      Rick Ellis
  * @copyright   Copyright (c) 2006, pMachine, Inc.
- * @license     http://www.codeignitor.com/user_guide/license.html
+ * @license     http://www.codeigniter.com/user_guide/license.html
  * @link        http://www.codeigniter.com
  * @since       Version 1.0
  * @filesource
@@ -50,19 +50,16 @@ class Asset {
      */
     public function css($asset_name, $module_name = NULL, $attributes = array(), $location_type = '')
     {
-        $attributes = $this->_parse_attributes($attributes);
+        $attributes = html_attr($attributes);
 
-        $attribute_str = $this->_parse_asset_html($attributes);
-
-        if ( ! preg_match('/rel="([^\"]+)"/', $attribute_str))
-        {
-            $attribute_str .= ' rel="stylesheet"';
+        if (html_attr_has_empty($attributes, 'rel')) {
+            $attributes = html_attr_set($attributes, 'rel', 'stylesheet');
         }
 
         $location_type = 'css_' . (in_array($location_type, array('url', 'path')) ? $location_type : 'path');
 
         return '
-    <link href="' . $this->{$location_type}($asset_name, $module_name) . '" type="text/css"' . $attribute_str . ' />';
+    <link href="'.$this->{$location_type}($asset_name, $module_name).'" type="text/css"'.$attributes.' />';
     }
 
     // ------------------------------------------------------------------------
@@ -114,25 +111,26 @@ class Asset {
      */
     public function image($asset_name, $module_name = '', $attributes = array(), $location_type = '')
     {
-        $attributes = $this->_parse_attributes($attributes);
+        $asset_name = @ (string) $asset_name;
+        $attributes = html_attr($attributes);
 
         // No alternative text given? Use the filename, better than nothing!
-        if (empty($attributes['alt']))
-        {
-            @ list($attributes['alt']) = explode('.', $asset_name);
+        if (!html_attr_has($attributes, 'alt')) {
+
+            list($alt) = explode('.', $asset_name); // TODO: Improve this for URL type asset name.
+            $attributes = html_attr_set($attributes, 'alt', $alt);
         }
 
-        $attribute_str    = $this->_parse_asset_html($attributes);
-        $optional        = $location_type && (substr($location_type, -1) === '?') AND (($location_type = substr($location_type, 0, -1)) === 'path');
-        $location_type    = 'image_' . (($optional OR in_array($location_type, array('url', 'path'))) ? $location_type : 'path');
-        $location        = $this->{$location_type}($asset_name, $module_name);
+        $optional = $location_type && (substr($location_type, -1) === '?') AND (($location_type = substr($location_type, 0, -1)) === 'path');
+        $location_type = 'image_' . (($optional OR in_array($location_type, array('url', 'path'))) ? $location_type : 'path');
+        $location = $this->{$location_type}($asset_name, $module_name);
 
         if ($optional && ! is_file(FCPATH . ltrim($location, '/')))
         {
             return '';
         }
 
-        return '<img src="' . $location . '"' . $attribute_str . ' />';
+        return '<img src="'.$location.'"'.$attributes.' />';
     }
 
     // ------------------------------------------------------------------------
@@ -183,14 +181,11 @@ class Asset {
      */
     public function js($asset_name, $module_name = NULL, $attributes = array(), $location_type = '')
     {
-        $attributes = $this->_parse_attributes($attributes);
-
-        $attribute_str = $this->_parse_asset_html($attributes);
-
+        $attributes = html_attr($attributes);
         $location_type = 'js_' . (in_array($location_type, array('url', 'path')) ? $location_type : 'path');
 
         return '
-    <script type="text/javascript" src="' . $this->{$location_type}($asset_name, $module_name) . '"'.$attribute_str.'></script>';
+    <script type="text/javascript" src="'.$this->{$location_type}($asset_name, $module_name).'"'.$attributes.'></script>';
     }
 
     // ------------------------------------------------------------------------
@@ -262,16 +257,14 @@ class Asset {
         // If they are using a direct path, take them to it
         if (strpos($asset_name, 'assets/') !== FALSE)
         {
-            $asset_location = $base_location . $asset_name;
+            $asset_location = $base_location.$asset_name;
         }
 
         // If they have just given a filename, not an asset path, and its in a theme
         elseif ($module_name == '_theme_' AND $this->theme)
         {
-            $base_location    = $location_type == 'url' ? rtrim(site_url(), '/') . '/' : BASE_URI;
-            $asset_location    = $base_location . ltrim(config_item('theme_asset_dir'), '/')
-                . $this->theme . '/'
-                . $asset_type . '/' . $asset_name;
+            $base_location = $location_type == 'url' ? rtrim(site_url(), '/').'/' : BASE_URI;
+            $asset_location = $base_location.ltrim(config_item('theme_asset_dir'), '/').$this->theme.'/'.$asset_type.'/'.$asset_name;
         }
 
         // Normal file (that might be in a module)
@@ -284,49 +277,19 @@ class Asset {
             {
                 foreach (Modules::$locations as $path => $offset)
                 {
-                    if (is_dir($path . $module_name))
+                    if (is_dir($path.$module_name))
                     {
-                        $base_location    = $location_type == 'url' ? rtrim(site_url(), '/') . '/' : BASE_URI;
-                        $asset_location = $base_location . $path . $module_name . '/';
+                        $base_location = $location_type == 'url' ? rtrim(site_url(), '/').'/' : BASE_URI;
+                        $asset_location = $base_location.$path.$module_name.'/';
                         break;
                     }
                 }
             }
 
-            $asset_location .= ( $asset_type == '' ? '' : $asset_type . '/') . $asset_name;
+            $asset_location .= ($asset_type == '' ? '' : $asset_type.'/').$asset_name;
         }
 
         return $asset_location;
-    }
-
-    // ------------------------------------------------------------------------
-
-    /**
-     * Parse HTML Attributes
-     *
-     * Turns an array of attributes into a string
-     *
-     * @access      private
-     * @param       array           attributes to be parsed
-     * @return      string          string of html attributes
-     */
-    private function _parse_asset_html($attributes = NULL)
-    {
-        $attribute_str = '';
-
-        if (is_string($attributes))
-        {
-            $attribute_str = ' '.$attributes;
-        }
-        else if (is_array($attributes) || is_object($attributes))
-        {
-            foreach ($attributes as $key => $value)
-            {
-                $attribute_str .= ' ' . $key . '="' . $value . '"';
-            }
-        }
-
-        return $attribute_str;
     }
 
     // ------------------------------------------------------------------------
@@ -342,54 +305,6 @@ class Asset {
     public function set_theme($theme)
     {
         $this->theme = $theme;
-    }
-
-    // ------------------------------------------------------------------------
-
-    // Added by Ivan Tcholakov, 26-OCT-2012.
-    protected function _parse_attributes( & $attributes) {
-
-        $result = array();
-
-        if (is_string($attributes)) {
-
-            if (preg_match_all(
-                    "/(([A-Za-z_:]|[^\\x00-\\x7F])([A-Za-z0-9_:.-]|[^\\x00-\\x7F])*)" .
-                    "([ \\n\\t\\r]+)?(=([ \\n\\t\\r]+)?(\"[^\"]*\"|'[^']*'|[^ \\n\\t\\r]*))?/",
-                    $attributes,
-                    $regs)) {
-
-                for ($i = 0; $i < count($regs[1]); $i++) {
-
-                    $name  = trim($regs[1][$i]);
-                    $check = trim($regs[0][$i]);
-                    $value = trim($regs[7][$i]);
-
-                    if ($name == $check) {
-                        $result[strtolower($name)] = strtolower($name);
-                    } else {
-                        if (!empty($value) && ($value[0] == '\'' || $value[0] == '"')) {
-                            $value = substr($value, 1, -1);
-                        }
-                        $result[strtolower($name)] = $value;
-                    }
-                }
-            }
-        }
-        elseif (is_array($attributes)) {
-
-            foreach ($attributes as $key => $value) {
-
-                if (is_int($key)) {
-                    $key = strtolower($value);
-                    $result[$key] = $key;
-                } else {
-                    $result[strtolower($key)] = (string) $value;
-                }
-            }
-        }
-
-        return $result;
     }
 
 }

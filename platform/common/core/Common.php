@@ -387,6 +387,28 @@ if (!function_exists('html_attr')) {
 
 }
 
+if (!function_exists('html_attr_has')) {
+
+    function html_attr_has($attributes, $name) {
+
+        $attr = new HTML_Attributes($attributes);
+
+        return $attr->getAttribute($name) !== null;
+    }
+
+}
+
+if (!function_exists('html_attr_has_empty')) {
+
+    function html_attr_has_empty($attributes, $name) {
+
+        $attr = new HTML_Attributes($attributes);
+
+        return $attr->getAttribute($name) == '';
+    }
+
+}
+
 if (!function_exists('html_attr_get')) {
 
     function html_attr_get($attributes, $name) {
