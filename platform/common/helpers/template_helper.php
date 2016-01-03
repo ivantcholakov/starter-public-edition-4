@@ -2,7 +2,7 @@
 
 /**
  * Template helper functions
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2013
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  * Some original functions from Phil Sturgeon have been taken as a starting point.
  */
@@ -278,23 +278,23 @@ if (!function_exists('html_tag')) {
 
         $data =& ci()->load->_ci_cached_vars;
 
-        $attributes = merge_attributes_and_classes(
+        $attributes = html_attr_merge(
             isset($data['template_html_tag_attributes']) ? $data['template_html_tag_attributes'] : '',
             $attributes
         );
 
         // The Modernizr javascript removes this additional class,
         // if it does not fail to run for some reason (no javascript).
-        $attributes = merge_attributes_and_classes('class="no-js"', $attributes);
+        $attributes = html_attr_merge('class="no-js"', $attributes);
 
         if (template_enable_oldie()) {
 
             return
 '<!DOCTYPE html>
-<!--[if IEMobile 7]><html'.merge_attributes_and_classes('class="iem7 oldie lt-ie9"', $attributes).'><![endif]-->
-<!--[if lt IE 7]><html'.merge_attributes_and_classes('class="ie6 oldie lt-ie9 lt-ie8 lt-ie7"', $attributes).'><![endif]-->
-<!--[if (IE 7)&!(IEMobile)]><html'.merge_attributes_and_classes('class="ie7 oldie lt-ie9 lt-ie8"', $attributes).'><![endif]-->
-<!--[if (IE 8)&!(IEMobile)]><html'.merge_attributes_and_classes('class="ie8 oldie lt-ie9"', $attributes).'><![endif]-->
+<!--[if IEMobile 7]><html'.html_attr_merge('class="iem7 oldie lt-ie9"', $attributes).'><![endif]-->
+<!--[if lt IE 7]><html'.html_attr_merge('class="ie6 oldie lt-ie9 lt-ie8 lt-ie7"', $attributes).'><![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html'.html_attr_merge('class="ie7 oldie lt-ie9 lt-ie8"', $attributes).'><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html'.html_attr_merge('class="ie8 oldie lt-ie9"', $attributes).'><![endif]-->
 <!--[if gt IE 8]><!-->
     <html'.$attributes.'>
     <!--<![endif]-->
@@ -687,7 +687,7 @@ if (!function_exists('body_tag')) {
 
         $data =& ci()->load->_ci_cached_vars;
 
-        $attributes = merge_attributes_and_classes(
+        $attributes = html_attr_merge(
             isset($data['template_body_tag_attributes']) ? $data['template_body_tag_attributes'] : '',
             $attributes
         );

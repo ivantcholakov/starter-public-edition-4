@@ -547,18 +547,12 @@ if (!function_exists('merge_attributes_and_classes')) {
      *                                 or HTML attribute string
      *
      * @return string A string containing merged attributes
+     *
+     * @deprecated Use html_attr_merge().
      */
     function merge_attributes_and_classes($attributes, $extra_attributes)
     {
-        $attributes = prepare_attributes($attributes);
-        $extra_attributes = prepare_attributes($extra_attributes);
-
-        $class_extra = get_attribute($extra_attributes, 'class');
-
-        $attributes = add_class($attributes, get_attribute($extra_attributes, 'class'));
-        $extra_attributes = remove_attribute($extra_attributes, 'class');
-
-        return merge_attributes($attributes, $extra_attributes);
+        return html_attr_merge($attributes, $extra_attributes);
     }
 
 }
