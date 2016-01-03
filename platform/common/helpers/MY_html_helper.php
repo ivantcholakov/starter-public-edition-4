@@ -198,7 +198,7 @@ if (!function_exists('gmap')) {
 //<![CDATA[
 
 if (typeof google == 'undefined' || typeof google.maps == 'undefined' ) {
-    document.write('<script type="text/javascript" src="<?php echo is_https() ? 'https:' : 'http:'; ?>//maps.google.com/maps/api/js?sensor=false">\x3C/script>');
+    document.write('<script type="text/javascript" src="<?php echo is_https() ? 'https:' : 'http:'; ?>//maps.google.com/maps/api/js">\x3C/script>');
 }
 
 $(function () {

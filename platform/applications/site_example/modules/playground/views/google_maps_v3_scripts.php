@@ -10,7 +10,7 @@ echo js('lib/chosen-image/chosenImage.jquery.js');
 
 ?>
 
-    <script type="text/javascript" src="<?php echo is_https() ? 'https:' : 'http:'; ?>//maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="<?php echo is_https() ? 'https:' : 'http:'; ?>//maps.google.com/maps/api/js"></script>
 
     <script type="text/javascript">
     //<![CDATA[
