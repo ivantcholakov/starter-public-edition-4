@@ -506,3 +506,13 @@ if (!function_exists('htmltag')) {
     }
 
 }
+
+// Added by Ivan Tcholakov, 03-JAN-2016.
+if (!function_exists('htmltagclose')) {
+
+    function htmltagclose($tag) {
+
+        return '</'.$tag.'>';
+    }
+
+}
