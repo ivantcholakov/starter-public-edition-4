@@ -461,11 +461,12 @@ if (!function_exists('has_class')) {
      * @param string $class CSS Class name
      *
      * @return bool
+     *
+     * @deprecated Use html_attr_has_class().
      */
     function has_class($attributes, $class)
     {
-        $regex = '/(^|\s)' . preg_quote($class, '/') . '(\s|$)/';
-        return (bool) preg_match($regex, get_attribute($attributes, 'class'));
+        return html_attr_has_class($attributes, $class);
     }
 
 }
@@ -480,24 +481,12 @@ if (!function_exists('add_class')) {
      *                            whitespace, array of class names
      *
      * @return string A string containing result attributes
+     *
+     * @deprecated Use html_attr_add_class().
      */
     function add_class($attributes, $class)
     {
-        $attributes = prepare_attributes($attributes);
-
-        if (!is_array($class)) {
-            $class = preg_split('/\s+/', $class, null, PREG_SPLIT_NO_EMPTY);
-        }
-        $curClass = preg_split(
-            '/\s+/', get_attribute($attributes, 'class'), null, PREG_SPLIT_NO_EMPTY
-        );
-        foreach ($class as $c) {
-            if (!in_array($c, $curClass)) {
-                $curClass[] = $c;
-            }
-        }
-
-        return set_attribute($attributes, 'class', implode(' ', $curClass));
+        return html_attr_add_class($attributes, $class);
     }
 
 }
@@ -512,26 +501,12 @@ if (!function_exists('remove_class')) {
      *                            whitespace, array of class names
      *
      * @return string A string containing result attributes
+     *
+     * @deprecated Use html_attr_remove_class().
      */
     function remove_class($attributes, $class)
     {
-        $attributes = prepare_attributes($attributes);
-
-        if (!is_array($class)) {
-            $class = preg_split('/\s+/', $class, null, PREG_SPLIT_NO_EMPTY);
-        }
-        $curClass = array_diff(
-            preg_split(
-                '/\s+/', get_attribute($attributes, 'class'), null, PREG_SPLIT_NO_EMPTY
-            ),
-            $class
-        );
-
-        if (0 == count($curClass)) {
-            return remove_attribute($attributes, 'class');
-        }
-
-        return set_attribute($attributes, 'class', implode(' ', $curClass));
+        return html_attr_remove_class($attributes, $class);
     }
 
 }
