@@ -269,12 +269,11 @@ if (!function_exists('template_ios')) {
 // Document Start
 //------------------------------------------------------------------------------
 
-if (!function_exists('html_tag')) {
+if (!function_exists('html_tag_no_conflict')) {
 
     // Added by Ivan Tcholakov. 21-OCT-2013.
-    function html_tag($attributes = null) {
-
-        ci()->load->helper('html');
+    // Renamed by Ivan Tcholakov, html_tag -> html_tag_no_conflict, 03-JAN-2016.
+    function html_tag_no_conflict($attributes = null) {
 
         $data =& ci()->load->_ci_cached_vars;
 
