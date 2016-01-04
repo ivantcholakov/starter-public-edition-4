@@ -80,4 +80,95 @@ class Parser_Lex_Extension_Url extends Parser_Lex_Extension {
         return $this->uri->total_rsegments();
     }
 
+    public function anchor() {
+
+        $uri = false;
+        $title = false;
+        $attr = false;
+
+        $values = array(
+            0 => false,
+            1 => false,
+            2 => false,
+        );
+
+        $attributes = $this->get_attributes();
+
+        // Scanning parameters for compatibility.
+        foreach ($values as $i => $v) {
+
+            if ($v[$i]) {
+                continue;
+            }
+
+            foreach ($attributes as $key => $value) {
+
+                if ($uri === false) {
+
+                    if ($key == 'segments') {
+
+                        $uri = $value;
+                        $v[$i] = true;
+                        continue;
+                    }
+
+                    if (array_key_exists('segments', $attributes)) {
+                        continue;
+                    }
+
+                    if ($key != 'title' && $key != 'class') {
+
+                        $uri = $value;
+                        $v[$i] = true;
+                        continue;
+                    }
+                }
+
+                if ($title === false) {
+
+                    if ($key == 'title') {
+
+                        $title = $value;
+                        $v[$i] = true;
+                        continue;
+                    }
+
+                    if (array_key_exists('title', $attributes)) {
+                        continue;
+                    }
+
+                    if ($key != 'segment' && $key != 'class') {
+
+                        $title = $value;
+                        $v[$i] = true;
+                        continue;
+                    }
+                }
+
+                if ($attr === false) {
+
+                    if ($key == 'class') {
+
+                        $attr = html_attr_add_class($attr, $value);
+                        $v[$i] = true;
+                        continue;
+                    }
+
+                    if (array_key_exists('class', $attributes)) {
+                        continue;
+                    }
+
+                    if ($key != 'segment' && $key != 'title' && $key != 'class') {
+
+                        $attr = $value;
+                        $v[$i] = true;
+                        continue;
+                    }
+                }
+            }
+        }
+
+        return anchor($uri, $title, $attr);
+    }
+
 }
