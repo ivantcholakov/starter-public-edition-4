@@ -2133,6 +2133,28 @@ document.write("Hello World!");
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:print_d value="[[ <strong>url:is_https</strong> ]]" }}
+&lt;div class="clearfix"&gt;&lt;/div&gt;
+{{ helper:print_d value="[[ <strong>url:is_ssl</strong> ]]" }} &lt;!-- an alias --&gt;{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:print_d value="[[ url:is_https ]]" }}
+<div class="clearfix"></div>
+{{ helper:print_d value="[[ url:is_ssl ]]" }} <!-- an alias -->
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>url:redirect</strong> to="playground" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+-- Not applicable for this demo. --
+                                        </td>
+                                    </tr>
+
                                 </tbody>
 
                             </table>

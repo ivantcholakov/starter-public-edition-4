@@ -171,4 +171,34 @@ class Parser_Lex_Extension_Url extends Parser_Lex_Extension {
         return anchor($uri, $title, $attr);
     }
 
+    public function is_https() {
+
+        return is_https();
+    }
+
+    // An alias of is_https().
+    public function is_ssl() {
+
+        return is_https();
+    }
+
+    public function redirect() {
+
+        $to = $this->get_attribute('to');
+
+        $method = $this->get_attribute('method');
+
+        if ($method == '') {
+            $method = 'auto';
+        }
+
+        $code = $this->get_attribute('code');
+
+        if ($code == '') {
+            $code = null;
+        }
+
+        redirect($to, $method, $code);
+    }
+
 }
