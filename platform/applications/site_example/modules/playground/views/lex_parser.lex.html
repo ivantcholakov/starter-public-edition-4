@@ -1494,19 +1494,19 @@ Replacement count: {{ helper:get name="str_replace_count" }}
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ global:<strong>CURRENT_URL</strong> }}{{ /noparse }}</code></pre>
+<pre><code>{{ noparse }}{{ helper:xss_clean value="[[ global:<strong>CURRENT_URL</strong> ]]" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
-{{ global:CURRENT_URL }}
+{{ helper:xss_clean value="[[ global:CURRENT_URL ]]" }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ global:<strong>CURRENT_URI</strong> }}{{ /noparse }}</code></pre>
+<pre><code>{{ noparse }}{{ helper:xss_clean value="[[ global:<strong>CURRENT_URI</strong> ]]" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
-{{ global:CURRENT_URI }}
+{{ helper:xss_clean value="[[ global:CURRENT_URI ]]" }}
                                         </td>
                                     </tr>
 
@@ -1548,10 +1548,10 @@ Replacement count: {{ helper:get name="str_replace_count" }}
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ global:<strong>CURRENT_URI_STRING</strong> }}{{ /noparse }}</code></pre>
+<pre><code>{{ noparse }}{{ helper:xss_clean value="[[ global:<strong>CURRENT_URI_STRING</strong> ]]" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
-{{ global:CURRENT_URI_STRING }}
+{{ helper:xss_clean value="[[ global:CURRENT_URI_STRING ]]" }}
                                         </td>
                                     </tr>
 
@@ -1969,19 +1969,19 @@ document.write("Hello World!");
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ <strong>url:current</strong> }}{{ /noparse }}</code></pre>
+<pre><code>{{ noparse }}{{ helper:xss_clean value="[[ <strong>url:current</strong> ]]" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
-{{ url:current }}
+{{ helper:xss_clean value="[[ url:current ]]" }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ <strong>uri:current</strong> }}{{ /noparse }}</code></pre>
+<pre><code>{{ noparse }}{{ helper:xss_clean value="[[ <strong>uri:current</strong> ]]" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
-{{ uri:current }}
+{{ helper:xss_clean value="[[ uri:current ]]" }}
                                         </td>
                                     </tr>
 
@@ -1996,19 +1996,19 @@ document.write("Hello World!");
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ <strong>url:query_string</strong> }}{{ /noparse }}</code></pre>
+<pre><code>{{ noparse }}{{ helper:xss_clean value="[[ <strong>url:query_string</strong> ]]" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
-{{ url:query_string }}
+{{ helper:xss_clean value="[[ url:query_string ]]" }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ <strong>url:get</strong> key="q_1" }}{{ /noparse }}</code></pre>
+<pre><code>{{ noparse }}{{ helper:xss_clean value="[[ <strong>url:get</strong> key='q_1' ]]" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
-{{ url:get key="q_1" }}
+{{ helper:xss_clean value="[[ url:get key='q_1' ]]" }}
                                         </td>
                                     </tr>
 
