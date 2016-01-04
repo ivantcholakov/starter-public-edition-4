@@ -2068,6 +2068,58 @@ document.write("Hello World!");
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:print_d value="[[ <strong>url:segments</strong> ]]" }}
+&lt;div class="clearfix"&gt;&lt;/div&gt;
+{{ <strong>url:segments</strong> segment="1" }}
+&lt;br /&gt;
+{{ <strong>url:segments</strong> segment="2" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:print_d value="[[ url:segments ]]" }}
+<div class="clearfix"></div>
+{{ url:segments segment="1" }}
+<br />
+{{ url:segments segment="2" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>url:total_segments</strong> }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ url:total_segments }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:print_d value="[[ <strong>url:rsegments</strong> ]]" }}
+&lt;div class="clearfix"&gt;&lt;/div&gt;
+{{ <strong>url:rsegments</strong> segment="1" }}
+&lt;br /&gt;
+{{ <strong>url:rsegments</strong> segment="2" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:print_d value="[[ url:rsegments ]]" }}
+<div class="clearfix"></div>
+{{ url:rsegments segment="1" }}
+<br />
+{{ url:rsegments segment="2" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>url:total_rsegments</strong> }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ url:total_rsegments }}
+                                        </td>
+                                    </tr>
+
                                 </tbody>
 
                             </table>

@@ -46,4 +46,38 @@ class Parser_Lex_Extension_Url extends Parser_Lex_Extension {
         return base_url($this->get_attribute(0));
     }
 
+    public function segments() {
+
+        $segment = $this->get_attribute(0);
+        $default = $this->get_attribute(1);
+
+        if ($segment == '') {
+            return $this->uri->segment_array();
+        }
+
+        return $this->uri->segment($segment, $default);
+    }
+
+    public function total_segments() {
+
+        return $this->uri->total_segments();
+    }
+
+    public function rsegments() {
+
+        $segment = $this->get_attribute(0);
+        $default = $this->get_attribute(1);
+
+        if ($segment == '') {
+            return $this->uri->rsegment_array();
+        }
+
+        return $this->uri->rsegment($segment, $default);
+    }
+
+    public function total_rsegments() {
+
+        return $this->uri->total_rsegments();
+    }
+
 }
