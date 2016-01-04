@@ -1943,6 +1943,57 @@ document.write("Hello World!");
                                         </td>
                                     </tr>
 
+                                    <tr class="info">
+                                        <td colspan="2">
+                                            <h4>URL/URI Handling</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>url:current</strong> }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ url:current }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>uri:current</strong> }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ uri:current }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>url:uri_string</strong> }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ url:uri_string }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>url:query_string</strong> }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ url:query_string }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>url:get</strong> key="q_1" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ url:get key="q_1" }}
+                                        </td>
+                                    </tr>
+
                                 </tbody>
 
                             </table>
