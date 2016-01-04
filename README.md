@@ -52,6 +52,17 @@ Have a look at their configuration files. Also, the common PHP configuration fil
 The platform auto-detects its base URL address nevertheless its public part is on the document root of the web-server or not.
 I don't expect you to be forced to set it up manually within platform/common/config/config.php.
 
+Coding Rules
+------------
+
+For originally written code:
+
+* A tab is turned into four spaces.
+
+For CodeIgniter system files, third-party libraries, components, etc.:
+
+* Use the code rules adopted by the corresponding authors.
+
 Features
 --------
 
