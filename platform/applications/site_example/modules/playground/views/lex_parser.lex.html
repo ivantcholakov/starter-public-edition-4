@@ -670,6 +670,15 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ helper:<strong>html_escape</strong> string="[[ dangerous_value ]]" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:html_escape string="[[ dangerous_value ]]" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}{{ helper:<strong>htmlentities</strong> string="[[ dog ]]" flags="3" encoding="UTF-8" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
@@ -1302,6 +1311,15 @@ Replacement count: {{ helper:get name="str_replace_count" }}
 {{ helper:url_title str="Limp Bizkit" separator="-" lowercase="yes" }}
 <br />
 {{ helper:url_title str="Лимп Бизкит" separator="-" lowercase="yes" transliterate_to_ascii="yes" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:<strong>xss_clean</strong> string="[[ dangerous_value ]]" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:xss_clean string="[[ dangerous_value ]]" }}
                                         </td>
                                     </tr>
 

@@ -784,6 +784,11 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return call_user_func_array($name, $attributes);
     }
 
+    public function xss_clean() {
+
+        return $this->security->xss_clean($this->get_attribute(0));
+    }
+
     public function word_limiter() {
 
         if (!$this->_is_function_allowed($name = __FUNCTION__, $message)) {
