@@ -2005,10 +2005,66 @@ document.write("Hello World!");
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ helper:xss_clean value="[[ <strong>url:get</strong> key='q_1' ]]" }}{{ /noparse }}</code></pre>
+<pre><code>{{ noparse }}{{ helper:xss_clean value="[[ <strong>url:get</strong> key='q_1' ]]" }}
+&lt;br /&gt;
+{{ <strong>url:get</strong> key="q_1" xss_clean="yes" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
 {{ helper:xss_clean value="[[ url:get key='q_1' ]]" }}
+<br />
+{{ url:get key="q_1" xss_clean="yes" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>url:site</strong> }}&lt;br /&gt;
+&lt;br /&gt;
+&lt;a href="{{ <strong>url:site</strong> uri="playground" }}"&gt;The Playground&lt;/a&gt;{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ url:site }}
+<br />
+<a href="{{ url:site uri="playground" }}">The Playground</a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>uri:site</strong> }}
+&lt;br /&gt;
+&lt;a href="{{ <strong>uri:site</strong> uri="playground" }}"&gt;The Playground&lt;/a&gt;{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ uri:site }}
+<br />
+<a href="{{ uri:site uri="playground" }}">The Playground</a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>url:base</strong> }}&lt;br /&gt;
+&lt;br /&gt;
+{{ <strong>url:base</strong> uri="assets" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ url:base }}
+<br />
+{{ url:base uri="assets" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>uri:base</strong> }}&lt;br /&gt;
+&lt;br /&gt;
+{{ <strong>uri:base</strong> uri="assets" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ uri:base }}
+<br />
+{{ uri:base uri="assets" }}
                                         </td>
                                     </tr>
 
