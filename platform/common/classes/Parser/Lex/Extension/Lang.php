@@ -12,7 +12,7 @@ class Parser_Lex_Extension_Lang extends Parser_Lex_Extension {
         parent::__construct();
     }
 
-    public function trans() {
+    public function t() {
 
         $attributes = $this->get_attribute_values();
 
