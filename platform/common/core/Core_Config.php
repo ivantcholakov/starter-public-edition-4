@@ -613,11 +613,14 @@ class Core_Config extends MX_Config {
     // Added by Ivan Tcholakov, 23-JAN-2014.
     public function get_language($language) {
 
+        $result = null;
+
         if (array_key_exists($language, $this->config['languages'])) {
-            return $this->config['languages'][$language];
+
+            $result = array_merge(array('language' => $language), $this->config['languages'][$language]);
         }
 
-        return null;
+        return $result;
     }
 
     // Added by Ivan Tcholakov, 22-JAN-2014.

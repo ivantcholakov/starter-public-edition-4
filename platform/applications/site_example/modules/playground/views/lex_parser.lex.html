@@ -2155,6 +2155,112 @@ document.write("Hello World!");
                                         </td>
                                     </tr>
 
+                                    <tr class="info">
+                                        <td colspan="2">
+                                            <h4>Language</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>lang:trans</strong> line="welcome.hello" }}
+&lt;br /&gt;
+{{ <strong>lang:trans</strong> line="ui_file_upload_success" param1="&lt;strong&gt;photo.png&lt;/strong&gt;" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang:trans line="welcome.hello" }}
+<br />
+{{ lang:trans line="ui_file_upload_success" param1="<strong>photo.png</strong>" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:print_d value="[[ <strong>lang:get</strong> ]]" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{  helper:print_d value="[[ lang:get ]]" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>lang:current</strong> }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang:current }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>lang:code</strong> }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang:code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>lang:direction</strong> }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang:direction }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>lang:uri_segment</strong> }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang:uri_segment }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>lang:current_uri_segment</strong> }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang:current_uri_segment }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>lang:name</strong> }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang:name }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>lang:name_en</strong> }}
+&lt;br /&gt;
+{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang:name_en }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>lang:flag</strong> }}
+&lt;br /&gt;
+&lt;img src="{{ asset:image_path file="lib/flags-iso/shiny/64/" }}{{ lang:flag }}.png" /&gt;{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang:flag }}
+<br />
+<img src="{{ asset:image_path file="lib/flags-iso/shiny/64/" }}{{ lang:flag }}.png" />
+                                        </td>
+                                    </tr>
+
                                 </tbody>
 
                             </table>
