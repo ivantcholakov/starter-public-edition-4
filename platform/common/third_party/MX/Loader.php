@@ -493,7 +493,10 @@ class MX_Loader extends CI_Loader
 
         } else {
 
-            class_exists('CI_Model', FALSE) OR load_class('Model', 'core');
+            // Modified by Ivan Tcholakov, 06-JAN-2016.
+            //class_exists('CI_Model', FALSE) OR load_class('Model', 'core');
+            $this->_load_system_model_classes();
+            //
 
             if ($connect !== FALSE AND ! class_exists('CI_DB', FALSE)) {
                 if ($connect === TRUE) $connect = '';
@@ -573,7 +576,10 @@ class MX_Loader extends CI_Loader
 
         if ( ! class_exists('CI_Model', FALSE))
         {
-            load_class('Model', 'core');
+            // Modified by Ivan Tcholakov, 06-JAN-2016.
+            //load_class('Model', 'core');
+            $this->_load_system_model_classes();
+            //
         }
 
         $model = ucfirst($model);
