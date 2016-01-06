@@ -498,7 +498,7 @@ if (!function_exists('html_attr_remove_class')) {
 // Added by Ivan Tcholakov, 03-JAN-2016.
 if (!function_exists('html_tag')) {
 
-    function html_tag($tag, $attributes = array(), $content = false) {
+    function html_tag($tag = null, $attributes = array(), $content = false) {
 
         // Avoid name conflict with a previously written function. --------
 
