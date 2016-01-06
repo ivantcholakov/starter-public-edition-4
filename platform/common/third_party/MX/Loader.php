@@ -615,6 +615,84 @@ class MX_Loader extends CI_Loader
         show_error('Unable to locate the model you have specified: '.$model);
     }
 
+    // Added by Ivan Tcholakov, 07-JAN-2016.
+    protected function _load_system_model_classes() {
+
+        // Note: All of the code under this condition used to be just:
+        //
+        //       load_class('Model', 'core');
+        //
+        //       However, load_class() instantiates classes
+        //       to cache them for later use and that prevents
+        //       MY_Model from being an abstract class and is
+        //       sub-optimal otherwise anyway.
+        if ( ! class_exists('CI_Model', FALSE))
+        {
+            $app_core_path = APPPATH.'core'.DIRECTORY_SEPARATOR;
+            $common_core_path = COMMONPATH.'core'.DIRECTORY_SEPARATOR;
+
+            if (file_exists($app_core_path.'Model.php'))
+            {
+                require_once($app_core_path.'Model.php');
+                if ( ! class_exists('CI_Model', FALSE))
+                {
+                    throw new RuntimeException($app_core_path."Model.php exists, but doesn't declare class CI_Model");
+                }
+            }
+            elseif (file_exists($common_core_path.'Model.php'))
+            {
+                require_once($common_core_path.'Model.php');
+                if ( ! class_exists('CI_Model', FALSE))
+                {
+                    throw new RuntimeException($common_core_path."Model.php exists, but doesn't declare class CI_Model");
+                }
+            }
+            elseif ( ! class_exists('CI_Model', FALSE))
+            {
+                require_once(BASEPATH.'core'.DIRECTORY_SEPARATOR.'Model.php');
+            }
+
+            $class = 'Core_Model';
+
+            if (file_exists($app_core_path.$class.'.php'))
+            {
+                require_once($app_core_path.$class.'.php');
+                if ( ! class_exists($class, FALSE))
+                {
+                    throw new RuntimeException($app_core_path.$class.".php exists, but doesn't declare class ".$class);
+                }
+            }
+            elseif (file_exists($common_core_path.$class.'.php'))
+            {
+                require_once($common_core_path.$class.'.php');
+                if ( ! class_exists($class, FALSE))
+                {
+                    throw new RuntimeException($common_core_path.$class.".php exists, but doesn't declare class ".$class);
+                }
+            }
+
+            $class = config_item('subclass_prefix').'Model';
+
+            if (file_exists($app_core_path.$class.'.php'))
+            {
+                require_once($app_core_path.$class.'.php');
+                if ( ! class_exists($class, FALSE))
+                {
+                    throw new RuntimeException($app_core_path.$class.".php exists, but doesn't declare class ".$class);
+                }
+            }
+            elseif (file_exists($common_core_path.$class.'.php'))
+            {
+                require_once($common_core_path.$class.'.php');
+                if ( ! class_exists($class, FALSE))
+                {
+                    throw new RuntimeException($common_core_path.$class.".php exists, but doesn't declare class ".$class);
+                }
+            }
+        }
+    }
+    //
+
     /** Load an array of models **/
     public function models($models) {
 
@@ -791,7 +869,7 @@ class MX_Loader extends CI_Loader
 
     public function __get($class) {
 
-	return (isset($this->controller)) ? $this->controller->$class : (isset(CI::$APP->$class) ? CI::$APP->$class : load_class(ucfirst($class), 'core'));
+        return (isset($this->controller)) ? $this->controller->$class : (isset(CI::$APP->$class) ? CI::$APP->$class : load_class(ucfirst($class), 'core'));
     }
 
     public function _ci_load($_ci_data) {

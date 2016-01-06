@@ -296,35 +296,32 @@ class CI_Loader {
 		//       to cache them for later use and that prevents
 		//       MY_Model from being an abstract class and is
 		//       sub-optimal otherwise anyway.
-		// Moved into a separate protected method below by Ivan Tcholakov, 06-JAN-2016.
-		//if ( ! class_exists('CI_Model', FALSE))
-		//{
-		//	$app_path = APPPATH.'core'.DIRECTORY_SEPARATOR;
-		//	if (file_exists($app_path.'Model.php'))
-		//	{
-		//		require_once($app_path.'Model.php');
-		//		if ( ! class_exists('CI_Model', FALSE))
-		//		{
-		//			throw new RuntimeException($app_path."Model.php exists, but doesn't declare class CI_Model");
-		//		}
-		//	}
-		//	elseif ( ! class_exists('CI_Model', FALSE))
-		//	{
-		//		require_once(BASEPATH.'core'.DIRECTORY_SEPARATOR.'Model.php');
-		//	}
-		//
-		//	$class = config_item('subclass_prefix').'Model';
-		//	if (file_exists($app_path.$class.'.php'))
-		//	{
-		//		require_once($app_path.$class.'.php');
-		//		if ( ! class_exists($class, FALSE))
-		//		{
-		//			throw new RuntimeException($app_path.$class.".php exists, but doesn't declare class ".$class);
-		//		}
-		//	}
-		//}
-		$this->_load_system_model_classes();
-		//
+		if ( ! class_exists('CI_Model', FALSE))
+		{
+			$app_path = APPPATH.'core'.DIRECTORY_SEPARATOR;
+			if (file_exists($app_path.'Model.php'))
+			{
+				require_once($app_path.'Model.php');
+				if ( ! class_exists('CI_Model', FALSE))
+				{
+					throw new RuntimeException($app_path."Model.php exists, but doesn't declare class CI_Model");
+				}
+			}
+			elseif ( ! class_exists('CI_Model', FALSE))
+			{
+				require_once(BASEPATH.'core'.DIRECTORY_SEPARATOR.'Model.php');
+			}
+
+			$class = config_item('subclass_prefix').'Model';
+			if (file_exists($app_path.$class.'.php'))
+			{
+				require_once($app_path.$class.'.php');
+				if ( ! class_exists($class, FALSE))
+				{
+					throw new RuntimeException($app_path.$class.".php exists, but doesn't declare class ".$class);
+				}
+			}
+		}
 
 		$model = ucfirst($model);
 		if ( ! class_exists($model))
@@ -359,84 +356,6 @@ class CI_Loader {
 		$CI->$name = new $model();
 		return $this;
 	}
-
-	// Moved here as a separate method and customized by Ivan Tcholakov, 06-JAN-2016.
-	protected function _load_system_model_classes() {
-
-		// Note: All of the code under this condition used to be just:
-		//
-		//       load_class('Model', 'core');
-		//
-		//       However, load_class() instantiates classes
-		//       to cache them for later use and that prevents
-		//       MY_Model from being an abstract class and is
-		//       sub-optimal otherwise anyway.
-		if ( ! class_exists('CI_Model', FALSE))
-		{
-			$app_core_path = APPPATH.'core'.DIRECTORY_SEPARATOR;
-			$common_core_path = COMMONPATH.'core'.DIRECTORY_SEPARATOR;
-
-			if (file_exists($app_core_path.'Model.php'))
-			{
-				require_once($app_core_path.'Model.php');
-				if ( ! class_exists('CI_Model', FALSE))
-				{
-					throw new RuntimeException($app_core_path."Model.php exists, but doesn't declare class CI_Model");
-				}
-			}
-			elseif (file_exists($common_core_path.'Model.php'))
-			{
-				require_once($common_core_path.'Model.php');
-				if ( ! class_exists('CI_Model', FALSE))
-				{
-					throw new RuntimeException($common_core_path."Model.php exists, but doesn't declare class CI_Model");
-				}
-			}
-			elseif ( ! class_exists('CI_Model', FALSE))
-			{
-				require_once(BASEPATH.'core'.DIRECTORY_SEPARATOR.'Model.php');
-			}
-
-			$class = 'Core_Model';
-
-			if (file_exists($app_core_path.$class.'.php'))
-			{
-				require_once($app_core_path.$class.'.php');
-				if ( ! class_exists($class, FALSE))
-				{
-					throw new RuntimeException($app_core_path.$class.".php exists, but doesn't declare class ".$class);
-				}
-			}
-			elseif (file_exists($common_core_path.$class.'.php'))
-			{
-				require_once($common_core_path.$class.'.php');
-				if ( ! class_exists($class, FALSE))
-				{
-					throw new RuntimeException($common_core_path.$class.".php exists, but doesn't declare class ".$class);
-				}
-			}
-
-			$class = config_item('subclass_prefix').'Model';
-
-			if (file_exists($app_core_path.$class.'.php'))
-			{
-				require_once($app_core_path.$class.'.php');
-				if ( ! class_exists($class, FALSE))
-				{
-					throw new RuntimeException($app_core_path.$class.".php exists, but doesn't declare class ".$class);
-				}
-			}
-			elseif (file_exists($common_core_path.$class.'.php'))
-			{
-				require_once($common_core_path.$class.'.php');
-				if ( ! class_exists($class, FALSE))
-				{
-					throw new RuntimeException($common_core_path.$class.".php exists, but doesn't declare class ".$class);
-				}
-			}
-		}
-	}
-	//
 
 	// --------------------------------------------------------------------
 
