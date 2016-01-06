@@ -1,13 +1,31 @@
 Change Log: `bootstrap-star-rating`
 ===================================
 
+## Version 3.5.6
+
+**Date:** 29-Dec-2015
+
+1. (enh #76): Add Russian Translations.
+2. (bug #77): Correct `touches` and `changedTouches` validation.
+3. (enh #81): Simplify README docs.
+4. (enh #82): Added "main" key into NPM package.json.
+
+## Version 3.5.5
+
+**Date:** 22-Nov-2015
+
+1. (enh #71): Fix `Error: Cannot read property 'pageX' of undefined` error on touch devices.
+2. (enh #74): Universal Module Definition for use with CommonJS, AMD or browser globals.
+3. (enh #75): Implement Locales and Translations.
+
 ## Version 3.5.4
 
-**Date:** 12-Aug-2015
+**Date:** 20-Sep-2015
 
 1. (enh #47): Styling enhancements for printed output (better star colors and hide clear button).
 2. (enh #59): Remove `String.prototype.replaceAll` and implement regex replace.
 3. (enh #63): Add `package.json` for npm install.
+4. Update bootstrap bower version to support only 3.x variants.
 
 ## Version 3.5.3
 
