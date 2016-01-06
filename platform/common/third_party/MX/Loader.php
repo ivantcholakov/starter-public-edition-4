@@ -574,13 +574,13 @@ class MX_Loader extends CI_Loader
             $CI->load->database($db_conn, FALSE, TRUE);
         }
 
-        if ( ! class_exists('CI_Model', FALSE))
-        {
-            // Modified by Ivan Tcholakov, 06-JAN-2016.
-            //load_class('Model', 'core');
-            $this->_load_system_model_classes();
-            //
-        }
+        // Modified by Ivan Tcholakov, 06-JAN-2016.
+        //if ( ! class_exists('CI_Model', FALSE))
+        //{
+        //    load_class('Model', 'core');
+        //}
+        $this->_load_system_model_classes();
+        //
 
         $model = ucfirst($model);
 
