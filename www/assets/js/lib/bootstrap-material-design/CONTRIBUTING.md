@@ -1,4 +1,6 @@
-# Contributing to bootsrap-material-design
+## **TLDR;** Create a test case using [this CodePen template](http://codepen.io/rosskevin/pen/VvRgrN) when submitting an issue.
+
+# Contributing
 
 Looking to contribute something to bootsrap-material-design? **Here's how you can help.**
 

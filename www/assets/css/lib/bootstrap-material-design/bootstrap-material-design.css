@@ -184,7 +184,7 @@ body .container-fluid .jumbotron-danger {
   letter-spacing: 0;
   will-change: box-shadow, transform;
   transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  outline: none;
+  outline: 0;
   cursor: pointer;
   text-decoration: none;
   background: transparent;
@@ -313,6 +313,24 @@ body .container-fluid .jumbotron-danger {
 .btn-group-raised .btn:not(.btn-link),
 .btn-group-raised .input-group-btn .btn:not(.btn-link) {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+.btn.btn-raised:not(.btn-link):hover,
+.input-group-btn .btn.btn-raised:not(.btn-link):hover,
+.btn-group-raised .btn:not(.btn-link):hover,
+.btn-group-raised .input-group-btn .btn:not(.btn-link):hover,
+.btn.btn-raised:not(.btn-link):focus,
+.input-group-btn .btn.btn-raised:not(.btn-link):focus,
+.btn-group-raised .btn:not(.btn-link):focus,
+.btn-group-raised .input-group-btn .btn:not(.btn-link):focus,
+.btn.btn-raised:not(.btn-link).active,
+.input-group-btn .btn.btn-raised:not(.btn-link).active,
+.btn-group-raised .btn:not(.btn-link).active,
+.btn-group-raised .input-group-btn .btn:not(.btn-link).active,
+.btn.btn-raised:not(.btn-link):active,
+.input-group-btn .btn.btn-raised:not(.btn-link):active,
+.btn-group-raised .btn:not(.btn-link):active,
+.btn-group-raised .input-group-btn .btn:not(.btn-link):active {
+  outline: 0;
 }
 .btn.btn-raised:not(.btn-link):hover,
 .input-group-btn .btn.btn-raised:not(.btn-link):hover,
