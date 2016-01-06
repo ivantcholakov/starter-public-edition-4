@@ -22,6 +22,60 @@ And this will be your templates after you use Mustache:
 
 !['stache](https://cloud.githubusercontent.com/assets/288977/8779228/a3cf700e-2f02-11e5-869a-300312fb7a00.gif)
 
+## Install
+
+You can get Mustache via npm.
+
+```bash
+$ npm install mustache --save
+```
+or install with bower:
+
+```bash
+$ bower install --save mustache
+```
+
+## Command line tool
+
+mustache.js is shipped with a node based command line tool. It might be installed as a global tool on your computer to render a mustache template of some kind
+
+```bash
+$ npm install -g mustache
+
+$ mustache dataView.json myTemplate.mustache > output.html
+```
+
+also supports stdin.
+
+```bash
+$ cat dataView.json | mustache - myTemplate.mustache > output.html
+```
+
+or as a package.json `devDependency` in a build process maybe?
+
+```bash
+$ npm install mustache --save-dev
+```
+
+```json
+{
+  "scripts": {
+    "build": "mustache dataView.json myTemplate.mustache > public/output.html"
+  }
+}
+```
+```bash
+$ npm run build
+```
+
+The command line tool is basically a wrapper around `Mustache.render` so you get all the features.
+
+If your templates use partials you should pass paths to partials using `-p` flag:
+
+```bash
+$ mustache -p path/to/partial1.mustache -p path/to/partial2.mustache dataView.json myTemplate.mustache
+```
+
 ## Who uses mustache.js?
 
 An updated list of mustache.js users is kept [on the Github wiki](http://wiki.github.com/janl/mustache.js/beard-competition). Add yourself or your company if you use mustache.js!
@@ -42,7 +96,7 @@ mustache.js is a mature project, but it continues to actively invite maintainers
 
 ## Usage
 
-Below is quick example how to use mustache.js:
+Below is a quick example how to use mustache.js:
 
 ```js
 var view = {
@@ -106,7 +160,7 @@ The most basic tag type is a simple variable. A `{{name}}` tag renders the value
 
 All variables are HTML-escaped by default. If you want to render unescaped HTML, use the triple mustache: `{{{name}}}`. You can also use `&` to unescape a variable.
 
-To print `{{name}}` as a string literal, the default delimiters must be changed. See the ["Set Delimiter'](https://github.com/janl/mustache.js#set-delimiter) section for more information about custom delimiters.
+If you want `{{name}}` _not_ to be interpreted as a mustache tag, but rather to appear exactly as `{{name}}` in the output, you must change and then restore the default delimiter. See the ["Set Delimiter"](https://github.com/janl/mustache.js#set-delimiter) section for more information about custom delimiters.
 
 View:
 
@@ -119,7 +173,7 @@ View:
 
 Template:
 
-```html
+```
 * {{name}}
 * {{age}}
 * {{company}}
@@ -468,36 +522,6 @@ These may be built using [Rake](http://rake.rubyforge.org/) and one of the follo
     $ rake yui3
     $ rake qooxdoo
 
-## Command line tool
-
-mustache.js is shipped with a node based command line tool. It might be installed as a global tool on your computer to render a mustache template of some kind
-
-```bash
-$ npm install -g mustache
-$ mustache dataView.json myTemplate.mustache > output.html
-
-# also supports stdin
-$ cat dataView.json | mustache - myTemplate.mustache > output.html
-```
-
-or as a package.json `devDependency` in a build process maybe?
-
-```bash
-$ npm install mustache --save-dev
-```
-```json
-{
-  "scripts": {
-    "build": "mustache dataView.json myTemplate.mustache > public/output.html"
-  }
-}
-```
-```bash
-$ npm run build
-```
-
-The command line tool is basically a wrapper around `Mustache.render` so you get all the aformentioned features.
-
 ## Testing
 
 In order to run the tests you'll need to install [node](http://nodejs.org/).
@@ -531,7 +555,7 @@ Then, you can run the test with:
 
 ### Browser tests
 
-Browser tests are not included in `npm test` as they run for too long, although they are runned automatically on Travis when merged into master. Run browser tests locally in any browser:
+Browser tests are not included in `npm test` as they run for too long, although they are ran automatically on Travis when merged into master. Run browser tests locally in any browser:
 
     $ npm run test-browser-local
 
@@ -567,6 +591,6 @@ mustache.js wouldn't kick ass if it weren't for these fine souls:
   * Ross Boucher / boucher
   * Matt Sanford / mzsanford
   * Ben Cherry / bcherry
-  * Michael Jackson / mjijackson
+  * Michael Jackson / mjackson
   * Phillip Johnsen / phillipj
   * David da Silva Contín / dasilvacontin
