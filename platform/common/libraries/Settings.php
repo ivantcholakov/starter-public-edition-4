@@ -281,7 +281,7 @@ class Settings {
                     continue;
                 }
 
-                $ncrypted = false;
+                $encrypted = false;
 
                 if (preg_match('/__encrypted$/', $name)) {
 
