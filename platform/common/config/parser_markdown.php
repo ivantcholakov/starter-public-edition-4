@@ -8,7 +8,7 @@
 // A choice of the Markdown implementation to be used:
 // 'php-markdown' - http://michelf.ca/projects/php-markdown
 // 'parsedown' - https://github.com/erusev/parsedown
-$config['markdown_implementation'] = 'parsedown';
+$config['markdown_implementation'] = is_php('5.3') ? 'parsedown' : 'php-markdown';
 
 // php-markdown specific options -----------------------------------------------
 
