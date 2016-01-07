@@ -84,7 +84,7 @@ class CI_DB_mysqli_driver extends CI_DB {
 	 *
 	 * @var	bool
 	 */
-	public $stricton = FALSE;
+	public $stricton;
 
 	// --------------------------------------------------------------------
 
@@ -137,9 +137,26 @@ class CI_DB_mysqli_driver extends CI_DB {
 
 		$this->_mysqli->options(MYSQLI_OPT_CONNECT_TIMEOUT, 10);
 
-		if ($this->stricton)
+		if (isset($this->stricton))
 		{
-			$this->_mysqli->options(MYSQLI_INIT_COMMAND, 'SET SESSION sql_mode="STRICT_ALL_TABLES"');
+			if ($this->stricton)
+			{
+				$this->_mysqli->options(MYSQLI_INIT_COMMAND, 'SET SESSION sql_mode = CONCAT(@@sql_mode, ",", "STRICT_ALL_TABLES")');
+			}
+			else
+			{
+				$this->_mysqli->options(MYSQLI_INIT_COMMAND,
+					'SET SESSION sql_mode =
+					REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+					@@sql_mode,
+					"STRICT_ALL_TABLES,", ""),
+					",STRICT_ALL_TABLES", ""),
+					"STRICT_ALL_TABLES", ""),
+					"STRICT_TRANS_TABLES,", ""),
+					",STRICT_TRANS_TABLES", ""),
+					"STRICT_TRANS_TABLES", "")'
+				);
+			}
 		}
 
 		if (is_array($this->encrypt))
@@ -153,9 +170,22 @@ class CI_DB_mysqli_driver extends CI_DB {
 
 			if ( ! empty($ssl))
 			{
-				if ( ! empty($this->encrypt['ssl_verify']) && defined('MYSQLI_OPT_SSL_VERIFY_SERVER_CERT'))
+				if (isset($this->encrypt['ssl_verify']))
 				{
-					$this->_mysqli->options(MYSQLI_OPT_SSL_VERIFY_SERVER_CERT, TRUE);
+					if ($this->encrypt['ssl_verify'])
+					{
+						defined('MYSQLI_OPT_SSL_VERIFY_SERVER_CERT') && $this->_mysqli->options(MYSQLI_OPT_SSL_VERIFY_SERVER_CERT, TRUE);
+					}
+					// Apparently (when it exists), setting MYSQLI_OPT_SSL_VERIFY_SERVER_CERT
+					// to FALSE didn't do anything, so PHP 5.6.16 introduced yet another
+					// constant ...
+					//
+					// https://secure.php.net/ChangeLog-5.php#5.6.16
+					// https://bugs.php.net/bug.php?id=68344
+					elseif (defined('MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT'))
+					{
+						$this->_mysqli->options(MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT, TRUE);
+					}
 				}
 
 				$client_flags |= MYSQLI_CLIENT_SSL;
