@@ -1,0 +1,58 @@
+
+/* Tables */
+
+.table.table-valign-middle td,
+.table .table-valign-middle td,
+.table.table-valign-middle th,
+.table .table-valign-middle th {
+    vertical-align: middle;
+}
+
+.table.table-valign-top td,
+.table .table-valign-top td,
+.table.table-valign-top th,
+.table .table-valign-top th {
+    vertical-align: top;
+}
+
+.table.table-valign-bottom td,
+.table .table-valign-bottom td,
+.table.table-valign-bottom th,
+.table .table-valign-bottom th {
+    vertical-align: bottom;
+}
+
+th.table-actions {
+    width: .01%;
+    border-left: none;
+    border-right: none;
+}
+
+td.table-actions {
+    border-left: none;
+    border-right: none;
+}
+
+.table td.table-actions {
+    border-left: none;
+    border-right: none;
+}
+
+th.details-control {
+    min-width: 35px;
+}
+
+td.details-control {
+    background: url('@{base-path}../img/lib/details-open.png') no-repeat center center;
+    cursor: pointer;
+}
+
+tr.shown td.details-control {
+    background: url('@{base-path}../img/lib/details-close.png') no-repeat center center;
+}
+
+.table-responsive table {
+    width: 99.9%;   /* A fix for Datatables JavaScript. */
+}
+
+/* End Tables */
