@@ -308,8 +308,8 @@ $config['less_compile'] = array(
 
     array(
         'name' => 'front-theme-bs-min',
-        'source' => DEFAULTFCPATH.'themes/front-theme-bs/less/front/index.less',
-        'destination' => DEFAULTFCPATH.'themes/front-theme-bs/css/front.min.css',
+        'source' => DEFAULTFCPATH.'themes/front_theme_bs/less/front/index.less',
+        'destination' => DEFAULTFCPATH.'themes/front_theme_bs/css/front.min.css',
         'compress' => true,
         'relativeUrls' => false,
     ),
@@ -318,8 +318,8 @@ $config['less_compile'] = array(
 
     array(
         'name' => 'front-theme-bsmd-min',
-        'source' => DEFAULTFCPATH.'themes/front-theme-bsmd/less/front/index.less',
-        'destination' => DEFAULTFCPATH.'themes/front-theme-bsmd/css/front.min.css',
+        'source' => DEFAULTFCPATH.'themes/front_theme_bsmd/less/front/index.less',
+        'destination' => DEFAULTFCPATH.'themes/front_theme_bsmd/css/front.min.css',
         'compress' => true,
         'relativeUrls' => false,
     ),
