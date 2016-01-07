@@ -279,8 +279,8 @@ class Asset {
         // If they have just given a filename, not an asset path, and its in a theme
         elseif ($module_name == '_theme_' AND $this->theme)
         {
-            $base_location = $location_type == 'url' ? rtrim(site_url(), '/').'/' : BASE_URI;
-            $asset_location = $base_location.ltrim(config_item('theme_asset_dir'), '/').$this->theme.'/'.$asset_type.'/'.$asset_name;
+            $base_location = $location_type == 'url' ? config_item('theme_asset_url') : config_item('theme_asset_dir');
+            $asset_location = $base_location.$this->theme.'/'.$asset_type.'/'.$asset_name;
         }
 
         // Normal file (that might be in a module)

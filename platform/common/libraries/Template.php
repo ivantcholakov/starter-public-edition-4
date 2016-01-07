@@ -65,6 +65,7 @@ class Template
     {
         $this->_ci =& get_instance();
 
+        $this->_ci->load->library('asset');
         $this->_ci->load->helper('asset');
         $this->_ci->load->helper('template');
         $this->_ci->load->helper('html');
@@ -546,6 +547,8 @@ class Template
     public function set_theme($theme = null)
     {
         $this->_theme = $theme;
+        $this->_ci->asset->set_theme($theme);
+
         foreach ($this->_theme_locations as $location)
         {
             if ($this->_theme and file_exists($location.$this->_theme))
