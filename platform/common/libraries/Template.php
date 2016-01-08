@@ -71,8 +71,7 @@ class Template
         $this->_ci->load->helper('html');
         $this->_ci->load->library('user_agent');
 
-        if ( ! empty($config))
-        {
+        if ( ! empty($config)) {
             $this->initialize($config);
         }
 
@@ -89,10 +88,8 @@ class Template
      */
     public function initialize($config = array())
     {
-        foreach ($config as $key => $val)
-        {
-            if ($key == 'theme' and $val != '')
-            {
+        foreach ($config as $key => $val) {
+            if ($key == 'theme' and $val != '') {
                 $this->set_theme($val);
                 continue;
             }
@@ -101,8 +98,7 @@ class Template
         }
 
         // No locations set in config?
-        if ($this->_theme_locations === array())
-        {
+        if ($this->_theme_locations === array()) {
             // Let's use this obvious default
             $this->_theme_locations = array(APPPATH . 'themes/');
         }
@@ -116,8 +112,7 @@ class Template
         //
 
         // Modular Separation / Modular Extensions has been detected
-        if (method_exists( $this->_ci->router, 'fetch_module' ))
-        {
+        if (method_exists( $this->_ci->router, 'fetch_module' )) {
             $this->_module = $this->_ci->router->fetch_module();
         }
 
@@ -184,17 +179,14 @@ class Template
     public function set($name, $value = null)
     {
         // Lots of things! Set them all
-        if (is_array($name) or is_object($name))
-        {
-            foreach ($name as $item => $value)
-            {
+        if (is_array($name) or is_object($name)) {
+            foreach ($name as $item => $value) {
                 $this->_data[$item] = $value;
             }
         }
 
         // Just one thing, set that
-        else
-        {
+        else {
             $this->_data[$name] = $value;
         }
 
@@ -229,32 +221,29 @@ class Template
         // We don't need you any more buddy
         unset($data);
 
-        if (empty($this->_title))
-        {
+        if (empty($this->_title)) {
             $this->_title = $this->_guess_title();
         }
 
         // Output template variables to the template
-        $template['title']            = $this->_title;
-        $template['breadcrumbs']    = $this->_breadcrumbs;
-        $template['metadata']        = trim(implode("\n    ", $this->_metadata));
-        if ($template['metadata'] != '')
-        {
+        $template['title'] = $this->_title;
+        $template['breadcrumbs'] = $this->_breadcrumbs;
+        $template['metadata'] = trim(implode("\n    ", $this->_metadata));
+        if ($template['metadata'] != '') {
             $template['metadata'] = "\n    ".$template['metadata'];
         }
-        $template['partials']        = array();
+        $template['partials'] = array();
 
         // Assign by reference, as all loaded views will need access to partials
         $this->_data['template'] =& $template;
 
-        foreach ($this->_partials as $name => $partial)
-        {
+        // Process partials.
+        foreach ($this->_partials as $name => $partial) {
             // We can only work with data arrays
-            is_array($partial['data']) OR $partial['data'] = (array) $partial['data'];
+            is_array($partial['data']) or $partial['data'] = (array) $partial['data'];
 
             // If it uses a view, load it
-            if (isset($partial['view']))
-            {
+            if (isset($partial['view'])) {
                 // Modified by Ivan Tcholakov, 28-DEC-2013.
                 //$template['partials'][$name] = $this->_find_view($partial['view'], $partial['data']);
                 $template['partials'][$name] = $this->_find_view($partial['view'], $partial['data'], $this->_parsers);
@@ -262,19 +251,17 @@ class Template
             }
 
             // Otherwise the partial must be a string
-            else
-            {
+            else {
                 // Modified by Ivan Tcholakov, 27-DEC-2013.
-                //if ($this->_parser_enabled === true)
-                //{
+                //if ($this->_parser_enabled === true) {
                 //    $partial['string'] = $this->_ci->parser->parse_string($partial['string'], $this->_data + $partial['data'], true, true);
                 //}
-                if (!empty($this->_parsers))
-                {
+                if (!empty($this->_parsers)) {
+
                     $data = $this->_data + $partial['data'];
 
-                    foreach ($this->_parsers as $parser => $config)
-                    {
+                    foreach ($this->_parsers as $parser => $config) {
+
                         $this->_ci->load->parser($parser);
                         $partial['string'] = $this->_ci->{$parser}->parse_string($partial['string'], $data, true, $config);
                     }
@@ -289,8 +276,7 @@ class Template
 
         // Disable sodding IE7's constant cacheing!!
         // This is in a conditional because otherwise it errors when output is returned instead of output to browser.
-        if ($IE_cache)
-        {
+        if ($IE_cache) {
             $this->_ci->output->set_header('Expires: Sat, 01 Jan 2000 00:00:01 GMT', true);
             $this->_ci->output->set_header('Cache-Control: no-store, no-cache, must-revalidate', true);
             $this->_ci->output->set_header('Cache-Control: post-check=0, pre-check=0, max-age=0', false);
@@ -299,7 +285,7 @@ class Template
         }
 
         // Let CI do the caching instead of the browser
-        $this->cache_lifetime > 0 && $this->_ci->output->cache( $this->cache_lifetime );
+        $this->cache_lifetime > 0 && $this->_ci->output->cache($this->cache_lifetime);
 
         // Test to see if this file
         // Modified by Ivan Tcholakov, 28-DEC-2013.
@@ -349,14 +335,12 @@ class Template
         }
         //
 
-        if ($this->_minify_enabled && function_exists('process_data_jmr1'))
-        {
+        if ($this->_minify_enabled && function_exists('process_data_jmr1')) {
             $this->_body = process_data_jmr1($this->_body);
         }
 
         // Want it returned or output to browser?
-        if ( ! $return)
-        {
+        if ( ! $return) {
             $this->_ci->output->set_output($this->_body);
             // Added by Ivan Tcholakov, 29-MAR-2013.
             return;
@@ -386,8 +370,7 @@ class Template
     public function title()
     {
         // If we have some segments passed
-        if ($title_segments = func_get_args())
-        {
+        if ($title_segments = func_get_args()) {
             $this->_title = implode($this->_title_separator, $title_segments);
         }
 
@@ -395,10 +378,10 @@ class Template
     }
 
     // Added by Ivan Tcholakov, 29-MAR-2013.
-    public function append_title()
-    {
-        if ($title_segments = func_get_args())
-        {
+    public function append_title() {
+
+        if ($title_segments = func_get_args()) {
+
             if (is_array($title_segments)) {
                 $title = implode($this->_title_separator, $title_segments);
             } else {
@@ -414,8 +397,8 @@ class Template
     // Added by Ivan Tcholakov, 09-NOV-2013.
     public function prepend_title() {
 
-        if ($title_segments = func_get_args())
-        {
+        if ($title_segments = func_get_args()) {
+
             if (is_array($title_segments)) {
                 $title = implode($this->_title_separator, $title_segments);
             } else {
@@ -442,8 +425,8 @@ class Template
      * @param    string    $line    The line being added to head
      * @return    object    $this
      */
-    public function prepend_metadata($line)
-    {
+    public function prepend_metadata($line) {
+
         array_unshift($this->_metadata, $line);
         return $this;
     }
@@ -461,7 +444,6 @@ class Template
         return $this;
     }
 
-
     /**
      * Set metadata for output later
      *
@@ -476,8 +458,7 @@ class Template
         $content = trim(htmlspecialchars(strip_tags($content)));
 
         // Keywords with no comments? ARG! comment them
-        if ($name == 'keywords' and ! strpos($content, ','))
-        {
+        if ($name == 'keywords' and ! strpos($content, ',')) {
             $content = preg_replace('/[\s]+/', ', ', trim($content));
         }
 
@@ -488,19 +469,15 @@ class Template
         }
         //
 
-        switch($type)
-        {
+        switch($type) {
             case 'meta':
 
-                if (strpos($name, 'og:') === 0)
-                {
+                if (strpos($name, 'og:') === 0) {
                     // A Facebook's Open Graph meta tag.
                     $this->_metadata[$name] = '
     <meta property="'.$name.'" content="'.$content.'" />';
 
-                }
-                else
-                {
+                } else {
                     // A normal meta tag.
                     $this->_metadata[$name] = '
     <meta name="'.$name.'" content="'.$content.'" />';
@@ -538,6 +515,7 @@ class Template
         return $this;
     }
 
+
     /**
      * Which theme are we using here?
      *
@@ -547,12 +525,13 @@ class Template
     public function set_theme($theme = null)
     {
         $this->_theme = $theme;
-        $this->_ci->asset->set_theme($theme);
 
-        foreach ($this->_theme_locations as $location)
-        {
-            if ($this->_theme and file_exists($location.$this->_theme))
-            {
+        // Added by Ivan Tcholakov, 08-JAN-2016.
+        $this->_ci->asset->set_theme($theme);
+        //
+
+        foreach ($this->_theme_locations as $location) {
+            if ($this->_theme and file_exists($location.$this->_theme)) {
                 $this->_theme_path = rtrim($location.$this->_theme.'/');
                 break;
             }
@@ -599,8 +578,7 @@ class Template
     {
         $this->_layout = $view;
 
-        if ($layout_subdir !== null)
-        {
+        if ($layout_subdir !== null) {
             $this->_layout_subdir = $layout_subdir;
         }
 
@@ -646,8 +624,8 @@ class Template
     public function set_breadcrumb($name, $uri = '', $reset = false)
     {
         // perhaps they want to start over
-        if ($reset)
-        {
+        if ($reset) {
+
             $this->_breadcrumbs = array();
         }
 
@@ -858,10 +836,8 @@ class Template
     {
         $theme OR $theme = $this->_theme;
 
-        foreach ($this->_theme_locations as $location)
-        {
-            if (is_dir($location.$theme))
-            {
+        foreach ($this->_theme_locations as $location) {
+            if (is_dir($location.$theme)) {
                 return true;
             }
         }
@@ -879,8 +855,7 @@ class Template
     {
         $layouts = array();
 
-        foreach(glob(self::_find_view_folder().'layouts/*.*') as $layout)
-        {
+        foreach(glob(self::_find_view_folder().'layouts/*.*') as $layout) {
             $layouts[] = pathinfo($layout, PATHINFO_BASENAME);
         }
 
@@ -901,23 +876,18 @@ class Template
 
         $layouts = array();
 
-        foreach ($this->_theme_locations as $location)
-        {
+        foreach ($this->_theme_locations as $location) {
             // Get special web layouts
-            if( is_dir($location.$theme.'/views/web/layouts/') )
-            {
-                foreach(glob($location.$theme . '/views/web/layouts/*.*') as $layout)
-                {
+            if( is_dir($location.$theme.'/views/web/layouts/') ) {
+                foreach(glob($location.$theme . '/views/web/layouts/*.*') as $layout) {
                     $layouts[] = pathinfo($layout, PATHINFO_BASENAME);
                 }
                 break;
             }
 
             // So there are no web layouts, assume all layouts are web layouts
-            if(is_dir($location.$theme.'/views/layouts/'))
-            {
-                foreach(glob($location.$theme . '/views/layouts/*.*') as $layout)
-                {
+            if(is_dir($location.$theme.'/views/layouts/')) {
+                foreach(glob($location.$theme . '/views/layouts/*.*') as $layout) {
                     $layouts[] = pathinfo($layout, PATHINFO_BASENAME);
                 }
                 break;
@@ -937,8 +907,7 @@ class Template
     public function layout_exists($layout)
     {
         // If there is a theme, check it exists in there
-        if ( ! empty($this->_theme) and in_array($layout, self::get_theme_layouts()))
-        {
+        if ( ! empty($this->_theme) and in_array($layout, self::get_theme_layouts())) {
             return true;
         }
 
@@ -966,10 +935,9 @@ class Template
     //
     {
         // Modified by Ivan Tcholakov. 25-JUN-2014.
-        //if (isset($this->_ci->load->_ci_cached_vars['template_views']))
-        if (!$in_common_application && isset($this->_ci->load->_ci_cached_vars['template_views']))
+        //if (isset($this->_ci->load->_ci_cached_vars['template_views'])) {
+        if (!$in_common_application && isset($this->_ci->load->_ci_cached_vars['template_views'])) {
         //
-        {
             return $this->_ci->load->_ci_cached_vars['template_views'];
         }
 
@@ -980,27 +948,23 @@ class Template
         //
 
         // Using a theme? Put the theme path in before the view folder
-        if ( ! empty($this->_theme))
-        {
+        if ( ! empty($this->_theme)) {
             $view_folder = $this->_theme_path.'views/';
         }
 
         // Would they like the mobile version?
-        if ($this->_is_mobile === true and is_dir($view_folder.'mobile/'))
-        {
+        if ($this->_is_mobile === true and is_dir($view_folder.'mobile/')) {
             // Use mobile as the base location for views
             $view_folder .= 'mobile/';
         }
 
         // Use the web version
-        else if (is_dir($view_folder.'web/'))
-        {
+        else if (is_dir($view_folder.'web/')) {
             $view_folder .= 'web/';
         }
 
         // Things like views/admin/web/view admin = subdir
-        if ($this->_layout_subdir)
-        {
+        if ($this->_layout_subdir) {
             $view_folder .= $this->_layout_subdir.'/';
         }
 
@@ -1015,10 +979,8 @@ class Template
     //
     {
         // Only bother looking in themes if there is a theme
-        if ( ! empty($this->_theme))
-        {
+        if ( ! empty($this->_theme)) {
             $location = $this->get_theme_path();
-
             $theme_views = array(
                 $this->get_views_path(true) . 'modules/' . $this->_module . '/' . $view,
                 // This allows build('pages/page') to still overload same as build('page')
@@ -1026,10 +988,8 @@ class Template
                 $this->get_views_path(true) . $view
             );
 
-            foreach ($theme_views as $theme_view)
-            {
-                if (file_exists($location . $theme_view . self::_ext($theme_view)))
-                {
+            foreach ($theme_views as $theme_view) {
+                if (file_exists($location . $theme_view . self::_ext($theme_view))) {
                     return self::_load_view($theme_view, $this->_data + $data, $parsers, $location);
                 }
             }
@@ -1045,8 +1005,7 @@ class Template
     //
     {
         // Sevear hackery to load views from custom places AND maintain compatibility with Modular Extensions
-        if ($override_view_path !== null)
-        {
+        if ($override_view_path !== null) {
             $content = $this->_ci->load->_ci_load(array(
                 '_ci_path' => $override_view_path.$view.self::_ext($view),
                 '_ci_vars' => $data,
@@ -1054,9 +1013,9 @@ class Template
                 '_ci_parsers' => $parsers
             ));
         }
+
         // Can just run as usual
-        else
-        {
+        else {
             $content = $this->_ci->load->view($view, $data, true, $parsers);
         }
 
@@ -1071,20 +1030,17 @@ class Template
         $title_parts = array();
 
         // If the method is something other than index, use that
-        if ($this->_method != 'index')
-        {
+        if ($this->_method != 'index') {
             $title_parts[] = $this->_method;
         }
 
         // Make sure controller name is not the same as the method name
-        if ( ! in_array($this->_controller, $title_parts))
-        {
+        if ( ! in_array($this->_controller, $title_parts)) {
             $title_parts[] = $this->_controller;
         }
 
         // Is there a module? Make sure it is not named the same as the method or controller
-        if ( ! empty($this->_module) and !in_array($this->_module, $title_parts))
-        {
+        if ( ! empty($this->_module) and !in_array($this->_module, $title_parts)) {
             $title_parts[] = $this->_module;
         }
 
