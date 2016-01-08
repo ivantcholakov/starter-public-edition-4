@@ -1963,6 +1963,30 @@ document.write("Hello World!");
 
                                     <tr class="info">
                                         <td colspan="2">
+                                            <h4>Visual Themes</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>theme:name</strong> }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ theme:name }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ helper:html_escape value="[[ <strong>theme:css</strong> file='front.min.css' ]]" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:html_escape value="[[ theme:css file='front.min.css' ]]" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="info">
+                                        <td colspan="2">
                                             <h4>URL/URI Handling</h4>
                                         </td>
                                     </tr>

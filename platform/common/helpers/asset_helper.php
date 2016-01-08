@@ -57,6 +57,15 @@ if (!function_exists('css_url')) {
 
 }
 
+if (!function_exists('theme_css_url')) {
+
+    function theme_css_url($asset_name) {
+
+        return css_url($asset_name, '_theme_');
+    }
+
+}
+
 if (!function_exists('css_path')) {
 
     function css_path($asset_name, $module_name = NULL) {
@@ -64,6 +73,15 @@ if (!function_exists('css_path')) {
         $CI =& get_instance();
         $CI->load->library('asset');
         return $CI->asset->css_path($asset_name, $module_name);
+    }
+
+}
+
+if (!function_exists('theme_css_path')) {
+
+    function theme_css_path($asset_name) {
+
+        return css_path($asset_name, '_theme_');
     }
 
 }
@@ -101,6 +119,15 @@ if (!function_exists('image_url')) {
 
 }
 
+if (!function_exists('theme_image_url')) {
+
+    function theme_image_url($asset_name) {
+
+        return image_url($asset_name, '_theme_');
+    }
+
+}
+
 if (!function_exists('image_path')) {
 
     function image_path($asset_name, $module_name = NULL) {
@@ -108,6 +135,15 @@ if (!function_exists('image_path')) {
         $CI =& get_instance();
         $CI->load->library('asset');
         return $CI->asset->image_path($asset_name, $module_name);
+    }
+
+}
+
+if (!function_exists('theme_image_path')) {
+
+    function theme_image_path($asset_name) {
+
+        return image_path($asset_name, '_theme_');
     }
 
 }
@@ -145,6 +181,15 @@ if (!function_exists('js_url')) {
 
 }
 
+if (!function_exists('theme_js_url')) {
+
+    function theme_js_url($asset_name) {
+
+        return js_url($asset_name, '_theme_');
+    }
+
+}
+
 if (!function_exists('js_path')) {
 
     function js_path($asset_name, $module_name = NULL) {
@@ -152,6 +197,15 @@ if (!function_exists('js_path')) {
         $CI =& get_instance();
         $CI->load->library('asset');
         return $CI->asset->js_path($asset_name, $module_name);
+    }
+
+}
+
+if (!function_exists('theme_js_path')) {
+
+    function theme_js_path($asset_name) {
+
+        return js_path($asset_name, '_theme_');
     }
 
 }

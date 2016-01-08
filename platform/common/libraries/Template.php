@@ -561,6 +561,12 @@ class Template
         return $this;
     }
 
+    // Added by Ivan Tcholakov, 08-JAN-2016.
+    public function get_theme() {
+
+        return $this->_theme;
+    }
+
     /**
      * Get the current theme path
      *
