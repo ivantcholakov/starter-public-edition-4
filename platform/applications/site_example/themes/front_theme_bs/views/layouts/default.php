@@ -18,7 +18,7 @@ echo cleartype_ie();
 echo js_platform();
 file_partial('webfontloader');
 
-echo css('front-theme-bs.min.css');
+echo theme_css('front.min.css');
 
 file_partial('css');
 template_partial('css');
