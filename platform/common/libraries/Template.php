@@ -57,6 +57,21 @@ class Template
     private $_data = array();
 
     /**
+     * Override Values
+     *
+     * These are values that will override existing
+     * values in the template library (if they are)
+     * set already.
+     *
+     * These values are added right before the template
+     * build process, so they can be used any time up until
+     * the site is rendered.
+     */
+    private $_override_title;
+    private $_override_meta = array();
+    private $_override_breadcrumbs = array();
+
+    /**
      * Constructor - Sets Preferences
      *
      * The constructor can be passed an array of config values
@@ -83,8 +98,8 @@ class Template
     /**
      * Initialize preferences
      *
-     * @param    array    $config
-     * @return    void
+     * @param       array       $config
+     * @return      void
      */
     public function initialize($config = array())
     {
@@ -105,8 +120,7 @@ class Template
 
         // Removed by Ivan Tcholakov, 27-DEC-2013.
         //// If the parse is going to be used, best make sure it's loaded
-        //if ($this->_parser_enabled === true)
-        //{
+        //if ($this->_parser_enabled === true) {
         //    $this->_ci->load->library('parser');
         //}
         //
@@ -117,8 +131,8 @@ class Template
         }
 
         // What controllers or methods are in use
-        $this->_controller    = $this->_ci->router->class;
-        $this->_method        = $this->_ci->router->method;
+        $this->_controller = $this->_ci->router->class;
+        $this->_method = $this->_ci->router->method;
 
         // We'll want to know this later
         $this->_is_mobile = $this->_ci->agent->is_mobile();
@@ -130,8 +144,8 @@ class Template
      * Set the module manually. Used when getting results from
      * another module with Modules::run('foo/bar')
      *
-     * @param    string    $module The module slug
-     * @return    mixed
+     * @param       string      $module         The module slug
+     * @return      mixed
      */
     public function set_module($module)
     {
@@ -145,8 +159,8 @@ class Template
     /**
      * Magic Get function to get data
      *
-     * @param    string    $name
-     * @return    mixed
+     * @param       string      $name
+     * @return      mixed
      */
     public function __get($name)
     {
@@ -158,9 +172,9 @@ class Template
     /**
      * Magic Set function to set data
      *
-     * @param    string    $name
-     * @param    mixed    $value
-     * @return    mixed
+     * @param       string      $name
+     * @param       mixed       $value
+     * @return      mixed
      */
     public function __set($name, $value)
     {
@@ -172,9 +186,9 @@ class Template
     /**
      * Set data using a chainable metod. Provide two strings or an array of data.
      *
-     * @param    string    $name
-     * @param    mixed    $value
-     * @return    object    $this
+     * @param       string      $name
+     * @param       mixed       $value
+     * @return      object      $this
      */
     public function set($name, $value = null)
     {
@@ -196,15 +210,58 @@ class Template
     // --------------------------------------------------------------------
 
     /**
+     * Build Template Data
+     *
+     * Gathers and builds a $template array
+     * with basic template data.
+     *
+     * @return      array
+     */
+    public function build_template_data()
+    {
+        // If we don't have a title, we'll take our best guess.
+        // We are doing this before we check the override so
+        // a user can set the title to blank if they want to.
+        if (empty($this->_title)) {
+            $this->_title = $this->_guess_title();
+        }
+
+        // Title override.
+        $title = ($this->_override_title) ? $this->_override_title : $this->_title;
+
+        $template['title'] = html_escape(strip_tags($title));
+        $template['page_title'] = $title;
+
+        $template['breadcrumbs'] = array_merge($this->_breadcrumbs, $this->_override_breadcrumbs);
+
+        $template['metadata'] = $this->get_metadata().$this->get_metadata('late_header');
+
+        if ($template['metadata'] != '') {
+            $template['metadata'] = "\n    ".$template['metadata'];
+        }
+
+        $template['partials'] = array();
+
+        // Load this into our cached vars so plugins
+        // can use it.
+        $this->_ci->load->vars(array('template' => $template));
+
+        return $template;
+    }
+
+    // --------------------------------------------------------------------
+
+    /**
      * Build the entire HTML output combining partials, layouts and views.
      *
-     * @param    string    $view
-     * @param    array    $data
-     * @param    bool    $return
-     * @param    bool    $IE_cache
-     * @return    string
+     * @param       string      $view
+     * @param       array       $data
+     * @param       bool        $return
+     * @param       bool        $IE_cache
+     * @param       bool        $pre_parsed_view    Did we already parse our view?
+     * @return      string
      */
-    public function build($view, $data = array(), $return = false, $IE_cache = true)
+    public function build($view, $data = array(), $return = false, $IE_cache = true, $pre_parsed_view = false, $template = array())
     {
         // Added by Ivan Tcholakov, 25-OCT-2012.
         // Preliminary caching the variable $this->_ci->load->_ci_cached_vars['template_views'],
@@ -215,24 +272,19 @@ class Template
         // Set whatever values are given. These will be available to all view files
         is_array($data) OR $data = (array) $data;
 
-        // Merge in what we already have with the specific data
+        // Merge in what we already have set
         $this->_data = array_merge($this->_data, $data);
 
         // We don't need you any more buddy
         unset($data);
 
-        if (empty($this->_title)) {
-            $this->_title = $this->_guess_title();
+        // If you want, you can use the build_template_data()
+        // to pre-build this template data. This is an edge case so you'll
+        // probably always just leave it to array(), but it's here if
+        // you need it.
+        if ( ! $template) {
+            $template = $this->build_template_data();
         }
-
-        // Output template variables to the template
-        $template['title'] = $this->_title;
-        $template['breadcrumbs'] = $this->_breadcrumbs;
-        $template['metadata'] = trim(implode("\n    ", $this->_metadata));
-        if ($template['metadata'] != '') {
-            $template['metadata'] = "\n    ".$template['metadata'];
-        }
-        $template['partials'] = array();
 
         // Assign by reference, as all loaded views will need access to partials
         $this->_data['template'] =& $template;
@@ -287,11 +339,17 @@ class Template
         // Let CI do the caching instead of the browser
         $this->cache_lifetime > 0 && $this->_ci->output->cache($this->cache_lifetime);
 
-        // Test to see if this file
-        // Modified by Ivan Tcholakov, 28-DEC-2013.
-        //$this->_body = $this->_find_view( $view, array(), $this->_parser_body_enabled );
-        $this->_body = $this->_find_view( $view, array(), $this->_parsers_body);
-        //
+        // Set the _body var. If we have pre-parsed our
+        // view, then our work is done. Otherwise, we will
+        // find the view and parse it.
+        if ($pre_parsed_view) {
+            $this->_body = $view;
+        } else {
+            // Modified by Ivan Tcholakov, 28-DEC-2013.
+            //$this->_body = $this->_find_view($view, array(), $this->_parser_body_enabled);
+            $this->_body = $this->_find_view($view, array(), $this->_parsers_body);
+            //
+        }
 
         // Want this file wrapped with a layout file?
         if (
@@ -324,12 +382,11 @@ class Template
         {
             if (strpos($this->_ci->input->get_request_header('Accept'), 'text/html') !== false && $this->_title != '')
             {
-                $charset = config_item('charset');
                 // Ivan, 15-AUG-2015:
                 // This makes not valid HTML, title tag should not exist within the returned
                 // HTML fragment, but I can't the make other way to work.
                 $this->_body = '
-    <title>'.htmlspecialchars(strip_tags($this->_title), ENT_QUOTES, $charset).'</title>
+    <title>'.html_escape(strip_tags($this->_title)).'</title>
 '.$this->_body;
             }
         }
@@ -353,8 +410,8 @@ class Template
     /**
      * Build the entire JSON output, setting the headers for response.
      *
-     * @param    array    $data
-     * @return    void
+     * @param       array       $data
+     * @return      void
      */
     public function build_json($data = array())
     {
@@ -365,7 +422,7 @@ class Template
     /**
      * Set the title of the page
      *
-     * @return    object    $this
+     * @return      object      $this
      */
     public function title()
     {
@@ -377,44 +434,12 @@ class Template
         return $this;
     }
 
-    // Added by Ivan Tcholakov, 29-MAR-2013.
-    public function append_title() {
-
+    public function override_title()
+    {
+        // If we have some segments passed
         if ($title_segments = func_get_args()) {
-
-            if (is_array($title_segments)) {
-                $title = implode($this->_title_separator, $title_segments);
-            } else {
-                $title = $title_segments;
-            }
-
-            $this->_title = trim($this->_title) != '' ? $this->_title.$this->_title_separator.$title : $title;
+            $this->_override_title = implode($this->_title_separator, $title_segments);
         }
-
-        return $this;
-    }
-
-    // Added by Ivan Tcholakov, 09-NOV-2013.
-    public function prepend_title() {
-
-        if ($title_segments = func_get_args()) {
-
-            if (is_array($title_segments)) {
-                $title = implode($this->_title_separator, $title_segments);
-            } else {
-                $title = $title_segments;
-            }
-
-            $this->_title = trim($this->_title) != '' ? $title.$this->_title_separator.$this->_title : $title;
-        }
-
-        return $this;
-    }
-
-    // Added by Ivan Tcholakov, 09-NOV-2013.
-    public function set_title_separator($string) {
-
-        $this->_title_separator = $string;
 
         return $this;
     }
@@ -422,40 +447,50 @@ class Template
     /**
      * Put extra javascipt, css, meta tags, etc before all other head data
      *
-     * @param    string    $line    The line being added to head
-     * @return    object    $this
+     * @param       string      $line           The line being added to head
+     * @return      object      $this
      */
-    public function prepend_metadata($line) {
+    public function prepend_metadata($line, $place = 'header')
+    {
+        // we need to declare all new key's in _metadata as an
+        // array for the unshift function to work
+        if ( ! isset($this->_metadata[$place])) {
+            $this->_metadata[$place] = array();
+        }
 
-        array_unshift($this->_metadata, $line);
+        array_unshift($this->_metadata[$place], $line);
+
         return $this;
     }
-
 
     /**
      * Put extra javascipt, css, meta tags, etc after other head data
      *
-     * @param    string    $line    The line being added to head
-     * @return    object    $this
+     * @param       string      $line           The line being added to head
+     * @return      object      $this
      */
-    public function append_metadata($line)
+    public function append_metadata($line, $place = 'header')
     {
-        $this->_metadata[] = $line;
+        $this->_metadata[$place][] = $line;
+
         return $this;
     }
 
     /**
      * Set metadata for output later
      *
-     * @param    string    $name        keywords, description, etc
-     * @param    string    $content    The content of meta data
-     * @param    string    $type        Meta-data comes in a few types, links for example
-     * @return    object    $this
+     * @param       string      $name           keywords, description, etc
+     * @param       string      $content        The content of meta data
+     * @param       string      $type           Meta-data comes in a few types, links for example
+     * @param       string 	[$place]	Defaults to 'header'
+     * @param       bool 	[$override]     Should we save this to the meta overrides instead of the
+     *                                          main meta array?
+     * @return      object      $this
      */
-    public function set_metadata($name, $content, $type = 'meta')
+    public function set_metadata($name, $content, $type = 'meta', $place = 'header', $override = false)
     {
-        $name = htmlspecialchars(strip_tags($name));
-        $content = trim(htmlspecialchars(strip_tags($content)));
+        $name = html_escape(strip_tags($name));
+        $content = trim(html_escape(strip_tags($content)));
 
         // Keywords with no comments? ARG! comment them
         if ($name == 'keywords' and ! strpos($content, ',')) {
@@ -473,43 +508,51 @@ class Template
             case 'meta':
 
                 if (strpos($name, 'og:') === 0) {
-                    // A Facebook's Open Graph meta tag.
-                    $this->_metadata[$name] = '
+
+                    // A Facebook's Open Graph meta tag (Added by Ivan Tcholakov).
+                    $meta = '
     <meta property="'.$name.'" content="'.$content.'" />';
 
                 } else {
+
                     // A normal meta tag.
-                    $this->_metadata[$name] = '
+                    $meta =  '
     <meta name="'.$name.'" content="'.$content.'" />';
                 }
 
-            break;
+                if ($override) {
+                    $this->_override_meta[$place][$name] = $meta;
+                } else {
+                    $this->_metadata[$place][$name] = $meta;
+                }
+
+                break;
 
             case 'link':
 
-                $this->_metadata[$content] = '
+                $link = '
     <link rel="'.$name.'" href="'.$content.'" />';
 
-            break;
-        }
+                if ($override) {
+                    $this->_override_meta[$place][$content] = $link;
+                } else {
+                    $this->_metadata[$place][$content] = $link;
+                }
 
-        return $this;
-    }
+                break;
 
-    /**
-     * Sets the canonical URL of the current page.
-     *
-     * @param       string      $url
-     * @return      object      $this
-     * @link        http://moz.com/learn/seo/canonicalization
-     * @link        https://support.google.com/webmasters/answer/139066?hl=en
-     */
-    public function set_canonical_url($url) {
+            case 'og':
 
-        $url = (string) $url;
+                $meta = '
+    <meta property="'.$name.'" content="'.$content.'" />';
 
-        if (strpos($url, '://')) {
-            $this->set_metadata('canonical', $url, 'link');
+                if ($override) {
+                    $this->_override_meta[$place][md5($name.$content)] = $meta;
+                } else {
+                    $this->_metadata[$place][md5($name.$content)] = $meta;
+                }
+
+                break;
         }
 
         return $this;
@@ -519,8 +562,8 @@ class Template
     /**
      * Which theme are we using here?
      *
-     * @param    string    $theme    Set a theme for the template library to use
-     * @return    object    $this
+     * @param       string      $theme      Set a theme for the template library to use
+     * @return      object      $this
      */
     public function set_theme($theme = null)
     {
@@ -540,16 +583,10 @@ class Template
         return $this;
     }
 
-    // Added by Ivan Tcholakov, 08-JAN-2016.
-    public function get_theme() {
-
-        return $this->_theme;
-    }
-
     /**
      * Get the current theme path
      *
-     * @return    string The current theme path
+     * @return      string                      The current theme path
      */
     public function get_theme_path()
     {
@@ -559,8 +596,8 @@ class Template
     /**
      * Get the current view path
      *
-     * @param    bool    Set if should be returned the view path full (with theme path) or the view relative the theme path
-     * @return    string    The current view path
+     * @param       bool                        Set if should be returned the view path full (with theme path) or the view relative the theme path
+     * @return      string                      The current view path
      */
     public function get_views_path($relative = false)
     {
@@ -570,9 +607,9 @@ class Template
     /**
      * Which theme layout should we using here?
      *
-     * @param    string    $view
-     * @param    string    $layout_subdir
-     * @return    object    $this
+     * @param       string      $view
+     * @param       string      $layout_subdir
+     * @return      object      $this
      */
     public function set_layout($view, $layout_subdir = null)
     {
@@ -588,10 +625,10 @@ class Template
     /**
      * Set a view partial
      *
-     * @param    string    $name
-     * @param    string    $view
-     * @param    array    $data
-     * @return    object    $this
+     * @param       string      $name
+     * @param       string      $view
+     * @param       array       $data
+     * @return      object      $this
      */
     public function set_partial($name, $view, $data = array())
     {
@@ -602,10 +639,10 @@ class Template
     /**
      * Set a view partial
      *
-     * @param    string    $name
-     * @param    string    $string
-     * @param    array    $data
-     * @return    object    $this
+     * @param       string      $name
+     * @param       string      $string
+     * @param       array       $data
+     * @return      object      $this
      */
     public function inject_partial($name, $string, $data = array())
     {
@@ -617,27 +654,36 @@ class Template
     /**
      * Helps build custom breadcrumb trails
      *
-     * @param    string    $name    What will appear as the link text
-     * @param    string    $uri    The URL segment
-     * @return    object    $this
+     * @param       string      $name           What will appear as the link text
+     * @param       string      $uri            The URL segment
+     * @return      object      $this
      */
-    public function set_breadcrumb($name, $uri = '', $reset = false)
+    public function set_breadcrumb($name, $uri = '', $reset = false, $override = false)
     {
         // perhaps they want to start over
         if ($reset) {
 
             $this->_breadcrumbs = array();
+
+            if ($override) {
+                $this->_override_breadcrumbs = array();
+            }
         }
 
-        $this->_breadcrumbs[] = array('name' => $name, 'uri' => $uri );
+        if ($override) {
+            $this->_override_breadcrumbs[] = array('name' => $name, 'uri' => $uri);
+        } else {
+            $this->_breadcrumbs[] = array('name' => $name, 'uri' => $uri);
+        }
+
         return $this;
     }
 
     /**
      * Set a the cache lifetime
      *
-     * @param    int        $seconds
-     * @return    object    $this
+     * @param       int         $seconds
+     * @return      object      $this
      */
     public function set_cache($seconds = 0)
     {
@@ -650,8 +696,8 @@ class Template
      * enable_minify
      * Should be minify used or the output html files just delivered normally?
      *
-     * @param    bool    $bool
-     * @return    object    $this
+     * @param       bool        $bool
+     * @return      object      $this
      */
     public function enable_minify($bool)
     {
@@ -659,46 +705,13 @@ class Template
         return $this;
     }
 
-    private function _detect_parsers(& $parsers) {
-
-        // BC: Detect a boolean value.
-
-        if (!is_array($parsers)) {
-
-            if (is_bool($parsers)) {
-
-                $is_bool = true;
-
-            } elseif (empty($parsers)) {
-
-                $is_bool = true;
-                $parsers = false;
-
-            } elseif (is_numeric($parsers)) {
-
-                $is_bool = true;
-                $parsers = $parsers > 0;
-
-            } else {
-
-                $is_bool = false;
-                $parsers = array((string) $parsers);
-            }
-
-        } else {
-
-            $is_bool = false;
-        }
-
-        return $is_bool;
-    }
 
     /**
      * enable_parser
      * Should be parser be used or the view files just loaded normally?
      *
-     * @param     mixed     $parsers
-     * @return    object    $this
+     * @param       mixed       $parsers
+     * @return      object      $this
      */
     public function enable_parser($parsers)
     {
@@ -751,8 +764,8 @@ class Template
      * enable_parser_body
      * Should be parser be used or the body view files just loaded normally?
      *
-     * @param     mixed     $parsers
-     * @return    object    $this
+     * @param       mixed       $parsers
+     * @return      object      $this
      */
     public function enable_parser_body($parsers)
     {
@@ -805,7 +818,7 @@ class Template
      * theme_locations
      * List the locations where themes may be stored
      *
-     * @return    array
+     * @return      array
      */
     public function theme_locations()
     {
@@ -816,9 +829,9 @@ class Template
      * add_theme_location
      * Set another location for themes to be looked in
      *
-     * @access    public
-     * @param    string    $location
-     * @return    array
+     * @access      public
+     * @param       string      $location
+     * @return      array
      */
     public function add_theme_location($location)
     {
@@ -829,8 +842,8 @@ class Template
      * theme_exists
      * Check if a theme exists
      *
-     * @param    string    $theme
-     * @return    bool
+     * @param       string      $theme
+     * @return      bool
      */
     public function theme_exists($theme = null)
     {
@@ -849,7 +862,7 @@ class Template
      * get_layouts
      * Get all current layouts (if using a theme you'll get a list of theme layouts)
      *
-     * @return    array
+     * @return      array
      */
     public function get_layouts()
     {
@@ -862,13 +875,48 @@ class Template
         return $layouts;
     }
 
+    /**
+     * Get Metadata
+     *
+     * @param       string 	$place
+     * @return      string
+     */
+    public function get_metadata($place = 'header')
+    {
+        // We are going to set this to a blank array if this
+        // does not exist in the right format, since we are going to
+        // see if any overrides are in place that we can use as well.
+        if ( ! isset($this->_metadata[$place]) or ! is_array($this->_metadata[$place])) {
+            $this->_metadata[$place] = array();
+        }
+
+        // Go through any 'header' place overrides
+        if (isset($this->_override_meta[$place])) {
+            foreach ($this->_override_meta[$place] as $key => $meta) {
+
+                // If this already exists, unset it.
+                if (isset($this->_metadata[$place][$key])) {
+                    unset($this->_metadata[$place][$key]);
+                }
+
+                $this->_metadata[$place][$key] = $this->_override_meta[$place][$key];
+            }
+        }
+
+        // Still nothing? Now we can return null.
+        if ( ! $this->_metadata[$place]) {
+            return null;
+        }
+
+        return trim(implode("\n    ", $this->_metadata[$place]));
+    }
 
     /**
      * get_layouts
      * Get all current layouts (if using a theme you'll get a list of theme layouts)
      *
-     * @param    string    $theme
-     * @return    array
+     * @param       string      $theme
+     * @return      array
      */
     public function get_theme_layouts($theme = null)
     {
@@ -901,8 +949,8 @@ class Template
      * layout_exists
      * Check if a theme layout exists
      *
-     * @param    string    $layout
-     * @return    bool
+     * @param       string      $layout
+     * @return      bool
      */
     public function layout_exists($layout)
     {
@@ -920,8 +968,8 @@ class Template
      * layout_is
      * Check if the current theme layout is equal the $layout argument
      *
-     * @param    string    $layout
-     * @return    bool
+     * @param       string      $layout
+     * @return      bool
      */
     public function layout_is($layout)
     {
@@ -970,6 +1018,16 @@ class Template
 
         // If using themes store this for later, available to all views
         return $this->_ci->load->_ci_cached_vars['template_views'] = $view_folder;
+    }
+
+    /**
+     * Wrapper function for _find_view()
+     * so we can manually get a theme view
+     * that can be overriden.
+     */
+    public function load_view($view, array $data, $parse_view = true)
+    {
+        return $this->_find_view($view, $data, $parse_view);
     }
 
     // A module view file can be overriden in a theme
@@ -1053,6 +1111,110 @@ class Template
     private function _ext($file)
     {
         return pathinfo($file, PATHINFO_EXTENSION) ? '' : '.php';
+    }
+
+    //--------------------------------------------------------------------------
+    // Additional Methods
+
+    private function _detect_parsers(& $parsers) {
+
+        // BC: Detect a boolean value.
+
+        if (!is_array($parsers)) {
+
+            if (is_bool($parsers)) {
+
+                $is_bool = true;
+
+            } elseif (empty($parsers)) {
+
+                $is_bool = true;
+                $parsers = false;
+
+            } elseif (is_numeric($parsers)) {
+
+                $is_bool = true;
+                $parsers = $parsers > 0;
+
+            } else {
+
+                $is_bool = false;
+                $parsers = array((string) $parsers);
+            }
+
+        } else {
+
+            $is_bool = false;
+        }
+
+        return $is_bool;
+    }
+
+    // Added by Ivan Tcholakov, 08-JAN-2016.
+    public function get_theme() {
+
+        return $this->_theme;
+    }
+
+    // Added by Ivan Tcholakov, 29-MAR-2013.
+    public function append_title() {
+
+        if ($title_segments = func_get_args()) {
+
+            if (is_array($title_segments)) {
+                $title = implode($this->_title_separator, $title_segments);
+            } else {
+                $title = $title_segments;
+            }
+
+            $this->_title = trim($this->_title) != '' ? $this->_title.$this->_title_separator.$title : $title;
+        }
+
+        return $this;
+    }
+
+    // Added by Ivan Tcholakov, 09-NOV-2013.
+    public function prepend_title() {
+
+        if ($title_segments = func_get_args()) {
+
+            if (is_array($title_segments)) {
+                $title = implode($this->_title_separator, $title_segments);
+            } else {
+                $title = $title_segments;
+            }
+
+            $this->_title = trim($this->_title) != '' ? $title.$this->_title_separator.$this->_title : $title;
+        }
+
+        return $this;
+    }
+
+    // Added by Ivan Tcholakov, 09-NOV-2013.
+    public function set_title_separator($string) {
+
+        $this->_title_separator = $string;
+
+        return $this;
+    }
+
+    /**
+     * Sets the canonical URL of the current page.
+     *
+     * @param       string      $url
+     * @return      object      $this
+     * @link        http://moz.com/learn/seo/canonicalization
+     * @link        https://support.google.com/webmasters/answer/139066?hl=en
+     */
+    public function set_canonical_url($url) {
+
+        $url = (string) $url;
+
+        if (strpos($url, '://')) {
+            $this->set_metadata('canonical', $url, 'link');
+        }
+
+        return $this;
     }
 
     //--------------------------------------------------------------------------
