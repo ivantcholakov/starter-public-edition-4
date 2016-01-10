@@ -266,7 +266,7 @@ class Template
         // Added by Ivan Tcholakov, 25-OCT-2012.
         // Preliminary caching the variable $this->_ci->load->_ci_cached_vars['template_views'],
         // so the helper function file_partial() gets able to work.
-        self::_find_view_folder();
+        $this->_find_view_folder();
         //
 
         // Set whatever values are given. These will be available to all view files
@@ -364,16 +364,16 @@ class Template
             // Modified by Ivan Tcholakov, 25-JUN-2014.
             // A very dirty fix for https://github.com/ivantcholakov/starter-public-edition-4/issues/16
             //// Modified by Ivan Tcholakov, 27-DEC-2013.
-            ////$this->_body = self::_load_view('layouts/'.$this->_layout, $this->_data, true, self::_find_view_folder());
-            //$this->_body = self::_load_view('layouts/'.$this->_layout, $this->_data, $this->_parsers, self::_find_view_folder());
+            ////$this->_body = $this->_load_view('layouts/'.$this->_layout, $this->_data, true, $this->_find_view_folder());
+            //$this->_body = $this->_load_view('layouts/'.$this->_layout, $this->_data, $this->_parsers, $this->_find_view_folder());
             ////
-            if (file_exists(self::_find_view_folder().'layouts/'.$this->_layout.self::_ext($this->_layout))) {
-                $this->_body = self::_load_view('layouts/'.$this->_layout, $this->_data, $this->_parsers, self::_find_view_folder());
-            } elseif (file_exists(self::_find_view_folder(true).'layouts/'.$this->_layout.self::_ext($this->_layout))) {
-                $this->_body = self::_load_view('layouts/'.$this->_layout, $this->_data, $this->_parsers, self::_find_view_folder(true));
+            if (file_exists($this->_find_view_folder().'layouts/'.$this->_layout.$this->_ext($this->_layout))) {
+                $this->_body = $this->_load_view('layouts/'.$this->_layout, $this->_data, $this->_parsers, $this->_find_view_folder());
+            } elseif (file_exists($this->_find_view_folder(true).'layouts/'.$this->_layout.$this->_ext($this->_layout))) {
+                $this->_body = $this->_load_view('layouts/'.$this->_layout, $this->_data, $this->_parsers, $this->_find_view_folder(true));
             } else {
                 // This probably would fail and show the error message.
-                $this->_body = self::_load_view('layouts/'.$this->_layout, $this->_data, $this->_parsers, self::_find_view_folder());
+                $this->_body = $this->_load_view('layouts/'.$this->_layout, $this->_data, $this->_parsers, $this->_find_view_folder());
             }
             //
         }
@@ -868,7 +868,7 @@ class Template
     {
         $layouts = array();
 
-        foreach(glob(self::_find_view_folder().'layouts/*.*') as $layout) {
+        foreach(glob($this->_find_view_folder().'layouts/*.*') as $layout) {
             $layouts[] = pathinfo($layout, PATHINFO_BASENAME);
         }
 
@@ -955,12 +955,12 @@ class Template
     public function layout_exists($layout)
     {
         // If there is a theme, check it exists in there
-        if ( ! empty($this->_theme) and in_array($layout, self::get_theme_layouts())) {
+        if ( ! empty($this->_theme) and in_array($layout, $this->get_theme_layouts())) {
             return true;
         }
 
         // Otherwise look in the normal places
-        return file_exists(self::_find_view_folder().'layouts/' . $layout . self::_ext($layout));
+        return file_exists($this->_find_view_folder().'layouts/' . $layout . $this->_ext($layout));
     }
 
 
@@ -1047,14 +1047,14 @@ class Template
             );
 
             foreach ($theme_views as $theme_view) {
-                if (file_exists($location . $theme_view . self::_ext($theme_view))) {
-                    return self::_load_view($theme_view, $this->_data + $data, $parsers, $location);
+                if (file_exists($location . $theme_view . $this->_ext($theme_view))) {
+                    return $this->_load_view($theme_view, $this->_data + $data, $parsers, $location);
                 }
             }
         }
 
         // Not found it yet? Just load, its either in the module or root view
-        return self::_load_view($view, $this->_data + $data, $parsers);
+        return $this->_load_view($view, $this->_data + $data, $parsers);
     }
 
     // Modified by Ivan Tcholakov, 28-DEC-2013.
@@ -1062,10 +1062,10 @@ class Template
     private function _load_view($view, array $data, $parsers = array(), $override_view_path = null)
     //
     {
-        // Sevear hackery to load views from custom places AND maintain compatibility with Modular Extensions
+        // Severe hackery to load views from custom places AND maintain compatibility with Modular Extensions
         if ($override_view_path !== null) {
             $content = $this->_ci->load->_ci_load(array(
-                '_ci_path' => $override_view_path.$view.self::_ext($view),
+                '_ci_path' => $override_view_path.$view.$this->_ext($view),
                 '_ci_vars' => $data,
                 '_ci_return' => true,
                 '_ci_parsers' => $parsers
