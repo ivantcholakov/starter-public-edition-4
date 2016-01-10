@@ -1963,6 +1963,30 @@ document.write("Hello World!");
 
                                     <tr class="info">
                                         <td colspan="2">
+                                            <h4>Template</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>template:title }} &lt;!-- no tags, HTML escaped --&gt;{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ template:title }} <!-- no tags, HTML escaped -->
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>template:page_title }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ template:page_title }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="info">
+                                        <td colspan="2">
                                             <h4>Visual Themes</h4>
                                         </td>
                                     </tr>

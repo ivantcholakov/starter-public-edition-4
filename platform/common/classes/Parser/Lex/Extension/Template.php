@@ -12,4 +12,14 @@ class Parser_Lex_Extension_Template extends Parser_Lex_Extension {
         parent::__construct();
     }
 
+    public function __call($name, $arguments) {
+
+        $template_data = & $this->parser_instance->getVariableRef(
+            'template',
+            $this->parser_instance->parser_data
+        );
+
+        return isset($template_data[$name]) ? $template_data[$name] : null;
+    }
+
 }
