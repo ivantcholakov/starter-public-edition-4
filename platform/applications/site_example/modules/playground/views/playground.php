@@ -14,7 +14,7 @@
             <div class="col-sm-12">
 
                 <div class="page-header">
-                    <h1>The Playground</h1>
+                    <h1><?php echo $template['page_title']; ?></h1>
                 </div>
 
             </div>

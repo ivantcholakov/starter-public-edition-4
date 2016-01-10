@@ -36,6 +36,7 @@ class Admin_mode_controller extends Base_Controller {
         }
 
         $this->template
+            ->title('Online Editor - Admin Mode')
             ->set('content', $content)
         ;
 

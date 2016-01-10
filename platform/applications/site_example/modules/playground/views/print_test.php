@@ -12,7 +12,7 @@
             <div class="container">
 
                 <div class="page-header">
-                    <h2>Print Test</h2>
+                    <h2><?php echo $template['page_title']; ?></h2>
                 </div>
 
                 <div id="action_bar" class="text-center" style="margin-bottom: 20px; <?php if ($this->registry->get('print')) { ?>display: none;<?php } ?>">

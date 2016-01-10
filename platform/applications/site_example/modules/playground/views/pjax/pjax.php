@@ -14,7 +14,7 @@ template_partial('pjax_subnavbar');
             <div class="container">
 
                 <div class="page-header">
-                    <h1>Pjax - Home Page</h1>
+                    <h1><?php echo $template['page_title']; ?></h1>
                 </div>
 
                 <div class="row">

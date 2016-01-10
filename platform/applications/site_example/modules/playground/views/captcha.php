@@ -10,7 +10,7 @@
         <section>
 
             <div class="page-header">
-                <h1>Captcha Test</h1>
+                <h1><?php echo $template['page_title']; ?></h1>
             </div>
 
             <p>Note: Examine the contact form as a real captcha usage example.</p>

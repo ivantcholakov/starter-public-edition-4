@@ -29,7 +29,7 @@ function _force_htmlentities($string) {
             <div class="container">
 
                 <div class="page-header">
-                    <h1>Smiley Test</h1>
+                    <h1><?php echo $template['page_title']; ?></h1>
                 </div>
 
                 <div class="row">

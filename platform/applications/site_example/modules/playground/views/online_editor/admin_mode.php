@@ -20,7 +20,7 @@ template_partial('subnavbar');
 ?>
 
                 <div class="page-header">
-                    <h1>Online Editor - Admin Mode</h1>
+                    <h1><?php echo $template['page_title']; ?></h1>
                 </div>
 
                 <div class="row">
@@ -43,7 +43,7 @@ $ckeditor->editor('content', $content, $config['config']);
                             </div>
 
                             <br class="clear" />
-    
+
                             <button type="submit" class="btn btn-primary">Submit Content</button>
 
                         <?php echo form_close(); ?>

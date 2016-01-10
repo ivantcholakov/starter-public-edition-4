@@ -5,7 +5,7 @@
             <div class="page-header" id="banner">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h1>Design Test</h1>
+                        <h1><?php echo $template['page_title']; ?></h1>
                         <p class="lead">
                             A Bootstrap visual theming preview.
                             <br />

@@ -49,7 +49,7 @@ $my_image = image_url('playground.jpg');
             <div class="container">
 
                 <div class="page-header">
-                    <h1>Image Manipulations Test</h1>
+                    <h1><?php echo $template['page_title']; ?></h1>
                 </div>
 
                 <div class="col-md-6">

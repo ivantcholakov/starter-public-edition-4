@@ -12,7 +12,7 @@
             <div class="container">
 
                 <div class="page-header">
-                    <h1>Multiplayer Library Test</h1>
+                    <h1><?php echo $template['page_title']; ?></h1>
                 </div>
 
                 <div class="row">
@@ -36,7 +36,7 @@ if (!$system_requirements_ok) {
 
     foreach ($videos as $video) {
 ?>
- 
+
                     <div class="col-md-4">
 
                         <p><?php echo $this->multiplayer->html($video); ?></p>

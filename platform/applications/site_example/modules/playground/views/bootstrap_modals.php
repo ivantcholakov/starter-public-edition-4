@@ -41,7 +41,7 @@
             <div class="container">
 
                 <div class="page-header">
-                    <h2>Bootstrap Modal Dialogs</h2>
+                    <h2><?php echo $template['page_title']; ?></h2>
                 </div>
 
                 <div class="row">

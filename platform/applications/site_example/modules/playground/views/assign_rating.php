@@ -24,7 +24,7 @@ template_partial('subnavbar');
 ?>
 
                 <div class="page-header">
-                    <h2>Assign Rating Example</h2>
+                    <h2><?php echo $template['page_title']; ?></h2>
                 </div>
 
                 <div class="text-center" style="margin-bottom: 20px;">

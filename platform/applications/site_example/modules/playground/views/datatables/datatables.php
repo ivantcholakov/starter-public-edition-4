@@ -9,7 +9,7 @@ template_partial('subnavbar');
 ?>
 
             <div class="page-header">
-                <h1>DataTables Simple Example</h1>
+                <h1><?php echo $template['page_title']; ?></h1>
             </div>
 
             <div class="panel panel-default">
@@ -18,7 +18,7 @@ template_partial('subnavbar');
 
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover table-condensed table-valign-middle" id="datatable">
- 
+
                             <thead>
 
                                 <tr>

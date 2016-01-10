@@ -9,7 +9,7 @@ template_partial('subnavbar');
 ?>
 
             <div class="page-header">
-                <h1>DataTables with Server-Side Processing</h1>
+                <h1><?php echo $template['page_title']; ?></h1>
             </div>
 
 <?php

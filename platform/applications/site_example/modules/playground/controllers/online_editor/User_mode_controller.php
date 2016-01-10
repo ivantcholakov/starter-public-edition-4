@@ -36,6 +36,7 @@ class User_mode_controller extends Base_Controller {
         }
 
         $this->template
+            ->title('Online Editor - User Mode')
             ->set('content', $content)
         ;
 

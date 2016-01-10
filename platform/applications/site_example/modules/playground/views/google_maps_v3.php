@@ -12,7 +12,7 @@
             <div class="container">
 
                 <div class="page-header">
-                    <h1>Google Maps JavaScript API v3 Demo</h1>
+                    <h1><?php echo $template['page_title']; ?></h1>
                 </div>
 
                 <div class="row">

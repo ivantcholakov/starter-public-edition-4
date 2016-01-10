@@ -13,7 +13,7 @@
             <div class="container">
 
                 <div class="page-header">
-                    <h2>Bootstrap Star Rating Examples <small>&copy; Kartik Visweswaran, Krajee.com</small></h2>
+                    <h2><?php echo $template['page_title']; ?> <small>&copy; Kartik Visweswaran, Krajee.com</small></h2>
                 </div>
 
                 <div class="row">

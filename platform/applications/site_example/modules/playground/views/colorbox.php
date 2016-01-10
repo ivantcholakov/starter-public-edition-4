@@ -64,7 +64,7 @@ if (!function_exists('_display_colorbox_gallery')) {
             <div class="container">
 
                 <div class="page-header">
-                    <h1>Colorbox Test</h1>
+                    <h1><?php echo $template['page_title']; ?></h1>
                 </div>
 
                 <p>

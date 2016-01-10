@@ -21,7 +21,7 @@
             <div class="container">
 
                 <div class="page-header">
-                    <h1>Social Buttons for Bootstrap</h1>
+                    <h1><?php echo $template['page_title']; ?></h1>
                 </div>
 
                 <p><a href="http://lipis.github.io/bootstrap-social/" target="_blank">http://lipis.github.io/bootstrap-social/</a></p>

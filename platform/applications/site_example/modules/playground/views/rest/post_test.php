@@ -18,7 +18,7 @@ template_partial('subnavbar');
 ?>
 
                 <div class="page-header">
-                    <h1>Testing a POST request</h1>
+                    <h1><?php echo $template['page_title']; ?></h1>
                 </div>
 
                 <div class="row">
