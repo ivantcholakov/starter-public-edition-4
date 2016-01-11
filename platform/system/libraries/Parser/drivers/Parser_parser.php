@@ -96,7 +96,7 @@ class CI_Parser_parser extends CI_Parser_driver {
 	 */
 	// Modified by Ivan Tcholakov, 27-DEC-2013.
 	//public function parse($template, $data = array(), $return = FALSE)
-	public function parse($template, $data = array(), $return = FALSE, $config = array())
+	public function parse($template, $data = array(), $return = FALSE, $options = array())
 	//
 	{
 		if (!is_array($data))
@@ -122,7 +122,7 @@ class CI_Parser_parser extends CI_Parser_driver {
 
 		// Modified by Ivan Tcholakov, 27-DEC-2013.
 		//return $this->_parse($template, $data, $return);
-		return $this->_parse($template, $data, $return, $config);
+		return $this->_parse($template, $data, $return, $options);
 		//
 	}
 
@@ -141,7 +141,7 @@ class CI_Parser_parser extends CI_Parser_driver {
 	 */
 	// Modified by Ivan Tcholakov, 27-DEC-2013.
 	// Modified by Ivan Tcholakov, 27-DEC-2013.
-	public function parse_string($template, $data = array(), $return = FALSE, $config = array())
+	public function parse_string($template, $data = array(), $return = FALSE, $options = array())
 	// Modified by Ivan Tcholakov, 27-DEC-2013.
 	{
 		if (!is_array($data))
@@ -151,7 +151,7 @@ class CI_Parser_parser extends CI_Parser_driver {
 
 		// Modified by Ivan Tcholakov, 27-DEC-2013.
 		//return $this->_parse($template, $data, $return);
-		return $this->_parse($template, $data, $return, $config);
+		return $this->_parse($template, $data, $return, $options);
 		//
 	}
 
@@ -170,7 +170,7 @@ class CI_Parser_parser extends CI_Parser_driver {
 	 */
 	// Modified by Ivan Tcholakov, 27-DEC-2013.
 	//protected function _parse($template, $data, $return = FALSE)
-	protected function _parse($template, $data, $return = FALSE, $config = array())
+	protected function _parse($template, $data, $return = FALSE, $options = array())
 	//
 	{
 		if ($template === '')

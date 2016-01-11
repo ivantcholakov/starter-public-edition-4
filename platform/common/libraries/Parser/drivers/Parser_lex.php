@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') || exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015 - 2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -66,34 +66,34 @@ class CI_Parser_lex extends CI_Parser_driver {
         log_message('info', 'CI_Parser_lex Class Initialized');
     }
 
-    public function parse($template, $data = array(), $return = FALSE, $config = array())
+    public function parse($template, $data = array(), $return = FALSE, $options = array())
     {
-        if (!is_array($config))
+        if (!is_array($options))
         {
-            $config = array();
+            $options = array();
         }
 
-        $config = array_merge($this->config, $config);
+        $options = array_merge($this->config, $options);
 
-        $config['cumulative_noparse'] = !empty($config['cumulative_noparse']);
+        $options['cumulative_noparse'] = !empty($options['cumulative_noparse']);
 
         $ci = $this->ci;
         $is_mx = false;
 
-        if (!$return || !$config['full_path'])
+        if (!$return || !$options['full_path'])
         {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
-        if (!$config['full_path'])
+        if (!$options['full_path'])
         {
             $template = $ci->load->path($template);
         }
 
         $parser = new Parser_Lex_Extensions;
 
-        $parser->scopeGlue($config['scope_glue']);
-        $parser->cumulativeNoparse($config['cumulative_noparse']);
+        $parser->scopeGlue($options['scope_glue']);
+        $parser->cumulativeNoparse($options['cumulative_noparse']);
 
         if (!is_array($data))
         {
@@ -109,11 +109,11 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         $data = array_merge($data, $ci->load->_ci_cached_vars);
 
-        $parser->parser_options = $config;
+        $parser->parser_options = $options;
 
-        $template = $parser->parse(@ file_get_contents($template), $data, array($parser, 'parser_callback'), $config['allow_php']);
+        $template = $parser->parse(@ file_get_contents($template), $data, array($parser, 'parser_callback'), $options['allow_php']);
 
-        if ($config['cumulative_noparse'])
+        if ($options['cumulative_noparse'])
         {
             $template = Parser_Lex_Extensions::injectNoparse($template);
         }
@@ -121,16 +121,16 @@ class CI_Parser_lex extends CI_Parser_driver {
         return $this->output($template, $return, $ci, $is_mx);
     }
 
-    public function parse_string($template, $data = array(), $return = FALSE, $config = array())
+    public function parse_string($template, $data = array(), $return = FALSE, $options = array())
     {
-        if (!is_array($config))
+        if (!is_array($options))
         {
-            $config = array();
+            $options = array();
         }
 
-        $config = array_merge($this->config, $config);
+        $options = array_merge($this->config, $options);
 
-        $config['cumulative_noparse'] = !empty($config['cumulative_noparse']);
+        $options['cumulative_noparse'] = !empty($options['cumulative_noparse']);
 
         $ci = $this->ci;
         $is_mx = false;
@@ -142,8 +142,8 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         $parser = new Parser_Lex_Extensions;
 
-        $parser->scopeGlue($config['scope_glue']);
-        $parser->cumulativeNoparse($config['cumulative_noparse']);
+        $parser->scopeGlue($options['scope_glue']);
+        $parser->cumulativeNoparse($options['cumulative_noparse']);
 
         if (!is_array($data))
         {
@@ -159,11 +159,11 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         $data = array_merge($data, $ci->load->_ci_cached_vars);
 
-        $parser->parser_options = $config;
+        $parser->parser_options = $options;
 
-        $template = $parser->parse($template, $data, array($parser, 'parser_callback'), $config['allow_php']);
+        $template = $parser->parse($template, $data, array($parser, 'parser_callback'), $options['allow_php']);
 
-        if ($config['cumulative_noparse'])
+        if ($options['cumulative_noparse'])
         {
             $template = Parser_Lex_Extensions::injectNoparse($template);
         }

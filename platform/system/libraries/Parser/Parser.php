@@ -152,23 +152,23 @@ class CI_Parser extends CI_Driver_Library {
 	 */
 	// Modified by Ivan Tcholakov, 27-DEC-2013.
 	//public function parse($template, $data = array(), $return = FALSE)
-	public function parse($template, $data = array(), $return = FALSE, $config = array())
+	public function parse($template, $data = array(), $return = FALSE, $options = array())
 	//
 	{
 		// Added by Ivan Tcholakov, 28-DEC-2013.
 		// Processing an alternative chain of drivers.
 
-		if ($this->_detect_config_chain($config))
+		if ($this->_detect_config_chain($options))
 		{
 			$CI = &get_instance();
 
-			$config = $this->parse_config($config);
+			$options = $this->parse_config($options);
 
-			if (!empty($config))
+			if (!empty($options))
 			{
 				$i = 0;
 
-				foreach ($config as $driver)
+				foreach ($options as $driver)
 				{
 					$CI->load->parser($driver['parser']);
 
@@ -199,7 +199,7 @@ class CI_Parser extends CI_Driver_Library {
 
 		// Modified by Ivan Tcholakov, 27-DEC-2013.
 		//return $this->driver->parse($template, $data, $return);
-		return $this->driver->parse($template, $data, $return, $config);
+		return $this->driver->parse($template, $data, $return, $options);
 		//
 	}
 
@@ -218,21 +218,21 @@ class CI_Parser extends CI_Driver_Library {
 	 */
 	// Modified by Ivan Tcholakov, 27-DEC-2013.
 	//public function parse_string($template, $data = array(), $return = FALSE)
-	public function parse_string($template, $data = array(), $return = FALSE, $config = array())
+	public function parse_string($template, $data = array(), $return = FALSE, $options = array())
 	//
 	{
 		// Added by Ivan Tcholakov, 28-DEC-2013.
 		// Processing an alternative chain of drivers.
 
-		if ($this->_detect_config_chain($config))
+		if ($this->_detect_config_chain($options))
 		{
 			$CI = &get_instance();
 
-			$config = $this->parse_config($config);
+			$options = $this->parse_config($options);
 
-			if (!empty($config))
+			if (!empty($options))
 			{
-				foreach ($config as $driver)
+				foreach ($options as $driver)
 				{
 					$CI->load->parser($driver['parser']);
 					$template = $CI->{$driver['parser']}->parse_string($template, $data, true, $driver['config']);
@@ -253,7 +253,7 @@ class CI_Parser extends CI_Driver_Library {
 
 		// Modified by Ivan Tcholakov, 27-DEC-2013.
 		//return $this->driver->parse_string($template, $data, $return);
-		return $this->driver->parse_string($template, $data, $return, $config);
+		return $this->driver->parse_string($template, $data, $return, $options);
 		//
 	}
 
@@ -487,7 +487,7 @@ abstract class CI_Parser_driver extends CI_Driver {
 	 */
 	// Modified by Ivan Tcholakov, 27-DEC-2013.
 	//abstract public function parse($template, $data = array(), $return = FALSE);
-	abstract public function parse($template, $data = array(), $return = FALSE, $config = array());
+	abstract public function parse($template, $data = array(), $return = FALSE, $options = array());
 	//
 
 	/**
@@ -505,7 +505,7 @@ abstract class CI_Parser_driver extends CI_Driver {
 	 */
 	// Modified by Ivan Tcholakov, 27-DEC-2013.
 	// abstract public function parse_string($template, $data = array(), $return = FALSE);
-	abstract public function parse_string($template, $data = array(), $return = FALSE, $config = array());
+	abstract public function parse_string($template, $data = array(), $return = FALSE, $options = array());
 	//
 
 	/**

@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') || exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015 - 2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -59,24 +59,24 @@ class CI_Parser_scss extends CI_Parser_driver {
         log_message('info', 'CI_Parser_scss Class Initialized');
     }
 
-    public function parse($template, $data = array(), $return = FALSE, $config = array())
+    public function parse($template, $data = array(), $return = FALSE, $options = array())
     {
-        if (!is_array($config))
+        if (!is_array($options))
         {
-            $config = array();
+            $options = array();
         }
 
-        $config = array_merge($this->config, $config);
+        $options = array_merge($this->config, $options);
 
         $ci = $this->ci;
         $is_mx = false;
 
-        if (!$return || !$config['full_path'])
+        if (!$return || !$options['full_path'])
         {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
-        if (!$config['full_path'])
+        if (!$options['full_path'])
         {
             $template = $ci->load->path($template);
         }
@@ -84,11 +84,11 @@ class CI_Parser_scss extends CI_Parser_driver {
         $parser_reflection = new ReflectionClass('Leafo\ScssPhp\Compiler');
         $parser = $parser_reflection->newInstance();
 
-        $parser->setImportPaths($config['import_paths']);
+        $parser->setImportPaths($options['import_paths']);
         $parser->addImportPath(dirname($template));
-        $parser->setNumberPrecision($config['number_precision']);
+        $parser->setNumberPrecision($options['number_precision']);
 
-        $formatter = $config['formatter'];
+        $formatter = $options['formatter'];
 
         if (!in_array($formatter, $this->allowed_formatters))
         {
@@ -98,21 +98,21 @@ class CI_Parser_scss extends CI_Parser_driver {
         $formatter = 'Leafo\ScssPhp\Formatter\\'.ucfirst($formatter);
         $parser->setFormatter($formatter);
 
-        $parser->setLineNumberStyle($config['line_number_style']);
+        $parser->setLineNumberStyle($options['line_number_style']);
 
         $template = $parser->compile(@ file_get_contents($template));
 
         return $this->output($template, $return, $ci, $is_mx);
     }
 
-    public function parse_string($template, $data = array(), $return = FALSE, $config = array())
+    public function parse_string($template, $data = array(), $return = FALSE, $options = array())
     {
-        if (!is_array($config))
+        if (!is_array($options))
         {
-            $config = array();
+            $options = array();
         }
 
-        $config = array_merge($this->config, $config);
+        $options = array_merge($this->config, $options);
 
         $ci = $this->ci;
         $is_mx = false;
@@ -125,10 +125,10 @@ class CI_Parser_scss extends CI_Parser_driver {
         $parser_reflection = new ReflectionClass('Leafo\ScssPhp\Compiler');
         $parser = $parser_reflection->newInstance();
 
-        $parser->setImportPaths($config['import_paths']);
-        $parser->setNumberPrecision($config['number_precision']);
+        $parser->setImportPaths($options['import_paths']);
+        $parser->setNumberPrecision($options['number_precision']);
 
-        $formatter = $config['formatter'];
+        $formatter = $options['formatter'];
 
         if (!in_array($formatter, $this->allowed_formatters))
         {
@@ -138,7 +138,7 @@ class CI_Parser_scss extends CI_Parser_driver {
         $formatter = 'Leafo\ScssPhp\Formatter\\'.ucfirst($formatter);
         $parser->setFormatter($formatter);
 
-        $parser->setLineNumberStyle($config['line_number_style']);
+        $parser->setLineNumberStyle($options['line_number_style']);
 
         $template = $parser->compile($template);
 
