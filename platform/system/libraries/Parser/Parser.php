@@ -83,10 +83,24 @@ class CI_Parser extends CI_Driver_Library {
 	{
 		$CI = &get_instance();
 
+		if ($CI->config->load('parser', TRUE, TRUE))
+		{
+			$config = $CI->config->item('parser');
+		}
+		else
+		{
+			$config = array();
+                }
+
 		$tmp_vdrivers = array_map('strtolower', $this->valid_drivers);
 
 		// load up the valid drivers
-		$drivers = isset($params['parser_valid_drivers']) ? $params['parser_valid_drivers'] : $CI->config->item('parser_valid_drivers');
+		$drivers = isset($params['parser_valid_drivers'])
+			? $params['parser_valid_drivers']
+			: (isset($config['parser_valid_drivers'])
+				? $config['parser_valid_drivers']
+				: array());
+
 		if ($drivers)
 		{
 			// Add driver names to valid list
@@ -100,7 +114,12 @@ class CI_Parser extends CI_Driver_Library {
 		}
 
 		// Get driver to load
-		$driver = isset($params['parser_driver']) ? $params['parser_driver'] : $CI->config->item('parser_driver');
+		$driver = isset($params['parser_driver'])
+			? $params['parser_driver']
+			: (isset($config['parser_driver'])
+				? $config['parser_driver']
+				: null);
+
 		if ( ! $driver)
 		{
 			$driver = 'parser';

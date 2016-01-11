@@ -532,33 +532,6 @@ $config['rewrite_short_tags'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
-| Parser Variables
-|--------------------------------------------------------------------------
-|
-| 'parser_driver'           = The driver to load: "parser" driver (default)
-| 'parser_valid_drivers'    = additional valid drivers which may be loaded
-|
-*/
-$config['parser_driver']        = 'parser';
-$config['parser_valid_drivers'] = array(
-    'mustache',
-    'textile',
-    'markdown',
-    'markdownify',
-    'auto_link',
-    'i18n',
-    'less',
-    'smileys',
-    'cssmin',
-    'jsmin',
-    'scss',
-    'ts',
-    'jsonmin',
-    'lex',
-);
-
-/*
-|--------------------------------------------------------------------------
 | Reverse Proxy IPs
 |--------------------------------------------------------------------------
 |
