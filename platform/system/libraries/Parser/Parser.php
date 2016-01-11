@@ -90,7 +90,7 @@ class CI_Parser extends CI_Driver_Library {
 		else
 		{
 			$config = array();
-                }
+		}
 
 		$tmp_vdrivers = array_map('strtolower', $this->valid_drivers);
 
