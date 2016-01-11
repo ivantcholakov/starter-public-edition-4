@@ -10,7 +10,7 @@
 // within configuration files parser_*.php
 
 // The driver to be auto-loaded: "parser" driver (default)
-$config['parser_driver']        = 'parser';
+$config['parser_driver'] = 'parser';
 
 // Additional valid drivers that may be loaded.
 $config['parser_valid_drivers'] = array(
@@ -28,4 +28,14 @@ $config['parser_valid_drivers'] = array(
     'ts',
     'jsonmin',
     'lex',
+);
+
+// File extensions associated with parsers that are to be applied
+// to views, partials, layouts.
+// Don't add leading dots on specifying file extensions.
+$config['parser_file_extensions'] = array(
+    'lex' => array('lex.html', 'lex'),
+    'mustache' => array('mustache.html', 'mustache'),
+    'markdown' => array('md', 'markdown', 'fbmd'),
+    'textile' => 'textile',
 );
