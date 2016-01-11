@@ -8,8 +8,8 @@
  * @package     CodeIgniter
  * @author      Rick Ellis
  * @copyright   Copyright (c) 2006, pMachine, Inc.
- * @license     http://www.codeigniter.com/user_guide/license.html
- * @link        http://www.codeigniter.com
+ * @license     https://www.codeigniter.com/user_guide/license.html
+ * @link        https://www.codeigniter.com
  * @since       Version 1.0
  * @filesource
  */

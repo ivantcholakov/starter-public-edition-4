@@ -55,8 +55,8 @@ class Core_Controller extends MX_Controller {
      *      EXAMPLE RULE:
      *  callback_external_callbacks[some_model,some_method,some_string,another_string]
      *
-     * @author skunkbad (forum alias), http://ellislab.com/forums/member/93974/
-     * @link http://ellislab.com/forums/viewthread/205469/
+     * @author skunkbad (forum alias), https://ellislab.com/forums/member/93974/
+     * @link https://ellislab.com/forums/viewthread/205469/
      * @link https://gist.github.com/1503599
      *
      * CodeIgniter 2.1.0 form validation external callbacks.

@@ -8,7 +8,7 @@ require_once dirname(__FILE__).'/Config.php';
  * Modular Extensions - HMVC
  *
  * Adapted from the CodeIgniter Core Classes
- * @link        http://codeigniter.com
+ * @link        https://codeigniter.com
  *
  * Description:
  * This library creates a CI class which allows the use of modules in an application.

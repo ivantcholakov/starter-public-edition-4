@@ -286,7 +286,7 @@ class Image_lib extends CI_Image_lib
         //    imagesavealpha($dst_img, TRUE);
         //}
         //
-        // Fix image transparency. Taken from http://codeigniter.com/forums/viewthread/150527/
+        // Fix image transparency. Taken from https://codeigniter.com/forums/viewthread/150527/
         if ( $this->image_library == 'gd2' )
         {
             $transparencyIndex = imagecolortransparent($src_img);

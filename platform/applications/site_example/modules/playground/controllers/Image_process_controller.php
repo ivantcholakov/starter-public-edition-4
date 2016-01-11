@@ -63,7 +63,7 @@ class Image_process_controller extends Base_Controller {
         $this->wm_enabled_min_w = 100;
         $this->wm_enabled_min_h = 50;
 
-        // See http://www.codeigniter.com/user_guide/libraries/image_lib.html#watermarking-preferences
+        // See https://www.codeigniter.com/user_guide/libraries/image_lib.html#watermarking-preferences
 
         // Common Watermarking Options
         $this->wm_type = 'text'; // 'text' or 'overlay'

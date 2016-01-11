@@ -16,7 +16,7 @@ is_array(Modules::$locations = $CFG->item('modules_locations')) OR Modules::$loc
  * Modular Extensions - HMVC
  *
  * Adapted from the CodeIgniter Core Classes
- * @link        http://codeigniter.com
+ * @link        https://codeigniter.com
  *
  * Description:
  * This library provides functions to load and instantiate controllers

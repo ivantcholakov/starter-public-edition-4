@@ -8,7 +8,7 @@
  *
  * This library requires that Facebook PHP SDK v4 is installed with composer, and that CodeIgniter
  * config is set to autoload the vendor folder. More information in the CodeIgniter user guide at
- * http://www.codeigniter.com/userguide3/general/autoloader.html?highlight=composer
+ * https://www.codeigniter.com/userguide3/general/autoloader.html?highlight=composer
  *
  * It also requires CodeIgniter session library to be correctly configured.
  *

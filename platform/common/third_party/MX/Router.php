@@ -7,7 +7,7 @@ require dirname(__FILE__).'/Modules.php';
  * Modular Extensions - HMVC
  *
  * Adapted from the CodeIgniter Core Classes
- * @link        http://codeigniter.com
+ * @link        https://codeigniter.com
  *
  * Description:
  * This library extends the CodeIgniter router class.

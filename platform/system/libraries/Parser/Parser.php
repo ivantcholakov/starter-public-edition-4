@@ -6,7 +6,7 @@
  *
  * This content is released under the MIT License (MIT)
  *
- * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+ * Copyright (c) 2014 - 2016, British Columbia Institute of Technology
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,12 +26,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * @package     CodeIgniter
- * @author      EllisLab Dev Team
- * @copyright   Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
- * @copyright   Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
- * @license     http://opensource.org/licenses/MIT    MIT License
- * @link        http://codeigniter.com
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2016, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 1.0.0
+ * @filesource
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -42,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	Libraries
  * @category	Parser
  * @author		EllisLab Dev Team
- * @link		http://codeigniter.com/user_guide/libraries/parser.html
+ * @link		https://codeigniter.com/user_guide/libraries/parser.html
  */
 class CI_Parser extends CI_Driver_Library {
 
@@ -445,10 +447,10 @@ class CI_Parser extends CI_Driver_Library {
  *
  * @package     CodeIgniter
  * @author      EllisLab Dev Team
- * @copyright   Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
- * @copyright   Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @copyright   Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright   Copyright (c) 2014 - 2016, British Columbia Institute of Technology (http://bcit.ca/)
  * @license     http://opensource.org/licenses/MIT    MIT License
- * @link        http://codeigniter.com
+ * @link        https://codeigniter.com
  */
 abstract class CI_Parser_driver extends CI_Driver {
 

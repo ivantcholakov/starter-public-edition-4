@@ -19,7 +19,7 @@ http://iridadesign.com/starter-public-edition-4/www/
 CodeIgniter 3.0 Documentation
 -----------------------------
 
-http://www.codeigniter.com/userguide3/
+https://www.codeigniter.com/userguide3/
 
 Requirements
 ------------
@@ -66,7 +66,7 @@ For CodeIgniter system files, third-party libraries, components, etc.:
 Features
 --------
 
-* CodeIgniter 3.0, http://codeigniter.com/, https://github.com/bcit-ci/CodeIgniter
+* CodeIgniter 3.0, https://codeigniter.com/, https://github.com/bcit-ci/CodeIgniter
 * On a web-server you can place your site (www folder) within a subdirectory.
 * Codeigniter Cross Modular Extensions - XHMVC,
 https://bitbucket.org/xperez/codeigniter-cross-modular-extensions-xhmvc,
@@ -111,7 +111,7 @@ The technique of this hack is available, but it is not mandatory.
 * Hack 4. Running CodeIgniter from the Command Line, http://net.tutsplus.com/tutorials/php/6-codeigniter-hacks-for-the-masters/ - see the file www/cli.php.
 * Form Validation Callbacks in HMVC in Codeigniter, http://www.mahbubblog.com/php/form-validation-callbacks-in-hmvc-in-codeigniter/
 * Making CodeIgniter’s Profiler AJAX compatible, http://dragffy.com/blog/posts/making-codeigniters-profiler-ajax-compatible
-* CodeIgniter Form Validation External Callbacks, https://gist.github.com/1503599, http://ellislab.com/forums/viewthread/205469/
+* CodeIgniter Form Validation External Callbacks, https://gist.github.com/1503599, https://ellislab.com/forums/viewthread/205469/
 * User Agent Helper Functions for CodeIgniter, https://github.com/ivantcholakov/codeigniter-user-agent-helper
 * Template library for CodeIgniter by Phil Sturgeon, http://philsturgeon.co.uk/code/codeigniter-template
 * CodeIgniter Asset Library by Phil Sturgeon.
@@ -377,7 +377,7 @@ platform's features/concepts. You may look at the examples and review their code
 A contact form has been created that with minimal adaptation you may use directly in your projects.
 
 If you have no previous experience with CodeIgniter, get familiar with its User Guide first:
-http://ellislab.com/codeigniter/user-guide/
+https://ellislab.com/codeigniter/user-guide/
 
 Real Life Usage
 ---------------
@@ -419,8 +419,8 @@ Gwenaël Gallon.
 License: The MIT License (MIT), http://opensource.org/licenses/MIT
 
 CodeIgniter:  
-Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)  
-Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)  
+Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)  
+Copyright (c) 2014 - 2016, British Columbia Institute of Technology (http://bcit.ca/)  
 License: The MIT License (MIT), http://opensource.org/licenses/MIT
 
 Third parties:  

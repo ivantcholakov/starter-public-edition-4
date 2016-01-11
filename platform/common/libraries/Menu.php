@@ -4,7 +4,7 @@
  * http://www.getfuelcms.com
  *
  * An open source Content Management System based on the
- * Codeigniter framework (http://codeigniter.com)
+ * Codeigniter framework (https://codeigniter.com)
  *
  * @package         FUEL CMS
  * @author          David McReynolds @ Daylight Studio
