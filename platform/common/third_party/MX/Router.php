@@ -516,6 +516,11 @@ class MX_Router extends CI_Router
                 $this->config->set_current_language($this->config->language_by_uri_segment($segments[0]));
                 array_shift($segments);
 
+                // Added by Ivan Tcholakov, 11-JAN-2016.
+                // See https://github.com/ivantcholakov/starter-public-edition-4/issues/66
+                $this->uri->segments = $segments;
+                //
+
                 if (empty($segments)) {
                     $segments = array($this->default_controller, 'index');
                 }
