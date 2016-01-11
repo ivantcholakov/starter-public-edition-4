@@ -377,7 +377,7 @@ platform's features/concepts. You may look at the examples and review their code
 A contact form has been created that with minimal adaptation you may use directly in your projects.
 
 If you have no previous experience with CodeIgniter, get familiar with its User Guide first:
-https://ellislab.com/codeigniter/user-guide/
+https://www.codeigniter.com/user_guide/
 
 Real Life Usage
 ---------------
