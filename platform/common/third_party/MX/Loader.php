@@ -89,6 +89,9 @@ class MX_Loader extends CI_Loader
 
         /* add this module path to the loader variables */
         $this->_add_module_paths($this->_module);
+
+        // Added by Ivan Tcholakov, 12-JAN-2016.
+        $this->parser();
     }
 
     /** Add a module path loader variables **/
