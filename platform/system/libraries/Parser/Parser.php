@@ -257,6 +257,111 @@ class CI_Parser extends CI_Driver_Library {
 		//
 	}
 
+	// Added by Ivan Tcholakov, 12-JAN-2016.
+	public function get_file_extensions($parser_name = null)
+	{
+		static $extensions = null;
+
+		if ($extensions === null)
+		{
+			$extensions = array();
+
+			$CI = & get_instance();
+
+			if ($CI->config->load('parser', TRUE, TRUE))
+			{
+				$config = $CI->config->item('parser');
+			}
+			else
+			{
+				$config = array();
+			}
+
+			if (!empty($config['parser_file_extensions']) && is_array($config['parser_file_extensions']))
+			{
+				foreach ($config['parser_file_extensions'] as $key => $value)
+				{
+					if (!is_array($value))
+					{
+						$value = (array) $value;
+					}
+
+					foreach ($value as & $item)
+					{
+						$item = '.'.$item;
+					}
+
+					unset($item);
+
+					$extensions[$key] = $value;
+				}
+			}
+		}
+
+		$parser_name = (string) $parser_name;
+
+		if ($parser_name == '')
+		{
+			return $extensions;
+		}
+
+		return isset($extensions[$parser_name]) ? $extensions[$parser_name] : array();
+	}
+
+	// Added by Ivan Tcholakov, 12-JAN-2016.
+	public function detect($file_name)
+	{
+		$file_name = (string) $file_name;
+
+		$qpos = strpos($file_name, '?');
+
+		if ($qpos !== false) {
+
+			// Eliminate query string.
+			$file_name = substr($file_name, 0, $qpos);
+		}
+
+		$parsers = & $this->get_parsers_by_file_extensions();
+
+		// Test whether a pure extension was given.
+		if (isset($parsers[$file_name]))
+		{
+			return $parsers[$file_name];
+		}
+
+		foreach ($parsers as $key => $value)
+		{
+			if (preg_match('/.*'.preg_quote($key).'$/', $file_name))
+			{
+				return $value;
+			}
+		}
+
+		return null;
+	}
+
+	// Added by Ivan Tcholakov, 12-JAN-2016.
+	protected function & get_parsers_by_file_extensions()
+	{
+		static $result = null;
+
+		if ($result === null)
+		{
+			$result = array();
+			$all_extensions = $this->get_file_extensions();
+
+			foreach ($all_extensions as $parser_name => $extensions)
+			{
+				foreach ($extensions as $extension)
+				{
+					$result[$extension] = $parser_name;
+				}
+			}
+		}
+
+		return $result;
+	}
+
 	// Added by Ivan Tcholakov, 28-DEC-2013.
 	public function parse_config($config, $force_return_config_chain = FALSE)
 	{
