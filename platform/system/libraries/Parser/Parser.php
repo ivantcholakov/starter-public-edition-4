@@ -258,7 +258,7 @@ class CI_Parser extends CI_Driver_Library {
 	}
 
 	// Added by Ivan Tcholakov, 12-JAN-2016.
-	public function get_file_extensions($parser_name = null)
+	public function & get_file_extensions($parser_name = null)
 	{
 		static $extensions = null;
 
@@ -309,6 +309,15 @@ class CI_Parser extends CI_Driver_Library {
 	}
 
 	// Added by Ivan Tcholakov, 12-JAN-2016.
+	public function has_file_extension($parser_name)
+	{
+		$parser_name = (string) $parser_name;
+		$all_extensions = & $this->get_file_extensions();
+
+		return !empty($all_extensions[$parser_name]);
+	}
+
+	// Added by Ivan Tcholakov, 12-JAN-2016.
 	public function detect($file_name)
 	{
 		$file_name = (string) $file_name;
@@ -341,14 +350,14 @@ class CI_Parser extends CI_Driver_Library {
 	}
 
 	// Added by Ivan Tcholakov, 12-JAN-2016.
-	protected function & get_parsers_by_file_extensions()
+	public function & get_parsers_by_file_extensions()
 	{
 		static $result = null;
 
 		if ($result === null)
 		{
 			$result = array();
-			$all_extensions = $this->get_file_extensions();
+			$all_extensions = & $this->get_file_extensions();
 
 			foreach ($all_extensions as $parser_name => $extensions)
 			{
