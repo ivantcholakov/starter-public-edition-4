@@ -26,7 +26,7 @@ if (!function_exists('template_title')) {
 
             echo
 '
-    <title>'.htmlspecialchars(strip_tags($data['template']['title']), ENT_QUOTES, $charset).'</title>';
+    <title>'.$data['template']['title'].'</title>';
         }
     }
 
