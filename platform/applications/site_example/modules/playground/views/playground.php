@@ -40,6 +40,7 @@
 
                     <h3 class="list-group-item">Feature Tests</h3>
                     <a class="list-group-item" href="<?php echo site_url('playground/captcha'); ?>">Captcha Test</a>
+                    <a class="list-group-item" href="<?php echo site_url('playground/parser-test'); ?>">CodeIgniter's Parser Test</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/mustache'); ?>">Mustache Parser Test</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/textile'); ?>">Textile Parser Test</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/scss'); ?>">SCSS Compiler Test</a>
