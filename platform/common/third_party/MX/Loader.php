@@ -922,7 +922,7 @@ class MX_Loader extends CI_Loader
         if (!empty($_ci_parsers)) {
 
             CI::$APP->load->parser();
-            $_ci_parsers = CI::$APP->parser->parse_config($_ci_parsers, TRUE);
+            $_ci_parsers = CI::$APP->parser->parse_options($_ci_parsers, TRUE);
 
         } else {
 
@@ -961,7 +961,7 @@ class MX_Loader extends CI_Loader
             foreach ($_ci_parsers as $_ci_parser)
             {
                 CI::$APP->load->parser($_ci_parser['parser']);
-                $_ci_template_content = CI::$APP->{$_ci_parser['parser']}->parse_string($_ci_template_content, $_ci_vars, true, $_ci_parser['config']);
+                $_ci_template_content = CI::$APP->{$_ci_parser['parser']}->parse_string($_ci_template_content, $_ci_vars, true, $_ci_parser['options']);
             }
 
             echo $_ci_template_content;

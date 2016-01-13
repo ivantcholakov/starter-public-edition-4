@@ -158,11 +158,11 @@ class CI_Parser extends CI_Driver_Library {
 		// Added by Ivan Tcholakov, 28-DEC-2013.
 		// Processing an alternative chain of drivers.
 
-		if ($this->_detect_config_chain($options))
+		if ($this->is_parser_chain($options))
 		{
 			$CI = &get_instance();
 
-			$options = $this->parse_config($options);
+			$options = $this->parse_options($options);
 
 			if (!empty($options))
 			{
@@ -174,11 +174,11 @@ class CI_Parser extends CI_Driver_Library {
 
 					if ($i == 0)
 					{
-						$template = $CI->{$driver['parser']}->parse($template, $data, true, $driver['config']);
+						$template = $CI->{$driver['parser']}->parse($template, $data, true, $driver['options']);
 					}
 					else
 					{
-						$template = $CI->{$driver['parser']}->parse_string($template, $data, true, $driver['config']);
+						$template = $CI->{$driver['parser']}->parse_string($template, $data, true, $driver['options']);
 					}
 
 					$i++;
@@ -224,18 +224,18 @@ class CI_Parser extends CI_Driver_Library {
 		// Added by Ivan Tcholakov, 28-DEC-2013.
 		// Processing an alternative chain of drivers.
 
-		if ($this->_detect_config_chain($options))
+		if ($this->is_parser_chain($options))
 		{
 			$CI = &get_instance();
 
-			$options = $this->parse_config($options);
+			$options = $this->parse_options($options);
 
 			if (!empty($options))
 			{
 				foreach ($options as $driver)
 				{
 					$CI->load->parser($driver['parser']);
-					$template = $CI->{$driver['parser']}->parse_string($template, $data, true, $driver['config']);
+					$template = $CI->{$driver['parser']}->parse_string($template, $data, true, $driver['options']);
 				}
 
 				$is_mx = false;
@@ -257,168 +257,56 @@ class CI_Parser extends CI_Driver_Library {
 		//
 	}
 
-	// Added by Ivan Tcholakov, 12-JAN-2016.
-	public function & get_file_extensions($parser_name = null)
-	{
-		static $extensions = null;
-
-		if ($extensions === null)
-		{
-			$extensions = array();
-
-			$CI = & get_instance();
-
-			if ($CI->config->load('parser', TRUE, TRUE))
-			{
-				$config = $CI->config->item('parser');
-			}
-			else
-			{
-				$config = array();
-			}
-
-			if (!empty($config['parser_file_extensions']) && is_array($config['parser_file_extensions']))
-			{
-				foreach ($config['parser_file_extensions'] as $key => $value)
-				{
-					if (!is_array($value))
-					{
-						$value = (array) $value;
-					}
-
-					foreach ($value as & $item)
-					{
-						$item = '.'.$item;
-					}
-
-					unset($item);
-
-					$extensions[$key] = $value;
-				}
-			}
-		}
-
-		$parser_name = (string) $parser_name;
-
-		if ($parser_name == '')
-		{
-			return $extensions;
-		}
-
-		return isset($extensions[$parser_name]) ? $extensions[$parser_name] : array();
-	}
-
-	// Added by Ivan Tcholakov, 12-JAN-2016.
-	public function has_file_extension($parser_name)
-	{
-		$parser_name = (string) $parser_name;
-		$all_extensions = & $this->get_file_extensions();
-
-		return !empty($all_extensions[$parser_name]);
-	}
-
-	// Added by Ivan Tcholakov, 12-JAN-2016.
-	public function detect($file_name)
-	{
-		$file_name = (string) $file_name;
-
-		$qpos = strpos($file_name, '?');
-
-		if ($qpos !== false) {
-
-			// Eliminate query string.
-			$file_name = substr($file_name, 0, $qpos);
-		}
-
-		$parsers = & $this->get_parsers_by_file_extensions();
-
-		// Test whether a pure extension was given.
-		if (isset($parsers[$file_name]))
-		{
-			return $parsers[$file_name];
-		}
-
-		foreach ($parsers as $key => $value)
-		{
-			if (preg_match('/.*'.preg_quote($key).'$/', $file_name))
-			{
-				return $value;
-			}
-		}
-
-		return null;
-	}
-
-	// Added by Ivan Tcholakov, 12-JAN-2016.
-	public function & get_parsers_by_file_extensions()
-	{
-		static $result = null;
-
-		if ($result === null)
-		{
-			$result = array();
-			$all_extensions = & $this->get_file_extensions();
-
-			foreach ($all_extensions as $parser_name => $extensions)
-			{
-				foreach ($extensions as $extension)
-				{
-					$result[$extension] = $parser_name;
-				}
-			}
-		}
-
-		return $result;
-	}
-
 	// Added by Ivan Tcholakov, 28-DEC-2013.
-	public function parse_config($config, $force_return_config_chain = FALSE)
+	// Renamed by Ivan Tcholakov, 16-JAN-2016.
+	public function parse_options($options, $force_return_parser_chain = FALSE)
 	{
-		if (!is_array($config))
+		if (!is_array($options))
 		{
-			$config = (string) $config;
+			$options = (string) $options;
 
-			if ($config != '')
+			if ($options != '')
 			{
-				$config = array($config);
+				$options = array($options);
 			}
 			else
 			{
-				$config = array();
+				$options = array();
 			}
 		}
 
-		if ($force_return_config_chain || $this->_detect_config_chain($config))
+		if ($force_return_parser_chain || $this->is_parser_chain($options))
 		{
-			return $this->_parse_config_chain($config);
+			return $this->get_parser_chain($options);
 		}
 
-		return $config;
+		return $options;
 	}
 
 	// Added by Ivan Tcholakov, 29-DEC-2013.
-	protected function _detect_config_chain($config)
+	// Renamed by Ivan Tcholakov, 16-JAN-2016.
+	public function is_parser_chain($options)
 	{
-		if (!is_array($config))
+		if (!is_array($options))
 		{
-			$config = (string) $config;
+			$options = (string) $options;
 
-			if ($config != '')
+			if ($options != '')
 			{
-				$config = array($config);
+				$options = array($options);
 			}
 			else
 			{
-				$config = array();
+				$options = array();
 			}
 		}
 
-		if (empty($config))
+		if (empty($options))
 		{
 			return false;
 		}
 
-		foreach ($config as $key => $value)
+		foreach ($options as $key => $value)
 		{
 			if (is_string($key))
 			{
@@ -444,19 +332,20 @@ class CI_Parser extends CI_Driver_Library {
 	}
 
 	// Added by Ivan Tcholakov, 29-DEC-2013.
-	protected function _parse_config_chain($config)
+	// Renamed by Ivan Tcholakov, 16-JAN-2016.
+	protected function get_parser_chain($options)
 	{
 		$result = array();
 
-		foreach ($config as $driver => $driver_config)
+		foreach ($options as $driver => $driver_options)
 		{
 			if (is_string($driver))
 			{
-				$result[] = array('parser' => $driver, 'config' => $driver_config);
+				$result[] = array('parser' => $driver, 'options' => $driver_options);
 			}
-			elseif (is_string($driver_config))
+			elseif (is_string($driver_options))
 			{
-				$result[] = array('parser' => $driver_config, 'config' => array());
+				$result[] = array('parser' => $driver_options, 'options' => array());
 			}
 		}
 
@@ -513,6 +402,120 @@ class CI_Parser extends CI_Driver_Library {
 				$ci->output->append_output(ob_get_clean());
 			}
 		}
+	}
+
+	// Added by Ivan Tcholakov, 12-JAN-2016.
+	public function & get_file_extensions($parser_name = null)
+	{
+		static $extensions = null;
+
+		if ($extensions === null)
+		{
+			$extensions = array();
+
+			$CI = & get_instance();
+
+			if ($CI->config->load('parser', TRUE, TRUE))
+			{
+				$config = $CI->config->item('parser');
+			}
+			else
+			{
+				$config = array();
+			}
+
+			if (!empty($config['parser_file_extensions']) && is_array($config['parser_file_extensions']))
+			{
+				foreach ($config['parser_file_extensions'] as $key => $value)
+				{
+					if (!is_array($value))
+					{
+						$value = (array) $value;
+					}
+
+					foreach ($value as & $item)
+					{
+						$item = '.'.$item;
+					}
+
+					unset($item);
+
+					$extensions[$key] = $value;
+				}
+			}
+		}
+
+		$parser_name = (string) $parser_name;
+
+		if ($parser_name == '')
+		{
+			return $extensions;
+		}
+
+		return isset($extensions[$parser_name]) ? $extensions[$parser_name] : array();
+	}
+
+	// Added by Ivan Tcholakov, 12-JAN-2016.
+	public function & get_parsers_by_file_extensions()
+	{
+		static $result = null;
+
+		if ($result === null)
+		{
+			$result = array();
+			$all_extensions = & $this->get_file_extensions();
+
+			foreach ($all_extensions as $parser_name => $extensions)
+			{
+				foreach ($extensions as $extension)
+				{
+					$result[$extension] = $parser_name;
+				}
+			}
+		}
+
+		return $result;
+	}
+
+	// Added by Ivan Tcholakov, 12-JAN-2016.
+	public function has_file_extension($parser_name)
+	{
+		$parser_name = (string) $parser_name;
+		$all_extensions = & $this->get_file_extensions();
+
+		return !empty($all_extensions[$parser_name]);
+	}
+
+	// Added by Ivan Tcholakov, 12-JAN-2016.
+	public function detect($file_name)
+	{
+		$file_name = (string) $file_name;
+
+		$qpos = strpos($file_name, '?');
+
+		if ($qpos !== false) {
+
+			// Eliminate query string.
+			$file_name = substr($file_name, 0, $qpos);
+		}
+
+		$parsers = & $this->get_parsers_by_file_extensions();
+
+		// Test whether a pure extension was given.
+		if (isset($parsers[$file_name]))
+		{
+			return $parsers[$file_name];
+		}
+
+		foreach ($parsers as $key => $value)
+		{
+			if (preg_match('/.*'.preg_quote($key).'$/', $file_name))
+			{
+				return $value;
+			}
+		}
+
+		return null;
 	}
 
 	/**
