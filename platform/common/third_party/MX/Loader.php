@@ -750,14 +750,20 @@ class MX_Loader extends CI_Loader
             $view = $_view;
         }
 
-        // Modified by Ivan Tcholakov, 12-DEC-2013, 27-DEC-2013.
+        // Modified by Ivan Tcholakov, 12-DEC-2013, 27-DEC-2013, 14-JAN-2016..
         // See https://github.com/EllisLab/CodeIgniter/issues/2165
+        // See also https://github.com/bcit-ci/CodeIgniter/issues/4379
         //return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
-        if ($return) {
-            return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return, '_ci_parsers' => $parsers));
+
+        if (is_object($vars)) {
+            $vars = get_object_vars($vars);
         }
 
-        $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return, '_ci_parsers' => $parsers));
+        if ($return) {
+            return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $vars, '_ci_return' => $return, '_ci_parsers' => $parsers));
+        }
+
+        $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $vars, '_ci_return' => $return, '_ci_parsers' => $parsers));
 
         return $this;
         //
@@ -801,6 +807,33 @@ class MX_Loader extends CI_Loader
         }
 
         return $this->library($library, $params, $object_name);
+    }
+
+    public function vars($vars, $val = '')
+    {
+        if (is_string($vars))
+        {
+            $vars = array($vars => $val);
+        }
+
+        // Modified by Ivan Tcholakov, 14-JAN-2016.
+        // See https://github.com/bcit-ci/CodeIgniter/issues/4379
+        //$vars = $this->_ci_object_to_array($vars);
+        if (is_object($vars))
+        {
+            $vars = get_object_vars($vars);
+        }
+        //
+
+        if (is_array($vars) && count($vars) > 0)
+        {
+            foreach ($vars as $key => $val)
+            {
+                $this->_ci_cached_vars[$key] = $val;
+            }
+        }
+
+        return $this;
     }
 
     public function parser($driver = '', $params = NULL, $object_name = NULL)
