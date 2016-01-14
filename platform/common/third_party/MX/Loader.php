@@ -981,18 +981,32 @@ class MX_Loader extends CI_Loader
                 $_ci_vars = array();
             }
 
-            ob_start();
+            $_ci_parser = array_shift($_ci_parsers);
 
-            if (!is_php('5.4') && ! ini_get('short_open_tag') && CI::$APP->config->item('rewrite_short_tags') === TRUE) {
-                echo eval('?>'.preg_replace("/;*\s*\?>/", "; ?>", str_replace('<?=', '<?php echo ', file_get_contents($_ci_path))));
+            if (CI::$APP->parser->has_file_extension($_ci_parser['parser'])) {
+
+                CI::$APP->load->parser($_ci_parser['parser']);
+                $_ci_parser['options']['full_path'] = true;
+                $_ci_template_content = CI::$APP->{$_ci_parser['parser']}->parse($_ci_path, $_ci_vars, true, $_ci_parser['options']);
+
             } else {
-                include($_ci_path);
+
+                ob_start();
+
+                if (!is_php('5.4') && ! ini_get('short_open_tag') && CI::$APP->config->item('rewrite_short_tags') === TRUE) {
+                    echo eval('?>'.preg_replace("/;*\s*\?>/", "; ?>", str_replace('<?=', '<?php echo ', file_get_contents($_ci_path))));
+                } else {
+                    include($_ci_path);
+                }
+
+                $_ci_template_content = ob_get_clean();
+
+                CI::$APP->load->parser($_ci_parser['parser']);
+                $_ci_template_content = CI::$APP->{$_ci_parser['parser']}->parse_string($_ci_template_content, $_ci_vars, true, $_ci_parser['options']);
             }
 
-            $_ci_template_content = ob_get_clean();
+            foreach ($_ci_parsers as $_ci_parser) {
 
-            foreach ($_ci_parsers as $_ci_parser)
-            {
                 CI::$APP->load->parser($_ci_parser['parser']);
                 $_ci_template_content = CI::$APP->{$_ci_parser['parser']}->parse_string($_ci_template_content, $_ci_vars, true, $_ci_parser['options']);
             }
