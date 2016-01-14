@@ -17,7 +17,7 @@
 
                 <div class="row">
 
-                    <div class="col-md-6">
+                    <div class="col-md-3">
 
                         <h3>Test 1</h3>
 
@@ -40,11 +40,27 @@
 
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-3">
 
                         <h3>Test 2</h3>
 
                         {parsed_result_2}
+
+                    </div>
+
+                    <div class="col-md-3">
+
+                        <h3>Test 3</h3>
+
+                        {parsed_result_3}
+
+                    </div>
+
+                    <div class="col-md-3">
+
+                        <h3>Test 4</h3>
+
+                        {parsed_result_4}
 
                     </div>
 

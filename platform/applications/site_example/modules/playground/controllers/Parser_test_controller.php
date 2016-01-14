@@ -23,14 +23,21 @@ class Parser_test_controller extends Base_Controller {
     public function index() {
 
         $data = $this->_get_data();
-        $parsed_template = $this->_get_template();
+        $parsed_template_view_name = 'countries.parser.php';
+
+        $parsed_template = $this->load->view('countries.parser.php', null, true);
+        $parsed_template_path = $this->load->path('countries.parser.php');
 
         $parsed_result_2 = $this->parser->parse_string($parsed_template, $data, true);
+        $parsed_result_3 = $this->parser->parse($parsed_template_view_name, $data, true);
+        $parsed_result_4 = $this->parser->parse($parsed_template_path, $data, true, array('parser' => array('full_path' => true)));
 
         $this->template
             ->set('BASE_URI', BASE_URI)
             ->set('data', $data['data'])
             ->set('parsed_result_2', $parsed_result_2)
+            ->set('parsed_result_3', $parsed_result_3)
+            ->set('parsed_result_4', $parsed_result_4)
             ->enable_parser_body('parser')
             ->build('parser_test');
     }
@@ -53,11 +60,6 @@ class Parser_test_controller extends Base_Controller {
         );
 
         return $data;
-    }
-
-    protected function _get_template() {
-
-        return $this->load->view('countries.parser.php', null, true);
     }
 
 }

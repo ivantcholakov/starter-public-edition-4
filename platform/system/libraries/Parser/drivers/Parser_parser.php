@@ -67,7 +67,9 @@ class CI_Parser_parser extends CI_Parser_driver {
 	 *
 	 * @var object
 	 */
-	protected $CI;
+	protected $ci;
+
+	protected $config;
 
 	// --------------------------------------------------------------------
 
@@ -78,7 +80,36 @@ class CI_Parser_parser extends CI_Parser_driver {
 	 */
 	public function __construct()
 	{
-		$this->CI =& get_instance();
+		$this->ci =& get_instance();
+
+		// Default configuration options.
+
+		$this->config = array(
+			'l_delim' => '{',
+			'r_delim' => '}',
+			'full_path' => FALSE,
+		);
+
+		if ($this->ci->config->load('parser_parser', TRUE, TRUE))
+		{
+			$this->config = array_merge($this->config, $this->ci->config->item('parser_parser'));
+		}
+
+		// Injecting configuration options directly.
+
+		if (isset($this->_parent) && !empty($this->_parent->params) && is_array($this->_parent->params))
+		{
+			$this->config = array_merge($this->config, $this->_parent->params);
+
+			if (array_key_exists('parser_driver', $this->config))
+			{
+				unset($this->config['parser_driver']);
+			}
+		}
+
+		$this->set_delimiters($this->config['l_delim'], $this->config['r_delim']);
+
+		log_message('info', 'CI_Parser_parser Class Initialized');
 	}
 
 	// --------------------------------------------------------------------
@@ -94,36 +125,42 @@ class CI_Parser_parser extends CI_Parser_driver {
 	 * @param	bool
 	 * @return	string
 	 */
-	// Modified by Ivan Tcholakov, 27-DEC-2013.
-	//public function parse($template, $data = array(), $return = FALSE)
+	// Modified by Ivan Tcholakov, 27-DEC-2013, JAN-2016.
 	public function parse($template, $data = array(), $return = FALSE, $options = array())
-	//
 	{
 		if (!is_array($data))
 		{
 			$data = array();
 		}
 
-		// Adaptation for HMVC by wiredesignz.
-		//$template = $this->CI->load->view($template, $data, TRUE);
-
-		$ci = $this->CI;
-
-		foreach (debug_backtrace() as $item) {
-			$object = isset($item['object']) ? $item['object'] : null;
-			if (is_object($object) && @ is_a($object, 'MX_Controller')) {
-				$ci = $object;
-				break;
-			}
+		if (!is_array($options))
+		{
+			$options = array();
 		}
 
-		$template = $ci->load->view($template, $data, TRUE);
-		//
+		$options = array_merge($this->config, $options);
 
-		// Modified by Ivan Tcholakov, 27-DEC-2013.
-		//return $this->_parse($template, $data, $return);
+		$ci = $this->ci;
+		$is_mx = false;
+
+		if (!$return || !$options['full_path'])
+		{
+			list($ci, $is_mx) = $this->detect_mx();
+		}
+
+		if ($options['full_path'])
+		{
+			$template = $ci->load->_ci_load(array('_ci_vars' => $data, '_ci_return' => true, '_ci_path' => $template));
+		}
+		else
+		{
+			$template = $ci->load->view($template, $data, true);
+		}
+
+		$options['ci'] = $ci;
+		$options['is_mx'] = $is_mx;
+
 		return $this->_parse($template, $data, $return, $options);
-		//
 	}
 
 	// --------------------------------------------------------------------
@@ -139,20 +176,33 @@ class CI_Parser_parser extends CI_Parser_driver {
 	 * @param	bool
 	 * @return	string
 	 */
-	// Modified by Ivan Tcholakov, 27-DEC-2013.
-	// Modified by Ivan Tcholakov, 27-DEC-2013.
+	// Modified by Ivan Tcholakov, 27-DEC-2013, JAN-2016.
 	public function parse_string($template, $data = array(), $return = FALSE, $options = array())
-	// Modified by Ivan Tcholakov, 27-DEC-2013.
 	{
 		if (!is_array($data))
 		{
 			$data = array();
 		}
 
-		// Modified by Ivan Tcholakov, 27-DEC-2013.
-		//return $this->_parse($template, $data, $return);
+		if (!is_array($options))
+		{
+			$options = array();
+		}
+
+		$options = array_merge($this->config, $options);
+
+		$ci = $this->ci;
+		$is_mx = false;
+
+		if (!$return)
+		{
+			list($ci, $is_mx) = $this->detect_mx();
+		}
+
+		$options['ci'] = $ci;
+		$options['is_mx'] = $is_mx;
+
 		return $this->_parse($template, $data, $return, $options);
-		//
 	}
 
 	// --------------------------------------------------------------------
@@ -168,11 +218,14 @@ class CI_Parser_parser extends CI_Parser_driver {
 	 * @param	bool
 	 * @return	string
 	 */
-	// Modified by Ivan Tcholakov, 27-DEC-2013.
-	//protected function _parse($template, $data, $return = FALSE)
+	// Modified by Ivan Tcholakov, 27-DEC-2013, JAN-2016.
 	protected function _parse($template, $data, $return = FALSE, $options = array())
-	//
 	{
+		$ci = $options['ci'];
+		$is_mx = $options['is_mx'];
+
+		$this->set_delimiters($options['l_delim'], $options['r_delim']);
+
 		if ($template === '')
 		{
 			return FALSE;
@@ -192,12 +245,7 @@ class CI_Parser_parser extends CI_Parser_driver {
 		unset($data);
 		$template = strtr($template, $replace);
 
-		if ($return === FALSE)
-		{
-			$this->CI->output->append_output($template);
-		}
-
-		return $template;
+		return $this->output($template, $return, $ci, $is_mx);
 	}
 
 	// --------------------------------------------------------------------
