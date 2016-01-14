@@ -59,6 +59,13 @@ template_body();
 
 ?>
         </div>
+<?php
+
+// Added temporarily. TODO: Remove.
+file_partial('test', 'lex.html');
+//
+
+?>
 
     </div>
 
