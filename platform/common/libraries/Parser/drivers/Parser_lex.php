@@ -74,8 +74,17 @@ class CI_Parser_lex extends CI_Parser_driver {
         }
 
         $options = array_merge($this->config, $options);
-
         $options['cumulative_noparse'] = !empty($options['cumulative_noparse']);
+
+        if (is_object($data))
+        {
+            $data = get_object_vars($data);
+        }
+
+        if (!is_array($data))
+        {
+            $data = array();
+        }
 
         $ci = $this->ci;
         $is_mx = false;
@@ -129,8 +138,17 @@ class CI_Parser_lex extends CI_Parser_driver {
         }
 
         $options = array_merge($this->config, $options);
-
         $options['cumulative_noparse'] = !empty($options['cumulative_noparse']);
+
+        if (is_object($data))
+        {
+            $data = get_object_vars($data);
+        }
+
+        if (!is_array($data))
+        {
+            $data = array();
+        }
 
         $ci = $this->ci;
         $is_mx = false;

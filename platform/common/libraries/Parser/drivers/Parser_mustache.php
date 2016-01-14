@@ -71,6 +71,11 @@ class CI_Parser_mustache extends CI_Parser_driver {
 
         $options['charset'] = strtoupper($options['charset']);
 
+        if (is_object($data))
+        {
+            $data = get_object_vars($data);
+        }
+
         if (!is_array($data))
         {
             $data = array();
@@ -117,6 +122,11 @@ class CI_Parser_mustache extends CI_Parser_driver {
         }
 
         $options['charset'] = strtoupper($options['charset']);
+
+        if (is_object($data))
+        {
+            $data = get_object_vars($data);
+        }
 
         if (!is_array($data))
         {

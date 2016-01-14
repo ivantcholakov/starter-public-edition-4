@@ -128,17 +128,22 @@ class CI_Parser_parser extends CI_Parser_driver {
 	// Modified by Ivan Tcholakov, 27-DEC-2013, JAN-2016.
 	public function parse($template, $data = array(), $return = FALSE, $options = array())
 	{
-		if (!is_array($data))
-		{
-			$data = array();
-		}
-
 		if (!is_array($options))
 		{
 			$options = array();
 		}
 
 		$options = array_merge($this->config, $options);
+
+		if (is_object($data))
+		{
+			$data = get_object_vars($data);
+		}
+
+		if (!is_array($data))
+		{
+			$data = array();
+		}
 
 		$ci = $this->ci;
 		$is_mx = false;
@@ -179,17 +184,22 @@ class CI_Parser_parser extends CI_Parser_driver {
 	// Modified by Ivan Tcholakov, 27-DEC-2013, JAN-2016.
 	public function parse_string($template, $data = array(), $return = FALSE, $options = array())
 	{
-		if (!is_array($data))
-		{
-			$data = array();
-		}
-
 		if (!is_array($options))
 		{
 			$options = array();
 		}
 
 		$options = array_merge($this->config, $options);
+
+		if (is_object($data))
+		{
+			$data = get_object_vars($data);
+		}
+
+		if (!is_array($data))
+		{
+			$data = array();
+		}
 
 		$ci = $this->ci;
 		$is_mx = false;
