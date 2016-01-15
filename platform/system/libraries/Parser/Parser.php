@@ -472,9 +472,18 @@ class CI_Parser extends CI_Driver_Library {
 					$result[$extension] = $parser_name;
 				}
 			}
+
+			// Sort by keys, move the longer extensions to top.
+			// This is for ensuring correct extension detection later.
+			uksort($result, array($this, '_compare_file_extensions'));
 		}
 
 		return $result;
+	}
+
+	protected function _compare_file_extensions($a, $b)
+	{
+		return strlen($b) - strlen($a);
 	}
 
 	// Added by Ivan Tcholakov, 12-JAN-2016.
