@@ -37,6 +37,7 @@ class CI_Parser_scss extends CI_Parser_driver {
             'number_precision' => 5,
             'formatter' => 'expanded',
             'line_number_style' => null,
+            'full_path' => FALSE,
         );
 
         if ($this->ci->config->load('parser_scss', TRUE, TRUE))

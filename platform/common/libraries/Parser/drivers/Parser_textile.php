@@ -28,6 +28,7 @@ class CI_Parser_textile extends CI_Parser_driver {
             'doctype' => 'xhtml',
             'full_path' => FALSE,
             'restricted_mode' => FALSE,
+            'full_path' => FALSE,
         );
 
         if ($this->ci->config->load('parser_textile', TRUE, TRUE))

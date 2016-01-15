@@ -24,6 +24,7 @@ class CI_Parser_smileys extends CI_Parser_driver {
         $this->config = array(
             'image_url' => null,
             'smileys' => null,
+            'full_path' => FALSE,
         );
 
         if ($this->ci->config->load('parser_smileys', TRUE, TRUE))

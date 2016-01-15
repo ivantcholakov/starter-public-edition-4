@@ -24,7 +24,9 @@ class CI_Parser_jsonmin extends CI_Parser_driver {
 
         // Default configuration options.
 
-        $this->config = array();
+        $this->config = array(
+            'full_path' => FALSE,
+        );
 
         if ($this->ci->config->load('parser_jsonmin', TRUE, TRUE))
         {

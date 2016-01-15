@@ -27,6 +27,7 @@ class CI_Parser_lex extends CI_Parser_driver {
             'cumulative_noparse' => false,
             'scope_glue' => '.',
             'allow_php' => false,
+            'full_path' => false,
         );
 
         if ($this->ci->config->load('parser_lex', TRUE, TRUE))

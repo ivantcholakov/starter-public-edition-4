@@ -19,6 +19,7 @@ class CI_Parser_ts extends CI_Parser_driver {
 
         $this->config = array(
             'options' => array(),
+            'full_path' => FALSE,
         );
 
         if ($this->ci->config->load('parser_ts', TRUE, TRUE))
