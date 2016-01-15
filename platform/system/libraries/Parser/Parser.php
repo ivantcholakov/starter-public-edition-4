@@ -481,6 +481,7 @@ class CI_Parser extends CI_Driver_Library {
 		return $result;
 	}
 
+	// Added by Ivan Tcholakov, 15-JAN-2016.
 	protected function _compare_file_extensions($a, $b)
 	{
 		return strlen($b) - strlen($a);
@@ -526,6 +527,58 @@ class CI_Parser extends CI_Driver_Library {
 				$detected_extension = $matches[1];
 
 				return $value;
+			}
+		}
+
+		return null;
+	}
+
+	// Added by Ivan Tcholakov, 15-JAN-2016.
+	public function find_file($file_name, & $detected_parser, & $detected_extension = null)
+	{
+		$file_name = (string) $file_name;
+		$detected_parser = null;
+		$detected_extension = null;
+
+		if (is_file($file_name))
+		{
+			$detected_parser = detect($file_name, $detected_extension);
+
+			if ($detected_parser == '')
+			{
+				$detected_extension = pathinfo($file_name, PATHINFO_EXTENSION);
+			}
+
+			return $file_name;
+		}
+
+		$ext = pathinfo($file_name, PATHINFO_EXTENSION);
+		$file_name = pathinfo($file_name, PATHINFO_FILENAME);
+
+		if ($ext === null)
+		{
+			$parsers = & $this->get_parsers_by_file_extensions();
+
+			foreach ($parsers as $key => $value)
+			{
+				$f = $file_name.'.'.$key;
+
+				if (is_file($f))
+				{
+					$detected_parser = $value;
+					$detected_extension = $key;
+
+					return $f;
+				}
+			}
+
+			$f = $file_name.'.php';
+
+			if (is_file($f))
+			{
+				$detected_extension = 'php';
+
+				return $f;
 			}
 		}
 
