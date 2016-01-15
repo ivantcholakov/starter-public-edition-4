@@ -83,7 +83,14 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         if (!is_array($data))
         {
-            $data = array();
+            if (empty($data))
+            {
+                $data = array();
+            }
+            else
+            {
+                $data = (array) $data;
+            }
         }
 
         $ci = $this->ci;
@@ -103,18 +110,6 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         $parser->scopeGlue($options['scope_glue']);
         $parser->cumulativeNoparse($options['cumulative_noparse']);
-
-        if (!is_array($data))
-        {
-            if (empty($data))
-            {
-                $data = array();
-            }
-            else
-            {
-                $data = (array) $data;
-            }
-        }
 
         $data = array_merge($data, $ci->load->_ci_cached_vars);
 
@@ -147,7 +142,14 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         if (!is_array($data))
         {
-            $data = array();
+            if (empty($data))
+            {
+                $data = array();
+            }
+            else
+            {
+                $data = (array) $data;
+            }
         }
 
         $ci = $this->ci;
@@ -162,18 +164,6 @@ class CI_Parser_lex extends CI_Parser_driver {
 
         $parser->scopeGlue($options['scope_glue']);
         $parser->cumulativeNoparse($options['cumulative_noparse']);
-
-        if (!is_array($data))
-        {
-            if (empty($data))
-            {
-                $data = array();
-            }
-            else
-            {
-                $data = (array) $data;
-            }
-        }
 
         $data = array_merge($data, $ci->load->_ci_cached_vars);
 
