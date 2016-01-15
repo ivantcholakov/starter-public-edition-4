@@ -458,33 +458,23 @@ class CI_Parser extends CI_Driver_Library {
 	// Added by Ivan Tcholakov, 12-JAN-2016.
 	public function & get_parsers_by_file_extensions()
 	{
-		static $result = null;
+		static $parsers = null;
 
-		if ($result === null)
+		if ($parsers === null)
 		{
-			$result = array();
+			$parsers = array();
 			$all_extensions = & $this->get_file_extensions();
 
 			foreach ($all_extensions as $parser_name => $extensions)
 			{
 				foreach ($extensions as $extension)
 				{
-					$result[$extension] = $parser_name;
+					$parsers[$extension] = $parser_name;
 				}
 			}
-
-			// Sort by keys, move the longer extensions to top.
-			// This is for ensuring correct extension detection later.
-			uksort($result, array($this, '_compare_file_extensions'));
 		}
 
-		return $result;
-	}
-
-	// Added by Ivan Tcholakov, 15-JAN-2016.
-	protected function _compare_file_extensions($a, $b)
-	{
-		return strlen($b) - strlen($a);
+		return $parsers;
 	}
 
 	// Added by Ivan Tcholakov, 12-JAN-2016.
@@ -499,6 +489,18 @@ class CI_Parser extends CI_Driver_Library {
 	// Added by Ivan Tcholakov, 12-JAN-2016.
 	public function detect($file_name, & $detected_extension = null)
 	{
+		static $parsers = null;
+
+		if ($parsers === null)
+		{
+			// Assign by value, this is a separate array.
+			$parsers = $this->get_parsers_by_file_extensions();
+
+			// Sort by keys, move the longer extensions to top.
+			// This is for ensuring correct extension detection.
+			uksort($parsers, array($this, '_compare_file_extensions'));
+		}
+
 		$file_name = (string) $file_name;
 		$detected_extension = null;
 
@@ -509,8 +511,6 @@ class CI_Parser extends CI_Driver_Library {
 			// Eliminate query string.
 			$file_name = substr($file_name, 0, $qpos);
 		}
-
-		$parsers = & $this->get_parsers_by_file_extensions();
 
 		// Test whether a pure extension was given.
 		if (isset($parsers[$file_name]))
@@ -531,6 +531,12 @@ class CI_Parser extends CI_Driver_Library {
 		}
 
 		return null;
+	}
+
+	// Added by Ivan Tcholakov, 15-JAN-2016.
+	protected function _compare_file_extensions($a, $b)
+	{
+		return strlen($b) - strlen($a);
 	}
 
 	// Added by Ivan Tcholakov, 15-JAN-2016.
