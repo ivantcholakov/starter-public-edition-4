@@ -435,7 +435,7 @@ class CI_Parser extends CI_Driver_Library {
 
 					foreach ($value as & $item)
 					{
-						$item = '.'.$item;
+						$item = ltrim($item, '.');
 					}
 
 					unset($item);
@@ -521,7 +521,7 @@ class CI_Parser extends CI_Driver_Library {
 
 		foreach ($parsers as $key => $value)
 		{
-			if (preg_match('/.*('.preg_quote($key).')$/', $file_name, $matches))
+			if (preg_match('/.*\.('.preg_quote($key).')$/', $file_name, $matches))
 			{
 				$detected_extension = $matches[1];
 
