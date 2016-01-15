@@ -487,9 +487,10 @@ class CI_Parser extends CI_Driver_Library {
 	}
 
 	// Added by Ivan Tcholakov, 12-JAN-2016.
-	public function detect($file_name)
+	public function detect($file_name, & $detected_extension = null)
 	{
 		$file_name = (string) $file_name;
+		$detected_extension = null;
 
 		$qpos = strpos($file_name, '?');
 
@@ -504,13 +505,17 @@ class CI_Parser extends CI_Driver_Library {
 		// Test whether a pure extension was given.
 		if (isset($parsers[$file_name]))
 		{
+			$detected_extension = $file_name;
+
 			return $parsers[$file_name];
 		}
 
 		foreach ($parsers as $key => $value)
 		{
-			if (preg_match('/.*'.preg_quote($key).'$/', $file_name))
+			if (preg_match('/.*('.preg_quote($key).')$/', $file_name, $matches))
 			{
+				$detected_extension = $matches[1];
+
 				return $value;
 			}
 		}
