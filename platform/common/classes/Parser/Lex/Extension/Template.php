@@ -10,6 +10,11 @@ class Parser_Lex_Extension_Template extends Parser_Lex_Extension {
     public function __construct() {
 
         parent::__construct();
+
+        $this->load
+            ->library('template')
+            ->helper('template')
+        ;
     }
 
     public function __call($name, $arguments) {
@@ -20,6 +25,15 @@ class Parser_Lex_Extension_Template extends Parser_Lex_Extension {
         );
 
         return isset($template_data[$name]) ? $template_data[$name] : null;
+    }
+
+    public function file_partial() {
+
+        ob_start();
+
+        file_partial($this->get_attribute(0));
+
+        return ob_get_clean();
     }
 
 }
