@@ -62,7 +62,7 @@ template_body();
 <?php
 
 // Added temporarily. TODO: Remove.
-file_partial('test', 'lex.html');
+file_partial('test');
 //
 
 ?>

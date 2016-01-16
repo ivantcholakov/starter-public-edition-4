@@ -559,9 +559,8 @@ class CI_Parser extends CI_Driver_Library {
 		}
 
 		$ext = pathinfo($file_name, PATHINFO_EXTENSION);
-		$file_name = pathinfo($file_name, PATHINFO_FILENAME);
 
-		if ($ext === null)
+		if ($ext == '')
 		{
 			$parsers = & $this->get_parsers_by_file_extensions();
 

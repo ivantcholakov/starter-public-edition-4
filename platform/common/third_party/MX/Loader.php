@@ -945,21 +945,37 @@ class MX_Loader extends CI_Loader
             show_error('Unable to load the requested file: '.$_ci_file);
         }
 
+        CI::$APP->load->parser();
+
+        $_ci_parser = CI::$APP->parser->detect($_ci_path);
+
         if (isset($_ci_vars)) {
             $this->_ci_cached_vars = array_merge($this->_ci_cached_vars, (array) $_ci_vars);
         }
 
         extract($this->_ci_cached_vars);
 
-        // Added by Ivan Tcholakov, 28-DEC-2013.
+        // Added by Ivan Tcholakov, 28-DEC-2013, 16-JAN-2016.
         if (!empty($_ci_parsers)) {
 
-            CI::$APP->load->parser();
             $_ci_parsers = CI::$APP->parser->parse_options($_ci_parsers, TRUE);
+
+            if ($_ci_parser != '' && $_ci_parsers[0]['parser'] != $_ci_parser) {
+
+                if (CI::$APP->parser->has_file_extension($_ci_parsers[0]['parser']) && CI::$APP->parser->has_file_extension($_ci_parser)) {
+                    $_ci_parsers[0] = array('parser' => $_ci_parser, 'options' => array());
+                } else {
+                    array_unshift($_ci_parsers, array('parser' => $_ci_parser, 'options' => array()));
+                }
+            }
 
         } else {
 
             $_ci_parsers = array();
+
+            if ($_ci_parser != '') {
+                $_ci_parsers[] = array('parser' => $_ci_parser, 'options' => array());
+            }
         }
         //
 

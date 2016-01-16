@@ -88,40 +88,38 @@ if (!function_exists('template_partial_exists')) {
 
 if (!function_exists('file_partial')) {
 
-    function file_partial($file, $ext = null) {
+    function file_partial($file) {
 
         $file = (string) $file;
-        $ext = (string) $ext;
-
-        if ($ext == '') {
-            $ext = 'php';
-        }
 
         $data =& ci()->load->_ci_cached_vars;
+
+        $file_found = null;
 
         if (isset($data['template_views'])) {
 
             $base_path = $data['template_views'];
+            $file_found = ci()->parser->find_file($base_path.'partials/'.$file);
+        }
 
-            if (!file_exists($base_path.'partials/'.$file.'.'.$ext)) {
-                $base_path = VIEWPATH;
-            }
-
-        } else {
+        if ($file_found === null) {
 
             $base_path = VIEWPATH;
+            $file_found = ci()->parser->find_file($base_path.'partials/'.$file);
         }
 
-        if (!file_exists($base_path.'partials/'.$file.'.'.$ext)) {
-            $base_path = COMMONPATH.'views/';
+        if ($file_found === null) {
+
+            $base_path = $base_path = COMMONPATH.'views/';
+            $file_found = ci()->parser->find_file($base_path.'partials/'.$file);
         }
 
-        if (!file_exists($base_path.'partials/'.$file.'.'.$ext)) {
+        if ($file_found === null) {
             return;
         }
 
         echo ci()->load->_ci_load(array(
-            '_ci_path' => $base_path.'partials/'.$file.'.'.$ext,
+            '_ci_path' => $file_found,
             '_ci_return' => TRUE
         ));
     }
