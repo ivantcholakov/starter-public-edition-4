@@ -306,8 +306,8 @@ class Modules
                 // Added by Ivan Tcholakov, 16-JAN-2016.
                 if ($base == 'views/') {
 
-                    if (($file_found = CI::$APP->parser->find_file($fullpath.$file, $detected_parser, $detected_extension)) !== null) {
-                        return array($fullpath, pathinfo($file_found, PATHINFO_BASENAME), $detected_parser, $detected_extension);
+                    if (($file_found = CI::$APP->parser->find_file($fullpath.$file)) !== null) {
+                        return array($fullpath, pathinfo($file_found, PATHINFO_BASENAME));
                     }
                 }
                 //
@@ -322,29 +322,29 @@ class Modules
         if ($base == 'views/') {
 
             // Added by Ivan Tcholakov, 16-JAN-2016.
-            if (($file_found = CI::$APP->parser->find_file(APPPATH.$base.$path.$file, $detected_parser, $detected_extension)) !== null) {
-                return array(APPPATH.$base.$path, pathinfo($file_found, PATHINFO_BASENAME), $detected_parser, $detected_extension);
+            if (($file_found = CI::$APP->parser->find_file(APPPATH.$base.$path.$file)) !== null) {
+                return array(APPPATH.$base.$path, pathinfo($file_found, PATHINFO_BASENAME));
             }
             //
 
             if (is_file(APPPATH.$base.$path.$file_ext)) {
-                return array(APPPATH.$base.$path, $file, null, pathinfo($file, PATHINFO_EXTENSION));
+                return array(APPPATH.$base.$path, $file);
             }
 
             // Added by Ivan Tcholakov, 16-JAN-2016.
-            if (($file_found = CI::$APP->parser->find_file(COMMONPATH.$base.$path.$file, $detected_parser, $detected_extension)) !== null) {
-                return array(COMMONPATH.$base.$path, pathinfo($file_found, PATHINFO_BASENAME), $detected_parser, $detected_extension);
+            if (($file_found = CI::$APP->parser->find_file(COMMONPATH.$base.$path.$file)) !== null) {
+                return array(COMMONPATH.$base.$path, pathinfo($file_found, PATHINFO_BASENAME));
             }
             //
 
             // Added by Ivan Tcholakov, 25-JUN-2014.
             if (is_file(COMMONPATH.$base.$path.$file_ext)) {
-                return array(COMMONPATH.$base.$path, $file, null, pathinfo($file, PATHINFO_EXTENSION));
+                return array(COMMONPATH.$base.$path, $file);
             }
             //
 
             if ($fail_gracefully) {
-                return array(FALSE, $file, null, pathinfo($file, PATHINFO_EXTENSION));
+                return array(FALSE, $file);
             }
 
             show_error("Unable to locate the {$base} file: {$path}{$file_ext}");

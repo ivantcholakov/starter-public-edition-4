@@ -540,7 +540,7 @@ class CI_Parser extends CI_Driver_Library {
 	}
 
 	// Added by Ivan Tcholakov, 15-JAN-2016.
-	public function find_file($file_name, & $detected_parser, & $detected_extension = null)
+	public function find_file($file_name, & $detected_parser = null, & $detected_extension = null)
 	{
 		$file_name = (string) $file_name;
 		$detected_parser = null;
