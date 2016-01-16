@@ -61,8 +61,7 @@ class Lex_parser_controller extends Base_Controller {
             ->set('string_markdown', 'Formatted **text**')
             ->set('string_textile', 'Formatted _text_')
             ->set('dangerous_value', 'A dangerous value <script>alert("Hi, I am dangerous.")</script>')
-            ->enable_parser_body('lex')
-            ->build('lex_parser.lex.html');
+            ->build('lex_parser');
     }
 
     protected function _get_country_data() {
