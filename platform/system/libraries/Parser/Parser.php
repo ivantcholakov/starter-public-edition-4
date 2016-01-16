@@ -588,6 +588,8 @@ class CI_Parser extends CI_Driver_Library {
 			}
 		}
 
+                $detected_extension = $ext;
+
 		return null;
 	}
 
