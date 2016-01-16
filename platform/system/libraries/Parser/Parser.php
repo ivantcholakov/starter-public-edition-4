@@ -548,7 +548,7 @@ class CI_Parser extends CI_Driver_Library {
 
 		if (is_file($file_name))
 		{
-			$detected_parser = detect($file_name, $detected_extension);
+			$detected_parser = $this->detect($file_name, $detected_extension);
 
 			if ($detected_parser == '')
 			{
