@@ -487,7 +487,7 @@ class CI_Parser extends CI_Driver_Library {
 	}
 
 	// Added by Ivan Tcholakov, 12-JAN-2016.
-	public function detect($file_name, & $detected_extension = null, & $detected_base_name = null)
+	public function detect($file_name, & $detected_extension = null, & $detected_filename = null)
 	{
 		static $parsers = null;
 
@@ -503,15 +503,7 @@ class CI_Parser extends CI_Driver_Library {
 
 		$file_name = (string) $file_name;
 		$detected_extension = null;
-		$detected_base_name = null;
-
-		$qpos = strpos($file_name, '?');
-
-		if ($qpos !== false) {
-
-			// Eliminate query string.
-			$file_name = substr($file_name, 0, $qpos);
-		}
+		$detected_filename = null;
 
 		// Test whether a pure extension was given.
 		if (isset($parsers[$file_name]))
@@ -523,10 +515,12 @@ class CI_Parser extends CI_Driver_Library {
 
 		foreach ($parsers as $key => $value)
 		{
-			if (preg_match('/(.*)\.('.preg_quote($key).')$/', $file_name, $matches))
+			$k = preg_quote($key);
+
+			if (preg_match('/.*\.('.$k.')$/', $file_name, $matches))
 			{
-				$detected_extension = $matches[2];
-				$detected_base_name = $matches[1];
+				$detected_extension = $matches[1];
+                                $detected_filename = preg_replace('/(.*)\.'.$k.'$/', '$1', pathinfo($file_name, PATHINFO_BASENAME));
 
 				return $value;
 			}
@@ -542,21 +536,21 @@ class CI_Parser extends CI_Driver_Library {
 	}
 
 	// Added by Ivan Tcholakov, 15-JAN-2016.
-	public function find_file($file_name, & $detected_parser = null, & $detected_extension = null, & $detected_base_name = null)
+	public function find_file($file_name, & $detected_parser = null, & $detected_extension = null, & $detected_filename = null)
 	{
 		$file_name = (string) $file_name;
 		$detected_parser = null;
 		$detected_extension = null;
-		$detected_base_name = null;
+		$detected_filename = null;
 
 		if (is_file($file_name))
 		{
-			$detected_parser = $this->detect($file_name, $detected_extension, $detected_base_name);
+			$detected_parser = $this->detect($file_name, $detected_extension, $detected_filename);
 
 			if ($detected_parser == '')
 			{
 				$detected_extension = pathinfo($file_name, PATHINFO_EXTENSION);
-				$detected_base_name = pathinfo($file_name, PATHINFO_BASENAME);
+				$detected_filename = pathinfo($file_name, PATHINFO_FILENAME);
 			}
 
 			return $file_name;
@@ -574,9 +568,7 @@ class CI_Parser extends CI_Driver_Library {
 
 				if (is_file($f))
 				{
-					$detected_parser = $value;
-					$detected_extension = $key;
-					$detected_base_name = $file_name;
+					$detected_parser = $this->detect($f, $detected_extension, $detected_filename);
 
 					return $f;
 				}
@@ -587,14 +579,14 @@ class CI_Parser extends CI_Driver_Library {
 			if (is_file($f))
 			{
 				$detected_extension = 'php';
-				$detected_base_name = $file_name;
+				$detected_filename = $file_name;
 
 				return $f;
 			}
 		}
 
 		$detected_extension = $ext;
-		$detected_base_name = pathinfo($file_name, PATHINFO_BASENAME);
+		$detected_filename = pathinfo($file_name, PATHINFO_FILENAME);
 
 		return null;
 	}
