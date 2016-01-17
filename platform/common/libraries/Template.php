@@ -1004,12 +1004,26 @@ class Template
     public function layout_exists($layout)
     {
         // If there is a theme, check it exists in there
-        if ( ! empty($this->_theme) and in_array($layout, $this->get_theme_layouts())) {
-            return true;
+        if (!empty($this->_theme)) {
+
+            foreach ($this->get_theme_layouts() as $l)
+            {
+                if ($this->layouts_equal($layout, $l))
+                {
+                    return true;
+                }
+            }
         }
 
-        // Otherwise look in the normal places
-        return file_exists($this->_find_view_folder().'layouts/' . $layout . $this->_ext($layout));
+        foreach ($this->get_layouts() as $l)
+        {
+            if ($this->layouts_equal($layout, $l))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 
@@ -1022,7 +1036,26 @@ class Template
      */
     public function layout_is($layout)
     {
-        return $layout === $this->_layout;
+        return layouts_equal($layout, $this->_layout);
+    }
+
+    // Added by Ivan Tcholakov. 18-JAN-2016.
+    protected function layouts_equal($layout_1, $layout_2) {
+
+        if ($layout_1 === $layout_2) {
+
+            return true;
+        }
+
+        $parser_1 = $this->_ci->parser->detect($detected_extension_1, $detected_filename_1);
+        $parser_2 = $this->_ci->parser->detect($detected_extension_2, $detected_filename_2);
+
+        if ($detected_filename_1 === $detected_filename_2) {
+
+            return true;
+        }
+
+        return false;
     }
 
     // find layout files, they could be mobile or web
@@ -1143,10 +1176,6 @@ class Template
         return $title;
     }
 
-    private function _ext($file)
-    {
-        return pathinfo($file, PATHINFO_EXTENSION) ? '' : '.php';
-    }
 
     //--------------------------------------------------------------------------
     // Additional Methods
