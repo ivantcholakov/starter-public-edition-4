@@ -5,9 +5,7 @@
     <br />
     Partial View, Temporary Test
     <br />
-    <?php echo isset($page_title) ? $page_title : ''; ?>
-    <br />
-    <?php echo $template['title']; ?>
+    <?php echo $template['page_title']; ?>
     <br />
     <br />
 
