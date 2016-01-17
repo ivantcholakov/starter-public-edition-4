@@ -62,20 +62,17 @@ class CI_Parser_i18n extends CI_Parser_driver {
         $ci = $this->ci;
         $is_mx = false;
 
-        if (!$return || !$options['full_path'])
+        if (!$return)
         {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
-        if ($options['full_path'])
+        if (!$options['full_path'])
         {
-            // For security reasons don't parse PHP content in this case.
-            $template = $ci->lang->parse_i18n( @ file_get_contents($template));
+            $template = $ci->load->path($template);
         }
-        else
-        {
-            $template = $ci->lang->parse_i18n($ci->load->view($template, $data, TRUE));
-        }
+
+        $template = $ci->lang->parse_i18n( @ file_get_contents($template));
 
         return $this->output($template, $return, $ci, $is_mx);
     }

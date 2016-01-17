@@ -941,13 +941,17 @@ class MX_Loader extends CI_Loader
             }
         }
 
-        if (empty($_ci_path)) {
+        if (empty($_ci_path) && !isset($_ci_template_content)) {
             show_error('Unable to load the requested file: '.$_ci_file);
         }
 
         CI::$APP->load->parser();
 
-        $_ci_parser = CI::$APP->parser->detect($_ci_path);
+        if (!isset($_ci_template_content)) {
+            $_ci_parser = CI::$APP->parser->detect($_ci_path);
+        } else {
+            $_ci_parser = null;
+        }
 
         if (isset($_ci_vars)) {
             $this->_ci_cached_vars = array_merge($this->_ci_cached_vars, (array) $_ci_vars);
@@ -983,15 +987,26 @@ class MX_Loader extends CI_Loader
 
         if (empty($_ci_parsers)) {
 
-            if (!is_php('5.4') && ! ini_get('short_open_tag') && CI::$APP->config->item('rewrite_short_tags') === TRUE) {
-                echo eval('?>'.preg_replace("/;*\s*\?>/", "; ?>", str_replace('<?=', '<?php echo ', file_get_contents($_ci_path))));
+            if (isset($_ci_template_content)) {
+
+                if (!is_php('5.4') && ! ini_get('short_open_tag') && CI::$APP->config->item('rewrite_short_tags') === TRUE) {
+                    echo eval('?>'.preg_replace("/;*\s*\?>/", "; ?>", str_replace('<?=', '<?php echo ', $_ci_template_content)));
+                } else {
+                    echo eval('?>'.$_ci_template_content);
+                }
+
             } else {
-                include($_ci_path);
+
+                if (!is_php('5.4') && ! ini_get('short_open_tag') && CI::$APP->config->item('rewrite_short_tags') === TRUE) {
+                    echo eval('?>'.preg_replace("/;*\s*\?>/", "; ?>", str_replace('<?=', '<?php echo ', file_get_contents($_ci_path))));
+                } else {
+                    include($_ci_path);
+                }
             }
 
         } else {
 
-            // This conditional branch has been added by Ivan Tcholakov, 27-DEC-2013.
+            // This conditional branch has been added by Ivan Tcholakov, 27-DEC-2013, 16-JAN-2016.
 
             if (!isset($_ci_vars)) {
                 $_ci_vars = array();
@@ -1009,10 +1024,21 @@ class MX_Loader extends CI_Loader
 
                 ob_start();
 
-                if (!is_php('5.4') && ! ini_get('short_open_tag') && CI::$APP->config->item('rewrite_short_tags') === TRUE) {
-                    echo eval('?>'.preg_replace("/;*\s*\?>/", "; ?>", str_replace('<?=', '<?php echo ', file_get_contents($_ci_path))));
+                if (isset($_ci_template_content)) {
+
+                    if (!is_php('5.4') && ! ini_get('short_open_tag') && CI::$APP->config->item('rewrite_short_tags') === TRUE) {
+                        echo eval('?>'.preg_replace("/;*\s*\?>/", "; ?>", str_replace('<?=', '<?php echo ', $_ci_template_content)));
+                    } else {
+                        echo eval('?>'.$_ci_template_content);
+                    }
+
                 } else {
-                    include($_ci_path);
+
+                    if (!is_php('5.4') && ! ini_get('short_open_tag') && CI::$APP->config->item('rewrite_short_tags') === TRUE) {
+                        echo eval('?>'.preg_replace("/;*\s*\?>/", "; ?>", str_replace('<?=', '<?php echo ', file_get_contents($_ci_path))));
+                    } else {
+                        include($_ci_path);
+                    }
                 }
 
                 $_ci_template_content = ob_get_clean();
@@ -1030,7 +1056,9 @@ class MX_Loader extends CI_Loader
             echo $_ci_template_content;
         }
 
-        log_message('debug', 'File loaded: '.$_ci_path);
+        if (isset($_ci_path)) {
+            log_message('debug', 'File loaded: '.$_ci_path);
+        }
 
         if ($_ci_return == TRUE) {
             return ob_get_clean();

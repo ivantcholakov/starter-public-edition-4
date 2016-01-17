@@ -148,19 +148,17 @@ class CI_Parser_parser extends CI_Parser_driver {
 		$ci = $this->ci;
 		$is_mx = false;
 
-		if (!$return || !$options['full_path'])
+		if (!$return)
 		{
 			list($ci, $is_mx) = $this->detect_mx();
 		}
 
-		if ($options['full_path'])
+		if (!$options['full_path'])
 		{
-			$template = $ci->load->_ci_load(array('_ci_vars' => $data, '_ci_return' => true, '_ci_path' => $template));
+			$template = $ci->load->path($template);
 		}
-		else
-		{
-			$template = $ci->load->view($template, $data, true);
-		}
+
+		$template = $ci->load->_ci_load(array('_ci_vars' => $data, '_ci_return' => true, '_ci_template_content' => (@ file_get_contents($template))));
 
 		$options['ci'] = $ci;
 		$options['is_mx'] = $is_mx;
