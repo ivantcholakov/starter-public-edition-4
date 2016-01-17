@@ -1065,7 +1065,9 @@ class Template
     {
         // Only bother looking in themes if there is a theme
         if ( ! empty($this->_theme)) {
+
             $location = $this->get_theme_path();
+
             $theme_views = array(
                 $this->get_views_path(true) . 'modules/' . $this->_module . '/' . $view,
                 // This allows build('pages/page') to still overload same as build('page')
@@ -1074,7 +1076,8 @@ class Template
             );
 
             foreach ($theme_views as $theme_view) {
-                if (file_exists($location . $theme_view . $this->_ext($theme_view))) {
+
+                if ($this->_ci->parser->find_file($location.$theme_view) !== null) {
                     return $this->_load_view($theme_view, $this->_data + $data, $parsers, $location);
                 }
             }
