@@ -868,9 +868,15 @@ class Template
     public function get_layouts()
     {
         $layouts = array();
+        $path = $this->_find_view_folder().'layouts/';
 
-        foreach(glob($this->_find_view_folder().'layouts/*.*') as $layout) {
-            $layouts[] = pathinfo($layout, PATHINFO_BASENAME);
+        foreach (glob($path.'*.*') as $layout) {
+
+            $parser = $this->_ci->parser->detect($layout, $detected_extension, $detected_filename);
+
+            if ($detected_filename.'.'.$detected_extension != 'index.html' && ($parser != '' || $detected_extension == 'php')) {
+                $layouts[] = pathinfo($layout, PATHINFO_BASENAME);
+            }
         }
 
         return $layouts;
@@ -926,19 +932,39 @@ class Template
         $layouts = array();
 
         foreach ($this->_theme_locations as $location) {
+
             // Get special web layouts
-            if( is_dir($location.$theme.'/views/web/layouts/') ) {
-                foreach(glob($location.$theme . '/views/web/layouts/*.*') as $layout) {
-                    $layouts[] = pathinfo($layout, PATHINFO_BASENAME);
+            // Ivan, TODO: What are these "special" layouts. Remove them here?
+            $path = $location.$theme.'/views/web/layouts/';
+
+            if (is_dir($path)) {
+
+                foreach (glob($path.'*.*') as $layout) {
+
+                    $parser = $this->_ci->parser->detect($layout, $detected_extension, $detected_filename);
+
+                    if ($detected_filename.'.'.$detected_extension != 'index.html' && ($parser != '' || $detected_extension == 'php')) {
+                        $layouts[] = pathinfo($layout, PATHINFO_BASENAME);
+                    }
                 }
+
                 break;
             }
 
             // So there are no web layouts, assume all layouts are web layouts
-            if(is_dir($location.$theme.'/views/layouts/')) {
-                foreach(glob($location.$theme . '/views/layouts/*.*') as $layout) {
-                    $layouts[] = pathinfo($layout, PATHINFO_BASENAME);
+            $path = $location.$theme.'/views/layouts/';
+
+            if (is_dir($path)) {
+
+                foreach (glob($path.'*.*') as $layout) {
+
+                    $parser = $this->_ci->parser->detect($layout, $detected_extension, $detected_filename);
+
+                    if ($detected_filename.'.'.$detected_extension != 'index.html' && ($parser != '' || $detected_extension == 'php')) {
+                        $layouts[] = pathinfo($layout, PATHINFO_BASENAME);
+                    }
                 }
+
                 break;
             }
         }
