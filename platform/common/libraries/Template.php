@@ -367,14 +367,36 @@ class Template
             //// Modified by Ivan Tcholakov, 27-DEC-2013.
             ////$this->_body = $this->_load_view('layouts/'.$this->_layout, $this->_data, true, $this->_find_view_folder());
             //$this->_body = $this->_load_view('layouts/'.$this->_layout, $this->_data, $this->_parsers, $this->_find_view_folder());
-            ////
-            if (file_exists($this->_find_view_folder().'layouts/'.$this->_layout.$this->_ext($this->_layout))) {
-                $this->_body = $this->_load_view('layouts/'.$this->_layout, $this->_data, $this->_parsers, $this->_find_view_folder());
-            } elseif (file_exists($this->_find_view_folder(true).'layouts/'.$this->_layout.$this->_ext($this->_layout))) {
-                $this->_body = $this->_load_view('layouts/'.$this->_layout, $this->_data, $this->_parsers, $this->_find_view_folder(true));
+            //// Modified by Ivan Tcholakov, 16-JAN-2016.
+            ////if (file_exists($this->_find_view_folder().'layouts/'.$this->_layout.$this->_ext($this->_layout))) {
+            ////    $this->_body = $this->_load_view('layouts/'.$this->_layout, $this->_data, $this->_parsers, $this->_find_view_folder());
+            ////} elseif (file_exists($this->_find_view_folder(true).'layouts/'.$this->_layout.$this->_ext($this->_layout))) {
+            ////    $this->_body = $this->_load_view('layouts/'.$this->_layout, $this->_data, $this->_parsers, $this->_find_view_folder(true));
+            ////} else {
+            ////    // This probably would fail and show the error message.
+            ////    $this->_body = $this->_load_view('layouts/'.$this->_layout, $this->_data, $this->_parsers, $this->_find_view_folder());
+            ////}
+            if (($file = $this->_ci->parser->find_file($this->_find_view_folder().'layouts/'.$this->_layout)) !== null) {
+
+                $this->_body = $this->_ci->load->_ci_load(array(
+                    '_ci_path' => $file,
+                    '_ci_vars' => $this->_data,
+                    '_ci_return' => true,
+                    '_ci_parsers' => $this->_parsers,
+                ));
+
+            } elseif (($file = $this->_ci->parser->find_file($this->_find_view_folder(true).'layouts/'.$this->_layout)) !== null) {
+
+                $this->_body = $this->_ci->load->_ci_load(array(
+                    '_ci_path' => $file,
+                    '_ci_vars' => $this->_data,
+                    '_ci_return' => true,
+                    '_ci_parsers' => $this->_parsers,
+                ));
+
             } else {
-                // This probably would fail and show the error message.
-                $this->_body = $this->_load_view('layouts/'.$this->_layout, $this->_data, $this->_parsers, $this->_find_view_folder());
+
+                show_error('Unable to load the requested layout: '.$this->_layout);
             }
             //
         }
@@ -1077,37 +1099,20 @@ class Template
 
             foreach ($theme_views as $theme_view) {
 
-                if ($this->_ci->parser->find_file($location.$theme_view) !== null) {
-                    return $this->_load_view($theme_view, $this->_data + $data, $parsers, $location);
+                if (($file = $this->_ci->parser->find_file($location.$theme_view)) !== null) {
+
+                    return $this->_ci->load->_ci_load(array(
+                        '_ci_path' => $file,
+                        '_ci_vars' => $this->_data + $data,
+                        '_ci_return' => true,
+                        '_ci_parsers' => $parsers,
+                    ));
                 }
             }
         }
 
         // Not found it yet? Just load, its either in the module or root view
-        return $this->_load_view($view, $this->_data + $data, $parsers);
-    }
-
-    // Modified by Ivan Tcholakov, 28-DEC-2013.
-    //private function _load_view($view, array $data, $parse_view = true, $override_view_path = null)
-    private function _load_view($view, array $data, $parsers = array(), $override_view_path = null)
-    //
-    {
-        // Severe hackery to load views from custom places AND maintain compatibility with Modular Extensions
-        if ($override_view_path !== null) {
-            $content = $this->_ci->load->_ci_load(array(
-                '_ci_path' => $override_view_path.$view.$this->_ext($view),
-                '_ci_vars' => $data,
-                '_ci_return' => true,
-                '_ci_parsers' => $parsers
-            ));
-        }
-
-        // Can just run as usual
-        else {
-            $content = $this->_ci->load->view($view, $data, true, $parsers);
-        }
-
-        return $content;
+        return $this->_ci->load->view($view, $this->_data + $data, true, $parsers);
     }
 
     private function _guess_title()
