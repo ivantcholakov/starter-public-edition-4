@@ -526,6 +526,9 @@ class CI_Parser extends CI_Driver_Library {
 			}
 		}
 
+		$detected_extension = pathinfo($file_name, PATHINFO_EXTENSION);
+		$detected_filename = pathinfo($file_name, PATHINFO_FILENAME);
+
 		return null;
 	}
 
