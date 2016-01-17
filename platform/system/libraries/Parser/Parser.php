@@ -487,7 +487,7 @@ class CI_Parser extends CI_Driver_Library {
 	}
 
 	// Added by Ivan Tcholakov, 12-JAN-2016.
-	public function detect($file_name, & $detected_extension = null)
+	public function detect($file_name, & $detected_extension = null, & $detected_base_name = null)
 	{
 		static $parsers = null;
 
@@ -503,6 +503,7 @@ class CI_Parser extends CI_Driver_Library {
 
 		$file_name = (string) $file_name;
 		$detected_extension = null;
+		$detected_base_name = null;
 
 		$qpos = strpos($file_name, '?');
 
@@ -522,9 +523,10 @@ class CI_Parser extends CI_Driver_Library {
 
 		foreach ($parsers as $key => $value)
 		{
-			if (preg_match('/.*\.('.preg_quote($key).')$/', $file_name, $matches))
+			if (preg_match('/(.*)\.('.preg_quote($key).')$/', $file_name, $matches))
 			{
-				$detected_extension = $matches[1];
+				$detected_extension = $matches[2];
+				$detected_base_name = $matches[1];
 
 				return $value;
 			}
@@ -540,19 +542,21 @@ class CI_Parser extends CI_Driver_Library {
 	}
 
 	// Added by Ivan Tcholakov, 15-JAN-2016.
-	public function find_file($file_name, & $detected_parser = null, & $detected_extension = null)
+	public function find_file($file_name, & $detected_parser = null, & $detected_extension = null, & $detected_base_name = null)
 	{
 		$file_name = (string) $file_name;
 		$detected_parser = null;
 		$detected_extension = null;
+		$detected_base_name = null;
 
 		if (is_file($file_name))
 		{
-			$detected_parser = $this->detect($file_name, $detected_extension);
+			$detected_parser = $this->detect($file_name, $detected_extension, $detected_base_name);
 
 			if ($detected_parser == '')
 			{
 				$detected_extension = pathinfo($file_name, PATHINFO_EXTENSION);
+				$detected_base_name = pathinfo($file_name, PATHINFO_BASENAME);
 			}
 
 			return $file_name;
@@ -572,6 +576,7 @@ class CI_Parser extends CI_Driver_Library {
 				{
 					$detected_parser = $value;
 					$detected_extension = $key;
+					$detected_base_name = $file_name;
 
 					return $f;
 				}
@@ -582,12 +587,14 @@ class CI_Parser extends CI_Driver_Library {
 			if (is_file($f))
 			{
 				$detected_extension = 'php';
+				$detected_base_name = $file_name;
 
 				return $f;
 			}
 		}
 
-                $detected_extension = $ext;
+		$detected_extension = $ext;
+		$detected_base_name = pathinfo($file_name, PATHINFO_BASENAME);
 
 		return null;
 	}

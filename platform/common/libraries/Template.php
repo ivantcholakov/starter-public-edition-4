@@ -85,6 +85,7 @@ class Template
         $this->_ci->load->helper('template');
         $this->_ci->load->helper('html');
         $this->_ci->load->library('user_agent');
+        $this->_ci->load->parser();
 
         if ( ! empty($config)) {
             $this->initialize($config);
