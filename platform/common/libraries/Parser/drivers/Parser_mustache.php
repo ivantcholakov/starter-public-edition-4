@@ -100,9 +100,17 @@ class CI_Parser_mustache extends CI_Parser_driver {
         $base_dir = $path['dirname'];
         $template = $path['basename'];
 
+        $ci->load->parser();
+        $p = $ci->parser->detect($template, $detected_extension, $detected_filename);
+
+        if ($detected_extension == '')
+        {
+            $detected_extension = $options['extension'];
+        }
+
         $parser = new Mustache_Engine($options);
-        $parser->setLoader(new Mustache_Loader_FilesystemLoader($base_dir));
-        $template = $parser->render($template, $data);
+        $parser->setLoader(new Mustache_Loader_FilesystemLoader($base_dir, array('extension' => '.'.$detected_extension)));
+        $template = $parser->render($detected_filename, $data);
 
         return $this->output($template, $return, $ci, $is_mx);
     }
