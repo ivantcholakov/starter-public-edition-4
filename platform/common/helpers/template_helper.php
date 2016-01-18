@@ -86,6 +86,17 @@ if (!function_exists('template_partial_exists')) {
 
 }
 
+if (!function_exists('template_has_partial')) {
+
+    // Added by Ivan Tcholakov, 19-JAN-2016.
+    // An alias of template_partial_exists()
+    function template_has_partial($name) {
+
+        return template_partial_exists($name);
+    }
+
+}
+
 if (!function_exists('file_partial')) {
 
     function file_partial($file) {

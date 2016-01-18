@@ -45,4 +45,9 @@ class Parser_Lex_Extension_Template extends Parser_Lex_Extension {
         return ob_get_clean();
     }
 
+    public function has_partial() {
+
+        return template_has_partial($this->get_attribute(0));
+    }
+
 }
