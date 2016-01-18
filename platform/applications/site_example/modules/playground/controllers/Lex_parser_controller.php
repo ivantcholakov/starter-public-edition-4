@@ -61,6 +61,7 @@ class Lex_parser_controller extends Base_Controller {
             ->set('string_markdown', 'Formatted **text**')
             ->set('string_textile', 'Formatted _text_')
             ->set('dangerous_value', 'A dangerous value <script>alert("Hi, I am dangerous.")</script>')
+            ->set_partial('lex_partial', 'lex_partial')
             ->build('lex_parser');
     }
 

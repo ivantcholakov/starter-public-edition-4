@@ -1,6 +1,6 @@
 
 {{#
-Author: Ivan Tcholakov, ivantcholakov@gmail.com, 2015
+Author: Ivan Tcholakov, ivantcholakov@gmail.com, 2015 - 2016
 License: The MIT License, http://opensource.org/licenses/MIT
 #}}
 
@@ -1969,7 +1969,7 @@ document.write("Hello World!");
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ <strong>template:title }} &lt;!-- no tags, HTML escaped --&gt;{{ /noparse }}</code></pre>
+<pre><code>{{ noparse }}{{ <strong>template:title</strong> }} &lt;!-- no tags, HTML escaped --&gt;{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
 {{ template:title }} <!-- no tags, HTML escaped -->
@@ -1978,7 +1978,7 @@ document.write("Hello World!");
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ <strong>template:page_title }}{{ /noparse }}</code></pre>
+<pre><code>{{ noparse }}{{ <strong>template:page_title</strong> }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
 {{ template:page_title }}
@@ -1987,7 +1987,16 @@ document.write("Hello World!");
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ <strong>template:file_partial file="test" }}{{ /noparse }}</code></pre>
+<pre><code>{{ noparse }}{{ <strong>template:partial</strong> name="lex_partial" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ template:partial name="lex_partial" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>template:file_partial</strong> file="test" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
 {{ template:file_partial file="test" }}
