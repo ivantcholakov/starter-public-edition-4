@@ -1034,17 +1034,22 @@ class Template
      * @param       string      $layout
      * @return      bool
      */
-    public function layout_is($layout)
+    public function layout_is($layout, $strict = false)
     {
-        return layouts_equal($layout, $this->_layout);
+        return layouts_equal($layout, $this->_layout, $strict);
     }
 
     // Added by Ivan Tcholakov. 18-JAN-2016.
-    protected function layouts_equal($layout_1, $layout_2) {
+    public function layouts_equal($layout_1, $layout_2, $strict = false) {
 
         if ($layout_1 === $layout_2) {
 
             return true;
+        }
+
+        if (!empty($strict)) {
+
+            return false;
         }
 
         $parser_1 = $this->_ci->parser->detect($detected_extension_1, $detected_filename_1);
