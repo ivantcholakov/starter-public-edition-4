@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014 - 2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -23,7 +23,9 @@ class Mustache_controller extends Base_Controller {
     public function index() {
 
         $data = $this->_get_data();
-        $mustache_template = $this->_get_template();
+        $parsed_template_view_name = 'countries.mustache';
+        $parsed_template_path = $this->load->path($parsed_template_view_name);
+        $mustache_template = file_get_contents($parsed_template_path);
 
         $this->template
             ->set('data', $data)
@@ -50,11 +52,6 @@ class Mustache_controller extends Base_Controller {
         );
 
         return $data;
-    }
-
-    protected function _get_template() {
-
-        return $this->load->view('countries.mustache', null, true);
     }
 
 }
