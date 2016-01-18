@@ -24,9 +24,8 @@ class Parser_test_controller extends Base_Controller {
 
         $data = $this->_get_data();
         $parsed_template_view_name = 'countries.parser.php';
-
-        $parsed_template = $this->load->view($parsed_template_view_name, null, true);
         $parsed_template_path = $this->load->path($parsed_template_view_name);
+        $parsed_template = file_get_contents($parsed_template_path);
 
         $parsed_result_2 = $this->parser->parse_string($parsed_template, $data, true);
         $parsed_result_3 = $this->parser->parse($parsed_template_view_name, $data, true);
