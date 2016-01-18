@@ -2,14 +2,13 @@
 
 /*
 |--------------------------------------------------------------------------
-| Parser Enabled
+| Parsers Enabled
 |--------------------------------------------------------------------------
 |
-| Should the Parser library be used for the entire page?
-|
-| Can be overridden with $this->template->enable_parser(TRUE/FALSE);
-|
-|   Default: TRUE
+| Should parsers be used for the entire page?
+| Setting Type: array|false
+| Example: $config['parser_enabled'] = false;
+| Example: $config['parser_enabled'] = array('i18n');
 |
 */
 
@@ -17,14 +16,13 @@ $config['parser_enabled'] = false;
 
 /*
 |--------------------------------------------------------------------------
-| Parser Enabled for Body
+| Parsers Enabled for Body
 |--------------------------------------------------------------------------
 |
-| If the parser is enabled, do you want it to parse the body or not?
-|
-| Can be overridden with $this->template->enable_parser(TRUE/FALSE);
-|
-|   Default: FALSE
+| Should parsers be used for the body of the page?
+| Setting Type: array|false
+| Example: $config['parser_body_enabled'] = false;
+| Example: $config['parser_body_enabled'] = array('i18n');
 |
 */
 
