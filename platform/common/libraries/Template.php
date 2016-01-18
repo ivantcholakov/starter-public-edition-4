@@ -43,6 +43,11 @@ class Template
     private $_parsers_body = array();
     //
 
+    // Added by Ivan Tcholakov, 18-JAN-2016..
+    private $_parsers_config = array();
+    private $_parsers_body_config = array();
+    //
+
     private $_minify_enabled = false;
 
     private $_theme_locations = array();
@@ -104,6 +109,16 @@ class Template
      */
     public function initialize($config = array())
     {
+        // Added by Ivan Tcholakov, 18-JAN-2016.
+        if (isset($config['parser_enabled'])) {
+            $this->_parsers_config = empty($config['parser_enabled']) ? array() : $config['parser_enabled'];
+        }
+
+        if (isset($config['parser_body_enabled'])) {
+            $this->_parsers_body_config = empty($config['parser_body_enabled']) ? array() : $config['parser_body_enabled'];
+        }
+        //
+
         foreach ($config as $key => $val) {
             if ($key == 'theme' and $val != '') {
                 $this->set_theme($val);
@@ -264,6 +279,10 @@ class Template
      */
     public function build($view, $data = array(), $return = false, $IE_cache = true, $pre_parsed_view = false, $template = array())
     {
+        // Added by Ivan Tcholakov, 18-JAN-2016.
+        $this->build_parser_options();
+        //
+
         // Added by Ivan Tcholakov, 25-OCT-2012.
         // Preliminary caching the variable $this->_ci->load->_ci_cached_vars['template_views'],
         // so the helper function file_partial() gets able to work.
@@ -505,8 +524,8 @@ class Template
      * @param       string      $name           keywords, description, etc
      * @param       string      $content        The content of meta data
      * @param       string      $type           Meta-data comes in a few types, links for example
-     * @param       string 	[$place]	Defaults to 'header'
-     * @param       bool 	[$override]     Should we save this to the meta overrides instead of the
+     * @param       string      [$place]        Defaults to 'header'
+     * @param       bool        [$override]     Should we save this to the meta overrides instead of the
      *                                          main meta array?
      * @return      object      $this
      */
@@ -738,47 +757,11 @@ class Template
      */
     public function enable_parser($parsers)
     {
-        // Modified by Ivan Tcholakov, 27-DEC-2013.
+        // Modified by Ivan Tcholakov, 18-JAN-2016.
         //$this->_parser_enabled = $parsers;
         //return $this;
 
-        $is_bool = $this->_detect_parsers($parsers);
-
-        if ($is_bool) {
-
-            if ($parsers) {
-
-                $this->_parsers['parser'] = array();
-
-            } else {
-
-                $this->_parsers = array();
-            }
-
-        } elseif (!empty($parsers)) {
-
-            foreach ($parsers as $parser_key => $parser_value) {
-
-                if (is_string($parser_key)) {
-
-                    if ($parser_value !== false) {
-
-                        $this->_parsers[$parser_key] = $parser_value;
-
-                    } else {
-
-                        if (array_key_exists($parser_key, $this->_parsers)) {
-
-                            unset($this->_parsers[$parser_key]);
-                        }
-                    }
-
-                } elseif (is_string($parser_value)) {
-
-                    $this->_parsers[$parser_value] = array();
-                }
-            }
-        }
+        $this->_parsers[] = $parsers;
 
         return $this;
     }
@@ -792,47 +775,11 @@ class Template
      */
     public function enable_parser_body($parsers)
     {
-        // Modified by Ivan Tcholakov, 27-DEC-2013.
+        // Modified by Ivan Tcholakov, 18-JAN-2016.
         //$this->_parser_body_enabled = $parsers;
         //return $this;
 
-        $is_bool = $this->_detect_parsers($parsers);
-
-        if ($is_bool) {
-
-            if ($parsers) {
-
-                $this->_parsers_body['parser'] = array();
-
-            } else {
-
-                $this->_parsers_body = array();
-            }
-
-        } elseif (!empty($parsers)) {
-
-            foreach ($parsers as $parser_key => $parser_value) {
-
-                if (is_string($parser_key)) {
-
-                    if ($parser_value !== false) {
-
-                        $this->_parsers_body[$parser_key] = $parser_value;
-
-                    } else {
-
-                        if (array_key_exists($parser_key, $this->_parsers_body)) {
-
-                            unset($this->_parsers_body[$parser_key]);
-                        }
-                    }
-
-                } elseif (is_string($parser_value)) {
-
-                    $this->_parsers_body[$parser_value] = array();
-                }
-            }
-        }
+        $this->_parsers_body[] = $parsers;
 
         return $this;
     }
@@ -907,7 +854,7 @@ class Template
     /**
      * Get Metadata
      *
-     * @param       string 	$place
+     * @param       string      $place
      * @return      string
      */
     public function get_metadata($place = 'header')
@@ -1185,38 +1132,107 @@ class Template
     //--------------------------------------------------------------------------
     // Additional Methods
 
-    private function _detect_parsers(& $parsers) {
+    // Added by Ivan Tcholakov, 18-JAN-2016.
+    protected function build_parser_options() {
+
+        $parsers = array_merge($this->_parsers, array($this->_parsers_config));
+        $this->_parsers = array();
+
+        foreach ($parsers as $options) {
+
+            if ($options === false) {
+
+                $this->_parsers = array();
+
+                break;
+            }
+
+            $this->read_parser_options($options, $this->_parsers);
+        }
+
+        $parsers = array_merge($this->_parsers_body, array($this->_parsers_body_config));
+        $this->_parsers_body = array();
+
+        foreach ($parsers as $options) {
+
+            if ($options === false) {
+
+                $this->_parsers_body = array();
+
+                break;
+            }
+
+            $this->read_parser_options($options, $this->_parsers_body);
+        }
+
+        return $this;
+    }
+
+    // Added by Ivan Tcholakov, 18-JAN-2016.
+    protected function read_parser_options($options, & $result) {
 
         // BC: Detect a boolean value.
+        if (!is_array($options)) {
 
-        if (!is_array($parsers)) {
-
-            if (is_bool($parsers)) {
-
-                $is_bool = true;
-
-            } elseif (empty($parsers)) {
+            if (is_bool($options)) {
 
                 $is_bool = true;
-                $parsers = false;
 
-            } elseif (is_numeric($parsers)) {
+            } elseif (empty($options)) {
 
                 $is_bool = true;
-                $parsers = $parsers > 0;
+                $options = false;
+
+            } elseif (is_numeric($options)) {
+
+                $is_bool = true;
+                $options = $options > 0;
 
             } else {
 
                 $is_bool = false;
-                $parsers = array((string) $parsers);
+                $options = array((string) $options);
             }
 
         } else {
 
             $is_bool = false;
         }
+        //
 
-        return $is_bool;
+        if ($is_bool) {
+
+            if ($options) {
+                $result['parser'] = array();
+            } else {
+                $result = array();
+            }
+
+        } elseif (!empty($options)) {
+
+            foreach ($options as $parser_key => $parser_value) {
+
+                if (is_string($parser_key)) {
+
+                    if ($parser_value !== false) {
+
+                        $result[$parser_key] = $parser_value;
+
+                    } else {
+
+                        if (array_key_exists($parser_key, $result)) {
+                            unset($result[$parser_key]);
+                        }
+                    }
+
+                } elseif (is_string($parser_value)) {
+
+                    $result[$parser_value] = array();
+                }
+            }
+        }
+
+        return $this;
     }
 
     // Added by Ivan Tcholakov, 08-JAN-2016.
