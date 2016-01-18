@@ -95,7 +95,6 @@ class Scss_controller extends Base_Controller {
            ->set('input', $input)
            ->set('output', $output)
            ->set('output_min', $output_min)
-           ->enable_parser_body('i18n')
            ->build('scss');
     }
 

@@ -86,7 +86,6 @@ class Login_controller extends Base_Controller {
         $this->template
             ->prepend_title('Login')
             ->set_partial('scripts', 'login_scripts')
-            ->enable_parser_body('i18n')
             ->build('login');
     }
 

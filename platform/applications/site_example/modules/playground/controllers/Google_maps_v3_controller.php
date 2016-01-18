@@ -31,7 +31,6 @@ class Google_maps_v3_controller extends Base_Controller {
         $this->template
             ->set('driver_ok', $this->driver_ok)
             ->set_partial('scripts', 'google_maps_v3_scripts')
-            ->enable_parser_body('i18n')
             ->build('google_maps_v3');
     }
 

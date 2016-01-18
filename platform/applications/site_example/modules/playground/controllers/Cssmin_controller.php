@@ -50,7 +50,6 @@ class Cssmin_controller extends Base_Controller {
 
         $this->template
             ->set(compact('output'))
-            ->enable_parser_body('i18n')
             ->build('cssmin');
     }
 

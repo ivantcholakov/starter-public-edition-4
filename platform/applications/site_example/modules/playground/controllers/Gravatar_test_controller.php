@@ -65,7 +65,6 @@ class Gravatar_test_controller extends Base_Controller {
 
         $this->template
             ->set(compact('email', 'gravatar', 'profile', 'last_error'))
-            ->enable_parser_body('i18n')
             ->build('gravatar_test');
     }
 

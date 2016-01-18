@@ -25,7 +25,7 @@ class Smileys_controller extends Base_Controller {
 
         $this->template
             ->set('smileys', $smileys)
-            ->enable_parser_body(array('i18n', 'smileys'))
+            ->enable_parser_body('smileys')
             ->build('smileys');
     }
 

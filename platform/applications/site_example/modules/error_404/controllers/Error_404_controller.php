@@ -30,7 +30,6 @@ class Error_404_controller extends Base_Controller {
 
         $this->template
             ->title($error_string)
-            ->enable_parser_body('i18n') 
             ->build('error_404');
     }
 

@@ -80,7 +80,6 @@ class Jsonmin_controller extends Base_Controller {
             ->set('is_example', $is_example)
             ->set('input', $input)
             ->set('output', $output)
-            ->enable_parser_body('i18n')
             ->build('jsonmin');
     }
 

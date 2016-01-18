@@ -43,7 +43,6 @@ class Datatables_controller extends Base_Controller {
             ->set('subnavbar_item_active', 'simple-example')
             ->set(compact('items'))
             ->set_partial('scripts', 'datatables/datatables_scripts')
-            ->enable_parser_body('i18n')
             ->build('datatables/datatables');
     }
 
@@ -57,7 +56,6 @@ class Datatables_controller extends Base_Controller {
             ->set('driver_ok', $this->driver_ok)
             ->set('readme', $readme)
             ->set_partial('scripts', 'datatables/datatables_ssp_scripts')
-            ->enable_parser_body('i18n')
             ->build('datatables/datatables_ssp');
     }
 

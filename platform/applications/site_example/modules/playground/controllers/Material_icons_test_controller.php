@@ -37,7 +37,6 @@ class Material_icons_test_controller extends Base_Controller {
 
         $this->template
             ->set('items', $items)
-            ->enable_parser_body(array('i18n'))
             ->build('material_icons');
     }
 
