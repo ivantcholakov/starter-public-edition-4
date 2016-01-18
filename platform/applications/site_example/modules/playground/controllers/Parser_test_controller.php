@@ -38,7 +38,6 @@ class Parser_test_controller extends Base_Controller {
             ->set('parsed_result_2', $parsed_result_2)
             ->set('parsed_result_3', $parsed_result_3)
             ->set('parsed_result_4', $parsed_result_4)
-            ->enable_parser_body('parser')
             ->build('parser_test');
     }
 
