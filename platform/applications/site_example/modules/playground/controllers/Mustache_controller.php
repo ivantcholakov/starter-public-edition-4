@@ -23,13 +23,17 @@ class Mustache_controller extends Base_Controller {
     public function index() {
 
         $data = $this->_get_data();
+        $data_json = json_encode($data);
         $parsed_template_view_name = 'countries.mustache';
         $parsed_template_path = $this->load->path($parsed_template_view_name);
         $mustache_template = file_get_contents($parsed_template_path);
+        $mustache_result = $this->load->view($parsed_template_view_name, $data, true);
 
         $this->template
             ->set('data', $data)
+            ->set('data_json', $data_json)
             ->set('mustache_template', $mustache_template)
+            ->set('mustache_result', $mustache_result)
             ->set_partial('scripts', 'mustache_scripts')
             ->build('mustache');
     }
