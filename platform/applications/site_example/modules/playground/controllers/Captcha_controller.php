@@ -5,7 +5,7 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Captcha_controller extends Base_Controller {
+class Captcha_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
@@ -16,8 +16,11 @@ class Captcha_controller extends Base_Controller {
             ->language('captcha')
         ;
 
+        $title = 'Captcha Test';
+
         $this->template
-            ->title('Captcha Test')
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/captcha'));
         ;
 
         $this->registry->set('nav', 'playground/captcha');

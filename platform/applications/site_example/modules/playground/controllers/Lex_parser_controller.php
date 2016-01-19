@@ -18,7 +18,7 @@ class Lex_parser_controller extends Playground_Base_Controller {
         $title = 'Lex Parser Test';
 
         $this->template
-            ->title($title)
+            ->append_title($title)
             ->set_breadcrumb($title, http_build_url(site_url('playground/lex-parser'), array('query' => http_build_query(array('q_1' => 'query_param_1', 'q_2' => 'query_param_2')))));
         ;
 

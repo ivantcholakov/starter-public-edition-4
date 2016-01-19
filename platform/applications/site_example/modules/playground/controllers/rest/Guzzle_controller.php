@@ -5,14 +5,21 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Guzzle_controller extends Base_Controller {
+class Guzzle_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
+        $title = 'Accessing the REST Server Using the Guzzle HTTP Client';
+
         $this->template
-            ->title('Accessing the REST Server Using the Guzzle HTTP Client')
+            ->append_title($title)
+            ->set_breadcrumb('RESTful Service Test', site_url('playground/rest/server'))
+            ->set_breadcrumb($title, site_url('playground/rest/guzzle'))
+        ;
+
+        $this->template
             ->set_partial('subnavbar', 'rest/subnavbar')
             ->set('subnavbar_item_active', 'guzzle_client')
         ;

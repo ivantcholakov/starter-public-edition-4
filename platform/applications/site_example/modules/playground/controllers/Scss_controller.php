@@ -5,18 +5,17 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Scss_controller extends Base_Controller {
+class Scss_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
-        $this->load
-            ->parser()
-        ;
+        $title = 'SCSS Compiler Test';
 
         $this->template
-            ->title('SCSS Compiler Test')
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/scss'));
         ;
 
         $this->registry->set('nav', 'playground');

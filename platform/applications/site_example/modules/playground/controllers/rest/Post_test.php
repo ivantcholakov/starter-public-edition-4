@@ -5,14 +5,21 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Post_test extends Base_Controller {
+class Post_test extends Playground_Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
+        $title = 'Testing a POST request';
+
         $this->template
-            ->title('Testing a POST request')
+            ->append_title($title)
+            ->set_breadcrumb('RESTful Service Test', site_url('playground/rest/server'))
+            ->set_breadcrumb($title, site_url('playground/rest/post-test'))
+        ;
+
+        $this->template
             ->set_partial('subnavbar', 'rest/subnavbar')
             ->set('subnavbar_item_active', 'post_test')
         ;

@@ -5,16 +5,17 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Mustache_controller extends Base_Controller {
+class Mustache_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
-        $this->load->parser();
+        $title = 'Mustache Parser Test';
 
         $this->template
-            ->title('Mustache Parser Test')
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/mustache'));
         ;
 
         $this->registry->set('nav', 'playground/mustache');

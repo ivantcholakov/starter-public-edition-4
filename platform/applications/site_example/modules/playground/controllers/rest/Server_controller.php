@@ -5,14 +5,20 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Server_controller extends Base_Controller {
+class Server_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
+        $title = 'REST Server';
+
         $this->template
-            ->title('REST Server')
+            ->append_title($title)
+            ->set_breadcrumb('RESTful Service Test', site_url('playground/rest/server'));
+        ;
+
+        $this->template
             ->set_partial('subnavbar', 'rest/subnavbar')
             ->set('subnavbar_item_active', 'restserver')
         ;

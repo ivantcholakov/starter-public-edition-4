@@ -5,14 +5,17 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Ajax_queue_controller extends Base_Controller {
+class Ajax_queue_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
+        $title = 'AJAX Queue Test';
+
         $this->template
-            ->title('AJAX Queue Test')
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/ajax-queue'));
         ;
 
         $this->registry->set('nav', 'playground');

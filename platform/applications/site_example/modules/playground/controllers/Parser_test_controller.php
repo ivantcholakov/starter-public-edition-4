@@ -5,16 +5,17 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Parser_test_controller extends Base_Controller {
+class Parser_test_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
-        $this->load->parser();
+        $title = 'CodeIgniter\'s Parser Test';
 
         $this->template
-            ->title('CodeIgniter\'s Parser Test')
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/parser-test'));
         ;
 
         $this->registry->set('nav', 'playground/parser_test');

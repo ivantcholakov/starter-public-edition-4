@@ -5,14 +5,21 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Curl_controller extends Base_Controller {
+class Curl_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
+        $title = 'Accessing the REST Server Using the Curl Library';
+
         $this->template
-            ->title('Accessing the REST Server Using the Curl Library')
+            ->append_title($title)
+            ->set_breadcrumb('RESTful Service Test', site_url('playground/rest/server'))
+            ->set_breadcrumb($title, site_url('playground/rest/curl'))
+        ;
+
+        $this->template
             ->set_partial('subnavbar', 'rest/subnavbar')
             ->set('subnavbar_item_active', 'curl')
         ;

@@ -5,18 +5,23 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Gibberish_aes_controller extends Base_Controller {
+class Gibberish_aes_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
-        $this->pass = 'my secret long pass-phrase (тайна парола) qiYV3xmL5uW1bUeGe6gZH1aaaA4HFgwkwux2uKSKcSmCW6XprmNmkEKdma76Zr1';
-        $this->secret_string = 'my secret message (тайно съобщение)';
+        $title = 'GibberishAES Test';
 
-        $this->template->title('GibberishAES Test');
+        $this->template
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/gibberish-aes'));
+        ;
 
         $this->registry->set('nav', 'playground');
+
+        $this->pass = 'my secret long pass-phrase (тайна парола) qiYV3xmL5uW1bUeGe6gZH1aaaA4HFgwkwux2uKSKcSmCW6XprmNmkEKdma76Zr1';
+        $this->secret_string = 'my secret message (тайно съобщение)';
     }
 
     public function index() {

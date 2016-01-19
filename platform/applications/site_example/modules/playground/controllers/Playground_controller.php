@@ -12,7 +12,7 @@ class Playground_controller extends Playground_Base_Controller {
         parent::__construct();
 
         $this->template
-            ->title('The Playground')
+            ->append_title('The Playground')
         ;
 
         $this->registry->set('nav', 'playground');
