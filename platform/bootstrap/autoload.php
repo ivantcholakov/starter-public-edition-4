@@ -66,6 +66,26 @@ function _common_autoloader($class) {
 
     // Autoload core classes.
 
+    global $RTR;
+    $module = null;
+
+    if (is_object($RTR)) {
+        $module = $RTR->fetch_module();
+    }
+
+    if ($module != '') {
+
+        if (is_file($location = APPPATH."modules/$module/core/$class.php")) {
+            require $location;
+            return true;
+        }
+
+        if (is_file($location = COMMONPATH."modules/$module/core/$class.php")) {
+            require $location;
+            return true;
+        }
+    }
+
     if (is_file($location = APPPATH."core/$class.php")) {
         require $location;
         return true;
