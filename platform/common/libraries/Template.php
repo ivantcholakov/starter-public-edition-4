@@ -246,7 +246,9 @@ class Template
         $title = ($this->_override_title) ? $this->_override_title : $this->_title;
 
         $template['title'] = html_escape(strip_tags($title));
-        $template['page_title'] = $title;
+
+        $title_last = array_slice(explode($this->_title_separator, $title), -1, 1);
+        $template['page_title'] = trim($title_last[0]);
 
         $template['breadcrumbs'] = array_merge($this->_breadcrumbs, $this->_override_breadcrumbs);
 
