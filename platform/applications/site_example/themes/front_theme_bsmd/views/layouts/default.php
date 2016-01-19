@@ -55,6 +55,8 @@ echo unsupported_browser();
         <div class="container" id="content-container">
 <?php
 
+echo Modules::run('breadcrumb_widget/index');
+
 template_body();
 
 ?>

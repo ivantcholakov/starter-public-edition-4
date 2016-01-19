@@ -39,6 +39,8 @@ class Base_Controller extends Core_Controller {
         if ($default_keywords != '') {
             $this->template->set_metadata('keywords', $default_keywords);
         }
+
+        $this->template->set_breadcrumb('<i class="fa fa-home"></i> '.$this->lang->line('ui_home'), site_url());
     }
 
 }

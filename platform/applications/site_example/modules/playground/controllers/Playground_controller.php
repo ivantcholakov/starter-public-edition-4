@@ -5,7 +5,7 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Playground_controller extends Base_Controller {
+class Playground_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
