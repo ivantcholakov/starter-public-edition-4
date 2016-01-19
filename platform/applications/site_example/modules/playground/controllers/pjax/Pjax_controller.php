@@ -5,7 +5,7 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Pjax_controller extends Base_Controller {
+class Pjax_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
@@ -25,7 +25,8 @@ class Pjax_controller extends Base_Controller {
 
         $this->registry->set('pjax_subnavbar_active', 'home');
         $this->template
-            ->title('Pjax - Home Page')
+            ->append_title('Pjax - Home Page')
+            ->set_breadcrumb('Pjax', site_url('playground/pjax'))
             ->build('pjax/pjax');
     }
 
@@ -33,7 +34,9 @@ class Pjax_controller extends Base_Controller {
 
         $this->registry->set('pjax_subnavbar_active', 'page_1');
         $this->template
-            ->title('Pjax - Test Page 1')
+            ->append_title('Pjax - Test Page 1')
+            ->set_breadcrumb('Pjax', site_url('playground/pjax'))
+            ->set_breadcrumb('Pjax - Test Page 1', site_url('playground/pjax/page-1'))
             ->build('pjax/page_1');
     }
 
@@ -52,7 +55,9 @@ class Pjax_controller extends Base_Controller {
         $this->template
             ->set('video', $video)
             ->set('php_required', $php_required)
-            ->title('Pjax - Test Page 2')
+            ->append_title('Pjax - Test Page 2')
+            ->set_breadcrumb('Pjax', site_url('playground/pjax'))
+            ->set_breadcrumb('Pjax - Test Page 2', site_url('playground/pjax/page-2'))
             ->build('pjax/page_2');
     }
 

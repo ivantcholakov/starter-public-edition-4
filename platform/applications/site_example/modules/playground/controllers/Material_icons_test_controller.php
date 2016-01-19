@@ -5,14 +5,17 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Material_icons_test_controller extends Base_Controller {
+class Material_icons_test_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
+        $title = 'Material Icons Test';
+
         $this->template
-            ->title('Material Icons Test')
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/material-icons-test'));
         ;
 
         $this->registry->set('nav', 'playground');

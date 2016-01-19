@@ -5,18 +5,17 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Jsmin_controller extends Base_Controller {
+class Jsmin_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
-        $this->load
-            ->parser()
-        ;
+        $title = 'JavaScript Minification Test';
 
         $this->template
-            ->title('JavaScript Minification Test')
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/jsmin'));
         ;
 
         $this->registry->set('nav', 'playground');

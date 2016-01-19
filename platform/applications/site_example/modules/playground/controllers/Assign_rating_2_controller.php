@@ -5,14 +5,17 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Assign_rating_2_controller extends Base_Controller {
+class Assign_rating_2_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
+        $title = 'Assign Rating Example';
+
         $this->template
-            ->title('Assign Rating Example')
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/assign-rating-2'));
         ;
 
         $this->template

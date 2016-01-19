@@ -5,14 +5,17 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Multiplayer_controller extends Base_Controller {
+class Multiplayer_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
+        $title = 'Multiplayer Library Test';
+
         $this->template
-            ->title('Multiplayer Library Test')
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/multiplayer'));
         ;
 
         $this->registry->set('nav', 'playground');

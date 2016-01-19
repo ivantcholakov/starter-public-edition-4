@@ -8,7 +8,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Fb_controller extends Base_Controller {
+class Fb_controller extends Playground_Base_Controller {
 
     protected $error_message;
 
@@ -36,8 +36,14 @@ class Fb_controller extends Base_Controller {
 
     public function index()
     {
+        $title = 'Facebook PHP SDK v4 for CodeIgniter';
+
         $this->template
-            ->title('Facebook PHP SDK v4 for CodeIgniter')
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/fb'));
+        ;
+
+        $this->template
             ->set('error_message', $this->error_message)
             ->set_partial('css', 'fb_start_css')
             ->build('fb_start');

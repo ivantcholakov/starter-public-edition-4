@@ -5,11 +5,18 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Print_test_controller extends Base_Controller {
+class Print_test_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
+
+        $title = 'Print Test';
+
+        $this->template
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/print-test'));
+        ;
 
         $print = $this->input->get('print');
         $print = !empty($print);
@@ -17,10 +24,6 @@ class Print_test_controller extends Base_Controller {
         if ($print) {
             $this->registry->set('print', true);
         }
-
-        $this->template
-            ->title('Print Test')
-        ;
 
         $this->registry->set('nav', 'playground');
     }

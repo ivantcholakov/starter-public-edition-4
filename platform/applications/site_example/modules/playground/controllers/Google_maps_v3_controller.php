@@ -5,7 +5,7 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Google_maps_v3_controller extends Base_Controller {
+class Google_maps_v3_controller extends Playground_Base_Controller {
 
     public $driver_ok = false;
 
@@ -19,8 +19,11 @@ class Google_maps_v3_controller extends Base_Controller {
             $this->load->database();
         }
 
+        $title = 'Google Maps JavaScript API v3 Demo';
+
         $this->template
-            ->title('Google Maps JavaScript API v3 Demo')
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/google-maps-v3'));
         ;
 
         $this->registry->set('nav', 'playground');

@@ -1,12 +1,19 @@
 <?php if (!defined('BASEPATH')) { exit('No direct script access allowed.'); }
 
-class User_mode_controller extends Base_Controller {
+class User_mode_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
         $this->load->helper('html_filters');
+
+        $title = 'Online Editor - User Mode';
+
+        $this->template
+            ->append_title($title)
+            ->set_breadcrumb('Online Editor Test', site_url('playground/online-editor/user-mode'));
+        ;
 
         $this->template
             ->set_partial('ckeditor', 'partials/ckeditor')
@@ -36,7 +43,6 @@ class User_mode_controller extends Base_Controller {
         }
 
         $this->template
-            ->title('Online Editor - User Mode')
             ->set('content', $content)
         ;
 

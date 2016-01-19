@@ -5,14 +5,17 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Colorbox_controller extends Base_Controller {
+class Colorbox_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
+        $title = 'Colorbox Test';
+
         $this->template
-            ->title('Colorbox Test')
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/colorbox'));
         ;
 
         $this->registry->set('nav', 'playground');

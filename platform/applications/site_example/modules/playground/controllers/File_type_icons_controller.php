@@ -5,7 +5,7 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class File_type_icons_controller extends Base_Controller {
+class File_type_icons_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
@@ -15,8 +15,11 @@ class File_type_icons_controller extends Base_Controller {
             ->helper('file')
         ;
 
+        $title = 'Testing File Type Icons';
+
         $this->template
-            ->title('Testing File Type Icons')
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/file-type-icons'));
         ;
 
         $this->registry->set('nav', 'playground');

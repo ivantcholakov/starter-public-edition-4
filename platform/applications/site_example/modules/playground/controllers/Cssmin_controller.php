@@ -5,18 +5,17 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Cssmin_controller extends Base_Controller {
+class Cssmin_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
-        $this->load
-            ->parser()
-        ;
+        $title = 'CSS Minification Test';
 
         $this->template
-            ->title('CSS Minification Test')
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/cssmin'));
         ;
 
         $this->registry->set('nav', 'playground');

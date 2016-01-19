@@ -5,14 +5,17 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Bootstrap_modals_controller extends Base_Controller {
+class Bootstrap_modals_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
+        $title = 'Bootstrap Modal Dialogs';
+
         $this->template
-            ->title('Bootstrap Modal Dialogs')
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/bootstrap-modals'));
         ;
 
         $this->registry->set('nav', 'playground');

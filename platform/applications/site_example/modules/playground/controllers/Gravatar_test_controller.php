@@ -5,7 +5,7 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Gravatar_test_controller extends Base_Controller {
+class Gravatar_test_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
@@ -18,8 +18,11 @@ class Gravatar_test_controller extends Base_Controller {
 
         $this->load->library('gravatar');
 
+        $title = 'Gravatar Test';
+
         $this->template
-            ->title('Gravatar Test')
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/gravatar-test'));
         ;
 
         $this->registry->set('nav', 'playground');

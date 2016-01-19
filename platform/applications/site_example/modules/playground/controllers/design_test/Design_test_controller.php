@@ -5,14 +5,17 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Design_test_controller extends Base_Controller {
+class Design_test_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
+        $title = 'Design Test';
+
         $this->template
-            ->title('Design Test')
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/design-test'));
         ;
 
         $this->registry->set('nav', 'playground');

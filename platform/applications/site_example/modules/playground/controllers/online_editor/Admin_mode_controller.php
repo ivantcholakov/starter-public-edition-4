@@ -1,12 +1,20 @@
 <?php if (!defined('BASEPATH')) { exit('No direct script access allowed.'); }
 
-class Admin_mode_controller extends Base_Controller {
+class Admin_mode_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
         $this->load->helper('html_filters');
+
+        $title = 'Online Editor - Admin Mode';
+
+        $this->template
+            ->append_title($title)
+            ->set_breadcrumb('Online Editor Test', site_url('playground/online-editor/user-mode'))
+            ->set_breadcrumb($title, site_url('playground/online-editor/admin-mode'))
+        ;
 
         $this->template
             ->set_partial('ckeditor', 'partials/ckeditor')
@@ -36,7 +44,6 @@ class Admin_mode_controller extends Base_Controller {
         }
 
         $this->template
-            ->title('Online Editor - Admin Mode')
             ->set('content', $content)
         ;
 

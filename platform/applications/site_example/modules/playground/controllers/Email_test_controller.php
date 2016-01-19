@@ -5,7 +5,7 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Email_test_controller extends Base_Controller {
+class Email_test_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
@@ -18,8 +18,11 @@ class Email_test_controller extends Base_Controller {
             ->parser()
         ;
 
+        $title = 'Email Test';
+
         $this->template
-            ->title('Email Test')
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/email-test'));
         ;
 
         $this->registry->set('nav', 'playground');

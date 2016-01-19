@@ -5,14 +5,17 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Social_buttons_controller extends Base_Controller {
+class Social_buttons_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
+        $title = 'Social Buttons for Bootstrap';
+
         $this->template
-            ->title('Social Buttons for Bootstrap')
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/social-buttons'));
         ;
 
         $this->registry->set('nav', 'playground');

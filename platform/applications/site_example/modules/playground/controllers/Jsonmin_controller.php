@@ -5,18 +5,17 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Jsonmin_controller extends Base_Controller {
+class Jsonmin_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
-        $this->load
-            ->parser()
-        ;
+        $title = 'JSON Minification Test';
 
         $this->template
-            ->title('JSON Minification Test')
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/jsonmin'));
         ;
 
         $this->registry->set('nav', 'playground');

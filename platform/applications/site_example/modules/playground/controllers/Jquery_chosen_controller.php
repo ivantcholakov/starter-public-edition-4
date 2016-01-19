@@ -5,7 +5,7 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Jquery_chosen_controller extends Base_Controller {
+class Jquery_chosen_controller extends Playground_Base_Controller {
 
     public $driver_ok = false;
 
@@ -21,8 +21,11 @@ class Jquery_chosen_controller extends Base_Controller {
             $this->load->model('countries');
         }
 
+        $title = 'Jquery Chosen Plugin Test';
+
         $this->template
-            ->title('Jquery Chosen Plugin Test')
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/jquery-chosen'));
         ;
 
         $this->registry->set('nav', 'playground');

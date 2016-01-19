@@ -5,7 +5,7 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Datatables_controller extends Base_Controller {
+class Datatables_controller extends Playground_Base_Controller {
 
     public $driver_ok = false;
 
@@ -38,8 +38,11 @@ class Datatables_controller extends Base_Controller {
             $item = (array('id' => $id, 'code' => $values[0], 'name' => $values[1]));
         }
 
+        $title = 'DataTables Simple Example';
+
         $this->template
-            ->title('DataTables Simple Example')
+            ->append_title($title)
+            ->set_breadcrumb('DataTables', site_url('playground/datatables'))
             ->set('subnavbar_item_active', 'simple-example')
             ->set(compact('items'))
             ->set_partial('scripts', 'datatables/datatables_scripts')
@@ -50,8 +53,12 @@ class Datatables_controller extends Base_Controller {
 
         $readme = $this->load->view('datatables/README.md', null, true, array('markdown'));
 
+        $title = 'DataTables with Server-Side Processing';
+
         $this->template
-            ->title('DataTables with Server-Side Processing')
+            ->append_title($title)
+            ->set_breadcrumb('DataTables', site_url('playground/datatables'))
+            ->set_breadcrumb($title, site_url('playground/datatables/ssp'))
             ->set('subnavbar_item_active', 'ssp')
             ->set('driver_ok', $this->driver_ok)
             ->set('readme', $readme)

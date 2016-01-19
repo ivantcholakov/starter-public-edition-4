@@ -5,14 +5,17 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Star_rating_controller extends Base_Controller {
+class Star_rating_controller extends Playground_Base_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
+        $title = 'Bootstrap Star Rating Examples';
+
         $this->template
-            ->title('Bootstrap Star Rating Examples')
+            ->append_title($title)
+            ->set_breadcrumb($title, site_url('playground/star-rating'));
         ;
 
         $this->registry->set('nav', 'playground');
