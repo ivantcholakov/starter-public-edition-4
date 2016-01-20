@@ -741,6 +741,28 @@ class MX_Loader extends CI_Loader
     //public function view($view, $vars = array(), $return = FALSE) {
     public function view($view, $vars = array(), $return = FALSE, $parsers = array()) {
     //
+        if (is_object($vars)) {
+            $vars = get_object_vars($vars);
+        }
+
+        // Added by Iban Tcholakov, 20-JAN-2016.
+        if (!empty($parsers) && is_array($parsers)) {
+
+            $p = array_slice($parsers, 0, 1);
+            $options = array_shift($p);
+
+            if (!empty($options['full_path'])) {
+
+                if ($return) {
+                    return $this->_ci_load(array('_ci_path' => $view, '_ci_vars' => $vars, '_ci_return' => $return, '_ci_parsers' => $parsers));
+                }
+
+                $this->_ci_load(array('_ci_path' => $view, '_ci_vars' => $vars, '_ci_return' => $return, '_ci_parsers' => $parsers));
+
+                return $this;
+            }
+        }
+        //
 
         list($path, $_view) = Modules::find($view, $this->_module, 'views/');
 
@@ -754,10 +776,6 @@ class MX_Loader extends CI_Loader
         // See https://github.com/EllisLab/CodeIgniter/issues/2165
         // See also https://github.com/bcit-ci/CodeIgniter/issues/4379
         //return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
-
-        if (is_object($vars)) {
-            $vars = get_object_vars($vars);
-        }
 
         if ($return) {
             return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $vars, '_ci_return' => $return, '_ci_parsers' => $parsers));

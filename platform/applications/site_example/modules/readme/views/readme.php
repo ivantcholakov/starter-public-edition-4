@@ -5,9 +5,6 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-
-$content = $path != '' ? @ file_get_contents($path) : '';
-
 ?>
 
         <section>
@@ -20,7 +17,7 @@ $content = $path != '' ? @ file_get_contents($path) : '';
 
 <?php
 
-echo $this->parser->parse_string($content, null, true, array('markdown'));
+echo $content;
 
 ?>
 

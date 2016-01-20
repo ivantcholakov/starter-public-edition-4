@@ -11,8 +11,6 @@ class Readme_controller extends Base_Controller {
 
         parent::__construct();
 
-        $this->load->parser();
-
         $this->template
             ->title('README')
         ;
@@ -35,9 +33,13 @@ class Readme_controller extends Base_Controller {
             $path = DEFAULTFCPATH.'README.md';
         }
 
+        if ($path != '') {
+            $content = $this->load->view($path, null, true, array('markdown' => array('full_path' => true)));
+        }
+
         $this->template
             ->set(compact('path', 'content'))
-            ->enable_parser_body(array('i18n' => false))    // Actually, this disables 'i18n' parser.
+            ->enable_parser_body(array('i18n' => false))    // Actually, this disables the 'i18n' parser.
             ->build('readme');
     }
 
