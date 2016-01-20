@@ -68,6 +68,58 @@ abstract class Parser_Lex_Extension {
 
         $content AND $this->parsed_content = $content;
 
+        $parse_content = false;
+
+        switch ($this->extension_class) {
+
+            case 'html':
+
+                $parse_content = true;
+                break;
+        }
+
+        if ($attributes) {
+
+            $set = false;
+
+            // Check for parsing the tag's content..
+            // Parsing is enabled by default, it could be disabled
+            // using a special parameter for that.
+            foreach (array('parse_content', 'parse-content') as $attr) {
+
+                if (isset($attributes[$attr]) && !$set) {
+
+                    $parse_content = str_to_bool($attributes[$attr]);
+                    $set = true;
+                }
+            }
+
+            if (isset($attributes['parse_content'])) {
+                unset($attributes['parse_content']);
+            }
+
+            if (isset($attributes['parse-content'])) {
+                unset($attributes['parse-content']);
+            }
+        }
+
+        if ($parse_content && is_scalar($this->parsed_content) && $this->parsed_content != '') {
+
+            $parser = new Parser_Lex_Extensions;
+
+            $parser->scopeGlue($this->parser_instance->parser_options['scope_glue']);
+            $parser->cumulativeNoparse($this->parser_instance->parser_options['cumulative_noparse']);
+
+            $this->parsed_content = $parser->parse(
+                $this->parsed_content,
+                $this->parser_instance->parser_data,
+                array($this->parser_instance, 'parser_callback'),
+                $this->parser_instance->parser_options['allow_php']
+            );
+
+            unset($parser);
+        }
+
         if ($attributes) {
 
             $parse_params = true;
@@ -141,6 +193,8 @@ abstract class Parser_Lex_Extension {
                             array($this->parser_instance, 'parser_callback'),
                             $this->parser_instance->parser_options['allow_php']
                         );
+
+                        unset($parser);
 
                         $attributes[$key] = $this->parser_instance->is_serialized(trim($value), $result)
                             ? $result
