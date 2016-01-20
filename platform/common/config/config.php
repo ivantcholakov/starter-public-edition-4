@@ -130,7 +130,7 @@ $config['subclass_prefix'] = 'MY_';
 | Note: This will NOT disable or override the CodeIgniter-specific
 |    autoloading (application/config/autoload.php)
 */
-$config['composer_autoload'] = PLATFORMPATH.'vendor/my_autoload.php';
+$config['composer_autoload'] = PLATFORMPATH.'vendor/'.(is_php('5.5') ? 'autoload.php' : 'my_autoload.php');
 
 /*
 |--------------------------------------------------------------------------
