@@ -135,7 +135,7 @@ class Core_Lang extends MX_Lang {
 
             if (($pos_end = strpos($string, $delimiter_end, $offset)) === false)
             {
-                trigger_error("parse_i18n: No ending i18n tag after position [$offset] found!", E_USER_ERROR);
+                trigger_error("parse_i18n: No ending i18n tag after position [$offset] found!", E_USER_WARNING);
             }
 
             $translate = substr($string, $offset, $pos_end - $offset);
