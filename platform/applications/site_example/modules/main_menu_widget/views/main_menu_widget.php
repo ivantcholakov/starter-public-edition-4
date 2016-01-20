@@ -55,7 +55,7 @@ if (!empty($nav)) {
 
 ?>
 
-                        <li class="dropdown dropdown-split-right">
+                        <li class="<?php if (!empty($item['is_active'])) { ?>active <?php } ?>dropdown dropdown-split-right">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
                                 <?php if ($item['icon'] != '') { ?><i class="<?php echo $item['icon']; ?> hidden-sm"></i>&nbsp; <?php } echo $item['label']; ?> <i class="fa fa-caret-down"></i>
                             </a>
