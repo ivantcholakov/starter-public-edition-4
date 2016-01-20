@@ -76,6 +76,10 @@ class Template
     private $_override_meta = array();
     private $_override_breadcrumbs = array();
 
+    // Added by Ivan Tcholakov, 20-JAN-2016.
+    protected $template_body_placeholder;
+    //
+
     /**
      * Constructor - Sets Preferences
      *
@@ -95,6 +99,10 @@ class Template
         if ( ! empty($config)) {
             $this->initialize($config);
         }
+
+        // Added by Ivan Tcholakov, 20-JAN-2016.
+        $this->template_body_placeholder = 'TEMPLATEBODY'.md5(date('Y-m-d\TH:i:sP')).'TEMPLATEBODY';
+        //
 
         log_message('info', 'Template class Initialized');
     }
@@ -364,12 +372,15 @@ class Template
         // Set the _body var. If we have pre-parsed our
         // view, then our work is done. Otherwise, we will
         // find the view and parse it.
+        $this->_body = $this->template_body_placeholder;
         if ($pre_parsed_view) {
-            $this->_body = $view;
+            //$this->_body = $view;
+            $template_body = $view;
         } else {
             // Modified by Ivan Tcholakov, 28-DEC-2013.
             //$this->_body = $this->_find_view($view, array(), $this->_parser_body_enabled);
-            $this->_body = $this->_find_view($view, array(), $this->_parsers_body);
+            //$this->_body = $this->_find_view($view, array(), $this->_parsers_body);
+            $template_body = $this->_find_view($view, array(), $this->_parsers_body);
             //
         }
 
@@ -434,6 +445,10 @@ class Template
 '.$this->_body;
             }
         }
+        //
+
+        // Added by Ivan Tcholakov, 20-JAN-2016.
+        $this->_body = str_replace($this->template_body_placeholder, $template_body, $this->_body);
         //
 
         if ($this->_minify_enabled && function_exists('process_data_jmr1')) {
