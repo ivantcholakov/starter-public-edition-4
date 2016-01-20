@@ -18,8 +18,6 @@ if (!function_exists('template_title')) {
 
     function template_title() {
 
-        $charset = config_item('charset');
-
         $data =& ci()->load->_ci_cached_vars;
 
         if (isset($data['template']['title']) && $data['template']['title'] != '') {

@@ -10,18 +10,16 @@ class Parser_Lex_Extension_Format extends Parser_Lex_Extension {
     public function __construct() {
 
         parent::__construct();
+
+        $this->load->parser();
     }
 
     public function markdown() {
-
-        $this->load->parser();
 
         return $this->parser->parse_string(trim($this->get_attribute(0, $this->get_content())), null, true, 'markdown');
     }
 
     public function textile() {
-
-        $this->load->parser();
 
         return $this->parser->parse_string(trim($this->get_attribute(0, $this->get_content())), null, true, 'textile');
     }
