@@ -108,7 +108,7 @@ class Core_Lang extends MX_Lang {
 
         $offset = 0;
 
-        while (($pos_start = strpos($string, $delimiter_begin, $offset)) !== false)
+        while (($pos_start = @ strpos($string, $delimiter_begin, $offset)) !== false)
         {
             $offset = $pos_start + $delimiter_start_length;
 
