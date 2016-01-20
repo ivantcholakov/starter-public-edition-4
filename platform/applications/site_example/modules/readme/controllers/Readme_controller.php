@@ -37,6 +37,7 @@ class Readme_controller extends Base_Controller {
 
         $this->template
             ->set(compact('path', 'content'))
+            ->enable_parser_body(array('i18n' => false))    // Actually, this disables 'i18n' parser.
             ->build('readme');
     }
 

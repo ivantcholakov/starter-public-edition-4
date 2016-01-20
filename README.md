@@ -174,7 +174,7 @@ You can override the global setting 'parse_i18n' within the controller by insert
 $this->parse_i18n = TRUE; // or FALSE
 ```
 
-Parsing of <i18n> tags is done on the final output buffer only when
+Parsing of ```<i18n>``` tags is done on the final output buffer only when
 the MIME-type is 'text/html'.
 
 **Note:** Enabling globally the i18n parser maybe is not the best idea. If you use HMVC, maybe it would
