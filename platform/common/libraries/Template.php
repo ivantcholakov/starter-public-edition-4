@@ -1219,7 +1219,7 @@ class Template
                 }
 
                 $occupied_options[] = $parser_name;
-                $final_options[] = array($parser_name => $parser_options);
+                $final_options[$parser_name] = $parser_options;
             }
         }
 
