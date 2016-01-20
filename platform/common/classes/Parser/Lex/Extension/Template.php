@@ -50,4 +50,13 @@ class Parser_Lex_Extension_Template extends Parser_Lex_Extension {
         return template_has_partial($this->get_attribute(0));
     }
 
+    public function body() {
+
+        ob_start();
+
+        template_body();
+
+        return ob_get_clean();
+    }
+
 }
