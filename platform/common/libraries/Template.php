@@ -289,8 +289,9 @@ class Template
      */
     public function build($view, $data = array(), $return = false, $IE_cache = true, $pre_parsed_view = false, $template = array())
     {
-        // Added by Ivan Tcholakov, 18-JAN-2016.
-        $this->build_parser_options();
+        // Added by Ivan Tcholakov, 20-JAN-2016.
+        $this->_parsers = $this->build_parser_options($this->_parsers, $this->_parsers_config);
+        $this->_parsers_body = $this->build_parser_options($this->_parsers_body, $this->_parsers_body_config);
         //
 
         // Added by Ivan Tcholakov, 25-OCT-2012.
@@ -1149,107 +1150,80 @@ class Template
     //--------------------------------------------------------------------------
     // Additional Methods
 
-    // Added by Ivan Tcholakov, 18-JAN-2016.
-    protected function build_parser_options() {
+    protected function build_parser_options($explicit, $config) {
 
-        $parsers = array_merge($this->_parsers, array($this->_parsers_config));
-        $this->_parsers = array();
+        $raw_options = array_merge($explicit, array($config));
+        $refined_options = array();
+        $disabled_options = array();
 
-        foreach ($parsers as $options) {
+        foreach ($raw_options as $options) {
+
+            if ($options === true) {
+
+                $refined_options[] = array($this->_ci->parser->get_default_driver_name() => array());
+                continue;
+            }
 
             if ($options === false) {
-
-                $this->_parsers = array();
-
-                break;
+                return array();
             }
 
-            $this->read_parser_options($options, $this->_parsers);
-        }
+            if (!is_array($options)) {
 
-        $parsers = array_merge($this->_parsers_body, array($this->_parsers_body_config));
-        $this->_parsers_body = array();
-
-        foreach ($parsers as $options) {
-
-            if ($options === false) {
-
-                $this->_parsers_body = array();
-
-                break;
+                $refined_options[] = array((string) $option => array());
+                continue;
             }
 
-            $this->read_parser_options($options, $this->_parsers_body);
-        }
+            foreach ($options as $parser_name => $parser_options) {
 
-        return $this;
-    }
+                if (is_string($parser_name)) {
 
-    // Added by Ivan Tcholakov, 18-JAN-2016.
-    protected function read_parser_options($options, & $result) {
-
-        // BC: Detect a boolean value.
-        if (!is_array($options)) {
-
-            if (is_bool($options)) {
-
-                $is_bool = true;
-
-            } elseif (empty($options)) {
-
-                $is_bool = true;
-                $options = false;
-
-            } elseif (is_numeric($options)) {
-
-                $is_bool = true;
-                $options = $options > 0;
-
-            } else {
-
-                $is_bool = false;
-                $options = array((string) $options);
-            }
-
-        } else {
-
-            $is_bool = false;
-        }
-        //
-
-        if ($is_bool) {
-
-            if ($options) {
-                $result['parser'] = array();
-            } else {
-                $result = array();
-            }
-
-        } elseif (!empty($options)) {
-
-            foreach ($options as $parser_key => $parser_value) {
-
-                if (is_string($parser_key)) {
-
-                    if ($parser_value !== false) {
-
-                        $result[$parser_key] = $parser_value;
-
-                    } else {
-
-                        if (array_key_exists($parser_key, $result)) {
-                            unset($result[$parser_key]);
-                        }
+                    if ($parser_options === false) {
+                        $disabled_options[] = $parser_name;
                     }
 
-                } elseif (is_string($parser_value)) {
+                    $refined_options[] = array($parser_name => $parser_options);
+                    continue;
 
-                    $result[$parser_value] = array();
+                } else {
+
+                    if ($parser_options === true) {
+
+                        $refined_options[] = array($this->_ci->parser->get_default_driver_name() => array());
+                        continue;
+                    }
+
+                    if ($parser_options === false) {
+                        return array();
+                    }
+
+                    $refined_options[] = array((string) $parser_options => array());
+                    continue;
                 }
             }
         }
 
-        return $this;
+        $final_options = array();
+        $occupied_options = array();
+
+        foreach ($refined_options as $options) {
+
+            foreach ($options as $parser_name => $parser_options) {
+
+                if (in_array($parser_name, $disabled_options)) {
+                    continue;
+                }
+
+                if (in_array($parser_name, $occupied_options)) {
+                    continue;
+                }
+
+                $occupied_options[] = $parser_name;
+                $final_options[] = array($parser_name => $parser_options);
+            }
+        }
+
+        return $final_options;
     }
 
     // Added by Ivan Tcholakov, 08-JAN-2016.
