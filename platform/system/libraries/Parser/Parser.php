@@ -71,6 +71,8 @@ class CI_Parser extends CI_Driver_Library {
 	 */
 	protected $driver;
 
+	// Added by Ivan Tcholakov, 20-JAN-2016.
+	protected $driver_name;
 
 	// --------------------------------------------------------------------
 
@@ -130,6 +132,8 @@ class CI_Parser extends CI_Driver_Library {
 		{
 			$this->valid_drivers[] = $driver;
 		}
+
+		$this->driver_name = $driver;
 
 		// Save a copy of parameters in case drivers need access
 		$this->params = $params;
@@ -255,6 +259,12 @@ class CI_Parser extends CI_Driver_Library {
 		//return $this->driver->parse_string($template, $data, $return);
 		return $this->driver->parse_string($template, $data, $return, $options);
 		//
+	}
+
+	// Added by Ivan Tcholakov, 20-JAN-2016.
+	public function get_default_driver_name()
+	{
+		return $this->driver_name;
 	}
 
 	// Added by Ivan Tcholakov, 28-DEC-2013.
