@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013 - 2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -11,8 +11,11 @@ class Readme_controller extends Base_Controller {
 
         parent::__construct();
 
+        $title = 'README';
+
         $this->template
-            ->title('README')
+            ->append_title($title)
+            ->set_breadcrumb('<i class="fa fa-info-circle"></i> '.$title, site_url('readme'));
         ;
 
         $this->registry->set('nav', 'readme');
@@ -39,7 +42,7 @@ class Readme_controller extends Base_Controller {
 
         $this->template
             ->set(compact('path', 'content'))
-            ->enable_parser_body(array('i18n' => false))    // Actually, this disables the 'i18n' parser.
+            //->enable_parser_body(array('i18n' => false))    // Actually, this disables the 'i18n' parser.
             ->build('readme');
     }
 
