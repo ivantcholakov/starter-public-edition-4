@@ -35,3 +35,5 @@ if (IS_CLI) {
     // http://www.controlstyle.com/articles/programming/text/if-mod-since-php/
     session_cache_limiter('private_no_expire');
 }
+
+ini_set('pcre.backtrack_limit', 10000000);

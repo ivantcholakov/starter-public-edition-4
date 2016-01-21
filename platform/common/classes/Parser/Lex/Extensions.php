@@ -613,7 +613,39 @@ class Parser_Lex_Extensions extends Lex\Parser {
      */
     public function setupRegex()
     {
-        return parent::setupRegex();
+        if ($this->regexSetup) {
+            return;
+        }
+
+        $glue = preg_quote($this->scopeGlue, '/');
+
+        // Modified by Ivan Tcholakov, 21-JAN-2016.
+        //$this->variableRegex = $glue === '\\.' ? '[a-zA-Z0-9_'.$glue.']+' : '[a-zA-Z0-9_\.'.$glue.']+';
+        $this->variableRegex = $glue === '\\.' ? '[a-zA-Z0-9_]+(?:['.$glue.']+[a-zA-Z0-9_]+)*' : '[a-zA-Z0-9_]+(?:[\.'.$glue.']+[a-zA-Z0-9_]+)*';
+        //
+        $this->callbackNameRegex = $this->variableRegex.$glue.$this->variableRegex;
+        $this->variableLoopRegex = '/\{\{\s*('.$this->variableRegex.')\s*\}\}(.*?)\{\{\s*\/\1\s*\}\}/ms';
+        $this->variableTagRegex = '/\{\{\s*('.$this->variableRegex.')\s*\}\}/m';
+
+        $this->callbackBlockRegex = '/\{\{\s*('.$this->variableRegex.')(\s.*?)\}\}(.*?)\{\{\s*\/\1\s*\}\}/ms';
+
+        $this->recursiveRegex = '/\{\{\s*\*recursive\s*('.$this->variableRegex.')\*\s*\}\}/ms';
+
+        $this->noparseRegex = '/\{\{\s*noparse\s*\}\}(.*?)\{\{\s*\/noparse\s*\}\}/ms';
+
+        $this->conditionalRegex = '/\{\{\s*(if|unless|elseif|elseunless)\s*((?:\()?(.*?)(?:\))?)\s*\}\}/ms';
+        $this->conditionalElseRegex = '/\{\{\s*else\s*\}\}/ms';
+        $this->conditionalEndRegex = '/\{\{\s*endif\s*\}\}/ms';
+        $this->conditionalExistsRegex = '/(\s+|^)exists\s+('.$this->variableRegex.')(\s+|$)/ms';
+        $this->conditionalNotRegex = '/(\s+|^)not(\s+|$)/ms';
+
+        $this->regexSetup = true;
+
+        // This is important, it's pretty unclear by the documentation
+        // what the default value is on <= 5.3.6
+        // Disabled by Ivan Tcholakov, 21-JAN-2016, This is set within a global configuration file.
+        //ini_set('pcre.backtrack_limit', 1000000);
+        //
     }
 
     /**
