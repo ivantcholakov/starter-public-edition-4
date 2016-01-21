@@ -1352,34 +1352,6 @@ Replacement count: {{ helper:get name="str_replace_count" }}
 
                                     <tr class="info">
                                         <td colspan="2">
-                                            <h4>Formatters, Parsers</h4>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-<pre><code>{{ noparse }}{{ <strong>format:markdown</strong> }} Formatted **text** {{ <strong>/format:markdown</strong> }}
-{{ <strong>format:markdown</strong> content="[[ string_markdown ]]" }}{{ /noparse }}</code></pre>
-                                        </td>
-                                        <td>
-{{ format:markdown }} Formatted **text** {{ /format:markdown }}
-{{ format:markdown content="[[ string_markdown ]]" }}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-<pre><code>{{ noparse }}{{ <strong>format:textile</strong> }} Formatted _text_ {{ <strong>/format:textile</strong> }}
-{{ <strong>format:textile</strong> content="[[ string_textile ]]" }}{{ /noparse }}</code></pre>
-                                        </td>
-                                        <td>
-{{ format:textile }} Formatted _text_ {{ /format:textile }}
-{{ format:textile content="[[ string_textile ]]" }}
-                                        </td>
-                                    </tr>
-
-                                    <tr class="info">
-                                        <td colspan="2">
                                             <h4>Session</h4>
                                         </td>
                                     </tr>
@@ -1801,6 +1773,58 @@ Replacement count: {{ helper:get name="str_replace_count" }}
                                         </td>
                                         <td>
 {{ setting:get item="contact_address" }} <!-- This result is language-sensitive. -->
+                                        </td>
+                                    </tr>
+
+                                    <tr class="info">
+                                        <td colspan="2">
+                                            <h4>HTML</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>html:escape</strong> }}&lt;div&gt;&lt;/div&gt;{{ <strong>/html:escape</strong> }}
+&lt;br /&gt;
+{{ <strong>html:escape</strong> }}&lt;div&gt;{{ dog }}&lt;/div&gt;{{ <strong>/html:escape</strong> }}
+&lt;br /&gt;
+{{ <strong>html:escape</strong> parse_content="no" }}&lt;div&gt;{{ dog }}&lt;/div&gt;{{ <strong>/html:escape</strong> }}
+{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ html:escape }}<div></div>{{ /html:escape }}
+<br />
+{{ html:escape }}<div>{{ dog }}</div>{{ /html:escape }}
+<br />
+{{ html:escape parse_content="no" }}<div>{{ dog }}</div>{{ /html:escape }} <span style="color: red;">This fails for now.</span>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="info">
+                                        <td colspan="2">
+                                            <h4>Formatters, Parsers</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>format:markdown</strong> }} Formatted **text** {{ <strong>/format:markdown</strong> }}
+{{ <strong>format:markdown</strong> content="[[ string_markdown ]]" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ format:markdown }} Formatted **text** {{ /format:markdown }}
+{{ format:markdown content="[[ string_markdown ]]" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>format:textile</strong> }} Formatted _text_ {{ <strong>/format:textile</strong> }}
+{{ <strong>format:textile</strong> content="[[ string_textile ]]" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ format:textile }} Formatted _text_ {{ /format:textile }}
+{{ format:textile content="[[ string_textile ]]" }}
                                         </td>
                                     </tr>
 

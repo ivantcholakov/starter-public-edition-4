@@ -12,4 +12,9 @@ class Parser_Lex_Extension_Html extends Parser_Lex_Extension {
         parent::__construct();
     }
 
+    public function escape() {
+
+        return html_escape($this->get_attribute(0, $this->get_content()));
+    }
+
 }
