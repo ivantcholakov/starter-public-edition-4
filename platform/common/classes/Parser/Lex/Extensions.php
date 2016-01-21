@@ -649,6 +649,33 @@ class Parser_Lex_Extensions extends Lex\Parser {
     }
 
     /**
+     * Extracts the looped tags so that we can parse conditionals then re-inject.
+     *
+     * @param  string $text The text to extract from
+     * @return string
+     */
+    protected function extractLoopedTags($text, $data = array(), $callback = null)
+    {
+        /**
+         * $matches[][0] is the raw match
+         */
+        if (preg_match_all($this->callbackBlockRegex, $text, $matches, PREG_SET_ORDER)) {
+            foreach ($matches as $match) {
+                // Does this callback block contain parameters?
+                if ($this->parseParameters($match[2], $data, $callback)) {
+                    // Let's extract it so it doesn't conflict with local variables when
+                    // parseVariables() is called.
+                    $text = $this->createExtraction('callback_blocks', $match[0], $match[0], $text);
+                } else {
+                    $text = $this->createExtraction('looped_tags', $match[0], $match[0], $text);
+                }
+            }
+        }
+
+        return $text;
+    }
+
+    /**
      * Takes a dot-notated key and finds the value for it in the given
      * array or object.
      *
