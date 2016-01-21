@@ -656,11 +656,18 @@ class Parser_Lex_Extensions extends Lex\Parser {
      */
     protected function extractLoopedTags($text, $data = array(), $callback = null)
     {
-        /**
-         * $matches[][0] is the raw match
-         */
-        if (preg_match_all($this->callbackBlockRegex, $text, $matches, PREG_SET_ORDER)) {
+        $count = preg_match_all($this->callbackBlockRegex, $text, $matches, PREG_SET_ORDER);
+
+        if ($count === false) {
+
+            // Try to debug.
+            $preg_last_error = preg_last_error();
+        }
+
+        if ($count) {
+
             foreach ($matches as $match) {
+
                 // Does this callback block contain parameters?
                 if ($this->parseParameters($match[2], $data, $callback)) {
                     // Let's extract it so it doesn't conflict with local variables when
