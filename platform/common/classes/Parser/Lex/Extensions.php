@@ -656,6 +656,9 @@ class Parser_Lex_Extensions extends Lex\Parser {
      */
     protected function extractLoopedTags($text, $data = array(), $callback = null)
     {
+// The commented code fails on long strings, it is not clear what couses this.
+// PCRE ini settings were good, preg_last_error() returned 0.
+/*
         $count = preg_match_all($this->callbackBlockRegex, $text, $matches, PREG_SET_ORDER);
 
         if ($count === false) {
@@ -677,6 +680,31 @@ class Parser_Lex_Extensions extends Lex\Parser {
                     $text = $this->createExtraction('looped_tags', $match[0], $match[0], $text);
                 }
             }
+        }
+
+        return $text;
+*/
+
+        if ($text == '') {
+            return $text;
+        }
+
+        while ($ret = preg_match($this->callbackBlockRegex, $text, $match)) {
+
+            // Does this callback block contain parameters?
+            if ($this->parseParameters($match[2], $data, $callback)) {
+                // Let's extract it so it doesn't conflict with local variables when
+                // parseVariables() is called.
+                $text = $this->createExtraction('callback_blocks', $match[0], $match[0], $text);
+            } else {
+                $text = $this->createExtraction('looped_tags', $match[0], $match[0], $text);
+            }
+        }
+
+        if ($ret === false) {
+
+            // Try to debug.
+            $preg_last_error = preg_last_error();
         }
 
         return $text;
