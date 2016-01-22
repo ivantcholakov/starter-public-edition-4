@@ -9,6 +9,8 @@
 
 abstract class Parser_Lex_Extension {
 
+    public $parse_tag_content = null;
+
     protected $parsed_attributes = array();
     protected $parsed_content = array();
     protected $parser_instance;
@@ -97,6 +99,14 @@ abstract class Parser_Lex_Extension {
                     unset($attributes[$attr]);
                 }
             }
+        }
+
+        if (empty($content) || (is_scalar($content) && trim($content) == '')) {
+            $parse_content = true;
+        }
+
+        if (!$parse_content) {
+            $this->parse_tag_content = false;
         }
 
         if ($parse_content && is_scalar($this->parsed_content) && $this->parsed_content != '') {

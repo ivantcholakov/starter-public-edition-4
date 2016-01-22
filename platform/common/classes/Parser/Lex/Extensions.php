@@ -125,6 +125,12 @@ class Parser_Lex_Extensions extends Lex\Parser {
 
             $data = call_user_func(array($extension, $method));
 
+            // Added by Ivan Tcholakov, 23-JAN-2016.
+            if (is_string($data) && $extension->parse_tag_content === false) {
+                $data = $this->createExtraction('noparse', $data, $data, $data);
+            }
+            //
+
         } else {
 
             log_message('error', 'Class '.$class_name.' does not exist.');
@@ -731,8 +737,24 @@ class Parser_Lex_Extensions extends Lex\Parser {
 
                 $parameters = $this->parseParameters($match[2], $data, $callback);
 
+                // Added by Ivan Tcholakov, 22-JAN-2016.
+                $parse_content = null;
+
+                foreach (array('parse_content', 'parse-content') as $attr) {
+
+                    if (isset($parameters[$attr])) {
+
+                        $parse_content = str_to_bool($parameters[$attr]);
+                        break;
+                    }
+                }
+                //
+
                 // Does this callback block contain parameters?
-                if ($parameters) {
+                // Modified by Ivan Tcholakov, 22-JAN-2016.
+                //if ($parameters) {
+                if ($parameters || $parse_content === false) {
+                //
                     // Let's extract it so it doesn't conflict with local variables when
                     // parseVariables() is called.
                     $text = $this->createExtraction('callback_blocks', $match[0], $match[0], $text);
