@@ -236,6 +236,8 @@ $(function () {
 //------------------------------------------------------------------------------
 
 /**
+ * @deprecated Use html_attr_* functions.
+ *
  * The following functions are derived work.
  * Adaptation by Ivan Tcholakov, OCT-2013.
  * Code is rewritten in procedural style,

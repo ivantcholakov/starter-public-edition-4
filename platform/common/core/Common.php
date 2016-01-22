@@ -371,6 +371,25 @@ if ( ! function_exists('_stringify_attributes'))
     }
 }
 
+if ( ! function_exists('html_code'))
+{
+    // Added by Ivan Tcholakov, 22-JAN-2016.
+    function html_code($string, $begin = null, $end = null)
+    {
+        if ($begin === null)
+        {
+            $begin = '<pre class="prettyprint"><code>';
+        }
+
+        if ($end === null)
+        {
+            $end = '</code></pre>';
+        }
+
+        return $begin.html_escape($string).$end;
+    }
+}
+
 // ------------------------------------------------------------------------
 
 // Processing HTML Attributes
