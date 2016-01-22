@@ -665,6 +665,7 @@ class Parser_Lex_Extensions extends Lex\Parser {
 
             // Try to debug.
             $preg_last_error = preg_last_error();
+            $preg_last_error_message = preg_error_message();
         }
 
         if ($count) {
@@ -705,6 +706,7 @@ class Parser_Lex_Extensions extends Lex\Parser {
 
             // Try to debug.
             $preg_last_error = preg_last_error();
+            $preg_last_error_message = preg_error_message();
         }
 
         return $text;
