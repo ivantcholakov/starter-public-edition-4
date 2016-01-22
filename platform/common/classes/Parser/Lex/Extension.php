@@ -92,14 +92,10 @@ abstract class Parser_Lex_Extension {
                     $parse_content = str_to_bool($attributes[$attr]);
                     $set = true;
                 }
-            }
 
-            if (isset($attributes['parse_content'])) {
-                unset($attributes['parse_content']);
-            }
-
-            if (isset($attributes['parse-content'])) {
-                unset($attributes['parse-content']);
+                if (isset($attributes[$attr])) {
+                    unset($attributes[$attr]);
+                }
             }
         }
 
@@ -135,14 +131,10 @@ abstract class Parser_Lex_Extension {
                     $parse_params = str_to_bool($attributes[$attr]);
                     $set = true;
                 }
-            }
 
-            if (isset($attributes['parse_params'])) {
-                unset($attributes['parse_params']);
-            }
-
-            if (isset($attributes['parse-params'])) {
-                unset($attributes['parse-params']);
+                if (isset($attributes[$attr])) {
+                    unset($attributes[$attr]);
+                }
             }
 
             $no_value = new Parser_Lex_No_Value;
