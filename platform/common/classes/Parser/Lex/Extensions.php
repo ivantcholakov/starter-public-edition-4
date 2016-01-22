@@ -848,6 +848,49 @@ class Parser_Lex_Extensions extends Lex\Parser {
         return $data;
     }
 
+    /**
+     * Parses a parameter string into an array
+     *
+     * @param   string  The string of parameters
+     * @return array
+     */
+    protected function parseParameters($parameters, $data, $callback)
+    {
+        $this->conditionalData = $data;
+        $this->inCondition = true;
+        // Extract all literal string in the conditional to make it easier
+        if (preg_match_all('/(["\']).*?(?<!\\\\)\1/', $parameters, $str_matches)) {
+            foreach ($str_matches[0] as $m) {
+                $parameters = $this->createExtraction('__param_str', $m, $m, $parameters);
+            }
+        }
+
+        $parameters = preg_replace_callback(
+            '/(.*?\s*=\s*(?!__))('.$this->variableRegex.')/is',
+            array($this, 'processParamVar'),
+            $parameters
+        );
+        if ($callback) {
+            $parameters = preg_replace('/(.*?\s*=\s*(?!\{\s*)(?!__))('.$this->callbackNameRegex.')(?!\s*\})\b/', '$1{$2}', $parameters);
+            $parameters = $this->parseCallbackTags($parameters, $data, $callback);
+        }
+
+        // Re-inject any strings we extracted
+        $parameters = $this->injectExtractions($parameters, '__param_str');
+        $this->inCondition = false;
+
+        if (preg_match_all('/(.*?)\s*=\s*(\'|"|&#?\w+;)(.*?)(?<!\\\\)\2/s', trim($parameters), $matches)) {
+            $return = array();
+            foreach ($matches[1] as $i => $attr) {
+                $return[trim($matches[1][$i])] = stripslashes($matches[3][$i]);
+            }
+
+            return $return;
+        }
+
+        return array();
+    }
+
     //--------------------------------------------------------------------------
 
     // Added by Ivan Tcholakov, 26-DEC-2015.
