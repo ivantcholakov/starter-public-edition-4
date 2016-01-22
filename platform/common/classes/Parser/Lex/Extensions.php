@@ -332,6 +332,7 @@ class Parser_Lex_Extensions extends Lex\Parser {
         } else {
             $regex = '/\{\{\s*('.$this->variableRegex.')(\s+.*?)?\s*(\/)?\}\}/ms';
         }
+
         /**
          * $match[0][0] is the raw tag
          * $match[0][1] is the offset of raw tag
@@ -343,17 +344,23 @@ class Parser_Lex_Extensions extends Lex\Parser {
          * $match[3][1] is the offset of closure
          */
         while (preg_match($regex, $text, $match, PREG_OFFSET_CAPTURE)) {
+
             $selfClosed = false;
             $parameters = array();
             $tag = $match[0][0];
             $start = $match[0][1];
             $name = $match[1][0];
+
             if (isset($match[2])) {
+
                 $cb_data = $data;
+
                 if ( !empty($this->parser_callback_data)) {
+
                     $data = $this->toArray($data);
                     $cb_data = array_merge($this->parser_callback_data, $data);
                 }
+
                 $raw_params = $this->injectExtractions($match[2][0], '__cond_str');
                 $parameters = $this->parseParameters($raw_params, $cb_data, $callback);
             }
@@ -361,9 +368,11 @@ class Parser_Lex_Extensions extends Lex\Parser {
             if (isset($match[3])) {
                 $selfClosed = true;
             }
+
             $content = '';
 
             $temp_text = substr($text, $start + strlen($tag));
+
             if (preg_match('/\{\{\s*\/'.preg_quote($name, '/').'\s*\}\}/m', $temp_text, $match, PREG_OFFSET_CAPTURE) && ! $selfClosed) {
 
                 $content = substr($temp_text, 0, $match[0][1]);
@@ -371,28 +380,34 @@ class Parser_Lex_Extensions extends Lex\Parser {
 
                 // Is there a nested block under this one existing with the same name?
                 $nested_regex = '/\{\{\s*('.preg_quote($name, '/').')(\s.*?)\}\}(.*?)\{\{\s*\/\1\s*\}\}/ms';
+
                 if (preg_match($nested_regex, $content.$match[0][0], $nested_matches)) {
+
                     $nested_content = preg_replace('/\{\{\s*\/'.preg_quote($name, '/').'\s*\}\}/m', '', $nested_matches[0]);
                     $content = $this->createExtraction('nested_looped_tags', $nested_content, $nested_content, $content);
                 }
             }
 
             $replacement = call_user_func_array($callback, array($name, $parameters, $content));
+
             // Added by Ivan Tcholakov, 23-DEC-2015.
             if ($this->is_attribute_being_parsed && !$inCondition) {
                 $replacement = $this->serialize($replacement);
             }
             //
+
             $replacement = $this->parseRecursives($replacement, $content, $callback);
 
             if ($inCondition) {
                 $replacement = $this->valueToLiteral($replacement);
             }
+
             // Added by Ivan Tcholakov, 23-DEC-2015.
             else {
                 $replacement = @ (string) $replacement;
             }
             //
+
             $text = preg_replace('/'.preg_quote($tag, '/').'/m', addcslashes($replacement, '\\$'), $text, 1);
             $text = $this->injectExtractions($text, 'nested_looped_tags');
         }
