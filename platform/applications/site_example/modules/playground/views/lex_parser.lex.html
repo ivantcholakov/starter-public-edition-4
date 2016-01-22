@@ -1800,6 +1800,24 @@ Replacement count: {{ helper:get name="str_replace_count" }}
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>html:code</strong> }}&lt;div&gt;&lt;/div&gt;{{ <strong>/html:code</strong> }}
+&lt;br /&gt;
+{{ <strong>html:code</strong> }}&lt;div&gt;{{ dog }}&lt;/div&gt;{{ <strong>/html:code</strong> }}
+&lt;br /&gt;
+{{ <strong>html:code</strong> parse_content="no" }}&lt;div&gt;{{ dog }}&lt;/div&gt;{{ <strong>/html:code</strong> }}
+{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ html:code }}<div></div>{{ /html:code }}
+<br />
+{{ html:code }}<div>{{ dog }}</div>{{ /html:code }}
+<br />
+{{ html:code parse_content="no" }}<div>{{ dog }}</div>{{ /html:code }}
+                                        </td>
+                                    </tr>
+
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>Formatters, Parsers</h4>
