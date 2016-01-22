@@ -18,6 +18,9 @@ class Parser_Lex_Extensions extends Lex\Parser {
 
     public $variableRegex = '';
 
+    protected $callbackBlockStartRegex = '';
+    protected $callbackBlockEndRegex = '';
+
     public function __construct() {
 
         $this->ci = & get_instance();
@@ -639,6 +642,10 @@ class Parser_Lex_Extensions extends Lex\Parser {
         $this->conditionalExistsRegex = '/(\s+|^)exists\s+('.$this->variableRegex.')(\s+|$)/ms';
         $this->conditionalNotRegex = '/(\s+|^)not(\s+|$)/ms';
 
+        $this->callbackBlockStartRegex = '/\{\{\s*('.$this->variableRegex.')(\s.*?)\}\}/ms';
+        $this->callbackBlockStartRegex1 = '/\{\{\s*(\1)(\s.*?)\}\}/ms';
+        $this->callbackBlockEndRegex = '/\{\{\s*\/\1\s*\}\}/ms';
+
         $this->regexSetup = true;
 
         // This is important, it's pretty unclear by the documentation
@@ -656,9 +663,9 @@ class Parser_Lex_Extensions extends Lex\Parser {
      */
     protected function extractLoopedTags($text, $data = array(), $callback = null)
     {
-// The commented code fails on long strings, it is not clear what couses this.
-// PCRE ini settings were good, preg_last_error() returned 0.
-/*
+        // The commented code fails on long strings, it is not clear what couses this.
+        // PCRE ini settings were good, preg_last_error() returned 0.
+        /*
         $count = preg_match_all($this->callbackBlockRegex, $text, $matches, PREG_SET_ORDER);
 
         if ($count === false) {
@@ -684,32 +691,111 @@ class Parser_Lex_Extensions extends Lex\Parser {
         }
 
         return $text;
-*/
+        */
 
         if ($text == '') {
             return $text;
         }
 
-        while ($ret = preg_match($this->callbackBlockRegex, $text, $match)) {
+        $count = 0;
+        $matches = array();
 
-            // Does this callback block contain parameters?
-            if ($this->parseParameters($match[2], $data, $callback)) {
-                // Let's extract it so it doesn't conflict with local variables when
-                // parseVariables() is called.
-                $text = $this->createExtraction('callback_blocks', $match[0], $match[0], $text);
-            } else {
-                $text = $this->createExtraction('looped_tags', $match[0], $match[0], $text);
+        $offset = 0;
+
+        while ($this->findBlock($text, $m, $offset)) {
+
+            $matches[] = array($m[0][0], $m[1][0], $m[2][0], $m[3][0]);
+
+            $offset = $m[0][1] + strlen($m[0][0]);
+            $count++;
+        }
+
+        if ($count) {
+
+            foreach ($matches as $match) {
+
+                // Does this callback block contain parameters?
+                if ($this->parseParameters($match[2], $data, $callback)) {
+                    // Let's extract it so it doesn't conflict with local variables when
+                    // parseVariables() is called.
+                    $text = $this->createExtraction('callback_blocks', $match[0], $match[0], $text);
+                } else {
+                    $text = $this->createExtraction('looped_tags', $match[0], $match[0], $text);
+                }
             }
         }
 
-        if ($ret === false) {
-
-            // Try to debug.
-            $preg_last_error = preg_last_error();
-            $preg_last_error_message = preg_error_message();
-        }
-
         return $text;
+    }
+
+    protected function findBlock(& $subject, & $matches, $offset = 0)
+    {
+        do {
+
+            $variable = null;
+
+            $ret = $this->findBlockStart(null, $subject, $m, $offset);
+
+            if (!$ret) {
+                return $ret;
+            }
+
+            $variable = $m[1][0];
+            $offset_start = $m[0][1];
+            $length_start = strlen($m[0][0]);
+            $offset_search_next = $offset_start + $length_start;
+
+            $ret = $this->findBlockEnd($variable, $subject, $m1, $offset_search_next);
+
+            if ($ret === false) {
+                return false;
+            }
+
+            if ($ret == 0) {
+
+                $offset = $offset_search_next;
+                continue;
+            }
+
+            $offset_end = $m1[0][1];
+            $length_end = strlen($m1[0][0]);
+
+            $ret = $this->findBlockStart($variable, $subject, $m2, $offset_search_next);
+
+            if ($ret) {
+
+                $offset_start_next = $m2[0][1];
+
+                if ($offset_end > $offset_start_next) {
+
+                    $offset = $offset_search_next;
+                    continue;
+                }
+            }
+
+            $matches = $m;
+            $matches[0][0] = substr($subject, $offset_start, $offset_end + $length_end - $offset_start);
+            $matches[] = array(substr($subject, $offset_search_next, $offset_end - $offset_search_next), $offset_search_next);
+
+            return 1;
+
+        } while (true);
+    }
+
+    protected function findBlockStart($variable, & $subject, & $matches, $offset = 0)
+    {
+        $pattern = $variable === null
+            ? $this->callbackBlockStartRegex
+            : str_replace('\1', preg_quote($variable), $this->callbackBlockStartRegex1);
+
+        return preg_match($pattern, $subject, $matches, PREG_OFFSET_CAPTURE, $offset);
+    }
+
+    protected function findBlockEnd($variable, & $subject, & $matches, $offset = 0)
+    {
+        $pattern = str_replace('\1', preg_quote($variable), $this->callbackBlockEndRegex);
+
+        return preg_match($pattern, $subject, $matches, PREG_OFFSET_CAPTURE, $offset);
     }
 
     /**
