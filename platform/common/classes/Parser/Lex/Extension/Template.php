@@ -79,20 +79,32 @@ class Parser_Lex_Extension_Template extends Parser_Lex_Extension {
 
     public function html_begin() {
 
-        ob_start();
-
-        echo html_tag_no_conflict($this->get_attribute(0));
-
-        return ob_get_clean();
+        return html_tag_no_conflict($this->get_attribute(0));
     }
 
     public function html_end() {
 
-        ob_start();
+        return html_close_tag();
+    }
 
-        echo html_close_tag();
+    public function html_head_begin() {
 
-        return ob_get_clean();
+        return head_tag();
+    }
+
+    public function html_head_end() {
+
+        return head_close_tag();
+    }
+
+    public function html_body_begin() {
+
+        return body_tag($this->get_attribute(0));
+    }
+
+    public function html_body_end() {
+
+        return body_close_tag();
     }
 
 }

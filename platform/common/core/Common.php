@@ -461,7 +461,13 @@ if (!function_exists('html_attr_merge')) {
         $attr2->removeAttribute('class');
         $attr1->addClass($class2);
 
-        return (string) $attr1->mergeAttributes((string) $attr2);
+        $attr1->mergeAttributes((string) $attr2);
+
+        if (trim($attr1->getAttribute('class')) == '') {
+            $attr1->removeAttribute('class');
+        }
+
+        return (string) $attr1;
     }
 
 }
@@ -506,6 +512,12 @@ if (!function_exists('html_attr_remove_class')) {
         $attr = new HTML_Attributes($attributes);
 
         return (string) $attr->removeClass($class);
+
+        if (trim($attr->getAttribute('class')) == '') {
+            $attr->removeAttribute('class');
+        }
+
+        return (string) $attr;
     }
 
 }
