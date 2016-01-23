@@ -107,4 +107,24 @@ class Parser_Lex_Extension_Template extends Parser_Lex_Extension {
         return body_close_tag();
     }
 
+    public function html_meta_charset() {
+
+        return meta_charset();
+    }
+
+    public function html_base_href() {
+
+        return base_href();
+    }
+
+    public function html_ie_edge() {
+
+        return ie_edge();
+    }
+
+    public function html_viewport() {
+
+        return viewport();
+    }
+
 }
