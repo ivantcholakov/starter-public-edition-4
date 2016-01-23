@@ -12,7 +12,7 @@ abstract class Parser_Lex_Extension {
     public $parse_tag_content = null;
 
     protected $parsed_attributes = array();
-    protected $parsed_content = array();
+    protected $parsed_content = null;
     protected $parser_instance;
     protected $extension_config;
     protected $extension_path;
