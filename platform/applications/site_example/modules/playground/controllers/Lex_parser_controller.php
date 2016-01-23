@@ -65,6 +65,8 @@ class Lex_parser_controller extends Playground_Base_Controller {
             ->set('string_textile', 'Formatted _text_')
             ->set('dangerous_value', 'A dangerous value <script>alert("Hi, I am dangerous.")</script>')
             ->set_partial('lex_partial', 'lex_partial')
+            ->set_metadata('description', 'Lex parser testing page')
+            ->set_metadata('keywords', 'CodeIgniter Lex Template Parser')
             ->build('lex_parser');
     }
 

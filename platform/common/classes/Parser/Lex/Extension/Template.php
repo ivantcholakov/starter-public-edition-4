@@ -68,4 +68,13 @@ class Parser_Lex_Extension_Template extends Parser_Lex_Extension {
         return ob_get_clean();
     }
 
+    public function html_metadata() {
+
+        ob_start();
+
+        template_metadata();
+
+        return ob_get_clean();
+    }
+
 }
