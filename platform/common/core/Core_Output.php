@@ -12,6 +12,10 @@ class Core_Output extends CI_Output {
     public function __construct()
     {
         parent::__construct();
+
+        // Added by Ivan Tcholakov, 24-JAN-2016.
+        $this->parse_exec_vars = ENVIRONMENT !== 'production';
+        //
     }
 
     // -------------------------------------------------------------------------
