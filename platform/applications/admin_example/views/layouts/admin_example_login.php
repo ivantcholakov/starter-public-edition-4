@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-echo html_tag('lang="'.$this->lang->code().'" dir="'.$this->lang->direction().'"');
+echo html_tag();
 echo head_tag();
 
 echo meta_charset();

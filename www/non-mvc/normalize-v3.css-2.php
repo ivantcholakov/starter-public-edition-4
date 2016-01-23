@@ -8,7 +8,7 @@ ci()->load
     ->library('template')
 ;
 
-echo html_tag('lang="en"');
+echo html_tag();
 
 echo head_tag();
 echo meta_charset();

@@ -282,6 +282,25 @@ if (!function_exists('html_tag_no_conflict')) {
     // Renamed by Ivan Tcholakov, html_tag -> html_tag_no_conflict, 03-JAN-2016.
     function html_tag_no_conflict($attributes = null) {
 
+        // Add language code and text direction automatically.
+        $attr = array();
+
+        $lang = ci()->lang->code();
+
+        if ($lang != '') {
+            $attr['lang'] = $lang;
+        }
+
+        $dir = ci()->lang->direction();
+
+        if ($dir != '') {
+            $attr['dir'] = $dir;
+        }
+
+        if (!empty($attr)) {
+            $attributes = html_attr_merge($attr, $attributes);
+        }
+
         $data =& ci()->load->_ci_cached_vars;
 
         $attributes = html_attr_merge(

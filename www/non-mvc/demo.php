@@ -19,7 +19,7 @@ $CI->load
 //    ->library('template')
 //;
 
-echo html_tag('lang="'.ci()->lang->code().'" dir="'.ci()->lang->direction().'"');
+echo html_tag();
 
 ?>
 
@@ -101,7 +101,7 @@ echo body_tag('id="page-top"');
                     <p>
                         Yet another image should be seen here:
                         <br />
-                        <?php echo image('lib/processing.gif', null, 'class="thumbnail"'); /* Inserting an image using a helper function. */ ?>                
+                        <?php echo image('lib/processing.gif', null, 'class="thumbnail"'); /* Inserting an image using a helper function. */ ?>
                     </p>
 
                     <p>
