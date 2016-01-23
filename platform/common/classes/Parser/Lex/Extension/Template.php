@@ -127,4 +127,19 @@ class Parser_Lex_Extension_Template extends Parser_Lex_Extension {
         return viewport();
     }
 
+    public function html_favicon() {
+
+        return favicon($this->get_attribute(0, 'favicon.ico'));
+    }
+
+    public function html_apple_touch_icon() {
+
+        return apple_touch_icon();
+    }
+
+    public function html_apple_touch_icon_precomposed() {
+
+        return apple_touch_icon_precomposed();
+    }
+
 }
