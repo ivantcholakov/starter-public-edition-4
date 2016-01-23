@@ -2081,6 +2081,26 @@ document.write("Hello World!");
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ html:code }}{{ <strong>template:html_begin</strong> }}{{ /html:code }}
+{{ html:code }}{{ <strong>template:html_begin</strong> attributes='class="my-class"' }}{{ /html:code }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ html:code }}{{ template:html_begin }}{{ /html:code }}
+{{ html:code }}{{ template:html_begin attributes='class="my-class"' }}{{ /html:code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ html:code }}{{ <strong>template:html_end</strong> }}{{ /html:code }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ html:code }}{{ template:html_end }}{{ /html:code }}
+                                        </td>
+                                    </tr>
+
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>Visual Themes</h4>
