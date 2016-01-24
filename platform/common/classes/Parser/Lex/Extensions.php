@@ -778,50 +778,48 @@ class Parser_Lex_Extensions extends Lex\Parser {
     {
         find_block:
 
-            $variable = null;
+        $variable = null;
 
-            $ret = $this->findBlockStart(null, $subject, $m, $offset);
+        $ret = $this->findBlockStart(null, $subject, $m, $offset);
 
-            if (!$ret) {
-                return $ret;
-            }
+        if (!$ret) {
+            return $ret;
+        }
 
-            $variable = $m[1][0];
-            $offset_start = $m[0][1];
-            $length_start = strlen($m[0][0]);
-            $offset_search_next = $offset_start + $length_start;
+        $variable = $m[1][0];
+        $offset_start = $m[0][1];
+        $length_start = strlen($m[0][0]);
+        $offset_search_next = $offset_start + $length_start;
 
-            $ret = $this->findBlockEnd($variable, $subject, $m1, $offset_search_next);
+        $ret = $this->findBlockEnd($variable, $subject, $m1, $offset_search_next);
 
-            if (!$ret) {
+        if (!$ret) {
+
+            $offset = $offset_search_next;
+            goto find_block;
+        }
+
+        $offset_end = $m1[0][1];
+        $length_end = strlen($m1[0][0]);
+
+        $ret = $this->findBlockStart($variable, $subject, $m2, $offset_search_next);
+
+        if ($ret) {
+
+            $offset_start_next = $m2[0][1];
+
+            if ($offset_end > $offset_start_next) {
 
                 $offset = $offset_search_next;
                 goto find_block;
             }
+        }
 
-            $offset_end = $m1[0][1];
-            $length_end = strlen($m1[0][0]);
+        $matches = $m;
+        $matches[0][0] = substr($subject, $offset_start, $offset_end + $length_end - $offset_start);
+        $matches[] = array(substr($subject, $offset_search_next, $offset_end - $offset_search_next), $offset_search_next);
 
-            $ret = $this->findBlockStart($variable, $subject, $m2, $offset_search_next);
-
-            if ($ret) {
-
-                $offset_start_next = $m2[0][1];
-
-                if ($offset_end > $offset_start_next) {
-
-                    $offset = $offset_search_next;
-                    goto find_block;
-                }
-            }
-
-            $matches = $m;
-            $matches[0][0] = substr($subject, $offset_start, $offset_end + $length_end - $offset_start);
-            $matches[] = array(substr($subject, $offset_search_next, $offset_end - $offset_search_next), $offset_search_next);
-
-            return 1;
-
-        goto find_block;
+        return 1;
     }
 
     protected function findBlockStart($variable, & $subject, & $matches, $offset = 0)
