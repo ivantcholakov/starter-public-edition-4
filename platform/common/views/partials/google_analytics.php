@@ -1,4 +1,8 @@
-<?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
+<?php defined('BASEPATH') or exit('No direct script access allowed');
+
+if ($this->settings->get('google_analytics_enabled')) {
+
+?>
 
     <script type="text/javascript">
     //<![CDATA[
@@ -10,3 +14,7 @@
         ga('create','<?php echo $this->settings->get('google_analytics_id'); ?>');ga('send','pageview');
     //]]>
     </script>
+
+<?php
+
+}
