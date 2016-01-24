@@ -54,7 +54,7 @@ echo Modules::run('main_menu_widget');
 echo noscript('<div class="alert alert-warning text-center">'.$this->lang->line('ui_noscript').'</div>');
 echo unsupported_browser('<div class="alert alert-warning text-center">'.$this->lang->line('ui_unsupported_browser').'</div>');
 
-echo Modules::run('breadcrumb_widget/index');
+echo Modules::run('breadcrumb_widget');
 
 template_body();
 
