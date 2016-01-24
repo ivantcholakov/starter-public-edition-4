@@ -793,11 +793,7 @@ class Parser_Lex_Extensions extends Lex\Parser {
 
             $ret = $this->findBlockEnd($variable, $subject, $m1, $offset_search_next);
 
-            if ($ret === false) {
-                return false;
-            }
-
-            if ($ret == 0) {
+            if (!$ret) {
 
                 $offset = $offset_search_next;
                 continue;
