@@ -177,4 +177,26 @@ class Parser_Lex_Extension_Template extends Parser_Lex_Extension {
         return js_jquery();
     }
 
+    public function html_noscript() {
+
+        $alternative_message = $this->get_attribute(0, $this->get_content());
+
+        if (trim($alternative_message) == '') {
+            $alternative_message = null;
+        }
+
+        return noscript($alternative_message);
+    }
+
+    public function html_unsupported_browser() {
+
+        $alternative_message = $this->get_attribute(0, $this->get_content());
+
+        if (trim($alternative_message) == '') {
+            $alternative_message = null;
+        }
+
+        return unsupported_browser($alternative_message);
+    }
+
 }

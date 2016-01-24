@@ -2265,6 +2265,22 @@ document.write("Hello World!");
                                         </td>
                                     </tr>
 
+                                        <td>
+<pre><code>{{ noparse }}{{ html:code }}{{ <strong>template:html_noscript</strong> }}{{ /html:code }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ html:code }}{{ template:html_noscript }}{{ /html:code }}
+                                        </td>
+                                    </tr>
+
+                                        <td>
+<pre><code>{{ noparse }}{{ html:code }}{{ <strong>template:html_unsupported_browser</strong> }}{{ /html:code }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ html:code }}{{ template:html_unsupported_browser }}{{ /html:code }}
+                                        </td>
+                                    </tr>
+
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>Visual Themes</h4>
