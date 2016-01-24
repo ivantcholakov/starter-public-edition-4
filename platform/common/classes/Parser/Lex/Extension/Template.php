@@ -199,4 +199,29 @@ class Parser_Lex_Extension_Template extends Parser_Lex_Extension {
         return unsupported_browser($alternative_message);
     }
 
+    public function js_jquery_extra_selectors() {
+
+        return js_jquery_extra_selectors();
+    }
+
+    public function js_bp_plugins() {
+
+        return js_bp_plugins();
+    }
+
+    public function js_mbp_helper() {
+
+        return js_mbp_helper();
+    }
+
+    public function js_scale_fix_ios() {
+
+        return js_scale_fix_ios();
+    }
+
+    public function js_imgsizer() {
+
+        return js_imgsizer();
+    }
+
 }
