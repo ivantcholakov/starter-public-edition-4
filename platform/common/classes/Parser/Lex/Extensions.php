@@ -776,7 +776,7 @@ class Parser_Lex_Extensions extends Lex\Parser {
 
     protected function findBlock(& $subject, & $matches, $offset = 0)
     {
-        do {
+        find_block:
 
             $variable = null;
 
@@ -796,7 +796,7 @@ class Parser_Lex_Extensions extends Lex\Parser {
             if (!$ret) {
 
                 $offset = $offset_search_next;
-                continue;
+                goto find_block;
             }
 
             $offset_end = $m1[0][1];
@@ -811,7 +811,7 @@ class Parser_Lex_Extensions extends Lex\Parser {
                 if ($offset_end > $offset_start_next) {
 
                     $offset = $offset_search_next;
-                    continue;
+                    goto find_block;
                 }
             }
 
@@ -821,7 +821,7 @@ class Parser_Lex_Extensions extends Lex\Parser {
 
             return 1;
 
-        } while (true);
+        goto find_block;
     }
 
     protected function findBlockStart($variable, & $subject, & $matches, $offset = 0)
