@@ -1,0 +1,81 @@
+{{ template:html_begin }}
+{{ template:html_head_begin }}
+{{ template:html_meta_charset }}
+{{ template:html_base_href }}
+{{ template:html_ie_edge }}
+
+{{ template:html_title }}
+{{ template:html_metadata }}
+
+{{ template:html_viewport }}
+{{ template:html_favicon }}
+{{ template:html_apple_touch_icon_precomposed }}
+{{ template:html_cleartype_ie }}
+
+{{ template:js_platform }}
+{{ template:file_partial file="webfontloader" }}
+
+{{ theme:css file="front.min.css" }}
+
+{{ template:file_partial file="css" }}
+{{ template:file_partial file="theme_css" }}
+{{ template:partial name="css" }}
+
+{{ asset:js file="lib/phpjs/phpjs.min.js" }}
+{{ template:js_selectivizr }}
+{{ template:js_modernizr }}
+{{ template:js_respond }}
+{{ template:js_jquery }}
+{{ asset:js file="lib/jquery-json/jquery.json.js" }}
+{{ template:partial name="ckeditor" }}
+
+{{ template:partial name="head" }}
+
+{{ template:html_head_end }}
+{{ template:html_body_begin attributes='id="page-top"' }}
+
+    <!-- Wrap all page content here -->
+    <div id="wrap">
+
+{{ widget:show name="main_menu_widget" }}
+
+{{ template:html_noscript }}
+{{ template:html_unsupported_browser }}
+
+        <!-- Begin page content -->
+        <div class="container" id="content-container">
+
+{{ widget:show name="breadcrumb_widget/index" }}
+{{ template:body }}
+
+        </div>
+
+    </div>
+
+{{ template:file_partial file="site_example_footer" }}
+
+{{ template:js_jquery_extra_selectors }}
+{{ template:js_bp_plugins }}
+{{ template:js_mbp_helper }}
+{{ template:js_scale_fix_ios }}
+{{ template:js_imgsizer }}
+
+{{ asset:js file="lib/bootstrap-3/bootstrap.min.js" }}
+{{ asset:js file="lib/jasny-bootstrap-3/jasny-bootstrap.min.js" }}
+{{ asset:js file="lib/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js" }}
+{{ asset:js file="lib/snackbar/snackbar.min.js" }}
+{{ asset:js file="lib/nouislider/nouislider.min.js" }}
+
+{{ template:file_partial file="scripts" }}
+{{ template:file_partial file="theme_scripts" }}
+{{ template:partial name="scripts" }}
+
+{{ asset:js file="lib/google-code-prettify/prettify.js" }}
+{{ asset:js file="site_example.js" }}
+
+    <div id="debug"></div>
+
+{{ template:file_partial file="google_analytics" }}
+
+{{ template:html_body_end }}
+{{ template:html_end }}
