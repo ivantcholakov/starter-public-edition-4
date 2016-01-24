@@ -431,6 +431,10 @@ class Parser_Lex_Extensions extends Lex\Parser {
      */
     public function parseConditionals($text, $data, $callback)
     {
+        // Added by Ivan Tcholakov, 24-JAN-2016.
+        $no_value = new Parser_Lex_No_Value;
+        //
+
         $this->setupRegex();
         preg_match_all($this->conditionalRegex, $text, $matches, PREG_SET_ORDER);
 
@@ -457,7 +461,10 @@ class Parser_Lex_Extensions extends Lex\Parser {
             if (preg_match_all($this->conditionalExistsRegex, $condition, $existsMatches, PREG_SET_ORDER)) {
                 foreach ($existsMatches as $m) {
                     $exists = 'true';
-                    if ($this->getVariable($m[2], $data, '__doesnt_exist__') === '__doesnt_exist__') {
+                    // Modified by Ivan Tcholakov, 24-JAN-2016.
+                    //if ($this->getVariable($m[2], $data, '__doesnt_exist__') === '__doesnt_exist__') {
+                    if ($this->getVariable($m[2], $data, $no_value) === $no_value) {
+                    //
                         $exists = 'false';
                     }
                     $condition = $this->createExtraction('__cond_exists', $m[0], $m[1].$exists.$m[3], $condition);
