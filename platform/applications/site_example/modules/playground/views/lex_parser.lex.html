@@ -151,9 +151,9 @@ License: The MIT License, http://opensource.org/licenses/MIT
 
 {{ my_blog:posts }}
     {{ if title == 'Blog Post One' }}
-    &lt;h2&gt;{{ title }} (tested, post 1)&lt;/h2&gt;
+    &lt;h2&gt;{{ title }} (tested, post {{ value_1 }})&lt;/h2&gt;
     {{ elseif title == 'Blog Post Two' }}
-    &lt;h2&gt;{{ title }} (tested, post 2)&lt;/h2&gt;
+    &lt;h2&gt;{{ title }} (tested, post {{ value_2 }})&lt;/h2&gt;
     {{ else }}
     &lt;h2&gt;{{ title }}&lt;/h2&gt;
     {{ endif }}
