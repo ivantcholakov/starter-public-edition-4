@@ -123,7 +123,7 @@ License: The MIT License, http://opensource.org/licenses/MIT
 &lt;br /&gt;
 {{ helper:html_escape <strong>value="[[ template:title ]]"</strong> }}
 &lt;br /&gt;
-{{ html:code <strong>value="Environment: [[ if global:environment == 'production' ]]production[[ else ]]non-production[[ endif ]]"</strong> }}{{ /html:code }}{{ /noparse }}</code></pre>
+{{ html:code <strong>value="Environment: [[ if global:environment == 'production' ]]production[[ else ]]non-production[[ endif ]]"</strong> /}}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
 {{ helper:html_escape value=dog }}
@@ -136,7 +136,7 @@ License: The MIT License, http://opensource.org/licenses/MIT
 <br />
 {{ helper:html_escape value="[[ template:title ]]" }}
 <br />
-{{ html:code value="Environment: [[ if global:environment == 'production' ]]production[[ else ]]non-production[[ endif ]]" }}{{ /html:code }} <span style='color: red;'>The last example fails yet.</span>
+{{ html:code value="Environment: [[ if global:environment == 'production' ]]production[[ else ]]non-production[[ endif ]]" /}} <span style='color: red;'>The last example fails yet.</span>
                                         </td>
                                     </tr>
 
@@ -147,14 +147,37 @@ License: The MIT License, http://opensource.org/licenses/MIT
      &lt;h2&gt;{{ title }}&lt;/h2&gt;
 {{ /my_blog:posts }}
 &lt;hr /&gt;
-{{ format:markdown }}Let's _convert_ this to **HTML**.{{ /format:markdown }}{{ /noparse }}</code></pre>
+{{ format:markdown }}Let us _convert_ this to **HTML**.{{ /format:markdown }}
+&lt;hr /&gt;
+{{ html:escape value="This is a <strong>self-closing</strong> tag." /}}{{ /noparse }}</code></pre>
+                                            " If you want to use both Single and Block tags in the same template, you must close the Single tags.
                                         </td>
                                         <td>
 {{ my_blog:posts }}
      <h2>{{ title }}</h2>
 {{ /my_blog:posts }}
 <hr />
-{{ format:markdown }}Let's _convert_ this to **HTML**.{{ /format:markdown }}
+{{ format:markdown }}Let us _convert_ this to **HTML**.{{ /format:markdown }}
+<hr />
+{{ html:escape value="This is a <strong>self-closing</strong> tag." /}}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <h4>Basic Conditionals</h4>
+<pre><code>{{ noparse }}{{ if helper:is_https }}
+    https://
+{{ else }}
+    http://
+{{ endif }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ if helper:is_https }}
+    https://
+{{ else }}
+    http://
+{{ endif }}
                                         </td>
                                     </tr>
 
