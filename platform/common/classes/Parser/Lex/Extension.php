@@ -177,11 +177,7 @@ abstract class Parser_Lex_Extension {
                         strpos($attr, '[[') !== false && strpos($attr, ']]') !== false
                     ) {
 
-                        if (preg_match('/^\s*\[\[(.*)\]\]\s*$/ms', $attr, $matches)) {
-                            $a = trim(str_replace(array('[[', ']]'), array('{{', '}}'), $attr));
-                        } else {
-                            $a = '{{'.$attr.'}}';
-                        }
+                        $a = trim(str_replace(array('[[', ']]'), array('{{', '}}'), $attr));
 
                         $parser = new Parser_Lex_Extensions;
 
