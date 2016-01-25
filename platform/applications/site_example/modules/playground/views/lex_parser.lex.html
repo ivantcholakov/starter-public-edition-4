@@ -171,7 +171,13 @@ License: The MIT License, http://opensource.org/licenses/MIT
 {{ else }}
     http://
 {{ endif }}{{ /noparse }}</code></pre>
-                                            * Reserved words for conditionals: if, unless, elseif, elseunless, else, endif
+<pre>Reserved words for conditionals:
+if
+unless
+elseif
+elseunless
+else
+endif</pre>
                                         </td>
                                         <td>
 {{ if helper:is_https }}
@@ -230,6 +236,71 @@ License: The MIT License, http://opensource.org/licenses/MIT
     Something here
 {{ else }}
     Nothing here
+{{ endif }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <h4>Conditional Operators</h4>
+<pre><code>{{ noparse }}{{ if {url:segments segment="1"} == 'playground' }}
+    &lt;p&gt;Looks like you are in the Playground section.&lt;/p&gt;
+{{ endif }}{{ /noparse }}</code></pre>
+<br />
+<pre>
+Operators List
+
+==      Equals. Values equal each other.
+!=      Does not equal. Values do not equal each other.
+===     Values equal each other in value and type.
+!==     Values are not equal each other in value and type.
+>       Greater than
+<       Less than
+>=      Greater than or equal to
+<=      Less than or equal to
+</pre>
+                                        </td>
+                                        <td>
+{{ if {url:segments segment="1"} == 'playground' }}
+    <p>Looks like you are in the Playground section.</p>
+{{ endif }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <h4>Logical Operators</h4>
+<pre><code>{{ noparse }}{{ if variables:custom_var != 'foo' and variables:custom_var != 'bar' }}
+     &lt;p&gt;No foos and no bars!&lt;/p&gt;
+{{ endif }}
+
+{{ if !user:logged_in }}
+    &lt;p&gt;You are not logged in.&lt;/p&gt;
+{{ endif }}
+
+{{ if not user:logged_in }}
+    &lt;p&gt;You are not logged in.&lt;/p&gt;
+{{ endif }}{{ /noparse }}</code></pre>
+<br />
+<pre>
+Logical Operators List
+
+and  /  &&
+or   /  ||
+not  /  !
+</pre>
+                                        </td>
+                                        <td>
+{{ if variables:custom_var != 'foo' and variables:custom_var != 'bar' }}
+     <p>No foos and no bars!</p>
+{{ endif }}
+
+{{ if !user:logged_in }}
+    <p>You are not logged in.</p>
+{{ endif }}
+
+{{ if not user:logged_in }}
+    <p>You are not logged in.</p>
 {{ endif }}
                                         </td>
                                     </tr>
