@@ -140,6 +140,24 @@ License: The MIT License, http://opensource.org/licenses/MIT
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+                                            <h4>Tag Pairs</h4>
+<pre><code>{{ noparse }}{{ my_blog:posts }}
+     &lt;h2&gt;{{ title }}&lt;/h2&gt;
+{{ /my_blog:posts }}
+&lt;hr /&gt;
+{{ format:markdown }}Let's _convert_ this to **HTML**.{{ /format:markdown }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ my_blog:posts }}
+     <h2>{{ title }}</h2>
+{{ /my_blog:posts }}
+<hr />
+{{ format:markdown }}Let's _convert_ this to **HTML**.{{ /format:markdown }}
+                                        </td>
+                                    </tr>
+
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>Accessing Variables</h4>
