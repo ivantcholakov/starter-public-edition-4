@@ -111,6 +111,7 @@ $config['allowed_globals'] = array(
     'UA_IS_REFERRAL',
     'CI_VERSION',
     'PLATFORM_VERSION',
+    'ENVIRONMENT',
 );
 
 // A whitelist of functions that Lex parser can execute.
