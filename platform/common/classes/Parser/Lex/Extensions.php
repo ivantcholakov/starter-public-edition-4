@@ -275,6 +275,10 @@ class Parser_Lex_Extensions extends Lex\Parser {
                     $looped_text = '';
                     if (is_array($loop_data) or ($loop_data instanceof \IteratorAggregate)) {
                         foreach ($loop_data as $item_data) {
+                            // Added by Ivan Tcholakov, 25-JAN-2016.
+                            // Make the global scope visible here too.
+                            $item_data = array_merge($data, $item_data);
+                            //
                             $str = $this->extractLoopedTags($match[2][0], $item_data, $callback);
                             $str = $this->parseConditionals($str, $item_data, $callback);
                             $str = $this->injectExtractions($str, 'looped_tags');

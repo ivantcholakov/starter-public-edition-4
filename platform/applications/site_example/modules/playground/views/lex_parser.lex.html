@@ -177,9 +177,9 @@ License: The MIT License, http://opensource.org/licenses/MIT
 
 {{ my_blog:posts }}
     {{ if title == 'Blog Post One' }}
-    <h2>{{ title }} (tested, post 1)</h2>
+    <h2>{{ title }} (tested, post {{ value_1 }})</h2>
     {{ elseif title == 'Blog Post Two' }}
-    <h2>{{ title }} (tested, post 2)</h2>
+    <h2>{{ title }} (tested, post {{ value_2 }})</h2>
     {{ else }}
     <h2>{{ title }}</h2>
     {{ endif }}
