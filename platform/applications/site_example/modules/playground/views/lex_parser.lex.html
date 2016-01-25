@@ -171,12 +171,35 @@ License: The MIT License, http://opensource.org/licenses/MIT
 {{ else }}
     http://
 {{ endif }}{{ /noparse }}</code></pre>
+                                            * Reserved words for conditionals: if, unless, elseif, elseunless, else, endif
                                         </td>
                                         <td>
 {{ if helper:is_https }}
     https://
 {{ else }}
     http://
+{{ endif }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <h4>Multiple Conditionals</h4>
+<pre><code>{{ noparse }}{{ if variables:custom_var == 'foo' }}
+    &lt;p&gt;Looks like a foo.&lt;/p&gt;
+{{ elseif variables:custom_var == 'bar' }}
+    &lt;p&gt;Looks like a bar.&lt;/p&gt;
+{{ else }}
+    &lt;p&gt;Neither foo nor bar.&lt;/p&gt;
+{{ endif }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ if variables:custom_var == 'foo' }}
+    <p>Looks like a foo.</p>
+{{ elseif variables:custom_var == 'bar' }}
+    <p>Looks like a bar.</p>
+{{ else }}
+    <p>Neither foo nor bar.</p>
 {{ endif }}
                                         </td>
                                     </tr>
@@ -2781,28 +2804,28 @@ document.write("Hello World!");
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ <strong>widget:show</strong> name="breadcrumb_widget/index" }}{{ /noparse }}</code></pre>
+<pre><code>{{ noparse }}{{ <strong>widget:show</strong> name="breadcrumb_widget" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
-{{ widget:show name="breadcrumb_widget/index" }}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-<pre><code>{{ noparse }}{{ <strong>widget:show</strong> name="contact_map_widget/index" }}{{ /noparse }}</code></pre>
-                                        </td>
-                                        <td>
-{{ widget:show name="contact_map_widget/index" }}
+{{ widget:show name="breadcrumb_widget" }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ <strong>widget:show</strong> name="contact_info_widget/index" }}{{ /noparse }}</code></pre>
+<pre><code>{{ noparse }}{{ <strong>widget:show</strong> name="contact_map_widget" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
-{{ widget:show name="contact_info_widget/index" }}
+{{ widget:show name="contact_map_widget" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>widget:show</strong> name="contact_info_widget" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ widget:show name="contact_info_widget" }}
                                         </td>
                                     </tr>
 
