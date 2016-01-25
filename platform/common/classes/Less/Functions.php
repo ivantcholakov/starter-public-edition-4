@@ -813,11 +813,11 @@ class Less_Functions{
 		return is_a($n, $type) ? new Less_Tree_Keyword('true') : new Less_Tree_Keyword('false');
 	}
 
-	public function tint($color, $amount) {
+	public function tint($color, $amount = null) {
 		return $this->mix( $this->rgb(255,255,255), $color, $amount);
 	}
 
-	public function shade($color, $amount) {
+	public function shade($color, $amount = null) {
 		return $this->mix($this->rgb(0, 0, 0), $color, $amount);
 	}
 
