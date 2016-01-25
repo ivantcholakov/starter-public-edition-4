@@ -2065,6 +2065,15 @@ Replacement count: {{ helper:get name="str_replace_count" }}
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}{{ <strong>html:xss_clean</strong> }}&lt;div&gt;{{ dangerous_value }}&lt;/div&gt;{{ <strong>/html:xss_clean</strong> }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ html:xss_clean }}<div>{{ dangerous_value }}</div>{{ /html:xss_clean }}
+                                        </td>
+                                    </tr>
+
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>Formatters, Parsers</h4>
@@ -2312,7 +2321,7 @@ document.write("Hello World!");
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ html:code}}{{ <strong>template:html_title</strong> }}{{ /html:code }}{{ /noparse }}</code></pre>
+<pre><code>{{ noparse }}{{ html:code }}{{ <strong>template:html_title</strong> }}{{ /html:code }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
 {{ html:code }}{{ template:html_title }}{{ /html:code }}

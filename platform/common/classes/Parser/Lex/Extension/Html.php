@@ -22,4 +22,9 @@ class Parser_Lex_Extension_Html extends Parser_Lex_Extension {
         return html_code($this->get_attribute(0, $this->get_content()));
     }
 
+    public function xss_clean() {
+
+        return $this->security->xss_clean($this->get_attribute(0, $this->get_content()));
+    }
+
 }
