@@ -414,7 +414,11 @@ class Parser_Lex_Extensions extends Lex\Parser {
             }
             //
 
-            $text = preg_replace('/'.preg_quote($tag, '/').'/m', addcslashes($replacement, '\\$'), $text, 1);
+            // Modified by Ivan Tcholakov, 25-JAN2016.
+            // Trying to avoid the error "preg_replace(): Compilation failed: regular expression is too large at offset ...".
+            //$text = preg_replace('/'.preg_quote($tag, '/').'/m', addcslashes($replacement, '\\$'), $text, 1);
+            $text = str_replace_limit($tag, addcslashes($replacement, '\\$'), $text, $replacement_count, 1);
+            //
             $text = $this->injectExtractions($text, 'nested_looped_tags');
         }
 

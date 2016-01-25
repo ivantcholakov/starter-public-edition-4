@@ -341,6 +341,7 @@ if (!function_exists('http_build_str') || !function_exists('http_build_url')) {
  */
 require BOOTSTRAPPATH.'arrays.php';
 require BOOTSTRAPPATH.'is_serialized.php';
+require BOOTSTRAPPATH.'str_replace_limit.php';
 
 
 /*
