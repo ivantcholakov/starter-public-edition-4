@@ -204,6 +204,36 @@ License: The MIT License, http://opensource.org/licenses/MIT
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+                                            <h4>Checking if a Variable Exists</h4>
+<pre><code>{{ noparse }}{{ if exists foo }}
+    Foo Exists
+{{ elseif not exists foo }}
+    Foo Does Not Exist
+{{ endif }}
+&lt;br /&gt;
+{{ if exists foo and foo !== 'bar' }}
+    Something here
+{{ else }}
+    Nothing here
+{{ endif }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ if exists foo }}
+    Foo Exists
+{{ elseif not exists foo }}
+    Foo Does Not Exist
+{{ endif }}
+<br />
+{{ if exists foo and foo !== 'bar' }}
+    Something here
+{{ else }}
+    Nothing here
+{{ endif }}
+                                        </td>
+                                    </tr>
+
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>Accessing Variables</h4>
