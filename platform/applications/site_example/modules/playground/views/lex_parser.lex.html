@@ -60,6 +60,88 @@ License: The MIT License, http://opensource.org/licenses/MIT
 
                                     <tr class="info">
                                         <td colspan="2">
+                                            <h4>Syntax (Source: <a href="http://docs.pyrocms.com/2.2/manual/guides/pyrocms-tags" target="_blank">PyroCMS Tags</a>)</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <h4>Comments</h4>
+<pre><code>{{ noparse }}{{&#35; This is a comment, it should not to be seen in the result text. &#35;}}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{# This is a comment, it should not to be seen in the result text. #}}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <h4>Basic Tags</h4>
+<pre><code>{{ noparse }}<strong>{{ value_0 }}</strong> {{&#35; - a variable &#35;}}
+&lt;br /&gt;
+<strong>{{ template:title }}</strong> {{&#35; - a variable too &#35;}}
+&lt;br /&gt;
+<strong>{{ url:base }}</strong> {{&#35; - a function call although the sysntex is the same as in the previous example &#35;}}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ value_0 }}{{# - a variable #}}
+<br />
+{{ template:title }}{{# - a variable too #}}
+<br />
+{{ url:base }}{{# - a function/method call although the sysntex is the same as in the previous example #}}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <h4>Tag Attributes (Parameters)</h4>
+<pre><code>{{ noparse }}{{ helper:date <strong>format="Y"</strong> }}
+&lt;br /&gt;
+{{ helper:date <strong>format='Y'</strong> }}
+&lt;br /&gt;
+{{ helper:date <strong>format="Y" timestamp="2524608000"</strong> }} {{&#35; - multiple attributes &#35;}}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:date format="Y" }}
+<br />
+{{ helper:date format='Y' }}
+<br />
+{{ helper:date format="Y" timestamp="2524608000" }}{{# - multiple attributes #}}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <h4>Using Tags and Variables In Tag Parameters</h4>
+<pre><code>{{ noparse }}{{ helper:html_escape <strong>value=dog</strong> }}
+&lt;br /&gt;
+{{ helper:html_escape <strong>value=template:title</strong> }}
+&lt;br /&gt;
+{{ helper:html_escape <strong>value={setting:get item="contact_address"}</strong> }}
+&lt;br /&gt;
+{{ helper:html_escape <strong>value="[[ dog ]]"</strong> }}
+&lt;br /&gt;
+{{ helper:html_escape <strong>value="[[ template:title ]]"</strong> }}
+&lt;br /&gt;
+{{ html:code <strong>value="Environment: [[ if global:environment == 'production' ]]production[[ else ]]non-production[[ endif ]]"</strong> }}{{ /html:code }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:html_escape value=dog }}
+<br />
+{{ helper:html_escape value=template:title }}
+<br />
+{{ helper:html_escape value={setting:get item="contact_address"} }}
+<br />
+{{ helper:html_escape value="[[ dog ]]" }}
+<br />
+{{ helper:html_escape value="[[ template:title ]]" }}
+<br />
+{{ html:code value="Environment: [[ if global:environment == 'production' ]]production[[ else ]]non-production[[ endif ]]" }}{{ /html:code }} <span style='color: red;'>The last example fails yet.</span>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="info">
+                                        <td colspan="2">
                                             <h4>Accessing Variables</h4>
                                         </td>
                                     </tr>
