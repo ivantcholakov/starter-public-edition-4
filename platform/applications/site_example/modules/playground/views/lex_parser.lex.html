@@ -146,9 +146,25 @@ License: The MIT License, http://opensource.org/licenses/MIT
 <pre><code>{{ noparse }}{{ my_blog:posts }}
      &lt;h2&gt;{{ title }}&lt;/h2&gt;
 {{ /my_blog:posts }}
+
 &lt;hr /&gt;
+
+{{ my_blog:posts }}
+    {{ if title == 'Blog Post One' }}
+    &lt;h2&gt;{{ title }} (tested, post 1)&lt;/h2&gt;
+    {{ elseif title == 'Blog Post Two' }}
+    &lt;h2&gt;{{ title }} (tested, post 2)&lt;/h2&gt;
+    {{ else }}
+    &lt;h2&gt;{{ title }}&lt;/h2&gt;
+    {{ endif }}
+{{ /my_blog:posts }}
+
+&lt;hr /&gt;
+
 {{ format:markdown }}Let us _convert_ this to **HTML**.{{ /format:markdown }}
+
 &lt;hr /&gt;
+
 {{ html:escape value="This is a <strong>self-closing</strong> tag." /}}{{ /noparse }}</code></pre>
                                             " If you want to use both Single and Block tags in the same template, you must close the Single tags.
                                         </td>
@@ -156,9 +172,25 @@ License: The MIT License, http://opensource.org/licenses/MIT
 {{ my_blog:posts }}
      <h2>{{ title }}</h2>
 {{ /my_blog:posts }}
+
 <hr />
+
+{{ my_blog:posts }}
+    {{ if title == 'Blog Post One' }}
+    <h2>{{ title }} (tested, post 1)</h2>
+    {{ elseif title == 'Blog Post Two' }}
+    <h2>{{ title }} (tested, post 2)</h2>
+    {{ else }}
+    <h2>{{ title }}</h2>
+    {{ endif }}
+{{ /my_blog:posts }}
+
+<hr />
+
 {{ format:markdown }}Let us _convert_ this to **HTML**.{{ /format:markdown }}
+
 <hr />
+
 {{ html:escape value="This is a <strong>self-closing</strong> tag." /}}
                                         </td>
                                     </tr>
