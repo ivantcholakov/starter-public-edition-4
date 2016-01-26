@@ -1170,7 +1170,7 @@ class Template
 
             if (!is_array($options)) {
 
-                $refined_options[] = array((string) $option => array());
+                $refined_options[] = array((string) $options => array());
                 continue;
             }
 
