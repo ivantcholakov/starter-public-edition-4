@@ -20,7 +20,7 @@ if (!function_exists('doctype')) {
      * @param     string  type    The doctype to be generated (a short key)
      * @return    string
      */
-    function doctype($type = 'xhtml1-strict') {
+    function doctype($type = 'html5') {
 
         static $doctypes;
 
