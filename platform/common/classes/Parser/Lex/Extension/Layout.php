@@ -126,7 +126,7 @@ class Parser_Lex_Extension_Layout extends Parser_Lex_Extension {
         $parser->cumulativeNoparse($this->parser_instance->parser_options['cumulative_noparse']);
         $parser->parser_options = $this->parser_instance->parser_options;
 
-        $result1 = $parser->parse(
+        $parser->parse(
             $content,
             $this->parser_instance->parser_data,
             array($this->parser_instance, 'parser_callback'),
