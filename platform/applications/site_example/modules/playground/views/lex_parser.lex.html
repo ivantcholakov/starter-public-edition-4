@@ -2971,6 +2971,67 @@ document.write("Hello World!");
                                         </td>
                                     </tr>
 
+                                    <tr class="info">
+                                        <td colspan="2">
+                                            <h4>Extending Layouts (See <a href="https://bitbucket.org/getunik/pyrocms-layout-module" target="_blank">Layout module for PyroCMS</a>)</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<p>Layout base: themes/x/views/layouts/default_base_test.lex.html</p>
+{{ html:code parse_content="no" }}<!DOCTYPE html>
+<html>
+
+<head>
+{{ template:html_meta_charset }}
+{{ template:html_title }}
+</head>
+
+<body>
+
+    <div>
+        {{ layout:placeholder name="content" }}
+            {{ template:body /}}
+        {{ /layout:placeholder }}
+    </div>
+
+    <div>
+        {{ layout:placeholder name="sidebar" }}
+            <p>The sidebar, default content, defined within a placeholser "sidebar".<p>
+        {{ /layout:placeholder }}
+    </div>
+
+</body>
+
+</html>{{ /html:code }}
+
+<p>The actual layout: themes/x/views/layouts/default_test.lex.html</p>
+{{ html:code parse_content="no" }}{{ layout:extend_outer file="layouts/default_base_test.lex.html" }}
+    {{ layout:partial name="content" }}
+        {{ template:body /}}
+        <p>Additional fixed content within the layout partial "content".</p>
+        {{ layout:placeholder name="post-body" /}}
+    {{ /layout:partial }}
+    {{ layout:partial name="sidebar" }}
+        <p>The sidebar, customized content, defined within the layout partial "sidebar".<p>
+    {{ /layout:partial }}
+{{ /layout:extend_outer }}{{ /html:code }}
+
+<p>The template body: modules/playground/views/lex_parser_layout_test.lex.html</p>
+{{ html:code parse_content="no" }}
+<p>This is regular view content that will be parsed and inserted into the layout as the template body.</p>
+
+{{ layout:partial name="post-body" }}
+    <p>This is the content of a post message, that has been defined within the payout partial "post-body".</p>
+{{ /layout:partial }}
+{{ /html:code }}
+                                        </td>
+                                        <td>
+{{ html:code }}{{ lex_parser_layout_test }}{{ /html:code }}
+                                        </td>
+                                    </tr>
+
                                 </tbody>
 
                             </table>

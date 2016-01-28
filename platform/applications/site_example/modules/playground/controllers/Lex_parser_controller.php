@@ -13,6 +13,7 @@ class Lex_parser_controller extends Playground_Base_Controller {
 
         $this->load
             ->language('welcome')
+            ->library('curl')
         ;
 
         $title = 'Lex Parser Test';
@@ -37,6 +38,8 @@ class Lex_parser_controller extends Playground_Base_Controller {
 
         $countries = $this->_get_country_data();
         $countries_10 = array_slice($countries, 0, 10);
+
+        $lex_parser_layout_test = $this->curl->create(site_url('playground/lex-parser-layout-test'))->get()->execute();
 
         $this->template
             ->set('br', '<br />')
@@ -65,6 +68,7 @@ class Lex_parser_controller extends Playground_Base_Controller {
             ->set('string_textile', 'Formatted _text_')
             ->set('dangerous_value', 'A dangerous value <script>alert("Hi, I am dangerous.")</script>')
             ->set('my_blog', array('posts' => array(array('title' => 'Blog Post One'), array('title' => 'Blog Post Two'))))
+            ->set('lex_parser_layout_test', $lex_parser_layout_test)
             ->set_partial('lex_partial', 'lex_partial')
             ->set_metadata('description', 'Lex parser testing page')
             ->set_metadata('keywords', 'CodeIgniter Lex Template Parser')
