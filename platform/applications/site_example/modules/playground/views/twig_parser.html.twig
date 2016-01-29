@@ -1,0 +1,140 @@
+
+{# Author: Ivan Tcholakov, ivantcholakov@gmail.com, 2016 #}
+{# License: The MIT License, http://opensource.org/licenses/MIT #}
+
+        <section>
+
+            <div class="container">
+
+                <div class="page-header">
+                    <h1>{{ template.page_title }}</h1>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <p>See <a href="http://twig.sensiolabs.org" target="_blank">http://twig.sensiolabs.org</a></p>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+
+                                <thead>
+
+                                    <tr>
+                                        <th class="col-sm-8" style="min-width: 300px;">Twig Code</th>
+                                        <th class="col-sm-4">Result</th>
+                                    </tr>
+
+                                </thead>
+
+                                <tfoot>
+
+                                    <tr>
+                                        <th>Twig Code</th>
+                                        <th>Result</th>
+                                    </tr>
+
+                                </tfoot>
+
+                                <tbody>
+
+                                    <tr class="info">
+                                        <td colspan="2">
+                                            <h4>Accessing Variables</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ template.title }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ template.title }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}Hello, {{ name }}!{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+Hello, {{ name }}!
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ value_0 }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ value_0 }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ value_1 }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ value_1 }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ value_2 }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ value_2 }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ value_3 }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ value_3 }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ string_123 }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ string_123 }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ dog|raw }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ dog|raw }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ dog_entities|raw }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ dog_entities|raw }}
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
