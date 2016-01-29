@@ -366,6 +366,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * noUiSlider, a lightweight JavaScript range slider, https://github.com/leongersen/noUiSlider/, http://refreshless.com/nouislider/
 * Material design theme for Bootstrap 3, https://github.com/FezVrasta/bootstrap-material-design, http://fezvrasta.github.io/bootstrap-material-design/
 * Lex, a lightweight template parser used by PyroCMS, https://github.com/pyrocms/lex
+* Twig, the flexible, fast, and secure template engine for PHP, http://twig.sensiolabs.org
 
 The Playground
 --------------
