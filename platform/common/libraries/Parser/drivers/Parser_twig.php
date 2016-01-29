@@ -89,9 +89,9 @@ class CI_Parser_twig extends CI_Parser_driver {
             $template = $ci->load->path($template);
         }
 
-        $template = @ file_get_contents($template);
-
-        $parser = new Twig_Environment(new Twig_Loader_String());
+        $parser = new Twig_Environment(new Parser_Twig_Loader_Filesystem(), array(
+            'cache' => TWIG_CACHE
+        ));
 
         $template = $parser->render($template, $data);
 
@@ -132,7 +132,8 @@ class CI_Parser_twig extends CI_Parser_driver {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
-        $parser = new Twig_Environment(new Twig_Loader_String());
+        $parser = new Twig_Environment(new Twig_Loader_Chain(array(new Parser_Twig_Loader_String, new Parser_Twig_Loader_Filesystem())), array(
+        ));
 
         $template = $parser->render($template, $data);
 
