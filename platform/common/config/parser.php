@@ -14,6 +14,7 @@ $config['parser_driver'] = 'parser';
 
 // Additional valid drivers that may be loaded.
 $config['parser_valid_drivers'] = array(
+    'twig',
     'mustache',
     'lex',
     'parser',
@@ -35,6 +36,7 @@ $config['parser_valid_drivers'] = array(
 // to views, partials, layouts.
 // Don't add leading dots on specifying file extensions.
 $config['parser_file_extensions'] = array(
+    'twig' => array('html.twig', 'twig', 'twig.html'),
     'mustache' => array('mustache.html', 'mustache'),
     'lex' => array('lex.html', 'lex'),
     'parser' => array('parser.php'),

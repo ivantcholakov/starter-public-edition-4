@@ -357,6 +357,10 @@ file_exists(MUSTACHE_CACHE) OR @mkdir(MUSTACHE_CACHE, 0755, TRUE);
 define('LESS_CACHE', WRITABLEPATH.'less/'.APPNAME.'/');
 file_exists(LESS_CACHE) OR @mkdir(LESS_CACHE, 0755, TRUE);
 
+// For Twig template engine, with a trailing slash.
+define('TWIG_CACHE', WRITABLEPATH.'twig/'.APPNAME.'/');
+file_exists(TWIG_CACHE) OR @mkdir(TWIG_CACHE, 0755, TRUE);
+
 /*
  * ------------------------------------------------------
  * Important charset-related stuff
