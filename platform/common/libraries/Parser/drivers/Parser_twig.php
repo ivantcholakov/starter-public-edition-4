@@ -162,6 +162,11 @@ class CI_Parser_twig extends CI_Parser_driver {
 
     protected function _extend_parser(& $parser, & $options)
     {
+        if ($options['debug'])
+        {
+            $parser->addExtension(new Twig_Extension_Debug());
+        }
+
         if (!empty($options['helpers']) && is_array($options['helpers']))
         {
             foreach ($options['helpers'] as & $item)
