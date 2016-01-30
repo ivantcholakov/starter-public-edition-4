@@ -126,6 +126,32 @@ Hello, {{ name }}!
                                         </td>
                                     </tr>
 
+                                    <tr class="info">
+                                        <td colspan="2">
+                                            <h4>Miscellaneous Tests</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<p>Sample Template, test.html.twig:</p>
+<pre><code>{{ twig_test_source }}</code></pre>
+
+<p>PHP Code:</p>
+<pre><code>{% verbatim %}$twig_test_name = 'test.html.twig';
+$twig_test_path = $this->load->path($twig_test_name);
+$twig_test_source = @ (string) file_get_contents($twig_test_path);
+$twig_test_1 = $this->parser->parse_string($twig_test_source, array(), true, 'twig');
+$twig_test_2 = $this->load->view($twig_test_name, array(), true);{% endverbatim %}</code></pre>
+
+<p>Results To Be Shown:</p>
+<pre><code>{% verbatim %}{{ twig_test_1|raw }} &lt;hr /&gt; {{ twig_test_2|raw }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ twig_test_1|raw }} <hr /> {{ twig_test_2|raw }}
+                                        </td>
+                                    </tr>
+
                                 </tbody>
 
                             </table>
