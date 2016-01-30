@@ -43,7 +43,7 @@ class Parser_Twig_Loader_Filesystem extends Twig_Loader_Filesystem {
         $file = $ci->parser->find_file($file_name, $detected_parser, $detected_extension, $detected_filename);
 
         if ($file != '') {
-            return $file;
+            return $this->cache[$name] = $file;
         }
 
         $this->errorCache[$name] = sprintf('Unable to find template "%s".', $name);
