@@ -14,8 +14,8 @@ class Parser_Twig_Loader_Filesystem extends Twig_Loader_Filesystem {
         parent::__construct();
     }
 
-    protected function findTemplate($name)
-    {
+    protected function findTemplate($name) {
+
         $ci = & get_instance();
 
         $throw = func_num_args() > 1 ? func_get_arg(1) : true;
@@ -26,6 +26,7 @@ class Parser_Twig_Loader_Filesystem extends Twig_Loader_Filesystem {
         }
 
         if (isset($this->errorCache[$name])) {
+
             if (!$throw) {
                 return false;
             }
@@ -34,7 +35,7 @@ class Parser_Twig_Loader_Filesystem extends Twig_Loader_Filesystem {
         }
 
         if (is_file($name)) {
-            // Full full file name has been given.
+            // Full file name has been given.
             return $this->cache[$name] = $name;
         }
 
