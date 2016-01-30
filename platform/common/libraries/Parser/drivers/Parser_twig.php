@@ -24,6 +24,7 @@ class CI_Parser_twig extends CI_Parser_driver {
         // Default configuration options.
 
         $this->config = array(
+            'debug' => false,
             'charset' => null,
             'cache' => false,
             'full_path' => false,
