@@ -5,4 +5,6 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-$config['dummy'] = null;
+// Character set used by the Twig template engine.
+// NULL means config_item('charset'), i.e. the character set of the site.
+$config['charset'] = null;

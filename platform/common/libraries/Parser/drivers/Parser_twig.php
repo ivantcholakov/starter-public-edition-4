@@ -24,7 +24,7 @@ class CI_Parser_twig extends CI_Parser_driver {
         // Default configuration options.
 
         $this->config = array(
-
+            'charset' => null,
             'full_path' => false,
         );
 
@@ -59,6 +59,13 @@ class CI_Parser_twig extends CI_Parser_driver {
 
         $options = array_merge($this->config, $options);
 
+        if (!isset($options['charset']) || trim($options['charset']) == '')
+        {
+            $options['charset'] = $this->ci->config->item('charset');
+        }
+
+        $options['charset'] = strtoupper($options['charset']);
+
         if (is_object($data))
         {
             $data = get_object_vars($data);
@@ -89,9 +96,11 @@ class CI_Parser_twig extends CI_Parser_driver {
             $template = $ci->load->path($template);
         }
 
-        $parser = new Twig_Environment(new Parser_Twig_Loader_Filesystem(), array(
-            'cache' => TWIG_CACHE
-        ));
+        if (!isset($options['cache']) || trim($options['cache']) == '') {
+            $options['cache'] = TWIG_CACHE;
+        }
+
+        $parser = new Twig_Environment(new Parser_Twig_Loader_Filesystem(), $options);
 
         $template = $parser->render($template, $data);
 
@@ -106,6 +115,13 @@ class CI_Parser_twig extends CI_Parser_driver {
         }
 
         $options = array_merge($this->config, $options);
+
+        if (!isset($options['charset']) || trim($options['charset']) == '')
+        {
+            $options['charset'] = $this->ci->config->item('charset');
+        }
+
+        $options['charset'] = strtoupper($options['charset']);
 
         if (is_object($data))
         {
@@ -132,8 +148,7 @@ class CI_Parser_twig extends CI_Parser_driver {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
-        $parser = new Twig_Environment(new Twig_Loader_Chain(array(new Parser_Twig_Loader_String, new Parser_Twig_Loader_Filesystem())), array(
-        ));
+        $parser = new Twig_Environment(new Twig_Loader_Chain(array(new Parser_Twig_Loader_String, new Parser_Twig_Loader_Filesystem())), $options);
 
         $template = $parser->render($template, $data);
 
