@@ -25,7 +25,7 @@ class CI_Parser_twig extends CI_Parser_driver {
 
         $this->config = array(
             'charset' => null,
-            'chache' => false,
+            'cache' => false,
             'full_path' => false,
         );
 
