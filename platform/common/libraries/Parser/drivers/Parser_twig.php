@@ -97,7 +97,8 @@ class CI_Parser_twig extends CI_Parser_driver {
             $template = $ci->load->path($template);
         }
 
-        $parser = new Twig_Environment(new Parser_Twig_Loader_Filesystem(), $options);
+        $parser = new Twig_Environment(new Parser_Twig_Loader_Filesystem(), array_except($options, array('helpers', 'functions', 'filters')));
+        $this->_extend_parser($parser, $options);
 
         $template = $parser->render($template, $data);
 
@@ -150,11 +151,92 @@ class CI_Parser_twig extends CI_Parser_driver {
         // that should be cleaned periodically.
         $options['cache'] = false;
 
-        $parser = new Twig_Environment(new Twig_Loader_Chain(array(new Parser_Twig_Loader_String, new Parser_Twig_Loader_Filesystem())), $options);
+        $parser = new Twig_Environment(new Twig_Loader_Chain(array(new Parser_Twig_Loader_String, new Parser_Twig_Loader_Filesystem())), array_except($options, array('helpers', 'functions', 'filters')));
+        $this->_extend_parser($parser, $options);
 
         $template = $parser->render($template, $data);
 
         return $this->output($template, $return, $ci, $is_mx);
+    }
+
+    protected function _extend_parser(& $parser, & $options)
+    {
+        if (!empty($options['helpers']) && is_array($options['helpers']))
+        {
+            foreach ($options['helpers'] as & $item)
+            {
+                $item = trim(@ (string) $item);
+
+                if ($item != '')
+                {
+                    $this->ci->load->helper($item);
+                }
+            }
+
+            unset($item);
+        }
+
+        if (!empty($options['functions']) && is_array($options['functions']))
+        {
+            foreach ($options['functions'] as & $item)
+            {
+                if (!is_array($item))
+                {
+                    $item = array((string) $item);
+                }
+
+                switch (count($item))
+                {
+                    case 1:
+
+                        $parser->addFunction(new Twig_SimpleFunction($item[0], $item[0]));
+                        break;
+
+                    case 2:
+
+                        $parser->addFunction(new Twig_SimpleFunction($item[0], $item[1]));
+                        break;
+
+                    default:
+
+                        $parser->addFunction(new Twig_SimpleFunction($item[0], $item[1], $item[2]));
+                        break;
+                }
+            }
+
+            unset($item);
+        }
+
+        if (!empty($options['filters']) && is_array($options['filters']))
+        {
+            foreach ($options['filters'] as & $item)
+            {
+                if (!is_array($item))
+                {
+                    $item = array((string) $item);
+                }
+
+                switch (count($item))
+                {
+                    case 1:
+
+                        $parser->addFunction(new Twig_SimpleFilter($item[0], $item[0]));
+                        break;
+
+                    case 2:
+
+                        $parser->addFunction(new Twig_SimpleFilter($item[0], $item[1]));
+                        break;
+
+                    default:
+
+                        $parser->addFunction(new Twig_SimpleFilter($item[0], $item[1], $item[2]));
+                        break;
+                }
+            }
+
+            unset($item);
+        }
     }
 
 }

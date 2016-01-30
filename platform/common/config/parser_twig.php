@@ -14,3 +14,13 @@ $config['charset'] = null;
 // Disable caching for now.
 //$config['cache'] = TWIG_CACHE;
 $config['cache'] = false;
+
+// Extending the Twig parser: Load CodeIgniter helpers
+// that contain implemented for Twig functions and filters.
+$onfig['helpers'] = array();
+
+// Extending the Twig parser: Extra-functions.
+$config['functions'] = array();
+
+// Extending the Twig parser: Extra-filters.
+$config['filters'] = array();
