@@ -25,6 +25,7 @@ class CI_Parser_twig extends CI_Parser_driver {
 
         $this->config = array(
             'charset' => null,
+            'chache' => false,
             'full_path' => false,
         );
 
@@ -96,10 +97,6 @@ class CI_Parser_twig extends CI_Parser_driver {
             $template = $ci->load->path($template);
         }
 
-        if (!isset($options['cache']) || trim($options['cache']) == '') {
-            $options['cache'] = TWIG_CACHE;
-        }
-
         $parser = new Twig_Environment(new Parser_Twig_Loader_Filesystem(), $options);
 
         $template = $parser->render($template, $data);
@@ -147,6 +144,11 @@ class CI_Parser_twig extends CI_Parser_driver {
         {
             list($ci, $is_mx) = $this->detect_mx();
         }
+
+        // Don't use the cache on string parsing, otherwise
+        // the cache would be overloaded with too much files
+        // that should be cleaned periodically.
+        $options['cache'] = false;
 
         $parser = new Twig_Environment(new Twig_Loader_Chain(array(new Parser_Twig_Loader_String, new Parser_Twig_Loader_Filesystem())), $options);
 
