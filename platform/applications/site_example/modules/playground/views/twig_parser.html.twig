@@ -150,6 +150,24 @@ Hello, {{ name }}!
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_r(array_1) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_r(array_1) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ var_export(array_1) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ var_export(array_1) }}
+                                        </td>
+                                    </tr>
+
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>Miscellaneous Tests</h4>
