@@ -19,12 +19,17 @@ $config['charset'] = null;
 $config['cache'] = false;
 
 // Extending the Twig parser: Load CodeIgniter helpers
-// that contain implemented for Twig functions and filters.
+// that serve implemented for Twig functions and filters.
 $onfig['helpers'] = array();
 
 // Extending the Twig parser: Choose Twig extensions to be loaded.
 $config['extensions'] = array(
     array('Twig_Extension_Debug', ENVIRONMENT !== 'production'),
+    array('Twig_Extensions_Extension_Text', false), // TRUE enables the corresponding extension.
+    array('Twig_Extensions_Extension_I18n', false),
+    array('Twig_Extensions_Extension_Intl', false),
+    array('Twig_Extensions_Extension_Array', false),
+    array('Twig_Extensions_Extension_Date', false),
 );
 
 // Extending the Twig parser: Extra-functions.
