@@ -203,9 +203,18 @@ class CI_Parser_twig extends CI_Parser_driver {
                         $parser->addFunction(new Twig_SimpleFunction($item[0], $item[1]));
                         break;
 
-                    default:
+                    case 3:
 
                         $parser->addFunction(new Twig_SimpleFunction($item[0], $item[1], $item[2]));
+                        break;
+
+                    default:
+
+                        if ($item[3] !== false)
+                        {
+                            $parser->addFunction(new Twig_SimpleFunction($item[0], $item[1], $item[2]));
+                        }
+
                         break;
                 }
             }
@@ -234,9 +243,18 @@ class CI_Parser_twig extends CI_Parser_driver {
                         $parser->addFilter(new Twig_SimpleFilter($item[0], $item[1]));
                         break;
 
-                    default:
+                    case 3:
 
                         $parser->addFilter(new Twig_SimpleFilter($item[0], $item[1], $item[2]));
+                        break;
+
+                    default:
+
+                        if ($item[3] !== false)
+                        {
+                            $parser->addFilter(new Twig_SimpleFilter($item[0], $item[1], $item[2]));
+                        }
+
                         break;
                 }
             }
