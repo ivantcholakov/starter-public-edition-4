@@ -162,11 +162,6 @@ class CI_Parser_twig extends CI_Parser_driver {
 
     protected function _extend_parser(& $parser, & $options)
     {
-        if ($options['debug'])
-        {
-            $parser->addExtension(new Twig_Extension_Debug());
-        }
-
         if (!empty($options['helpers']) && is_array($options['helpers']))
         {
             foreach ($options['helpers'] as & $item)
@@ -176,6 +171,36 @@ class CI_Parser_twig extends CI_Parser_driver {
                 if ($item != '')
                 {
                     $this->ci->load->helper($item);
+                }
+            }
+
+            unset($item);
+        }
+
+        if (!empty($options['extensions']) && is_array($options['extensions']))
+        {
+            foreach ($options['extensions'] as & $item)
+            {
+                if (!is_array($item))
+                {
+                    $item = array((string) $item);
+                }
+
+                switch (count($item))
+                {
+                    case 1:
+
+                        $parser->addExtension(new $item[0]);
+                        break;
+
+                    default:
+
+                        if ($item[1] !== false)
+                        {
+                            $parser->addExtension(new $item[0]);
+                        }
+
+                        break;
                 }
             }
 

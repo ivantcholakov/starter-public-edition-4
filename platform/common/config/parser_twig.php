@@ -22,6 +22,11 @@ $config['cache'] = false;
 // that contain implemented for Twig functions and filters.
 $onfig['helpers'] = array();
 
+// Extending the Twig parser: Choose Twig extensions to be loaded.
+$config['extensions'] = array(
+    array('Twig_Extension_Debug', ENVIRONMENT !== 'production'),
+);
+
 // Extending the Twig parser: Extra-functions.
 $config['functions'] = array();
 
