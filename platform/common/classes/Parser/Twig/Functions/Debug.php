@@ -9,14 +9,14 @@
 
 class Parser_Twig_Functions_Debug {
 
-    public static function print_r($var) {
+    public static function print_r($value) {
 
-        return print_r($var, true);
+        return print_r($value, true);
     }
 
-    public static function var_export($var) {
+    public static function var_export($value) {
 
-        return var_export($var, true);
+        return var_export($value, true);
     }
 
 }
