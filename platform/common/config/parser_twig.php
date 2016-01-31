@@ -33,7 +33,9 @@ $config['extensions'] = array(
 );
 
 // Extending the Twig parser: Extra-functions.
-$config['functions'] = array();
+$config['functions'] = array(
+    array('print_d', 'print_d', array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
+);
 
 // Extending the Twig parser: Extra-filters.
 $config['filters'] = array();

@@ -128,7 +128,16 @@ Hello, {{ name }}!
 
                                     <tr class="info">
                                         <td colspan="2">
-                                            <h4>Debugging Previews</h4>
+                                            <h4>Debugging Previews (Available Only on Non-Production Environments)</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(array_1) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(array_1) }}
                                         </td>
                                     </tr>
 
