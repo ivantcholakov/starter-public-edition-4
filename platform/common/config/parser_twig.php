@@ -58,8 +58,6 @@ $config['functions'] = array(
     array('is_object', 'is_object', array('is_safe' => array('html'))),
     array('is_scalar', 'is_scalar', array('is_safe' => array('html'))),
     array('is_string', 'is_string', array('is_safe' => array('html'))),
-    //CodeIgniter's Helpers
-    'character_limiter',
 );
 
 // Extending the Twig parser: Extra-filters.
@@ -76,4 +74,6 @@ $config['filters'] = array(
     array('array', array('Parser_Twig_Filters_TypeCasting', 'twig_array')),
     array('object', array('Parser_Twig_Filters_TypeCasting', 'object')),
     array('null', array('Parser_Twig_Filters_TypeCasting', 'null'), array('is_safe' => array('html'))),
+    //CodeIgniter's Helpers
+    'character_limiter',
 );

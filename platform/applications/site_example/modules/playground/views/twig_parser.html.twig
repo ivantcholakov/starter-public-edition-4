@@ -549,14 +549,14 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>character_limiter</strong>("Very long text. Very long text.", 10) }}
+<pre><code>{% verbatim %}{{ "Very long text. Very long text."|<strong>character_limiter</strong>(10) }}
 &lt;br /&gt;
-{{ <strong>character_limiter</strong>(very_long_text, 10, "&amp;#8230;") }}{% endverbatim %}</code></pre>
+{{ very_long_text|<strong>character_limiter</strong>(10, "&amp;#8230;") }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ character_limiter("Very long text. Very long text.", 10) }}
+{{ "Very long text. Very long text."|character_limiter(10) }}
 <br />
-{{ character_limiter(very_long_text, 10, "&#8230;") }}
+{{ very_long_text|character_limiter(10, "&#8230;") }}
                                         </td>
                                     </tr>
 
