@@ -74,6 +74,6 @@ $config['filters'] = array(
     array('array', array('Parser_Twig_Filters_TypeCasting', 'twig_array')),
     array('object', array('Parser_Twig_Filters_TypeCasting', 'object')),
     array('null', array('Parser_Twig_Filters_TypeCasting', 'null'), array('is_safe' => array('html'))),
-    //CodeIgniter's Helpers
+    // CodeIgniter's Helpers
     'character_limiter',
 );

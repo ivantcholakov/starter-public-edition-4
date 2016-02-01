@@ -126,6 +126,33 @@ Hello, {{ name }}!
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ _charset }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ _charset }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ _context.name }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ _context.name }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(_self) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(_self) }}
+                                        </td>
+                                    </tr>
+
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>Debugging Previews (Available Only on Non-Production Environments)</h4>
@@ -386,6 +413,50 @@ Hello, {{ name }}!
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>Built-In Twig Functions, Filters, and Operators</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ (-10)|<strong>abs</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ (-10)|abs }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ ['a', 'b', 'c', 'd', 'e', 'f', 'g']|<strong>batch</strong>(3, 'x') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(['a', 'b', 'c', 'd', 'e', 'f', 'g']|batch(3, 'x')) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ "limp bizkit"|<strong>capitalize</strong> }}
+&lt;br /&gt;
+{{ "лимп бизкит"|<strong>capitalize</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ "limp bizkit"|capitalize }}
+<br />
+{{ "лимп бизкит"|capitalize }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ "limp bizkit"|<strong>convert_encoding</strong>('HTML-ENTITIES', _charset) }}
+&lt;br /&gt;
+{{ "лимп бизкит"|<strong>convert_encoding</strong>('HTML-ENTITIES', _charset) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ "limp bizkit"|convert_encoding('HTML-ENTITIES', _charset) }}
+<br />
+{{ "лимп бизкит"|convert_encoding('HTML-ENTITIES', _charset) }}
                                         </td>
                                     </tr>
 
