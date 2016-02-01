@@ -134,7 +134,7 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ print_d(array_1) }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ <strong>print_d</strong>(array_1) }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
 {{ print_d(array_1) }}
@@ -143,7 +143,7 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ dump(array_1) }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ <strong>dump</strong>(array_1) }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
 {{ dump(array_1) }}
@@ -152,7 +152,7 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ print_r(array_1) }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ <strong>print_r</strong>(array_1) }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
 {{ print_r(array_1) }}
@@ -161,10 +161,104 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ var_export(array_1) }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ <strong>var_export</strong>(array_1) }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
 {{ var_export(array_1) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="info">
+                                        <td colspan="2">
+                                            <h4>Assigning Variables</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>set</strong> my_var = null %}
+{{ print_d(my_var) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% set my_var = null %}
+{{ print_d(my_var) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>set</strong> my_var = "my variable" %}
+{{ print_d(my_var) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% set my_var = "my variable" %}
+{{ print_d(my_var) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>set</strong> my_var = "10" %}
+{{ print_d(my_var) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% set my_var = "10" %}
+{{ print_d(my_var) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>set</strong> my_var = array_1 %}
+{{ print_d(my_var) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% set my_var = array_1 %}
+{{ print_d(my_var) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>set</strong> my_var = ['one', 'two', 'three'] %}
+{{ print_d(my_var) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% set my_var = ['one', 'two', 'three'] %}
+{{ print_d(my_var) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>set</strong> my_var = true %}
+{{ print_d(my_var) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% set my_var = true %}
+{{ print_d(my_var) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>set</strong> my_var = 10 %}
+{{ print_d(my_var) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% set my_var = 10 %}
+{{ print_d(my_var) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>set</strong> my_var = 250.5 %}
+{{ print_d(my_var) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% set my_var = 250.5 %}
+{{ print_d(my_var) }}
                                         </td>
                                     </tr>
 
