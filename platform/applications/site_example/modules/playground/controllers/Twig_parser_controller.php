@@ -62,6 +62,7 @@ class Twig_parser_controller extends Playground_Base_Controller {
             ->set('value_null', null)
             ->set('string_10', '10')
             ->set('object_123', (object) array('one', 'two', 'three'))
+            ->set('float_value', 250.5)
             ->set('dog', "I'll \"walk\" the <b>dog</b> now.")
             ->set('dog_entities', htmlentities("I'll \"walk\" the <b>dog</b> now.", ENT_QUOTES, 'UTF-8'))
             ->set('countries', $countries)

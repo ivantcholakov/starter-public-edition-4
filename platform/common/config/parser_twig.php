@@ -38,6 +38,19 @@ $config['functions'] = array(
     array('print_d', 'print_d', array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
     array('print_r', array('Parser_Twig_Functions_Debug', 'print_r'), array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
     array('var_export', array('Parser_Twig_Functions_Debug', 'var_export'), array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
+    // PHP Functions
+    array('gettype', 'gettype', array('is_safe' => array('html'))),
+    array('is_array', 'is_array', array('is_safe' => array('html'))),
+    array('is_bool', 'is_bool', array('is_safe' => array('html'))),
+    array('is_boolean', 'is_bool', array('is_safe' => array('html'))),
+    array('is_float', 'is_float', array('is_safe' => array('html'))),
+    array('is_int', 'is_int', array('is_safe' => array('html'))),
+    array('is_integer', 'is_integer', array('is_safe' => array('html'))),
+    array('is_null', 'is_null', array('is_safe' => array('html'))),
+    array('is_numeric', 'is_numeric', array('is_safe' => array('html'))),
+    array('is_object', 'is_object', array('is_safe' => array('html'))),
+    array('is_scalar', 'is_scalar', array('is_safe' => array('html'))),
+    array('is_string', 'is_string', array('is_safe' => array('html'))),
 );
 
 // Extending the Twig parser: Extra-filters.

@@ -1029,6 +1029,15 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
+<pre><code>{{ noparse }}{{ helper:<strong>is_float</strong> value="[[ float_value ]]" }}{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+{{ helper:is_float value="[[ float_value ]]" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{{ noparse }}&lt;div id=&quot;map_canvas&quot; class=&quot;google-maps&quot;&gt;&lt;/div&gt;
 
 &lt;script type=&quot;text/javascript&quot; src=&quot;{{ if helper:<strong>is_https</strong> }}https:{{ else }}http:{{ endif }}//maps.google.com/maps/api/js&quot;&gt;&lt;/script&gt;

@@ -134,6 +134,7 @@ $config['allowed_functions'] = array(
     'is_array',
     'is_bool',
     'is_boolean',
+    'is_float',
     'is_https',
     'is_int',
     'is_integer',
