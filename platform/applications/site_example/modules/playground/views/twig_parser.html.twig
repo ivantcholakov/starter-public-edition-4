@@ -170,6 +170,41 @@ Hello, {{ name }}!
 
                                     <tr class="info">
                                         <td colspan="2">
+                                            <h4>Checking if a Variable Exists</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% if foo is defined %}
+    Foo Exists
+{% elseif foo is not defined %}
+    Foo Does Not Exist
+{% endif %}
+&lt;br /&gt;
+{% if foo is defined and foo != 'bar' %}
+    Something here
+{% else %}
+    Nothing here
+{% endif %}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% if foo is defined %}
+    Foo Exists
+{% elseif foo is not defined %}
+    Foo Does Not Exist
+{% endif %}
+<br />
+{% if foo is defined and foo != 'bar' %}
+    Something here
+{% else %}
+    Nothing here
+{% endif %}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="info">
+                                        <td colspan="2">
                                             <h4>Assigning Variables</h4>
                                         </td>
                                     </tr>
