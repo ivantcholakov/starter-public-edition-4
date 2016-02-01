@@ -20,7 +20,9 @@ $config['cache'] = false;
 
 // Extending the Twig parser: Load CodeIgniter helpers
 // that serve implemented for Twig functions and filters.
-$onfig['helpers'] = array();
+$config['helpers'] = array(
+    'text',
+);
 
 // Extending the Twig parser: Choose Twig extensions to be loaded.
 $config['extensions'] = array(
@@ -52,6 +54,8 @@ $config['functions'] = array(
     array('is_object', 'is_object', array('is_safe' => array('html'))),
     array('is_scalar', 'is_scalar', array('is_safe' => array('html'))),
     array('is_string', 'is_string', array('is_safe' => array('html'))),
+    //CodeIgniter's Helpers
+    'character_limiter',
 );
 
 // Extending the Twig parser: Extra-filters.

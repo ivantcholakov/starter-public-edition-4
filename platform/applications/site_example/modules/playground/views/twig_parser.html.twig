@@ -447,6 +447,25 @@ Hello, {{ name }}!
 
                                     <tr class="info">
                                         <td colspan="2">
+                                            <h4>CodeIgniter's Helpers</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>character_limiter</strong>("Very long text. Very long text.", 10) }}
+&lt;br /&gt;
+{{ <strong>character_limiter</strong>(very_long_text, 10, "&amp;#8230;") }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ character_limiter("Very long text. Very long text.", 10) }}
+<br />
+{{ character_limiter(very_long_text, 10, "&#8230;") }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="info">
+                                        <td colspan="2">
                                             <h4>Miscellaneous Tests</h4>
                                         </td>
                                     </tr>

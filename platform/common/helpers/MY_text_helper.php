@@ -25,6 +25,8 @@ if (!function_exists('character_limiter') && IS_UTF8_CHARSET) {
             return $str;
         }
 
+        $end_char = html_entity_decode($end_char, ENT_QUOTES, 'UTF-8');
+
         // a bit complicated, but faster than preg_replace with \s+
         //$str = preg_replace('/ {2,}/', ' ', str_replace(array("\r", "\n", "\t", "\x0B", "\x0C"), ' ', $str));
         $str = preg_replace('/\s+/u', ' ', $str);
