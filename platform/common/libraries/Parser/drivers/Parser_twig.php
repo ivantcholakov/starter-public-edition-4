@@ -98,7 +98,9 @@ class CI_Parser_twig extends CI_Parser_driver {
             $template = $ci->load->path($template);
         }
 
-        $parser = new Twig_Environment(new Parser_Twig_Loader_Filesystem(), array_except($options, array('helpers', 'extensions', 'functions', 'filters')));
+        $parser = new Twig_Environment(new Parser_Twig_Loader_Filesystem(),
+            array_except($options, array('timezone', 'helpers', 'extensions', 'functions', 'filters'))
+        );
         $this->_extend_parser($parser, $options);
 
         $template = $parser->render($template, $data);
@@ -152,7 +154,9 @@ class CI_Parser_twig extends CI_Parser_driver {
         // that should be cleaned periodically.
         $options['cache'] = false;
 
-        $parser = new Twig_Environment(new Twig_Loader_Chain(array(new Parser_Twig_Loader_String, new Parser_Twig_Loader_Filesystem())), array_except($options, array('helpers', 'extensions', 'functions', 'filters')));
+        $parser = new Twig_Environment(new Twig_Loader_Chain(array(new Parser_Twig_Loader_String, new Parser_Twig_Loader_Filesystem())),
+            array_except($options, array('timezone', 'helpers', 'extensions', 'functions', 'filters'))
+        );
         $this->_extend_parser($parser, $options);
 
         $template = $parser->render($template, $data);
@@ -162,6 +166,11 @@ class CI_Parser_twig extends CI_Parser_driver {
 
     protected function _extend_parser(& $parser, & $options)
     {
+        if (isset($options['timezone']) && $options['timezone'] != '')
+        {
+            $parser->getExtension('core')->setTimezone($options['timezone']);
+        }
+
         if (!empty($options['helpers']) && is_array($options['helpers']))
         {
             foreach ($options['helpers'] as & $item)

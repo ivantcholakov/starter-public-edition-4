@@ -18,6 +18,9 @@ $config['charset'] = null;
 //$config['cache'] = TWIG_CACHE;
 $config['cache'] = false;
 
+// The default timezone to be used by Twig.
+$config['timezone'] = date_default_timezone_get();
+
 // Extending the Twig parser: Load CodeIgniter helpers
 // that serve implemented for Twig functions and filters.
 $config['helpers'] = array(
