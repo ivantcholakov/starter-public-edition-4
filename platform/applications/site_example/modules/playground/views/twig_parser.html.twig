@@ -451,12 +451,16 @@ Hello, {{ name }}!
                                         <td>
 <pre><code>{% verbatim %}{{ "limp bizkit"|<strong>convert_encoding</strong>('HTML-ENTITIES', _charset) }}
 &lt;br /&gt;
-{{ "лимп бизкит"|<strong>convert_encoding</strong>('HTML-ENTITIES', _charset) }}{% endverbatim %}</code></pre>
+{{ "лимп бизкит"|<strong>convert_encoding</strong>('HTML-ENTITIES', _charset) }}
+&lt;br /&gt;
+{{ "лимп бизкит"|<strong>convert_encoding</strong>('HTML-ENTITIES', _charset)|raw }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
 {{ "limp bizkit"|convert_encoding('HTML-ENTITIES', _charset) }}
 <br />
 {{ "лимп бизкит"|convert_encoding('HTML-ENTITIES', _charset) }}
+<br />
+{{ "лимп бизкит"|convert_encoding('HTML-ENTITIES', _charset)|raw }}
                                         </td>
                                     </tr>
 
