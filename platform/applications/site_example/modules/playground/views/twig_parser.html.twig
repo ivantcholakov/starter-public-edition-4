@@ -382,13 +382,34 @@ Hello, {{ name }}!
 {{ print_d(250.5|null) }}
                                         </td>
                                     </tr>
-<!--
+
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>Built-In Twig Functions, Filters, and Operators</h4>
                                         </td>
                                     </tr>
--->
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(<strong>date()</strong>) }}
+&lt;div class="clearfix"&gt;&lt;/div&gt;
+{{ "now"|<strong>date</strong>("Y-m-d H:i:s") }}
+&lt;br /&gt;
+{{ "now"|<strong>date</strong>("Y") }}
+&lt;br /&gt;
+{{ 2524608000|<strong>date</strong>("Y") }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(date()) }}
+<div class="clearfix"></div>
+{{ "now"|date("Y-m-d H:i:s") }}
+<br />
+{{ "now"|date("Y") }}
+<br />
+{{ 2524608000|date("Y") }}
+                                        </td>
+                                    </tr>
+
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>PHP Functions</h4>
