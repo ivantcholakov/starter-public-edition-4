@@ -42,6 +42,7 @@ $config['functions'] = array(
     array('print_r', array('Parser_Twig_Functions_Debug', 'print_r'), array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
     array('var_export', array('Parser_Twig_Functions_Debug', 'var_export'), array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
     // PHP Functions
+    array('count', 'count', array('is_safe' => array('html'))),
     array('gettype', 'gettype', array('is_safe' => array('html'))),
     array('is_array', 'is_array', array('is_safe' => array('html'))),
     array('is_bool', 'is_bool', array('is_safe' => array('html'))),
