@@ -485,6 +485,60 @@ Hello, {{ name }}!
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ date()|<strong>date_modify</strong>("+1 day")|date("Y-m-d") }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ date()|date_modify("+1 day")|date("Y-m-d") }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ undefined_or_empty_variable|<strong>default</strong>("Undefined or empty variable.") }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ undefined_or_empty_variable|default("Undefined or empty variable.") }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% autoescape false %}{{ dog|<strong>escape</strong> }}{% endautoescape %}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% autoescape false %}{{ dog|escape }}{% endautoescape %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ array_1|<strong>first</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ array_1|first }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ "There are %d monkeys in the %s."|<strong>format(5, 'tree')</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ "There are %d monkeys in the %s."|format(5, 'tree') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ array_1|<strong>join('; ')</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ array_1|join('; ') }}
+                                        </td>
+                                    </tr>
+
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>PHP Functions</h4>
