@@ -264,6 +264,75 @@ Hello, {{ name }}!
 
                                     <tr class="info">
                                         <td colspan="2">
+                                            <h4>Type Casting</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(1|<strong>boolean</strong>) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(1|boolean) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d("10"|<strong>integer</strong>) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d("10"|integer) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d("250.5"|<strong>float</strong>) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d("250.5"|float) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(250.5|<strong>string</strong>) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(250.5|string) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(250.5|<strong>array</strong>) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(250.5|array) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(250.5|<strong>object</strong>) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(250.5|object) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(250.5|<strong>null</strong>) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(250.5|null) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="info">
+                                        <td colspan="2">
                                             <h4>Miscellaneous Tests</h4>
                                         </td>
                                     </tr>
