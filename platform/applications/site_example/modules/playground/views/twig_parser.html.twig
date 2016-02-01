@@ -170,7 +170,7 @@ Hello, {{ name }}!
 
                                     <tr class="info">
                                         <td colspan="2">
-                                            <h4>Checking if a Variable Exists</h4>
+                                            <h4>Checking if a Variable Exists, and If a Variable is Empty</h4>
                                         </td>
                                     </tr>
 
@@ -182,7 +182,7 @@ Hello, {{ name }}!
     Foo Does Not Exist
 {% endif %}
 &lt;br /&gt;
-{% if foo is defined and foo != 'bar' %}
+{% if foo is defined and foo is not same as('bar') %}
     Something here
 {% else %}
     Nothing here
@@ -195,11 +195,28 @@ Hello, {{ name }}!
     Foo Does Not Exist
 {% endif %}
 <br />
-{% if foo is defined and foo != 'bar' %}
+{% if foo is defined and foo is not same as('bar') %}
     Something here
 {% else %}
     Nothing here
 {% endif %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(value_0 is empty) }} {# Careful here, it is a differency in comparison to PHP. #}
+&lt;div class="clearfix"&gt;&lt;/div&gt;
+{{ print_d("" is empty) }}
+&lt;div class="clearfix"&gt;&lt;/div&gt;
+{{ print_d([] is empty) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(value_0 is empty) }} {# Careful here, it is a differency in comparison to PHP. #}
+<div class="clearfix"></div>
+{{ print_d("" is empty) }}
+<div class="clearfix"></div>
+{{ print_d([] is empty) }}
                                         </td>
                                     </tr>
 
@@ -365,7 +382,13 @@ Hello, {{ name }}!
 {{ print_d(250.5|null) }}
                                         </td>
                                     </tr>
-
+<!--
+                                    <tr class="info">
+                                        <td colspan="2">
+                                            <h4>Built-In Twig Functions, Filters, and Operators</h4>
+                                        </td>
+                                    </tr>
+-->
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>PHP Functions</h4>
