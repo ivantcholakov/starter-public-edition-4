@@ -505,10 +505,10 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{% autoescape false %}{{ dog|<strong>escape</strong> }}{% endautoescape %}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{% autoescape false %}{{ dangerous_value|<strong>escape</strong> }}{% endautoescape %}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{% autoescape false %}{{ dog|escape }}{% endautoescape %}
+{% autoescape false %}{{ dangerous_value|escape }}{% endautoescape %}
                                         </td>
                                     </tr>
 
@@ -536,6 +536,144 @@ Hello, {{ name }}!
                                         </td>
                                         <td>
 {{ array_1|join('; ') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ array_1|<strong>json_encode</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ array_1|json_encode }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(array_1|<strong>keys</strong>) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(array_1|keys) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ array_1|<strong>last</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ array_1|last }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ array_1|<strong>length</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ array_1|length }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ "LIMP BIZKIT"|<strong>lower</strong> }}
+&lt;br /&gt;
+{{ "ЛИМП БИЗКИТ"|<strong>lower</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ "LIMP BIZKIT"|lower }}
+<br />
+{{ "ЛИМП БИЗКИТ"|lower }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(array_1|<strong>merge</strong>(array_2)) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(array_1|merge(array_2)) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ "I like Twig.\nYou will like it too."|<strong>nl2br</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ "I like Twig.\nYou will like it too."|nl2br }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ 1234.56|<strong>number_format</strong>(2, ',', ' ') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ 1234.56|number_format(2, ',', ' ') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ dog|<strong>raw</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ dog|raw }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ "I like %this% with %that%."|<strong>replace</strong>({'%this%': 'whiskey', '%that%': 'ice'}) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ "I like %this% with %that%."|replace({'%this%': 'whiskey', '%that%': 'ice'}) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(array_1|<strong>reverse</strong>) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(array_1|reverse) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ 42.55|<strong>round</strong> }}
+&lt;br /&gt;
+{{ 42.55|<strong>round</strong>(1, 'floor') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ 42.55|round }}
+<br />
+{{ 42.55|round(1, 'floor') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ '12345'|<strong>slice</strong>(0, 2) }}
+&lt;br /&gt;
+{{ print_d(array_1|<strong>slice</strong>(0, 2)) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ '12345'|slice(0, 2) }}
+<br />
+{{ print_d(array_1|slice(0, 2)) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(array_1|<strong>sort</strong>) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(array_1|sort) }}
                                         </td>
                                     </tr>
 
