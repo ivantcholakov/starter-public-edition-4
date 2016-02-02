@@ -7,7 +7,7 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Parser_Twig_Functions_Debug {
+class Parser_Twig_Extension_Debug {
 
     public static function print_r($value) {
 

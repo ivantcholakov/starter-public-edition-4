@@ -412,7 +412,7 @@ Hello, {{ name }}!
 
                                     <tr class="info">
                                         <td colspan="2">
-                                            <h4>Built-In Twig Functions, Filters, and Operators</h4>
+                                            <h4>Built-In Twig Tags, Functions, Filters, and Operators (Checks)</h4>
                                         </td>
                                     </tr>
 
@@ -747,126 +747,126 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>count</strong>(array_1) }}
+<pre><code>{% verbatim %}{{ array_1|<strong>count</strong> }}
 &lt;br /&gt;
-{{ <strong>count</strong>(array_2) }}
+{{ array_2|<strong>count</strong> }}
 &lt;br /&gt;
-{{ <strong>count</strong>(array_2, true) }}{% endverbatim %}</code></pre>
+{{ array_2|<strong>count</strong>(true) }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ count(array_1) }}
+{{ array_1|count }}
 <br />
-{{ count(array_2) }}
+{{ array_2|count }}
 <br />
-{{ count(array_2, true) }}
+{{ array_2|count(true) }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>gettype</strong>(array_1) }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ array_1|<strong>gettype</strong> }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ gettype(array_1) }}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-<pre><code>{% verbatim %}{{ <strong>is_array</strong>(array_1) }}{% endverbatim %}</code></pre>
-                                        </td>
-                                        <td>
-{{ is_array(array_1) }}
+{{ array_1|gettype }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>is_bool</strong>(boolean_true) }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ array_1|<strong>is_array</strong> }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ is_bool(boolean_true) }}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-<pre><code>{% verbatim %}{{ <strong>is_boolean</strong>(boolean_true) }}{% endverbatim %}</code></pre>
-                                        </td>
-                                        <td>
-{{ is_boolean(boolean_true) }}
+{{ array_1|is_array }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>is_float</strong>(float_value) }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ boolean_true|<strong>is_bool</strong> }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ is_float(float_value) }}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-<pre><code>{% verbatim %}{{ <strong>is_int</strong>(value_0) }}{% endverbatim %}</code></pre>
-                                        </td>
-                                        <td>
-{{ is_int(value_0) }}
+{{ boolean_true|is_bool }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>is_integer</strong>(value_0) }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ boolean_true|<strong>is_boolean</strong> }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ is_integer(value_0) }}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-<pre><code>{% verbatim %}{{ <strong>is_null</strong>(value_null) }}{% endverbatim %}</code></pre>
-                                        </td>
-                                        <td>
-{{ is_null(value_null) }}
+{{ boolean_true|is_boolean }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>is_numeric</strong>(string_10) }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ float_value|<strong>is_float</strong> }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ is_numeric(string_10) }}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-<pre><code>{% verbatim %}{{ <strong>is_object</strong>(object_123) }}{% endverbatim %}</code></pre>
-                                        </td>
-                                        <td>
-{{ is_object(object_123) }}
+{{ float_value|is_float }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>is_scalar</strong>(string_123) }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ value_0|<strong>is_int</strong> }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ is_scalar(string_123) }}
+{{ value_0|is_int }}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>is_string</strong>(string_123) }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ value_0|<strong>is_integer</strong> }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ is_string(string_123) }}
+{{ value_0|is_integer }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ value_null|<strong>is_null</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ value_null|is_null }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ string_10|<strong>is_numeric</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ string_10|is_numeric }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ object_123|<strong>is_object</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ object_123|is_object }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ string_123|<strong>is_scalar</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ string_123|is_scalar }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ string_123|<strong>is_string</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ string_123|is_string }}
                                         </td>
                                     </tr>
 

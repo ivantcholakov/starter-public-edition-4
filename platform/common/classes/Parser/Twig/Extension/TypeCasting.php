@@ -7,7 +7,7 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Parser_Twig_Filters_TypeCasting {
+class Parser_Twig_Extension_TypeCasting {
 
     public static function boolean($value) {
 
