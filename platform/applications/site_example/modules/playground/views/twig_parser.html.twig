@@ -677,6 +677,68 @@ Hello, {{ name }}!
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d("one, two, three"|<strong>split(', ')</strong>) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d("one, two, three"|split(', ')) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ dog|<strong>striptags</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ dog|striptags }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ "limp bizkit"|<strong>title</strong> }}
+&lt;br /&gt;
+{{ "лимп бизкит"|<strong>title</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ "limp bizkit"|title }}
+<br />
+{{ "лимп бизкит"|title }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ "****STRING****"|<strong>trim</strong>('*') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ "****STRING****"|trim('*') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ "limp bizkit"|<strong>upper</strong> }}
+&lt;br /&gt;
+{{ "лимп бизкит"|<strong>upper</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ "limp bizkit"|upper }}
+<br />
+{{ "лимп бизкит"|upper }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ "path-seg*ment"|<strong>url_encode</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ "path-seg*ment"|url_encode }}
+                                        </td>
+                                    </tr>
+
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>PHP Functions</h4>
