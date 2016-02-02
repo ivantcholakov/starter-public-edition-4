@@ -505,6 +505,19 @@ Line 3
 
                                     <tr>
                                         <td>
+<pre><code>{% verbatim %}{% for i in 0..10 %}
+    {{ <strong>cycle</strong>(array_1, i) }}&lt;br /&gt;
+{% endfor %}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% for i in 0..10 %}
+    {{ cycle(array_1, i) }}<br />
+{% endfor %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{% verbatim %}{{ print_d(<strong>date()</strong>) }}
 &lt;div class="clearfix"&gt;&lt;/div&gt;
 {{ "now"|<strong>date</strong>("Y-m-d H:i:s") }}
