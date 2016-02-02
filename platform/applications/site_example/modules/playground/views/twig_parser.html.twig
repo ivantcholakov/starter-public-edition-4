@@ -427,6 +427,36 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
+<pre><code>{% verbatim %}{{ <strong>attribute</strong>(template, 'title') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ attribute(template, 'title') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>block</strong> separator %}&lt;div class="clearfix" /&gt;&lt;hr /&gt;{% endblock %}
+Line 1
+{{ <strong>block</strong>('separator') }}
+Line 2
+{{ <strong>block</strong>('separator') }}
+Line 3
+{{ <strong>block</strong>('separator') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% block separator %}<div class="clearfix" /><hr />{% endblock %}
+Line 1
+{{ block('separator') }}
+Line 2
+{{ block('separator') }}
+Line 3
+{{ block('separator') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{% verbatim %}{{ ['a', 'b', 'c', 'd', 'e', 'f', 'g']|<strong>batch</strong>(3, 'x') }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
@@ -444,6 +474,15 @@ Hello, {{ name }}!
 {{ "limp bizkit"|capitalize }}
 <br />
 {{ "лимп бизкит"|capitalize }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>constant</strong>('BASE_URL') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('BASE_URL') }}
                                         </td>
                                     </tr>
 
