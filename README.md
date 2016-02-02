@@ -395,6 +395,7 @@ Real Life Usage
 * http://vsichkiremonti.bg (repair services), the design is based on AdminLTE project.
 * http://mominidvori.com (a hotel in Bansko, Bulgaria), designer: Irina Stancheva
 * http://hotel-classic.eu (a hotel in Sofia, Bulgaria), designer: Irina Stancheva
+* http://nelasms.com (a seller of spare parts for trucks), designer: Irina Stancheva
 
 Reported by Webnice Ltd., http://webnicebg.com
 
