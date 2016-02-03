@@ -412,13 +412,14 @@ Hello, {{ name }}!
 
                                     <tr class="info">
                                         <td colspan="2">
-                                            <h4>Built-In Twig Tags, Functions, Filters, and Operators (Checks)</h4>
+                                            <h4>Built-In Twig Tags, Functions, Filters, and Operators</h4>
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ (-10)|<strong>abs</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/abs.html" target="_blank">abs</a>
                                         </td>
                                         <td>
 {{ (-10)|abs }}
@@ -428,6 +429,7 @@ Hello, {{ name }}!
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>attribute</strong>(template, 'title') }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/attribute.html" target="_blank">attribute</a>
                                         </td>
                                         <td>
 {{ attribute(template, 'title') }}
@@ -443,6 +445,8 @@ Line 2
 {{ <strong>block</strong>('separator') }}
 Line 3
 {{ <strong>block</strong>('separator') }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tags/block.html" target="_blank">block (tag)</a>
+<a href="http://twig.sensiolabs.org/doc/functions/block.html" target="_blank">block (function)</a>
                                         </td>
                                         <td>
 {% block separator %}<div class="clearfix" /><hr />{% endblock %}
@@ -458,6 +462,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ ['a', 'b', 'c', 'd', 'e', 'f', 'g']|<strong>batch</strong>(3, 'x') }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/batch.html" target="_blank">batch</a>
                                         </td>
                                         <td>
 {{ print_d(['a', 'b', 'c', 'd', 'e', 'f', 'g']|batch(3, 'x')) }}
@@ -469,6 +474,7 @@ Line 3
 <pre><code>{% verbatim %}{{ "limp bizkit"|<strong>capitalize</strong> }}
 &lt;br /&gt;
 {{ "лимп бизкит"|<strong>capitalize</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/capitalize.html" target="_blank">capitalize</a>
                                         </td>
                                         <td>
 {{ "limp bizkit"|capitalize }}
@@ -480,6 +486,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>constant</strong>('BASE_URL') }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/constant.html" target="_blank">constant</a>
                                         </td>
                                         <td>
 {{ constant('BASE_URL') }}
@@ -493,6 +500,7 @@ Line 3
 {{ "лимп бизкит"|<strong>convert_encoding</strong>('HTML-ENTITIES', _charset) }}
 &lt;br /&gt;
 {{ "лимп бизкит"|<strong>convert_encoding</strong>('HTML-ENTITIES', _charset)|raw }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/convert_encoding.html" target="_blank">convert_encoding</a>
                                         </td>
                                         <td>
 {{ "limp bizkit"|convert_encoding('HTML-ENTITIES', _charset) }}
@@ -508,6 +516,7 @@ Line 3
 <pre><code>{% verbatim %}{% for i in 0..10 %}
     {{ <strong>cycle</strong>(array_1, i) }}&lt;br /&gt;
 {% endfor %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/cycle.html" target="_blank">cycle</a>
                                         </td>
                                         <td>
 {% for i in 0..10 %}
@@ -525,6 +534,8 @@ Line 3
 {{ "now"|<strong>date</strong>("Y") }}
 &lt;br /&gt;
 {{ 2524608000|<strong>date</strong>("Y") }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/date.html" target="_blank">date (function)</a>
+<a href="http://twig.sensiolabs.org/doc/filters/date.html" target="_blank">date (filter)</a>
                                         </td>
                                         <td>
 {{ print_d(date()) }}
@@ -540,6 +551,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ date()|<strong>date_modify</strong>("+1 day")|date("Y-m-d") }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/date_modify.html" target="_blank">date_modify</a>
                                         </td>
                                         <td>
 {{ date()|date_modify("+1 day")|date("Y-m-d") }}
@@ -549,6 +561,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ undefined_or_empty_variable|<strong>default</strong>("Undefined or empty variable.") }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/default.html" target="_blank">default</a>
                                         </td>
                                         <td>
 {{ undefined_or_empty_variable|default("Undefined or empty variable.") }}
@@ -558,6 +571,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% autoescape false %}{{ dangerous_value|<strong>escape</strong> }}{% endautoescape %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/escape.html" target="_blank">escape</a>
                                         </td>
                                         <td>
 {% autoescape false %}{{ dangerous_value|escape }}{% endautoescape %}
@@ -567,6 +581,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ array_1|<strong>first</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/first.html" target="_blank">first</a>
                                         </td>
                                         <td>
 {{ array_1|first }}
@@ -576,6 +591,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ "There are %d monkeys in the %s."|<strong>format(5, 'tree')</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/format.html" target="_blank">format</a>
                                         </td>
                                         <td>
 {{ "There are %d monkeys in the %s."|format(5, 'tree') }}
@@ -585,6 +601,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ array_1|<strong>join('; ')</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/join.html" target="_blank">join</a>
                                         </td>
                                         <td>
 {{ array_1|join('; ') }}
@@ -594,6 +611,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>include</strong>('test.html') }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/include.html" target="_blank">include</a>
                                         </td>
                                         <td>
 {{ include('test.html') }}
@@ -603,6 +621,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ array_1|<strong>json_encode</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/json_encode.html" target="_blank">json_encode</a>
                                         </td>
                                         <td>
 {{ array_1|json_encode }}
@@ -612,6 +631,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ print_d(array_1|<strong>keys</strong>) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/keys.html" target="_blank">keys</a>
                                         </td>
                                         <td>
 {{ print_d(array_1|keys) }}
@@ -621,6 +641,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ array_1|<strong>last</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/last.html" target="_blank">last</a>
                                         </td>
                                         <td>
 {{ array_1|last }}
@@ -630,6 +651,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ array_1|<strong>length</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/length.html" target="_blank">length</a>
                                         </td>
                                         <td>
 {{ array_1|length }}
@@ -641,6 +663,7 @@ Line 3
 <pre><code>{% verbatim %}{{ "LIMP BIZKIT"|<strong>lower</strong> }}
 &lt;br /&gt;
 {{ "ЛИМП БИЗКИТ"|<strong>lower</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/lower.html" target="_blank">lower</a>
                                         </td>
                                         <td>
 {{ "LIMP BIZKIT"|lower }}
@@ -651,7 +674,18 @@ Line 3
 
                                     <tr>
                                         <td>
+<pre><code>{% verbatim %}{{ <strong>max</strong>(array_1) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/max.html" target="_blank">max</a>
+                                        </td>
+                                        <td>
+{{ max(array_1) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{% verbatim %}{{ print_d(array_1|<strong>merge</strong>(array_2)) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/merge.html" target="_blank">merge</a>
                                         </td>
                                         <td>
 {{ print_d(array_1|merge(array_2)) }}
@@ -660,7 +694,18 @@ Line 3
 
                                     <tr>
                                         <td>
+<pre><code>{% verbatim %}{{ <strong>min</strong>(array_1) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/min.html" target="_blank">min</a>
+                                        </td>
+                                        <td>
+{{ min(array_1) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{% verbatim %}{{ "I like Twig.\nYou will like it too."|<strong>nl2br</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/nl2br.html" target="_blank">nl2br</a>
                                         </td>
                                         <td>
 {{ "I like Twig.\nYou will like it too."|nl2br }}
@@ -670,6 +715,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ 1234.56|<strong>number_format</strong>(2, ',', ' ') }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/number_format.html" target="_blank">number_format</a>
                                         </td>
                                         <td>
 {{ 1234.56|number_format(2, ',', ' ') }}
@@ -679,6 +725,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ dog|<strong>raw</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/raw.html" target="_blank">raw</a>
                                         </td>
                                         <td>
 {{ dog|raw }}
@@ -688,6 +735,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ "I like %this% with %that%."|<strong>replace</strong>({'%this%': 'whiskey', '%that%': 'ice'}) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/replace.html" target="_blank">replace</a>
                                         </td>
                                         <td>
 {{ "I like %this% with %that%."|replace({'%this%': 'whiskey', '%that%': 'ice'}) }}
@@ -697,6 +745,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ print_d(array_1|<strong>reverse</strong>) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/reverse.html" target="_blank">reverse</a>
                                         </td>
                                         <td>
 {{ print_d(array_1|reverse) }}
@@ -708,6 +757,7 @@ Line 3
 <pre><code>{% verbatim %}{{ 42.55|<strong>round</strong> }}
 &lt;br /&gt;
 {{ 42.55|<strong>round</strong>(1, 'floor') }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/round.html" target="_blank">round</a>
                                         </td>
                                         <td>
 {{ 42.55|round }}
@@ -721,6 +771,7 @@ Line 3
 <pre><code>{% verbatim %}{{ '12345'|<strong>slice</strong>(0, 2) }}
 &lt;br /&gt;
 {{ print_d(array_1|<strong>slice</strong>(0, 2)) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/slice.html" target="_blank">slice</a>
                                         </td>
                                         <td>
 {{ '12345'|slice(0, 2) }}
@@ -732,6 +783,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ print_d(array_1|<strong>sort</strong>) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/sort.html" target="_blank">sort</a>
                                         </td>
                                         <td>
 {{ print_d(array_1|sort) }}
@@ -741,6 +793,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ print_d("one, two, three"|<strong>split(', ')</strong>) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/split.html" target="_blank">split</a>
                                         </td>
                                         <td>
 {{ print_d("one, two, three"|split(', ')) }}
@@ -750,6 +803,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ dog|<strong>striptags</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/striptags.html" target="_blank">striptags</a>
                                         </td>
                                         <td>
 {{ dog|striptags }}
@@ -761,6 +815,7 @@ Line 3
 <pre><code>{% verbatim %}{{ "limp bizkit"|<strong>title</strong> }}
 &lt;br /&gt;
 {{ "лимп бизкит"|<strong>title</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/title.html" target="_blank">title</a>
                                         </td>
                                         <td>
 {{ "limp bizkit"|title }}
@@ -772,6 +827,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ "****STRING****"|<strong>trim</strong>('*') }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/trim.html" target="_blank">trim</a>
                                         </td>
                                         <td>
 {{ "****STRING****"|trim('*') }}
@@ -783,6 +839,7 @@ Line 3
 <pre><code>{% verbatim %}{{ "limp bizkit"|<strong>upper</strong> }}
 &lt;br /&gt;
 {{ "лимп бизкит"|<strong>upper</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/upper.html" target="_blank">upper</a>
                                         </td>
                                         <td>
 {{ "limp bizkit"|upper }}
@@ -794,6 +851,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ "path-seg*ment"|<strong>url_encode</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/url_encode.html" target="_blank">url_encode</a>
                                         </td>
                                         <td>
 {{ "path-seg*ment"|url_encode }}
@@ -813,6 +871,7 @@ Line 3
 {{ array_2|<strong>count</strong> }}
 &lt;br /&gt;
 {{ array_2|<strong>count</strong>(true) }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.count.php" target="_blank">count</a>
                                         </td>
                                         <td>
 {{ array_1|count }}
@@ -826,6 +885,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ array_1|<strong>gettype</strong> }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.gettype.php" target="_blank">gettype</a>
                                         </td>
                                         <td>
 {{ array_1|gettype }}
@@ -835,6 +895,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ array_1|<strong>is_array</strong> }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.is-array.php" target="_blank">is_array</a>
                                         </td>
                                         <td>
 {{ array_1|is_array }}
@@ -844,6 +905,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ boolean_true|<strong>is_bool</strong> }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.is-bool.php" target="_blank">is_bool</a>
                                         </td>
                                         <td>
 {{ boolean_true|is_bool }}
@@ -853,6 +915,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ boolean_true|<strong>is_boolean</strong> }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.is-bool.php" target="_blank">an alias of is_bool()</a>
                                         </td>
                                         <td>
 {{ boolean_true|is_boolean }}
@@ -862,6 +925,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ float_value|<strong>is_float</strong> }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.is-float.php" target="_blank">is_float</a>
                                         </td>
                                         <td>
 {{ float_value|is_float }}
@@ -871,6 +935,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ value_0|<strong>is_int</strong> }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.is-int.php" target="_blank">is_int</a>
                                         </td>
                                         <td>
 {{ value_0|is_int }}
@@ -880,6 +945,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ value_0|<strong>is_integer</strong> }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.is-integer.php" target="_blank">is_integer</a>
                                         </td>
                                         <td>
 {{ value_0|is_integer }}
@@ -889,6 +955,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ value_null|<strong>is_null</strong> }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.is-null.php" target="_blank">is_null</a>
                                         </td>
                                         <td>
 {{ value_null|is_null }}
@@ -898,6 +965,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ string_10|<strong>is_numeric</strong> }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.is-numeric.php" target="_blank">is_numeric</a>
                                         </td>
                                         <td>
 {{ string_10|is_numeric }}
@@ -907,6 +975,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ object_123|<strong>is_object</strong> }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.is-object.php" target="_blank">is_iobject</a>
                                         </td>
                                         <td>
 {{ object_123|is_object }}
@@ -916,6 +985,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ string_123|<strong>is_scalar</strong> }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.is-scalar.php" target="_blank">is_scalar</a>
                                         </td>
                                         <td>
 {{ string_123|is_scalar }}
@@ -925,6 +995,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ string_123|<strong>is_string</strong> }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.is-string.php" target="_blank">is_string</a>
                                         </td>
                                         <td>
 {{ string_123|is_string }}
@@ -942,6 +1013,7 @@ Line 3
 <pre><code>{% verbatim %}{{ "Very long text. Very long text."|<strong>character_limiter</strong>(10) }}
 &lt;br /&gt;
 {{ very_long_text|<strong>character_limiter</strong>(10, "&amp;#8230;") }}{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/helpers/text_helper.html#character_limiter" target="_blank">character_limiter</a>
                                         </td>
                                         <td>
 {{ "Very long text. Very long text."|character_limiter(10) }}
