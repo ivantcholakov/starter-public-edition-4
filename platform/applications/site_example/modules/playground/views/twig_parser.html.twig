@@ -438,6 +438,20 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
+<pre><code>{% verbatim %}{% <strong>autoescape</strong> %}
+    {{ dog }} Static expressions &lt;strong&gt;are not&lt;/strong&gt; escaped.
+{% endautoescape %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tags/autoescape.html" target="_blank">autoescape</a>
+                                        </td>
+                                        <td>
+{% autoescape %}
+    {{ dog }} Static expressions <strong>are not</strong> escaped.
+{% endautoescape %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{% verbatim %}{% <strong>block</strong> separator %}&lt;div class="clearfix" /&gt;&lt;hr /&gt;{% endblock %}
 Line 1
 {{ <strong>block</strong>('separator') }}
@@ -565,6 +579,16 @@ Line 3
                                         </td>
                                         <td>
 {{ undefined_or_empty_variable|default("Undefined or empty variable.") }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>do</strong> 1 + 2 %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tags/do.html" target="_blank">do</a>
+                                        </td>
+                                        <td>
+{% do 1 + 2 %}
                                         </td>
                                     </tr>
 
