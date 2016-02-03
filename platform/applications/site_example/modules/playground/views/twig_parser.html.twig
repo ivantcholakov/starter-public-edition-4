@@ -732,6 +732,32 @@ Line 3
                                         </td>
                                     </tr>
 
+<!-- TODO: parent() -->
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>random</strong>(array_1) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/random.html" target="_blank">random</a>
+                                        </td>
+                                        <td>
+{{ random(array_1) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(<strong>range</strong>(0, 3)) }}
+&lt;div class="clearfix"&gt;&lt;/div&gt;
+{{ print_d(0..3) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/range.html" target="_blank">range</a>
+                                        </td>
+                                        <td>
+{{ print_d(range(0, 3)) }}
+<div class="clearfix"></div>
+{{ print_d(0..3) }}
+                                        </td>
+                                    </tr>
+
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ "I like %this% with %that%."|<strong>replace</strong>({'%this%': 'whiskey', '%that%': 'ice'}) }}{% endverbatim %}</code></pre>
@@ -792,6 +818,16 @@ Line 3
 
                                     <tr>
                                         <td>
+<pre><code>{% verbatim %}&lt;pre&gt;&lt;code&gt;{{ <strong>source</strong>('test.html')|escape }}&lt;/code&gt;&lt;/pre&gt;{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/source.html" target="_blank">source</a>
+                                        </td>
+                                        <td>
+<pre><code>{{ source('test.html')|escape }}</code></pre>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{% verbatim %}{{ print_d("one, two, three"|<strong>split(', ')</strong>) }}{% endverbatim %}</code></pre>
 <a href="http://twig.sensiolabs.org/doc/filters/split.html" target="_blank">split</a>
                                         </td>
@@ -821,6 +857,16 @@ Line 3
 {{ "limp bizkit"|title }}
 <br />
 {{ "лимп бизкит"|title }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ include(<strong>template_from_string</strong>("Hello {{ name }}")) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/template_from_string.html" target="_blank">template_from_string</a>
+                                        </td>
+                                        <td>
+{{ include(template_from_string("Hello {{ name }}")) }}
                                         </td>
                                     </tr>
 
