@@ -530,7 +530,7 @@ class CI_Parser extends CI_Driver_Library {
 			if (preg_match('/.*\.('.$k.')$/', $file_name, $matches))
 			{
 				$detected_extension = $matches[1];
-                                $detected_filename = preg_replace('/(.*)\.'.$k.'$/', '$1', pathinfo($file_name, PATHINFO_BASENAME));
+				$detected_filename = preg_replace('/(.*)\.'.$k.'$/', '$1', pathinfo($file_name, PATHINFO_BASENAME));
 
 				return $value;
 			}
@@ -549,12 +549,13 @@ class CI_Parser extends CI_Driver_Library {
 	}
 
 	// Added by Ivan Tcholakov, 15-JAN-2016.
-	public function find_file($file_name, & $detected_parser = null, & $detected_extension = null, & $detected_filename = null)
+	public function find_file($file_name, & $detected_parser = null, & $detected_extension = null, & $detected_filename = null, $for_parser = null)
 	{
 		$file_name = (string) $file_name;
 		$detected_parser = null;
 		$detected_extension = null;
 		$detected_filename = null;
+		$for_parser = (string) $for_parser;
 
 		if (is_file($file_name))
 		{
@@ -566,17 +567,25 @@ class CI_Parser extends CI_Driver_Library {
 				$detected_filename = pathinfo($file_name, PATHINFO_FILENAME);
 			}
 
-			return $file_name;
+			if ($for_parser == '' || $for_parser == $detected_parser)
+			{
+				return $file_name;
+			}
 		}
 
 		$ext = pathinfo($file_name, PATHINFO_EXTENSION);
 
-		if ($ext == '')
+		if ($ext == '' || $ext == 'html')
 		{
 			$parsers = & $this->get_parsers_by_file_extensions();
 
 			foreach ($parsers as $key => $value)
 			{
+				if ($for_parser != '' && $for_parser != $value)
+				{
+					continue;
+				}
+
 				$f = $file_name.'.'.$key;
 
 				if (is_file($f))

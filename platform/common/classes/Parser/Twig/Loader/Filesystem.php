@@ -9,14 +9,12 @@
 
 class Parser_Twig_Loader_Filesystem extends Twig_Loader_Filesystem {
 
-    public function __construct() {
+    public function __construct($paths = array()) {
 
-        parent::__construct();
+        parent::__construct($paths);
     }
 
     protected function findTemplate($name) {
-
-        $ci = & get_instance();
 
         $throw = func_num_args() > 1 ? func_get_arg(1) : true;
         $name = $this->normalizeName($name);
@@ -34,20 +32,42 @@ class Parser_Twig_Loader_Filesystem extends Twig_Loader_Filesystem {
             throw new Twig_Error_Loader($this->errorCache[$name]);
         }
 
-        if (is_file($name)) {
+        $ci = & get_instance();
+
+        if (strpos($name, '..') === false && $ci->parser->detect($name) === 'twig' && is_file($name)) {
             // Full file name has been given.
             return $this->cache[$name] = $name;
         }
 
         $this->validateName($name);
 
-        $file = $ci->parser->find_file($file_name, $detected_parser, $detected_extension, $detected_filename);
+        list($namespace, $shortname) = $this->parseName($name);
 
-        if ($file != '') {
-            return $this->cache[$name] = $file;
+        if (!isset($this->paths[$namespace])) {
+            $this->errorCache[$name] = sprintf('There are no registered paths for namespace "%s".', $namespace);
+
+            if (!$throw) {
+                return false;
+            }
+
+            throw new Twig_Error_Loader($this->errorCache[$name]);
         }
 
-        $this->errorCache[$name] = sprintf('Unable to find template "%s".', $name);
+        foreach ($this->paths[$namespace] as $path) {
+
+            $file = $ci->parser->find_file($path.'/'.$shortname, $detected_parser, $detected_extension, $detected_filename, 'twig');
+
+            if (is_file($file)) {
+
+                if (false !== $realpath = realpath($file)) {
+                    return $this->cache[$name] = $realpath;
+                }
+
+                return $this->cache[$name] = $file;
+            }
+        }
+
+        $this->errorCache[$name] = sprintf('Unable to find template "%s" (looked into: %s).', $name, implode(', ', $this->paths[$namespace]));
 
         if (!$throw) {
             return false;

@@ -916,6 +916,62 @@ class MX_Loader extends CI_Loader
         return $_ci_path;
     }
 
+    // Added by Ivan Tcholakov, FEB-2016.
+    public function locations($base = null) {
+
+        $base = trim($base, '/');
+
+        $paths = array();
+        $result = array();
+
+        // TODO: Add theme loacations too.
+
+        $module = $this->_module;
+
+        if ($module == '') {
+
+            if (isset(CI::$APP->module) && CI::$APP->module != '') {
+                $module = CI::$APP->module;
+            }
+        }
+
+        if ($module != '') {
+
+            foreach (Modules::$locations as $location => $offset) {
+
+                $path = realpath($location);
+
+                if ($path == '') {
+                    continue;
+                }
+
+                $path = rtrim(str_replace('\\', '/', $path), '/').'/';
+
+                if ($module != '') {
+                    $path .= $module.'/';
+                }
+
+                $paths[] = $path;
+            }
+        }
+
+        $paths[] = APPPATH;
+        $paths[] = COMMONPATH;
+
+        foreach ($paths as $path) {
+
+            if ($base != '') {
+                $path .= $base.'/';
+            }
+
+            if (is_dir($path)) {
+                $result[] = $path;
+            }
+        }
+
+        return $result;
+    }
+
     protected function &_ci_get_component($component) {
 
         return CI::$APP->$component;

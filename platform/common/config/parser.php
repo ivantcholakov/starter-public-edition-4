@@ -36,7 +36,7 @@ $config['parser_valid_drivers'] = array(
 // to views, partials, layouts.
 // Don't add leading dots on specifying file extensions.
 $config['parser_file_extensions'] = array(
-    'twig' => array('html.twig', 'twig', 'twig.html'),
+    'twig' => array('twig', 'html.twig'),
     'mustache' => array('mustache.html', 'mustache'),
     'lex' => array('lex.html', 'lex'),
     'parser' => array('parser.php'),
