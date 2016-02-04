@@ -421,8 +421,19 @@ Hello, {{ name }}!
 
                                     <tr class="info">
                                         <td colspan="2">
-                                            <h4>Built-In Twig Tags, Functions, Filters, Operators, and "Tests"</h4>
+                                            <h4>Built-In Twig Tags, Functions, Filters, and Operators</h4>
                                             <p>See <a href="http://twig.sensiolabs.org/documentation" target="_blank">Twig Reference</a></p>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<p><a href="http://twig.sensiolabs.org/doc/templates.html#math" target="_blank">Math operators</a>: +, -, /, %, //, *, **</p>
+<p><a href="http://twig.sensiolabs.org/doc/templates.html#math" target="_blank">Logic operators</a>: and, or, not, (), b-and, b-xor, b-or</p>
+<p><a href="http://twig.sensiolabs.org/doc/templates.html#comparisons" target="_blank">Comparisons</a>: ==, !=, <, >, >=, <=, <a href="http://twig.sensiolabs.org/doc/tests/sameas.html" target="_blank">===</a>, starts with, ends with, matches</p>
+<p><a href="http://twig.sensiolabs.org/doc/templates.html#other-operators" target="_blank">Other operators</a>: .., |, ~, ., [], ?:</p>
+                                        </td>
+                                        <td>
                                         </td>
                                     </tr>
 
@@ -771,12 +782,32 @@ limp bizkit
 
                                     <tr>
                                         <td>
+<pre><code>{% verbatim %}{% if 'one' <strong>in</strong> array_1 %}Yes{% else %}No{% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/templates.html#containment-operator" target="_blank">in</a>
+                                        </td>
+                                        <td>
+{% if 'one' in array_1 %}Yes{% else %}No{% endif %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{% verbatim %}{{ <strong>include</strong>('test.html') }}{% endverbatim %}</code></pre>
 <a href="http://twig.sensiolabs.org/doc/tags/include.html" target="_blank">include (tag)</a>
 <a href="http://twig.sensiolabs.org/doc/functions/include.html" target="_blank">include (function)</a>
                                         </td>
                                         <td>
 {{ include('test.html') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% if value_1 <strong>is</strong> odd %}Odd{% else %}Even{% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/templates.html#test-operator" target="_blank">is</a>
+                                        </td>
+                                        <td>
+{% if value_1 is odd %}Odd{% else %}Even{% endif %}
                                         </td>
                                     </tr>
 
