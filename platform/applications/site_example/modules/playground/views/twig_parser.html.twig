@@ -14,7 +14,7 @@
 
                     <div class="col-md-12">
 
-                        <p>See <a href="http://twig.sensiolabs.org" target="_blank">http://twig.sensiolabs.org</a></p>
+                        <p>See <a href="http://twig.sensiolabs.org" target="_blank">http://twig.sensiolabs.org</a>, <a href="http://twig.sensiolabs.org/doc/templates.html" target="_blank">http://twig.sensiolabs.org/doc/templates.html</a></p>
 
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover">
@@ -110,7 +110,8 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ dog|raw }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ dog|<strong>raw</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/raw.html" target="_blank">raw</a>
                                         </td>
                                         <td>
 {{ dog|raw }}
@@ -119,7 +120,7 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ dog_entities|raw }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ dog_entities|<strong>raw</strong> }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
 {{ dog_entities|raw }}
@@ -162,6 +163,7 @@ Hello, {{ name }}!
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>print_d</strong>(array_1) }}{% endverbatim %}</code></pre>
+<a href="https://github.com/vikerlane/print_d" target="_blank">print_d</a>
                                         </td>
                                         <td>
 {{ print_d(array_1) }}
@@ -171,6 +173,7 @@ Hello, {{ name }}!
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>dump</strong>(array_1) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/dump.html" target="_blank">dump</a>
                                         </td>
                                         <td>
 {{ dump(array_1) }}
@@ -180,6 +183,7 @@ Hello, {{ name }}!
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>print_r</strong>(array_1) }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.print-r.php" target="_blank">print_r</a>
                                         </td>
                                         <td>
 {{ print_r(array_1) }}
@@ -189,6 +193,7 @@ Hello, {{ name }}!
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>var_export</strong>(array_1) }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.var-export.php" target="_blank">var_export</a>
                                         </td>
                                         <td>
 {{ var_export(array_1) }}
@@ -205,15 +210,16 @@ Hello, {{ name }}!
                                         <td>
 <pre><code>{% verbatim %}{% if foo is defined %}
     Foo Exists
-{% elseif foo is not defined %}
+{% elseif foo is not <strong>defined</strong> %}
     Foo Does Not Exist
 {% endif %}
 &lt;br /&gt;
-{% if foo is defined and foo is not same as('bar') %}
+{% if foo is <strong>defined</strong> and foo is not same as('bar') %}
     Something here
 {% else %}
     Nothing here
 {% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tests/defined.html" target="_blank">defined</a>
                                         </td>
                                         <td>
 {% if foo is defined %}
@@ -232,11 +238,12 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ print_d(value_0 is empty) }} {# Careful here, it is a differency in comparison to PHP. #}
+<pre><code>{% verbatim %}{{ print_d(value_0 is <strong>empty</strong>) }} {# Careful here, it is a differency in comparison to PHP. #}
 &lt;div class="clearfix"&gt;&lt;/div&gt;
-{{ print_d("" is empty) }}
+{{ print_d("" is <strong>empty</strong>) }}
 &lt;div class="clearfix"&gt;&lt;/div&gt;
-{{ print_d([] is empty) }}{% endverbatim %}</code></pre>
+{{ print_d([] is <strong>empty</strong>) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tests/empty.html" target="_blank">empty</a>
                                         </td>
                                         <td>
 {{ print_d(value_0 is empty) }} {# Careful here, it is a differency in comparison to PHP. #}
@@ -257,6 +264,7 @@ Hello, {{ name }}!
                                         <td>
 <pre><code>{% verbatim %}{% <strong>set</strong> my_var = null %}
 {{ print_d(my_var) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tags/set.html" target="_blank">set</a>
                                         </td>
                                         <td>
 {% set my_var = null %}
@@ -344,6 +352,7 @@ Hello, {{ name }}!
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>Type Casting</h4>
+                                            <p>See <a href="http://php.net/manual/en/language.types.type-juggling.php#language.types.typecasting" target="_blank">PHP Type Casting</a></p>
                                         </td>
                                     </tr>
 
@@ -413,6 +422,7 @@ Hello, {{ name }}!
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>Built-In Twig Tags, Functions, Filters, and Operators</h4>
+                                            <p>See <a href="http://twig.sensiolabs.org/documentation" target="_blank">Twig Reference</a></p>
                                         </td>
                                     </tr>
 
@@ -500,7 +510,8 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>constant</strong>('BASE_URL') }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/functions/constant.html" target="_blank">constant</a>
+<a href="http://twig.sensiolabs.org/doc/functions/constant.html" target="_blank">constant (function)</a>
+<a href="http://twig.sensiolabs.org/doc/tests/constant.html" target="_blank">constant (operator)</a>
                                         </td>
                                         <td>
 {{ constant('BASE_URL') }}
