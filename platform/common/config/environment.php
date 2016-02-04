@@ -37,3 +37,6 @@ if (IS_CLI) {
 }
 
 ini_set('pcre.backtrack_limit', 10000000);
+
+// https://stackoverflow.com/questions/34849485/regex-not-working-for-long-pattern-pcres-jit-compiler-stack-limit-php7
+ini_set('pcre.jit', false);
