@@ -723,8 +723,17 @@ limp bizkit
 
                                     <tr>
                                         <td>
+<a href="http://twig.sensiolabs.org/doc/tags/import.html" target="_blank">import</a>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{% verbatim %}{{ <strong>include</strong>('test.html') }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/functions/include.html" target="_blank">include</a>
+<a href="http://twig.sensiolabs.org/doc/tags/include.html" target="_blank">include (tag)</a>
+<a href="http://twig.sensiolabs.org/doc/functions/include.html" target="_blank">include (function)</a>
                                         </td>
                                         <td>
 {{ include('test.html') }}
@@ -782,6 +791,14 @@ limp bizkit
 {{ "LIMP BIZKIT"|lower }}
 <br />
 {{ "ЛИМП БИЗКИТ"|lower }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<a href="http://twig.sensiolabs.org/doc/tags/macro.html" target="_blank">macro</a>
+                                        </td>
+                                        <td>
                                         </td>
                                     </tr>
 
@@ -907,6 +924,26 @@ limp bizkit
 
                                     <tr>
                                         <td>
+<a href="http://twig.sensiolabs.org/doc/tags/sandbox.html" target="_blank">sandbox</a>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>set</strong> my_var = "my variable" %}
+{{ my_var }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tags/set.html" target="_blank">set</a>
+                                        </td>
+                                        <td>
+{% set my_var = "my variable" %}
+{{ my_var }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{% verbatim %}{{ '12345'|<strong>slice</strong>(0, 2) }}
 &lt;br /&gt;
 {{ print_d(array_1|<strong>slice</strong>(0, 2)) }}{% endverbatim %}</code></pre>
@@ -936,6 +973,24 @@ limp bizkit
                                         </td>
                                         <td>
 <pre><code>{{ source('test.html')|escape }}</code></pre>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% filter escape('html') %}{% <strong>spaceless</strong> %}
+    &lt;div&gt;
+        &lt;strong&gt;spaceless&lt;/strong&gt;
+    &lt;/div&gt;
+{% endspaceless %}{% endfilter %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tags/spaceless.html" target="_blank">spaceless</a>
+                                        </td>
+                                        <td>
+{% filter escape('html') %}{% spaceless %}
+    <div>
+        <strong>spaceless</strong>
+    </div>
+{% endspaceless %}{% endfilter %}
                                         </td>
                                     </tr>
 
@@ -1014,6 +1069,32 @@ limp bizkit
                                         </td>
                                         <td>
 {{ "path-seg*ment"|url_encode }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<a href="http://twig.sensiolabs.org/doc/tags/use.html" target="_blank">use</a>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}&lt;pre&gt;&lt;code&gt;{% filter escape('html') %}{% <strong>verbatim</strong> %}&lt;ul&gt;
+    {% for value in array_1 %}
+        &lt;li&gt;{{ value|e }}&lt;/li&gt;
+    {% endfor %}
+&lt;/ul&gt;{&#37 endverbatim %}{% endfilter %}&lt;/code&gt;&lt;/pre&gt;{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tags/verbatim.html" target="_blank">verbatim</a>
+                                        </td>
+                                        <td>
+<pre><code>{% filter escape('html') %}{% verbatim %}<ul>
+    {% for value in array_1 %}
+        <li>{{ value|e }}</li>
+    {% endfor %}
+</ul>{% endverbatim %}{% endfilter %}</code></pre>
                                         </td>
                                     </tr>
 
