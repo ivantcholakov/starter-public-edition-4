@@ -659,11 +659,55 @@ limp bizkit
 
                                     <tr>
                                         <td>
+<a href="http://twig.sensiolabs.org/doc/tags/flush.html" target="_blank">flush</a>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}&lt;ul&gt;
+    {% <strong>for</strong> value in array_1 %}
+        &lt;li&gt;{{ value|e }}&lt;/li&gt;
+    {% endfor %}
+&lt;/ul&gt;{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tags/for.html" target="_blank">for</a>
+                                        </td>
+                                        <td>
+<ul>
+    {% for value in array_1 %}
+        <li>{{ value|e }}</li>
+    {% endfor %}
+</ul>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{% verbatim %}{{ "There are %d monkeys in the %s."|<strong>format(5, 'tree')</strong> }}{% endverbatim %}</code></pre>
 <a href="http://twig.sensiolabs.org/doc/filters/format.html" target="_blank">format</a>
                                         </td>
                                         <td>
 {{ "There are %d monkeys in the %s."|format(5, 'tree') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<a href="http://twig.sensiolabs.org/doc/tags/from.html" target="_blank">from</a>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>if</strong> array_1[0] == 'One' %}Ok{% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tags/if.html" target="_blank">if</a>
+                                        </td>
+                                        <td>
+{% if array_1[0] == 'one' %}Ok{% endif %}
                                         </td>
                                     </tr>
 
