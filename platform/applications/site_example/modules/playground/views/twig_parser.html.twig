@@ -421,7 +421,7 @@ Hello, {{ name }}!
 
                                     <tr class="info">
                                         <td colspan="2">
-                                            <h4>Built-In Twig Tags, Functions, Filters, and Operators</h4>
+                                            <h4>Built-In Twig Tags, Functions, Filters, Operators, and "Tests"</h4>
                                             <p>See <a href="http://twig.sensiolabs.org/documentation" target="_blank">Twig Reference</a></p>
                                         </td>
                                     </tr>
@@ -511,7 +511,7 @@ Line 3
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>constant</strong>('BASE_URL') }}{% endverbatim %}</code></pre>
 <a href="http://twig.sensiolabs.org/doc/functions/constant.html" target="_blank">constant (function)</a>
-<a href="http://twig.sensiolabs.org/doc/tests/constant.html" target="_blank">constant (operator)</a>
+<a href="http://twig.sensiolabs.org/doc/tests/constant.html" target="_blank">constant (test)</a>
                                         </td>
                                         <td>
 {{ constant('BASE_URL') }}
@@ -615,11 +615,45 @@ Line 3
 
                                     <tr>
                                         <td>
+<a href="http://twig.sensiolabs.org/doc/tags/embed.html" target="_blank">embed</a>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<a href="http://twig.sensiolabs.org/doc/tags/extends.html" target="_blank">extends</a>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{% verbatim %}{{ array_1|<strong>first</strong> }}{% endverbatim %}</code></pre>
 <a href="http://twig.sensiolabs.org/doc/filters/first.html" target="_blank">first</a>
                                         </td>
                                         <td>
 {{ array_1|first }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>filter</strong> upper|raw %}
+limp bizkit
+&lt;br /&gt;
+лимп бизкит
+{% endfilter %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tags/filter.html" target="_blank">filter</a>
+                                        </td>
+                                        <td>
+{% filter upper|raw %}
+limp bizkit
+<br />
+лимп бизкит
+{% endfilter %}
                                         </td>
                                     </tr>
 
