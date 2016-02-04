@@ -595,6 +595,26 @@ Line 3
 
                                     <tr>
                                         <td>
+<pre><code>{% verbatim %}{% if value_2 is <strong>divisible by</strong>(2) %}Yes{% else %}No{% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tests/divisibleby.html" target="_blank">divisible by</a>
+                                        </td>
+                                        <td>
+{% if value_2 is divisible by(2) %}Yes{% else %}No{% endif %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% if undefined_or_empty_variable is not <strong>defined</strong> %}Not defined{% else %}Defined{% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tests/defined.html" target="_blank">defined</a>
+                                        </td>
+                                        <td>
+{% if undefined_or_empty_variable is not defined %}Not defined{% else %}Defined{% endif %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{% verbatim %}{% <strong>do</strong> 1 + 2 %}{% endverbatim %}</code></pre>
 <a href="http://twig.sensiolabs.org/doc/tags/do.html" target="_blank">do</a>
                                         </td>
@@ -618,6 +638,26 @@ Line 3
 <a href="http://twig.sensiolabs.org/doc/tags/embed.html" target="_blank">embed</a>
                                         </td>
                                         <td>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% if string_empty is <strong>empty</strong> %}Empty{% else %}Non-empty{% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tests/empty.html" target="_blank">empty</a>
+                                        </td>
+                                        <td>
+{% if string_empty is empty %}Empty{% else %}Non-empty{% endif %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% if value_2 is <strong>even</strong> %}Even{% else %}Odd{% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tests/even.html" target="_blank">even</a>
+                                        </td>
+                                        <td>
+{% if value_2 is even %}Even{% else %}Odd{% endif %}
                                         </td>
                                     </tr>
 
@@ -742,6 +782,16 @@ limp bizkit
 
                                     <tr>
                                         <td>
+<pre><code>{% verbatim %}{% if array_1 is <strong>iterable</strong> %}Iterable{% else %}Non-iterable{% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tests/iterable.html" target="_blank">iterable</a>
+                                        </td>
+                                        <td>
+{% if array_1 is iterable %}Iterable{% else %}Non-iterable{% endif %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{% verbatim %}{{ array_1|<strong>json_encode</strong> }}{% endverbatim %}</code></pre>
 <a href="http://twig.sensiolabs.org/doc/filters/json_encode.html" target="_blank">json_encode</a>
                                         </td>
@@ -854,6 +904,34 @@ limp bizkit
 
                                     <tr>
                                         <td>
+<pre><code>{% verbatim %}{% if value_null is <strong>null</strong> %}Null{% else %}Non-null{% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tests/null.html" target="_blank">null</a>
+                                        </td>
+                                        <td>
+{% if value_null is null %}Null{% else %}Non-null{% endif %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% if value_1 is <strong>odd</strong> %}Odd{% else %}Even{% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tests/odd.html" target="_blank">odd</a>
+                                        </td>
+                                        <td>
+{% if value_1 is odd %}Odd{% else %}Even{% endif %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<a href="http://twig.sensiolabs.org/doc/functions/parent.html" target="_blank">parent</a>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{% verbatim %}{{ dog|<strong>raw</strong> }}{% endverbatim %}</code></pre>
 <a href="http://twig.sensiolabs.org/doc/filters/raw.html" target="_blank">raw</a>
                                         </td>
@@ -861,8 +939,6 @@ limp bizkit
 {{ dog|raw }}
                                         </td>
                                     </tr>
-
-<!-- TODO: parent() -->
 
                                     <tr>
                                         <td>
@@ -919,6 +995,16 @@ limp bizkit
 {{ 42.55|round }}
 <br />
 {{ 42.55|round(1, 'floor') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% if value_1 is <strong>same as</strong>(1) %}It is the same (===){% else %}It is not the same (!==){% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tests/sameas.html" target="_blank">same as</a>
+                                        </td>
+                                        <td>
+{% if value_1 is same as(1) %}It is the same (===){% else %}It is not the same (!==){% endif %}
                                         </td>
                                     </tr>
 
