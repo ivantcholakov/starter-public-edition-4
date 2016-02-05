@@ -77,3 +77,6 @@ $config['filters'] = array(
     // CodeIgniter's Helpers
     'character_limiter',
 );
+
+// Extending the Twig parser: Extra-tests (is * operators).
+$config['tests'] = array();

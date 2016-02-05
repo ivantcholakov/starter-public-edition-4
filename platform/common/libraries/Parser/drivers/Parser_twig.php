@@ -99,7 +99,7 @@ class CI_Parser_twig extends CI_Parser_driver {
         }
 
         $parser = new Twig_Environment(new Parser_Twig_Loader_Filesystem($ci->load->locations('views')),
-            array_except($options, array('timezone', 'helpers', 'extensions', 'functions', 'filters'))
+            array_except($options, array('timezone', 'helpers', 'extensions', 'functions', 'filters', 'tests'))
         );
         $this->_extend_parser($parser, $options);
 
@@ -155,7 +155,7 @@ class CI_Parser_twig extends CI_Parser_driver {
         $options['cache'] = false;
 
         $parser = new Twig_Environment(new Twig_Loader_Chain(array(new Parser_Twig_Loader_String, new Parser_Twig_Loader_Filesystem($ci->load->locations('views')))),
-            array_except($options, array('timezone', 'helpers', 'extensions', 'functions', 'filters'))
+            array_except($options, array('timezone', 'helpers', 'extensions', 'functions', 'filters', 'tests'))
         );
         $this->_extend_parser($parser, $options);
 
@@ -287,6 +287,46 @@ class CI_Parser_twig extends CI_Parser_driver {
                         if ($item[3] !== false)
                         {
                             $parser->addFilter(new Twig_SimpleFilter($item[0], $item[1], $item[2]));
+                        }
+
+                        break;
+                }
+            }
+
+            unset($item);
+        }
+
+        if (!empty($options['tests']) && is_array($options['tests']))
+        {
+            foreach ($options['tests'] as & $item)
+            {
+                if (!is_array($item))
+                {
+                    $item = array((string) $item);
+                }
+
+                switch (count($item))
+                {
+                    case 1:
+
+                        $parser->addTest(new Twig_SimpleTest($item[0], $item[0]));
+                        break;
+
+                    case 2:
+
+                        $parser->addTest(new Twig_SimpleTest($item[0], $item[1]));
+                        break;
+
+                    case 3:
+
+                        $parser->addTest(new Twig_SimpleTest($item[0], $item[1], $item[2]));
+                        break;
+
+                    default:
+
+                        if ($item[3] !== false)
+                        {
+                            $parser->addTest(new Twig_SimpleTest($item[0], $item[1], $item[2]));
                         }
 
                         break;
