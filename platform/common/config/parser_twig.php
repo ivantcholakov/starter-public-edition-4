@@ -44,6 +44,8 @@ $config['functions'] = array(
     array('print_d', 'print_d', array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
     array('print_r', array('Parser_Twig_Extension_Debug', 'print_r'), array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
     array('var_export', array('Parser_Twig_Extension_Debug', 'var_export'), array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
+    // CodeIgniter's Helpers
+    array('lang', array('Parser_Twig_Extension_Language', 'lang')),
     // Configuration, Settings
     array('config', array('Parser_Twig_Extension_Setting', 'config')),
     array('setting', array('Parser_Twig_Extension_Setting', 'setting')),
@@ -69,6 +71,7 @@ $config['filters'] = array(
     array('money_format', array('Parser_Twig_Extension_Php', 'money_format')),
     // CodeIgniter's Helpers
     'character_limiter',
+    array('xss_clean', array('Parser_Twig_Extension_Html', 'xss_clean'), array('is_safe' => array('html'))),
 );
 
 // Extending the Twig parser: Extra-tests (is * operators).

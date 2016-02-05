@@ -1379,6 +1379,30 @@ limp bizkit
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>lang</strong>('welcome.hello') }}
+&lt;br /&gt;
+{{ <strong>lang</strong>('ui_file_upload_success', '&lt;strong&gt;photo.png&lt;/strong&gt;') }}{% endverbatim %}</code></pre>
+<a href="http://codeigniter.com/user_guide/libraries/language.html#fetching-a-line-of-text" target="_blank">lang-&gt;line</a>
+                                        </td>
+                                        <td>
+{{ lang('welcome.hello') }}
+<br />
+{{ lang('ui_file_upload_success', '<strong>photo.png</strong>')|raw }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ dangerous_value|<strong>xss_clean</strong> }}{% endverbatim %}</code></pre>
+<a href="http://codeigniter.com/user_guide/libraries/security.html#xss-filtering" target="_blank">security-&gt;xss_clean</a>
+                                        </td>
+                                        <td>
+{{ dangerous_value|xss_clean }}
+                                        </td>
+                                    </tr>
+
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>Useful Constants</h4>
