@@ -17,59 +17,6 @@ $config['cumulative_noparse'] = false;
 
 // Lex Parser Extensions
 
-// A blacklist of configuration options that Lex parser should not access.
-$config['disabled_config_settings'] = array(
-
-    // Common
-    'password',
-    'encryption',
-
-    // Speciric
-    'uri_protocol',
-    'url_suffix',
-    'enable_hooks',
-    'subclass_prefix',
-    'composer_autoload',
-    'permitted_uri_chars',
-    'allow_get_array',
-    'enable_query_strings',
-    'controller_trigger',
-    'function_trigger',
-    'directory_trigger',
-    'log_threshold',
-    'log_path',
-    'log_file_extension',
-    'log_file_permissions',
-    'log_date_format',
-    'error_views_path',
-    'cache_path',
-    'cache_query_string',
-    'encryption_key',
-    'encryption_key_256',
-    'encryption_key_for_settings',
-    'sess_driver',
-    'sess_cookie_name',
-    'sess_expiration',
-    'sess_save_path',
-    'sess_match_ip',
-    'sess_time_to_update',
-    'sess_regenerate_destroy',
-    'standardize_newlines',
-    'global_xss_filtering',
-    'csrf_protection',
-    'csrf_token_name',
-    'csrf_cookie_name',
-    'csrf_expire',
-    'csrf_regenerate',
-    'csrf_exclude_uris',
-    'rewrite_short_tags',
-    'proxy_ips',
-    'controller_suffix',
-    'modules_locations',
-    'public_upload_path',
-    'platform_upload_path',
-);
-
 // A whitelist of constants that Lex parser can access.
 $config['allowed_globals'] = array(
     'BASE_URL',

@@ -198,7 +198,7 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
             return;
         }
 
-        if ($this->is_blacklisted_config_setting($item)) {
+        if ($this->parser->is_blacklisted_config_setting($item)) {
             return;
         }
 

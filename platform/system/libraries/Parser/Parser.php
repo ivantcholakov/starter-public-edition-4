@@ -799,4 +799,61 @@ abstract class CI_Parser_driver extends CI_Driver {
 		}
 	}
 
+	// Checks whether a config setting should not be accessed by a parser
+	// when a parsed template contains a directive for that.
+	public function is_blacklisted_config_setting($item_name) {
+
+		static $blacklist = null;
+
+		if (!is_array($blacklist)) {
+
+			$CI = &get_instance();
+
+			if ($CI->config->load('parser', TRUE, TRUE))
+			{
+				$config = $CI->config->item('parser');
+			}
+			else
+			{
+				$config = array();
+			}
+
+			$blacklist = isset($config['parser_config_settings_balcklist'])
+				? $config['parser_config_settings_balcklist']
+				: array();
+
+			if (!is_array($blacklist)) {
+				$blacklist = array();
+			}
+
+			if (!empty($blacklist)) {
+
+				$list = array_chunk($blacklist, 50);
+
+				foreach ($list as $key => $items) {
+					$list[$key] = implode('|', array_map('preg_quote', $items));
+				}
+
+				$blacklist = $list;
+			}
+                }
+
+		if ($item_name == '') {
+			return true;
+		}
+
+		if (empty($blacklist)) {
+			return false;
+		}
+
+		foreach ($blacklist as $items) {
+
+			if (preg_match('/('.$items.')/', $item_name)) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 }
