@@ -2,6 +2,23 @@
 {# Author: Ivan Tcholakov, ivantcholakov@gmail.com, 2016 #}
 {# License: The MIT License, http://opensource.org/licenses/MIT #}
 
+<style type="text/css">
+.image-container {
+    border: 1px solid blue;
+    display:table-cell;
+    vertical-align:middle;
+    text-align: center;
+}
+.image-container-120x180 {
+    width: 120px;
+    height: 180px;
+}
+.image-container-180x120 {
+    width: 180px;
+    height: 120px;
+}
+</style>
+
         <section>
 
             <div class="container">
@@ -1789,6 +1806,97 @@ limp bizkit
                                         </td>
                                         <td>
 {{ setting('contact_address') }} <!-- This result is language-sensitive. -->
+                                        </td>
+                                    </tr>
+
+                                    <tr class="info">
+                                        <td colspan="2">
+                                            <h4>Platform Routines</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}Fit an Image by Width
+&lt;br /&gt;
+&lt;img src=&quot;{{ <strong>my_image_url</strong>(my_image, 120) }}&quot; /&gt;
+&lt;br &gt;
+width = 120px
+
+&lt;hr /&gt;
+
+Fit an Image by Height
+&lt;br /&gt;
+&lt;img src=&quot;{{ <strong>my_image_url</strong>(my_image, null, 120) }}&quot; /&gt;
+&lt;br &gt;
+height = 120px
+
+&lt;hr /&gt;
+
+Fit an Image by Width and Height
+&lt;br /&gt;
+&lt;img src=&quot;{{ <strong>my_image_url</strong>(my_image, 180, 120) }}&quot; /&gt;
+&lt;br &gt;
+width = 180px, height = 120px
+
+&lt;hr /&gt;
+
+Resize an Image Within Width and Height
+&lt;br /&gt;
+&lt;div class=&quot;image-container image-container-180x120&quot;&gt;
+    &lt;img src=&quot;{{ <strong>my_image_url</strong>(my_image, 180, 120, true) }}&quot; /&gt;
+&lt;/div&gt;
+width = 180px, height = 120px
+
+&lt;hr /&gt;
+
+Fit an Image Within a Canvas with Given Width and Height
+&lt;br /&gt;
+&lt;div class=&quot;image-container image-container-180x120&quot;&gt;
+    &lt;img src=&quot;{{ <strong>my_image_url</strong>(my_image, 180, 120, true, true) }}&quot; /&gt;
+&lt;/div&gt;
+width = 180px, height = 120px{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+Fit an Image by Width
+<br />
+<img src="{{ my_image_url(my_image, 120) }}" />
+<br >
+width = 120px
+
+<hr />
+
+Fit an Image by Height
+<br />
+<img src="{{ my_image_url(my_image, null, 120) }}" />
+<br >
+height = 120px
+
+<hr />
+
+Fit an Image by Width and Height
+<br />
+<img src="{{ my_image_url(my_image, 180, 120) }}" />
+<br >
+width = 180px, height = 120px
+
+<hr />
+
+Resize an Image Within Width and Height
+<br />
+<div class="image-container image-container-180x120">
+    <img src="{{ my_image_url(my_image, 180, 120, true) }}" />
+</div>
+width = 180px, height = 120px
+
+<hr />
+
+Fit an Image Within a Canvas with Given Width and Height
+<br />
+<div class="image-container image-container-180x120">
+    <img src="{{ my_image_url(my_image, 180, 120, true, true) }}" />
+</div>
+width = 180px, height = 120px
                                         </td>
                                     </tr>
 

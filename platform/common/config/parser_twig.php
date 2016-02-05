@@ -49,6 +49,8 @@ $config['functions'] = array(
     // Configuration, Settings
     array('config', array('Parser_Twig_Extension_Setting', 'config')),
     array('setting', array('Parser_Twig_Extension_Setting', 'setting')),
+    // Platform Routines
+    array('my_image_url', array('Parser_Twig_Extension_Platform', 'my_image_url'), array('is_safe' => array('html'))),
 );
 
 // Extending the Twig parser: Extra-filters.
