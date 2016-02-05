@@ -1371,6 +1371,30 @@ limp bizkit
 
                                     <tr class="info">
                                         <td colspan="2">
+                                            <h4>Configuration, Settings</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>config</strong>('language') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ config('language') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>setting</strong>('contact_address') }} &lt;!-- This result is language-sensitive. --&gt;{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ setting('contact_address') }} <!-- This result is language-sensitive. -->
+                                        </td>
+                                    </tr>
+
+                                    <tr class="info">
+                                        <td colspan="2">
                                             <h4>Miscellaneous Tests</h4>
                                         </td>
                                     </tr>

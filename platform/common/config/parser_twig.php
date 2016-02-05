@@ -44,6 +44,8 @@ $config['functions'] = array(
     array('print_d', 'print_d', array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
     array('print_r', array('Parser_Twig_Extension_Debug', 'print_r'), array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
     array('var_export', array('Parser_Twig_Extension_Debug', 'var_export'), array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
+    array('config', array('Parser_Twig_Extension_Setting', 'config')),
+    array('setting', array('Parser_Twig_Extension_Setting', 'setting')),
 );
 
 // Extending the Twig parser: Extra-filters.
