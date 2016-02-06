@@ -1410,16 +1410,6 @@ limp bizkit
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td>
-<pre><code>{% verbatim %}{{ dangerous_value|<strong>xss_clean</strong> }}{% endverbatim %}</code></pre>
-<a href="http://codeigniter.com/user_guide/libraries/security.html#xss-filtering" target="_blank">security-&gt;xss_clean</a>
-                                        </td>
-                                        <td>
-{{ dangerous_value|xss_clean }}
-                                        </td>
-                                    </tr>
-
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>Useful Constants</h4>
@@ -1806,6 +1796,40 @@ limp bizkit
                                         </td>
                                         <td>
 {{ setting('contact_address') }} <!-- This result is language-sensitive. -->
+                                        </td>
+                                    </tr>
+
+                                    <tr class="info">
+                                        <td colspan="2">
+                                            <h4>HTML</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% filter <strong>html_code</strong> %}&lt;div&gt;&lt;/div&gt;{% endfilter %}
+&lt;br /&gt;
+{% filter <strong>html_code</strong> %}{% verbatim %}&lt;div&gt;{{ dog }}&lt;/div&gt;{&#37; endverbatim %}{% endfilter %}
+&lt;br /&gt;
+{{ dog|<strong>html_code</strong> }}
+{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% filter html_code %}<div></div>{% endfilter %}
+<br />
+{% filter html_code %}{% verbatim %}<div>{{ dog }}</div>{% endverbatim %}{% endfilter %}
+<br />
+{{ dog|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ dangerous_value|<strong>xss_clean</strong> }}{% endverbatim %}</code></pre>
+<a href="http://codeigniter.com/user_guide/libraries/security.html#xss-filtering" target="_blank">security-&gt;xss_clean</a>
+                                        </td>
+                                        <td>
+{{ dangerous_value|xss_clean }}
                                         </td>
                                     </tr>
 
