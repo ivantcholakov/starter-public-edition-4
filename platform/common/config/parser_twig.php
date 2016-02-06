@@ -74,6 +74,9 @@ $config['filters'] = array(
     // CodeIgniter's Helpers
     'character_limiter',
     array('xss_clean', array('Parser_Twig_Extension_Html', 'xss_clean'), array('is_safe' => array('html'))),
+    // Formatters, Parsers
+    array('markdown', array('Parser_Twig_Extension_Format', 'markdown'), array('is_safe' => array('html'))),
+    array('textile', array('Parser_Twig_Extension_Format', 'textile'), array('is_safe' => array('html'))),
 );
 
 // Extending the Twig parser: Extra-tests (is * operators).

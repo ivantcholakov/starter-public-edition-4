@@ -1811,6 +1811,34 @@ limp bizkit
 
                                     <tr class="info">
                                         <td colspan="2">
+                                            <h4>Formatters, Parsers</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% filter <strong>markdown</strong> %} Formatted **text** {% endfilter %}
+{{ string_markdown|<strong>markdown</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% filter markdown %} Formatted **text** {% endfilter %}
+{{ string_markdown|markdown }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% filter <strong>textile</strong> %} Formatted **text** {% endfilter %}
+{{ string_textile|<strong>textile</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% filter textile %} Formatted **text** {% endfilter %}
+{{ string_textile|textile }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="info">
+                                        <td colspan="2">
                                             <h4>Platform Routines</h4>
                                         </td>
                                     </tr>
