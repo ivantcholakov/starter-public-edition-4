@@ -1402,12 +1402,22 @@ limp bizkit
 <pre><code>{% verbatim %}{{ <strong>lang</strong>('welcome.hello') }}
 &lt;br /&gt;
 {{ <strong>lang</strong>('ui_file_upload_success', '&lt;strong&gt;photo.png&lt;/strong&gt;')|raw }}{% endverbatim %}</code></pre>
-<a href="http://codeigniter.com/user_guide/libraries/language.html#fetching-a-line-of-text" target="_blank">lang-&gt;line</a>
+<a href="https://codeigniter.com/user_guide/libraries/language.html#fetching-a-line-of-text" target="_blank">lang-&gt;line</a>
                                         </td>
                                         <td>
 {{ lang('welcome.hello') }}
 <br />
 {{ lang('ui_file_upload_success', '<strong>photo.png</strong>')|raw }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ 1451529295|<strong>timespan</strong> }}{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/helpers/date_helper.html#timespan" target="_blank">timespan</a>
+                                        </td>
+                                        <td>
+{{ 1451529295|timespan }}
                                         </td>
                                     </tr>
 
@@ -1827,7 +1837,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ dangerous_value|<strong>xss_clean</strong> }}{% endverbatim %}</code></pre>
-<a href="http://codeigniter.com/user_guide/libraries/security.html#xss-filtering" target="_blank">security-&gt;xss_clean</a>
+<a href="https://codeigniter.com/user_guide/libraries/security.html#xss-filtering" target="_blank">security-&gt;xss_clean</a>
                                         </td>
                                         <td>
 {{ dangerous_value|xss_clean }}

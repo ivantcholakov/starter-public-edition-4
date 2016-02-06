@@ -24,6 +24,7 @@ $config['timezone'] = date_default_timezone_get();
 // Extending the Twig parser: Load CodeIgniter helpers
 // that serve implemented for Twig functions and filters.
 $config['helpers'] = array(
+    'date',
     'text',
 );
 
@@ -73,6 +74,7 @@ $config['filters'] = array(
     array('money_format', array('Parser_Twig_Extension_Php', 'money_format')),
     // CodeIgniter's Helpers
     'character_limiter',
+    array('timespan', array('Parser_Twig_Extension_DateTime', 'timespan')),
     // Formatters, Parsers
     array('html_code', 'html_code', array('is_safe' => array('html'))),
     array('xss_clean', array('Parser_Twig_Extension_Html', 'xss_clean'), array('is_safe' => array('html'))),

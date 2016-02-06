@@ -732,9 +732,9 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
         $this->load->helper('date');
 
-        $timespan = date($this->get_attribute(0, now()));
+        $timestamp = date($this->get_attribute(0, now()));
 
-        return timespan($timespan, time());
+        return timespan($timestamp, time());
     }
 
     public function trim() {
