@@ -1409,6 +1409,24 @@ limp bizkit
 
                                     <tr>
                                         <td>
+<pre><code>{% verbatim %}{{ 'FILE_READ_MODE'|<strong>humanize</strong> }}
+&lt;br /&gt;
+{{ 'FILE_READ_MODE'|<strong>humanize</strong>('_') }}
+&lt;br /&gt;
+{{ 'трейси_чапман'|<strong>humanize</strong> }}{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/helpers/inflector_helper.html#humanize" target="_blank">humanize</a>
+                                        </td>
+                                        <td>
+{{ 'FILE_READ_MODE'|humanize }}
+<br />
+{{ 'FILE_READ_MODE'|humanize('_') }}
+<br />
+{{ 'трейси_чапман'|humanize }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{% verbatim %}{{ <strong>lang</strong>('welcome.hello') }}
 &lt;br /&gt;
 {{ <strong>lang</strong>('ui_file_upload_success', '&lt;strong&gt;photo.png&lt;/strong&gt;')|raw }}{% endverbatim %}</code></pre>

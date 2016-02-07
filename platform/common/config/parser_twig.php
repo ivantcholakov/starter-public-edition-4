@@ -26,6 +26,7 @@ $config['timezone'] = date_default_timezone_get();
 $config['helpers'] = array(
     'date',
     'text',
+    'inflector',
     'gravatar',
 );
 
@@ -81,8 +82,9 @@ $config['filters'] = array(
     // CodeIgniter's Helpers
     'character_limiter',
     array('highlight_phrase', 'highlight_phrase', array('is_safe' => array('html'))),
+    array('humanize', 'humanize'),
     array('timespan', array('Parser_Twig_Extension_DateTime', 'timespan')),
-    // Formatters, Parsers
+    // HTML
     array('html_code', 'html_code', array('is_safe' => array('html'))),
     array('xss_clean', array('Parser_Twig_Extension_Html', 'xss_clean'), array('is_safe' => array('html'))),
     // Formatters, Parsers

@@ -18,7 +18,7 @@ if (!function_exists('humanize') && IS_UTF8_CHARSET) {
      */
     function humanize($str, $separator = '_')
     {
-        return UTF8::ucwords(preg_replace('/['.$separator.']+/'.(IS_UTF8_CHARSET && PCRE_UTF8_INSTALLED ? 'u' : ''), ' ', UTF8::trim(UTF8::strtolower($str))));
+        return UTF8::ucwords(preg_replace('/['.preg_quote($separator).']+/'.(IS_UTF8_CHARSET && PCRE_UTF8_INSTALLED ? 'u' : ''), ' ', UTF8::trim(UTF8::strtolower($str))));
     }
 
 }
