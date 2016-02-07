@@ -1423,6 +1423,56 @@ limp bizkit
 
                                     <tr class="info">
                                         <td colspan="2">
+                                            <h4>Session</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>session</strong>('sess_var_1', 'test_1') }} &lt;!-- Set --&gt;
+{{ <strong>session:data</strong>('sess_var_1') }} &lt;!-- Get --&gt;{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/libraries/sessions.html#retrieving-session-data" target="_blank">session-&gt;userdata</a>
+<a href="https://codeigniter.com/user_guide/libraries/sessions.html#adding-session-data" target="_blank">session-&gt;set_userdata</a>
+
+                                        </td>
+                                        <td>
+{{ session('sess_var_1', 'test_1') }} <!-- Set -->
+{{ session('sess_var_1') }} <!-- Get -->
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>session_flash</strong>('sess_var_2', 'test_2') }} &lt;!-- Set --&gt;
+{{ <strong>session_flash</strong>('sess_var_2') }} &lt;!-- Get --&gt;{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/libraries/sessions.html#flashdata" target="_blank">session-&gt;flashdata</a>
+                                        </td>
+                                        <td>
+{{ session_flash('sess_var_2', 'test_2') }} <!-- Set -->
+{{ session_flash('sess_var_2') }} <!-- Get -->
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>session_temp</strong>('sess_var_3', 'test_3') }} &lt;!-- Set --&gt;
+{{ <strong>session_temp</strong>('sess_var_3') }} &lt;!-- Get --&gt;
+&lt;br /&gt;
+{{ <strong>session_temp</strong>('sess_var_4', 'test_4', 1000) }} &lt;!-- Set with TTL in seconds, the default is 300 --&gt;
+{{ <strong>session_temp</strong>('sess_var_4') }} &lt;!-- Get --&gt;{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/libraries/sessions.html#tempdata" target="_blank">session-&gt;tempdata</a>
+                                        </td>
+                                        <td>
+{{ session_temp('sess_var_3', 'test_3') }} <!-- Set -->
+{{ session_temp('sess_var_3') }} <!-- Get -->
+<br />
+{{ session_temp('sess_var_4', 'test_4', 1000) }} <!-- Set with TTL in seconds, the default is 300 -->
+{{ session_temp('sess_var_4') }} <!-- Get -->
+                                        </td>
+                                    </tr>
+
+                                    <tr class="info">
+                                        <td colspan="2">
                                             <h4>Useful Constants</h4>
                                         </td>
                                     </tr>

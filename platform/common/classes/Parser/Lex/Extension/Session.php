@@ -105,7 +105,13 @@ class Parser_Lex_Extension_Session extends Parser_Lex_Extension {
                 return;
             }
 
-            $ttl = (int) $this->get_attribute(2, 300);
+            $ttl = $this->get_attribute(2, 300);
+
+            if (!is_numeric($ttl)) {
+                $ttl = 300;
+            }
+
+            $ttl = (int) $ttl;
 
             $this->session->set_tempdata($name, $value, $ttl);
 

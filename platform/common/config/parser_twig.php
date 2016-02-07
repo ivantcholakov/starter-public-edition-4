@@ -47,6 +47,10 @@ $config['functions'] = array(
     array('var_export', array('Parser_Twig_Extension_Debug', 'var_export'), array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
     // CodeIgniter's Helpers
     array('lang', array('Parser_Twig_Extension_Language', 'lang')),
+    // Session
+    array('session', array('Parser_Twig_Extension_Session', 'session')),
+    array('session_flash', array('Parser_Twig_Extension_Session', 'session_flash')),
+    array('session_temp', array('Parser_Twig_Extension_Session', 'session_temp')),
     // Configuration, Settings
     array('config', array('Parser_Twig_Extension_Setting', 'config')),
     array('setting', array('Parser_Twig_Extension_Setting', 'setting')),
