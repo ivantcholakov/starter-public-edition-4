@@ -856,4 +856,96 @@ abstract class CI_Parser_driver extends CI_Driver {
 		return false;
 	}
 
+	// Checks whether a session variable should not be accessed (r/w) by a parser
+	// when a parsed template contains a directive for that.
+	public function is_blacklisted_session_variable($name) {
+
+		static $blacklist = null;
+
+		if (!is_array($blacklist)) {
+
+			$CI = &get_instance();
+
+			if ($CI->config->load('parser', TRUE, TRUE))
+			{
+				$config = $CI->config->item('parser');
+			}
+			else
+			{
+				$config = array();
+			}
+
+			$blacklist = isset($config['parser_session_balcklist'])
+				? $config['parser_session_balcklist']
+				: array();
+
+			if (!is_array($blacklist)) {
+				$blacklist = array();
+			}
+                }
+
+		if ($name == '') {
+			return true;
+		}
+
+		if (empty($blacklist)) {
+			return false;
+		}
+
+		foreach ($blacklist as $item) {
+
+			if (strpos($item, $name) === 0) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	// Checks whether a session variable should read-only by a parser
+	// when a parsed template contains a directive for that.
+	public function is_read_only_session_variable($name) {
+
+		static $read_only = null;
+
+		if (!is_array($read_only)) {
+
+			$CI = &get_instance();
+
+			if ($CI->config->load('parser', TRUE, TRUE))
+			{
+				$config = $CI->config->item('parser');
+			}
+			else
+			{
+				$config = array();
+			}
+
+			$read_only = isset($config['parser_session_read_only'])
+				? $config['parser_session_read_only']
+				: array();
+
+			if (!is_array($read_only)) {
+				$read_only = array();
+			}
+                }
+
+		if ($name == '') {
+			return true;
+		}
+
+		if (empty($read_only)) {
+			return false;
+		}
+
+		foreach ($read_only as $item) {
+
+			if (strpos($item, $name) === 0) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 }

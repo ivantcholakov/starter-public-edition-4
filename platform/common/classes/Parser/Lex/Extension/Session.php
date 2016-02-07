@@ -31,16 +31,7 @@ class Parser_Lex_Extension_Session extends Parser_Lex_Extension {
 
         if ($value !== $no_value) {
 
-            if (in_array($name, array(
-                'session_id',
-                'ip_address',
-                'id',
-                'user_id',
-                'group_id',
-                'group',
-                'username',
-                'email',
-            ))) {
+            if ($this->parser->is_blacklisted_session_variable($name) || $this->parser->is_read_only_session_variable($name)) {
                 return;
             }
 
@@ -49,7 +40,7 @@ class Parser_Lex_Extension_Session extends Parser_Lex_Extension {
             return;
         }
 
-        if ($name == 'session_id') {
+        if ($this->parser->is_blacklisted_session_variable($name)) {
             return;
         }
 
@@ -75,8 +66,16 @@ class Parser_Lex_Extension_Session extends Parser_Lex_Extension {
 
         if ($value !== $no_value) {
 
+            if ($this->parser->is_blacklisted_session_variable($name) || $this->parser->is_read_only_session_variable($name)) {
+                return;
+            }
+
             $this->session->set_flashdata($name, $value);
 
+            return;
+        }
+
+        if ($this->parser->is_blacklisted_session_variable($name)) {
             return;
         }
 
@@ -102,10 +101,18 @@ class Parser_Lex_Extension_Session extends Parser_Lex_Extension {
 
         if ($value !== $no_value) {
 
+            if ($this->parser->is_blacklisted_session_variable($name) || $this->parser->is_read_only_session_variable($name)) {
+                return;
+            }
+
             $ttl = (int) $this->get_attribute(2, 300);
 
             $this->session->set_tempdata($name, $value, $ttl);
 
+            return;
+        }
+
+        if ($this->parser->is_blacklisted_session_variable($name)) {
             return;
         }
 

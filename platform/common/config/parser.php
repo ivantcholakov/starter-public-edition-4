@@ -99,3 +99,23 @@ $config['parser_config_settings_balcklist'] = array(
     'public_upload_path',
     'platform_upload_path',
 );
+
+// A blacklist of session variables that a parser should not read or write
+// when a parsed template contains a directive for that.
+// Matching of keys is done exactly.
+$config['parser_session_balcklist'] = array(
+    'session_id',
+    'ip_address',
+);
+
+// A list of session variables that a parser should not write
+// when a parsed template contains a directive for that.
+// Matching of keys is done exactly.
+$config['parser_session_read_only'] = array(
+    'id',
+    'user_id',
+    'group_id',
+    'group',
+    'username',
+    'email',
+);
