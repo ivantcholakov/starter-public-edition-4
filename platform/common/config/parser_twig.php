@@ -80,6 +80,7 @@ $config['filters'] = array(
     array('money_format', array('Parser_Twig_Extension_Php', 'money_format')),
     // CodeIgniter's Helpers
     'character_limiter',
+    array('highlight_phrase', 'highlight_phrase', array('is_safe' => array('html'))),
     array('timespan', array('Parser_Twig_Extension_DateTime', 'timespan')),
     // Formatters, Parsers
     array('html_code', 'html_code', array('is_safe' => array('html'))),

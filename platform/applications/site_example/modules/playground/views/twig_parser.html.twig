@@ -1399,6 +1399,16 @@ limp bizkit
 
                                     <tr>
                                         <td>
+<pre><code>{% verbatim %}{{ dog|<strong>highlight_phrase</strong>('dog')|xss_clean }}{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/helpers/text_helper.html#highlight_phrase" target="_blank">highlight_phrase</a>
+                                        </td>
+                                        <td>
+{{ dog|highlight_phrase('dog')|xss_clean }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{% verbatim %}{{ <strong>lang</strong>('welcome.hello') }}
 &lt;br /&gt;
 {{ <strong>lang</strong>('ui_file_upload_success', '&lt;strong&gt;photo.png&lt;/strong&gt;')|raw }}{% endverbatim %}</code></pre>
