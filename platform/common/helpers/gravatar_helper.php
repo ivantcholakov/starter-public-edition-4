@@ -10,7 +10,7 @@ if (!function_exists('gravatar')) {
     // This helper function has been added here for compatibility with PyroCMS.
     function gravatar($email = '', $size = 50, $rating = 'g', $url_only = false, $default = false) {
 
-        $ci = get_instance();
+        $ci = & get_instance();
         $ci->load->library('gravatar');
 
         if (@ (string) $default == '') {

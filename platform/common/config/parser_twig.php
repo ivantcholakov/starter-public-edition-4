@@ -26,6 +26,7 @@ $config['timezone'] = date_default_timezone_get();
 $config['helpers'] = array(
     'date',
     'text',
+    'gravatar',
 );
 
 // Extending the Twig parser: Choose Twig extensions to be loaded.
@@ -55,6 +56,7 @@ $config['functions'] = array(
     array('config', array('Parser_Twig_Extension_Setting', 'config')),
     array('setting', array('Parser_Twig_Extension_Setting', 'setting')),
     // Platform Routines
+    array('gravatar', 'gravatar', array('is_safe' => array('html'))),
     array('my_image_url', array('Parser_Twig_Extension_Platform', 'my_image_url'), array('is_safe' => array('html'))),
 );
 
