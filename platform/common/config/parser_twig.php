@@ -25,10 +25,10 @@ $config['timezone'] = date_default_timezone_get();
 // that serve implemented for Twig functions and filters.
 $config['helpers'] = array(
     'date',
-    'text',
-    'inflector',
-    'url',
     'gravatar',
+    'inflector',
+    'text',
+    'url',
 );
 
 // Extending the Twig parser: Choose Twig extensions to be loaded.
@@ -83,17 +83,18 @@ $config['filters'] = array(
     array('ltrim', array('Parser_Twig_Extension_Php', 'ltrim')),
     array('money_format', array('Parser_Twig_Extension_Php', 'money_format')),
     array('rtrim', array('Parser_Twig_Extension_Php', 'rtrim')),
-    array('sprintf', 'sprintf'),
+    'sprintf',
     array('stripos', 'stripos', array('is_safe' => array('html'))),
     array('strpos', 'strpos', array('is_safe' => array('html'))),
     // CodeIgniter's Helpers
     'character_limiter',
     array('highlight_phrase', 'highlight_phrase', array('is_safe' => array('html'))),
-    array('humanize', 'humanize'),
+    'humanize',
     array('safe_mailto', 'safe_mailto', array('is_safe' => array('html', 'js'))),
     array('timespan', array('Parser_Twig_Extension_DateTime', 'timespan')),
+    'url_title',
     // Platform Routines
-    array('slugify', 'slugify'),
+    'slugify',
     // HTML
     array('html_code', 'html_code', array('is_safe' => array('html'))),
     array('xss_clean', array('Parser_Twig_Extension_Html', 'xss_clean'), array('is_safe' => array('html'))),

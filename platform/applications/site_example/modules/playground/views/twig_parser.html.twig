@@ -1589,6 +1589,20 @@ $(function() {
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ 'Limp Bizkit'|<strong>url_title</strong>('-', true) }}
+&lt;br /&gt;
+{{ 'Лимп Бизкит'|<strong>url_title</strong>('-', true, true) }}{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/helpers/url_helper.html#url_title" target="_blank">url_title</a>
+                                        </td>
+                                        <td>
+{{'Limp Bizkit'|url_title('-', true) }}
+<br />
+{{ 'Лимп Бизкит'|url_title('-', true, true) }}
+                                        </td>
+                                    </tr>
+
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>Session</h4>
