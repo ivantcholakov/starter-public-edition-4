@@ -2160,6 +2160,19 @@ width = 180px, height = 120px
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ 'Pink Floyd'|<strong>slugify</strong>('-') }}
+&lt;br /&gt;
+{{ 'Пинк Флойд'|<strong>slugify</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ 'Pink Floyd'|slugify('-') }}
+<br />
+{{ 'Pink Floyd'|slugify }}
+                                        </td>
+                                    </tr>
+
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>Miscellaneous Tests</h4>

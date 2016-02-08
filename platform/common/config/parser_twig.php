@@ -89,6 +89,8 @@ $config['filters'] = array(
     array('humanize', 'humanize'),
     array('safe_mailto', 'safe_mailto', array('is_safe' => array('html', 'js'))),
     array('timespan', array('Parser_Twig_Extension_DateTime', 'timespan')),
+    // Platform Routines
+    array('slugify', 'slugify'),
     // HTML
     array('html_code', 'html_code', array('is_safe' => array('html'))),
     array('xss_clean', array('Parser_Twig_Extension_Html', 'xss_clean'), array('is_safe' => array('html'))),
