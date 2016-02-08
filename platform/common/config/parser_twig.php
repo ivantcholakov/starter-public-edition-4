@@ -86,6 +86,7 @@ $config['filters'] = array(
     'sprintf',
     array('stripos', 'stripos', array('is_safe' => array('html'))),
     array('strpos', 'strpos', array('is_safe' => array('html'))),
+    array('wordwrap', array('Parser_Twig_Extension_Php', 'wordwrap')),
     // CodeIgniter's Helpers
     'character_limiter',
     'ellipsize',

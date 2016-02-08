@@ -48,4 +48,13 @@ class Parser_Twig_Extension_Php {
             : call_user_func_array('strpos', $args);
     }
 
+    public static function wordwrap() {
+
+        $args = func_get_args();
+
+        return IS_UTF8_CHARSET
+            ? call_user_func_array(array('UTF8', 'wordwrap'), $args)
+            : call_user_func_array('wordwrap', $args);
+    }
+
 }
