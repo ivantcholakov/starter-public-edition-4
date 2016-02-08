@@ -1414,6 +1414,26 @@ limp bizkit
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ 'abcdEf'|<strong>stripos</strong>('deF') }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.stripos.php" target="_blank">stripos</a>
+                                        </td>
+                                        <td>
+{{ 'abcdEf'|stripos('deF') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ 'abcdef'|<strong>strpos</strong>('def') }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.strpos.php" target="_blank">strpos</a>
+                                        </td>
+                                        <td>
+{{ 'abcdef'|strpos('def') }}
+                                        </td>
+                                    </tr>
+
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>CodeIgniter's Helpers</h4>

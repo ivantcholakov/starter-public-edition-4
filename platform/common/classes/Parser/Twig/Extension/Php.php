@@ -30,4 +30,22 @@ class Parser_Twig_Extension_Php {
             : call_user_func_array('rtrim', $args);
     }
 
+    public static function stripos() {
+
+        $args = func_get_args();
+
+        return IS_UTF8_CHARSET
+            ? call_user_func_array(array('UTF8', 'stripos'), $args)
+            : call_user_func_array('stripos', $args);
+    }
+
+    public static function strpos() {
+
+        $args = func_get_args();
+
+        return IS_UTF8_CHARSET
+            ? call_user_func_array(array('UTF8', 'strpos'), $args)
+            : call_user_func_array('strpos', $args);
+    }
+
 }
