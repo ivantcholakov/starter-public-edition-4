@@ -12,4 +12,22 @@ class Parser_Twig_Extension_Php {
         return money_format($format, $number);
     }
 
+    public static function ltrim() {
+
+        $args = func_get_args();
+
+        return IS_UTF8_CHARSET
+            ? call_user_func_array(array('UTF8', 'ltrim'), $args)
+            : call_user_func_array('ltrim', $args);
+    }
+
+    public static function rtrim() {
+
+        $args = func_get_args();
+
+        return IS_UTF8_CHARSET
+            ? call_user_func_array(array('UTF8', 'rtrim'), $args)
+            : call_user_func_array('rtrim', $args);
+    }
+
 }

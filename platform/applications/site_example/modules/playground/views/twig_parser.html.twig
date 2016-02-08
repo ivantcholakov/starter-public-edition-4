@@ -1376,11 +1376,31 @@ limp bizkit
 
                                     <tr>
                                         <td>
+<pre><code>{% verbatim %}{{ '****STRING****'|<strong>ltrim</strong>('*') }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.ltrim.php" target="_blank">ltrim</a>
+                                        </td>
+                                        <td>
+{{ '****STRING****'|ltrim('*') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{% verbatim %}{{ 1234.56|<strong>money_format</strong>('%i') }}{% endverbatim %}</code></pre>
 <a href="http://php.net/manual/en/function.money-format.php" target="_blank">money_format</a>
                                         </td>
                                         <td>
 {{ 1234.56|money_format('%i') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ '****STRING****'|<strong>rtrim</strong>('*') }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.rtrim.php" target="_blank">rtrim</a>
+                                        </td>
+                                        <td>
+{{ '****STRING****'|rtrim('*') }}
                                         </td>
                                     </tr>
 
