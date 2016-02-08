@@ -83,6 +83,7 @@ $config['filters'] = array(
     array('ltrim', array('Parser_Twig_Extension_Php', 'ltrim')),
     array('money_format', array('Parser_Twig_Extension_Php', 'money_format')),
     array('rtrim', array('Parser_Twig_Extension_Php', 'rtrim')),
+    array('sprintf', 'sprintf'),
     // CodeIgniter's Helpers
     'character_limiter',
     array('highlight_phrase', 'highlight_phrase', array('is_safe' => array('html'))),
