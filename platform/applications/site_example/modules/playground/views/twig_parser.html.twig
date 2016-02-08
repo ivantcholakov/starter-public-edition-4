@@ -1541,6 +1541,16 @@ $(function() {
 
                                     <tr>
                                         <td>
+<pre><code>{% verbatim %}{{ 'contact@example.com'|<strong>safe_mailto</strong>('Contact Us', 'alt="Contact Us"') }}{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/helpers/url_helper.html#safe_mailto" target="_blank">safe_mailto</a>
+                                        </td>
+                                        <td>
+{{ 'contact@example.com'|safe_mailto('Contact Us', 'alt="Contact Us"') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
 <pre><code>{% verbatim %}{{ 1451529295|<strong>timespan</strong> }}{% endverbatim %}</code></pre>
 <a href="https://codeigniter.com/user_guide/helpers/date_helper.html#timespan" target="_blank">timespan</a>
                                         </td>

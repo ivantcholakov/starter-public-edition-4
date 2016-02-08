@@ -27,6 +27,7 @@ $config['helpers'] = array(
     'date',
     'text',
     'inflector',
+    'url',
     'gravatar',
 );
 
@@ -86,6 +87,7 @@ $config['filters'] = array(
     'character_limiter',
     array('highlight_phrase', 'highlight_phrase', array('is_safe' => array('html'))),
     array('humanize', 'humanize'),
+    array('safe_mailto', 'safe_mailto', array('is_safe' => array('html', 'js'))),
     array('timespan', array('Parser_Twig_Extension_DateTime', 'timespan')),
     // HTML
     array('html_code', 'html_code', array('is_safe' => array('html'))),
