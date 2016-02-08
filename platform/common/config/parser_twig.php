@@ -88,6 +88,7 @@ $config['filters'] = array(
     array('strpos', 'strpos', array('is_safe' => array('html'))),
     // CodeIgniter's Helpers
     'character_limiter',
+    'ellipsize',
     array('highlight_phrase', 'highlight_phrase', array('is_safe' => array('html'))),
     'humanize',
     array('safe_mailto', 'safe_mailto', array('is_safe' => array('html', 'js'))),

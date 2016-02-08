@@ -91,6 +91,10 @@ if (!function_exists('ellipsize') && IS_UTF8_CHARSET)
         // Strip tags
         $str = trim(strip_tags($str));
 
+        // Added by Ivan Tcholakov, 08-FEB-2016.
+        $ellipsis = html_entity_decode($ellipsis, ENT_QUOTES, 'UTF-8');
+        //
+
         // Added by Ivan Tcholakov, 07-JAN-2014.
         $str = html_entity_decode($str, ENT_QUOTES, 'UTF-8');
         //
