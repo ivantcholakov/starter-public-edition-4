@@ -1623,6 +1623,17 @@ $(function() {
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ 'The quick brown fox jumped over the lazy dog.'|<strong>word_wrap</strong>(20)|nl2br }}{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/helpers/text_helper.html#word_wrap" target="_blank">word_wrap</a>
+
+                                        </td>
+                                        <td>
+{{ 'The quick brown fox jumped over the lazy dog.'|word_wrap(20)|nl2br }}
+                                        </td>
+                                    </tr>
+
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>Session</h4>

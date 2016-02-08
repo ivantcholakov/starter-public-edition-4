@@ -95,6 +95,7 @@ $config['filters'] = array(
     array('timespan', array('Parser_Twig_Extension_DateTime', 'timespan')),
     'url_title',
     'word_limiter',
+    'word_wrap',
     // Platform Routines
     'slugify',
     // HTML
