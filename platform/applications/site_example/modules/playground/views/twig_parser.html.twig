@@ -1067,13 +1067,20 @@ limp bizkit
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{% <strong>set</strong> my_var = "my variable" %}
-{{ my_var }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{% <strong>set</strong> counter = 1 %}
+{% for country in countries if counter <= 10 %}
+    {{ counter }} -- ({{ country.code }}) {{ country.name }}&lt;br /&gt;
+    {% <strong>set</strong> counter = counter + 1 %}
+{% endfor %}
+{% endverbatim %}</code></pre>
 <a href="http://twig.sensiolabs.org/doc/tags/set.html" target="_blank">set</a>
                                         </td>
                                         <td>
-{% set my_var = "my variable" %}
-{{ my_var }}
+{% set counter = 1 %}
+{% for country in countries if counter <= 10 %}
+    {{ counter }} -- ({{ country.code }}) {{ country.name }}<br />
+    {% set counter = counter + 1 %}
+{% endfor %}
                                         </td>
                                     </tr>
 
