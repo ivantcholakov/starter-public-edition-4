@@ -93,6 +93,7 @@ $config['filters'] = array(
     array('safe_mailto', 'safe_mailto', array('is_safe' => array('html', 'js'))),
     array('timespan', array('Parser_Twig_Extension_DateTime', 'timespan')),
     'url_title',
+    'word_limiter',
     // Platform Routines
     'slugify',
     // HTML

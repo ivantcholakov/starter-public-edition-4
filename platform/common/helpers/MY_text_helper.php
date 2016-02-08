@@ -232,6 +232,10 @@ if (!function_exists('word_limiter') && IS_UTF8_CHARSET) {
             return $str;
         }
 
+        // Added by Ivan Tcholakov, 08-FEB-2016.
+        $end_char = html_entity_decode($end_char, ENT_QUOTES, 'UTF-8');
+        //
+
         preg_match('/^\s*+(?:\S++\s*+){1,'.(int) $limit.'}/'.(IS_UTF8_CHARSET && PCRE_UTF8_INSTALLED ? 'u' : ''), $str, $matches);
 
         if (UTF8::strlen($str) === UTF8::strlen($matches[0]))
