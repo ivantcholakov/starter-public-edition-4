@@ -401,6 +401,7 @@ Reported by Webnice Ltd., http://webnicebg.com
 
 * http://katonovi.com (an online store)
 * http://lvhalsokost.se
+* http://astoconsult.com (industrial property)
 
 Credits
 -------
