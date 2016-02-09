@@ -24,6 +24,7 @@ $config['timezone'] = date_default_timezone_get();
 // Extending the Twig parser: Load CodeIgniter helpers
 // that serve implemented for Twig functions and filters.
 $config['helpers'] = array(
+    'asset',
     'date',
     'gravatar',
     'inflector',
@@ -61,6 +62,8 @@ $config['functions'] = array(
     // Platform Routines
     array('gravatar', 'gravatar', array('is_safe' => array('html'))),
     array('my_image_url', array('Parser_Twig_Extension_Platform', 'my_image_url'), array('is_safe' => array('html'))),
+    // Web Assets
+    array('css', array('Parser_Twig_Extension_Asset', 'css'), array('is_safe' => array('html'))),
 );
 
 // Extending the Twig parser: Extra-filters.

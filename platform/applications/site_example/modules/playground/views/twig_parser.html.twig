@@ -2260,6 +2260,39 @@ width = 180px, height = 120px
 
                                     <tr class="info">
                                         <td colspan="2">
+                                            <h4>Web Assets</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>css</strong>('lib/common/common.min.css')|e }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ css('lib/common/common.min.css')|e }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>css</strong>('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', 'integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"')|e }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ css('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', 'integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"')|e }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>css</strong>('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', {'integrity': 'sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7', 'crossorigin': 'anonymous'})|e }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ css('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', {'integrity': 'sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7', 'crossorigin': 'anonymous'})|e }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="info">
+                                        <td colspan="2">
                                             <h4>Miscellaneous Tests</h4>
                                         </td>
                                     </tr>
