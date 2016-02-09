@@ -64,6 +64,8 @@ $config['functions'] = array(
     array('my_image_url', array('Parser_Twig_Extension_Platform', 'my_image_url'), array('is_safe' => array('html'))),
     // Web Assets
     array('css', array('Parser_Twig_Extension_Asset', 'css'), array('is_safe' => array('html'))),
+    'css_path',
+    'css_url',
 );
 
 // Extending the Twig parser: Extra-filters.
