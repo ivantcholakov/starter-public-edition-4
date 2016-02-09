@@ -14,4 +14,14 @@ class Parser_Twig_Extension_Asset {
         return css($asset_name, null, $attributes);
     }
 
+    public static function image($asset_name, $attributes = array()) {
+
+        return image($asset_name, null, $attributes);
+    }
+
+    public static function js($asset_name, $attributes = array()) {
+
+        return js($asset_name, null, $attributes);
+    }
+
 }

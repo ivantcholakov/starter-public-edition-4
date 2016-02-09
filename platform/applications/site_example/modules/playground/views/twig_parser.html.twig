@@ -2309,6 +2309,105 @@ width = 180px, height = 120px
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js</strong>('lib/modernizr/modernizr.custom.min.js')|e }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js('lib/modernizr/modernizr.custom.min.js')|e }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js</strong>('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', 'integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"')|e }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', 'integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"')|e }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js</strong>('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', {'integrity': 'sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS', 'crossorigin': 'anonymous'})|e }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', 'integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"')|e }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_path</strong>('lib/modernizr/modernizr.custom.min.js') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_path('lib/modernizr/modernizr.custom.min.js') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_url</strong>('lib/modernizr/modernizr.custom.min.js') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_url('lib/modernizr/modernizr.custom.min.js') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>image</strong>('lib/default-person.png', 'alt="No Photo"') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ image('lib/default-person.png', 'alt="No Photo"') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>image</strong>('lib/default-person.png', {'alt': 'No Photo'}) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ image('lib/default-person.png', {'alt': 'No Photo'}) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>image</strong>(my_image_url(my_image, 180, 120)) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ image(my_image_url(my_image, 180, 120)) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>image</strong>('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACy0lEQVRYw+2WMY/bRhCFvxlSCiFf+lTX21WKFAHS55/497jKzwiQOk3aFCnSxDHSXBUgvQ2fxCXnpeAuueRJOru5xjfASqslte/tmzdDwnM8x5cehln799u3yd2JiCcBLVgvX73atUAnidvbWyRNrMzm4e6Y2cI4r5c5MP9P0jwvvyNiXq/3v7u7A+haoI0IUkpIWgG7O5JmEjVgTaomURMp4BGxImJmRe3WgdXFS6dc5e0z17bkCymAtiZwboPteNRUm3vM7MHeNQE/R+Aa4DUSl+7f7vWAwDiOVzc9R2ZrzE/5Tx0FswX44ec3/Pjd93wcEuaONQ5mmBtgYGeAt5tXlbCsTR8KgYTGQBEc2h2//vH7QoAITscj90PC3TDPBMzAbNrHbI15gcA8lSbexdwSiiBCNO0ItQmROI0jg0YUhqG1AlPHYiWFrjix7geqFIjAJE6jz4SzAmJA9BGYG4qp9hUZ3A3TOhVs06v1XEV6wLLpLJPZuSC0ViDFSB8D4JMPYlIBA8Ys/yeU4aLAzGRWRBEQwT6ahwr0MdBH5NzlTpdBDUO2PfkFCfKXZRXQRELZhGjCWinw0y+/8e27f+HDe8yMxgzPEI7WnfGxw2/b8eQoAhiLN26+5s93//C6EBgR6ntIaT65suKqHG+bVNsFP6qMuTQrb0hY6hmoFBgFjAMaB5TLroBN2Aups1nQGSKlB2yvSWgYJ8xCIAF9SpASOwOvci7bNKIHOqxfL5SvZe9NqajSMgpiSKTahH3Tci9ovMEbnzzgS+Wvhi2HXz3himpa0/NMJioz9oJj01YKfNXxcd/RHW7o9jv2jdO6Y5YfFqW/a+nM5wjMlWdL/iPLHhgmMaSB4+lEv+8WArvDC/46BR3wojE6HA/j8arX1be9dWqmyrsf4P0paA+HklK7Ab4Bbnja+AD8Z5i1QDc3paeLATjyHF98/A+hru2lkzlecAAAAABJRU5ErkJggg==') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ image('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACy0lEQVRYw+2WMY/bRhCFvxlSCiFf+lTX21WKFAHS55/497jKzwiQOk3aFCnSxDHSXBUgvQ2fxCXnpeAuueRJOru5xjfASqslte/tmzdDwnM8x5cehln799u3yd2JiCcBLVgvX73atUAnidvbWyRNrMzm4e6Y2cI4r5c5MP9P0jwvvyNiXq/3v7u7A+haoI0IUkpIWgG7O5JmEjVgTaomURMp4BGxImJmRe3WgdXFS6dc5e0z17bkCymAtiZwboPteNRUm3vM7MHeNQE/R+Aa4DUSl+7f7vWAwDiOVzc9R2ZrzE/5Tx0FswX44ec3/Pjd93wcEuaONQ5mmBtgYGeAt5tXlbCsTR8KgYTGQBEc2h2//vH7QoAITscj90PC3TDPBMzAbNrHbI15gcA8lSbexdwSiiBCNO0ItQmROI0jg0YUhqG1AlPHYiWFrjix7geqFIjAJE6jz4SzAmJA9BGYG4qp9hUZ3A3TOhVs06v1XEV6wLLpLJPZuSC0ViDFSB8D4JMPYlIBA8Ys/yeU4aLAzGRWRBEQwT6ahwr0MdBH5NzlTpdBDUO2PfkFCfKXZRXQRELZhGjCWinw0y+/8e27f+HDe8yMxgzPEI7WnfGxw2/b8eQoAhiLN26+5s93//C6EBgR6ntIaT65suKqHG+bVNsFP6qMuTQrb0hY6hmoFBgFjAMaB5TLroBN2Aups1nQGSKlB2yvSWgYJ8xCIAF9SpASOwOvci7bNKIHOqxfL5SvZe9NqajSMgpiSKTahH3Tci9ovMEbnzzgS+Wvhi2HXz3himpa0/NMJioz9oJj01YKfNXxcd/RHW7o9jv2jdO6Y5YfFqW/a+nM5wjMlWdL/iPLHhgmMaSB4+lEv+8WArvDC/46BR3wojE6HA/j8arX1be9dWqmyrsf4P0paA+HklK7Ab4Bbnja+AD8Z5i1QDc3paeLATjyHF98/A+hru2lkzlecAAAAABJRU5ErkJggg==') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>image_path</strong>('lib/default-person.png') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ image_path('lib/default-person.png') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>image_url</strong>('lib/default-person.png') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ image_url('lib/default-person.png') }}
+                                        </td>
+                                    </tr>
+
                                     <tr class="info">
                                         <td colspan="2">
                                             <h4>Miscellaneous Tests</h4>
