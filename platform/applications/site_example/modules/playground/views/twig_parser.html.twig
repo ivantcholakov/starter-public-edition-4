@@ -2410,6 +2410,297 @@ width = 180px, height = 120px
 
                                     <tr class="info">
                                         <td colspan="2">
+                                            <h4>Template</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>template.title</strong>|raw }} &lt;!-- no tags, HTML escaped --&gt;{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ template.title|raw }} <!-- no tags, HTML escaped -->
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>template.page_title</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ template.page_title }}
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>html_title</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ html_title()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>metadata</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ metadata()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>html_begin</strong>()|html_code }}
+{{ <strong>html_begin</strong>('class="my-class"')|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ html_begin()|html_code }}
+{{ html_begin('class="my-class"')|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>html_end</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ html_end()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>head_begin()</strong>|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ head_begin()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>head_end</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ head_end()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>body_begin</strong>()|html_code }}
+{{ <strong>body_begin</strong>('class="my-class"')|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ body_begin()|html_code }}
+{{ body_begin('class="my-class"')|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>body_end</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ body_end()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>meta_charset</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ meta_charset()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>base_href()</strong>|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ base_href()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>ie_edge</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ ie_edge()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>viewport</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ viewport()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>favicon</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ favicon()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>apple_touch_icon</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ apple_touch_icon()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>apple_touch_icon_precomposed</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ apple_touch_icon_precomposed()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>cleartype_ie</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ cleartype_ie()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>css_normalize</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ css_normalize()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_platform</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_platform()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_selectivizr</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_selectivizr()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_modernizr</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_modernizr()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_respond</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_respond()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_jquery</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_jquery()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>noscript</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ noscript()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>unsupported_browser</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ unsupported_browser()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_jquery_extra_selectors</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_jquery_extra_selectors()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_bp_plugins</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_bp_plugins()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_mbp_helper</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_mbp_helper()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_scale_fix_ios</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_scale_fix_ios()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_imgsizer</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_imgsizer()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="info">
+                                        <td colspan="2">
                                             <h4>Miscellaneous Tests</h4>
                                         </td>
                                     </tr>
