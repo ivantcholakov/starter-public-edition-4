@@ -555,8 +555,10 @@ if (!function_exists('js_platform')) {
 
         foreach ($constants as $name) {
 
-            $constants_js[] = '        var '.$name.' = '.json_encode(constant($name)).';
+            if (defined($name)) {
+                $constants_js[] = '        var '.$name.' = '.json_encode(constant($name)).';
 ';
+            }
         }
 
         $constants_js = implode('', $constants_js);
