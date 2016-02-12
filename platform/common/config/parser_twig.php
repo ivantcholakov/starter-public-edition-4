@@ -107,6 +107,17 @@ $config['functions'] = array(
     array('js_mbp_helper', 'js_mbp_helper', array('is_safe' => array('html'))),
     array('js_scale_fix_ios', 'js_scale_fix_ios', array('is_safe' => array('html'))),
     array('js_imgsizer', 'js_imgsizer', array('is_safe' => array('html'))),
+    // Visual Themes
+    array('theme_name', array('Parser_Twig_Extension_Theme', 'theme_name')),
+    array('theme_css', 'theme_css', array('is_safe' => array('html'))),
+    'theme_css_path',
+    'theme_css_url',
+    array('theme_image', 'theme_image', array('is_safe' => array('html'))),
+    'theme_image_path',
+    'theme_image_url',
+    array('theme_js', 'theme_js', array('is_safe' => array('html'))),
+    'theme_js_path',
+    'theme_js_url',
 );
 
 // Extending the Twig parser: Extra-filters.

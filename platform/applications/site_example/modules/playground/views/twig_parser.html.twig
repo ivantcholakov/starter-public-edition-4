@@ -1720,7 +1720,7 @@ $(function() {
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ constant('<strong>SERVER_URL</strong> }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ constant('<strong>SERVER_URL</strong>') }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
 {{ constant('SERVER_URL') }}
@@ -1837,7 +1837,7 @@ $(function() {
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ constant('<strong>DEFAULT_BASE_URL</strong> }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ constant('<strong>DEFAULT_BASE_URL</strong>') }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
 {{ constant('DEFAULT_BASE_URL') }}
@@ -2730,6 +2730,30 @@ width = 180px, height = 120px
                                         </td>
                                         <td>
 {{ js_imgsizer()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="info">
+                                        <td colspan="2">
+                                            <h4>Visual Themes</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>theme_name</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ theme_name() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>theme_css</strong>('front.min.css')|e }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ theme_css('front.min.css')|e }}
                                         </td>
                                     </tr>
 
