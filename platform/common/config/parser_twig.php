@@ -118,6 +118,26 @@ $config['functions'] = array(
     array('theme_js', 'theme_js', array('is_safe' => array('html'))),
     'theme_js_path',
     'theme_js_url',
+    // URL/URI Handling
+    array('current_url', array('Parser_Twig_Extension_Url', 'current_url')),
+    array('current_uri', array('Parser_Twig_Extension_Url', 'current_uri')),
+    array('uri_string', array('Parser_Twig_Extension_Url', 'uri_string')),
+    array('query_string', array('Parser_Twig_Extension_Url', 'query_string')),
+    array('url_get', array('Parser_Twig_Extension_Url', 'url_get')),
+    'site_url',
+    'site_uri',
+    'base_url',
+    'base_uri',
+    array('segment', array('Parser_Twig_Extension_Url', 'segment')),
+    array('segments', array('Parser_Twig_Extension_Url', 'segments')),
+    array('total_segments', array('Parser_Twig_Extension_Url', 'total_segments')),
+    array('rsegment', array('Parser_Twig_Extension_Url', 'rsegment')),
+    array('rsegments', array('Parser_Twig_Extension_Url', 'rsegments')),
+    array('total_rsegments', array('Parser_Twig_Extension_Url', 'total_rsegments')),
+    array('anchor', 'anchor', array('is_safe' => array('html'))),
+    'redirect',
+    'http_build_url',
+    'http_build_query',
 );
 
 // Extending the Twig parser: Extra-filters.

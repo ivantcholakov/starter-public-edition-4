@@ -2759,6 +2759,197 @@ width = 180px, height = 120px
 
                                     <tr class="info">
                                         <td colspan="2">
+                                            <h4>URL/URI Handling</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>current_url</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ current_url() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>current_uri</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ current_uri() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>uri_string</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ uri_string() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>query_string</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ query_string() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>url_get</strong>('q_1') }}
+&lt;br /&gt;
+{{ print_d(<strong>url_get</strong>()) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ url_get('q_1') }}
+<br />
+{{ print_d(url_get()) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>site_url</strong>() }}
+&lt;br /&gt;
+&lt;a href="{{ <strong>site_url</strong>('playground') }}"&gt;The Playground&lt;/a&gt;{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ site_url() }}
+<br />
+<a href="{{ site_url('playground') }}">The Playground</a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>site_uri</strong>() }}
+&lt;br /&gt;
+&lt;a href="{{ <strong>site_uri</strong>('playground') }}"&gt;The Playground&lt;/a&gt;{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ site_uri() }}
+<br />
+<a href="{{ site_uri('playground') }}">The Playground</a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>base_url</strong>() }}
+&lt;br /&gt;
+{{ <strong>base_url</strong>('assets') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ base_url() }}
+<br />
+{{ base_url('assets') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>base_uri</strong>() }}
+&lt;br /&gt;
+{{ <strong>base_uri</strong>('assets') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ base_uri() }}
+<br />
+{{ base_uri('assets') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(<strong>segments</strong>()) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(segments()) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>segment</strong>(1) }}
+&lt;br /&gt;
+{{ <strong>segment</strong>(2) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ segment(1) }}
+<br />
+{{ segment(2) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>total_segments</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ total_segments() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(<strong>rsegments</strong>()) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(rsegments()) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>rsegment</strong>(1) }}
+&lt;br /&gt;
+{{ <strong>rsegment</strong>(2) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ rsegment(1) }}
+<br />
+{{ rsegment(2) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>total_rsegments</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ total_rsegments() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>anchor</strong>('playground/twig-parser', 'Twig Parser Test', 'class="test"') }}
+&lt;br /&gt;
+{{ <strong>anchor</strong>('playground/twig-parser', 'Twig Parser Test', {'class': 'test'}) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ anchor('playground/twig-parser', 'Twig Parser Test', 'class="test"') }}
+<br />
+{{ anchor('playground/twig-parser', 'Twig Parser Test', {'class': 'test'}) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>redirect</strong>('playground') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+-- Not applicable for this demo. --
+                                        </td>
+                                    </tr>
+
+                                    <tr class="info">
+                                        <td colspan="2">
                                             <h4>Miscellaneous Tests</h4>
                                         </td>
                                     </tr>
