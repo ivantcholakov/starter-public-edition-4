@@ -9,6 +9,15 @@
 
 class Parser_Twig_Extension_Template {
 
+    public static function body() {
+
+        ob_start();
+
+        template_body();
+
+        return ob_get_clean();
+    }
+
     public static function html_title() {
 
         ob_start();
