@@ -75,6 +75,9 @@ $config['functions'] = array(
     'js_url',
     // Template
     array('body', array('Parser_Twig_Extension_Template', 'body'), array('is_safe' => array('html'))),
+    array('file_partial', array('Parser_Twig_Extension_Template', 'file_partial'), array('is_safe' => array('html'))),
+    array('partial', array('Parser_Twig_Extension_Template', 'partial'), array('is_safe' => array('html'))),
+    array('has_partial', array('Parser_Twig_Extension_Template', 'has_partial'), array('is_safe' => array('html'))),
     array('html_title', array('Parser_Twig_Extension_Template', 'html_title'), array('is_safe' => array('html'))),
     array('metadata', array('Parser_Twig_Extension_Template', 'metadata'), array('is_safe' => array('html'))),
     array('html_begin', 'html_tag_no_conflict', array('is_safe' => array('html'))),

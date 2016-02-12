@@ -2441,7 +2441,32 @@ width = 180px, height = 120px
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>partial</strong>('twig_partial') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ partial('twig_partial') }}
+                                        </td>
+                                    </tr>
 
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>has_partial</strong>('twig_partial') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ has_partial('twig_partial') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>file_partial</strong>('test') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ file_partial('test') }}
+                                        </td>
+                                    </tr>
 
                                     <tr>
                                         <td>

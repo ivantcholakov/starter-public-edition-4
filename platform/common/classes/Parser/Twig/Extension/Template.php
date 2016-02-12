@@ -18,6 +18,29 @@ class Parser_Twig_Extension_Template {
         return ob_get_clean();
     }
 
+    public static function file_partial($name) {
+
+        ob_start();
+
+        file_partial($name);
+
+        return ob_get_clean();
+    }
+
+    public static function partial($name) {
+
+        ob_start();
+
+        template_partial($name);
+
+        return ob_get_clean();
+    }
+
+    public static function has_partial($name) {
+
+        return template_has_partial($name);
+    }
+
     public static function html_title() {
 
         ob_start();

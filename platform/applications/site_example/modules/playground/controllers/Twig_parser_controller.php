@@ -78,6 +78,7 @@ class Twig_parser_controller extends Playground_Base_Controller {
             ->set('twig_test_source', $twig_test_source)
             ->set('twig_test_1', $twig_test_1)
             ->set('twig_test_2', $twig_test_2)
+            ->set_partial('twig_partial', 'twig_partial')
             ->set_metadata('description', 'Twig parser testing page')
             ->set_metadata('keywords', 'CodeIgniter Twig Template Parser')
             ->build('twig_parser');
