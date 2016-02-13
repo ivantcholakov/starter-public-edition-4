@@ -1577,20 +1577,6 @@ $(function() {
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>lang</strong>('welcome.hello') }}
-&lt;br /&gt;
-{{ <strong>lang</strong>('ui_file_upload_success', '&lt;strong&gt;photo.png&lt;/strong&gt;')|raw }}{% endverbatim %}</code></pre>
-<a href="https://codeigniter.com/user_guide/libraries/language.html#fetching-a-line-of-text" target="_blank">lang-&gt;line</a>
-                                        </td>
-                                        <td>
-{{ lang('welcome.hello') }}
-<br />
-{{ lang('ui_file_upload_success', '<strong>photo.png</strong>')|raw }}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
 <pre><code>{% verbatim %}{{ 'contact@example.com'|<strong>safe_mailto</strong>('Contact Us', 'alt="Contact Us"') }}{% endverbatim %}</code></pre>
 <a href="https://codeigniter.com/user_guide/helpers/url_helper.html#safe_mailto" target="_blank">safe_mailto</a>
                                         </td>
@@ -2945,6 +2931,129 @@ width = 180px, height = 120px
                                         </td>
                                         <td>
 -- Not applicable for this demo. --
+                                        </td>
+                                    </tr>
+
+                                    <tr class="info">
+                                        <td colspan="2">
+                                            <h4>Language</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>lang</strong>('welcome.hello') }}
+&lt;br /&gt;
+{{ <strong>lang</strong>('ui_file_upload_success', '&lt;strong&gt;photo.png&lt;/strong&gt;')|raw }}{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/libraries/language.html#fetching-a-line-of-text" target="_blank">lang-&gt;line</a>
+                                        </td>
+                                        <td>
+{{ lang('welcome.hello') }}
+<br />
+{{ lang('ui_file_upload_success', '<strong>photo.png</strong>')|raw }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(<strong>lang_get</strong>()) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(lang_get()) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>lang_current</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang_current() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>lang_code</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang_code() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>lang_direction</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang_direction() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>lang_uri_segment</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang_uri_segment() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>lang_current_uri_segment</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang_current_uri_segment() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>lang_name</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang_name() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>lang_name_en</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang_name_en() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>lang_flag</strong>() }}
+&lt;br /&gt;
+&lt;img src="{{ asset_image_path file="lib/flags-iso/shiny/64/" }}{{ lang_flag }}.png" /&gt;{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang_flag() }}
+<br />
+<img src="{{ image_path('lib/flags-iso/shiny/64/') }}{{ lang_flag() }}.png" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(<strong>lang_enabled</strong>()) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(lang_enabled()) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>is_multilingual</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ is_multilingual() }}
                                         </td>
                                     </tr>
 

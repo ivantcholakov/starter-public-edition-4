@@ -52,7 +52,6 @@ $config['functions'] = array(
     array('var_export', array('Parser_Twig_Extension_Debug', 'var_export'), array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
     // CodeIgniter's Helpers
     array('is_https', 'is_https', array('is_safe' => array('html'))),
-    array('lang', array('Parser_Twig_Extension_Language', 'lang')),
     // Session
     array('session', array('Parser_Twig_Extension_Session', 'session')),
     array('session_flash', array('Parser_Twig_Extension_Session', 'session_flash')),
@@ -138,6 +137,19 @@ $config['functions'] = array(
     'redirect',
     'http_build_url',
     'http_build_query',
+    // Language
+    array('lang', array('Parser_Twig_Extension_Language', 'lang')),
+    array('lang_get', array('Parser_Twig_Extension_Language', 'lang_get')),
+    array('lang_current', array('Parser_Twig_Extension_Language', 'lang_current')),
+    array('lang_code', array('Parser_Twig_Extension_Language', 'lang_code')),
+    array('lang_direction', array('Parser_Twig_Extension_Language', 'lang_direction')),
+    array('lang_uri_segment', array('Parser_Twig_Extension_Language', 'lang_uri_segment')),
+    array('lang_current_uri_segment', array('Parser_Twig_Extension_Language', 'lang_current_uri_segment')),
+    array('lang_name', array('Parser_Twig_Extension_Language', 'lang_name')),
+    array('lang_name_en', array('Parser_Twig_Extension_Language', 'lang_name_en')),
+    array('lang_flag', array('Parser_Twig_Extension_Language', 'lang_flag')),
+    array('lang_enabled', array('Parser_Twig_Extension_Language', 'lang_enabled')),
+    array('is_multilingual', array('Parser_Twig_Extension_Language', 'is_multilingual')),
 );
 
 // Extending the Twig parser: Extra-filters.

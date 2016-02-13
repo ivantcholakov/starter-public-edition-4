@@ -28,4 +28,111 @@ class Parser_Twig_Extension_Language {
         return $ci->lang->line($line, $params);
     }
 
+    public static function lang_get($language = null) {
+
+        $ci = & get_instance();
+
+        if ($language === null) {
+            $language = $ci->lang->current();
+        }
+
+        return $ci->lang->get($language);
+    }
+
+    public static function lang_current() {
+
+        $ci = & get_instance();
+
+        return $ci->lang->current();
+    }
+
+    public static function lang_code($language = null) {
+
+        $ci = & get_instance();
+
+        if ($language === null) {
+            $language = $ci->lang->current();
+        }
+
+        return $ci->lang->code();
+    }
+
+    public static function lang_direction($language = null) {
+
+        $ci = & get_instance();
+
+        if ($language === null) {
+            $language = $ci->lang->current();
+        }
+
+        return $ci->lang->direction();
+    }
+
+    public static function lang_uri_segment($language = null) {
+
+        $ci = & get_instance();
+
+        if ($language === null) {
+            $language = $ci->lang->current();
+        }
+
+        return $ci->lang->uri_segment();
+    }
+
+    public static function lang_current_uri_segment() {
+
+        $ci = & get_instance();
+
+        return $ci->lang->hide_default_uri_segment() && $ci->lang->current() == $ci->lang->default_lang()
+            ? NULL
+            : $ci->lang->uri_segment();
+    }
+
+    public static function lang_name($language = null) {
+
+        $ci = & get_instance();
+
+        if ($language === null) {
+            $language = $ci->lang->current();
+        }
+
+        return $ci->lang->name();
+    }
+
+    public static function lang_name_en($language = null) {
+
+        $ci = & get_instance();
+
+        if ($language === null) {
+            $language = $ci->lang->current();
+        }
+
+        return $ci->lang->name_en();
+    }
+
+    public static function lang_flag($language = null) {
+
+        $ci = & get_instance();
+
+        if ($language === null) {
+            $language = $ci->lang->current();
+        }
+
+        return $ci->lang->flag();
+    }
+
+    public static function lang_enabled() {
+
+        $ci = & get_instance();
+
+        return $ci->lang->enabled();
+    }
+
+    public static function is_multilingual() {
+
+        $ci = & get_instance();
+
+        return $ci->lang->multilingual_site();
+    }
+
 }
