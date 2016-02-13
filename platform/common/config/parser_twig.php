@@ -26,6 +26,7 @@ $config['timezone'] = date_default_timezone_get();
 $config['helpers'] = array(
     'asset',
     'date',
+    'form',
     'gravatar',
     'inflector',
     'template',
@@ -153,6 +154,12 @@ $config['functions'] = array(
     // Widgets
     array('widget', array('Parser_Twig_Extension_Widget', 'widget'), array('is_safe' => array('html'))),
     array('run', array('Parser_Twig_Extension_Widget', 'run'), array('is_safe' => array('html'))),
+    // Forms
+    array('form_*', array('Parser_Twig_Extension_Form', 'form_functions'), array('is_safe' => array('html'))),
+    array('has_validation_error', 'has_validation_error', array('is_safe' => array('html'))),
+    array('build_validation_message', 'build_validation_message', array('is_safe' => array('html'))),
+    array('validation_errors', 'validation_errors', array('is_safe' => array('html'))),
+    array('validation_errors_array', 'validation_errors_array', array('is_safe' => array('html'))),
 );
 
 // Extending the Twig parser: Extra-filters.
