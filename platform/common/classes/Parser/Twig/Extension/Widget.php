@@ -5,16 +5,11 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-class Parser_Lex_Extension_Widget extends Parser_Lex_Extension {
+class Parser_Twig_Extension_Widget {
 
-    public function __construct() {
+    public static function widget() {
 
-        parent::__construct();
-    }
-
-    public function show() {
-
-        $args = $this->get_attribute_values();
+        $args = func_get_args();
 
         ob_start();
 
@@ -26,9 +21,9 @@ class Parser_Lex_Extension_Widget extends Parser_Lex_Extension {
         return $result;
     }
 
-    public function run() {
+    public static function run() {
 
-        $args = $this->get_attribute_values();
+        $args = func_get_args();
 
         // Return data directly.
         return call_user_func_array(array('Modules', 'run'), $args);

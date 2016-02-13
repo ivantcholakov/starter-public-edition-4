@@ -150,6 +150,9 @@ $config['functions'] = array(
     array('lang_flag', array('Parser_Twig_Extension_Language', 'lang_flag')),
     array('lang_enabled', array('Parser_Twig_Extension_Language', 'lang_enabled')),
     array('is_multilingual', array('Parser_Twig_Extension_Language', 'is_multilingual')),
+    // Widgets
+    array('widget', array('Parser_Twig_Extension_Widget', 'widget'), array('is_safe' => array('html'))),
+    array('run', array('Parser_Twig_Extension_Widget', 'run'), array('is_safe' => array('html'))),
 );
 
 // Extending the Twig parser: Extra-filters.
