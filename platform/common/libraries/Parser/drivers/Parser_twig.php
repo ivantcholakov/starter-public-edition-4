@@ -8,6 +8,7 @@
 class CI_Parser_twig extends CI_Parser_driver {
 
     protected $config;
+    protected $environment_options;
     private $ci;
 
     public function initialize()
@@ -23,12 +24,25 @@ class CI_Parser_twig extends CI_Parser_driver {
 
         // Default configuration options.
 
+        $this->environment_options = array(
+            'debug' => false,
+            'charset' => 'UTF-8',
+            'base_template_class' => 'Twig_Template',
+            'strict_variables' => false,
+            'autoescape' => 'html',
+            'cache' => false,
+            'auto_reload' => null,
+            'optimizations' => -1,
+        );
+
         $this->config = array(
             'debug' => false,
             'charset' => null,
             'cache' => false,
             'full_path' => false,
         );
+
+        $this->config = array_merge($this->environment_options, $this->config);
 
         if ($this->ci->config->load('parser_twig', TRUE, TRUE))
         {
@@ -99,7 +113,7 @@ class CI_Parser_twig extends CI_Parser_driver {
         }
 
         $parser = new Twig_Environment(new Parser_Twig_Loader_Filesystem($ci->load->locations('views')),
-            array_except($options, array('timezone', 'helpers', 'extensions', 'functions', 'filters', 'tests'))
+            array_only($options, array_keys($this->environment_options))
         );
         $this->_extend_parser($parser, $options);
 
@@ -155,7 +169,7 @@ class CI_Parser_twig extends CI_Parser_driver {
         $options['cache'] = false;
 
         $parser = new Twig_Environment(new Twig_Loader_Chain(array(new Parser_Twig_Loader_String, new Parser_Twig_Loader_Filesystem($ci->load->locations('views')))),
-            array_except($options, array('timezone', 'helpers', 'extensions', 'functions', 'filters', 'tests'))
+            array_only($options, array_keys($this->environment_options))
         );
         $this->_extend_parser($parser, $options);
 
