@@ -349,6 +349,14 @@ class CI_Parser_twig extends CI_Parser_driver {
 
             unset($item);
         }
+
+        $parser->addExtension(new Twig_Extension_Sandbox(new Twig_Sandbox_SecurityPolicy(
+            !empty($options['sandbox_tags']) && is_array($options['sandbox_tags']) ? $options['sandbox_tags'] : array(),
+            !empty($options['sandbox_filters']) && is_array($options['sandbox_filters']) ? $options['sandbox_filters'] : array(),
+            !empty($options['sandbox_methods']) && is_array($options['sandbox_methods']) ? $options['sandbox_methods'] : array(),
+            !empty($options['sandbox_properties']) && is_array($options['sandbox_properties']) ? $options['sandbox_properties'] : array(),
+            !empty($options['sandbox_functions']) && is_array($options['sandbox_functions']) ? $options['sandbox_functions'] : array()
+        )));
     }
 
 }

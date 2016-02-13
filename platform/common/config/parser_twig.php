@@ -3,6 +3,8 @@
 /**
  * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2016
  * @license The MIT License, http://opensource.org/licenses/MIT
+ *
+ * See http://twig.sensiolabs.org/doc/api.html
  */
 
 // Twig's 'debug' option.
@@ -219,3 +221,16 @@ $config['tests'] = array(
     array('scalar', 'is_scalar'),
     array('string', 'is_string'),
 );
+
+// Sandbox Whitelists
+// See http://twig.sensiolabs.org/doc/api.html#sandbox-extension
+
+$config['sandbox_tags'] = array();
+
+$config['sandbox_filters'] = array();
+
+$config['sandbox_methods'] = array();
+
+$config['sandbox_properties'] = array();
+
+$config['sandbox_functions'] = array();
