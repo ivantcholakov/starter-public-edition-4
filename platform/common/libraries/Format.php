@@ -295,7 +295,7 @@ class Format {
         {
             // Suppressing the "array to string conversion" notice
             // Keep the "evil" @ here
-            $row = @ array_map('strval', $row);
+            $row = @array_map('strval', $row);
 
             $this->_CI->table->add_row($row);
         }

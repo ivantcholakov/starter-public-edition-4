@@ -326,7 +326,7 @@ abstract class REST_Controller extends Core_Controller {
     /**
      * Enable XSS flag
      * Determines whether the XSS filter is always active when
-     * GET, OPTIONS, HEAD, POST, PUT, DELETE and PATCH data is encountered.
+     * GET, OPTIONS, HEAD, POST, PUT, DELETE and PATCH data is encountered
      * Set automatically based on config setting
      *
      * @var bool
@@ -415,7 +415,7 @@ abstract class REST_Controller extends Core_Controller {
         // At present the library is bundled with REST_Controller 2.5+, but will eventually be part of CodeIgniter (no citation)
         $this->load->library('format');
 
-        // Determine supported output formats from configiguration.
+        // Determine supported output formats from configuration
         $supported_formats = $this->config->item('rest_supported_formats');
 
         // Validate the configuration setting output formats
@@ -429,7 +429,7 @@ abstract class REST_Controller extends Core_Controller {
             $supported_formats = array($supported_formats);
         }
 
-        // Add silently the default output format if it is missing.
+        // Add silently the default output format if it is missing
         $default_format = $this->_get_default_output_format();
         if (!in_array($default_format, $supported_formats))
         {
@@ -549,7 +549,7 @@ abstract class REST_Controller extends Core_Controller {
         }
 
         // When there is no specific override for the current class/method, use the default auth value set in the config
-        if ($this->auth_override === FALSE && !($this->config->item('rest_enable_keys') && $this->_allow === TRUE))
+        if ($this->auth_override === FALSE && !($this->config->item('rest_enable_keys') && $this->_allow === TRUE) || ($this->config->item('allow_auth_and_keys') === TRUE && $this->_allow === TRUE))
         {
             $rest_auth = strtolower($this->config->item('rest_auth'));
             switch ($rest_auth)
@@ -842,9 +842,9 @@ abstract class REST_Controller extends Core_Controller {
     }
 
     /**
-     * Gets the default format from the configuration. Fallbacks to 'json'.
+     * Gets the default format from the configuration. Fallbacks to 'json'
      * if the corresponding configuration option $config['rest_default_format']
-     * is missing or is empty.
+     * is missing or is empty
      *
      * @access protected
      * @return string The default supported input format
