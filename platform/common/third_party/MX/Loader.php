@@ -924,7 +924,13 @@ class MX_Loader extends CI_Loader
         $paths = array();
         $result = array();
 
-        // TODO: Add theme loacations too.
+        $ci = & get_instance();
+
+        $theme = null;
+
+        if (isset($ci->template) && is_object($ci->template)) {
+            $theme = $ci->template->get_theme();
+        }
 
         $module = $this->_module;
 
@@ -953,6 +959,10 @@ class MX_Loader extends CI_Loader
 
                 $paths[] = $path;
             }
+        }
+
+        if ($theme != '') {
+            $paths[] = APPPATH.'themes/'.$theme.'/';
         }
 
         $paths[] = APPPATH;
