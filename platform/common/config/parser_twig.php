@@ -15,10 +15,9 @@ $config['debug'] = ENVIRONMENT !== 'production';
 $config['charset'] = null;
 
 // Caching: An absolute path where to store the compiled templates,
-// or false to disable caching (which is the default).
-// Disable caching for now.
-//$config['cache'] = TWIG_CACHE;
-$config['cache'] = false;
+// or FALSE to disable caching.
+// The constant TWIG_CACHE contains the usual path for Twig cache.
+$config['cache'] = ENVIRONMENT === 'production' ? TWIG_CACHE : FALSE;
 
 // The default timezone to be used by Twig.
 $config['timezone'] = date_default_timezone_get();
