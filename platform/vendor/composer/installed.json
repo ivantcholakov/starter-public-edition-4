@@ -385,18 +385,19 @@
         "source": {
             "type": "git",
             "url": "https://github.com/Roave/SecurityAdvisories.git",
-            "reference": "7de84a436dfddf7d407b9cc6f08afa6fa56ff774"
+            "reference": "c18abc6df90257ddbbe2654a98cc5cc7be804411"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/7de84a436dfddf7d407b9cc6f08afa6fa56ff774",
-            "reference": "7de84a436dfddf7d407b9cc6f08afa6fa56ff774",
+            "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/c18abc6df90257ddbbe2654a98cc5cc7be804411",
+            "reference": "c18abc6df90257ddbbe2654a98cc5cc7be804411",
             "shasum": ""
         },
         "conflict": {
             "aws/aws-sdk-php": ">=3,<3.2.1",
             "cakephp/cakephp": ">=3,<3.0.15|>=2,<2.4.99|>=2.5,<2.5.90|>=2.6,<2.6.12|>=1.3,<1.3.18|>=2.7,<2.7.6|>=3.1,<3.1.3",
             "codeigniter/framework": "<3.0.3",
+            "composer/composer": "<=1.0.0-alpha11",
             "contao/core": ">=2.11,<3|>=3,<3.1|>=3.1,<3.2|>=3.2,<3.2.19|>=3.3,<3.4|>=3.4,<3.4.4",
             "doctrine/annotations": ">=1,<1.2.7",
             "doctrine/cache": ">=1,<1.3.2|>=1.4,<1.4.2",
@@ -407,7 +408,7 @@
             "doctrine/mongodb-odm": ">=1,<1.0.2",
             "doctrine/mongodb-odm-bundle": ">=2,<3.0.1",
             "doctrine/orm": ">=2,<2.4.8|>=2.5,<2.5.1",
-            "dompdf/dompdf": ">=0.6,<0.6.1",
+            "dompdf/dompdf": ">=0.6,<0.6.2",
             "firebase/php-jwt": "<2",
             "friendsofsymfony/rest-bundle": ">=1.2,<1.2.2",
             "friendsofsymfony/user-bundle": ">=1.2,<1.3|>=1.3,<1.3.5",
@@ -479,7 +480,7 @@
             "zfcampus/zf-apigility-doctrine": ">=1,<1.0.3",
             "zfr/zfr-oauth2-server-module": "<0.1.2"
         },
-        "time": "2016-01-25 21:27:29",
+        "time": "2016-02-14 18:50:07",
         "type": "metapackage",
         "notification-url": "https://packagist.org/downloads/",
         "license": [
