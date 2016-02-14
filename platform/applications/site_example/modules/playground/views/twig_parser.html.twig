@@ -3092,6 +3092,59 @@ width = 180px, height = 120px
 
                                     <tr class="info">
                                         <td colspan="2">
+                                            <h4>Twig Template Inheritance Test</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<p>The layout base: themes/x/views/layouts/default_test.html.twig</p>
+{% filter html_code %}{% verbatim %}<!DOCTYPE html>
+<html>
+
+<head>
+{{ meta_charset() }}
+{{ html_title() }}
+</head>
+
+<body>
+
+    <div>
+        {% block content %}
+            <p>This is a static default text displayed within the template body.</p>
+        {% endblock %}
+    </div>
+
+    <div>
+        {% block sidebar %}
+            <p>The sidebar, default content, defined within a block "sidebar".<p>
+        {% endblock %}
+    </div>
+
+</body>
+
+</html>{% endverbatim %}{% endfilter %}
+
+<p>The template body: modules/playground/views/twig_template_inheritance_test.html.twig</p>
+{% filter html_code %}{% verbatim %}{% extends 'layouts/default_test.html' %}
+{% block content %}
+    {{ parent() }}
+    <p>{{ text_in_body }}</p>
+{% endblock %}{% endverbatim %}{% endfilter %}
+<a href="http://twig.sensiolabs.org/doc/tags/extends.html" target="_blank">extends</a>
+<a href="http://twig.sensiolabs.org/doc/tags/block.html" target="_blank">block (tag)</a>
+<a href="http://twig.sensiolabs.org/doc/functions/block.html" target="_blank">block (function)</a>
+<a href="http://twig.sensiolabs.org/doc/functions/parent.html" target="_blank">parent</a>
+<a href="http://twig.sensiolabs.org/doc/tags/use.html" target="_blank">use</a>
+
+                                        </td>
+                                        <td>
+{{ twig_template_inheritance_test|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="info">
+                                        <td colspan="2">
                                             <h4>Miscellaneous Tests</h4>
                                         </td>
                                     </tr>

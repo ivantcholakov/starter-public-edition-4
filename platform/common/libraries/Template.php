@@ -409,16 +409,15 @@ class Template
             ////    // This probably would fail and show the error message.
             ////    $this->_body = $this->_load_view('layouts/'.$this->_layout, $this->_data, $this->_parsers, $this->_find_view_folder());
             ////}
-            if (($file = $this->_ci->parser->find_file($this->_find_view_folder().'layouts/'.$this->_layout)) !== null) {
+            (($file = $this->_ci->parser->find_file($this->_find_view_folder().'layouts/'.$this->_layout)) !== null)
+            OR
+            (($file = $this->_ci->parser->find_file($this->_find_view_folder(true).'layouts/'.$this->_layout)) !== null)
+            OR
+            (($file = $this->_ci->parser->find_file(APPPATH.'views/layouts/'.$this->_layout)) !== null)
+            OR
+            (($file = $this->_ci->parser->find_file(COMMONPATH.'views/layouts/'.$this->_layout)) !== null);
 
-                $this->_body = $this->_ci->load->_ci_load(array(
-                    '_ci_path' => $file,
-                    '_ci_vars' => $this->_data,
-                    '_ci_return' => true,
-                    '_ci_parsers' => $this->_parsers,
-                ));
-
-            } elseif (($file = $this->_ci->parser->find_file($this->_find_view_folder(true).'layouts/'.$this->_layout)) !== null) {
+            if ($file !== null) {
 
                 $this->_body = $this->_ci->load->_ci_load(array(
                     '_ci_path' => $file,
