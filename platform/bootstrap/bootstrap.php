@@ -343,6 +343,9 @@ require BOOTSTRAPPATH.'arrays.php';
 require BOOTSTRAPPATH.'is_serialized.php';
 require BOOTSTRAPPATH.'str_replace_limit.php';
 
+if (!function_exists('money_format')) {
+    require BOOTSTRAPPATH.'money_format.php';
+}
 
 /*
  * --------------------------------------------------------------------
