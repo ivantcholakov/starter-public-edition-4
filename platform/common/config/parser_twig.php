@@ -52,6 +52,9 @@ $config['functions'] = array(
     array('print_d', 'print_d', array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
     array('print_r', array('Parser_Twig_Extension_Debug', 'print_r'), array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
     array('var_export', array('Parser_Twig_Extension_Debug', 'var_export'), array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
+    // PHP
+    array('mt_rand', 'mt_rand', array('is_safe' => array('html'))),
+    array('rand', 'mt_rand', array('is_safe' => array('html'))),
     // CodeIgniter's Helpers
     array('is_https', 'is_https', array('is_safe' => array('html'))),
     // Session
@@ -62,6 +65,7 @@ $config['functions'] = array(
     array('config', array('Parser_Twig_Extension_Setting', 'config')),
     array('setting', array('Parser_Twig_Extension_Setting', 'setting')),
     // Platform Routines
+    array('captcha', array('Parser_Twig_Extension_Platform', 'captcha')),
     array('gravatar', 'gravatar', array('is_safe' => array('html'))),
     array('my_image_url', array('Parser_Twig_Extension_Platform', 'my_image_url'), array('is_safe' => array('html'))),
     // Web Assets
@@ -129,6 +133,7 @@ $config['functions'] = array(
     'site_uri',
     'base_url',
     'base_uri',
+    'default_base_url',
     array('segment', array('Parser_Twig_Extension_Url', 'segment')),
     array('segments', array('Parser_Twig_Extension_Url', 'segments')),
     array('total_segments', array('Parser_Twig_Extension_Url', 'total_segments')),

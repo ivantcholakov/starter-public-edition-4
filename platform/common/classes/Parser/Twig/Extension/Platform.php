@@ -7,6 +7,13 @@
 
 class Parser_Twig_Extension_Platform {
 
+    public static function captcha() {
+
+        $ci = & get_instance();
+
+        return $ci->captcha;
+    }
+
     // Image Processing Demo.
     // Rework this method or create a similar one according to the
     // concrete image processing implementation.
