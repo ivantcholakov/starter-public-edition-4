@@ -1,11 +1,10 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
     <script type="text/javascript">
     //<![CDATA[
 
     function refresh_captcha() {
 
-        $('#captcha_image').attr('src', '<?php echo $this->captcha->src; ?>' + '?nocache=' + Math.random()*999999999);
+        $('#captcha_image').attr('src', '{{ captcha().src }}' + '?nocache=' + Math.random()*999999999);
         $('#captcha').val('');
     }
 
