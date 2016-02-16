@@ -161,6 +161,10 @@ $config['functions'] = array(
     array('build_validation_message', 'build_validation_message', array('is_safe' => array('html'))),
     array('validation_errors', 'validation_errors', array('is_safe' => array('html'))),
     array('validation_errors_array', 'validation_errors_array', array('is_safe' => array('html'))),
+    array('set_value', 'set_value', array('is_safe' => array('html'))),
+    array('set_select', 'set_select', array('is_safe' => array('html'))),
+    array('set_checkbox', 'set_checkbox', array('is_safe' => array('html'))),
+    array('set_radio', 'set_radio', array('is_safe' => array('html'))),
 );
 
 // Extending the Twig parser: Extra-filters.
