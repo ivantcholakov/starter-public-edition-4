@@ -7,7 +7,15 @@
 
 class Parser_Twig_Extension_Form {
 
-    public static function form_functions($name, $args = array()) {
+    public static function form_functions() {
+
+        $args = func_get_args();
+
+        if (count($args) < 1) {
+            return null;
+        }
+
+        $name = array_shift($args);
 
         if (count($args) > 0) {
 
