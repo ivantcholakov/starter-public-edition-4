@@ -16,16 +16,23 @@ class Feedback_messages_widget_controller extends Base_Widget_Controller {
 
     public function index($data = array()) {
 
+        if (is_object($data)) {
+            $data = get_object_vars($data);
+        }
+
         if (empty($data)) {
             $data = array();
         }
 
         if (!is_array($data)) {
-            $data = array();
-        }
 
-        if (!is_array($data)) {
-            $data = array('feedback_message_id' => (string) $data);
+            $data = (string) $data;
+
+            if ($data != '') {
+                $data = array('feedback_message_id' => $data);
+            } else {
+                $data = array();
+            }
         }
 
         $feedback_message_id = isset($data['element_id']) && $data['element_id'] != '' ? nohtml($data['element_id']) : 'main_feedback_message';
