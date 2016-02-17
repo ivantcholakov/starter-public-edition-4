@@ -1,0 +1,20 @@
+
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <ol class="breadcrumb">
+
+{% set i = 1 %}
+{% for breadcrumb in breadcrumbs %}
+    {% if i < n %}
+                    <li><a href="{{ breadcrumb['uri'] }}">{{ breadcrumb['name'] }}</a>
+    {% else %}
+                    <li class="active">{{ breadcrumb['name'] }}</li>
+    {% endif %}
+    {% set i = i + 1 %}
+{% endfor %}
+
+                    </ol>
+
+                </div>
+            </div>
