@@ -32,4 +32,32 @@ class Parser_Twig_Extension_Platform {
         return http_build_url(site_url('playground/image-process'), array('query' => http_build_query(array('src' => $src, 'w' => $width, 'h' => $height, 'no_crop' => $no_crop, 'keep_canvas_size' => $keep_canvas_size))), HTTP_URL_JOIN_QUERY);
     }
 
+    public static function registry() {
+
+        $args = func_get_args();
+
+        if (count($args) < 1) {
+            return null;
+        }
+
+        $ci = & get_instance();
+
+        $name = $args[0];
+
+        $name = trim(@ (string) $name);
+
+        if ($name == '') {
+            return;
+        }
+
+        if (count($args) == 1) {
+
+            return $ci->registry->get($name);
+        }
+
+        $ci->registry->set($name,  $args[1]);
+
+        return;
+    }
+
 }

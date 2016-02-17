@@ -68,6 +68,7 @@ $config['functions'] = array(
     array('captcha', array('Parser_Twig_Extension_Platform', 'captcha')),
     array('gravatar', 'gravatar', array('is_safe' => array('html'))),
     array('my_image_url', array('Parser_Twig_Extension_Platform', 'my_image_url'), array('is_safe' => array('html'))),
+    array('registry', array('Parser_Twig_Extension_Platform', 'registry')),
     // Web Assets
     array('css', array('Parser_Twig_Extension_Asset', 'css'), array('is_safe' => array('html'))),
     'css_path',
