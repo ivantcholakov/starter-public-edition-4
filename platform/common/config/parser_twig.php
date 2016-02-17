@@ -113,6 +113,7 @@ $config['functions'] = array(
     array('js_mbp_helper', 'js_mbp_helper', array('is_safe' => array('html'))),
     array('js_scale_fix_ios', 'js_scale_fix_ios', array('is_safe' => array('html'))),
     array('js_imgsizer', 'js_imgsizer', array('is_safe' => array('html'))),
+    array('enable_oldie', 'template_enable_oldie', array('is_safe' => array('html'))),
     // Visual Themes
     array('theme_name', array('Parser_Twig_Extension_Theme', 'theme_name')),
     array('theme_css', 'theme_css', array('is_safe' => array('html'))),
