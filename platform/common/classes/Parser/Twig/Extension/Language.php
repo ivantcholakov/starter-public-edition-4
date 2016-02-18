@@ -135,4 +135,27 @@ class Parser_Twig_Extension_Language {
         return $ci->lang->multilingual_site();
     }
 
+    public static function language_extra_helpers() {
+
+        $args = func_get_args();
+
+        if (count($args) < 1) {
+            return null;
+        }
+
+        $name = array_shift($args);
+
+        if (count($args) > 0) {
+
+            foreach ($args as & $arg) {
+
+                if (is_object($arg)) {
+                    $arg = get_object_vars($arg);
+                }
+            }
+        }
+
+        return call_user_func_array('language_'.$name, $args);
+    }
+
 }
