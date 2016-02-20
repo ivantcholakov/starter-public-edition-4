@@ -67,9 +67,12 @@ $config['functions'] = array(
     array('setting', array('Parser_Twig_Extension_Setting', 'setting')),
     // Platform Routines
     array('captcha', array('Parser_Twig_Extension_Platform', 'captcha')),
+    array('current_user', array('Parser_Twig_Extension_Platform', 'current_user')),
     array('gravatar', 'gravatar', array('is_safe' => array('html'))),
     array('my_image_url', array('Parser_Twig_Extension_Platform', 'my_image_url'), array('is_safe' => array('html'))),
     array('registry', array('Parser_Twig_Extension_Platform', 'registry')),
+    'url',
+    'url_add_data_language',
     // Web Assets
     array('css', array('Parser_Twig_Extension_Asset', 'css'), array('is_safe' => array('html'))),
     'css_path',
@@ -197,6 +200,7 @@ $config['filters'] = array(
     array('money_format', array('Parser_Twig_Extension_Php', 'money_format')),
     array('rtrim', array('Parser_Twig_Extension_Php', 'rtrim')),
     'sprintf',
+    'str_repeat',
     array('stripos', 'stripos', array('is_safe' => array('html'))),
     array('strpos', 'strpos', array('is_safe' => array('html'))),
     array('wordwrap', array('Parser_Twig_Extension_Php', 'wordwrap')),

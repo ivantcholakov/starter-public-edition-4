@@ -14,6 +14,13 @@ class Parser_Twig_Extension_Platform {
         return $ci->captcha;
     }
 
+    public static function current_user() {
+
+        $ci = & get_instance();
+
+        return $ci->current_user;
+    }
+
     // Image Processing Demo.
     // Rework this method or create a similar one according to the
     // concrete image processing implementation.
