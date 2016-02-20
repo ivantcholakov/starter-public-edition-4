@@ -32,12 +32,7 @@ template_partial('subnavbar');
                             <div>
 <?php
 
-$config = CKEditorConfig::get('user');
-$config['config']['height'] = '150';
-$ckeditor = new CKEditor($config['basePath']);
-$ckeditor->textareaAttributes = $config['textareaAttributes'];
-$ckeditor->initialized = true;
-$ckeditor->editor('content', $content, $config['config']);
+echo form_ckeditor('content', $content, 'user', array('height' => 150));
 
 ?>
                             </div>

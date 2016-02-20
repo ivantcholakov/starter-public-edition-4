@@ -1,5 +1,93 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed.');
 
+if (!function_exists('form_ckeditor')) {
+
+    // Added by Ivan Tcholakov, 20-FEB-2016.
+    function form_ckeditor($name, $value = null, $config_name = null, $options = array(), $events = array()) {
+
+        $config_name = trim(@ (string) $config_name);
+
+        if ($config_name == '') {
+            $config_name = 'user';
+        }
+
+        $config = CKEditorConfig::get($config_name);
+
+        if (empty($config)) {
+
+            // Avoid these defaults, make sure that a configuration file exists.
+            $config = array();
+
+            $config['basePath'] = DEFAULT_BASE_URL.'assets/js/ckeditor/';
+            $config['config']['baseHref'] = http_build_url(DEFAULT_BASE_URL.'../');
+            $config['config']['fullPage'] = false;
+            $config['config']['language'] = language_ckeditor();
+            $config['config']['defaultLanguage'] = 'en';
+            $config['config']['contentsLanguage'] = language_ckeditor();
+            $config['config']['contentsLangDirection'] = get_instance()->lang->direction();
+
+            $config['config']['contentsCss'][] = DEFAULT_BASE_URL.'assets/css/lib/editor.css';
+
+            $config['config']['width'] = '';
+            $config['config']['height'] = '100';
+            $config['config']['resize_enabled'] = false;
+            $config['textareaAttributes'] = array('rows' => 8, 'cols' => 60);
+
+            $config['config']['entities_latin'] = false;
+            $config['config']['entities_greek'] = false;
+
+            $config['config']['forcePasteAsPlainText'] = true;
+            $config['config']['toolbarCanCollapse'] = false;
+
+            $config['config']['allowedContent'] = true;
+        }
+
+        $initialized = true;
+
+        if (is_object($options)) {
+            $options = get_object_vars($object);
+        }
+
+        if (!empty($options) && is_array($options)) {
+
+            if (isset($options['initialized'])) {
+
+                $initialized = !empty($options['initialized']);
+                unset($options['initialized']);
+            }
+
+            if (isset($options['basePath'])) {
+                unset($options['basePath']);
+            }
+
+            if (isset($options['textareaAttributes'])) {
+
+                if (is_object($options['textareaAttributes'])) {
+                    $options['textareaAttributes'] = get_object_vars($options['textareaAttributes']);
+                }
+
+                if (is_array($options['textareaAttributes'])) {
+                    $config['textareaAttributes'] = $options['textareaAttributes'];
+                }
+
+                unset($options['textareaAttributes']);
+            }
+
+            if (!empty($options)) {
+                $config['config'] = array_merge($config['config'], $options);
+            }
+        }
+
+        $ckeditor = new CKEditor($config['basePath']);
+        $ckeditor->returnOutput = true;
+        $ckeditor->initialized = $initialized;
+        $ckeditor->textareaAttributes = $config['textareaAttributes'];
+
+        return $ckeditor->editor($name, $value, $config['config'], $events);
+    }
+
+}
+
 if (!function_exists('form_per_page')) {
 
     // For serving pagination: A select box for choosing number of items to be shown per page.
