@@ -73,6 +73,7 @@ $config['functions'] = array(
     array('registry', array('Parser_Twig_Extension_Platform', 'registry')),
     'url',
     'url_add_data_language',
+    array('view', array('Parser_Twig_Extension_Platform', 'view'), array('is_safe' => array('html'))),
     // Web Assets
     array('css', array('Parser_Twig_Extension_Asset', 'css'), array('is_safe' => array('html'))),
     'css_path',

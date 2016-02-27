@@ -67,4 +67,15 @@ class Parser_Twig_Extension_Platform {
         return;
     }
 
+    public static function view($view, $data = array(), $options = array()) {
+
+        if (is_object($options)) {
+            $options = get_object_vars($options);
+        }
+
+        $load = class_exists('CI') ? CI::$APP->load : get_instance()->load;
+
+        return $load->view($view, $data, true, $options);
+    }
+
 }
