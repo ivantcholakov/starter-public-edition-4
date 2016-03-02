@@ -223,6 +223,7 @@ $config['filters'] = array(
     // Formatters, Parsers
     array('markdown', array('Parser_Twig_Extension_Format', 'markdown'), array('is_safe' => array('html'))),
     array('textile', array('Parser_Twig_Extension_Format', 'textile'), array('is_safe' => array('html'))),
+    array('i18n', array('Parser_Twig_Extension_Format', 'i18n'), array('is_safe' => array('html'))),
 );
 
 // Extending the Twig parser: Extra-tests (is * operators).

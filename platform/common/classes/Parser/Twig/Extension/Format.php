@@ -21,4 +21,11 @@ class Parser_Twig_Extension_Format {
         return $ci->parser->parse_string(trim($text), null, true, 'textile');
     }
 
+    public static function i18n($text) {
+
+        $ci = & get_instance();
+
+        return $ci->parser->parse_string(trim($text), null, true, 'i18n');
+    }
+
 }
