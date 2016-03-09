@@ -218,6 +218,7 @@ $config['filters'] = array(
     'word_wrap',
     // Platform Routines
     'slugify',
+    array('trim_html', 'trim_html', array('is_safe' => array('html'))),
     // HTML
     array('html_code', 'html_code', array('is_safe' => array('html'))),
     array('xss_clean', array('Parser_Twig_Extension_Html', 'xss_clean'), array('is_safe' => array('html'))),
