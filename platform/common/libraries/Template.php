@@ -128,10 +128,12 @@ class Template
         //
 
         foreach ($config as $key => $val) {
-            if ($key == 'theme' and $val != '') {
-                $this->set_theme($val);
-                continue;
-            }
+            // Removed by Ivan Tcholakov, 09-MAR-2016.
+            //if ($key == 'theme' and $val != '') {
+            //    $this->set_theme($val);
+            //    continue;
+            //}
+            //
 
             $this->{'_'.$key} = $val;
         }
@@ -141,6 +143,12 @@ class Template
             // Let's use this obvious default
             $this->_theme_locations = array(APPPATH . 'themes/');
         }
+
+        // Added by Ivan Tcholakov, 09-MAR-2016.
+        if ($this->_theme != '') {
+            $this->set_theme($this->_theme);
+        }
+        //
 
         // Removed by Ivan Tcholakov, 27-DEC-2013.
         //// If the parse is going to be used, best make sure it's loaded
