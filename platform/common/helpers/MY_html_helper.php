@@ -76,23 +76,10 @@ if (!function_exists('text_to_html')) {
 
     function text_to_html($text) {
 
-/*
-        static $parser;
+        $ci = & get_instance();
+        $ci->load->parser();
 
-        if (!isset($parser)) {
-            $parser = new MarkdownExtra_Parser();
-        }
-
-        return @ $parser->transform($text);
-*/
-
-        static $parser;
-
-        if (!isset($parser)) {
-            $parser = new ParsedownExtra();
-        }
-
-        return @ $parser->text($text);
+        return $ci->parser->parse_string($text, null, true, 'markdown');
     }
 
 }
@@ -109,27 +96,6 @@ if (!function_exists('html_simplify')) {
 if (!function_exists('nohtml')) {
 
     function nohtml($string) {
-
-/*
-        static $purifier;
-
-        if (!isset($purifier)) {
-
-            $config = HTMLPurifier_Config::createDefault();
-
-            $config->set('Cache.SerializerPath', HTMLPURIFIER_CACHE_SERIALIZER_PATH);
-            $config->set('Core.Encoding', config_item('charset'));
-            $config->set('HTML.Doctype', 'XHTML 1.0 Transitional');
-            $config->set('HTML.TidyLevel', 'light');
-            $config->set('Core.ConvertDocumentToFragment', false);
-            $config->set('Core.RemoveProcessingInstructions', true);
-            @ $config->set('HTML.Allowed', '');
-
-            $purifier = @ new HTMLPurifier($config);
-        }
-
-        return trim(@ $purifier->purify(strip_tags($string)), " \t\n\r\0\x0B");
-*/
 
         return get_instance()->security->xss_clean(strip_tags($string));
     }
