@@ -787,22 +787,25 @@ class MX_Loader extends CI_Loader
         //
     }
 
-    public function driver($library = '', $params = NULL, $object_name = NULL)
+    public function driver($library, $params = NULL, $object_name = NULL)
     {
         if (is_array($library))
         {
-            foreach ($library as $driver)
+            foreach ($library as $key => $value)
             {
-                $this->driver($driver);
+                if (is_int($key))
+                {
+                    $this->driver($value, $params);
+                }
+                else
+                {
+                    $this->driver($key, $params, $value);
+                }
             }
-            // Modified by Ivan Tcholakov, 12-DEC-2013.
-            // See https://github.com/EllisLab/CodeIgniter/issues/2165
-            //return;
-            return $this;
-            //
-        }
 
-        if ($library === '')
+            return $this;
+        }
+        elseif (empty($library))
         {
             // Modified by Ivan Tcholakov, 12-DEC-2013.
             // See https://github.com/EllisLab/CodeIgniter/issues/2165
@@ -1604,10 +1607,7 @@ class MX_Loader extends CI_Loader
         // Autoload drivers
         if (isset($autoload['drivers']))
         {
-            foreach ($autoload['drivers'] as $item)
-            {
-                $this->driver($item);
-            }
+            $this->driver($autoload['drivers']);
         }
 
         // Load libraries
