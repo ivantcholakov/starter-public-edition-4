@@ -256,8 +256,8 @@ class CI_Session {
 		}
 
 		// Modified by Ivan Tcholakov, 12-DEC-2014.
-		//if ( ! class_exists($prefix.$class) && file_exists($file_path = APPPATH.'libraries/Session/drivers/'.$prefix.$class.'.php'))
-		if ( ! class_exists($prefix.$class) && (file_exists($file_path = APPPATH.'libraries/Session/drivers/'.$prefix.$class.'.php') OR file_exists($file_path = COMMONPATH.'libraries/Session/drivers/'.$prefix.$class.'.php')))
+		//if ( ! class_exists($prefix.$class, FALSE) && file_exists($file_path = APPPATH.'libraries/Session/drivers/'.$prefix.$class.'.php'))
+		if ( ! class_exists($prefix.$class, FALSE) && (file_exists($file_path = APPPATH.'libraries/Session/drivers/'.$prefix.$class.'.php') OR file_exists($file_path = COMMONPATH.'libraries/Session/drivers/'.$prefix.$class.'.php')))
 		//
 		{
 			require_once($file_path);
