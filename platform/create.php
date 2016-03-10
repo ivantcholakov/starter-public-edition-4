@@ -547,7 +547,7 @@ $LANG =& load_class('Lang', 'core');
  *
  * Returns current CI instance object
  *
- * @return object
+ * @return CI_Controller
  */
 function &get_instance()
 {
