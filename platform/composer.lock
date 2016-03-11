@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bf4b253cc708b5b3e5d727c6679a6aea",
-    "content-hash": "9fa81152c79660e30275f9a5fc71f6e5",
+    "hash": "9ddc1ecb8cff23e15d99152701056720",
+    "content-hash": "38385b8acb0e8b3fa5a9b5c0a24913d5",
     "packages": [
         {
             "name": "facebook/php-sdk-v4",
@@ -58,20 +58,20 @@
         },
         {
             "name": "fg/multiplayer",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/felixgirault/multiplayer.git",
-                "reference": "6cb6ffbe0f3e5a7e19ece7cc99e23b3d544f17d7"
+                "reference": "6982d02dee5bd6bc38c110b0206523771ab5d2b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/felixgirault/multiplayer/zipball/6cb6ffbe0f3e5a7e19ece7cc99e23b3d544f17d7",
-                "reference": "6cb6ffbe0f3e5a7e19ece7cc99e23b3d544f17d7",
+                "url": "https://api.github.com/repos/felixgirault/multiplayer/zipball/6982d02dee5bd6bc38c110b0206523771ab5d2b0",
+                "reference": "6982d02dee5bd6bc38c110b0206523771ab5d2b0",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=5.4.0"
             },
             "type": "library",
             "autoload": {
@@ -97,7 +97,7 @@
                 "player",
                 "video"
             ],
-            "time": "2014-03-29 12:52:27"
+            "time": "2015-11-11 23:24:08"
         },
         {
             "name": "guzzlehttp/guzzle",

@@ -30,7 +30,7 @@ class Multiplayer_controller extends Playground_Base_Controller {
             'http://vbox7.com/play:25c4115f2d',
         );
 
-        $system_requirements_ok = is_php('5.3.2');
+        $system_requirements_ok = is_php('5.4.0');
 
         if ($system_requirements_ok) {
             $this->load->library('multiplayer');

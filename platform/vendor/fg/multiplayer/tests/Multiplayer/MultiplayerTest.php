@@ -4,7 +4,6 @@
  *	@author Félix Girault <felix.girault@gmail.com>
  *	@license FreeBSD License (http://opensource.org/licenses/BSD-2-Clause)
  */
-
 namespace Multiplayer;
 
 use PHPUnit_Framework_TestCase;
@@ -14,13 +13,11 @@ use PHPUnit_Framework_TestCase;
 /**
  *	Test case for Multiplayer.
  */
-
 class MultiplayerTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 *
 	 */
-
 	public $Multiplayer = null;
 
 
@@ -28,28 +25,27 @@ class MultiplayerTest extends PHPUnit_Framework_TestCase {
 	/**
 	 *
 	 */
-
-	public $services = array(
-		'service' => array(
+	public $services = [
+		'service' => [
 			'id' => '#service\.com/video/(?<id>[0-9]+)#i',
 			'url' => 'http://service.com/player/%s',
-			'map' => array(
+			'map' => [
 				'autoPlay' => 'play',
-				'showInfos' => array( 'title', 'author' ),
+				'showInfos' => ['title', 'author'],
 				'highlightColor' => 'color'
-			)
-		)
-	);
+			]
+		]
+	];
 
 
 
 	/**
 	 *
 	 */
-
-	public function setUp( ) {
-
-		$this->Multiplayer = new Multiplayer( $this->services );
+	public function setUp() {
+		$this->Multiplayer = new Multiplayer($this->services, function($url) {
+			return $url;
+		});
 	}
 
 
@@ -57,12 +53,32 @@ class MultiplayerTest extends PHPUnit_Framework_TestCase {
 	/**
 	 *
 	 */
+	public function testTemplate() {
+		$expected = <<<HTML
+			<iframe
+				src="http://foo.bar"
+				frameborder="0"
+				webkitAllowFullScreen
+				mozallowfullscreen
+				allowFullScreen
+			></iframe>
+HTML;
 
-	public function testHtml( ) {
+		$this->assertEquals(
+			$expected,
+			$this->Multiplayer->template('http://foo.bar')
+		);
+	}
 
+
+
+	/**
+	 *
+	 */
+	public function testHtml() {
 		$this->assertEquals(
 			'http://service.com/player/42',
-			$this->Multiplayer->html( 'service.com/video/42', array( ), '%s' )
+			$this->Multiplayer->html('service.com/video/42', [])
 		);
 	}
 
@@ -71,12 +87,10 @@ class MultiplayerTest extends PHPUnit_Framework_TestCase {
 	/**
 	 *
 	 */
-
-	public function testHtmlWithParam( ) {
-
+	public function testHtmlWithParam() {
 		$this->assertEquals(
 			'http://service.com/player/42?foo=bar',
-			$this->Multiplayer->html( 'service.com/video/42', array( 'foo' => 'bar' ), '%s' )
+			$this->Multiplayer->html('service.com/video/42', ['foo' => 'bar'])
 		);
 	}
 
@@ -85,17 +99,32 @@ class MultiplayerTest extends PHPUnit_Framework_TestCase {
 	/**
 	 *
 	 */
-
-	public function testHtmlWithMappedParam( ) {
-
+	public function testHtmlWithMappedParam() {
 		$this->assertEquals(
 			'http://service.com/player/42?play=1',
-			$this->Multiplayer->html( 'service.com/video/42', array( 'autoPlay' => true ), '%s' )
+			$this->Multiplayer->html('service.com/video/42', ['autoPlay' => true])
 		);
 
 		$this->assertEquals(
 			'http://service.com/player/42?title=1&author=1',
-			$this->Multiplayer->html( 'service.com/video/42', array( 'showInfos' => true ), '%s' )
+			$this->Multiplayer->html('service.com/video/42', ['showInfos' => true])
+		);
+	}
+
+
+
+	/**
+	 *
+	 */
+	public function testWithTemplate() {
+		$expected = '<iframe />';
+		$template = function($url) use ($expected) {
+			return $expected;
+		};
+
+		$this->assertEquals(
+			$expected,
+			$this->Multiplayer->html('service.com/video/42', [], $template)
 		);
 	}
 }

@@ -25,7 +25,7 @@ if (!$system_requirements_ok) {
                     <div class="col-md-12">
 
                         <div class="status alert alert-warning">
-                           PHP 5.3.2 is required for this example.
+                           PHP 5.4.0 is required for this example.
                         </div>
 
                     </div>
