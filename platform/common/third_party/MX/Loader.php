@@ -997,7 +997,9 @@ class MX_Loader extends CI_Loader
 
     public function _ci_load($_ci_data) {
 
-        extract($_ci_data);
+        foreach (array('_ci_view', '_ci_vars', '_ci_path', '_ci_return', '_ci_parsers', '_ci_template_content') as $_ci_val) {
+            $$_ci_val = isset($_ci_data[$_ci_val]) ? $_ci_data[$_ci_val] : null;
+        }
 
         if (isset($_ci_view)) {
 
@@ -1040,10 +1042,26 @@ class MX_Loader extends CI_Loader
             $_ci_parser = null;
         }
 
-        if (isset($_ci_vars)) {
-            $this->_ci_cached_vars = array_merge($this->_ci_cached_vars, (array) $_ci_vars);
-        }
+        /*
+         * Extract and cache variables
+         *
+         * You can either set variables using the dedicated $this->load->vars()
+         * function or via the second parameter of this function. We'll merge
+         * the two types and cache them so that views that are embedded within
+         * other views can have access to these variables.
+         */
+        if (is_array($_ci_vars))
+        {
+            foreach (array_keys($_ci_vars) as $key)
+            {
+                if (strncmp($key, '_ci_', 4) === 0)
+                {
+                    unset($_ci_vars[$key]);
+                }
+            }
 
+            $this->_ci_cached_vars = array_merge($this->_ci_cached_vars, $_ci_vars);
+        }
         extract($this->_ci_cached_vars);
 
         // Added by Ivan Tcholakov, 28-DEC-2013, 16-JAN-2016.

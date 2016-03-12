@@ -942,6 +942,14 @@ class CI_Loader {
 		 */
 		if (is_array($_ci_vars))
 		{
+			foreach (array_keys($_ci_vars) as $key)
+			{
+				if (strncmp($key, '_ci_', 4) === 0)
+				{
+					unset($_ci_vars[$key]);
+				}
+			}
+
 			$this->_ci_cached_vars = array_merge($this->_ci_cached_vars, $_ci_vars);
 		}
 		extract($this->_ci_cached_vars);
@@ -1175,10 +1183,7 @@ class CI_Loader {
 				}
 				else
 				{
-					// Modified by IvanTcholakov, 12-APR-2015.
-					//log_message('debug', APPPATH.'libraries/'.$file_path.$subclass.'.php exists, but does not declare '.$subclass);
 					log_message('debug', $path.' exists, but does not declare '.$subclass);
-					//
 				}
 			}
 		}
