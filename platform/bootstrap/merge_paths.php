@@ -7,6 +7,11 @@ if (!function_exists('merge_paths')) {
 
     function merge_paths($path1, $path2) {
 
+        // Added by Ivan Tcholakov, 13-MAR-2016.
+        $path1 = str_replace('\\', '/', $path1);
+        $path2 = str_replace('\\', '/', $path2);
+        //
+
         $p1 = explode('/', trim($path1,' /'));
         $p2 = explode('/', trim($path2,' /'));
 
