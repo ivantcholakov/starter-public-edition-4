@@ -29,7 +29,20 @@
 
 {{ head_end() }}
 
-{{ body_begin({'id': 'page-top'}) }}
+{% set body_attr = {'id': 'page-top'} %}
+{% if template.module is not empty %}
+    {% set body_attr = html_attr_add_class(body_attr, template.module ~ '_module') %}
+{% endif %}
+{% if template.controller is not empty %}
+    {% set body_attr = html_attr_add_class(body_attr, template.controller) %}
+{% endif %}
+{% if template.method is not empty %}
+    {% set body_attr = html_attr_add_class(body_attr, template.method ~ '_method') %}
+{% endif %}
+{% if id is not empty %}
+    {% set body_attr = html_attr_add_class(body_attr, 'item_' ~ id) %}
+{% endif %}
+{{ body_begin(body_attr) }}
 
 
     <!-- Wrap all page content here -->
