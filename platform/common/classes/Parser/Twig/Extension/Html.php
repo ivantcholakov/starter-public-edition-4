@@ -14,4 +14,17 @@ class Parser_Twig_Extension_Html {
         return $ci->security->xss_clean($value);
     }
 
+    public static function html_attr_functions() {
+
+        $args = func_get_args();
+
+        if (count($args) < 1) {
+            return null;
+        }
+
+        $name = array_shift($args);
+
+        return call_user_func_array('html_attr_'.$name, $args);
+    }
+
 }
