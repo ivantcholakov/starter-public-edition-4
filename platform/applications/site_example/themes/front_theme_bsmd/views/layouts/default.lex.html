@@ -36,6 +36,7 @@
 {{ if template:module != '' }}{{ helper:set name="body_attr" value="[[ html:attr_add_class attributes='[[ body_attr ]]' class='[[template:module]]_module' ]]" }}{{ endif }}
 {{ if template:controller != '' }}{{ helper:set name="body_attr" value="[[ html:attr_add_class attributes='[[ body_attr ]]' class='[[template:controller]]' ]]" }}{{ endif }}
 {{ if template:method != '' }}{{ helper:set name="body_attr" value="[[ html:attr_add_class attributes='[[ body_attr ]]' class='[[template:method]]_method' ]]" }}{{ endif }}
+{{ if id != '' }}{{ helper:set name="body_attr" value="[[ html:attr_add_class attributes='[[ body_attr ]]' class='item_[[id]]' ]]" }}{{ endif }}
 {{ template:html_body_begin attributes="[[ helper:get name='body_attr']]" }}
 
     <!-- Wrap all page content here -->
