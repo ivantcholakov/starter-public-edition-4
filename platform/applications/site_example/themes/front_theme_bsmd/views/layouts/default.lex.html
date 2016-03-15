@@ -32,7 +32,11 @@
 {{ template:partial name="head" }}
 
 {{ template:html_head_end }}
-{{ template:html_body_begin attributes='id="page-top"' }}
+{{ helper:set name="body_attr" value='id="page-top"' }}
+{{ if template:module != '' }}{{ helper:set name="body_attr" value="[[ html:attr_add_class attributes='[[ body_attr ]]' class='[[template:module]]_module' ]]" }}{{ endif }}
+{{ if template:controller != '' }}{{ helper:set name="body_attr" value="[[ html:attr_add_class attributes='[[ body_attr ]]' class='[[template:controller]]' ]]" }}{{ endif }}
+{{ if template:method != '' }}{{ helper:set name="body_attr" value="[[ html:attr_add_class attributes='[[ body_attr ]]' class='[[template:method]]_method' ]]" }}{{ endif }}
+{{ template:html_body_begin attributes="[[ helper:get name='body_attr']]" }}
 
     <!-- Wrap all page content here -->
     <div id="wrap">

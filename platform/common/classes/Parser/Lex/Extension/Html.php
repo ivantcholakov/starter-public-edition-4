@@ -12,6 +12,21 @@ class Parser_Lex_Extension_Html extends Parser_Lex_Extension {
         parent::__construct();
     }
 
+    // html_*() functions: html_attr(), html_attr_has(), etc.
+    public function __call($name, $arguments) {
+
+        $name = 'html_'.$name;
+
+        if (function_exists($name)) {
+
+            $attributes = $this->get_attributes();
+
+            return call_user_func_array($name, $attributes);
+        }
+
+        return $this->_function_not_found($name);
+    }
+
     public function escape() {
 
         return html_escape($this->get_attribute(0, $this->get_content()));
