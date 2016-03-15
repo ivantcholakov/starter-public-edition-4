@@ -276,6 +276,12 @@ class Template
 
         $template['partials'] = array();
 
+        // Added by Ivan Tcholakov, 15-MAR-2016.
+        $template['module'] = $this->_module;
+        $template['controller'] = $this->_controller;
+        $template['method'] = $this->_method;
+        //
+
         // Load this into our cached vars so plugins
         // can use it.
         $this->_ci->load->vars(array('template' => $template));
