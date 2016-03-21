@@ -130,7 +130,6 @@ if (!function_exists('set_email_settings')) {
 
         $ci->load
             ->library('settings')
-            ->library('password')
         ;
 
         if (!is_array($config)) {
@@ -253,7 +252,6 @@ if (!function_exists('get_email_settings')) {
 
         $ci->load
             ->library('settings')
-            ->library('password')
         ;
 
         // Read values from the configuration file first.
