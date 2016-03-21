@@ -2,14 +2,14 @@
 
 /**
  * CodeIgniter compatible email-library powered by PHPMailer.
- * Version: 1.2.0
+ * Version: 1.2.1
  * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2016.
  * @license The MIT License (MIT), http://opensource.org/licenses/MIT
  * @link https://github.com/ivantcholakov/codeigniter-phpmailer
  *
  * This library is intended to be compatible with CI 2.x and CI 3.x.
  *
- * Tested on CodeIgniter 3.0.5+ (March 20, 2016) and
+ * Tested on CodeIgniter 3.0.6 (March 21, 2016) and
  * PHPMailer Version 5.2.14+ (March 20, 2016).
  */
 
@@ -1056,8 +1056,13 @@ class Email extends CI_Email {
 
         $this->properties['dkim_private'] = $value;
 
+        // Parse the provided path seek for constant and translate it.
+        // For example the path to the private key could be set as follows:
+        // {APPPATH}config/rsa.private
+        $value_parsed = str_replace(array_keys(self::_get_file_name_variables()), array_values(self::_get_file_name_variables()), $value);
+
         if ($this->mailer_engine == 'phpmailer') {
-            $this->phpmailer->DKIM_private = $value;
+            $this->phpmailer->DKIM_private = $value_parsed;
         }
 
         return $this;
@@ -1271,6 +1276,26 @@ class Email extends CI_Email {
                 $result[] = trim($match['1']);
             } else {
                 $result[] = '';
+            }
+        }
+
+        return $result;
+    }
+
+    protected static function _get_file_name_variables() {
+
+        static $result = null;
+
+        if ($result === null) {
+
+            $result = array('{APPPATH}' => APPPATH);
+
+            if (defined('COMMONPATH')) {
+                $result['{COMMONPATH}'] = COMMONPATH;
+            }
+
+            if (defined('PLATFORMPATH')) {
+                $result['{PLATFORMPATH}'] = PLATFORMPATH;
             }
         }
 
