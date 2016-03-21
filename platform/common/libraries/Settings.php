@@ -193,6 +193,10 @@ class Settings {
 
         $this->settings[$key] = $this->detect_setting_type($value);
 
+        if (!(is_null($value) || is_scalar($value))) {
+            $value = serialize($value);
+        }
+
         if ($encrypt) {
 
             $this->encrypted_settings[$key] = true;
@@ -307,6 +311,10 @@ class Settings {
 
                 if ($encrypted) {
                     $this->encrypted_settings[$name] = true;
+                }
+
+                if (is_serialized($value, $unserialized)) {
+                    $value = $unserialized;
                 }
 
                 $this->settings[$name] = $this->detect_setting_type($value);
