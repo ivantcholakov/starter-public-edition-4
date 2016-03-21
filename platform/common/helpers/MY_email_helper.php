@@ -223,7 +223,7 @@ if (!function_exists('set_email_settings')) {
         //----------------------------------------------------------------------
 
         if (array_key_exists('smtp_auto_tls', $config)) {
-            $ci->settings->set('smtp_auto_tls', (int) empty($config['smtp_auto_tls']) ? 0 : 1);
+            $ci->settings->set('email_smtp_auto_tls', (int) empty($config['smtp_auto_tls']) ? 0 : 1);
         }
 
         if (array_key_exists('smtp_conn_options', $config)) {
@@ -234,27 +234,27 @@ if (!function_exists('set_email_settings')) {
                 $config['smtp_conn_options'] = array();
             }
 
-            $ci->settings->set('smtp_conn_options', $config['smtp_conn_options']);
+            $ci->settings->set('email_smtp_conn_options', $config['smtp_conn_options']);
         }
 
         if (array_key_exists('dkim_domain', $config)) {
-            $ci->settings->set('dkim_domain', (string) $config['dkim_domain']);
+            $ci->settings->set('email_dkim_domain', (string) $config['dkim_domain']);
         }
 
         if (array_key_exists('dkim_private', $config)) {
-            $ci->settings->set('dkim_private', (string) $config['dkim_private']);
+            $ci->settings->set('email_dkim_private', (string) $config['dkim_private']);
         }
 
         if (array_key_exists('dkim_selector', $config)) {
-            $ci->settings->set('dkim_selector', (string) $config['dkim_selector']);
+            $ci->settings->set('email_dkim_selector', (string) $config['dkim_selector']);
         }
 
         if (array_key_exists('dkim_passphrase', $config)) {
-            $ci->settings->set('dkim_passphrase', (string) $config['dkim_passphrase']);
+            $ci->settings->set('email_dkim_passphrase', (string) $config['dkim_passphrase']);
         }
 
         if (array_key_exists('dkim_identity', $config)) {
-            $ci->settings->set('dkim_identity', (string) $config['dkim_identity']);
+            $ci->settings->set('email_dkim_identity', (string) $config['dkim_identity']);
         }
 
         //----------------------------------------------------------------------
@@ -368,13 +368,13 @@ if (!function_exists('get_email_settings')) {
             'email_bcc_batch_size',
             'email_encoding',
 
-            'smtp_auto_tls',
-            'smtp_conn_options',
-            'dkim_domain',
-            'dkim_private',
-            'dkim_selector',
-            'dkim_passphrase',
-            'dkim_identity',
+            'email_smtp_auto_tls',
+            'email_smtp_conn_options',
+            'email_dkim_domain',
+            'email_dkim_private',
+            'email_dkim_selector',
+            'email_dkim_passphrase',
+            'email_dkim_identity',
 
             'mailer_enabled',
             'site_email',
@@ -404,18 +404,18 @@ if (!function_exists('get_email_settings')) {
         $config['bcc_batch_size'] = isset($settings['email_bcc_batch_size']) ? (int) $settings['email_bcc_batch_size'] : $config['bcc_batch_size'];
         $config['encoding'] = isset($settings['email_encoding']) ? (int) $settings['email_encoding'] : $config['encoding'];
 
-        $config['smtp_auto_tls'] = isset($settings['smtp_auto_tls']) ? !empty($settings['smtp_auto_tls']) : $config['smtp_auto_tls'];
-        $config['smtp_conn_options'] = isset($settings['smtp_conn_options']) ? $settings['smtp_conn_options'] : $config['smtp_conn_options'];
+        $config['smtp_auto_tls'] = isset($settings['email_smtp_auto_tls']) ? !empty($settings['email_smtp_auto_tls']) : $config['smtp_auto_tls'];
+        $config['smtp_conn_options'] = isset($settings['email_smtp_conn_options']) ? $settings['email_smtp_conn_options'] : $config['smtp_conn_options'];
 
         if (empty($config['smtp_conn_options'])) {
             $config['smtp_conn_options'] = array();
         }
 
-        $config['dkim_domain'] = isset($settings['dkim_domain']) ? (string) $settings['dkim_domain'] : $config['dkim_domain'];
-        $config['dkim_private'] = isset($settings['dkim_private']) ? (string) $settings['dkim_private'] : $config['dkim_private'];
-        $config['dkim_selector'] = isset($settings['dkim_selector']) ? (string) $settings['dkim_selector'] : $config['dkim_selector'];
-        $config['dkim_passphrase'] = isset($settings['dkim_passphrase']) ? (string) $settings['dkim_passphrase'] : $config['dkim_passphrase'];
-        $config['dkim_identity'] = isset($settings['dkim_identity']) ? (string) $settings['dkim_identity'] : $config['dkim_identity'];
+        $config['dkim_domain'] = isset($settings['email_dkim_domain']) ? (string) $settings['email_dkim_domain'] : $config['dkim_domain'];
+        $config['dkim_private'] = isset($settings['email_dkim_private']) ? (string) $settings['email_dkim_private'] : $config['dkim_private'];
+        $config['dkim_selector'] = isset($settings['email_dkim_selector']) ? (string) $settings['email_dkim_selector'] : $config['dkim_selector'];
+        $config['dkim_passphrase'] = isset($settings['email_dkim_passphrase']) ? (string) $settings['email_dkim_passphrase'] : $config['dkim_passphrase'];
+        $config['dkim_identity'] = isset($settings['email_dkim_identity']) ? (string) $settings['email_dkim_identity'] : $config['dkim_identity'];
 
         $config['mailer_enabled'] = isset($settings['mailer_enabled']) ? !empty($settings['mailer_enabled']) : $config['mailer_enabled'];
         $config['site_email'] = isset($settings['site_email']) ? (string) $settings['site_email'] : $config['site_email'];
