@@ -11,7 +11,7 @@
  * CREATE TABLE IF NOT EXISTS `settings` (
  *   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
  *     `name` varchar(255) NOT NULL,
- *   `value` varchar(511) DEFAULT NULL,
+ *   `value` text DEFAULT NULL,
  *   PRIMARY KEY (`id`),
  *   KEY `name` (`name`)
  * ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
