@@ -1,5 +1,44 @@
 <?php
 
+if (!function_exists('get_object_vars_recursive')) {
+
+    // Added by Ivan Tcholakov, 21-MAR-2016.
+    function get_object_vars_recursive($data) {
+
+        if (is_object($data)) {
+            $data = get_object_vars($data);
+        }
+
+        if (is_array($data)) {
+
+            array_walk($data, '_get_object_vars_recursive_callback');
+            return $data;
+        }
+
+        return array();
+    }
+
+}
+
+if (!function_exists('_get_object_vars_recursive_callback')) {
+
+    // Added by Ivan Tcholakov, 21-MAR-2016.
+    function _get_object_vars_recursive_callback(& $data) {
+
+        if (is_object($data)) {
+            $data = get_object_vars($data);
+        }
+
+        if (is_array($data)) {
+            array_walk($data, __FUNCTION__);
+        }
+
+        return $data;
+    }
+
+}
+
+
 // The following functions have been borrowed from Laravel framework.
 // @link http://laravel.com/
 
@@ -105,5 +144,5 @@ if (!function_exists('array_intersect_compare')) {
 
         return false;
     }
-    
+
 }
