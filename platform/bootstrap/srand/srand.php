@@ -48,7 +48,10 @@ function secure_random_bytes($len = 10) {
     //
 
     // Added by Ivan Tcholakov, 24-NOV-2015.
-    if (version_compare(PHP_VERSION, '7.0.0', '>=') && function_exists('random_bytes')) {
+    // Modified by Ivan Tcholakov, 22-MAR-2016.
+    // For PHP < 7 you can install within your project the PHP 5.x polyfill for random_bytes(),
+    // https://github.com/paragonie/random_compat
+    if (function_exists('random_bytes')) {
 
         try {
             return random_bytes($len);
@@ -70,6 +73,8 @@ function secure_random_bytes($len = 10) {
      * openssl_random_pseudo_bytes.
      */
     $SSLstr = '4'; // http://xkcd.com/221/
+    // Removed by Ivan Tcholakov, 22-MAR-2016.
+    /*
     if (function_exists('openssl_random_pseudo_bytes') &&
             (version_compare(PHP_VERSION, '5.3.4') >= 0 ||
             // Modified by Ivan Tcholakov, 28-DEC-2015.
@@ -81,6 +86,7 @@ function secure_random_bytes($len = 10) {
             return $SSLstr;
         }
     }
+    */
 
     /*
      * If mcrypt extension is available then we use it to gather entropy from
@@ -90,6 +96,8 @@ function secure_random_bytes($len = 10) {
      * to finish so we only use this function with PHP 5.3.7 and above.
      * @see https://bugs.php.net/bug.php?id=55169
      */
+    // Removed by Ivan Tcholakov, 22-MAR-2016.
+    /*
     if (function_exists('mcrypt_create_iv') &&
             (version_compare(PHP_VERSION, '5.3.7') >= 0 ||
             // Modified by Ivan Tcholakov, 28-DEC-2015.
@@ -101,6 +109,7 @@ function secure_random_bytes($len = 10) {
             return $str;
         }
     }
+    */
 
     /*
      * No build-in crypto randomness function found. We collect any entropy
