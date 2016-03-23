@@ -92,6 +92,21 @@ class Welcome_controller extends Base_Controller {
         $diagnostics[] = '\'openssl\' installed - '.(extension_loaded('openssl') ? $yes : $no);
         $diagnostics[] = 'or \'mcrypt\' installed - '.(defined('MCRYPT_DEV_URANDOM') ? $yes : $no);
 
+        $random_bytes = $no;
+
+        if (function_exists('random_bytes')) {
+
+            try {
+                $test = random_bytes(1);
+                $random_bytes = $yes;
+            }
+            catch (Exception $e) {
+                $random_bytes = '<span style="color: red;">'.$e->getMessage().'</span>';
+            }
+        }
+
+        $diagnostics[] = 'random_bytes() - '.$random_bytes;
+
         $diagnostics = implode('<br />', $diagnostics);
 
         $this->template
