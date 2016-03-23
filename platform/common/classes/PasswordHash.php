@@ -50,6 +50,8 @@ class PasswordHash {
 
     function get_random_bytes($count)
     {
+        // Modified by Ivan Tcholakov, 23-MAR-2016.
+        /*
         $output = '';
         if (@is_readable('/dev/urandom') &&
             ($fh = @fopen('/dev/urandom', 'rb'))) {
@@ -69,6 +71,19 @@ class PasswordHash {
         }
 
         return $output;
+        */
+
+        if (!(ctype_digit(@ (string) $count) && ($count = (int) $count) > 0)) {
+            throw new InvalidArgumentException('PasswordHash::get_random_bytes(): A positive integer value as parameter is expected.');
+        }
+
+        $result = get_instance()->security->get_random_bytes($count);
+
+        if ($result === false) {
+            throw new Exception('PasswordHash::get_random_bytes(): There is no suitable CSPRNG installed on your system.');
+        }
+
+        return $result;
     }
 
     function encode64($input, $count)

@@ -210,18 +210,13 @@ class Restserver_api_key_controller extends REST_Controller {
         do
         {
             // Generate a random salt
-            // Modified by Ivan Tcholakov, 13-SEP-2015.
-            //$salt = base_convert(bin2hex($this->security->get_random_bytes(64)), 16, 36);
-            $salt = base_convert(bin2hex(secure_random_bytes(64)), 16, 36);
-            //
+            $salt = base_convert(bin2hex($this->security->get_random_bytes(64)), 16, 36);
 
-            // Removed by Ivan Tcholakov, 13-SEP-2015.
-            //// If an error occurred, then fall back to the previous method
-            //if ($salt === FALSE)
-            //{
-            //    $salt = hash('sha256', time() . mt_rand());
-            //}
-            //
+            // If an error occurred, then fall back to the previous method
+            if ($salt === FALSE)
+            {
+                $salt = hash('sha256', time() . mt_rand());
+            }
 
             $new_key = substr($salt, 0, config_item('rest_key_length'));
         }

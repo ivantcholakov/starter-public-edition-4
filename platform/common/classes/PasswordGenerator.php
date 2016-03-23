@@ -137,10 +137,12 @@ class PasswordGenerator
             return $ints;
         }
 
-        // Modified by Ivan Tcholakov, 21-DEC-2014.
-        // The purpose of this change is making this method tollerant to different system configurations.
+        // Modified by Ivan Tcholakov, 23-MAR-2016.
         //$rawBinary = mcrypt_create_iv($numInts * PHP_INT_SIZE, MCRYPT_DEV_URANDOM);
-        $rawBinary = secure_random_bytes($numInts * PHP_INT_SIZE);
+        $rawBinary = get_instance()->security->get_random_bytes($numInts * PHP_INT_SIZE);
+        if ($rawBinary === false) {
+            throw new Exception('PasswordGenerator::getRandomInts(): There is no suitable CSPRNG installed on your system.');
+        }
         //
 
         for($i = 0; $i < $numInts; ++$i)
