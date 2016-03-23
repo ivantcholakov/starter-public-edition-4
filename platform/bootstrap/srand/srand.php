@@ -3,7 +3,9 @@
 // See https://github.com/GeorgeArgyros/Secure-random-bytes-in-PHP
 // Reference: http://framework.zend.com/security/advisory/ZF2013-02
 
-/*
+/**
+ * @deprecated by Ivan Tcholakov, 23-MAR-2016. Use random_bytes() instead.
+ *
  * Author:
  * George Argyros <argyros.george@gmail.com>
  *
