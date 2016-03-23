@@ -855,6 +855,7 @@ fieldset[disabled] .form-group.is-focused .checkbox label {
   width: 20px;
   height: 20px;
   border: 2px solid rgba(0,0,0, .54);
+  border-radius: 2px;
   overflow: hidden;
   z-index: 1;
 }
@@ -874,7 +875,7 @@ fieldset[disabled] .form-group.is-focused .checkbox label {
         0 0 0 0,
         0 0 0 0,
         0 0 0 0 inset;
-  animation: checkbox-off 0.3s forwards;
+  animation: checkbox-off;
 }
 .checkbox input[type=checkbox]:focus + .checkbox-material .check:after {
   opacity: 0.2;
@@ -889,13 +890,13 @@ fieldset[disabled] .form-group.is-focused .checkbox label {
   animation: checkbox-on 0.3s forwards;
 }
 .checkbox input[type=checkbox]:checked + .checkbox-material:before {
-  animation: rippleOn 500ms;
+  animation: rippleOn;
 }
 .checkbox input[type=checkbox]:checked + .checkbox-material .check:after {
   animation: rippleOn 500ms forwards;
 }
 .checkbox input[type=checkbox]:not(:checked) + .checkbox-material:before {
-  animation: rippleOff 500ms;
+  animation: rippleOff;
 }
 .checkbox input[type=checkbox]:not(:checked) + .checkbox-material .check:after {
   animation: rippleOff 500ms forwards;
@@ -910,6 +911,15 @@ fieldset[disabled] .checkbox input[type=checkbox],
 .checkbox input[type=checkbox][disabled] + .checkbox-material .check:after {
   background-color: rgba(0,0,0, 0.87);
   transform: rotate(-45deg);
+}
+.is-focused .checkbox .checkbox-material .check:before {
+  animation: checkbox-off 0.3s forwards;
+}
+.is-focused .checkbox input[type=checkbox]:checked + .checkbox-material:before {
+  animation: rippleOn 500ms;
+}
+.is-focused .checkbox input[type=checkbox]:not(:checked) + .checkbox-material:before {
+  animation: rippleOff 500ms;
 }
 @keyframes checkbox-on {
   0% {
@@ -1119,7 +1129,7 @@ fieldset[disabled] .form-group.is-focused .radio label {
   animation: rippleOff 500ms;
 }
 .radio label input[type=radio]:checked ~ .check:after {
-  animation: rippleOn 500ms;
+  animation: rippleOn;
 }
 .radio input[type=radio] {
   opacity: 0;
@@ -1159,6 +1169,9 @@ fieldset[disabled] .form-group.is-focused .radio label {
 }
 .theme-dark .radio input[type=radio][disabled] ~ .circle {
   border-color: #ffffff;
+}
+.is-focused .radio input[type=radio]:checked ~ .check:after {
+  animation: rippleOn 500ms;
 }
 @keyframes rippleOn {
   0% {
@@ -2311,7 +2324,7 @@ fieldset[disabled] .navbar .btn-link:focus {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 .dropdown-menu .divider {
-  background-color: rgba(229, 229, 229, 0.12);
+  background-color: rgba(0, 0, 0, 0.12);
 }
 .dropdown-menu li {
   overflow: hidden;
@@ -2531,13 +2544,15 @@ fieldset[disabled] .navbar .btn-link:focus {
   height: 10%;
   padding: 18px;
 }
-.card .card-footer button {
+.card .card-footer button,
+.card .card-footer a {
   margin: 0 !important;
   position: relative;
   bottom: 25px;
   width: auto;
 }
-.card .card-footer button:first-child {
+.card .card-footer button:first-child,
+.card .card-footer a:first-child {
   left: -15px;
 }
 .modal-content {
@@ -2911,15 +2926,15 @@ hr.on-light {
 .selectize-control.multi .selectize-input.input-active:after {
   right: 5px;
   position: absolute;
-  font-size: 7px;
-  content: "\e894";
-  font-family: "Material-Design-Icons";
+  font-size: 25px;
+  content: "\e5c5";
+  font-family: 'Material Icons';
   speak: none;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
-  line-height: 4;
+  line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

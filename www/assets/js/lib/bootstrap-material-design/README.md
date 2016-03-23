@@ -6,19 +6,33 @@
 
 [![banner](demo/imgs/banner.jpg)](#)
 
-This Bootstrap theme is an easy way to use the new [Material Design guidelines by Google](http://www.google.com/design/spec/material-design/introduction.html) in your Bootstrap 3 based application.
+Material Design for Bootstrap is a Bootstrap V3 compatible theme; it is an easy way to use the new [Material Design guidelines by Google](http://www.google.com/design/spec/material-design/introduction.html) in your Bootstrap 3 based application.
 Just include the theme, after the Bootstrap CSS and include the JavaScript at the end of your document (just before the `</body>` tag), and everything will be converted to Material Design (Paper) style.
 
-**NOTE**: This theme is still in development, it could be used on production websites but I can't guarantee compatibility with previous versions.
+**NOTE**: This V3 compatible theme is still in development, it could be used on production websites but I can't guarantee compatibility with previous versions.
 
 Check out [the demo at this link](http://fezvrasta.github.io/bootstrap-material-design/).
 
+## V4 Development
+The next major Bootstrap V4 compatible release of bootstrap-material-design is [in development](https://github.com/FezVrasta/bootstrap-material-design/tree/v4-dev).  Check out the [documentation](http://rosskevin.github.io/bootstrap-material-design/migration/) (temporary site url) for migration, getting started, development, and examples.  It has some requested implementations and more to come over V3.  There are a lot of great changes in V4, but be warned, both Bootstrap V4 and our own implementation is changing daily.  If you want to get involved, please do so by submitting pull requests.  Before undertaking any major PR effort, please check the [milestone](https://github.com/FezVrasta/bootstrap-material-design/milestones/V4) for an existing issue.  If there isn't one, please file a new issue and `cc: @rosskevin` so we can discuss and assign the work so effort is not duplicated.  Thank you!
+
+Please prefix any issue or pull request title with `V4`.
+
+Major differences:
+- Customized bootstrap build with variables instead of being an addon theme
+- ES6 Javascript classes
+- SCSS
+- New scalable documentation framework that mirrors Bootstrap's own
+- Documentation includes Bootstrap reference pages to display default rendering
+- New build/documentation process (also mimics Bootstrap's project setup)
+
 ## How to install
 
-You may install this theme using Bower or Meteor:
+You may install this theme using NPM, Bower or Meteor:
 
+- NPM : `npm install bootstrap-material-design`
 - Bower : `bower install bootstrap-material-design`
-- Meteor: `meteor add fezvrasta:bootstrap-material-design`
+- Meteor : **Not supported** : Needs new package and maintainer - see #930
 
 If you prefer, you can include this framework in your project using our official CDN:
 
@@ -31,15 +45,15 @@ If you prefer, you can include this framework in your project using our official
 Add the necessary links to your `<head>` element for fonts and stylsheets:
 ```html
   <!-- Material Design fonts -->
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
 
   <!-- Bootstrap -->
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
   <!-- Bootstrap Material Design -->
-  <link href="dist/css/bootstrap-material-design.css" rel="stylesheet">
-  <link href="dist/css/ripples.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="dist/css/bootstrap-material-design.css">
+  <link rel="stylesheet" type="text/css" href="dist/css/ripples.min.css">
 ```
 
 ### Bower
@@ -48,7 +62,7 @@ Many use bower including compiling source for this project.  Here are a couple o
 
   1. When using SASS, `@import` directives cannot be interpolated.  Given the variety of configurations, the typical `bower_components` directory is occasionally in a different location.  Given the options, a `loadPath` was [added to the SASS compiler](https://github.com/FezVrasta/bootstrap-material-design/pull/762/files)
      so that bootstrap files could be loaded without specifying the path to the `bower_components` directory.  You may similarly need to add a load path to your compiler.  It is still debatable if this is for the greater good, but seems like the only
-     way to accomodate multiple configurations.
+     way to accommodate multiple configurations.
   2. This project will install both `bootstrap` and `bootstrap-sass` in `bower_components`.  Each is used for the LESS and SASS version compilation respectively.   If you are only using one, feel free to [ignore the other bower dependency](http://stackoverflow.com/a/27791606/2363935).
 
 ## Support and Contributions

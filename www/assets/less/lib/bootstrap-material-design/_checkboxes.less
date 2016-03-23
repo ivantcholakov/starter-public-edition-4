@@ -47,7 +47,8 @@
       display: inline-block;
       width: @mdb-checkbox-size;
       height: @mdb-checkbox-size;
-      border: @border-radius-base solid @mdb-checkbox-border-color;
+      border: @mdb-checkbox-border-size solid @mdb-checkbox-border-color;
+      border-radius: @border-radius-base;
       overflow: hidden;
       z-index: 1;
     }
@@ -68,7 +69,7 @@
         0 0 0 0,
         0 0 0 0,
         0 0 0 0 inset;
-      animation: checkbox-off @mdb-checkbox-animation-check forwards;
+      animation: checkbox-off;
     }
   }
 
@@ -98,7 +99,7 @@
       }
 
       & + .checkbox-material:before {
-        animation: rippleOn @mdb-checkbox-animation-ripple;
+        animation: rippleOn;
       }
 
       & + .checkbox-material .check:after {
@@ -109,12 +110,11 @@
 
     &:not(:checked) {
       & + .checkbox-material:before {
-        animation: rippleOff @mdb-checkbox-animation-ripple;
+        animation: rippleOff;
       }
 
       & + .checkbox-material .check:after {
         animation: rippleOff @mdb-checkbox-animation-ripple forwards; // Ripple effect on uncheck
-
       }
     }
   }
@@ -130,6 +130,29 @@
   input[type=checkbox][disabled] + .checkbox-material .check:after {
     background-color: @mdb-text-color-primary;
     transform: rotate(-45deg);
+  }
+}
+
+// Prevent checkbox animation and ripple effect on page load
+.is-focused {
+  .checkbox {
+    .checkbox-material {
+      .check:before {
+        animation: checkbox-off @mdb-checkbox-animation-check forwards;
+      }
+    }
+    input[type=checkbox] {
+      &:checked {
+        & + .checkbox-material:before {
+          animation: rippleOn @mdb-checkbox-animation-ripple;
+        }
+      }
+      &:not(:checked) {
+        & + .checkbox-material:before {
+          animation: rippleOff @mdb-checkbox-animation-ripple;
+        }
+      }
+    }
   }
 }
 
@@ -162,6 +185,7 @@
       20px -12px 0 11px;
   }
 }
+
 @keyframes checkbox-off {
   0% {
     box-shadow:
@@ -173,7 +197,6 @@
       20px -12px 0 11px,
       0 0 0 0 inset;
   }
-
   25% {
     box-shadow:
       0 0 0 10px,
@@ -230,6 +253,7 @@
       0px 0 0 0 inset;
   }
 }
+
 @keyframes rippleOn {
   0% {
     opacity: 0;
@@ -241,6 +265,7 @@
     opacity: 0;
   }
 }
+
 @keyframes rippleOff {
   0% {
     opacity: 0;
