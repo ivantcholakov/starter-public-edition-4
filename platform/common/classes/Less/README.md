@@ -1,4 +1,4 @@
-[Less.php](http://lessphp.gpeasy.com)
+[Less.php](http://lessphp.typesettercms.com)
 ========
 
 This is a PHP port of the official LESS processor <http://lesscss.org>. [![Build Status](https://travis-ci.org/oyejorge/less.php.png?branch=master)](https://travis-ci.org/oyejorge/less.php)

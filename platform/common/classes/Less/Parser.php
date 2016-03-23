@@ -109,13 +109,14 @@ class Less_Parser{
 		self::$contentsMap = array();
 
 		$this->env = new Less_Environment($options);
-		$this->env->Init();
 
 		//set new options
 		if( is_array($options) ){
 			$this->SetOptions(Less_Parser::$default_options);
 			$this->SetOptions($options);
 		}
+
+		$this->env->Init();
 	}
 
 	/**
@@ -800,7 +801,8 @@ class Less_Parser{
 	public function expectChar($tok, $msg = null ){
 		$result = $this->MatchChar($tok);
 		if( !$result ){
-			$this->Error( $msg ? "Expected '" . $tok . "' got '" . $this->input[$this->pos] . "'" : $msg );
+			$msg = $msg ? $msg : "Expected '" . $tok . "' got '" . $this->input[$this->pos] . "'";
+			$this->Error( $msg );
 		}else{
 			return $result;
 		}
@@ -938,7 +940,8 @@ class Less_Parser{
 			$e = true; // Escaped strings
 		}
 
-		if( $this->input[$j] != '"' && $this->input[$j] !== "'" ){
+		$char = $this->input[$j];
+		if( $char !== '"' && $char !== "'" ){
 			return;
 		}
 
@@ -946,15 +949,52 @@ class Less_Parser{
 			$this->MatchChar('~');
 		}
 
-                // Fix for #124: match escaped newlines
-                //$str = $this->MatchReg('/\\G"((?:[^"\\\\\r\n]|\\\\.)*)"|\'((?:[^\'\\\\\r\n]|\\\\.)*)\'/');
-		$str = $this->MatchReg('/\\G"((?:[^"\\\\\r\n]|\\\\.|\\\\\r\n|\\\\[\n\r\f])*)"|\'((?:[^\'\\\\\r\n]|\\\\.|\\\\\r\n|\\\\[\n\r\f])*)\'/');
 
-		if( $str ){
-			$result = $str[0][0] == '"' ? $str[1] : $str[2];
-			return $this->NewObj5('Less_Tree_Quoted',array($str[0], $result, $e, $index, $this->env->currentFileInfo) );
+		$matched = $this->MatchQuoted($char, $j+1);
+		if( $matched === false ){
+			return;
 		}
-		return;
+
+		$quoted = $char.$matched.$char;
+		return $this->NewObj5('Less_Tree_Quoted',array($quoted, $matched, $e, $index, $this->env->currentFileInfo) );
+	}
+
+
+	/**
+	 * When PCRE JIT is enabled in php, regular expressions don't work for matching quoted strings
+	 *
+	 *	$regex	= '/\\G\'((?:[^\'\\\\\r\n]|\\\\.|\\\\\r\n|\\\\[\n\r\f])*)\'/';
+	 *	$regex	= '/\\G"((?:[^"\\\\\r\n]|\\\\.|\\\\\r\n|\\\\[\n\r\f])*)"/';
+	 *
+	 */
+	private function MatchQuoted($quote_char, $i){
+
+		$matched = '';
+		while( $i < $this->input_len ){
+			$c = $this->input[$i];
+
+			//escaped character
+			if( $c === '\\' ){
+				$matched .= $c . $this->input[$i+1];
+				$i += 2;
+				continue;
+			}
+
+			if( $c === $quote_char ){
+				$this->pos = $i+1;
+				$this->skipWhitespace(0);
+				return $matched;
+			}
+
+			if( $c === "\r" || $c === "\n" ){
+				return false;
+			}
+
+			$i++;
+			$matched .= $c;
+		}
+
+		return false;
 	}
 
 
@@ -1131,7 +1171,7 @@ class Less_Parser{
 	}
 
 
-	// A variable entity useing the protective {} e.g. @{var}
+	// A variable entity using the protective {} e.g. @{var}
 	private function parseEntitiesVariableCurly() {
 		$index = $this->pos;
 
@@ -1568,7 +1608,7 @@ class Less_Parser{
 	//
 	// A Rule terminator. Note that we use `peek()` to check for '}',
 	// because the `block` rule will be expecting it, but we still need to make sure
-	// it's there, if ';' was ommitted.
+	// it's there, if ';' was omitted.
 	//
 	private function parseEnd(){
 		return $this->MatchChar(';') || $this->PeekChar('}');
