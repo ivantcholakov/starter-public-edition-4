@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed.');
  * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2016.
  * Code repository: @link https://github.com/ivantcholakov/gibberish-aes-php
  *
- * @version 1.3.0-dev
+ * @version 1.3.0
  *
  * @license The MIT License (MIT)
  * @link http://opensource.org/licenses/MIT
