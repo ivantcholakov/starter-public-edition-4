@@ -250,7 +250,7 @@ if (!function_exists('set_email_settings')) {
         }
 
         if (array_key_exists('dkim_passphrase', $config)) {
-            $ci->settings->set('email_dkim_passphrase', (string) $config['dkim_passphrase']);
+            $ci->settings->set('email_dkim_passphrase', (string) $config['dkim_passphrase'], true);
         }
 
         if (array_key_exists('dkim_identity', $config)) {
