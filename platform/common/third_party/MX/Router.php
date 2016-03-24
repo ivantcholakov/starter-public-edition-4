@@ -94,21 +94,6 @@ class MX_Router extends CI_Router
     public function locate($segments, $router_initialization = true) {
     //
 
-        // Resolving the language.
-        if ($router_initialization) {
-
-            if (!empty($segments) && $this->config->valid_language_uri_segment($segments[0])) {
-
-                $language = $this->config->language_by_uri_segment($segments[0]);
-                array_shift($segments);
-                $this->config->set_current_language($language);
-
-                if (empty($segments)) {
-                    $segments = array($this->default_controller, 'index');
-                }
-            }
-        }
-
         // Processing slugs, if there are any.
         if ($router_initialization) {
             $segments = $this->remap($segments, $router_initialization);
