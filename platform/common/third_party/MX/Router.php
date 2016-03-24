@@ -46,6 +46,9 @@ class MX_Router extends CI_Router
     // A public property for assisting proper calculation of $ci->uri->ruri_string();
     public $rdir = '';
 
+    // A public property that holds the detected valid lanuage segment within the current uri.
+    public $language_uri_segment = null;
+
     protected $module;
 
     public function fetch_module() {
@@ -498,7 +501,8 @@ class MX_Router extends CI_Router
 
             if ($this->config->valid_language_uri_segment($segments[0])) {
 
-                $this->config->set_current_language($this->config->language_by_uri_segment($segments[0]));
+                $this->language_uri_segment = $segments[0];
+                $this->config->set_current_language($this->config->language_by_uri_segment($this->language_uri_segment));
                 array_shift($segments);
 
                 // Added by Ivan Tcholakov, 11-JAN-2016.

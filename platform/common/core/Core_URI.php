@@ -21,4 +21,8 @@ class Core_URI extends CI_URI {
         return ltrim(load_class('Router', 'core')->rdir, '/').implode('/', $this->rsegments);
     }
 
+    public function language_segment()
+    {
+        return load_class('Router', 'core')->language_uri_segment;
+    }
 }
