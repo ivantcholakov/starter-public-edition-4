@@ -77,6 +77,7 @@
                     <a class="list-group-item" href="<?php echo site_url('playground/design-test'); ?>">Design Test</a>
                     <a class="list-group-item" href="<?php echo http_build_url(site_url('playground/lex-parser'), array('query' => http_build_query(array('q_1' => 'query_param_1', 'q_2' => 'query_param_2')))); ?>">Lex Parser Test</a>
                     <a class="list-group-item" href="<?php echo http_build_url(site_url('playground/twig-parser'), array('query' => http_build_query(array('q_1' => 'query_param_1', 'q_2' => 'query_param_2')))); ?>">Twig Parser Test</a>
+                    <a class="list-group-item" href="<?php echo site_url('playground/which-browser'); ?>">WhichBrowser Test</a>
 
                 <!--</div>-->
 
