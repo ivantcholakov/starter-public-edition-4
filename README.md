@@ -368,6 +368,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Lex, a lightweight template parser used by PyroCMS, https://github.com/pyrocms/lex
 * Twig, the flexible, fast, and secure template engine for PHP, http://twig.sensiolabs.org
 * PHP 5.x support for random_bytes() and random_int(), https://github.com/paragonie/random_compat
+* WhichBrowser/Parser, a useragent parser library for PHP, https://github.com/WhichBrowser/Parser
 
 The Playground
 --------------
