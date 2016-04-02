@@ -233,23 +233,29 @@ class Core_Lang_Model extends Core_Model {
 
             if ($result === null) {
 
-                // Try to find an existing value in some language.
-                $result = $this
-                    ->where($this->external_key_field, $id)
-                    ->order_by($this->primary_key, 'asc')
-                    ->value($field);
+                // Try to find the value in the site leading language.
+                $result = $this->lang($id, $field, $this->lang->leading(), false);
 
                 if ($result === null) {
 
-                    if ($fall_back_template === null) {
+                    // Try to find an existing value in some language.
+                    $result = $this
+                        ->where($this->external_key_field, $id)
+                        ->order_by($this->primary_key, 'asc')
+                        ->value($field);
 
-                        // Give up.
-                        $result = null;
+                    if ($result === null) {
 
-                    } else {
+                        if ($fall_back_template === null) {
 
-                        // Return value based on the given fallback template.
-                        $result = str_replace('{field}', $field, str_replace('{id}', $id, $fall_back_template));
+                            // Give up.
+                            $result = null;
+
+                        } else {
+
+                            // Return value based on the given fallback template.
+                            $result = str_replace('{field}', $field, str_replace('{id}', $id, $fall_back_template));
+                        }
                     }
                 }
             }

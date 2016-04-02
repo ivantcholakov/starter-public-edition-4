@@ -479,4 +479,188 @@ class Core_Lang extends MX_Lang {
         return $this->config->language_flag($language);
     }
 
+    //--------------------------------------------------------------------------
+
+    // Added by Ivan Tcholakov, 15-APR-2014.
+    public function all() {
+
+        get_instance()->load->model('languages');
+
+        return get_instance()->languages->all();
+    }
+
+    // Added by Ivan Tcholakov, 15-APR-2014.
+    public function all_keys() {
+
+        static $keys = null;
+
+        if (isset($keys)) {
+            return $keys;
+        }
+
+        get_instance()->load->model('languages');
+
+        $items = & get_instance()->languages->all();
+
+        $keys = array_keys($items);
+
+        return $keys;
+    }
+
+    // Added by Ivan Tcholakov, 16-APR-2014.
+    public function all_codes() {
+
+        static $codes = null;
+
+        if (isset($codes)) {
+            return $codes;
+        }
+
+        $codes = array();
+
+        foreach ($this->all_keys() as $key) {
+            $codes[] = $this->code($key);
+        }
+
+        return $codes;
+    }
+
+    // Added by Ivan Tcholakov, 16-APR-2014.
+    public function all_count() {
+
+        static $count = null;
+
+        if (isset($count)) {
+            return $count;
+        }
+
+        $count = count($this->all_keys());
+
+        return $count;
+    }
+
+    // Added by Ivan Tcholakov, 15-APR-2014.
+    public function active() {
+
+        get_instance()->load->model('languages');
+
+        return get_instance()->languages->active();
+    }
+
+    // Added by Ivan Tcholakov, 15-APR-2014.
+    public function active_keys() {
+
+        static $keys = null;
+
+        if (isset($keys)) {
+            return $keys;
+        }
+
+        get_instance()->load->model('languages');
+
+        $items = & get_instance()->languages->active();
+
+        $keys = array_keys($items);
+
+        return $keys;
+    }
+
+    // Added by Ivan Tcholakov, 16-APR-2014.
+    public function active_codes() {
+
+        static $codes = null;
+
+        if (isset($codes)) {
+            return $codes;
+        }
+
+        $codes = array();
+
+        foreach ($this->active_keys() as $key) {
+            $codes[] = $this->code($key);
+        }
+
+        return $codes;
+    }
+
+    // Added by Ivan Tcholakov, 01-MAY-2014.
+    public function active_codes_assoc() {
+
+        static $result = null;
+
+        if (isset($result)) {
+            return $result;
+        }
+
+        $result = array();
+
+        foreach ($this->active_keys() as $key) {
+            $result[$key] = $this->code($key);
+        }
+
+        return $result;
+    }
+
+    // Added by Ivan Tcholakov, 16-APR-2014.
+    public function active_count() {
+
+        static $count = null;
+
+        if (isset($count)) {
+            return $count;
+        }
+
+        $count = count($this->active_keys());
+
+        return $count;
+    }
+
+    // Added by Ivan Tcholakov, 15-APR-2014.
+    public function multi() {
+
+        static $result = null;
+
+        if (isset($result)) {
+            return $result;
+        }
+
+        $result = count($this->active_keys()) > 1;
+
+        return $result;
+    }
+
+    // Added by Ivan Tcholakov, 15-APR-2014.
+    public function leading() {
+
+        static $key = null;
+        static $checked = false;
+
+        if ($checked) {
+            return $key;
+        }
+
+        $checked = true;
+
+        get_instance()->load->model('languages');
+
+        $items = & get_instance()->languages->active();
+
+        foreach ($items as $language => $item) {
+
+            if (!empty($item['default'])) {
+
+                $key = $language;
+                break;
+            }
+        }
+
+        return $key;
+    }
+
+    // Added by Ivan Tcholakov, 26-APR-2014.
+    public function leading_code() {
+
+        return $this->code($this->leading());
+    }
+
 }
