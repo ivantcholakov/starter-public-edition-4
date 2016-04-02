@@ -1,4 +1,3 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
     <section id="error" class="container">
 
@@ -25,9 +24,9 @@
 
         </style>
 
-        <h1><?php echo lang('ui_error_404_title'); ?></h1>
+        <h1>{{ lang('ui_error_404_title') }}</h1>
         <p>
-            <?php echo $this->lang->line('ui_error_404_description',
+            {{ lang('ui_error_404_description',
 '
             <strong>
                 <script type="text/javascript">
@@ -36,25 +35,21 @@
                 //]]>
                 </script>
             </strong>
-'
-                ); ?>
+')|raw
+            }}
         </p>
 
-        <a class="btn btn-success" href="<?php echo site_url(); ?>"><i class="fa fa-home"></i> <?php echo lang('ui_go_to_homepage'); ?></a>
+        <a class="btn btn-success" href="{{ site_url() }}"><i class="fa fa-home"></i> {{ lang('ui_go_to_homepage') }}</a>
 
         <div id="google_search_form" class="form" style="display: none;"></div>
 
         <div id="google_search_form_hidden" style="display: none;">
 
-<?php
-
-// See http://support.google.com/webmasters/bin/answer.py?hl=en&answer=136085
-
-?>
+{# See http://support.google.com/webmasters/bin/answer.py?hl=en&answer=136085 #}
 
             <script type="text/javascript">
             //<![CDATA[
-                var GOOG_FIXURL_LANG = '<?php echo get_instance()->lang->code(); ?>';
+                var GOOG_FIXURL_LANG = '{{ lang_code() }}';
                 var GOOG_FIXURL_SITE = BASE_URL;
             //]]>
             </script>
@@ -92,4 +87,4 @@
         //]]>
         </script>
 
-    </section><!--/#error-->
+    </section>

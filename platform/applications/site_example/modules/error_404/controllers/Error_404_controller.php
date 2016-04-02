@@ -27,6 +27,7 @@ class Error_404_controller extends Base_Controller {
         }
 
         $error_string = $this->lang->line('ui_error_404');
+        $this->registry->set('is_error', true);
 
         $this->template
             ->title($error_string)
