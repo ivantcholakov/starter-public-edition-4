@@ -135,7 +135,7 @@ class Submit_controller extends Core_Controller {
 
                 } elseif (validation_errors_array()) {
 
-                    $messages = validation_errors_array();
+                    $messages = $this->form_validation->error_array();
 
                 } else {
 

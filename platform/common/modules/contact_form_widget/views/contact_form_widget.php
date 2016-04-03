@@ -119,7 +119,7 @@ if ($this->settings->get('mailer_enabled')) {
                             </div>
 
                             <div class="form-group">
-                                <button id="contact_form_submit" name="contact_form_submit" type="submit" class="btn btn-primary btn-lg">
+                                <button id="contact_form_submit" name="contact_form_submit" type="submit" class="btn btn-primary btn-block">
                                     <i id="contact_form_submit_icon" class="fa fa-check fa-fw"></i>
                                     <i id="contact_form_error_flag" class="fa fa-exclamation-triangle fa-fw" style="display: none;"></i>
                                     <i id="contact_form_processing" class="fa fa-spinner fa-spin fa-fw" style="display: none;"></i>
