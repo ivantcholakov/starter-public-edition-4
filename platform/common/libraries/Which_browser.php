@@ -29,20 +29,9 @@ class Which_browser {
             $config = array();
         }
 
-        $raw_info = isset($config['raw_info']) && is_array($config['raw_info'])
+        $raw_info = isset($config['raw_info'])
             ? $config['raw_info']
-            : array();
-
-        if (empty($raw_info)) {
-
-            if (function_exists('getallheaders')) {
-                $raw_info = getallheaders();
-            } else {
-                $raw_info = isset($_SERVER['HTTP_USER_AGENT'])
-                    ? $_SERVER['HTTP_USER_AGENT']
-                    : array();
-            }
-        }
+            : get_instance()->input->request_headers();
 
         //$this->wb_parser = new WhichBrowser\Parser($this->_get_raw_info($raw_info));
         // Still keeping the PHP 5.2 syntax:
@@ -72,10 +61,6 @@ class Which_browser {
     // $result = $this->which_browser->with(getallheaders())->get();
     // echo $result->toString();
     public function with($raw_info = array()) {
-
-        if (!is_array($raw_info)) {
-            $raw_info = array();
-        }
 
         $this->with_clause = true;
 
