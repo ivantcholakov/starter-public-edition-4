@@ -16,7 +16,7 @@ $config['width'] = 120;
 $config['height'] = 80;
 
 // The length in characters of the generated captcha keystring.
-$config['length'] = 4;
+$config['length'] = 3;
 
 // The foreground color as a RGB triad (RGB, 0-255).
 // Example: $config['foreground_color'] = array(0, 0, 0);
