@@ -17,9 +17,9 @@ class Core_Controller extends MX_Controller {
 
         $ci = get_instance();
 
-        $this->module = $this->router->fetch_module();
-        $this->controller = $this->router->class;
-        $this->method = $this->router->method;
+        $ci->module = $this->module = $this->router->fetch_module();
+        $ci->controller = $this->controller = $this->router->class;
+        $ci->method = $this->method = $this->router->method;
 
         // If the current URI has no a language segment, check also whether
         // the default language has been set within the database.
