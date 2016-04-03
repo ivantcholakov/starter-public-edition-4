@@ -60,7 +60,7 @@ class Which_browser {
     // $this->load->library('which_browser');
     // $result = $this->which_browser->with(getallheaders())->get();
     // echo $result->toString();
-    public function with($raw_info = array()) {
+    public function with($raw_info) {
 
         $this->with_clause = true;
 
