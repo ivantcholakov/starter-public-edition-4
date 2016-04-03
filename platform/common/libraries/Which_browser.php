@@ -56,7 +56,7 @@ class Which_browser {
         return $this->wb_parser;
     }
 
-    // Usage for testing, an alternative parser is initialized in this case.:
+    // Usage for testing, an alternative parser is initialized in this case:
     // $this->load->library('which_browser');
     // $result = $this->which_browser->with(getallheaders())->get();
     // echo $result->toString();
