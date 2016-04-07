@@ -16,12 +16,12 @@
  *
  * // Converting and dumping the tree structure as a list.
  * $menu = $this->pages->get_list(
- *     null,                                                    // No root id specified, dump all.
- *     'name, slug, display_order',                             // Which fields to select.
- *     array(array('display_on_menu', 1), array('lang', 1)),    // Where conditions.
- *     array('weight', 'asc')                                   // Order.
+ *     null,                                                        // No root id specified, dump all.
+ *     'name, slug, display_order',                                 // Which fields to select.
+ *     array(array('display_on_menu', 1), array('left_menu', 1)),   // Where conditions.
+ *     array('display_order', 'asc')                                // Order.
  * );
- * var_dump($menu);                                             // The result rows are arrays, always.
+ * var_dump($menu);                                                 // The result rows are arrays, always.
  */
 
 // If your system uses class autoloading feature,
