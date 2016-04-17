@@ -2181,91 +2181,6 @@ $(function() {
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}Fit an Image by Width
-&lt;br /&gt;
-&lt;img src=&quot;{{ <strong>my_image_url</strong>(my_image, 120) }}&quot; /&gt;
-&lt;br &gt;
-width = 120px
-
-&lt;hr /&gt;
-
-Fit an Image by Height
-&lt;br /&gt;
-&lt;img src=&quot;{{ <strong>my_image_url</strong>(my_image, null, 120) }}&quot; /&gt;
-&lt;br &gt;
-height = 120px
-
-&lt;hr /&gt;
-
-Fit an Image by Width and Height
-&lt;br /&gt;
-&lt;img src=&quot;{{ <strong>my_image_url</strong>(my_image, 180, 120) }}&quot; /&gt;
-&lt;br &gt;
-width = 180px, height = 120px
-
-&lt;hr /&gt;
-
-Resize an Image Within Width and Height
-&lt;br /&gt;
-&lt;div class=&quot;image-container image-container-180x120&quot;&gt;
-    &lt;img src=&quot;{{ <strong>my_image_url</strong>(my_image, 180, 120, true) }}&quot; /&gt;
-&lt;/div&gt;
-width = 180px, height = 120px
-
-&lt;hr /&gt;
-
-Fit an Image Within a Canvas with Given Width and Height
-&lt;br /&gt;
-&lt;div class=&quot;image-container image-container-180x120&quot;&gt;
-    &lt;img src=&quot;{{ <strong>my_image_url</strong>(my_image, 180, 120, true, true) }}&quot; /&gt;
-&lt;/div&gt;
-width = 180px, height = 120px{% endverbatim %}</code></pre>
-                                        </td>
-                                        <td>
-Fit an Image by Width
-<br />
-<img src="{{ my_image_url(my_image, 120) }}" />
-<br >
-width = 120px
-
-<hr />
-
-Fit an Image by Height
-<br />
-<img src="{{ my_image_url(my_image, null, 120) }}" />
-<br >
-height = 120px
-
-<hr />
-
-Fit an Image by Width and Height
-<br />
-<img src="{{ my_image_url(my_image, 180, 120) }}" />
-<br >
-width = 180px, height = 120px
-
-<hr />
-
-Resize an Image Within Width and Height
-<br />
-<div class="image-container image-container-180x120">
-    <img src="{{ my_image_url(my_image, 180, 120, true) }}" />
-</div>
-width = 180px, height = 120px
-
-<hr />
-
-Fit an Image Within a Canvas with Given Width and Height
-<br />
-<div class="image-container image-container-180x120">
-    <img src="{{ my_image_url(my_image, 180, 120, true, true) }}" />
-</div>
-width = 180px, height = 120px
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
 <pre><code>{% verbatim %}{{ 'Pink Floyd'|<strong>slugify</strong>('-') }}
 &lt;br /&gt;
 {{ 'Пинк Флойд'|<strong>slugify</strong> }}{% endverbatim %}</code></pre>
@@ -2274,6 +2189,91 @@ width = 180px, height = 120px
 {{ 'Pink Floyd'|slugify('-') }}
 <br />
 {{ 'Pink Floyd'|slugify }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}Fit an Image by Width
+&lt;br /&gt;
+&lt;img src=&quot;{{ <strong>thumbnail</strong>(my_image, 120) }}&quot; /&gt;
+&lt;br &gt;
+width = 120px
+
+&lt;hr /&gt;
+
+Fit an Image by Height
+&lt;br /&gt;
+&lt;img src=&quot;{{ <strong>thumbnail</strong>(my_image, null, 120) }}&quot; /&gt;
+&lt;br &gt;
+height = 120px
+
+&lt;hr /&gt;
+
+Fit an Image by Width and Height
+&lt;br /&gt;
+&lt;img src=&quot;{{ <strong>thumbnail</strong>(my_image, 180, 120) }}&quot; /&gt;
+&lt;br &gt;
+width = 180px, height = 120px
+
+&lt;hr /&gt;
+
+Resize an Image Within Width and Height
+&lt;br /&gt;
+&lt;div class=&quot;image-container image-container-180x120&quot;&gt;
+    &lt;img src=&quot;{{ <strong>thumbnail</strong>(my_image, 180, 120, true) }}&quot; /&gt;
+&lt;/div&gt;
+width = 180px, height = 120px
+
+&lt;hr /&gt;
+
+Fit an Image Within a Canvas with Given Width and Height
+&lt;br /&gt;
+&lt;div class=&quot;image-container image-container-180x120&quot;&gt;
+    &lt;img src=&quot;{{ <strong>thumbnail</strong>(my_image, 180, 120, true, true) }}&quot; /&gt;
+&lt;/div&gt;
+width = 180px, height = 120px{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+Fit an Image by Width
+<br />
+<img src="{{ thumbnail(my_image, 120) }}" />
+<br >
+width = 120px
+
+<hr />
+
+Fit an Image by Height
+<br />
+<img src="{{ thumbnail(my_image, null, 120) }}" />
+<br >
+height = 120px
+
+<hr />
+
+Fit an Image by Width and Height
+<br />
+<img src="{{ thumbnail(my_image, 180, 120) }}" />
+<br >
+width = 180px, height = 120px
+
+<hr />
+
+Resize an Image Within Width and Height
+<br />
+<div class="image-container image-container-180x120">
+    <img src="{{ thumbnail(my_image, 180, 120, true) }}" />
+</div>
+width = 180px, height = 120px
+
+<hr />
+
+Fit an Image Within a Canvas with Given Width and Height
+<br />
+<div class="image-container image-container-180x120">
+    <img src="{{ thumbnail(my_image, 180, 120, true, true) }}" />
+</div>
+width = 180px, height = 120px
                                         </td>
                                     </tr>
 
@@ -2393,10 +2393,10 @@ width = 180px, height = 120px
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>image</strong>(my_image_url(my_image, 180, 120)) }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ <strong>image</strong>(thumbnail(my_image, 180, 120)) }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ image(my_image_url(my_image, 180, 120)) }}
+{{ image(thumbnail(my_image, 180, 120)) }}
                                         </td>
                                     </tr>
 

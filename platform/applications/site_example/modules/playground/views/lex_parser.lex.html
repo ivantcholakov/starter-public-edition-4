@@ -1281,91 +1281,6 @@ $(function() {
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}Fit an Image by Width
-&lt;br /&gt;
-&lt;img src=&quot;{{ helper:<strong>my_image_url</strong> src=&quot;[[ my_image ]]&quot; width=&quot;120&quot; }}&quot; /&gt;
-&lt;br &gt;
-width = 120px
-
-&lt;hr /&gt;
-
-Fit an Image by Height
-&lt;br /&gt;
-&lt;img src=&quot;{{ helper:<strong>my_image_url</strong> src=&quot;[[ my_image ]]&quot; width=&quot;&quot; height=&quot;120&quot; }}&quot; /&gt;
-&lt;br &gt;
-height = 120px
-
-&lt;hr /&gt;
-
-Fit an Image by Width and Height
-&lt;br /&gt;
-&lt;img src=&quot;{{ helper:<strong>my_image_url</strong> src=&quot;[[ my_image ]]&quot; width=&quot;180&quot; height=&quot;120&quot; }}&quot; /&gt;
-&lt;br &gt;
-width = 180px, height = 120px
-
-&lt;hr /&gt;
-
-Resize an Image Within Width and Height
-&lt;br /&gt;
-&lt;div class=&quot;image-container image-container-180x120&quot;&gt;
-    &lt;img src=&quot;{{ helper:<strong>my_image_url</strong> src=&quot;[[ my_image ]]&quot; width=&quot;180&quot; height=&quot;120&quot; no_crop=&quot;yes&quot; }}&quot; /&gt;
-&lt;/div&gt;
-width = 180px, height = 120px
-
-&lt;hr /&gt;
-
-Fit an Image Within a Canvas with Given Width and Height
-&lt;br /&gt;
-&lt;div class=&quot;image-container image-container-180x120&quot;&gt;
-    &lt;img src=&quot;{{ helper:<strong>my_image_url</strong> src=&quot;[[ my_image ]]&quot; width=&quot;180&quot; height=&quot;120&quot; no_crop=&quot;yes&quot; keep_canvas_size=&quot;yes&quot; }}&quot; /&gt;
-&lt;/div&gt;
-width = 180px, height = 120px{{ /noparse }}</code></pre>
-                                        </td>
-                                        <td>
-Fit an Image by Width
-<br />
-<img src="{{ helper:my_image_url src="[[ my_image ]]" width="120" }}" />
-<br >
-width = 120px
-
-<hr />
-
-Fit an Image by Height
-<br />
-<img src="{{ helper:my_image_url src="[[ my_image ]]" width="" height="120" }}" />
-<br >
-height = 120px
-
-<hr />
-
-Fit an Image by Width and Height
-<br />
-<img src="{{ helper:my_image_url src="[[ my_image ]]" width="180" height="120" }}" />
-<br >
-width = 180px, height = 120px
-
-<hr />
-
-Resize an Image Within Width and Height
-<br />
-<div class="image-container image-container-180x120">
-    <img src="{{ helper:my_image_url src="[[ my_image ]]" width="180" height="120" no_crop="yes" }}" />
-</div>
-width = 180px, height = 120px
-
-<hr />
-
-Fit an Image Within a Canvas with Given Width and Height
-<br />
-<div class="image-container image-container-180x120">
-    <img src="{{ helper:my_image_url src="[[ my_image ]]" width="180" height="120" no_crop="yes" keep_canvas_size="yes" }}" />
-</div>
-width = 180px, height = 120px
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
 <pre><code>{{ noparse }}{{ helper:<strong>nl2br</strong> string="[[ with_a_new_line ]]" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
@@ -1577,6 +1492,91 @@ Replacement count: {{ helper:get name="str_replace_count" }}
                                         </td>
                                         <td>
 {{ helper:substr string="abcdef" start="3" length="3" }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{{ noparse }}Fit an Image by Width
+&lt;br /&gt;
+&lt;img src=&quot;{{ helper:<strong>thumbnail</strong> src=&quot;[[ my_image ]]&quot; width=&quot;120&quot; }}&quot; /&gt;
+&lt;br &gt;
+width = 120px
+
+&lt;hr /&gt;
+
+Fit an Image by Height
+&lt;br /&gt;
+&lt;img src=&quot;{{ helper:<strong>thumbnail</strong> src=&quot;[[ my_image ]]&quot; width=&quot;&quot; height=&quot;120&quot; }}&quot; /&gt;
+&lt;br &gt;
+height = 120px
+
+&lt;hr /&gt;
+
+Fit an Image by Width and Height
+&lt;br /&gt;
+&lt;img src=&quot;{{ helper:<strong>thumbnail</strong> src=&quot;[[ my_image ]]&quot; width=&quot;180&quot; height=&quot;120&quot; }}&quot; /&gt;
+&lt;br &gt;
+width = 180px, height = 120px
+
+&lt;hr /&gt;
+
+Resize an Image Within Width and Height
+&lt;br /&gt;
+&lt;div class=&quot;image-container image-container-180x120&quot;&gt;
+    &lt;img src=&quot;{{ helper:<strong>thumbnail</strong> src=&quot;[[ my_image ]]&quot; width=&quot;180&quot; height=&quot;120&quot; no_crop=&quot;yes&quot; }}&quot; /&gt;
+&lt;/div&gt;
+width = 180px, height = 120px
+
+&lt;hr /&gt;
+
+Fit an Image Within a Canvas with Given Width and Height
+&lt;br /&gt;
+&lt;div class=&quot;image-container image-container-180x120&quot;&gt;
+    &lt;img src=&quot;{{ helper:<strong>thumbnail</strong> src=&quot;[[ my_image ]]&quot; width=&quot;180&quot; height=&quot;120&quot; no_crop=&quot;yes&quot; keep_canvas_size=&quot;yes&quot; }}&quot; /&gt;
+&lt;/div&gt;
+width = 180px, height = 120px{{ /noparse }}</code></pre>
+                                        </td>
+                                        <td>
+Fit an Image by Width
+<br />
+<img src="{{ helper:thumbnail src="[[ my_image ]]" width="120" }}" />
+<br >
+width = 120px
+
+<hr />
+
+Fit an Image by Height
+<br />
+<img src="{{ helper:thumbnail src="[[ my_image ]]" width="" height="120" }}" />
+<br >
+height = 120px
+
+<hr />
+
+Fit an Image by Width and Height
+<br />
+<img src="{{ helper:thumbnail src="[[ my_image ]]" width="180" height="120" }}" />
+<br >
+width = 180px, height = 120px
+
+<hr />
+
+Resize an Image Within Width and Height
+<br />
+<div class="image-container image-container-180x120">
+    <img src="{{ helper:thumbnail src="[[ my_image ]]" width="180" height="120" no_crop="yes" }}" />
+</div>
+width = 180px, height = 120px
+
+<hr />
+
+Fit an Image Within a Canvas with Given Width and Height
+<br />
+<div class="image-container image-container-180x120">
+    <img src="{{ helper:thumbnail src="[[ my_image ]]" width="180" height="120" no_crop="yes" keep_canvas_size="yes" }}" />
+</div>
+width = 180px, height = 120px
                                         </td>
                                     </tr>
 
@@ -2293,10 +2293,10 @@ document.write("Hello World!");
 
                                     <tr>
                                         <td>
-<pre><code>{{ noparse }}{{ <strong>asset:image</strong> file="[[ helper:my_image_url src='[[ my_image ]]' width='180' height='120' ]]" }}{{ /noparse }}</code></pre>
+<pre><code>{{ noparse }}{{ <strong>asset:image</strong> file="[[ helper:thumbnail src='[[ my_image ]]' width='180' height='120' ]]" }}{{ /noparse }}</code></pre>
                                         </td>
                                         <td>
-{{ asset:image file="[[ helper:my_image_url src='[[ my_image ]]' width='180' height='120' ]]" }}
+{{ asset:image file="[[ helper:thumbnail src='[[ my_image ]]' width='180' height='120' ]]" }}
                                         </td>
                                     </tr>
 

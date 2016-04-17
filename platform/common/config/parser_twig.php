@@ -71,7 +71,6 @@ $config['functions'] = array(
     array('gravatar', 'gravatar', array('is_safe' => array('html'))),
     array('html_attr', 'html_attr', array('is_safe' => array('html'))),
     array('html_attr_*', array('Parser_Twig_Extension_Html', 'html_attr_functions'), array('is_safe' => array('html'))),
-    array('my_image_url', array('Parser_Twig_Extension_Platform', 'my_image_url'), array('is_safe' => array('html'))),
     array('registry', array('Parser_Twig_Extension_Platform', 'registry')),
     array('thumbnail', 'thumbnail', array('is_safe' => array('html'))),
     'url',

@@ -408,34 +408,20 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return $this->_utf8(__FUNCTION__);
     }
 
-    // TODO: To be removed.
-    // Image Processing Demo.
-    // Rework this method or create a similar one according to the
-    // concrete image processing implementation.
-    public function my_image_url() {
+    public function thumbnail() {
 
-        $this->load->helper('asset');
+        $this->load->helper('thumbnail');
 
         $this->detect_boolean_attributes(array(3, 4));
         $attributes = $this->get_attribute_values();
 
-        $src = (isset($attributes[0]) && $attributes[0] != '') ? $attributes[0] : image_url('lib/blank.png');
+        $src = (isset($attributes[0]) && $attributes[0] != '') ? $attributes[0] : null;
         $width = (isset($attributes[1]) && $attributes[1] != '') ? $attributes[1] : null;
         $height = (isset($attributes[2]) && $attributes[2] != '') ? $attributes[2] : null;
         $no_crop = isset($attributes[3]) ? $attributes[3] : null;
         $keep_canvas_size = isset($attributes[4]) ? $attributes[4] : null;
 
-        return http_build_url(
-            site_url('playground/image-process'),
-            array('query' => http_build_query(array(
-                'src' => $src,
-                'w' => $width,
-                'h' => $height,
-                'no_crop' => $no_crop,
-                'keep_canvas_size' => $keep_canvas_size
-            ))),
-            HTTP_URL_JOIN_QUERY
-        );
+        return thumbnail($src, $width, $height, $no_crop, $keep_canvas_size);
     }
 
     public function _func_null() {

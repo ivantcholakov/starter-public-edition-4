@@ -21,25 +21,6 @@ class Parser_Twig_Extension_Platform {
         return $ci->current_user;
     }
 
-    // TODO: To be removed.
-    // Image Processing Demo.
-    // Rework this method or create a similar one according to the
-    // concrete image processing implementation.
-    public static function my_image_url($src = null, $width = null, $height = null, $no_crop = null, $keep_canvas_size = null) {
-
-        $src = (isset($src) && $src != '') ? $src : image_url('lib/blank.png');
-
-        if ($no_crop !== null) {
-            $no_crop = empty($no_crop) ? 0 : 1;
-        }
-
-        if ($keep_canvas_size !== null) {
-            $keep_canvas_size = empty($keep_canvas_size) ? 0 : 1;
-        }
-
-        return http_build_url(site_url('playground/image-process'), array('query' => http_build_query(array('src' => $src, 'w' => $width, 'h' => $height, 'no_crop' => $no_crop, 'keep_canvas_size' => $keep_canvas_size))), HTTP_URL_JOIN_QUERY);
-    }
-
     public static function registry() {
 
         $args = func_get_args();
