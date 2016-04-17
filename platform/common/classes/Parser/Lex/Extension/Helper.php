@@ -408,6 +408,7 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         return $this->_utf8(__FUNCTION__);
     }
 
+    // TODO: To be removed.
     // Image Processing Demo.
     // Rework this method or create a similar one according to the
     // concrete image processing implementation.

@@ -21,6 +21,7 @@ class Parser_Twig_Extension_Platform {
         return $ci->current_user;
     }
 
+    // TODO: To be removed.
     // Image Processing Demo.
     // Rework this method or create a similar one according to the
     // concrete image processing implementation.
