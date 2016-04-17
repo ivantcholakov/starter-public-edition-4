@@ -163,6 +163,11 @@ class Thumbnail {
             $src = isset($src['src']) ? $src['src'] : null;
         }
 
+        // Sanitazing the source URL.
+        if (strpos(str_replace('\\', '/', $src), '../') !== false) {
+            $this->_display_error_500();
+        }
+
         // Separate all the image thumbnails within a subdirectory.
         // When the source image is to be deleted, all its thumbnails
         // will be removed by deletion of the corresponding subdirectory.
