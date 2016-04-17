@@ -28,6 +28,8 @@ echo js('lib/dataTables/datatables.responsive.js');
             'dom': '<"top"<"pull-left"l><"pull-right"f><"clearfix"><"pull-left"i><"pull-right"p><"clearfix">>rt<"bottom"<"pull-left"i><"pull-right"p><"clearix">>',
             'orderCellsTop': true,
             'pagingType': 'simple_numbers',
+            "lengthMenu": [[5, 10, 25, 50, 100, 200, -1], [5, 10, 25, 50, 100, 200, <?php echo json_encode($this->lang->line('ui_all')); ?>]],
+            "pageLength": 5,
             'stateSave': true,
             //'processing': true,   // Needs to be fixed visually first.
             'processing': false,
