@@ -3,12 +3,12 @@
 /**
  * Gravatar Library for CodeIgniter
  *
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015 - 2016
  * @author Ryan Marshall <ryan@irealms.co.uk>, 2011 - 2015, @link http://irealms.co.uk
  *
  * Code repository: @link https://github.com/ivantcholakov/Codeigniter-Gravatar
  *
- * @version 1.0.1
+ * @version 1.1.0
  *
  * @license The MIT License (MIT)
  * @link http://opensource.org/licenses/MIT
@@ -23,14 +23,16 @@ defined('GRAVATAR_INCORRECT_FORMAT') OR define('GRAVATAR_INCORRECT_FORMAT', 4);
 
 class Gravatar {
 
-    protected $base_url = 'http://www.gravatar.com/';
-    protected $secure_base_url = 'https://secure.gravatar.com/';
-    protected $image_extension = '.png';
-    protected $image_size = 80;
-    protected $default_image = '';
-    protected $force_default_image = false;
-    protected $rating = '';
-    protected $useragent = 'PHP Gravatar Library';
+    protected $defaults;
+
+    protected $gravatar_base_url;
+    protected $gravatar_secure_base_url;
+    protected $gravatar_image_extension;
+    protected $gravatar_image_size;
+    protected $gravatar_default_image;
+    protected $gravatar_force_default_image;
+    protected $gravatar_rating ;
+    protected $gravatar_useragent;
 
     protected $last_error = GRAVATAR_NO_ERROR;
 
@@ -44,54 +46,64 @@ class Gravatar {
         get_instance()->load->helper('email');
         //
 
+        $this->defaults = array(
+            'gravatar_base_url' => 'http://www.gravatar.com/',
+            'gravatar_secure_base_url' => 'https://secure.gravatar.com/',
+            'gravatar_image_extension' => '.png',
+            'gravatar_image_size' => 80,
+            'gravatar_default_image' => '',
+            'gravatar_force_default_image' => false,
+            'gravatar_rating' => '',
+            'gravatar_useragent' => 'PHP Gravatar Library',
+        );
+
+        $this->is_https = $this->is_https();
+        $this->curl_exists = function_exists('curl_init');
+        $allow_url_fopen = @ini_get('allow_url_fopen');
+        $allow_url_fopen = $allow_url_fopen === false || in_array(strtolower($allow_url_fopen), array('on', 'true', '1'));
+        $this->allow_url_fopen = $allow_url_fopen;
+
         if (!is_array($config)) {
             $config = array();
         }
 
-        if (isset($config['gravatar_base_url'])) {
-            $this->base_url = (string) $config['gravatar_base_url'];
+        $this->defaults = array_merge($this->defaults, $config);
+        $this->initialize($this->defaults);
+    }
+
+    public function initialize($config = array()) {
+
+        if (!is_array($config)) {
+            $config = array();
         }
 
-        if (isset($config['gravatar_secure_base_url'])) {
-            $this->secure_base_url = (string) $config['gravatar_secure_base_url'];
+        foreach ($config as $key => $value) {
+            $this->{$key} = $value;
         }
 
-        if (isset($config['gravatar_image_extension'])) {
-            $this->image_extension = (string) $config['gravatar_image_extension'];
+        $this->gravatar_base_url = (string) $this->gravatar_base_url;
+        $this->gravatar_secure_base_url = (string) $this->gravatar_secure_base_url;
+        $this->gravatar_image_extension = (string) $this->gravatar_image_extension;
+
+        $this->gravatar_image_size = (int) $this->gravatar_image_size;
+
+        if ($this->gravatar_image_size <= 0) {
+            $this->gravatar_image_size = 80;
         }
 
-        if (isset($config['gravatar_image_size'])) {
+        $this->gravatar_default_image = (string) $this->gravatar_default_image;
+        $this->gravatar_force_default_image = !empty($this->gravatar_force_default_image);
+        $this->gravatar_rating = (string) $this->gravatar_rating;
+        $this->gravatar_useragent = (string) $this->gravatar_useragent;
 
-            $image_size = (int) $config['gravatar_image_size'];
+        return $this;
+    }
 
-            if ($image_size > 0) {
-                $this->image_size = $image_size;
-            }
-        }
+    public function reset() {
 
-        if (isset($config['gravatar_default_image'])) {
-            $this->default_image = (string) $config['gravatar_default_image'];
-        }
+        $this->initialize($this->defaults);
 
-        if (isset($config['gravatar_force_default_image'])) {
-            $this->force_default_image = !empty($config['gravatar_force_default_image']);
-        }
-
-        if (isset($config['gravatar_rating'])) {
-            $this->rating = (string) $config['gravatar_rating'];
-        }
-
-        if (isset($config['gravatar_useragent'])) {
-            $this->useragent = (string) $config['gravatar_useragent'];
-        }
-
-        $this->is_https = $this->is_https();
-
-        $this->curl_exists = function_exists('curl_init');
-
-        $allow_url_fopen = @ini_get('allow_url_fopen');
-        $allow_url_fopen = $allow_url_fopen === false || in_array(strtolower($allow_url_fopen), array('on', 'true', '1'));
-        $this->allow_url_fopen = $allow_url_fopen;
+        return $this;
     }
 
     /**
@@ -110,14 +122,14 @@ class Gravatar {
      */
     public function get($email, $size = null, $default_image = null, $force_default_image = null, $rating = null) {
 
-        $url = ($this->is_https ? $this->secure_base_url : $this->base_url).'avatar/'.$this->create_hash($email).$this->image_extension;
+        $url = ($this->is_https ? $this->gravatar_secure_base_url : $this->gravatar_base_url).'avatar/'.$this->create_hash($email).$this->gravatar_image_extension;
 
         $query = array();
 
         $size = (int) $size;
 
         if ($size <= 0) {
-            $size = $this->image_size;
+            $size = $this->gravatar_image_size;
         }
 
         if ($size > 0) {
@@ -127,7 +139,7 @@ class Gravatar {
         if (isset($default_image)) {
             $default_image = (string) $default_image;
         } else {
-            $default_image = $this->default_image;
+            $default_image = $this->gravatar_default_image;
         }
 
         if ($default_image != '') {
@@ -137,7 +149,7 @@ class Gravatar {
         if (isset($force_default_image)) {
             $force_default_image = !empty($force_default_image);
         } else {
-            $force_default_image = $this->force_default_image;
+            $force_default_image = $this->gravatar_force_default_image;
         }
 
         if ($force_default_image) {
@@ -147,7 +159,7 @@ class Gravatar {
         if (isset($rating)) {
             $rating = (string) $rating;
         } else {
-            $rating = $this->rating;
+            $rating = $this->gravatar_rating;
         }
 
         if ($rating != '') {
@@ -211,18 +223,22 @@ class Gravatar {
 
         $this->last_error = GRAVATAR_NO_ERROR;
 
-        // Modified by Ivan Tcholakov, 09-JAN-2015.
-        //if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        //
-        //    $this->last_error = GRAVATAR_INVALID_EMAIL;
-        //    return null;
-        //}
-        if (!valid_email($email)) {
+        if (function_exists('valid_email')) {
 
-            $this->last_error = GRAVATAR_INVALID_EMAIL;
-            return null;
+            if (!valid_email($email)) {
+
+                $this->last_error = GRAVATAR_INVALID_EMAIL;
+                return null;
+            }
+
+        } else {
+
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+
+                $this->last_error = GRAVATAR_INVALID_EMAIL;
+                return null;
+            }
         }
-        //
 
         $format = trim($format);
 
@@ -234,12 +250,12 @@ class Gravatar {
 
         if ($this->curl_exists) {
 
-            $url = $this->secure_base_url.$this->create_hash($email).$format;
+            $url = $this->gravatar_secure_base_url.$this->create_hash($email).$format;
 
             $ch = curl_init();
 
             $options = array(
-                CURLOPT_USERAGENT, $this->useragent,
+                CURLOPT_USERAGENT, $this->gravatar_useragent,
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_POST => true,
                 CURLOPT_POSTFIELDS => array(),
@@ -267,12 +283,12 @@ class Gravatar {
 
         } elseif ($this->allow_url_fopen) {
 
-            $url = $this->base_url.$this->create_hash($email).$format;
+            $url = $this->gravatar_base_url.$this->create_hash($email).$format;
 
             $options = array(
                 'http' => array(
                     'method' => 'GET',
-                    'useragent' => $this->useragent,
+                    'useragent' => $this->gravatar_useragent,
                 ),
             );
 
@@ -315,10 +331,7 @@ class Gravatar {
      */
     public function create_hash($email) {
 
-        // Modified by Ivan Tcholakov, 09-JAN-2015.
-        //return md5(strtolower(trim($email)));
-        return md5(UTF8::strtolower(trim($email)));
-        //
+        return md5(strtolower(trim($email)));
     }
 
     protected function is_https() {
@@ -357,7 +370,7 @@ class Gravatar {
     {
         $email = trim(strtolower($email));
 
-        if( ! filter_var($email, FILTER_VALIDATE_EMAIL) === FALSE)
+        if ( ! filter_var($email, FILTER_VALIDATE_EMAIL) === FALSE)
         {
             return md5($email);
         }
@@ -414,11 +427,11 @@ class Gravatar {
 
         if ($secure !== NULL)
         {
-            $base = $this->secure_base_url;
+            $base = $this->gravatar_secure_base_url;
         }
         else
         {
-            $base = $this->base_url;
+            $base = $this->gravatar_base_url;
         }
 
         return $base .'avatar/'. $hash . $query_string;
@@ -453,7 +466,7 @@ class Gravatar {
                 return NULL;
             }
 
-            $str = file_get_contents($this->base_url . $hash .'.xml');
+            $str = file_get_contents($this->gravatar_base_url . $hash .'.xml');
         }
 
         if ($fetch_method === 'curl')
@@ -467,7 +480,7 @@ class Gravatar {
             $options = array(
                 CURLOPT_RETURNTRANSFER => TRUE,
                 CURLOPT_POST => TRUE,
-                CURLOPT_URL => $this->secure_base_url . $hash .'.xml',
+                CURLOPT_URL => $this->gravatar_secure_base_url . $hash .'.xml',
                 CURLOPT_TIMEOUT => 3
             );
             curl_setopt_array($ch, $options);
