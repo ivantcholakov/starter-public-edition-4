@@ -28,6 +28,7 @@ class Thumbnail {
     protected $bg_r;
     protected $bg_g;
     protected $bg_b;
+    protected $bg_alpha;    // 0 - completely opaque, 127 - completely transparent.
 
     // Enable/Disable Watermarking
     protected $has_watermark;
@@ -79,6 +80,7 @@ class Thumbnail {
             'bg_r' => 255,
             'bg_g' => 255,
             'bg_b' => 255,
+            'bg_alpha' => 127,
 
             'has_watermark' => false,
             'wm_enabled_min_w' => 100,
@@ -185,39 +187,41 @@ class Thumbnail {
         $h = (string) $height;
 
         $no_crop = !empty($no_crop);
+        $force_crop = !empty($this->force_crop);
 
-        if (!empty($this->force_crop)) {
+        if ($force_crop) {
             $no_crop = false;
         }
 
         $keep_canvas_size = !empty($keep_canvas_size);
 
-        $bg_r = $this->bg_r;
-        $bg_g = $this->bg_g;
-        $bg_b = $this->bg_b;
+        $bg_r = (int) $this->bg_r;
+        $bg_g = (int) $this->bg_g;
+        $bg_b = (int) $this->bg_b;
+        $bg_alpha = (int) $this->bg_alpha;
 
         $has_watermark = !empty($this->has_watermark);
-        $wm_enabled_min_w = $this->wm_enabled_min_w;
-        $wm_enabled_min_h = $this->wm_enabled_min_h;
+        $wm_enabled_min_w = (int) $this->wm_enabled_min_w;
+        $wm_enabled_min_h = (int) $this->wm_enabled_min_h;
 
-        $wm_type = $this->wm_type;
-        $wm_padding = $this->wm_padding;
-        $wm_vrt_alignment = $this->wm_vrt_alignment;
-        $wm_hor_alignment = $this->wm_hor_alignment;
-        $wm_hor_offset = $this->wm_hor_offset;
-        $wm_vrt_offset = $this->wm_vrt_offset;
+        $wm_type = (string) $this->wm_type;
+        $wm_padding = (int) $this->wm_padding;
+        $wm_vrt_alignment = (string) $this->wm_vrt_alignment;
+        $wm_hor_alignment = (string) $this->wm_hor_alignment;
+        $wm_hor_offset = (int) $this->wm_hor_offset;
+        $wm_vrt_offset = (int) $this->wm_vrt_offset;
 
-        $wm_text = $this->wm_text;
-        $wm_font_path = $this->wm_font_path;
-        $wm_font_size = $this->wm_font_size;
-        $wm_font_color = $this->wm_font_color;
-        $wm_shadow_color = $this->wm_shadow_color;
-        $wm_shadow_distance = $this->wm_shadow_distance;
+        $wm_text = (string) $this->wm_text;
+        $wm_font_path = (string) $this->wm_font_path;
+        $wm_font_size = (int) $this->wm_font_size;
+        $wm_font_color = (string) $this->wm_font_color;
+        $wm_shadow_color = (string) $this->wm_shadow_color;
+        $wm_shadow_distance = (int) $this->wm_shadow_distance;
 
-        $wm_overlay_path = $this->wm_overlay_path;
-        $wm_opacity = $this->wm_opacity;
-        $wm_x_transp = $this->wm_x_transp;
-        $wm_y_transp = $this->wm_y_transp;
+        $wm_overlay_path = (string) $this->wm_overlay_path;
+        $wm_opacity = (int) $this->wm_opacity;
+        $wm_x_transp = is_bool($this->wm_x_transp) ? $this->wm_x_transp : (int) $this->wm_x_transp;
+        $wm_y_transp = is_bool($this->wm_y_transp) ? $this->wm_y_transp : (int) $this->wm_y_transp;
 
         $prop = $this->ci->image_lib->get_image_properties($src_path, true);
 
@@ -264,6 +268,7 @@ class Thumbnail {
             'w',
             'h',
             'no_crop',
+            'force_crop',
             'keep_canvas_size',
             'has_watermark'
         );
@@ -273,7 +278,8 @@ class Thumbnail {
             $parameters = array_merge($parameters, compact(
                 'bg_r',
                 'bg_g',
-                'bg_b'
+                'bg_b',
+                'bg_alpha'
             ));
         }
 
@@ -354,7 +360,8 @@ class Thumbnail {
                 }
 
                 $img = imagecreatetruecolor($w, $h);
-                $bg = imagecolorallocate($img, $bg_r, $bg_g, $bg_b);
+                imagesavealpha($img, true);
+                $bg = imagecolorallocatealpha($img, $bg_r, $bg_g, $bg_b, $bg_alpha);
                 imagefill($img, 0, 0, $bg);
 
                 $this->ci->image_lib->image_type = $image_type;
@@ -377,6 +384,8 @@ class Thumbnail {
                 $config['wm_opacity'] = 100;
                 $config['wm_hor_alignment'] = 'center';
                 $config['wm_vrt_alignment'] = 'middle';
+                $config['wm_x_transp'] = false;
+                $config['wm_y_transp'] = false;
                 $config['dynamic_output'] = false;
                 $config['new_image'] = $cached_image_file;
                 $config['quality'] = 100;
