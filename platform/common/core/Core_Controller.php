@@ -46,6 +46,7 @@ class Core_Controller extends MX_Controller {
             ->helper('language_extra')
             ->language('ui')
             ->helper('text')
+            ->helper('thumbnail')
         ;
     }
 

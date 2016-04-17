@@ -167,7 +167,7 @@ class Thumbnail {
         // When the source image is to be deleted, all its thumbnails
         // will be removed by deletion of the corresponding subdirectory.
         // On deletion generate the directory path in the exactly the same way.
-        $src_path = str_replace('\\', '/', realpath($this->image_base_path.str_ireplace($this->image_base_url, '', $src)));
+        $src_path = str_replace('\\', '/', realpath($this->image_base_path.str_replace($this->image_base_url, '', $src)));
 
         if (!is_file($src_path)) {
             $this->_display_error_404();
