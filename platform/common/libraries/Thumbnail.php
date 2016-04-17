@@ -102,8 +102,8 @@ class Thumbnail {
 
             'wm_overlay_path' => '',
             'wm_opacity' => 50,
-            'wm_x_transp' => 4,
-            'wm_y_transp' => 4,
+            'wm_x_transp' => false,
+            'wm_y_transp' => false,
 
             'force_crop' => false,
         );
