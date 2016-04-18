@@ -533,20 +533,19 @@ $config['rest_language'] = 'english';
 | CORS Check
 |--------------------------------------------------------------------------
 |
-| Set to true to enable Cross-Origin Resource Sharing (CORS). Useful if you
-|  are hosting your API on a different domain from the appolication that
-|  will access it through a browser.
+| Set to TRUE to enable Cross-Origin Resource Sharing (CORS). Useful if you
+| are hosting your API on a different domain from the application that
+| will access it through a browser
 |
 */
-$config['check_cors'] = false;
+$config['check_cors'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
 | CORS Allowable Headers
 |--------------------------------------------------------------------------
 |
-| If using CORS checks, set the allowable headers here. Add any custom headers you may
-|  be using in tyou application to the array
+| If using CORS checks, set the allowable headers here
 |
 */
 $config['allowed_cors_headers'] = array(
@@ -562,7 +561,7 @@ $config['allowed_cors_headers'] = array(
 | CORS Allowable Methods
 |--------------------------------------------------------------------------
 |
-| If using CORS checks, you can set the methods you want to be allowed here.
+| If using CORS checks, you can set the methods you want to be allowed
 |
 */
 $config['allowed_cors_methods'] = array(
@@ -579,22 +578,21 @@ $config['allowed_cors_methods'] = array(
 | CORS Allow Any Domain
 |--------------------------------------------------------------------------
 |
-| Set to true to enable Cross-Origin Resource Sharing (CORS) from any
-|  source domain
+| Set to TRUE to enable Cross-Origin Resource Sharing (CORS) from any
+| source domain
 |
 */
-$config['allow_any_cors_domain'] = false;
+$config['allow_any_cors_domain'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
 | CORS Allowable Domains
 |--------------------------------------------------------------------------
 |
-| Used if $config['check_cors'] is set to true and $config['allow_any_cors_domain']
-|  is set to false. Set all the allowable domains within the array.
+| Used if $config['check_cors'] is set to TRUE and $config['allow_any_cors_domain']
+| is set to FALSE. Set all the allowable domains within the array
 |
 | e.g. $config['allowed_origins'] = ['http://www.example.com', 'https://spa.example.com']
 |
 */
 $config['allowed_cors_origins'] = array();
-
