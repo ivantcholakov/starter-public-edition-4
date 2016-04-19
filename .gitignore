@@ -27,6 +27,8 @@ www/editor/*
 www/upload/*
 !www/upload/.gitkeep
 
+www/cache/*
+!www/cache/.gitkeep
 
 # IDE Files
 #-------------------------
