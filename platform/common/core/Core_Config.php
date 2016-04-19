@@ -183,6 +183,8 @@ class Core_Config extends MX_Config {
 
         // Common Purpose File System Repositories
 
+        //----------------------------------------------------------------------
+
         $public_upload_path = $this->add_slash(
             isset($this->config['public_upload_path']) && $this->config['public_upload_path'] != ''
                 ? $this->config['public_upload_path']
@@ -207,6 +209,8 @@ class Core_Config extends MX_Config {
             define('PUBLIC_UPLOAD_URL', $public_upload_url);
         }
 
+        //----------------------------------------------------------------------
+
         $platform_upload_path = $this->add_slash(
             isset($this->config['platform_upload_path']) && $this->config['platform_upload_path'] != ''
                 ? $this->config['platform_upload_path']
@@ -218,6 +222,34 @@ class Core_Config extends MX_Config {
         if (!defined('PLATFORM_UPLOAD_PATH')) {
             define('PLATFORM_UPLOAD_PATH', $platform_upload_path);
         }
+
+        //----------------------------------------------------------------------
+
+        $public_cache_path = $this->add_slash(
+            isset($this->config['public_cache_path']) && $this->config['public_cache_path'] != ''
+                ? $this->config['public_cache_path']
+                : DEFAULTFCPATH.'cache/'
+        );
+
+        $this->set_item('public_cache_path', $public_cache_path);
+
+        if (!defined('PUBLIC_CACHE_PATH')) {
+            define('PUBLIC_CACHE_PATH', $public_cache_path);
+        }
+
+        $public_cache_url = $this->add_slash(
+            isset($this->config['public_cache_url']) && $this->config['public_cache_url'] != ''
+                ? str_replace(array('{default_base_url}', '{base_url}'), array(DEFAULT_BASE_URL, BASE_URL), $this->config['public_cache_url'])
+                : DEFAULT_BASE_URL.'cache/'
+        );
+
+        $this->set_item('public_cache_url', $public_cache_url);
+
+        if (!defined('PUBLIC_CACHE_URL')) {
+            define('PUBLIC_CACHE_URL', $public_cache_url);
+        }
+
+        //----------------------------------------------------------------------
 
         // Assets
 

@@ -579,7 +579,8 @@ $config['modules_locations'] = array(
 | For uploading user files (documents, images movies, etc.) two file system
 | repositories are available:
 | public repository - the uploaded files are accessible by browsers (user agents);
-| platform repository - the uploaded files are accessible by PHP scripts only.
+| platform repository - the uploaded files are accessible by PHP scripts only;
+| public cache directory - created by the system cached files, accesible by the browser.
 |
 */
 
@@ -591,3 +592,9 @@ $config['public_upload_url'] = '{default_base_url}'.'upload/';
 
 // Aslo defines PLATFORM_UPLOAD_PATH constant.
 $config['platform_upload_path'] = PLATFORMPATH.'upload/';
+
+// Aslo defines PUBLIC_CACHE_PATH constant.
+$config['public_cache_path'] = DEFAULTFCPATH.'cache/';
+
+// Aslo defines PUBLIC_CACHE_URL constant.
+$config['public_cache_url'] = '{default_base_url}'.'cache/';
