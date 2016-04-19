@@ -11,7 +11,7 @@
 class Thumbnail {
 
     // Default Configuration Values
-    public $defaults;
+    protected $defaults;
 
     protected $ci;
 
@@ -24,14 +24,23 @@ class Thumbnail {
     // Base Path for Cached Images
     protected $image_cache_path;
 
+    // Base Path for Browser Accessible Cached Images
+    protected $image_public_cache_path;
+
+    // Base URL for Browser Accessible Cached Images
+    protected $image_public_cache_url;
+
+    // Enable Dynamic Output
+    protected $enable_dynamic_output;
+
     // Canvas Background Color
     protected $bg_r;
     protected $bg_g;
     protected $bg_b;
     protected $bg_alpha;    // 0 - completely opaque, 127 - completely transparent.
 
-    // Enable/Disable Watermarking
-    protected $has_watermark;
+    // Enable Watermarking
+    protected $enable_watermark;
     protected $wm_enabled_min_w;
     protected $wm_enabled_min_h;
 
@@ -75,14 +84,18 @@ class Thumbnail {
 
             'image_base_url' => default_base_url(),
             'image_base_path' => DEFAULTFCPATH,
-            'image_cache_path' => WRITABLEPATH.'image_cache/thumbnails/',
+            'image_cache_path' => WRITABLEPATH.'thumbnails/',
+            'image_public_cache_path' => PUBLIC_CACHE_PATH.'thumbnails/',
+            'image_public_cache_url' => PUBLIC_CACHE_URL.'thumbnails/',
+
+            'enable_dynamic_output' => array(),
 
             'bg_r' => 255,
             'bg_g' => 255,
             'bg_b' => 255,
             'bg_alpha' => 127,
 
-            'has_watermark' => false,
+            'enable_watermark' => array(),
             'wm_enabled_min_w' => 100,
             'wm_enabled_min_h' => 50,
 
@@ -123,18 +136,183 @@ class Thumbnail {
             $config = array();
         }
 
-        foreach ($config as $key => $value) {
-            $this->{$key} = $value;
+        if (isset($config['image_base_path'])) {
+
+            $config['image_base_path'] = (string) $config['image_base_path'];
+
+            if ($config['image_base_path'] == '') {
+                throw new RuntimeException('Thumbnail: image_base_path setting is empty.');
+            }
+
+            if (!is_dir($config['image_base_path'])) {
+                throw new RuntimeException('Thumbnail: image_base_path does not exist.');
+            }
+
+            if (($test = $this->_get_absolute_dir($config['image_base_path'])) !== false) {
+                $config['image_base_path'] = $test;
+            } else {
+                throw new RuntimeException('Thumbnail: image_base_path does not exist.');
+            }
         }
 
-        file_exists($this->image_cache_path) OR @mkdir($this->image_cache_path, 0755, TRUE);
+        if (isset($config['image_cache_path'])) {
+
+            $config['image_cache_path'] = (string) $config['image_cache_path'];
+
+            if ($config['image_cache_path'] == '') {
+                throw new RuntimeException('Thumbnail: image_cache_path setting is empty.');
+            }
+
+            if (!is_dir($config['image_cache_path'])) {
+
+                @mkdir($config['image_cache_path'], 0755, TRUE);
+
+                if (!is_dir($config['image_cache_path'])) {
+                    throw new RuntimeException('Thumbnail: image_public_cache_path can not be created.');
+                }
+            }
+
+            if (($test = $this->_get_absolute_dir($config['image_cache_path'])) !== false) {
+                $config['image_cache_path'] = $test;
+            } else {
+                throw new RuntimeException('Thumbnail: image_cache_path can not be created.');
+            }
+        }
+
+        if (isset($config['image_public_cache_path'])) {
+
+            $config['image_public_cache_path'] = (string) $config['image_public_cache_path'];
+
+            if ($config['image_public_cache_path'] == '') {
+                throw new RuntimeException('Thumbnail: image_public_cache_path setting is empty.');
+            }
+
+            if (!is_dir($config['image_public_cache_path'])) {
+
+                @mkdir($config['image_public_cache_path'], 0755, TRUE);
+
+                if (!is_dir($config['image_public_cache_path'])) {
+                    throw new RuntimeException('Thumbnail: image_public_cache_path can not be created.');
+                }
+            }
+
+            if (($test = $this->_get_absolute_dir($config['image_public_cache_path'])) !== false) {
+                $config['image_public_cache_path'] = $test;
+            } else {
+                throw new RuntimeException('Thumbnail: image_public_cache_path can not be created.');
+            }
+        }
+
+        foreach ($config as $key => $value) {
+
+            // Since most of the options will be used for hash creation
+            // make them "strongly typed".
+            switch ($key) {
+
+                case 'image_base_url':
+                case 'image_base_path':
+                case 'image_cache_path':
+                case 'image_public_cache_path':
+                case 'image_public_cache_url':
+                case 'wm_type':
+                case 'wm_vrt_alignment':
+                case 'wm_hor_alignment':
+                case 'wm_text':
+                case 'wm_font_color':
+                case 'wm_shadow_color':
+                case 'wm_overlay_path':
+
+                    $this->{$key} = (string) $value;
+                    break;
+
+                case 'wm_font_path':
+
+                    $value = (string) $value;
+
+                    if ($value != '') {
+                        $value = str_replace('\\', '/', realpath($value));
+                    }
+
+                    $this->{$key} = $value;
+                    break;
+
+                case 'bg_r':
+                case 'bg_g':
+                case 'bg_b':
+                case 'bg_alpha':
+                case 'wm_enabled_min_w':
+                case 'wm_enabled_min_h':
+                case 'wm_padding':
+                case 'wm_hor_offset':
+                case 'wm_vrt_offset':
+                case 'wm_font_size':
+                case 'wm_shadow_distance':
+                case 'wm_opacity':
+
+                    $this->{$key} = (int) $value;
+                    break;
+
+                case 'force_crop':
+
+                    $this->{$key} = !empty($value);
+                    break;
+
+                case 'wm_x_transp':
+                case 'wm_y_transp':
+
+                    $this->{$key} = is_bool($value) ? $value : (int) $value;
+                    break;
+
+                case 'enable_watermark':
+                case 'enable_dynamic_output':
+
+                    if (is_array($value)) {
+
+                        foreach ($value as & $v) {
+                            $v = str_replace('\\', '/', $v);
+                        }
+
+                        unset($v);
+
+                        $this->{$key} = $value;
+
+                    } else {
+
+                        $this->{$key} = array();
+                    }
+
+                    break;
+
+                default:
+
+                    $this->{$key} = $value;
+                    break;
+            }
+        }
 
         return $this;
     }
 
+    public function reset() {
+
+        $this->initialize($this->defaults);
+
+        return $this;
+    }
+
+    public function get_defaults() {
+
+        return $this->defaults;
+    }
+
     public function get($src, $width = null, $height = null, $no_crop = null, $keep_canvas_size = null) {
 
-        $this->ci = & get_instance();
+        return $this->create($src, $width, $height, $no_crop, $keep_canvas_size, false, true);
+    }
+
+    public function create($src, $width = null, $height = null, $no_crop = null, $keep_canvas_size = null, $public = null, $dynamic_output = null) {
+
+        // Read the input parameters.
 
         if (is_array($src)) {
 
@@ -145,7 +323,7 @@ class Thumbnail {
             } elseif (isset($src['w'])) {
                 $width = $src['w'];
             } else {
-                $width = null;
+                $width = $width;
             }
 
             if (isset($src['height'])) {
@@ -153,46 +331,73 @@ class Thumbnail {
             } elseif (isset($src['h'])) {
                 $height = $src['h'];
             } else {
-                $height = null;
+                $height = $height;
             }
 
-            $no_crop = isset($src['no_crop']) ? $src['no_crop'] : null;
-            $keep_canvas_size = isset($src['keep_canvas_size']) ? $src['keep_canvas_size'] : null;
+            $no_crop = isset($src['no_crop']) ? $src['no_crop'] : $no_crop;
+            $keep_canvas_size = isset($src['keep_canvas_size']) ? $src['keep_canvas_size'] : $keep_canvas_size;
+            $public = isset($src['public']) ? $src['public'] : $public;
+            $dynamic_output = isset($src['dynamic_output']) ? $src['dynamic_output'] : $dynamic_output;
 
-            // The followin assignment is to be at the last place within this block.
+            // The following assignment is to be at the last place within this block.
             $src = isset($src['src']) ? $src['src'] : null;
         }
 
-        // Sanitazing the source URL.
-        if (strpos(str_replace('\\', '/', $src), '../') !== false) {
-            $this->_display_error_500();
+        $public = !empty($public);
+        $dynamic_output = !empty($dynamic_output);
+
+        // Sanitaze the source URL.
+        if ($this->_check_path($src) === false) {
+
+            if ($dynamic_output) {
+                $this->_display_error(500);
+            }
+
+            return false;
         }
 
-        // Separate all the image thumbnails within a subdirectory.
-        // When the source image is to be deleted, all its thumbnails
-        // will be removed by deletion of the corresponding subdirectory.
-        // On deletion generate the directory path in the exactly the same way.
-        $src_path = str_replace('\\', '/', realpath($this->image_base_path.str_replace($this->image_base_url, '', $src)));
+        // Calcualate the image path from the provided source URL.
+
+        $src_path = $this->image_base_path.str_replace($this->image_base_url, '', $src);
 
         if (!is_file($src_path)) {
-            $this->_display_error_404();
+
+            if ($dynamic_output) {
+                $this->_display_error(404);
+            }
+
+            return false;
         }
 
-        $image_cache_subdirectory = sha1($src_path);
-        $image_cache_path = $this->image_cache_path.$image_cache_subdirectory.'/';
-        file_exists($image_cache_path) OR @mkdir($image_cache_path, 0755, TRUE);
-        //
+        $src_path = $this->_get_absolute_filename($src_path);
 
+        if ($src_path === false || !is_file($src_path)) {
+
+            if ($dynamic_output) {
+                $this->_display_error(404);
+            }
+
+            return false;
+        }
+
+        // Get the name of a subdirectory that should contain the image's thumbnails.
+        $image_cache_subdirectory = $this->_create_path_hash($src_path);
+        $image_cache_path = ($public ? $this->image_public_cache_path : $this->image_cache_path).$image_cache_subdirectory.'/';
+
+        // Get the image file extension.
         $src_name_parts = $this->ci->image_lib->explode_name($src_path);
         $ext = $src_name_parts['ext'];
 
-        $resize_operation = null;
+        // Expose the image default parameters.
+        extract($this->_get_image_defaults());
+
+        // Prepare the input parameters.
 
         $w = (string) $width;
         $h = (string) $height;
 
         $no_crop = !empty($no_crop);
-        $force_crop = !empty($this->force_crop);
+        $no_crop_saved = $no_crop;
 
         if ($force_crop) {
             $no_crop = false;
@@ -200,43 +405,63 @@ class Thumbnail {
 
         $keep_canvas_size = !empty($keep_canvas_size);
 
-        $bg_r = (int) $this->bg_r;
-        $bg_g = (int) $this->bg_g;
-        $bg_b = (int) $this->bg_b;
-        $bg_alpha = (int) $this->bg_alpha;
+        // Determine whether dynamic input is enabled.
 
-        $has_watermark = !empty($this->has_watermark);
-        $wm_enabled_min_w = (int) $this->wm_enabled_min_w;
-        $wm_enabled_min_h = (int) $this->wm_enabled_min_h;
+        if ($dynamic_output) {
 
-        $wm_type = (string) $this->wm_type;
-        $wm_padding = (int) $this->wm_padding;
-        $wm_vrt_alignment = (string) $this->wm_vrt_alignment;
-        $wm_hor_alignment = (string) $this->wm_hor_alignment;
-        $wm_hor_offset = (int) $this->wm_hor_offset;
-        $wm_vrt_offset = (int) $this->wm_vrt_offset;
+            $dynamic_output_enabled = false;
 
-        $wm_text = (string) $this->wm_text;
-        $wm_font_path = (string) $this->wm_font_path;
-        $wm_font_size = (int) $this->wm_font_size;
-        $wm_font_color = (string) $this->wm_font_color;
-        $wm_shadow_color = (string) $this->wm_shadow_color;
-        $wm_shadow_distance = (int) $this->wm_shadow_distance;
+            foreach ($this->enable_dynamic_output as & $d_location) {
 
-        $wm_overlay_path = (string) $this->wm_overlay_path;
-        $wm_opacity = (int) $this->wm_opacity;
-        $wm_x_transp = is_bool($this->wm_x_transp) ? $this->wm_x_transp : (int) $this->wm_x_transp;
-        $wm_y_transp = is_bool($this->wm_y_transp) ? $this->wm_y_transp : (int) $this->wm_y_transp;
+                if (strpos($src_path, $d_location) === 0) {
+                    $dynamic_output_enabled = true;
+                }
+            }
+
+            unset($d_location);
+
+            if (!$dynamic_output_enabled) {
+                $this->_display_error(403);
+            }
+        }
+
+        // Check whether the image is valid one.
 
         $prop = $this->ci->image_lib->get_image_properties($src_path, true);
 
         if ($prop === false) {
-            $this->_display_error_500();
+
+            if ($dynamic_output) {
+                $this->_display_error(500);
+            }
+
+            return false;
         }
 
         $mime_type = $prop['mime_type'];
         $image_type = $prop['image_type'];
         $src_size = filesize($src_path);
+
+        // The image seems to be valid, so create the corresponding
+        // subdirectory that should contain the image's thumbnails.
+        file_exists($image_cache_path) OR @mkdir($image_cache_path, 0755, TRUE);
+
+        // Determine whether a watermark should be put.
+
+        $has_watermark = false;
+
+        foreach ($this->enable_watermark as & $wm_location) {
+
+            if (strpos($src_path, $wm_location) === 0) {
+                $has_watermark = true;
+            }
+        }
+
+        unset($wm_location);
+
+        // Determine kind of Image_lib's resizing operation is to be executed.
+
+        $resize_operation = null;
 
         if ($w > 0) {
 
@@ -250,7 +475,10 @@ class Thumbnail {
 
         if ($h > 0) {
 
-            $resize_operation = $resize_operation == 'fit_width' ? ($no_crop ? ($keep_canvas_size ? 'fit_canvas' : 'fit_inner') : 'fit') : 'fit_height';
+            $resize_operation = $resize_operation == 'fit_width'
+                ? ($no_crop ? ($keep_canvas_size ? 'fit_canvas' : 'fit_inner') : 'fit')
+                : 'fit_height';
+
             $h = (int) $h;
 
         } else {
@@ -265,6 +493,9 @@ class Thumbnail {
 
             $resize_operation = $keep_canvas_size ? 'fit_canvas' : 'fit_inner';
         }
+
+        // Based on the real file name and the relevant parameters the thumbnail's
+        // filename (a hash) is to be created. Let us determine these parameters.
 
         $parameters = compact(
             'src_path',
@@ -315,22 +546,25 @@ class Thumbnail {
             } elseif ($wm_type == 'overlay') {
 
                 $wm_parameters = array_merge($wm_parameters, compact(
-                    'wm_text',
-                    'wm_font_path',
-                    'wm_font_size',
-                    'wm_font_color',
-                    'wm_shadow_color',
-                    'wm_shadow_distance'
+                    'wm_overlay_path',
+                    'wm_opacity',
+                    'wm_x_transp',
+                    'wm_y_transp'
                 ));
             }
 
             $parameters = array_merge($parameters, $wm_parameters);
         }
 
+        // Determine the destination file.
         $cached_image_name = sha1(serialize($parameters)).$ext;
         $cached_image_file = $image_cache_path.$cached_image_name;
 
+        // If the destination file does not exist - create it.
+
         if (!is_file($cached_image_file)) {
+
+            // Resize the image and write it to destination file.
 
             $config = array();
             $config['source_image'] = $src_path;
@@ -343,7 +577,12 @@ class Thumbnail {
             $config['quality'] = 100;
 
             if (!$this->ci->image_lib->initialize($config)) {
-                $this->_display_error_500();
+
+                if ($dynamic_output) {
+                    $this->_display_error(500);
+                }
+
+                return false;
             }
 
             if ($resize_operation == 'fit_inner' || $resize_operation == 'fit_canvas') {
@@ -354,6 +593,9 @@ class Thumbnail {
 
             $this->ci->image_lib->clear();
 
+            // If the canvas size is to be preserved - add background with the
+            // given width and height and place the image at the center.
+
             if ($resize_operation == 'fit_canvas') {
 
                 $backgrund_image = @ tempnam(sys_get_temp_dir(), 'imp');
@@ -361,7 +603,12 @@ class Thumbnail {
                 if ($backgrund_image === false) {
 
                     @ unlink($cached_image_file);
-                    $this->_display_error_500();
+
+                    if ($dynamic_output) {
+                        $this->_display_error(500);
+                    }
+
+                    return false;
                 }
 
                 $img = imagecreatetruecolor($w, $h);
@@ -377,7 +624,12 @@ class Thumbnail {
 
                     @ unlink($backgrund_image);
                     @ unlink($cached_image_file);
-                    $this->_display_error_500();
+
+                    if ($dynamic_output) {
+                        $this->_display_error(500);
+                    }
+
+                    return false;
                 }
 
                 $this->ci->image_lib->clear();
@@ -399,19 +651,31 @@ class Thumbnail {
 
                     @ unlink($backgrund_image);
                     @ unlink($cached_image_file);
-                    $this->_display_error_500();
+
+                    if ($dynamic_output) {
+                        $this->_display_error(500);
+                    }
+
+                    return false;
                 }
 
                 if (!$this->ci->image_lib->watermark()) {
 
                     @ unlink($backgrund_image);
                     @ unlink($cached_image_file);
-                    $this->_display_error_500();
+
+                    if ($dynamic_output) {
+                        $this->_display_error(500);
+                    }
+
+                    return false;
                 }
 
                 @ unlink($backgrund_image);
                 $this->ci->image_lib->clear();
             }
+
+            // If a watermark is needed, place it.
 
             if ($has_watermark) {
 
@@ -420,7 +684,12 @@ class Thumbnail {
                 if ($prop_resized === false) {
 
                     @ unlink($cached_image_file);
-                    $this->_display_error_500();
+
+                    if ($dynamic_output) {
+                        $this->_display_error(500);
+                    }
+
+                    return false;
                 }
 
                 if ($prop_resized['width'] < $wm_enabled_min_w || $prop_resized['height'] < $wm_enabled_min_h) {
@@ -439,13 +708,23 @@ class Thumbnail {
                     if (!$this->ci->image_lib->initialize($config)) {
 
                         @ unlink($cached_image_file);
-                        $this->_display_error_500();
+
+                        if ($dynamic_output) {
+                            $this->_display_error(500);
+                        }
+
+                        return false;
                     }
 
                     if (!$this->ci->image_lib->watermark()) {
 
                         @ unlink($cached_image_file);
-                        $this->_display_error_500();
+
+                        if ($dynamic_output) {
+                            $this->_display_error(500);
+                        }
+
+                        return false;
                     }
 
                     $this->ci->image_lib->clear();
@@ -453,8 +732,144 @@ class Thumbnail {
             }
         }
 
-        $this->_display_graphic_file($cached_image_file, $mime_type, $cached_image_name);
+        // Output or return the result.
 
+        if ($dynamic_output) {
+            $this->_display_graphic_file($cached_image_file, $mime_type, $cached_image_name);
+        }
+
+        if ($public) {
+
+            return array(
+                'path' => $cached_image_file,
+                'url' => $this->image_public_cache_url.$image_cache_subdirectory.'/'.pathinfo($cached_image_file, PATHINFO_BASENAME),
+            );
+        }
+
+        $uri = 'thumbnail';
+
+        $url = http_build_url(default_base_url($uri), array(
+                'query' => http_build_query(array(
+                    'src' => $src,
+                    'w' => $width,
+                    'h' => $height,
+                    'no_crop' => $no_crop_saved ? 0 : 1,
+                    'keep_canvas_size' => $keep_canvas_size ? 0 : 1
+                )
+            )
+        ), HTTP_URL_JOIN_QUERY);
+
+        return array(
+            'path' => $cached_image_file,
+            'url' => $url,
+        );
+    }
+
+    public function delete($src_path) {
+
+        if (!is_file($src_path)) {
+            return false;
+        }
+
+        $src_path = $this->_get_absolute_filename($src_path);
+
+        if ($src_path === false || !is_file($src_path)) {
+            return false;
+        }
+
+        $image_cache_subdirectory = $this->_create_path_hash($src_path);
+        $image_cache_path = $this->image_cache_path.$image_cache_subdirectory.'/';
+        $image_public_cache_path = $this->image_public_cache_path.$image_cache_subdirectory.'/';
+
+        $this->ci->load->helper('file');
+
+        delete_files($image_cache_path, true);
+        delete_files($image_public_cache_path, true);
+
+        return true;
+    }
+
+    protected function _get_absolute_dir($name) {
+
+        $name = realpath($name);
+
+        if ($name === false) {
+            return false;
+        }
+
+        return str_replace('\\', '/', $name).'/';
+    }
+
+    protected function _get_absolute_filename($name) {
+
+        $name = realpath($name);
+
+        if ($name === false) {
+            return false;
+        }
+
+        return str_replace('\\', '/', $name);
+    }
+
+    protected function _check_path($path) {
+
+        $p = str_replace('\\', '/', $path);
+
+        foreach (explode('/', $p) as $part) {
+
+            if ($part == '..') {
+                return false;
+            }
+        }
+
+        return $path;
+    }
+
+    protected function _create_path_hash($path) {
+
+        $path = str_replace('\\', '/', $path);
+
+        if (($p = realpath($path)) !== false) {
+            $path = str_replace('\\', '/', $p);
+        }
+
+        $result = sha1($path);
+
+        return $result;
+    }
+
+    protected function _get_image_defaults() {
+
+        return array_only(get_object_vars($this),array(
+            'bg_r',
+            'bg_g',
+            'bg_b',
+            'bg_alpha',
+
+            'wm_enabled_min_w',
+            'wm_enabled_min_h',
+
+            'wm_type',
+            'wm_padding',
+            'wm_vrt_alignment',
+            'wm_hor_alignment',
+            'wm_hor_offset',
+            'wm_vrt_offset',
+
+            'wm_text',
+            'wm_font_path',
+            'wm_font_size',
+            'wm_font_color',
+            'wm_shadow_color',
+            'wm_shadow_distance',
+
+            'wm_overlay_path',
+            'wm_opacity',
+            'wm_x_transp',
+            'wm_y_transp',
+
+            'force_crop',
+        ));
     }
 
     // http://ernieleseberg.com/php-image-output-and-browser-caching/
@@ -489,15 +904,9 @@ class Thumbnail {
         exit;
     }
 
-    protected function _display_error_404() {
+    protected function _display_error($code) {
 
-        set_status_header(404);
-        exit;
-    }
-
-    protected function _display_error_500() {
-
-        set_status_header(500);
+        set_status_header($code);
         exit;
     }
 

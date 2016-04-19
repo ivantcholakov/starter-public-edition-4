@@ -412,7 +412,7 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
 
         $this->load->helper('thumbnail');
 
-        $this->detect_boolean_attributes(array(3, 4));
+        $this->detect_boolean_attributes(array(3, 4, 5));
         $attributes = $this->get_attribute_values();
 
         $src = (isset($attributes[0]) && $attributes[0] != '') ? $attributes[0] : null;
@@ -420,8 +420,9 @@ class Parser_Lex_Extension_Helper extends Parser_Lex_Extension {
         $height = (isset($attributes[2]) && $attributes[2] != '') ? $attributes[2] : null;
         $no_crop = isset($attributes[3]) ? $attributes[3] : null;
         $keep_canvas_size = isset($attributes[4]) ? $attributes[4] : null;
+        $dynamic_output = isset($attributes[5]) ? $attributes[5] : null;
 
-        return thumbnail($src, $width, $height, $no_crop, $keep_canvas_size);
+        return thumbnail($src, $width, $height, $no_crop, $keep_canvas_size, $dynamic_output);
     }
 
     public function _func_null() {
