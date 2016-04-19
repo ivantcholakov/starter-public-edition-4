@@ -8,7 +8,7 @@
  *
  * Code repository: @link https://github.com/ivantcholakov/Codeigniter-Gravatar
  *
- * @version 1.1.0
+ * @version 1.1.1
  *
  * @license The MIT License (MIT)
  * @link http://opensource.org/licenses/MIT
@@ -104,6 +104,11 @@ class Gravatar {
         $this->initialize($this->defaults);
 
         return $this;
+    }
+
+    public function get_defaults() {
+
+        return $this->defaults;
     }
 
     /**
