@@ -42,14 +42,17 @@ class Welcome_controller extends Base_Controller {
                     'path' => PUBLIC_UPLOAD_PATH,
                     'is_writable' => NULL
                 ),
+            'www/cache/' =>
+                array(
+                    'path' => PUBLIC_CACHE_PATH,
+                    'is_writable' => NULL
+                ),
         );
 
         foreach ($writable_folders as $key => $folder) {
 
             $writable_folders[$key]['is_writable'] = is_really_writable($folder['path']);
         }
-
-        $mailer_enabled = (bool) $this->settings->get('mailer_enabled');
 
         // Diagnostics data decoration.
 
@@ -69,6 +72,10 @@ class Welcome_controller extends Base_Controller {
             }
         }
 
+        //----------------------------------------------------------------------
+
+        $mailer_enabled = (bool) $this->settings->get('mailer_enabled');
+
         $diagnostics[] = '<br /><strong>Mailer:</strong>';
 
         if ($mailer_enabled) {
@@ -80,12 +87,16 @@ class Welcome_controller extends Base_Controller {
             $diagnostics[] = 'Mailer service - <span style="color: red">disabled. Check $config[\'mailer_enabled\'] option within platform/core/common/config/config_site.php. Check also the mailer settings within platform/core/common/config/email.php.</span>';
         }
 
+        //----------------------------------------------------------------------
+
         $diagnostics[] = '<br /><strong>UTF-8 support:</strong>';
         $diagnostics[] = 'IS_UTF8_CHARSET - '.(IS_UTF8_CHARSET ? $yes : $no);
         $diagnostics[] = 'MBSTRING_INSTALLED - '.(MBSTRING_INSTALLED ? $yes : $no);
         $diagnostics[] = 'ICONV_INSTALLED - '.(ICONV_INSTALLED ? $yes : $no);
         $diagnostics[] = 'PCRE_UTF8_INSTALLED - '.(PCRE_UTF8_INSTALLED ? $yes : $no);
         $diagnostics[] = 'INTL_INSTALLED (optional) - '.(INTL_INSTALLED ? $yes : $no);
+
+        //----------------------------------------------------------------------
 
         $diagnostics[] = '<br /><strong>Cryptography support:</strong>';
 
@@ -106,6 +117,27 @@ class Welcome_controller extends Base_Controller {
         }
 
         $diagnostics[] = 'random_bytes() - '.$random_bytes;
+
+        //----------------------------------------------------------------------
+
+        $gd_installed = extension_loaded('gd');
+
+        $gd_version = null;
+
+        if ($gd_installed) {
+
+            $gd_info = gd_info();
+
+            if (isset($gd_info['GD Version'])) {
+                $gd_version = $gd_info['GD Version'];
+            }
+        }
+
+        $diagnostics[] = '<br /><strong>Graphics:</strong>';
+
+        $diagnostics[] = '\'gd\' installed - '.($gd_installed ? $yes.($gd_version != '' ? ', '.$gd_version : '') : $no);
+
+        //----------------------------------------------------------------------
 
         $diagnostics = implode('<br />', $diagnostics);
 
