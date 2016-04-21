@@ -1,14 +1,11 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-/**
+{#
  * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015-2016
  * @license The MIT License, http://opensource.org/licenses/MIT
- */
+#}
 
-// The image we play with, full URL.
-$my_image = image_url('playground.jpg');
-
-?>
+{# The image we are playing with, get the full URL. #}
+{% set my_image = image_url('playground.jpg') %}
 
     <style>
         .image-container {
@@ -32,7 +29,7 @@ $my_image = image_url('playground.jpg');
             <div class="container">
 
                 <div class="page-header">
-                    <h1><?php echo $template['page_title']; ?></h1>
+                    <h1>{{ template.page_title }}</h1>
                 </div>
 
                         <div class="table-responsive">
@@ -67,26 +64,26 @@ $my_image = image_url('playground.jpg');
                                     <tr>
                                         <td>
                                             <p>
-                                                <img src="<?php echo thumbnail($my_image, 120); ?>" />
+                                                <img src="{{ thumbnail(my_image, 120) }}" />
                                                 <br />
                                                 width = 120px
                                             </p>
 
                                             <p>
-                                                <img src="<?php echo thumbnail($my_image, 180); ?>" />
+                                                <img src="{{ thumbnail(my_image, 180) }}" />
                                                 <br />
                                                 width = 180px
                                             </p>
                                         </td>
                                         <td>
                                             <p>
-                                                <img src="<?php echo thumbnail($my_image, 120, null, null, null, true); ?>" />
+                                                <img src="{{ thumbnail(my_image, 120, null, null, null, true) }}" />
                                                 <br />
                                                 width = 120px
                                             </p>
 
                                             <p>
-                                                <img src="<?php echo thumbnail($my_image, 180, null, null, null, true); ?>" />
+                                                <img src="{{ thumbnail(my_image, 180, null, null, null, true) }}" />
                                                 <br />
                                                 width = 180px
                                             </p>
@@ -102,26 +99,26 @@ $my_image = image_url('playground.jpg');
                                     <tr>
                                         <td>
                                             <p>
-                                                <img src="<?php echo thumbnail($my_image, null, 120); ?>" />
+                                                <img src="{{ thumbnail(my_image, null, 120) }}" />
                                                 <br />
                                                 height = 120px
                                             </p>
 
                                             <p>
-                                                <img src="<?php echo thumbnail($my_image, null, 180); ?>" />
+                                                <img src="{{ thumbnail(my_image, null, 180) }}" />
                                                 <br />
                                                 height = 180px
                                             </p>
                                         </td>
                                         <td>
                                             <p>
-                                                <img src="<?php echo thumbnail($my_image, null, 120, null, null, true); ?>" />
+                                                <img src="{{ thumbnail(my_image, null, 120, null, null, true) }}" />
                                                 <br />
                                                 height = 120px
                                             </p>
 
                                             <p>
-                                                <img src="<?php echo thumbnail($my_image, null, 180, null, null, true); ?>" />
+                                                <img src="{{ thumbnail(my_image, null, 180, null, null, true) }}" />
                                                 <br />
                                                 height = 180px
                                             </p>
@@ -137,26 +134,26 @@ $my_image = image_url('playground.jpg');
                                     <tr>
                                         <td>
                                             <p>
-                                                <img src="<?php echo thumbnail($my_image, 180, 120); ?>" />
+                                                <img src="{{ thumbnail(my_image, 180, 120) }}" />
                                                 <br />
                                                 width = 180px, height = 120px
                                             </p>
 
                                             <p>
-                                                <img src="<?php echo thumbnail($my_image, 120, 180); ?>" />
+                                                <img src="{{ thumbnail(my_image, 120, 180) }}" />
                                                 <br />
                                                 width = 120px, height = 180px
                                             </p>
                                         </td>
                                         <td>
                                             <p>
-                                                <img src="<?php echo thumbnail($my_image, 180, 120, null, null, true); ?>" />
+                                                <img src="{{ thumbnail(my_image, 180, 120, null, null, true) }}" />
                                                 <br />
                                                 width = 180px, height = 120px
                                             </p>
 
                                             <p>
-                                                <img src="<?php echo thumbnail($my_image, 120, 180, null, null, true); ?>" />
+                                                <img src="{{ thumbnail(my_image, 120, 180, null, null, true) }}" />
                                                 <br />
                                                 width = 120px, height = 180px
                                             </p>
@@ -173,7 +170,7 @@ $my_image = image_url('playground.jpg');
                                         <td>
                                             <p>
                                                 <div class="image-container image-container-180x120">
-                                                    <img src="<?php echo thumbnail($my_image, 180, 120, true); ?>" />
+                                                    <img src="{{ thumbnail(my_image, 180, 120, true) }}" />
                                                 </div>
 
                                                 width = 180px, height = 120px
@@ -181,7 +178,7 @@ $my_image = image_url('playground.jpg');
 
                                             <p>
                                                 <div class="image-container image-container-120x180">
-                                                    <img src="<?php echo thumbnail($my_image, 120, 180, true); ?>" />
+                                                    <img src="{{ thumbnail(my_image, 120, 180, true) }}" />
                                                 </div>
                                                 width = 120px, height = 180px
                                             </p>
@@ -189,7 +186,7 @@ $my_image = image_url('playground.jpg');
                                         <td>
                                             <p>
                                                 <div class="image-container image-container-180x120">
-                                                    <img src="<?php echo thumbnail($my_image, 180, 120, true, null, true); ?>" />
+                                                    <img src="{{ thumbnail(my_image, 180, 120, true, null, true) }}" />
                                                 </div>
 
                                                 width = 180px, height = 120px
@@ -197,7 +194,7 @@ $my_image = image_url('playground.jpg');
 
                                             <p>
                                                 <div class="image-container image-container-120x180">
-                                                    <img src="<?php echo thumbnail($my_image, 120, 180, true, null, true); ?>" />
+                                                    <img src="{{ thumbnail(my_image, 120, 180, true, null, true) }}" />
                                                 </div>
                                                 width = 120px, height = 180px
                                             </p>
@@ -214,7 +211,7 @@ $my_image = image_url('playground.jpg');
                                         <td>
                                             <p>
                                                 <div class="image-container image-container-180x120">
-                                                    <img src="<?php echo thumbnail($my_image, 180, 120, true, true); ?>" />
+                                                    <img src="{{ thumbnail(my_image, 180, 120, true, true) }}" />
                                                 </div>
 
                                                 width = 180px, height = 120px
@@ -222,7 +219,7 @@ $my_image = image_url('playground.jpg');
 
                                             <p>
                                                 <div class="image-container image-container-120x180">
-                                                    <img src="<?php echo thumbnail($my_image, 120, 180, true, true); ?>" />
+                                                    <img src="{{ thumbnail(my_image, 120, 180, true, true) }}" />
                                                 </div>
                                                 width = 120px, height = 180px
                                             </p>
@@ -230,7 +227,7 @@ $my_image = image_url('playground.jpg');
                                         <td>
                                             <p>
                                                 <div class="image-container image-container-180x120">
-                                                    <img src="<?php echo thumbnail($my_image, 180, 120, true, true, true); ?>" />
+                                                    <img src="{{ thumbnail(my_image, 180, 120, true, true, true) }}" />
                                                 </div>
 
                                                 width = 180px, height = 120px
@@ -238,7 +235,7 @@ $my_image = image_url('playground.jpg');
 
                                             <p>
                                                 <div class="image-container image-container-120x180">
-                                                    <img src="<?php echo thumbnail($my_image, 120, 180, true, true, true); ?>" />
+                                                    <img src="{{ thumbnail(my_image, 120, 180, true, true, true) }}" />
                                                 </div>
                                                 width = 120px, height = 180px
                                             </p>
