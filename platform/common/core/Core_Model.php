@@ -6,7 +6,7 @@
  * @link http://github.com/jamierumbelow/codeigniter-base-model
  * @copyright Copyright (c) 2012, Jamie Rumbelow <http://jamierumbelow.net>
  *
- * Some modifications have been implemented by Ivan Tcholakov, 2012-2015
+ * Some modifications have been implemented by Ivan Tcholakov, 2012-2016
  * @link https://github.com/ivantcholakov/codeigniter-base-model
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -93,6 +93,8 @@ class Core_Model extends CI_Model
     protected $after_get = array();
     protected $before_delete = array();
     protected $after_delete = array();
+    protected $before_dropdown = array();
+    protected $after_dropdown = array();
 
     protected $callback_parameters = array();
 
