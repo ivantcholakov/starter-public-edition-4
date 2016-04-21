@@ -2440,7 +2440,7 @@ class Core_Model extends CI_Model
             return CI::$APP->$myVar;
         }
 
-        throw new Exception('There is no such property: ' . $myVar);
+        throw new Exception('Core_Model: There is no such property: ' . $myVar);
     }
 
     /**
@@ -2481,7 +2481,7 @@ class Core_Model extends CI_Model
             return call_user_func_array(array(CI::$APP, $name), $arguments);
         }
 
-        throw new Exception('There is no such method: ' . $name);
+        throw new Exception('Core_Model:There is no such method: ' . $name);
     }
 
     /**

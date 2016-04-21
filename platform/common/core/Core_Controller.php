@@ -141,7 +141,7 @@ class Core_Controller extends MX_Controller {
             return CI::$APP->$myVar;
         }
 
-        throw new Exception('There is no such property: ' . $myVar);
+        throw new Exception('Core_Controller: There is no such property: ' . $myVar);
     }
 
     /**
@@ -177,7 +177,7 @@ class Core_Controller extends MX_Controller {
             return call_user_func_array(array(CI::$APP, $name), $arguments);
         }
 
-        throw new Exception('There is no such method: ' . $name);
+        throw new Exception('Core_Controller: There is no such method: ' . $name);
     }
 
     /**
