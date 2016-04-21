@@ -168,7 +168,7 @@ class Thumbnail {
                 @mkdir($config['image_cache_path'], 0755, TRUE);
 
                 if (!is_dir($config['image_cache_path'])) {
-                    throw new RuntimeException('Thumbnail: image_public_cache_path can not be created.');
+                    throw new RuntimeException('Thumbnail: image_cache_path can not be created.');
                 }
             }
 
@@ -316,7 +316,7 @@ class Thumbnail {
 
         if (is_array($src)) {
 
-            $src = array_only($src, array('src', 'width', 'w', 'height', 'h', 'no_crop', 'keep_canvas_size'));
+            $src = array_only($src, array('src', 'width', 'w', 'height', 'h', 'no_crop', 'keep_canvas_size', 'dynamic_output'));
 
             if (isset($src['width'])) {
                 $width = $src['width'];
