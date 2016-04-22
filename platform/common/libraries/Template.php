@@ -1339,16 +1339,6 @@ class Template
         $this->_ci->load->_ci_cached_vars['template_'.$tag.'_tag_attributes'] = html_attr($attributes);
     }
 
-    public function merge_attributes($tag = 'body', $attributes) {
-
-        $this->set_attributes($tag, html_attr_merge($this->get_attributes($tag), $attributes));
-    }
-
-    public function remove_attribute($tag = 'body', $attribute_name) {
-
-        $this->set_attributes($tag, html_attr_remove($this->get_attributes($tag), $attribute_name));
-    }
-
     // End of "Added by Ivan Tcholakov, 23-OCT-2013."
     //--------------------------------------------------------------------------
 }
