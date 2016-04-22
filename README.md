@@ -43,7 +43,15 @@ Open the site with a browser on an address like this: http://localhost/starter-p
 On your web-server you may move one level up the content of the folder www, so the segment www from the address to disappear.
 Also you can move the folder platform to a folder outside the document root of the web server for increased security.
 After such a rearrangement open the file config.php (www/config.php before rearrangement), find the setting $PLATFORMPATH and change this path accordingly.
-Don't forget to check platform/writable folder, it should be writable.
+
+The following directories (the locations are the original) must have writable access:
+
+```
+platform/writable/
+www/cache/
+www/editor/
+www/upload/
+```
 
 Have a look at the files .htaccess and robots.txt and adjust them for your site.
 Within the folder platform/applications you will by default two applications - "site_example" and "admin_example".
