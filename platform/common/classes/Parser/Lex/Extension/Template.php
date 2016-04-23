@@ -79,7 +79,7 @@ class Parser_Lex_Extension_Template extends Parser_Lex_Extension {
 
     public function html_begin() {
 
-        return html_tag_no_conflict($this->get_attribute(0));
+        return html_begin($this->get_attribute(0));
     }
 
     public function html_end() {

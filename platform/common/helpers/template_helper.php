@@ -276,11 +276,12 @@ if (!function_exists('template_ios')) {
 // Document Start
 //------------------------------------------------------------------------------
 
-if (!function_exists('html_tag_no_conflict')) {
+if (!function_exists('html_begin')) {
 
     // Added by Ivan Tcholakov. 21-OCT-2013.
     // Renamed by Ivan Tcholakov, html_tag -> html_tag_no_conflict, 03-JAN-2016.
-    function html_tag_no_conflict($attributes = null) {
+    // Renamed by Ivan Tcholakov, html_tag_no_conflict -> html_begin, 23-APR-2016.
+    function html_begin($attributes = null) {
 
         // Add language code and text direction automatically.
         $attr = array();
