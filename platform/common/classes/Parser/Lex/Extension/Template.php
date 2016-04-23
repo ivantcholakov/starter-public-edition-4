@@ -99,7 +99,7 @@ class Parser_Lex_Extension_Template extends Parser_Lex_Extension {
 
     public function html_body_begin() {
 
-        return body_tag($this->get_attribute(0));
+        return body_begin($this->get_attribute(0));
     }
 
     public function html_body_end() {

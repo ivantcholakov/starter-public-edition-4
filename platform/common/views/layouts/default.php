@@ -28,7 +28,7 @@ echo js_jquery();
 template_partial('head');
 
 echo head_end();
-echo body_tag('id="page-top"');
+echo body_begin('id="page-top"');
 
 echo noscript();
 echo unsupported_browser();

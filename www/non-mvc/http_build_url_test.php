@@ -66,7 +66,7 @@ echo js_respond();
 echo js_jquery();
 
 echo head_end();
-echo body_tag('id="page-top"');
+echo body_begin('id="page-top"');
 
 ?>
 

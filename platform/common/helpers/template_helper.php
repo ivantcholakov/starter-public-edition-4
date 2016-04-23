@@ -731,10 +731,10 @@ if (!function_exists('head_close_tag')) {
 // Body Section Start
 //------------------------------------------------------------------------------
 
-if (!function_exists('body_tag')) {
+if (!function_exists('body_begin')) {
 
-    // Added by Ivan Tcholakov. 21-OCT-2013.
-    function body_tag($attributes = null) {
+    // Added by Ivan Tcholakov. 23-APR-2016.
+    function body_begin($attributes = null) {
 
         ci()->load->helper('html');
 
@@ -749,6 +749,19 @@ if (!function_exists('body_tag')) {
 "
 <body$attributes>
 ";
+    }
+
+}
+
+if (!function_exists('body_tag')) {
+
+    // Added by Ivan Tcholakov. 21-OCT-2013.
+    /**
+     * @deprecated Use body_begin().
+     */
+    function body_tag($attributes = null) {
+
+        return body_begin($attributes);
     }
 
 }
