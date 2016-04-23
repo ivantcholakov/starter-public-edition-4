@@ -412,7 +412,6 @@ if (!function_exists('viewport')) {
         return
 '
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />';
-
     }
 
 }
@@ -473,7 +472,6 @@ if (!function_exists('cleartype_ie')) {
             return
 '
     <meta http-equiv="cleartype" content="on" />';
-
         }
 
         return '';
@@ -495,6 +493,7 @@ if (!function_exists('css_normalize')) {
         //return css('lib/normalize-2/normalize.css');
         return css('lib/normalize-3/normalize.css');
     }
+
 }
 
 
@@ -636,7 +635,6 @@ if (!function_exists('js_respond')) {
         Modernizr.mq('(min-width:0)') || document.write('\x3Cscr' + 'ipt type=\"text/javascript\" src=\"$js_path\">\x3C/scr' + 'ipt>');
     //]]>
     </script>";
-
         }
 
         return '';
@@ -849,7 +847,6 @@ if (!function_exists('js_scale_fix_ios')) {
         MBP.scaleFix();
     //]]>
     </script>';
-
         }
 
         return '';
