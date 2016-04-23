@@ -29,6 +29,8 @@ class Curl_controller extends Playground_Base_Controller {
 
     public function index() {
 
+        $curl_exists = function_exists('curl_init');
+
         $code_example = <<<EOT
 
         \$user_id = 1;
@@ -47,7 +49,11 @@ class Curl_controller extends Playground_Base_Controller {
 
 EOT;
 
-        eval($code_example);
+        if ($curl_exists) {
+            eval($code_example);
+        } else {
+            $result = 'Error: \'curl\' PHP extension is required for this example.';
+        }
 
         $this->template
             ->set(compact('code_example', 'result'))
