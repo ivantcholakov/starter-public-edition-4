@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015-2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -13,7 +13,7 @@ class Lex_parser_controller extends Playground_Base_Controller {
 
         $this->load
             ->language('welcome')
-            ->library('curl')
+            //->library('curl')
         ;
 
         $title = 'Lex Parser Test';
@@ -39,7 +39,8 @@ class Lex_parser_controller extends Playground_Base_Controller {
         $countries = $this->_get_country_data();
         $countries_10 = array_slice($countries, 0, 10);
 
-        $lex_parser_layout_test = $this->curl->create(site_url('playground/lex-parser-layout-test'))->get()->execute();
+        //$lex_parser_layout_test = $this->curl->create(site_url('playground/lex-parser-layout-test'))->get()->execute();
+        $lex_parser_layout_test = @ Requests::get(site_url('playground/lex-parser-layout-test'))->body;
 
         $this->template
             ->set('br', '<br />')

@@ -13,7 +13,7 @@ class Twig_parser_controller extends Playground_Base_Controller {
 
         $this->load
             ->language('welcome')
-            ->library('curl')
+            //->library('curl')
         ;
 
         $title = 'Twig Parser Test';
@@ -39,7 +39,8 @@ class Twig_parser_controller extends Playground_Base_Controller {
         $countries = $this->_get_country_data();
         $countries_10 = array_slice($countries, 0, 10);
 
-        $twig_template_inheritance_test = $this->curl->create(site_url('playground/twig-template-inheritance-test'))->get()->execute();
+        //$twig_template_inheritance_test = $this->curl->create(site_url('playground/twig-template-inheritance-test'))->get()->execute();
+        $twig_template_inheritance_test = @ Requests::get(site_url('playground/twig-template-inheritance-test'))->body;
 
         // Miscellaneous Tests
         $twig_test_name = 'test.html.twig';
