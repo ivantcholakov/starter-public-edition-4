@@ -84,7 +84,7 @@ class Parser_Lex_Extension_Template extends Parser_Lex_Extension {
 
     public function html_end() {
 
-        return html_close_tag();
+        return html_end();
     }
 
     public function html_head_begin() {

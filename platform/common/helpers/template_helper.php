@@ -969,14 +969,27 @@ if (!function_exists('body_close_tag')) {
 // Document End
 //------------------------------------------------------------------------------
 
-if (!function_exists('html_close_tag')) {
+if (!function_exists('html_end')) {
 
-    // Added by Ivan Tcholakov. 25-OCT-2013.
-    function html_close_tag() {
+    // Added by Ivan Tcholakov. 23-APR-2016.
+    function html_end() {
 
         return
 '
 </html>';
+    }
+
+}
+
+if (!function_exists('html_close_tag')) {
+
+    // Added by Ivan Tcholakov. 25-OCT-2013.
+    /**
+     * @deprecated Use html_end().
+     */
+    function html_close_tag() {
+
+        return html_end();
     }
 
 }
