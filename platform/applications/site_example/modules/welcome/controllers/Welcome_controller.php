@@ -58,6 +58,8 @@ class Welcome_controller extends Base_Controller {
 
         $diagnostics = array();
 
+        //----------------------------------------------------------------------
+
         $diagnostics[] = '<strong>Writable folders check:</strong>';
 
         foreach ($writable_folders as $key => $folder) {
@@ -74,9 +76,9 @@ class Welcome_controller extends Base_Controller {
 
         //----------------------------------------------------------------------
 
-        $mailer_enabled = (bool) $this->settings->get('mailer_enabled');
-
         $diagnostics[] = '<br /><strong>Mailer:</strong>';
+
+        $mailer_enabled = (bool) $this->settings->get('mailer_enabled');
 
         if ($mailer_enabled) {
 
@@ -90,6 +92,7 @@ class Welcome_controller extends Base_Controller {
         //----------------------------------------------------------------------
 
         $diagnostics[] = '<br /><strong>UTF-8 support:</strong>';
+
         $diagnostics[] = 'IS_UTF8_CHARSET - '.(IS_UTF8_CHARSET ? $yes : $no);
         $diagnostics[] = 'MBSTRING_INSTALLED - '.(MBSTRING_INSTALLED ? $yes : $no);
         $diagnostics[] = 'ICONV_INSTALLED - '.(ICONV_INSTALLED ? $yes : $no);
@@ -120,6 +123,8 @@ class Welcome_controller extends Base_Controller {
 
         //----------------------------------------------------------------------
 
+        $diagnostics[] = '<br /><strong>Graphics:</strong>';
+
         $gd_installed = extension_loaded('gd');
 
         $gd_version = null;
@@ -133,9 +138,13 @@ class Welcome_controller extends Base_Controller {
             }
         }
 
-        $diagnostics[] = '<br /><strong>Graphics:</strong>';
-
         $diagnostics[] = '\'gd\' installed - '.($gd_installed ? $yes.($gd_version != '' ? ', '.$gd_version : '') : $no);
+
+        //----------------------------------------------------------------------
+
+        $diagnostics[] = '<br /><strong>Communication:</strong>';
+
+        $diagnostics[] = '\'curl\' (optional) - '.(function_exists('curl_init') ? $yes : $no);
 
         //----------------------------------------------------------------------
 
