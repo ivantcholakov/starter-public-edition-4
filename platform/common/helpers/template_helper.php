@@ -940,14 +940,27 @@ if (!function_exists('div_debug')) {
 // Body Section End
 //------------------------------------------------------------------------------
 
-if (!function_exists('body_close_tag')) {
+if (!function_exists('body_end')) {
 
-    // Added by Ivan Tcholakov. 25-OCT-2013.
-    function body_close_tag() {
+    // Added by Ivan Tcholakov. 23-APR-2016.
+    function body_end() {
 
         return
 '
 </body>';
+    }
+
+}
+
+if (!function_exists('body_close_tag')) {
+
+    // Added by Ivan Tcholakov. 25-OCT-2013.
+    /**
+     * @deprecated Use body_end().
+     */
+    function body_close_tag() {
+
+        return body_end();
     }
 
 }

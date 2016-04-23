@@ -46,5 +46,5 @@ template_partial('scripts');
 
 echo div_debug();
 
-echo body_close_tag();
+echo body_end();
 echo html_close_tag();
