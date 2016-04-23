@@ -19,7 +19,7 @@ $CI->load
 //    ->library('template')
 //;
 
-echo html_tag();
+echo html_begin();
 
 ?>
 
