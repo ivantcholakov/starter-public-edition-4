@@ -342,7 +342,7 @@ if (!function_exists('html_begin')) {
 
 if (!function_exists('head_begin')) {
 
-    // Added by Ivan Tcholakov. 25-OCT-2013.
+    // Added by Ivan Tcholakov. 23-APR-2016.
     function head_begin() {
 
         return
@@ -702,14 +702,27 @@ if (!function_exists('js_jquery')) {
 // Head Section End
 //------------------------------------------------------------------------------
 
-if (!function_exists('head_close_tag')) {
+if (!function_exists('head_end')) {
 
-    // Added by Ivan Tcholakov. 25-OCT-2013.
-    function head_close_tag() {
+    // Added by Ivan Tcholakov. 25-APR-2016.
+    function head_end() {
 
         return
 '
 </head>';
+    }
+
+}
+
+if (!function_exists('head_close_tag')) {
+
+    // Added by Ivan Tcholakov. 25-OCT-2013.
+    /**
+     * @deprecated Use head_end().
+     */
+    function head_close_tag() {
+
+        return head_end();
     }
 
 }

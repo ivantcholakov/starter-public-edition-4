@@ -65,7 +65,7 @@ echo js_modernizr();
 echo js_respond();
 echo js_jquery();
 
-echo head_close_tag();
+echo head_end();
 echo body_tag('id="page-top"');
 
 ?>
