@@ -340,14 +340,28 @@ if (!function_exists('html_begin')) {
 // Head Section Start
 //------------------------------------------------------------------------------
 
-if (!function_exists('head_tag')) {
+if (!function_exists('head_begin')) {
 
     // Added by Ivan Tcholakov. 25-OCT-2013.
-    function head_tag() {
+    function head_begin() {
 
         return
 '
 <head>';
+    }
+
+}
+
+if (!function_exists('head_tag')) {
+
+    // Added by Ivan Tcholakov. 25-OCT-2013.
+    /**
+     *
+     * @deprecated Use head_begin().
+     */
+    function head_tag() {
+
+        return head_begin();
     }
 
 }

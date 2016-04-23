@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 echo html_begin();
-echo head_tag();
+echo head_begin();
 
 echo meta_charset();
 echo base_href();

@@ -10,7 +10,7 @@ ci()->load
 
 echo html_begin();
 
-echo head_tag();
+echo head_begin();
 echo meta_charset();
 
 ?>
