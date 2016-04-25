@@ -39,6 +39,8 @@ class Core_Tree_Model extends Core_Model {
     protected $children_count_index = 'children_count';
     protected $display_level_index = 'display_level';
 
+    protected $tree_list_total_count = 0;
+
     protected $cache = null;
 
     public function __construct() {
@@ -68,9 +70,13 @@ class Core_Tree_Model extends Core_Model {
             $this->cache[$id] = array();
         }
 
-        $this->cache[$id]['parent_id'] = (int) $this->select($this->parent_id_key)->as_value()->get($id);
+        $db = clone $this;
+        $db->reset_query();
 
-        return $this->cache[$id]['parent_id'];
+        $parent_id = (int) $db->select($this->parent_id_key)->as_value()->get($id);
+        $this->cache[$id]['parent_id'] = $parent_id;
+
+        return $parent_id;
     }
 
     public function get_parents($id) {
@@ -194,9 +200,13 @@ class Core_Tree_Model extends Core_Model {
             $this->cache[$id] = array();
         }
 
-        $this->cache[$id]['has_children'] = !is_null($this->select($this->primary_key)->as_value()->first($this->parent_id_key, $id));
+        $db = clone $this;
+        $db->reset_query();
 
-        return $this->cache[$id]['has_children'];
+        $has_children = !is_null($db->select($this->primary_key)->as_value()->first($this->parent_id_key, $id));
+        $this->cache[$id]['has_children'] = $has_children;
+
+        return $has_children;
     }
 
     public function children_count($id) {
@@ -214,9 +224,13 @@ class Core_Tree_Model extends Core_Model {
             $this->cache[$id] = array();
         }
 
-        $this->cache[$id]['children_count'] = (int) $this->select('COUNT('.$this->protect_identifiers($this->primary_key).')')->as_value()->first($this->parent_id_key, $id);
+        $db = clone $this;
+        $db->reset_query();
 
-        return $this->cache[$id]['children_count'];
+        $children_count = (int) $db->select('COUNT('.$this->protect_identifiers($this->primary_key).')')->as_value()->first($this->parent_id_key, $id);
+        $this->cache[$id]['children_count'] = $children_count;
+
+        return $children_count;
     }
 
     public function get_children($id = null, $select = '', $where = array(), $order_by = array(), $depth = null) {
@@ -255,14 +269,19 @@ class Core_Tree_Model extends Core_Model {
 
         $select = array_merge(
             array(
-                $this->primary_key,
-                $this->parent_id_key,
+                $this->_table.'.'.$this->primary_key,
+                $this->_table.'.'.$this->parent_id_key,
                 "$level AS {$this->level_index}"
             ),
             $select
         );
 
-        $this->select($select);
+        $db = clone $this;
+
+        $db->offset(0);
+        $db->limit(PHP_INT_MAX);
+
+        $db->select($select);
 
         if (is_array($where) && !empty($where)) {
 
@@ -273,15 +292,15 @@ class Core_Tree_Model extends Core_Model {
                     switch (count($w)) {
 
                         case 1:
-                            $this->where($w[0]);
+                            $db->where($w[0]);
                             break;
 
                         case 2:
-                            $this->where($w[0], $w[1]);
+                            $db->where($w[0], $w[1]);
                             break;
 
                         case 3:
-                            $this->where($w[0], $w[1], $w[2]);
+                            $db->where($w[0], $w[1], $w[2]);
                             break;
                     }
                 }
@@ -291,15 +310,15 @@ class Core_Tree_Model extends Core_Model {
                 switch (count($where)) {
 
                     case 1:
-                        $this->where($where[0]);
+                        $db->where($where[0]);
                         break;
 
                     case 2:
-                        $this->where($where[0], $where[1]);
+                        $db->where($where[0], $where[1]);
                         break;
 
                     case 3:
-                        $this->where($where[0], $where[1], $where[2]);
+                        $db->where($where[0], $where[1], $where[2]);
                         break;
                 }
             }
@@ -314,15 +333,15 @@ class Core_Tree_Model extends Core_Model {
                     switch (count($o)) {
 
                         case 1:
-                            $this->order_by($o[0]);
+                            $db->order_by($o[0]);
                             break;
 
                         case 2:
-                            $this->order_by($o[0], $o[1]);
+                            $db->order_by($o[0], $o[1]);
                             break;
 
                         case 3:
-                            $this->order_by($o[0], $o[1], $o[2]);
+                            $db->order_by($o[0], $o[1], $o[2]);
                             break;
                     }
                 }
@@ -332,15 +351,15 @@ class Core_Tree_Model extends Core_Model {
                 switch (count($order_by)) {
 
                     case 1:
-                        $this->order_by($order_by[0]);
+                        $db->order_by($order_by[0]);
                         break;
 
                     case 2:
-                        $this->order_by($order_by[0], $order_by[1]);
+                        $db->order_by($order_by[0], $order_by[1]);
                         break;
 
                     case 3:
-                        $this->order_by($order_by[0], $order_by[1], $order_by[2]);
+                        $db->order_by($order_by[0], $order_by[1], $order_by[2]);
                         break;
                 }
             }
@@ -348,16 +367,19 @@ class Core_Tree_Model extends Core_Model {
 
         if (empty($id)) {
 
-            return $this
+            return $db
                 ->group_start()
-                    ->where($this->parent_id_key, 0)
-                    ->or_where($this->parent_id_key, null)
+                    ->where($this->_table.'.'.$this->parent_id_key, 0)
+                    ->or_where($this->_table.'.'.$this->parent_id_key, null)
                 ->group_end()
                 ->as_array()
                 ->find();
         }
 
-        return $this->find($this->parent_id_key, $id);
+        return $db
+            ->where($this->_table.'.'.$this->parent_id_key, $id)
+            ->as_array()
+            ->find();
     }
 
     public function get_tree($id = null, $select = '', $where = array(), $order_by = array(), $depth = null) {
@@ -368,34 +390,72 @@ class Core_Tree_Model extends Core_Model {
 
         if (!empty($result)) {
 
-             foreach ($result as $key => $row) {
+            foreach ($result as $key => $row) {
 
-                 $children = $this->get_children($row[$this->primary_key], $select, $where, $order_by, $depth);
+                $children = $this->get_children($row[$this->primary_key], $select, $where, $order_by, $depth);
 
-                 if (!empty($children)) {
+                if (!empty($children)) {
 
-                     $result[$key][$this->children_index] = $children;
-                     $result[$key][$this->has_children_index] = true;
-                     $result[$key][$this->children_count_index] = count($children);
+                    $result[$key][$this->children_index] = $children;
+                    $result[$key][$this->has_children_index] = true;
+                    $result[$key][$this->children_count_index] = count($children);
 
-                 } else {
+                } else {
 
-                     $result[$key][$this->has_children_index] = false;
-                     $result[$key][$this->children_count_index] = 0;
-                 }
-             }
+                    $result[$key][$this->has_children_index] = false;
+                    $result[$key][$this->children_count_index] = 0;
+                }
+            }
 
-             return $result;
+            $this->reset_query();
+
+            return $result;
         }
+
+        $this->reset_query();
 
         return null;
     }
 
+    public function get_tree_list($id = null, $select = '', $where = array(), $order_by = array(), $depth = null) {
+
+        // This code is not effective way for large results.
+
+        $offset = $this->get_offset();
+        $limit = $this->get_limit();
+
+        $this->tree_list_total_count = 0;
+
+        $result = $this->get_tree($id, $select, $where, $order_by, $depth);
+        $result = $this->_tree_to_list($result);
+
+        $this->tree_list_total_count = count($result);
+
+        if ($offset !== false || $limit !== false) {
+
+            $offset = (int) $offset;
+
+            if ($limit === false) {
+                return array_slice($result, $offset);
+            }
+
+            return array_slice($result, $offset, $limit);
+        }
+
+        return $result;
+    }
+
+    public function get_last_tree_list_total_count() {
+
+        return $this->tree_list_total_count;
+    }
+
+    /**
+     * @deprecated
+     */
     public function get_list($id = null, $select = '', $where = array(), $order_by = array(), $depth = null) {
 
-        $tree = $this->get_tree($id, $select, $where, $order_by, $depth);
-
-        return $this->_tree_to_list($tree);
+        return $this->get_tree_list($id, $select, $where, $order_by, $depth);
     }
 
     protected function _tree_to_list(& $tree, $display_level = 0) {
