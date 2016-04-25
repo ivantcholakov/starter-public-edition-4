@@ -172,6 +172,16 @@ class Core_Model extends CI_Model
     protected $_select_called = FALSE;
 
     /**
+     * Saved value about LIMIT clause.
+     */
+    protected $_limit = FALSE;
+
+    /**
+     * Saved value about OFFSET clause.
+     */
+    protected $_offset = FALSE;
+
+    /**
      * CodeIgniter version check.
      */
     protected $_is_ci_3 = NULL;
@@ -1325,6 +1335,22 @@ class Core_Model extends CI_Model
         return $this->_database->field_data($this->_table);
     }
 
+    /**
+     * A getter about LIMIT clause.
+     */
+    public function get_limit()
+    {
+        return $this->_limit;
+    }
+
+    /**
+     * A getter about OFFSET clause.
+     */
+    public function get_offset()
+    {
+        return $this->_offset;
+    }
+
     /* --------------------------------------------------------------
      * GLOBAL SCOPES
      * ------------------------------------------------------------ */
@@ -1625,6 +1651,23 @@ class Core_Model extends CI_Model
      */
     public function limit($limit, $offset = 0)
     {
+        if ($limit < 0)
+        {
+            $limit = FALSE;
+        }
+
+        $this->_limit = $limit;
+
+        if ($limit === FALSE)
+        {
+            $limit = PHP_INT_MAX;
+        }
+
+        if (!empty($offset))
+        {
+            $this->_offset = (int) $offset;
+        }
+
         if (!$this->_is_ci_3)
         {
             // Adjust the default value of $offset to match the definition in CI 2.x.
@@ -1640,6 +1683,14 @@ class Core_Model extends CI_Model
      */
     public function offset($offset)
     {
+        $this->_offset = $offset;
+
+        if (empty($offset))
+        {
+            $this->_offset = FALSE;
+            $offset = '00';
+        }
+
         $this->_database->offset($offset);
         return $this;
     }
@@ -2398,6 +2449,8 @@ class Core_Model extends CI_Model
         $this->_as_json_options = 0;
         $this->_temporary_skip_observers = FALSE;
         $this->_select_called = FALSE;
+        $this->_limit = FALSE;
+        $this->_offset = FALSE;
     }
 
     /**
