@@ -98,6 +98,8 @@ class Datatable {
     protected $has_order;
     protected $has_filter;
 
+    protected $is_tree_list = false;
+
     public function __construct() {
 
         $this->ci =& get_instance();
@@ -146,15 +148,24 @@ class Datatable {
             $this->select($select, false);
         }
 
-        $db = clone $this->db;
-        $recordsTotal = $db->count_all_results();
+        if (!$this->is_tree_list) {
 
-        $this->set_limit()->set_order();
+            $db = clone $this->db;
+            $recordsTotal = $db->count_all_results();
 
-        if ($this->is_custom_model()) {
-            $data = $this->db->as_array()->find();
+            $this->set_limit()->set_order();
+
+            if ($this->is_custom_model()) {
+                $data = $this->db->as_array()->find();
+            } else {
+                $data = $this->db->get()->result_array();
+            }
+
         } else {
-            $data = $this->db->get()->result_array();
+
+            $this->set_limit()->set_order();
+            $data = $this->db->get_tree_list();
+            $recordsTotal = $this->db->get_last_tree_list_total_count();
         }
 
         // Ivan: Strange, the table works fine when $recordsFiltered = $recordsTotal
@@ -550,6 +561,23 @@ class Datatable {
     }
 
 
+    // Show as Tree List (If Applicable)
+    //--------------------------------------------------------------------------
+
+    public function as_tree_list($enabled = true) {
+
+        $enabled = (bool) $enabled;
+
+        if (! @is_a($this->db, 'Core_Tree_Model')) {
+            $enabled = false;
+        }
+
+        $this->is_tree_list = $enabled;
+
+        return $this;
+    }
+
+
     // Protected methods
     //--------------------------------------------------------------------------
 
@@ -569,11 +597,20 @@ class Datatable {
 
     protected function set_limit() {
 
-        if (isset($this->request['start']) && $this->request['length'] != -1) {
+        if (isset($this->request['start']) || isset($this->request['length'])) {
 
-            $this
-                ->offset((int) $this->request['start'])
-                ->limit((int) $this->request['length']);
+            $offset = isset($this->request['start']) ? (int) $this->request['start'] : 0;
+            $limit = isset($this->request['length']) ? (int) $this->request['length'] : -1;
+
+            if (empty($offset)) {
+                $offset = '00';
+            }
+
+            if ($limit < 0) {
+                $limit = PHP_INT_MAX;
+            }
+
+            $this->limit($limit)->offset($offset);
         }
 
         return $this;
