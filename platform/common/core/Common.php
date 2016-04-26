@@ -77,7 +77,7 @@ if ( ! function_exists('get_config'))
     }
 }
 
-// ------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 if ( ! function_exists('load_class'))
 {
@@ -164,7 +164,7 @@ if ( ! function_exists('load_class'))
     }
 }
 
-// ------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 if ( ! function_exists('get_mimes'))
 {
@@ -201,7 +201,7 @@ if ( ! function_exists('get_mimes'))
     }
 }
 
-// ------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 if ( ! function_exists('_error_handler'))
 {
@@ -273,7 +273,9 @@ if ( ! function_exists('_error_handler'))
     }
 }
 
-// ------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+
+// Escapers
 
 if ( ! function_exists('html_escape'))
 {
@@ -325,7 +327,86 @@ if ( ! function_exists('html_escape'))
     }
 }
 
-// ------------------------------------------------------------------------
+// Added by Ivan Tcholakov, 26-APR-2016.
+if (!function_exists('html_attr_escape')) {
+
+    function html_attr_escape($string) {
+
+        $twig = & _get_simple_twig_instance();
+
+        return call_user_func($twig->getFilter('escape')->getCallable(), $twig, $string, 'html_attr');
+    }
+
+}
+
+// Added by Ivan Tcholakov, 26-APR-2016.
+if (!function_exists('js_escape')) {
+
+    function js_escape($string) {
+
+        $twig = & _get_simple_twig_instance();
+
+        return call_user_func($twig->getFilter('escape')->getCallable(), $twig, $string, 'js');
+    }
+
+}
+
+// Added by Ivan Tcholakov, 26-APR-2016.
+if (!function_exists('css_escape')) {
+
+    function css_escape($string) {
+
+        $twig = & _get_simple_twig_instance();
+
+        return call_user_func($twig->getFilter('escape')->getCallable(), $twig, $string, 'css');
+    }
+
+}
+
+// Added by Ivan Tcholakov, 26-APR-2016.
+if (!function_exists('url_escape')) {
+
+    function url_escape($string) {
+
+        $twig = & _get_simple_twig_instance();
+
+        return call_user_func($twig->getFilter('escape')->getCallable(), $twig, $string, 'url');
+    }
+
+}
+
+// Added by Ivan Tcholakov, 26-APR-2016.
+if (!function_exists('_get_simple_twig_instance')) {
+
+    function & _get_simple_twig_instance() {
+
+        static $instance = null;
+
+        if (!isset($instance)) {
+
+            $instance = new Twig_Environment(
+                new Parser_Twig_Loader_String,
+                array(
+                    'debug' => false,
+                    'charset' => config_item('charset'),
+                    'base_template_class' => 'Twig_Template',
+                    'strict_variables' => false,
+                    'autoescape' => 'html',
+                    'cache' => false,
+                    'auto_reload' => null,
+                    'optimizations' => -1,
+                )
+            );
+        }
+
+        return $instance;
+    }
+
+}
+
+// End Escapers
+
+// -----------------------------------------------------------------------------
 
 if ( ! function_exists('_stringify_attributes'))
 {
@@ -390,7 +471,7 @@ if ( ! function_exists('html_code'))
     }
 }
 
-// ------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 // Processing HTML Attributes
 // Ivan Tcholakov, 2016.
@@ -524,7 +605,9 @@ if (!function_exists('html_attr_remove_class')) {
 
 // End Processing HTML Attributes
 
-// ------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+
+// HTML Tags
 
 // Added by Ivan Tcholakov, 03-JAN-2016.
 if (!function_exists('html_tag')) {
@@ -561,7 +644,7 @@ if (!function_exists('html_tag')) {
             return html_begin($tag);
         }
 
-        //-----------------------------------------------------------------
+        //----------------------------------------------------------------------
 
         $has_content = $content !== false && $content !== null;
 
@@ -618,3 +701,7 @@ if (!function_exists('xml_tag_valid_name')) {
     }
 
 }
+
+// End HTM Tags
+
+// -----------------------------------------------------------------------------

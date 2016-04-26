@@ -65,12 +65,14 @@ $config['allowed_globals'] = array(
 $config['allowed_functions'] = array(
     'character_limiter',
     'count',
+    'css_escape',       // Works as in Twig.
     'date',
     'empty',
     'explode',
     'gettype',
     'gmap_url',
     'highlight_phrase',
+    'html_attr_escape', // Works as in Twig.
     'html_entity_decode',
     'html_escape',
     'htmlentities',
@@ -91,6 +93,7 @@ $config['allowed_functions'] = array(
     'is_scalar',
     'is_string',
     'isset',
+    'js_escape',        // Works as in Twig.
     'json_decode',
     'json_encode',
     'ltrim',
@@ -121,10 +124,11 @@ $config['allowed_functions'] = array(
     'trim',
     'ucfirst',
     'ucwords',
+    'url_escape',       // Works as in Twig.
     'url_title',
     'var_dump',
     'var_export',
     'word_limiter',
-    'word_wrap', // CodeIgniter
-    'wordwrap',  // PHP
+    'word_wrap',        // CodeIgniter
+    'wordwrap',         // PHP
 );
