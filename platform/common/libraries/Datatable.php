@@ -115,8 +115,6 @@ class Datatable {
 
     public function generate($as_json = true) {
 
-        $this->set_filters();
-
         $select = $this->pluck($this->columns, 'db');
         $expressions = $this->pluck($this->columns, 'expression');
 
@@ -142,13 +140,17 @@ class Datatable {
 
                 $i++;
             }
-
-            $select = implode(', ', $select);
-
-            $this->select($select, false);
         }
 
         if (!$this->is_tree_list) {
+
+            $this->set_filters();
+
+            if (!empty($select)) {
+
+                $select = implode(', ', $select);
+                $this->select($select, false);
+            }
 
             $db = clone $this->db;
             $recordsTotal = $db->count_all_results();
@@ -163,9 +165,64 @@ class Datatable {
 
         } else {
 
-            $this->set_limit()->set_order();
-            $data = $this->db->get_tree_list();
-            $recordsTotal = $this->db->get_last_tree_list_total_count();
+            if (!$this->has_filter()) {
+
+                $this->set_filters();
+
+                $this->set_limit()->set_order();
+
+                if (empty($select)) {
+                    $data = $this->db->get_tree_list();
+                } else {
+                    $data = $this->db->get_tree_list(null, $select);
+                }
+
+                $recordsTotal = $this->db->get_last_tree_list_total_count();
+
+            } else {
+
+                $db1 = clone $this->db;
+
+                $this->set_filters();
+
+                $t = $this->db->table();
+                $primary_key = $this->db->primary_key();
+
+                $ids = array();
+                $items = $this->db->select("$t.$primary_key")->as_array()->find();
+
+                if (!empty($items)) {
+
+                    foreach ($items as $item) {
+
+                        $id = (int) $item[$primary_key];
+                        $ids = array_merge($ids, array($id), $this->db->get_parents($id));
+                    }
+                }
+
+                $this->db = $db1;
+
+                if (!empty($ids)) {
+
+                    $ids = array_unique($ids);
+
+                    $this->set_limit()->set_order();
+
+                    if (empty($select)) {
+                        $data = $this->db->get_tree_list(null, '', array("$t.$primary_key", $ids));
+                    } else {
+                        $data = $this->db->get_tree_list(null, $select, array("$t.$primary_key", $ids));
+                    }
+
+                    $recordsTotal = $this->db->get_last_tree_list_total_count();
+
+                } else {
+
+                    $this->db->reset_query();
+                    $data = array();
+                    $recordsTotal = 0;
+                }
+            }
         }
 
         // Ivan: Strange, the table works fine when $recordsFiltered = $recordsTotal

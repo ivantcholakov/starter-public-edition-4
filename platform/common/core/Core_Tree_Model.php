@@ -296,11 +296,19 @@ class Core_Tree_Model extends Core_Model {
                             break;
 
                         case 2:
-                            $db->where($w[0], $w[1]);
+                            if (is_array($w[1])) {
+                                $db->where_in($w[0], $w[1]);
+                            } else {
+                                $db->where($w[0], $w[1]);
+                            }
                             break;
 
                         case 3:
-                            $db->where($w[0], $w[1], $w[2]);
+                            if (is_array($w[1])) {
+                                $db->where_in($w[0], $w[1], $w[2]);
+                            } else {
+                                $db->where($w[0], $w[1], $w[2]);
+                            }
                             break;
                     }
                 }
@@ -314,11 +322,19 @@ class Core_Tree_Model extends Core_Model {
                         break;
 
                     case 2:
-                        $db->where($where[0], $where[1]);
+                        if (is_array($where[1])) {
+                            $db->where_in($where[0], $where[1]);
+                        } else {
+                            $db->where($where[0], $where[1]);
+                        }
                         break;
 
                     case 3:
-                        $db->where($where[0], $where[1], $where[2]);
+                        if (is_array($where[1])) {
+                            $db->where_in($where[0], $where[1], $where[2]);
+                        } else {
+                            $db->where($where[0], $where[1], $where[2]);
+                        }
                         break;
                 }
             }
