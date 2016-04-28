@@ -27,7 +27,7 @@
                 ],
                 urls: [
                     ASSET_CSS_URI + 'lib/material-icons/material-icons.min.css',
-                    ASSET_CSS_URI + 'lib/font-awesome-4/font-awesome.min.css',
+                    ASSET_CSS_URI + 'lib/font-awesome-4-actions/font-awesome.min.css',
                     ASSET_CSS_URI + 'lib/bootstrap-3/bootstrap-font-face.min.css'
                 ]
             },
