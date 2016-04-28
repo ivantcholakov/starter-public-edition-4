@@ -377,6 +377,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Twig, the flexible, fast, and secure template engine for PHP, http://twig.sensiolabs.org
 * PHP 5.x support for random_bytes() and random_int(), https://github.com/paragonie/random_compat
 * WhichBrowser/Parser, a useragent parser library for PHP, https://github.com/WhichBrowser/Parser
+* Font Awesome actions font (a superset), https://github.com/nyon/fontawesome-actions
 
 The Playground
 --------------
