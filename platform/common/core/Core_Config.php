@@ -387,7 +387,7 @@ class Core_Config extends MX_Config {
             }
         }
 
-        return $base_url.ltrim($this->_uri_string($uri), '/');
+        return $base_url.$this->_uri_string($uri);
     }
 
     // --------------------------------------------------------------------
@@ -493,7 +493,7 @@ class Core_Config extends MX_Config {
             $uri = implode('/', $uri);
         }
 
-        return BASE_URI.ltrim($this->_uri_string($uri), '/');
+        return BASE_URI.$this->_uri_string($uri);
     }
 
     // Added by Ivan Tcholakov, 09-NOV-2013.
@@ -560,7 +560,7 @@ class Core_Config extends MX_Config {
             $base_url = $protocol.substr($base_url, strpos($base_url, '://'));
         }
 
-        return $base_url.ltrim($this->_uri_string($uri), '/');
+        return $base_url.$this->_uri_string($uri);
     }
 
     // Added by Ivan Tcholakov, 13-JAN-2014.
@@ -570,7 +570,7 @@ class Core_Config extends MX_Config {
             $uri = implode('/', $uri);
         }
 
-        return DEFAULT_BASE_URI.ltrim($this->_uri_string($uri), '/');
+        return DEFAULT_BASE_URI.$this->_uri_string($uri);
     }
 
     // Internationalization

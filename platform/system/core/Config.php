@@ -326,7 +326,7 @@ class CI_Config {
 			}
 		}
 
-		return $base_url.ltrim($this->_uri_string($uri), '/');
+		return $base_url.$this->_uri_string($uri);
 	}
 
 	// -------------------------------------------------------------
@@ -344,11 +344,8 @@ class CI_Config {
 	{
 		if ($this->item('enable_query_strings') === FALSE)
 		{
-			if (is_array($uri))
-			{
-				$uri = implode('/', $uri);
-			}
-			return trim($uri, '/');
+			is_array($uri) && $uri = implode('/', $uri);
+			return ltrim($uri, '/');
 		}
 		elseif (is_array($uri))
 		{
