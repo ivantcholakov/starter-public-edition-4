@@ -478,11 +478,11 @@ if ( ! function_exists('html_code'))
 
 if (!function_exists('html_attr')) {
 
-    function html_attr($attributes) {
+    function html_attr($attributes, $return_as_array = false) {
 
         $attr = new HTML_Attributes($attributes);
 
-        return (string) $attr;
+        return $attr->getAttributes( ! $return_as_array);
     }
 
 }
@@ -522,18 +522,20 @@ if (!function_exists('html_attr_get')) {
 
 if (!function_exists('html_attr_set')) {
 
-    function html_attr_set($attributes, $name, $value = null) {
+    function html_attr_set($attributes, $name, $value = null, $return_as_array = false) {
 
         $attr = new HTML_Attributes($attributes);
 
-        return (string) $attr->setAttribute($name, $value);
+        $attr->setAttribute($name, $value);
+
+        return $attr->getAttributes( ! $return_as_array);
     }
 
 }
 
 if (!function_exists('html_attr_merge')) {
 
-    function html_attr_merge($attributes1, $attributes2) {
+    function html_attr_merge($attributes1, $attributes2, $return_as_array = false) {
 
         $attr1 = new HTML_Attributes($attributes1);
         $attr2 = new HTML_Attributes($attributes2);
@@ -542,24 +544,26 @@ if (!function_exists('html_attr_merge')) {
         $attr2->removeAttribute('class');
         $attr1->addClass($class2);
 
-        $attr1->mergeAttributes((string) $attr2);
+        $attr1->mergeAttributes($attr2->getAttributes());
 
         if (trim($attr1->getAttribute('class')) == '') {
             $attr1->removeAttribute('class');
         }
 
-        return (string) $attr1;
+        return $attr1->getAttributes( ! $return_as_array);
     }
 
 }
 
 if (!function_exists('html_attr_remove')) {
 
-    function html_attr_remove($attributes, $name) {
+    function html_attr_remove($attributes, $name, $return_as_array = false) {
 
         $attr = new HTML_Attributes($attributes);
 
-        return (string) $attr->removeAttribute($name);
+        $attr->removeAttribute($name);
+
+        return $attr->getAttributes( ! $return_as_array);
     }
 
 }
@@ -577,28 +581,30 @@ if (!function_exists('html_attr_has_class')) {
 
 if (!function_exists('html_attr_add_class')) {
 
-    function html_attr_add_class($attributes, $class) {
+    function html_attr_add_class($attributes, $class, $return_as_array = false) {
 
         $attr = new HTML_Attributes($attributes);
 
-        return (string) $attr->addClass($class);
+        $attr->addClass($class);
+
+        return $attr->getAttributes( ! $return_as_array);
     }
 
 }
 
 if (!function_exists('html_attr_remove_class')) {
 
-    function html_attr_remove_class($attributes, $class) {
+    function html_attr_remove_class($attributes, $class, $return_as_array = false) {
 
         $attr = new HTML_Attributes($attributes);
 
-        return (string) $attr->removeClass($class);
+        $attr->removeClass($class);
 
         if (trim($attr->getAttribute('class')) == '') {
             $attr->removeAttribute('class');
         }
 
-        return (string) $attr;
+        return $attr->getAttributes( ! $return_as_array);
     }
 
 }
