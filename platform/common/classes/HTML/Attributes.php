@@ -10,7 +10,7 @@ class HTML_Attributes extends HTML_Common2 {
     public function __construct($attributes) {
 
         if (is_object($attributes)) {
-            $attributes = (array) $attributes;
+            $attributes = get_object_vars($attributes);
         }
 
         parent::__construct($attributes);
