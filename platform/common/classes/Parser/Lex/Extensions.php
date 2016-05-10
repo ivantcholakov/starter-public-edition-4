@@ -277,6 +277,15 @@ class Parser_Lex_Extensions extends Lex\Parser {
                         foreach ($loop_data as $item_data) {
                             // Added by Ivan Tcholakov, 25-JAN-2016.
                             // Make the global scope visible here too.
+                            if (empty($item_data)) {
+                                $item_data = array();
+                            }
+                            if (is_object($item_data)) {
+                                $item_data = get_object_vars($item_data);
+                            }
+                            if (!is_array($item_data)) {
+                                $item_data = array();
+                            }
                             $item_data = array_merge($data, $item_data);
                             //
                             $str = $this->extractLoopedTags($match[2][0], $item_data, $callback);
