@@ -3,9 +3,9 @@
 /**
  * Transliteration class
  *
- * @version 1.1
+ * @version 1.1.1
  *
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2015.
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2016.
  * @link https://github.com/ivantcholakov/transliterate
  *
  * @license The MIT License (MIT)
@@ -208,8 +208,13 @@ class Transliterate {
                 $transliterator_id .= '; Any-Latin; Latin-ASCII';
             }
 
-            $transliterator = Transliterator::create($transliterator_id);
-            $new_string = @ $transliterator->transliterate($string);
+            $transliterator = @ Transliterator::create($transliterator_id);
+
+            if (is_object($transliterator)) {
+                $new_string = @ $transliterator->transliterate($string);
+            } else {
+                $new_string = false;
+            }
 
             if ($new_string !== false) {
                 $string = $new_string;
