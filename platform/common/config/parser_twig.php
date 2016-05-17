@@ -49,6 +49,9 @@ $config['extensions'] = array(
 
 // Extending the Twig parser: Extra-functions.
 $config['functions'] = array(
+    // Static Class Methods and Properties
+    array('call_static', array('Parser_Twig_Extension_Static', 'call_static')),
+    array('get_static', array('Parser_Twig_Extension_Static', 'get_static')),
     // Debugging Previews
     array('print_d', 'print_d', array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
     array('print_r', array('Parser_Twig_Extension_Debug', 'print_r'), array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
