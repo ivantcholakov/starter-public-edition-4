@@ -57,4 +57,9 @@ class Parser_Twig_Extension_Php {
             : call_user_func_array('wordwrap', $args);
     }
 
+    public static function php_empty($variable) {
+
+        return empty($variable);
+    }
+
 }

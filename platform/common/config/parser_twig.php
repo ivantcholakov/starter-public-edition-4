@@ -244,6 +244,7 @@ $config['tests'] = array(
     array('object', 'is_object'),
     array('scalar', 'is_scalar'),
     array('string', 'is_string'),
+    array('zero', array('Parser_Twig_Extension_Php', 'php_empty')),
 );
 
 // Sandbox Whitelists
