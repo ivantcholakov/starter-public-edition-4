@@ -80,6 +80,7 @@
                     <a class="list-group-item" href="<?php echo site_url('playground/which-browser'); ?>">WhichBrowser Test</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/fa-test'); ?>">Font Awesome Superset Test</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/ihover'); ?>">iHover Test</a>
+                    <a class="list-group-item" href="<?php echo site_url('playground/masonry'); ?>">Masonry Test</a>
 
                 <!--</div>-->
 
