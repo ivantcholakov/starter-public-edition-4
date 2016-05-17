@@ -379,6 +379,8 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * WhichBrowser/Parser, a useragent parser library for PHP, https://github.com/WhichBrowser/Parser
 * Font Awesome actions font (a superset), https://github.com/nyon/fontawesome-actions
 * iHover, a collection of hover effects using pure CSS, https://github.com/gudh/ihover
+* imagesLoaded - "You images done yet or what?", https://github.com/desandro/imagesloaded
+* Masonry - a cascading grid layout library, https://github.com/desandro/masonry
 
 The Playground
 --------------
