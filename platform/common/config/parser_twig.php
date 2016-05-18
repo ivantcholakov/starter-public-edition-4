@@ -59,6 +59,7 @@ $config['functions'] = array(
     // PHP
     array('mt_rand', 'mt_rand', array('is_safe' => array('html'))),
     array('rand', 'mt_rand', array('is_safe' => array('html'))),
+    'file_exists',
     // CodeIgniter's Helpers
     array('is_https', 'is_https', array('is_safe' => array('html'))),
     // Session
@@ -200,6 +201,8 @@ $config['filters'] = array(
     array('object', array('Parser_Twig_Extension_TypeCasting', 'object')),
     array('null', array('Parser_Twig_Extension_TypeCasting', 'null'), array('is_safe' => array('html'))),
     // PHP Functions
+    'base64_decode',
+    array('base64_encode', 'base64_encode', array('is_safe' => array('html'))),
     array('count', 'count', array('is_safe' => array('html'))),
     array('gettype', 'gettype', array('is_safe' => array('html'))),
     array('ltrim', array('Parser_Twig_Extension_Php', 'ltrim')),
