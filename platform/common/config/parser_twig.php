@@ -202,7 +202,7 @@ $config['filters'] = array(
     array('null', array('Parser_Twig_Extension_TypeCasting', 'null'), array('is_safe' => array('html'))),
     // PHP Functions
     'base64_decode',
-    array('base64_encode', 'base64_encode', array('is_safe' => array('html'))),
+    array('base64_encode', 'base64_encode', array('is_safe' => array('html', 'html_attr', 'js'))),
     array('count', 'count', array('is_safe' => array('html'))),
     array('gettype', 'gettype', array('is_safe' => array('html'))),
     array('ltrim', array('Parser_Twig_Extension_Php', 'ltrim')),
