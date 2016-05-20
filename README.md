@@ -417,6 +417,8 @@ Reported by Webnice Ltd., http://webnicebg.com
 * http://katonovi.com (an online store)
 * http://lvhalsokost.se
 * http://astoconsult.com (industrial property)
+* http://bba-bulgaria.com (a medical NGO)
+* http://evroforest.com (a parquet seller)
 
 Credits
 -------
