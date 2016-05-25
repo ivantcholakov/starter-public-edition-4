@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c42aabe4ff4069850b667ce00ac2d559",
-    "content-hash": "ebf8a61b5659dbbf3294ffe2061601a8",
+    "hash": "cb39dd95a7d2a9b6751db5beeaf9b2ec",
+    "content-hash": "2ed0e2c398fd72cff6a07f0141b7fba5",
     "packages": [
         {
             "name": "facebook/php-sdk-v4",
@@ -547,16 +547,16 @@
         },
         {
             "name": "whichbrowser/parser",
-            "version": "v2.0.16",
+            "version": "v2.0.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WhichBrowser/Parser.git",
-                "reference": "38d7b2b1fd2bf008e08ef0d4d1e44459c8d3d561"
+                "reference": "2a144160618566e39bc4a742faf255e76ebe138a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WhichBrowser/Parser/zipball/38d7b2b1fd2bf008e08ef0d4d1e44459c8d3d561",
-                "reference": "38d7b2b1fd2bf008e08ef0d4d1e44459c8d3d561",
+                "url": "https://api.github.com/repos/WhichBrowser/Parser/zipball/2a144160618566e39bc4a742faf255e76ebe138a",
+                "reference": "2a144160618566e39bc4a742faf255e76ebe138a",
                 "shasum": ""
             },
             "require": {
@@ -570,7 +570,7 @@
                 "phpunit/php-code-coverage": "^2.2|^3.0",
                 "phpunit/phpunit": "^4.0",
                 "satooshi/php-coveralls": "^0.6.1",
-                "squizlabs/php_codesniffer": "2.*",
+                "squizlabs/php_codesniffer": "2.5.*",
                 "symfony/yaml": "^2.7"
             },
             "type": "library",
@@ -601,7 +601,7 @@
                 "ua",
                 "useragent"
             ],
-            "time": "2016-03-22 15:10:51"
+            "time": "2016-05-17 12:16:11"
         }
     ],
     "packages-dev": [],

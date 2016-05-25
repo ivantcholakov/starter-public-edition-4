@@ -105,6 +105,11 @@ trait Corrections
             $this->data->engine->reset();
         }
 
+        if ($this->data->os->name == 'Lindows' && $this->data->browser->name == 'Internet Explorer') {
+            $this->data->browser->reset();
+            $this->data->engine->reset();
+        }
+
         if ($this->data->os->name == 'Tizen' && $this->data->browser->name == 'Chrome') {
             $this->data->browser->reset([
                 'family' => isset($this->data->browser->family) ? $this->data->browser->family : null
@@ -171,7 +176,7 @@ trait Corrections
 
     private function hideOsOnDeviceTypeTelevision()
     {
-        if (isset($this->data->os->name) && !in_array($this->data->os->name, [ 'Aliyun OS', 'Tizen', 'Android', 'Android TV', 'FireOS', 'Google TV', 'Firefox OS' ])) {
+        if (isset($this->data->os->name) && !in_array($this->data->os->name, [ 'Aliyun OS', 'Tizen', 'Android', 'Android TV', 'FireOS', 'Google TV', 'Firefox OS', 'OpenTV' ])) {
             $this->data->os->reset();
         }
     }

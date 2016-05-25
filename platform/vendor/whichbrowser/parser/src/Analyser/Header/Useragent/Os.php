@@ -27,6 +27,7 @@ trait Os
         $this->detectBada($ua);
         $this->detectBrew($ua);
         $this->detectQtopia($ua);
+        $this->detectOpenTV($ua);
         $this->detectRemainingOperatingSystems($ua);
 
         return $this;
@@ -52,8 +53,7 @@ trait Os
     {
         /* iOS */
 
-        if ((preg_match('/iPhone/u', $ua) && !preg_match('/like iPhone/u', $ua)) ||
-            preg_match('/iPad/u', $ua) || preg_match('/iPod/u', $ua)) {
+        if (preg_match('/(iPhone|iPad|iPod)/u', $ua) && !preg_match('/like iPhone/u', $ua)) {
             $this->data->os->name = 'iOS';
 
             if (preg_match('/CPU like Mac OS X/u', $ua, $match)) {
@@ -158,7 +158,7 @@ trait Os
     {
         /* Android */
 
-        if (preg_match('/Android/ui', $ua)) {
+        if (preg_match('/Andr[0o]id/ui', $ua)) {
             $falsepositive = false;
 
             /* Prevent the Mobile IE 11 Franken-UA from matching Android */
@@ -181,7 +181,7 @@ trait Os
                 $this->data->os->name = 'Android';
                 $this->data->os->version = new Version();
 
-                if (preg_match('/Android(?: )?(?:AllPhone_|CyanogenMod_|OUYA )?(?:\/)?v?([0-9.]+)/ui', str_replace('-update', ',', $ua), $match)) {
+                if (preg_match('/Andr[0o]id(?: )?(?:AllPhone_|CyanogenMod_|OUYA )?(?:\/)?v?([0-9.]+)/ui', str_replace('-update', ',', $ua), $match)) {
                     $this->data->os->version = new Version([ 'value' => $match[1], 'details' => 3 ]);
                 }
 
@@ -197,8 +197,16 @@ trait Os
                     $this->data->os->version = new Version([ 'value' => '4.4', 'details' => 3 ]);
                 }
 
-                if (preg_match('/Android 5.[01].99/u', $ua)) {
+                if (preg_match('/Android (?:L|4.4.99);/u', $ua)) {
+                    $this->data->os->version = new Version([ 'value' => '5', 'details' => 3, 'alias' => 'L' ]);
+                }
+
+                if (preg_match('/Android (?:M|5.[01].99);/u', $ua)) {
                     $this->data->os->version = new Version([ 'value' => '6', 'details' => 3, 'alias' => 'M' ]);
+                }
+
+                if (preg_match('/Android (?:N|6.0.99);/u', $ua)) {
+                    $this->data->os->version = new Version([ 'value' => '7', 'details' => 3, 'alias' => 'N' ]);
                 }
 
                 $this->data->device->type = Constants\DeviceType::MOBILE;
@@ -212,8 +220,11 @@ trait Os
                 }
 
 
-
-                if (preg_match('/Eclair; (?:[a-zA-Z][a-zA-Z](?:[-_][a-zA-Z][a-zA-Z])?) Build\/([^\/]*)\//u', $ua, $match)) {
+                if (preg_match('/[a-zA-Z][a-zA-Z](?:[-_][a-zA-Z][a-zA-Z])?; ([^;]*[^;\s])\s?;\s+(?:BUILD|Build|build)/u', $ua, $match)) {
+                    $this->data->device->model = $match[1];
+                } elseif (preg_match('/; [a-z][a-zA-Z](?:[-_][a-zA-Z][a-zA-Z])?;? ([^;]*[^;\s])\s+(?:BUILD|Build|build)/u', $ua, $match)) {
+                    $this->data->device->model = $match[1];
+                } elseif (preg_match('/Eclair; (?:[a-zA-Z][a-zA-Z](?:[-_][a-zA-Z][a-zA-Z])?) Build\/([^\/]*)\//u', $ua, $match)) {
                     $this->data->device->model = $match[1];
                 } elseif (preg_match('/android\/[0-9.]+ \([^;]+; [^;]+; ([^\)]+)\)$/u', $ua, $match)) {
                     $this->data->device->model = $match[1];
@@ -227,20 +238,18 @@ trait Os
                     $this->data->device->model = $match[1];
                 } elseif (preg_match('/Linux;Android [0-9.]+,([^\)]+)\)/u', $ua, $match)) {
                     $this->data->device->model = $match[1];
-                } elseif (preg_match('/[a-zA-Z][a-zA-Z](?:[-_][a-zA-Z][a-zA-Z])?; ([^;]*[^;\s])\s?;\s+[Bb]uild/u', $ua, $match)) {
-                    $this->data->device->model = $match[1];
                 } elseif (preg_match('/\(([^;]+);U;Android\/[^;]+;[0-9]+\*[0-9]+;CTC\/2.0\)/u', $ua, $match)) {
                     $this->data->device->model = $match[1];
                 } elseif (preg_match('/;\s?([^;]+);\s?[0-9]+\*[0-9]+;\s?CTC\/2.0/u', $ua, $match)) {
                     $this->data->device->model = $match[1];
-                } elseif (preg_match('/Android [^;]+; (?:[a-zA-Z][a-zA-Z](?:[-_][a-zA-Z][a-zA-Z])?; )?([^)]+)\)/u', $ua, $match)) {
-                    if (!preg_match('/[a-zA-Z][a-zA-Z](?:[-_][a-zA-Z][a-zA-Z])?/u', $match[1])) {
+                } elseif (preg_match('/Android [^;]+; (?:[a-zA-Z][a-zA-Z](?:[-_][a-zA-Z][a-zA-Z])?; )?([^)\/;]+)\)/u', $ua, $match)) {
+                    if (!preg_match('/^[a-zA-Z][a-zA-Z](?:[-_][a-zA-Z][a-zA-Z])?$/u', $match[1])) {
                         $this->data->device->model = $match[1];
                     }
                 }
 
                 /* Sometimes we get a model name that starts with Android, in that case it is a mismatch and we should ignore it */
-                if (isset($this->data->device->model) && substr($this->data->device->model, 0, 7) == 'Android') {
+                if (isset($this->data->device->model) && substr($this->data->device->model, 0, 7) == 'Android' && substr($this->data->device->model, 0, 15) != 'Android Edition') {
                     $this->data->device->model = null;
                 }
 
@@ -279,7 +288,34 @@ trait Os
             }
         }
 
-        if (preg_match('/\(Linux; ([^;]+) Build/u', $ua, $match)) {
+        if (preg_match('/\(Linux; (?:U; )?(?:([0-9.]+); )?(?:[a-zA-Z][a-zA-Z](?:[-_][a-zA-Z][a-zA-Z])?; )?([^;]+) Build/u', $ua, $match)) {
+            $falsepositive = false;
+
+            if ($match[2] == 'OpenTV') {
+                $falsepositive = true;
+            }
+
+            if (!$falsepositive) {
+                $this->data->device->type = Constants\DeviceType::MOBILE;
+                $this->data->device->model = $match[2];
+
+                $this->data->os->name = 'Android';
+
+                if (!empty($match[1])) {
+                    $this->data->os->version = new Version([ 'value' => $match[1], 'details' => 3 ]);
+                }
+
+                $device = Data\DeviceModels::identify('android', $match[2]);
+                if ($device->identified) {
+                    $device->identified |= Constants\Id::PATTERN;
+                    $device->identified |= $this->data->device->identified;
+
+                    $this->data->device = $device;
+                }
+            }
+        }
+
+        if (preg_match('/Linux x86_64; ([^;\)]+)(?:; [a-zA-Z][a-zA-Z](?:[-_][a-zA-Z][a-zA-Z])?)?\) AppleWebKit\/534.24 \(KHTML, like Gecko\) Chrome\/11.0.696.34 Safari\/534.24/u', $ua, $match)) {
             $device = Data\DeviceModels::identify('android', $match[1]);
             if ($device->identified) {
                 $device->identified |= Constants\Id::PATTERN;
@@ -291,6 +327,9 @@ trait Os
         }
 
         if (preg_match('/\(Linux; U; Linux Ventana; [^;]+; ([^;]+) Build/u', $ua, $match)) {
+            $this->data->device->type = Constants\DeviceType::MOBILE;
+            $this->data->device->model = $match[1];
+
             $device = Data\DeviceModels::identify('android', $match[1]);
             if ($device->identified) {
                 $device->identified |= Constants\Id::PATTERN;
@@ -390,6 +429,33 @@ trait Os
             }
         }
 
+        /* LeOS */
+
+        if (preg_match('/LeOS/u', $ua)) {
+            $this->data->os->name = 'LeOS';
+            $this->data->os->family = new Family([ 'name' => 'Android' ]);
+
+            if (preg_match('/LeOS([0-9\.]*)/u', $ua, $match)) {
+                $this->data->os->version = new Version([ 'value' => $match[1] ]);
+            }
+
+            $this->data->device->type = Constants\DeviceType::TABLET;
+
+            if (preg_match('/LeOS[0-9\.]+; [^;]+; (.*) Build/u', $ua, $match)) {
+                $this->data->device->model = $match[1];
+            }
+
+            if (isset($this->data->device->model) && $this->data->device->model) {
+                $this->data->device->identified |= Constants\Id::PATTERN;
+
+                $device = Data\DeviceModels::identify('android', $this->data->device->model);
+                if ($device->identified) {
+                    $device->identified |= $this->data->device->identified;
+                    $this->data->device = $device;
+                }
+            }
+        }
+
         /* WoPhone */
 
         if (preg_match('/WoPhone/u', $ua)) {
@@ -405,28 +471,30 @@ trait Os
 
         /* COS */
 
-        if (preg_match('/COS[\/ ]?([0-9]\.[0-9.]+)/ui', $ua, $match)) {
-            $this->data->os->name = 'COS';
-            $this->data->os->family = new Family([ 'name' => 'Android' ]);
-            $this->data->os->version = new Version([ 'value' => $match[1], 'details' => 2 ]);
-        } elseif (preg_match('/(?:\(|; )Chinese Operating System ([0-9]\.[0-9.]*);/ui', $ua, $match)) {
-            $this->data->os->name = 'COS';
-            $this->data->os->family = new Family([ 'name' => 'Android' ]);
-            $this->data->os->version = new Version([ 'value' => $match[1], 'details' => 2 ]);
-        } elseif (preg_match('/COS like Android/ui', $ua, $match)) {
-            $this->data->os->name = 'COS';
-            $this->data->os->family = new Family([ 'name' => 'Android' ]);
-            $this->data->os->version = null;
-            $this->data->device->type = Constants\DeviceType::MOBILE;
-        } elseif (preg_match('/(COS like Android|COSBrowser\/|\(COS;|\(COS 998;)/ui', $ua, $match)) {
-            $this->data->os->name = 'COS';
-            $this->data->os->family = new Family([ 'name' => 'Android' ]);
+        if (preg_match('/(COS|(China|Chinese) Operating System)/ui', $ua)) {
+            if (preg_match('/COS[\/ ]?([0-9]\.[0-9.]+)/ui', $ua, $match)) {
+                $this->data->os->name = 'COS';
+                $this->data->os->family = new Family([ 'name' => 'Android' ]);
+                $this->data->os->version = new Version([ 'value' => $match[1], 'details' => 2 ]);
+            } elseif (preg_match('/(?:\(|; )(?:China|Chinese) Operating System ([0-9]\.[0-9.]*);/ui', $ua, $match)) {
+                $this->data->os->name = 'COS';
+                $this->data->os->family = new Family([ 'name' => 'Android' ]);
+                $this->data->os->version = new Version([ 'value' => $match[1], 'details' => 2 ]);
+            } elseif (preg_match('/COS like Android/ui', $ua, $match)) {
+                $this->data->os->name = 'COS';
+                $this->data->os->family = new Family([ 'name' => 'Android' ]);
+                $this->data->os->version = null;
+                $this->data->device->type = Constants\DeviceType::MOBILE;
+            } elseif (preg_match('/(COS like Android|COSBrowser\/|\(COS;|\(COS 998;)/ui', $ua, $match)) {
+                $this->data->os->name = 'COS';
+                $this->data->os->family = new Family([ 'name' => 'Android' ]);
+            }
         }
     }
 
     private function determineAndroidVersionBasedOnBuild($ua)
     {
-        if ($this->data->isOs('Linux') || $this->data->isOs('Android')) {
+        if ($this->data->isOs('Android')) {
             if (preg_match('/Build\/([^\);]+)/u', $ua, $match)) {
                 $version = Data\BuildIds::identify($match[1]);
                 if ($version) {
@@ -437,10 +505,6 @@ trait Os
                     /* Special case for Android L */
                     if ($version->toFloat() == 5) {
                         $this->data->os->version = $version;
-                    }
-
-                    if (!$this->data->isOs('Android')) {
-                        $this->data->os->name = 'Android';
                     }
                 }
 
@@ -465,7 +529,7 @@ trait Os
                 $this->data->os->version = new Version([ 'value' => '5.0', 'alias' => '2000' ]);
             }
 
-            if (preg_match('/Windows XP/u', $ua) || preg_match('/WinXP/u', $ua)) {
+            if (preg_match('/(Windows XP|WinXP)/u', $ua)) {
                 $this->data->os->version = new Version([ 'value' => '5.1', 'alias' => 'XP' ]);
             }
 
@@ -523,15 +587,15 @@ trait Os
 
             /* Windows */
 
-            if (preg_match('/Windows 95/u', $ua) || preg_match('/Win95/u', $ua)) {
+            if (preg_match('/(Windows 95|Win95)/u', $ua)) {
                 $this->data->os->version = new Version([ 'value' => '4.0', 'alias' => '95' ]);
             }
 
-            if (preg_match('/Windows 98/u', $ua) || preg_match('/Win98/u', $ua)) {
+            if (preg_match('/(Windows 98|Win98)/u', $ua)) {
                 $this->data->os->version = new Version([ 'value' => '4.1', 'alias' => '98' ]);
             }
 
-            if (preg_match('/Windows M[eE]/u', $ua) || preg_match('/WinME/u', $ua)) {
+            if (preg_match('/(Windows M[eE]|WinME)/u', $ua)) {
                 $this->data->os->version = new Version([ 'value' => '4.9', 'alias' => 'ME' ]);
             }
 
@@ -577,7 +641,7 @@ trait Os
                 }
             }
 
-            if (preg_match('/Windows CE/u', $ua) || preg_match('/WinCE/u', $ua) || preg_match('/WindowsCE/u', $ua)) {
+            if (preg_match('/(Windows CE|WindowsCE|WinCE)/u', $ua)) {
                 $this->data->device->type = Constants\DeviceType::MOBILE;
 
                 if (preg_match('/ IEMobile/u', $ua)) {
@@ -668,7 +732,12 @@ trait Os
                 }
             }
 
-            if (preg_match('/Microsoft Windows; PPC/u', $ua)) {
+            if (preg_match('/Microsoft Windows; (PPC|Smartphone)/u', $ua)) {
+                $this->data->os->name = 'Windows Mobile';
+                $this->data->device->type = Constants\DeviceType::MOBILE;
+            }
+
+            if (preg_match('/Windows CE; (PPC|Smartphone)/u', $ua)) {
                 $this->data->os->name = 'Windows Mobile';
                 $this->data->device->type = Constants\DeviceType::MOBILE;
             }
@@ -707,7 +776,7 @@ trait Os
                 }
             }
 
-            if (preg_match('/Windows Phone/u', $ua) || preg_match('/WPDesktop/u', $ua) || preg_match('/ZuneWP7/u', $ua)) {
+            if (preg_match('/(Windows Phone|Windows NT 1[0-9]\.[0-9]; ARM|WPDesktop|ZuneWP7)/u', $ua)) {
                 $this->data->os->name = 'Windows Phone';
                 $this->data->device->type = Constants\DeviceType::MOBILE;
 
@@ -732,7 +801,7 @@ trait Os
                 }
 
                 /* Windows Phone 7 (buggy) */
-                if (preg_match('/Windows Phone OS [^;]+; Trident\/[^;]+; IEMobile\/[^;]+\) ([A-Z\s]+); ?([^\/,]+)/ui', $ua, $match)) {
+                if (preg_match('/Windows Phone OS [^;]+; Trident\/[^;]+; IEMobile[\/ ][^;]+[\);] ([A-Z\s]+); ?([^\/\),]+)/ui', $ua, $match)) {
                     $this->data->device->manufacturer = $match[1];
                     $this->data->device->model = $match[2];
                     $this->data->device->identified |= Constants\Id::PATTERN;
@@ -768,6 +837,20 @@ trait Os
                         $device->identified |= $this->data->device->identified;
                         $this->data->device = $device;
                     }
+                }
+
+                /* Windows Phone 10 Continuum */
+                if (preg_match('/Windows NT 1[0-9]\.[0-9]; ARM; ([^;\)\s][^;\)]*)\)/u', $ua, $match)) {
+                    $this->data->device->model = $match[1];
+                    $this->data->device->identified |= Constants\Id::PATTERN;
+
+                    $device = Data\DeviceModels::identify('wp', $match[1]);
+                    if ($device->identified) {
+                        $device->identified |= $this->data->device->identified;
+                        $this->data->device = $device;
+                    }
+
+                    $this->data->device->type = Constants\DeviceType::DESKTOP;
                 }
 
                 /* Third party browsers */
@@ -850,7 +933,7 @@ trait Os
                         $this->data->device->identified = Constants\Id::NONE;
                     }
 
-                    if ($this->data->device->manufacturer == 'Microsoft' && $this->data->device->model == 'XDeviceEmulator') {
+                    if ($this->data->device->model == 'XDeviceEmulator') {
                         $this->data->device->manufacturer = null;
                         $this->data->device->model = null;
                         $this->data->device->type = Constants\DeviceType::EMULATOR;
@@ -930,13 +1013,16 @@ trait Os
         if (preg_match('/Tizen/u', $ua)) {
             $this->data->os->name = 'Tizen';
 
-            if (preg_match('/Tizen[\/ ]([0-9.]*[0-9])/u', $ua, $match)) {
+            if (preg_match('/Tizen[\/ ]?([0-9.]*[0-9])/u', $ua, $match)) {
                 $this->data->os->version = new Version([ 'value' => $match[1] ]);
             }
 
             if (preg_match('/\(([^;]+); ([^\/]+)\//u', $ua, $match)) {
                 $falsepositive = false;
                 if (strtoupper($match[1]) == 'SMART-TV') {
+                    $falsepositive = true;
+                }
+                if ($match[1] == 'TV') {
                     $falsepositive = true;
                 }
                 if ($match[1] == 'Linux') {
@@ -994,7 +1080,7 @@ trait Os
             }
 
 
-            if (preg_match('/\(SMART[ -]TV;/iu', $ua, $match)) {
+            if (preg_match('/\((SMART[ -])?TV;/iu', $ua, $match)) {
                 $this->data->device->type = Constants\DeviceType::TELEVISION;
                 $this->data->device->manufacturer = 'Samsung';
                 $this->data->device->series = 'Smart TV';
@@ -1027,6 +1113,10 @@ trait Os
 
     private function detectSymbian($ua)
     {
+        if (!preg_match('/(Series|Symbian|S60|UIQ)/ui', $ua)) {
+            return;
+        }
+
         /* Series 80 */
 
         if (preg_match('/Series80\/([0-9.]*)/u', $ua, $match)) {
@@ -1122,6 +1212,10 @@ trait Os
 
     private function detectNokiaOs($ua)
     {
+        if (!preg_match('/(Series|MeeGo|Maemo|Geos)/ui', $ua)) {
+            return;
+        }
+
         /* Series 40 */
 
         if (preg_match('/Series40/u', $ua)) {
@@ -1432,6 +1526,35 @@ trait Os
     }
 
 
+    /* Open TV */
+
+    private function detectOpenTV($ua)
+    {
+        if (preg_match('/OpenTV/ui', $ua, $match)) {
+            $this->data->device->type = Constants\DeviceType::TELEVISION;
+
+            $this->data->os->name = 'OpenTV';
+            $this->data->os->version = null;
+
+            if (preg_match('/OpenTV Build\/([0-9\.]+)/u', $ua, $match)) {
+                $this->data->os->version = new Version([ 'value' => $match[1] ]);
+            }
+
+            if (preg_match('/OpenTV ([0-9\.]+)/u', $ua, $match)) {
+                $this->data->os->version = new Version([ 'value' => $match[1] ]);
+            }
+
+            if (preg_match('/Opentv([0-9]+)/u', $ua, $match)) {
+                $this->data->os->version = new Version([ 'value' => $match[1] ]);
+            }
+
+            if (preg_match('/OTV([0-9\.]+)/u', $ua, $match)) {
+                $this->data->os->version = new Version([ 'value' => $match[1] ]);
+            }
+        }
+    }
+
+
     /* Qtopia */
 
     private function detectQtopia($ua)
@@ -1450,6 +1573,10 @@ trait Os
 
     private function detectUnix($ua)
     {
+        if (!preg_match('/(UNIX|OSF|ULTRIX|HP-UX|SunOS|Solaris|AIX|IRIX|NEWS-OS|GENIX)/ui', $ua)) {
+            return;
+        }
+
         /* Unix */
 
         if (preg_match('/Unix/iu', $ua)) {
@@ -1626,66 +1753,68 @@ trait Os
 
     private function detectBsd($ua)
     {
-        if (preg_match('/BSD/iu', $ua) || preg_match('/DragonFly/iu', $ua)) {
-            if (preg_match('/X11/u', $ua)) {
-                $this->data->device->type = Constants\DeviceType::DESKTOP;
+        if (!preg_match('/(BSD|DragonFly)/ui', $ua)) {
+            return;
+        }
+
+        if (preg_match('/X11/u', $ua)) {
+            $this->data->device->type = Constants\DeviceType::DESKTOP;
+        }
+
+        /* BSD/OS */
+
+        if (preg_match('/BSD\/386/u', $ua)) {
+            $this->data->os->name = 'BSD/OS';
+            $this->data->os->family = new Family([ 'name' => 'BSD' ]);
+        }
+
+        if (preg_match('/BSD\/OS/u', $ua)) {
+            $this->data->os->name = 'BSD/OS';
+            $this->data->os->family = new Family([ 'name' => 'BSD' ]);
+
+            if (preg_match('/BSD\/OS ([0-9.]*)/u', $ua, $match)) {
+                $this->data->os->version = new Version([ 'value' => $match[1] ]);
             }
+        }
 
-            /* BSD/OS */
+        /* FreeBSD */
 
-            if (preg_match('/BSD\/386/u', $ua)) {
-                $this->data->os->name = 'BSD/OS';
-                $this->data->os->family = new Family([ 'name' => 'BSD' ]);
+        if (preg_match('/FreeBSD/iu', $ua)) {
+            $this->data->os->name = 'FreeBSD';
+            $this->data->os->family = new Family([ 'name' => 'BSD' ]);
+
+            if (preg_match('/FreeBSD[ -\/]?([0-9.]*)/iu', $ua, $match)) {
+                $this->data->os->version = new Version([ 'value' => $match[1] ]);
             }
+        }
 
-            if (preg_match('/BSD\/OS/u', $ua)) {
-                $this->data->os->name = 'BSD/OS';
-                $this->data->os->family = new Family([ 'name' => 'BSD' ]);
+        /* OpenBSD */
 
-                if (preg_match('/BSD\/OS ([0-9.]*)/u', $ua, $match)) {
-                    $this->data->os->version = new Version([ 'value' => $match[1] ]);
-                }
+        if (preg_match('/OpenBSD/iu', $ua)) {
+            $this->data->os->name = 'OpenBSD';
+            $this->data->os->family = new Family([ 'name' => 'BSD' ]);
+
+            if (preg_match('/OpenBSD ?([0-9.]*)/iu', $ua, $match)) {
+                $this->data->os->version = new Version([ 'value' => $match[1] ]);
             }
+        }
 
-            /* FreeBSD */
+        /* NetBSD */
 
-            if (preg_match('/FreeBSD/iu', $ua)) {
-                $this->data->os->name = 'FreeBSD';
-                $this->data->os->family = new Family([ 'name' => 'BSD' ]);
+        if (preg_match('/NetBSD/iu', $ua)) {
+            $this->data->os->name = 'NetBSD';
+            $this->data->os->family = new Family([ 'name' => 'BSD' ]);
 
-                if (preg_match('/FreeBSD[ -\/]?([0-9.]*)/iu', $ua, $match)) {
-                    $this->data->os->version = new Version([ 'value' => $match[1] ]);
-                }
+            if (preg_match('/NetBSD ?([0-9.]*)/iu', $ua, $match)) {
+                $this->data->os->version = new Version([ 'value' => $match[1] ]);
             }
+        }
 
-            /* OpenBSD */
+        /* DragonFly */
 
-            if (preg_match('/OpenBSD/iu', $ua)) {
-                $this->data->os->name = 'OpenBSD';
-                $this->data->os->family = new Family([ 'name' => 'BSD' ]);
-
-                if (preg_match('/OpenBSD ?([0-9.]*)/iu', $ua, $match)) {
-                    $this->data->os->version = new Version([ 'value' => $match[1] ]);
-                }
-            }
-
-            /* NetBSD */
-
-            if (preg_match('/NetBSD/iu', $ua)) {
-                $this->data->os->name = 'NetBSD';
-                $this->data->os->family = new Family([ 'name' => 'BSD' ]);
-
-                if (preg_match('/NetBSD ?([0-9.]*)/iu', $ua, $match)) {
-                    $this->data->os->version = new Version([ 'value' => $match[1] ]);
-                }
-            }
-
-            /* DragonFly */
-
-            if (preg_match('/DragonFly/iu', $ua)) {
-                $this->data->os->name = 'DragonFly BSD';
-                $this->data->os->family = new Family([ 'name' => 'BSD' ]);
-            }
+        if (preg_match('/DragonFly/iu', $ua)) {
+            $this->data->os->name = 'DragonFly BSD';
+            $this->data->os->family = new Family([ 'name' => 'BSD' ]);
         }
     }
 
@@ -1701,10 +1830,33 @@ trait Os
                 $this->data->device->type = Constants\DeviceType::DESKTOP;
             }
 
+            if (preg_match('/Antergos Linux/u', $ua)) {
+                $this->data->os->name = 'Antergos Linux';
+                $this->data->device->type = Constants\DeviceType::DESKTOP;
+            }
+
+            if (preg_match('/Arch ?Linux/u', $ua)) {
+                $this->data->os->name = 'Arch Linux';
+                $this->data->device->type = Constants\DeviceType::DESKTOP;
+            }
+
+            if (preg_match('/Black Lab Linux/u', $ua)) {
+                $this->data->os->name = 'Black Lab Linux';
+                if (preg_match('/Black Lab Linux ([0-9\.]+)/u', $ua, $match)) {
+                    $this->data->os->version = new Version([ 'value' => $match[1] ]);
+                }
+
+                $this->data->device->type = Constants\DeviceType::DESKTOP;
+            }
+
             if (preg_match('/CentOS/u', $ua)) {
                 $this->data->os->name = 'CentOS';
                 if (preg_match('/CentOS\/[0-9\.\-]+el([0-9_]+)/u', $ua, $match)) {
                     $this->data->os->version = new Version([ 'value' => str_replace('_', '.', $match[1]) ]);
+                }
+
+                if (preg_match('/CentOS Linux release ([0-9\.]+)/u', $ua, $match)) {
+                    $this->data->os->version = new Version([ 'value' => $match[1], 'details' => 2 ]);
                 }
 
                 $this->data->device->type = Constants\DeviceType::DESKTOP;
@@ -1716,6 +1868,19 @@ trait Os
                     $this->data->os->version = new Version([ 'value' => $match[1] ]);
                 }
 
+                if (preg_match('/Debian GNU\/Linux ([0-9\.]+)/u', $ua, $match)) {
+                    $this->data->os->version = new Version([ 'value' => $match[1] ]);
+                }
+
+                $this->data->device->type = Constants\DeviceType::DESKTOP;
+            }
+
+            if (preg_match('/elementary OS/u', $ua)) {
+                $this->data->os->name = 'elementary OS';
+                if (preg_match('/elementary OS ([A-Za-z]+)/u', $ua, $match)) {
+                    $this->data->os->version = new Version([ 'alias' => $match[1] ]);
+                }
+
                 $this->data->device->type = Constants\DeviceType::DESKTOP;
             }
 
@@ -1725,11 +1890,19 @@ trait Os
                     $this->data->os->version = new Version([ 'value' => str_replace('_', '.', $match[1]) ]);
                 }
 
+                if (preg_match('/Fedora release ([0-9\.]+)/u', $ua, $match)) {
+                    $this->data->os->version = new Version([ 'value' => $match[1] ]);
+                }
+
                 $this->data->device->type = Constants\DeviceType::DESKTOP;
             }
 
             if (preg_match('/Gentoo/u', $ua)) {
                 $this->data->os->name = 'Gentoo';
+                if (preg_match('/Gentoo Base System release ([0-9\.]+)/u', $ua, $match)) {
+                    $this->data->os->version = new Version([ 'value' => $match[1] ]);
+                }
+
                 $this->data->device->type = Constants\DeviceType::DESKTOP;
             }
 
@@ -1751,6 +1924,15 @@ trait Os
                 $this->data->device->type = Constants\DeviceType::DESKTOP;
             }
 
+            if (preg_match('/Linux Mint/u', $ua)) {
+                $this->data->os->name = 'Linux Mint';
+                if (preg_match('/Linux Mint ([0-9\.]+)/iu', $ua, $match)) {
+                    $this->data->os->version = new Version([ 'value' => $match[1] ]);
+                }
+
+                $this->data->device->type = Constants\DeviceType::DESKTOP;
+            }
+
             if (preg_match('/Mandriva Linux/u', $ua)) {
                 $this->data->os->name = 'Mandriva';
                 if (preg_match('/Mandriva Linux\/[0-9\.\-]+mdv([0-9]+)/u', $ua, $match)) {
@@ -1763,6 +1945,10 @@ trait Os
             if (preg_match('/Mageia/u', $ua)) {
                 $this->data->os->name = 'Mageia';
                 if (preg_match('/Mageia\/[0-9\.\-]+mga([0-9]+)/u', $ua, $match)) {
+                    $this->data->os->version = new Version([ 'value' => $match[1] ]);
+                }
+
+                if (preg_match('/Mageia ([0-9\.]+)/iu', $ua, $match)) {
                     $this->data->os->version = new Version([ 'value' => $match[1] ]);
                 }
 
@@ -1811,6 +1997,10 @@ trait Os
                     $this->data->os->version = new Version([ 'value' => $match[1] ]);
                 }
 
+                if (preg_match('/openSUSE ([0-9\.]+)/iu', $ua, $match)) {
+                    $this->data->os->version = new Version([ 'value' => $match[1] ]);
+                }
+
                 $this->data->device->type = Constants\DeviceType::DESKTOP;
             }
 
@@ -1827,6 +2017,10 @@ trait Os
                 $this->data->os->name = 'Ubuntu';
                 if (preg_match('/Ubuntu\/([0-9.]*)/u', $ua, $match)) {
                     $this->data->os->version = new Version([ 'value' => $match[1] ]);
+                }
+
+                if (preg_match('/Ubuntu ([0-9\.]+)/iu', $ua, $match)) {
+                    $this->data->os->version = new Version([ 'value' => $match[1], 'details' => 2 ]);
                 }
 
                 $this->data->device->type = Constants\DeviceType::DESKTOP;
@@ -1878,6 +2072,12 @@ trait Os
             $this->data->os->name = 'Ubuntu Touch';
             $this->data->os->version = new Version([ 'value' => $match[1] ]);
             $this->data->device->type = Constants\DeviceType::MOBILE;
+        }
+
+        if (preg_match('/Lindows ([0-9.]+)/u', $ua, $match)) {
+            $this->data->os->name = 'Lindows';
+            $this->data->os->version = new Version([ 'value' => $match[1] ]);
+            $this->data->device->type = Constants\DeviceType::DESKTOP;
         }
     }
 
@@ -1984,14 +2184,18 @@ trait Os
 
     private function detectRemainingOperatingSystems($ua)
     {
+        if (!preg_match('/(BeOS|Haiku|AmigaOS|MorphOS|AROS|VMS|RISC|Joli|OS\/2|Inferno|Syllable|Grid|MTK|MRE|MAUI|QNX|VRE|SpreadTrum|EPOC|ThreadX)/ui', $ua)) {
+            return;
+        }
+
         $patterns = [
             [ 'name' => 'BeOS',         'regexp' => [ '/BeOS/iu' ],                                         'type' => Constants\DeviceType::DESKTOP ],
             [ 'name' => 'Haiku',        'regexp' => [ '/Haiku/iu' ],                                        'type' => Constants\DeviceType::DESKTOP ],
-            [ 'name' => 'AmigaOS',      'regexp' => [ '/AmigaOS/iu', '/AmigaOS ?([0-9.]+)/iu' ],            'type' => Constants\DeviceType::DESKTOP ],
+            [ 'name' => 'AmigaOS',      'regexp' => [ '/AmigaOS ?([0-9.]+)/iu', '/AmigaOS/iu' ],            'type' => Constants\DeviceType::DESKTOP ],
             [ 'name' => 'MorphOS',      'regexp' => [ '/MorphOS(?: ([0-9.]*))?/iu' ],                       'type' => Constants\DeviceType::DESKTOP ],
             [ 'name' => 'AROS',         'regexp' => [ '/AROS/iu' ],                                         'type' => Constants\DeviceType::DESKTOP ],
-            [ 'name' => 'OpenVMS',      'regexp' => [ '/OpenVMS/iu', '/OpenVMS V([0-9.]+)/iu' ],            'type' => Constants\DeviceType::DESKTOP ],
-            [ 'name' => 'RISC OS',      'regexp' => [ '/RISC OS/iu', '/RISC OS(?:-NC)? ([0-9.]*)/iu' ],     'type' => Constants\DeviceType::DESKTOP ],
+            [ 'name' => 'OpenVMS',      'regexp' => [ '/OpenVMS V([0-9.]+)/iu', '/OpenVMS/iu' ],            'type' => Constants\DeviceType::DESKTOP ],
+            [ 'name' => 'RISC OS',      'regexp' => [ '/RISC OS(?:-NC)? ([0-9.]*)/iu', '/RISC OS/iu' ],     'type' => Constants\DeviceType::DESKTOP ],
             [ 'name' => 'Joli OS',      'regexp' => [ '/Joli OS\/([0-9.]*)/iu' ],                           'type' => Constants\DeviceType::DESKTOP ],
             [ 'name' => 'OS/2',         'regexp' => [ '/OS\/2;(?: (?:U; )?Warp ([0-9.]*))?/iu' ],           'type' => Constants\DeviceType::DESKTOP ],
             [ 'name' => 'Inferno',      'regexp' => [ '/Inferno/iu' ],                                      'type' => Constants\DeviceType::DESKTOP ],
@@ -2020,8 +2224,6 @@ trait Os
                 if (preg_match($patterns[$b]['regexp'][$r], $ua, $match)) {
                     $this->data->os->name = $patterns[$b]['name'];
 
-                    $this->data->os->name = $patterns[$b]['name'];
-
                     if (isset($match[1]) && $match[1]) {
                         $this->data->os->version = new Version([ 'value' => $match[1], 'details' => isset($patterns[$b]['details']) ? $patterns[$b]['details'] : null ]);
                     } else {
@@ -2031,6 +2233,8 @@ trait Os
                     if (isset($patterns[$b]['type'])) {
                         $this->data->device->type = $patterns[$b]['type'];
                     }
+
+                    break;
                 }
             }
         }

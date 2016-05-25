@@ -81,7 +81,7 @@ trait Television
 
     private function detectLgTelevision($ua)
     {
-        if (preg_match('/LGSmartTV/u', $ua)) {
+        if (preg_match('/(LGSmartTV|LG smartTV)/u', $ua)) {
             $this->data->device->manufacturer = 'LG';
             $this->data->device->series = 'Smart TV';
             $this->data->device->type = Constants\DeviceType::TELEVISION;
@@ -159,6 +159,22 @@ trait Television
             $this->data->device->identified |= Constants\Id::MATCH_UA;
 
             if (preg_match('/LG Browser\/[0-9.]+\(LGE; ([^;]+);/u', $ua, $match)) {
+                if (strtoupper(substr($match[1], 0, 5)) != 'WEBOS') {
+                    $this->data->device->model = $match[1];
+                }
+            }
+        }
+
+        if (preg_match('/PBRM\//u', $ua)) {
+            $this->data->browser->name = "Pro:Centric";
+            $this->data->browser->version = null;
+
+            $this->data->device->manufacturer = 'LG';
+            $this->data->device->series = 'webOS TV';
+            $this->data->device->type = Constants\DeviceType::TELEVISION;
+            $this->data->device->identified |= Constants\Id::MATCH_UA;
+
+            if (preg_match('/PBRM\/[0-9.]+ \( ;LGE ;([^;]+) ;/u', $ua, $match)) {
                 if (strtoupper(substr($match[1], 0, 5)) != 'WEBOS') {
                     $this->data->device->model = $match[1];
                 }
@@ -277,11 +293,15 @@ trait Television
             }
         }
 
-        if (preg_match('/Maple_([0-9][0-9][0-9][0-9])/u', $ua, $match)) {
+        if (preg_match('/Maple_?([0-9][0-9][0-9][0-9])/u', $ua, $match)) {
             $this->data->device->manufacturer = 'Samsung';
             $this->data->device->series = 'Smart TV ' . $match[1];
             $this->data->device->type = Constants\DeviceType::TELEVISION;
             $this->data->device->identified |= Constants\Id::MATCH_UA;
+
+            if (preg_match('/Linux\/(?:SmartTV)?\+([0-9]{4,4})/u', $ua, $match)) {
+                $this->data->device->series = 'Smart TV ' . $match[1];
+            }
         }
 
         if (preg_match('/Maple ([0-9]+\.[0-9]+)\.[0-9]+/u', $ua, $match)) {
@@ -348,7 +368,7 @@ trait Television
 
     private function detectSharpTelevision($ua)
     {
-        if (preg_match('/AQUOSBrowser/u', $ua) || preg_match('/AQUOS-(AS|DMP)/u', $ua)) {
+        if (preg_match('/(AQUOSBrowser|AQUOS-(AS|DMP))/u', $ua)) {
             $this->data->device->manufacturer = 'Sharp';
             $this->data->device->series = 'Aquos TV';
             $this->data->device->type = Constants\DeviceType::TELEVISION;
@@ -398,6 +418,10 @@ trait Television
 
     private function detectSettopboxes($ua)
     {
+        if (!preg_match('/(lacleTV|LOEWE|KreaTV|ADB|Mstar|TechniSat|Technicolor|Highway|CiscoBrowser|Sunniwell|Enseo|LocationFreeTV|Winbox|DuneHD|Roku|AppleTV|WebTV|OpenTV|MediStream)/ui', $ua)) {
+            return;
+        }
+
         /* Orange La clé TV */
 
         if (preg_match('/lacleTV\//u', $ua)) {
@@ -484,11 +508,36 @@ trait Television
 
         /* Cisco MediaHighway */
 
-        if (preg_match('/Media-Highway Evolution/u', $ua, $match)) {
+        if (preg_match('/(Media-Highway Evolution|CiscoBrowser\/CI)/u', $ua, $match)) {
             $this->data->os->reset();
 
             $this->data->device->manufacturer = 'Cisco';
             $this->data->device->model = 'MediaHighway';
+            $this->data->device->type = Constants\DeviceType::TELEVISION;
+            $this->data->device->identified |= Constants\Id::MATCH_UA;
+            $this->data->device->generic = false;
+        }
+
+        /* Sunniwell */
+
+        if (preg_match('/Sunniwell/u', $ua) && preg_match('/Resolution/u', $ua)) {
+            $this->data->os->reset();
+
+            $this->data->device->manufacturer = 'Sunniwell';
+            $this->data->device->series = 'STB';
+            $this->data->device->type = Constants\DeviceType::TELEVISION;
+            $this->data->device->identified |= Constants\Id::MATCH_UA;
+            $this->data->device->generic = false;
+        }
+
+        /* Enseo */
+
+        if (preg_match('/Enseo\/([A-Z0-9]+)/u', $ua, $match)) {
+            $this->data->os->reset();
+
+            $this->data->device->manufacturer = 'Enseo';
+            $this->data->device->model = $match[1];
+            $this->data->device->series = 'STB';
             $this->data->device->type = Constants\DeviceType::TELEVISION;
             $this->data->device->identified |= Constants\Id::MATCH_UA;
             $this->data->device->generic = false;
@@ -592,13 +641,6 @@ trait Television
             $this->data->device->type = Constants\DeviceType::TELEVISION;
             $this->data->device->identified |= Constants\Id::MATCH_UA;
             $this->data->device->generic = false;
-        }
-
-        /* OpenTV */
-
-        if (preg_match('/OpenTV/u', $ua)) {
-            $this->data->device->series = 'OpenTV';
-            $this->data->device->type = Constants\DeviceType::TELEVISION;
         }
 
         /* MediStream */
@@ -749,6 +791,12 @@ trait Television
                                 break;
                         }
                     }
+
+                    if ($this->data->device->manufacturer == 'Panasonic') {
+                        if (substr($modelName, 0, 6) != 'PANATV') {
+                            $this->data->device->model = $modelName;
+                        }
+                    }
                 }
 
                 if (!isset($this->data->device->series)) {
@@ -763,12 +811,18 @@ trait Television
 
     private function detectGenericHbbTV($ua)
     {
-        if (preg_match('/((HbbTV|OHTV|SmartTV)\/[0-9\.]+ \(|\)\+CE-HTML)/iu', $ua)) {
+        if (preg_match('/((HbbTV|OHTV|SmartTV)\/[0-9\.]+|CE-HTML)/iu', $ua)) {
             $this->data->device->type = Constants\DeviceType::TELEVISION;
 
             $vendorName = null;
             $modelName = null;
             $found = false;
+
+            if (preg_match('/HbbTV\/[0-9\.]+;CE-HTML\/[0-9\.]+;([A-Z]+)\s([^;]+);/iu', $ua, $match)) {
+                $vendorName = Data\Manufacturers::identify(Constants\DeviceType::TELEVISION, $match[1]);
+                $modelName = trim($match[2]);
+                $found = true;
+            }
 
             if (preg_match('/UID\([a-f0-9:]+\/([^\/]+)\/([^\/]+)\/[0-9a-z\.]+\)\+CE-HTML/iu', $ua, $match)) {
                 $vendorName = Data\Manufacturers::identify(Constants\DeviceType::TELEVISION, $match[2]);

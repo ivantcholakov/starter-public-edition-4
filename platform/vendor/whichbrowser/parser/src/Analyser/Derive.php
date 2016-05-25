@@ -42,11 +42,15 @@ trait Derive
         if ($this->data->device->type == 'mobile' && empty($this->data->device->subtype)) {
             $this->data->device->subtype = 'feature';
 
-            if (isset($this->data->os->family) && in_array($this->data->os->family->getName(), [ 'Android' ])) {
+            if (in_array($this->data->os->getName(), [ 'Android', 'Bada', 'BlackBerry', 'BlackBerry OS', 'Firefox OS', 'iOS', 'iPhone OS', 'Kin OS', 'Maemo', 'MeeGo', 'Palm OS', 'Sailfish', 'Series60', 'Series80', 'Tizen', 'Ubuntu Touch', 'Windows Mobile', 'Windows Phone', 'webOS' ])) {
                 $this->data->device->subtype = 'smart';
             }
 
-            if (in_array($this->data->os->getName(), [ 'Android', 'Bada', 'BlackBerry', 'BlackBerry OS', 'Firefox OS', 'iOS', 'iPhone OS', 'Kin OS', 'Maemo', 'MeeGo', 'Palm OS', 'Sailfish', 'Series60', 'Series80', 'Tizen', 'Ubuntu Touch', 'Windows Mobile', 'Windows Phone', 'webOS' ])) {
+            if (isset($this->data->os->name) && in_array($this->data->os->name, [ 'Windows Phone' ])) {
+                $this->data->device->subtype = 'smart';
+            }
+
+            if (isset($this->data->os->family) && in_array($this->data->os->family->getName(), [ 'Android' ])) {
                 $this->data->device->subtype = 'smart';
             }
         }
@@ -217,8 +221,8 @@ trait Derive
         if ($flag == Constants\Flag::ANDROIDTV) {
             $this->data->os->name = 'Android TV';
             $this->data->os->family = new Family([ 'name' => 'Android' ]);
-
             unset($this->data->device->flag);
+            unset($this->data->device->series);
         }
 
         if ($flag == Constants\Flag::ANDROIDWEAR) {
@@ -304,7 +308,7 @@ trait Derive
 
         /* Derive the default browser on Tizen */
 
-        if ($this->data->os->name == 'Tizen' && !isset($this->data->browser->name) && $this->data->browser->stock && $this->data->device->type == Constants\DeviceType::MOBILE) {
+        if ($this->data->os->name == 'Tizen' && !isset($this->data->browser->name) && $this->data->browser->stock && in_array($this->data->device->type, [ Constants\DeviceType::MOBILE, Constants\DeviceType::APPLIANCE ])) {
             $this->data->browser->name = 'Samsung Browser';
         }
 
@@ -330,6 +334,26 @@ trait Derive
             if (!empty($this->data->os->version)) {
                 if ($this->data->os->version->is('>', '2')) {
                     $this->data->os->version->nickname = 'Warp';
+                }
+            }
+        }
+
+        /* Derive HP TouchPad based on webOS and tablet */
+
+        if ($this->data->os->name == 'webOS' && $this->data->device->type == Constants\DeviceType::TABLET) {
+            $this->data->device->manufacturer = 'HP';
+            $this->data->device->model = 'TouchPad';
+            $this->data->device->identified |= Constants\Id::MATCH_UA;
+        }
+
+        /* Derive Windows 10 Mobile edition */
+
+        if ($this->data->os->name == 'Windows Phone') {
+            if (!empty($this->data->os->version)) {
+                if ($this->data->os->version->is('=', '10')) {
+                    $this->data->os->alias = 'Windows';
+                    $this->data->os->edition = 'Mobile';
+                    $this->data->os->version->alias = '10';
                 }
             }
         }

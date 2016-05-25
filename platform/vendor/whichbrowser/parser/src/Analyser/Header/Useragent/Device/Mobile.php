@@ -249,6 +249,10 @@ trait Mobile
             return;
         }
 
+        if (!preg_match('/(T-Mobile|Danger|HPiPAQ|Acer|Amoi|AIRNESS|ASUS|BenQ|maui|ALCATEL|Bird|COOLPAD|CELKON|Coship|Cricket|DESAY|Diamond|dopod|Ericsson|FLY|GIONEE|Haier|HIKe|Hisense|HS|HTC|T[0-9]{4,4}|HUAWEI|Karbonn|KWC|KONKA|KTOUCH|K-Touch|Lenovo|Lephone|LG|Micromax|MOT|Nexian|NEC|NGM|OPPO|Panasonic|Pantech|Philips|Sagem|Sanyo|Sam|SEC|SGH|SCH|SIE|Sony|SE|SHARP|Spice|Tecno|T-smart|TCL|Tiphone|Toshiba|UTStar|vk|Vodafone|Xiaomi|ZTE|WAP)/ui', $ua)) {
+            return;
+        }
+
         $this->data->device->identifyModel('/T-Mobile[_ ]([^\/;]+)/u', $ua, [
             'type'          => Constants\DeviceType::MOBILE,
             'manufacturer'  => 'T-Mobile'
@@ -260,7 +264,7 @@ trait Mobile
             'model'         => 'Hiptop'
         ]);
 
-        $this->data->device->identifyModel('/HP(iPAQ[0-9]+)\//u', $ua, [
+        $this->data->device->identifyModel('/HP(iPAQ[0-9A-Za-z]+)\//u', $ua, [
             'type'          => Constants\DeviceType::MOBILE,
             'manufacturer'  => 'HP'
         ]);
@@ -359,6 +363,11 @@ trait Mobile
             'manufacturer'  => 'Ericsson'
         ]);
 
+        $this->data->device->identifyModel('/^(R[0-9]{3,3}) [0-9\.]+ WAP/ui', $ua, [
+            'type'          => Constants\DeviceType::MOBILE,
+            'manufacturer'  => 'Ericsson'
+        ]);
+
         $this->data->device->identifyModel('/FLY_]?([^\s\/]+)/ui', $ua, [
             'type'          => Constants\DeviceType::MOBILE,
             'manufacturer'  => 'Fly'
@@ -377,6 +386,11 @@ trait Mobile
         $this->data->device->identifyModel('/HIKe_([^\s]+)/ui', $ua, [
             'type'          => Constants\DeviceType::MOBILE,
             'manufacturer'  => 'HIKe'
+        ]);
+
+        $this->data->device->identifyModel('/HAIER-([A-Z][0-9]+)/ui', $ua, [
+            'type'          => Constants\DeviceType::MOBILE,
+            'manufacturer'  => 'Haier'
         ]);
 
         $this->data->device->identifyModel('/Hisense[ -](?:HS-)?([^\s]+)/ui', $ua, [
@@ -439,7 +453,7 @@ trait Mobile
             'manufacturer'  => 'Lephone'
         ]);
 
-        $this->data->device->identifyModel('/LG([A-Z]{2,2}[0-9]+)/ui', $ua, [
+        $this->data->device->identifyModel('/LGE?([A-Z]{2,2}[0-9]+)/ui', $ua, [
             'type'          => Constants\DeviceType::MOBILE,
             'manufacturer'  => 'LG'
         ]);
@@ -449,7 +463,7 @@ trait Mobile
             'manufacturer'  => 'LG'
         ]);
 
-        $this->data->device->identifyModel('/LGE? ([A-Z]+[0-9]+)/u', $ua, [
+        $this->data->device->identifyModel('/LGE? ?([A-Z]*[0-9]+[A-Z]?)/u', $ua, [
             'type'          => Constants\DeviceType::MOBILE,
             'manufacturer'  => 'LG'
         ]);
@@ -478,6 +492,11 @@ trait Mobile
         ]);
 
         $this->data->device->identifyModel('/Motorola[_ ]([^\/_;]+)/ui', $ua, [
+            'type'          => Constants\DeviceType::MOBILE,
+            'manufacturer'  => 'Motorola'
+        ]);
+
+        $this->data->device->identifyModel('/Moto([^\/\s_;r][^\/\s_;]*)/u', $ua, [
             'type'          => Constants\DeviceType::MOBILE,
             'manufacturer'  => 'Motorola'
         ]);
@@ -533,6 +552,11 @@ trait Mobile
             }
         ]);
 
+        $this->data->device->identifyModel('/SAGEM-([A-Z0-9\-]+)/ui', $ua, [
+            'type'          => Constants\DeviceType::MOBILE,
+            'manufacturer'  => 'Sagem'
+        ]);
+
         $this->data->device->identifyModel('/Sanyo-([A-Z0-9]+)/ui', $ua, [
             'type'          => Constants\DeviceType::MOBILE,
             'manufacturer'  => 'Sanyo'
@@ -562,6 +586,11 @@ trait Mobile
         ]);
 
         $this->data->device->identifyModel('/(?:Siemens |SIE-)([A-Z]+[0-9]+)/ui', $ua, [
+            'type'          => Constants\DeviceType::MOBILE,
+            'manufacturer'  => 'Siemens'
+        ]);
+
+        $this->data->device->identifyModel('/SIE-([0-9]{4,4})/ui', $ua, [
             'type'          => Constants\DeviceType::MOBILE,
             'manufacturer'  => 'Siemens'
         ]);
@@ -636,7 +665,7 @@ trait Mobile
             'manufacturer'  => 'Toshiba'
         ]);
 
-        $this->data->device->identifyModel('/UTStar-([^\s\.;]+)/u', $ua, [
+        $this->data->device->identifyModel('/UTStar(?:com)?-([^\s\.\/;]+)/ui', $ua, [
             'type'          => Constants\DeviceType::MOBILE,
             'manufacturer'  => 'UTStarcom'
         ]);

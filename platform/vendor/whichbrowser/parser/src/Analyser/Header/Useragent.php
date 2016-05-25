@@ -11,8 +11,8 @@ class Useragent
         $this->data =& $data;
 
         /* Make sure we do not have a duplicate concatenated useragent string */
-
-        $header = preg_replace("/^(Mozilla\/[0-9]\.[0-9].*)\s+Mozilla\/[0-9]\.[0-9].*$/iu", '$1', $header);
+  
+        $header = preg_replace("/^(Mozilla\/[0-9]\.[0-9].{20,})\s+Mozilla\/[0-9]\.[0-9].*$/iu", '$1', $header);
 
         /* Detect the basic information */
 
@@ -21,8 +21,13 @@ class Useragent
              ->detectBrowser($header)
              ->detectApplication($header)
              ->detectUsing($header)
-             ->detectEngine($header)
-             ->detectBot($header);
+             ->detectEngine($header);
+
+         /* Detect bots */
+
+        if (!isset($this->options->detectBots) || $this->options->detectBots === true) {
+            $this->detectBot($header);
+        }
 
         /* Refine some of the information */
 
