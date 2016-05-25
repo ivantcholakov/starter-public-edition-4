@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright 2014 Facebook, Inc.
+ * Copyright 2016 Facebook, Inc.
  *
  * You are hereby granted a non-exclusive, worldwide, royalty-free license to
  * use, copy, modify, and distribute this software in source code or binary
@@ -25,55 +25,56 @@ namespace Facebook\HttpClients;
 
 /**
  * Class FacebookStream
+ *
  * Abstraction for the procedural stream elements so that the functions can be
  * mocked and the implementation can be tested.
+ *
  * @package Facebook
  */
 class FacebookStream
 {
+    /**
+     * @var resource Context stream resource instance
+     */
+    protected $stream;
 
-  /**
-   * @var resource Context stream resource instance
-   */
-  protected $stream;
+    /**
+     * @var array Response headers from the stream wrapper
+     */
+    protected $responseHeaders = [];
 
-  /**
-   * @var array Response headers from the stream wrapper
-   */
-  protected $responseHeaders;
+    /**
+     * Make a new context stream reference instance
+     *
+     * @param array $options
+     */
+    public function streamContextCreate(array $options)
+    {
+        $this->stream = stream_context_create($options);
+    }
 
-  /**
-   * Make a new context stream reference instance
-   *
-   * @param array $options
-   */
-  public function streamContextCreate(array $options)
-  {
-    $this->stream = stream_context_create($options);
-  }
+    /**
+     * The response headers from the stream wrapper
+     *
+     * @return array
+     */
+    public function getResponseHeaders()
+    {
+        return $this->responseHeaders;
+    }
 
-  /**
-   * The response headers from the stream wrapper
-   *
-   * @return array|null
-   */
-  public function getResponseHeaders()
-  {
-    return $this->responseHeaders;
-  }
+    /**
+     * Send a stream wrapped request
+     *
+     * @param string $url
+     *
+     * @return mixed
+     */
+    public function fileGetContents($url)
+    {
+        $rawResponse = file_get_contents($url, false, $this->stream);
+        $this->responseHeaders = $http_response_header ?: [];
 
-  /**
-   * Send a stream wrapped request
-   *
-   * @param string $url
-   *
-   * @return mixed
-   */
-  public function fileGetContents($url)
-  {
-    $rawResponse = file_get_contents($url, false, $this->stream);
-    $this->responseHeaders = $http_response_header;
-    return $rawResponse;
-  }
-
+        return $rawResponse;
+    }
 }

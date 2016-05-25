@@ -1,11 +1,4 @@
 <?php
-
-/**
- * @author Mattias Hedman, 2015
- * @license The MIT License, http://opensource.org/licenses/MIT
- * @author Code adaptation by Ivan Tcholakov <ivantcholakov@gmail.com>, 2015
- */
-
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Fb_controller extends Playground_Base_Controller {
@@ -57,14 +50,13 @@ class Fb_controller extends Playground_Base_Controller {
 
             $data['user'] = array();
 
-            if ($this->facebook->logged_in())
+            if ($this->facebook->is_authenticated())
             {
-                $user = $this->facebook->user();
+                $user = $this->facebook->request('get', '/me?fields=id,name,email');
 
-                if ($user['code'] === 200)
+                if (!isset($user['error']))
                 {
-                    unset($user['data']['permissions']);
-                    $data['user'] = $user['data'];
+                    $data['user'] = $user;
                 }
             }
         }
@@ -91,7 +83,12 @@ class Fb_controller extends Playground_Base_Controller {
     {
         header('Content-Type: application/json');
 
-        $result = $this->facebook->publish_text($this->input->post('message'));
+        $result = $this->facebook->request(
+            'post',
+            '/me/feed',
+            ['message' => $this->input->post('message')]
+        );
+
         $this->output->set_output(json_encode($result));
     }
 

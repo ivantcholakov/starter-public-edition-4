@@ -9,7 +9,8 @@
                 appId   : '<?php echo $this->config->item('facebook_app_id'); ?>', // Your app id
                 cookie  : true,  // enable cookies to allow the server to access the session
                 xfbml   : false,  // disable xfbml improves the page load time
-                version : 'v2.3' // use version 2.3
+                version : 'v2.5',
+                status  : true // Check for user login status right away
             });
 
             FB.getLoginStatus(function(response) {
@@ -55,29 +56,39 @@
             });
         }
 
-        // Trigger login
-        $('.login').on('click', 'button', function() {
-            FB.login(function(){
-                loginCheck();
-            }, {scope: '<?php echo implode(",", $this->config->item('facebook_permissions')); ?>'});
+        $(function(){
+            // Trigger login
+            $('.login').on('click', 'button', function() {
+                FB.login(function(){
+                    loginCheck();
+                }, {scope: '<?php echo implode(",", $this->config->item('facebook_permissions')); ?>'});
+            });
+
+            $('.form').on('submit', '.post-to-wall', function(e) {
+                e.preventDefault();
+
+                var formdata = $(this).serialize();
+
+                $.ajax({
+                    url: '/example/post',
+                    data: formdata,
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function(response) {
+                        console.log(response);
+                        if (response.id)
+                        {
+                            $('.form').html('<p>Post submitted successfully.</p>');
+                        }
+                        else
+                        {
+                            $('.form').html('<p>Something happened, please try again!.</p>');
+                        }
+                    }
+
+                })
+            });
         });
-
-        $('.form').on('submit', '.post-to-wall', function(e) {
-            e.preventDefault();
-
-            var formdata = $(this).serialize();
-
-            $.ajax({
-                url: '<?php echo site_url('playground/fb/post'); ?>',
-                data: formdata,
-                type: 'POST',
-                dataType: 'json',
-                success: function(response) {
-                    console.log(response);
-                }
-
-            })
-        })
 
         (function(d, s, id){
             var js, fjs = d.getElementsByTagName(s)[0];

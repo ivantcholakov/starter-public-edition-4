@@ -1,14 +1,14 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Facebook PHP SDK v4 for CodeIgniter 3
+ * Facebook PHP SDK for CodeIgniter 3
  *
- * Library wrapper for Facebook PHP SDK v4. Check user login status, publish to feed
- * and more with easy to user CodeIgniter syntax.
+ * Library wrapper for Facebook PHP SDK. Check user login status, publish to feed
+ * and more with easy to use CodeIgniter syntax.
  *
- * This library requires that Facebook PHP SDK v4 is installed with composer, and that CodeIgniter
+ * This library requires the Facebook PHP SDK to be installed with Composer, and that CodeIgniter
  * config is set to autoload the vendor folder. More information in the CodeIgniter user guide at
- * https://www.codeigniter.com/userguide3/general/autoloader.html?highlight=composer
+ * http://www.codeigniter.com/userguide3/general/autoloader.html?highlight=composer
  *
  * It also requires CodeIgniter session library to be correctly configured.
  *
@@ -17,37 +17,42 @@
  * @author      Mattias Hedman
  * @license     MIT
  * @link        https://github.com/darkwhispering/facebook-sdk-v4-codeigniter
- * @version     2.0.0
+ * @version     3.0.0
  */
 
-// Load all required Facebook classes
-use Facebook\FacebookSession;
-use Facebook\FacebookRedirectLoginHelper;
-use Facebook\FacebookJavaScriptLoginHelper;
-use Facebook\FacebookCanvasLoginHelper;
-use Facebook\FacebookRequest;
-use Facebook\FacebookResponse;
-use Facebook\FacebookSDKException;
-use Facebook\FacebookRequestException;
-use Facebook\FacebookOtherException;
-use Facebook\FacebookAuthorizationException;
-use Facebook\GraphObject;
-use Facebook\GraphSessionInfo;
-use Facebook\FacebookHttpable;
-use Facebook\FacebookCurl;
-use Facebook\FacebookCurlHttpClient;
+use Facebook\Facebook as FB;
+use Facebook\Authentication\AccessToken;
+use Facebook\Exceptions\FacebookResponseException;
+use Facebook\Exceptions\FacebookSDKException;
+use Facebook\FacebookBatchResponse;
+use Facebook\Helpers\FacebookCanvasHelper;
+use Facebook\Helpers\FacebookJavaScriptHelper;
+use Facebook\Helpers\FacebookPageTabHelper;
+use Facebook\Helpers\FacebookRedirectLoginHelper;
 
-Class Facebook {
+Class Facebook
+{
+    const UPLOAD_TYPE_VIDEO = 'video';
+    const UPLOAD_TYPE_IMAGE = 'image';
 
     /**
-     * Facebook login helper
-     *
-     * @var object
+     * @var FB
      */
-    protected $helper;
+    private $fb;
 
-    // ------------------------------------------------------------------------
+    /**
+     * @var FacebookRedirectLoginHelper|FacebookCanvasHelper|FacebookJavaScriptHelper|FacebookPageTabHelper
+     */
+    private $helper;
 
+    /**
+     * @var array
+     */
+    private $batch_request_pool = [];
+
+    /**
+     * Facebook constructor.
+     */
     public function __construct()
     {
         // Load config
@@ -57,59 +62,193 @@ Class Facebook {
         $this->load->library('session');
         $this->load->helper('url');
 
-        // App id and secret
-        $app_id     = $this->config->item('facebook_app_id');
-        $app_secret = $this->config->item('facebook_app_secret');
-
-        // Initiate the Facebook SDK
-        FacebookSession::setDefaultApplication($app_id, $app_secret);
-
-        // Load correct helper depending or login type
-        // that is set in the config
-        if ($this->config->item('facebook_login_type') == 'js')
+        if (!isset($this->fb))
         {
-            // Javascript helper
-            $this->helper = new FacebookJavaScriptLoginHelper();
-        }
-        else if ($this->config->item('facebook_login_type') == 'canvas')
-        {
-            // Canvas helper
-            $this->helper = new FacebookCanvasLoginHelper();
-        }
-        else if ($this->config->item('facebook_login_type') == 'web')
-        {
-            // Web helper (redirect)
-            // Modified by Ivan Tcholakov, 18-APR-2015.
-            //$this->helper = new FacebookRedirectLoginHelper(base_url() . $this->config->item('facebook_login_redirect_url'));
-            $this->helper = new FacebookRedirectLoginHelper(site_url($this->config->item('facebook_login_redirect_url')));
+            $this->fb = new FB([
+                'app_id'                => $this->config->item('facebook_app_id'),
+                'app_secret'            => $this->config->item('facebook_app_secret'),
+                'default_graph_version' => $this->config->item('facebook_graph_version')
+            ]);
         }
 
-        // Create session right away if we have one
-        $this->facebook_session();
+        // Load correct helper depending on login type
+        // set in the config file
+        switch ($this->config->item('facebook_login_type'))
+        {
+            case 'js':
+                $this->helper = $this->fb->getJavaScriptHelper();
+                break;
+
+            case 'canvas':
+                $this->helper = $this->fb->getCanvasHelper();
+                break;
+
+            case 'page_tab':
+                $this->helper = $this->fb->getPageTabHelper();
+                break;
+
+            case 'web':
+                $this->helper = $this->fb->getRedirectLoginHelper();
+                break;
+        }
+
+        if ($this->config->item('facebook_auth_on_load') === TRUE)
+        {
+            // Try and authenticate the user right away (aka, get valid access token)
+            $this->authenticate();
+        }
     }
 
-    // ------------------------------------------------------------------------
+    /**
+     * @return FB
+     */
+    public function object()
+    {
+        return $this->fb;
+    }
 
     /**
-    * Check if user are logged in by checking if we have a Facebook
-    * session active.
-    *
-    * @return  bool
-    **/
-    public function logged_in()
+     * Check if user are logged in by checking if we have a Facebook
+     * session active.
+     *
+     * @return mixed|boolean
+     */
+    public function is_authenticated()
     {
-        // Check if we have an active Facebook session
-        if ($this->facebook_session())
+        $access_token = $this->authenticate();
+
+        if (isset($access_token))
         {
-            // Session found
-            return true;
+            return $access_token;
         }
 
-        // No session found
         return false;
     }
 
-    // ------------------------------------------------------------------------
+    /**
+     * Do Graph request
+     *
+     * @param       $method
+     * @param       $endpoint
+     * @param array $params
+     * @param null  $access_token
+     *
+     * @return array
+     */
+    public function request($method, $endpoint, $params = [], $access_token = null)
+    {
+        try
+        {
+            $response = $this->fb->{strtolower($method)}($endpoint, $params, $access_token);
+            return $response->getDecodedBody();
+        }
+        catch(FacebookResponseException $e)
+        {
+            return $this->logError($e->getCode(), $e->getMessage());
+        }
+        catch (FacebookSDKException $e)
+        {
+            return $this->logError($e->getCode(), $e->getMessage());
+        }
+    }
+
+    /**
+     * Upload image or video to user profile
+     *
+     * @param        $path_to_file
+     * @param array  $params
+     * @param string $type
+     * @param null   $access_token
+     *
+     * @return array
+     */
+    public function user_upload_request($path_to_file, $params = [], $type = self::UPLOAD_TYPE_IMAGE, $access_token = null)
+    {
+        if ($type === self::UPLOAD_TYPE_IMAGE)
+        {
+            $data = ['source' => $this->fb->fileToUpload($path_to_file)] + $params;
+            $endpoint = '/me/photos';
+        }
+        elseif ($type === self::UPLOAD_TYPE_VIDEO)
+        {
+            $data = ['source' => $this->fb->videoToUpload($path_to_file)] + $params;
+            $endpoint = '/me/videos';
+        }
+        else
+        {
+            return $this->logError(400, 'Invalid upload type');
+        }
+
+        try
+        {
+            $response = $this->fb->post($endpoint, $data, $access_token);
+            return $response->getDecodedBody();
+        }
+        catch(FacebookSDKException $e)
+        {
+            return $this->logError($e->getCode(), $e->getMessage());
+        }
+    }
+
+    /**
+     * Add request to batch
+     *
+     * @param       $key
+     * @param       $method
+     * @param       $endpoint
+     * @param array $params
+     * @param null  $access_token
+     */
+    public function add_to_batch_pool($key, $method, $endpoint, $params = [], $access_token = null)
+    {
+        $this->batch_request_pool = array_merge(
+            $this->batch_request_pool,
+            [$key => $this->fb->request($method, $endpoint, $params, $access_token)]
+        );
+    }
+
+    /**
+     * Remove request from batch
+     *
+     * @param $key
+     */
+    public function remove_from_batch_pool($key)
+    {
+        if (isset($this->batch_request_pool[$key]))
+        {
+            unset($this->batch_request_pool[$key]);
+        }
+    }
+
+    /**
+     * Send all request in the batch pool
+     *
+     * @return array|FacebookBatchResponse
+     */
+    public function send_batch_pool()
+    {
+        try
+        {
+            $responses = $this->fb->sendBatchRequest($this->batch_request_pool);
+            $this->batch_request_pool = [];
+
+            $data = [];
+            foreach ($responses as $key => $response)
+            {
+                $data[$key] = $response->getDecodedBody();
+            }
+
+            return $data;
+        }
+        catch(FacebookResponseException $e)
+        {
+            return $this->logError($e->getCode(), $e->getMessage());
+        }
+        catch(FacebookSDKException $e)
+        {
+            return $this->logError($e->getCode(), $e->getMessage());
+        }
+    }
 
     /**
      * Generate Facebook login url for Facebook Redirect Login (web)
@@ -124,19 +263,17 @@ Class Facebook {
             return '';
         }
 
-        // Create login url
-        $url = $this->helper->getLoginUrl($this->config->item('facebook_permissions'));
-
-        // Return login url
-        return $url;
+        return $this->helper->getLoginUrl(
+            base_url() . $this->config->item('facebook_login_redirect_url'),
+            $this->config->item('facebook_permissions')
+        );
     }
-
-    // ------------------------------------------------------------------------
 
     /**
      * Generate Facebook login url for Facebook Redirect Login (web)
      *
-     * @return  string
+     * @return string
+     * @throws FacebookSDKException
      */
     public function logout_url()
     {
@@ -146,454 +283,169 @@ Class Facebook {
             return '';
         }
 
-        // Get users facebook session
-        $session = $this->facebook_session();
-
-        // Can't generate link if we don't have a loaded helper
-        // and active session
-        if ( ! isset($this->helper) && ! isset($session))
-        {
-            return '';
-        }
-
         // Create logout url
-        // Modified by Ivan Tcholakov, 18-APR-2015.
-        //$url = $this->helper->getLogoutUrl($session, base_url() . $this->config->item('facebook_logout_redirect_url'));
-        $url = $this->helper->getLogoutUrl($session, site_url($this->config->item('facebook_logout_redirect_url')));
-        //
-
-        // Return logout url
-        return $url;
+        return $this->helper->getLogoutUrl(
+            $this->get_access_token(),
+            base_url() . $this->config->item('facebook_logout_redirect_url')
+        );
     }
 
-    // ------------------------------------------------------------------------
-
     /**
-     * Destroy out Facebook token
-     *
-     * @return  string
+     * Destroy our local Facebook session
      */
     public function destroy_session()
     {
-        // Remove our Facebook token from session
-        $this->session->unset_userdata('fb_token');
+        $this->session->unset_userdata('fb_access_token');
     }
 
-    // ------------------------------------------------------------------------
-
     /**
-    * Get user ID
-    *
-    * @return  array
-    **/
-    public function user_id()
-    {
-        // Get users facebook session
-        $session = $this->facebook_session();
-
-        // Continue only if we have a session
-        if ($session)
-        {
-            try
-            {
-                // Get users ID
-                $user = (new FacebookRequest($session, 'GET', '/me'))
-                    ->execute()
-                    ->getGraphObject()
-                    ->asArray();
-
-                // Return data
-                return $this->response(200, 'success', array('user_id' => $user['id']));
-            }
-            catch(FacebookRequestException $e)
-            {
-                // Log error as debug
-                log_message('debug', '[FACEBOOK PHP SDK - User ID] code: ' . $e->getCode().' | message: '.$e->getMessage());
-
-                // Return error
-                return $this->response($e->getCode(), $e->getMessage());
-            }
-        }
-
-        return $this->response(463, 'Expired');
-    }
-
-    // ------------------------------------------------------------------------
-
-
-    /**
-    * Get all user details and accepted permissions list
-    *
-    * @return  array
-    **/
-    public function user()
-    {
-        // Get users facebook session
-        $session = $this->facebook_session();
-
-        // Continue only if we have a session
-        if ($session)
-        {
-            try
-            {
-                // Get user details
-                $user = (new FacebookRequest($session, 'GET', '/me'))
-                    ->execute()
-                    ->getGraphObject()
-                    ->asArray();
-
-                // Get users permissions list
-                $user['permissions'] = (new FacebookRequest($session, 'GET', '/me/permissions'))
-                    ->execute()
-                    ->getGraphObject()
-                    ->asArray();
-
-                // Return data
-                return $this->response(200, 'success', $user);
-            }
-            catch(FacebookRequestException $e)
-            {
-                // Log error as debug
-                log_message('debug', '[FACEBOOK PHP SDK - User] code: ' . $e->getCode().' | message: '.$e->getMessage());
-
-                // Return error
-                return $this->response($e->getCode(), $e->getMessage());
-            }
-        }
-
-        return $this->response(463, 'Expired');
-    }
-
-    // ------------------------------------------------------------------------
-
-    /**
-    * Retrieve a single post from users wall
-    *
-    * Required permission: read_stream
-    *
-    * @param   int     $id   Post ID
-    *
-    * @return  array
-    **/
-    public function get_post($id = NULL)
-    {
-        // ID required, exit if not provided
-        if ( ! $id)
-        {
-            return array();
-        }
-
-        // Get users facebook session
-        $session = $this->facebook_session();
-
-        // Continue only if we have a session
-        if ($session)
-        {
-            try
-            {
-                // Get post data
-                $post = (new FacebookRequest($session, 'GET', '/'.$id))
-                    ->execute()
-                    ->getGraphObject()
-                    ->asArray();
-
-                // Return post data
-                return $this->response(200, 'success', $post);
-            }
-            catch(FacebookRequestException $e)
-            {
-                // Log error as debug
-                log_message('debug', '[FACEBOOK PHP SDK - Get post] code: ' . $e->getCode().' | message: '.$e->getMessage());
-
-                // Return error
-                return $this->response($e->getCode(), $e->getMessage());
-            }
-        }
-
-        return $this->response(463, 'Expired');
-    }
-
-    // ------------------------------------------------------------------------
-
-    /**
-    * Publish a post to the users feed
-    *
-    * Required permission: publish_actions
-    *
-    * @param   string  $message  Message to publish
-    *
-    * @return  array
-    **/
-    public function publish_text($message = '')
-    {
-        // Get user facebook session
-        $session = $this->facebook_session();
-
-        // Continue only if we have a session
-        if ($session)
-        {
-            try
-            {
-                // Publish post
-                $response = (new FacebookRequest($session, 'POST', '/me/feed',
-                        array(
-                            'message' => $message
-                        )
-                    ))
-                    ->execute()
-                    ->getGraphObject()
-                    ->asArray();
-
-                // Return data
-                return $this->response(200, 'success', array('post_id' => $response['id']));
-            }
-            catch(FacebookRequestException $e)
-            {
-                // Log error as debug
-                log_message('debug', '[FACEBOOK PHP SDK - Publish text] code: ' . $e->getCode().' | message: '.$e->getMessage());
-
-                // Return error
-                return $this->response($e->getCode(), $e->getMessage());
-            }
-        }
-
-        return $this->response(463, 'Expired');
-
-    }
-
-    // ------------------------------------------------------------------------
-
-    /**
-    * Publish (upload) a video to the users feed
-    *
-    * Required permission: publish_actions
-    *
-    * @param   string  $file         Path to video file
-    * @param   string  $description  Video description text
-    * @param   string  $title        Video title text
-    *
-    * @return  array
-    **/
-    public function publish_video($file = '', $description = '', $title = '')
-    {
-        // Get users facebook session
-        $session = $this->facebook_session();
-
-        if ($session)
-        {
-            try
-            {
-                // Publish video
-                $response = (new FacebookRequest($session, 'POST', '/me/videos',
-                        array(
-                            'description' => $description,
-                            'title'       => $title,
-                            'source'      => '@'.$file
-                        )
-                    ))
-                    ->execute()
-                    ->getGraphObject()
-                    ->asArray();
-
-                // Return data
-                return $this->response(200, 'success', array('video_id' => $response['id']));
-            }
-            catch(FacebookRequestException $e)
-            {
-                // Log error as debug
-                log_message('debug', '[FACEBOOK PHP SDK - Publish video] code: ' . $e->getCode().' | message: '.$e->getMessage());
-
-                // Return error
-                return $this->response($e->getCode(), $e->getMessage());
-            }
-        }
-
-        return $this->response(463, 'Expired');
-    }
-
-    // ------------------------------------------------------------------------
-
-    /**
-    * Publish image to users feed
-    *
-    * Supports externally hosted images only! No direct upload
-    * to Facebook.com albums at this time.
-    *
-    * Required permission: publish_actions
-    *
-    * @param   string  $image    URL to image
-    * @param   string  $message  Image description text
-    *
-    * @return  array
-    **/
-    public function publish_image($image = '', $message = '')
-    {
-        // Get users facebook session
-        $session = $this->facebook_session();
-
-        if ($session)
-        {
-            try
-            {
-                // Publish image
-                $response = (new FacebookRequest($session, 'POST', '/me/photos',
-                        array(
-                            'url'     => $image,
-                            'message' => $message
-                        )
-                    ))
-                    ->execute()
-                    ->getGraphObject()
-                    ->asArray();
-
-                // Return image ID
-                return $this->response(200, 'success', array('image_id' => $response['id']));
-            }
-            catch(FacebookRequestException $e)
-            {
-                // Log error as debug
-                log_message('debug', '[FACEBOOK PHP SDK - Publish image] code: ' . $e->getCode().' | message: '.$e->getMessage());
-
-                // Return error
-                return $this->response($e->getCode(), $e->getMessage());
-            }
-        }
-
-        return $this->response(463, 'Expired');
-    }
-
-    // ------------------------------------------------------------------------
-
-    /**
-    * Checking if the user is already signed in with Facebook
-    * and get the session data from the Facebook cookie or
-    * our current if it is still valid
-    *
-    * @return  object
-    **/
-    private function facebook_session()
-    {
-        // Check if our own session token exists
-        if ($this->session->userdata('fb_token'))
-        {
-            // Create new session for the token
-            $session = new FacebookSession($this->session->userdata('fb_token'));
-
-            // validate the access token to make sure it's still valid
-            try
-            {
-                if (!$session->validate())
-                {
-                    // Not valid, create new session
-                    $session = $this->get_new_session();
-                }
-            }
-            catch (Exception $e)
-            {
-                // Error, create new session
-                $session = $this->get_new_session();
-            }
-        }
-        else
-        {
-            // We don't have a session, create a new
-            $session = $this->get_new_session();
-        }
-
-        // Return session object data
-        return $session;
-    }
-
-    // ------------------------------------------------------------------------
-
-    /**
-    * Get a new session from Facebook
-    *
-    * @return  object
-    **/
-    private function get_new_session()
-    {
-        try
-        {
-            // Get session from JS or Canvas helper
-            if ($this->config->item('facebook_login_type') == 'js' OR $this->config->item('facebook_login_type') == 'canvas')
-            {
-                $session = $this->helper->getSession();
-            }
-
-            // Get session for redirect (web)
-            else
-            {
-                $session = $this->helper->getSessionFromRedirect();
-            }
-        }
-        catch (FacebookRequestException $e)
-        {
-            // Log error as debug
-            log_message('debug', '[FACEBOOK PHP SDK - Get session FacebookRequestException] code: ' . $e->getCode().' | message: '.$e->getMessage());
-        }
-        catch (Exception $e)
-        {
-            // Log error as debug
-            log_message('debug', '[FACEBOOK PHP SDK - Get session Exception] code: ' . $e->getCode().' | message: '.$e->getMessage());
-        }
-
-        // If we got a session we need to exchange it for
-        // a long lived session.
-        if (isset($session))
-        {
-            // Get long lived token
-            $token = $session->getLongLivedSession()->getToken();
-
-            // Create a new session with the long lived token
-            $session = new FacebookSession($token);
-
-            // Save the token to the current session
-            $this->session->set_userdata('fb_token', $token);
-
-            // Return the token
-            return $token;
-        }
-
-        // Could not get a session, so return null
-        return NULL;
-    }
-
-    // ------------------------------------------------------------------------
-
-    /**
-     * Format response
+     * Get a new access token from Facebook
      *
-     * @param   int      $code     Status code
-     * @param   string   $message  Detailed response message
-     * @param   array    $data     Any other data to include
-     *
-     * @return  array
+     * @return array|AccessToken|null|object|void
      */
-    private function response($code = 200, $message = 'Success', $data = array())
+    private function authenticate()
     {
-        // Return ID
-        $response = array(
-            'code'    => $code,
-            'message' => $message,
-            'data'    => $data
-        );
+        $access_token = $this->get_access_token();
 
-        return $response;
+        if ($access_token && $this->get_expire_time() > (time() + 30) || $access_token && !$this->get_expire_time())
+        {
+            $this->fb->setDefaultAccessToken($access_token);
+            return $access_token;
+        }
+
+        // If we did not have a stored access token or if it has expired, try get a new access token
+        if (!$access_token)
+        {
+            try
+            {
+                $access_token = $this->helper->getAccessToken();
+            }
+            catch (FacebookSDKException $e)
+            {
+                $this->logError($e->getCode(), $e->getMessage());
+                return null;
+            }
+
+            // If we got a session we need to exchange it for a long lived session.
+            if (isset($access_token))
+            {
+                $access_token = $this->long_lived_token($access_token);
+
+                $this->set_expire_time($access_token->getExpiresAt());
+                $this->set_access_token($access_token);
+                $this->fb->setDefaultAccessToken($access_token);
+
+                return $access_token;
+            }
+        }
+
+        // Collect errors if any when using web redirect based login
+        if ($this->config->item('facebook_login_type') === 'web')
+        {
+            if ($this->helper->getError())
+            {
+                // Collect error data
+                $error = array(
+                    'error'             => $this->helper->getError(),
+                    'error_code'        => $this->helper->getErrorCode(),
+                    'error_reason'      => $this->helper->getErrorReason(),
+                    'error_description' => $this->helper->getErrorDescription()
+                );
+
+                return $error;
+            }
+        }
+
+        return $access_token;
     }
 
-    // ------------------------------------------------------------------------
+    /**
+     * Exchange short lived token for a long lived token
+     *
+     * @param AccessToken $access_token
+     *
+     * @return AccessToken|null
+     */
+    private function long_lived_token(AccessToken $access_token)
+    {
+        if (!$access_token->isLongLived())
+        {
+            $oauth2_client = $this->fb->getOAuth2Client();
+
+            try
+            {
+                return $oauth2_client->getLongLivedAccessToken($access_token);
+            }
+            catch (FacebookSDKException $e)
+            {
+                $this->logError($e->getCode(), $e->getMessage());
+                return null;
+            }
+        }
+
+        return $access_token;
+    }
 
     /**
-    * Enables the use of CI super-global without having to define an extra variable.
-    * I can't remember where I first saw this, so thank you if you are the original author.
-    *
-    * Copied from the Ion Auth library
-    *
-    * @access  public
-    * @param   $var
-    * @return  mixed
-    */
+     * Get stored access token
+     *
+     * @return mixed
+     */
+    private function get_access_token()
+    {
+        return $this->session->userdata('fb_access_token');
+    }
+
+    /**
+     * Store access token
+     *
+     * @param AccessToken $access_token
+     */
+    private function set_access_token(AccessToken $access_token)
+    {
+        $this->session->set_userdata('fb_access_token', $access_token->getValue());
+    }
+
+    /**
+     * @return mixed
+     */
+    private function get_expire_time()
+    {
+        return $this->session->userdata('fb_expire');
+    }
+
+    /**
+     * @param DateTime $time
+     */
+    private function set_expire_time(DateTime $time = null)
+    {
+        if ($time) {
+            $this->session->set_userdata('fb_expire', $time->getTimestamp());
+        }
+    }
+
+    /**
+     * @param $code
+     * @param $message
+     *
+     * @return array
+     */
+    private function logError($code, $message)
+    {
+        log_message('error', '[FACEBOOK PHP SDK] code: ' . $code.' | message: '.$message);
+        return ['error' => $code, 'message' => $message];
+    }
+
+    /**
+     * Enables the use of CI super-global without having to define an extra variable.
+     * I can't remember where I first saw this, so thank you if you are the original author.
+     *
+     * Borrowed from the Ion Auth library (http://benedmunds.com/ion_auth/)
+     *
+     * @param $var
+     *
+     * @return mixed
+     */
     public function __get($var)
     {
         return get_instance()->$var;
