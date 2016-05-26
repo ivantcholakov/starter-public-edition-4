@@ -171,6 +171,21 @@ $config['less_compile'] = array(
         'compress' => true
     ),
 
+    // php cli.php less compile bootstrap-select bootstrap-select-min
+
+    array(
+        'name' => 'bootstrap-select',
+        'source' => DEFAULTFCPATH.'assets/less/lib/bootstrap-select/bootstrap-select.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/bootstrap-select/bootstrap-select.css',
+        'compress' => false
+    ),
+    array(
+        'name' => 'bootstrap-select-min',
+        'source' => DEFAULTFCPATH.'assets/less/lib/bootstrap-select/bootstrap-select.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/bootstrap-select/bootstrap-select.min.css',
+        'compress' => true
+    ),
+
     // php cli.php less compile yamm3 yamm3-min
 
     array(

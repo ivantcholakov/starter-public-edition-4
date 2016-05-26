@@ -82,6 +82,7 @@
                     <a class="list-group-item" href="<?php echo site_url('playground/ihover'); ?>">iHover Test</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/masonry'); ?>">Masonry Test</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/loading-overlay'); ?>">jQuery LoadingOverlay Test</a>
+                    <a class="list-group-item" href="<?php echo site_url('playground/bootstrap-select'); ?>">Bootstrap-Select Test</a>
 
                 <!--</div>-->
 
