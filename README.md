@@ -381,6 +381,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * iHover, a collection of hover effects using pure CSS, https://github.com/gudh/ihover
 * imagesLoaded - "You images done yet or what?", https://github.com/desandro/imagesloaded
 * Masonry - a cascading grid layout library, https://github.com/desandro/masonry
+* jQuery LoadingOverlay - A flexible loading overlay jQuery plugin, https://github.com/gasparesganga/jquery-loading-overlay
 
 The Playground
 --------------

@@ -1,0 +1,43 @@
+
+{{ js('lib/jquery-loading-overlay/loadingoverlay.min.js') }}
+
+    <script type="text/javascript">
+    //<![CDATA[
+
+    $(function() {
+
+        $("#example1").on("click",          Demo.Example1);
+        $("#example4").on("click",          Demo.Example4);
+        $.LoadingOverlaySetup({
+            image: '{{ image_url('lib/loading.gif') }}'
+        });
+    });
+
+
+    var Demo = (function($, undefined){
+        return {
+            Example1        : Example1,
+            Example4        : Example4
+        };
+
+        function Example1(event){
+            $.LoadingOverlay("show");
+            setTimeout(function(){
+                $.LoadingOverlay("hide");
+            }, 3000);
+        }
+
+        function Example4(event){
+            $.LoadingOverlay("show", {
+                image       : "",
+                fontawesome : "fa fa-spinner fa-spin"
+            });
+            setTimeout(function(){
+                $.LoadingOverlay("hide");
+            }, 3000);
+        }
+
+    })(jQuery);
+
+    //]]>
+    </script>
