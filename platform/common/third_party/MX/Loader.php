@@ -134,20 +134,23 @@ class MX_Loader extends CI_Loader
             return $this;
         }
 
-        // Modified by Ivan Tcholakov, 25-DEC-2013.
+        // Modified by Ivan Tcholakov, 25-DEC-2013, 28-MAY-2016..
         // See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
         //require_once BASEPATH.'database/DB.php';
-        if (file_exists(APPPATH.'database/DB.php'))
+        if (!function_exists('DB'))
         {
-            require_once APPPATH.'database/DB.php';
-        }
-        elseif (file_exists(COMMONPATH.'database/DB.php'))
-        {
-            require_once COMMONPATH.'database/DB.php';
-        }
-        else
-        {
-            require_once BASEPATH.'database/DB.php';
+            if (file_exists(APPPATH.'database/DB.php'))
+            {
+                require_once APPPATH.'database/DB.php';
+            }
+            elseif (file_exists(COMMONPATH.'database/DB.php'))
+            {
+                require_once COMMONPATH.'database/DB.php';
+            }
+            else
+            {
+                require_once BASEPATH.'database/DB.php';
+            }
         }
         //
 
@@ -155,7 +158,19 @@ class MX_Loader extends CI_Loader
             return DB($params, $query_builder);
         }
 
-        CI::$APP->db = DB($params, $query_builder);
+        // Modified by Ivan Tcholakov, 28-MAY-2016
+        // See https://github.com/ivantcholakov/starter-public-edition-4/issues/67
+        //CI::$APP->db = DB($params, $query_builder);
+        if ((is_string($params) || $params === NULL) && strpos($params, '://') === FALSE && $query_builder === NULL)
+        {
+            // Reuse the connection.
+            CI::$APP->db = get_db_instance($params);
+        }
+        else
+        {
+            CI::$APP->db = DB($params, $query_builder);
+        }
+        //
 
         return $this;
     }

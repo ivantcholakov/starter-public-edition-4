@@ -292,6 +292,84 @@ $BM =& load_class('Benchmark', 'core');
 $BM->mark('total_execution_time_start');
 $BM->mark('loading_time:_base_classes_start');
 
+
+/**
+ * Reference to the CI_Controller method.
+ *
+ * Returns current CI instance object
+ *
+ * @return CI_Controller
+ */
+function &get_instance()
+{
+    return CI_Controller::get_instance();
+}
+
+// Added by Ivan Tcholakov, 07-OCT-2013.
+// ci() - a handy alias of get_instance()
+function &ci()
+{
+    return get_instance();
+}
+//
+
+
+/*
+ * ------------------------------------------------------
+ *  DB Connections Before a Controller Has Been Created
+ * ------------------------------------------------------
+ */
+
+// See https://github.com/ivantcholakov/starter-public-edition-4/issues/67
+
+// CodeIgniter's database cache folder.
+define('CACHE_DB_PATH', WRITABLEPATH.'cache_db/'.APPNAME.'/');
+file_exists(CACHE_DB_PATH) OR @mkdir(CACHE_DB_PATH, 0755, TRUE);
+
+// Added by Ivan Tcholakov, 28-MAY-2016.
+function & get_db_instance($connection_group = null)
+{
+    static $connections = array();
+
+    $connection_group = (string) $connection_group;
+
+    if ($connection_group == '')
+    {
+        $connection_group = 'default';
+    }
+
+    if (isset($connections[$connection_group]))
+    {
+        return $connections[$connection_group];
+    }
+
+    if (!function_exists('DB'))
+    {
+        // See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
+        if (file_exists(APPPATH.'database/DB.php'))
+        {
+            require_once APPPATH.'database/DB.php';
+        }
+        elseif (file_exists(COMMONPATH.'database/DB.php'))
+        {
+            require_once COMMONPATH.'database/DB.php';
+        }
+        else
+        {
+            require_once BASEPATH.'database/DB.php';
+        }
+    }
+
+    $connections[$connection_group] = & DB($connection_group);
+
+    return $connections[$connection_group];
+}
+//
+
+// Note: This is the earliest tested place where
+// the function get_db_instance() can be called.
+
+
 /*
  * ------------------------------------------------------
  *  Instantiate the hooks class
@@ -340,10 +418,6 @@ file_exists(TMP_PATH) OR @mkdir(TMP_PATH, 0755, TRUE);
 // CodeIgniter's cache folder.
 $cache_path = $CFG->item('cache_path') == '' ? APPPATH.'cache/' : $CFG->item('cache_path');
 file_exists($cache_path) OR @mkdir($cache_path, 0755, TRUE);
-
-// CodeIgniter's database cache folder.
-define('CACHE_DB_PATH', WRITABLEPATH.'cache_db/'.APPNAME.'/');
-file_exists(CACHE_DB_PATH) OR @mkdir(CACHE_DB_PATH, 0755, TRUE);
 
 // For HTMLPurifier, no trailing slash.
 define('HTMLPURIFIER_CACHE_SERIALIZER_PATH', WRITABLEPATH.'htmlpurifier');
@@ -540,28 +614,6 @@ $LANG =& load_class('Lang', 'core');
 //// Load the base controller class
 //require_once BASEPATH.'core/Controller.php';
 //
-
-
-/**
- * Reference to the CI_Controller method.
- *
- * Returns current CI instance object
- *
- * @return CI_Controller
- */
-function &get_instance()
-{
-    return CI_Controller::get_instance();
-}
-
-// Added by Ivan Tcholakov, 07-OCT-2013.
-// ci() - a handy alias of get_instance()
-function &ci()
-{
-    return get_instance();
-}
-//
-
 
 // Set a mark point for benchmarking
 $BM->mark('loading_time:_base_classes_end');
