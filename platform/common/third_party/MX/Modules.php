@@ -64,7 +64,7 @@ class Modules
 
         $method = 'index';
 
-        if (($pos = strrpos($module, '/')) != FALSE) {
+        if (($pos = strrpos($module, '/')) !== FALSE) {
 
             $method = substr($module, $pos + 1);
             $module = substr($module, 0, $pos);
@@ -122,10 +122,10 @@ class Modules
         }
 
         /* set the module directory */
-        // Modified by Ivan Tcholakov, 16-DEC-2013.
+        // Modified by Ivan Tcholakov, 16-DEC-2013, 31-MAY-2016.
         //$path = APPPATH.'controllers/'.CI::$APP->router->directory;
-        $path = resolve_path(APPPATH.'controllers/'.CI::$APP->router->directory).'/';
-        $path_common = resolve_path(COMMONPATH.'controllers/'.CI::$APP->router->directory).'/';
+        $path = resolve_path(APPPATH.'controllers/'.str_replace('../../common/modules', '../modules', CI::$APP->router->directory)).'/';
+        $path_common = resolve_path(COMMONPATH.'controllers/'.str_replace('../modules', '../../common/modules', CI::$APP->router->directory)).'/';
         //
 
         /* load the controller class */
@@ -140,9 +140,9 @@ class Modules
         elseif (self::test_load_file(ucfirst($class), $path)) {
             $class = ucfirst($class);
         }
-        //elseif (self::test_load_file($class, $path)) {
+        elseif (self::test_load_file($class, $path)) {
             // Do nothing.
-        //}
+        }
         elseif (self::test_load_file(ucfirst($class).CI::$APP->config->item('controller_suffix'), $path_common)) {
             $class = ucfirst($class).CI::$APP->config->item('controller_suffix');
             $path = $path_common;
@@ -253,18 +253,6 @@ class Modules
 
         $file = str_replace('.php', '', $file);
         $location = $path.$file.'.php';
-
-        if (class_exists($file, FALSE)) {
-
-            // Added by Ivan Tcholakov, 02-JUN-2014.
-            // A durty workaround.
-            if ($file == 'Email') {
-                return false;
-            }
-            //
-
-            return true;
-        }
 
         return is_file($location);
     }
