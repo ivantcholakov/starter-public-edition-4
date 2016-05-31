@@ -247,7 +247,7 @@ class CI_Log {
 	{
 		// Modified by Ivan Tcholakov, URL recording feature, 16-FEB-2016.
 		//return $level.' - '.$date.' --> '.$message."\n";
-		return $level.' - '.$date.' --> '.$message.(!is_cli() ? ' --> URL: '.CURRENT_URL : (isset($_SERVER['argv']) && is_array($_SERVER['argv']) ? ' --> Command: '.implode(' ', $_SERVER['argv']) : ''))."\n";
+		return $level.' - '.$date.' --> '.$message.(!is_cli() ? (defined('CURRENT_URL') ? ' --> URL: '.CURRENT_URL : '') : (isset($_SERVER['argv']) && is_array($_SERVER['argv']) ? ' --> Command: '.implode(' ', $_SERVER['argv']) : ''))."\n";
 		//
 	}
 }
