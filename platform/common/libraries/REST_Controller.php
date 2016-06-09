@@ -566,7 +566,9 @@ abstract class REST_Controller extends Core_Controller {
         }
 
         // When there is no specific override for the current class/method, use the default auth value set in the config
-        if ($this->auth_override === FALSE && ( ! ($this->config->item('rest_enable_keys') && $this->_allow === TRUE) || ($this->config->item('allow_auth_and_keys') === TRUE && $this->_allow === TRUE)))
+        if ($this->auth_override === FALSE &&
+            (! ($this->config->item('rest_enable_keys') && $this->_allow === TRUE) ||
+            ($this->config->item('allow_auth_and_keys') === TRUE && $this->_allow === TRUE)))
         {
             $rest_auth = strtolower($this->config->item('rest_auth'));
             switch ($rest_auth)
@@ -667,12 +669,12 @@ abstract class REST_Controller extends Core_Controller {
         }
 
         // Sure it exists, but can they do anything with it?
-        if (method_exists($this, $controller_method) === FALSE)
+        if (!method_exists($this, $controller_method))
         {
             $this->response(array(
                     $this->config->item('rest_status_field_name') => FALSE,
                     $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_unknown_method')
-                ), self::HTTP_NOT_FOUND);
+                ), self::HTTP_METHOD_NOT_ALLOWED);
         }
 
         // Doing key related stuff? Can only do it if they have a key right?
