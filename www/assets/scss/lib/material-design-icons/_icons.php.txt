@@ -42,7 +42,9 @@ foreach ($items as $key => $item) {
     $items[$key] = $item;
 }
 
-$result = '';
+$result = '@import "variables";
+
+';
 
 foreach ($items as $item) {
 

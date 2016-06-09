@@ -1,8 +1,10 @@
+@import "variables";
+
 // Base Class Definition
 // -------------------------
 
 .#{$md-css-prefix}, .material-icons {
-    font: normal normal normal #{$md-font-size-base}/1 'Material Icons'; // shortening font declaration
+    font: normal normal normal #{$md-font-size-base}/1 $md-font-family; // shortening font declaration
     font-size: inherit; // can't have font-size inherit on line above, so need to override
     display: inline-block;
     text-transform: none;

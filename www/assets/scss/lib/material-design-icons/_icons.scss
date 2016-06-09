@@ -1,3 +1,5 @@
+@import "variables";
+
 .#{$md-css-prefix}-3d-rotation:before { content: "\e84d"; }
 .#{$md-css-prefix}-ac-unit:before { content: "\eb3b"; }
 .#{$md-css-prefix}-access-alarm:before { content: "\e190"; }
@@ -103,6 +105,7 @@
 .#{$md-css-prefix}-border-style:before { content: "\e231"; }
 .#{$md-css-prefix}-border-top:before { content: "\e232"; }
 .#{$md-css-prefix}-border-vertical:before { content: "\e233"; }
+.#{$md-css-prefix}-branding-watermark:before { content: "\e06b"; }
 .#{$md-css-prefix}-brightness-1:before { content: "\e3a6"; }
 .#{$md-css-prefix}-brightness-2:before { content: "\e3a7"; }
 .#{$md-css-prefix}-brightness-3:before { content: "\e3a8"; }
@@ -116,8 +119,10 @@
 .#{$md-css-prefix}-brightness-medium:before { content: "\e1ae"; }
 .#{$md-css-prefix}-broken-image:before { content: "\e3ad"; }
 .#{$md-css-prefix}-brush:before { content: "\e3ae"; }
+.#{$md-css-prefix}-bubble-chart:before { content: "\e6dd"; }
 .#{$md-css-prefix}-bug-report:before { content: "\e868"; }
 .#{$md-css-prefix}-build:before { content: "\e869"; }
+.#{$md-css-prefix}-burst-mode:before { content: "\e43c"; }
 .#{$md-css-prefix}-business:before { content: "\e0af"; }
 .#{$md-css-prefix}-business-center:before { content: "\eb3f"; }
 .#{$md-css-prefix}-cached:before { content: "\e86a"; }
@@ -130,6 +135,7 @@
 .#{$md-css-prefix}-call-missed-outgoing:before { content: "\e0e4"; }
 .#{$md-css-prefix}-call-received:before { content: "\e0b5"; }
 .#{$md-css-prefix}-call-split:before { content: "\e0b6"; }
+.#{$md-css-prefix}-call-to-action:before { content: "\e06c"; }
 .#{$md-css-prefix}-camera:before { content: "\e3af"; }
 .#{$md-css-prefix}-camera-alt:before { content: "\e3b0"; }
 .#{$md-css-prefix}-camera-enhance:before { content: "\e8fc"; }
@@ -209,6 +215,8 @@
 .#{$md-css-prefix}-date-range:before { content: "\e916"; }
 .#{$md-css-prefix}-dehaze:before { content: "\e3c7"; }
 .#{$md-css-prefix}-delete:before { content: "\e872"; }
+.#{$md-css-prefix}-delete-forever:before { content: "\e92b"; }
+.#{$md-css-prefix}-delete-sweep:before { content: "\e16c"; }
 .#{$md-css-prefix}-description:before { content: "\e873"; }
 .#{$md-css-prefix}-desktop-mac:before { content: "\e30b"; }
 .#{$md-css-prefix}-desktop-windows:before { content: "\e30c"; }
@@ -234,6 +242,8 @@
 .#{$md-css-prefix}-dns:before { content: "\e875"; }
 .#{$md-css-prefix}-do-not-disturb:before { content: "\e612"; }
 .#{$md-css-prefix}-do-not-disturb-alt:before { content: "\e611"; }
+.#{$md-css-prefix}-do-not-disturb-off:before { content: "\e643"; }
+.#{$md-css-prefix}-do-not-disturb-on:before { content: "\e644"; }
 .#{$md-css-prefix}-dock:before { content: "\e30e"; }
 .#{$md-css-prefix}-domain:before { content: "\e7ee"; }
 .#{$md-css-prefix}-done:before { content: "\e876"; }
@@ -252,6 +262,8 @@
 .#{$md-css-prefix}-equalizer:before { content: "\e01d"; }
 .#{$md-css-prefix}-error:before { content: "\e000"; }
 .#{$md-css-prefix}-error-outline:before { content: "\e001"; }
+.#{$md-css-prefix}-euro-symbol:before { content: "\e926"; }
+.#{$md-css-prefix}-ev-station:before { content: "\e56d"; }
 .#{$md-css-prefix}-event:before { content: "\e878"; }
 .#{$md-css-prefix}-event-available:before { content: "\e614"; }
 .#{$md-css-prefix}-event-busy:before { content: "\e615"; }
@@ -274,6 +286,8 @@
 .#{$md-css-prefix}-fast-rewind:before { content: "\e020"; }
 .#{$md-css-prefix}-favorite:before { content: "\e87d"; }
 .#{$md-css-prefix}-favorite-border:before { content: "\e87e"; }
+.#{$md-css-prefix}-featured-play-list:before { content: "\e06d"; }
+.#{$md-css-prefix}-featured-video:before { content: "\e06e"; }
 .#{$md-css-prefix}-feedback:before { content: "\e87f"; }
 .#{$md-css-prefix}-fiber-dvr:before { content: "\e05d"; }
 .#{$md-css-prefix}-fiber-manual-record:before { content: "\e061"; }
@@ -305,6 +319,7 @@
 .#{$md-css-prefix}-find-in-page:before { content: "\e880"; }
 .#{$md-css-prefix}-find-replace:before { content: "\e881"; }
 .#{$md-css-prefix}-fingerprint:before { content: "\e90d"; }
+.#{$md-css-prefix}-first-page:before { content: "\e5dc"; }
 .#{$md-css-prefix}-fitness-center:before { content: "\eb43"; }
 .#{$md-css-prefix}-flag:before { content: "\e153"; }
 .#{$md-css-prefix}-flare:before { content: "\e3e4"; }
@@ -354,6 +369,7 @@
 .#{$md-css-prefix}-fullscreen:before { content: "\e5d0"; }
 .#{$md-css-prefix}-fullscreen-exit:before { content: "\e5d1"; }
 .#{$md-css-prefix}-functions:before { content: "\e24a"; }
+.#{$md-css-prefix}-g-translate:before { content: "\e927"; }
 .#{$md-css-prefix}-gamepad:before { content: "\e30f"; }
 .#{$md-css-prefix}-games:before { content: "\e021"; }
 .#{$md-css-prefix}-gavel:before { content: "\e90e"; }
@@ -435,6 +451,7 @@
 .#{$md-css-prefix}-laptop-chromebook:before { content: "\e31f"; }
 .#{$md-css-prefix}-laptop-mac:before { content: "\e320"; }
 .#{$md-css-prefix}-laptop-windows:before { content: "\e321"; }
+.#{$md-css-prefix}-last-page:before { content: "\e5dd"; }
 .#{$md-css-prefix}-launch:before { content: "\e895"; }
 .#{$md-css-prefix}-layers:before { content: "\e53b"; }
 .#{$md-css-prefix}-layers-clear:before { content: "\e53c"; }
@@ -499,6 +516,7 @@
 .#{$md-css-prefix}-looks-two:before { content: "\e401"; }
 .#{$md-css-prefix}-loop:before { content: "\e028"; }
 .#{$md-css-prefix}-loupe:before { content: "\e402"; }
+.#{$md-css-prefix}-low-priority:before { content: "\e16d"; }
 .#{$md-css-prefix}-loyalty:before { content: "\e89a"; }
 .#{$md-css-prefix}-mail:before { content: "\e158"; }
 .#{$md-css-prefix}-mail-outline:before { content: "\e0e1"; }
@@ -515,6 +533,7 @@
 .#{$md-css-prefix}-mms:before { content: "\e618"; }
 .#{$md-css-prefix}-mode-comment:before { content: "\e253"; }
 .#{$md-css-prefix}-mode-edit:before { content: "\e254"; }
+.#{$md-css-prefix}-monetization-on:before { content: "\e263"; }
 .#{$md-css-prefix}-money-off:before { content: "\e25c"; }
 .#{$md-css-prefix}-monochrome-photos:before { content: "\e403"; }
 .#{$md-css-prefix}-mood:before { content: "\e7f2"; }
@@ -528,6 +547,7 @@
 .#{$md-css-prefix}-movie:before { content: "\e02c"; }
 .#{$md-css-prefix}-movie-creation:before { content: "\e404"; }
 .#{$md-css-prefix}-movie-filter:before { content: "\e43a"; }
+.#{$md-css-prefix}-multiline-chart:before { content: "\e6df"; }
 .#{$md-css-prefix}-music-note:before { content: "\e405"; }
 .#{$md-css-prefix}-music-video:before { content: "\e063"; }
 .#{$md-css-prefix}-my-location:before { content: "\e55c"; }
@@ -547,6 +567,7 @@
 .#{$md-css-prefix}-no-encryption:before { content: "\e641"; }
 .#{$md-css-prefix}-no-sim:before { content: "\e0cc"; }
 .#{$md-css-prefix}-not-interested:before { content: "\e033"; }
+.#{$md-css-prefix}-note:before { content: "\e06f"; }
 .#{$md-css-prefix}-note-add:before { content: "\e89c"; }
 .#{$md-css-prefix}-notifications:before { content: "\e7f4"; }
 .#{$md-css-prefix}-notifications-active:before { content: "\e7f7"; }
@@ -616,6 +637,8 @@
 .#{$md-css-prefix}-picture-as-pdf:before { content: "\e415"; }
 .#{$md-css-prefix}-picture-in-picture:before { content: "\e8aa"; }
 .#{$md-css-prefix}-picture-in-picture-alt:before { content: "\e911"; }
+.#{$md-css-prefix}-pie-chart:before { content: "\e6c4"; }
+.#{$md-css-prefix}-pie-chart-outlined:before { content: "\e6c5"; }
 .#{$md-css-prefix}-pin-drop:before { content: "\e55e"; }
 .#{$md-css-prefix}-place:before { content: "\e55f"; }
 .#{$md-css-prefix}-play-arrow:before { content: "\e037"; }
@@ -637,6 +660,7 @@
 .#{$md-css-prefix}-pregnant-woman:before { content: "\e91e"; }
 .#{$md-css-prefix}-present-to-all:before { content: "\e0df"; }
 .#{$md-css-prefix}-print:before { content: "\e8ad"; }
+.#{$md-css-prefix}-priority-high:before { content: "\e645"; }
 .#{$md-css-prefix}-public:before { content: "\e80b"; }
 .#{$md-css-prefix}-publish:before { content: "\e255"; }
 .#{$md-css-prefix}-query-builder:before { content: "\e8ae"; }
@@ -659,6 +683,7 @@
 .#{$md-css-prefix}-remove-circle-outline:before { content: "\e15d"; }
 .#{$md-css-prefix}-remove-from-queue:before { content: "\e067"; }
 .#{$md-css-prefix}-remove-red-eye:before { content: "\e417"; }
+.#{$md-css-prefix}-remove-shopping-cart:before { content: "\e928"; }
 .#{$md-css-prefix}-reorder:before { content: "\e8fe"; }
 .#{$md-css-prefix}-repeat:before { content: "\e040"; }
 .#{$md-css-prefix}-repeat-one:before { content: "\e041"; }
@@ -670,8 +695,10 @@
 .#{$md-css-prefix}-reply-all:before { content: "\e15f"; }
 .#{$md-css-prefix}-report:before { content: "\e160"; }
 .#{$md-css-prefix}-report-problem:before { content: "\e8b2"; }
+.#{$md-css-prefix}-restaurant:before { content: "\e56c"; }
 .#{$md-css-prefix}-restaurant-menu:before { content: "\e561"; }
 .#{$md-css-prefix}-restore:before { content: "\e8b3"; }
+.#{$md-css-prefix}-restore-page:before { content: "\e929"; }
 .#{$md-css-prefix}-ring-volume:before { content: "\e0d1"; }
 .#{$md-css-prefix}-room:before { content: "\e8b4"; }
 .#{$md-css-prefix}-room-service:before { content: "\eb49"; }
@@ -681,6 +708,7 @@
 .#{$md-css-prefix}-rounded-corner:before { content: "\e920"; }
 .#{$md-css-prefix}-router:before { content: "\e328"; }
 .#{$md-css-prefix}-rowing:before { content: "\e921"; }
+.#{$md-css-prefix}-rss-feed:before { content: "\e0e5"; }
 .#{$md-css-prefix}-rv-hookup:before { content: "\e642"; }
 .#{$md-css-prefix}-satellite:before { content: "\e562"; }
 .#{$md-css-prefix}-save:before { content: "\e161"; }
@@ -698,6 +726,11 @@
 .#{$md-css-prefix}-security:before { content: "\e32a"; }
 .#{$md-css-prefix}-select-all:before { content: "\e162"; }
 .#{$md-css-prefix}-send:before { content: "\e163"; }
+.#{$md-css-prefix}-sentiment-dissatisfied:before { content: "\e811"; }
+.#{$md-css-prefix}-sentiment-neutral:before { content: "\e812"; }
+.#{$md-css-prefix}-sentiment-satisfied:before { content: "\e813"; }
+.#{$md-css-prefix}-sentiment-very-dissatisfied:before { content: "\e814"; }
+.#{$md-css-prefix}-sentiment-very-satisfied:before { content: "\e815"; }
 .#{$md-css-prefix}-settings:before { content: "\e8b8"; }
 .#{$md-css-prefix}-settings-applications:before { content: "\e8b9"; }
 .#{$md-css-prefix}-settings-backup-restore:before { content: "\e8ba"; }
@@ -722,6 +755,7 @@
 .#{$md-css-prefix}-shopping-basket:before { content: "\e8cb"; }
 .#{$md-css-prefix}-shopping-cart:before { content: "\e8cc"; }
 .#{$md-css-prefix}-short-text:before { content: "\e261"; }
+.#{$md-css-prefix}-show-chart:before { content: "\e6e1"; }
 .#{$md-css-prefix}-shuffle:before { content: "\e043"; }
 .#{$md-css-prefix}-signal-cellular-4-bar:before { content: "\e1c8"; }
 .#{$md-css-prefix}-signal-cellular-connected-no-internet-4-bar:before { content: "\e1cd"; }
@@ -750,6 +784,7 @@
 .#{$md-css-prefix}-speaker:before { content: "\e32d"; }
 .#{$md-css-prefix}-speaker-group:before { content: "\e32e"; }
 .#{$md-css-prefix}-speaker-notes:before { content: "\e8cd"; }
+.#{$md-css-prefix}-speaker-notes-off:before { content: "\e92a"; }
 .#{$md-css-prefix}-speaker-phone:before { content: "\e0d2"; }
 .#{$md-css-prefix}-spellcheck:before { content: "\e8ce"; }
 .#{$md-css-prefix}-star:before { content: "\e838"; }
@@ -766,6 +801,7 @@
 .#{$md-css-prefix}-store:before { content: "\e8d1"; }
 .#{$md-css-prefix}-store-mall-directory:before { content: "\e563"; }
 .#{$md-css-prefix}-straighten:before { content: "\e41c"; }
+.#{$md-css-prefix}-streetview:before { content: "\e56e"; }
 .#{$md-css-prefix}-strikethrough-s:before { content: "\e257"; }
 .#{$md-css-prefix}-style:before { content: "\e41d"; }
 .#{$md-css-prefix}-subdirectory-arrow-left:before { content: "\e5d9"; }
@@ -773,6 +809,7 @@
 .#{$md-css-prefix}-subject:before { content: "\e8d2"; }
 .#{$md-css-prefix}-subscriptions:before { content: "\e064"; }
 .#{$md-css-prefix}-subtitles:before { content: "\e048"; }
+.#{$md-css-prefix}-subway:before { content: "\e56f"; }
 .#{$md-css-prefix}-supervisor-account:before { content: "\e8d3"; }
 .#{$md-css-prefix}-surround-sound:before { content: "\e049"; }
 .#{$md-css-prefix}-swap-calls:before { content: "\e0d7"; }
@@ -809,6 +846,7 @@
 .#{$md-css-prefix}-timer-10:before { content: "\e423"; }
 .#{$md-css-prefix}-timer-3:before { content: "\e424"; }
 .#{$md-css-prefix}-timer-off:before { content: "\e426"; }
+.#{$md-css-prefix}-title:before { content: "\e264"; }
 .#{$md-css-prefix}-toc:before { content: "\e8de"; }
 .#{$md-css-prefix}-today:before { content: "\e8df"; }
 .#{$md-css-prefix}-toll:before { content: "\e8e0"; }
@@ -817,6 +855,9 @@
 .#{$md-css-prefix}-toys:before { content: "\e332"; }
 .#{$md-css-prefix}-track-changes:before { content: "\e8e1"; }
 .#{$md-css-prefix}-traffic:before { content: "\e565"; }
+.#{$md-css-prefix}-train:before { content: "\e570"; }
+.#{$md-css-prefix}-tram:before { content: "\e571"; }
+.#{$md-css-prefix}-transfer-within-a-station:before { content: "\e572"; }
 .#{$md-css-prefix}-transform:before { content: "\e428"; }
 .#{$md-css-prefix}-translate:before { content: "\e8e2"; }
 .#{$md-css-prefix}-trending-down:before { content: "\e8e3"; }
@@ -837,6 +878,8 @@
 .#{$md-css-prefix}-vertical-align-center:before { content: "\e259"; }
 .#{$md-css-prefix}-vertical-align-top:before { content: "\e25a"; }
 .#{$md-css-prefix}-vibration:before { content: "\e62d"; }
+.#{$md-css-prefix}-video-call:before { content: "\e070"; }
+.#{$md-css-prefix}-video-label:before { content: "\e071"; }
 .#{$md-css-prefix}-video-library:before { content: "\e04a"; }
 .#{$md-css-prefix}-videocam:before { content: "\e04b"; }
 .#{$md-css-prefix}-videocam-off:before { content: "\e04c"; }
