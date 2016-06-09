@@ -414,6 +414,7 @@ Real Life Usage
 * http://nelasms.com (a seller of spare parts for trucks), designer: Irina Stancheva
 * http://afilipov.eu (a personal site, Andrey Filipov), designer: Irina Stancheva
 * http://petyakonstantinova.com (a personal site, Petya Konstantinova), designer: Irina Stancheva
+* http://liveconsult.eu (training about business or personal relations), designer: Irina Stancheva
 
 Reported by Webnice Ltd., http://webnicebg.com
 
