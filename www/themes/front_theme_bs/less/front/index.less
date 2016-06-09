@@ -25,7 +25,7 @@
 // Variables and Mixins --------------------------------------------------------
 
 // Common-Purpose Theme Variables
-@import "@{theme-path}variables-common-purpose.less";
+// None for now.
 
 // Common mixins
 @import "@{default-assets-less-lib-path}common/mixins.less";
@@ -38,13 +38,36 @@
 @import "@{theme-path}variables-bootstrap.less";
 
 // Site Structure Variables
-@import "@{theme-path}variables-site-structure.less";
+// None for now.
 
 // Colorbox Variables
-@import "@{theme-path}variables-colorbox.less";
+@colorbox-example-dir: "example3/";
+@colorbox-import-file: "@{default-assets-css-lib-path}colorbox/@{colorbox-example-dir}colorbox.css";
+@colorbox-image-dir: "@{default-assets-uri}css/lib/colorbox/@{colorbox-example-dir}images/";
 
 // Scroll To Top Link
-@import "@{theme-path}variables-scroll-top.less";
+@scroll-top-color: #fff;
+@scroll-top-background-color: rgba(57, 181, 233, 0.5);
+@scroll-top-width: 50px;
+@scroll-top-height: 50px;
+@scroll-top-radius: 50%;
+@scroll-top-right: 15px;
+@scroll-top-bottom: 15px;
+
+// DataTables
+@datatables-img-path: "@{default-assets-uri}img/lib/dataTables/";
+
+// bootstrap-chosen Variables
+@import "@{default-assets-less-lib-path}bootstrap-chosen/bootstrap-chosen-variables.less";
+@chosen-sprite-path: "@{default-assets-uri}img/lib/bootstrap-chosen/chosen-sprite.png";
+@chosen-sprite-retina-path: "@{default-assets-uri}img/lib/bootstrap-chosen/chosen-sprite@2x.png";
+
+// Star Rating Variables
+@import "@{default-assets-less-lib-path}bootstrap-star-rating/star-rating-variables.less";
+@star-rating-img-path: "@{default-assets-uri}img/lib/bootstrap-star-rating/";
+
+// bootstrap-select Variables
+@import "@{default-assets-less-lib-path}bootstrap-select/variables.less";
 
 // End Variables and Mixins ----------------------------------------------------
 
@@ -125,19 +148,19 @@
  *  http://github.com/alxlit/bootstrap-chosen
  *  An alternate stylesheet for Chosen (http://harvesthq.github.com/chosen/).
  */
-@import "@{default-assets-less-lib-path}bootstrap-chosen/bootstrap-chosen-variables.less";
-@import "@{theme-path}variables-bootstrap-chosen.less";
 @import "@{default-assets-less-lib-path}bootstrap-chosen/bootstrap-chosen-source.less";
 @import "@{default-assets-less-lib-path}chosen-image/bootstrap-chosenImage.less";
-@import "@{theme-path}bootstrap-chosen.less";
+
+// A correction.
+.chosen-container-multi .chosen-choices {
+    padding-right: 5px;
+}
 
 
 /*!
  *  https://github.com/silviomoreto/bootstrap-select
  *  Bootstrap-select jQuery plugin (http://silviomoreto.github.io/bootstrap-select/).
  */
-@import "@{default-assets-less-lib-path}bootstrap-select/variables.less";
-@import "@{theme-path}variables-bootstrap-select.less";
 @import "@{default-assets-less-lib-path}bootstrap-select/bootstrap-select-source.less";
 
 
@@ -165,7 +188,6 @@
 /*!
  *  DataTables - Bootstrap 3 Integration
  */
-@import "@{theme-path}variables-datatables.less";
 @import "@{default-assets-less-lib-path}dataTables/dataTables.bootstrap-source.less";
 @import "@{default-assets-less-lib-path}dataTables/datatables.responsive-source.less";
 
@@ -180,14 +202,42 @@
  *  Bootstrap Modal Dialogs, https://github.com/nakupanda/bootstrap3-dialog
  */
 @import "@{default-assets-less-lib-path}bootstrap3-dialog/bootstrap-dialog-source.less";
-@import "@{theme-path}bootstrap-dialog.less";
+
+// boostrap-dialog Style Corrections
+
+.bootstrap-dialog .modal-header.bootstrap-dialog-draggable {
+    cursor: move;
+}
+
+//.bootstrap-dialog .modal-header {
+//    border-top-left-radius: 0;
+//    border-top-right-radius: 0;
+//}
 
 
 // bootstrap-star-rating
-@import "@{default-assets-less-lib-path}bootstrap-star-rating/star-rating-variables.less";
-@import "@{theme-path}variables-bootstrap-star-rating.less";
 @import "@{default-assets-less-lib-path}bootstrap-star-rating/star-rating-source.less";
-@import "@{theme-path}bootstrap-star-rating.less";
+
+/* bootstrap-star-rating customizations */
+
+.star-rating.rating-custom, .star-rating-rtl.rating-custom {
+    display: inline-block;
+}
+
+.rating-custom {
+    font-size: 12px;
+}
+
+.star-rating.rating-custom .clear-rating, .star-rating-rtl.rating-custom .clear-rating {
+    font-size: 13px;
+}
+
+.star-rating.rating-custom .caption, .star-rating-rtl.rating-custom .caption .label {
+    font-size: 13px;
+    line-height: 1.0;
+}
+
+/* End  bootstrap-star-rating customizations */
 
 
 /*!
@@ -203,23 +253,348 @@
  *  Customizations
  */
 
-// Site Structure
-@import "@{theme-path}site-structure.less";
 
-// Scroll To Top Link
-@import "@{theme-path}scroll-top.less";
+/* Site Structure */
 
-// Tables
-@import "@{theme-path}tables.less";
+/* Sticky Footer Styles */
 
-// Forms
-@import "@{theme-path}forms.less";
+html,
+body {
+    height: 100%;
+    /* The html and body elements cannot have any padding or margin. */
+}
 
-// Images
-@import "@{theme-path}images.less";
+/* Wrapper for page content to push down footer */
+#wrap {
+    min-height: 100%;
+    height: auto;
+    /* Negative indent footer by its height */
+    margin: 0 auto -60px;
+    /* Pad bottom by footer height */
+    padding: 0 0 60px;
+    > .container {
+        padding: 60px 15px 0;
+    }
+}
 
-// Colorbox
-@import "@{theme-path}colorbox.less";
+/* Set the fixed height of the footer here */
+#footer {
+    min-height: 60px;
+    background-color: #f5f5f5;
+}
 
-// Printing
-@import "@{theme-path}print.less";
+/* End Sticky Footer Styles */
+
+.container .text-muted {
+    margin: 20px 0;
+}
+
+#footer > .container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+code {
+    font-size: 80%;
+}
+
+/* End Site Structure */
+
+
+/* Scroll To Top Link - Customization */
+
+#scroll-top {
+    bottom: @scroll-top-bottom;
+    right: @scroll-top-right;
+    width: @scroll-top-width;
+    height: @scroll-top-height;
+    -webkit-border-radius: @scroll-top-radius;
+    -moz-border-radius: @scroll-top-radius;
+    border-radius: @scroll-top-radius;
+    color: @scroll-top-color;
+    background-color: @scroll-top-background-color;
+}
+
+#scroll-top i {
+    left: ceil((@scroll-top-width - 20px) / 2);
+    top: ceil((@scroll-top-height - 22px) / 2);
+}
+
+/* End Scroll To Top Link - Customization */
+
+
+/* Tables */
+
+.table.table-valign-middle td,
+.table .table-valign-middle td,
+.table.table-valign-middle th,
+.table .table-valign-middle th {
+    vertical-align: middle;
+}
+
+.table.table-valign-top td,
+.table .table-valign-top td,
+.table.table-valign-top th,
+.table .table-valign-top th {
+    vertical-align: top;
+}
+
+.table.table-valign-bottom td,
+.table .table-valign-bottom td,
+.table.table-valign-bottom th,
+.table .table-valign-bottom th {
+    vertical-align: bottom;
+}
+
+th.table-actions {
+    width: .01%;
+    border-left: none;
+    border-right: none;
+}
+
+td.table-actions {
+    border-left: none;
+    border-right: none;
+}
+
+.table td.table-actions {
+    border-left: none;
+    border-right: none;
+}
+
+th.details-control {
+    min-width: 35px;
+}
+
+td.details-control {
+    background: url('@{default-assets-uri}img/lib/details-open.png') no-repeat center center;
+    cursor: pointer;
+}
+
+tr.shown td.details-control {
+    background: url('@{default-assets-uri}img/lib/details-close.png') no-repeat center center;
+}
+
+.table-responsive table {
+    width: 99.9%;   /* A fix for Datatables JavaScript. */
+}
+
+/* End Tables */
+
+
+/* Forms */
+
+label a .fa {
+    vertical-align: middle;
+    font-size: 150%;
+}
+
+label a, label a:hover, label a:focus {
+    text-decoration: none;
+}
+
+label a:focus {
+    outline: 0;
+}
+
+legend {
+    font-size: 16px;
+}
+
+legend a, legend a:hover, legend a:focus {
+    text-decoration: none;
+}
+
+legend a:focus {
+    outline: 0;
+}
+
+legend a .fa {
+    font-size: 150%;
+}
+
+.form-horizontal fieldset {
+    padding-top: 15px;
+}
+
+.input-group-addon a {
+    outline: 0;
+}
+
+/* End Forms */
+
+
+/* Images */
+
+/* Images With Rounded Corners */
+
+.img-rounded-2 {
+    border-radius: 2px;
+}
+
+.img-rounded-3 {
+    border-radius: 3px;
+}
+
+.img-rounded-4 {
+    border-radius: 4px;
+}
+
+.img-rounded-5 {
+    border-radius: 5px;
+}
+
+.img-rounded-6 {
+    border-radius: 6px;
+}
+
+.img-rounded-7 {
+    border-radius: 7px;
+}
+
+.img-rounded-8 {
+    border-radius: 8px;
+}
+
+.img-rounded-9 {
+    border-radius: 9px;
+}
+
+.img-rounded-10 {
+    border-radius: 10px;
+}
+
+/* End Images With Rounded Corners */
+
+
+/* Thumbnails */
+
+// http://stackoverflow.com/questions/12991351/css-force-image-resize-and-keep-aspect-ratio
+
+img.thumbnail-32 {
+    display: block;
+    max-width: 32px;
+    max-height: 32px;
+    width: auto;
+    height: auto;
+}
+
+img.thumbnail-48 {
+    display: block;
+    max-width: 48px;
+    max-height: 48px;
+    width: auto;
+    height: auto;
+}
+
+img.thumbnail-64 {
+    display: block;
+    max-width: 64px;
+    max-height: 64px;
+    width: auto;
+    height: auto;
+}
+
+img.thumbnail-80 {
+    display: block;
+    max-width: 80px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+}
+
+img.thumbnail-96 {
+    display: block;
+    max-width: 96px;
+    max-height: 96px;
+    width: auto;
+    height: auto;
+}
+
+img.thumbnail-120 {
+    display: block;
+    max-width: 120px;
+    max-height: 120px;
+    width: auto;
+    height: auto;
+}
+
+img.thumbnail-160 {
+    display: block;
+    max-width: 160px;
+    max-height: 160px;
+    width: auto;
+    height: auto;
+}
+
+img.thumbnail-240 {
+    display: block;
+    max-width: 240px;
+    max-height: 240px;
+    width: auto;
+    height: auto;
+}
+
+/* End Thumbnails */
+
+
+/* Styles for Indicating Missing Items (Semi-Transparent, Grey Color) */
+
+.missing img, img.missing {
+    opacity: .3;
+}
+
+.missing img.img-thumbnail, img.img-thumbnail.missing {
+    opacity: .7;
+    background-color: #d3d3d3;
+}
+
+/* End Styles for Missing Items */
+
+/* End Images */
+
+
+/* Colorbox */
+
+@import (inline) "@{colorbox-import-file}";
+
+/* Colorbox Fix URLs */
+
+#cboxLoadingGraphic {
+    background-image: url("@{colorbox-image-dir}loading.gif");
+}
+
+#cboxPrevious {
+    background-image: url("@{colorbox-image-dir}controls.png");
+}
+
+#cboxNext {
+    background-image: url("@{colorbox-image-dir}controls.png");
+}
+
+#cboxClose {
+    background-image: url("@{colorbox-image-dir}controls.png");
+}
+
+/* End Colorbox Fix URLs */
+
+/* Colorbox Visual Corrections */
+
+#cboxPrevious, #cboxNext, #cboxSlideshow, #cboxClose {
+    outline: 0 !important;
+}
+
+/* End Colorbox */
+
+
+/* Printing */
+
+// http://www.itsupportguides.com/tech-tips-tricks/how-to-hide-urlhref-when-printing-bootstrap-website/
+// http://stackoverflow.com/questions/7301989/need-to-remove-href-values-when-printing-in-chrome
+@media print {
+    a[href]:after {
+        content: none !important;
+    }
+}
+
+/* End Printing */
