@@ -70,23 +70,26 @@ echo js('lib/bootstrap3-dialog/bootstrap-dialog.min.js');
         $('#manipulating_dialog_message').on('click', function() {
 
             BootstrapDialog.show({
-                message: $('<div></div>').load('<?php echo site_url('playground/bootstrap-modals/remote-html'); ?>')
+                title: 'Default Title',
+                message: 'Click buttons below.',
+                buttons: [{
+                    label: 'Message 1',
+                    action: function(dialog) {
+                        dialog.setMessage('Message 1');
+                    }
+                }, {
+                    label: 'Message 2',
+                    action: function(dialog) {
+                        dialog.setMessage('Message 2');
+                    }
+                }]
             });
         });
 
         $('#loading_remote_page_1').on('click', function() {
 
             BootstrapDialog.show({
-                message: function(dialog) {
-                    var $message = $('<div></div>');
-                    var pageToLoad = dialog.getData('pageToLoad');
-                    $message.load(pageToLoad);
-
-                    return $message;
-                },
-                data: {
-                    'pageToLoad': '<?php echo site_url('playground/bootstrap-modals/remote-html'); ?>'
-                }
+                message: $('<div></div>').load('<?php echo site_url('playground/bootstrap-modals/remote-html'); ?>')
             });
         });
 
