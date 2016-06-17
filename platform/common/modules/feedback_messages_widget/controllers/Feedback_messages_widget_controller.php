@@ -35,17 +35,17 @@ class Feedback_messages_widget_controller extends Base_Widget_Controller {
             }
         }
 
-        $feedback_message_id = isset($data['element_id']) && $data['element_id'] != '' ? nohtml($data['element_id']) : 'main_feedback_message';
-        $feedback_message_full_width = array_key_exists('full_width', $data) ? !empty($data['full_width']) : true;
-        $feedback_message_with_javascript = array_key_exists('with_javascript', $data) ? !empty($data['with_javascript']) : true;
+        if (array_key_exists('element_id', $data) && !array_key_exists('feedback_message_id', $data))  {
 
-        $this->load->view('feedback_messages_widget',
-            compact(
-                'feedback_message_id',
-                'feedback_message_full_width',
-                'feedback_message_with_javascript'
-            )
-        );
+            // BC
+            $data['feedback_message_id'] = $data['element_id'];
+        }
+
+        $data['feedback_message_id'] = isset($data['feedback_message_id']) && $data['feedback_message_id'] != '' ? nohtml($data['feedback_message_id']) : 'main_feedback_message';
+        $data['feedback_message_full_width'] = array_key_exists('full_width', $data) ? !empty($data['full_width']) : true;
+        $data['feedback_message_with_javascript'] = array_key_exists('with_javascript', $data) ? !empty($data['with_javascript']) : true;
+
+        $this->load->view('feedback_messages_widget', $data);
     }
 
 }

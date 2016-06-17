@@ -6,7 +6,13 @@
 
                 <h2>Admin Login Page</h2>
 
-{{ widget('feedback_messages_widget', {'with_javascript': false}) }}
+{{ widget('feedback_messages_widget', {
+    'normal_message': normal_message,
+    'confirmation_message': confirmation_message,
+    'warning_message': warning_message,
+    'error_message': error_message,
+    'with_javascript': false
+}) }}
 
                 <div class="form-group{% if validation_errors['username'] is not empty %} has-error{% endif %}">
                     <label for="username" class="control-label">* {{ lang('ui_username') }}</label>
