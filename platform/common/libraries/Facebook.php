@@ -16,7 +16,7 @@
  * @category    Libraries
  * @author      Mattias Hedman
  * @license     MIT
- * @link        https://github.com/darkwhispering/facebook-sdk-v4-codeigniter
+ * @link        https://github.com/darkwhispering/facebook-sdk-codeigniter
  * @version     3.0.0
  */
 
