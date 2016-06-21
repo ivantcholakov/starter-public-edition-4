@@ -29,7 +29,7 @@ class Fb_controller extends Playground_Base_Controller {
 
     public function index()
     {
-        $title = 'Facebook PHP SDK v4 for CodeIgniter';
+        $title = 'Facebook PHP SDK for CodeIgniter';
 
         $this->template
             ->append_title($title)
@@ -62,7 +62,7 @@ class Fb_controller extends Playground_Base_Controller {
         }
 
         $this->template
-            ->title('Facebook PHP SDK v4 for CodeIgniter - Redirect login example')
+            ->title('Facebook PHP SDK for CodeIgniter - Redirect login example')
             ->set($data)
             ->set('error_message', $this->error_message)
             ->set_partial('css', 'fb_web_css')
@@ -72,7 +72,7 @@ class Fb_controller extends Playground_Base_Controller {
     public function js_login()
     {
         $this->template
-            ->title('Facebook PHP SDK v4 for CodeIgniter - Javascript login example')
+            ->title('Facebook PHP SDK for CodeIgniter - Javascript login example')
             ->set('error_message', $this->error_message)
             ->set_partial('css', 'fb_js_css')
             ->set_partial('scripts', 'fb_js_scripts')

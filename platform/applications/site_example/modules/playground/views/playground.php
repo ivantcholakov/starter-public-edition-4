@@ -61,7 +61,7 @@
                     <a class="list-group-item" href="<?php echo site_url('playground/file-type-icons'); ?>">Testing File Type Icons</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/cssmin'); ?>">CSS Minification Test</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/jsmin'); ?>">JavaScript Minification Test</a>
-                    <a class="list-group-item" href="<?php echo site_url('playground/fb'); ?>">Facebook PHP SDK v4 for CodeIgniter</a>
+                    <a class="list-group-item" href="<?php echo site_url('playground/fb'); ?>">Facebook PHP SDK for CodeIgniter</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/bootstrap-modals'); ?>">Bootstrap Modal Dialogs</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/star-rating'); ?>">Bootstrap Star Rating Examples</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/assign-rating'); ?>">Assign Rating Example</a>
