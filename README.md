@@ -423,6 +423,7 @@ Reported by Webnice Ltd., http://webnicebg.com
 * http://astoconsult.com (industrial property)
 * http://bba-bulgaria.com (a medical NGO)
 * http://evroforest.com (a parquet seller)
+* http://sip2000.bg (consultancy and training about public procurement)
 
 Credits
 -------
