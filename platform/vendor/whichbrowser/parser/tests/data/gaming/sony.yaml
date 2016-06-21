@@ -1,6 +1,6 @@
 -
     headers: 'User-Agent: Mozilla/4.0 (PSP (PlayStation Portable); 2.00)'
-    result: { device: { type: gaming, subtype: portable, manufacturer: Sony, model: 'Playstation Portable' } }
+    result: { engine: { name: NetFront }, device: { type: gaming, subtype: portable, manufacturer: Sony, model: 'Playstation Portable' } }
     readable: 'a Sony Playstation Portable'
 -
     headers: 'User-Agent: Mozilla/5.0 (PLAYSTATION 3 4.10) AppleWebKit/531.22.8 (KHTML, like Gecko)'
@@ -32,15 +32,15 @@
     readable: 'a Sony Playstation 3 running 4.55'
 -
     headers: 'User-Agent: Mozilla/5.0 (PLAYSTATION 3; 1.00)'
-    result: { os: { version: '1.00' }, device: { type: gaming, subtype: console, manufacturer: Sony, model: 'Playstation 3' } }
+    result: { engine: { name: NetFront }, os: { version: '1.00' }, device: { type: gaming, subtype: console, manufacturer: Sony, model: 'Playstation 3' } }
     readable: 'a Sony Playstation 3 running 1.00'
 -
     headers: 'User-Agent: Mozilla/5.0 (PLAYSTATION 3; 2.00)'
-    result: { os: { version: '2.00' }, device: { type: gaming, subtype: console, manufacturer: Sony, model: 'Playstation 3' } }
+    result: { engine: { name: NetFront }, os: { version: '2.00' }, device: { type: gaming, subtype: console, manufacturer: Sony, model: 'Playstation 3' } }
     readable: 'a Sony Playstation 3 running 2.00'
 -
     headers: 'User-Agent: Mozilla/5.0 (PLAYSTATION 3; 3.55)'
-    result: { os: { version: '3.55' }, device: { type: gaming, subtype: console, manufacturer: Sony, model: 'Playstation 3' } }
+    result: { engine: { name: NetFront }, os: { version: '3.55' }, device: { type: gaming, subtype: console, manufacturer: Sony, model: 'Playstation 3' } }
     readable: 'a Sony Playstation 3 running 3.55'
 -
     headers: 'User-Agent: Mozilla/5.0 (PlayStation 3) SonyComputerEntertainmentEurope/531.3 (NCell) NuantiMeta/2.0'
@@ -160,7 +160,7 @@
     readable: 'a Sony Playstation 2'
 -
     headers: 'User-Agent: Mozilla/4.0 (PS2; PlayStation BB Navigator 1.0) NetFront/3.0'
-    result: { browser: { name: NetFront, version: '3.0', type: browser }, device: { type: gaming, subtype: console, manufacturer: Sony, model: 'Playstation 2' } }
+    result: { browser: { name: NetFront, version: '3.0', type: browser }, engine: { name: NetFront }, device: { type: gaming, subtype: console, manufacturer: Sony, model: 'Playstation 2' } }
     readable: 'NetFront 3.0 on a Sony Playstation 2'
 -
     headers: 'User-Agent: Mozilla/5.0 (PS3) AppleWebKit/535.11 (KHTML, like Gecko) NuantiMeta/2.0'
@@ -184,9 +184,9 @@
     readable: 'Planetweb 1.16 on a Sony Playstation 2'
 -
     headers: 'User-Agent: Mozilla/3.0 AVE-Front/2.6 (BrowserInfo Screen=624x400x16M; InputMethod=CONTROLER, MOUSE, REMOCON; Page=10M; Category=GAME; Product=ACCESS/NFPS; HTML-Level=3.2; Strage=NO;)'
-    result: { browser: { name: NetFront, version: '2.6', type: browser }, device: { type: gaming, subtype: console, manufacturer: Sony, model: 'Playstation 2' } }
+    result: { browser: { name: NetFront, version: '2.6', type: browser }, engine: { name: NetFront }, device: { type: gaming, subtype: console, manufacturer: Sony, model: 'Playstation 2' } }
     readable: 'NetFront 2.6 on a Sony Playstation 2'
 -
     headers: 'User-Agent: Mozilla/3.0 AVE-Front/2.6 (BrowserInfo Screen=640x448x16M; InputMethod=CONTROLER, MOUSE, REMOCON; Page=12M; Category=GAME; Product=SUNSOFT/EnjoyMagic; HTML-Level=3.2; Language=ja.SJIS; Storage=NO;)'
-    result: { browser: { name: NetFront, version: '2.6', type: browser }, device: { type: gaming, subtype: console, manufacturer: Sony, model: 'Playstation 2' } }
+    result: { browser: { name: NetFront, version: '2.6', type: browser }, engine: { name: NetFront }, device: { type: gaming, subtype: console, manufacturer: Sony, model: 'Playstation 2' } }
     readable: 'NetFront 2.6 on a Sony Playstation 2'

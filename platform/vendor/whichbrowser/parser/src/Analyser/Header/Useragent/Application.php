@@ -45,6 +45,27 @@ trait Application
             }
         }
 
+        /* Sony Select SDK */
+
+        if (preg_match('/Android [0-9\.]+; (.*) Sony\/.*SonySelectSDK\/([0-9\.]+)/iu', $ua, $match)) {
+            $this->data->browser->reset();
+            $this->data->browser->type = Constants\BrowserType::APP;
+            $this->data->browser->using = new \WhichBrowser\Model\Using([
+                'name' => 'Sony Select SDK',
+                'version' => new Version([ 'value' => $match[2], 'details' => 2 ])
+            ]);
+
+            $this->data->device->model = $match[1];
+            $this->data->device->identified |= Constants\Id::PATTERN;
+            $this->data->device->type = Constants\DeviceType::MOBILE;
+
+            $device = Data\DeviceModels::identify('android', $match[1]);
+            if ($device->identified) {
+                $device->identified |= $this->data->device->identified;
+                $this->data->device = $device;
+            }
+        }
+
         /* Samsung Mediahub */
 
         if (preg_match('/^Stamhub [^\/]+\/([^;]+);.*:([0-9\.]+)\/[^\/]+\/[^:]+:user\/release-keys$/iu', $ua, $match)) {
@@ -116,7 +137,7 @@ trait Application
 
         /* Instagram */
 
-        if (preg_match('/^Instagram ([0-9\.]+) Android \([0-9]+\/([0-9\.]+); [0-9]+dpi; [0-9]+x[0-9]+; [^;]+; ([^;]*);/iu', $ua, $match)) {
+        if (preg_match('/^Instagram ([0-9\.]+) Android (?:IC )?\([0-9]+\/([0-9\.]+); [0-9]+dpi; [0-9]+x[0-9]+; [^;]+; ([^;]*);/iu', $ua, $match)) {
             $this->data->browser->name = 'Instagram';
             $this->data->browser->version = new Version([ 'value' => $match[1] ]);
             $this->data->browser->type = Constants\BrowserType::APP_SOCIAL;
@@ -204,7 +225,7 @@ trait Application
 
         /* Groupon */
 
-        if (preg_match('/Groupon\/([0-9\.]+) \(Android ([0-9\.]+); [^\/]+ \/ ([^;]*);/u', $ua, $match)) {
+        if (preg_match('/Groupon\/([0-9\.]+) \(Android ([0-9\.]+); [^\/]+ \/ [A-Z][a-z]+ ([^;]*);/u', $ua, $match)) {
             $this->data->browser->name = 'Groupon';
             $this->data->browser->version = new Version([ 'value' => $match[1], 'details' => 2 ]);
             $this->data->browser->type = Constants\BrowserType::APP_SHOPPING;
@@ -215,6 +236,7 @@ trait Application
             ]);
 
             $this->data->device->type = Constants\DeviceType::MOBILE;
+            $this->data->device->model = $match[3];
 
             $device = Data\DeviceModels::identify('android', $match[3]);
             if ($device->identified) {
@@ -386,6 +408,29 @@ trait Application
             $this->data->device->type = Constants\DeviceType::MOBILE;
 
             $device = Data\DeviceModels::identify('android', $match[2]);
+            if ($device->identified) {
+                $device->identified |= $this->data->device->identified;
+                $this->data->device = $device;
+            }
+        }
+
+        /* VK */
+
+        if (preg_match('/^VKAndroidApp\/([0-9\.]+)-[0-9]+ \(Android ([^;]+); SDK [^;]+; [^;]+; [a-z]+ ([^;]+);/iu', $ua, $match)) {
+            $this->data->browser->name = 'VK';
+            $this->data->browser->version = new Version([ 'value' => $match[1], 'details' => 2 ]);
+            $this->data->browser->type = Constants\BrowserType::APP_SOCIAL;
+
+            $this->data->os->reset([
+                'name'      => 'Android',
+                'version'   => new Version([ 'value' => $match[2] ])
+            ]);
+
+            $this->data->device->model = $match[3];
+            $this->data->device->identified |= Constants\Id::PATTERN;
+            $this->data->device->type = Constants\DeviceType::MOBILE;
+
+            $device = Data\DeviceModels::identify('android', $match[3]);
             if ($device->identified) {
                 $device->identified |= $this->data->device->identified;
                 $this->data->device = $device;

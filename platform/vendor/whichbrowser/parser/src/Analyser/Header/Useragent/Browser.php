@@ -38,6 +38,7 @@ trait Browser
         $this->detectModernNetscape($ua);
         $this->detectMosaic($ua);
         $this->detectKonqueror($ua);
+        $this->detectOmniWeb($ua);
 
         /* Detect other various television browsers */
         $this->detectEspial($ua);
@@ -229,6 +230,12 @@ trait Browser
                     $this->data->browser->channel = null;
                     $this->data->browser->stock = true;
                     $this->data->browser->version = new Version([ 'value' => $match[1] ]);
+                    
+                    if (preg_match('/Mobile VR/', $ua)) {
+                        $this->data->device->manufacturer = 'Samsung';
+                        $this->data->device->model = 'Gear VR';
+                        $this->data->device->type = Constants\DeviceType::HEADSET;
+                    }
                 }
             } else {
                 $channel = Data\Chrome::getChannel('desktop', $version);
@@ -393,12 +400,14 @@ trait Browser
             $this->data->browser->name = 'Pocket Internet Explorer';
             $this->data->browser->version = new Version([ 'value' => '1.0' ]);
             $this->data->browser->type = Constants\BrowserType::BROWSER;
+            $this->data->device->type = Constants\DeviceType::MOBILE;
         }
 
         if (preg_match('/MSPIE ([0-9.]*)/u', $ua, $match)) {
-            $this->data->browser->name = 'Pocket Internet Explorer';
+            $this->data->browser->name = 'Pocket Internet Explorer2';
             $this->data->browser->version = new Version([ 'value' => $match[1] ]);
             $this->data->browser->type = Constants\BrowserType::BROWSER;
+            $this->data->device->type = Constants\DeviceType::MOBILE;
         }
 
         /* Microsoft Mobile Explorer */
@@ -407,6 +416,7 @@ trait Browser
             $this->data->browser->name = 'Microsoft Mobile Explorer';
             $this->data->browser->version = new Version([ 'value' => $match[1] . '.' . $match[2] ]);
             $this->data->browser->type = Constants\BrowserType::BROWSER;
+            $this->data->device->type = Constants\DeviceType::MOBILE;
         }
 
 
@@ -523,7 +533,7 @@ trait Browser
                 $this->data->device->type = Constants\DeviceType::MOBILE;
             }
 
-            if (preg_match('/Opera Mini\/(?:att\/)?([0-9.]*)/u', $ua, $match)) {
+            if (preg_match('/Opera Mini\/(?:att\/)?([0-9.]+)/u', $ua, $match)) {
                 $this->data->browser->name = 'Opera Mini';
                 $this->data->browser->version = new Version([ 'value' => $match[1], 'details' => (intval(substr(strrchr($match[1], '.'), 1)) > 99 ? -1 : null) ]);
                 $this->data->browser->mode = 'proxy';
@@ -1304,7 +1314,7 @@ trait Browser
             return $result;
         };
 
-        if (preg_match('/(?:Obigo|Teleca|AU-MIC|MIC\/WAP)/ui', $ua)) {
+        if (preg_match('/(?:Obigo|Teleca|AU-MIC|MIC\/)/ui', $ua)) {
             $this->data->browser->name = 'Obigo';
             $this->data->browser->version = null;
             $this->data->browser->type = Constants\BrowserType::BROWSER;
@@ -1704,13 +1714,51 @@ trait Browser
             }
         }
     }
+    
+    
+    /* OmniWeb */
+
+    private function detectOmniWeb($ua)
+    {
+        if (preg_match('/OmniWeb/u', $ua)) {
+            $this->data->browser->name = 'OmniWeb';
+            $this->data->browser->type = Constants\BrowserType::BROWSER;
+            $this->data->browser->version = null;
+
+            if (preg_match('/OmniWeb\/v?([0-9])[0-9][0-9]/u', $ua, $match)) {
+                $this->data->browser->version = new Version([ 'value' => $match[1], 'details' => 1 ]);
+            }
+
+            if (preg_match('/OmniWeb\/([0-9]\.[0-9\.]+)/u', $ua, $match)) {
+                $this->data->browser->version = new Version([ 'value' => $match[1], 'details' => 3 ]);
+            }
+
+            $this->data->device->reset([
+                'type' => Constants\DeviceType::DESKTOP
+            ]);
+            
+            if (!empty($this->data->browser->version)) {
+                if ($this->data->browser->version->is('<', 3)) {
+                    $this->data->os->name = 'NextStep';
+                    $this->data->os->version = null;
+                }
+                
+                if ($this->data->browser->version->is('>=', 4)) {
+                    if (empty($this->data->os->name) || $this->data->os->name != 'OS X') {
+                        $this->data->os->name = 'OS X';
+                        $this->data->os->version = null;
+                    }
+                }
+            }
+        }
+    }
 
 
     /* Other browsers */
 
     private function detectDesktopBrowsers($ua)
     {
-        if (!preg_match('/(WebPositive|WebExplorer|WorldWideweb|Midori|Maxthon)/ui', $ua)) {
+        if (!preg_match('/(WebPositive|WebExplorer|WorldWideweb|Midori|Maxthon|Browse)/ui', $ua)) {
             return;
         }
 
@@ -1797,6 +1845,15 @@ trait Browser
             if (isset($this->data->os->name) && $this->data->browser->version && $this->data->os->name == 'Windows' && $this->data->browser->version->toFloat() < 4) {
                 $this->data->browser->version->details = 1;
             }
+        }
+
+        /* Browse for Remix OS */
+
+        if (preg_match('/^Browse\/([0-9.]+)/u', $ua, $match)) {
+            $this->data->browser->name = 'Browse';
+            $this->data->browser->channel = '';
+            $this->data->browser->version = new Version([ 'value' => $match[1] ]);
+            $this->data->browser->type = Constants\BrowserType::BROWSER;
         }
     }
 

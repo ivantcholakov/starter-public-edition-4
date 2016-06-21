@@ -114,6 +114,7 @@ trait Television
         /* NetCast */
 
         if ($ua == "Mozilla/5.0 (X11; Linux; ko-KR) AppleWebKit/534.26+ (KHTML, like Gecko) Version/5.0 Safari/534.26+" ||
+            $ua == "Mozilla/5.0 (DirectFB; Linux; ko-KR) AppleWebKit/534.26 (KHTML, like Gecko) Version/5.0 Safari/534.26" ||
             $ua == "Mozilla/5.0 (DirectFB; Linux; ko-KR) AppleWebKit/534.26+ (KHTML, like Gecko) Version/5.0 Safari/534.26+") {
             $this->data->device->manufacturer = 'LG';
             $this->data->device->series = 'NetCast TV 2012';
@@ -133,6 +134,11 @@ trait Television
                 $this->data->device->series = 'NetCast TV';
             } else {
                 $this->data->device->series = 'webOS TV';
+                
+                $this->data->os->reset([
+                    'name'   => 'webOS',
+                    'hidden' => true
+                ]);
             }
         }
 
@@ -143,6 +149,11 @@ trait Television
             $this->data->device->series = 'webOS TV';
             $this->data->device->type = Constants\DeviceType::TELEVISION;
             $this->data->device->identified |= Constants\Id::MATCH_UA;
+
+            $this->data->os->reset([
+                'name'   => 'webOS',
+                'hidden' => true
+            ]);
         }
 
         if (preg_match('/Web[O0]S; Linux\/SmartTV/u', $ua)) {
@@ -150,6 +161,11 @@ trait Television
             $this->data->device->series = 'webOS TV';
             $this->data->device->type = Constants\DeviceType::TELEVISION;
             $this->data->device->identified |= Constants\Id::MATCH_UA;
+
+            $this->data->os->reset([
+                'name'   => 'webOS',
+                'hidden' => true
+            ]);
         }
 
         if (preg_match('/webOS\.TV-([0-9]+)/u', $ua, $match)) {
@@ -163,6 +179,11 @@ trait Television
                     $this->data->device->model = $match[1];
                 }
             }
+
+            $this->data->os->reset([
+                'name'   => 'webOS',
+                'hidden' => true
+            ]);
         }
 
         if (preg_match('/PBRM\//u', $ua)) {
@@ -179,6 +200,11 @@ trait Television
                     $this->data->device->model = $match[1];
                 }
             }
+
+            $this->data->os->reset([
+                'name'   => 'webOS',
+                'hidden' => true
+            ]);
         }
     }
 
@@ -418,7 +444,7 @@ trait Television
 
     private function detectSettopboxes($ua)
     {
-        if (!preg_match('/(lacleTV|LOEWE|KreaTV|ADB|Mstar|TechniSat|Technicolor|Highway|CiscoBrowser|Sunniwell|Enseo|LocationFreeTV|Winbox|DuneHD|Roku|AppleTV|WebTV|OpenTV|MediStream)/ui', $ua)) {
+        if (!preg_match('/(lacleTV|LOEWE|KreaTV|ADB|Mstar|TechniSat|Technicolor|Highway|CiscoBrowser|Sunniwell|Enseo|LocationFreeTV|Winbox|DuneHD|Roku|AppleTV|Apple TV|WebTV|OpenTV|MediStream)/ui', $ua)) {
             return;
         }
 
@@ -621,7 +647,7 @@ trait Television
 
         /* AppleTV */
 
-        if (preg_match('/AppleTV/u', $ua)) {
+        if (preg_match('/Apple ?TV/u', $ua)) {
             $this->data->os->reset();
 
             $this->data->device->manufacturer = 'Apple';

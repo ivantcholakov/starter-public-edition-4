@@ -29,6 +29,9 @@ trait Derive
 
         if (isset($this->data->browser->name)) {
             $this->deriveTrident();
+            $this->deriveOperaRenderingEngine();
+            $this->deriveOmniWebRenderingEngine();
+            $this->deriveNetFrontRenderingEngine();
         }
 
         return $this;
@@ -58,6 +61,53 @@ trait Derive
         return $this;
     }
 
+
+    private function deriveOmniWebRenderingEngine()
+    {
+        if ($this->data->isBrowser('OmniWeb')) {
+            $version = $this->data->browser->getVersion();
+
+            if ($version < 5) {
+                $this->data->engine->reset();
+            }
+
+            if ($version >= 5 && $version < 5.5 && !$this->data->isEngine('WebCore')) {
+                $this->data->engine->reset([ 'name' => 'WebCore' ]);
+            }
+
+            if ($version >= 5.5 && !$this->data->isEngine('WebKit')) {
+                $this->data->engine->reset([ 'name' => 'WebKit' ]);
+            }
+        }
+    }
+
+
+    private function deriveOperaRenderingEngine()
+    {
+        if ($this->data->isBrowser('Opera') || $this->data->isBrowser('Opera Mobile')) {
+            $version = $this->data->browser->getVersion();
+
+            if ($version >= 3.5 && $version < 7 && !$this->data->isEngine('Electra')) {
+                $this->data->engine->reset([ 'name' => 'Electra' ]);
+            }
+
+            if ($version >= 7 && $version < 13 && !$this->data->isEngine('Presto')) {
+                $this->data->engine->reset([ 'name' => 'Presto' ]);
+            }
+        }
+
+        if ($this->data->isBrowser('Opera Mini') && !$this->data->isOs('iOS') && !$this->data->isEngine('Presto')) {
+            $this->data->engine->reset([ 'name' => 'Presto' ]);
+        }
+    }
+
+
+    private function deriveNetFrontRenderingEngine()
+    {
+        if ($this->data->isBrowser('NetFront') && !$this->data->isEngine('NetFront')) {
+            $this->data->engine->reset([ 'name' => 'NetFront' ]);
+        }
+    }
 
     private function deriveTrident()
     {
@@ -358,6 +408,27 @@ trait Derive
             }
         }
 
+        /* Derive manufacturer and model based on MacOS or OS X */
+
+        if ($this->data->os->name == 'OS X' || $this->data->os->name == 'Mac OS') {
+            if (empty($this->data->device->model)) {
+                $this->data->device->manufacturer = 'Apple';
+                $this->data->device->model = 'Macintosh';
+                $this->data->device->identified |= Constants\Id::INFER;
+                $this->data->device->hidden = true;
+            }
+        }
+
+        /* Derive manufacturer and model based on MacOS or OS X */
+
+        if ($this->data->os->name == 'iOS') {
+            if (empty($this->data->device->model)) {
+                $this->data->device->manufacturer = 'Apple';
+                $this->data->device->identified |= Constants\Id::INFER;
+                $this->data->device->hidden = true;
+            }
+        }
+
         /* Derive iOS and OS X aliases */
 
         if ($this->data->os->name == 'iOS') {
@@ -372,6 +443,10 @@ trait Derive
             if (!empty($this->data->os->version)) {
                 if ($this->data->os->version->is('<', '10.7')) {
                     $this->data->os->alias = 'Mac OS X';
+                }
+
+                if ($this->data->os->version->is('>=', '10.12')) {
+                    $this->data->os->alias = 'macOS';
                 }
 
                 if ($this->data->os->version->is('10.7')) {
@@ -392,6 +467,10 @@ trait Derive
 
                 if ($this->data->os->version->is('10.11')) {
                     $this->data->os->version->nickname = 'El Capitan';
+                }
+
+                if ($this->data->os->version->is('10.12')) {
+                    $this->data->os->version->nickname = 'Sierra';
                 }
             }
         }

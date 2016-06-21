@@ -53,6 +53,11 @@ trait Os
     {
         /* iOS */
 
+        if (preg_match('/\(iOS;/u', $ua)) {
+            $this->data->os->name = 'iOS';
+            $this->data->device->type = Constants\DeviceType::MOBILE;
+        }
+
         if (preg_match('/(iPhone|iPad|iPod)/u', $ua) && !preg_match('/like iPhone/u', $ua)) {
             $this->data->os->name = 'iOS';
 
@@ -96,8 +101,8 @@ trait Os
                 $this->data->os->version = new Version([ 'value' => str_replace('_', '.', $match[1]), 'details' => 2 ]);
             }
 
-            if (preg_match('/;os=Mac (10[0-9\.]*)/u', $ua, $match)) {
-                $this->data->os->version = new Version([ 'value' => $match[1], 'details' => 2 ]);
+            if (preg_match('/;os=Mac (10[0-9[\.,]*)/u', $ua, $match)) {
+                $this->data->os->version = new Version([ 'value' => str_replace(',', '.', $match[1]), 'details' => 2 ]);
             }
 
             $this->data->device->type = Constants\DeviceType::DESKTOP;
@@ -105,22 +110,29 @@ trait Os
 
         /* Darwin */
 
-        if (preg_match('/Darwin\/([0-9]+).[0-9]+/u', $ua, $match)) {
-            if (preg_match('/\((?:x86_64|i386|Power%20Macintosh)\)/u', $ua)) {
+        if (preg_match('/Darwin(?:\/([0-9]+).[0-9]+)?/u', $ua, $match)) {
+            if (preg_match('/\(X11;/u', $ua)) {
+
+                /* Darwin */
+                $this->data->os->name = 'Darwin';
+                $this->data->device->type = Constants\DeviceType::DESKTOP;
+            } elseif (preg_match('/\((?:x86_64|i386|Power%20Macintosh)\)/u', $ua)) {
 
                 /* OS X */
                 $this->data->os->name = 'OS X';
                 $this->data->device->type = Constants\DeviceType::DESKTOP;
 
-                $version = Data\Darwin::getVersion('osx', $match[1]);
-                if ($version) {
-                    $this->data->os->version = new Version($version);
-                }
-
-                if (preg_match('/CFNetwork\/([0-9\.]+)/u', $ua, $match)) {
-                    $version = Data\CFNetwork::getVersion('osx', $match[1]);
+                if (isset($match[1])) {
+                    $version = Data\Darwin::getVersion('osx', $match[1]);
                     if ($version) {
                         $this->data->os->version = new Version($version);
+                    }
+
+                    if (preg_match('/CFNetwork\/([0-9\.]+)/u', $ua, $match)) {
+                        $version = Data\CFNetwork::getVersion('osx', $match[1]);
+                        if ($version) {
+                            $this->data->os->version = new Version($version);
+                        }
                     }
                 }
             } else {
@@ -129,15 +141,17 @@ trait Os
                 $this->data->os->name = 'iOS';
                 $this->data->device->type = Constants\DeviceType::MOBILE;
 
-                $version = Data\Darwin::getVersion('ios', $match[1]);
-                if ($version) {
-                    $this->data->os->version = new Version($version);
-                }
-
-                if (preg_match('/CFNetwork\/([0-9\.]+)/u', $ua, $match)) {
-                    $version = Data\CFNetwork::getVersion('ios', $match[1]);
+                if (isset($match[1])) {
+                    $version = Data\Darwin::getVersion('ios', $match[1]);
                     if ($version) {
                         $this->data->os->version = new Version($version);
+                    }
+
+                    if (preg_match('/CFNetwork\/([0-9\.]+)/u', $ua, $match)) {
+                        $version = Data\CFNetwork::getVersion('ios', $match[1]);
+                        if ($version) {
+                            $this->data->os->version = new Version($version);
+                        }
                     }
                 }
             }
@@ -219,62 +233,87 @@ trait Os
                     $this->data->device->type = Constants\DeviceType::MOBILE;
                 }
 
+                $candidates = [];
 
-                if (preg_match('/[a-zA-Z][a-zA-Z](?:[-_][a-zA-Z][a-zA-Z])?; ([^;]*[^;\s])\s?;\s+(?:BUILD|Build|build)/u', $ua, $match)) {
-                    $this->data->device->model = $match[1];
-                } elseif (preg_match('/; [a-z][a-zA-Z](?:[-_][a-zA-Z][a-zA-Z])?;? ([^;]*[^;\s])\s+(?:BUILD|Build|build)/u', $ua, $match)) {
-                    $this->data->device->model = $match[1];
-                } elseif (preg_match('/Eclair; (?:[a-zA-Z][a-zA-Z](?:[-_][a-zA-Z][a-zA-Z])?) Build\/([^\/]*)\//u', $ua, $match)) {
-                    $this->data->device->model = $match[1];
-                } elseif (preg_match('/android\/[0-9.]+ \([^;]+; [^;]+; ([^\)]+)\)$/u', $ua, $match)) {
-                    $this->data->device->model = $match[1];
-                } elseif (preg_match('/;\+? ?(?:\*\*)?([^;]*[^;\s])\s+[Bb]uild/u', $ua, $match)) {
-                    $this->data->device->model = $match[1];
-                } elseif (preg_match('/^(?U)([^\/]+)(?U)(?:(?:_CMCC_TD|_CMCC|_TD|_TDLTE|_LTE)?\/[^\/]*)? Linux\/[0-9.+]+ Android\/[0-9.]+/u', $this->removeKnownPrefixes($ua), $match)) {
-                    $this->data->device->model = $match[1];
-                } elseif (preg_match('/^(?U)([^\/]+)(?U)(?:(?:_CMCC_TD|_CMCC|_TD|_TDLTE|_LTE)?\/[^\/]*)? Android(_OS)?\/[0-9.]+/u', $this->removeKnownPrefixes($ua), $match)) {
-                    $this->data->device->model = $match[1];
-                } elseif (preg_match('/^(?U)([^\/]+)(?U)(?:(?:_CMCC_TD|_CMCC|_TD|_TDLTE|_LTE)?\/[^\/]*)? Release\/[0-9.]+/u', $this->removeKnownPrefixes($ua), $match)) {
-                    $this->data->device->model = $match[1];
-                } elseif (preg_match('/Linux;Android [0-9.]+,([^\)]+)\)/u', $ua, $match)) {
-                    $this->data->device->model = $match[1];
-                } elseif (preg_match('/\(([^;]+);U;Android\/[^;]+;[0-9]+\*[0-9]+;CTC\/2.0\)/u', $ua, $match)) {
-                    $this->data->device->model = $match[1];
-                } elseif (preg_match('/;\s?([^;]+);\s?[0-9]+\*[0-9]+;\s?CTC\/2.0/u', $ua, $match)) {
-                    $this->data->device->model = $match[1];
-                } elseif (preg_match('/Android [^;]+; (?:[a-zA-Z][a-zA-Z](?:[-_][a-zA-Z][a-zA-Z])?; )?([^)\/;]+)\)/u', $ua, $match)) {
-                    if (!preg_match('/^[a-zA-Z][a-zA-Z](?:[-_][a-zA-Z][a-zA-Z])?$/u', $match[1])) {
-                        $this->data->device->model = $match[1];
+                if (preg_match('/Build/ui', $ua)) {
+
+                    /* Normal Android useragent strings */
+
+                    if (preg_match('/; [a-z][a-zA-Z][-_][a-zA-Z][a-zA-Z] ([^;]*[^;\s])\s+(?:BUILD|Build|build)/u', $ua, $match)) {
+                        $candidates[] = $match[1];
+                    }
+
+                    if (preg_match('/Android [A-Za-z]+; (?:[a-zA-Z][a-zA-Z](?:[-_][a-zA-Z][a-zA-Z])?) Build\/([^\/]*)\//u', $ua, $match)) {
+                        $candidates[] = $match[1];
+                    }
+
+                    if (preg_match('/;\+? ?(?:\*\*)?([^;]*[^;\s]);?\s+(?:BUILD|Build|build)/u', $ua, $match)) {
+                        $candidates[] = $match[1];
+                    }
+                } elseif (preg_match('/Release\//ui', $ua)) {
+
+                    /* WAP style useragent strings */
+
+                    if (preg_match('/^(?U)([^\/]+)(?U)(?:(?:_CMCC_TD|_CMCC|_TD|_TDLTE|_LTE)?\/[^\/]*)? Linux\/[0-9.+]+ Android\/[0-9.]+/u', $this->removeKnownPrefixes($ua), $match)) {
+                        $candidates[] = $match[1];
+                    } else if (preg_match('/^(?U)([^\/]+)(?U)(?:(?:_CMCC_TD|_CMCC|_TD|_TDLTE|_LTE)?\/[^\/]*)? Android(_OS)?\/[0-9.]+/u', $this->removeKnownPrefixes($ua), $match)) {
+                        $candidates[] = $match[1];
+                    } else if (preg_match('/^(?U)([^\/]+)(?U)(?:(?:_CMCC_TD|_CMCC|_TD|_TDLTE|_LTE)?\/[^\/]*)? Release\/[0-9.]+/u', $this->removeKnownPrefixes($ua), $match)) {
+                        $candidates[] = $match[1];
+                    }
+                } elseif (preg_match('/Mozilla\//ui', $ua)) {
+
+                    /* Old Android useragent strings */
+
+                    if (preg_match('/Linux; (?:U; )?Android [^;]+; (?:[a-zA-Z][a-zA-Z](?:[-_][a-zA-Z][a-zA-Z])?; )?(?:[^;]+; ?)?([^)\/;]+)\)/u', $ua, $match)) {
+                        $candidates[] = $match[1];
+                    } elseif (preg_match('/\(([^;]+);U;Android\/[^;]+;[0-9]+\*[0-9]+;CTC\/2.0\)/u', $ua, $match)) {
+                        $candidates[] = $match[1];
+                    }
+                } else {
+
+                    /* Other applications */
+
+                    if (preg_match('/[34]G Explorer\/[0-9.]+ \(Linux;Android [0-9.]+,([^\)]+)\)/u', $ua, $match)) {
+                        $candidates[] = $match[1];
+                    }
+
+                    if (preg_match('/GetJarSDK\/.*android\/[0-9.]+ \([^;]+; [^;]+; ([^\)]+)\)$/u', $ua, $match)) {
+                        $candidates[] = $match[1];
                     }
                 }
 
-                /* Sometimes we get a model name that starts with Android, in that case it is a mismatch and we should ignore it */
-                if (isset($this->data->device->model) && substr($this->data->device->model, 0, 7) == 'Android' && substr($this->data->device->model, 0, 15) != 'Android Edition') {
-                    $this->data->device->model = null;
+                $candidates = array_unique($candidates);
+
+                for ($c = 0; $c < count($candidates); $c++) {
+                    if (preg_match('/^[a-zA-Z][a-zA-Z](?:[-_][a-zA-Z][a-zA-Z])?$/u', $candidates[$c])) {
+                        unset($candidates[$c]);
+                        continue;
+                    }
+
+                    if (preg_match('/^Android [0-9\.]+$/u', $candidates[$c])) {
+                        unset($candidates[$c]);
+                        continue;
+                    }
+
+                    $candidates[$c] = preg_replace('/^[a-zA-Z][a-zA-Z][-_][a-zA-Z][a-zA-Z]\s+/u', '', $candidates[$c]);
+                    $candidates[$c] = preg_replace('/(.*) - [0-9\.]+ - (?:with Google Apps - )?API [0-9]+ - [0-9]+x[0-9]+/', '\\1', $candidates[$c]);
+                    $candidates[$c] = preg_replace('/^sprd-/u', '', $candidates[$c]);
                 }
 
-                /* Sometimes we get a model name that starts with "sprd-", in that case it delete that part */
-                if (isset($this->data->device->model) && substr($this->data->device->model, 0, 5) == 'sprd-') {
-                    $this->data->device->model = substr($this->data->device->model, 5);
-                }
+                $candidates = array_unique($candidates);
 
-                /* Sometimes we get version and API numbers and display size too */
-                if (isset($this->data->device->model) && preg_match('/(.*) - [0-9\.]+ - (?:with Google Apps - )?API [0-9]+ - [0-9]+x[0-9]+/', $this->data->device->model, $matches)) {
-                    $this->data->device->model = $matches[1];
-                }
-
-                /* Sometimes we get a model that is actually an old style useragent */
-                if (isset($this->data->device->model) && preg_match('/([^\/]+?)(?:\/[0-9\.]+)? (?:Android|Release)\//', $this->data->device->model, $matches)) {
-                    $this->data->device->model = $matches[1];
-                }
-
-                if (isset($this->data->device->model) && $this->data->device->model) {
+                if (count($candidates)) {
+                    $this->data->device->model = $candidates[0];
                     $this->data->device->identified |= Constants\Id::PATTERN;
 
-                    $device = Data\DeviceModels::identify('android', $this->data->device->model);
-                    if ($device->identified) {
-                        $device->identified |= $this->data->device->identified;
-                        $this->data->device = $device;
+                    for ($c = 0; $c < count($candidates); $c++) {
+                        $device = Data\DeviceModels::identify('android', $candidates[$c]);
+                        if ($device->identified) {
+                            $device->identified |= $this->data->device->identified;
+                            $this->data->device = $device;
+                            break;
+                        }
                     }
                 }
 
@@ -490,6 +529,27 @@ trait Os
                 $this->data->os->family = new Family([ 'name' => 'Android' ]);
             }
         }
+
+        /* RemixOS */
+
+        if (preg_match('/RemixOS/u', $ua)) {
+            $this->data->os->name = 'Remix OS';
+            $this->data->os->version = null;
+            $this->data->os->family = new Family([ 'name' => 'Android' ]);
+
+            if (preg_match('/RemixOS ([0-9]\.[0-9])/u', $ua, $match)) {
+                switch ($match[1]) {
+                    case '5.1':
+                        $this->data->os->version = new Version([ 'value' => '1.0' ]);
+                        break;
+                    case '6.0':
+                        $this->data->os->version = new Version([ 'value' => '2.0' ]);
+                        break;
+                }
+            }
+
+            $this->data->device->type = Constants\DeviceType::DESKTOP;
+        }
     }
 
     private function determineAndroidVersionBasedOnBuild($ua)
@@ -582,6 +642,8 @@ trait Os
                         $this->data->os->version = new Version([ 'value' => $match[1], 'alias' => 'NT ' . $match[1] ]);
                         break;
                 }
+
+                $this->detectWindowsOemManufacturer($ua);
             }
 
 
@@ -646,6 +708,11 @@ trait Os
 
                 if (preg_match('/ IEMobile/u', $ua)) {
                     $this->data->os->name = 'Windows Mobile';
+
+                    if (preg_match('/ IEMobile\/9/u', $ua)) {
+                        $this->data->os->name = 'Windows Phone';
+                        $this->data->os->version = new Version([ 'value' => '7.5', 'details' => 2 ]);
+                    }
 
                     if (preg_match('/ IEMobile 8/u', $ua)) {
                         $this->data->os->version = new Version([ 'value' => '6.5', 'details' => 2 ]);
@@ -728,6 +795,22 @@ trait Os
                     if ($device->identified) {
                         $device->identified |= $this->data->device->identified;
                         $this->data->device = $device;
+                    }
+                } else {
+                    if (empty($model) && preg_match('/Windows CE [^;]+; Trident\/[^;]+; IEMobile[\/ ][^;]+[\);] ([A-Z\s]+); ?([^\/\),]+)/ui', $ua, $match)) {
+                        $model = $match[2];
+                    }
+
+                    if (!empty($model)) {
+                        $this->data->device->model = $model;
+                        $this->data->device->identified |= Constants\Id::PATTERN;
+                        $this->data->os->name = 'Windows Phone';
+
+                        $device = Data\DeviceModels::identify('wp', $model);
+                        if ($device->identified) {
+                            $device->identified |= $this->data->device->identified;
+                            $this->data->device = $device;
+                        }
                     }
                 }
             }
@@ -944,6 +1027,59 @@ trait Os
         } elseif (preg_match('/WMPRO/u', $ua)) {
             $this->data->os->name = 'Windows Mobile';
             $this->data->device->type = Constants\DeviceType::MOBILE;
+        }
+    }
+
+    private function detectWindowsOemManufacturer($ua)
+    {
+        $manufacturers = [
+            'MAAR'      => 'Acer',
+            'ASJB'      => 'Asus',
+            'ASU2'      => 'Asus',
+            'MAAU'      => 'Asus',
+            'NP06'      => 'Asus',
+            'NP07'      => 'Asus',
+            'NP08'      => 'Asus',
+            'NP09'      => 'Asus',
+            'CMNTDF'    => 'Compaq',
+            'CPDTDF'    => 'Compaq',
+            'CPNTDF'    => 'Compaq',
+            'MDDR'      => 'Dell',
+            'MDDC'      => 'Dell',
+            'MDDS'      => 'Dell',
+            'FSJB'      => 'Fujitsu',
+            'MAFS'      => 'Fujitsu',
+            'MAGW'      => 'Gateway',
+            'HPCMHP'    => 'HP',
+            'HPDTDF'    => 'HP',
+            'HPNTDF'    => 'HP',
+            'MANM'      => 'Hyrican',
+            'LCJB'      => 'Lenovo',
+            'LEN2'      => 'Lenovo',
+            'MALC'      => 'Lenovo',
+            'MALE'      => 'Lenovo',
+            'MALN'      => 'Lenovo',
+            'MAMD'      => 'Medion',
+            'MAMI'      => 'MSI',
+            'MAM3'      => 'MSI',
+            'MASM'      => 'Samsung',
+            'SMJB'      => 'Samsung',
+            'MASA'      => 'Sony',
+            'MASE'      => 'Sony',
+            'MASP'      => 'Sony',
+            'MATB'      => 'Toshiba',
+            'MATM'      => 'Toshiba',
+            'MATP'      => 'Toshiba',
+            'TAJB'      => 'Toshiba',
+            'TNJB'      => 'Toshiba',
+        ];
+
+        $keys = array_keys($manufacturers);
+
+        if (preg_match('/; (' . implode('|', $keys) . ')(?:JS)?[\);]/u', $ua, $match)) {
+            $this->data->device->manufacturer = $manufacturers[$match[1]];
+            $this->data->device->hidden = true;
+            $this->data->device->identified |= Constants\Id::INFER;
         }
     }
 
@@ -1333,6 +1469,12 @@ trait Os
         if (preg_match('/(?:Spark|elite)\/fzz/u', $ua, $match) || preg_match('/webOSBrowser/u', $ua, $match)) {
             $this->data->os->name = 'webOS';
             $this->data->device->type = preg_match('/Tablet/iu', $ua) ? Constants\DeviceType::TABLET : Constants\DeviceType::MOBILE;
+            $this->data->device->generic = false;
+        }
+
+        if (preg_match('/ (Pre|Pixi|TouchPad|P160UN?A?)\/[0-9\.]+$/u', $ua, $match)) {
+            $this->data->os->name = 'webOS';
+            $this->data->device->type = $match[1] == 'TouchPad' ? Constants\DeviceType::TABLET : Constants\DeviceType::MOBILE;
             $this->data->device->generic = false;
         }
 
@@ -2184,7 +2326,7 @@ trait Os
 
     private function detectRemainingOperatingSystems($ua)
     {
-        if (!preg_match('/(BeOS|Haiku|AmigaOS|MorphOS|AROS|VMS|RISC|Joli|OS\/2|Inferno|Syllable|Grid|MTK|MRE|MAUI|QNX|VRE|SpreadTrum|EPOC|ThreadX)/ui', $ua)) {
+        if (!preg_match('/(BeOS|Haiku|AmigaOS|MorphOS|AROS|VMS|RISC|Joli|OS\/2|Inferno|Syllable|Grid|MTK|MRE|MAUI|Nucleus|QNX|VRE|SpreadTrum|EPOC|ThreadX)/ui', $ua)) {
             return;
         }
 
@@ -2207,6 +2349,9 @@ trait Os
             [ 'name' => 'MRE',          'regexp' => [ '/MRE\\\\/iu' ],                                      'type' => Constants\DeviceType::MOBILE ],
             [ 'name' => 'MRE',          'regexp' => [ '/MAUI[-_ ](?:Browser|Runtime)/iu' ],                 'type' => Constants\DeviceType::MOBILE ],
             [ 'name' => 'MRE',          'regexp' => [ '/Browser\/MAUI/iu' ],                                'type' => Constants\DeviceType::MOBILE ],
+            [ 'name' => 'MRE',          'regexp' => [ '/Nucleus RTOS\//iu' ],                               'type' => Constants\DeviceType::MOBILE ],
+            [ 'name' => 'MRE',          'regexp' => [ '/\/Nucleus/iu' ],                                    'type' => Constants\DeviceType::MOBILE ],
+            [ 'name' => 'MRE',          'regexp' => [ '/Nucleus\//iu' ],                                    'type' => Constants\DeviceType::MOBILE ],
 
             [ 'name' => 'QNX',          'regexp' => [ '/QNX/iu' ],                                          'type' => Constants\DeviceType::MOBILE ],
             [ 'name' => 'VRE',          'regexp' => [ '/\(VRE;/iu' ],                                       'type' => Constants\DeviceType::MOBILE ],

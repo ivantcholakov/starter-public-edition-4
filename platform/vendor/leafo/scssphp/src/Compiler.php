@@ -125,20 +125,21 @@ class Compiler
     protected $rootEnv;
     protected $rootBlock;
 
+    protected $env;
+    protected $scope;
+    protected $storeEnv;
+    protected $charsetSeen;
+    protected $sourceNames;
+
     private $indentLevel;
     private $commentsSeen;
     private $extends;
     private $extendsMap;
     private $parsedFiles;
-    private $env;
-    private $scope;
     private $parser;
-    private $sourceNames;
     private $sourceIndex;
     private $sourceLine;
     private $sourceColumn;
-    private $storeEnv;
-    private $charsetSeen;
     private $stderr;
     private $shouldEvaluate;
     private $ignoreErrors;
@@ -207,7 +208,7 @@ class Compiler
      *
      * @return \Leafo\ScssPhp\Parser
      */
-    private function parserFactory($path)
+    protected function parserFactory($path)
     {
         $parser = new Parser($path, count($this->sourceNames), $this->encoding);
 
@@ -1460,9 +1461,9 @@ class Compiler
                 list(, $name, $value) = $child;
 
                 if ($name[0] === Type::T_VARIABLE) {
-                    $flag = isset($child[3]) ? $child[3] : null;
-                    $isDefault = $flag === '!default';
-                    $isGlobal = $flag === '!global';
+                    $flags = isset($child[3]) ? $child[3] : [];
+                    $isDefault = in_array('!default', $flags);
+                    $isGlobal = in_array('!global', $flags);
 
                     if ($isGlobal) {
                         $this->set($name[1], $this->reduce($value), false, $this->rootEnv);
@@ -1695,6 +1696,9 @@ class Compiler
                 $this->pushEnv();
                 $this->env->depth--;
 
+                $storeEnv = $this->storeEnv;
+                $this->storeEnv = $this->env;
+
                 if (isset($content)) {
                     $content->scope = $callingScope;
 
@@ -1708,6 +1712,8 @@ class Compiler
                 $this->env->marker = 'mixin';
 
                 $this->compileChildrenNoReturn($mixin->children, $out);
+
+                $this->storeEnv = $storeEnv;
 
                 $this->popEnv();
                 break;
@@ -1742,7 +1748,7 @@ class Compiler
 
                 $line = $this->sourceLine;
                 $value = $this->compileValue($this->reduce($value, true));
-                echo "Line $line WARN: $value\n";
+                fwrite($this->stderr, "Line $line WARN: $value\n");
                 break;
 
             case Type::T_ERROR:
@@ -2216,7 +2222,7 @@ class Compiler
             return;
         }
 
-        if ($left !== self::$false) {
+        if ($left !== self::$false and $left !== self::$null) {
             return $this->reduce($right, true);
         }
 
@@ -2238,7 +2244,7 @@ class Compiler
             return;
         }
 
-        if ($left !== self::$false) {
+        if ($left !== self::$false and $left !== self::$null) {
             return $left;
         }
 
@@ -2937,17 +2943,16 @@ class Compiler
      */
     public function get($name, $shouldThrow = true, Environment $env = null)
     {
-        $name = $this->normalizeName($name);
+        $normalizedName = $this->normalizeName($name);
 
         if (! isset($env)) {
             $env = $this->getStoreEnv();
         }
 
-        $hasNamespace = $name[0] === '^' || $name[0] === '@' || $name[0] === '%';
-
+        $hasNamespace = $normalizedName[0] === '^' || $normalizedName[0] === '@' || $normalizedName[0] === '%';
         for (;;) {
-            if (array_key_exists($name, $env->store)) {
-                return $env->store[$name];
+            if (array_key_exists($normalizedName, $env->store)) {
+                return $env->store[$normalizedName];
             }
 
             if (! $hasNamespace && isset($env->marker)) {
@@ -3303,7 +3308,7 @@ class Compiler
      *
      * @throws \Exception
      */
-    private function handleImportLoop($name)
+    protected function handleImportLoop($name)
     {
         for ($env = $this->env; $env; $env = $env->parent) {
             $file = $this->sourceNames[$env->block->sourceIndex];
@@ -3346,6 +3351,9 @@ class Compiler
 
         $this->pushEnv();
 
+        $storeEnv = $this->storeEnv;
+        $this->storeEnv = $this->env;
+
         // set the args
         if (isset($func->args)) {
             $this->applyArguments($func->args, $argValues);
@@ -3359,6 +3367,8 @@ class Compiler
         $this->env->marker = 'function';
 
         $ret = $this->compileChildren($func->children, $tmp);
+
+        $this->storeEnv = $storeEnv;
 
         $this->popEnv();
 
@@ -3620,6 +3630,29 @@ class Compiler
 
         if ($value === '') {
             return self::$emptyString;
+        }
+
+        if (preg_match('/^(#([0-9a-f]{6})|#([0-9a-f]{3}))$/i', $value, $m)) {
+            $color = [Type::T_COLOR];
+
+            if (isset($m[3])) {
+                $num = hexdec($m[3]);
+
+                foreach ([3, 2, 1] as $i) {
+                    $t = $num & 0xf;
+                    $color[$i] = $t << 4 | $t;
+                    $num >>= 4;
+                }
+            } else {
+                $num = hexdec($m[2]);
+
+                foreach ([3, 2, 1] as $i) {
+                    $color[$i] = $num & 0xff;
+                    $num >>= 8;
+                }
+            }
+
+            return $color;
         }
 
         return [Type::T_KEYWORD, $value];

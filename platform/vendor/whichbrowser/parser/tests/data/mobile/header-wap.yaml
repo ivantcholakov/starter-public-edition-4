@@ -52,21 +52,21 @@
     readable: 'UC Browser 9.5 on a Nokia 208 running Series40'
 -
     headers: { User-Agent: 'Opera/9.50 (J2ME/MIDP; Opera Mini/5.1.24702/29.3757; U; xx)', X-Wap-Profile: 'http://www.zte.com.cn/mobile/uaprof/Vodafone550.xml' }
-    result: { browser: { name: 'Opera Mini', version: '5.1', type: browser }, device: { type: mobile, subtype: feature, manufacturer: Vodafone, model: '550' } }
+    result: { browser: { name: 'Opera Mini', version: '5.1', type: browser }, engine: { name: Presto }, device: { type: mobile, subtype: feature, manufacturer: Vodafone, model: '550' } }
     readable: 'Opera Mini 5.1 on a Vodafone 550'
 -
     headers: { User-Agent: 'Opera/9.50 (J2ME/MIDP; Opera Mini/5.1.25137/29.3757; U; xx)', X-Wap-Profile: 'http://www.zte.com.cn/mobile/uaprof/W1.xml' }
-    result: { browser: { name: 'Opera Mini', version: '5.1', type: browser }, device: { type: mobile, subtype: feature, manufacturer: Vodafone, model: W1 } }
+    result: { browser: { name: 'Opera Mini', version: '5.1', type: browser }, engine: { name: Presto }, device: { type: mobile, subtype: feature, manufacturer: Vodafone, model: W1 } }
     readable: 'Opera Mini 5.1 on a Vodafone W1'
 -
     headers: { User-Agent: 'SAMSUNG-GT-S5610/S5610XXLI1 NetFront/4.1 Profile/MIDP-2.0 Configuration/CLDC-1.1', X-Wap-Profile: 'http://wap.samsungmobile.com/uaprof/GT-S5610_3G.rdf' }
-    result: { browser: { name: NetFront, version: '4.1', type: browser }, device: { type: mobile, subtype: feature, manufacturer: Samsung, model: Primo } }
+    result: { browser: { name: NetFront, version: '4.1', type: browser }, engine: { name: NetFront }, device: { type: mobile, subtype: feature, manufacturer: Samsung, model: Primo } }
     readable: 'NetFront 4.1 on a Samsung Primo'
 -
     headers: { User-Agent: 'SAMSUNG-SGH-i900/1.0 Opera 9.5', X-Wap-Profile: 'http://wap.samsungmobile.com/uaprof/SGH-i900.xml' }
-    result: { browser: { name: 'Opera Mobile', version: '9.5', type: browser }, os: { name: 'Windows Mobile' }, device: { type: mobile, subtype: smart, manufacturer: Samsung, model: Omnia } }
+    result: { browser: { name: 'Opera Mobile', version: '9.5', type: browser }, engine: { name: Presto }, os: { name: 'Windows Mobile' }, device: { type: mobile, subtype: smart, manufacturer: Samsung, model: Omnia } }
     readable: 'Opera Mobile 9.5 on a Samsung Omnia running Windows Mobile'
 -
     headers: { User-Agent: 'dopodT8588/1.0 WindowsMobile/6.5 CEOS/5.2 release/5.0 Opera/9.7 WAP2.0 Profile/MIDP2.0 Configuration/CLDC1.1', X-Wap-Profile: 'http://www.htcmms.com.tw/gen/HTC_HD2_T8585-1.0.xml' }
-    result: { browser: { name: 'Opera Mobile', version: '9.7', type: browser }, os: { name: 'Windows Mobile', version: '6.5' }, device: { type: mobile, subtype: smart, manufacturer: HTC, model: HD2 } }
+    result: { browser: { name: 'Opera Mobile', version: '9.7', type: browser }, engine: { name: Presto }, os: { name: 'Windows Mobile', version: '6.5' }, device: { type: mobile, subtype: smart, manufacturer: HTC, model: HD2 } }
     readable: 'Opera Mobile 9.7 on a HTC HD2 running Windows Mobile 6.5'

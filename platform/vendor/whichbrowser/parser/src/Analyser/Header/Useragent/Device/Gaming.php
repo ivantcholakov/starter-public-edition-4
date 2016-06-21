@@ -79,7 +79,11 @@ trait Gaming
 
         if (preg_match('/Nintendo 3DS/u', $ua)) {
             $this->data->os->reset();
-            $this->data->os->identifyVersion('/Version\/([0-9.]*)/u', $ua);
+            $this->data->os->identifyVersion('/Version\/([0-9.]*[0-9])/u', $ua);
+
+            $this->data->engine->set([
+                'name'          => 'WebKit'
+            ]);
 
             $this->data->device->setIdentification([
                 'manufacturer'  =>  'Nintendo',
@@ -93,7 +97,7 @@ trait Gaming
 
         if (preg_match('/New Nintendo 3DS/u', $ua)) {
             $this->data->os->reset();
-            $this->data->os->identifyVersion('/Version\/([0-9.]*)/u', $ua);
+            $this->data->os->identifyVersion('/Version\/([0-9.]*[0-9])/u', $ua);
 
             $this->data->device->setIdentification([
                 'manufacturer'  =>  'Nintendo',
@@ -113,6 +117,11 @@ trait Gaming
 
         if (preg_match('/PlayStation Portable/u', $ua)) {
             $this->data->os->reset();
+
+            $this->data->engine->set([
+                'name'          => 'NetFront'
+            ]);
+
             $this->data->device->setIdentification([
                 'manufacturer'  =>  'Sony',
                 'model'         =>  'Playstation Portable',
@@ -158,6 +167,12 @@ trait Gaming
         if (preg_match('/PlayStation 3/ui', $ua) || preg_match('/\(PS3/u', $ua)) {
             $this->data->os->reset();
             $this->data->os->identifyVersion('/PLAYSTATION 3;? ([0-9.]*)/u', $ua);
+
+            if (preg_match('/PLAYSTATION 3; [123]/', $ua)) {
+                $this->data->engine->set([
+                    'name'          => 'NetFront'
+                ]);
+            }
 
             $this->data->device->setIdentification([
                 'manufacturer'  =>  'Sony',

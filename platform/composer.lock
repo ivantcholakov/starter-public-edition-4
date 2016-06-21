@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cb39dd95a7d2a9b6751db5beeaf9b2ec",
-    "content-hash": "2ed0e2c398fd72cff6a07f0141b7fba5",
+    "hash": "18e900e5b88fabea9b42b6dbeab74f3d",
+    "content-hash": "5531259f0e9d464af28450289d1b0a7c",
     "packages": [
         {
             "name": "facebook/php-sdk-v4",
@@ -280,16 +280,16 @@
         },
         {
             "name": "leafo/scssphp",
-            "version": "v0.6.3",
+            "version": "v0.6.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/leafo/scssphp.git",
-                "reference": "a27edad3d16635a222d7204706572e24c338aa17"
+                "reference": "0649d38dfef6808be1a89040a3312e8bda0b3aed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/leafo/scssphp/zipball/a27edad3d16635a222d7204706572e24c338aa17",
-                "reference": "a27edad3d16635a222d7204706572e24c338aa17",
+                "url": "https://api.github.com/repos/leafo/scssphp/zipball/0649d38dfef6808be1a89040a3312e8bda0b3aed",
+                "reference": "0649d38dfef6808be1a89040a3312e8bda0b3aed",
                 "shasum": ""
             },
             "require": {
@@ -329,7 +329,7 @@
                 "scss",
                 "stylesheet"
             ],
-            "time": "2016-01-15 02:50:06"
+            "time": "2016-06-20 15:25:08"
         },
         {
             "name": "psr/cache",
@@ -547,16 +547,16 @@
         },
         {
             "name": "whichbrowser/parser",
-            "version": "v2.0.19",
+            "version": "v2.0.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WhichBrowser/Parser.git",
-                "reference": "2a144160618566e39bc4a742faf255e76ebe138a"
+                "reference": "f53b12bbffd2862e901c6f3b01aead11b49f9f07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WhichBrowser/Parser/zipball/2a144160618566e39bc4a742faf255e76ebe138a",
-                "reference": "2a144160618566e39bc4a742faf255e76ebe138a",
+                "url": "https://api.github.com/repos/WhichBrowser/Parser/zipball/f53b12bbffd2862e901c6f3b01aead11b49f9f07",
+                "reference": "f53b12bbffd2862e901c6f3b01aead11b49f9f07",
                 "shasum": ""
             },
             "require": {
@@ -601,7 +601,7 @@
                 "ua",
                 "useragent"
             ],
-            "time": "2016-05-17 12:16:11"
+            "time": "2016-06-14 07:31:39"
         }
     ],
     "packages-dev": [],

@@ -9,10 +9,6 @@ trait Corrections
 {
     private function &applyCorrections()
     {
-        if (isset($this->data->device->model)) {
-            $this->hideDeviceModelIfMatchesLanguage();
-        }
-
         if (isset($this->data->browser->name) && isset($this->data->browser->using)) {
             $this->hideBrowserBasedOnUsing();
         }
@@ -56,13 +52,6 @@ trait Corrections
         }
     }
 
-    private function hideDeviceModelIfMatchesLanguage()
-    {
-        if (preg_match('/^[a-z][a-z]-[a-zA-Z][a-zA-Z]$/u', $this->data->device->model)) {
-            $this->data->device->model = null;
-        }
-    }
-
     private function fixMidoriEngineName()
     {
         if ($this->data->browser->name == 'Midori' && $this->data->engine->name != 'Webkit') {
@@ -91,10 +80,6 @@ trait Corrections
 
     private function hideBrowserBasedOnOperatingSystem()
     {
-        if ($this->data->os->name == 'iOS' && $this->data->browser->name == 'Safari') {
-            $this->data->browser->hidden = true;
-        }
-
         if ($this->data->os->name == 'Series60' && $this->data->browser->name == 'Internet Explorer') {
             $this->data->browser->reset();
             $this->data->engine->reset();
@@ -176,7 +161,7 @@ trait Corrections
 
     private function hideOsOnDeviceTypeTelevision()
     {
-        if (isset($this->data->os->name) && !in_array($this->data->os->name, [ 'Aliyun OS', 'Tizen', 'Android', 'Android TV', 'FireOS', 'Google TV', 'Firefox OS', 'OpenTV' ])) {
+        if (isset($this->data->os->name) && !in_array($this->data->os->name, [ 'Aliyun OS', 'Tizen', 'Android', 'Android TV', 'FireOS', 'Google TV', 'Firefox OS', 'OpenTV', 'webOS' ])) {
             $this->data->os->reset();
         }
     }

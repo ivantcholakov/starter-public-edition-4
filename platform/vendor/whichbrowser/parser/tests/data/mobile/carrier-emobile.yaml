@@ -12,11 +12,11 @@
     readable: 'EMOBILE Browser 1.0 on an Inventec H31IA'
 -
     headers: 'User-Agent: Mozilla/5.0 (H11T; like Gecko; OpenBrowser) NetFront/3.4'
-    result: { browser: { name: NetFront, version: '3.4', type: browser }, device: { type: mobile, subtype: feature, manufacturer: Toshiba, model: H11T, carrier: EMOBILE } }
+    result: { browser: { name: NetFront, version: '3.4', type: browser }, engine: { name: NetFront }, device: { type: mobile, subtype: feature, manufacturer: Toshiba, model: H11T, carrier: EMOBILE } }
     readable: 'NetFront 3.4 on a Toshiba H11T'
 -
     headers: 'User-Agent: emobile/1.0.0 (H11T; like Gecko; Wireless) NetFront/3.4'
-    result: { browser: { name: NetFront, version: '3.4', type: browser }, device: { type: mobile, subtype: feature, manufacturer: Toshiba, model: H11T, carrier: EMOBILE } }
+    result: { browser: { name: NetFront, version: '3.4', type: browser }, engine: { name: NetFront }, device: { type: mobile, subtype: feature, manufacturer: Toshiba, model: H11T, carrier: EMOBILE } }
     readable: 'NetFront 3.4 on a Toshiba H11T'
 -
     headers: 'User-Agent: emobile/1.0.0 (H11T; Profile/MIDP-2.0 Configuration/CLDC-1.1 Local/ja UNTRUSTED/1.0)'
@@ -40,5 +40,5 @@
     readable: 'Mobile Internet Explorer 6.0 on a HTC Dual Diamond S22HT running Windows Mobile 6.1'
 -
     headers: 'User-Agent: Opera/9.5 (Microsoft Windows; PPC; Opera Mobi; U; ja) S21HT'
-    result: { browser: { name: 'Opera Mobile', version: '9.5', type: browser }, os: { name: 'Windows Mobile' }, device: { type: mobile, subtype: smart, manufacturer: HTC, model: S21HT, carrier: EMOBILE } }
+    result: { browser: { name: 'Opera Mobile', version: '9.5', type: browser }, engine: { name: Presto }, os: { name: 'Windows Mobile' }, device: { type: mobile, subtype: smart, manufacturer: HTC, model: S21HT, carrier: EMOBILE } }
     readable: 'Opera Mobile 9.5 on a HTC S21HT running Windows Mobile'

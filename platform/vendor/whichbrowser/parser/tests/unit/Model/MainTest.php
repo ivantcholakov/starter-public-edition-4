@@ -315,8 +315,8 @@ class MainTest extends PHPUnit_Framework_TestCase
         $expected = <<<'EOD'
 this.browser = new Browser({ stock: true, hidden: false, mode: "", type: "" });
 this.engine = new Engine({  });
-this.os = new Os({  });
-this.device = new Device({ type: "", subtype: "", identified: 0, generic: true });
+this.os = new Os({ hidden: false });
+this.device = new Device({ type: "", subtype: "", identified: 0, generic: true, hidden: false });
 this.camouflage = false;
 this.features = [];
 

@@ -3,8 +3,8 @@
         "roave/security-advisories": "dev-master",
         "fg/multiplayer": "1.2.0",
         "facebook/php-sdk-v4" : "~5.0",
-        "leafo/scssphp": "0.6.3",
+        "leafo/scssphp": "0.6.5",
         "guzzlehttp/guzzle": "~6.0",
-        "whichbrowser/parser": "2.0.19"
+        "whichbrowser/parser": "2.0.22"
     }
 }
