@@ -433,6 +433,8 @@ Credits
 * quasiperfect (GitHub name), https://github.com/quasiperfect - for various suggestions and bug-reports;
 * Exelord (GitHub name), https://github.com/Exelord - for Polish translation;
 * Krishna Guragai, https://github.com/krishnaguragain - for drafting the Facebook PHP SDK integration.
+* Denislav Adilev, http://forum.codeigniter.com/user-9053.html - for his overall influence and recommendations,
+for testing and various bug-reports about the Template library, Twig and Lex parsers integration, language support, image processing and modular extensions.
 
 License Information
 -------------------
