@@ -639,7 +639,7 @@ class Core_Config extends MX_Config {
     // Added by Ivan Tcholakov, 22-JAN-2014.
     public function hide_default_language_uri_segment() {
 
-        return $this->config['hide_default_uri_segment'];
+        return !empty($this->config['hide_default_uri_segment']);
     }
 
     // Added by Ivan Tcholakov, 23-JAN-2014.

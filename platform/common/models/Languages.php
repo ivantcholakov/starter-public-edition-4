@@ -5,20 +5,15 @@
 -- Sample structure for the table `languages`
 
 CREATE TABLE IF NOT EXISTS `languages` (
-  `id` int(11) unsigned NOT NULL,
-  `lang` varchar(8) NOT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '0',
-  `default` tinyint(1) NOT NULL DEFAULT '0',
-  `display_order` int(11) unsigned NOT NULL DEFAULT '0'
+    `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `lang` varchar(8) NOT NULL,
+    `active` tinyint(1) NOT NULL DEFAULT '0',
+    `default` tinyint(1) NOT NULL DEFAULT '0',
+    `display_order` int(11) UNSIGNED NOT NULL DEFAULT '0',
+    PRIMARY KEY (`id`),
+    KEY `lang` (`lang`),
+    KEY `display_order` (`display_order`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-ALTER TABLE `languages`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `lang` (`lang`),
-  ADD KEY `display_order` (`display_order`);
-
-ALTER TABLE `languages`
-  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
 
 */
 
