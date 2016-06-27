@@ -384,8 +384,9 @@ class Thumbnail {
         $image_cache_subdirectory = $this->_create_path_hash($src_path);
         $image_cache_path = ($public ? $this->image_public_cache_path : $this->image_cache_path).$image_cache_subdirectory.'/';
 
-        // Get the image file extension.
+        // Get the image base name and file extension.
         $src_name_parts = $this->ci->image_lib->explode_name($src_path);
+        $name = pathinfo($src_name_parts['name'], PATHINFO_BASENAME);
         $ext = $src_name_parts['ext'];
 
         // Expose the image default parameters.
@@ -557,7 +558,8 @@ class Thumbnail {
         }
 
         // Determine the destination file.
-        $cached_image_name = sha1(serialize($parameters)).$ext;
+        //$cached_image_name = sha1(serialize($parameters)).$ext;
+        $cached_image_name = sha1(serialize($parameters)).'-'.url_title($name, '-', true, true, $this->ci->config->default_language()).$ext; // SEO-friendly, hopefully.
         $cached_image_file = $image_cache_path.$cached_image_name;
 
         // If the destination file does not exist - create it.
