@@ -375,20 +375,68 @@ if (!function_exists('url_escape')) {
 
 }
 
+// Added by Ivan Tcholakov, 28-JUN-2016.
+// An implementation of the function esc(), introduced in CodeIgniter 4.
+// The original CI4 function will be watched further for possible changes.
+// Valid context values: 'html', 'js', 'css', 'url', 'attr', 'raw', null
+if (!function_exists('esc')) {
+
+    function esc($data, $context = 'html', $charset = null) {
+
+        if (is_array($data)) {
+
+            foreach ($data as $key => & $value) {
+                $value = esc($value, $context, $charset);
+            }
+
+        } elseif (is_string($data)) {
+
+            $context = strtolower($context);
+
+            if (empty($context) || $context == 'raw') {
+                return $data;
+            }
+
+            if (!in_array($context, ['html', 'js', 'css', 'url', 'attr'])) {
+                throw new InvalidArgumentException('Invalid escape context provided.');
+            }
+
+            if ($context == 'attr') {
+                $context = 'html_attr';
+            }
+
+            $twig = & _get_simple_twig_instance($charset);
+
+            $data = call_user_func($twig->getFilter('escape')->getCallable(), $twig, $data, $context);
+        }
+
+        return $data;
+    }
+
+}
+
 // Added by Ivan Tcholakov, 26-APR-2016.
 if (!function_exists('_get_simple_twig_instance')) {
 
-    function & _get_simple_twig_instance() {
+    function & _get_simple_twig_instance($charset = null) {
 
-        static $instance = null;
+        static $instance = array();
 
-        if (!isset($instance)) {
+        $charset = (string) $charset;
 
-            $instance = new Twig_Environment(
+        if ($charset == '') {
+            $charset = config_item('charset');
+        }
+
+        $charset = strtoupper($charset);
+
+        if (!isset($instance[$charset])) {
+
+            $instance[$charset] = new Twig_Environment(
                 new Parser_Twig_Loader_String,
                 array(
                     'debug' => false,
-                    'charset' => config_item('charset'),
+                    'charset' => $charset,
                     'base_template_class' => 'Twig_Template',
                     'strict_variables' => false,
                     'autoescape' => 'html',
@@ -399,7 +447,7 @@ if (!function_exists('_get_simple_twig_instance')) {
             );
         }
 
-        return $instance;
+        return $instance[$charset];
     }
 
 }
