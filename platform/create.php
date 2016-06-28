@@ -327,6 +327,7 @@ define('CACHE_DB_PATH', WRITABLEPATH.'cache_db/'.APPNAME.'/');
 file_exists(CACHE_DB_PATH) OR @mkdir(CACHE_DB_PATH, 0755, TRUE);
 
 // Added by Ivan Tcholakov, 28-MAY-2016.
+// Corrected by Ivan Tcholakov, 29-JUN-2016.
 function & get_db_instance($connection_group = null)
 {
     static $connections = array();
@@ -338,10 +339,12 @@ function & get_db_instance($connection_group = null)
         $connection_group = 'default';
     }
 
-    if (isset($connections[$connection_group]))
+    if (array_key_exists($connection_group, $connections))
     {
         return $connections[$connection_group];
     }
+
+    $connections[$connection_group] = null;
 
     if (!function_exists('DB'))
     {
@@ -361,6 +364,13 @@ function & get_db_instance($connection_group = null)
     }
 
     $connections[$connection_group] = & DB($connection_group);
+
+    // Break code execution when establishing database connection fails, prevent infinite looping.
+    if (!is_object($connections[$connection_group]) || empty($connections[$connection_group]->conn_id))
+    {
+        exit(8); // EXIT_DATABASE
+    }
+    //
 
     return $connections[$connection_group];
 }
