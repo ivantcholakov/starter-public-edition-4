@@ -415,6 +415,7 @@ Real Life Usage
 * http://afilipov.eu (a personal site, Andrey Filipov), designer: Irina Stancheva
 * http://petyakonstantinova.com (a personal site, Petya Konstantinova), designer: Irina Stancheva
 * http://liveconsult.eu (training about business or personal relations), designer: Irina Stancheva
+* http://hop-mebeli.com/ - an online shop, furniture, migrated from starter-public-edition-3, designer: Irina Stancheva
 
 Reported by Webnice Ltd., http://webnicebg.com
 
