@@ -171,7 +171,6 @@ $config['languages'] = array(
         'name' => 'Dansk',
         'name_en' => 'Danish',
         'flag' => 'DK',
-        'phpmailer' => 'dk',
     ),
 
     'estonian' => array(
