@@ -15,7 +15,7 @@ if (!function_exists('detect_https')) {
             (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off')
             ? true
             : (
-                (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https')
+                (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https')
                 ? true
                 : (
                     (!empty($_SERVER['HTTP_FRONT_END_HTTPS']) && strtolower($_SERVER['HTTP_FRONT_END_HTTPS']) !== 'off')
