@@ -54,6 +54,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |    ['compress'] Whether or not to use client compression (MySQL only)
 |    ['stricton'] TRUE/FALSE - forces 'Strict Mode' connections
 |                            - good for ensuring strict SQL while developing
+|                 For MySQL drivers, if a string is provided, it will be used for setting the connection (session) variable @@sql_mode directly, see https://github.com/bcit-ci/CodeIgniter/issues/4727
+|                 Example: 'stricton' => 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION',
 |    ['ssl_options'] Used to set various SSL options that can be used when making SSL connections.
 |    ['failover'] array - A array with 0 or more data for connections if the main should fail.
 |    ['save_queries'] TRUE/FALSE - Whether to "save" all executed queries.
