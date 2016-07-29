@@ -118,9 +118,9 @@ class Image_lib extends CI_Image_lib
 
             // Calculate missing dimension.
             if ($this->user_width == 0) {
-                $this->width = ceil($this->user_height * $this->orig_width / $this->orig_height);
+                @ $this->width = ceil($this->user_height * $this->orig_width / $this->orig_height);
             } else {
-                $this->height = ceil($this->user_width * $this->orig_height / $this->orig_width);
+                @ $this->height = ceil($this->user_width * $this->orig_height / $this->orig_width);
             }
 
             // No cropping is needed, just resize.
@@ -131,8 +131,8 @@ class Image_lib extends CI_Image_lib
         // Mode 2: Resize and crop the image to fit both dimensions.
         // ------------------------------------------------------------------------------------------
 
-        $this->width = ceil($this->user_height * $this->orig_width / $this->orig_height);
-        $this->height = ceil($this->user_width * $this->orig_height / $this->orig_width);
+        @ $this->width = ceil($this->user_height * $this->orig_width / $this->orig_height);
+        @ $this->height = ceil($this->user_width * $this->orig_height / $this->orig_width);
 
         if (($this->user_width != $this->width) && ($this->user_height != $this->height)) {
 
