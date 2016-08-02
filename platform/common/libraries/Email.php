@@ -2,7 +2,7 @@
 
 /**
  * CodeIgniter compatible email-library powered by PHPMailer.
- * Version: 1.2.7
+ * Version: 1.2.8
  * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2016.
  * @license The MIT License (MIT), http://opensource.org/licenses/MIT
  * @link https://github.com/ivantcholakov/codeigniter-phpmailer
@@ -12,34 +12,6 @@
  * Tested on CodeIgniter 3.1.0 (July 26, 2016) and
  * PHPMailer Version 5.2.16+ (July 26, 2016).
  */
-
-if (is_php('7')) {
-
-    // Suppress the warning "Declaration of Email::initialize($config = Array)
-    // should be compatible with CI_Email::initialize(array $config = Array)".
-
-    if (!function_exists('_email_library_error_handler')) {
-
-        function _email_library_error_handler($errno, $errstr, $errfile, $errline, $errcontext) {
-
-            global $_email_library_old_error_handler;
-
-            if (strpos($errstr, 'Declaration of') !== false && strpos($errstr, 'should be compatible with') !== false) {
-                return;
-            }
-
-            if (is_callable($_email_library_old_error_handler)) {
-                return call_user_func($_email_library_old_error_handler, $errno, $errstr, $errfile, $errline, $errcontext);
-            }
-
-            return false;
-        }
-
-        global $_email_library_old_error_handler;
-        $_email_library_old_error_handler = set_error_handler('_email_library_error_handler', E_WARNING);
-    }
-
-}
 
 class Email extends CI_Email {
 
@@ -95,17 +67,13 @@ class Email extends CI_Email {
 
     // The Constructor ---------------------------------------------------------
 
-    public function __construct($config = array()) {
+    public function __construct(array $config = array()) {
 
         $this->_is_ci_3 = (bool) ((int) CI_VERSION >= 3);
 
         $this->CI = get_instance();
         $this->CI->load->helper('email');
         $this->CI->load->helper('html');
-
-        if (!is_array($config)) {
-            $config = array();
-        }
 
         // Wipe out certain properties that are declared within the parent class.
         // These properties would be accessed by magic.
@@ -204,11 +172,7 @@ class Email extends CI_Email {
 
     // Initialization & Clearing -----------------------------------------------
 
-    public function initialize($config = array()) {
-
-        if (!is_array($config)) {
-            $config = array();
-        }
+    public function initialize(array $config = array()) {
 
         foreach ($config as $key => $value) {
             $this->{$key} = $value;
@@ -277,11 +241,7 @@ class Email extends CI_Email {
 
         } else {
 
-            if ($this->_is_ci_3) {
-                parent::from($from, $name, $return_path);
-            } else {
-                parent::from($from, $name);
-            }
+            parent::from($from, $name, $return_path);
         }
 
         return $this;
@@ -521,11 +481,7 @@ class Email extends CI_Email {
 
         } else {
 
-            if ($this->_is_ci_3) {
-                parent::attach($file, $disposition, $newname, $mime);
-            } else {
-                parent::attach($file, $disposition);
-            }
+            parent::attach($file, $disposition, $newname, $mime);
         }
 
         return $this;
@@ -544,7 +500,7 @@ class Email extends CI_Email {
                 }
             }
 
-        } elseif ($this->_is_ci_3) {
+        } else {
 
             return parent::attachment_cid($filename);
         }
@@ -611,11 +567,7 @@ class Email extends CI_Email {
 
         } else {
 
-            if ($this->_is_ci_3) {
-                $result = parent::send($auto_clear);
-            } else {
-                $result = parent::send();
-            }
+            $result = parent::send($auto_clear);
         }
 
         return $result;
@@ -845,9 +797,7 @@ class Email extends CI_Email {
 
     public function set_wrapchars($wrapchars) {
 
-        if ($this->_is_ci_3) {
-            $wrapchars = (int) $wrapchars;
-        }
+        $wrapchars = (int) $wrapchars;
 
         $this->properties['wrapchars'] = $wrapchars;
 
