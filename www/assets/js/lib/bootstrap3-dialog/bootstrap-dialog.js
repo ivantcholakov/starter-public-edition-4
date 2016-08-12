@@ -17,13 +17,7 @@
 
     // CommonJS module is defined
     if (typeof module !== 'undefined' && module.exports) {
-        var isNode = (typeof process !== "undefined");
-        var isElectron = isNode && ('electron' in process.versions);
-        if (isElectron) {
-            root.BootstrapDialog = factory(root.jQuery);
-        } else {
-            module.exports = factory(require('jquery'), require('bootstrap'));
-        }
+        module.exports = factory(require('jquery'), require('bootstrap'));
     }
     // AMD module is defined
     else if (typeof define === "function" && define.amd) {
@@ -224,6 +218,8 @@
     BootstrapDialog.BUTTON_SIZES[BootstrapDialog.SIZE_WIDE] = '';
     BootstrapDialog.BUTTON_SIZES[BootstrapDialog.SIZE_LARGE] = 'btn-lg';
     BootstrapDialog.ICON_SPINNER = 'glyphicon glyphicon-asterisk';
+    BootstrapDialog.BUTTONS_ORDER_CANCEL_OK = 'btns-order-cancel-ok';
+    BootstrapDialog.BUTTONS_ORDER_OK_CANCEL = 'btns-order-ok-cancel';
 
     /**
      * Default options.
@@ -238,12 +234,14 @@
         closable: true,
         closeByBackdrop: true,
         closeByKeyboard: true,
+        closeIcon: '&#215;',
         spinicon: BootstrapDialog.ICON_SPINNER,
         autodestroy: true,
         draggable: false,
         animate: true,
         description: '',
-        tabindex: -1
+        tabindex: -1,
+        btnsOrder: BootstrapDialog.BUTTONS_ORDER_CANCEL_OK
     };
 
     /**
@@ -778,7 +776,8 @@
         createCloseButton: function () {
             var $container = $('<div></div>');
             $container.addClass(this.getNamespace('close-button'));
-            var $icon = $('<button class="close">&times;</button>');
+            var $icon = $('<button class="close"></button>');
+            $icon.append(this.options.closeIcon);
             $container.append($icon);
             $container.on('click', {dialog: this}, function (event) {
                 event.data.dialog.close();
@@ -1282,6 +1281,7 @@
             btnCancelClass: null,
             btnOKLabel: BootstrapDialog.DEFAULT_TEXTS.OK,
             btnOKClass: null,
+            btnsOrder: BootstrapDialog.defaultOptions.btnsOrder,
             callback: null
         };
         if (typeof arguments[0] === 'object' && arguments[0].constructor === {}.constructor) {
@@ -1298,7 +1298,8 @@
 
         var dialog = new BootstrapDialog(confirmOptions);
         dialog.setData('callback', confirmOptions.callback);
-        dialog.addButton({
+        
+        var buttons = [{
             label: confirmOptions.btnCancelLabel,
             cssClass: confirmOptions.btnCancelClass,
             action: function (dialog) {
@@ -1308,8 +1309,7 @@
 
                 return dialog.close();
             }
-        });
-        dialog.addButton({
+        }, {
             label: confirmOptions.btnOKLabel,
             cssClass: confirmOptions.btnOKClass,
             action: function (dialog) {
@@ -1319,7 +1319,11 @@
 
                 return dialog.close();
             }
-        });
+        }];
+        if(confirmOptions.btnsOrder === BootstrapDialog.BUTTONS_ORDER_OK_CANCEL) {
+            buttons.reverse();
+        }
+        dialog.addButtons(buttons);
 
         return dialog.open();
 
