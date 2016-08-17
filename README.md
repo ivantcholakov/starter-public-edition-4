@@ -427,6 +427,11 @@ Reported by Webnice Ltd., http://webnicebg.com
 * http://evroforest.com (a parquet seller)
 * http://sip2000.bg (consultancy and training about public procurement)
 
+Reported by Krishna Guragai, @krishnaguragain
+
+* https://redmudcoffee.com (a coffee seller)
+* https://hamroschoolapp.com (a home page of a mobile application)
+
 Credits
 -------
 
