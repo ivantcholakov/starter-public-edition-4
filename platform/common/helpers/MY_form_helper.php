@@ -83,7 +83,17 @@ if (!function_exists('form_ckeditor')) {
         $ckeditor->initialized = $initialized;
         $ckeditor->textareaAttributes = $config['textareaAttributes'];
 
-        return $ckeditor->editor($name, $value, $config['config'], $events);
+        // Repopulate the value when form validation fails.
+
+        $CI = get_instance();
+
+        $value_editor = (isset($CI->form_validation) && is_object($CI->form_validation) && $CI->form_validation->has_rule($name))
+            ? $CI->form_validation->set_value($name, $value)
+            : $CI->input->post($name, FALSE);
+
+        isset($value_editor) OR $value_editor = $value;
+
+        return $ckeditor->editor($name, $value_editor, $config['config'], $events);
     }
 
 }

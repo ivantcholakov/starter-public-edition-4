@@ -39,7 +39,7 @@ class User_mode_controller extends Playground_Base_Controller {
         $this->form_validation->set_rules($validation_rules);
 
         if ($this->form_validation->run()) {
-            $content = $this->input->post('content');
+            // Save the form.
         }
 
         $this->template
