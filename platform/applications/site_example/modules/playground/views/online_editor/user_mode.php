@@ -1,11 +1,9 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
-
-$content = @ isset($content) ? (string) $content : '';
 
 ?>
 
@@ -45,7 +43,7 @@ echo form_ckeditor('content', $content, 'user', array('height' => 150));
 
                         <h2>Result:</h2>
 
-                        <div><?php echo $content; ?></div>
+                        <div><?php echo set_value('content', $content, false); ?></div>
 
                     </div>
 
