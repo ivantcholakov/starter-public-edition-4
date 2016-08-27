@@ -104,7 +104,10 @@ class Welcome_controller extends Base_Controller {
         $diagnostics[] = '<br /><strong>Cryptography support:</strong>';
 
         $diagnostics[] = '\'openssl\' installed - '.(extension_loaded('openssl') ? $yes : $no);
-        $diagnostics[] = 'or \'mcrypt\' installed - '.(defined('MCRYPT_DEV_URANDOM') ? $yes : $no);
+
+        if (version_compare(PHP_VERSION, '7.1.0-alpha', '<')) {
+            $diagnostics[] = 'or \'mcrypt\' installed - '.(defined('MCRYPT_DEV_URANDOM') ? $yes : $no);
+        }
 
         $random_bytes = $no;
 
