@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed.');
  *
  * OpenSSL functions installed and PHP version >= 5.3.3
  * or
- * Mcrypt functions installed.
+ * Mcrypt functions installed and PHP version < 7.1.0-alpha
  *
  * For PHP under version 7 it is recommendable you to install within your project
  * "PHP 5.x support for random_bytes() and random_int()",
@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed.');
  * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2016.
  * Code repository: @link https://github.com/ivantcholakov/gibberish-aes-php
  *
- * @version 1.3.0
+ * @version 1.3.1
  *
  * @license The MIT License (MIT)
  * @link http://opensource.org/licenses/MIT
@@ -251,7 +251,13 @@ class GibberishAES {
     protected static function mcrypt_exists() {
 
         if (!isset(self::$mcrypt_exists)) {
-            self::$mcrypt_exists = function_exists('mcrypt_encrypt');
+
+            if (version_compare(PHP_VERSION, '7.1.0-alpha', '>=')) {
+                // Avoid using mcrypt on PHP 7.1.x since deprecation notices are thrown.
+                self::$mcrypt_exists = false;
+            } else {
+                self::$mcrypt_exists = function_exists('mcrypt_encrypt');
+            }
         }
 
         return self::$mcrypt_exists;
