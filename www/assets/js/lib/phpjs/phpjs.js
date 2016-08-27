@@ -1012,3 +1012,106 @@ function vsprintf(format, args) {
 
   return this.sprintf.apply(this, [format].concat(args));
 }
+
+function in_array (needle, haystack, argStrict) { // eslint-disable-line camelcase
+  //  discuss at: http://locutus.io/php/in_array/
+  // original by: Kevin van Zonneveld (http://kvz.io)
+  // improved by: vlado houba
+  // improved by: Jonas Sciangula Street (Joni2Back)
+  //    input by: Billy
+  // bugfixed by: Brett Zamir (http://brett-zamir.me)
+  //   example 1: in_array('van', ['Kevin', 'van', 'Zonneveld'])
+  //   returns 1: true
+  //   example 2: in_array('vlado', {0: 'Kevin', vlado: 'van', 1: 'Zonneveld'})
+  //   returns 2: false
+  //   example 3: in_array(1, ['1', '2', '3'])
+  //   example 3: in_array(1, ['1', '2', '3'], false)
+  //   returns 3: true
+  //   returns 3: true
+  //   example 4: in_array(1, ['1', '2', '3'], true)
+  //   returns 4: false
+
+  var key = ''
+  var strict = !!argStrict
+
+  // we prevent the double check (strict && arr[key] === ndl) || (!strict && arr[key] === ndl)
+  // in just one for, in order to improve the performance
+  // deciding wich type of comparation will do before walk array
+  if (strict) {
+    for (key in haystack) {
+      if (haystack[key] === needle) {
+        return true
+      }
+    }
+  } else {
+    for (key in haystack) {
+      if (haystack[key] == needle) { // eslint-disable-line eqeqeq
+        return true
+      }
+    }
+  }
+
+  return false
+}
+
+function isset() {
+    //  discuss at: http://phpjs.org/functions/isset/
+    // original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+    // improved by: FremyCompany
+    // improved by: Onno Marsman
+    // improved by: Rafał Kukawski (http://blog.kukawski.pl)
+    //   example 1: isset( undefined, true);
+    //   returns 1: false
+    //   example 2: isset( 'Kevin van Zonneveld' );
+    //   returns 2: true
+    var a = arguments, l = a.length, i = 0, undef;
+    if (l === 0) {
+        throw new Error('Empty isset');
+    }
+    while (i !== l) {
+        if (a[i] === undef || a[i] === null) {
+            return false;
+        }
+        i++;
+    }
+    return true;
+}
+
+function empty(mixed_var) {
+    //  discuss at: http://phpjs.org/functions/empty/
+    // original by: Philippe Baumann
+    //    input by: Onno Marsman
+    //    input by: LH
+    //    input by: Stoyan Kyosev (http://www.svest.org/)
+    // bugfixed by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+    // improved by: Onno Marsman
+    // improved by: Francesco
+    // improved by: Marc Jansen
+    // improved by: Rafał Kukawski (http://blog.kukawski.pl)
+    //   example 1: empty(null);
+    //   returns 1: true
+    //   example 2: empty(undefined);
+    //   returns 2: true
+    //   example 3: empty([]);
+    //   returns 3: true
+    //   example 4: empty({});
+    //   returns 4: true
+    //   example 5: empty({'aFunc' : function () { alert('humpty'); } });
+    //   returns 5: false
+    var undef, key, i, len;
+    var emptyValues = [undef, null, false, 0, '', '0'];
+    for (i = 0, len = emptyValues.length; i < len; i++) {
+        if (mixed_var === emptyValues[i]) {
+            return true;
+        }
+    }
+    if (typeof mixed_var === 'object') {
+        for (key in mixed_var) {
+            // TODO: should we check for own properties only?
+            // if (mixed_var.hasOwnProperty(key)) {
+            return false;
+        }
+        return true;
+    }
+    return false;
+}
