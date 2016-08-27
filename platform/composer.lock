@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "18e900e5b88fabea9b42b6dbeab74f3d",
-    "content-hash": "5531259f0e9d464af28450289d1b0a7c",
+    "hash": "6938f6b17c6218d8db464854319f0246",
+    "content-hash": "076810c139daf99b362d03c98fa9a236",
     "packages": [
         {
             "name": "facebook/php-sdk-v4",
@@ -556,16 +556,16 @@
         },
         {
             "name": "whichbrowser/parser",
-            "version": "v2.0.22",
+            "version": "v2.0.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WhichBrowser/Parser.git",
-                "reference": "f53b12bbffd2862e901c6f3b01aead11b49f9f07"
+                "reference": "db77e0a5c91ea3e00cc0f7151baf909288b10c3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WhichBrowser/Parser/zipball/f53b12bbffd2862e901c6f3b01aead11b49f9f07",
-                "reference": "f53b12bbffd2862e901c6f3b01aead11b49f9f07",
+                "url": "https://api.github.com/repos/WhichBrowser/Parser/zipball/db77e0a5c91ea3e00cc0f7151baf909288b10c3d",
+                "reference": "db77e0a5c91ea3e00cc0f7151baf909288b10c3d",
                 "shasum": ""
             },
             "require": {
@@ -573,12 +573,13 @@
                 "psr/cache": "^1.0"
             },
             "require-dev": {
-                "cache/array-adapter": "^0.3.0",
+                "cache/array-adapter": "^0.4",
                 "icomefromthenet/reverse-regex": "dev-master",
                 "league/csv": "^8.0",
+                "phpdocumentor/reflection-docblock": "^2.0",
                 "phpunit/php-code-coverage": "^2.2|^3.0",
                 "phpunit/phpunit": "^4.0",
-                "satooshi/php-coveralls": "^0.6.1",
+                "satooshi/php-coveralls": "^0.6",
                 "squizlabs/php_codesniffer": "2.5.*",
                 "symfony/yaml": "^2.7"
             },
@@ -610,7 +611,7 @@
                 "ua",
                 "useragent"
             ],
-            "time": "2016-06-14 07:31:39"
+            "time": "2016-08-18 12:32:44"
         }
     ],
     "packages-dev": [],

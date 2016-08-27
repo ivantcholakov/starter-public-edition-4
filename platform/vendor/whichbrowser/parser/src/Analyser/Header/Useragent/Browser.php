@@ -716,6 +716,11 @@ trait Browser
             $this->data->browser->type = Constants\BrowserType::BROWSER;
         }
 
+        if (preg_match('/Servo\/1.0 Firefox\/37.0/u', $ua)) {
+            $this->data->browser->name = 'Servo Nightly Build';
+            $this->data->browser->version = null;
+        }
+
 
         /* Set the browser family */
 
@@ -1193,6 +1198,10 @@ trait Browser
 
             if (preg_match('/(InettvBrowser|HbbTV|DTV|NetworkAVTV|BDPlayer)/u', $ua)) {
                 $this->data->device->type = Constants\DeviceType::TELEVISION;
+            }
+
+            if (preg_match('/VCC/u', $ua)) {
+                $this->data->device->type = Constants\DeviceType::CAR;
             }
 
             if (preg_match('/Kindle/u', $ua)) {
