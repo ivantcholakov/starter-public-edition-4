@@ -44,9 +44,10 @@ class User_mode_controller extends Playground_Base_Controller {
 
         $this->template
             ->set('content', $content)
+            ->set('editor_mode', 'user')
         ;
 
-        $this->template->build('online_editor/user_mode');
+        $this->template->build('online_editor/online_editor');
     }
 
 }

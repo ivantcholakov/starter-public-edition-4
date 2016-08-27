@@ -45,9 +45,10 @@ class Admin_mode_controller extends Playground_Base_Controller {
 
         $this->template
             ->set('content', $content)
+            ->set('editor_mode', 'admin')
         ;
 
-        $this->template->build('online_editor/admin_mode');
+        $this->template->build('online_editor/online_editor');
     }
 
 }
