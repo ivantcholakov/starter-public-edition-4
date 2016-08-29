@@ -426,6 +426,7 @@ Reported by Webnice Ltd., http://webnicebg.com
 * http://bba-bulgaria.com (a medical NGO)
 * http://evroforest.com (a parquet seller)
 * http://sip2000.bg (consultancy and training about public procurement)
+* http://lz1866.com (a locomotive services provider)
 
 Reported by Krishna Guragai, @krishnaguragain
 
