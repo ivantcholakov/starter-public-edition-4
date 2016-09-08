@@ -300,19 +300,7 @@ if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/environment.php')) {
  * --------------------------------------------------------------------
  */
 
-if (!function_exists('lcfirst')) {
-    require BOOTSTRAPPATH.'lcfirst.php';
-}
-
 require BASEPATH.'core/compat/standard.php';
-
-if (!function_exists('array_fill_keys')) {
-    require BOOTSTRAPPATH.'array_fill_keys.php';
-}
-
-if (!function_exists('htmlspecialchars_decode')) {
-    require BOOTSTRAPPATH.'htmlspecialchars_decode.php';
-}
 
 if (!is_php('7')) {
     require_once BOOTSTRAPPATH.'random_compat/lib/random.php';
@@ -320,10 +308,6 @@ if (!is_php('7')) {
 
 if (!function_exists('secure_random_bytes')) {
     require BOOTSTRAPPATH.'srand/srand.php';
-}
-
-if (!function_exists('gethostname')) {
-    require BOOTSTRAPPATH.'gethostname.php';
 }
 
 
@@ -357,16 +341,6 @@ if (!function_exists('money_format')) {
  * --------------------------------------------------------------------
  */
 require BOOTSTRAPPATH.'autoload.php';
-
-
-/*
- * --------------------------------------------------------------------
- * IDN functions - fallback PHP implementations.
- * --------------------------------------------------------------------
- */
-if (!defined('INTL_IDNA_VARIANT_2003')) {
-    require BOOTSTRAPPATH.'idn.php';
-}
 
 
 /*
