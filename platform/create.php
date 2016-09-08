@@ -265,7 +265,7 @@ if ( ! empty($assign_to_config['subclass_prefix']))
  * ------------------------------------------------------
  */
 // See https://getcomposer.org/doc/00-intro.md#system-requirements
-if (($composer_autoload = config_item('composer_autoload')) && is_php('5.3.2'))
+if ($composer_autoload = config_item('composer_autoload'))
 {
     if ($composer_autoload === TRUE)
     {
@@ -764,11 +764,7 @@ if (NORMAL_MVC_EXECUTION) {
             $params = array($method, array_slice($URI->rsegments, 2));
             $method = '_remap';
         }
-        // WARNING: It appears that there are issues with is_callable() even in PHP 5.2!
-        // Furthermore, there are bug reports and feature/change requests related to it
-        // that make it unreliable to use in this context. Please, DO NOT change this
-        // work-around until a better alternative is available.
-        elseif ( ! in_array(strtolower($method), array_map('strtolower', get_class_methods($class)), TRUE))
+        elseif ( ! is_callable(array($class, $method)))
         {
             $e404 = TRUE;
         }

@@ -1218,28 +1218,21 @@ class CI_Upload {
 		// We'll need this to validate the MIME info string (e.g. text/plain; charset=us-ascii)
 		$regexp = '/^([a-z\-]+\/[a-z0-9\-\.\+]+)(;\s.+)?$/';
 
-		/* Fileinfo extension - most reliable method
-		 *
-		 * Unfortunately, prior to PHP 5.3 - it's only available as a PECL extension and the
-		 * more convenient FILEINFO_MIME_TYPE flag doesn't exist.
-		 */
-		if (function_exists('finfo_file'))
+		// Fileinfo extension - most reliable method
+		$finfo = @finfo_open(FILEINFO_MIME);
+		if (is_resource($finfo)) // It is possible that a FALSE value is returned, if there is no magic MIME database file found on the system
 		{
-			$finfo = @finfo_open(FILEINFO_MIME);
-			if (is_resource($finfo)) // It is possible that a FALSE value is returned, if there is no magic MIME database file found on the system
-			{
-				$mime = @finfo_file($finfo, $file['tmp_name']);
-				finfo_close($finfo);
+			$mime = @finfo_file($finfo, $file['tmp_name']);
+			finfo_close($finfo);
 
-				/* According to the comments section of the PHP manual page,
-				 * it is possible that this function returns an empty string
-				 * for some files (e.g. if they don't exist in the magic MIME database)
-				 */
-				if (is_string($mime) && preg_match($regexp, $mime, $matches))
-				{
-					$this->file_type = $matches[1];
-					return;
-				}
+			/* According to the comments section of the PHP manual page,
+			 * it is possible that this function returns an empty string
+			 * for some files (e.g. if they don't exist in the magic MIME database)
+			 */
+			if (is_string($mime) && preg_match($regexp, $mime, $matches))
+			{
+				$this->file_type = $matches[1];
+				return;
 			}
 		}
 
