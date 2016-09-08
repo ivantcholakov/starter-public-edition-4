@@ -277,56 +277,6 @@ if ( ! function_exists('_error_handler'))
 
 // Escapers
 
-if ( ! function_exists('html_escape'))
-{
-    /**
-     * Returns HTML escaped variable.
-     *
-     * @param       mixed   $var            The input string or array of strings to be escaped.
-     * @param       bool    $double_encode  $double_encode set to FALSE prevents escaping twice.
-     * @return      mixed                   The escaped string or array of strings as a result.
-     */
-    function html_escape($var, $double_encode = TRUE)
-    {
-        if (empty($var))
-        {
-            return $var;
-        }
-
-        $charset = config_item('charset');
-
-        // Added by Ivan Tcholakov, 25-AUG-2015.
-        // Ivan: For supporting PHP 5.2.0, unofficially.
-        $is_php_5_2_3 = is_php('5.2.3');
-        //
-
-        if (is_array($var))
-        {
-            array_walk_recursive($var, '_html_escape_callback', array($charset, $double_encode, $is_php_5_2_3));
-            return $var;
-        }
-
-        if ($is_php_5_2_3)
-        {
-            return htmlspecialchars($var, ENT_QUOTES, $charset, $double_encode);
-        }
-
-        return htmlspecialchars($var, ENT_QUOTES, $charset);
-    }
-
-    function _html_escape_callback(& $value, $key, $options)
-    {
-        if ($options[2])
-        {
-            $value = htmlspecialchars($value, ENT_QUOTES, $options[0], $options[1]);
-        }
-        else
-        {
-            $value = htmlspecialchars($value, ENT_QUOTES, $options[0]);
-        }
-    }
-}
-
 // Added by Ivan Tcholakov, 26-APR-2016.
 if (!function_exists('html_attr_escape')) {
 
