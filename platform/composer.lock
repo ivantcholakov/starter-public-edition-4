@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6938f6b17c6218d8db464854319f0246",
-    "content-hash": "076810c139daf99b362d03c98fa9a236",
+    "hash": "203e980db2b2b01264aae45fc90ee08b",
+    "content-hash": "3c88ef338c02de49f46dfd96e13cb774",
     "packages": [
         {
             "name": "facebook/php-sdk-v4",
@@ -434,19 +434,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "d954a95c1be04118dbbda88f3524424695dd886f"
+                "reference": "15b8f286a8a0ffe7c19c7c09344b7707c66ac233"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/d954a95c1be04118dbbda88f3524424695dd886f",
-                "reference": "d954a95c1be04118dbbda88f3524424695dd886f",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/15b8f286a8a0ffe7c19c7c09344b7707c66ac233",
+                "reference": "15b8f286a8a0ffe7c19c7c09344b7707c66ac233",
                 "shasum": ""
             },
             "conflict": {
                 "amphp/artax": ">=2,<2.0.4|>0.7.1,<1.0.4",
                 "aws/aws-sdk-php": ">=3,<3.2.1",
                 "bugsnag/bugsnag-laravel": ">=2,<2.0.2",
-                "cakephp/cakephp": ">=3,<3.0.15|>=2,<2.4.99|>=2.5,<2.5.90|>=2.6,<2.6.12|>=1.3,<1.3.18|>=2.7,<2.7.6|>=3.1,<3.1.3",
+                "cakephp/cakephp": ">=3,<3.0.15|>=2,<2.4.99|>=2.5,<2.5.99|>=2.6,<2.6.12|>=1.3,<1.3.18|>=2.7,<2.7.6|>=3.1,<3.1.4",
+                "cartalyst/sentry": "<2.1",
                 "codeigniter/framework": "<3.0.3",
                 "composer/composer": "<=1.0.0-alpha11",
                 "contao-components/mediaelement": ">=2.14.2,<2.21.1",
@@ -532,7 +533,7 @@
                 "zendframework/zend-view": ">=2,<2.2.7|>=2.3,<2.3.1",
                 "zendframework/zend-xmlrpc": ">=2.1,<2.1.6|>=2.2,<2.2.6",
                 "zendframework/zendframework": ">=2,<2.4.9|>=2.5,<2.5.1",
-                "zendframework/zendframework1": "<1.12.19",
+                "zendframework/zendframework1": "<1.12.20",
                 "zendframework/zendopenid": ">=2,<2.0.2",
                 "zendframework/zendxml": ">=1,<1.0.1",
                 "zf-commons/zfc-user": "<1.2.2",
@@ -552,20 +553,20 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2016-07-29 12:29:36"
+            "time": "2016-09-08 18:37:03"
         },
         {
             "name": "whichbrowser/parser",
-            "version": "v2.0.23",
+            "version": "v2.0.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WhichBrowser/Parser.git",
-                "reference": "db77e0a5c91ea3e00cc0f7151baf909288b10c3d"
+                "reference": "ed6e911bed49a2946b5920469c0071b6fe57776e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WhichBrowser/Parser/zipball/db77e0a5c91ea3e00cc0f7151baf909288b10c3d",
-                "reference": "db77e0a5c91ea3e00cc0f7151baf909288b10c3d",
+                "url": "https://api.github.com/repos/WhichBrowser/Parser/zipball/ed6e911bed49a2946b5920469c0071b6fe57776e",
+                "reference": "ed6e911bed49a2946b5920469c0071b6fe57776e",
                 "shasum": ""
             },
             "require": {
@@ -611,7 +612,7 @@
                 "ua",
                 "useragent"
             ],
-            "time": "2016-08-18 12:32:44"
+            "time": "2016-09-08 14:07:33"
         }
     ],
     "packages-dev": [],

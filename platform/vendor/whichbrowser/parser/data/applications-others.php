@@ -69,7 +69,7 @@ Applications::$OTHERS = [
 
     Constants\BrowserType::APP_CHAT => [
         [ 'name' => 'Facebook Messenger',   'id'    => 'messenger',      'regexp' =>'/FBAN\/MessengerForiOS/u' ],
-        [ 'name' => 'Kik',                  'id'    => 'kik',      'regexp' =>'/Kik\/([0-9.]*)/u' ],
+        [ 'name' => 'Kik',                  'id'    => 'kik',      'regexp' =>'/Kik\/([0-9.]*?)(\.0)?\.[0-9]{3,4}/u' ],
         [ 'name' => 'WeChat',               'id'    => 'messenger',      'regexp' =>'/MicroMessenger\/([0-9.]*)/u' ],
         [ 'name' => 'Yahoo Messenger',      'id'    => 'yahoo',      'regexp' =>'/YahooMobile\/1.0 \(im; ([0-9.]+)\)/u', 'details' => 3 ],
         [ 'name' => 'Yammer',               'id'    => 'yammer',      'regexp' =>'/Yammer\/([0-9.]*)/u', 'details' => 2 ],
@@ -81,6 +81,8 @@ Applications::$OTHERS = [
         [ 'name' => 'Facebook',             'id'    => 'fb4a',      'regexp' =>'/FB_IAB\/FB4A/u' ],
         [ 'name' => 'Google+',              'id'    => 'googleplus',      'regexp' =>'/com.google.GooglePlus/u'  ],
         [ 'name' => 'Instagram',            'id'    => 'instagram',      'regexp' =>'/Instagram ([0-9.]+)/u' ],
+        [ 'name' => 'Pinterest',            'id'    => 'pinterest',      'regexp' =>'/\[Pinterest\/(Android|iOS)\]/u' ],
+        [ 'name' => 'Pinterest',            'id'    => 'pinterest',      'regexp' =>'/Pinterest\/[0-9.]+/u' ],
         [ 'name' => 'Sina Weibo',           'id'    => 'weibo',      'regexp' =>'/weibo__([0-9.]*)/u' ],
         [ 'name' => 'Tumblr',               'id'    => 'tumblr',      'regexp' =>'/Tumblr\/([0-9.]*)/u' ],
         [ 'name' => 'Twitter',              'id'    => 'twitter',      'regexp' =>'/TwitterAndroid/u' ],
