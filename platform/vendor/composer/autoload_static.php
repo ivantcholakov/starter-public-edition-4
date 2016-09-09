@@ -76,6 +76,17 @@ class ComposerStaticInitdc3d756b09e56e386c98d22248d033e5
     );
 
     public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'ParsedownExtra' => 
+            array (
+                0 => __DIR__ . '/..' . '/erusev/parsedown-extra',
+            ),
+            'Parsedown' => 
+            array (
+                0 => __DIR__ . '/..' . '/erusev/parsedown',
+            ),
+        ),
         'M' => 
         array (
             'Multiplayer' => 

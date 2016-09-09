@@ -5,6 +5,8 @@
         "facebook/php-sdk-v4" : "~5.0",
         "leafo/scssphp": "0.6.5",
         "guzzlehttp/guzzle": "~6.0",
-        "whichbrowser/parser": "2.0.24"
+        "whichbrowser/parser": "~2.0.24",
+        "erusev/parsedown": "^1.6",
+        "erusev/parsedown-extra": "^0.7.1"
     }
 }
