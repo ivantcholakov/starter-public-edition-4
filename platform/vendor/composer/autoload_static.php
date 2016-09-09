@@ -89,6 +89,10 @@ class ComposerStaticInitdc3d756b09e56e386c98d22248d033e5
         ),
         'M' => 
         array (
+            'Mustache' => 
+            array (
+                0 => __DIR__ . '/..' . '/mustache/mustache/src',
+            ),
             'Multiplayer' => 
             array (
                 0 => __DIR__ . '/..' . '/fg/multiplayer/lib',

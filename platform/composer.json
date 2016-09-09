@@ -7,6 +7,7 @@
         "guzzlehttp/guzzle": "~6.0",
         "whichbrowser/parser": "~2.0.24",
         "erusev/parsedown": "^1.6",
-        "erusev/parsedown-extra": "^0.7.1"
+        "erusev/parsedown-extra": "^0.7.1",
+        "mustache/mustache": "~2.5"
     }
 }
