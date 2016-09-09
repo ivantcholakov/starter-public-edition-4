@@ -1,14 +1,14 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013 - 2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
 // A choice of the Markdown implementation to be used:
 // 'php-markdown' - http://michelf.ca/projects/php-markdown
 // 'parsedown' - https://github.com/erusev/parsedown
-$config['markdown_implementation'] = is_php('5.3') ? 'parsedown' : 'php-markdown';
+$config['markdown_implementation'] = 'parsedown';
 
 // php-markdown specific options -----------------------------------------------
 
