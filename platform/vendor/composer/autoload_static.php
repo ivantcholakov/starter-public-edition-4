@@ -76,6 +76,17 @@ class ComposerStaticInitdc3d756b09e56e386c98d22248d033e5
     );
 
     public static $prefixesPsr0 = array (
+        'T' => 
+        array (
+            'Twig_Extensions_' => 
+            array (
+                0 => __DIR__ . '/..' . '/twig/extensions/lib',
+            ),
+            'Twig_' => 
+            array (
+                0 => __DIR__ . '/..' . '/twig/twig/lib',
+            ),
+        ),
         'P' => 
         array (
             'ParsedownExtra' => 

@@ -8,6 +8,8 @@
         "whichbrowser/parser": "~2.0.24",
         "erusev/parsedown": "^1.6",
         "erusev/parsedown-extra": "^0.7.1",
-        "mustache/mustache": "~2.5"
+        "mustache/mustache": "~2.5",
+        "twig/twig": "~1.0",
+        "twig/extensions": "~1.3"
     }
 }
