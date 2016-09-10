@@ -11,6 +11,7 @@ class ComposerStaticInitdc3d756b09e56e386c98d22248d033e5
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '7e702cccdb9dd904f2ccf22e5f37abae' => __DIR__ . '/..' . '/facebook/php-sdk-v4/src/Facebook/polyfills.php',
+        '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -114,6 +115,13 @@ class ComposerStaticInitdc3d756b09e56e386c98d22248d033e5
             'Multiplayer' => 
             array (
                 0 => __DIR__ . '/..' . '/fg/multiplayer/lib',
+            ),
+        ),
+        'H' => 
+        array (
+            'HTMLPurifier' => 
+            array (
+                0 => __DIR__ . '/..' . '/ezyang/htmlpurifier/library',
             ),
         ),
     );

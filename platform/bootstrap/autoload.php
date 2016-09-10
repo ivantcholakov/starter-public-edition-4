@@ -1,7 +1,6 @@
 <?php
 
 require COMMONPATH.'third_party/phpmailer/PHPMailerAutoload.php';
-require COMMONPATH.'third_party/htmlpurifier/library/HTMLPurifier/Bootstrap.php';
 
 spl_autoload_register('_common_autoloader');
 
@@ -147,11 +146,6 @@ function _common_autoloader($class) {
 
     if (is_file($location = COMMONPATH.'classes/'.str_replace(array('_', '\\'), DIRECTORY_SEPARATOR, $class).'.php')) {
         require $location;
-        return true;
-    }
-
-    // Autoload HTMLPurifier classes.
-    if (HTMLPurifier_Bootstrap::autoload($class)) {
         return true;
     }
 

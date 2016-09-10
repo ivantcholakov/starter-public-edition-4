@@ -13,4 +13,5 @@ return array(
     'Netcarver\\Textile' => array($vendorDir . '/netcarver/textile/src'),
     'Mustache' => array($vendorDir . '/mustache/mustache/src'),
     'Multiplayer' => array($vendorDir . '/fg/multiplayer/lib'),
+    'HTMLPurifier' => array($vendorDir . '/ezyang/htmlpurifier/library'),
 );
