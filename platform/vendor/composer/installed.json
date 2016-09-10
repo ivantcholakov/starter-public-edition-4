@@ -876,5 +876,60 @@
             "i18n",
             "text"
         ]
+    },
+    {
+        "name": "netcarver/textile",
+        "version": "v3.5.5",
+        "version_normalized": "3.5.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/textile/php-textile.git",
+            "reference": "1b95af533775316d09bd36a38bee2c0b804add12"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/textile/php-textile/zipball/1b95af533775316d09bd36a38bee2c0b804add12",
+            "reference": "1b95af533775316d09bd36a38bee2c0b804add12",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "3.7.*",
+            "satooshi/php-coveralls": "0.6.*",
+            "squizlabs/php_codesniffer": "1.5.*",
+            "symfony/yaml": "2.3.*"
+        },
+        "time": "2014-01-02 09:39:06",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.5-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Netcarver\\Textile": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "description": "Textile markup language parser",
+        "homepage": "https://github.com/textile/php-textile",
+        "keywords": [
+            "document",
+            "format",
+            "html",
+            "language",
+            "markup",
+            "parser",
+            "php-textile",
+            "plaintext",
+            "textile"
+        ]
     }
 ]

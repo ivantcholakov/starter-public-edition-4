@@ -5,14 +5,6 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-/*
-// Sample class loading if you have no your own way.
-if (!class_exists('Textile', FALSE))
-{
-    require APPPATH.'classes/Textile.php';
-}
-*/
-
 class CI_Parser_textile extends CI_Parser_driver {
 
     protected $config;
@@ -76,7 +68,7 @@ class CI_Parser_textile extends CI_Parser_driver {
         // For security reasons don't parse PHP content.
         $template = @ file_get_contents($template);
 
-        $parser = new Textile($options['doctype']);
+        $parser = new \Netcarver\Textile\Parser($options['doctype']);
 
         if ($options['restricted_mode'])
         {
@@ -107,7 +99,7 @@ class CI_Parser_textile extends CI_Parser_driver {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
-        $parser = new Textile($options['doctype']);
+        $parser = new \Netcarver\Textile\Parser($options['doctype']);
 
         if ($options['restricted_mode'])
         {

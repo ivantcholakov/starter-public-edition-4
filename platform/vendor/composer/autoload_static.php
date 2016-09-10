@@ -98,6 +98,13 @@ class ComposerStaticInitdc3d756b09e56e386c98d22248d033e5
                 0 => __DIR__ . '/..' . '/erusev/parsedown',
             ),
         ),
+        'N' => 
+        array (
+            'Netcarver\\Textile' => 
+            array (
+                0 => __DIR__ . '/..' . '/netcarver/textile/src',
+            ),
+        ),
         'M' => 
         array (
             'Mustache' => 

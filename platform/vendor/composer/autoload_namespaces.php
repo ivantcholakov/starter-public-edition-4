@@ -10,6 +10,7 @@ return array(
     'Twig_' => array($vendorDir . '/twig/twig/lib'),
     'ParsedownExtra' => array($vendorDir . '/erusev/parsedown-extra'),
     'Parsedown' => array($vendorDir . '/erusev/parsedown'),
+    'Netcarver\\Textile' => array($vendorDir . '/netcarver/textile/src'),
     'Mustache' => array($vendorDir . '/mustache/mustache/src'),
     'Multiplayer' => array($vendorDir . '/fg/multiplayer/lib'),
 );
