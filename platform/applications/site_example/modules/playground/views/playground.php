@@ -30,7 +30,6 @@
                     <h3 class="list-group-item no-margin-top">Standalone Pages</h3>
                     <a class="list-group-item" href="<?php echo base_url('non-mvc/demo.php'); ?>">Non-MVC Page Demonstration</a>
                     <a class="list-group-item" href="<?php echo base_url('non-mvc/http_build_url_test.php'); ?>">Testing http_build_url()</a>
-                    <a class="list-group-item" href="<?php echo base_url('non-mvc/idna.php'); ?>">IDNA Converter Test (PEAR IDNA2 - This component might be used by HTMLPurifier, so let us have a look at its test)</a>
                     <a class="list-group-item" href="<?php echo base_url('non-mvc/normalize-v1.css.php'); ?>">Testing normalize.css, v1.x</a>
                     <a class="list-group-item" href="<?php echo base_url('non-mvc/normalize-v2.css.php'); ?>">Testing normalize.css, v2.x</a>
                     <a class="list-group-item" href="<?php echo base_url('non-mvc/normalize-v3.css.php'); ?>">Testing normalize.css, v3.x</a>
