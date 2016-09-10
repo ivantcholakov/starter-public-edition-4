@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed.');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014 - 2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -42,7 +42,6 @@ if (!function_exists('html_filter_user')) {
             $purifier_config->set('CSS.AllowImportant', true);
             $purifier_config->set('CSS.AllowTricky', true);
             $purifier_config->set('CSS.Proprietary', true);
-            $purifier_config->set('Core.EnableIDNA', true);
             $purifier = @ new HTMLPurifier($purifier_config);
         }
 
@@ -88,7 +87,6 @@ if (!function_exists('html_filter_admin')) {
             $purifier_config->set('CSS.AllowImportant', true);
             $purifier_config->set('CSS.AllowTricky', true);
             $purifier_config->set('CSS.Proprietary', true);
-            $purifier_config->set('Core.EnableIDNA', true);
             $purifier = @ new HTMLPurifier($purifier_config);
         }
 
