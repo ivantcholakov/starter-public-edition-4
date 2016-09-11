@@ -88,6 +88,13 @@ class ComposerStaticInitdc3d756b09e56e386c98d22248d033e5
                 0 => __DIR__ . '/..' . '/twig/twig/lib',
             ),
         ),
+        'R' => 
+        array (
+            'Requests' => 
+            array (
+                0 => __DIR__ . '/..' . '/rmccue/requests/library',
+            ),
+        ),
         'P' => 
         array (
             'ParsedownExtra' => 

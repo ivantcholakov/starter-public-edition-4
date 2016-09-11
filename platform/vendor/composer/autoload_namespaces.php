@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'Twig_Extensions_' => array($vendorDir . '/twig/extensions/lib'),
     'Twig_' => array($vendorDir . '/twig/twig/lib'),
+    'Requests' => array($vendorDir . '/rmccue/requests/library'),
     'ParsedownExtra' => array($vendorDir . '/erusev/parsedown-extra'),
     'Parsedown' => array($vendorDir . '/erusev/parsedown'),
     'Netcarver\\Textile' => array($vendorDir . '/netcarver/textile/src'),
