@@ -302,10 +302,6 @@ if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/environment.php')) {
 
 require BASEPATH.'core/compat/standard.php';
 
-if (!is_php('7')) {
-    require_once BOOTSTRAPPATH.'random_compat/lib/random.php';
-}
-
 if (!function_exists('secure_random_bytes')) {
     require BOOTSTRAPPATH.'srand/srand.php';
 }
