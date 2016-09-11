@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "812f3f2d1db85a2022ca536132cb03a6",
-    "content-hash": "72e02c664e4c29a2ec9c95e596b0cf63",
+    "hash": "496c02a013411a7c3487a709179ec7dd",
+    "content-hash": "ac1795a2bf7694282edc79bdba7907c9",
     "packages": [
         {
             "name": "erusev/parsedown",
@@ -408,16 +408,16 @@
         },
         {
             "name": "leafo/scssphp",
-            "version": "v0.6.5",
+            "version": "v0.6.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/leafo/scssphp.git",
-                "reference": "0649d38dfef6808be1a89040a3312e8bda0b3aed"
+                "reference": "6fdfe19d2b13a3f12ba0792227f0718809ce4e4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/leafo/scssphp/zipball/0649d38dfef6808be1a89040a3312e8bda0b3aed",
-                "reference": "0649d38dfef6808be1a89040a3312e8bda0b3aed",
+                "url": "https://api.github.com/repos/leafo/scssphp/zipball/6fdfe19d2b13a3f12ba0792227f0718809ce4e4d",
+                "reference": "6fdfe19d2b13a3f12ba0792227f0718809ce4e4d",
                 "shasum": ""
             },
             "require": {
@@ -457,7 +457,7 @@
                 "scss",
                 "stylesheet"
             ],
-            "time": "2016-06-20 15:25:08"
+            "time": "2016-09-11 01:34:11"
         },
         {
             "name": "mustache/mustache",
