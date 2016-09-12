@@ -137,7 +137,6 @@ The technique of this hack is available, but it is not mandatory.
 * A simple Event System for CodeIgniter, https://github.com/ericbarnes/CodeIgniter-Events, https://github.com/nathanmac/CodeIgniter-Events
 * Support for database stored settings (Settings library).
 * Textile, A Humane Web Text Generator, https://txstyle.org, https://github.com/textile/php-textile
-* Markdown Extra - A text-to-HTML conversion tool, http://michelf.com/projects/php-markdown/
 * Markdownify - A HTML-to-text conversion tool, http://milianw.de/projects/markdownify/
 * Parsedown - Better Markdown Parser in PHP - https://github.com/erusev/parsedown
 * Parsedown Extra - An extension of Parsedown that adds support for Markdown Extra - https://github.com/erusev/parsedown-extra

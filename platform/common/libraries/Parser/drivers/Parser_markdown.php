@@ -5,14 +5,6 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-/*
-// Sample class loading if you have no your own way.
-if (!class_exists('MarkdownExtra_Parser', FALSE))
-{
-    require COMMONPATH.'third_party/markdown/markdown.php';
-}
-*/
-
 class CI_Parser_markdown extends CI_Parser_driver {
 
     protected $config;
@@ -22,13 +14,10 @@ class CI_Parser_markdown extends CI_Parser_driver {
     {
         $this->ci = get_instance();
 
-        $this->ci->load->helper('url');
-
         // Default configuration options.
 
         $this->config = array(
-            'markdown_implementation' => 'php-markdown',
-            'detect_code_blocks' => TRUE,
+            'markdown_implementation' => 'parsedown',
             'full_path' => FALSE,
         );
 
@@ -77,33 +66,8 @@ class CI_Parser_markdown extends CI_Parser_driver {
         // For security reasons don't parse PHP content.
         $template = @ file_get_contents($template);
 
-        switch ($options['markdown_implementation']) {
-
-            case 'parsedown':
-
-                $parser = new ParsedownExtra();
-                $template = @ $parser->text($template);
-
-                break;
-
-            default:
-
-                if (!empty($options['detect_code_blocks']))
-                {
-                    $template = preg_replace('/`{3,}[a-z]*/i', '~~~', $template);
-                }
-
-                $parser = new MarkdownExtra_Parser();
-                $template = @ $parser->transform($template);
-
-                if (!empty($options['apply_autolink']))
-                {
-                    $this->ci->load->helper('url');
-                    $template = auto_link($template);
-                }
-
-                break;
-        }
+        $parser = new \ParsedownExtra();
+        $template = @ $parser->text($template);
 
         return $this->output($template, $return, $ci, $is_mx);
     }
@@ -125,33 +89,8 @@ class CI_Parser_markdown extends CI_Parser_driver {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
-        switch ($options['markdown_implementation']) {
-
-            case 'parsedown':
-
-                $parser = new ParsedownExtra();
-                $template = @ $parser->text($template);
-
-                break;
-
-            default:
-
-                if (!empty($options['detect_code_blocks']))
-                {
-                    $template = preg_replace('/`{3,}[a-z]*/i', '~~~', $template);
-                }
-
-                $parser = new MarkdownExtra_Parser();
-                $template = @ $parser->transform($template);
-
-                if (!empty($options['apply_autolink']))
-                {
-                    $this->ci->load->helper('url');
-                    $template = auto_link($template);
-                }
-
-                break;
-        }
+        $parser = new \ParsedownExtra();
+        $template = @ $parser->text($template);
 
         return $this->output($template, $return, $ci, $is_mx);
     }
