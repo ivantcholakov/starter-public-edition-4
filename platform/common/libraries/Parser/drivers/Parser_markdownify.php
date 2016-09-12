@@ -5,14 +5,6 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-/*
-// Sample class loading if you have no your own way.
-if (!class_exists('Markdownify_Extra', FALSE))
-{
-    require COMMONPATH.'third_party/markdownify/markdownify_extra.php';
-}
-*/
-
 class CI_Parser_markdownify extends CI_Parser_driver {
 
     protected $config;
@@ -76,7 +68,7 @@ class CI_Parser_markdownify extends CI_Parser_driver {
         // For security reasons don't parse PHP content.
         $template = @ file_get_contents($template);
 
-        $parser = new Markdownify_Extra(
+        $parser = new \Markdownify\ConverterExtra(
             $options['linksAfterEachParagraph'],
             $options['bodyWidth'],
             $options['keepHTML']
@@ -104,7 +96,7 @@ class CI_Parser_markdownify extends CI_Parser_driver {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
-        $parser = new Markdownify_Extra(
+        $parser = new \Markdownify\ConverterExtra(
             $options['linksAfterEachParagraph'],
             $options['bodyWidth'],
             $options['keepHTML']

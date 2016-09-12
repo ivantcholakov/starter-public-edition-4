@@ -63,9 +63,10 @@ if (!function_exists('html_to_text')) {
         static $parser;
 
         if (!isset($parser)) {
-            $parser = new Markdownify_Extra();
-            $parser->keepHTML = false;
+            $parser = new \Markdownify\ConverterExtra();
         }
+
+        $parser->setKeepHTML(false);
 
         return @ $parser->parseString($html);
     }

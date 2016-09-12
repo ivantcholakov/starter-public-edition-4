@@ -9,6 +9,7 @@
         "whichbrowser/parser": "~2.0.24",
         "erusev/parsedown": "^1.6",
         "erusev/parsedown-extra": "^0.7.1",
+        "pixel418/markdownify": "^2.2.0",
         "mustache/mustache": "~2.5",
         "netcarver/textile": "3.5.*",
         "twig/twig": "~1.0",

@@ -88,6 +88,10 @@ class ComposerStaticInitdc3d756b09e56e386c98d22248d033e5
             array (
                 0 => __DIR__ . '/..' . '/twig/twig/lib',
             ),
+            'Test\\Markdownify' => 
+            array (
+                0 => __DIR__ . '/..' . '/pixel418/markdownify/test',
+            ),
         ),
         'R' => 
         array (
@@ -123,6 +127,10 @@ class ComposerStaticInitdc3d756b09e56e386c98d22248d033e5
             'Multiplayer' => 
             array (
                 0 => __DIR__ . '/..' . '/fg/multiplayer/lib',
+            ),
+            'Markdownify' => 
+            array (
+                0 => __DIR__ . '/..' . '/pixel418/markdownify/src',
             ),
         ),
         'H' => 

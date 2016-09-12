@@ -12,6 +12,4 @@
 */
 
 $autoload['classes'] = array(
-    'Markdownify' => COMMONPATH.'third_party/markdownify/markdownify.php',
-    'Markdownify_Extra' => COMMONPATH.'third_party/markdownify/markdownify_extra.php',
 );
