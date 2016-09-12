@@ -24,7 +24,7 @@ class Markdown_controller extends Playground_Base_Controller {
     public function index() {
 
         $text =  @ file_get_contents($this->load->path('test.md'));
-        $html = $this->load->view('test.md', null, true, 'textile');
+        $html = $this->load->view('test.md', null, true);
 
         $this->template
             ->set(compact('text', 'html'))
