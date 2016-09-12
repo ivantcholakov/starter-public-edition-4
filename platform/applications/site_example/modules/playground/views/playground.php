@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2015
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -41,6 +41,7 @@
                     <a class="list-group-item" href="<?php echo site_url('playground/captcha'); ?>">Captcha Test</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/parser-test'); ?>">CodeIgniter's Parser Test</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/mustache'); ?>">Mustache Parser Test</a>
+                    <a class="list-group-item" href="<?php echo site_url('playground/markdown'); ?>">Markdown Parser Test</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/textile'); ?>">Textile Parser Test</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/scss'); ?>">SCSS Compiler Test</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/less'); ?>">Less Compiler Test</a>
