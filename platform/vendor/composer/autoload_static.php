@@ -16,6 +16,10 @@ class ComposerStaticInitdc3d756b09e56e386c98d22248d033e5
     );
 
     public static $prefixLengthsPsr4 = array (
+        't' => 
+        array (
+            't1st3\\' => 6,
+        ),
         'W' => 
         array (
             'WhichBrowser\\' => 13,
@@ -42,6 +46,10 @@ class ComposerStaticInitdc3d756b09e56e386c98d22248d033e5
     );
 
     public static $prefixDirsPsr4 = array (
+        't1st3\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/t1st3/php-json-minify/src/t1st3',
+        ),
         'WhichBrowser\\' => 
         array (
             0 => __DIR__ . '/..' . '/whichbrowser/parser/src',

@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    't1st3\\' => array($vendorDir . '/t1st3/php-json-minify/src/t1st3'),
     'WhichBrowser\\' => array($vendorDir . '/whichbrowser/parser/src', $vendorDir . '/whichbrowser/parser/tests/src'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
     'Psr\\Cache\\' => array($vendorDir . '/psr/cache/src'),

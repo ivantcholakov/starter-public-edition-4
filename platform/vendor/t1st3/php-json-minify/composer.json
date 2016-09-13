@@ -1,0 +1,35 @@
+{
+  "name": "t1st3/php-json-minify",
+  "version": "0.6.2",
+  "homepage": "https://github.com/t1st3/php-json-minify",
+  "description": "",
+  "keywords": [
+    "php"
+  ],
+  "authors": [
+    {
+      "name": "t1st3",
+      "homepage": "https://github.com/t1st3",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/t1st3/php-json-minify/issues",
+    "source": "https://github.com/t1st3/php-json-minify"
+  },
+  "license": "MIT",
+  "type": "library",
+  "require": {
+    "php": ">=5.6.0"
+  },
+  "require-dev": {
+    "phpdocumentor/phpdocumentor": "2.*",
+    "phpunit/phpunit": "5.*",
+    "sebastian/phpcpd": "2.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "t1st3\\": "src/t1st3/"
+    }
+  }
+}

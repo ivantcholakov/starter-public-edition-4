@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "573679a6b0d859235c8fc34d7ad9717c",
-    "content-hash": "fb8a07dcd51fa1ee0107e00ca88b8bfb",
+    "hash": "8f7a36fe565bd3e5577081369b4c215a",
+    "content-hash": "e6beda6ca1f8df5c9d8f92724a66b228",
     "packages": [
         {
             "name": "erusev/parsedown",
@@ -933,6 +933,51 @@
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
             "time": "2016-09-08 18:37:03"
+        },
+        {
+            "name": "t1st3/php-json-minify",
+            "version": "0.6.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/t1st3/php-json-minify.git",
+                "reference": "f48327a253632128139a1d0a728d6fcb517f6f25"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/t1st3/php-json-minify/zipball/f48327a253632128139a1d0a728d6fcb517f6f25",
+                "reference": "f48327a253632128139a1d0a728d6fcb517f6f25",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpdocumentor/phpdocumentor": "2.*",
+                "phpunit/phpunit": "5.*",
+                "sebastian/phpcpd": "2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "t1st3\\": "src/t1st3/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "t1st3",
+                    "homepage": "https://github.com/t1st3",
+                    "role": "Developer"
+                }
+            ],
+            "homepage": "https://github.com/t1st3/php-json-minify",
+            "keywords": [
+                "php"
+            ],
+            "time": "2016-08-03 14:17:41"
         },
         {
             "name": "twig/extensions",

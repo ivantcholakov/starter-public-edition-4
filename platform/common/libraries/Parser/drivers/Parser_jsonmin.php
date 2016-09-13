@@ -13,7 +13,7 @@ class CI_Parser_jsonmin extends CI_Parser_driver {
 
     public function initialize()
     {
-        $php_min = '5.3.0';
+        $php_min = '5.6.0';
 
         if (!is_php($php_min))
         {
@@ -70,8 +70,7 @@ class CI_Parser_jsonmin extends CI_Parser_driver {
             $template = $ci->load->path($template);
         }
 
-        $parser_reflection = new ReflectionClass('t1st3\JSONMin\JSONMin');
-        $parser = $parser_reflection->newInstance(@ file_get_contents($template));
+        $parser = new \t1st3\JSONMin\JSONMin(@ file_get_contents($template));
 
         $template = $parser->getMin();
 
@@ -95,8 +94,7 @@ class CI_Parser_jsonmin extends CI_Parser_driver {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
-        $parser_reflection = new ReflectionClass('t1st3\JSONMin\JSONMin');
-        $parser = $parser_reflection->newInstance($template);
+        $parser = new \t1st3\JSONMin\JSONMin($template);
 
         $template = $parser->getMin();
 
