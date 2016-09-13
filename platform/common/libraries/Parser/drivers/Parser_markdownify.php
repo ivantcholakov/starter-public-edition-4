@@ -17,7 +17,8 @@ class CI_Parser_markdownify extends CI_Parser_driver {
         // Default configuration options.
 
         $this->config = array(
-            'linksAfterEachParagraph' => FALSE,
+            'linksAfterEachParagraph' => NULL, // A deprecated option, use 'linkPosition' instead.
+            'linkPosition' => 0,
             'bodyWidth' => FALSE,
             'keepHTML' => FALSE,
             'full_path' => FALSE,
@@ -65,11 +66,17 @@ class CI_Parser_markdownify extends CI_Parser_driver {
             $template = $ci->load->path($template);
         }
 
+        // Check whether the deprecated option is still used.
+        if (isset($options['linksAfterEachParagraph']))
+        {
+            $options['linkPosition'] = empty($options['linksAfterEachParagraph']) ? 0 : 1;
+        }
+
         // For security reasons don't parse PHP content.
         $template = @ file_get_contents($template);
 
         $parser = new \Markdownify\ConverterExtra(
-            $options['linksAfterEachParagraph'],
+            $options['linkPosition'],
             $options['bodyWidth'],
             $options['keepHTML']
         );
@@ -96,8 +103,14 @@ class CI_Parser_markdownify extends CI_Parser_driver {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
+        // Check whether the deprecated option is still used.
+        if (isset($options['linksAfterEachParagraph']))
+        {
+            $options['linkPosition'] = empty($options['linksAfterEachParagraph']) ? 0 : 1;
+        }
+
         $parser = new \Markdownify\ConverterExtra(
-            $options['linksAfterEachParagraph'],
+            $options['linkPosition'],
             $options['bodyWidth'],
             $options['keepHTML']
         );
