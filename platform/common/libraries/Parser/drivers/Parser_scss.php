@@ -82,8 +82,7 @@ class CI_Parser_scss extends CI_Parser_driver {
             $template = $ci->load->path($template);
         }
 
-        $parser_reflection = new ReflectionClass('Leafo\ScssPhp\Compiler');
-        $parser = $parser_reflection->newInstance();
+        $parser = new \Leafo\ScssPhp\Compiler();
 
         $parser->setImportPaths($options['import_paths']);
         $parser->addImportPath(dirname($template));
@@ -123,8 +122,7 @@ class CI_Parser_scss extends CI_Parser_driver {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
-        $parser_reflection = new ReflectionClass('Leafo\ScssPhp\Compiler');
-        $parser = $parser_reflection->newInstance();
+        $parser = new \Leafo\ScssPhp\Compiler();
 
         $parser->setImportPaths($options['import_paths']);
         $parser->setNumberPrecision($options['number_precision']);
