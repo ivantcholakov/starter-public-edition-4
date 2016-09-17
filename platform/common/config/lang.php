@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -98,7 +98,7 @@ $config['languages'] = array(
         'name' => 'Português do Brasil',
         'name_en' => 'Brazilian Portuguese',
         'flag' => 'BR',
-        'phpmailer' => 'br',
+        'phpmailer' => 'pt_br',
     ),
 
     'russian' => array(
@@ -234,6 +234,7 @@ $config['languages'] = array(
         'name' => 'Norsk',
         'name_en' => 'Norwegian',
         'flag' => 'NO',
+        'phpmailer' => 'nb',
     ),
 
     'polish' => array(
@@ -324,7 +325,6 @@ $config['languages'] = array(
         'name' => 'Čeština',
         'name_en' => 'Czech',
         'flag' => 'CZ',
-        'phpmailer' => 'cz',
     ),
 
     'swedish' => array(
@@ -334,7 +334,6 @@ $config['languages'] = array(
         'name' => 'Svenska',
         'name_en' => 'Swedish',
         'flag' => 'SE',
-        'phpmailer' => 'se',
     ),
 
     'indonesian' => array(
