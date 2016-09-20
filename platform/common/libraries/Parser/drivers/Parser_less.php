@@ -17,9 +17,12 @@ class CI_Parser_less extends CI_Parser_driver {
         // Default configuration options.
 
         $this->config = array(
+            'implementation' => 'less.php',
+            'tmp_dir' => TMP_PATH,
             'compress' => FALSE,
             'strictUnits' => FALSE,
             'uri_root' => '',
+            'relativeUrls' => TRUE,
             'full_path' => FALSE,
         );
 
@@ -65,10 +68,19 @@ class CI_Parser_less extends CI_Parser_driver {
             $template = $ci->load->path($template);
         }
 
-        // For security reasons don't parse PHP content.
-        $parser = new Less_Parser($options);
-        $parser->parseFile($template, $options['uri_root']);
-        $template = $parser->getCss();
+        switch ($options['implementation'])
+        {
+            case 'less.js':
+                $parser = new Lessjs_Parser($options);
+                $template = $parser->parse($template);
+                break;
+
+            default:
+                $parser = new Less_Parser($options);
+                $parser->parseFile($template, $options['uri_root']);
+                $template = $parser->getCss();
+                break;
+        }
 
         return $this->output($template, $return, $ci, $is_mx);
     }
@@ -90,9 +102,19 @@ class CI_Parser_less extends CI_Parser_driver {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
-        $parser = new Less_Parser($options);
-        $parser->parse($template);
-        $template = $parser->getCss();
+        switch ($options['implementation'])
+        {
+            case 'less.js':
+                $parser = new Lessjs_Parser($options);
+                $template = $parser->parseString($template);
+                break;
+
+            default:
+                $parser = new Less_Parser($options);
+                $parser->parse($template);
+                $template = $parser->getCss();
+                break;
+        }
 
         return $this->output($template, $return, $ci, $is_mx);
     }
