@@ -24,10 +24,18 @@ class ComposerStaticInitdc3d756b09e56e386c98d22248d033e5
         array (
             'WhichBrowser\\' => 13,
         ),
+        'T' => 
+        array (
+            'Test\\Markdownify\\' => 17,
+        ),
         'P' => 
         array (
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Cache\\' => 10,
+        ),
+        'M' => 
+        array (
+            'Markdownify\\' => 12,
         ),
         'L' => 
         array (
@@ -55,6 +63,10 @@ class ComposerStaticInitdc3d756b09e56e386c98d22248d033e5
             0 => __DIR__ . '/..' . '/whichbrowser/parser/src',
             1 => __DIR__ . '/..' . '/whichbrowser/parser/tests/src',
         ),
+        'Test\\Markdownify\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pixel418/markdownify/test',
+        ),
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
@@ -62,6 +74,10 @@ class ComposerStaticInitdc3d756b09e56e386c98d22248d033e5
         'Psr\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
+        ),
+        'Markdownify\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pixel418/markdownify/src',
         ),
         'Leafo\\ScssPhp\\' => 
         array (
@@ -95,10 +111,6 @@ class ComposerStaticInitdc3d756b09e56e386c98d22248d033e5
             'Twig_' => 
             array (
                 0 => __DIR__ . '/..' . '/twig/twig/lib',
-            ),
-            'Test\\Markdownify' => 
-            array (
-                0 => __DIR__ . '/..' . '/pixel418/markdownify/test',
             ),
         ),
         'R' => 
@@ -136,10 +148,6 @@ class ComposerStaticInitdc3d756b09e56e386c98d22248d033e5
             array (
                 0 => __DIR__ . '/..' . '/fg/multiplayer/lib',
             ),
-            'Markdownify' => 
-            array (
-                0 => __DIR__ . '/..' . '/pixel418/markdownify/src',
-            ),
         ),
         'H' => 
         array (
@@ -150,12 +158,17 @@ class ComposerStaticInitdc3d756b09e56e386c98d22248d033e5
         ),
     );
 
+    public static $fallbackDirsPsr0 = array (
+        0 => __DIR__ . '/..' . '/vladkens/autoprefixer/lib',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitdc3d756b09e56e386c98d22248d033e5::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitdc3d756b09e56e386c98d22248d033e5::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInitdc3d756b09e56e386c98d22248d033e5::$prefixesPsr0;
+            $loader->fallbackDirsPsr0 = ComposerStaticInitdc3d756b09e56e386c98d22248d033e5::$fallbackDirsPsr0;
 
         }, null, ClassLoader::class);
     }

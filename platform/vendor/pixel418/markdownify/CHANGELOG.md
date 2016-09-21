@@ -2,6 +2,15 @@ CHANGELOG
 ==============
 
 
+21/09/2016 v2.2.1
+--------------
+
+ * Fix: Moving trailing whitespace from inline elements outside of the element
+ * Feature: Use PSR-4
+ * Feature: PHP 7.0 support in continuous integration
+ * Doc: Update of the README
+
+
 07/09/2016 v2.2.0
 --------------
 

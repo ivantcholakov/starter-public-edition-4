@@ -8,8 +8,10 @@ $baseDir = dirname($vendorDir);
 return array(
     't1st3\\' => array($vendorDir . '/t1st3/php-json-minify/src/t1st3'),
     'WhichBrowser\\' => array($vendorDir . '/whichbrowser/parser/src', $vendorDir . '/whichbrowser/parser/tests/src'),
+    'Test\\Markdownify\\' => array($vendorDir . '/pixel418/markdownify/test'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
     'Psr\\Cache\\' => array($vendorDir . '/psr/cache/src'),
+    'Markdownify\\' => array($vendorDir . '/pixel418/markdownify/src'),
     'Leafo\\ScssPhp\\' => array($vendorDir . '/leafo/scssphp/src'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
     'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),

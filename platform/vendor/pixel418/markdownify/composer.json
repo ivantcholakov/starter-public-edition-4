@@ -3,7 +3,7 @@
     "type": "lib",
     "description": "The HTML to Markdown converter for PHP ",
     "keywords": ["markdown", "markdownify"],
-    "license": "MIT",
+    "license": "LGPL",
     "homepage": "https://github.com/elephant418/Markdownify",
     "authors": [
         {
@@ -30,9 +30,9 @@
         "phpunit/phpunit": "^4.8"
     },
     "autoload": {
-        "psr-0": {
-            "Markdownify": "src",
-            "Test\\Markdownify": "test"
+        "psr-4": {
+            "Markdownify\\": "src",
+            "Test\\Markdownify\\": "test"
         }
     }
 }
