@@ -158,17 +158,12 @@ class ComposerStaticInitdc3d756b09e56e386c98d22248d033e5
         ),
     );
 
-    public static $fallbackDirsPsr0 = array (
-        0 => __DIR__ . '/..' . '/vladkens/autoprefixer/lib',
-    );
-
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitdc3d756b09e56e386c98d22248d033e5::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitdc3d756b09e56e386c98d22248d033e5::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInitdc3d756b09e56e386c98d22248d033e5::$prefixesPsr0;
-            $loader->fallbackDirsPsr0 = ComposerStaticInitdc3d756b09e56e386c98d22248d033e5::$fallbackDirsPsr0;
 
         }, null, ClassLoader::class);
     }

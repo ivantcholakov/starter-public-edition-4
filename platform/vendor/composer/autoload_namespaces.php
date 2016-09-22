@@ -15,5 +15,4 @@ return array(
     'Mustache' => array($vendorDir . '/mustache/mustache/src'),
     'Multiplayer' => array($vendorDir . '/fg/multiplayer/lib'),
     'HTMLPurifier' => array($vendorDir . '/ezyang/htmlpurifier/library'),
-    '' => array($vendorDir . '/vladkens/autoprefixer/lib'),
 );

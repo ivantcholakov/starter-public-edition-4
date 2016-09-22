@@ -143,18 +143,6 @@ class Twig_Tests_EnvironmentTest extends PHPUnit_Framework_TestCase
         */
     }
 
-    public function testCompileSourceInlinesSource()
-    {
-        $twig = new Twig_Environment($this->getMockBuilder('Twig_LoaderInterface')->getMock());
-
-        $source = "<? */*foo*/ ?>\r\nbar\n";
-        $expected = "/* <? *//* *foo*//*  ?>*/\n/* bar*/\n/* */\n";
-        $compiled = $twig->compileSource($source, 'index');
-
-        $this->assertContains($expected, $compiled);
-        $this->assertNotContains('/**', $compiled);
-    }
-
     public function testExtensionsAreNotInitializedWhenRenderingACompiledTemplate()
     {
         $cache = new Twig_Cache_Filesystem($dir = sys_get_temp_dir().'/twig');
@@ -275,7 +263,13 @@ class Twig_Tests_EnvironmentTest extends PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('foo_binary', $twig->getBinaryOperators());
         $this->assertArrayHasKey('foo_global', $twig->getGlobals());
         $visitors = $twig->getNodeVisitors();
-        $this->assertEquals('Twig_Tests_EnvironmentTest_NodeVisitor', get_class($visitors[2]));
+        $found = false;
+        foreach ($visitors as $visitor) {
+            if ($visitor instanceof Twig_Tests_EnvironmentTest_NodeVisitor) {
+                $found = true;
+            }
+        }
+        $this->assertTrue($found);
     }
 
     /**

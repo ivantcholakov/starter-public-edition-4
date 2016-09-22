@@ -16,7 +16,6 @@
         "twig/extensions": "~1.3",
         "ezyang/htmlpurifier": "^4.8.0",
         "rmccue/requests": ">=1.0",
-        "t1st3/php-json-minify": "^0.6.2",
-        "vladkens/autoprefixer": "dev-master"
+        "t1st3/php-json-minify": "^0.6.2"
     }
 }
