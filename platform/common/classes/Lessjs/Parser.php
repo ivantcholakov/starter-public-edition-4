@@ -71,7 +71,7 @@ class Lessjs_Parser {
      */
     public function parse($filename) {
 
-        $cmd = $this->getPathToLessCompiler().$this->parseOptions().' '.$this->escapeShellArg($filename);
+        $cmd = $this->getCompilerPath().$this->parseOptions().' '.$this->escapeShellArg($filename);
 
         $output = array();
 
@@ -86,7 +86,7 @@ class Lessjs_Parser {
 
     public function getVersion() {
 
-        $cmd = $this->getPathToLessCompiler().' --version';
+        $cmd = $this->getCompilerPath().' --version';
 
         exec($cmd, $output, $return);
 
@@ -174,7 +174,7 @@ class Lessjs_Parser {
         return empty($result) ? '' : ' '.implode(' ', $result);
     }
 
-    protected function getPathToLessCompiler() {
+    protected function getCompilerPath() {
 
         return $this->options['lessc_path'];
     }
