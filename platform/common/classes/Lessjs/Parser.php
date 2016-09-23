@@ -42,7 +42,7 @@ class Lessjs_Parser {
 
         $result = null;
 
-        $filename = tempnam($this->options['tnp_dir'], 'Lessjs_');
+        $filename = tempnam($this->options['tmp_dir'], 'Lessjs_');
         file_put_contents($filename, $str);
 
         try {
@@ -104,7 +104,7 @@ class Lessjs_Parser {
         $this->options = array();
 
         $this->options['lessc_path'] = 'lessc';
-        $this->options['tnp_dir'] = sys_get_temp_dir();
+        $this->options['tmp_dir'] = sys_get_temp_dir();
         $this->options['compress'] = false; // This option is deprecated.
         $this->options['strictUnits'] = false;
         $this->options['uri_root'] = '';
