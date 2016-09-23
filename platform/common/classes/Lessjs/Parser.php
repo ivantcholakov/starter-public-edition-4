@@ -73,15 +73,35 @@ class Lessjs_Parser {
 
         $cmd = $this->getCompilerPath().$this->parseOptions().' '.$this->escapeShellArg($filename);
 
-        $output = array();
+        $descriptorspec = array(
+            0 => array('pipe', 'r'), // stdin
+            1 => array('pipe', 'w'), // stdout
+            2 => array('pipe', 'w')  // stderr
+        );
 
-        exec($cmd, $output, $return);
+        $process = proc_open($cmd, $descriptorspec, $pipes);
 
-        if ($return === 0) {
-            return implode("\n", $output);
+        if (is_resource($process)) {
+
+            $stdout = stream_get_contents($pipes[1]);
+            fclose($pipes[1]);
+
+            $stderr = stream_get_contents($pipes[2]);
+            fclose($pipes[2]);
+
+            $return = proc_close($process);
+
+        } else {
+
+            $return = 1;
+            $stderr = "Lessjs_Parser: Can't execute a command.\n";
         }
 
-        throw new RuntimeException('Error '.$return);
+        if ($return === 0) {
+            return $stdout;
+        }
+
+        throw new RuntimeException($stderr);
     }
 
     public function getVersion() {
