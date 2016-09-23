@@ -30,6 +30,7 @@ $config['parser_valid_drivers'] = array(
     'scss',
     'ts',
     'jsonmin',
+    'autoprefixer',
 );
 
 // File extensions associated with parsers that are to be applied

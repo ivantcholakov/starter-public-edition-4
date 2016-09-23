@@ -60,6 +60,7 @@
                     <a class="list-group-item" href="<?php echo site_url('playground/google-maps-v3'); ?>">Google Maps JavaScript API v3 Demo</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/smileys'); ?>">Smiley Test</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/file-type-icons'); ?>">Testing File Type Icons</a>
+                    <a class="list-group-item" href="<?php echo site_url('playground/autoprefixer'); ?>">CSS Autoprefixer Test</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/cssmin'); ?>">CSS Minification Test</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/jsmin'); ?>">JavaScript Minification Test</a>
                     <a class="list-group-item" href="<?php echo site_url('playground/fb'); ?>">Facebook PHP SDK for CodeIgniter</a>
