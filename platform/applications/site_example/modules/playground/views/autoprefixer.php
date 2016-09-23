@@ -29,7 +29,7 @@ file_partial('messages');
 
                             <div class="form-group">
                                 <label for="input">The input, CSS source:</label>
-                                <textarea id="input" name="input" class="form-control" rows="10" placeholder="Copy/paste your Less source here."><?php echo $clear_form || $is_example ? form_prep($input, true) : set_value('input', $input, true); ?></textarea>
+                                <textarea id="input" name="input" class="form-control" rows="10" placeholder="Copy/paste your CSS source here."><?php echo $clear_form || $is_example ? form_prep($input, true) : set_value('input', $input, true); ?></textarea>
                             </div>
 
                             <div class="form-group">
