@@ -354,4 +354,24 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
     ),
 
+    // php cli.php less compile semantic-ui semantic-ui-min
+
+    array(
+        'name' => 'semantic-ui',
+        'source' => DEFAULTFCPATH.'assets/less/lib/semantic/semantic.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/semantic/semantic.css',
+        'relativeUrls' => false,
+        'implementation' => 'less.js',
+        'autoprefixer' => array(),
+    ),
+    array(
+        'name' => 'semantic-ui-min',
+        'source' => DEFAULTFCPATH.'assets/less/lib/semantic/semantic.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/semantic/semantic.min.css',
+        'relativeUrls' => false,
+        'implementation' => 'less.js',
+        'autoprefixer' => array(),
+        'cssmin' => array('implementation' => 'cssnano'),
+    ),
+
 );
