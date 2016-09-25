@@ -59,8 +59,28 @@ class Compile_controller extends Core_Controller {
             $dir = pathinfo($destination, PATHINFO_DIRNAME);
             file_exists($dir) OR mkdir($dir, 0755, TRUE);
 
+            $parsers = array();
+
+            if (isset($options['autoprefixer'])) {
+
+                $parsers['autoprefixer'] = $options['autoprefixer'];
+                unset($options['autoprefixer']);
+            }
+
+            if (isset($options['cssmin'])) {
+
+                $parsers['cssmin'] = $options['cssmin'];
+                unset($options['cssmin']);
+
+                if (isset($options['compress'])) {
+                    unset($options['compress']);
+                }
+            }
+
+            $parsers = array_merge(array('less' => $options), $parsers);
+
             try {
-                write_file($destination, $this->parser->parse($source, null, true, array('less' => $options)));
+                write_file($destination, $this->parser->parse($source, null, true, $parsers));
             } catch(Exception $e) {
                 echo $e->getMessage().PHP_EOL;
             }
