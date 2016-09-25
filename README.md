@@ -382,6 +382,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Masonry - a cascading grid layout library, https://github.com/desandro/masonry
 * jQuery LoadingOverlay - A flexible loading overlay jQuery plugin, https://github.com/gasparesganga/jquery-loading-overlay
 * Bootstrap-select, a jQuery plugin that utilizes Bootstrap's dropdown.js to style and bring additional functionality to standard select elements, https://github.com/silviomoreto/bootstrap-select, http://silviomoreto.github.io/bootstrap-select/
+* Semantic UI - a component framework based around useful principles from natural language, AN EXPERIMENTAL INTEGRATION, DO NOT USE IT YET, http://www.semantic-ui.com
 
 The Playground
 --------------
