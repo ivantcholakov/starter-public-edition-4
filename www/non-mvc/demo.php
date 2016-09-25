@@ -48,7 +48,7 @@ echo apple_touch_icon_precomposed();
 echo cleartype_ie();
 
 // A CSS loading example.
-echo css('lib/bootstrap-3/bootstrap.css');
+echo css('lib/semantic/semantic.min.css');
 echo css('lib/font-awesome-4/font-awesome.css');
 
 // Loading javascripts example.
@@ -68,23 +68,24 @@ echo body_begin('id="page-top"');
 
 ?>
 
-        <section class="container">
+        <div class="ui grid container">
 
-            <div class="row" style="margin-top: 40px;">
+            <div class="row">
 
-                <div class="col-sm-12">
+                <div class="column">
 
-                    <div class="clearfix">
+                    <p style="margin-top: 40px;">The touch icon should be seen here:</p>
+                    <p><img src="<?php echo base_uri('apple-touch-icon-precomposed.png'); ?>" class="ui image" /></p>
 
-                        The touch icon should be seen here:
-                        <br />
-                        <img src="<?php echo base_uri('apple-touch-icon-precomposed.png'); ?>" class="thumbnail" />
+                </div>
 
-                    </div>
+            </div>
 
-                    <div class="page-header">
-                        <h1>Dealing with Legacy Pages Example</h1>
-                    </div>
+            <div class="row">
+
+                <div class="column">
+
+                    <h1 class="ui header">Dealing with Legacy Pages Example</h1>
 
                     <p>
                         This is a sample of an "old legacy page" that is not rewritten in (H)MVC style yet. Sometimes this costs a lot of time.
@@ -98,21 +99,34 @@ echo body_begin('id="page-top"');
                         If it is necessary, use the helper function <strong>get_instance()</strong> to access the dummy controller and its properties and methods.
                     </p>
 
-                    <p>
-                        Yet another image should be seen here:
-                        <br />
-                        <?php echo image('lib/processing.gif', null, 'class="thumbnail"'); /* Inserting an image using a helper function. */ ?>
-                    </p>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="column">
+
+                    <p>Yet another image should be seen here:</p>
+                    <p><?php echo image('lib/processing.gif', null, 'class="ui image"'); /* Inserting an image using a helper function. */ ?></p>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="column">
 
                     <p>
-                        <a href="<?php echo site_url('playground'); ?>" class="btn btn-primary"><i class="fa fa-angle-double-left"></i> Back to the playground</a>
+                        <a href="<?php echo site_url('playground'); ?>" class="ui primary button"><i class="fa fa-angle-double-left"></i> Back to the playground</a>
                     </p>
 
                 </div>
 
             </div>
 
-        </section>
+        </div>
 
 <?php
 
