@@ -11,7 +11,7 @@
 class Autoprefixer_Parser {
 
     protected $options;
-    protected $browsers_file;
+    protected $config_file;
 
     public function __construct($options = null) {
 
@@ -98,10 +98,10 @@ class Autoprefixer_Parser {
             $stderr = "Autoprefixer_Parser: Can't execute a command.\n";
         }
 
-        if (isset($this->browsers_file)) {
+        if (isset($this->config_file)) {
 
-            @ unlink($this->browsers_file);
-            $this->browsers_file = null;
+            @ unlink($this->config_file);
+            $this->config_file = null;
         }
 
         if ($return === 0) {
@@ -155,20 +155,20 @@ class Autoprefixer_Parser {
 
         $result = array();
 
-        $this->browsers_file = tempnam($this->options['tmp_dir'], 'Autoprefixer_browsers_');
+        $this->config_file = tempnam($this->options['tmp_dir'], 'Autoprefixer_config_');
 
         // The external script requires .json extension,
         // otherwise the file is not accepted as valid.
-        rename($this->browsers_file, $this->browsers_file .= '.json');
+        rename($this->config_file, $this->config_file .= '.json');
 
         $config = '{
     "autoprefixer": {
         "browsers": '.json_encode($this->options['browsers']).'
     }
 }';
-        file_put_contents($this->browsers_file, $config);
+        file_put_contents($this->config_file, $config);
 
-        $result[] = '--config '.$this->escapeShellArg($this->browsers_file);
+        $result[] = '--config '.$this->escapeShellArg($this->config_file);
 
         return empty($result) ? '' : ' '.implode(' ', $result);
     }
