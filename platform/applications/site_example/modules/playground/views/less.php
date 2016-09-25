@@ -49,11 +49,6 @@ file_partial('messages');
                                 <textarea id="output" class="form-control" rows="10"><?php echo form_prep($output, true); ?></textarea>
                             </div>
 
-                            <div class="form-group">
-                                <label for="output_min">The result, minified CSS:</label>
-                                <textarea id="output_min" class="form-control" rows="10"><?php echo form_prep($output_min, true); ?></textarea>
-                            </div>
-
                         <?php echo form_close(); ?>
 
                     </div>

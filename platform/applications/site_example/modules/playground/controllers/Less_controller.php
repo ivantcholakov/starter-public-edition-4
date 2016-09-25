@@ -25,7 +25,6 @@ class Less_controller extends Playground_Base_Controller {
 
         $input = null;
         $output = null;
-        $output_min = null;
 
         $clear_form = (bool) $this->input->post('test_form_clear');
         $is_example = (bool) $this->input->post('test_form_example');
@@ -42,12 +41,6 @@ class Less_controller extends Playground_Base_Controller {
                 $output = $this->parser->parse_string($input, null, true, 'less');
             } catch(Exception $e) {
                 $output = $e->getMessage();
-            }
-
-            try {
-                $output_min = $this->parser->parse_string($input, null, true, array('less' => array('compress' => true)));
-            } catch(Exception $e) {
-                $output_min = $e->getMessage();
             }
 
         } else {
@@ -72,16 +65,9 @@ class Less_controller extends Playground_Base_Controller {
                     $output = $e->getMessage();
                 }
 
-                try {
-                    $output_min = $this->parser->parse_string($input, null, true, array('less' => array('compress' => true)));
-                } catch(Exception $e) {
-                    $output_min = $e->getMessage();
-                }
-
             } elseif (validation_errors()) {
 
                 $output = null;
-                $output_min = null;
 
                 $this->template->set('error_message', '<ul>'.validation_errors('<li>', '</li>').'</ul>');
                 $this->template->set('validation_errors', validation_errors_array());
@@ -89,12 +75,11 @@ class Less_controller extends Playground_Base_Controller {
         }
 
         $this->template
-           ->set('clear_form', $clear_form)
-           ->set('is_example', $is_example)
-           ->set('input', $input)
-           ->set('output', $output)
-           ->set('output_min', $output_min)
-           ->build('less');
+            ->set('clear_form', $clear_form)
+            ->set('is_example', $is_example)
+            ->set('input', $input)
+            ->set('output', $output)
+            ->build('less');
     }
 
 }
