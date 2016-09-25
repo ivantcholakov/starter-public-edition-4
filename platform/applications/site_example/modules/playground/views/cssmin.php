@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015-2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -29,12 +29,18 @@ file_partial('messages');
 
                             <div class="form-group">
                                 <label for="input">The input, CSS source:</label>
-                                <textarea id="input" name="input" class="form-control" rows="10" placeholder="Copy/paste your CSS source here."><?php echo set_value('input', '', true); ?></textarea>
+                                <textarea id="input" name="input" class="form-control" rows="10" placeholder="Copy/paste your CSS source here."><?php echo $clear_form || $is_example ? form_prep($input, true) : set_value('input', $input, true); ?></textarea>
                             </div>
 
                             <div class="form-group">
                                 <button id="test_form_submit" name="test_form_submit" type="submit" class="btn btn-primary">
                                     Submit
+                                </button>
+                                <button id="test_form_submit" name="test_form_clear" type="submit" value="1" class="btn btn-danger">
+                                    Clear
+                                </button>
+                                <button id="test_form_submit" name="test_form_example" type="submit" value="1" class="btn btn-info">
+                                    Show Me an Example
                                 </button>
                             </div>
 

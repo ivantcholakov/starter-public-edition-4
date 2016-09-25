@@ -17,11 +17,13 @@ class CI_Parser_cssmin extends CI_Parser_driver {
         // Default configuration options.
 
         $this->config = array(
+            'implementation' => 'yui_css_compressor',
             'raise_php_limits' => TRUE,
             'memory_limit' => '128M',
             'max_execution_time' => 60,
             'pcre_backtrack_limit' => 1000 * 1000,
             'pcre_recursion_limit' => 500 * 1000,
+            'safe' => TRUE,
             'full_path' => FALSE,
         );
 
@@ -67,38 +69,50 @@ class CI_Parser_cssmin extends CI_Parser_driver {
             $template = $ci->load->path($template);
         }
 
-        $options['raise_php_limits'] = !empty($options['raise_php_limits']);
-
-        $parser = new CSSmin($options['raise_php_limits']);
-
-        if ($options['raise_php_limits'])
+        switch ($options['implementation'])
         {
+            case 'cssnano':
+                $parser = new Cssnano_Parser($options);
+                $template = $parser->parse($template);
+                break;
 
-            if ($options['memory_limit'] != '')
-            {
-                $parser->set_memory_limit($options['memory_limit']);
-            }
+            default:
 
-            if ($options['max_execution_time'] != '')
-            {
-                $parser->set_max_execution_time($options['max_execution_time']);
-            }
+                // For security reasons don't parse PHP content.
+                $template = @ file_get_contents($template);
 
-            if ($options['pcre_backtrack_limit'] != '')
-            {
-                $parser->set_pcre_backtrack_limit($options['pcre_backtrack_limit']);
-            }
+                $options['raise_php_limits'] = !empty($options['raise_php_limits']);
 
-            if ($options['pcre_recursion_limit'] != '')
-            {
-                $parser->set_pcre_recursion_limit($options['pcre_recursion_limit']);
-            }
+                $parser = new CSSmin($options['raise_php_limits']);
+
+                if ($options['raise_php_limits'])
+                {
+
+                    if ($options['memory_limit'] != '')
+                    {
+                        $parser->set_memory_limit($options['memory_limit']);
+                    }
+
+                    if ($options['max_execution_time'] != '')
+                    {
+                        $parser->set_max_execution_time($options['max_execution_time']);
+                    }
+
+                    if ($options['pcre_backtrack_limit'] != '')
+                    {
+                        $parser->set_pcre_backtrack_limit($options['pcre_backtrack_limit']);
+                    }
+
+                    if ($options['pcre_recursion_limit'] != '')
+                    {
+                        $parser->set_pcre_recursion_limit($options['pcre_recursion_limit']);
+                    }
+                }
+
+                $template = $parser->run($template);
+
+                break;
         }
-
-        // For security reasons don't parse PHP content.
-        $template = @ file_get_contents($template);
-
-        $template = $parser->run($template);
 
         return $this->output($template, $return, $ci, $is_mx);
     }
@@ -120,35 +134,47 @@ class CI_Parser_cssmin extends CI_Parser_driver {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
-        $options['raise_php_limits'] = !empty($options['raise_php_limits']);
-
-        $parser = new CSSmin($options['raise_php_limits']);
-
-        if ($options['raise_php_limits'])
+        switch ($options['implementation'])
         {
+            case 'cssnano':
+                $parser = new Cssnano_Parser($options);
+                $template = $parser->parseString($template);
+                break;
 
-            if ($options['memory_limit'] != '')
-            {
-                $parser->set_memory_limit($options['memory_limit']);
-            }
+            default:
 
-            if ($options['max_execution_time'] != '')
-            {
-                $parser->set_max_execution_time($options['max_execution_time']);
-            }
+                $options['raise_php_limits'] = !empty($options['raise_php_limits']);
 
-            if ($options['pcre_backtrack_limit'] != '')
-            {
-                $parser->set_pcre_backtrack_limit($options['pcre_backtrack_limit']);
-            }
+                $parser = new CSSmin($options['raise_php_limits']);
 
-            if ($options['pcre_recursion_limit'] != '')
-            {
-                $parser->set_pcre_recursion_limit($options['pcre_recursion_limit']);
-            }
+                if ($options['raise_php_limits'])
+                {
+
+                    if ($options['memory_limit'] != '')
+                    {
+                        $parser->set_memory_limit($options['memory_limit']);
+                    }
+
+                    if ($options['max_execution_time'] != '')
+                    {
+                        $parser->set_max_execution_time($options['max_execution_time']);
+                    }
+
+                    if ($options['pcre_backtrack_limit'] != '')
+                    {
+                        $parser->set_pcre_backtrack_limit($options['pcre_backtrack_limit']);
+                    }
+
+                    if ($options['pcre_recursion_limit'] != '')
+                    {
+                        $parser->set_pcre_recursion_limit($options['pcre_recursion_limit']);
+                    }
+                }
+
+                $template = $parser->run($template);
+
+                break;
         }
-
-        $template = $parser->run($template);
 
         return $this->output($template, $return, $ci, $is_mx);
     }

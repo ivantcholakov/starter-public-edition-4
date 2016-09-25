@@ -78,11 +78,11 @@ class Autoprefixer_controller extends Playground_Base_Controller {
         }
 
         $this->template
-           ->set('clear_form', $clear_form)
-           ->set('is_example', $is_example)
-           ->set('input', $input)
-           ->set('output', $output)
-           ->build('autoprefixer');
+            ->set('clear_form', $clear_form)
+            ->set('is_example', $is_example)
+            ->set('input', $input)
+            ->set('output', $output)
+            ->build('autoprefixer');
     }
 
 }
