@@ -427,6 +427,8 @@ Reported by Webnice Ltd., http://webnicebg.com
 * http://evroforest.com (a parquet seller)
 * http://sip2000.bg (consultancy and training about public procurement)
 * http://lz1866.com (a locomotive services provider)
+* http://www.prista-oil.com/ - production and distribution of motor and industrial oils, greases and special fluids; battery business
+* http://mycity.bg/ - a virtual tourist guide
 
 Reported by Krishna Guragai, @krishnaguragain
 
