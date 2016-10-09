@@ -51,6 +51,50 @@ echo cleartype_ie();
 echo css('lib/semantic/semantic.min.css');
 echo css('lib/font-awesome-4/font-awesome.css');
 
+?>
+
+    <style>
+.navbeer {
+    height: 60px !important;
+}
+.navbeer-brand {
+    display: inline-block;
+}
+.navbeer-brand img {
+    height: 60px !important;
+    line-height: 60px !important;
+}
+/*
+    In case of you are using text for the Brand Name instead image,
+    put your text inside a span tag
+*/
+.navbeer-brand span {
+    line-height: 60px !important;
+    white-space: nowrap;
+    margin-left: 15px;
+    color: #ccc;
+}
+.navbeer-sandwich {
+    position: relative !important;
+    display: none;
+}
+.navbeer-sandwich-icon {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.navbeer-sandwich .menu .icon {
+    position: absolute !important;
+    top: 40% !important;
+    right: 10px !important;
+}
+
+#example {
+    width: 100%;
+}
+    </style>
+
+<?php
+
 // Loading javascripts example.
 echo js_platform();
 echo js_selectivizr();
@@ -68,13 +112,59 @@ echo body_begin('id="page-top"');
 
 ?>
 
-        <div class="ui grid container">
+        <div class="ui grid">
+            <div class="row">
+
+                <!-- See http://chineque.com.br/labs/navbeer/ -->
+                <nav id="example" class="column">
+                    <div class="navbeer ui inverted teal borderless menu page grid">
+                        <div class="navbeer-sandwich ui dropdown item" style="display: none;">
+                            <i class="navbeer-sandwich-icon content big icon"></i>
+                            <div class="navbeer-sandwich-content menu"></div><!--Keep empty-->
+                        </div>
+                        <a class="navbeer-brand" href="#">
+                            <img src="<?php echo base_uri('apple-touch-icon-precomposed.png'); ?>" />
+                            <!--<span><strong>COMPANY NAME</strong></span>-->
+                        </a>
+                        <div class="navbeer-menu right menu">
+                            <a class="item navbeer-collapsable-item" href="#"><strong>ITEM</strong></a>
+                            <a class="item navbeer-collapsable-item" href="#"><strong>ITEM</strong></a>
+                            <a class="item navbeer-collapsable-item" href="#"><strong>ITEM</strong></a>
+                            <div class="navbeer-collapsable-item ui dropdown item">
+                                <strong>DROPDOWN</strong>
+                                <i class="dropdown icon"></i>
+                                <div class="menu">
+                                    <a class="item" href="#"><strong>ITEM</strong></a>
+                                    <a class="item" href="#"><strong>ITEM</strong></a>
+                                    <a class="item" href="#"><strong>ITEM</strong></a>
+                                </div>
+                            </div>
+                            <!-- This link will not collapse -->
+                            <a class="item" href="#"><strong>FIXED ITEM</strong></a>
+                        </div>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+
+        <div class="ui grid page">
 
             <div class="row">
 
                 <div class="column">
 
-                    <p style="margin-top: 40px;">The touch icon should be seen here:</p>
+                    <p>See information about the menu example: <a href="http://chineque.com.br/labs/navbeer/" target="_blank">http://chineque.com.br/labs/navbeer/</a></p>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="column">
+
+                    <p>The touch icon should be seen here:</p>
                     <p><img src="<?php echo base_uri('apple-touch-icon-precomposed.png'); ?>" class="ui image" /></p>
 
                 </div>
@@ -119,7 +209,7 @@ echo body_begin('id="page-top"');
                 <div class="column">
 
                     <p>
-                        <a href="<?php echo site_url('playground'); ?>" class="ui primary button"><i class="fa fa-angle-double-left"></i> Back to the playground</a>
+                        <a href="<?php echo site_url('playground'); ?>" class="ui primary button"><i class="fa fa-angle-double-left"></i> Back to the Playground</a>
                     </p>
 
                 </div>
@@ -135,6 +225,91 @@ echo js_bp_plugins();
 echo js_mbp_helper();
 echo js_scale_fix_ios();
 echo js_imgsizer();
+
+echo js('lib/semantic/semantic.min.js');
+
+?>
+
+
+<script type="text/javascript" src="<?php echo js_url('lib/webfontloader/webfontloader.js'); ?>"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+
+    WebFont.load({
+        //google: {
+            //families: [
+            //     'Roboto:300,400,500,700:latin,cyrillic-ext,greek-ext,greek,vietnamese,latin-ext,cyrillic',
+            //     'Roboto+Condensed:400,300,300italic,700:latin,cyrillic'
+            //]
+        //},
+        custom: {
+            families: [
+                'Icons',
+                'Material Icons',
+                'FontAwesome'
+            ],
+            urls: [
+                ASSET_CSS_URI + 'lib/semantic-icons-default/icons.css',
+                ASSET_CSS_URI + 'lib/material-icons/material-icons.min.css',
+                ASSET_CSS_URI + 'lib/font-awesome-4/font-awesome.min.css'
+            ]
+        },
+        timeout: 2000
+    });
+
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+
+    (function($) {
+
+        $.fn.navBeer = function () {
+            var
+                navBeerBrand    = jQuery('.navbeer-brand', this),
+                navBeerSandwich = jQuery('.navbeer-sandwich', this),
+                navBeerMenu     = jQuery('.navbeer-menu', this),
+                menuWidthCompensation = 30, // Try change this if the navbar is collapsing too early or to later.
+                navBeerWidth    = navBeerBrand.width() + navBeerMenu.width() + menuWidthCompensation,
+                navBeerCollapse = function () {
+                    if (jQuery(window).width() < navBeerWidth) {
+                        // Get the navbar items and put them into the sandwich menu.
+                        navBeerMenu
+                            .find('.navbeer-collapsable-item')
+                            .appendTo(navBeerSandwich.find('.navbeer-sandwich-content'));
+                        navBeerSandwich.show();
+                    } else {
+                        // Give the items back to the navbar.
+                        navBeerSandwich
+                            .hide()
+                            .find('.navbeer-collapsable-item ')
+                            .prependTo(navBeerMenu);
+                        navBeerMenu.show();
+                    }
+                }
+            ;
+            // Check to collapse on page load.
+            navBeerCollapse();
+            // ...or when window resize.
+            jQuery(window).on('resize', function(){
+                navBeerCollapse();
+            });
+        };
+
+    }(jQuery));
+
+    $(function () {
+
+        $('.ui.dropdown').dropdown();
+        $('#example').navBeer();
+    });
+
+//]]>
+</script>
+
+<?php
 
 echo div_debug();
 

@@ -1,0 +1,11 @@
+
+@font-face {
+    font-family: 'Icons';
+    src: url("../../../fonts/semantic/basic/icons.eot");
+    src: url("../../../fonts/semantic/basic/icons.eot?#iefix") format('embedded-opentype'), url("../../../fonts/semantic/basic/icons.woff") format('woff'), url("../../../fonts/semantic/basic/icons.ttf") format('truetype'), url("../../../fonts/semantic/basic/icons.svg#icons") format('svg');
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-decoration: inherit;
+    text-transform: none;
+}
