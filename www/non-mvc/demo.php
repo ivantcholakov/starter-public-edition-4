@@ -49,7 +49,6 @@ echo cleartype_ie();
 
 // A CSS loading example.
 echo css('lib/semantic/semantic.min.css');
-echo css('lib/font-awesome-4/font-awesome.css');
 
 ?>
 
