@@ -237,19 +237,15 @@ echo js('lib/semantic/semantic.min.js');
 //<![CDATA[
 
     WebFont.load({
-        //google: {
-            //families: [
-            //     'Roboto:300,400,500,700:latin,cyrillic-ext,greek-ext,greek,vietnamese,latin-ext,cyrillic',
-            //     'Roboto+Condensed:400,300,300italic,700:latin,cyrillic'
-            //]
-        //},
         custom: {
             families: [
+                'Lato',
                 'Icons',
                 'Material Icons',
                 'FontAwesome'
             ],
             urls: [
+                ASSET_CSS_URI + 'lib/lato/latofonts.min.css',
                 ASSET_CSS_URI + 'lib/semantic-icons-default/icons.css',
                 ASSET_CSS_URI + 'lib/material-icons/material-icons.min.css',
                 ASSET_CSS_URI + 'lib/font-awesome-4/font-awesome.min.css'

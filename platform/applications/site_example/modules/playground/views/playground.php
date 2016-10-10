@@ -29,6 +29,7 @@
 
                     <h3 class="list-group-item no-margin-top">Standalone Pages</h3>
                     <a class="list-group-item" href="<?php echo base_url('non-mvc/demo.php'); ?>">Non-MVC Page Demonstration</a>
+                    <a class="list-group-item" href="<?php echo base_url('non-mvc/lato.php'); ?>">Lato Font Test</a>
                     <a class="list-group-item" href="<?php echo base_url('non-mvc/http_build_url_test.php'); ?>">Testing http_build_url()</a>
                     <a class="list-group-item" href="<?php echo base_url('non-mvc/normalize-v1.css.php'); ?>">Testing normalize.css, v1.x</a>
                     <a class="list-group-item" href="<?php echo base_url('non-mvc/normalize-v2.css.php'); ?>">Testing normalize.css, v2.x</a>

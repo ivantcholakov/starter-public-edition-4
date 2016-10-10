@@ -642,7 +642,6 @@
              Reset
 *******************************/
 /* Border-Box */
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin');
 *,
 *:before,
 *:after {
@@ -2009,6 +2008,9 @@ th {
 /*******************************
              Page
 *******************************/
+/*
+.loadFonts();
+*/
 html,
 body {
   height: 100%;
