@@ -53,16 +53,26 @@ echo css('lib/semantic/semantic.min.css');
 ?>
 
     <style>
+
+/* A Collapsible Main Menu */
+/* See See http://chineque.com.br/labs/navbeer/ */
+
 .navbeer {
     height: 60px !important;
+    border-radius: 0 !important;
 }
+
 .navbeer-brand {
     display: inline-block;
+    outline: 0;
 }
+
 .navbeer-brand img {
     height: 60px !important;
     line-height: 60px !important;
+    outline: 0;
 }
+
 /*
     In case of you are using text for the Brand Name instead image,
     put your text inside a span tag
@@ -72,24 +82,75 @@ echo css('lib/semantic/semantic.min.css');
     white-space: nowrap;
     margin-left: 15px;
     color: #ccc;
+    outline: 0;
 }
+
 .navbeer-sandwich {
     position: relative !important;
     display: none;
 }
+
 .navbeer-sandwich-icon {
     margin: 0 !important;
     padding: 0 !important;
 }
+
 .navbeer-sandwich .menu .icon {
     position: absolute !important;
     top: 40% !important;
     right: 10px !important;
 }
 
-#example {
+#main_menu {
     width: 100%;
 }
+
+/* End Collapsible Main Menu */
+
+/* Sticky Footer */
+
+/* See https://github.com/philipwalton/solved-by-flexbox/blob/master/assets/css/components/site.css */
+
+/**
+ * 1. Avoid the IE 10-11 `min-height` bug.
+ * 2. Set `flex-shrink` to `0` to prevent some browsers from
+ *    letting these items shrink to smaller than their content's default
+ *    minimum size. See http://bit.ly/1Mn35US for details.
+ * 3. Use `%` instead of `vh` since `vh` is buggy in older mobile Safari.
+ */
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* 1, 3 */
+}
+
+body > nav {
+    flex: none; /* 2 */
+    width: 100%;
+}
+
+body > main {
+    flex: 1 0 auto; /* 2 */
+    width: 100%;
+}
+
+body > footer {
+    flex: none; /* 2 */
+    width: 100%;
+}
+
+/* End Sticky Footer */
+
+/* Other Styles */
+
+body > footer {
+    min-height: 60px;
+    background-color: #f5f5f5;
+}
+
+/* End Other Styles */
+
     </style>
 
 <?php
@@ -111,11 +172,13 @@ echo body_begin('id="page-top"');
 
 ?>
 
+    <nav>
+
         <div class="ui grid">
             <div class="row">
 
                 <!-- See http://chineque.com.br/labs/navbeer/ -->
-                <nav id="example" class="column">
+                <div id="main_menu" class="column">
                     <div class="navbeer ui inverted teal borderless menu page grid">
                         <div class="navbeer-sandwich ui dropdown item" style="display: none;">
                             <i class="navbeer-sandwich-icon content big icon"></i>
@@ -142,12 +205,16 @@ echo body_begin('id="page-top"');
                             <a class="item" href="#"><strong>FIXED ITEM</strong></a>
                         </div>
                     </div>
-                </nav>
+                </div>
 
             </div>
         </div>
 
-        <div class="ui grid page">
+    </nav>
+
+    <main>
+
+        <div class="ui vertically padded grid page">
 
             <div class="row">
 
@@ -217,6 +284,23 @@ echo body_begin('id="page-top"');
 
         </div>
 
+    </main>
+
+    <footer>
+
+        <div class="ui vertically padded grid page">
+
+            <div class="row">
+                <div class="column">
+
+                    <p>A Sticky Footer</p>
+
+                </div>
+            </div>
+
+        </div>
+
+    </footer>
 <?php
 
 echo js_jquery_extra_selectors();
@@ -298,7 +382,7 @@ echo js('lib/semantic/semantic.min.js');
     $(function () {
 
         $('.ui.dropdown').dropdown();
-        $('#example').navBeer();
+        $('#main_menu').navBeer();
     });
 
 //]]>
