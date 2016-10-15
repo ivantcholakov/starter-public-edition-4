@@ -84,7 +84,7 @@ body {
     width: 100%;
 }
 
-body > footer {
+#footer {
     flex: none; /* 2 */
     width: 100%;
 }
