@@ -54,6 +54,50 @@ echo css('lib/semantic/semantic.min.css');
 
     <style>
 
+/* Site Structure */
+
+/* Sticky Footer */
+
+/* See https://github.com/philipwalton/solved-by-flexbox/blob/master/assets/css/components/site.css */
+
+/**
+ * 1. Avoid the IE 10-11 `min-height` bug.
+ * 2. Set `flex-shrink` to `0` to prevent some browsers from
+ *    letting these items shrink to smaller than their content's default
+ *    minimum size. See http://bit.ly/1Mn35US for details.
+ * 3. Use `%` instead of `vh` since `vh` is buggy in older mobile Safari.
+ */
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* 1, 3 */
+}
+
+#main_navigation {
+    flex: none; /* 2 */
+    width: 100%;
+}
+
+#main_content {
+    flex: 1 0 auto; /* 2 */
+    width: 100%;
+}
+
+body > footer {
+    flex: none; /* 2 */
+    width: 100%;
+}
+
+/* End Sticky Footer */
+
+#footer {
+    min-height: 60px;
+    background-color: #f5f5f5;
+}
+
+/* End Site Structure */
+
 /* A Collapsible Main Menu */
 /* See See http://chineque.com.br/labs/navbeer/ */
 
@@ -107,50 +151,6 @@ echo css('lib/semantic/semantic.min.css');
 
 /* End Collapsible Main Menu */
 
-/* Sticky Footer */
-
-/* See https://github.com/philipwalton/solved-by-flexbox/blob/master/assets/css/components/site.css */
-
-/**
- * 1. Avoid the IE 10-11 `min-height` bug.
- * 2. Set `flex-shrink` to `0` to prevent some browsers from
- *    letting these items shrink to smaller than their content's default
- *    minimum size. See http://bit.ly/1Mn35US for details.
- * 3. Use `%` instead of `vh` since `vh` is buggy in older mobile Safari.
- */
-
-body {
-    display: flex;
-    flex-direction: column;
-    height: 100%; /* 1, 3 */
-}
-
-body > nav {
-    flex: none; /* 2 */
-    width: 100%;
-}
-
-body > main {
-    flex: 1 0 auto; /* 2 */
-    width: 100%;
-}
-
-body > footer {
-    flex: none; /* 2 */
-    width: 100%;
-}
-
-/* End Sticky Footer */
-
-/* Other Styles */
-
-body > footer {
-    min-height: 60px;
-    background-color: #f5f5f5;
-}
-
-/* End Other Styles */
-
     </style>
 
 <?php
@@ -172,7 +172,7 @@ echo body_begin('id="page-top"');
 
 ?>
 
-    <nav>
+    <nav id="main_navigation">
 
         <div class="ui grid">
             <div class="row">
@@ -212,7 +212,7 @@ echo body_begin('id="page-top"');
 
     </nav>
 
-    <main>
+    <main id="main_content">
 
         <div class="ui vertically padded grid page">
 
@@ -286,7 +286,7 @@ echo body_begin('id="page-top"');
 
     </main>
 
-    <footer>
+    <footer id="footer">
 
         <div class="ui vertically padded grid page">
 
