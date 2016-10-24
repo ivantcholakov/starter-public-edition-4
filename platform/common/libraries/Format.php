@@ -116,14 +116,10 @@ class Format {
      */
     public function factory($data, $from_type = NULL)
     {
-        // Added by Ivan Tcholakov, 01-JUL-2015.
-        $class = __CLASS__;
-        return new $class($data, $from_type);
-        //
+        // $class = __CLASS__;
+        // return new $class($data, $from_type);
 
-        // Removed by Ivan Tcholakov, 01-JUL-2015.
-        //return new static($data, $from_type);
-        //
+        return new static($data, $from_type);
     }
 
     // FORMATTING OUTPUT ---------------------------------------------------------
@@ -180,12 +176,6 @@ class Format {
         if ($data === NULL && func_num_args() === 0)
         {
             $data = $this->_data;
-        }
-
-        // turn off compatibility mode as simple xml throws a wobbly if you don't.
-        if (ini_get('zend.ze1_compatibility_mode') == 1)
-        {
-            ini_set('zend.ze1_compatibility_mode', 0);
         }
 
         if ($structure === NULL)
@@ -438,22 +428,14 @@ class Format {
 
         if (empty($callback) === TRUE)
         {
-            // Modified by Ivan Tcholakov, 26-JUL-2016.
-            // See https://github.com/chriskacerguis/codeigniter-restserver/pull/669
-            //return json_encode($data, JSON_NUMERIC_CHECK);
             return json_encode($data);
-            //
         }
 
         // We only honour a jsonp callback which are valid javascript identifiers
         elseif (preg_match('/^[a-z_\$][a-z0-9\$_]*(\.[a-z_\$][a-z0-9\$_]*)*$/i', $callback))
         {
             // Return the data as encoded json with a callback
-            // Modified by Ivan Tcholakov, 26-JUL-2016.
-            // See https://github.com/chriskacerguis/codeigniter-restserver/pull/669
-            //return $callback.'('.json_encode($data, JSON_NUMERIC_CHECK).');';
             return $callback.'('.json_encode($data).');';
-            //
         }
 
         // An invalid jsonp callback function provided.
@@ -564,5 +546,4 @@ class Format {
     {
         return trim($data);
     }
-
 }

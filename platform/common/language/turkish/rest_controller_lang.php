@@ -1,17 +1,18 @@
 <?php
 
 /*
-* Turkish language
-*/
+ * Turkish language
+ */
 
-$lang['text_rest_invalid_api_key'] = 'Invalid API key %s'; // %s is the REST API key
-$lang['text_rest_invalid_credentials'] = 'Invalid credentials';
-$lang['text_rest_ip_denied'] = 'IP denied';
-$lang['text_rest_ip_unauthorized'] = 'IP unauthorized';
-$lang['text_rest_unauthorized'] = 'Unauthorized';
-$lang['text_rest_ajax_only'] = 'Only AJAX requests are allowed';
-$lang['text_rest_api_key_unauthorized'] = 'This API key does not have access to the requested controller';
-$lang['text_rest_api_key_permissions'] = 'This API key does not have enough permissions';
-$lang['text_rest_api_key_time_limit'] = 'This API key has reached the time limit for this method';
-$lang['text_rest_unknown_method'] = 'Unknown method';
-$lang['text_rest_unsupported'] = 'Unsupported protocol';
+$lang['text_rest_invalid_api_key'] = 'Geçersiz API anahtarı %s'; // %s is the REST API key
+$lang['text_rest_invalid_credentials'] = 'Geçersiz kimlik';
+$lang['text_rest_ip_denied'] = 'IP reddedildi';
+$lang['text_rest_ip_unauthorized'] = 'Yetkisiz IP';
+$lang['text_rest_unauthorized'] = 'İzinsiz';
+$lang['text_rest_ajax_only'] = 'Sadece AJAX isteklerine izin verildi';
+$lang['text_rest_api_key_unauthorized'] = 'Ulaşılmak istenilen controllera API anahtarının erişim yetkisi bulunmamaktadır';
+$lang['text_rest_api_key_permissions'] = 'Bu API anahtarının yeterli yetkisi bulunmamaktadır';
+$lang['text_rest_api_key_time_limit'] = 'API anahtarı bu metod için zaman sınırına ulaştı.';
+$lang['text_rest_ip_address_time_limit'] = 'IP adresi bu metod için zaman sınırına ulaştı.';
+$lang['text_rest_unknown_method'] = 'Bilinmeyen metod';
+$lang['text_rest_unsupported'] = 'Desteklenmeyen protokol';
