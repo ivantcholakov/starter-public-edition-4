@@ -29,38 +29,19 @@ class Twig_Extensions_Extension_Date extends Twig_Extension
      */
     private $translator;
 
-    /**
-     * Constructor.
-     *
-     * @param TranslatorInterface $translator A TranslatorInterface instance.
-     */
     public function __construct(TranslatorInterface $translator = null)
     {
         $this->translator = $translator;
     }
 
     /**
-     * Returns a list of filters.
-     *
-     * @return array
+     * {@inheritdoc}
      */
     public function getFilters()
     {
         return array(
-            new Twig_SimpleFilter('time_diff', array($this, 'diff'), array(
-                'needs_environment' => true,
-            )),
+            new Twig_SimpleFilter('time_diff', array($this, 'diff'), array('needs_environment' => true)),
         );
-    }
-
-    /**
-     * Name of this extension.
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return 'date';
     }
 
     /**
@@ -101,10 +82,18 @@ class Twig_Extensions_Extension_Date extends Twig_Extension
             return $this->translator->transChoice($id, $count, array('%count%' => $count), 'date');
         }
 
-        if ($count > 1) {
+        if (1 !== $count) {
             $unit .= 's';
         }
 
         return $invert ? "in $count $unit" : "$count $unit ago";
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getName()
+    {
+        return 'date';
     }
 }

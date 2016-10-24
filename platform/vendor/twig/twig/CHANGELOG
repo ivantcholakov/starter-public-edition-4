@@ -1,3 +1,16 @@
+* 1.26.1 (2016-10-05)
+
+ * fixed default implementation of Twig_Template::getDebugInfo() for better BC
+ * fixed regression on static calls for functions/filters/tests
+
+* 1.26.0 (2016-10-02)
+
+ * added template cache invalidation based on more environment options
+ * added a missing deprecation notice
+ * fixed template paths when a template is stored in a PHAR file
+ * allowed filters/functions/tests implementation to use a different class than the extension they belong to
+ * deprecated Twig_ExtensionInterface::getName()
+
 * 1.25.0 (2016-09-21)
 
  * changed the way we store template source in template classes
