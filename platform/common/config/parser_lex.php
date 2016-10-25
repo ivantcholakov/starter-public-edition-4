@@ -131,4 +131,6 @@ $config['allowed_functions'] = array(
     'word_limiter',
     'word_wrap',        // CodeIgniter
     'wordwrap',         // PHP
+    // Platform Routines
+    'file_type_icon_fa',    // load file helper.
 );
