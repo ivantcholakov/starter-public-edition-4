@@ -31,7 +31,7 @@ if ($show_info_pane) {
             <div class="col-sm-4">
 <?php
 
-    if ($show_contact_info) {
+    if ($show_map) {
 
         echo Modules::run('contact_map_widget/index');
     }
