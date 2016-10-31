@@ -10,14 +10,6 @@ if ($this->settings->get('mailer_enabled')) {
 
                 <div id="contact_form_feedback_messages" style="display: none;"></div>
 
-                <div id="contact_form_alert_success_wrapper" class="status alert alert-success" style="display: none;">
-                    <div id="contact_form_alert_success"></div>
-                </div>
-
-                <div id="contact_form_alert_error_wrapper" class="status alert alert-danger" style="display: none;">
-                    <div id="contact_form_alert_error"></div>
-                </div>
-
                 <?php echo form_open('', 'class="contact-form" name="main-contact-form" id="main-contact-form" method="post" role="form"'); ?>
 
                     <div class="row">
