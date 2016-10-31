@@ -46,7 +46,7 @@ class Pjax_controller extends Playground_Base_Controller {
 
         $video = 'https://www.youtube.com/watch?v=QTXyXuqfBLA';
 
-        $php_required = '5.3.2';
+        $php_required = '5.4.0';
 
         if (is_php($php_required)) {
             $this->load->library('multiplayer');
