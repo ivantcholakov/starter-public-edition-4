@@ -137,13 +137,13 @@ class Core_Output extends CI_Output {
                 if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) && strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== FALSE)
                 {
                     header('Content-Encoding: gzip');
-                    header('Content-Length: '.strlen($output));
+                    header('Content-Length: '.self::strlen($output));
                 }
                 else
                 {
                     // User agent doesn't support gzip compression,
                     // so we'll have to decompress our cache
-                    $output = gzinflate(substr($output, 10, -8));
+                    $output = gzinflate(self::substr($output, 10, -8));
                 }
             }
 
