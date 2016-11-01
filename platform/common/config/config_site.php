@@ -27,7 +27,7 @@ $config['contact_address_bg'] = 'България, София';
 $config['contact_first_name_bg'] = '';
 $config['contact_last_name_bg'] = '';
 
-$config['contact_map'] = '<iframe width="100%" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?ie=UTF8&amp;t=m&amp;source=embed&amp;ll=42.684454,23.329468&amp;spn=0.436106,1.020355&amp;z=11&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?ie=UTF8&amp;t=m&amp;source=embed&amp;ll=42.684454,23.329468&amp;spn=0.436106,1.020355&amp;z=11" style="color:#0000FF;text-align:left" target="_blank"><i18n>ui_see_a_larger_map</i18n></a></small>';
+$config['contact_map'] = '<iframe width="100%" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?ie=UTF8&amp;t=m&amp;source=embed&amp;ll=42.684454,23.329468&amp;spn=0.436106,1.020355&amp;z=11&amp;output=embed"></iframe>';
 
 
 /*
