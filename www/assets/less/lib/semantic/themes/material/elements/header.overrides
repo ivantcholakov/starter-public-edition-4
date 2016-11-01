@@ -2,7 +2,8 @@
            Overrides
 *******************************/
 
-@import url(https://fonts.googleapis.com/css?family=Roboto);
+// Removed by Ivan Tcholakov, 01-NOV-2016.
+//@import url(https://fonts.googleapis.com/css?family=Roboto);
 
 h1.ui.header,
 .ui.huge.header {

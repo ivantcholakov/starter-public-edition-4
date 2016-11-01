@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto);
+// Removed by Ivan Tcholakov, 01-NOV-2016.
+//@import url(https://fonts.googleapis.com/css?family=Roboto);
 
 .ui.modal .header {
   font-family: "Roboto", Arial, Sans-serif !important;
