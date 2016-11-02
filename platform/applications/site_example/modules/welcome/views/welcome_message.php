@@ -4,8 +4,8 @@
                 Project repository: <a href="https://github.com/ivantcholakov/starter-public-edition-4/" target="_blank">https://github.com/ivantcholakov/starter-public-edition-4/</a>
             </p>
 
-            <div class="alert alert-info">
-                <i class="fa fa-exclamation-circle"></i> Here you can start developing the administration part of your site: <strong><a href="<?php echo base_url('admin-example'); ?>"><?php echo base_url('admin-example'); ?></a></strong>
+            <div class="ui info message">
+                <i class="info circle icon"></i> Here you can start developing the administration part of your site: <strong><a href="<?php echo base_url('admin-example'); ?>"><?php echo base_url('admin-example'); ?></a></strong>
             </div>
 
             <p>A Semantic UI icon: <i class="star icon"></i></p>
