@@ -17,7 +17,7 @@
                     <div class="navbeer ui inverted blue borderless menu page grid">
 
                         <div class="navbeer-sandwich ui dropdown item" style="display: none;">
-                            <i class="navbeer-sandwich-icon content big icon"></i>
+                            <i class="navbeer-sandwich-icon content icon"></i>
                             <div class="navbeer-sandwich-content menu"></div><!--Keep empty-->
                         </div>
 
