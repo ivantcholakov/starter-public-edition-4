@@ -393,12 +393,36 @@ $config['less_compile'] = array(
         'cssmin' => array('implementation' => 'cssnano'),
     ),
 
+    // php cli.php less compile front-semantic-ui-basic-min
+
+    array(
+        'name' => 'front-semantic-ui-basic-min',
+        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_basic/less/front/index.less',
+        'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_basic/css/front.min.css',
+        'relativeUrls' => false,
+        'implementation' => 'less.js',
+        'autoprefixer' => array(),
+        'cssmin' => array('implementation' => 'cssnano'),
+    ),
+
     // php cli.php less compile front-semantic-ui-classic-min
 
     array(
         'name' => 'front-semantic-ui-classic-min',
         'source' => DEFAULTFCPATH.'themes/front_semantic_ui_classic/less/front/index.less',
         'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_classic/css/front.min.css',
+        'relativeUrls' => false,
+        'implementation' => 'less.js',
+        'autoprefixer' => array(),
+        'cssmin' => array('implementation' => 'cssnano'),
+    ),
+
+    // php cli.php less compile front-semantic-ui-github-min
+
+    array(
+        'name' => 'front-semantic-ui-github-min',
+        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_github/less/front/index.less',
+        'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_github/css/front.min.css',
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array(),

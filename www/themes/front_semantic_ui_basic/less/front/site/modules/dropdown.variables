@@ -1,0 +1,7 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+
+@chosen-drop-zindex: 1010;
+@chosen-sprite: url("@{chosen-sprite-path}");
+@chosen-sprite-retina: url("@{chosen-sprite-retina-path}");
