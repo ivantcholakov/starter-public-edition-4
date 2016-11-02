@@ -33,8 +33,16 @@ class Visual_themes extends CI_Model {
                 'name' => 'Semantic UI Basic',
             ),
             array(
+                'key' => 'front_semantic_ui_chubby',
+                'name' => 'Semantic UI Chubby',
+            ),
+            array(
                 'key' => 'front_semantic_ui_classic',
                 'name' => 'Semantic UI Classic',
+            ),
+            array(
+                'key' => 'front_semantic_ui_flat',
+                'name' => 'Semantic UI Flat',
             ),
             array(
                 'key' => 'front_semantic_ui_github',

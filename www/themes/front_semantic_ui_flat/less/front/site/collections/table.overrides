@@ -1,0 +1,7 @@
+/*******************************
+         Site Overrides
+*******************************/
+
+.ui.table thead td {
+    border-bottom: @headerBorder;
+}

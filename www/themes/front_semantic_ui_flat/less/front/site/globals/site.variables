@@ -1,0 +1,36 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+/*-------------------
+      Base Sizes
+--------------------*/
+
+/* This is the single variable that controls them all */
+@emSize   : 16px;
+
+/* The size of page text  */
+@fontSize : 16px;
+
+/*-------------------
+        Page
+--------------------*/
+
+@pageOverflowX       : hidden;
+
+/*-------------------
+     Breakpoints
+--------------------*/
+
+@mobileBreakpoint            : 320px;
+@tabletBreakpoint            : 768px;
+@computerBreakpoint          : 992px;
+@largeMonitorBreakpoint      : 1200px;
+@widescreenMonitorBreakpoint : 1920px;
+
+/*-------------------
+    Derived Values
+--------------------*/
+
+/* Minimum Mobile Width */
+@pageMinWidth       : 320px;
