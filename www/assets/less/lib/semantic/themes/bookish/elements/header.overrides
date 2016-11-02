@@ -2,7 +2,8 @@
            Overrides
 *******************************/
 
-@import url(http://fonts.googleapis.com/css?family=Karma);
+// Removed by Ivan Tcholakov, 02-NOV-2016.
+//@import url(http://fonts.googleapis.com/css?family=Karma);
 
 h1.ui.header,
 .ui.huge.header {
