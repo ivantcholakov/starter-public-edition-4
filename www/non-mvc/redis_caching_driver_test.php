@@ -17,7 +17,7 @@ echo viewport();
 
 ?>
 
-        <title>Testing http_build_url()</title>
+        <title>Redis Caching Driver Test</title>
 <?php
 
 echo favicon();
