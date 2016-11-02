@@ -1,0 +1,36 @@
+{#
+Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2016
+The MIT License, http://opensource.org/licenses/MIT
+#}
+
+{% if not driver_ok %}
+
+                                <div class="ui orange message">pdo_sqlite database driver is needed for this demo to work.</div>
+
+{% else %}
+
+                                {{ form_open("", 'id="test_form" method="post" class="ui form"') }}
+
+                                    <div class="field">
+
+                                        <label for="country_id">
+                                            Country:
+                                        </label>
+
+{{ widget(
+    'playground/country_dropdown_widget/index',
+    { 'element_name': 'country_id', 'element_class': '', 'value': set_value('country_id', '') }|array
+) }}
+
+                                    </div>
+
+                                    <div class="field">
+
+                                        <div id="map_canvas" class="ui 16:9 embed"></div>
+                                        <p id="larger_map" style="display: none;"></p>
+
+                                    </div>
+
+                                {{ form_close() }}
+
+{% endif %}

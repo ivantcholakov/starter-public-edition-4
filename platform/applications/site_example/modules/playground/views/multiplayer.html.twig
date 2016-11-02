@@ -1,0 +1,30 @@
+{#
+Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2016
+The MIT License, http://opensource.org/licenses/MIT
+#}
+
+{% if not system_requirements_ok %}
+
+                <div class="ui orange message">
+                   PHP {{ php_required }} is required for this example.
+                </div>
+
+{% else %}
+
+                <div class="ui grid">
+
+    {% for video in videos %}
+
+                    <div class="sixteen wide mobile eight wide tablet four wide computer column break word">
+
+                        <div class="ui 16:9 embed">{{ multiplayer.html(video)|raw }}</div>
+
+                        <p><a href="{{ video|e('html_attr') }}" target="_blank">{{ video }}</a></p>
+
+                    </div>
+
+    {% endfor %}
+
+                </div>
+
+{% endif %}

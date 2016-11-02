@@ -26,7 +26,7 @@ class Country_dropdown_widget_controller extends Base_Widget_Controller {
         $options = $this->countries->get_dropdown($language);
         $codes = $this->countries->get_dropdown_codes();
 
-        $this->load->view('country_dropdown_widget', compact('element_name', 'element_id', 'element_class', 'value', 'language', 'options', 'codes'), false, 'i18n');
+        $this->load->view('country_dropdown_widget', compact('element_name', 'element_id', 'element_class', 'value', 'language', 'options', 'codes'));
     }
 
 }

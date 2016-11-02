@@ -13,26 +13,28 @@ if (!empty($theme_switcher)) {
 
 ?>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" i18n:title="ui_switch_language"><?php echo 'Theme: '.(isset($item_active['label']) ? $item_active['label'] : ''); ?> <span class="fa fa-caret-down"></span></a>
-                            <ul class="dropdown-menu">
+                    <div class="navbeer-collapsable-item ui dropdown item">
+
+                            <?php echo 'Theme: '.(isset($item_active['label']) ? $item_active['label'] : ''); ?>
+                            <i class="dropdown icon"></i>
+
+                            <div class="menu">
 <?php
 
     foreach ($theme_switcher as $key => $item) {
 
 ?>
 
-                                <li<?php if (!empty($item['active'])) { ?> class="active"<?php } ?>><a href="<?php echo $item['link']; ?>"><?php echo $item['label']; ?></a></li>
+                                <a class="item<?php if (!empty($item['active'])) { ?> active<?php } ?>" href="<?php echo $item['link']; ?>"><?php echo $item['label']; ?></a>
 <?php
 
     }
 
 ?>
 
-                            </ul>
-                        </li>
-                    </ul>
+                            </div>
+
+                    </div>
 
 <?php
 

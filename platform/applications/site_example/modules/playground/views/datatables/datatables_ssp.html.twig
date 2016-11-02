@@ -1,0 +1,58 @@
+
+{{ partial('subnavbar') }}
+
+{% if not driver_ok %}
+            <div class="ui orange message">pdo_sqlite database driver is needed for this demo to work.</div>
+{% endif %}
+
+                        <table class="ui celled striped selectable compact table" id="datatable">
+
+                            <thead>
+
+                                <tr>
+                                    <th class="two wide">id</th>
+                                    <th class="two wide">ISO-3166 Code</th>
+                                    <th>Country Name</th>
+                                    <th class="two wide">Flag</th>
+                                    <th class="collapsing">{{ lang('ui_actions') }}</th>
+                                </tr>
+
+                                <tr>
+                                    <td><div class="ui fluid input"><input id="search_id" type="text" placeholder="{{ lang('ui_search')|e('html_attr') }}" /></div></td>
+                                    <td><div class="ui fluid input"><input id="search_iso_code" type="text" placeholder="{{ lang('ui_search')|e('html_attr') }}" /></div></td>
+                                    <td><div class="ui fluid input"><input id="search_country_name" type="text" placeholder="{{ lang('ui_search')|e('html_attr') }}" /></div></td>
+                                    <td></td>
+                                    <td>
+                                       <a href="javascript://" class="compact positive ui icon button" title="{{ lang('ui_add')|e('html_attr') }}"><i class="add circle icon"></i></a>
+                                    </td>
+                                </tr>
+
+                            </thead>
+
+                            <tfoot>
+
+                                <tr>
+                                    <th>id</th>
+                                    <th>ISO-3166 Code</th>
+                                    <th>Country Name</th>
+                                    <th>Flag</th>
+                                    <th>{{ lang('ui_actions') }}</th>
+                                </tr>
+
+                            </tfoot>
+
+                            <tbody>
+                                <tr>
+                                    <td colspan="5" class="dataTables_empty">
+                                        <div class="ui active centered inline text loader">{{ lang('ui_loading_data_from_server') }}</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                        <div class="ui hidden clearing divider"></div>
+
+                        <div class='ui message'>
+                            {{ readme|raw }}
+                        </div>

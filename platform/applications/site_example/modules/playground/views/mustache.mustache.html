@@ -3,50 +3,38 @@ Author Ivan Tcholakov <ivantcholakov@gmail.com>, 2016
 License The MIT License, http://opensource.org/licenses/MIT
 -->
 
-        <section>
+            <div class="ui grid">
 
-            <div class="container">
+                <div class="sixteen wide mobile eight wide tablet four wide computer column">
 
-                <div class="page-header">
-                    <h1>{{#template}}{{page_title}}{{/template}}</h1>
+                    <h4>Data (JSON Encoded)</h4>
+
+                    <pre>{{data_json}}</pre>
+
                 </div>
 
-                <div class="row">
+                <div class="sixteen wide mobile eight wide tablet four wide computer column">
 
-                    <div class="col-md-3">
+                    <h4>The Template</h4>
 
-                        <h4>Data (JSON Encoded)</h4>
+                    <pre>{{mustache_template}}</pre>
 
-                        <pre>{{data_json}}</pre>
+                </div>
 
-                    </div>
+                <div class="sixteen wide mobile eight wide tablet four wide computer column">
 
-                    <div class="col-md-3">
+                    <h4>The PHP Parser Result</h4>
 
-                        <h4>The Template</h4>
+                    {{{mustache_result}}}
 
-                        <pre>{{mustache_template}}</pre>
+                </div>
 
-                    </div>
+                <div class="sixteen wide mobile eight wide tablet four wide computer column">
 
-                    <div class="col-md-3">
+                    <h4>The JavaScript Parser Result</h4>
 
-                        <h4>The PHP Parser Result</h4>
-
-                        {{{mustache_result}}}
-
-                    </div>
-
-                    <div class="col-md-3">
-
-                        <h4>The JavaScript Parser Result</h4>
-
-                        <div id="the_result"></div>
-
-                    </div>
+                    <div id="the_result"></div>
 
                 </div>
 
             </div>
-
-        </section>

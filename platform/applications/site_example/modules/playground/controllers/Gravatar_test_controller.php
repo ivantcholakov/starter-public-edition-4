@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) { exit('No direct script access allowed.'); }
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -47,6 +47,7 @@ class Gravatar_test_controller extends Playground_Base_Controller {
         $gravatar = null;
         $profile = null;
         $last_error = 0;
+        $show_profile = false;
 
         $this->form_validation->set_rules($validation_rules);
 
@@ -57,6 +58,7 @@ class Gravatar_test_controller extends Playground_Base_Controller {
             $gravatar = $this->gravatar->get($email);
             $profile = $this->gravatar->get_profile_data($email);
             $last_error = $this->gravatar->last_error($email);
+            $show_profile = true;
 
         } elseif (validation_errors()) {
 
@@ -67,7 +69,7 @@ class Gravatar_test_controller extends Playground_Base_Controller {
         $this->captcha->clear();
 
         $this->template
-            ->set(compact('email', 'gravatar', 'profile', 'last_error'))
+            ->set(compact('email', 'gravatar', 'profile', 'last_error', 'show_profile'))
             ->build('gravatar_test');
     }
 

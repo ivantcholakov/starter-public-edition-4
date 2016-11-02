@@ -1,29 +1,13 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2015
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
-
-?>
-
-        <section>
-
-            <div class="container">
-
-<?php
 
 template_partial('subnavbar');
 
 ?>
-
-                <div class="page-header">
-                    <h1><?php echo $template['page_title']; ?></h1>
-                </div>
-
-                <div class="row">
-
-                    <div class="col-md-12">
 
                         <p>
                             Articles:
@@ -52,11 +36,3 @@ template_partial('subnavbar');
                             <li><a href="<?php echo site_url('playground/rest/server-api-example/users?format=html'); ?>">Users</a> - get it in HTML (users?format=html)</li>
                             <li><a href="<?php echo site_url('playground/rest/server-api-example/users/format/debug'); ?>">Users</a> - get it as a debugging HTML preview</li>
                         </ol>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>

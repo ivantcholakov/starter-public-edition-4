@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013-2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  *
  * Put this widget within a view in the following way:
@@ -45,7 +45,7 @@ class Contact_form_widget_controller extends Core_Controller {
 
         $data['mailer_error_html'] = $this->load->view('messages_html', array('success' => false, 'message' => $this->lang->line('mailer_error').' (AJAX)'), true);
 
-        $this->load->view('contact_form_widget', $data, false, 'i18n');
+        $this->load->view('contact_form_widget', $data);
     }
 
 }

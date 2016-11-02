@@ -1,0 +1,42 @@
+{#
+
+https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/webfont-optimization
+https://developers.google.com/fonts/docs/webfont_loader
+https://github.com/typekit/webfontloader
+https://github.com/typekit/fvd
+https://google-webfonts-helper.herokuapp.com
+
+#}
+
+    <script type="text/javascript" src="{{ js_url('lib/webfontloader/webfontloader.js') }}"></script>
+
+    <script type="text/javascript">
+    //<![CDATA[
+
+        WebFont.load({
+            google: {
+                families: [
+                     'Roboto:300,400,500,700:latin,cyrillic-ext,greek-ext,greek,vietnamese,latin-ext,cyrillic',
+                     'Roboto+Condensed:400,300,300italic,700:latin,cyrillic'   
+                ]
+            },
+            custom: {
+                families: [
+                    'Lato',
+                    'Icons',
+                    'FontAwesome',
+                    'Material Icons'
+                ],
+                urls: [
+                    ASSET_CSS_URI + 'lib/lato/latofonts.min.css',
+                    ASSET_CSS_URI + 'lib/semantic-icons-default/icons.css',
+                    //ASSET_CSS_URI + 'lib/font-awesome-4/font-awesome.min.css',
+                    ASSET_CSS_URI + 'lib/font-awesome-4-actions/font-awesome.min.css',
+                    ASSET_CSS_URI + 'lib/material-icons/material-icons.min.css'
+                ]
+            },
+            timeout: 2000
+        });
+
+    //]]>
+    </script>

@@ -1,0 +1,174 @@
+{{ html_begin() }}
+{{ head_begin() }}
+{{ meta_charset() }}
+
+{{ base_href() }}
+{{ ie_edge() }}
+
+{{ html_title() }}
+{{ metadata() }}
+
+{{ viewport() }}
+{{ favicon() }}
+{{ apple_touch_icon_precomposed() }}
+{{ cleartype_ie() }}
+
+{{ js_platform() }}
+{{ file_partial('webfontloader') }}
+{{ theme_css('front.min.css') }}
+{{ file_partial('css') }}
+{{ partial('css') }}
+{{ js('lib/phpjs/phpjs.min.js') }}
+{{ js_selectivizr() }}
+{{ js_modernizr() }}
+{{ js_respond() }}
+{{ js_jquery() }}
+{{ js('lib/jquery-json/jquery.json.js') }}
+{{ partial('ckeditor') }}
+{{ partial('head') }}
+
+{{ head_end() }}
+
+{% set body_attr = {'id': 'page-top'} %}
+{% if template.module is not empty %}
+    {% set body_attr = html_attr_add_class(body_attr, template.module ~ '_module') %}
+{% endif %}
+{% if template.controller is not empty %}
+    {% set body_attr = html_attr_add_class(body_attr, template.controller) %}
+{% endif %}
+{% if template.method is not empty %}
+    {% set body_attr = html_attr_add_class(body_attr, template.method ~ '_method') %}
+{% endif %}
+{% if id is not empty %}
+    {% set body_attr = html_attr_add_class(body_attr, 'item_' ~ id) %}
+{% endif %}
+{{ body_begin(body_attr) }}
+
+{{ widget('main_menu_widget') }}
+
+    <header id="header">
+
+        <div class="ui vertically padded grid page">
+
+{{ widget('breadcrumb_widget') }}
+
+{% if template.page_title is not empty %}
+
+            <div class="row">
+                <div class="column">
+
+                    <h1 class="ui header">{{ template.page_title }}</h1>
+
+                </div>
+            </div>
+
+{% endif %}
+
+        </div>
+
+    </header>
+
+    <main id="main_content">
+
+        <div class="ui vertically padded grid page">
+
+{{ widget('feedback_messages_widget', {
+    'feedback_message_target': feedback_message_target,
+    'normal_message': normal_message,
+    'confirmation_message': confirmation_message,
+    'warning_message': warning_message,
+    'error_message': error_message
+}) }}
+
+            <div class="row">
+                <div id="content-container" class="sixteen wide column">
+
+{{ body() }}
+
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+{{ widget('footer_widget') }}
+
+{{ js_jquery_extra_selectors() }}
+{{ js_bp_plugins() }}
+{{ js_mbp_helper() }}
+{{ js_scale_fix_ios() }}
+{{ js_imgsizer() }}
+
+{{ js('lib/semantic/semantic.min.js') }}
+
+{{ file_partial('scripts') }}
+{{ partial('scripts') }}
+
+{{ js('lib/google-code-prettify/prettify.js') }}
+{{ js('site_example.js') }}
+
+<script type="text/javascript">
+//<![CDATA[
+
+    (function($) {
+
+        $.fn.navBeer = function () {
+            var
+                navBeerBrand    = jQuery('.navbeer-brand', this),
+                navBeerSandwich = jQuery('.navbeer-sandwich', this),
+                navBeerMenu     = jQuery('.navbeer-menu', this),
+                //menuWidthCompensation = 30, // Try change this if the navbar is collapsing too early or to later.
+                menuWidthCompensation = 550,
+                navBeerWidth    = navBeerBrand.width() + navBeerMenu.width() + menuWidthCompensation,
+                navBeerCollapse = function () {
+                    if (jQuery(window).width() < navBeerWidth) {
+                        // Get the navbar items and put them into the sandwich menu.
+                        navBeerMenu
+                            .find('.navbeer-collapsable-item')
+                            .appendTo(navBeerSandwich.find('.navbeer-sandwich-content'));
+                        navBeerSandwich.show();
+                    } else {
+                        // Give the items back to the navbar.
+                        navBeerSandwich
+                            .hide()
+                            .find('.navbeer-collapsable-item ')
+                            .prependTo(navBeerMenu);
+                        navBeerMenu.show();
+                    }
+                }
+            ;
+            // Check to collapse on page load.
+            navBeerCollapse();
+            // ...or when window resize.
+            jQuery(window).on('resize', function(){
+                navBeerCollapse();
+            });
+        };
+
+    }(jQuery));
+
+    $(function () {
+
+        $('.ui.dropdown').dropdown();
+        $('#main_menu').navBeer();
+
+        $('body').on('click', '.message .close', function() {
+
+            $(this)
+              .closest('.message')
+              .transition('fade')
+            ;
+        });
+;
+    });
+
+//]]>
+</script>
+
+    <div id="debug"></div>
+
+{{ file_partial('google_analytics') }}
+
+{{ body_end() }}
+{{ html_end() }}

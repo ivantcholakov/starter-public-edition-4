@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed.');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015-2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -46,15 +46,21 @@ class Pjax_controller extends Playground_Base_Controller {
 
         $video = 'https://www.youtube.com/watch?v=QTXyXuqfBLA';
 
+        $multiplayer = null;
         $php_required = '5.4.0';
+        $system_requirements_ok = is_php($php_required);
 
-        if (is_php($php_required)) {
+        if ($system_requirements_ok) {
+
             $this->load->library('multiplayer');
+            $multiplayer = $this->multiplayer;
         }
 
         $this->template
+            ->set('multiplayer', $multiplayer)
             ->set('video', $video)
             ->set('php_required', $php_required)
+            ->set('system_requirements_ok', $system_requirements_ok)
             ->append_title('Pjax - Test Page 2')
             ->set_breadcrumb('Pjax', site_url('playground/pjax'))
             ->set_breadcrumb('Pjax - Test Page 2', site_url('playground/pjax/page-2'))

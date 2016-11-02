@@ -1,0 +1,253 @@
+{#
+Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2016
+The MIT License, http://opensource.org/licenses/MIT
+#}
+
+                <div class="two column stackable ui grid">
+
+                    <div class="column">
+
+                        <h3>JavaScript Implementation</h3>
+
+                        <p><a href="https://github.com/mdp/gibberish-aes" target="_blank">https://github.com/mdp/gibberish-aes</a></p>
+
+{%
+set source_1 = 'var pass = \'' ~ pass ~ '\';
+var secret_string = \'' ~ secret_string ~ '\';
+GibberishAES.size(256);    // Also 192, 128
+var encrypted_secret_string = GibberishAES.enc(secret_string, pass);
+var decrypted_secret_string = GibberishAES.dec(encrypted_secret_string, pass);
+GibberishAES.size(256);  // Restore the default key size.'
+%}
+
+                        <pre>{{ source_1 }}</pre>
+
+                        <table class="ui celled table" style="table-layout: fixed; word-wrap: break-word;">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Results:</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td colspan="2"><strong>256-bit key:</strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 50%;">encrypted_secret_string</td>
+                                    <td><span id="encrypted_secret_string_256">&nbsp;</span></td>
+                                </tr>
+                                <tr>
+                                    <td>decrypted_secret_string</td>
+                                    <td><span id="decrypted_secret_string_256">&nbsp;</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2"><strong>192-bit key:</strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 50%;">encrypted_secret_string</td>
+                                    <td><span id="encrypted_secret_string_192">&nbsp;</span></td>
+                                </tr>
+                                <tr>
+                                    <td>decrypted_secret_string</td>
+                                    <td><span id="decrypted_secret_string_192">&nbsp;</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2"><strong>128-bit key:</strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 50%;">encrypted_secret_string</td>
+                                    <td><span id="encrypted_secret_string_128">&nbsp;</span></td>
+                                </tr>
+                                <tr>
+                                    <td>decrypted_secret_string</td>
+                                    <td><span id="decrypted_secret_string_128">&nbsp;</span></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <div class="column">
+
+                        <h3>PHP Implementation</h3>
+
+                        <p><a href="https://github.com/ivantcholakov/gibberish-aes-php" target="_blank">https://github.com/ivantcholakov/gibberish-aes-php</a></p>
+
+{%
+set source_2 = '$pass = \'' ~ pass ~ '\'
+$secret_string = \'' ~ secret_string ~ '\';
+$old_key_size = GibberishAES::size();
+GibberishAES::size(256);    // Also 192, 128
+$encrypted_secret_string = GibberishAES::enc($secret_string, $pass);
+$decrypted_secret_string = GibberishAES::dec($encrypted_secret_string, $pass);
+GibberishAES::size($old_key_size);  // Restore the old key size.'
+%}
+
+                        <pre>{{ source_2 }}</pre>
+
+                        <table class="ui celled table" style="table-layout: fixed; word-wrap: break-word;">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Results:</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td colspan="2"><strong>256-bit key:</strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 50%;">$encrypted_secret_string</td>
+                                    <td>{{ encrypted_secret_string_256 }}</td>
+                                </tr>
+                                <tr>
+                                    <td>$decrypted_secret_string</td>
+                                    <td>{{ decrypted_secret_string_256 }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2"><strong>192-bit key:</strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 50%;">$encrypted_secret_string</td>
+                                    <td>{{ encrypted_secret_string_192 }}</td>
+                                </tr>
+                                <tr>
+                                    <td>$decrypted_secret_string</td>
+                                    <td>{{ decrypted_secret_string_192 }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2"><strong>128-bit key:</strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 50%;">$encrypted_secret_string</td>
+                                    <td>{{ encrypted_secret_string_128 }}</td>
+                                </tr>
+                                <tr>
+                                    <td>$decrypted_secret_string</td>
+                                    <td>{{ decrypted_secret_string_128 }}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+
+                <h3>Implementation Compatibility Test</h3>
+
+                <div class="two column stackable ui grid">
+
+                    <div class="column">
+
+                        <h4>Encryption on PHP, Decryption on JavaScript</h4>
+
+                        <table class="ui celled table" style="table-layout: fixed; word-wrap: break-word;">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Results:</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td colspan="2"><strong>256-bit key:</strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 50%;">$encrypted_secret_string</td>
+                                    <td>{{ encrypted_secret_string_256 }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>decrypted_secret_string</td>
+                                    <td><span id="decrypted_secret_string_256_js">&nbsp;</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2"><strong>192-bit key:</strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 50%;">$encrypted_secret_string</td>
+                                    <td>{{ encrypted_secret_string_192 }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>decrypted_secret_string</td>
+                                    <td><span id="decrypted_secret_string_192_js">&nbsp;</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2"><strong>128-bit key:</strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 50%;">$encrypted_secret_string</td>
+                                    <td>{{ encrypted_secret_string_128 }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>decrypted_secret_string</td>
+                                    <td><span id="decrypted_secret_string_128_js">&nbsp;</span></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <div class="column">
+
+                        <h4>Encryption on JavaScript, Decryption on PHP</h4>
+
+                        <table class="ui celled table" style="table-layout: fixed; word-wrap: break-word;">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Results:</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td colspan="2"><strong>256-bit key:</strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 50%;">encrypted_secret_string</td>
+                                    <td><span id="encrypted_secret_string_256_js">&nbsp;</span></td>
+                                </tr>
+                                <tr>
+                                    <td>$decrypted_secret_string</td>
+                                    <td><span id="decrypted_secret_string_256_php">&nbsp;</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2"><strong>192-bit key:</strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 50%;">encrypted_secret_string</td>
+                                    <td><span id="encrypted_secret_string_192_js">&nbsp;</span></td>
+                                </tr>
+                                <tr>
+                                    <td>$decrypted_secret_string</td>
+                                    <td><span id="decrypted_secret_string_192_php">&nbsp;</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2"><strong>128-bit key:</strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 50%;">encrypted_secret_string</td>
+                                    <td><span id="encrypted_secret_string_128_js">&nbsp;</span></td>
+                                </tr>
+                                <tr>
+                                    <td>$decrypted_secret_string</td>
+                                    <td><span id="decrypted_secret_string_128_php">&nbsp;</span></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>

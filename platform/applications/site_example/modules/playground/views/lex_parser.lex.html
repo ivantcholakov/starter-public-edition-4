@@ -5,44 +5,35 @@ License: The MIT License, http://opensource.org/licenses/MIT
 #}}
 
 {{ asset:css_inline }}
+
 .image-container {
     border: 1px solid blue;
     display:table-cell;
     vertical-align:middle;
     text-align: center;
 }
+
 .image-container-120x180 {
     width: 120px;
     height: 180px;
 }
+
 .image-container-180x120 {
     width: 180px;
     height: 120px;
 }
+
 {{ /asset:css_inline }}
 
-        <section>
+                            <p>See <a href="https://github.com/pyrocms/lex" target="_blank">https://github.com/pyrocms/lex</a></p>
 
-            <div class="container">
-
-                <div class="page-header">
-                    <h1>{{ template:page_title }}</h1>
-                </div>
-
-                <div class="row">
-
-                    <div class="col-md-12">
-
-                        <p>See <a href="https://github.com/pyrocms/lex" target="_blank">https://github.com/pyrocms/lex</a></p>
-
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover">
+                            <table class="ui celled fixed table">
 
                                 <thead>
 
                                     <tr>
-                                        <th class="col-sm-8" style="min-width: 300px;">Lex Code</th>
-                                        <th class="col-sm-4">Result</th>
+                                        <th class="eight wide">Lex Code</th>
+                                        <th class="eight wide">Result</th>
                                     </tr>
 
                                 </thead>
@@ -58,8 +49,8 @@ License: The MIT License, http://opensource.org/licenses/MIT
 
                                 <tbody>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Syntax (Source: <a href="http://docs.pyrocms.com/2.2/manual/guides/pyrocms-tags" target="_blank">PyroCMS Tags</a>)</h4>
                                         </td>
                                     </tr>
@@ -337,8 +328,8 @@ not  /  !
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Accessing Variables</h4>
                                         </td>
                                     </tr>
@@ -469,8 +460,8 @@ Hello, {{ name }}!
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Debugging Previews</h4>
                                         </td>
                                     </tr>
@@ -511,8 +502,8 @@ Hello, {{ name }}!
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Assigning Variables</h4>
                                             <p>Note: Only <strong>helper:get</strong> can access variables assigned within a template.</p>
                                         </td>
@@ -672,8 +663,8 @@ Hello, {{ name }}!
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Type Casting</h4>
                                         </td>
                                     </tr>
@@ -741,8 +732,8 @@ Hello, {{ name }}!
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Helper Functions</h4>
                                         </td>
                                     </tr>
@@ -1665,8 +1656,8 @@ width = 180px, height = 120px
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Session</h4>
                                         </td>
                                     </tr>
@@ -1710,8 +1701,8 @@ width = 180px, height = 120px
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Constants and Global Properties</h4>
                                         </td>
                                     </tr>
@@ -2067,8 +2058,8 @@ width = 180px, height = 120px
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Configuration, Settings</h4>
                                         </td>
                                     </tr>
@@ -2091,8 +2082,8 @@ width = 180px, height = 120px
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>HTML</h4>
                                         </td>
                                     </tr>
@@ -2142,8 +2133,8 @@ width = 180px, height = 120px
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Formatters, Parsers</h4>
                                         </td>
                                     </tr>
@@ -2170,8 +2161,8 @@ width = 180px, height = 120px
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Web Assets</h4>
                                         </td>
                                     </tr>
@@ -2327,8 +2318,8 @@ document.write("Hello World!");
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Template</h4>
                                         </td>
                                     </tr>
@@ -2652,8 +2643,8 @@ document.write("Hello World!");
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Visual Themes</h4>
                                         </td>
                                     </tr>
@@ -2676,8 +2667,8 @@ document.write("Hello World!");
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>URL/URI Handling</h4>
                                         </td>
                                     </tr>
@@ -2870,8 +2861,8 @@ document.write("Hello World!");
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Language</h4>
                                         </td>
                                     </tr>
@@ -2974,8 +2965,8 @@ document.write("Hello World!");
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Widgets</h4>
                                         </td>
                                     </tr>
@@ -3007,8 +2998,8 @@ document.write("Hello World!");
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Extending Layouts (See <a href="https://bitbucket.org/getunik/pyrocms-layout-module" target="_blank">Layout module for PyroCMS</a>)</h4>
                                         </td>
                                     </tr>
@@ -3071,12 +3062,3 @@ document.write("Hello World!");
                                 </tbody>
 
                             </table>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>

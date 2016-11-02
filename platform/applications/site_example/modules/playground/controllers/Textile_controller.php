@@ -23,7 +23,16 @@ class Textile_controller extends Playground_Base_Controller {
 
     public function index() {
 
+        $text = str_replace('BASE_URL', base_url(), @ file_get_contents($this->load->path('test.textile')));
+
+        try {
+            $html = str_replace('BASE_URL', base_url(), $this->load->view('test.textile', null, true, 'textile'));
+        } catch (Exception $e) {
+            $html = $e->getMessage();
+        }
+
         $this->template
+            ->set(compact('text', 'html'))
             ->build('textile');
     }
 

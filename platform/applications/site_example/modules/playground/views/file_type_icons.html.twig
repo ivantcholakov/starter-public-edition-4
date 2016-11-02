@@ -1,0 +1,45 @@
+{#
+Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2016
+The MIT License, http://opensource.org/licenses/MIT
+#}
+
+{% if file_extensions is not empty %}
+
+                        <table class="ui celled striped selectable compact table">
+
+                            <thead>
+
+                                <tr>
+                                    <th class="col-sm-1">File Name</th>
+                                    <th class="col-sm-1">Icon Class</th>
+                                    <th class="col-sm-1">Icon</th>
+                                </tr>
+
+                            </thead>
+
+                            <tfoot>
+
+                                <tr>
+                                    <th>File Name</th>
+                                    <th>Icon Class</th>
+                                    <th>Icon</th>
+                                </tr>
+
+                            </tfoot>
+
+                            <tbody>
+
+    {% for ext in file_extensions %}
+        {% set file_name = 'x.' ~ ext %}
+                                <tr>
+                                    <td>{{ file_name }}</td>
+                                    <td>{{ file_type_icon_fa(file_name) }}</td>
+                                    <td><i class="fa fa-2x {{ file_type_icon_fa(file_name) }}"></i></td>
+                                </tr>
+    {% endfor %}
+
+                            </tbody>
+
+                        </table>
+
+{% endif %}

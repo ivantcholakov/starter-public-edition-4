@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) { exit('No direct script access allowed.'); }
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -57,9 +57,6 @@ class Jquery_chosen_controller extends Playground_Base_Controller {
 
         $this->form_validation->set_rules($validation_rules);
 
-        $success = false;
-        $messages = array();
-
         if ($this->form_validation->run()) {
 
             // Read data.
@@ -72,21 +69,20 @@ class Jquery_chosen_controller extends Playground_Base_Controller {
             $country_1_name = $this->countries->select('name')->as_value()->get($country_1);
             $country_2_name = $this->countries->select('name')->as_value()->get($country_2);
 
-            $messages[] =
+            $this->template->set('confirmation_message',
                 'You have just chosen:<br />'.
                 '<strong>Country 1:</strong> '.$country_1_name.'<br />'.
-                '<strong>Country 2:</strong> '.$country_2_name;
-
-            $success = true;
+                '<strong>Country 2:</strong> '.$country_2_name
+            );
 
         } elseif (validation_errors()) {
 
-            $messages = validation_errors_array();
-            $this->template->set('validation_errors', $messages);
+            $this->template->set('error_message', '<ul>'.validation_errors('<li>', '</li>').'</ul>');
+            $this->template->set('validation_errors', validation_errors_array());
         }
 
         $this->template
-            ->set(compact('success', 'messages', 'country_1', 'country_2', 'country_names'))
+            ->set(compact('country_1', 'country_2', 'country_names'))
             ->set('driver_ok', $this->driver_ok)
             ->set_partial('scripts', 'jquery_chosen_scripts')
             ->build('jquery_chosen');

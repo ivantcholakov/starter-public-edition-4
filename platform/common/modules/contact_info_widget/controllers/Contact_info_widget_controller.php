@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013-2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  *
  * Put this widget within a view in the following way:
@@ -36,7 +36,7 @@ class Contact_info_widget_controller extends Core_Controller {
             return;
         }
 
-        $this->load->view('contact_info_widget', compact('contacts'), false, 'i18n');
+        $this->load->view('contact_info_widget', compact('contacts'));
     }
 
     public function parse_contacts($contacts) {

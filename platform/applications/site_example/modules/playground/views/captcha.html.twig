@@ -1,0 +1,24 @@
+{#
+Ivan Tcholakov <ivantcholakov@gmail.com>, 2013-2016
+The MIT License, http://opensource.org/licenses/MIT
+#}
+
+            <p>Note: Examine the contact form as a real captcha usage example.</p>
+
+            <h4>Click on the image:</h4>
+
+            <p>
+
+                <div>
+                    <img id="captcha_image"
+                        src="{{ captcha().src ~ '?nocache=' ~ rand(100000000, 999999999) }}"
+                        style="cursor: pointer;"
+                        title="{{ lang('captcha.tip')|e('html_attr') }}"
+                    />
+                </div>
+
+            </p>
+
+            <h4>User input simulation:</h4>
+
+            <div id="captcha_test"></div>

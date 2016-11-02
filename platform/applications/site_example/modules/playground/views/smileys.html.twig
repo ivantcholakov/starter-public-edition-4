@@ -1,0 +1,44 @@
+{#
+Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2016
+The MIT License, http://opensource.org/licenses/MIT
+#}
+
+{% if items is not empty %}
+
+                        <table class="ui celled striped selectable compact table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Text</th>
+                                    <th>Image Name</th>
+                                    <th>Image</th>
+                                </tr>
+
+                            </thead>
+
+                            <tfoot>
+
+                                <tr>
+                                    <th>Text</th>
+                                    <th>Image Name</th>
+                                    <th>Image</th>
+                                </tr>
+
+                            </tfoot>
+
+                            <tbody>
+
+    {% for item in items %}
+                                <tr>
+                                    <td>{{ item['key_escaped']|raw }}</td>
+                                    <td>{{ item['image_name'] }}</td>
+                                    <td> {{ item['key'] }} </td>
+                                </tr>
+    {% endfor %}
+
+                            </tbody>
+
+                        </table>
+
+{% endif %}

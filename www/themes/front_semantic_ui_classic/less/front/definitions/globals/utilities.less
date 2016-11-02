@@ -1,0 +1,173 @@
+/*!
+ * Added by Ivan Tcholakov, 20-OCT-2016.
+ *
+ *
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+
+/*******************************
+            Theme
+*******************************/
+
+@type    : 'global';
+@element : 'utilities';
+
+@import (multiple) '../../theme.less';
+
+/* Force Element To Self-Clear its Children */
+
+.clearfix {
+    .clearfix();
+}
+
+/* End Force Element To Self-Clear its Children */
+
+/* Global Floats */
+
+// See http://stackoverflow.com/questions/39963655/semantic-ui-floats
+// also https://github.com/Semantic-Org/Semantic-UI/issues/1949
+
+[class*="left floated"], .left-floated {
+    float: left !important;
+}
+
+[class*="right floated"], .right-floated {
+    float: right !important;
+}
+
+/* End Global Floats */
+
+/* Text */
+
+[class*="left aligned"].text, .lett-aligned-text {
+    text-align: left !important;
+}
+
+[class*="right aligned"].text, .right-aligned-text {
+    text-align: right !important;
+}
+
+.center.aligned.text, .center-aligned-text {
+    text-align: center !important;
+}
+
+.justified.text, .justified-text {
+    text-align: justify !important;
+}
+
+.uppercase.text, .uppercase-text {
+    text-transform: uppercase !important;
+}
+
+[class*="break word"], .break-word {
+    word-wrap: break-word !important;
+}
+
+[class*="no break"], .no-break {
+    white-space: nowrap !important;
+}
+
+/* End Text */
+
+/* Margins */
+
+[class*="no margin"], .no-margin {
+    margin: 0 !important;
+}
+
+[class*="no left margin"], .no-left-margin {
+    margin-left: 0 !important;
+}
+
+[class*="no right margin"], .no-right-margin {
+    margin-right: 0 !important;
+}
+
+[class*="no top margin"], .no-top-margin {
+    margin-top: 0 !important;
+}
+
+[class*="no bottom margin"], .no-bottom-margin {
+    margin-bottom: 0 !important;
+}
+
+/* End Margins */
+
+/* Paddings */
+
+[class*="no padding"], .no-padding {
+    padding: 0 !important;
+}
+
+[class*="no left padding"], .no-left-padding {
+    padding-left: 0 !important;
+}
+
+[class*="no right padding"], .no-right-padding {
+    padding-right: 0 !important;
+}
+
+[class*="no top padding"], .no-top-padding {
+    padding-top: 0 !important;
+}
+
+[class*="no bottom padding"], .no-bottom-padding {
+    padding-bottom: 0 !important;
+}
+
+/* End Paddings */
+
+/* Centering Variable Width Content */
+
+// See http://www.tightcss.com/centering/center_variable_width.htm
+
+// Sample usage:
+// <div class="centered-block-container">
+//    <div class="alert alert-info alert-dismissable centered-block">
+//        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+//        My message goes here...
+//    </div>
+// </div>
+
+.centered-block-container {
+    float: left;
+    position: relative;
+    margin-left: 50%;
+}
+
+.centered-block {
+    float: left;
+    position: relative;
+    left: -50%;
+}
+
+/* End Centering Variable Width Content */
+
+/* Miscellaneous */
+
+[class*="no border"], .no-border {
+    border: none !important;
+}
+
+[class*="not rounded"], .not-rounded {
+    border-radius: 0 !important;
+}
+
+[class*="no shadow"], .no-shadow {
+    box-shadow: none !important;
+}
+
+[class*="no outline"], .no-outline {
+    outline: 0 !important;
+}
+
+.pointer {
+    cursor: pointer !important;
+}
+
+/* End Miscellaneous */
+
+.loadUIOverrides();

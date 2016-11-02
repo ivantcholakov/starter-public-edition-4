@@ -22,7 +22,7 @@ $('pre').addClass('prettyprint');
 
     function addScrollTopAnimation() {
 
-        var $scrolltop_link = $('#scroll-top');
+        var $scrolltop_link = $('.ui.button.scroll.top');
 
         $scrolltop_link.on( 'click' ,  function ( ev ) {
 
@@ -78,7 +78,6 @@ $('pre').addClass('prettyprint');
 
                     if( !is_hidden ) {
 
-                        //$scrolltop_link.slideUp().data('hidden', 1);
                         $scrolltop_link.fadeOut(600).data('hidden', 1);
 
                     }

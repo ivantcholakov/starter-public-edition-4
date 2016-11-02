@@ -10,7 +10,7 @@ class Contact_page_test_controller extends Base_Controller {
 
         $this->template
             ->append_title($title)
-            ->set_breadcrumb('<i class="fa fa-envelope"></i> '.$title, site_url('contact-page-test'));
+            ->set_breadcrumb('<i class="mail icon"></i> '.$title, site_url('contact-page-test'));
         ;
 
         $this->config->load('contact_page', FALSE, TRUE);

@@ -1,0 +1,65 @@
+
+{{ partial('subnavbar') }}
+
+                        <table class="ui celled striped selectable compact table" id="datatable">
+
+                            <thead>
+
+                                <tr>
+                                    <th class="two wide">id</th>
+                                    <th class="two wide">ISO-3166 Code</th>
+                                    <th>Country Name</th>
+                                    <th class="two wide">Flag</th>
+                                    <th class="collapsing">{{ lang('ui_actions') }}</th>
+                                </tr>
+
+                                <tr>
+                                    <td><div class="ui fluid input"><input id="search_id" type="text" placeholder="{{ lang('ui_search')|e('html_attr') }}" /></div></td>
+                                    <td><div class="ui fluid input"><input id="search_iso_code" type="text" placeholder="{{ lang('ui_search')|e('html_attr') }}" /></div></td>
+                                    <td><div class="ui fluid input"><input id="search_country_name" type="text" placeholder="{{ lang('ui_search')|e('html_attr') }}" /></div></td>
+                                    <td></td>
+                                    <td>
+                                       <a href="javascript://" class="compact positive ui icon button" title="{{ lang('ui_add')|e('html_attr') }}"><i class="add circle icon"></i></a>
+                                    </td>
+                                </tr>
+
+                            </thead>
+
+                            <tfoot>
+
+                                <tr>
+                                    <th>id</th>
+                                    <th>ISO-3166 Code</th>
+                                    <th>Country Name</th>
+                                    <th>Flag</th>
+                                    <th>{{ lang('ui_actions') }}</th>
+                                </tr>
+
+                            </tfoot>
+
+                            <tbody>
+{% for item in items %}
+                                <tr>
+                                    <td>{{ item['id'] }}</td>
+                                    <td>{{ item['code'] }}</td>
+                                    <td>{{ item['name'] }}</td>
+                                    <td><img src="{{ constant('BASE_URI') }}assets/img/lib/flags-iso/shiny/32/{{ item['code'] }}.png" /></td>
+                                    <td>
+                                        <div class="ui icon buttons">
+                                            <a href="javascript://" class="compact primary ui icon button" title="{{ lang('ui_edit')|e('html_attr') }}"><i class="write icon"></i></a>
+                                            <a id="delete_action_{{ item['id'] }}" href="javascript://" class="compact negative ui icon button delete_action" title="{{ lang('ui_delete')|e('html_attr') }}"><i class="trash icon"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+{% endfor %}
+                            </tbody>
+
+                        </table>
+
+                        <div class="ui hidden clearing divider"></div>
+
+                        <div class="ui message">
+                            <p>DataTables documentation: <a target="_blank" href="http://datatables.net">http://datatables.net</a></p>
+                            <p>Integration for Bootstrap 3: <a target="_blank" href="https://github.com/DataTables/Plugins/tree/master/integration/bootstrap/3">https://github.com/DataTables/Plugins/tree/master/integration/bootstrap/3</a></p>
+                            <p>Visual responsiveness support: <a target="_blank" href="https://github.com/Comanche/datatables-responsive">https://github.com/Comanche/datatables-responsive</a></p>
+                        </div>

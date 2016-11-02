@@ -1,0 +1,88 @@
+{#
+Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2016
+The MIT License, http://opensource.org/licenses/MIT
+#}
+
+{% if setting('mailer_enabled') %}
+
+                        <h4>Test message preview</h4>
+
+                        <div class="ui segment">
+
+                            <p>Subject: {{ subject }}</p>
+
+                            <hr />
+
+                            {{ body|raw }}
+
+                        </div>
+
+                        <h4>Sending the test message to the notification email address</h4>
+
+                        {{ form_open('', 'id="email_test_form" method="post" class="ui form"') }}
+
+                            <div class="field">
+                                <textarea id="custom_text" name="custom_text" rows="5" placeholder="Enter here your text, if you wish.">{{ set_value('custom_text', '', true) }}</textarea>
+                            </div>
+
+                            <div>
+                                <img id="captcha_image"
+                                    class="pointer"
+                                    src="{{ captcha().src ~ '?nocache=' ~ rand(100000000, 999999999) }}"
+                                    title="{{ lang('captcha.tip')|e('html_attr') }}"
+                                />
+                            </div>
+
+                            <div class="fields">
+                                <div class="field{% if validation_errors['email_test_form_captcha'] is not empty %} error{% endif %}">
+                                    <div class="ui left icon input">
+                                        <input type="text" id="email_test_form_captcha" name="email_test_form_captcha" placeholder="{{ lang('captcha.label')|e('html_attr') }}" maxlength="{{ captcha().length }}" />
+                                        <i class="privacy icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p>{{ lang('ui_required_fields_note') }}</p>
+
+                            <button id="email_test_form_submit" name="email_test_form_submit" type="submit" class="ui primary large button">
+                                <i id="email_test_form_submit_icon" class="checkmark icon"></i>
+                                <i id="email_test_form_processing" class="spinner loading icon" style="display: none;"></i>
+                                Send message
+                            </button>
+
+                        {{ form_close() }}
+
+                        <script type="text/javascript">
+                        //<![CDATA[
+
+                        function refresh_captcha() {
+
+                            $('#captcha_image').attr('src', '{{ captcha().src }}' + '?nocache=' + Math.random()*999999999);
+                            $('#email_test_form_captcha').val('');
+                        }
+
+                        $(function () {
+
+                            $('#captcha_image').on('click', function() {
+                                refresh_captcha();
+                            });
+
+                            $('#email_test_form').submit(function(e) {
+
+                                $('#email_test_form_submit').attr('disabled', 'disabled');
+                                $('#email_test_form_submit_icon').hide();
+                                $('#email_test_form_processing').show();
+                            });
+
+                        });
+
+                        //]]>
+                        </script>
+
+{% else %}
+
+                        <div class="ui orange message">
+                            {{ lang('mailer_disabled') }}
+                        </div>
+
+{% endif %}

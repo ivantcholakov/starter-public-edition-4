@@ -1,10 +1,12 @@
 
-    <section id="error" class="container">
-
         <style type="text/css">
 
             #goog-wm {
                 margin-top: 50px;
+            }
+
+            #goog-wm .content ul {
+                padding-left: 0;
             }
 
             #goog-wm-qt {
@@ -39,9 +41,9 @@
             }}
         </p>
 
-        <a class="btn btn-success" href="{{ site_url() }}"><i class="fa fa-home"></i> {{ lang('ui_go_to_homepage') }}</a>
+        <a class="ui button" href="{{ site_url() }}"><i class="home icon"></i> {{ lang('ui_go_to_homepage') }}</a>
 
-        <div id="google_search_form" class="form" style="display: none;"></div>
+        <div id="google_search_form" class="ui form" style="display: none;"></div>
 
         <div id="google_search_form_hidden" style="display: none;">
 
@@ -49,7 +51,7 @@
 
             <script type="text/javascript">
             //<![CDATA[
-                var GOOG_FIXURL_LANG = '{{ lang_code() }}';
+                var GOOG_FIXURL_LANG = '{{ lang_code()|e('js') }}';
                 var GOOG_FIXURL_SITE = BASE_URL;
             //]]>
             </script>
@@ -76,9 +78,9 @@
                 $('#google_search_form').show();
 
                 jQuery(function( $ ) {
-                    $('#goog-wm form').addClass('form-inline');
-                    $('#goog-wm-sb').addClass('btn btn-primary');
-                    $('#goog-wm-qt').addClass('form-control');
+                    //$('#goog-wm form').addClass('form-inline');
+                    $('#goog-wm-sb').addClass('ui primary button');
+                    //$('#goog-wm-qt').addClass('form-control');
                 });
             } catch (ex) {}
 
@@ -86,5 +88,3 @@
 
         //]]>
         </script>
-
-    </section>

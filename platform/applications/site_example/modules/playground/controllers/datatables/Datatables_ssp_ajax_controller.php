@@ -43,25 +43,17 @@ class Datatables_ssp_ajax_controller extends Base_Ajax_Controller {
                 'formatter' => array($this, '_formatter_flag')
             ),
             array(
-                'dt' => 'action_edit',
-                'formatter' => array($this, '_formatter_action_edit')
+                'db' => 'latitude',
             ),
             array(
-                'db' => 'location',
-                //'expression' => "CONCAT(latitude, ',', longitude)", // MySQL
-                'expression' => "latitude || ',' || longitude",    // SQLite
-                'dt' => 'action_map',
-                'formatter' => array($this, '_formatter_action_map')
+                'db' => 'longitude',
             ),
             array(
                 'db' => 'link',
-                'expression' => "link",
-                'dt' => 'action_info',
-                'formatter' => array($this, '_formatter_action_info')
             ),
             array(
-                'dt' => 'action_delete',
-                'formatter' => array($this, '_formatter_action_delete')
+                'dt' => 'actions',
+                'formatter' => array($this, '_formatter_actions')
             ),
         );
 
@@ -75,50 +67,34 @@ class Datatables_ssp_ajax_controller extends Base_Ajax_Controller {
         );
     }
 
-    public function _formatter_code($value, $row) {
+    public function _formatter_code($value, $item) {
 
         return '<span class="loud">'.$value.'</span>';
     }
 
-    public function _formatter_flag($value, $row) {
+    public function _formatter_flag($value, $item) {
 
-        return '<img src="'.BASE_URI.'assets/img/lib/flags-iso/shiny/32/'.$row['code'].'.png" />';
+        return '<img src="'.BASE_URI.'assets/img/lib/flags-iso/shiny/32/'.$item['code'].'.png" />';
     }
 
-    public function _formatter_action_edit($value, $row) {
+    public function _formatter_actions($value, $item) {
 
-        return '<a href="javascript://" class="btn btn-info" title="'.$this->lang->line('ui_edit').'"><i class="fa fa-pencil fa-fw"></i></a>';
-    }
+        $result = array();
 
-    public function _formatter_action_map($value, $item) {
+        $gmap_url = gmap_url($item['latitude'], $item['longitude'], 6);
 
-        $value = explode(',', $value);
-
-        if (count($value) != 2) {
-            return '';
+        if ($gmap_url != '') {
+            $result[] = '<a href="'.$gmap_url.'" class="compact ui icon button" title="'.$this->lang->line('ui_map').'" target="_blank"><i class="marker icon"></i></a>';
         }
 
-        $link = gmap_url($value[0], $value[1], 6);
-
-        if ($link == '') {
-            return '';
+        if ($item['link'] != '') {
+            $result[] = '<a href="'.$item['link'].'" class="compact ui icon button" title="'.$this->lang->line('ui_information').'" target="_blank"><i class="external icon"></i></a>';
         }
 
-        return '<a href="'.$link.'" class="btn btn-default" title="'.$this->lang->line('ui_map').'" target="_blank"><i class="fa fa-map-marker fa-fw"></i></a>';
-    }
+        $result[] = '<a href="javascript://" class="compact primary ui icon button" title="'.$this->lang->line('ui_edit').'"><i class="write icon"></i></a>';
+        $result[] = '<a id="delete_action_'.$item['id'].'" href="javascript://" class="compact negative ui icon button delete_action" title="'.$this->lang->line('ui_delete').'"><i class="trash icon"></i></a>';
 
-    public function _formatter_action_info($value, $item) {
-
-        if ($value == '') {
-            return '';
-        }
-
-        return '<a href="'.$value.'" class="btn btn-default" title="'.$this->lang->line('ui_information').'" target="_blank"><i class="fa fa-external-link fa-fw"></i></a>';
-    }
-
-    public function _formatter_action_delete($value, $row) {
-
-        return '<a id="delete_action_'.$row['id'].'" href="javascript://" class="btn btn-danger delete_action" title="'.$this->lang->line('ui_delete').'"><i class="fa fa-trash-o fa-fw"></i></a>';
+        return '<div class="ui icon buttons">'.implode('', $result).'</div>';
     }
 
 }

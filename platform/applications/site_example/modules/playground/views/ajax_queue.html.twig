@@ -1,0 +1,34 @@
+{#
+Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2016
+The MIT License, http://opensource.org/licenses/MIT
+#}
+
+            <div class="two column stackable ui grid">
+
+                <div class="column">
+
+                    <h3>Queued AJAX Calls</h3>
+                    <h4>(the results should appear in correct order)</h4>
+
+                    <pre><code>{{ test_script_1 }}</code></pre>
+
+                    <h3>Results:</h3>
+
+                    <ul id="queued_ajax"></ul>
+
+                </div>
+
+                <div class="column">
+
+                    <h3>Ordinary AJAX Calls</h3>
+                    <h4>(the results might appear in incorrect order)</h4>
+
+                    <pre><code>{{ test_script_2 }}</code></pre>
+
+                    <h3>Results:</h3>
+
+                    <ul id="ordinary_ajax"></ul>
+
+                </div>
+
+            </div>

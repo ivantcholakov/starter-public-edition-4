@@ -3,51 +3,45 @@
 {# License: The MIT License, http://opensource.org/licenses/MIT #}
 
 <style type="text/css">
+
 .image-container {
     border: 1px solid blue;
     display:table-cell;
     vertical-align:middle;
     text-align: center;
 }
+
 .image-container-120x180 {
     width: 120px;
     height: 180px;
 }
+
 .image-container-180x120 {
     width: 180px;
     height: 120px;
 }
+
 </style>
 
-        <section>
 
-            <div class="container">
+                            <p><big>The current Twig version is {{ constant('Twig_Environment::VERSION') }}</big></p>
 
-                <div class="page-header">
-                    <h1>{{ template.page_title }}<br /><small>The current Twig version is {{ constant('Twig_Environment::VERSION') }}</small></h1>
-                </div>
+                            <p>See <a href="http://twig.sensiolabs.org" target="_blank">http://twig.sensiolabs.org</a>, <a href="http://twig.sensiolabs.org/doc/templates.html" target="_blank">http://twig.sensiolabs.org/doc/templates.html</a></p>
+                            <p>
+                                Other readings: <a href="http://fabien.potencier.org/templating-engines-in-php.html" target="_blank">http://fabien.potencier.org/templating-engines-in-php.html</a>,
+                                <a href="http://www.slideshare.net/fabpot/twig-the-flexible-fast-and-securetemplate-language-for-php" target="_blank">http://www.slideshare.net/fabpot/twig-the-flexible-fast-and-securetemplate-language-for-php</a>,
+                                <a href="http://www.slideshare.net/javier.eguiluz/twig-tips-and-tricks" target="_blank">http://www.slideshare.net/javier.eguiluz/twig-tips-and-tricks</a>,
+                                <a href="http://www.slideshare.net/javier.eguiluz/mastering-twig-druaplcon-barcelona-2015" target="_blank">http://www.slideshare.net/javier.eguiluz/mastering-twig-druaplcon-barcelona-2015</a>
+                            </p>
+                            <p>Note: After Twig parser configuration change delete Twig's cache. This is not always necessary, but you do it just in case.</p>
 
-                <div class="row">
-
-                    <div class="col-md-12">
-
-                        <p>See <a href="http://twig.sensiolabs.org" target="_blank">http://twig.sensiolabs.org</a>, <a href="http://twig.sensiolabs.org/doc/templates.html" target="_blank">http://twig.sensiolabs.org/doc/templates.html</a></p>
-                        <p>
-                            Other readings: <a href="http://fabien.potencier.org/templating-engines-in-php.html" target="_blank">http://fabien.potencier.org/templating-engines-in-php.html</a>,
-                            <a href="http://www.slideshare.net/fabpot/twig-the-flexible-fast-and-securetemplate-language-for-php" target="_blank">http://www.slideshare.net/fabpot/twig-the-flexible-fast-and-securetemplate-language-for-php</a>,
-                            <a href="http://www.slideshare.net/javier.eguiluz/twig-tips-and-tricks" target="_blank">http://www.slideshare.net/javier.eguiluz/twig-tips-and-tricks</a>,
-                            <a href="http://www.slideshare.net/javier.eguiluz/mastering-twig-druaplcon-barcelona-2015" target="_blank">http://www.slideshare.net/javier.eguiluz/mastering-twig-druaplcon-barcelona-2015</a>
-                        </p>
-                        <p>Note: After Twig parser configuration change delete Twig's cache. This is not always necessary, but you do it just in case.</p>
-
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover">
+                            <table class="ui celled fixed table">
 
                                 <thead>
 
                                     <tr>
-                                        <th class="col-sm-8" style="min-width: 300px;">Twig Code</th>
-                                        <th class="col-sm-4">Result</th>
+                                        <th class="eight wide">Twig Code</th>
+                                        <th class="eight wide">Result</th>
                                     </tr>
 
                                 </thead>
@@ -63,8 +57,8 @@
 
                                 <tbody>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Accessing Variables</h4>
                                         </td>
                                     </tr>
@@ -205,8 +199,8 @@ Hello, {{ name }}!
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Debugging Previews (Available Only on Non-Production Environments)</h4>
                                         </td>
                                     </tr>
@@ -251,8 +245,8 @@ Hello, {{ name }}!
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Checking if a Variable Exists, and If a Variable is Empty</h4>
                                         </td>
                                     </tr>
@@ -305,8 +299,8 @@ Hello, {{ name }}!
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Assigning Variables</h4>
                                         </td>
                                     </tr>
@@ -400,8 +394,8 @@ Hello, {{ name }}!
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Type Casting</h4>
                                             <p>See <a href="http://php.net/manual/en/language.types.type-juggling.php#language.types.typecasting" target="_blank">PHP Type Casting</a></p>
                                         </td>
@@ -470,8 +464,8 @@ Hello, {{ name }}!
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Built-In Twig Tags, Functions, Filters, and Operators</h4>
                                             <p>See <a href="http://twig.sensiolabs.org/documentation" target="_blank">Twig Reference</a></p>
                                         </td>
@@ -1273,8 +1267,8 @@ limp bizkit
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>PHP Functions</h4>
                                         </td>
                                     </tr>
@@ -1477,8 +1471,8 @@ limp bizkit
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>CodeIgniter's Helpers</h4>
                                         </td>
                                     </tr>
@@ -1663,8 +1657,8 @@ $(function() {
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Session</h4>
                                         </td>
                                     </tr>
@@ -1713,8 +1707,8 @@ $(function() {
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Useful Constants</h4>
                                         </td>
                                     </tr>
@@ -2078,8 +2072,8 @@ $(function() {
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Configuration, Settings</h4>
                                         </td>
                                     </tr>
@@ -2102,8 +2096,8 @@ $(function() {
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>HTML</h4>
                                         </td>
                                     </tr>
@@ -2136,8 +2130,8 @@ $(function() {
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Formatters, Parsers</h4>
                                         </td>
                                     </tr>
@@ -2164,8 +2158,8 @@ $(function() {
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Platform Routines</h4>
                                         </td>
                                     </tr>
@@ -2277,8 +2271,8 @@ width = 180px, height = 120px
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Web Assets</h4>
                                         </td>
                                     </tr>
@@ -2427,8 +2421,8 @@ width = 180px, height = 120px
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Template</h4>
                                         </td>
                                     </tr>
@@ -2752,8 +2746,8 @@ width = 180px, height = 120px
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Visual Themes</h4>
                                         </td>
                                     </tr>
@@ -2776,8 +2770,8 @@ width = 180px, height = 120px
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>URL/URI Handling</h4>
                                         </td>
                                     </tr>
@@ -2967,8 +2961,8 @@ width = 180px, height = 120px
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Language</h4>
                                         </td>
                                     </tr>
@@ -3090,8 +3084,8 @@ width = 180px, height = 120px
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Widgets</h4>
                                         </td>
                                     </tr>
@@ -3123,8 +3117,8 @@ width = 180px, height = 120px
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Twig Template Inheritance Test</h4>
                                         </td>
                                     </tr>
@@ -3176,8 +3170,8 @@ width = 180px, height = 120px
                                         </td>
                                     </tr>
 
-                                    <tr class="info">
-                                        <td colspan="2">
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
                                             <h4>Miscellaneous Tests</h4>
                                         </td>
                                     </tr>
@@ -3205,12 +3199,3 @@ $twig_test_2 = $this->load->view($twig_test_name, array(), true);{% endverbatim 
                                 </tbody>
 
                             </table>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>

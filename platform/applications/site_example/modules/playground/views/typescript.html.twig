@@ -1,0 +1,35 @@
+{#
+Ivan Tcholakov <ivantcholakov@gmail.com>, 2015-2016
+The MIT License, http://opensource.org/licenses/MIT
+#}
+
+                        {{ form_open('', 'id="test_form" method="post" class="ui form"') }}
+
+                            <div class="field">
+                                <label for="input">The input, TypeScript source:</label>
+                                <textarea id="input" name="input" class="form-control" rows="10" placeholder="Copy/paste your TypeScript source here.">{{ clear_form or is_example ? form_prep(input, true) : set_value('input', input, true) }}</textarea>
+                            </div>
+
+                            <button id="test_form_submit" name="test_form_submit" type="submit" class="ui primary button">
+                                Submit
+                            </button>
+                            <button id="test_form_submit" name="test_form_clear" type="submit" value="1" class="ui negative button">
+                                Clear
+                            </button>
+                            <button id="test_form_submit" name="test_form_example" type="submit" value="1" class="ui button">
+                                Show Me an Example
+                            </button>
+
+                            <div class="ui hidden divider"></div>
+
+                            <div class="field">
+                                <label for="output">The result, JavaScript:</label>
+                                <textarea id="output" rows="10">{{ form_prep(output, true) }}</textarea>
+                            </div>
+
+                            <div class="field">
+                                <label for="output_min">The result, minified JavaScript:</label>
+                                <textarea id="output_min" rows="10">{{ form_prep(output_min, true) }}</textarea>
+                            </div>
+
+                        {{ form_close() }}

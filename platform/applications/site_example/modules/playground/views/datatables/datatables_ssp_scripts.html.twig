@@ -1,0 +1,134 @@
+
+{% if driver_ok %}
+
+{{ js('lib/dataTables/jquery.dataTables.min.js') }}
+{{ js('lib/dataTables/dataTables.semanticui.min.js') }}
+{{ js('lib/dataTables/plug-ins/api/sortNeutral.js') }}
+{{ js('lib/dataTables/dataTables.responsive.min.js') }}
+{{ js('lib/dataTables/responsive.semanticui.min.js') }}
+{{ js('lib/dataTables/dataTables.select.min.js') }}
+
+    <script type="text/javascript">
+    //<![CDATA[
+
+    $(function() {
+
+        var table = $('#datatable').DataTable({
+            'dom':
+                "<'ui grid'"+
+                    "<'row'"+
+                        "<'sixteen wide mobile sixteen wide tablet eight wide computer column'l>"+
+                        "<'right aligned sixteen wide mobile sixteen wide tablet eight wide computer column'f>"+
+                        "<'sixteen wide mobile sixteen wide tablet six wide computer column'i>"+
+                        "<'right aligned sixteen wide mobile sixteen wide tablet ten wide computer column'p>"+
+                    ">"+
+                    "<'row dt-table'"+
+                        "<'sixteen wide column'tr>"+
+                    ">"+
+                    "<'row'"+
+                        "<'sixteen wide mobile sixteen wide tablet six wide computer column'i>"+
+                        "<'right aligned sixteen wide mobile sixteen wide tablet ten wide computer column'p>"+
+                    ">"+
+                ">",
+            'orderCellsTop': true,
+            'pagingType': 'simple_numbers',
+            "lengthMenu": [[5, 10, 25, 50, 100, 200, -1], [5, 10, 25, 50, 100, 200, '{{ lang('ui_all')|e('js') }}']],
+            "pageLength": 5,
+            'stateSave': true,
+            //'processing': true,   // Needs to be fixed visually first.
+            'processing': false,
+            'serverSide': true,
+            'ajax': {
+                'url': '{{ site_url('playground/datatables/datatables-ssp-ajax') }}',
+                'type': 'post'
+            },
+            'columns': [
+                {
+                    'data': 'id'
+                },
+                {
+                    'data': 'code'
+                },
+                {
+                    'data': 'name'
+                },
+                {
+                    'data': 'flag',
+                    'searchable': false,
+                    'orderable': false
+                },
+                {
+                    'data': 'actions',
+                    'searchable': false,
+                    'orderable': false
+                }
+            ],
+            'language': {{ language_datatables()|raw }},
+            // Making the table responsive.
+            'autoWidth': false,
+            // See http://odoepner.wordpress.com/2011/12/12/jquery-datatables-column-filters-state-saving/
+            'initComplete': function(oSettings, json) {
+                var cols = oSettings.aoPreSearchCols;
+                for (var i = 0; i < cols.length; i++) {
+                    var value = cols[i].sSearch;
+                    if (value.length > 0) {
+                        switch (i) {
+                            case 0:
+                                $('#search_id').val(value);
+                                break;
+                            case 1:
+                                $('#search_iso_code').val(value);
+                                break;
+                            case 2:
+                                $('#search_country_name').val(value);
+                                break;
+                        }
+                    }
+                }
+            }
+        });
+
+        // Individual text-input filters.
+
+        $("#datatable thead input[type=text]").on('keyup change', function () {
+
+            table
+                .column($(this).parent().index() + ':visible')
+                .search(this.value)
+                .draw();
+        });
+
+        // "Clear search" and "Clear sort" buttons.
+
+        $('#datatable_filter input').after(' <div class="ui icon buttons"><button id="clear_search" class="ui icon button" title="{{ lang('ui_clear_search')|e('html_attr')|e('js') }}"><i class="zoom out icon"></i></button> <button id="clear_sort" class="ui icon button" title="{{ lang('ui_clear_sort')|e('html_attr')|e('js') }}"><i class="sort icon"></i></button></div>');
+
+        // Clear sort.
+        $('#clear_sort').on('click', function() {
+
+            table.sortNeutral();
+        });
+
+        // Clear search.
+        $('#clear_search').on('click', function() {
+
+            table.column(0).search('');
+            $('#search_id').val('');
+
+            table.column(1).search('');
+            $('#search_iso_code').val('');
+
+            table.column(2).search('');
+            $('#search_country_name').val('');
+
+            table.search('');
+            $('#datatable_filter input').val('');
+
+            table.draw();
+        });
+
+    });
+
+    //]]>
+    </script>
+
+{% endif %}

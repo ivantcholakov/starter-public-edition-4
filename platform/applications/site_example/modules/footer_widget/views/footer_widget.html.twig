@@ -1,0 +1,17 @@
+
+    <footer id="footer">
+
+        <div class="ui vertically padded grid page black inverted footer attached segment">
+
+            <div class="row">
+                <div class="column">
+
+                    <p>{% autoescape false %}{{ setting('copyright_note')|replace({'{year}': 'now'|date('Y'), '{organization}': setting('contact_organization')}) }}{% endautoescape %}</p>
+                    <a class="circular ui icon huge blue scroll top button" href="{{ constant('CURRENT_URI') }}#page-top" title="{{ lang('ui_go_to_top')|e('html_attr') }}" style="display: none;"><i class="chevron up icon"></i></a>
+
+                </div>
+            </div>
+
+        </div>
+
+    </footer>

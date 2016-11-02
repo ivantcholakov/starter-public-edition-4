@@ -1,98 +1,99 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2015
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
 ?>
 
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <nav id="main_navigation">
 
-            <div class="container">
+            <div class="ui grid">
+                <div class="row">
 
-                <div class="navbar-header">
+                <div id="main_menu" class="column">
 
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only"><i18n>ui_toggle_navigation</i18n></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+                    <div class="navbeer ui inverted blue borderless menu page grid">
 
-                    <a class="navbar-brand" href="<?php echo site_url(); ?>">v. <?php echo PLATFORM_VERSION; ?></a>
+                        <div class="navbeer-sandwich ui dropdown item" style="display: none;">
+                            <i class="navbeer-sandwich-icon content big icon"></i>
+                            <div class="navbeer-sandwich-content menu"></div><!--Keep empty-->
+                        </div>
 
-                </div>
+                        <a class="navbeer-brand" href="<?php echo site_url(); ?>">
+                            <!--<img src="<?php echo base_uri('apple-touch-icon-precomposed.png'); ?>" />-->
+                            <span><strong>v. <?php echo PLATFORM_VERSION; ?></strong></span>
+                        </a>
 
-                <div class="collapse navbar-collapse">
+                        <div class="navbeer-menu right menu">
 <?php
 
 if (!empty($nav)) {
-
-?>
-
-                    <ul class="nav navbar-nav">
-<?php
 
     foreach ($nav as $item) {
 
         if (empty($item['children'])) {
 
-            $classes = '';
+            $classes = 'item navbeer-collapsable-item';
 
             if (!empty($item['is_active'])) {
-                $classes = ' active';
+                $classes .= ' active';
             }
-
-            $classes = trim($classes);
 
 ?>
 
-                        <li<?php if ($classes != '') { ?> class="<?php echo $classes; ?>"<?php } ?>><a href="<?php echo $item['link']; ?>"><?php if ($item['icon'] != '') { ?><i class="<?php echo $item['icon']; ?> hidden-md"></i>&nbsp; <?php } echo $item['label']; ?></a></li>
+                        <a href="<?php echo $item['link']; ?>"<?php if ($classes != '') { ?> class="<?php echo $classes; ?>"<?php } ?>><?php if ($item['icon'] != '') { ?><i class="<?php echo $item['icon']; ?>"></i> <?php } echo $item['label']; ?></a>
 <?php
 
         } else {
 
+            $classes = 'navbeer-collapsable-item ui dropdown item';
+
+            if (!empty($item['is_active'])) {
+                // TODO: See why dropdown item does not work when it is active.
+                //$classes .= ' active';
+            }
+
 ?>
 
-                        <li class="<?php if (!empty($item['is_active'])) { ?>active <?php } ?>dropdown dropdown-split-right">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
-                                <?php if ($item['icon'] != '') { ?><i class="<?php echo $item['icon']; ?> hidden-sm"></i>&nbsp; <?php } echo $item['label']; ?> <i class="fa fa-caret-down"></i>
-                            </a>
-                            <ul class="dropdown-menu pull-right-sm">
+                        <div<?php if ($classes != '') { ?> class="<?php echo $classes; ?>"<?php } ?>>
 
-                                <li class="divider"></li>
-                                <li<?php if (!empty($item['is_active']) && empty($item['has_active'])) { ?> class="active"<?php } ?>><a href="<?php echo $item['link']; ?>"><?php if ($item['icon'] != '') { ?><i class="<?php echo $item['icon']; ?>"></i>&nbsp; <?php } echo $item['label']; ?></a></li>
-                                <li class="divider"></li>
+                            <?php if ($item['icon'] != '') { ?><i class="<?php echo $item['icon']; ?>"></i> <?php } echo $item['label']; ?>
+                            <i class="dropdown icon"></i>
+
+                            <div class="menu">
+
+                                <a href="<?php echo $item['link']; ?>" class="item<?php if (!empty($item['is_active']) && empty($item['has_active'])) { ?> active<?php } ?>"><?php if ($item['icon'] != '') { ?><i class="<?php echo $item['icon']; ?>"></i> <?php } echo $item['label']; ?></a>
+                                <div class="ui divider"></div>
 
 <?php
             _main_menu_widget_display_children($item['children']);
 ?>
 
-                            </ul>
-                        </li>
+                            </div>
+
+                        </div>
 <?php
 
         }
     }
-
-?>
-
-                    </ul>
-<?php
-
 }
 
-echo Modules::run('language_switcher_widget/index', 'navbar');
 echo Modules::run('theme_switcher_widget/index', 'navbar');
-
+echo Modules::run('language_switcher_widget/index', 'navbar');
 ?>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
+                </div>
             </div>
 
-        </div>
+        </nav>
 
 <?php
 
@@ -103,14 +104,14 @@ function _main_menu_widget_display_children($items, $level = 0) {
         if (empty($item['blank'])) {
 ?>
 
-                                <li<?php if (!empty($item['is_active'])) { ?> class="active"<?php } ?>><a href="<?php echo $item['link']; ?>"<?php echo _stringify_attributes($item['attributes']); ?>><?php echo str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $level); if ($item['icon'] != '') { ?><i class="<?php echo $item['icon']; ?>"></i>&nbsp; <?php } echo $item['label']; ?></a></li>
+                                <a href="<?php echo $item['link']; ?>"<?php echo _stringify_attributes($item['attributes']); ?> class="item<?php if (!empty($item['is_active']) && empty($item['has_active'])) { /* !!! */ ?> active<?php } ?>"><?php echo str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $level); if ($item['icon'] != '') { ?><i class="<?php echo $item['icon']; ?>"></i> <?php } echo $item['label']; ?></a>
 
 <?php
 
         } else {
 ?>
 
-                                <li class="divider"></li>
+                                <div class="ui divider"></div>
 
 <?php
         }

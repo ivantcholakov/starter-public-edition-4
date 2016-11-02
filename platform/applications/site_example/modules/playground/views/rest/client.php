@@ -5,25 +5,9 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-?>
-
-        <section>
-
-            <div class="container">
-
-<?php
-
 template_partial('subnavbar');
 
 ?>
-
-                <div class="page-header">
-                    <h1><?php echo $template['page_title']; ?></h1>
-                </div>
-
-                <div class="row">
-
-                    <div class="col-md-12">
 
                         <p>
                             See the article
@@ -39,11 +23,3 @@ template_partial('subnavbar');
                         <h3>Result:</h3>
 
                         <?php echo print_d($result); ?>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>

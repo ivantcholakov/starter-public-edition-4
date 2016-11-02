@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) { exit('No direct script access allowed.'); }
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -41,7 +41,6 @@ class Email_test_controller extends Playground_Base_Controller {
         );
 
         $success = false;
-        $messages = array();
 
         $this->form_validation->set_rules($validation_rules);
 
@@ -54,20 +53,21 @@ class Email_test_controller extends Playground_Base_Controller {
 
             if ($success) {
 
-                $messages[] = $this->lang->line('mailer_your_message_has_been_sent');
+                $this->template->set('confirmation_message', $this->lang->line('mailer_your_message_has_been_sent'));
 
             } else {
 
                 if ($this->registry->get('email_debugger') != '') {
-                    $messages[] = $this->lang->line('mailer_error').'<br /><br />'.$this->registry->get('email_debugger');
+                    $this->template->set('error_message', $this->lang->line('mailer_error').'<br /><br />'.$this->registry->get('email_debugger'));
                 } else {
-                    $messages[] = $this->lang->line('mailer_error');
+                    $this->template->set('error_message', $this->lang->line('mailer_error'));
                 }
             }
 
-        } else {
+        } elseif (validation_errors()) {
 
-            $messages = validation_errors_array();
+            $this->template->set('error_message', '<ul>'.validation_errors('<li>', '</li>').'</ul>');
+            $this->template->set('validation_errors', validation_errors_array());
         }
 
         extract(Modules::run('email/test/get_message'));
@@ -84,7 +84,7 @@ class Email_test_controller extends Playground_Base_Controller {
         $this->captcha->clear();
 
         $this->template
-            ->set(compact('success', 'messages', 'subject', 'body'))
+            ->set(compact('subject', 'body'))
             ->build('email_test');
     }
 

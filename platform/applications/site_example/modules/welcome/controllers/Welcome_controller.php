@@ -20,8 +20,8 @@ class Welcome_controller extends Base_Controller {
 
         // This is just a demo page, code is done in ad-hoc manner.
 
-        $yes = '<span style="color: green;">Yes</span>';
-        $no  = '<span style="color: red;">No</span>';
+        $yes = '<span class="green text">Yes</span>';
+        $no  = '<span class="red text">No</span>';
 
         // Collecting diagnostics data.
 
@@ -66,11 +66,11 @@ class Welcome_controller extends Base_Controller {
 
             if ($writable_folders[$key]['is_writable']) {
 
-                $diagnostics[] = "$key - <span style=\"color: green\">writable</span>";
+                $diagnostics[] = "$key - <span class=\"green text\">writable</span>";
 
             } else {
 
-                $diagnostics[] = "$key - <span style=\"color: red\">make it writable</span>";
+                $diagnostics[] = "$key - <span class=\"red text\">make it writable</span>";
             }
         }
 
@@ -82,11 +82,11 @@ class Welcome_controller extends Base_Controller {
 
         if ($mailer_enabled) {
 
-            $diagnostics[] = 'Mailer service - <span style="color: green">enabled</span>';
+            $diagnostics[] = 'Mailer service - <span class="green text">enabled</span>';
 
         } else {
 
-            $diagnostics[] = 'Mailer service - <span style="color: red">disabled. Check $config[\'mailer_enabled\'] option within platform/core/common/config/config_site.php. Check also the mailer settings within platform/core/common/config/email.php.</span>';
+            $diagnostics[] = 'Mailer service - <span class="red text">disabled. Check $config[\'mailer_enabled\'] option within platform/core/common/config/config_site.php. Check also the mailer settings within platform/core/common/config/email.php.</span>';
         }
 
         //----------------------------------------------------------------------
@@ -118,7 +118,7 @@ class Welcome_controller extends Base_Controller {
                 $random_bytes = $yes;
             }
             catch (Exception $e) {
-                $random_bytes = '<span style="color: red;">'.$e->getMessage().'</span>';
+                $random_bytes = '<span class="red text">'.$e->getMessage().'</span>';
             }
         }
 

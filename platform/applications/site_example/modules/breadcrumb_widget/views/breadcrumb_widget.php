@@ -1,6 +1,9 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
-            <ol class="breadcrumb">
+        <div class="row">
+            <div class="column">
+
+                <div class="ui breadcrumb">
 <?php
 
     $i = 1;
@@ -15,11 +18,12 @@
 
         if ($i < $n) {
 ?>
-                    <li><a href="<?php echo $breadcrumb['uri']; ?>"><?php echo $breadcrumb['name']; ?></a>
+                    <a href="<?php echo $breadcrumb['uri']; ?>" class="section"><?php echo $breadcrumb['name']; ?></a>
+                    <span class="divider">/</span>
 <?php
         } else {
 ?>
-                    <li class="active"><?php echo $breadcrumb['name']; ?></li>
+                    <div class="active section"><?php echo $breadcrumb['name']; ?></div>
 <?php
         }
 
@@ -27,4 +31,7 @@
     }
 ?>
 
-            </ol>
+                </div>
+
+            </div>
+        </div>

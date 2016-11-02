@@ -1,0 +1,99 @@
+{#
+Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2016
+The MIT License, http://opensource.org/licenses/MIT
+#}
+
+                <div class="ui grid">
+
+                    <div class="sixteen wide mobile six wide tablet five wide computer column">
+
+                       <h3>Request:</h3>
+
+                        {{ form_open('', 'id="gravatar_test_form" method="post" class="ui form"') }}
+
+                            <div class="field{% if validation_errors['email'] is not empty %} error{% endif %}">
+                                <div class="ui left icon input">
+                                    <input type="text" id="email" name="email" placeholder="* Enter an email address" value="{{ set_value('email', email) }}" />
+                                    <i class="mail outline icon"></i>
+                                </div>
+                            </div>
+
+                            <div>
+                                <img id="captcha_image"
+                                    class="pointer"
+                                    src="{{ captcha().src ~ '?nocache=' ~ rand(100000000, 999999999) }}"
+                                    title="{{ lang('captcha.tip')|e('html_attr') }}"
+                                />
+                            </div>
+
+                            <div class="fields">
+                                <div class="field{% if validation_errors['captcha'] is not empty %} error{% endif %}">
+                                    <div class="ui left icon input">
+                                        <input type="text" id="captcha" name="captcha" placeholder="{{ lang('captcha.label')|e('html_attr') }}" maxlength="{{ captcha().length }}" />
+                                        <i class="privacy icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p>{{ lang('ui_required_fields_note') }}</p>
+
+                            <button id="gravatar_test_form_submit" name="gravatar_test_form_submit" type="submit" class="ui primary large button">
+                                <i id="gravatar_test_form_submit_icon" class="checkmark icon"></i>
+                                <i id="gravatar_test_form_processing" class="spinner loading icon" style="display: none;"></i>
+                                Get Gravatar Info
+                            </button>
+
+                        {{ form_close() }}
+
+                        <script type="text/javascript">
+                        //<![CDATA[
+
+                        function refresh_captcha() {
+
+                            $('#captcha_image').attr('src', '{{ captcha().src }}' + '?nocache=' + Math.random()*999999999);
+                            $('#gravatar_test_form_captcha').val('');
+                        }
+
+                        $(function () {
+
+                            $('#captcha_image').on('click', function() {
+                                refresh_captcha();
+                            });
+
+                            $('#gravatar_test_form').submit(function(e) {
+
+                                $('#gravatar_test_form_submit').attr('disabled', 'disabled');
+                                $('#gravatar_test_form_submit_icon').hide();
+                                $('#gravatar_test_form_processing').show();
+                            });
+
+                        });
+
+                        //]]>
+                        </script>
+
+                    </div>
+
+                    <div class="sixteen wide mobile ten wide tablet eleven wide computer column">
+
+{% if show_profile %}
+
+                        <h3>Result:</h3>
+
+                        <p>
+                            <img class="img-thumbnail" src="{{ gravatar }}" />
+                        </p>
+
+                        {{ print_d(profile) }}
+
+                        <div class="clearfix"></div>
+
+                        {{ print_d(last_error) }}
+
+                        <div class="clearfix"></div>
+
+{% endif %}
+
+                    </div>
+
+                </div>

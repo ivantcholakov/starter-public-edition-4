@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
                                             <select name="<?php echo $element_name; ?>" id="<?php echo $element_id; ?>"<?php if ($element_class != '') { ?> class="<?php echo $element_class; ?>"<?php } ?>>
-                                                <option value=""<?php if ($value == '') { ?> selected="selected"<?php } ?> data-img-src="<?php echo image_path('lib/flags-iso/flat/24/_unknown.png'); ?>">-- <i18n>ui_choose</i18n> --</option>
+                                                <option value=""<?php if ($value == '') { ?> selected="selected"<?php } ?> data-img-src="<?php echo image_path('lib/flags-iso/flat/24/_unknown.png'); ?>">-- <?php echo $this->lang->line('ui_choose'); ?> --</option>
 <?php
 
 if (!empty($options)) {

@@ -43,7 +43,7 @@ if ($feedback_message_target == $feedback_message_id) {
 
 ?>
 
-                <div id="<?php echo $feedback_message_id; ?>" class="clearfix">
+                <div id="<?php echo $feedback_message_id; ?>" style="width: 100%;">
 
 <?php
 
@@ -53,10 +53,9 @@ if ($feedback_message_target == $feedback_message_id && $normal_message != '') {
 
 ?>
 
-                    <div class="alert alert-info alert-dismissable">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <div class="ui info message">
+                        <i class="close icon"></i>
                         <?php echo $normal_message; ?>
-
                     </div>
 
 <?php
@@ -66,10 +65,9 @@ if ($feedback_message_target == $feedback_message_id && $normal_message != '') {
 ?>
 
                     <div class="centered-block-container">
-                        <div class="alert alert-info alert-dismissable centered-block">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <div class="ui info compact message centered-block">
+                            <i class="close icon"></i>
                             <?php echo $normal_message; ?>
-
                         </div>
                     </div>
 <?php
@@ -82,8 +80,8 @@ if ($feedback_message_target == $feedback_message_id && $confirmation_message !=
 
 ?>
 
-                    <div class="alert alert-success alert-dismissable">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <div class="ui positive message">
+                        <i class="close icon"></i>
                         <?php echo $confirmation_message; ?>
 
                     </div>
@@ -94,10 +92,9 @@ if ($feedback_message_target == $feedback_message_id && $confirmation_message !=
 ?>
 
                     <div class="centered-block-container">
-                        <div class="alert alert-success alert-dismissable centered-block">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <div class="ui positive compact message centered-block">
+                            <i class="close icon"></i>
                             <?php echo $confirmation_message; ?>
-
                         </div>
                     </div>
 <?php
@@ -110,10 +107,9 @@ if ($feedback_message_target == $feedback_message_id && $warning_message != '') 
 
 ?>
 
-                    <div class="alert alert-warning alert-dismissable">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <div class="ui orange message">
+                        <i class="close icon"></i>
                         <?php echo $warning_message; ?>
-
                     </div>
 <?php
 
@@ -122,10 +118,9 @@ if ($feedback_message_target == $feedback_message_id && $warning_message != '') 
 ?>
 
                     <div class="centered-block-container">
-                        <div class="alert alert-warning alert-dismissable centered-block">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <div class="ui orange compact message centered-block">
+                            <i class="close icon"></i>
                             <?php echo $warning_message; ?>
-
                         </div>
                     </div>
 <?php
@@ -138,10 +133,9 @@ if ($feedback_message_target == $feedback_message_id && $error_message != '') {
 
 ?>
 
-                    <div class="alert alert-danger alert-dismissable">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <div class="ui negative message">
+                        <i class="close icon"></i>
                         <?php echo $error_message; ?>
-
                     </div>
 <?php
 
@@ -150,10 +144,9 @@ if ($feedback_message_target == $feedback_message_id && $error_message != '') {
 ?>
 
                     <div class="centered-block-container">
-                        <div class="alert alert-danger alert-dismissable centered-block">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <div class="ui negative compact message centered-block">
+                            <i class="close icon"></i>
                             <?php echo $error_message; ?>
-
                         </div>
                     </div>
 <?php
@@ -187,14 +180,14 @@ if ($feedback_message_with_javascript) {
 
 ?>
 
-            var visual_class = 'alert alert-info alert-dismissable';
+            var visual_class = 'ui info message';
 <?php
 
     } else {
 
 ?>
 
-            var visual_class = 'alert alert-info alert-dismissable centered-block';
+            var visual_class = 'ui info compact message centered-block';
 <?php
 
     }
@@ -212,14 +205,14 @@ if ($feedback_message_with_javascript) {
 
 ?>
 
-                    visual_class = 'alert alert-success alert-dismissable';
+                    visual_class = 'ui positive message';
 <?php
 
     } else {
 
 ?>
 
-                    visual_class = 'alert alert-success alert-dismissable centered-block';
+                    visual_class = 'ui positive message centered-block';
 <?php
 
     }
@@ -236,14 +229,14 @@ if ($feedback_message_with_javascript) {
 
 ?>
 
-                    visual_class = 'alert alert-warning alert-dismissable';
+                    visual_class = 'ui orange message';
 <?php
 
     } else {
 
 ?>
 
-                    visual_class = 'alert alert-warning alert-dismissable centered-block';
+                    visual_class = 'ui orange message centered-block';
 <?php
 
     }
@@ -260,14 +253,14 @@ if ($feedback_message_with_javascript) {
 
 ?>
 
-                    visual_class = 'alert alert-danger alert-dismissable';
+                    visual_class = 'ui negative message';
 <?php
 
     } else {
 
 ?>
 
-                    visual_class = 'alert alert-danger alert-dismissable centered-block';
+                    visual_class = 'ui negative message centered-block';
 <?php
 
     }
@@ -283,14 +276,14 @@ if ($feedback_message_with_javascript) {
 
 ?>
 
-            $('#<?php echo $feedback_message_id; ?>').html('<div class="' +  visual_class + '"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> ' +  message + ' </div>');
+            $('#<?php echo $feedback_message_id; ?>').html('<div class="' +  visual_class + '"> <i class="close icon"></i> ' +  message + ' </div>');
 <?php
 
     } else {
 
 ?>
 
-            $('#<?php echo $feedback_message_id; ?>').html('<div class="centered-block-container"><div class="' +  visual_class + '"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> ' +  message + ' </div></div>');
+            $('#<?php echo $feedback_message_id; ?>').html('<div class="centered-block-container"><div class="' +  visual_class + '"> <i class="close icon"></i> ' +  message + ' </div></div>');
 <?php
 
     }

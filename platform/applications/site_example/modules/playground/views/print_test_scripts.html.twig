@@ -1,0 +1,19 @@
+{#
+Ivan tcholakov, 2015-2016
+The MIT License, http://opensource.org/licenses/MIT
+#}
+
+{% if registry('print') %}
+
+    <script type="text/javascript">
+    //<![CDATA[
+
+    $(function () {
+
+        window.print();
+    });
+
+    //]]>
+    </script>
+
+{% endif %}

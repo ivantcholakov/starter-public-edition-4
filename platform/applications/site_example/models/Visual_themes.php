@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015-2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  *
  * Note: Storing the current theme is within a session variable.
@@ -21,12 +21,20 @@ class Visual_themes extends CI_Model {
 
         $this->items = array(
             array(
-                'key' => 'front_theme_bs',
-                'name' => 'Bootstrap',
+                'key' => 'front_semantic_ui_default',
+                'name' => 'Semantic UI Default',
             ),
             array(
-                'key' => 'front_theme_bsmd',
-                'name' => 'Bootstrap Material Design',
+                'key' => 'front_semantic_ui_amazon',
+                'name' => 'Semantic UI Amazon',
+            ),
+            array(
+                'key' => 'front_semantic_ui_classic',
+                'name' => 'Semantic UI Classic',
+            ),
+            array(
+                'key' => 'front_semantic_ui_material',
+                'name' => 'Semantic UI Material',
             ),
         );
     }

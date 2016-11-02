@@ -1,0 +1,6 @@
+
+        <div class="ui secondary stackable menu">
+            <a data-pjax class="{% if registry('pjax_subnavbar_active') == 'home' %}active {% endif %}item" href="{{ site_url('playground/pjax') }}">Pjax - Home Page</a>
+            <a data-pjax class="{% if registry('pjax_subnavbar_active') == 'page_1' %}active {% endif %}item" href="{{ site_url('playground/pjax/page-1') }}">Pjax - Test Page 1</a>
+            <a data-pjax class="{% if registry('pjax_subnavbar_active') == 'page_2' %}active {% endif %}item" href="{{ site_url('playground/pjax/page-2') }}">Pjax - Test Page 2</a>
+        </div>

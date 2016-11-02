@@ -15,7 +15,7 @@ class Readme_controller extends Base_Controller {
 
         $this->template
             ->append_title($title)
-            ->set_breadcrumb('<i class="fa fa-info-circle"></i> '.$title, site_url('readme'));
+            ->set_breadcrumb('<i class="info circle icon"></i> '.$title, site_url('readme'));
         ;
 
         $this->registry->set('nav', 'readme');

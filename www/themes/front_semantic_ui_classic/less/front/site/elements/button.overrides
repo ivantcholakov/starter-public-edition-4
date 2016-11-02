@@ -1,0 +1,18 @@
+/*******************************
+         Site Overrides
+*******************************/
+
+/* Scroll To Top Button */
+
+.ui.button.scroll.top {
+    position: fixed; 
+    z-index: 9999; 
+    display: inline-block;
+    outline: 0;
+    opacity: 0.5;
+    transition: none;
+    bottom: 15px;
+    right: 15px;
+}
+
+/* End Scroll To Top Button */

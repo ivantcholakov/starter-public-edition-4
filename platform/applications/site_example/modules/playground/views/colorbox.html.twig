@@ -1,0 +1,54 @@
+{#
+Ivan Tcholakov <ivantcholakov@gmail.com>, 2015-2016
+The MIT License, http://opensource.org/licenses/MIT
+#}
+
+{% macro display_colorbox_gallery(images, mode) %}
+
+    {% set mode = mode is empty ? 'colorbox' : 'colorbox-' ~ mode %}
+
+    {% for image in images %}
+
+        {% set image_url = image_url(image['image']) %}
+        {% set image_thumb_url = thumbnail(image_url, 180, 120) %}
+
+                        <div class="image-container">
+                            <a href="{{ image_url }}" title="{{ image['title']|e('html_attr') }}" target="blank" rel="{{ mode|e('html_attr') }}"><img src="{{ image_thumb_url }}" /></a>
+                        </div>
+    {% endfor %}
+
+{% endmacro %}
+
+{% import _self as colorbox_example %}
+
+{#----------------------------------------------------------------------------#}
+
+    <style>
+
+.image-container {
+    float: left;
+    margin: 5px;
+}
+
+.image-container a {
+    outline: 0;
+}
+
+    </style>
+
+                <p>
+                    <a href="http://www.jacklmoore.com/colorbox/" target="_blank">http://www.jacklmoore.com/colorbox/</a>,
+                    <a href="https://github.com/jackmoore/colorbox" target="_blank">https://github.com/jackmoore/colorbox</a>
+                </p>
+
+                <h3>Colorbox - Default Mode</h3>
+
+                <div class="clearfix">
+                    {{ colorbox_example.display_colorbox_gallery(images, null) }}
+                </div>
+
+                <h3>Colorbox - Slideshow Mode</h3>
+
+                <div class="clearfix">
+                    {{ colorbox_example.display_colorbox_gallery(images, 'slideshow') }}
+                </div>

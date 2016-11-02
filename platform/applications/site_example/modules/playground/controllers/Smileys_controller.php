@@ -26,10 +26,42 @@ class Smileys_controller extends Playground_Base_Controller {
         $this->load->helper('smiley');  // This is needed only for calling _get_smiley_array().
         $smileys = _get_smiley_array();
 
+        $items = array();
+
+        if (!empty($smileys)) {
+
+            foreach ($smileys as $key => $value) {
+                $items[] = array(
+                    'key' => $key,
+                    'key_escaped' => $this->_force_htmlentities($key),
+                    'image_name' => $value[0],
+                    'width' => $value[1],
+                    'height' => $value[2],
+                    'alt' => $value[3],
+                );
+            }
+        }
+
         $this->template
-            ->set('smileys', $smileys)
+            ->set('items', $items)
             ->enable_parser_body('smileys')
             ->build('smileys');
+    }
+
+    protected function _force_htmlentities($string) {
+
+        $arr = preg_split('/(?<!^)(?!$)/u', $string);  // An array of every multi-byte characters.
+
+        $result = '';
+
+        if (!empty($arr)) {
+
+            foreach ($arr as $c) {
+                $result .= '&#'.ord($c).';';
+            }
+        }
+
+        return $result;
     }
 
 }

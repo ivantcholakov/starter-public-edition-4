@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2016
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -30,14 +30,20 @@ class Multiplayer_controller extends Playground_Base_Controller {
             'http://vbox7.com/play:25c4115f2d',
         );
 
-        $system_requirements_ok = is_php('5.4.0');
+        $multiplayer = null;
+        $php_required = '5.4.0';
+        $system_requirements_ok = is_php($php_required);
 
         if ($system_requirements_ok) {
+
             $this->load->library('multiplayer');
+            $multiplayer = $this->multiplayer;
         }
 
         $this->template
+            ->set('multiplayer', $multiplayer)
             ->set('videos', $videos)
+            ->set('php_required', $php_required)
             ->set('system_requirements_ok', $system_requirements_ok)
             ->build('multiplayer');
     }

@@ -1,0 +1,109 @@
+
+{% for item in contacts %}
+
+                    <h4>{{ item['contact_label'] }}</h4>
+
+                    <div class="ui list">
+
+    {% if item['contact_address'] is not empty %}
+                        <div class="item" title="{{ lang('contact_address')|e('html_attr') }}">
+                            <i class="marker icon"></i>
+                            <div class="content">
+                                <div class="content">{{ item['contact_address'] }}</div>
+                            </div>
+                        </div>
+    {% endif %}
+
+    {% if item['contact_phone'] is not empty %}
+                        <div class="item" title="{{ lang('contact_phone')|e('html_attr') }}">
+                            <i class="call icon"></i>
+                            <div class="content">
+                                <div class="content">{{ item['contact_phone'] }}</div>
+                            </div>
+                        </div>
+    {% endif %}
+
+    {% if item['contact_fax'] is not empty %}
+                        <div class="item" title="{{ lang('contact_fax')|e('html_attr') }}">
+                            <i class="print icon"></i>
+                            <div class="content">
+                                <div class="content">{{ item['contact_fax'] }}</div>
+                            </div>
+                        </div>
+    {% endif %}
+
+    {% if item['contact_email'] is not empty %}
+                        <div class="item" title="{{ lang('contact_email')|e('html_attr') }}">
+                            <i class="mail outline icon"></i>
+                            <div class="content">
+                                <div class="content">{{ item['contact_email']|auto_link }}</div>
+                            </div>
+                        </div>
+    {% endif %}
+
+    {% if item['contact_person'] is not empty %}
+                        <div class="item" title="{{ lang('contact_person')|e('html_attr') }}">
+                            <i class="user icon"></i>
+                            <div class="content">
+                                <div class="content">{{ item['contact_person'] }}</div>
+                            </div>
+                        </div>
+    {% endif %}
+
+    {% if item['contact_web_site'] is not empty %}
+                        <div class="item" title="{{ lang('contact_web_site')|e('html_attr') }}">
+                            <i class="linkify icon"></i>
+                            <div class="content">
+                                <div class="content">{{ item['contact_web_site']|auto_link }}</div>
+                            </div>
+                        </div>
+    {% endif %}
+
+    {% if item['contact_facebook'] is not empty %}
+                        <div class="item" title="{{ lang('contact_facebook')|e('html_attr') }}">
+                            <i class="facebook icon"></i>
+                            <div class="content">
+                                <div class="content">{{ item['contact_facebook']|auto_link }}</div>
+                            </div>
+                        </div>
+    {% endif %}
+
+    {% if item['contact_twitter'] is not empty %}
+                        <div class="item" title="{{ lang('contact_twitter')|e('html_attr') }}">
+                            <i class="twitter icon"></i>
+                            <div class="content">
+                                <div class="content">{{ item['contact_twitter']|auto_link }}</div>
+                            </div>
+                        </div>
+    {% endif %}
+
+    {% if item['contact_google_plus'] is not empty %}
+                        <div class="item" title="{{ lang('contact_google_plus')|e('html_attr') }}">
+                            <i class="google plus icon"></i>
+                            <div class="content">
+                                <div class="content">{{ item['contact_google_plus']|auto_link }}</div>
+                            </div>
+                        </div>
+    {% endif %}
+
+    {% if item['contact_linkedin'] is not empty %}
+                        <div class="item" title="{{ lang('contact_linkedin')|e('html_attr') }}">
+                            <i class="linkedin icon"></i>
+                            <div class="content">
+                                <div class="content">{{ item['contact_linkedin']|auto_link }}</div>
+                            </div>
+                        </div>
+    {% endif %}
+
+    {% if item['contact_github'] is not empty %}
+                        <div class="item" title="{{ lang('contact_github')|e('html_attr') }}">
+                            <i class="github alternate icon"></i>
+                            <div class="content">
+                                <div class="content">{{ item['contact_github']|auto_link }}</div>
+                            </div>
+                        </div>
+    {% endif %}
+
+                    </div>
+
+{% endfor %}

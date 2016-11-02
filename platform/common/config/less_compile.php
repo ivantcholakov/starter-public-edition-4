@@ -261,6 +261,21 @@ $config['less_compile'] = array(
         'compress' => true
     ),
 
+    // php cli.php less compile datatables-semantic-ui datatables-semantic-ui-min
+
+    array(
+        'name' => 'datatables-semantic-ui',
+        'source' => DEFAULTFCPATH.'assets/less/lib/dataTables/dataTables.semanticui.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/dataTables/dataTables.semanticui.css',
+        'compress' => false
+    ),
+    array(
+        'name' => 'datatables-semantic-ui-min',
+        'source' => DEFAULTFCPATH.'assets/less/lib/dataTables/dataTables.semanticui.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/dataTables/dataTables.semanticui.min.css',
+        'compress' => true
+    ),
+
     // php cli.php less compile bootstrap3-dialog bootstrap3-dialog-min
 
     array(
@@ -334,26 +349,6 @@ $config['less_compile'] = array(
         'compress' => true
     ),
 
-    // php cli.php less compile front-theme-bs-min
-
-    array(
-        'name' => 'front-theme-bs-min',
-        'source' => DEFAULTFCPATH.'themes/front_theme_bs/less/front/index.less',
-        'destination' => DEFAULTFCPATH.'themes/front_theme_bs/css/front.min.css',
-        'compress' => true,
-        'relativeUrls' => false,
-    ),
-
-    // php cli.php less compile front-theme-bsmd-min
-
-    array(
-        'name' => 'front-theme-bsmd-min',
-        'source' => DEFAULTFCPATH.'themes/front_theme_bsmd/less/front/index.less',
-        'destination' => DEFAULTFCPATH.'themes/front_theme_bsmd/css/front.min.css',
-        'compress' => true,
-        'relativeUrls' => false,
-    ),
-
     // php cli.php less compile semantic-ui semantic-ui-min
 
     array(
@@ -368,6 +363,54 @@ $config['less_compile'] = array(
         'name' => 'semantic-ui-min',
         'source' => DEFAULTFCPATH.'assets/less/lib/semantic/semantic.less',
         'destination' => DEFAULTFCPATH.'assets/css/lib/semantic/semantic.min.css',
+        'relativeUrls' => false,
+        'implementation' => 'less.js',
+        'autoprefixer' => array(),
+        'cssmin' => array('implementation' => 'cssnano'),
+    ),
+
+    // php cli.php less compile front-semantic-ui-default-min
+
+    array(
+        'name' => 'front-semantic-ui-default-min',
+        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_default/less/front/index.less',
+        'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_default/css/front.min.css',
+        'relativeUrls' => false,
+        'implementation' => 'less.js',
+        'autoprefixer' => array(),
+        'cssmin' => array('implementation' => 'cssnano'),
+    ),
+
+    // php cli.php less compile front-semantic-ui-amazon-min
+
+    array(
+        'name' => 'front-semantic-ui-amazon-min',
+        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_amazon/less/front/index.less',
+        'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_amazon/css/front.min.css',
+        'relativeUrls' => false,
+        'implementation' => 'less.js',
+        'autoprefixer' => array(),
+        'cssmin' => array('implementation' => 'cssnano'),
+    ),
+
+    // php cli.php less compile front-semantic-ui-classic-min
+
+    array(
+        'name' => 'front-semantic-ui-classic-min',
+        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_classic/less/front/index.less',
+        'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_classic/css/front.min.css',
+        'relativeUrls' => false,
+        'implementation' => 'less.js',
+        'autoprefixer' => array(),
+        'cssmin' => array('implementation' => 'cssnano'),
+    ),
+
+    // php cli.php less compile front-semantic-ui-material-min
+
+    array(
+        'name' => 'front-semantic-ui-material-min',
+        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_material/less/front/index.less',
+        'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_material/css/front.min.css',
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array(),

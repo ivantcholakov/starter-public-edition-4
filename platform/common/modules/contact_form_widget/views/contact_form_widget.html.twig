@@ -1,0 +1,213 @@
+
+                <h4>{{ lang('contact_send_us_a_message') }}</h4>
+
+<style>
+
+.status.ui.message:last-child {
+    margin-bottom: 1em;
+}
+
+</style>
+
+{% if setting('mailer_enabled') %}
+
+                <div id="contact_form_feedback_messages" style="display: none;"></div>
+
+                {{ form_open('', 'name="main-contact-form" id="main-contact-form" method="post" class="ui form"') }}
+
+                    <div class="ui two column stackable grid">
+
+                        <div class="column">
+
+                            <div class="field">
+                                <div class="ui fluid left icon input">
+                                    <input type="text" id="contact_form_first_name" name="contact_form_first_name" placeholder="* {{ lang('contact_first_name')|e('html_attr') }}" />
+                                    <i class="user icon"></i>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="ui fluid left icon input">
+                                    <input type="text" id="contact_form_last_name" name="contact_form_last_name" placeholder="* {{ lang('contact_last_name')|e('html_attr') }}" />
+                                    <i class="user icon"></i>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="ui fluid left icon input">
+                                    <input type="email" id="contact_form_email" name="contact_form_email" placeholder="* {{ lang('contact_email')|e('html_attr') }}" />
+                                    <i class="mail outline icon"></i>
+                                </div>
+                            </div>
+
+    {% if contact_form_has_phone %}
+
+                            <div class="field">
+                                <div class="ui fluid left icon input">
+                                    <input type="text" id="contact_form_phone" name="contact_form_phone" placeholder="{% if contact_form_phone_required %}* {% endif %}{{ lang('contact_phone')|e('html_attr') }}" />
+                                    <i class="call icon"></i>
+                                </div>
+                            </div>
+
+    {% endif %}
+
+    {% if contact_form_has_organization %}
+
+                            <div class="field">
+                                <div class="ui fluid left icon input">
+                                    <input type="text" id="contact_form_organization" name="contact_form_organization" placeholder="{% if contact_form_organization_required %}* {% endif %}{{ lang('contact_organization')|e('html_attr') }}" />
+                                    <i class="sitemap icon"></i>
+                                </div>
+                            </div>
+
+    {% endif %}
+
+                            <div class="field">
+
+                                <div class="img-thumbnail">
+
+                                    <img id="captcha_image"
+                                        src="{{ captcha().src ~ '?nocache=' ~ rand(100000000, 999999999) }}"
+                                        title="{{ lang('captcha.tip')|e('html_attr') }}"
+                                        class="ui middle aligned image"
+                                    />
+                                    <button type="button" id="captcha_refresh" class="ui icon button" title="{{ lang('ui_refresh')|e('html_attr') }}"><i class="refresh icon"></i></button>
+
+                                </div>
+
+                            </div>
+
+                            <div class="field">
+                                <div class="ui fluid left icon input">
+                                    <input type="text" id="contact_form_captcha" name="contact_form_captcha" placeholder="* {{ lang('captcha.label')|e('html_attr') }}" maxlength="{{ captcha().length }}" />
+                                    <i class="privacy icon"></i>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="column">
+
+                            <div class="field">
+                                <div class="ui fluid input">
+                                    <input type="text" id="contact_form_subject" name="contact_form_subject" placeholder="* {{ lang('contact_subject')|e('html_attr') }}" />
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <textarea id="contact_form_message" name="contact_form_message" rows="14" placeholder="* {{ lang('contact_message')|e('html_attr') }}"></textarea>
+                            </div>
+
+                            <p>{{ lang('ui_required_fields_note') }}</p>
+
+                            <button id="contact_form_submit" name="contact_form_submit" type="submit" class="ui fluid big primary button">
+                                <i id="contact_form_submit_icon" class="checkmark icon"></i>
+                                <i id="contact_form_error_flag" class="warning sign icon" style="display: none;"></i>
+                                <i id="contact_form_processing" class="spinner loading icon" style="display: none;"></i>
+                                {{ lang('contact_send_message') }}
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                {{ form_close() }}
+
+                <script type="text/javascript">
+                //<![CDATA[
+
+                function refresh_captcha() {
+
+                    $('#captcha_image').attr('src', '{{ captcha().src }}' + '?nocache=' + Math.random()*999999999);
+                    $('#contact_form_captcha').val('');
+                }
+
+                function contact_form_submit_state() {
+
+                    $('#contact_form_submit').attr('disabled', 'disabled');
+                    $('#contact_form_submit_icon').hide();
+                    $('#contact_form_error_flag').hide();
+                    $('#contact_form_processing').show();
+                }
+
+                function contact_form_success_state(message) {
+
+                    $('#contact_form_processing').hide();
+                    $('#contact_form_error_flag').hide();
+                    $('#contact_form_submit_icon').show();
+                    $('#contact_form_submit').removeAttr('disabled');
+
+                    $('#main-contact-form').hide();
+
+                    $('#contact_form_feedback_messages').html(message);
+                    $('#contact_form_feedback_messages').fadeIn('slow');
+                }
+
+                function contact_form_error_state(message) {
+
+                    $('#contact_form_processing').hide();
+
+                    $('#contact_form_error_flag').show();
+                    $('#contact_form_submit').removeAttr('disabled');
+
+                    $('#contact_form_feedback_messages').html(message);
+                    $('#contact_form_feedback_messages').fadeIn('slow');
+
+                    refresh_captcha('#captcha_image');
+                }
+
+                $(function () {
+
+                    $('#captcha_image').on('click', function() {
+                        refresh_captcha();
+                    });
+
+                    $('#captcha_refresh').on('click', function() {
+                        refresh_captcha();
+                    });
+
+                    $('#main-contact-form').submit(function(e) {
+
+                        contact_form_submit_state();
+
+                        var contact_form_data = $(this).serialize();
+
+                        $.ajax({
+                            type: 'post',
+                            url: '{{ site_uri('contact_form_widget/submit') }}',
+                            data: contact_form_data,
+                            success: function(data) {
+
+                                if (data.success) {
+
+                                    contact_form_success_state(data.messages_html);
+
+                                } else {
+
+                                    contact_form_error_state(data.messages_html);
+
+                                }
+
+                            },
+                            error: function () {
+
+                                contact_form_error_state({{ mailer_error_html|json_encode|raw }});
+
+                            }
+                        });
+
+                        e.preventDefault();
+                        return false;
+                    });
+
+                });
+                //]]>
+                </script>
+
+{% else %}
+
+                <div class="status ui orange message">
+                    {{ lang('mailer_disabled') }}
+                </div>
+
+{% endif %}

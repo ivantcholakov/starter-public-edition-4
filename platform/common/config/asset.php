@@ -73,7 +73,7 @@ $config['load_javascripts_from_source'] = false;
 | Internet Explorer Support Options
 |--------------------------------------------------------------------------
 */
-$config['ie_min_supported_version'] = 6;    // 6, 7, 8, 9, 10, ...
+$config['ie_min_supported_version'] = 10;   // 6, 7, 8, 9, 10, ...
 
 /*
 |--------------------------------------------------------------------------

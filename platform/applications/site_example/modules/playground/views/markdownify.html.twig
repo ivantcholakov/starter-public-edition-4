@@ -1,32 +1,20 @@
 
-        <section>
+        <div class="two column stackable ui grid">
 
-            <div class="container">
+            <div class="column">
 
-                <div class="page-header">
-                    <h1>{{ template['page_title'] }}</h1>
-                </div>
+                <h4>The Input HTML</h4>
 
-                <div class="row">
-
-                    <div class="col-md-6">
-
-                        <h4>The Input HTML</h4>
-
-                        {{ html|raw }}
-
-                    </div>
-
-                    <div class="col-md-6">
-
-                        <h4>The Result Text</h4>
-
-                        <pre>{{ text|raw }}</pre>
-
-                    </div>
-
-                </div>
+                {{ html|raw }}
 
             </div>
 
-        </section>
+            <div class="column">
+
+                <h4>The Result Text</h4>
+
+                <pre>{{ text|raw }}</pre>
+
+            </div>
+
+        </div>

@@ -7,65 +7,53 @@
 
 ?>
 
-        <section>
+            <div class="ui grid">
 
-            <div class="container">
+                <div class="sixteen wide mobile eight wide tablet four wide computer column">
 
-                <div class="page-header">
-                    <h1><?php echo $template['page_title']; ?></h1>
+                    <h3>Test 1</h3>
+
+                    <table class="ui celled striped compact table">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th>Flag</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {data}<tr>
+                                <td>{code}</td>
+                                <td>{name}</td>
+                                <td><img src="{BASE_URI}assets/img/lib/flags-iso/flat/32/{code}.png" /></td>
+                            </tr>{/data}
+                        </tbody>
+                    </table>
+
                 </div>
 
-                <div class="row">
+                <div class="sixteen wide mobile eight wide tablet four wide computer column">
 
-                    <div class="col-md-3">
+                    <h3>Test 2</h3>
 
-                        <h3>Test 1</h3>
+                    {parsed_result_2}
 
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Code</th>
-                                    <th>Name</th>
-                                    <th>Flag</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {data}<tr>
-                                    <td>{code}</td>
-                                    <td>{name}</td>
-                                    <td><img class="thumbnail" src="{BASE_URI}assets/img/lib/flags-iso/flat/32/{code}.png" /></td>
-                                </tr>{/data}
-                            </tbody>
-                        </table>
+                </div>
 
-                    </div>
+                <div class="sixteen wide mobile eight wide tablet four wide computer column">
 
-                    <div class="col-md-3">
+                    <h3>Test 3</h3>
 
-                        <h3>Test 2</h3>
+                    {parsed_result_3}
 
-                        {parsed_result_2}
+                </div>
 
-                    </div>
+                <div class="sixteen wide mobile eight wide tablet four wide computer column">
 
-                    <div class="col-md-3">
+                    <h3>Test 4</h3>
 
-                        <h3>Test 3</h3>
-
-                        {parsed_result_3}
-
-                    </div>
-
-                    <div class="col-md-3">
-
-                        <h3>Test 4</h3>
-
-                        {parsed_result_4}
-
-                    </div>
+                    {parsed_result_4}
 
                 </div>
 
             </div>
-
-        </section>

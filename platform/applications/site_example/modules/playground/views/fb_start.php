@@ -1,25 +1,6 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-        <section>
-
-            <div class="container">
-
-                <div class="row">
-
-                    <div class="col-md-12">
-
-
-<?php
-
-if ($error_message != '') {
-
-?>
-
-                        <div class="alert alert-warning text-center"><?php echo $error_message; ?></div>
-
-<?php
-
-} else {
+if ($error_message == '') {
 
 ?>
 
@@ -42,13 +23,3 @@ if ($error_message != '') {
 <?php
 
 }
-
-?>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
