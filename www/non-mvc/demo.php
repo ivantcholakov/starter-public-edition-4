@@ -45,7 +45,6 @@ template_metadata();
 
 echo favicon();
 echo apple_touch_icon_precomposed();
-echo cleartype_ie();
 
 // A CSS loading example.
 echo css('lib/semantic/semantic.min.css');

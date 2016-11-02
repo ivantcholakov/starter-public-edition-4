@@ -112,7 +112,6 @@ $config['functions'] = array(
     array('favicon', 'favicon', array('is_safe' => array('html'))),
     array('apple_touch_icon', 'apple_touch_icon', array('is_safe' => array('html'))),
     array('apple_touch_icon_precomposed', 'apple_touch_icon_precomposed', array('is_safe' => array('html'))),
-    array('cleartype_ie', 'cleartype_ie', array('is_safe' => array('html'))),
     array('css_normalize', 'css_normalize', array('is_safe' => array('html'))),
     array('js_platform', 'js_platform', array('is_safe' => array('html'))),
     array('js_selectivizr', 'js_selectivizr', array('is_safe' => array('html'))),

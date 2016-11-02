@@ -142,11 +142,6 @@ class Parser_Lex_Extension_Template extends Parser_Lex_Extension {
         return apple_touch_icon_precomposed();
     }
 
-    public function html_cleartype_ie() {
-
-        return cleartype_ie();
-    }
-
     public function css_normalize() {
 
         return css_normalize();

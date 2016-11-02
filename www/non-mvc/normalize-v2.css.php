@@ -21,7 +21,6 @@ echo meta_charset();
 
 echo favicon();
 echo apple_touch_icon_precomposed();
-echo cleartype_ie();
 
 echo css('lib/normalize-2/normalize.css');
 echo js('lib/html5shiv/html5shiv.min.js');

@@ -474,25 +474,6 @@ if (!function_exists('apple_touch_icon_precomposed')) {
 
 }
 
-if (!function_exists('cleartype_ie')) {
-
-    // Added by Ivan Tcholakov. 24-OCT-2013.
-    function cleartype_ie() {
-
-        if (template_ie_mobile()) {
-
-            // Mobile IE allows us to activate ClearType technology
-            // for smoothing fonts for easy reading.
-            return
-'
-    <meta http-equiv="cleartype" content="on" />';
-        }
-
-        return '';
-    }
-
-}
-
 if (!function_exists('css_normalize')) {
 
     // Added by Ivan Tcholakov. 25-OCT-2013.

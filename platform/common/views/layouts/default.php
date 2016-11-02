@@ -13,7 +13,6 @@ template_metadata();
 echo viewport();
 echo favicon();
 echo apple_touch_icon_precomposed();
-echo cleartype_ie();
 
 echo css_normalize();
 file_partial('css');
