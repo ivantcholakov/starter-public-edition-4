@@ -757,33 +757,6 @@ if (!function_exists('unsupported_browser')) {
 //------------------------------------------------------------------------------
 
 
-if (!function_exists('js_jquery_extra_selectors')) {
-
-    // Added by Ivan Tcholakov. 23-OCT-2013.
-    function js_jquery_extra_selectors() {
-
-        if (template_enable_oldie()) {
-
-            ci()->load->helper('asset');
-
-            if (config_item('load_javascripts_from_source')) {
-                $js = js('lib/jquery-extra-selectors/jquery-extra-selectors.js');
-            } else {
-                $js = js('lib/jquery-extra-selectors/jquery-extra-selectors.min.js');
-            }
-
-            return
-'
-    <!--[if (lt IE 9) & (!IEMobile)]>
-        '.trim($js).'
-    <![endif]-->';
-        }
-
-        return '';
-    }
-
-}
-
 if (!function_exists('js_bp_plugins')) {
 
     // Added by Ivan Tcholakov. 26-OCT-2013.

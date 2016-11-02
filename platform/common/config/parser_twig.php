@@ -118,7 +118,6 @@ $config['functions'] = array(
     array('js_jquery', 'js_jquery', array('is_safe' => array('html'))),
     array('noscript', 'noscript', array('is_safe' => array('html'))),
     array('unsupported_browser', 'unsupported_browser', array('is_safe' => array('html'))),
-    array('js_jquery_extra_selectors', 'js_jquery_extra_selectors', array('is_safe' => array('html'))),
     array('js_bp_plugins', 'js_bp_plugins', array('is_safe' => array('html'))),
     array('js_mbp_helper', 'js_mbp_helper', array('is_safe' => array('html'))),
     array('js_scale_fix_ios', 'js_scale_fix_ios', array('is_safe' => array('html'))),

@@ -32,7 +32,6 @@ echo unsupported_browser();
 
 template_body();
 
-echo js_jquery_extra_selectors();
 echo js_bp_plugins();
 echo js_mbp_helper();
 echo js_scale_fix_ios();

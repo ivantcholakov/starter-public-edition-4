@@ -184,11 +184,6 @@ class Parser_Lex_Extension_Template extends Parser_Lex_Extension {
         return unsupported_browser($alternative_message);
     }
 
-    public function js_jquery_extra_selectors() {
-
-        return js_jquery_extra_selectors();
-    }
-
     public function js_bp_plugins() {
 
         return js_bp_plugins();
