@@ -2,7 +2,7 @@
     "require": {
         "roave/security-advisories": "dev-master",
         "paragonie/random_compat": "^2.0.2",
-        "fg/multiplayer": "1.2.0",
+        "fg/multiplayer": "^1.2.1",
         "facebook/php-sdk-v4" : "~5.0",
         "leafo/scssphp": "0.6.6",
         "guzzlehttp/guzzle": "~6.0",

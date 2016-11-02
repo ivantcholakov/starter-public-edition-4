@@ -58,10 +58,24 @@ abstract class Twig_Template implements Twig_TemplateInterface
      * Returns the template source code.
      *
      * @return string The template source code
+     *
+     * @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead
      */
     public function getSource()
     {
+        @trigger_error('The '.__METHOD__.' method is deprecated since version 1.27 and will be removed in 2.0. Use getSourceContext() instead.', E_USER_DEPRECATED);
+
         return '';
+    }
+
+    /**
+     * Returns information about the original template source code.
+     *
+     * @return Twig_Source
+     */
+    public function getSourceContext()
+    {
+        return new Twig_Source('', $this->getTemplateName());
     }
 
     /**
@@ -107,7 +121,7 @@ abstract class Twig_Template implements Twig_TemplateInterface
                 $this->parents[$parent] = $this->loadTemplate($parent);
             }
         } catch (Twig_Error_Loader $e) {
-            $e->setTemplateFile(null);
+            $e->setTemplateName(null);
             $e->guess();
 
             throw $e;
@@ -188,8 +202,8 @@ abstract class Twig_Template implements Twig_TemplateInterface
             try {
                 $template->$block($context, $blocks);
             } catch (Twig_Error $e) {
-                if (!$e->getTemplateFile()) {
-                    $e->setTemplateFile($template->getTemplateName());
+                if (!$e->getTemplateName()) {
+                    $e->setTemplateName($template->getTemplateName());
                 }
 
                 // this is mostly useful for Twig_Error_Loader exceptions
@@ -307,8 +321,8 @@ abstract class Twig_Template implements Twig_TemplateInterface
 
             return $this->env->loadTemplate($template, $index);
         } catch (Twig_Error $e) {
-            if (!$e->getTemplateFile()) {
-                $e->setTemplateFile($templateName ? $templateName : $this->getTemplateName());
+            if (!$e->getTemplateName()) {
+                $e->setTemplateName($templateName ? $templateName : $this->getTemplateName());
             }
 
             if ($e->getTemplateLine()) {
@@ -381,8 +395,8 @@ abstract class Twig_Template implements Twig_TemplateInterface
         try {
             $this->doDisplay($context, $blocks);
         } catch (Twig_Error $e) {
-            if (!$e->getTemplateFile()) {
-                $e->setTemplateFile($this->getTemplateName());
+            if (!$e->getTemplateName()) {
+                $e->setTemplateName($this->getTemplateName());
             }
 
             // this is mostly useful for Twig_Error_Loader exceptions

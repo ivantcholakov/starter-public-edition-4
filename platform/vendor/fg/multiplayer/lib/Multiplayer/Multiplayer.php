@@ -20,7 +20,7 @@ class Multiplayer {
 	 *
 	 *	@var callable
 	 */
-	protected $_template = 'Multiplayer::template';
+	protected $_template = 'Multiplayer\Multiplayer::template';
 
 
 

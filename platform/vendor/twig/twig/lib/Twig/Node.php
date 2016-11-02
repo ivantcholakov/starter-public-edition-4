@@ -22,7 +22,7 @@ class Twig_Node implements Twig_NodeInterface
     protected $lineno;
     protected $tag;
 
-    private $filename;
+    private $name;
 
     /**
      * Constructor.
@@ -118,8 +118,18 @@ class Twig_Node implements Twig_NodeInterface
         }
     }
 
+    public function getTemplateLine()
+    {
+        return $this->lineno;
+    }
+
+    /**
+     * @deprecated since 1.27 (to be removed in 2.0)
+     */
     public function getLine()
     {
+        @trigger_error('The '.__METHOD__.' method is deprecated since version 1.27 and will be removed in 2.0. Use getTemplateName() instead.', E_USER_DEPRECATED);
+
         return $this->lineno;
     }
 
@@ -240,18 +250,38 @@ class Twig_Node implements Twig_NodeInterface
         return new ArrayIterator($this->nodes);
     }
 
-    public function setFilename($filename)
+    public function setTemplateName($name)
     {
-        $this->filename = $filename;
+        $this->name = $name;
         foreach ($this->nodes as $node) {
             if (null !== $node) {
-                $node->setFilename($filename);
+                $node->setTemplateName($name);
             }
         }
     }
 
+    public function getTemplateName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @deprecated since 1.27 (to be removed in 2.0)
+     */
+    public function setFilename($name)
+    {
+        @trigger_error('The '.__METHOD__.' method is deprecated since version 1.27 and will be removed in 2.0. Use setTemplateName() instead.', E_USER_DEPRECATED);
+
+        $this->setTemplateName($name);
+    }
+
+    /**
+     * @deprecated since 1.27 (to be removed in 2.0)
+     */
     public function getFilename()
     {
-        return $this->filename;
+        @trigger_error('The '.__METHOD__.' method is deprecated since version 1.27 and will be removed in 2.0. Use getTemplateName() instead.', E_USER_DEPRECATED);
+
+        return $this->name;
     }
 }
