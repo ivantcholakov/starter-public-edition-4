@@ -256,7 +256,6 @@ echo '<br />';
 echo js_bp_plugins();
 echo js_mbp_helper();
 echo js_scale_fix_ios();
-echo js_imgsizer();
 
 echo div_debug();
 

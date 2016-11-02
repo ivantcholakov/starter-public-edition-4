@@ -799,27 +799,6 @@ if (!function_exists('js_scale_fix_ios')) {
 
 }
 
-if (!function_exists('js_imgsizer')) {
-
-    // Added by Ivan Tcholakov. 22-OCT-2013.
-    function js_imgsizer() {
-
-        if (template_enable_oldie()) {
-
-            ci()->load->helper('asset');
-
-            return
-'
-    <!--[if (lt IE 9) & (!IEMobile)]>
-        '.trim(js('lib/imgsizer/imgsizer.js')).'
-    <![endif]-->';
-        }
-
-        return '';
-    }
-
-}
-
 
 //------------------------------------------------------------------------------
 // Within a template here is the place for custom javascripts,

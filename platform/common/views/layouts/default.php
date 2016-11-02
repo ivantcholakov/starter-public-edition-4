@@ -35,7 +35,6 @@ template_body();
 echo js_bp_plugins();
 echo js_mbp_helper();
 echo js_scale_fix_ios();
-echo js_imgsizer();
 
 file_partial('scripts');
 template_partial('scripts');

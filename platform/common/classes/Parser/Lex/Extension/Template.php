@@ -199,9 +199,4 @@ class Parser_Lex_Extension_Template extends Parser_Lex_Extension {
         return js_scale_fix_ios();
     }
 
-    public function js_imgsizer() {
-
-        return js_imgsizer();
-    }
-
 }
