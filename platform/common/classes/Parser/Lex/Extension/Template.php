@@ -152,19 +152,9 @@ class Parser_Lex_Extension_Template extends Parser_Lex_Extension {
         return js_platform();
     }
 
-    public function js_selectivizr() {
-
-        return js_selectivizr();
-    }
-
     public function js_modernizr() {
 
         return js_modernizr();
-    }
-
-    public function js_respond() {
-
-        return js_respond();
     }
 
     public function js_jquery() {

@@ -59,9 +59,7 @@ echo css_normalize();
 <?php
 
 echo js_platform();
-echo js_selectivizr();
 echo js_modernizr();
-echo js_respond();
 echo js_jquery();
 
 echo head_end();

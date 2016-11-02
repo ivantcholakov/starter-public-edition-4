@@ -19,9 +19,7 @@ file_partial('css');
 template_partial('css');
 
 echo js_platform();
-echo js_selectivizr();
 echo js_modernizr();
-echo js_respond();
 echo js_jquery();
 
 template_partial('head');

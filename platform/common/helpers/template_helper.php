@@ -571,26 +571,6 @@ if (!function_exists('js_platform')) {
 
 }
 
-if (!function_exists('js_selectivizr')) {
-
-    // Added by Ivan Tcholakov. 22-OCT-2013.
-    function js_selectivizr() {
-
-        if (template_enable_oldie()) {
-
-            ci()->load->helper('asset');
-
-            return
-'
-    <!--[if (lt IE 9) & (!IEMobile)]>
-        '.trim(js('lib/selectivizr/selectivizr.js')).'
-    <![endif]-->';
-        }
-
-        return '';
-    }
-
-}
 
 if (!function_exists('js_modernizr')) {
 
@@ -604,35 +584,6 @@ if (!function_exists('js_modernizr')) {
         }
 
         return js('lib/modernizr/modernizr.custom.min.js');
-    }
-
-}
-
-if (!function_exists('js_respond')) {
-
-    // Added by Ivan Tcholakov. 22-OCT-2013.
-    function js_respond() {
-
-        if (template_enable_oldie()) {
-
-            ci()->load->helper('asset');
-
-            if (config_item('load_javascripts_from_source')) {
-                $js_path = js_path('lib/respond/respond-1.3.0.js');
-            } else {
-                $js_path = js_path('lib/respond/respond-1.3.0.min.js');
-            }
-
-            return
-"
-    <script type=\"text/javascript\">
-    //<![CDATA[
-        Modernizr.mq('(min-width:0)') || document.write('\x3Cscr' + 'ipt type=\"text/javascript\" src=\"$js_path\">\x3C/scr' + 'ipt>');
-    //]]>
-    </script>";
-        }
-
-        return '';
     }
 
 }
