@@ -46,6 +46,36 @@ template_metadata();
 echo favicon();
 echo apple_touch_icon_precomposed();
 
+?>
+
+<script type="text/javascript" src="<?php echo js_url('lib/webfontloader/webfontloader.js'); ?>"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+
+    WebFont.load({
+        custom: {
+            families: [
+                'Lato',
+                'Icons',
+                'Material Icons',
+                'FontAwesome'
+            ],
+            urls: [
+                ASSET_CSS_URI + 'lib/lato/latofonts.min.css',
+                ASSET_CSS_URI + 'lib/semantic-icons-default/icons.css',
+                ASSET_CSS_URI + 'lib/material-icons/material-icons.min.css',
+                ASSET_CSS_URI + 'lib/font-awesome-4/font-awesome.min.css'
+            ]
+        },
+        timeout: 2000
+    });
+
+//]]>
+</script>
+
+<?php
+
 // A CSS loading example.
 echo css('lib/semantic/semantic.min.css');
 
@@ -297,6 +327,7 @@ echo body_begin('id="page-top"');
         </div>
 
     </footer>
+
 <?php
 
 echo js_bp_plugins();
@@ -306,33 +337,6 @@ echo js_scale_fix_ios();
 echo js('lib/semantic/semantic.min.js');
 
 ?>
-
-
-<script type="text/javascript" src="<?php echo js_url('lib/webfontloader/webfontloader.js'); ?>"></script>
-
-<script type="text/javascript">
-//<![CDATA[
-
-    WebFont.load({
-        custom: {
-            families: [
-                'Lato',
-                'Icons',
-                'Material Icons',
-                'FontAwesome'
-            ],
-            urls: [
-                ASSET_CSS_URI + 'lib/lato/latofonts.min.css',
-                ASSET_CSS_URI + 'lib/semantic-icons-default/icons.css',
-                ASSET_CSS_URI + 'lib/material-icons/material-icons.min.css',
-                ASSET_CSS_URI + 'lib/font-awesome-4/font-awesome.min.css'
-            ]
-        },
-        timeout: 2000
-    });
-
-//]]>
-</script>
 
 <script type="text/javascript">
 //<![CDATA[
