@@ -571,7 +571,6 @@ if (!function_exists('js_platform')) {
 
 }
 
-
 if (!function_exists('js_modernizr')) {
 
     // Added by Ivan Tcholakov. 22-OCT-2013.

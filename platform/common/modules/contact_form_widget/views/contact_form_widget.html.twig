@@ -63,18 +63,12 @@
     {% endif %}
 
                             <div class="field">
-
-                                <div class="img-thumbnail">
-
-                                    <img id="captcha_image"
-                                        src="{{ captcha().src ~ '?nocache=' ~ rand(100000000, 999999999) }}"
-                                        title="{{ lang('captcha.tip')|e('html_attr') }}"
-                                        class="ui middle aligned image"
-                                    />
-                                    <button type="button" id="captcha_refresh" class="ui icon button" title="{{ lang('ui_refresh')|e('html_attr') }}"><i class="refresh icon"></i></button>
-
-                                </div>
-
+                                <img id="captcha_image"
+                                    src="{{ captcha().src ~ '?nocache=' ~ rand(100000000, 999999999) }}"
+                                    title="{{ lang('captcha.tip')|e('html_attr') }}"
+                                    class="ui middle aligned image"
+                                />
+                                <button type="button" id="captcha_refresh" class="ui icon button" title="{{ lang('ui_refresh')|e('html_attr') }}"><i class="refresh icon"></i></button>
                             </div>
 
                             <div class="field">
