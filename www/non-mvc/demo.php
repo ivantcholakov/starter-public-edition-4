@@ -48,31 +48,32 @@ echo apple_touch_icon_precomposed();
 
 ?>
 
-<script type="text/javascript" src="<?php echo js_url('lib/webfontloader/webfontloader.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo js_url('lib/webfontloader/webfontloader.js'); ?>"></script>
 
-<script type="text/javascript">
-//<![CDATA[
+    <script type="text/javascript">
+    //<![CDATA[
 
-    WebFont.load({
-        custom: {
-            families: [
-                'Lato',
-                'Icons',
-                'Material Icons',
-                'FontAwesome'
-            ],
-            urls: [
-                ASSET_CSS_URI + 'lib/lato/latofonts.min.css',
-                ASSET_CSS_URI + 'lib/semantic-icons-default/icons.css',
-                ASSET_CSS_URI + 'lib/material-icons/material-icons.min.css',
-                ASSET_CSS_URI + 'lib/font-awesome-4/font-awesome.min.css'
-            ]
-        },
-        timeout: 2000
-    });
+        WebFont.load({
+            custom: {
+                families: [
+                    'Lato',
+                    'Icons',
+                    'FontAwesome',
+                    'Material Icons'
+                ],
+                urls: [
+                    ASSET_CSS_URI + 'lib/lato/latofonts.min.css',
+                    ASSET_CSS_URI + 'lib/semantic-icons-default/icons.css',
+                    //ASSET_CSS_URI + 'lib/font-awesome-4/font-awesome.min.css',
+                    ASSET_CSS_URI + 'lib/font-awesome-4-actions/font-awesome.min.css',
+                    ASSET_CSS_URI + 'lib/material-icons/material-icons.min.css'
+                ]
+            },
+            timeout: 2000
+        });
 
-//]]>
-</script>
+    //]]>
+    </script>
 
 <?php
 
