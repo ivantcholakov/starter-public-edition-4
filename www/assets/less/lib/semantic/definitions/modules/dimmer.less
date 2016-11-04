@@ -156,7 +156,10 @@ body.dimmable > .dimmer {
   background-color: @invertedBackgroundColor;
 }
 .ui.inverted.dimmer > .content > * {
-  color: @textColor;
+  // SUI4631
+  //color: @textColor;
+  color: @invertedTextColor;
+  //
 }
 
 /*--------------
