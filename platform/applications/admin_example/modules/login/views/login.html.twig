@@ -1,74 +1,79 @@
 
-            {{ form_open('', 'class="form-signin" role="form"') }}
+    <div class="ui padded centered grid">
 
-                <!-- Put your logo here. -->
-                <!--<img src="{{ default_base_url('apple-touch-icon-precomposed.png') }}" class="img-responsive center-block" />-->
+        <div class="column">
 
-                <h2>Admin Login Page</h2>
-
-{{ widget('feedback_messages_widget', {
-    'feedback_message_target': feedback_message_target,
-    'normal_message': normal_message,
-    'confirmation_message': confirmation_message,
-    'warning_message': warning_message,
-    'error_message': error_message,
-    'with_javascript': false
-}) }}
-
-                <div class="form-group{% if validation_errors['username'] is not empty %} has-error{% endif %}">
-                    <label for="username" class="control-label">* {{ lang('ui_username') }}</label>
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-                        <input type="text" name="username" id="username" class="form-control" value="{{ set_value('username') }}" />
-                    </div>
+            <h2 class="ui teal image header">
+                <img src="{{ default_base_url('apple-touch-icon-precomposed.png') }}" class="image" />
+                <div class="content">
+                    Admin Login Page
                 </div>
+            </h2>
 
-                <div class="form-group{% if validation_errors['password'] is not empty %} has-error{% endif %}">
-                    <label for="password" class="control-label">* {{ lang('ui_password') }}</label>
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-                        <input type="password" name="password" id="password" class="form-control" value="{{ set_value('password') }}" />
+            {{ form_open('', 'method="post" class="ui form"') }}
+
+                <div class="ui segment">
+
+                    <div class="field">
+                    {{ widget('feedback_messages_widget', {
+                        'feedback_message_target': feedback_message_target,
+                        'normal_message': normal_message,
+                        'confirmation_message': confirmation_message,
+                        'warning_message': warning_message,
+                        'error_message': error_message,
+                        'with_javascript': false
+                    }) }}
                     </div>
-                </div>
 
-                <div class="form-group">
+                    <div class="field{% if validation_errors['username'] is not empty %} error{% endif %}">
+                        <div class="ui left icon input">
+                            <i class="user icon"></i>
+                            <input type="text" name="username" id="username" class="form-control" value="{{ set_value('username') }}"  placeholder="* {{ lang('ui_username')|e('html_attr') }}">
+                        </div>
+                    </div>
 
-                    <div class="img-thumbnail">
+                    <div class="field{% if validation_errors['password'] is not empty %} error{% endif %}">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input type="password" name="password" id="password" value="{{ set_value('password') }}" placeholder="* {{ lang('ui_password')|e('html_attr') }}">
+                        </div>
+                    </div>
 
+                    <div class="field">
                         <img id="captcha_image"
                             src="{{ captcha().src ~ '?nocache=' ~ rand(100000000, 999999999) }}"
-                            class="img-thumbnail"
-                            style="cursor: pointer; margin-right: 5px; padding: 0; border-radius: 4px;"
-                            title="{{ lang('captcha.tip') }}"
-                        /><button type="button" id="captcha_refresh" class="btn btn-default" title="{{ lang('ui_refresh') }}"
-                            style="vertical-align: middle; margin-top: 5px; margin-bottom: 5px; margin-right: 2px; outline: 0;"
-                        >
-                            <i id="captcha_refresh" class="fa fa-refresh"></i>
-                        </button>
-
+                            title="{{ lang('captcha.tip')|e('html_attr') }}"
+                            class="ui middle aligned image"
+                        />
+                        <button type="button" id="captcha_refresh" class="ui icon button" title="{{ lang('ui_refresh')|e('html_attr') }}"><i class="refresh icon"></i></button>
                     </div>
 
-                </div>
+                    <div class="field{% if validation_errors['captcha'] is not empty %} error{% endif %}">
+                        <div class="ui fluid left icon input">
+                            <input type="text" id="captcha" name="captcha" placeholder="* {{ lang('captcha.label')|e('html_attr') }}" maxlength="{{ captcha().length }}" />
+                            <i class="privacy icon"></i>
+                        </div>
+                    </div>
 
-                <div class="form-group{% if validation_errors['captcha'] is not empty %} has-error{% endif %}">
-                    <label for="captcha" class="control-label">* {{ lang('captcha.label') }}</label>
-                    <input type="text" id="captcha" name="captcha" class="form-control" maxlength="{{ captcha().length }}" value="{{ set_value('catcha') }}" />
-                </div>
+                    <button class="ui fluid large teal button" type="submit"><i class="sign in icon"> {{ lang('ui_login') }}</i></button>
 
-                <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block" type="submit"><i class="fa fa-sign-in"> {{ lang('ui_login') }}</i></button>
-                </div>
-
-                <div class="form-group">
-                    <p class="help-block">
-                        Enter random username and password, enter the captcha string, and click on "Login" button to get in.
-                    </p>
-                </div>
-
-                <div class="form-group">
-                    <p class="help-block">
-                        Back to the public site: <a href="{{ default_base_url() }}">{{ default_base_url() }}</a>
-                    </p>
                 </div>
 
             {{ form_close() }}
+
+            <div class="ui message">
+
+                <p>
+                    Enter random username and password, enter the captcha string, and click on "Login" button to get in.
+                </p>
+
+                <p>
+                    Back to the public site: <a href="{{ default_base_url() }}">{{ default_base_url() }}</a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+

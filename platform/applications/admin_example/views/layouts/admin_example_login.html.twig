@@ -15,10 +15,34 @@
 {{ js_platform() }}
 {{ file_partial('webfontloader') }}
 
-{{ css('lib/bootstrap-3/bootstrap-no-font-face.min.css') }}
-{{ css('lib/bootstrap-3/bootstrap-theme.min.css') }}
-{{ css('lib/common/common.min.css') }}
-{{ css('admin_example_login.css') }}
+{{ css('lib/semantic/semantic.min.css') }}
+
+    <style>
+
+    body.login-page {
+        background-color: #DADADA;
+    }
+
+    .login-page > .grid {
+        height: 100%;
+    }
+
+    .login-page > .grid .column {
+        max-width: 450px;
+        padding-top: 25px !important;
+    }
+
+    .login-page .button i.icon {
+        display: inline;
+    }
+
+    @media only screen and (min-width: 992px) {
+        .login-page > .grid .column {
+            padding-top: 60px !important;
+        }
+    }
+
+    </style>
 
 {{ file_partial('css') }}
 {{ partial('css') }}
@@ -31,32 +55,36 @@
 
 {{ head_end() }}
 
-{{ body_begin({'id': 'page-top'}) }}
-
-
-    <!-- Wrap all page content here -->
-    <div id="wrap">
-
-{{ noscript('<div class="alert alert-warning text-center">' ~ lang('ui_noscript') ~ '</div>') }}
-{{ unsupported_browser('<div class="alert alert-warning text-center">' ~ lang('ui_unsupported_browser') ~ '</div>') }}
-
-        <!-- Begin page content -->
-        <div class="container">
-
+{{ body_begin({'id': 'page-top', 'class': 'login-page'}) }}
 {{ body() }}
-
-        </div>
-
-    </div>
 
 {{ js_bp_plugins() }}
 {{ js_mbp_helper() }}
 {{ js_scale_fix_ios() }}
 
-{{ js('lib/bootstrap-3/bootstrap.min.js') }}
+{{ js('lib/semantic/semantic.min.js') }}
 
-{{ file_partial('scripts') }}
 {{ partial('scripts') }}
+
+<script type="text/javascript">
+//<![CDATA[
+
+    $(function () {
+
+        $('.ui.dropdown').dropdown();
+
+        $('body').on('click', '.message .close', function() {
+
+            $(this)
+              .closest('.message')
+              .transition('fade')
+            ;
+        });
+;
+    });
+
+//]]>
+</script>
 
     <div id="debug"></div>
 
