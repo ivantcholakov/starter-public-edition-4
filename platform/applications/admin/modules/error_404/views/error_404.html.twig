@@ -1,9 +1,6 @@
 
-    <section id="error" class="container text-center">
-
-        <h1>{{ lang('ui_error_404_title') }}</h1>
         <p>
-            {% autoescape false %}{{ lang('ui_error_404_description',
+            {{ lang('ui_error_404_description',
 '
             <strong>
                 <script type="text/javascript">
@@ -12,13 +9,12 @@
                 //]]>
                 </script>
             </strong>
-'
-                ) }}{% endautoescape %}
+')|raw
+            }}
         </p>
 
         <p>
-            <a class="btn btn-success" href="{{ site_url() }}"><i class="fa fa-dashboard"></i> {{ lang('ui_admin_panel') }}</a>
-            <a class="btn btn-default" href="{{ default_base_url() }}"><i class="fa fa-home"></i> {{ lang('ui_to_public_site') }}</a>
+            <a class="ui primary button" href="{{ site_url() }}"><i class="dashboard icon"></i> {{ lang('ui_admin_panel') }}</a>
+            <a class="ui button" href="{{ default_base_url() }}"><i class="home icon"></i> {{ lang('ui_to_public_site') }}</a>
         </p>
 
-    </section>
