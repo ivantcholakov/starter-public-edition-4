@@ -9,7 +9,7 @@ class Error_404_controller extends Base_Controller {
 
     public function index() {
 
-        $error_string = 'Error 404';
+        $error_string = $this->lang->line('ui_error_404');
 
         if (is_cli()) {
 
@@ -26,7 +26,7 @@ class Error_404_controller extends Base_Controller {
             return;
         }
 
-        $error_string = $this->lang->line('ui_error_404');
+        $error_string = $this->lang->line('ui_error_404_title');
         $this->registry->set('is_error', true);
 
         $this->template
