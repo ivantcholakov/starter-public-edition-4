@@ -54,7 +54,7 @@ www/upload/
 ```
 
 Have a look at the files .htaccess and robots.txt and adjust them for your site.
-Within the folder platform/applications you will by default two applications - "site_example" and "admin_example".
+Within the folder platform/applications you will by default two applications - "front" and "admin".
 Have a look at their configuration files. Also, the common PHP configuration files you may find at platform/common/config/ folder.
 
 The platform auto-detects its base URL address nevertheless its public part is on the document root of the web-server or not.
