@@ -9,7 +9,10 @@ class Home_controller extends Base_Authenticated_Controller {
 
     public function index() {
 
+        $title = 'Administrator\'s Home Page';
+
         $this->template
+            ->title($title)
             ->build('home');
     }
 

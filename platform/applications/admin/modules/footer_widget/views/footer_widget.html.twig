@@ -1,0 +1,16 @@
+
+    <footer id="footer">
+
+        <div class="ui vertically padded grid page black inverted footer attached segment">
+
+            <div class="row">
+                <div class="column">
+
+                    <p>{% autoescape false %}{{ setting('copyright_note')|replace({'{year}': 'now'|date('Y'), '{organization}': setting('contact_organization')}) }}{% endautoescape %}</p>
+
+                </div>
+            </div>
+
+        </div>
+
+    </footer>
