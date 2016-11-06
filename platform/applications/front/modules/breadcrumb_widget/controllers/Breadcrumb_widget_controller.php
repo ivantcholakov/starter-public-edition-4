@@ -21,7 +21,7 @@ class Breadcrumb_widget_controller extends Base_Widget_Controller {
             'n'
         );
 
-        $this->load->view('breadcrumb_widget', $data, false, 'i18n');
+        $this->load->view('breadcrumb_widget', $data);
     }
 
 }
