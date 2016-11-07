@@ -326,37 +326,25 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Menu Library, https://github.com/nihaopaul/Spark-Menu, https://github.com/Barnabas/Spark-Menu (the original spark-source), https://github.com/daylightstudio/FUEL-CMS/blob/master/fuel/modules/fuel/libraries/Menu.php
 * Function print_d() (enhanced debug print), https://github.com/vikerlane/print_d
 * Registry library for CodeIgniter, https://github.com/ivantcholakov/codeigniter-registry
-* Bootstrap, http://getbootstrap.com/
-* Bootstrap Hover Dropdown Plugin, https://github.com/CWSpear/bootstrap-hover-dropdown
 * jQuery Validation Plugin, http://jqueryvalidation.org/
 * Extended JavaScript regular expressions XRegExp, http://xregexp.com/
 * DataTables jQuery plugin (http://datatables.net) and Datatable library for server-side processing support.
 * An icon subset of flags from GoSquared, https://www.gosquared.com/resources/flag-icons/
-* Bootstrap Vertical Tabs, https://github.com/dbtek/bootstrap-vertical-tabs
-* Jasny Bootstrap, The missing components for your favorite front-end framework, http://jasny.github.io/bootstrap/, https://github.com/jasny/bootstrap
 * phpass (PasswordHash class), http://www.openwall.com/phpass/, http://cvsweb.openwall.com/cgi/cvsweb.cgi/projects/phpass/PasswordHash.php
 * Gravatar Library for CodeIgniter, https://github.com/ivantcholakov/Codeigniter-Gravatar
 * CodeIgniter Advanced Images (Smart Resize and Crop), https://github.com/jenssegers/codeigniter-advanced-images/
 * Multiplayer - A tiny library to build nice HTML embed codes for videos, https://github.com/felixgirault/multiplayer, https://packagist.org/packages/fg/multiplayer
 * jQuery Chosen Plugin, http://harvesthq.github.com/chosen/, https://github.com/harvesthq/chosen/
 * jQuery Chosen Image Plugin (with modifications for jQuery Chosen 1.2 compatibility), https://github.com/djgrant/chosen-image
-* An alternate stylesheet for Chosen that integrates with Bootstrap, https://github.com/alxlit/bootstrap-chosen
 * Smiley Icons, http://thuthuatvietnam.com/sites/default/files/uploads/files/2013/08/huong-dan-su-dung-smiley-helper-tren-codeigniter.zip, http://thuthuatvietnam.com/huong-dan-su-dung-smileys-helper-tren-codeigniter.html
 * Smiley Icons from Django-emoticons, https://github.com/Fantomas42/django-emoticons
-* Yet another megamenu for Bootstrap 3, https://github.com/geedmo/yamm3
-* Breakpoints at 480px and 384px for Bootstrap 3, https://github.com/auipga/bootstrap-xxs, see also this request at Bootstrap's repository: https://github.com/twbs/bootstrap/issues/10203
-* metisMenu, Easy menu jQuery plugin for Twitter Bootstrap 3, https://github.com/onokumus/metisMenu
-* Social Buttons for Bootstrap, https://github.com/lipis/bootstrap-social
 * Secure Random Bytes in PHP, https://github.com/GeorgeArgyros/Secure-random-bytes-in-PHP
 * php-passgen - A library for generating cryptographically secure passwords in PHP, https://github.com/defuse/php-passgen
 * A PHP port of the YUI CSS compressor, https://github.com/tubalmartin/YUI-CSS-compressor-PHP-port
 * JSMinPlus - a JavaScript minifier, https://github.com/mrclay/minify/blob/2.2.0/min/lib/JSMinPlus.php
-* iCheck plugin, Highly customizable checkboxes and radio buttons (jQuery & Zepto), https://github.com/fronteed/iCheck
 * less.js script for client-side usage (for learning and development purposes, for production compile less assets before deploying), https://github.com/less/less.js
 * Ellipsis (jQuery version) - A plugin to truncate strings that are too long, https://github.com/danbeam/ellipsis/
-* Bootstrap Star Rating - A simple yet powerful JQuery star rating plugin with fractional rating support, https://github.com/kartik-v/bootstrap-star-rating
 * Facebook PHP SDK v5 for CodeIgniter - Library for integration of Facebook PHP SDK v5 with CodeIgniter 3, https://github.com/darkwhispering/facebook-sdk-codeigniter
-* Bootstrap Modal Dialogs - Make use of Twitter Bootstrap's modal more monkey-friendly, https://github.com/nakupanda/bootstrap3-dialog, http://nakupanda.github.io/bootstrap3-dialog/
 * Roave Security Advisories - This package ensures that your application doesn't have installed dependencies with known security vulnerabilities, https://github.com/Roave/SecurityAdvisories
 * Requests for PHP - A HTTP library written in PHP, for human beings, https://github.com/rmccue/Requests, http://requests.ryanmccue.info
 * Pjax jQuery plugin - pushState + ajax = pjax, https://github.com/defunkt/jquery-pjax, http://pjax.herokuapp.com
@@ -365,13 +353,9 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Colorbox, a light-weight, customizable lightbox plugin for jQuery, https://github.com/jackmoore/colorbox
 * php-json-minify, a JSON minifier and uncommenter written in PHP, https://github.com/T1st3/php-json-minify
 * Animate.css, a bunch of cool, fun, and cross-browser animations for you to use in your projects, https://github.com/daneden/animate.css, http://daneden.github.io/animate.css/
-* Bootstrap pull 3.x, adds pull-right and pull-left for Bootstrap v3 for xs, sm, md, lg media, https://github.com/Natshah/bootstrap-pull
 * Web Font Loader, gives you added control when using linked fonts via @font-face, https://github.com/typekit/webfontloader
 * Material Design icons by Google https://github.com/google/material-design-icons, http://google.github.io/material-design-icons/
 * Material Design icons with Bootstrap-like styling, https://github.com/mervick/material-design-icons
-* SnackbarJS, Create snackbars and toasts with ease, https://github.com/FezVrasta/snackbarjs, http://fezvrasta.github.io/snackbarjs/
-* noUiSlider, a lightweight JavaScript range slider, https://github.com/leongersen/noUiSlider/, http://refreshless.com/nouislider/
-* Material design theme for Bootstrap 3, https://github.com/FezVrasta/bootstrap-material-design, http://fezvrasta.github.io/bootstrap-material-design/
 * Lex, a lightweight template parser used by PyroCMS, https://github.com/pyrocms/lex
 * Twig, the flexible, fast, and secure template engine for PHP, http://twig.sensiolabs.org
 * PHP 5.x support for random_bytes() and random_int(), https://github.com/paragonie/random_compat
@@ -381,7 +365,6 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * imagesLoaded - "You images done yet or what?", https://github.com/desandro/imagesloaded
 * Masonry - a cascading grid layout library, https://github.com/desandro/masonry
 * jQuery LoadingOverlay - A flexible loading overlay jQuery plugin, https://github.com/gasparesganga/jquery-loading-overlay
-* Bootstrap-select, a jQuery plugin that utilizes Bootstrap's dropdown.js to style and bring additional functionality to standard select elements, https://github.com/silviomoreto/bootstrap-select, http://silviomoreto.github.io/bootstrap-select/
 * Semantic UI - a component framework based around useful principles from natural language, AN EXPERIMENTAL INTEGRATION, DO NOT USE IT YET, http://www.semantic-ui.com
 
 The Playground
