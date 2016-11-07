@@ -12564,6 +12564,9 @@ i.icon.minus.square.outline:before {
 i.icon.check.square:before {
   content: "\f14a";
 }
+i.icon.check.square.outline:before {
+  content: "\f046";
+}
 i.icon.selected.radio:before {
   content: "\f192";
 }
@@ -44421,7 +44424,7 @@ a.ui.card:hover,
 /*******************************
             Dimmer
 *******************************/
-.dimmable:not(.body) {
+.dimmable:not(body) {
   position: relative;
 }
 .ui.dimmer {
