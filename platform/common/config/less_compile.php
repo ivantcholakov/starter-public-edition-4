@@ -21,21 +21,6 @@
 
 $config['less_compile'] = array(
 
-    // php cli.php less compile common common-min
-
-    array(
-        'name' => 'common',
-        'source' => DEFAULTFCPATH.'assets/less/lib/common/common.less',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/common/common.css',
-        'compress' => false
-    ),
-    array(
-        'name' => 'common-min',
-        'source' => DEFAULTFCPATH.'assets/less/lib/common/common.less',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/common/common.min.css',
-        'compress' => true
-    ),
-
     // php cli.php less compile font-awesome-4 font-awesome-4-min
 
     array(
