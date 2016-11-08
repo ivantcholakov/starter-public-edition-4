@@ -56,7 +56,7 @@ class Main_menu_widget_controller extends Core_Controller {
             'nav'
         );
 
-        $this->load->view('main_menu_widget', $data, false, 'i18n');
+        $this->load->view('main_menu_widget', $data);
     }
 
 }
