@@ -66,14 +66,6 @@ class Core_Output extends CI_Output {
 
         // --------------------------------------------------------------------
 
-        // Is minify requested?
-        if ($CFG->item('minify_output') === TRUE)
-        {
-            $output = $this->minify($output, $this->mime_type);
-        }
-
-        // --------------------------------------------------------------------
-
         // Do we need to write a cache file? Only if the controller does not have its
         // own _output() method and we are not dealing with a cache file, which we
         // can determine by the existence of the $CI object above
