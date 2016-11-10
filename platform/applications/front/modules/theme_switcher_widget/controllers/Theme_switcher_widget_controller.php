@@ -37,7 +37,7 @@ class Theme_switcher_widget_controller extends Base_Widget_Controller {
             }
         }
 
-        $this->load->view('theme_switcher_widget'.($display_type == '' ? '' : '_'.$display_type), compact('theme_switcher'), false, 'i18n');
+        $this->load->view('theme_switcher_widget'.($display_type == '' ? '' : '_'.$display_type), compact('theme_switcher'));
     }
 
 }
