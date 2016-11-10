@@ -60,7 +60,7 @@ class Language_switcher_widget_controller extends Base_Widget_Controller {
             $language_switcher[] = $item;
         }
 
-        $this->load->view('language_switcher_widget'.($display_type == '' ? '' : '_'.$display_type), compact('language_switcher'), false, 'i18n');
+        $this->load->view('language_switcher_widget'.($display_type == '' ? '' : '_'.$display_type), compact('language_switcher'));
     }
 
 }

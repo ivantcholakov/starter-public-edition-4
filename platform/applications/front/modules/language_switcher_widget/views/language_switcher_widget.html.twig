@@ -1,0 +1,26 @@
+
+{% if language_switcher is not empty %}
+
+    {% set i = 0 %}
+
+    {% for key, item in language_switcher %}
+
+        {% if i > 0 %} | {% endif %}
+
+        {% if item['flag'] is not empty %}
+            {% set anchor = anchor(item['link'], image('lib/flags-iso/flat/24/' ~ item['flag'] ~ '.png', 'class="ui bottom aligned image"') ~ ' ' ~ item['label']) %}
+        {% else %}
+            {% set anchor = anchor(item['link'], item['label']) %}
+        {% endif %}
+
+        {% if item['active'] is not empty %}
+            <strong>{{ anchor|raw }}</strong>
+        {% else %}
+            {{ anchor|raw }}
+        {% endif %}
+
+        {% set i = i + 1 %}
+
+    {% endfor %}
+
+{% endif %}
