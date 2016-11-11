@@ -1,25 +1,131 @@
 {#
-Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2016
+Ivan Tcholakov <ivantcholakov@gmail.com>, 2016
 The MIT License, http://opensource.org/licenses/MIT
 #}
 
+{% macro display_items(items) %}
+
+    {% import _self as main_menu_macro %}
+
+    {% for item in items %}
+
+        {% if item['children'] is empty %}
+
+            {% set classes = 'item' %}
+
+            {% if item['is_active'] is not empty %}
+                {% set classes = classes ~ ' active' %}
+            {% endif %}
+
+            {% set classes = classes|trim %}
+
+                            <a href="{{ item['link'] }}"{% if classes is not empty %} class="{{ classes|e('html_attr') }}"{% endif %}>{% if item['icon'] is not empty %}<i class="{{ item['icon']|e('html_attr') }}"></i> {% endif %}{{ item['label'] }}</a>
+
+    {% else %}
+
+            {% set classes = 'ui dropdown item' %}
+
+            {% if item['is_active'] is not empty %}
+                {# TODO: See why dropdown item does not work when it is active. $}
+                {# {% set classes = classes ~ ' active' %} #}
+            {% endif %}
+
+                            <div{% if classes is not empty %} class="{{ classes|e('html_attr') }}"{% endif %}>
+
+                                {% if item['icon'] is not empty %}<i class="{{ item['icon']|e('html_attr') }}"></i> {% endif %}{{ item['label'] }}
+                                <i class="dropdown icon"></i>
+
+                                <div class="menu">
+                                    <a href="{{ item['link'] }}" class="item{% if item['is_active'] is not empty and item['has_active'] is empty %} active{% endif %}">{% if item['icon'] is not empty %}<i class="{{ item['icon']|e('html_attr') }}"></i> {% endif %}{{ item['label'] }}</a>
+                                    <div class="ui divider"></div>
+                                    {{ main_menu_macro.display_children(item['children'], 1) }}
+                                </div>
+
+                            </div>
+
+        {% endif %}
+
+    {% endfor %}
+
+{% endmacro %}
 
 {% macro display_children(items, level = 0) %}
+
     {% import _self as main_menu_macro %}
+
     {% set level = level|default(0) %}
 
     {% for item in items %}
 
         {% if not item['blank'] %}
-                                <a href="{{ item['link'] }}" {{ html_attr(item['attributes']) }} class="item{% if item['is_active'] is not empty and item['has_active'] is empty %}{# !!! #} active{% endif %}">{{ '&nbsp;&nbsp;&nbsp;&nbsp;'|str_repeat(level)|raw }}{% if item['icon'] is not empty %}<i class="{{ item['icon']|e('html_attr') }}"></i>&nbsp; {% endif %}{{ item['label'] }}</a>
+                            <a href="{{ item['link'] }}" {{ html_attr(item['attributes']) }} class="item{% if item['is_active'] is not empty and item['has_active'] is empty %}{# !!! #} active{% endif %}">{% if item['icon'] is not empty %}<i class="{{ item['icon']|e('html_attr') }}"></i>{% endif %}{{ item['label'] }}</a>
         {% else %}
-                                <div class="ui divider"></div>
+                            <div class="ui divider"></div>
         {% endif %}
 
         {% if item['children'] is not empty %}
-{{ main_menu_macro.display_children(item['children'], level + 1) }}
+            {{ main_menu_macro.display_children(item['children'], level + 1) }}
         {% endif %}
+
     {% endfor %}
+
+{% endmacro %}
+
+{% macro display_items_mobile(items) %}
+
+    {% import _self as main_menu_macro %}
+
+    {% for item in items %}
+
+        {% if item['children'] is empty %}
+
+            {% set classes = 'item' %}
+
+            {% if item['is_active'] is not empty %}
+                {% set classes = classes ~ ' active' %}
+            {% endif %}
+
+            {% set classes = classes|trim %}
+
+                            <a href="{{ item['link'] }}"{% if classes is not empty %} class="{{ classes|e('html_attr') }}"{% endif %}>{% if item['icon'] is not empty %}<i class="{{ item['icon']|e('html_attr') }}"></i> {% endif %}{{ item['label'] }}</a>
+
+        {% else %}
+
+            {% set classes = 'item' %}
+
+            {% if item['is_active'] is not empty %}
+                {% set classes = classes ~ ' active' %}
+            {% endif %}
+
+                            <a href="{{ item['link'] }}" class="item{% if item['is_active'] is not empty and item['has_active'] is empty %} active{% endif %}">{% if item['icon'] is not empty %}<i class="{{ item['icon']|e('html_attr') }}"></i> {% endif %}{{ item['label'] }}</a>
+                            {{ main_menu_macro.display_children_mobile(item['children'], 1) }}
+
+        {% endif %}
+
+    {% endfor %}
+
+{% endmacro %}
+
+{% macro display_children_mobile(items, level = 0) %}
+
+    {% import _self as main_menu_macro %}
+
+    {% set level = level|default(0) %}
+
+    {% for item in items %}
+
+        {% if not item['blank'] %}
+                            <a href="{{ item['link'] }}" {{ html_attr(item['attributes']) }} class="item{% if item['is_active'] is not empty and item['has_active'] is empty %}{# !!! #} active{% endif %}">{{ '&nbsp;&nbsp;&nbsp;&nbsp;'|str_repeat(level)|raw }}{% if item['icon'] is not empty %}<i class="{{ item['icon']|e('html_attr') }}"></i>{% endif %}{{ item['label'] }}</a>
+        {% else %}
+                            {# <div class="ui divider"></div> #}
+        {% endif %}
+
+        {% if item['children'] is not empty %}
+            {{ main_menu_macro.display_children_mobile(item['children'], level + 1) }}
+        {% endif %}
+
+    {% endfor %}
+
 {% endmacro %}
 
 {# -------------------------------------------------------------------------- #}
@@ -29,74 +135,48 @@ The MIT License, http://opensource.org/licenses/MIT
         <nav id="main_navigation">
 
             <div class="ui grid">
-                <div class="row">
 
-                <div id="main_menu" class="column">
+                <div class="computer tablet only row">
+                    <div class="column">
 
-                    <div class="navbeer ui inverted blue borderless menu page grid">
+                        <div class="ui inverted blue borderless attached menu page grid">
 
-                        <div class="navbeer-sandwich ui dropdown item" style="display: none;">
-                            <i class="navbeer-sandwich-icon content icon"></i>
-                            <div class="navbeer-sandwich-content menu"></div>{# Keep empty #}
-                        </div>
+                            <a href="{{ site_url() }}" class="brand item">{# <img src="{{ base_uri('apple-touch-icon-precomposed.png') }}" /> #}<strong>v. {{ constant('PLATFORM_VERSION') }}</strong></a>
+                            {{ main_menu_macro.display_items(nav) }}
 
-                        <a class="navbeer-brand" href="{{ site_url() }}">
-                            {# <img src="{{ base_uri('apple-touch-icon-precomposed.png') }}" /> #}
-                            <span><strong>v. {{ constant('PLATFORM_VERSION') }}</strong></span>
-                        </a>
-
-                        <div class="navbeer-menu right menu">
-
-{% for item in nav %}
-
-    {% if item['children'] is empty %}
-
-        {% set classes = 'item navbeer-collapsable-item' %}
-
-        {% if item['is_active'] is not empty %}
-            {% set classes = classes ~ ' active' %}
-        {% endif %}
-
-        {% set classes = classes|trim %}
-
-                        <a href="{{ item['link'] }}"{% if classes is not empty %} class="{{ classes|e('html_attr') }}"{% endif %}>{% if item['icon'] is not empty %}<i class="{{ item['icon']|e('html_attr') }}"></i> {% endif %}{{ item['label'] }}</a>
-
-    {% else %}
-
-            {% set classes = 'navbeer-collapsable-item ui dropdown item' %}
-
-            {% if item['is_active'] is not empty %}
-                {# TODO: See why dropdown item does not work when it is active. $}
-                {# {% set classes = classes ~ ' active' %} #}
-            {% endif %}
-
-                        <div{% if classes is not empty %} class="{{ classes|e('html_attr') }}"{% endif %}>
-
-                            {% if item['icon'] is not empty %}<i class="{{ item['icon']|e('html_attr') }}"></i> {% endif %}{{ item['label'] }}
-                            <i class="dropdown icon"></i>
-
-                            <div class="menu">
-
-                                <a href="{{ item['link'] }}" class="item{% if item['is_active'] is not empty and item['has_active'] is empty %} active{% endif %}">{% if item['icon'] is not empty %}<i class="{{ item['icon']|e('html_attr') }}"></i> {% endif %}{{ item['label'] }}</a>
-                                <div class="ui divider"></div>
-{{ main_menu_macro.display_children(item['children']) }}
+                            <div class="right menu">
+                                {{ widget('theme_switcher_widget/index', 'navbar') }}
+                                {{ widget('language_switcher_widget/index', 'navbar') }}
                             </div>
 
                         </div>
 
-    {% endif %}
-{% endfor %}
+                    </div>
+                </div>
 
-{{ widget('theme_switcher_widget/index', 'navbar') }}
-{{ widget('language_switcher_widget/index', 'navbar') }}
+                <div class="mobile only row">
+                    <div class="column">
 
+                        <div class="ui inverted blue borderless attached fluid menu">
+                            <a href="{{ site_url() }}" class="brand item">{# <img src="{{ base_uri('apple-touch-icon-precomposed.png') }}" /> #}<strong>v. {{ constant('PLATFORM_VERSION') }}</strong></a>
+                            <div class="right menu">
+                                {{ widget('language_switcher_widget/index', 'navbar') }}
+                            </div>
+                            <div class="right menu open" style="margin-left: 0 !important;">
+                                <a href="" class="menu item toggle">
+                                    <i class="content icon"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="ui vertical inverted blue borderless attached stacked fluid menu" style="display: none;">
+                            {{ main_menu_macro.display_items_mobile(nav) }}
+                            {{ widget('theme_switcher_widget/index', 'navbar_mobile') }}
                         </div>
 
                     </div>
-
                 </div>
 
-                </div>
             </div>
 
         </nav>

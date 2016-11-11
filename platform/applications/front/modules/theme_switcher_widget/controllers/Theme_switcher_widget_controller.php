@@ -17,7 +17,7 @@ class Theme_switcher_widget_controller extends Base_Widget_Controller {
             $display_type = '';
         }
 
-        if (!in_array($display_type, array('', 'navbar'))) {
+        if (!in_array($display_type, array('', 'navbar', 'navbar_mobile'))) {
             $display_type = '';
         }
 

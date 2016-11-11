@@ -1,4 +1,24 @@
 
+$(function () {
+
+    $('.ui.dropdown').dropdown();
+
+    $('body').on('click', '.message .close', function() {
+
+        $(this)
+          .closest('.message')
+          .transition('fade')
+        ;
+    });
+;
+    $('#main_navigation .menu.toggle').on("click", function(e) {
+
+        e.preventDefault();
+        $('#main_navigation .ui.vertical.menu').toggle();
+    });
+});
+
+
 /*
  * prettyPrint
  */

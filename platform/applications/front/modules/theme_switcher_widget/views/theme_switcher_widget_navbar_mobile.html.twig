@@ -1,0 +1,15 @@
+
+{% if theme_switcher is not empty %}
+
+    {% set item_active = [] %}
+
+    {% for item in theme_switcher %}
+        {% if item['active'] is not empty %}{% set item_active = item %}{% endif %}
+    {% endfor %}
+                            <div class="item header">Theme: {{ item_active['label'] }}</div>
+
+        {% for item in theme_switcher %}
+                            <a class="item{% if item['active'] is not empty %} active {% endif %}" href="{{ item['link'] }}">&nbsp;&nbsp;&nbsp;&nbsp;{{ item['label'] }}</a>
+        {% endfor %}
+
+{% endif %}
