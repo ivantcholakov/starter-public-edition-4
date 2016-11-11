@@ -618,37 +618,7 @@ if (!function_exists('html_tag')) {
 
     function html_tag($tag = null, $attributes = array(), $content = false) {
 
-        if (is_scalar($tag) || is_null($tag)) {
-            $tag = trim($tag);
-        } else {
-            // This line will be activated in the future,
-            // when the deprecated behavior gets removed.
-            //$tag = trim(@ (string) $tag);
-        }
-
-        // Deprecated behavior, previously html_tag() was used in templates.
-        // Replace html_tag() within your old PHP templates withi the function
-        // html_begin(). -------------------------------------------------------
-
-        if (
-                is_array($tag)
-                ||
-                is_object($tag)
-                ||
-                $tag == ''
-                ||
-                !xml_tag_valid_name($tag)
-        ) {
-
-            if (!function_exists('html_begin')) {
-                get_instance()->load->helper('template');
-            }
-
-            // Here $tag actually contains HTML attributes.
-            return html_begin($tag);
-        }
-
-        //----------------------------------------------------------------------
+        $tag = trim(@ (string) $tag);
 
         $has_content = $content !== false && $content !== null;
 
@@ -670,6 +640,8 @@ if (!function_exists('html_tag_open')) {
 
     function html_tag_open($tag, $attributes = array()) {
 
+        $tag = trim(@ (string) $tag);
+
         return '<'.$tag.html_attr($attributes).'>';
     }
 
@@ -679,6 +651,8 @@ if (!function_exists('html_tag_open')) {
 if (!function_exists('html_tag_close')) {
 
     function html_tag_close($tag) {
+
+        $tag = trim(@ (string) $tag);
 
         return '</'.$tag.'>';
     }
