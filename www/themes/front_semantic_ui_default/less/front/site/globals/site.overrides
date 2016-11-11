@@ -20,6 +20,8 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%; /* 1, 3 */
+
+    word-wrap: break-word;
 }
 
 #main_navigation {
