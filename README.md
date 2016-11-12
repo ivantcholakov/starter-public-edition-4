@@ -365,7 +365,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * imagesLoaded - "You images done yet or what?", https://github.com/desandro/imagesloaded
 * Masonry - a cascading grid layout library, https://github.com/desandro/masonry
 * jQuery LoadingOverlay - A flexible loading overlay jQuery plugin, https://github.com/gasparesganga/jquery-loading-overlay
-* Semantic UI - a component framework based around useful principles from natural language, AN EXPERIMENTAL INTEGRATION, DO NOT USE IT YET, http://www.semantic-ui.com
+* Semantic UI - a component framework based around useful principles from natural language, http://www.semantic-ui.com
 
 The Playground
 --------------
