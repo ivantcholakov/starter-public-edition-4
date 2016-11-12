@@ -98,10 +98,19 @@ echo css('lib/semantic/semantic.min.css');
  * 3. Use `%` instead of `vh` since `vh` is buggy in older mobile Safari.
  */
 
+html {
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 body {
     display: flex;
     flex-direction: column;
-    height: 100%; /* 1, 3 */
+    /* height: 100%; */ /* 1, 3 */
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
 
     word-wrap: break-word;
 }
