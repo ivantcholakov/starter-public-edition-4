@@ -1,0 +1,43 @@
+
+/* 
+    Created on : 2016-11-12
+    Author     : Ivan Tcholakov
+    License    : MIT
+*/
+
+
+// front-theme
+
+
+// Directories
+@base-uri:                      "../../../../";
+@default-base-uri:              @base-uri;
+@default-assets-uri:            "@{default-base-uri}assets/";
+
+@theme-path:                    "./";
+@default-assets-path:           "../../../";
+@default-assets-less-path:      "@{default-assets-path}less/";
+@default-assets-less-lib-path:  "@{default-assets-less-path}lib/";
+@default-assets-css-path:       "@{default-assets-path}css/";
+@default-assets-css-lib-path:   "@{default-assets-css-path}lib/";
+
+
+// Semantic UI
+@theme-loader-path:             "../editor/";
+@import "definitions/globals/mixins";
+@import "@{default-assets-less-lib-path}/semantic/semantic.vendor.less";
+& { @import "definitions/globals/utilities"; }
+
+
+/*!
+ *  Material Design Icons, https://github.com/google/material-design-icons
+ *  Guarantee the same typography regardless from where the font has been loaded.
+ */
+@import "@{default-assets-less-lib-path}material-icons/typography.less";
+@import (less) "@{default-assets-css-lib-path}material-design-icons/material-icons.css";
+
+
+/*!
+ *  Common Purpose Styles
+ */
+@import (less) "@{default-assets-css-lib-path}animate/animate.css";

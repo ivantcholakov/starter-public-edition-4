@@ -1,0 +1,9 @@
+/*******************************
+         Site Overrides
+*******************************/
+
+// See https://github.com/Semantic-Org/Semantic-UI/issues/4671
+.ui.breadcrumb {
+    line-height: 2;
+    margin: (@verticalMargin / 2) 0em;
+}

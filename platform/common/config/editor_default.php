@@ -13,8 +13,7 @@ $config['config']['contentsCss'][] = DEFAULT_BASE_URL.'assets/css/lib/lato/latof
 $config['config']['contentsCss'][] = DEFAULT_BASE_URL.'assets/css/lib/semantic-icons-default/icons.css';
 $config['config']['contentsCss'][] = DEFAULT_BASE_URL.'assets/css/lib/font-awesome-4/font-awesome.min.css';
 $config['config']['contentsCss'][] = DEFAULT_BASE_URL.'assets/css/lib/material-icons/material-icons.min.css';
-$config['config']['contentsCss'][] = DEFAULT_BASE_URL.'assets/css/lib/semantic/semantic.min.css';
-$config['config']['contentsCss'][] = DEFAULT_BASE_URL.'assets/css/lib/editor.css';
+$config['config']['contentsCss'][] = DEFAULT_BASE_URL.'assets/css/lib/editor/editor.css';
 
 $config['config']['width'] = '';
 $config['config']['height'] = '100';

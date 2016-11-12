@@ -21,6 +21,26 @@
 
 $config['less_compile'] = array(
 
+    // php cli.php less compile editor editor-min
+
+    array(
+        'name' => 'editor',
+        'source' => DEFAULTFCPATH.'assets/less/lib/editor/index.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/editor/editor.css',
+        'relativeUrls' => false,
+        'implementation' => 'less.js',
+        'autoprefixer' => array(),
+    ),
+    array(
+        'name' => 'editor-min',
+        'source' => DEFAULTFCPATH.'assets/less/lib/editor/index.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/editor/editor.min.css',
+        'relativeUrls' => false,
+        'implementation' => 'less.js',
+        'autoprefixer' => array(),
+        'cssmin' => array('implementation' => 'cssnano'),
+    ),
+
     // php cli.php less compile font-awesome-4 font-awesome-4-min
 
     array(
