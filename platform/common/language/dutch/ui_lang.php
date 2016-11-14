@@ -253,3 +253,4 @@ $lang['ui_save_note_0'] = 'Data will be saved after pressing the button %s.';
 $lang['ui_save_note_1'] = 'Data for the corresponding language will be saved after pressing the button %s.';
 $lang['ui_example'] = 'Example';
 $lang['ui_examples'] = 'Examples';
+$lang['ui_unknown'] = 'Unknown';
