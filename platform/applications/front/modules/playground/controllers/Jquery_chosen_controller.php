@@ -81,6 +81,8 @@ class Jquery_chosen_controller extends Playground_Base_Controller {
             $this->template->set('validation_errors', validation_errors_array());
         }
 
+        $this->template->set('warning_message', 'This feature has been deprecated, it will be removed. Use the dropdown that is implemented by Semantic UI.');
+
         $this->template
             ->set(compact('country_1', 'country_2', 'country_names'))
             ->set('driver_ok', $this->driver_ok)
