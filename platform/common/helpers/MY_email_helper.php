@@ -245,6 +245,10 @@ if (!function_exists('set_email_settings')) {
             $ci->settings->set('email_dkim_private', (string) $config['dkim_private']);
         }
 
+        if (array_key_exists('dkim_private_string', $config)) {
+            $ci->settings->set('email_dkim_private_string', (string) $config['dkim_private_string']);
+        }
+
         if (array_key_exists('dkim_selector', $config)) {
             $ci->settings->set('email_dkim_selector', (string) $config['dkim_selector']);
         }
@@ -334,6 +338,7 @@ if (!function_exists('get_email_settings')) {
         $config['smtp_conn_options'] = array_key_exists('smtp_conn_options', $config) ? $config['smtp_conn_options'] : array();
         $config['dkim_domain'] = array_key_exists('dkim_domain', $config) ? $config['dkim_domain'] : '';
         $config['dkim_private'] = array_key_exists('dkim_private', $config) ? $config['dkim_private'] : '';
+        $config['dkim_private_string'] = array_key_exists('dkim_private_string', $config) ? $config['dkim_private_string'] : '';
         $config['dkim_selector'] = array_key_exists('dkim_selector', $config) ? $config['dkim_selector'] : '';
         $config['dkim_passphrase'] = array_key_exists('dkim_passphrase', $config) ? $config['dkim_passphrase'] : '';
         $config['dkim_identity'] = array_key_exists('dkim_identity', $config) ? $config['dkim_identity'] : '';
@@ -372,6 +377,7 @@ if (!function_exists('get_email_settings')) {
             'email_smtp_conn_options',
             'email_dkim_domain',
             'email_dkim_private',
+            'email_dkim_private_string',
             'email_dkim_selector',
             'email_dkim_passphrase',
             'email_dkim_identity',
@@ -413,6 +419,7 @@ if (!function_exists('get_email_settings')) {
 
         $config['dkim_domain'] = isset($settings['email_dkim_domain']) ? (string) $settings['email_dkim_domain'] : $config['dkim_domain'];
         $config['dkim_private'] = isset($settings['email_dkim_private']) ? (string) $settings['email_dkim_private'] : $config['dkim_private'];
+        $config['dkim_private_string'] = isset($settings['email_dkim_private_string']) ? (string) $settings['email_dkim_private_string'] : $config['dkim_private_string'];
         $config['dkim_selector'] = isset($settings['email_dkim_selector']) ? (string) $settings['email_dkim_selector'] : $config['dkim_selector'];
         $config['dkim_passphrase'] = isset($settings['email_dkim_passphrase']) ? (string) $settings['email_dkim_passphrase'] : $config['dkim_passphrase'];
         $config['dkim_identity'] = isset($settings['email_dkim_identity']) ? (string) $settings['email_dkim_identity'] : $config['dkim_identity'];
