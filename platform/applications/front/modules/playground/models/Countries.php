@@ -14,6 +14,10 @@ class Countries extends Core_Model {
 
     public function get_dropdown($language = null) {
 
+        if ($language == '') {
+            $language = $this->lang->current();
+        }
+
         // Note: The parameter $language is not used here,
         // translation of country names is not supported by this demo code.
 

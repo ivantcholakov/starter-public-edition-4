@@ -17,10 +17,24 @@ The MIT License, http://opensource.org/licenses/MIT
                                             Country:
                                         </label>
 
-{{ widget(
-    'playground/country_dropdown_widget/index',
-    { 'element_name': 'country_id', 'element_class': '', 'value': set_value('country_id', '') }|array
-) }}
+                                        <div class="ui fluid search selection dropdown">
+                                            <input type="hidden" name="country_id" id="country_id">
+                                            <i class="dropdown icon"></i>
+                                            <div class="default text">-- {{ lang('ui_choose') }} --</div>
+                                            <div class="menu">
+    {% for key, country_code in country_codes %}
+        {% set country_name = country_names[key] %}
+        {% set flag = image_path('lib/flags-iso/flat/24/' ~ country_code ~ '.png') %}
+        {% if flag is empty %}
+            {% set flag = image_path('lib/flags-iso/flat/24/_unknown.png') %}
+        {% endif %}
+                                                <div class="item" data-value="{{ key|e('html_attr') }}">
+                                                    <img class="ui mini image" src="{{ flag|e('html_attr') }}" />
+                                                    {{ country_name }}
+                                                </div>
+    {% endfor %}
+                                            </div>
+                                        </div>
 
                                     </div>
 

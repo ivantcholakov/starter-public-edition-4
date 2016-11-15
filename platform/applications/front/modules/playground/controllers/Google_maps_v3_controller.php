@@ -31,7 +31,19 @@ class Google_maps_v3_controller extends Playground_Base_Controller {
 
     public function index() {
 
+        $country_codes = array();
+        $country_names = array();
+
+        if ($this->driver_ok) {
+
+            $this->load->model('countries');
+            $country_codes = $this->countries->get_dropdown_codes();
+            $country_names = $this->countries->get_dropdown();
+        }
+
         $this->template
+            ->set('country_codes', $country_codes)
+            ->set('country_names', $country_names)
             ->set('driver_ok', $this->driver_ok)
             ->set_partial('scripts', 'google_maps_v3_scripts')
             ->build('google_maps_v3');
