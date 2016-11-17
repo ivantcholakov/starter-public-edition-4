@@ -3,26 +3,26 @@
 
         <div class="column">
 
-            <h2 class="ui teal image header">
-                <img src="{{ default_base_url('apple-touch-icon-precomposed.png') }}" class="image" />
-                <div class="content">
-                    Admin Login Page
-                </div>
-            </h2>
-
             {{ form_open('', 'method="post" class="ui form"') }}
 
                 <div class="ui segment">
 
+                    <h2 class="ui teal image header">
+                        <img src="{{ default_base_url('apple-touch-icon-precomposed.png') }}" class="image" />
+                        <div class="content">
+                            Admin Login Page
+                        </div>
+                    </h2>
+
                     <div class="field">
-                    {{ widget('feedback_messages_widget', {
-                        'feedback_message_target': feedback_message_target,
-                        'normal_message': normal_message,
-                        'confirmation_message': confirmation_message,
-                        'warning_message': warning_message,
-                        'error_message': error_message,
-                        'with_javascript': false
-                    }) }}
+                        {{ widget('feedback_messages_widget', {
+                            'feedback_message_target': feedback_message_target,
+                            'normal_message': normal_message,
+                            'confirmation_message': confirmation_message,
+                            'warning_message': warning_message,
+                            'error_message': error_message,
+                            'with_javascript': false
+                        }) }}
                     </div>
 
                     <div class="field{% if validation_errors['username'] is not empty %} error{% endif %}">
@@ -55,7 +55,7 @@
                         </div>
                     </div>
 
-                    <button class="ui fluid large teal button" type="submit"><i class="sign in icon"> {{ lang('ui_login') }}</i></button>
+                    <button class="ui fluid big teal button" type="submit"><i class="sign in icon"> {{ lang('ui_login') }}</i></button>
 
                 </div>
 
