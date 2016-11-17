@@ -18,6 +18,10 @@
             refresh_captcha();
         });
 
+        $('#login_form').on('submit', function(e) {
+
+            $('> .ui.segment', this).addClass('loading');
+        });
     });
 
     //]]>
