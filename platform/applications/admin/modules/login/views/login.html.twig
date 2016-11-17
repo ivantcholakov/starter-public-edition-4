@@ -49,7 +49,7 @@
                     </div>
 
                     <div class="field{% if validation_errors['captcha'] is not empty %} error{% endif %}">
-                        <div class="ui fluid big left icon input">
+                        <div class="ui big left icon input">
                             <input type="text" id="captcha" name="captcha" placeholder="* {{ lang('captcha.label')|e('html_attr') }}" maxlength="{{ captcha().length }}" />
                             <i class="privacy icon"></i>
                         </div>
