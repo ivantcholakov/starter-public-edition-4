@@ -334,8 +334,6 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Gravatar Library for CodeIgniter, https://github.com/ivantcholakov/Codeigniter-Gravatar
 * CodeIgniter Advanced Images (Smart Resize and Crop), https://github.com/jenssegers/codeigniter-advanced-images/
 * Multiplayer - A tiny library to build nice HTML embed codes for videos, https://github.com/felixgirault/multiplayer, https://packagist.org/packages/fg/multiplayer
-* **DEPRECATED:** jQuery Chosen Plugin, http://harvesthq.github.com/chosen/, https://github.com/harvesthq/chosen/
-* **DEPRECATED:** jQuery Chosen Image Plugin (with modifications for jQuery Chosen 1.2 compatibility), https://github.com/djgrant/chosen-image
 * Smiley Icons, http://thuthuatvietnam.com/sites/default/files/uploads/files/2013/08/huong-dan-su-dung-smiley-helper-tren-codeigniter.zip, http://thuthuatvietnam.com/huong-dan-su-dung-smileys-helper-tren-codeigniter.html
 * Smiley Icons from Django-emoticons, https://github.com/Fantomas42/django-emoticons
 * Secure Random Bytes in PHP, https://github.com/GeorgeArgyros/Secure-random-bytes-in-PHP
