@@ -13,10 +13,19 @@
 /**
  * Default base class for compiled templates.
  *
+ * This class is an implementation detail of how template compilation currently
+ * works, which might change. It should never be used directly. Use $twig->load()
+ * instead, which returns an instance of Twig_TemplateWrapper.
+ *
  * @author Fabien Potencier <fabien@symfony.com>
+ *
+ * @internal
  */
 abstract class Twig_Template implements Twig_TemplateInterface
 {
+    /**
+     * @internal
+     */
     protected static $cache = array();
 
     protected $parent;
@@ -25,11 +34,6 @@ abstract class Twig_Template implements Twig_TemplateInterface
     protected $blocks = array();
     protected $traits = array();
 
-    /**
-     * Constructor.
-     *
-     * @param Twig_Environment $env A Twig_Environment instance
-     */
     public function __construct(Twig_Environment $env)
     {
         $this->env = $env;
@@ -268,44 +272,70 @@ abstract class Twig_Template implements Twig_TemplateInterface
     }
 
     /**
-     * Returns whether a block exists or not.
+     * Returns whether a block exists or not in the current context of the template.
      *
-     * This method is for internal use only and should never be called
-     * directly.
+     * This method checks blocks defined in the current template
+     * or defined in "used" traits or defined in parent templates.
      *
-     * This method does only return blocks defined in the current template
-     * or defined in "used" traits.
-     *
-     * It does not return blocks from parent templates as the parent
-     * template name can be dynamic, which is only known based on the
-     * current context.
-     *
-     * @param string $name The block name
+     * @param string $name    The block name
+     * @param array  $context The context
+     * @param array  $blocks  The current set of blocks
      *
      * @return bool true if the block exists, false otherwise
      *
      * @internal
      */
-    public function hasBlock($name)
+    public function hasBlock($name, array $context = null, array $blocks = array())
     {
-        return isset($this->blocks[(string) $name]);
+        if (null === $context) {
+            @trigger_error('The '.__METHOD__.' method is internal and should never be called; calling it directly is deprecated since version 1.28 and won\'t be possible anymore in 2.0.', E_USER_DEPRECATED);
+
+            return isset($this->blocks[(string) $name]);
+        }
+
+        if (isset($blocks[$name])) {
+            return $blocks[$name][0] instanceof self;
+        }
+
+        if (isset($this->blocks[$name])) {
+            return true;
+        }
+
+        if (false !== $parent = $this->getParent($context)) {
+            return $parent->hasBlock($name, $context);
+        }
+
+        return false;
     }
 
     /**
-     * Returns all block names.
+     * Returns all block names in the current context of the template.
      *
-     * This method is for internal use only and should never be called
-     * directly.
+     * This method checks blocks defined in the current template
+     * or defined in "used" traits or defined in parent templates.
+     *
+     * @param array  $context The context
+     * @param array  $blocks  The current set of blocks
      *
      * @return array An array of block names
      *
-     * @see hasBlock
-     *
      * @internal
      */
-    public function getBlockNames()
+    public function getBlockNames(array $context = null, array $blocks = array())
     {
-        return array_keys($this->blocks);
+        if (null === $context) {
+            @trigger_error('The '.__METHOD__.' method is internal and should never be called; calling it directly is deprecated since version 1.28 and won\'t be possible anymore in 2.0.', E_USER_DEPRECATED);
+
+            return array_keys($this->blocks);
+        }
+
+        $names = array_merge(array_keys($blocks), array_keys($this->blocks));
+
+        if (false !== $parent = $this->getParent($context)) {
+            $names = array_merge($names, $parent->getBlockNames($context));
+        }
+
+        return array_unique($names);
     }
 
     protected function loadTemplate($template, $templateName = null, $line = null, $index = null)
@@ -316,6 +346,10 @@ abstract class Twig_Template implements Twig_TemplateInterface
             }
 
             if ($template instanceof self) {
+                return $template;
+            }
+
+            if ($template instanceof Twig_TemplateWrapper) {
                 return $template;
             }
 
@@ -346,8 +380,6 @@ abstract class Twig_Template implements Twig_TemplateInterface
      * directly.
      *
      * @return array An array of blocks
-     *
-     * @see hasBlock
      *
      * @internal
      */
@@ -467,6 +499,8 @@ abstract class Twig_Template implements Twig_TemplateInterface
      * @return mixed The attribute value, or a Boolean when $isDefinedTest is true, or null when the attribute is not set and $ignoreStrictCheck is true
      *
      * @throws Twig_Error_Runtime if the attribute does not exist and Twig is running in strict mode and $isDefinedTest is false
+     *
+     * @internal
      */
     protected function getAttribute($object, $item, array $arguments = array(), $type = self::ANY_CALL, $isDefinedTest = false, $ignoreStrictCheck = false)
     {
@@ -474,7 +508,7 @@ abstract class Twig_Template implements Twig_TemplateInterface
         if (self::METHOD_CALL !== $type) {
             $arrayItem = is_bool($item) || is_float($item) ? (int) $item : $item;
 
-            if ((is_array($object) && array_key_exists($arrayItem, $object))
+            if ((is_array($object) && (isset($object[$arrayItem]) || array_key_exists($arrayItem, $object)))
                 || ($object instanceof ArrayAccess && isset($object[$arrayItem]))
             ) {
                 if ($isDefinedTest) {
@@ -555,37 +589,54 @@ abstract class Twig_Template implements Twig_TemplateInterface
         $class = get_class($object);
 
         // object method
-        if (!isset(self::$cache[$class]['methods'])) {
+        if (!isset(self::$cache[$class])) {
             // get_class_methods returns all methods accessible in the scope, but we only want public ones to be accessible in templates
             if ($object instanceof self) {
                 $ref = new ReflectionClass($class);
                 $methods = array();
 
                 foreach ($ref->getMethods(ReflectionMethod::IS_PUBLIC) as $refMethod) {
-                    $methodName = strtolower($refMethod->name);
-
                     // Accessing the environment from templates is forbidden to prevent untrusted changes to the environment
-                    if ('getenvironment' !== $methodName) {
-                        $methods[$methodName] = true;
+                    if ('getenvironment' !== strtolower($refMethod->name)) {
+                        $methods[] = $refMethod->name;
                     }
                 }
-
-                self::$cache[$class]['methods'] = $methods;
             } else {
-                self::$cache[$class]['methods'] = array_change_key_case(array_flip(get_class_methods($object)));
+                $methods = get_class_methods($object);
             }
+            $cache = array();
+
+            foreach ($methods as $method) {
+                $cache[$method] = $method;
+                $cache[$lcName = strtolower($method)] = $method;
+
+                if ('g' === $lcName[0] && 0 === strpos($lcName, 'get')) {
+                    $name = substr($method, 3);
+                    $lcName = substr($lcName, 3);
+                } elseif ('i' === $lcName[0] && 0 === strpos($lcName, 'is')) {
+                    $name = substr($method, 2);
+                    $lcName = substr($lcName, 2);
+                } else {
+                    continue;
+                }
+
+                if (!isset($cache[$name])) {
+                    $cache[$name] = $method;
+                }
+                if (!isset($cache[$lcName])) {
+                    $cache[$lcName] = $method;
+                }
+            }
+            self::$cache[$class] = $cache;
         }
 
         $call = false;
-        $lcItem = strtolower($item);
-        if (isset(self::$cache[$class]['methods'][$lcItem])) {
-            $method = (string) $item;
-        } elseif (isset(self::$cache[$class]['methods']['get'.$lcItem])) {
-            $method = 'get'.$item;
-        } elseif (isset(self::$cache[$class]['methods']['is'.$lcItem])) {
-            $method = 'is'.$item;
-        } elseif (isset(self::$cache[$class]['methods']['__call'])) {
-            $method = (string) $item;
+        if (isset(self::$cache[$class][$item])) {
+            $method = self::$cache[$class][$item];
+        } elseif (isset(self::$cache[$class][$lcItem = strtolower($item)])) {
+            $method = self::$cache[$class][$lcItem];
+        } elseif (isset(self::$cache[$class]['__call'])) {
+            $method = $item;
             $call = true;
         } else {
             if ($isDefinedTest) {
@@ -596,7 +647,7 @@ abstract class Twig_Template implements Twig_TemplateInterface
                 return;
             }
 
-            throw new Twig_Error_Runtime(sprintf('Neither the property "%1$s" nor one of the methods "%1$s()", "get%1$s()"/"is%1$s()" or "__call()" exist and have public access in class "%2$s".', $item, get_class($object)), -1, $this->getTemplateName());
+            throw new Twig_Error_Runtime(sprintf('Neither the property "%1$s" nor one of the methods "%1$s()", "get%1$s()"/"is%1$s()" or "__call()" exist and have public access in class "%2$s".', $item, $class), -1, $this->getTemplateName());
         }
 
         if ($isDefinedTest) {
@@ -610,7 +661,11 @@ abstract class Twig_Template implements Twig_TemplateInterface
         // Some objects throw exceptions when they have __call, and the method we try
         // to call is not supported. If ignoreStrictCheck is true, we should return null.
         try {
-            $ret = call_user_func_array(array($object, $method), $arguments);
+            if (!$arguments) {
+                $ret = $object->$method();
+            } else {
+                $ret = call_user_func_array(array($object, $method), $arguments);
+            }
         } catch (BadMethodCallException $e) {
             if ($call && ($ignoreStrictCheck || !$this->env->isStrictVariables())) {
                 return;
@@ -618,9 +673,10 @@ abstract class Twig_Template implements Twig_TemplateInterface
             throw $e;
         }
 
-        // useful when calling a template method from a template
-        // this is not supported but unfortunately heavily used in the Symfony profiler
+        // @deprecated in 1.28
         if ($object instanceof Twig_TemplateInterface) {
+            @trigger_error('Using the dot notation on an instance of '.__CLASS.' is deprecated since version 1.28 and won\'t be supported anymore in 2.0.', E_USER_DEPRECATED);
+
             return $ret === '' ? '' : new Twig_Markup($ret, $this->env->getCharset());
         }
 
