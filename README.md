@@ -410,6 +410,7 @@ Reported by Webnice Ltd., http://webnicebg.com
 * http://lz1866.com (a locomotive services provider)
 * http://www.prista-oil.com/ - production and distribution of motor and industrial oils, greases and special fluids; battery business
 * http://mycity.bg/ - a virtual tourist guide
+* http://vonleart.com - wedding photography
 
 Reported by Krishna Guragai, @krishnaguragain
 
