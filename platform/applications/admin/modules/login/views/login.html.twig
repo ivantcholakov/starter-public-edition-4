@@ -64,11 +64,12 @@
             <div class="ui message">
 
                 <p>
+                    {# {{ lang('ui_login_tip') }} #}
                     Enter random username and password, enter the captcha string, and click on "Login" button to get in.
                 </p>
 
                 <p>
-                    Back to the public site: <a href="{{ default_base_url() }}">{{ default_base_url() }}</a>
+                    {{ lang('ui_to_public_site') }}: <a href="{{ default_base_url() }}">{{ default_base_url() }}</a>
                 </p>
 
             </div>

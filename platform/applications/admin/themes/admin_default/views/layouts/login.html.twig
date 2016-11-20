@@ -13,37 +13,8 @@
 {{ apple_touch_icon_precomposed() }}
 
 {{ js_platform() }}
-{{ file_partial('webfontloader') }}
-{{ css('lib/material-design-icons/material-icons.min.css') }}
-{{ css('lib/semantic/semantic.min.css') }}
-
-    <style>
-
-    body.login-page {
-        background-color: #DADADA;
-    }
-
-    .login-page > .grid {
-        height: 100%;
-    }
-
-    .login-page > .grid .column {
-        max-width: 450px;
-        padding-top: 25px !important;
-    }
-
-    .login-page .button i.icon {
-        display: inline;
-    }
-
-    @media only screen and (min-width: 992px) {
-        .login-page > .grid .column {
-            padding-top: 60px !important;
-        }
-    }
-
-    </style>
-
+{% include 'partials/webfontloader' %}
+{{ theme_css('login.min.css') }}
 {{ partial('css') }}
 
 {{ js_modernizr() }}

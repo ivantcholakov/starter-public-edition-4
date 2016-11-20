@@ -13,14 +13,15 @@
 {{ apple_touch_icon_precomposed() }}
 
 {{ js_platform() }}
-{{ file_partial('webfontloader') }}
-{{ css('lib/material-design-icons/material-icons.min.css') }}
-{{ css('lib/semantic/semantic.min.css') }}
-{{ css('admin.css') }}
+{% include 'partials/webfontloader' %}
+{{ theme_css('admin.min.css') }}
 {{ partial('css') }}
-{{ js('lib/phpjs/phpjs.min.js') }}
+
 {{ js_modernizr() }}
 {{ js_jquery() }}
+
+{{ js('lib/phpjs/phpjs.min.js') }}
+
 {{ partial('head') }}
 
 {{ head_end() }}

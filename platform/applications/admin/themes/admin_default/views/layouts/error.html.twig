@@ -13,10 +13,8 @@
 {{ apple_touch_icon_precomposed() }}
 
 {{ js_platform() }}
-{{ file_partial('webfontloader') }}
-{{ css('lib/material-design-icons/material-icons.min.css') }}
-{{ css('lib/semantic/semantic.min.css') }}
-
+{% include 'partials/webfontloader' %}
+{{ theme_css('error.min.css') }}
 {{ partial('css') }}
 
 {{ js_modernizr() }}

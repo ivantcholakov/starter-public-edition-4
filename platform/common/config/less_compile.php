@@ -141,6 +141,36 @@ $config['less_compile'] = array(
         'cssmin' => array('implementation' => 'cssnano'),
     ),
 
+    // php cli.php less compile admin-default-min admin-default-login-min admin-default-error-min
+
+    array(
+        'name' => 'admin-default-min',
+        'source' => DEFAULTFCPATH.'admin/themes/admin_default/less/index.less',
+        'destination' => DEFAULTFCPATH.'admin/themes/admin_default/css/admin.min.css',
+        'relativeUrls' => false,
+        'implementation' => 'less.js',
+        'autoprefixer' => array(),
+        'cssmin' => array('implementation' => 'cssnano'),
+    ),
+    array(
+        'name' => 'admin-default-login-min',
+        'source' => DEFAULTFCPATH.'admin/themes/admin_default/less/login.less',
+        'destination' => DEFAULTFCPATH.'admin/themes/admin_default/css/login.min.css',
+        'relativeUrls' => false,
+        'implementation' => 'less.js',
+        'autoprefixer' => array(),
+        'cssmin' => array('implementation' => 'cssnano'),
+    ),
+    array(
+        'name' => 'admin-default-error-min',
+        'source' => DEFAULTFCPATH.'admin/themes/admin_default/less/error.less',
+        'destination' => DEFAULTFCPATH.'admin/themes/admin_default/css/error.min.css',
+        'relativeUrls' => false,
+        'implementation' => 'less.js',
+        'autoprefixer' => array(),
+        'cssmin' => array('implementation' => 'cssnano'),
+    ),
+
     // php cli.php less compile front-semantic-ui-default-min
 
     array(
