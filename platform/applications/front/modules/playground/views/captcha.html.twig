@@ -11,8 +11,8 @@ The MIT License, http://opensource.org/licenses/MIT
 
                 <div>
                     <img id="captcha_image"
+                        class="ui middle aligned image pointer"
                         src="{{ captcha().src ~ '?nocache=' ~ rand(100000000, 999999999) }}"
-                        style="cursor: pointer;"
                         title="{{ lang('captcha.tip')|e('html_attr') }}"
                     />
                 </div>

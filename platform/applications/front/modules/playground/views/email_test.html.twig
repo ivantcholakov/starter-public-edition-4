@@ -25,9 +25,9 @@ The MIT License, http://opensource.org/licenses/MIT
                                 <textarea id="custom_text" name="custom_text" rows="5" placeholder="Enter here your text, if you wish.">{{ set_value('custom_text', '', true) }}</textarea>
                             </div>
 
-                            <div>
+                            <div class="field">
                                 <img id="captcha_image"
-                                    class="pointer"
+                                    class="ui middle aligned image pointer"
                                     src="{{ captcha().src ~ '?nocache=' ~ rand(100000000, 999999999) }}"
                                     title="{{ lang('captcha.tip')|e('html_attr') }}"
                                 />
