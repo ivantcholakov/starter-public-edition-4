@@ -1,0 +1,191 @@
+
+/* 
+    Created on : 2016-11-01
+    Author     : Ivan Tcholakov
+    License    : MIT
+*/
+
+
+// Semantic UI Flat Theme
+
+
+// Directories
+@base-uri:                      "../../../";
+@default-base-uri:              @base-uri;
+@default-assets-uri:            "@{default-base-uri}assets/";
+
+@theme-path:                    "./";
+@default-assets-path:           "../../../assets/";
+@default-assets-less-path:      "@{default-assets-path}less/";
+@default-assets-less-lib-path:  "@{default-assets-less-path}lib/";
+@default-assets-css-path:       "@{default-assets-path}css/";
+@default-assets-css-lib-path:   "@{default-assets-css-path}lib/";
+
+
+// Semantic UI
+@theme-loader-path:             "../../../../themes/front_semantic_ui_flat/less/";
+@import "@{default-assets-less-lib-path}/semantic-custom/definitions/globals/mixins";
+@import "@{default-assets-less-lib-path}/semantic/semantic.vendor.less";
+& { @import "@{default-assets-less-lib-path}/semantic-custom/definitions/globals/utilities"; }
+
+
+/*
+ *  Material Design Icons, https://github.com/google/material-design-icons
+ *  Guarantee the same typography regardless from where the font has been loaded.
+ */
+@import "@{default-assets-less-lib-path}material-icons/typography.less";
+@import (less) "@{default-assets-css-lib-path}material-design-icons/material-icons.css";
+
+
+/*
+ *  Common Purpose Styles
+ */
+@import (less) "@{default-assets-css-lib-path}animate/animate.css";
+@import (less) "@{default-assets-css-lib-path}google-code-prettify/prettify.css";
+
+
+/*
+ *  DataTables - Semantic UI Integration
+ */
+
+@import "@{default-assets-less-lib-path}dataTables/dataTables.semanticui-source.less";
+
+@import '@{default-assets-less-lib-path}dataTables/select.semanticui-variables.less';
+@import '@{default-assets-less-lib-path}dataTables/select.semanticui-source.less';
+
+div.dataTables_wrapper div.dataTables_length .ui.selection.dropdown {
+    min-width: 100px;
+}
+
+div.dataTables_wrapper > div.ui.grid > div.row {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+div.dataTables_wrapper > div.ui.grid > div.row:first-child {
+    padding-top: 7px;
+}
+
+div.dataTables_wrapper > div.ui.grid > div.row div.column {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+th.details-control {
+    min-width: 35px;
+}
+
+td.details-control {
+    background: url('@{default-assets-uri}img/lib/details-open.png') no-repeat center center;
+    cursor: pointer;
+}
+
+tr.shown td.details-control {
+    background: url('@{default-assets-uri}img/lib/details-close.png') no-repeat center center;
+}
+
+
+/* Colorbox */
+
+@colorbox-example-dir: "example3/";
+@colorbox-import-file: "@{default-assets-css-lib-path}colorbox/@{colorbox-example-dir}colorbox.css";
+@colorbox-image-dir: "@{default-assets-uri}css/lib/colorbox/@{colorbox-example-dir}images/";
+
+@import (inline) "@{colorbox-import-file}";
+
+/* Colorbox Fix URLs */
+
+#cboxLoadingGraphic {
+    background-image: url("@{colorbox-image-dir}loading.gif");
+}
+
+#cboxPrevious {
+    background-image: url("@{colorbox-image-dir}controls.png");
+}
+
+#cboxNext {
+    background-image: url("@{colorbox-image-dir}controls.png");
+}
+
+#cboxClose {
+    background-image: url("@{colorbox-image-dir}controls.png");
+}
+
+/* End Colorbox Fix URLs */
+
+/* Colorbox Visual Corrections */
+
+#cboxPrevious, #cboxNext, #cboxSlideshow, #cboxClose {
+    outline: 0 !important;
+}
+
+/* End Colorbox */
+
+
+/* Site Structure */
+
+/* Sticky Footer */
+
+/* See https://github.com/philipwalton/solved-by-flexbox/blob/master/assets/css/components/site.css */
+
+/**
+ * 1. Avoid the IE 10-11 `min-height` bug.
+ * 2. Set `flex-shrink` to `0` to prevent some browsers from
+ *    letting these items shrink to smaller than their content's default
+ *    minimum size. See http://bit.ly/1Mn35US for details.
+ * 3. Use `%` instead of `vh` since `vh` is buggy in older mobile Safari.
+ */
+
+html {
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    /* height: 100%; */ /* 1, 3 */
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+
+    word-wrap: break-word;
+}
+
+#main_navigation {
+    flex: none; /* 2 */
+    width: 100%;
+}
+
+#header {
+    flex: none; /* 2 */
+    width: 100%;
+}
+
+#main_content {
+    flex: 1 0 auto; /* 2 */
+    width: 100%;
+}
+
+#footer {
+    flex: none; /* 2 */
+    width: 100%;
+}
+
+/* End Sticky Footer */
+
+/* End Site Structure */
+
+
+// The Main Menu
+
+#main_menu {
+    width: 100%;
+}
+
+.ui.grid.main {
+    margin-top: 15px;
+}
+
+/* End Site Structure */

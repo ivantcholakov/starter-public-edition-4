@@ -6,7 +6,7 @@
 */
 
 
-// front-theme
+// Online Editor's Visual Theme'
 
 
 // Directories
@@ -24,9 +24,9 @@
 
 // Semantic UI
 @theme-loader-path:             "../editor/";
-@import "definitions/globals/mixins";
+@import "@{default-assets-less-lib-path}/semantic-custom/definitions/globals/mixins";
 @import "@{default-assets-less-lib-path}/semantic/semantic.vendor.less";
-& { @import "definitions/globals/utilities"; }
+& { @import "@{default-assets-less-lib-path}/semantic-custom/definitions/globals/utilities"; }
 
 
 /*!
@@ -41,3 +41,18 @@
  *  Common Purpose Styles
  */
 @import (less) "@{default-assets-css-lib-path}animate/animate.css";
+
+
+/* Site Structure */
+
+html, body {
+    background-image: none;
+    background-color: #fff;
+}
+
+body {
+    display: block;
+    padding: 15px 15px 15px 15px;
+}
+
+/* End Site Structure */

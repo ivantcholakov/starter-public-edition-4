@@ -121,11 +121,31 @@ $config['less_compile'] = array(
         'cssmin' => array('implementation' => 'cssnano'),
     ),
 
+    // php cli.php less compile semantic-ui-custom semantic-ui-custom-min
+
+    array(
+        'name' => 'semantic-ui-custom',
+        'source' => DEFAULTFCPATH.'assets/less/lib/semantic-custom/semantic-custom.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/semantic-custom/semantic-custom.css',
+        'relativeUrls' => false,
+        'implementation' => 'less.js',
+        'autoprefixer' => array(),
+    ),
+    array(
+        'name' => 'semantic-ui-custom-min',
+        'source' => DEFAULTFCPATH.'assets/less/lib/semantic-custom/semantic-custom.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/semantic-custom/semantic-custom.min.css',
+        'relativeUrls' => false,
+        'implementation' => 'less.js',
+        'autoprefixer' => array(),
+        'cssmin' => array('implementation' => 'cssnano'),
+    ),
+
     // php cli.php less compile front-semantic-ui-default-min
 
     array(
         'name' => 'front-semantic-ui-default-min',
-        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_default/less/front/index.less',
+        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_default/less/index.less',
         'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_default/css/front.min.css',
         'relativeUrls' => false,
         'implementation' => 'less.js',
@@ -137,7 +157,7 @@ $config['less_compile'] = array(
 
     array(
         'name' => 'front-semantic-ui-amazon-min',
-        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_amazon/less/front/index.less',
+        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_amazon/less/index.less',
         'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_amazon/css/front.min.css',
         'relativeUrls' => false,
         'implementation' => 'less.js',
@@ -149,7 +169,7 @@ $config['less_compile'] = array(
 
     array(
         'name' => 'front-semantic-ui-basic-min',
-        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_basic/less/front/index.less',
+        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_basic/less/index.less',
         'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_basic/css/front.min.css',
         'relativeUrls' => false,
         'implementation' => 'less.js',
@@ -161,7 +181,7 @@ $config['less_compile'] = array(
 
     array(
         'name' => 'front-semantic-ui-chubby-min',
-        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_chubby/less/front/index.less',
+        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_chubby/less/index.less',
         'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_chubby/css/front.min.css',
         'relativeUrls' => false,
         'implementation' => 'less.js',
@@ -173,7 +193,7 @@ $config['less_compile'] = array(
 
     array(
         'name' => 'front-semantic-ui-classic-min',
-        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_classic/less/front/index.less',
+        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_classic/less/index.less',
         'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_classic/css/front.min.css',
         'relativeUrls' => false,
         'implementation' => 'less.js',
@@ -185,7 +205,7 @@ $config['less_compile'] = array(
 
     array(
         'name' => 'front-semantic-ui-flat-min',
-        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_flat/less/front/index.less',
+        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_flat/less/index.less',
         'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_flat/css/front.min.css',
         'relativeUrls' => false,
         'implementation' => 'less.js',
@@ -197,7 +217,7 @@ $config['less_compile'] = array(
 
     array(
         'name' => 'front-semantic-ui-github-min',
-        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_github/less/front/index.less',
+        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_github/less/index.less',
         'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_github/css/front.min.css',
         'relativeUrls' => false,
         'implementation' => 'less.js',
@@ -209,7 +229,7 @@ $config['less_compile'] = array(
 
     array(
         'name' => 'front-semantic-ui-material-min',
-        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_material/less/front/index.less',
+        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_material/less/index.less',
         'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_material/css/front.min.css',
         'relativeUrls' => false,
         'implementation' => 'less.js',

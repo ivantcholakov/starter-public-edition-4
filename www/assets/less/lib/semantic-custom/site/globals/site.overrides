@@ -1,0 +1,33 @@
+/*******************************
+         Site Overrides
+*******************************/
+
+
+/* Colored Texts */
+
+// See https://github.com/Semantic-Org/Semantic-UI/issues/1885
+// Author: https://github.com/kamalkhan
+// Example: <span class="red text">I am red!</span>
+@text-colors: blue, green, orange, pink, purple, red, teal, yellow, black, grey, white;
+.text {
+    .-(@i: length(@text-colors)) when (@i > 0) {
+        @c: extract(@text-colors, @i);
+        &.@{c} { color: @@c }
+        .-((@i - 1));
+    }.-;
+}
+
+/* End Colored Texts */
+
+
+/* Printing */
+
+// http://www.itsupportguides.com/tech-tips-tricks/how-to-hide-urlhref-when-printing-bootstrap-website/
+// http://stackoverflow.com/questions/7301989/need-to-remove-href-values-when-printing-in-chrome
+@media print {
+    a[href]:after {
+        content: none !important;
+    }
+}
+
+/* End Printing */
