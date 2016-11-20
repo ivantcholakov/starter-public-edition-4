@@ -46,6 +46,8 @@ template_metadata();
 echo favicon();
 echo apple_touch_icon_precomposed();
 
+echo js_platform();
+
 ?>
 
     <script type="text/javascript" src="<?php echo js_url('lib/webfontloader/webfontloader.js'); ?>"></script>
@@ -78,7 +80,7 @@ echo apple_touch_icon_precomposed();
 <?php
 
 // A CSS loading example.
-echo css('lib/semantic/semantic.min.css');
+echo css('lib/semantic-custom/semantic-custom.min.css');
 
 ?>
 
@@ -360,7 +362,7 @@ echo js('lib/semantic/semantic.min.js');
                 navBeerBrand    = jQuery('.navbeer-brand', this),
                 navBeerSandwich = jQuery('.navbeer-sandwich', this),
                 navBeerMenu     = jQuery('.navbeer-menu', this),
-                menuWidthCompensation = 30, // Try change this if the navbar is collapsing too early or to later.
+                menuWidthCompensation = 100, // Try change this if the navbar is collapsing too early or to later.
                 navBeerWidth    = navBeerBrand.width() + navBeerMenu.width() + menuWidthCompensation,
                 navBeerCollapse = function () {
                     if (jQuery(window).width() < navBeerWidth) {
