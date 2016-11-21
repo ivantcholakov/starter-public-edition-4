@@ -11,7 +11,7 @@
         "erusev/parsedown-extra": "^0.7.1",
         "pixel418/markdownify": "^2.2.0",
         "mustache/mustache": "~2.5",
-        "netcarver/textile": "3.5.*",
+        "netcarver/textile": "3.6.*",
         "twig/twig": "~1.0",
         "twig/extensions": "~1.3",
         "ezyang/htmlpurifier": "^4.8.0",
