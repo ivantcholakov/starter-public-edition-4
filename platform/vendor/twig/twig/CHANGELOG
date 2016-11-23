@@ -1,3 +1,8 @@
+* 1.28.2 (2016-11-23)
+
+ * fixed precedence between getFoo() and isFoo() in Twig_Template::getAttribute()
+ * improved a deprecation message
+
 * 1.28.1 (2016-11-18)
 
  * fixed block() function when used with a template argument

@@ -943,18 +943,73 @@
         ]
     },
     {
-        "name": "twig/twig",
-        "version": "v1.28.1",
-        "version_normalized": "1.28.1.0",
+        "name": "netcarver/textile",
+        "version": "v3.6.0",
+        "version_normalized": "3.6.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/twigphp/Twig.git",
-            "reference": "fff80c4a7ae1d47a81dfec10c76cbcb939170b45"
+            "url": "https://github.com/textile/php-textile.git",
+            "reference": "bac6381fcab28cf6b6ae3d0e61b6a8c8d6adca13"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/twigphp/Twig/zipball/fff80c4a7ae1d47a81dfec10c76cbcb939170b45",
-            "reference": "fff80c4a7ae1d47a81dfec10c76cbcb939170b45",
+            "url": "https://api.github.com/repos/textile/php-textile/zipball/bac6381fcab28cf6b6ae3d0e61b6a8c8d6adca13",
+            "reference": "bac6381fcab28cf6b6ae3d0e61b6a8c8d6adca13",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "3.7.*",
+            "satooshi/php-coveralls": "0.6.*",
+            "squizlabs/php_codesniffer": "1.5.*",
+            "symfony/yaml": "2.4.*"
+        },
+        "time": "2016-11-17 14:18:12",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.6-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Netcarver\\Textile": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "description": "Textile markup language parser",
+        "homepage": "https://github.com/textile/php-textile",
+        "keywords": [
+            "document",
+            "format",
+            "html",
+            "language",
+            "markup",
+            "parser",
+            "php-textile",
+            "plaintext",
+            "textile"
+        ]
+    },
+    {
+        "name": "twig/twig",
+        "version": "v1.28.2",
+        "version_normalized": "1.28.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/twigphp/Twig.git",
+            "reference": "b22ce0eb070e41f7cba65d78fe216de29726459c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/twigphp/Twig/zipball/b22ce0eb070e41f7cba65d78fe216de29726459c",
+            "reference": "b22ce0eb070e41f7cba65d78fe216de29726459c",
             "shasum": ""
         },
         "require": {
@@ -962,9 +1017,9 @@
         },
         "require-dev": {
             "symfony/debug": "~2.7",
-            "symfony/phpunit-bridge": "~2.7"
+            "symfony/phpunit-bridge": "~3.2@dev"
         },
-        "time": "2016-11-19 05:52:49",
+        "time": "2016-11-23 18:41:40",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1012,12 +1067,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/Roave/SecurityAdvisories.git",
-            "reference": "e51e8d385220844905c299d249736c0d9fe1f42c"
+            "reference": "7a1c6b8d5700e89397e854530b837011d14aa4b3"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/e51e8d385220844905c299d249736c0d9fe1f42c",
-            "reference": "e51e8d385220844905c299d249736c0d9fe1f42c",
+            "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/7a1c6b8d5700e89397e854530b837011d14aa4b3",
+            "reference": "7a1c6b8d5700e89397e854530b837011d14aa4b3",
             "shasum": ""
         },
         "conflict": {
@@ -1087,7 +1142,7 @@
             "thelia/backoffice-default-template": ">=2.1,<2.1.2",
             "thelia/thelia": ">=2.1.0-beta1,<2.1.3|>=2.1,<2.1.2",
             "twig/twig": "<1.20",
-            "typo3/cms": ">=6.2,<6.2.27|>=8,<8.3.1|>=7,<7.6.11",
+            "typo3/cms": ">=6.2,<6.2.29|>=8,<8.4.1|>=7,<7.6.13",
             "typo3/flow": ">=2.3,<2.3.16|>=3,<3.0.10|>=3.1,<3.1.7|>=3.2,<3.2.7|>=3.3,<3.3.5|>=1,<1.0.4|>=1.1,<1.1.1|>=2,<2.0.1",
             "typo3/neos": ">=1.1,<1.1.3|>=1.2,<1.2.13|>=2,<2.0.4",
             "willdurand/js-translation-bundle": "<2.1.1",
@@ -1120,7 +1175,7 @@
             "zfcampus/zf-apigility-doctrine": ">=1,<1.0.3",
             "zfr/zfr-oauth2-server-module": "<0.1.2"
         },
-        "time": "2016-11-19 21:14:30",
+        "time": "2016-11-23 19:06:04",
         "type": "metapackage",
         "notification-url": "https://packagist.org/downloads/",
         "license": [
@@ -1134,60 +1189,5 @@
             }
         ],
         "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
-    },
-    {
-        "name": "netcarver/textile",
-        "version": "v3.6.0",
-        "version_normalized": "3.6.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/textile/php-textile.git",
-            "reference": "bac6381fcab28cf6b6ae3d0e61b6a8c8d6adca13"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/textile/php-textile/zipball/bac6381fcab28cf6b6ae3d0e61b6a8c8d6adca13",
-            "reference": "bac6381fcab28cf6b6ae3d0e61b6a8c8d6adca13",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "3.7.*",
-            "satooshi/php-coveralls": "0.6.*",
-            "squizlabs/php_codesniffer": "1.5.*",
-            "symfony/yaml": "2.4.*"
-        },
-        "time": "2016-11-17 14:18:12",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "3.6-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Netcarver\\Textile": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "description": "Textile markup language parser",
-        "homepage": "https://github.com/textile/php-textile",
-        "keywords": [
-            "document",
-            "format",
-            "html",
-            "language",
-            "markup",
-            "parser",
-            "php-textile",
-            "plaintext",
-            "textile"
-        ]
     }
 ]
