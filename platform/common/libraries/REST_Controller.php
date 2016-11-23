@@ -379,7 +379,6 @@ abstract class REST_Controller extends Core_Controller {
      * @access public
      * @param string $config Configuration filename minus the file extension
      * e.g: my_rest.php is passed as 'my_rest'
-     * @return void
      */
     public function __construct($config = 'rest')
     {
@@ -594,7 +593,7 @@ abstract class REST_Controller extends Core_Controller {
      * Checks to see if we have everything we need to run this library.
      *
      * @access protected
-     * @return Exception
+     * @@throws Exception
      */
     protected function preflight_checks()
     {
@@ -641,6 +640,11 @@ abstract class REST_Controller extends Core_Controller {
         $object_called = preg_replace('/^(.*)\.(?:'.implode('|', array_keys($this->_supported_formats)).')$/', '$1', $object_called);
 
         $controller_method = $object_called.'_'.$this->request->method;
+        // Does this method exist? If not, try executing an index method
+        if (!method_exists($this, $controller_method)) {
+            $controller_method = "index_" . $this->request->method;
+            array_unshift($arguments, $object_called);
+        }
 
         // Do we want to log this method (if allowed by config)?
         $log_method = ! (isset($this->methods[$controller_method]['log']) && $this->methods[$controller_method]['log'] === FALSE);
@@ -654,6 +658,11 @@ abstract class REST_Controller extends Core_Controller {
             if ($this->config->item('rest_enable_logging') && $log_method)
             {
                 $this->_log_request();
+            }
+            
+            // fix cross site to option request error 
+            if($this->request->method == 'options') {
+                exit;
             }
 
             $this->response(array(
@@ -734,13 +743,8 @@ abstract class REST_Controller extends Core_Controller {
         catch (Exception $ex)
         {
             // If the method doesn't exist, then the error will be caught and an error response shown
-            $this->response(array(
-                    $this->config->item('rest_status_field_name') => FALSE,
-                    $this->config->item('rest_message_field_name') => array(
-                        'classname' => get_class($ex),
-                        'message' => $ex->getMessage()
-                    )
-                ), self::HTTP_INTERNAL_SERVER_ERROR);
+            $_error = &load_class('Exceptions', 'core');
+            $_error->show_exception($ex);
         }
     }
 
@@ -755,6 +759,7 @@ abstract class REST_Controller extends Core_Controller {
      */
     public function response($data = NULL, $http_code = NULL, $continue = FALSE)
     {
+        ob_start();
         // If the HTTP status is not NULL, then cast as an integer
         if ($http_code !== NULL)
         {
@@ -822,6 +827,10 @@ abstract class REST_Controller extends Core_Controller {
             // Display the data and exit execution
             $this->output->_display();
             exit;
+        }
+        else
+        {
+            ob_end_flush();
         }
 
         // Otherwise dump the output automatically
