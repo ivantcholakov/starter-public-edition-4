@@ -364,6 +364,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Masonry - a cascading grid layout library, https://github.com/desandro/masonry
 * jQuery LoadingOverlay - A flexible loading overlay jQuery plugin, https://github.com/gasparesganga/jquery-loading-overlay
 * Semantic UI - a component framework based around useful principles from natural language, http://www.semantic-ui.com
+* A collection of HTTP related packages (HTTPlug), https://github.com/php-http , http://httplug.io
 
 The Playground
 --------------

@@ -17,5 +17,6 @@ if (!isset($subnavbar_item_active)) {
                     <a class="<?php if ($subnavbar_item_active == 'restclient') { ?>active <?php } ?>item" href="<?php echo site_url('playground/rest/client'); ?>">Rest Client Library</a>
                     <a class="<?php if ($subnavbar_item_active == 'requests') { ?>active <?php } ?>item" href="<?php echo site_url('playground/rest/requests'); ?>">Requests HTTP Library</a>
                     <a class="<?php if ($subnavbar_item_active == 'guzzle_client') { ?>active <?php } ?>item" href="<?php echo site_url('playground/rest/guzzle'); ?>">Guzzle HTTP Client</a>
+                    <a class="<?php if ($subnavbar_item_active == 'php_http_client') { ?>active <?php } ?>item" href="<?php echo site_url('playground/rest/php-http-client'); ?>">PHP-HTTP Clent</a>
                     <a class="<?php if ($subnavbar_item_active == 'post_test') { ?>active <?php } ?>item" href="<?php echo site_url('playground/rest/post-test'); ?>">Testing a POST request</a>
                 </div>
