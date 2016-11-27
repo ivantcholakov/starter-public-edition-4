@@ -412,6 +412,7 @@ Reported by Webnice Ltd., http://webnicebg.com
 * http://www.prista-oil.com/ - production and distribution of motor and industrial oils, greases and special fluids; battery business
 * http://mycity.bg/ - a virtual tourist guide
 * http://vonleart.com - wedding photography
+* http://spa-rusalka.com - a SPA-hotel
 
 Reported by Krishna Guragai, @krishnaguragain
 
