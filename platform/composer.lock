@@ -722,16 +722,16 @@
         },
         {
             "name": "php-http/discovery",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/discovery.git",
-                "reference": "5a236c5e43486286efbd6b36f5151e0b962cfdb5"
+                "reference": "47fc36bd73ab615b55c31f4134e6bae70f1c04c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/discovery/zipball/5a236c5e43486286efbd6b36f5151e0b962cfdb5",
-                "reference": "5a236c5e43486286efbd6b36f5151e0b962cfdb5",
+                "url": "https://api.github.com/repos/php-http/discovery/zipball/47fc36bd73ab615b55c31f4134e6bae70f1c04c1",
+                "reference": "47fc36bd73ab615b55c31f4134e6bae70f1c04c1",
                 "shasum": ""
             },
             "require": {
@@ -780,7 +780,7 @@
                 "message",
                 "psr7"
             ],
-            "time": "2016-10-20 08:05:06"
+            "time": "2016-11-27 12:21:25"
         },
         {
             "name": "php-http/guzzle6-adapter",
