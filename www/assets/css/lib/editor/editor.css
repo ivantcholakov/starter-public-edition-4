@@ -62973,6 +62973,7 @@ html.ios body {
 }
 /* End Centering Variable Width Content */
 /* Miscellaneous */
+.borderless,
 [class*="no border"],
 .no-border {
   border: none !important;
