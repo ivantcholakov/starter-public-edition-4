@@ -1,0 +1,26 @@
+
+        <nav id="main_navigation">
+
+            <div class="ui blue inverted attached menu">
+
+                <a class="icon item" id="sidebar_toggle">
+                    <i class="sidebar icon"></i>
+                </a>
+
+                <a href="{{ site_url() }}" class="brand item">
+                    <strong>{{ setting('site_name') is not empty ? setting('site_name') : lang('admin_panel') }}</strong>
+                </a>
+
+                <a href="{{ default_base_url() }}" target="_blank" class="mobile hidden item">
+                    <i class="home icon"></i> <span class="tablet hidden">Go To Site</span>
+                </a>
+
+                <div class="right menu">
+
+                    {{ widget('account_widget') }}
+
+                </div>
+
+            </div>
+
+        </nav>

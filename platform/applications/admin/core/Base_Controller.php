@@ -114,4 +114,9 @@ class Base_Controller extends Core_Controller {
         return true;
     }
 
+    protected function _set_nav($id) {
+
+        $this->registry->set('nav', $id);
+    }
+
 }

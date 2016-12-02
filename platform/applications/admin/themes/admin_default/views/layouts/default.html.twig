@@ -41,11 +41,17 @@
 {% endif %}
 {{ body_begin(body_attr) }}
 
-{{ file_partial('navbar') }}
+    {{ widget('main_menu_widget') }}
+
+    <div id="application">
+
+    {{ widget('side_menu_widget') }}
+
+    <div id="page">
 
     <header id="header">
 
-        <div class="ui vertically padded grid page">
+        <div class="ui vertically padded grid">
 
 {{ widget('breadcrumb_widget') }}
 
@@ -67,7 +73,7 @@
 
     <main id="main_content">
 
-        <div class="ui vertically padded grid page">
+        <div class="ui vertically padded grid">
 
 {{ widget('feedback_messages_widget', {
     'feedback_message_target': feedback_message_target,
@@ -89,7 +95,10 @@
 
     </main>
 
-{{ widget('footer_widget') }}
+    </div>
+    </div>
+
+    {{ widget('footer_widget') }}
 
 {{ js_bp_plugins() }}
 {{ js_mbp_helper() }}
@@ -97,30 +106,14 @@
 
 {{ js('lib/semantic/semantic.min.js') }}
 {{ js('lib/jquery-ajax-queue/jquery-ajax-queue.js') }}
+{{ js('lib/jquery-ellipsis/jquery.ellipsis.min.js') }}
+{{ js('lib/jquery-keepalive/jquery.keepalive.min.js') }}
+{{ js('admin.js') }}
+
 
 {{ partial('scripts') }}
 
 {{ partial('handle_unauthenticated_ajax') }}
-
-<script type="text/javascript">
-//<![CDATA[
-
-    $(function () {
-
-        $('.ui.dropdown').dropdown();
-
-        $('body').on('click', '.message .close', function() {
-
-            $(this)
-              .closest('.message')
-              .transition('fade')
-            ;
-        });
-;
-    });
-
-//]]>
-</script>
 
     <div id="debug"></div>
 
