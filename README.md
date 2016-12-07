@@ -366,6 +366,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Semantic UI - a component framework based around useful principles from natural language, http://www.semantic-ui.com
 * A collection of HTTP related packages (HTTPlug), https://github.com/php-http , http://httplug.io
 * jQuery keepalive Plugin, sends ajax requests to the server at configurable intervals to keep a PHP session from expiring, https://github.com/waynewalls/jquery.keepalive
+* CSS & JavaScript minifier, in PHP, https://github.com/matthiasmullie/minify , http://www.minifier.org
 
 The Playground
 --------------

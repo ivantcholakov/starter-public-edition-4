@@ -19,6 +19,7 @@
         "t1st3/php-json-minify": "^0.6.2",
         "php-http/guzzle6-adapter": "^1.1",
         "php-http/discovery": "^1.1",
-        "php-http/client-common": "^1.4"
+        "php-http/client-common": "^1.4",
+        "matthiasmullie/minify": "^1.3"
     }
 }

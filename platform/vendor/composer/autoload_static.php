@@ -41,6 +41,8 @@ class ComposerStaticInitdc3d756b09e56e386c98d22248d033e5
         ),
         'M' => 
         array (
+            'MatthiasMullie\\PathConverter\\' => 29,
+            'MatthiasMullie\\Minify\\' => 22,
             'Markdownify\\' => 12,
         ),
         'L' => 
@@ -97,6 +99,14 @@ class ComposerStaticInitdc3d756b09e56e386c98d22248d033e5
         'Psr\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
+        ),
+        'MatthiasMullie\\PathConverter\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/matthiasmullie/path-converter/src',
+        ),
+        'MatthiasMullie\\Minify\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/matthiasmullie/minify/src',
         ),
         'Markdownify\\' => 
         array (
