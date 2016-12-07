@@ -7,6 +7,7 @@
 
 // Which CSS minifier is to be used:
 // 'yui_css_compressor' - https://github.com/tubalmartin/YUI-CSS-compressor-PHP-port
+// 'minifycss'          - https://github.com/matthiasmullie/minify
 // 'cssnano'            - http://cssnano.co
 $config['implementation'] = 'yui_css_compressor';
 

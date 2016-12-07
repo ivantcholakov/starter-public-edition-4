@@ -76,6 +76,11 @@ class CI_Parser_cssmin extends CI_Parser_driver {
                 $template = $parser->parse($template);
                 break;
 
+            case 'minifycss':
+                $parser = new MatthiasMullie\Minify\CSS($template);
+                $template = $parser->minify();
+                break;
+
             default:
 
                 // For security reasons don't parse PHP content.
@@ -139,6 +144,11 @@ class CI_Parser_cssmin extends CI_Parser_driver {
             case 'cssnano':
                 $parser = new Cssnano_Parser($options);
                 $template = $parser->parseString($template);
+                break;
+
+            case 'minifycss':
+                $parser = new MatthiasMullie\Minify\CSS($template);
+                $template = $parser->minify();
                 break;
 
             default:
