@@ -1380,12 +1380,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "7a1c6b8d5700e89397e854530b837011d14aa4b3"
+                "reference": "5560bd95c22a4ccf9404d8f176fceb4812a7398e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/7a1c6b8d5700e89397e854530b837011d14aa4b3",
-                "reference": "7a1c6b8d5700e89397e854530b837011d14aa4b3",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/5560bd95c22a4ccf9404d8f176fceb4812a7398e",
+                "reference": "5560bd95c22a4ccf9404d8f176fceb4812a7398e",
                 "shasum": ""
             },
             "conflict": {
@@ -1434,7 +1434,8 @@
                 "silverstripe/forum": "<=0.6.1|>=0.7,<=0.7.3",
                 "silverstripe/framework": ">=3,<3.3",
                 "silverstripe/userforms": "<3",
-                "simplesamlphp/simplesamlphp": "<1.14.4",
+                "simplesamlphp/saml2": ">=1.9,<1.9.1|>=1.10,<1.10.3|>=2.3,<2.3.3",
+                "simplesamlphp/simplesamlphp": "<1.14.10",
                 "socalnick/scn-social-auth": "<1.15.2",
                 "swiftmailer/swiftmailer": ">=4,<4.99.99|>=5,<5.2.1",
                 "symfony/dependency-injection": ">=2,<2.0.17",
@@ -1501,7 +1502,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2016-11-23 19:06:04"
+            "time": "2016-12-06 13:29:26"
         },
         {
             "name": "symfony/options-resolver",
