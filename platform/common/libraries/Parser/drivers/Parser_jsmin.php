@@ -17,6 +17,7 @@ class CI_Parser_jsmin extends CI_Parser_driver {
         // Default configuration options.
 
         $this->config = array(
+            'implementation' => 'jsminplus',
             'full_path' => FALSE,
         );
 
@@ -62,20 +63,32 @@ class CI_Parser_jsmin extends CI_Parser_driver {
             $template = $ci->load->path($template);
         }
 
-        $filename = $template;
+        switch ($options['implementation'])
+        {
+            case 'minifyjs':
+                $parser = new MatthiasMullie\Minify\JS($template);
+                $template = $parser->minify();
+                break;
 
-        // For security reasons don't parse PHP content.
-        $template = @ file_get_contents($template);
+            default:
 
-        ob_start();
+                $filename = $template;
 
-        $template = JSMinPlus::minify($template, $filename);
+                // For security reasons don't parse PHP content.
+                $template = @ file_get_contents($template);
 
-        $exception_message = ob_get_contents();
-        ob_end_clean();
+                ob_start();
 
-        if ($exception_message != '') {
-            throw new Exception('JSMinPlus: '.$exception_message);
+                $template = JSMinPlus::minify($template, $filename);
+
+                $exception_message = ob_get_contents();
+                ob_end_clean();
+
+                if ($exception_message != '') {
+                    throw new Exception('JSMinPlus: '.$exception_message);
+                }
+
+                break;
         }
 
         return $this->output($template, $return, $ci, $is_mx);
@@ -98,15 +111,27 @@ class CI_Parser_jsmin extends CI_Parser_driver {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
-        ob_start();
+        switch ($options['implementation'])
+        {
+            case 'minifyjs':
+                $parser = new MatthiasMullie\Minify\JS($template);
+                $template = $parser->minify();
+                break;
 
-        $template = JSMinPlus::minify($template);
+            default:
 
-        $exception_message = ob_get_contents();
-        ob_end_clean();
+                ob_start();
 
-        if ($exception_message != '') {
-            throw new Exception('JSMinPlus: '.$exception_message);
+                $template = JSMinPlus::minify($template);
+
+                $exception_message = ob_get_contents();
+                ob_end_clean();
+
+                if ($exception_message != '') {
+                    throw new Exception('JSMinPlus: '.$exception_message);
+                }
+
+                break;
         }
 
         return $this->output($template, $return, $ci, $is_mx);
