@@ -415,6 +415,7 @@ Reported by Webnice Ltd., http://webnicebg.com
 * http://mycity.bg/ - a virtual tourist guide
 * http://vonleart.com - wedding photography
 * http://spa-rusalka.com - a SPA-hotel
+* http://polypoolsbg.com - a FiberGlass pools provider
 
 Reported by Krishna Guragai, @krishnaguragain
 
