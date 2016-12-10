@@ -324,7 +324,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * CodeIgniter Cache Helper, https://github.com/stevenbenner/codeigniter-cache-helper
 * auto_link() helper accepts attributes, https://github.com/bcit-ci/CodeIgniter/wiki/auto-link
 * Menu Library, https://github.com/nihaopaul/Spark-Menu, https://github.com/Barnabas/Spark-Menu (the original spark-source), https://github.com/daylightstudio/FUEL-CMS/blob/master/fuel/modules/fuel/libraries/Menu.php
-* Function print_d() (enhanced debug print), https://github.com/vikerlane/print_d
+* Function print_d() (enhanced debug print), ~~https://github.com/vikerlane/print_d~~ https://github.com/CesiumComputer/print_d
 * Registry library for CodeIgniter, https://github.com/ivantcholakov/codeigniter-registry
 * jQuery Validation Plugin, http://jqueryvalidation.org/
 * Extended JavaScript regular expressions XRegExp, http://xregexp.com/
