@@ -14,6 +14,7 @@
 
 {{ js_platform() }}
 {% include 'partials/webfontloader' %}
+{{ css('lib/sweetalert/sweetalert.min.css') }}
 {{ theme_css('admin.min.css') }}
 {{ partial('css') }}
 
@@ -21,6 +22,7 @@
 {{ js_jquery() }}
 
 {{ js('lib/phpjs/phpjs.min.js') }}
+{{ js('lib/sweetalert/sweetalert.min.js') }}
 
 {{ partial('head') }}
 
