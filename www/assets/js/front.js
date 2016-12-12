@@ -14,7 +14,21 @@ $(function () {
     $('#main_navigation .menu.toggle').on("click", function(e) {
 
         e.preventDefault();
-        $('#main_navigation .ui.vertical.menu').toggle();
+
+        //$('#main_navigation .ui.vertical.menu').toggle();
+        $('#main_navigation .ui.vertical.menu').transition({
+            animation: 'slide down',
+            onComplete : function() {
+
+                var menu = $('#main_navigation .ui.vertical.menu');
+
+                if (menu.hasClass('hidden')) {
+                    menu.hide();
+                } else {
+                    menu.show();
+                }
+            }
+        });
     });
 });
 
