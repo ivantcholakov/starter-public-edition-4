@@ -16,11 +16,10 @@ $(function () {
         e.preventDefault();
 
         //$('#main_navigation .ui.vertical.menu').toggle();
-        $('#main_navigation .ui.vertical.menu').transition({
+        var menu = $('#main_navigation .ui.vertical.menu');
+        menu.transition({
             animation: 'slide down',
             onComplete : function() {
-
-                var menu = $('#main_navigation .ui.vertical.menu');
 
                 if (menu.hasClass('hidden')) {
                     menu.hide();
