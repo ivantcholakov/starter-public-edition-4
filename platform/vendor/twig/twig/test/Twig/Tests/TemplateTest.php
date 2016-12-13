@@ -214,15 +214,17 @@ class Twig_Tests_TemplateTest extends PHPUnit_Framework_TestCase
         $this->assertNotInstanceof('Twig_Markup', $template->getAttribute($template1, 'empty'));
         $this->assertSame('', $template->getAttribute($template1, 'empty'));
 
+        $blocks = array('name' => array($template1, 'block_name'));
+
         // trigger some deprecation notice messages to check them with @expectedDeprecation
-        $template->getAttribute($template, 'renderBlock', array('name', array()));
-        $template->getAttribute($template, 'displayBlock', array('name', array()));
+        $template->getAttribute($template, 'renderBlock', array('name', array(), $blocks));
+        $template->getAttribute($template, 'displayBlock', array('name', array(), $blocks));
         $template->getAttribute($template, 'hasBlock', array('name', array()));
         $template->getAttribute($template, 'render', array(array()));
         $template->getAttribute($template, 'display', array(array()));
 
-        $template->getAttribute($template1, 'renderBlock', array('name', array()));
-        $template->getAttribute($template1, 'displayBlock', array('name', array()));
+        $template->getAttribute($template1, 'renderBlock', array('name', array(), $blocks));
+        $template->getAttribute($template1, 'displayBlock', array('name', array(), $blocks));
         $template->getAttribute($template1, 'hasBlock', array('name', array()));
         $template->getAttribute($template1, 'render', array(array()));
         $template->getAttribute($template1, 'display', array(array()));
@@ -231,6 +233,20 @@ class Twig_Tests_TemplateTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($template->getAttribute($template1, 'environment', array(), Twig_Template::ANY_CALL, true));
         $this->assertFalse($template->getAttribute($template1, 'getEnvironment', array(), Twig_Template::METHOD_CALL, true));
         $this->assertFalse($template->getAttribute($template1, 'displayWithErrorHandling', array(), Twig_Template::METHOD_CALL, true));
+    }
+
+    /**
+     * @group legacy
+     * @expectedDeprecation Silent display of undefined block "unknown" in template "index.twig" is deprecated since version 1.29 and will throw an exception in 2.0.
+     * @expectedDeprecation Silent display of undefined block "unknown" in template "index.twig" is deprecated since version 1.29 and will throw an exception in 2.0.
+     */
+    public function testRenderBlockWithUndefinedBlock()
+    {
+        $twig = new Twig_Environment($this->getMockBuilder('Twig_TemplateTestLoaderInterface')->getMock());
+
+        $template = new Twig_TemplateTest($twig, false, 'index.twig');
+        $template->renderBlock('unknown', array());
+        $template->displayBlock('unknown', array());
     }
 
     /**
@@ -450,7 +466,6 @@ class Twig_Tests_TemplateTest extends PHPUnit_Framework_TestCase
             array(false, null, $methodAndPropObject, 'c', array(), $anyType),
             array(false, null, $methodAndPropObject, 'c', array(), $methodType),
             array(false, null, $methodAndPropObject, 'c', array(), $arrayType),
-
         ));
 
         // tests when input is not an array or object
@@ -533,6 +548,10 @@ class Twig_TemplateTest extends Twig_Template
         } else {
             return parent::getAttribute($object, $item, $arguments, $type, $isDefinedTest, $ignoreStrictCheck);
         }
+    }
+
+    public function block_name($context, array $blocks = array())
+    {
     }
 }
 
@@ -712,18 +731,21 @@ class Twig_TemplateMethodObject
 class Twig_TemplateMethodAndPropObject
 {
     private $a = 'a_prop';
+
     public function getA()
     {
         return 'a';
     }
 
     public $b = 'b_prop';
+
     public function getB()
     {
         return 'b';
     }
 
     private $c = 'c_prop';
+
     private function getC()
     {
         return 'c';
