@@ -10,7 +10,13 @@ $(function () {
           .transition('fade')
         ;
     });
-;
+
+    $('.ui.accordion')
+      .accordion()
+    ;
+
+    $('.popover').popup({ 'on': Modernizr.touch ? 'click' : 'hover' });
+
     $('#main_navigation .menu.toggle').on("click", function(e) {
 
         e.preventDefault();

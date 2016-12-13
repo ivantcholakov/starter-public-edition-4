@@ -15,6 +15,8 @@ $(function () {
       .accordion()
     ;
 
+    $('.popover').popup({ 'on': Modernizr.touch ? 'click' : 'hover' });
+
     $('#sidebar_toggle').on('click', function() {
 
         $('#sidebar').transition({
