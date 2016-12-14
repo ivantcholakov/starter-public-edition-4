@@ -8,15 +8,21 @@ $(function () {
             // "[Dropdown] Add Nullable Option for Single Selection"
 
             var target = $(this);
+            var wrapper = target.prop('tagName') == 'SELECT' ? target.parent() : target;
 
-            if (target.hasClass('nullable')) {
+            if (wrapper.hasClass('nullable')) {
 
                 if (value) {
 
-                     target.find('.dropdown.icon').removeClass('dropdown').addClass('delete').on('click', function() {
+                    var icon = wrapper.find('.dropdown.icon');
+
+                    icon.removeClass('dropdown').addClass('delete').on('click', function(e) {
 
                         target.dropdown('clear');
                         $(this).removeClass('delete').addClass('dropdown');
+
+                        e.preventDefault();
+                        return false;
                     });
                 }
             }
