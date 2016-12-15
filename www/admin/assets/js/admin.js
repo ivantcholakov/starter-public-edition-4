@@ -1,11 +1,11 @@
 
 $(function () {
 
-    $('.ui.dropdown:not(.nullable)').dropdown();
+    $('.ui.dropdown:not(.selection):not(.nullable)').dropdown();
 
     // A workaround, see https://github.com/Semantic-Org/Semantic-UI/issues/2072
     // "[Dropdown] Add Nullable Option for Single Selection"
-    $('.ui.dropdown.nullable').dropdown({
+    $('.ui.dropdown.nullable:not(.selection)').dropdown({
         onChange: function(value) {
 
             var target = $(this);
