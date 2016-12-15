@@ -1,32 +1,31 @@
 
 $(function () {
 
-    $('.ui.dropdown').dropdown({
-        onChange: function(value) {
+    $('.ui.dropdown:not(.nullable)').dropdown();
 
-            // A workaround, see https://github.com/Semantic-Org/Semantic-UI/issues/2072
-            // "[Dropdown] Add Nullable Option for Single Selection"
+    // A workaround, see https://github.com/Semantic-Org/Semantic-UI/issues/2072
+    // "[Dropdown] Add Nullable Option for Single Selection"
+    $('.ui.dropdown.nullable').dropdown({
+        onChange: function(value) {
 
             var target = $(this);
             var wrapper = target.prop('tagName') == 'SELECT' ? target.parent() : target;
 
-            if (wrapper.hasClass('nullable')) {
+            if (value) {
 
-                if (value) {
+                var icon = wrapper.find('.dropdown.icon');
 
-                    var icon = wrapper.find('.dropdown.icon');
+                icon.removeClass('dropdown').addClass('delete').on('click', function(e) {
 
-                    icon.removeClass('dropdown').addClass('delete').on('click', function(e) {
+                    target.dropdown('clear');
+                    $(this).removeClass('delete').addClass('dropdown');
 
-                        target.dropdown('clear');
-                        $(this).removeClass('delete').addClass('dropdown');
-
-                        e.preventDefault();
-                        return false;
-                    });
-                }
+                    e.preventDefault();
+                    return false;
+                });
             }
-        }
+        },
+        fireOnInit: true
     });
 
     $('body').on('click', '.message .close', function() {
