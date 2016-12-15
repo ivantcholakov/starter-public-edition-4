@@ -46,6 +46,24 @@
 
                     <div class="field">
 
+                        <label for="smtp_crypto_2">SMTP Encryption (testing a native select box):</label>
+
+                        <select name="smtp_crypto" id="smtp_crypto_2" class="ui selection dropdown">
+                            <option value="" selected="selected">-- none --</option>
+                            <option value="ssl">ssl</option>
+                            <option value="tls">tls</option>
+                        </select>
+
+                    </div>
+
+                </form>
+            </p>
+
+            <p>
+                <form class="ui form">
+
+                    <div class="field">
+
                         <label for="smtp_crypto">SMTP Encryption (testing a nullable dropdown):</label>
 
                         <select name="smtp_crypto" id="smtp_crypto" class="ui nullable dropdown">
