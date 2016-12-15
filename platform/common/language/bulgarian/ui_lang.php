@@ -105,7 +105,7 @@ $lang['ui_per_page'] = '%s на страница';
 $lang['ui_noscript'] = 'Необходима е поддръжка на JavaScript, за да работи системата коректно. Моля, активирайте JavaScript чрез настройките на вашия браузър и презаредете страницата.';
 $lang['ui_unsupported_browser'] = 'Вашият браузер е много стар и <strong>не се поддържа</strong>. Моля, направете <a href="http://browsehappy.com/">ъпгрейд на браузъра</a>.';
 $lang['ui_more'] = 'Още';
-$lang['ui_read_more'] = 'Прочете повече';
+$lang['ui_read_more'] = 'Прочетете повече';
 $lang['ui_sitemap'] = 'Карта на сайта';
 $lang['ui_slideshow'] = 'Слайдшоу';
 $lang['ui_slideshow_start'] = 'Старт';
