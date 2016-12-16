@@ -417,6 +417,7 @@ Reported by Webnice Ltd., http://webnicebg.com
 * http://vonleart.com - wedding photography
 * http://spa-rusalka.com - a SPA-hotel
 * http://polypoolsbg.com - a FiberGlass pools provider
+* http://ruseplasticsurgery.com - plastic surgery
 
 Reported by Krishna Guragai, @krishnaguragain
 
