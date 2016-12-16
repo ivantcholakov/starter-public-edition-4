@@ -15,6 +15,7 @@
 {{ js_platform() }}
 {{ file_partial('webfontloader') }}
 {{ css('lib/sweetalert/sweetalert.min.css') }}
+{{ css('lib/jquery-ui-custom/jquery-ui.min.css') }}
 {{ theme_css('front.min.css') }}
 {{ file_partial('css') }}
 {{ partial('css') }}
@@ -22,8 +23,9 @@
 {{ js_modernizr() }}
 {{ js_jquery() }}
 {{ js('lib/jquery-json/jquery.json.js') }}
-{{ js('lib/sweetalert/sweetalert.min.js') }}
 {{ partial('ckeditor') }}
+{{ js('lib/sweetalert/sweetalert.min.js') }}
+
 {{ partial('head') }}
 
 {{ head_end() }}
@@ -103,6 +105,7 @@
 {{ partial('scripts') }}
 
 {{ js('lib/google-code-prettify/prettify.js') }}
+{{ js('lib/jquery-ui-custom/jquery-ui.min.js') }}
 {{ js('front.js') }}
 
     <div id="debug"></div>
