@@ -70,7 +70,8 @@ table.dataTable {
         }
     }
 
-    td.select-checkbox {
+    td.select-checkbox,
+    th.select-checkbox {
         position: relative;
 
         &:before,
@@ -93,19 +94,22 @@ table.dataTable {
         }
     }
 
-    tr.selected td.select-checkbox {
-        &:after {
-            content: '\2714';
+    tr.selected {
+        td.select-checkbox,
+        th.select-checkbox {
+            &:after {
+                content: '\2714';
 
-            margin-top: -11px;
-            margin-left: -4px;
+                margin-top: -11px;
+                margin-left: -4px;
 
-            text-align: center;
-            text-shadow:
-                1px 1px #B0BED9,
-                -1px -1px #B0BED9,
-                1px -1px #B0BED9,
-                -1px 1px #B0BED9;
+                text-align: center;
+                text-shadow:
+                    1px 1px #B0BED9,
+                    -1px -1px #B0BED9,
+                    1px -1px #B0BED9,
+                    -1px 1px #B0BED9;
+            }
         }
     }
 }
