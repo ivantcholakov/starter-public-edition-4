@@ -265,7 +265,7 @@ class Core_Model extends CI_Model
             ? $this->_database->subdriver
             : NULL;
 
-        if ($this->_dbdriver == 'oci8' || $this->_subdriver = 'oci') {
+        if ($this->_dbdriver == 'oci8' || $this->_subdriver == 'oci') {
             $this->_count_string = 'SELECT COUNT(1) AS ';
         }
 
