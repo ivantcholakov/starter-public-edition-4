@@ -1,5 +1,13 @@
 # Change Log
 
+
+## 1.4.1 - 2016-12-16
+
+### Fixed
+
+- Cookie::matchPath Cookie with root path (`/`) will not match sub path (e.g. `/cookie`).
+
+
 ## 1.4.0 - 2016-10-20
 
 ### Added
@@ -7,6 +15,7 @@
 - Message, stream and URI factories for [Slim Framework](https://github.com/slimphp/Slim)
 - BufferedStream that allow you to decorate a non-seekable stream with a seekable one.
 - cUrlFormatter to be able to redo the request with a cURL command
+
 
 ## 1.3.1 - 2016-07-15
 
