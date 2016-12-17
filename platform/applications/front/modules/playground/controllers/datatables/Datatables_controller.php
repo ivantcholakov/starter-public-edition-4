@@ -66,4 +66,18 @@ class Datatables_controller extends Playground_Base_Controller {
             ->build('datatables/datatables_ssp');
     }
 
+    public function ssp_2() {
+
+        $title = 'DataTables with Server-Side Processing 2';
+
+        $this->template
+            ->append_title($title)
+            ->set_breadcrumb('DataTables', site_url('playground/datatables'))
+            ->set_breadcrumb($title, site_url('playground/datatables/ssp-2'))
+            ->set('subnavbar_item_active', 'ssp_2')
+            ->set('driver_ok', $this->driver_ok)
+            ->set_partial('scripts', 'datatables/datatables_ssp_2_scripts')
+            ->build('datatables/datatables_ssp_2');
+    }
+
 }

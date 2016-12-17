@@ -1,0 +1,261 @@
+
+{% if driver_ok %}
+
+{{ js('lib/dataTables/jquery.dataTables.min.js') }}
+{{ js('lib/dataTables/dataTables.semanticui.min.js') }}
+{{ js('lib/dataTables/plug-ins/api/sortNeutral.js') }}
+{{ js('lib/dataTables/dataTables.responsive.min.js') }}
+{{ js('lib/dataTables/responsive.semanticui.min.js') }}
+{{ js('lib/dataTables/dataTables.select.min.js') }}
+
+    <script type="text/javascript">
+    //<![CDATA[
+
+    $(function() {
+
+        var table = $('#datatable').DataTable({
+            'dom':
+                "<'ui grid'"+
+                    "<'row'"+
+                        "<'sixteen wide mobile sixteen wide tablet eight wide computer column'l>"+
+                        "<'right aligned sixteen wide mobile sixteen wide tablet eight wide computer column'f>"+
+                        "<'sixteen wide mobile sixteen wide tablet six wide computer column'i>"+
+                        "<'right aligned sixteen wide mobile sixteen wide tablet ten wide computer column'p>"+
+                    ">"+
+                    "<'row dt-table'"+
+                        "<'sixteen wide column'tr>"+
+                    ">"+
+                    "<'row'"+
+                        "<'sixteen wide mobile sixteen wide tablet six wide computer column'i>"+
+                        "<'right aligned sixteen wide mobile sixteen wide tablet ten wide computer column'p>"+
+                    ">"+
+                ">",
+            'order': [],
+            'orderCellsTop': true,
+            'pagingType': 'simple_numbers',
+            "lengthMenu": [[5, 10, 25, 50, 100, 200, -1], [5, 10, 25, 50, 100, 200, '{{ lang('ui_all')|e('js') }}']],
+            "pageLength": 5,
+            'stateSave': true,
+            //'processing': true,   // Needs to be fixed visually first.
+            'processing': false,
+            'serverSide': true,
+            'ajax': {
+                'url': '{{ site_url('playground/datatables/datatables-ssp-2-ajax') }}',
+                'type': 'post'
+            },
+            'columns': [
+                {
+                    'data': 'id'
+                },
+                {
+                    'data': 'code'
+                },
+                {
+                    'data': 'name'
+                },
+                {
+                    'data': 'flag',
+                    'searchable': false,
+                    'orderable': false
+                },
+                {
+                    'data': 'display_order',
+                    'searchable': false,
+                    'orderable': false
+                },
+                {
+                    'data': 'action_reorder',
+                    'searchable': false,
+                    'orderable': false
+                },
+                {
+                    'data': 'action_up_or_down',
+                    'searchable': false,
+                    'orderable': false
+                },
+                {
+                    'data': 'actions',
+                    'searchable': false,
+                    'orderable': false
+                }
+            ],
+            'language': {{ language_datatables()|raw }},
+            // Making the table responsive.
+            'autoWidth': false,
+            // See http://odoepner.wordpress.com/2011/12/12/jquery-datatables-column-filters-state-saving/
+            'initComplete': function(oSettings, json) {
+                var cols = oSettings.aoPreSearchCols;
+                for (var i = 0; i < cols.length; i++) {
+                    var value = cols[i].sSearch;
+                    if (value.length > 0) {
+                        switch (i) {
+                            case 0:
+                                $('#search_id').val(value);
+                                break;
+                            case 1:
+                                $('#search_iso_code').val(value);
+                                break;
+                            case 2:
+                                $('#search_country_name').val(value);
+                                break;
+                        }
+                    }
+                }
+            }
+        });
+
+        // Individual text-input filters.
+
+        $("#datatable thead input[type=text]").on('keyup change', function () {
+
+            table
+                .column($(this).parent().index() + ':visible')
+                .search(this.value)
+                .draw();
+        });
+
+        // "Clear search" and "Clear sort" buttons.
+
+        $('#datatable_filter input').after(' <div class="ui icon buttons"><button id="clear_search" class="ui icon button" title="{{ lang('ui_clear_search')|e('html_attr')|e('js') }}"><i class="zoom out icon"></i></button> <button id="clear_sort" class="ui icon button" title="{{ lang('ui_clear_sort')|e('html_attr')|e('js') }}"><i class="sort icon"></i></button></div>');
+
+        // Clear sort.
+        $('#clear_sort').on('click', function() {
+
+            table.sortNeutral();
+        });
+
+        // Clear search.
+        $('#clear_search').on('click', function() {
+
+            table.column(0).search('');
+            $('#search_id').val('');
+
+            table.column(1).search('');
+            $('#search_iso_code').val('');
+
+            table.column(2).search('');
+            $('#search_country_name').val('');
+
+            table.search('');
+            $('#datatable_filter input').val('');
+
+            table.draw();
+        });
+
+        $('#datatable').on('click', '.action_up', function(e) {
+
+            var id = $(this).attr('data-id');
+
+            $.ajax({
+                type: 'post',
+                mode: 'queue',
+                url: '{{ site_url('playground/datatables/datatables-ssp-2-ajax/up') }}',
+                data: { id: id },
+                success: function(data) {
+
+                    if (data.success) {
+                        table.draw('page');
+                    }
+                }
+            });
+
+            e.preventDefault();
+            return false;
+        });
+
+        $('#datatable').on('click', '.action_down', function(e) {
+
+            var id = $(this).attr('data-id');
+
+            $.ajax({
+                type: 'post',
+                mode: 'queue',
+                url: '{{ site_url('playground/datatables/datatables-ssp-2-ajax/down') }}',
+                data: { id: id },
+                success: function(data) {
+
+                    if (data.success) {
+                        table.draw('page');
+                    }
+                }
+            });
+
+            e.preventDefault();
+            return false;
+        });
+
+        $('#datatable tbody').sortable({
+            handle: '.action_reorder',
+            cancel: '',
+            revert: 100,
+            start: function(event, ui) {
+
+                $(this).fadeTo('fast', 0.6);
+            },
+            stop: function(event, ui) {
+
+                var item = ui.item;
+                var id = item.attr('id').replace('datatable_row_', '');
+
+                var item_prev = item.prev();
+                var id_prev = null;
+
+                if (item_prev.length) {
+                    id_prev = item_prev.attr('id').replace('datatable_row_', '');
+                }
+
+                var item_next = item.next();
+                var id_next = null;
+
+                if (item_next.length) {
+                    id_next = item_next.attr('id').replace('datatable_row_', '');
+                }
+
+                var sortable = $(this);
+
+                if (id_prev != '' || id_next != '') {
+
+                    $.ajax({
+                        type: 'post',
+                        mode: 'queue',
+                        url: '{{ site_url('playground/datatables/datatables-ssp-2-ajax/reorder') }}',
+                        data: {
+                            id: id,
+                            id_prev: id_prev,
+                            id_next: id_next
+                        },
+                        success: function(data) {
+
+                            if (data.success) {
+
+                                sortable.fadeTo('fast', 1);
+                                table.draw('page');
+
+                            } else {
+
+                                sortable.fadeTo('fast', 1);
+                                sortable.sortable('cancel');
+                                $(ui.sender).sortable('cancel');
+                            }
+
+                        },
+                        error: function() {
+
+                            sortable.cancel();
+                            sortable.fadeTo('fast', 1);
+                        }
+                    });
+
+                } else {
+
+                    sortable.fadeTo('fast', 1);
+                }
+            }
+        });
+
+    });
+
+    //]]>
+    </script>
+
+{% endif %}
