@@ -107,17 +107,21 @@
 {{ js_mbp_helper() }}
 {{ js_scale_fix_ios() }}
 
+{{ partial('handle_unauthenticated_ajax') }}
 {{ js('lib/semantic/semantic.min.js') }}
 {{ js('lib/jquery-ajax-queue/jquery-ajax-queue.js') }}
 {{ js('lib/jquery-ellipsis/jquery.ellipsis.min.js') }}
 {{ js('lib/jquery-keepalive/jquery.keepalive.min.js') }}
+{{ js('lib/dataTables/jquery.dataTables.min.js') }}
+{{ js('lib/dataTables/dataTables.semanticui.min.js') }}
+{{ js('lib/dataTables/plug-ins/api/sortNeutral.js') }}
+{{ js('lib/dataTables/dataTables.responsive.min.js') }}
+{{ js('lib/dataTables/responsive.semanticui.min.js') }}
+{{ js('lib/dataTables/dataTables.select.min.js') }}
 {{ js('lib/jquery-ui-custom/jquery-ui.min.js') }}
 {{ js('admin.js') }}
 
-
 {{ partial('scripts') }}
-
-{{ partial('handle_unauthenticated_ajax') }}
 
     <div id="debug"></div>
 
