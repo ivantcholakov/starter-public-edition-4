@@ -595,7 +595,7 @@ if (!function_exists('js_jquery')) {
         ci()->load->helper('asset');
         ci()->load->helper('user_agent');
 
-        $jquery_version = '1.11.3';
+        $jquery_version = '1.12.4';
 
         $browser = user_agent_ie();
 
@@ -609,12 +609,12 @@ if (!function_exists('js_jquery')) {
         if (config_item('load_javascripts_from_source')) {
 
             $result = js("lib/jquery/jquery-$jquery_version.js");
-            $result .= js('lib/jquery/jquery-migrate-1.2.1.js');
+            $result .= js('lib/jquery/jquery-migrate-1.4.1.js');
 
         } else {
 
             $result = js("lib/jquery/jquery-$jquery_version.min.js");
-            $result .= js('lib/jquery/jquery-migrate-1.2.1.min.js');
+            $result .= js('lib/jquery/jquery-migrate-1.4.1.min.js');
         }
 
         return $result;
