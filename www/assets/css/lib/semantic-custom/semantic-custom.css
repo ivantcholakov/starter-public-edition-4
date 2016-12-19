@@ -2891,18 +2891,6 @@ input::selection {
 /*******************************
          Site Overrides
 *******************************/
-/* Firefox - Remove Select Box Outline  */
-select:-moz-focusring {
-  color: transparent;
-  text-shadow: 0 0 0 #000;
-}
-select:-moz-focusring option:disabled {
-  text-shadow: none;
-}
-select:focus {
-  outline: 0;
-}
-/* End Firefox - Remove Select Box Outline  */
 /* Colored Texts */
 .text.white {
   color: #FFFFFF;
