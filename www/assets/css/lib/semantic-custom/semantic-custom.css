@@ -2891,6 +2891,18 @@ input::selection {
 /*******************************
          Site Overrides
 *******************************/
+/* Firefox - Remove Select Box Outline  */
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
+select:-moz-focusring option:disabled {
+  text-shadow: none;
+}
+select:focus {
+  outline: 0;
+}
+/* End Firefox - Remove Select Box Outline  */
 /* Colored Texts */
 .text.white {
   color: #FFFFFF;
@@ -47971,9 +47983,6 @@ body.dimmable > .dimmer {
     User Variable Overrides
 *******************************/
 /*******************************
-    User Variable Overrides
-*******************************/
-/*******************************
              Mix-ins
 *******************************/
 /*------------------
@@ -48274,7 +48283,7 @@ body.dimmable > .dimmer {
   -webkit-transform: rotateZ(0deg);
           transform: rotateZ(0deg);
   min-width: 14em;
-  min-height: 0;
+  min-height: 2.5267em;
   background: #FFFFFF;
   display: inline-block;
   padding: 0.6875em 1.975em 0.6875em 0.875em;
@@ -48290,7 +48299,7 @@ body.dimmable > .dimmer {
   z-index: 10;
 }
 select.ui.dropdown {
-  height: auto;
+  height: 38px;
   padding: 0.5em;
   border: 1px solid rgba(34, 36, 38, 0.15);
   visibility: visible;
@@ -49227,9 +49236,11 @@ select.ui.dropdown {
 /*******************************
         User Overrides
 *******************************/
-.ui.selection.dropdown:-moz-focusring {
-  color: transparent;
-  text-shadow: 0 0 0 #000;
+select.ui.selection.dropdown:not([multiple]) {
+  min-height: 0;
+}
+select.ui.dropdown:not([multiple]) {
+  height: auto;
 }
 /*!
  * # Semantic UI - Video

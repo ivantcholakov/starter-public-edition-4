@@ -5,10 +5,9 @@ $(function () {
     // See https://github.com/Semantic-Org/Semantic-UI/issues/2072
     // "[Dropdown] Add Nullable Option for Single Selection"
 
-    $('.ui.dropdown[multiple]').dropdown();
-    $('.ui.dropdown:not([multiple]):not(.nullable).search').dropdown();
-    $('.ui.dropdown:not([multiple]):not(.nullable):not(.search):not(select.selection)').dropdown();
-    $('.ui.dropdown:not([multiple]).nullable.search, select.ui.dropdown:not([multiple]).nullable:not(.search).selection').dropdown({
+    $('.ui.dropdown:not(.native)[multiple]').dropdown();
+    $('.ui.dropdown:not(.native):not([multiple]):not(.nullable)').dropdown();
+    $('.ui.dropdown:not(.native):not([multiple]).nullable').dropdown({
         onChange: function(value) {
 
             var target = $(this);
