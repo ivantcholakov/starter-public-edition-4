@@ -1,0 +1,13 @@
+/*******************************
+        User Overrides
+*******************************/
+
+// Visual corrections.
+
+// v2.2.6, 19-DEC-2016
+// A correction for Firefox browser.
+// See http://stackoverflow.com/questions/3773430/remove-outline-from-select-box-in-ff/18853002#18853002
+.ui.selection.dropdown:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}

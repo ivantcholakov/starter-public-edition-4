@@ -26343,6 +26343,7 @@ ol.ui.horizontal.list li:before,
           flex: 0 1 auto;
   -webkit-align-self: middle;
       -ms-flex-item-align: middle;
+              -ms-grid-row-align: middle;
           align-self: middle;
 }
 .ui.steps .step > .icon ~ .content {
@@ -26376,6 +26377,7 @@ ol.ui.horizontal.list li:before,
   content: counters(ordered, ".");
   -webkit-align-self: middle;
       -ms-flex-item-align: middle;
+              -ms-grid-row-align: middle;
           align-self: middle;
   margin-right: 1rem;
   font-size: 2.5em;
@@ -26387,6 +26389,7 @@ ol.ui.horizontal.list li:before,
   display: block;
   -webkit-align-self: middle;
       -ms-flex-item-align: middle;
+              -ms-grid-row-align: middle;
           align-self: middle;
 }
 /*--------------
@@ -29170,7 +29173,6 @@ ol.ui.horizontal.list li:before,
   -webkit-box-align: center;
   -webkit-align-items: center;
       -ms-flex-align: center;
-              -ms-grid-row-align: center;
           align-items: center;
 }
 .ui.form .inline.fields .field {
@@ -31140,6 +31142,7 @@ ol.ui.horizontal.list li:before,
   vertical-align: middle;
   -webkit-align-self: center !important;
       -ms-flex-item-align: center !important;
+              -ms-grid-row-align: center !important;
           align-self: center !important;
 }
 /* Bottom Aligned */
@@ -31199,6 +31202,7 @@ ol.ui.horizontal.list li:before,
   text-align: left;
   -webkit-align-self: inherit;
       -ms-flex-item-align: inherit;
+              -ms-grid-row-align: inherit;
           align-self: inherit;
 }
 /* Center Aligned */
@@ -31210,6 +31214,7 @@ ol.ui.horizontal.list li:before,
   text-align: center;
   -webkit-align-self: inherit;
       -ms-flex-item-align: inherit;
+              -ms-grid-row-align: inherit;
           align-self: inherit;
 }
 .ui[class*="center aligned"].grid {
@@ -31227,6 +31232,7 @@ ol.ui.horizontal.list li:before,
   text-align: right;
   -webkit-align-self: inherit;
       -ms-flex-item-align: inherit;
+              -ms-grid-row-align: inherit;
           align-self: inherit;
 }
 /* Justified */
@@ -33393,6 +33399,7 @@ Floated Menu / Item
 .ui.secondary.menu .item {
   -webkit-align-self: center;
       -ms-flex-item-align: center;
+              -ms-grid-row-align: center;
           align-self: center;
   box-shadow: none;
   border: none;
@@ -33610,6 +33617,7 @@ Floated Menu / Item
   box-shadow: none;
   -webkit-align-self: center;
       -ms-flex-item-align: center;
+              -ms-grid-row-align: center;
           align-self: center;
   margin: 0em 0em;
   padding: 0.3125em 0.4375em;
@@ -41542,6 +41550,7 @@ a.ui.card:hover,
   height: auto;
   -webkit-align-self: stretch;
       -ms-flex-item-align: stretch;
+              -ms-grid-row-align: stretch;
           align-self: stretch;
   text-align: left;
 }
@@ -41575,6 +41584,7 @@ a.ui.card:hover,
           flex: 1 1 auto;
   -webkit-align-self: stretch;
       -ms-flex-item-align: stretch;
+              -ms-grid-row-align: stretch;
           align-self: stretch;
   text-align: left;
   word-wrap: break-word;
@@ -42543,6 +42553,7 @@ a.ui.card:hover,
   max-height: '';
   -webkit-align-self: top;
       -ms-flex-item-align: top;
+              -ms-grid-row-align: top;
           align-self: top;
 }
 .ui.items > .item > .image > img {
@@ -42587,6 +42598,7 @@ a.ui.card:hover,
   margin-left: 0em;
   -webkit-align-self: top;
       -ms-flex-item-align: top;
+              -ms-grid-row-align: top;
           align-self: top;
   padding-left: 1.5em;
 }
@@ -42616,6 +42628,7 @@ a.ui.card:hover,
 .ui.items > .item .content img {
   -webkit-align-self: middle;
       -ms-flex-item-align: middle;
+              -ms-grid-row-align: middle;
           align-self: middle;
   width: '';
 }
@@ -42814,6 +42827,7 @@ a.ui.card:hover,
 .ui.items > .item > .image + [class*="middle aligned"].content {
   -webkit-align-self: center;
       -ms-flex-item-align: center;
+              -ms-grid-row-align: center;
           align-self: center;
 }
 .ui.items > .item > .image + [class*="bottom aligned"].content {
@@ -43839,7 +43853,6 @@ a.ui.card:hover,
   -webkit-box-align: center;
   -webkit-align-items: center;
       -ms-flex-align: center;
-              -ms-grid-row-align: center;
           align-items: center;
 }
 .ui.horizontal.statistics {
@@ -43860,7 +43873,6 @@ a.ui.card:hover,
   -webkit-box-align: center;
   -webkit-align-items: center;
       -ms-flex-align: center;
-              -ms-grid-row-align: center;
           align-items: center;
   max-width: none;
   margin: 1em 0em;
@@ -47959,6 +47971,9 @@ body.dimmable > .dimmer {
     User Variable Overrides
 *******************************/
 /*******************************
+    User Variable Overrides
+*******************************/
+/*******************************
              Mix-ins
 *******************************/
 /*------------------
@@ -48259,7 +48274,7 @@ body.dimmable > .dimmer {
   -webkit-transform: rotateZ(0deg);
           transform: rotateZ(0deg);
   min-width: 14em;
-  min-height: 2.5267em;
+  min-height: 0;
   background: #FFFFFF;
   display: inline-block;
   padding: 0.6875em 1.975em 0.6875em 0.875em;
@@ -48275,7 +48290,7 @@ body.dimmable > .dimmer {
   z-index: 10;
 }
 select.ui.dropdown {
-  height: 38px;
+  height: auto;
   padding: 0.5em;
   border: 1px solid rgba(34, 36, 38, 0.15);
   visibility: visible;
@@ -49209,6 +49224,13 @@ select.ui.dropdown {
 /*******************************
         User Overrides
 *******************************/
+/*******************************
+        User Overrides
+*******************************/
+.ui.selection.dropdown:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
 /*!
  * # Semantic UI - Video
  * http://github.com/semantic-org/semantic-ui/
@@ -50855,21 +50877,25 @@ select.ui.dropdown {
   width: '';
   -webkit-align-self: top;
       -ms-flex-item-align: top;
+              -ms-grid-row-align: top;
           align-self: top;
 }
 .ui.modal > [class*="top aligned"] {
   -webkit-align-self: top;
       -ms-flex-item-align: top;
+              -ms-grid-row-align: top;
           align-self: top;
 }
 .ui.modal > [class*="middle aligned"] {
   -webkit-align-self: middle;
       -ms-flex-item-align: middle;
+              -ms-grid-row-align: middle;
           align-self: middle;
 }
 .ui.modal > [class*="stretched"] {
   -webkit-align-self: stretch;
       -ms-flex-item-align: stretch;
+              -ms-grid-row-align: stretch;
           align-self: stretch;
 }
 /* Description */
@@ -50882,6 +50908,7 @@ select.ui.dropdown {
   min-width: 0px;
   -webkit-align-self: top;
       -ms-flex-item-align: top;
+              -ms-grid-row-align: top;
           align-self: top;
 }
 .ui.modal > .content > .icon + .description,

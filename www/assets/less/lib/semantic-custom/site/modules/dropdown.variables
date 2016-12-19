@@ -1,0 +1,9 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+
+// Visual corrections.
+
+// v2.2.6, 19-DEC-2016
+@selectionMinHeight: 0;
+@selectHeight: auto;
