@@ -4,9 +4,9 @@
   *
   *      @desc Object initializations
   *   @package KCFinder
-  *   @version 2.51
-  *    @author Pavel Tzonkov <pavelc@users.sourceforge.net>
-  * @copyright 2010, 2011 KCFinder Project
+  *   @version 2.54
+  *    @author Pavel Tzonkov <sunhater@sunhater.com>
+  * @copyright 2010-2014 KCFinder Project
   *   @license http://www.opensource.org/licenses/gpl-2.0.php GPLv2
   *   @license http://www.opensource.org/licenses/lgpl-2.1.php LGPLv2
   *      @link http://kcfinder.sunhater.com
@@ -30,6 +30,7 @@ browser.init = function() {
         return false;
     });
     this.initOpeners();
+    console.log(this.opener);
     this.initSettings();
     this.initContent();
     this.initToolbar();
@@ -76,6 +77,9 @@ browser.initOpeners = function() {
         } else
             this.opener.CKEditor = null;
     }
+
+    if (this.opener.name && (this.opener.name == "tinymce4"))
+            this.opener.callBack = true;
 
     if (!this.opener.CKEditor && !this.opener.FCKEditor && !this.TinyMCE) {
         if ((window.opener && window.opener.KCFinder && window.opener.KCFinder.callBack) ||

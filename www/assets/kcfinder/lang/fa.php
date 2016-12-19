@@ -259,6 +259,9 @@ $lang = array(
     // SINCE 2.41
 
     "You cannot rename the extension of files!" => "!شما نمی توانید پسوند فایلها را تغییر دهید",
+    "Uploading file {number} of {count}... {progress}" => "{progress} ...ارسال شد {count} فایل از {number}",
+    "Failed to upload {filename}!"  => "! {filename} خطا در ارسال"
+
 );
 
 ?>

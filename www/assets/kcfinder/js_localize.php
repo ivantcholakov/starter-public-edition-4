@@ -4,9 +4,9 @@
   *
   *      @desc Load language labels into JavaScript
   *   @package KCFinder
-  *   @version 2.51
-  *    @author Pavel Tzonkov <pavelc@users.sourceforge.net>
-  * @copyright 2010, 2011 KCFinder Project
+  *   @version 2.54
+  *    @author Pavel Tzonkov <sunhater@sunhater.com>
+  * @copyright 2010-2014 KCFinder Project
   *   @license http://www.opensource.org/licenses/gpl-2.0.php GPLv2
   *   @license http://www.opensource.org/licenses/lgpl-2.1.php LGPLv2
   *      @link http://kcfinder.sunhater.com
@@ -19,10 +19,8 @@ ci()->load->helper('template');
 //
 
 require "core/autoload.php";
-
 if (function_exists('set_magic_quotes_runtime'))
     @set_magic_quotes_runtime(false);
-
 $input = new input();
 if (!isset($input->get['lng']) || ($input->get['lng'] == 'en')) {
     header("Content-Type: text/javascript");

@@ -120,6 +120,8 @@ $lang = array(
     "Yes" => "Igen",
     "No" => "Nem",
     "You cannot rename the extension of files!" => "Nem változtathatja meg a fájlok kiterjezstését",
+    "Uploading file {number} of {count}... {progress}" => "A(z) {number}. fájl feltöltése (összesen {count}) ... {progress}",
+    "Failed to upload {filename}!" => "Nem sikerült feltölteni a '{filename}' fájlt.",
 );
 
 ?>

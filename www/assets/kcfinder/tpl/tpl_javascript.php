@@ -3,34 +3,9 @@
 echo js_platform();
 ?>
 <?php // ?>
-<?php // Modified by Ivan Tcholakov, 06-MAR-2012. ?>
-<?php /* <script src="js/jquery.js" type="text/javascript"></script> */ ?>
-<?php
-
-echo js_jquery();
-
-?>
-<?php // ?>
-<?php // Modified by Ivan Tcholakov, 06-MAR-2012. ?>
-<?php /* <script src="js/jquery.rightClick.js" type="text/javascript"></script> */ ?>
-<?php
-
-echo js('lib/jquery-right-click/jquery.right.click.js');
-
-?>
-<?php // ?>
-<?php // Modified by Ivan Tcholakov, 06-MAR-2012. ?>
-<?php /* <script src="js/jquery.drag.js" type="text/javascript"></script> */ ?>
-<?php
-
-if (config_item('load_javascripts_from_source')) {
-    echo js('lib/jquery-event-drag/jquery.event.drag.js');
-} else {
-    echo js('lib/jquery-event-drag/jquery.event.drag.min.js');
-}
-
-?>
-<?php // ?>
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/jquery.rightClick.js" type="text/javascript"></script>
+<script src="js/jquery.drag.js" type="text/javascript"></script>
 <script src="js/helper.js" type="text/javascript"></script>
 <script src="js/browser/joiner.php" type="text/javascript"></script>
 <script src="js_localize.php?lng=<?php echo $this->lang ?>" type="text/javascript"></script>
@@ -61,6 +36,9 @@ browser.opener.CKEditor.funcNum = <?php echo $this->opener['CKEditor']['funcNum'
 <?php ENDIF ?>
 <?php IF (isset($this->opener['TinyMCE']) && $this->opener['TinyMCE']): ?>
 browser.opener.TinyMCE = true;
+<?php ENDIF ?>
+<?php IF (isset($this->get['opener']) && ($this->get['opener'] == "tinymce4") && isset($this->get['field'])): ?>
+browser.opener.TinyMCE4 = "<?= text::jsValue($this->get['field']) ?>";
 <?php ENDIF ?>
 browser.cms = "<?php echo text::jsValue($this->cms) ?>";
 _.kuki.domain = "<?php echo text::jsValue($this->config['cookieDomain']) ?>";
