@@ -4,7 +4,7 @@ $config['disabled'] = true;
 $config['denyZipDownload'] = true;
 $config['denyUpdateCheck'] = true;
 $config['denyExtensionRename'] = true;
-$config['theme'] = 'oxygen';
+$config['theme'] = 'default';
 $config['uploadURL'] = resolve_path(DEFAULT_BASE_URI.'editor/');
 $config['uploadDir'] = resolve_path(DEFAULTFCPATH.'editor/');
 $config['dirPerms'] = DIR_READ_MODE;
@@ -27,7 +27,7 @@ $config['access'] = array(
     )
 );
 
-$config['deniedExts'] = 'exe com msi bat php phps phtml php3 php4 cgi pl';
+$config['deniedExts'] = 'exe com msi bat php phps phtml php3 php4 php5 php6 cgi pl';
 // Native CKEditor types
 $config['types']['files'] = '';
 $config['types']['flash'] = 'swf';
@@ -53,7 +53,7 @@ $config['maxImageHeight'] = 0;
 $config['thumbWidth'] = 100;
 $config['thumbHeight'] = 100;
 $config['thumbsDir'] = '.thumbs';
-$config['jpegQuality'] = 90;
+$config['jpegQuality'] = 100;
 
 $config['cookieDomain'] = '';
 $config['cookiePath'] = '';

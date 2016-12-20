@@ -6,6 +6,8 @@
 
 $lang = array(
 
+    '_lang' => "Hebrew",
+    '_native' => "עברית",
     '_locale' => "he_IL.UTF-8",  // UNIX localization code
     '_charset' => "utf-8",       // Browser charset
 
@@ -123,5 +125,3 @@ $lang = array(
     "Uploading file {number} of {count}... {progress}" => "מעלה קובץ {number} מתוך {count}... {progress}",
     "Failed to upload {filename}!" => "העלאת הקובץ נכשלה!",
 );
-
-?>

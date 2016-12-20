@@ -7,6 +7,8 @@
 
 $lang = array(
 
+    '_lang' => "Catalan",
+    '_native' => "Català",
     '_locale' => "ca_ES.UTF-8",  // UNIX localization code
     '_charset' => "utf-8",       // Browser charset
 
@@ -124,5 +126,3 @@ $lang = array(
     "Uploading file {number} of {count}... {progress}" => "Carregant arxiu {number} de {count}... {progress}",
     "Failed to upload {filename}!" => "Error al carregar {filename}",
 );
-
-?>

@@ -9,6 +9,8 @@
 
 $lang = array(
 
+    '_lang' => "Chinese Simplified",
+    '_native' => "中国简体",
     '_locale' => "zh_CN.UTF-8",  // UNIX localization code
     '_charset' => "utf-8",       // Browser charset
 
@@ -126,5 +128,3 @@ $lang = array(
     "Uploading file {number} of {count}... {progress}" => "正在上传文件{number} / {count}... {progress}",
     "Failed to upload {filename}!" => "上传失败{filename}！",
 );
-
-?>

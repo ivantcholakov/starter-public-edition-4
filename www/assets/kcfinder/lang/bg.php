@@ -6,6 +6,8 @@
 
 $lang = array(
 
+    '_lang' => "Bulgarian",
+    '_native' => "Български",
     '_locale' => "bg_BG.UTF-8",  // UNIX localization code
     '_charset' => "utf-8",       // Browser charset
 
@@ -95,8 +97,9 @@ $lang = array(
     "Are you sure you want to delete this file?" =>
     "Наистина ли искате да изтриете този файл?",
 
+
     "Are you sure you want to delete this folder and all its content?" =>
-    "Наистина ли искате да изтриете тази папка и цялото й съдържание?",
+    "Наистина ли искате да изтриете тази папка и цялото ѝ съдържание?",
 
     "Non-existing directory type." =>
     "Несъществуващ специален тип на папка.",
@@ -257,6 +260,19 @@ $lang = array(
     "Качване на файл {number} от {count}... {progress}",
 
     "Failed to upload {filename}!" => "Несполучливо качване на {filename}!",
-);
 
-?>
+    // SINCE 3.0
+
+    "Close" => "Затвори",
+    "Previous" => "Предишно",
+    "Next" => "Следващо",
+    "Confirmation" => "Потвърждение",
+    "Warning" => "Внимание",
+
+    // SINCE 3.20
+
+    "Uploading files" => "Качване на файлове",
+    "Uploading file {current} of {count}" => "Качване на файл {current} от общо {count}",
+    "Uploaded {uploaded} of {total}" => "Качено {uploaded} от общо {total}",
+    "Errors:" => "Грешки:"
+);

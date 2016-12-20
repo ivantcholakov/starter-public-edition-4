@@ -1,5 +1,7 @@
 <?php
 
+namespace kcfinder;
+
 /**
  * FastImage - Because sometimes you just want the size!
  * Based on the Ruby Implementation by Steven Sykes (https://github.com/sdsykes/fastimage)

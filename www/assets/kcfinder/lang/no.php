@@ -7,6 +7,8 @@
 
 $lang = array(
 
+    '_lang' => "Norwegian",
+    '_native' => "Norsk",
     '_locale' => "nb_NO.UTF-8",  // UNIX localization code
     '_charset' => "utf-8",       // Browser charset
 
@@ -238,5 +240,3 @@ $lang = array(
     "Select Thumbnails" => "Velg miniatyrbilde",
     "Download files" => "Last ned filer",
 );
-
-?>

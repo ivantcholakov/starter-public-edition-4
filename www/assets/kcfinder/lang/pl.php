@@ -6,6 +6,8 @@
 
 $lang = array(
 
+    '_lang' => "Polish",
+    '_native' => "Polski",
     '_locale' => "pl_PL.UTF-8",  // UNIX localization code
     '_charset' => "utf-8",       // Browser charset
 
@@ -123,5 +125,3 @@ $lang = array(
     "Uploading file {number} of {count}... {progress}" => "Wysyłanie pliku nr {number} spośród {count} ... {progress}",
     "Failed to upload {filename}!" => "Wysyłanie pliku {filename} nie powiodło się!",
 );
-
-?>

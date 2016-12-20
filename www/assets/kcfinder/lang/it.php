@@ -6,6 +6,8 @@
 
 $lang = array(
 
+    '_lang' => "Italian",
+    '_native' => "Italiano",
     '_locale' => "it_IT.UTF-8",  // UNIX localization code
     '_charset' => "utf-8",       // Browser charset
 
@@ -122,6 +124,9 @@ $lang = array(
     "You cannot rename the extension of files!" => "Non puoi rinominare l'estensione del file!",
     "Uploading file {number} of {count}... {progress}" => "Caricmento del file {number} di {count}... {progress}",
     "Failed to upload {filename}!" => "Il caricamento del file {filename} è fallito ",
+    "Close" => "Chiudi",
+    "Previous" => "Precedente",
+    "Next" => "Successivo",
+    "Confirmation" => "Conferma",
+    "Warning" => "Attenzione",
 );
-
-?>

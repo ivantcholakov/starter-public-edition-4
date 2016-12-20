@@ -7,6 +7,8 @@
 
 $lang = array(
 
+    '_lang' => "Russian",
+    '_native' => "Русский",
     '_locale' => "ru_RU.UTF-8",  // UNIX localization code
     '_charset' => "utf-8",       // Browser charset
 
@@ -123,6 +125,9 @@ $lang = array(
     "You cannot rename the extension of files!" => "Вы не можете изменять расширения файлов!",
     "Uploading file {number} of {count}... {progress}" => "Загрузка {number} файла из {count}... {progress}",
     "Failed to upload {filename}!" => "Неудачная попытка загрузки {filename}!",
+    "Close" => "Закрыть",
+    "Previous" => "Предыдущий",
+    "Next" => "Следующий",
+    "Confirmation" => "Подтверждение",
+    "Warning" => "Предупреждение",
 );
-
-?>

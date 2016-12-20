@@ -7,6 +7,8 @@
 
 $lang = array(
 
+    '_lang' => "Ukrainian",
+    '_native' => "Українська",
     '_locale' => "uk_UA.UTF-8",  // UNIX localization code
     '_charset' => "utf-8",       // Browser charset
 
@@ -124,5 +126,3 @@ $lang = array(
     "Uploading file {number} of {count}... {progress}" => "Завантаження файлу {number} з {count}... {progress}",
     "Failed to upload {filename}!" => "Помилка завантаження {filename}!",
 );
-
-?>

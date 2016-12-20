@@ -8,6 +8,8 @@
 
 $lang = array(
 
+    '_lang' => "Portuguese",
+    '_native' => "Português",
     '_locale' => "pt_PT.UTF-8",  // UNIX localization code
     '_charset' => "utf-8",       // Browser charset
 
@@ -41,7 +43,7 @@ $lang = array(
     "Falta a pasta temporária.",
 
     "Failed to write file." =>
-    "Não foi poss�vel guardar o ficheiro.",
+    "Não foi possível guardar o ficheiro.",
 
     "Denied file extension." =>
     "Extensão do ficheiro inválida.",
@@ -53,25 +55,25 @@ $lang = array(
     "A imagem é muito grande e não pode ser redimensionada.",
 
     "Cannot create {dir} folder." =>
-    "Não foi poss�vel criar a pasta '{dir}'.",
+    "Não foi possível criar a pasta '{dir}'.",
 
     "Cannot write to upload folder." =>
-    "Não foi poss�vel guardar o ficheiro.",
+    "Não foi possível guardar o ficheiro.",
 
     "Cannot read .htaccess" =>
-    "Não foi poss�vel ler o ficheiro '.htaccess'.",
+    "Não foi possível ler o ficheiro .htaccess",
 
     "Incorrect .htaccess file. Cannot rewrite it!" =>
-    "Ficheiro '.htaccess' incorrecto. Não foi poss�vel altera-lo.",
+    "Ficheiro '.htaccess' incorrecto. Não foi possível altera-lo.",
 
     "Cannot read upload folder." =>
-    "Não foi poss�vel ler a pasta de upload.",
+    "Não foi possível ler a pasta de upload.",
 
     "Cannot access or create thumbnails folder." =>
-    "Não foi poss�vel aceder ou criar a pasta de miniaturas.",
+    "Não foi possível aceder ou criar a pasta de miniaturas.",
 
     "Cannot access or write to upload folder." =>
-    "Não foi poss�vel aceder ou criar a pasta de upload.",
+    "Não foi possível aceder ou criar a pasta de upload.",
 
     "Please enter new folder name." =>
     "Por favor insira o nome da pasta.",
@@ -80,7 +82,7 @@ $lang = array(
     "Caracteres não autorizados no nome da pasta.",
 
     "Folder name shouldn't begins with '.'" =>
-    "O nome da pasta não deve come�ar por '.'.",
+    "O nome da pasta não deve começar por '.'",
 
     "Please enter new file name." =>
     "Por favor defina o nome do ficheiro.",
@@ -89,7 +91,7 @@ $lang = array(
     "Caracteres não autorizados no nome do ficheiro.",
 
     "File name shouldn't begins with '.'" =>
-    "O nome do ficheiro não deve come�ar por '.'.",
+    "O nome do ficheiro não deve começar por '.'",
 
     "Are you sure you want to delete this file?" =>
     "Tem a certeza que deseja apagar este ficheiro?",
@@ -98,7 +100,7 @@ $lang = array(
     "Tem a certeza que deseja apagar esta pasta e todos os seus conteúdos?",
 
     "Inexistant or inaccessible folder." =>
-    "Pasta inexistente ou inacess�vel.",
+    "Pasta inexistente ou inacessível.",
 
     "Undefined MIME types." =>
     "Tipos MIME indefinidos.",
@@ -239,5 +241,3 @@ $lang = array(
     "Select Thumbnails" => "Seleccionar miniaturas",
     "Download files" => "Sacar ficheiros",
 );
-
-?>

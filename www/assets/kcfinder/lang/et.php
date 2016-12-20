@@ -6,6 +6,8 @@
 
 $lang = array(
 
+    '_lang' => "Estonian",
+    '_native' => "Eesti",
     '_locale' => "et_EE.UTF-8",  // UNIX localization code
     '_charset' => "utf-8",       // Browser charset
 
@@ -123,5 +125,3 @@ $lang = array(
     "Uploading file {number} of {count}... {progress}" => "Laen üles faili {number} {count}-st... {progress}",
     "Failed to upload {filename}!" => "{filename} üleslaadimine ebaõnnestus!",
 );
-
-?>

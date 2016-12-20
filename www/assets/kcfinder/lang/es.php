@@ -6,6 +6,8 @@
 
 $lang = array(
 
+    '_lang' => "Spanish",
+    '_native' => "Español",
     '_locale' => "es_ES.UTF-8",  // UNIX localization code
     '_charset' => "utf-8",       // Browser charset
 
@@ -55,7 +57,7 @@ $lang = array(
     "Cannot delete the folder." => "No se puede borrrar la carpeta.",
     "Click to remove from the Clipboard" => "Haga Click para borrar del portapapeles",
     "This file is already added to the Clipboard." => "Este archivo ya fué agregado al portapapeles.",
-    "The files in the Clipboard are not readable." => "Los archivos en el portapaleles no son legibles.",
+    "The files in the Clipboard are not readable." => "Los archivos en el portapapeles no son legibles.",
     "{count} files in the Clipboard are not readable. Do you want to copy the rest?" => "{count} archivos en el portapapeles no son legibles. Desea copiar el resto?",
     "The files in the Clipboard are not movable." => "Los archivos en el portapapeles no se pueden mover.",
     "{count} files in the Clipboard are not movable. Do you want to move the rest?" => "{count} archivos en el portapapeles no se pueden mover. Desea mover el resto?",
@@ -123,5 +125,3 @@ $lang = array(
     "Uploading file {number} of {count}... {progress}" => "Cargando archivo {number} de {count}... {progress}",
     "Failed to upload {filename}!" => "¡No se pudo cargar el archivo {filename}!",
 );
-
-?>
