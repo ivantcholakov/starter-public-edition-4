@@ -27,7 +27,7 @@ $config['access'] = array(
     )
 );
 
-$config['deniedExts'] = 'exe com msi bat php phps phtml php3 php4 php5 php6 cgi pl';
+$config['deniedExts'] = 'exe com msi bat cgi pl php phps phtml php3 php4 php5 php6 py pyc pyo pcgi pcgi3 pcgi4 pcgi5 pchi6';
 // Native CKEditor types
 $config['types']['files'] = '';
 $config['types']['flash'] = 'swf';
@@ -60,3 +60,5 @@ $config['cookiePath'] = '';
 $config['cookiePrefix'] = 'KCFINDER_';
 
 $config['_check4htaccess'] = false;
+$config['_normalizeFilenames'] = false;
+$config['_dropUploadMaxFilesize'] = 10485760;
