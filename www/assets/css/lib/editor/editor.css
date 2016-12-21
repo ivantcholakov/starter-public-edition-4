@@ -28297,6 +28297,9 @@ ol.ui.horizontal.list li:before,
     User Variable Overrides
 *******************************/
 /*******************************
+    User Variable Overrides
+*******************************/
+/*******************************
              Mix-ins
 *******************************/
 /*------------------
@@ -29269,6 +29272,23 @@ ol.ui.horizontal.list li:before,
 /*******************************
          Site Overrides
 *******************************/
+/*******************************
+         Site Overrides
+*******************************/
+/* Fieldsets */
+.ui.form legend {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 0.938em;
+}
+.ui.form fieldset {
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  border-radius: 0.25rem;
+  padding: 1em 1em;
+  margin: 1em 0em;
+}
+/* End Fieldsets */
 /*!
  * # Semantic UI - Grid
  * http://github.com/semantic-org/semantic-ui/
