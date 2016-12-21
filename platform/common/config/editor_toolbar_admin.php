@@ -12,5 +12,5 @@ $config = array(
 	'/',
 	/* styles */      array('Format', 'Font', 'FontSize'),
 	/* colors */      array('TextColor', 'BGColor'),
-	/* insert */      array('Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak'),
+	/* insert */      array('Image', /*'Flash', */'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak'),
 );

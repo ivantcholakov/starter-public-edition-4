@@ -9,7 +9,7 @@ $config = array(
     /* basicstyles */ array('Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat'),
     /* paragraph */   array('NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl'),
     /* links */       array('Link', 'Unlink', 'Anchor'),
-    /* insert */      array('Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe'),
+    /* insert */      array('Image', /*'Flash', */'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe'),
     '/',
     /* styles */      array('Styles', 'Format', 'Font', 'FontSize'),
     /* colors */      array('TextColor', 'BGColor'),
