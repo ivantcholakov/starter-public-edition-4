@@ -29280,7 +29280,6 @@ ol.ui.horizontal.list li:before,
   display: block;
   font-size: 20px;
   font-weight: bold;
-  margin-bottom: 0.938em;
 }
 .ui.form fieldset {
   border: 1px solid rgba(34, 36, 38, 0.15);
