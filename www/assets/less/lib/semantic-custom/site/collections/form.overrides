@@ -8,7 +8,6 @@
     display: block;
     font-size: @emSize * 1.25;
     font-weight: bold;
-    margin-bottom: 0.938em;
 }
 
 .ui.form fieldset {
