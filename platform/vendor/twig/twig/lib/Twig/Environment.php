@@ -16,10 +16,10 @@
  */
 class Twig_Environment
 {
-    const VERSION = '1.29.0';
-    const VERSION_ID = 12900;
+    const VERSION = '1.30.0';
+    const VERSION_ID = 13000;
     const MAJOR_VERSION = 1;
-    const MINOR_VERSION = 29;
+    const MINOR_VERSION = 30;
     const RELEASE_VERSION = 0;
     const EXTRA_VERSION = '';
 
@@ -831,7 +831,7 @@ class Twig_Environment
             return true;
         }
 
-        return isset($this->extensionsByClass[ltrim($class, '\\')]);
+        return isset($this->extensionsByClass[$class]);
     }
 
     /**
