@@ -20,4 +20,15 @@
 
                         <h2>Result:</h2>
 
+                        {% if editor_mode == 'admin' %}
+
+                        {# See http://twig.sensiolabs.org/doc/functions/template_from_string.html #}
+                        {# Use Twig parsing if it is needed in the front-end for data that is entered through the admin panel only. #}
+                        <div>{{ include(template_from_string(set_value('content', content, false))) }}</div>
+
+                        {% else %}
+
+                        {# No Twig parsing for user data. #}
                         <div>{{ set_value('content', content, false) }}</div>
+
+                        {% endif %}
