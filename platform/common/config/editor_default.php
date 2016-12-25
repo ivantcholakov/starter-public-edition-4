@@ -27,3 +27,5 @@ $config['config']['forcePasteAsPlainText'] = true;
 $config['config']['toolbarCanCollapse'] = false;
 
 $config['config']['allowedContent'] = true;
+
+$config['config']['extraPlugins'] = 'showprotected';
