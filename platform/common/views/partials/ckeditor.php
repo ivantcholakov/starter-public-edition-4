@@ -27,5 +27,9 @@ echo js('ckeditor/adapters/jquery.js?t='.CKEditor::timestamp);
         CKEDITOR.dtd.a.div = 1;
         CKEDITOR.dtd.a.p = 1;
 
+        // Protect Twig syntax {{ }} and {% %}
+        CKEDITOR.config.protectedSource.push(/\{\{[\s\S]*?\}\}/g);
+        CKEDITOR.config.protectedSource.push(/\{\%[\s\S]*?%\}/g);
+
     //]]>
     </script>
