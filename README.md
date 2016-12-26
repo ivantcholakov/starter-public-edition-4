@@ -369,6 +369,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * CSS & JavaScript minifier, in PHP, https://github.com/matthiasmullie/minify , http://www.minifier.org
 * SweetAlert, a beautiful replacement for JavaScript's "alert", https://github.com/t4t5/sweetalert , http://t4t5.github.io/sweetalert/
 * Handlebars.js - an extension to the Mustache templating language, https://github.com/wycats/handlebars.js , http://handlebarsjs.com
+* Handlebars.php - Handlebars processor for PHP, https://github.com/XaminProject/handlebars.php
 
 The Playground
 --------------
