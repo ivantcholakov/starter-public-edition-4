@@ -433,6 +433,10 @@ file_exists($cache_path) OR @mkdir($cache_path, 0755, TRUE);
 define('HTMLPURIFIER_CACHE_SERIALIZER_PATH', WRITABLEPATH.'htmlpurifier');
 file_exists(HTMLPURIFIER_CACHE_SERIALIZER_PATH) OR @mkdir(HTMLPURIFIER_CACHE_SERIALIZER_PATH, 0755, TRUE);
 
+// For Handlebars, with a trailing slash.
+define('HANDLEBARS_CACHE', WRITABLEPATH.'handlebars/'.APPNAME.'/');
+file_exists(HANDLEBARS_CACHE) OR @mkdir(HANDLEBARS_CACHE, 0755, TRUE);
+
 // For Mustache, with a trailing slash.
 define('MUSTACHE_CACHE', WRITABLEPATH.'mustache/'.APPNAME.'/');
 file_exists(MUSTACHE_CACHE) OR @mkdir(MUSTACHE_CACHE, 0755, TRUE);
