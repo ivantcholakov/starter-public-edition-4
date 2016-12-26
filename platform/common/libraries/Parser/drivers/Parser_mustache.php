@@ -5,15 +5,6 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-/*
-// Sample class autoloading if you have no your own way.
-if (!class_exists('Mustache_Autoloader', FALSE))
-{
-    require_once APPPATH.'third_party/Mustache/Autoloader.php';
-    Mustache_Autoloader::register();
-}
-*/
-
 class CI_Parser_mustache extends CI_Parser_driver {
 
     protected $config;
@@ -26,7 +17,6 @@ class CI_Parser_mustache extends CI_Parser_driver {
         // Default configuration options.
 
         $this->config = array(
-            'extension' => '.mustache',
             'cache' => MUSTACHE_CACHE,
             'cache_file_mode' => FILE_WRITE_MODE,
             'escape' => null,
@@ -70,6 +60,11 @@ class CI_Parser_mustache extends CI_Parser_driver {
         }
 
         $options['charset'] = strtoupper($options['charset']);
+
+        if (empty($options['cache']) && array_key_exists('cache', $options))
+        {
+            unset($options['cache']);
+        }
 
         if (is_object($data))
         {
@@ -130,6 +125,11 @@ class CI_Parser_mustache extends CI_Parser_driver {
         }
 
         $options['charset'] = strtoupper($options['charset']);
+
+        if (array_key_exists('cache', $options))
+        {
+            unset($options['cache']);
+        }
 
         if (is_object($data))
         {
