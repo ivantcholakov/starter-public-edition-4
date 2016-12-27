@@ -1,0 +1,80 @@
+-
+    headers: 'User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 8_1_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12B466 [FBAN/FBIOS;FBAV/46.0.0.54.156;FBBV/18972819;FBDV/iPhone7,2;FBMD/iPhone;FBSN/iPhone OS;FBSV/8.1.3;FBSS/2; FBCR/vfnl;FBID/phone;FBLC/nl_NL;FBOP/5'
+    result: { browser: { name: Facebook, type: 'app:social' }, engine: { name: Webkit, version: 600.1.4 }, os: { name: iOS, version: 8.1.3 }, device: { type: mobile, subtype: smart, manufacturer: Apple, model: 'iPhone 6' } }
+    readable: 'Facebook on an Apple iPhone 6 running iOS 8.1.3'
+-
+    headers: 'User-Agent: Instagram 6.0.1 (iPhone3,3; iPhone OS 7_1; en_US; en) AppleWebKit/420+'
+    result: { browser: { name: Instagram, version: 6.0.1, type: 'app:social' }, engine: { name: Webkit, version: '420' }, os: { name: iOS, version: '7.1' }, device: { type: mobile, subtype: smart, manufacturer: Apple, model: 'iPhone 4' } }
+    readable: 'Instagram 6.0.1 on an Apple iPhone 4 running iOS 7.1'
+-
+    headers: 'User-Agent: Instagram 5.0.7 Android (17/4.2.2; 240dpi; 480x800; samsung; SM-G350; cs02; hawaii_ss_cs02; de_DE)'
+    result: { browser: { name: Instagram, version: 5.0.7, type: 'app:social' }, os: { name: Android, version: 4.2.2 }, device: { type: mobile, subtype: smart, manufacturer: Samsung, model: 'Galaxy Core Plus' } }
+    readable: 'Instagram 5.0.7 on a Samsung Galaxy Core Plus running Android 4.2.2'
+-
+    headers: 'User-Agent: Instagram 3.4.0 Android (10/2.3.6; 240dpi; 480x800; samsung; SCH-R760; SCH-R760; smdkc210; en_US)'
+    result: { browser: { name: Instagram, version: 3.4.0, type: 'app:social' }, os: { name: Android, version: 2.3.6 }, device: { type: mobile, subtype: smart, manufacturer: Samsung, model: 'Galaxy S II' } }
+    readable: 'Instagram 3.4.0 on a Samsung Galaxy S II running Android 2.3.6'
+-
+    headers: 'User-Agent: Instagram 1.1.3 Android (10/2.3.6; 240dpi; 480x800; samsung; SAMSUNG-SGH-I727; SGH-I727; qcom; en_US)'
+    result: { browser: { name: Instagram, version: 1.1.3, type: 'app:social' }, os: { name: Android, version: 2.3.6 }, device: { type: mobile, subtype: smart, manufacturer: Samsung, model: 'Galaxy S II Skyrocket' } }
+    readable: 'Instagram 1.1.3 on a Samsung Galaxy S II Skyrocket running Android 2.3.6'
+-
+    headers: 'User-Agent: Mozilla/5.0 (iPad; CPU OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13B143 [FBAN/FBIOS;FBAV/46.0.0.54.156;FBBV/18972819;FBDV/iPad6,7;FBMD/iPad;FBSN/iPhone OS;FBSV/9.1;FBSS/2; FBCR/;FBID/tablet;FBLC/nl_NL;FBOP/1]'
+    result: { browser: { name: Facebook, type: 'app:social' }, engine: { name: Webkit, version: 601.1.46 }, os: { name: iOS, version: '9.1' }, device: { type: tablet, manufacturer: Apple, model: 'iPad Pro (12.9″)' } }
+    readable: 'Facebook on an Apple iPad Pro (12.9″) running iOS 9.1'
+-
+    headers: 'User-Agent: Pinterest for Android Tablet/1.8.4 (SGP321; 4.3)'
+    readable: 'Pinterest 1.8.4 on a Sony Xperia Tablet Z running Android 4.3'
+    result: { browser: { name: Pinterest, version: 1.8.4, type: 'app:social' }, os: { name: Android, version: '4.3' }, device: { type: tablet, manufacturer: Sony, model: 'Xperia Tablet Z' } }
+-
+    headers: 'User-Agent: Pinterest for Android/1.1.1 (endeavoru; 4.1.1)'
+    readable: 'Pinterest 1.1.1 on a HTC One X running Android 4.1.1'
+    result: { browser: { name: Pinterest, version: 1.1.1, type: 'app:social' }, os: { name: Android, version: 4.1.1 }, device: { type: mobile, subtype: smart, manufacturer: HTC, model: 'One X' } }
+-
+    headers: 'User-Agent: Mozilla/5.0 (Linux; U; Android 4.2.2; en-gb; GT-I9190 Build/JDQ39) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30 [Pinterest/Android]'
+    readable: 'Pinterest on a Samsung Galaxy S4 Mini running Android 4.2.2'
+    result: { browser: { name: Pinterest, version: Android, type: 'app:social' }, engine: { name: Webkit, version: '534.30' }, os: { name: Android, version: 4.2.2 }, device: { type: mobile, subtype: smart, manufacturer: Samsung, model: 'Galaxy S4 Mini' } }
+-
+    headers: 'User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13B143 [Pinterest/iOS]'
+    readable: 'Pinterest on an Apple iPhone running iOS 9.1'
+    result: { browser: { name: Pinterest, version: iOS, type: 'app:social' }, engine: { name: Webkit, version: 601.1.46 }, os: { name: iOS, version: '9.1' }, device: { type: mobile, subtype: smart, manufacturer: Apple, model: iPhone } }
+-
+    headers: 'User-Agent: Mozilla/5.0 (Linux; Android 4.4.3; KFSAWI Build/KTU84M) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/34.0.0.0 Safari/537.36 [Pinterest/Android]'
+    readable: 'Pinterest on an Amazon Fire HDX 8.9" (2014) running FireOS 4.5'
+    result: { browser: { name: Pinterest, using: 'Amazon WebView', version: Android, type: 'app:social' }, engine: { name: Blink }, os: { name: FireOS, family: Android, version: '4.5' }, device: { type: tablet, manufacturer: Amazon, model: 'Fire HDX 8.9" (2014)' } }
+-
+    headers: 'User-Agent: Pinterest/3.3.3 CFNetwork/609.1.4 Darwin/13.0.0'
+    readable: 'Pinterest on iOS 6.1.2'
+    result: { browser: { name: Pinterest, type: 'app:social' }, os: { name: iOS, version: 6.1.2 }, device: { type: mobile, subtype: smart, manufacturer: Apple } }
+-
+    headers: 'User-Agent: Pinterest/4.1.3 CFNetwork/672.1.14 Darwin/14.0.0'
+    readable: 'Pinterest on iOS 7.1.1'
+    result: { browser: { name: Pinterest, type: 'app:social' }, os: { name: iOS, version: 7.1.1 }, device: { type: mobile, subtype: smart, manufacturer: Apple } }
+-
+    headers: 'User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Mobile/11A4449d Twitter for iPhone'
+    readable: 'Twitter on an Apple iPhone running iOS 7.0'
+    result: { browser: { name: Twitter, type: 'app:social' }, engine: { name: Webkit, version: 537.51.1 }, os: { name: iOS, version: '7.0' }, device: { type: mobile, subtype: smart, manufacturer: Apple, model: iPhone } }
+-
+    headers: 'User-Agent: [FBAN/FB4A;FBAV/10.0.0.28.27;FBBV/2802760;FBDM/{density=3.0,width=1080,height=1776};FBLC/fr_CA;FBCR/VIRGIN;FBPN/com.facebook.katana;FBDV/Nexus 5;FBSV/4.4.3;FBOP/1;FBCA/armeabi-v7a:armeabi;]'
+    readable: 'Facebook on a LG Nexus 5 running Android 4.4.3'
+    result: { browser: { name: Facebook, type: 'app:social' }, os: { name: Android, version: 4.4.3 }, device: { type: mobile, subtype: smart, manufacturer: LG, model: 'Nexus 5' } }
+-
+    headers: 'User-Agent: [FBAN/PAAA;FBAV/1.7;FBDM/{density=2.0,width=720,height=1280};FBLC/es_ES;FB_FW/2;FBSN/Android;FBCR/FONIC;FBDV/GT-I9300;FBSV/4.1.2;]'
+    readable: 'Facebook Pages on a Samsung Galaxy S III running Android 4.1.2'
+    result: { browser: { name: 'Facebook Pages', type: 'app:social' }, os: { name: Android, version: 4.1.2 }, device: { type: mobile, subtype: smart, manufacturer: Samsung, model: 'Galaxy S III' } }
+-
+    headers: 'User-Agent: Instagram 1.0.0 Android IC (10/2.3.4; 240dpi; 540x960; HTC/sprint; PG86100; shooter; shooter)'
+    readable: 'Instagram 1.0.0 on a HTC EVO 3D running Android 2.3.4'
+    result: { browser: { name: Instagram, version: 1.0.0, type: 'app:social' }, os: { name: Android, version: 2.3.4 }, device: { type: mobile, subtype: smart, manufacturer: HTC, model: 'EVO 3D' } }
+-
+    headers: 'User-Agent: VKAndroidApp/3.3.2-249 (Android 4.2.2; SDK 17; armeabi-v7a; asus K00F; ru)'
+    readable: 'VK 3.3 on an Asus MeMO Pad 10 (ME102A) running Android 4.2.2'
+    result: { browser: { name: VK, version: '3.3', type: 'app:social' }, os: { name: Android, version: 4.2.2 }, device: { type: tablet, manufacturer: Asus, model: 'MeMO Pad 10 (ME102A)' } }
+-
+    headers: 'User-Agent: VKAndroidApp/3.2.1-196 (Android 4.2.2; SDK 17; armeabi-v7a; samsung GT-I9500; ru)'
+    readable: 'VK 3.2 on a Samsung Galaxy S4 running Android 4.2.2'
+    result: { browser: { name: VK, version: '3.2', type: 'app:social' }, os: { name: Android, version: 4.2.2 }, device: { type: mobile, subtype: smart, manufacturer: Samsung, model: 'Galaxy S4' } }
+-
+    headers: 'User-Agent: VKAndroidApp/3.4-288 (Android 3.2; SDK 13; armeabi-v7a; samsung GT-P7300; ru)'
+    readable: 'VK 3.4 on a Samsung Galaxy Tab 8.9 running Android 3.2'
+    result: { browser: { name: VK, version: '3.4', type: 'app:social' }, os: { name: Android, version: '3.2' }, device: { type: tablet, manufacturer: Samsung, model: 'Galaxy Tab 8.9' } }
