@@ -1,4 +1,7 @@
 {
+    "config": {
+        "preferred-install": "dist"
+    },
     "require": {
         "roave/security-advisories": "dev-master",
         "paragonie/random_compat": "^2.0.2",
@@ -22,6 +25,6 @@
         "php-http/client-common": "^1.4",
         "matthiasmullie/minify": "^1.3",
         "phpmailer/phpmailer": "^5.2.17",
-        "xamin/handlebars.php": "dev-master"
+        "xamin/handlebars.php": "^0.10.4"
     }
 }
