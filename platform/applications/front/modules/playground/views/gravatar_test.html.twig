@@ -11,7 +11,7 @@ The MIT License, http://opensource.org/licenses/MIT
 
                         {{ form_open('', 'id="gravatar_test_form" method="post" class="ui form"') }}
 
-                            <div class="field{% if validation_errors['email'] is not empty %} error{% endif %}">
+                            <div class="field{% if validation_errors['email'] %} error{% endif %}">
                                 <div class="ui left icon input">
                                     <input type="text" id="email" name="email" placeholder="* Enter an email address" value="{{ set_value('email', email) }}" />
                                     <i class="mail outline icon"></i>
@@ -27,7 +27,7 @@ The MIT License, http://opensource.org/licenses/MIT
                             </div>
 
                             <div class="fields">
-                                <div class="field{% if validation_errors['captcha'] is not empty %} error{% endif %}">
+                                <div class="field{% if validation_errors['captcha'] %} error{% endif %}">
                                     <div class="ui left icon input">
                                         <input type="text" id="captcha" name="captcha" placeholder="{{ lang('captcha.label')|e('html_attr') }}" maxlength="{{ captcha().length }}" />
                                         <i class="privacy icon"></i>

@@ -25,14 +25,14 @@
                         }) }}
                     </div>
 
-                    <div class="field{% if validation_errors['username'] is not empty %} error{% endif %}">
+                    <div class="field{% if validation_errors['username'] %} error{% endif %}">
                         <div class="ui big left icon input">
                             <i class="user icon"></i>
                             <input type="text" name="username" id="username" class="form-control" value="{{ set_value('username') }}"  placeholder="* {{ lang('ui_username')|e('html_attr') }}">
                         </div>
                     </div>
 
-                    <div class="field{% if validation_errors['password'] is not empty %} error{% endif %}">
+                    <div class="field{% if validation_errors['password'] %} error{% endif %}">
                         <div class="ui big left icon input">
                             <i class="lock icon"></i>
                             <input type="password" name="password" id="password" value="{{ set_value('password') }}" placeholder="* {{ lang('ui_password')|e('html_attr') }}">
@@ -48,7 +48,7 @@
                         <button type="button" id="captcha_refresh" class="ui icon button" title="{{ lang('ui_refresh')|e('html_attr') }}"><i class="refresh icon"></i></button>
                     </div>
 
-                    <div class="field{% if validation_errors['captcha'] is not empty %} error{% endif %}">
+                    <div class="field{% if validation_errors['captcha'] %} error{% endif %}">
                         <div class="ui big left icon input">
                             <input type="text" id="captcha" name="captcha" placeholder="* {{ lang('captcha.label')|e('html_attr') }}" maxlength="{{ captcha().length }}" />
                             <i class="privacy icon"></i>
