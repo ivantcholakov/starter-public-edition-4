@@ -13,23 +13,31 @@
 {{ widget('home/quick_buttons_widget/index') }}
 
             <div class="ui hidden divider"></div>
+
+            <p>
+                <form class="ui form">
+
+                    <div class="field">
+
+                        <label for="date_picker_test">
+                            * jQuery Date Picker Test (yyyy-mm-dd):
+                        </label>
+
+                        <div class="ui left icon input">
+                            <input type="text" name="date_picker_test" id="date_picker_test"
+                                value=""
+                            />
+                            <i class="calendar icon"></i>
+                        </div>
+
+                    </div>
+
+                </form>
+            </p>
+ 
             <p>
                 <button class="ui button" id="test_4">A success message</button>
             </p>
-            <script type="text/javascript">
-            //<![CDATA[
-
-            (function($) {
-
-                $('#test_4').on('click', function() {
-
-                    swal("Good job!", "You clicked the button!", "success");
-                });
-
-            })(jQuery);
-
-            //]]>
-            </script>
 
             <p>
                 <a href="javascript://"

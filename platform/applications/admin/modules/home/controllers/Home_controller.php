@@ -15,6 +15,7 @@ class Home_controller extends Base_Authenticated_Controller {
 
         $this->template
             ->title($title)
+            ->set_partial('scripts', 'home_scripts')
             ->build('home');
     }
 
