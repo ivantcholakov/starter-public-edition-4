@@ -441,7 +441,7 @@ License Information
 -------------------
 
 For original code in this project:  
-Copyright (c) 2012 - 2015:  
+Copyright (c) 2012 - 2017:  
 Ivan Tcholakov (the initial author) ivantcholakov@gmail.com,  
 Gwenaël Gallon.  
 License: The MIT License (MIT), http://opensource.org/licenses/MIT
