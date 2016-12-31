@@ -106,7 +106,7 @@ class MX_Router extends CI_Router
         $this->directory = '';
 
         // Use module route if available.
-        if (isset($segments[0]) && $routes = Modules::parse_routes($segments[0], implode('/', $segments))) {
+        if (isset($segments[0]) && $routes = Modules::parse_routes(str_replace('-', '_', $segments[0]), implode('/', $segments))) {
             $segments = $routes;
         }
 
