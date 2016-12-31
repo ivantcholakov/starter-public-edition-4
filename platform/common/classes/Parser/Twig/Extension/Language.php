@@ -54,7 +54,7 @@ class Parser_Twig_Extension_Language {
             $language = $ci->lang->current();
         }
 
-        return $ci->lang->code();
+        return $ci->lang->code($language);
     }
 
     public static function lang_direction($language = null) {
@@ -65,7 +65,7 @@ class Parser_Twig_Extension_Language {
             $language = $ci->lang->current();
         }
 
-        return $ci->lang->direction();
+        return $ci->lang->direction($language);
     }
 
     public static function lang_uri_segment($language = null) {
@@ -76,7 +76,7 @@ class Parser_Twig_Extension_Language {
             $language = $ci->lang->current();
         }
 
-        return $ci->lang->uri_segment();
+        return $ci->lang->uri_segment($language);
     }
 
     public static function lang_current_uri_segment() {
@@ -96,7 +96,7 @@ class Parser_Twig_Extension_Language {
             $language = $ci->lang->current();
         }
 
-        return $ci->lang->name();
+        return $ci->lang->name($language);
     }
 
     public static function lang_name_en($language = null) {
@@ -107,7 +107,7 @@ class Parser_Twig_Extension_Language {
             $language = $ci->lang->current();
         }
 
-        return $ci->lang->name_en();
+        return $ci->lang->name_en($language);
     }
 
     public static function lang_flag($language = null) {
@@ -118,7 +118,7 @@ class Parser_Twig_Extension_Language {
             $language = $ci->lang->current();
         }
 
-        return $ci->lang->flag();
+        return $ci->lang->flag($language);
     }
 
     public static function lang_enabled() {
