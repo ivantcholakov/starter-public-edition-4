@@ -6,7 +6,7 @@ spl_autoload_register('_common_autoloader');
  * Automatically loads classes in PHP5 way, using SPL.
  * @param   string      $class              The class name, no namespaces are supported.
  * @return  bool                            TRUE if a class have been found and loaded, FALSE otherwise.
- * @author  Ivan Tcholakov, 2013
+ * @author  Ivan Tcholakov, 2013-2016
  * @license The MIT License
  */
 function _common_autoloader($class) {
@@ -77,7 +77,17 @@ function _common_autoloader($class) {
             return true;
         }
 
+        if (is_file($location = APPPATH."modules/$module/controllers/$class.php")) {
+            require $location;
+            return true;
+        }
+
         if (is_file($location = COMMONPATH."modules/$module/core/$class.php")) {
+            require $location;
+            return true;
+        }
+
+        if (is_file($location = COMMONPATH."modules/$module/controllers/$class.php")) {
             require $location;
             return true;
         }
@@ -88,7 +98,17 @@ function _common_autoloader($class) {
         return true;
     }
 
+    if (is_file($location = APPPATH."controllers/$class.php")) {
+        require $location;
+        return true;
+    }
+
     if (is_file($location = COMMONPATH."core/$class.php")) {
+        require $location;
+        return true;
+    }
+
+    if (is_file($location = COMMONPATH."controllers/$class.php")) {
         require $location;
         return true;
     }
