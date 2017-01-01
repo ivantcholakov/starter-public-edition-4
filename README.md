@@ -126,7 +126,6 @@ The technique of this hack is available, but it is not mandatory.
 * UTF-8 string support for CodeIgniter based on Kohana's implementation, https://github.com/ivantcholakov/codeigniter-utf8
 * PHP fallback function http_build_url(), https://github.com/ivantcholakov/http_build_url
 * Core_Model, see https://github.com/ivantcholakov/codeigniter-base-model
-* Some basic javascripts.
 * normalize.css, a collection of HTML element and attribute style-normalizations, https://github.com/necolas/normalize.css
 * Modernizr, a JavaScript library that detects HTML5 and CSS3 features in the user’s browser, http://modernizr.com
 * html5shiv.js and html5shiv-printshiv.js (separate, packed within Modernizr too) - The HTML5 Shiv enables use of HTML5 sectioning elements in legacy Internet Explorer and provides basic HTML5 styling for Internet Explorer 6-9, Safari 4.x (and iPhone 3.x), and Firefox 3.x., https://github.com/aFarkas/html5shiv
