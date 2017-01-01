@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013-2017
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -181,7 +181,7 @@ class Submit_controller extends Core_Controller {
 
         // Here is the dеfault email template. You may get it from database too.
         $this->load->parser();
-        $template_path = $this->load->path('contact_form_email.mustache');
+        $template_path = $this->load->path('contact_form_email.handlebars');
         $data['email_template'] = $this->parser->parse_string(@ file_get_contents($template_path), null, true, 'i18n');
 
         return $data;
@@ -192,7 +192,7 @@ class Submit_controller extends Core_Controller {
         $data['to'] = name_email_format($this->settings->lang('site_name'), $this->settings->get('contact_email'));
         $data['reply_to'] = name_email_format($data['contact_form_name'], $data['contact_form_email']);
         $data['subject'] = '['.$this->settings->lang('site_name').': '.$this->lang->line('mailer_a_message_has_been_received_from').' '.$data['contact_form_name'].'] '.$data['contact_form_subject'];
-        $data['body'] = $this->parser->parse_string($data['email_template'], $data, true, 'mustache');
+        $data['body'] = $this->parser->parse_string($data['email_template'], $data, true, 'handlebars');
 
         $this->load->library('email');
         $data['body'] = $this->email->full_html($data['subject'], $data['body']);

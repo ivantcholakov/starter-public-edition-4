@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) { exit('No direct script access allowed.'); }
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2016
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2017
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -41,6 +41,7 @@ class Email_test_controller extends Playground_Base_Controller {
         );
 
         $success = false;
+        $custom_html = '';
 
         $this->form_validation->set_rules($validation_rules);
 
@@ -76,9 +77,15 @@ class Email_test_controller extends Playground_Base_Controller {
 
         $body = $this->parser->parse_string(
             $body,
-            array('has_logo' => $has_logo, 'logo_src' => default_base_url('apple-touch-icon-precomposed.png')),
+            array(
+                'has_logo' => $has_logo,
+                'logo_src' => default_base_url('apple-touch-icon-precomposed.png'),
+                'custom_text' => $custom_html,
+                'site_url' => default_base_url(),
+                'site_name' => $this->settings->lang('site_name'),
+            ),
             true,
-            'mustache'
+            'handlebars'
         );
 
         $this->captcha->clear();

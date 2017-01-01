@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2017
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -29,16 +29,22 @@ class Test_controller extends Core_Controller {
 
         $custom_text = isset($data['custom_text']) ? $data['custom_text'] : null;
 
-        extract($this->get_message($custom_text));
+        extract($this->get_message());
 
         $logo = DEFAULTFCPATH.'apple-touch-icon-precomposed.png';
         $has_logo = file_exists($logo);
 
         $body = $this->parser->parse_string(
             $body,
-            array('has_logo' => $has_logo, 'logo_src' => 'cid:logo_src'),
+            array(
+                'has_logo' => $has_logo,
+                'logo_src' => 'cid:logo_src',
+                'custom_text' => $custom_text,
+                'site_url' => default_base_url(),
+                'site_name' => $this->settings->lang('site_name'),
+            ),
             true,
-            'mustache'
+            'handlebars'
         );
 
         $attach = array();
@@ -61,23 +67,17 @@ class Test_controller extends Core_Controller {
         return Events::trigger('email', $data);
     }
 
-    public function get_message($custom_text = null) {
+    public function get_message() {
 
         $subject = '['.$this->settings->lang('site_name').'] '.'Test Message';
         $body =
 '
-    {{#has_logo}}
+    {{#if has_logo}}
     <p><img src="{{logo_src}}" /></p>
-    {{/has_logo}}
+    {{/if}}
     <h1>This is a message for testing purpose</h1>
-';
-
-        if ($custom_text != '') {
-            $body .= $custom_text;
-        }
-
-        $body .= '
-    <p>Greetings from the team of <a href="'.default_base_url().'">'.$this->settings->lang('site_name').'</a>.</p>
+    {{{custom_text}}}
+    <p>Greetings from the team of <a href="{{site_url}}">{{site_name}}</a>.</p>
 ';
 
         return compact('subject', 'body');
