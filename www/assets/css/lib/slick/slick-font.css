@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'slick';
+  font-weight: normal;
+  font-style: normal;
+  src: url('../../../fonts/slick/slick.eot');
+  src: url('../../../fonts/slick/slick.eot?#iefix') format('embedded-opentype'), url('../../../fonts/slick/slick.woff') format('woff'), url('../../../fonts/slick/slick.ttf') format('truetype'), url('../../../fonts/slick/slick.svg#slick') format('svg');
+}

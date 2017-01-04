@@ -86,6 +86,53 @@ $config['less_compile'] = array(
         'compress' => true
     ),
 
+    // php cli.php less compile slick slick-min slick-font slick-font-min slick-theme slick-theme-min
+
+    array(
+        'name' => 'slick',
+        'source' => DEFAULTFCPATH.'assets/less/lib/slick/slick.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/slick/slick.css',
+        'relativeUrls' => false,
+        'compress' => false
+    ),
+    array(
+        'name' => 'slick-min',
+        'source' => DEFAULTFCPATH.'assets/less/lib/slick/slick.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/slick/slick.min.css',
+        'relativeUrls' => false,
+        'compress' => true
+    ),
+
+    array(
+        'name' => 'slick-font',
+        'source' => DEFAULTFCPATH.'assets/less/lib/slick/slick-font.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/slick/slick-font.css',
+        'relativeUrls' => false,
+        'compress' => false
+    ),
+    array(
+        'name' => 'slick-font-min',
+        'source' => DEFAULTFCPATH.'assets/less/lib/slick/slick-font.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/slick/slick-font.min.css',
+        'relativeUrls' => false,
+        'compress' => true
+    ),
+
+    array(
+        'name' => 'slick-theme',
+        'source' => DEFAULTFCPATH.'assets/less/lib/slick/slick-theme.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/slick/slick-theme.css',
+        'relativeUrls' => false,
+        'compress' => false
+    ),
+    array(
+        'name' => 'slick-theme-min',
+        'source' => DEFAULTFCPATH.'assets/less/lib/slick/slick-theme.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/slick/slick-theme.min.css',
+        'relativeUrls' => false,
+        'compress' => true
+    ),
+
     // php cli.php less compile datatables-semantic-ui datatables-semantic-ui-min
 
     array(
