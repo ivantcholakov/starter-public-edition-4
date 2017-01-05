@@ -1,32 +1,19 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2016
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2017
  * @license The MIT License, http://opensource.org/licenses/MIT
- *
- * Put this widget within a view in the following way:
- * echo Modules::run('contact_info_widget/index');
  */
 
-class Main_menu_widget_controller extends Core_Controller {
+class Main_menu_widget_controller extends Base_Widget_Controller {
 
     public function __construct() {
 
         parent::__construct();
 
         $this->load
-            ->library('settings')
-            ->helper('language')
-            ->helper('url')
-            ->helper('asset')
             ->library('menu')
-            ->language('ui')
         ;
-    }
-
-    public function _remap($method, $params = array()) {
-
-        show_404();
     }
 
     public function index() {
