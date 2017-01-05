@@ -599,7 +599,7 @@ abstract class REST_Controller extends Core_Controller {
      * Checks to see if we have everything we need to run this library.
      *
      * @access protected
-     * @@throws Exception
+     * @throws Exception
      */
     protected function preflight_checks()
     {
@@ -748,6 +748,10 @@ abstract class REST_Controller extends Core_Controller {
         }
         catch (Exception $ex)
         {
+            if ($this->config->item('rest_handle_exceptions') === FALSE) {
+                throw $ex;
+            }
+
             // If the method doesn't exist, then the error will be caught and an error response shown
             $_error = &load_class('Exceptions', 'core');
             $_error->show_exception($ex);
