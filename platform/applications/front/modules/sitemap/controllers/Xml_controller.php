@@ -2,10 +2,10 @@
 
 /**
  * Sitemap module public controller
- * 
+ *
  * Renders a human-readable sitemap with all public pages and blog categories
  * Also renders a machine-readable sitemap for search engines
- * 
+ *
  * @author      Barnabas Kendall <barnabas@bkendall.biz>
  * @author      2014, modifications by Ivan Tcholakov <ivantcholakov@gmail.com>
  * @license     Apache License v2.0
@@ -17,7 +17,7 @@ class Xml_controller extends Base_Controller {
 
     /**
      * XML method - output sitemap in XML format for search engines
-     * 
+     *
      * @return void
      */
     public function index()
@@ -64,7 +64,7 @@ class Xml_controller extends Base_Controller {
 
             $doc->addChild('sitemap')->addChild('loc', site_url($module_name.'/sitemap/xml'));
         }
-        
+
         $this->output->set_content_type('application/xml')->set_output($doc->asXML());
     }
 
