@@ -73,16 +73,17 @@
             // After the page has been loaded, the generated form is to be
             // moved and shown on its visual place.
             try {
+
                 var fixurl_form = $('#goog-fixurl').html();
                 $('#google_search_form_hidden').html('');
                 $('#google_search_form').html(fixurl_form);
                 $('#google_search_form').show();
 
                 jQuery(function( $ ) {
-                    //$('#goog-wm form').addClass('form-inline');
+
                     $('#goog-wm-sb').addClass('ui primary button');
-                    //$('#goog-wm-qt').addClass('form-control');
                 });
+
             } catch (ex) {}
 
         });
