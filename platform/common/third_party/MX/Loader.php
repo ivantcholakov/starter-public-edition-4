@@ -756,9 +756,8 @@ class MX_Loader extends CI_Loader
     //public function view($view, $vars = array(), $return = FALSE) {
     public function view($view, $vars = array(), $return = FALSE, $parsers = array()) {
     //
-        if (is_object($vars)) {
-            $vars = get_object_vars($vars);
-        }
+
+        $vars = $this->_ci_prepare_view_vars($vars);
 
         // Added by Iban Tcholakov, 20-JAN-2016.
         if (!empty($parsers) && is_array($parsers)) {
