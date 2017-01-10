@@ -40,19 +40,36 @@
 .slick-prev, .slick-next {
     height: 48px;
     width: 48px;
-    z-index: 1001;
+    z-index: 1100;
 }
 
 .slick-prev:before, .slick-next:before {
+    font-family: "Icons";
     font-size: 48px;
     color:rgba(0,0,0,0.3);
     background-color: transparent;
 }
 
+.slick-prev:before {
+    content: "\f137";
+}
+
+.slick-prev:before[dir="rtl"] {
+    content: "\f138";
+}
+
+.slick-next:before {
+    content: "\f138";
+}
+
+.slick-next:before[dir="rtl"] {
+    content: "\f137";
+}
+
 .slideshow .slick-dots {
     position: absolute;
     bottom: 10px;
-    z-index: 1001;
+    z-index: 1100;
 }
 
 </style>
