@@ -5,20 +5,54 @@
 
 <style>
 
-/* Lazy Ad-Hoc Custom Styles */
+/* Slideshow Custom Styles */
 
 .slick-slide {
     outline: none;
 }
 
+.slideshow {
+    width: 100%;
+}
+
+.slideshow .carousel {
+    width: 100%;
+}
+
+.slick-prev {
+    left: 10px;
+}
+
+.slick-prev[dir="rtl"] {
+    left: auto;
+    right: 10px;
+}
+
+.slick-next {
+    right: 10px;
+}
+
+.slick-next[dir="rtl"] {
+    left: 10px;
+    right: auto;
+}
+
 .slick-prev, .slick-next {
-    height: 36px;
-    width: 36px;
+    height: 48px;
+    width: 48px;
+    z-index: 1001;
 }
 
 .slick-prev:before, .slick-next:before {
-    color: lightgray;
-    font-size: 36px;
+    font-size: 48px;
+    color:rgba(0,0,0,0.3);
+    background-color: transparent;
+}
+
+.slideshow .slick-dots {
+    position: absolute;
+    bottom: 10px;
+    z-index: 1001;
 }
 
 </style>
