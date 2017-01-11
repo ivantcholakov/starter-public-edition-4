@@ -1,5 +1,5 @@
 
-{{ css('lib/slick/slick-font.min.css') }}
+{# {{ css('lib/slick/slick-font.min.css') }} #}
 {{ css('lib/slick/slick.min.css') }}
 {{ css('lib/slick/slick-theme.min.css') }}
 
@@ -70,6 +70,11 @@
     position: absolute;
     bottom: 10px;
     z-index: 1100;
+}
+
+.slick-dots li button:before {
+    font-family: "Icons";
+    content: "\f111";
 }
 
 </style>
