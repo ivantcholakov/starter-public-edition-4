@@ -39,8 +39,15 @@ class Main_menu_widget_controller extends Base_Widget_Controller {
         $nav = $this->menu->render($nav, $active, NULL, 'data');
         $this->menu->reset();
 
+        $module = get_instance()->module;
+        $controller = get_instance()->controller;
+        $method = get_instance()->method;
+
         $data = compact(
-            'nav'
+            'nav',
+            'module',
+            'controller',
+            'method'
         );
 
         $this->load->view('main_menu_widget', $data);
