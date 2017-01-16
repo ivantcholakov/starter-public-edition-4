@@ -12,6 +12,7 @@
 }
 
 .slideshow {
+    position: relative;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -21,21 +22,25 @@
     width: 100%;
 }
 
+.slideshow .carousel:not(.slick-initialized) {
+    visibility: hidden;
+}
+
 .slideshow .slick-prev {
-    left: 10px;
+    left: 15px;
 }
 
 .slideshow .slick-prev[dir="rtl"] {
     left: auto;
-    right: 10px;
+    right: 15px;
 }
 
 .slideshow .slick-next {
-    right: 10px;
+    right: 15px;
 }
 
 .slideshow .slick-next[dir="rtl"] {
-    left: 10px;
+    left: 15px;
     right: auto;
 }
 

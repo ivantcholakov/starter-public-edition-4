@@ -12,6 +12,7 @@
 }
 
 .slideshow {
+    position: relative;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -21,21 +22,25 @@
     width: 100%;
 }
 
+.slideshow .carousel:not(.slick-initialized) {
+    visibility: hidden;
+}
+
 .slideshow .slick-prev {
-    left: 10px;
+    left: 15px;
 }
 
 .slideshow .slick-prev[dir="rtl"] {
     left: auto;
-    right: 10px;
+    right: 15px;
 }
 
 .slideshow .slick-next {
-    right: 10px;
+    right: 15px;
 }
 
 .slideshow .slick-next[dir="rtl"] {
-    left: 10px;
+    left: 15px;
     right: auto;
 }
 
@@ -100,14 +105,14 @@
 
 .slideshow .buttons {
     position: absolute;
-    bottom: 45px;
-    left: 25px;
+    bottom: 15px;
+    left: 15px;
     z-index: 1100;
 }
 
 .slideshow .buttons[dir="rtl"] {
     left: auto;
-    right: 25px;
+    right: 15px;
 }
 
 .slideshow .buttons button {
