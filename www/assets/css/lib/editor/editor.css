@@ -2896,35 +2896,44 @@ input::selection {
 .text.white {
   color: #FFFFFF !important;
 }
-.text.grey {
-  color: #767676 !important;
-}
 .text.black {
   color: #1B1C1D !important;
 }
-.text.yellow {
-  color: #FBBD08 !important;
+.text.grey {
+  color: #767676 !important;
 }
-.text.teal {
-  color: #00B5AD !important;
-}
-.text.red {
-  color: #DB2828 !important;
-}
-.text.purple {
-  color: #A333C8 !important;
+.text.brown {
+  color: #A5673F !important;
 }
 .text.pink {
   color: #E03997 !important;
 }
-.text.orange {
-  color: #F2711C !important;
+.text.purple {
+  color: #A333C8 !important;
+}
+.text.violet {
+  color: #6435C9 !important;
+}
+.text.blue {
+  color: #2185D0 !important;
+}
+.text.teal {
+  color: #00B5AD !important;
 }
 .text.green {
   color: #21BA45 !important;
 }
-.text.blue {
-  color: #2185D0 !important;
+.text.olive {
+  color: #B5CC18 !important;
+}
+.text.yellow {
+  color: #FBBD08 !important;
+}
+.text.orange {
+  color: #F2711C !important;
+}
+.text.red {
+  color: #DB2828 !important;
 }
 /* End Colored Texts */
 /* Printing */
