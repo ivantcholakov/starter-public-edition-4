@@ -12,7 +12,7 @@
 .text {
     .-(@i: length(@text-colors)) when (@i > 0) {
         @c: extract(@text-colors, @i);
-        &.@{c} { color: @@c }
+        &.@{c} { color: @@c !important }
         .-((@i - 1));
     }.-;
 }
