@@ -2894,37 +2894,37 @@ input::selection {
 *******************************/
 /* Colored Texts */
 .text.white {
-  color: #FFFFFF;
+  color: #FFFFFF !important;
 }
 .text.grey {
-  color: #767676;
+  color: #767676 !important;
 }
 .text.black {
-  color: #1B1C1D;
+  color: #1B1C1D !important;
 }
 .text.yellow {
-  color: #FBBD08;
+  color: #FBBD08 !important;
 }
 .text.teal {
-  color: #00B5AD;
+  color: #00B5AD !important;
 }
 .text.red {
-  color: #DB2828;
+  color: #DB2828 !important;
 }
 .text.purple {
-  color: #A333C8;
+  color: #A333C8 !important;
 }
 .text.pink {
-  color: #E03997;
+  color: #E03997 !important;
 }
 .text.orange {
-  color: #F2711C;
+  color: #F2711C !important;
 }
 .text.green {
-  color: #21BA45;
+  color: #21BA45 !important;
 }
 .text.blue {
-  color: #2185D0;
+  color: #2185D0 !important;
 }
 /* End Colored Texts */
 /* Printing */
