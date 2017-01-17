@@ -8,7 +8,7 @@
 // See https://github.com/Semantic-Org/Semantic-UI/issues/1885
 // Author: https://github.com/kamalkhan
 // Example: <span class="red text">I am red!</span>
-@text-colors: blue, green, orange, pink, purple, red, teal, yellow, black, grey, white;
+@text-colors: red, orange, yellow, olive, green, teal, blue, violet, purple, pink, brown, grey, black;
 .text {
     .-(@i: length(@text-colors)) when (@i > 0) {
         @c: extract(@text-colors, @i);
