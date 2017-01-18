@@ -1,0 +1,116 @@
+{{ html_begin() }}
+{{ head_begin() }}
+{{ meta_charset() }}
+
+{{ base_href() }}
+{{ ie_edge() }}
+
+{{ html_title() }}
+{{ metadata() }}
+
+{{ viewport() }}
+{{ favicon() }}
+{{ apple_touch_icon_precomposed() }}
+
+{{ js_platform() }}
+{{ file_partial('webfontloader') }}
+{{ css('lib/sweetalert/sweetalert.min.css') }}
+{{ css('lib/jquery-ui-custom/jquery-ui.min.css') }}
+{{ theme_css('front.min.css') }}
+{{ file_partial('css') }}
+{{ partial('css') }}
+{{ js('lib/phpjs/phpjs.min.js') }}
+{{ js_modernizr() }}
+{{ js_jquery() }}
+{{ js('lib/jquery-json/jquery.json.js') }}
+{{ partial('ckeditor') }}
+{{ js('lib/sweetalert/sweetalert.min.js') }}
+
+{{ partial('head') }}
+
+{{ head_end() }}
+
+{% set body_attr = {'id': 'page-top'} %}
+{% if template.module is not empty %}
+    {% set body_attr = html_attr_add_class(body_attr, template.module ~ '_module') %}
+{% endif %}
+{% if template.controller is not empty %}
+    {% set body_attr = html_attr_add_class(body_attr, template.controller) %}
+{% endif %}
+{% if template.method is not empty %}
+    {% set body_attr = html_attr_add_class(body_attr, template.method ~ '_method') %}
+{% endif %}
+{% if id is not empty %}
+    {% set body_attr = html_attr_add_class(body_attr, 'item_' ~ id) %}
+{% endif %}
+{{ body_begin(body_attr) }}
+
+{{ widget('main_menu_widget') }}
+
+    <header id="header">
+
+        <div class="ui vertically padded grid page">
+
+{{ widget('breadcrumb_widget') }}
+
+{% if template.page_title is not empty %}
+
+            <div class="row">
+                <div class="column">
+
+                    <h1 class="ui header">{{ template.page_title }}</h1>
+
+                </div>
+            </div>
+
+{% endif %}
+
+        </div>
+
+    </header>
+
+    <main id="main_content">
+
+        <div class="ui vertically padded grid page">
+
+{{ widget('feedback_messages_widget', {
+    'feedback_message_target': feedback_message_target,
+    'normal_message': normal_message,
+    'confirmation_message': confirmation_message,
+    'warning_message': warning_message,
+    'error_message': error_message
+}) }}
+
+            <div class="row">
+                <div id="content-container" class="sixteen wide column">
+
+{{ body() }}
+
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+{{ widget('footer_widget') }}
+
+{{ js_bp_plugins() }}
+{{ js_mbp_helper() }}
+{{ js_scale_fix_ios() }}
+
+{{ js('lib/semantic/semantic.min.js') }}
+
+{{ file_partial('scripts') }}
+{{ partial('scripts') }}
+
+{{ js('lib/google-code-prettify/prettify.js') }}
+{{ js('lib/jquery-ui-custom/jquery-ui.min.js') }}
+{{ js('front.js') }}
+
+    <div id="debug"></div>
+
+{{ file_partial('google_analytics') }}
+
+{{ body_end() }}
+{{ html_end() }}

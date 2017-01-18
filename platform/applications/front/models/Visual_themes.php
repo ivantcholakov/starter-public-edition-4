@@ -21,6 +21,10 @@ class Visual_themes extends CI_Model {
 
         $this->items = array(
             array(
+                'key' => 'front_default',
+                'name' => 'Front Default',
+            ),
+            array(
                 'key' => 'front_semantic_ui_default',
                 'name' => 'Semantic UI Default',
             ),

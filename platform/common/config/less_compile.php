@@ -314,4 +314,16 @@ $config['less_compile'] = array(
         'cssmin' => array('implementation' => 'minifycss'),
     ),
 
+    // php cli.php less compile front-default-min
+
+    array(
+        'name' => 'front-default-min',
+        'source' => DEFAULTFCPATH.'themes/front_default/less/index.less',
+        'destination' => DEFAULTFCPATH.'themes/front_default/css/front.min.css',
+        'relativeUrls' => false,
+        'implementation' => 'less.js',
+        'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 11', 'Edge >= 12', 'Android >= 4')),
+        'cssmin' => array('implementation' => 'minifycss'),
+    ),
+
 );
