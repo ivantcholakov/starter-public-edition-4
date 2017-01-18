@@ -6,7 +6,7 @@ class Playground_Base_Controller extends Base_Controller {
 
         parent::__construct();
 
-        $this->template->set_breadcrumb('<i class="sun icon"></i> '.'The Palyground', site_url('playground'));
+        $this->template->set_breadcrumb('<i class="sun icon"></i> '.'The Playground', site_url('playground'));
     }
 
 }
