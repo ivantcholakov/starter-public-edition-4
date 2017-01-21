@@ -586,8 +586,16 @@ class Menu {
         {
             if (is_array($this->home_link))
             {
-                $home_link = each($this->home_link);
-                $home_anchor = anchor($home_link['key'], $home_link['value']);
+                // Modified by Ivan Tcholakov, 21-JAN-2017.
+                //$home_link = each($this->home_link);
+                //$home_anchor = anchor($home_link['key'], $home_link['value']);
+                $home_anchor = null;
+                foreach ($this->home_link as $key => $value)
+                {
+                    $home_anchor = anchor($key, $value);
+                    break;
+                }
+                //
             }
             else
             {

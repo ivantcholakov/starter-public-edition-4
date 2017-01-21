@@ -97,7 +97,14 @@ class Modules
     /** Load a module controller **/
     public static function load($module) {
 
-        (is_array($module)) ? list($module, $params) = each($module) : $params = NULL;
+        // Modified by Ivan Tcholakov, 21-JAN-2017.
+        //(is_array($module)) ? list($module, $params) = each($module) : $params = NULL;
+        if (is_array($module)) {
+            list($params, $module) = array(reset($module), key($module));
+        } else {
+            $params = NULL;
+        }
+        //
 
         //
         // Removed by Ivan Tcholakov, 03-APR-2014.
