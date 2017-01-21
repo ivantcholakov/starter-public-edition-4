@@ -60,6 +60,73 @@ Have a look at their configuration files. Also, the common PHP configuration fil
 The platform auto-detects its base URL address nevertheless its public part is on the document root of the web-server or not.
 I don't expect you to be forced to set it up manually within platform/common/config/config.php.
 
+Installation on a developer's machine
+-------------------------------------
+
+In addition to the section above, it is desirable on a developer's machine
+additional components to be installed globally, they are mostly to support
+compilation of web resources (for example: less -> css, ts -> js). The system
+accesses them using PHP command-shell functions.
+
+When installing the additional components globally, the command-line console would
+require administrative privileges.
+
+* Install Node.js and npm, for example see https://docs.npmjs.com/getting-started/installing-node
+As a result, from the command line these commands should work:
+
+```sh
+node -v
+npm -v
+```
+
+* Install less.js compiler (http://lesscss.org/) globally:
+
+```sh
+npm install less -g
+```
+
+Then the following command should work:
+
+```sh
+lessc -v
+```
+
+* Install PostCSS and its CLI utility (https://github.com/postcss/postcss-cli) globally:
+
+```sh
+npm -g install postcss-cli
+```
+
+And this command should work:
+
+```sh
+postcss -v
+```
+
+* Install Autoprefixer (https://github.com/postcss/autoprefixer) globally:
+
+```sh
+npm -g install autoprefixer
+```
+
+* Install cssnano (https://github.com/ben-eb/cssnano):
+
+```sh
+npm -g install cssnano
+```
+
+* Install TypeScript compiler (if it is needed):
+
+```sh
+npm -g install typescript-compiler
+```
+
+This command should work:
+
+```sh
+tsc -v
+```
+
 Coding Rules
 ------------
 
