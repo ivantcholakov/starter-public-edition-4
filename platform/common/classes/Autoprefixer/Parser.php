@@ -192,7 +192,7 @@ class Autoprefixer_Parser {
 
             // Sequence of backslashes followed by a double quote:
             // double up all the backslashes and escape the double quote
-            $arg = preg_replace('/(\\*)"/g', '$1$1\\"', $arg);
+            $arg = preg_replace('/(\\*)"/', '$1$1\\"', $arg);
 
             // Sequence of backslashes followed by the end of the arg,
             // which will become a double quote later:
@@ -205,7 +205,7 @@ class Autoprefixer_Parser {
             $arg = '"'.$arg.'"';
 
             // Escape shell metacharacters.
-            $arg = preg_replace('/([\(\)%!^"<>&|;, ])/g', '^$1', $arg);
+            $arg = preg_replace('/([\(\)%!^"<>&|;, ])/', '^$1', $arg);
 
             return $arg;
         }
