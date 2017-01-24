@@ -487,6 +487,7 @@ Reported by Webnice Ltd., http://webnicebg.com
 * http://spa-rusalka.com - a SPA-hotel
 * http://polypoolsbg.com - a FiberGlass pools provider
 * http://ruseplasticsurgery.com - plastic surgery
+* http://tciships.com/ - logistics
 
 Reported by Krishna Guragai, @krishnaguragain
 
