@@ -21,11 +21,12 @@ The MIT License, http://opensource.org/licenses/MIT
 
                     </div>
 
-                    <h3 class="item">Feature Tests</h3>
+                    <h3 class="item">Parsers</h3>
 
                     <div class="ui vertical fluid menu">
 
-                        <a class="item" href="{{ site_url('playground/captcha') }}">Captcha Test</a>
+                        <a class="item" href="{{ http_build_url(site_url('playground/twig-parser'), {'query': http_build_query({'q_1': 'query_param_1', 'q_2': 'query_param_2'})}) }}">Twig Parser Test</a>
+                        <a class="item" href="{{ http_build_url(site_url('playground/lex-parser'), {'query': http_build_query({'q_1': 'query_param_1', 'q_2': 'query_param_2'})}) }}">Lex Parser Test</a>
                         <a class="item" href="{{ site_url('playground/parser-test') }}">CodeIgniter's Parser Test</a>
                         <a class="item" href="{{ site_url('playground/handlebars') }}">Handlebars Parser Test</a>
                         <a class="item" href="{{ site_url('playground/mustache') }}">Mustache Parser Test</a>
@@ -34,37 +35,57 @@ The MIT License, http://opensource.org/licenses/MIT
                         <a class="item" href="{{ site_url('playground/textile') }}">Textile Parser Test</a>
                         <a class="item" href="{{ site_url('playground/scss') }}">SCSS Compiler Test</a>
                         <a class="item" href="{{ site_url('playground/less') }}">Less Compiler Test</a>
-                        <a class="item" href="{{ site_url('playground/gibberish-aes') }}">GibberishAES Test</a>
-                        <a class="item" href="{{ site_url('playground/random') }}">Random Values Test</a>
-                        <a class="item" href="{{ site_url('playground/ajax-queue') }}">AJAX Queue Test</a>
-                        <a class="item" href="{{ site_url('playground/jquery-url-parser') }}">jQuery URL Parser Test</a>
-                        <a class="item" href="{{ site_url('playground/rest/server') }}">RESTful Service Test</a>
-                        <a class="item" href="{{ site_url('playground/online-editor/user-mode') }}">Online Editor Test</a>
-                        <a class="item" href="{{ site_url('playground/email-test') }}">Email Test</a>
-                        <a class="item" href="{{ site_url('playground/datatables') }}">DataTables</a>
-                        <a class="item" href="{{ site_url('playground/gravatar-test') }}">Gravatar Test</a>
-                        <a class="item" href="{{ site_url('playground/multiplayer') }}">Multiplayer Library Test</a>
-                        <a class="item" href="{{ site_url('playground/google-maps-v3') }}">Google Maps JavaScript API v3 Demo</a>
-                        <a class="item" href="{{ site_url('playground/smileys') }}">Smiley Test</a>
-                        <a class="item" href="{{ site_url('playground/file-type-icons') }}">Testing File Type Icons</a>
                         <a class="item" href="{{ site_url('playground/autoprefixer') }}">CSS Autoprefixer Test</a>
                         <a class="item" href="{{ site_url('playground/cssmin') }}">CSS Minification Test</a>
                         <a class="item" href="{{ site_url('playground/jsmin') }}">JavaScript Minification Test</a>
-                        <a class="item" href="{{ site_url('playground/fb') }}">Facebook PHP SDK for CodeIgniter</a>
-                        <a class="item" href="{{ site_url('playground/print-test') }}">Print Test</a>
-                        <a class="item" href="{{ site_url('playground/image-process-test') }}">Image Manipulations Test</a>
-                        <a class="item" href="{{ site_url('playground/pjax') }}">Pjax jQuery plugin Test</a>
-                        <a class="item" href="{{ site_url('playground/typescript') }}">TypeScript Compiler Test</a>
-                        <a class="item" href="{{ site_url('playground/colorbox') }}">Colorbox Test</a>
                         <a class="item" href="{{ site_url('playground/jsonmin') }}">JSON Minification Test</a>
+                        <a class="item" href="{{ site_url('playground/typescript') }}">TypeScript Compiler Test</a>
+
+                    </div>
+
+                    <h3 class="item">Helpers</h3>
+
+                    <div class="ui vertical fluid menu">
+
+                        <a class="item" href="{{ site_url('playground/smileys') }}">Smiley Test</a>
+                        <a class="item" href="{{ site_url('playground/file-type-icons') }}">Testing File Type Icons</a>
+
+                    </div>
+
+                    <h3 class="item">Libraries</h3>
+
+                    <div class="ui vertical fluid menu">
+
+                        <a class="item" href="{{ site_url('playground/captcha') }}">Captcha Test</a>
+                        <a class="item" href="{{ site_url('playground/gravatar-test') }}">Gravatar Test</a>
+                        <a class="item" href="{{ site_url('playground/email-test') }}">Email Test</a>
+                        <a class="item" href="{{ site_url('playground/multiplayer') }}">Multiplayer Library Test</a>
+                        <a class="item" href="{{ site_url('playground/image-process-test') }}">Image Manipulations Test</a>
+                        <a class="item" href="{{ site_url('playground/rest/server') }}">RESTful Service Test</a>
+                        <a class="item" href="{{ site_url('playground/fb') }}">Facebook PHP SDK for CodeIgniter</a>
+                        <a class="item" href="{{ site_url('playground/gibberish-aes') }}">GibberishAES Test</a>
+                        <a class="item" href="{{ site_url('playground/page-hits') }}">Page Visitors Counter Demo</a>
+                        <a class="item" href="{{ site_url('playground/which-browser') }}">WhichBrowser Test</a>
+                        <a class="item" href="{{ site_url('playground/random') }}">Random Values Test</a>
+
+                    </div>
+
+                    <h3 class="item">Front-End</h3>
+
+                    <div class="ui vertical fluid menu">
+
+                        <a class="item" href="{{ site_url('playground/print-test') }}">Print Test</a>
+                        <a class="item" href="{{ site_url('playground/online-editor/user-mode') }}">Online Editor Test</a>
+                        <a class="item" href="{{ site_url('playground/ajax-queue') }}">AJAX Queue Test</a>
+                        <a class="item" href="{{ site_url('playground/jquery-url-parser') }}">jQuery URL Parser Test</a>
+                        <a class="item" href="{{ site_url('playground/datatables') }}">DataTables</a>
+                        <a class="item" href="{{ site_url('playground/google-maps-v3') }}">Google Maps JavaScript API v3 Demo</a>
+                        <a class="item" href="{{ site_url('playground/pjax') }}">Pjax jQuery plugin Test</a>
+                        <a class="item" href="{{ site_url('playground/colorbox') }}">Colorbox Test</a>
                         <a class="item" href="{{ site_url('playground/animate') }}">Animate,css Test</a>
                         <a class="item" href="{{ site_url('playground/material-icons-test') }}">Material Icons Test</a>
-                        <a class="item" href="{{ http_build_url(site_url('playground/lex-parser'), {'query': http_build_query({'q_1': 'query_param_1', 'q_2': 'query_param_2'})}) }}">Lex Parser Test</a>
-                        <a class="item" href="{{ http_build_url(site_url('playground/twig-parser'), {'query': http_build_query({'q_1': 'query_param_1', 'q_2': 'query_param_2'})}) }}">Twig Parser Test</a>
-                        <a class="item" href="{{ site_url('playground/which-browser') }}">WhichBrowser Test</a>
                         <a class="item" href="{{ site_url('playground/ihover') }}">iHover Test</a>
                         <a class="item" href="{{ site_url('playground/masonry') }}">Masonry Test</a>
-                        <a class="item" href="{{ site_url('playground/page-hits') }}">Page Visitors Counter Demo</a>
                         <a class="item" href="{{ site_url('playground/sweetalert') }}">SweetAlert Test</a>
                         <a class="item" href="{{ site_url('playground/slick') }}">Slick Carousel Test</a>
 
