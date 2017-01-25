@@ -56,21 +56,6 @@ $config['less_compile'] = array(
         'compress' => true
     ),
 
-    // php cli.php less compile font-awesome-4-actions font-awesome-4-actions-min
-
-    array(
-        'name' => 'font-awesome-4-actions',
-        'source' => DEFAULTFCPATH.'assets/less/lib/font-awesome-4-actions/font-awesome.less',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/font-awesome-4-actions/font-awesome.css',
-        'compress' => false
-    ),
-    array(
-        'name' => 'font-awesome-4-actions-min',
-        'source' => DEFAULTFCPATH.'assets/less/lib/font-awesome-4-actions/font-awesome.less',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/font-awesome-4-actions/font-awesome.min.css',
-        'compress' => true
-    ),
-
     // php cli.php less compile material-icons material-icons-min
 
     array(

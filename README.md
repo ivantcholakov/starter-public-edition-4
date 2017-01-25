@@ -424,7 +424,6 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Twig, the flexible, fast, and secure template engine for PHP, http://twig.sensiolabs.org
 * PHP 5.x support for random_bytes() and random_int(), https://github.com/paragonie/random_compat
 * WhichBrowser/Parser, a useragent parser library for PHP, https://github.com/WhichBrowser/Parser
-* Font Awesome actions font (a superset), https://github.com/nyon/fontawesome-actions
 * iHover, a collection of hover effects using pure CSS, https://github.com/gudh/ihover
 * imagesLoaded - "You images done yet or what?", https://github.com/desandro/imagesloaded
 * Masonry - a cascading grid layout library, https://github.com/desandro/masonry
