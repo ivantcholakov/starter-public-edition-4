@@ -83,6 +83,7 @@ $config['functions'] = array(
     'url_add_data_language',
     array('view', array('Parser_Twig_Extension_Platform', 'view'), array('is_safe' => array('html'))),
     array('file_type_icon_fa', 'file_type_icon_fa', array('is_safe' => array('html', 'html_attr', 'js'))),
+    array('file_type_icon', 'file_type_icon', array('is_safe' => array('html', 'html_attr', 'js'))),
     // Web Assets
     array('css', array('Parser_Twig_Extension_Asset', 'css'), array('is_safe' => array('html'))),
     'css_path',

@@ -33,8 +33,8 @@ The MIT License, http://opensource.org/licenses/MIT
         {% set file_name = 'x.' ~ ext %}
                                 <tr>
                                     <td>{{ file_name }}</td>
-                                    <td>{{ file_type_icon_fa(file_name) }}</td>
-                                    <td><i class="fa fa-2x {{ file_type_icon_fa(file_name) }}"></i></td>
+                                    <td>file {{ file_type_icon(file_name) }} icon</td>
+                                    <td><i class="file {{ file_type_icon(file_name) }} outline big icon"></i></td>
                                 </tr>
     {% endfor %}
 

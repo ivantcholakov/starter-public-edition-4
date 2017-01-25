@@ -133,4 +133,5 @@ $config['allowed_functions'] = array(
     'wordwrap',         // PHP
     // Platform Routines
     'file_type_icon_fa',    // load file helper.
+    'file_type_icon',       // load file helper.
 );

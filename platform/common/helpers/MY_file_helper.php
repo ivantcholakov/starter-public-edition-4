@@ -165,89 +165,90 @@ if (!function_exists('recursive_chmod')) {
         return true;
     }
 
-    if (!function_exists('file_type_icon')) {
+}
 
-        function file_type_icon($path = null) {
+if (!function_exists('file_type_icon')) {
 
-            static $_icons;
+    function file_type_icon($path = null) {
 
-            if (!isset($_icons)) {
+        static $_icons;
 
-                if (file_exists(COMMONPATH.'config/file_type_icons.php')) {
-                    include(COMMONPATH.'config/file_type_icons.php');
-                }
+        if (!isset($_icons)) {
 
-                if (file_exists(COMMONPATH.'config/'.ENVIRONMENT.'/file_type_icons.php')) {
-                    include(COMMONPATH.'config/'.ENVIRONMENT.'/file_type_icons.php');
-                }
+            if (file_exists(COMMONPATH.'config/file_type_icons.php')) {
+                include(COMMONPATH.'config/file_type_icons.php');
+            }
 
-                if (file_exists(APPPATH.'config/file_type_icons.php')) {
-                    include(APPPATH.'config/file_type_icons.php');
-                }
+            if (file_exists(COMMONPATH.'config/'.ENVIRONMENT.'/file_type_icons.php')) {
+                include(COMMONPATH.'config/'.ENVIRONMENT.'/file_type_icons.php');
+            }
 
-                if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/file_type_icons.php')) {
-                    include(APPPATH.'config/'.ENVIRONMENT.'/file_type_icons.php');
-                }
+            if (file_exists(APPPATH.'config/file_type_icons.php')) {
+                include(APPPATH.'config/file_type_icons.php');
+            }
 
-                if (empty($icons) OR !is_array($icons)) {
-                    $icons = array();
-                }
+            if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/file_type_icons.php')) {
+                include(APPPATH.'config/'.ENVIRONMENT.'/file_type_icons.php');
+            }
 
-                $_icons = array();
+            if (empty($icons) OR !is_array($icons)) {
+                $icons = array();
+            }
 
-                if (!empty($icons)) {
+            $_icons = array();
 
-                    foreach ($icons as $key => $icon) {
+            if (!empty($icons)) {
 
-                        if (is_array($icon)) {
+                foreach ($icons as $key => $icon) {
 
-                            foreach ($icon as $i) {
-                                $_icons[(string) $i] = $key;
-                            }
+                    if (is_array($icon)) {
 
-                        } else {
-
-                            $_icons[(string) $icon] = $key;
+                        foreach ($icon as $i) {
+                            $_icons[(string) $i] = $key;
                         }
+
+                    } else {
+
+                        $_icons[(string) $icon] = $key;
                     }
                 }
             }
-
-            if ($path === null) {
-                return $_icons;
-            }
-
-            $ext = extension($path);
-
-            if (isset($_icons[$ext])) {
-                return $_icons[$ext];
-            }
-
-            return null;
         }
-    }
 
-    if (!function_exists('file_type_icon_fa')) {
-
-        function file_type_icon_fa($path) {
-
-            $result = file_type_icon($path);
-
-            if (is_array($result)) {
-
-                foreach ($result as $key => & $value) {
-                    $value = 'fa-file-'.$value.'-o';
-                }
-
-                return $result;
-            }
-
-            if ($result == '') {
-                return 'fa-file-o';
-            }
-
-            return 'fa-file-'.$result.'-o';
+        if ($path === null) {
+            return $_icons;
         }
-    }
 
+        $ext = extension($path);
+
+        if (isset($_icons[$ext])) {
+            return $_icons[$ext];
+        }
+
+        return null;
+    }
 }
+
+if (!function_exists('file_type_icon_fa')) {
+
+    function file_type_icon_fa($path) {
+
+        $result = file_type_icon($path);
+
+        if (is_array($result)) {
+
+            foreach ($result as $key => & $value) {
+                $value = 'fa-file-'.$value.'-o';
+            }
+
+            return $result;
+        }
+
+        if ($result == '') {
+            return 'fa-file-o';
+        }
+
+        return 'fa-file-'.$result.'-o';
+    }
+}
+
