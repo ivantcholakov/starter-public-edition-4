@@ -138,8 +138,6 @@ tr.shown td.details-control {
 
 html {
     min-height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
 }
 
 body {
@@ -147,8 +145,6 @@ body {
     flex-direction: column;
     height: auto;
     min-height: 100%;
-    overflow-x: hidden;
-
     word-wrap: break-word;
 }
 
@@ -165,8 +161,6 @@ body {
     background-color: @black;
     height: auto;
     min-height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
     min-width: 210px;
 }
 
@@ -198,6 +192,7 @@ body {
     width: 100%;
     display: flex;
     flex-direction: row;
+    background-color: #f4f4f4;
 }
 
 #page {
@@ -209,7 +204,6 @@ body {
 
     padding-left: 15px;
     padding-right: 15px;
-    //overflow-x: auto; // TODO: Thess needs to be fixed.
 }
 
 @media only screen and (min-width: @computerBreakpoint) {
@@ -227,6 +221,7 @@ body {
 #main_content {
     flex: 1 0 auto; /* 2 */
     width: 100%;
+    z-index: 0;
 }
 
 #footer {
