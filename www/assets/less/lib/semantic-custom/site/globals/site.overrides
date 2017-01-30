@@ -3,6 +3,17 @@
 *******************************/
 
 
+/* Force <pre> and <code> Tags to Word Wrap */
+
+code, pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+/* End Force <pre> and <code> Tags to Word Wrap */
+
+
 /* Colored Texts */
 
 // See https://github.com/Semantic-Org/Semantic-UI/issues/1885

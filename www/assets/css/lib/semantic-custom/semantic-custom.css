@@ -2891,6 +2891,14 @@ input::selection {
 /*******************************
          Site Overrides
 *******************************/
+/* Force <pre> and <code> Tags to Word Wrap */
+code,
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+/* End Force <pre> and <code> Tags to Word Wrap */
 /* Colored Texts */
 .text.white {
   color: #FFFFFF !important;
