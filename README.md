@@ -469,6 +469,7 @@ Real Life Usage
 * http://liveconsult.eu (training about business or personal relations), designer: Irina Stancheva
 * http://hop-mebeli.com/ - an online shop, furniture, migrated from starter-public-edition-3, designer: Irina Stancheva
 * http://iridadesign.com (we), designer: Irina Stancheva
+* http://profitherm.bg - water pumps supplier, designer: Irina Stancheva (Semantic UI based design)
 
 Reported by Webnice Ltd., http://webnicebg.com
 
