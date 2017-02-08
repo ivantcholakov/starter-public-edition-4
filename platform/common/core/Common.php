@@ -175,25 +175,27 @@ if ( ! function_exists('get_mimes'))
      */
     function &get_mimes()
     {
-        static $_mimes = array();
+        static $_mimes;
 
         if (empty($_mimes))
         {
+            $_mimes = file_exists(COMMONPATH.'config/mimes.php')
+                ? include(COMMONPATH.'config/mimes.php')
+                : array();
+
+            if (file_exists(COMMONPATH.'config/'.ENVIRONMENT.'/mimes.php'))
+            {
+                $_mimes = array_merge($_mimes, include(COMMONPATH.'config/'.ENVIRONMENT.'/mimes.php'));
+            }
+
+            if (file_exists(APPPATH.'config/mimes.php'))
+            {
+                $_mimes = array_merge($_mimes, include(APPPATH.'config/mimes.php'));
+            }
+
             if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/mimes.php'))
             {
-                $_mimes = include(APPPATH.'config/'.ENVIRONMENT.'/mimes.php');
-            }
-            elseif (file_exists(APPPATH.'config/mimes.php'))
-            {
-                $_mimes = include(APPPATH.'config/mimes.php');
-            }
-            elseif (file_exists(COMMONPATH.'config/'.ENVIRONMENT.'/mimes.php'))
-            {
-                $_mimes = include(COMMONPATH.'config/'.ENVIRONMENT.'/mimes.php');
-            }
-            elseif (file_exists(COMMONPATH.'config/mimes.php'))
-            {
-                $_mimes = include(COMMONPATH.'config/mimes.php');
+                $_mimes = array_merge($_mimes, include(APPPATH.'config/'.ENVIRONMENT.'/mimes.php'));
             }
         }
 
