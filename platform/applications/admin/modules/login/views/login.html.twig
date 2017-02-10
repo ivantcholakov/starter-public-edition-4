@@ -50,7 +50,7 @@
 
                     <div class="field{% if validation_errors['captcha'] %} error{% endif %}">
                         <div class="ui big left icon input">
-                            <input type="text" id="captcha" name="captcha" placeholder="* {{ lang('captcha.label')|e('html_attr') }}" maxlength="{{ captcha().length }}" />
+                            <input type="text" id="captcha" name="captcha" placeholder="* {{ lang('captcha.label')|e('html_attr') }}" maxlength="{{ captcha().length }}" autocomplete="off" autocorrect="off" autocapitalize="off" />
                             <i class="privacy icon"></i>
                         </div>
                     </div>

@@ -73,7 +73,7 @@
 
                             <div class="field">
                                 <div class="ui fluid left icon input">
-                                    <input type="text" id="contact_form_captcha" name="contact_form_captcha" placeholder="* {{ lang('captcha.label')|e('html_attr') }}" maxlength="{{ captcha().length }}" />
+                                    <input type="text" id="contact_form_captcha" name="contact_form_captcha" placeholder="* {{ lang('captcha.label')|e('html_attr') }}" maxlength="{{ captcha().length }}" autocomplete="off" autocorrect="off" autocapitalize="off" />
                                     <i class="privacy icon"></i>
                                 </div>
                             </div>
