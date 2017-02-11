@@ -1753,64 +1753,6 @@
         ]
     },
     {
-        "name": "php-http/curl-client",
-        "version": "v1.6.2",
-        "version_normalized": "1.6.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/php-http/curl-client.git",
-            "reference": "3f9ff1ffbe2496ed793734a9ab92b784a05d277a"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/php-http/curl-client/zipball/3f9ff1ffbe2496ed793734a9ab92b784a05d277a",
-            "reference": "3f9ff1ffbe2496ed793734a9ab92b784a05d277a",
-            "shasum": ""
-        },
-        "require": {
-            "ext-curl": "*",
-            "php": "^5.5 || ^7.0",
-            "php-http/discovery": "^1.0",
-            "php-http/httplug": "^1.0",
-            "php-http/message": "^1.2",
-            "php-http/message-factory": "^1.0.2"
-        },
-        "provide": {
-            "php-http/async-client-implementation": "1.0",
-            "php-http/client-implementation": "1.0"
-        },
-        "require-dev": {
-            "guzzlehttp/psr7": "^1.0",
-            "php-http/client-integration-tests": "^0.5.1",
-            "phpunit/phpunit": "^4.8.27",
-            "zendframework/zend-diactoros": "^1.0"
-        },
-        "time": "2017-01-02T15:39:30+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Http\\Client\\Curl\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Михаил Красильников",
-                "email": "m.krasilnikov@yandex.ru"
-            }
-        ],
-        "description": "cURL client for PHP-HTTP",
-        "homepage": "http://php-http.org",
-        "keywords": [
-            "curl",
-            "http"
-        ]
-    },
-    {
         "name": "symfony/options-resolver",
         "version": "v3.2.3",
         "version_normalized": "3.2.3.0",
@@ -2000,5 +1942,63 @@
             }
         ],
         "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
+    },
+    {
+        "name": "php-http/curl-client",
+        "version": "v1.7.0",
+        "version_normalized": "1.7.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/php-http/curl-client.git",
+            "reference": "0972ad0d7d37032a52077a5cbe27cf370f2007d8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/php-http/curl-client/zipball/0972ad0d7d37032a52077a5cbe27cf370f2007d8",
+            "reference": "0972ad0d7d37032a52077a5cbe27cf370f2007d8",
+            "shasum": ""
+        },
+        "require": {
+            "ext-curl": "*",
+            "php": "^5.5 || ^7.0",
+            "php-http/discovery": "^1.0",
+            "php-http/httplug": "^1.0",
+            "php-http/message": "^1.2",
+            "php-http/message-factory": "^1.0.2"
+        },
+        "provide": {
+            "php-http/async-client-implementation": "1.0",
+            "php-http/client-implementation": "1.0"
+        },
+        "require-dev": {
+            "guzzlehttp/psr7": "^1.0",
+            "php-http/client-integration-tests": "^0.5.1",
+            "phpunit/phpunit": "^4.8.27",
+            "zendframework/zend-diactoros": "^1.0"
+        },
+        "time": "2017-02-09T15:18:33+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Http\\Client\\Curl\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Михаил Красильников",
+                "email": "m.krasilnikov@yandex.ru"
+            }
+        ],
+        "description": "cURL client for PHP-HTTP",
+        "homepage": "http://php-http.org",
+        "keywords": [
+            "curl",
+            "http"
+        ]
     }
 ]

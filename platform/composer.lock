@@ -830,16 +830,16 @@
         },
         {
             "name": "php-http/curl-client",
-            "version": "v1.6.2",
+            "version": "v1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/curl-client.git",
-                "reference": "3f9ff1ffbe2496ed793734a9ab92b784a05d277a"
+                "reference": "0972ad0d7d37032a52077a5cbe27cf370f2007d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/curl-client/zipball/3f9ff1ffbe2496ed793734a9ab92b784a05d277a",
-                "reference": "3f9ff1ffbe2496ed793734a9ab92b784a05d277a",
+                "url": "https://api.github.com/repos/php-http/curl-client/zipball/0972ad0d7d37032a52077a5cbe27cf370f2007d8",
+                "reference": "0972ad0d7d37032a52077a5cbe27cf370f2007d8",
                 "shasum": ""
             },
             "require": {
@@ -882,7 +882,7 @@
                 "curl",
                 "http"
             ],
-            "time": "2017-01-02T15:39:30+00:00"
+            "time": "2017-02-09T15:18:33+00:00"
         },
         {
             "name": "php-http/discovery",
