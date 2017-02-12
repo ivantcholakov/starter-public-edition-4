@@ -408,7 +408,7 @@ class Core_Tree_Model extends Core_Model {
 
             foreach ($result as $key => $row) {
 
-                $children = $this->get_children($row[$this->primary_key], $select, $where, $order_by, $depth);
+                $children = $this->get_tree((int) $row[$this->primary_key], $select, $where, $order_by, $depth);
 
                 if (!empty($children)) {
 
