@@ -470,6 +470,7 @@ Real Life Usage
 * http://hop-mebeli.com/ - an online shop, furniture, migrated from starter-public-edition-3, designer: Irina Stancheva
 * http://iridadesign.com (we), designer: Irina Stancheva
 * http://profitherm.bg - water pumps supplier, designer: Irina Stancheva (Semantic UI based design)
+* http://art-tochka.com/ - an online shop, gifts, migrated from starter-public-edition-3, designer: Irina Stancheva (still Bootstrap-based design)
 
 Reported by Webnice Ltd., http://webnicebg.com
 
