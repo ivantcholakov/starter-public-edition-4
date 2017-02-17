@@ -140,7 +140,7 @@ class Email_controller extends Core_Controller {
 
         } else {
 
-            $cc = array();
+            $cc = $cc_email;
         }
 
         $subject = isset($data['subject']) ? trim($data['subject']) : '';
