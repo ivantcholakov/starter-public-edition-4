@@ -295,6 +295,12 @@ class Modules
                     return array($fullpath, ucfirst($file));
                 }
 
+                // Added by Ivan Tcholakov, 17-FEB-2017.
+                if ($base == 'models/' AND is_file($fullpath.ucfirst($file_ext))) {
+                    return array($fullpath, ucfirst($file));
+                }
+                //
+
                 // Added by Ivan Tcholakov, 31-JAN-2015.
                 if ($base == 'helpers/' && is_file($fullpath.config_item('subclass_prefix').$file_ext)) {
                     return array($fullpath, config_item('subclass_prefix').$file);
