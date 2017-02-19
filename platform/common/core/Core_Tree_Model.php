@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2017
  * @license The MIT License, http://opensource.org/licenses/MIT
  *
  * Code repository: https://github.com/ivantcholakov/codeigniter-base-model
@@ -402,13 +402,15 @@ class Core_Tree_Model extends Core_Model {
 
         $id = (int) $id;
 
-        $result = $this->get_children($id, $select, $where, $order_by, $depth);
+        $cloned = clone($this);
+        $result = $cloned->get_children($id, $select, $where, $order_by, $depth);
 
         if (!empty($result)) {
 
             foreach ($result as $key => $row) {
 
-                $children = $this->get_tree((int) $row[$this->primary_key], $select, $where, $order_by, $depth);
+                $cloned = clone($this);
+                $children = $cloned->get_tree((int) $row[$this->primary_key], $select, $where, $order_by, $depth);
 
                 if (!empty($children)) {
 
