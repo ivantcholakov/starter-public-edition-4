@@ -666,69 +666,6 @@
         ]
     },
     {
-        "name": "php-http/client-common",
-        "version": "v1.4.0",
-        "version_normalized": "1.4.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/php-http/client-common.git",
-            "reference": "3cf7eb93a2e19bded055efff1a267a1fa6d46074"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/php-http/client-common/zipball/3cf7eb93a2e19bded055efff1a267a1fa6d46074",
-            "reference": "3cf7eb93a2e19bded055efff1a267a1fa6d46074",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.4",
-            "php-http/httplug": "^1.1",
-            "php-http/message": "^1.2",
-            "php-http/message-factory": "^1.0",
-            "symfony/options-resolver": "^2.6 || ^3.0"
-        },
-        "require-dev": {
-            "henrikbjorn/phpspec-code-coverage": "^1.0",
-            "phpspec/phpspec": "^2.4"
-        },
-        "suggest": {
-            "php-http/cache-plugin": "PSR-6 Cache plugin",
-            "php-http/logger-plugin": "PSR-3 Logger plugin",
-            "php-http/stopwatch-plugin": "Symfony Stopwatch plugin"
-        },
-        "time": "2016-11-04T09:19:15+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.5-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Http\\Client\\Common\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Márk Sági-Kazár",
-                "email": "mark.sagikazar@gmail.com"
-            }
-        ],
-        "description": "Common HTTP Client implementations and tools for HTTPlug",
-        "homepage": "http://httplug.io",
-        "keywords": [
-            "client",
-            "common",
-            "http",
-            "httplug"
-        ]
-    },
-    {
         "name": "xamin/handlebars.php",
         "version": "v0.10.4",
         "version_normalized": "0.10.4.0",
@@ -820,66 +757,6 @@
             "csprng",
             "pseudorandom",
             "random"
-        ]
-    },
-    {
-        "name": "guzzlehttp/psr7",
-        "version": "1.3.1",
-        "version_normalized": "1.3.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/guzzle/psr7.git",
-            "reference": "5c6447c9df362e8f8093bda8f5d8873fe5c7f65b"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/guzzle/psr7/zipball/5c6447c9df362e8f8093bda8f5d8873fe5c7f65b",
-            "reference": "5c6447c9df362e8f8093bda8f5d8873fe5c7f65b",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.4.0",
-            "psr/http-message": "~1.0"
-        },
-        "provide": {
-            "psr/http-message-implementation": "1.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~4.0"
-        },
-        "time": "2016-06-24T23:00:38+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.4-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "GuzzleHttp\\Psr7\\": "src/"
-            },
-            "files": [
-                "src/functions_include.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Michael Dowling",
-                "email": "mtdowling@gmail.com",
-                "homepage": "https://github.com/mtdowling"
-            }
-        ],
-        "description": "PSR-7 message implementation",
-        "keywords": [
-            "http",
-            "message",
-            "stream",
-            "uri"
         ]
     },
     {
@@ -1999,6 +1876,136 @@
             "config",
             "configuration",
             "options"
+        ]
+    },
+    {
+        "name": "php-http/client-common",
+        "version": "v1.4.1",
+        "version_normalized": "1.4.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/php-http/client-common.git",
+            "reference": "6027a1d59064c11c614a9aa2b5e3b800add4d878"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/php-http/client-common/zipball/6027a1d59064c11c614a9aa2b5e3b800add4d878",
+            "reference": "6027a1d59064c11c614a9aa2b5e3b800add4d878",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4",
+            "php-http/httplug": "^1.1",
+            "php-http/message": "^1.2",
+            "php-http/message-factory": "^1.0",
+            "symfony/options-resolver": "^2.6 || ^3.0"
+        },
+        "require-dev": {
+            "henrikbjorn/phpspec-code-coverage": "^1.0",
+            "phpspec/phpspec": "^2.4"
+        },
+        "suggest": {
+            "php-http/cache-plugin": "PSR-6 Cache plugin",
+            "php-http/logger-plugin": "PSR-3 Logger plugin",
+            "php-http/stopwatch-plugin": "Symfony Stopwatch plugin"
+        },
+        "time": "2017-02-20T14:20:20+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.5-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Http\\Client\\Common\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Márk Sági-Kazár",
+                "email": "mark.sagikazar@gmail.com"
+            }
+        ],
+        "description": "Common HTTP Client implementations and tools for HTTPlug",
+        "homepage": "http://httplug.io",
+        "keywords": [
+            "client",
+            "common",
+            "http",
+            "httplug"
+        ]
+    },
+    {
+        "name": "guzzlehttp/psr7",
+        "version": "1.4.0",
+        "version_normalized": "1.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/guzzle/psr7.git",
+            "reference": "04a6d1a00ea5da0727ee94309a9f0d3dbaecb569"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/guzzle/psr7/zipball/04a6d1a00ea5da0727ee94309a9f0d3dbaecb569",
+            "reference": "04a6d1a00ea5da0727ee94309a9f0d3dbaecb569",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0",
+            "psr/http-message": "~1.0"
+        },
+        "provide": {
+            "psr/http-message-implementation": "1.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.0"
+        },
+        "time": "2017-02-21T01:20:32+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "GuzzleHttp\\Psr7\\": "src/"
+            },
+            "files": [
+                "src/functions_include.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Michael Dowling",
+                "email": "mtdowling@gmail.com",
+                "homepage": "https://github.com/mtdowling"
+            },
+            {
+                "name": "Tobias Schultze",
+                "homepage": "https://github.com/Tobion"
+            }
+        ],
+        "description": "PSR-7 message implementation that also provides common utility methods",
+        "keywords": [
+            "http",
+            "message",
+            "request",
+            "response",
+            "stream",
+            "uri",
+            "url"
         ]
     }
 ]
