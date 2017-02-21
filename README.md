@@ -489,6 +489,7 @@ Reported by Webnice Ltd., http://webnicebg.com
 * http://ruseplasticsurgery.com - plastic surgery
 * http://tciships.com/ - logistics
 * http://matracimore.com - a provider of mattresses
+* http://freshway-bg.com - an air fresheners provider
 
 Reported by Krishna Guragai, @krishnaguragain
 
