@@ -216,6 +216,13 @@ class Core_Model extends CI_Model
     protected $lang_model_name = NULL;
 
     /**
+     * The location string (optional) of the language model that is to serve language translations.
+     * This is commonly to be used when the language model name is aliased or
+     * when the language model is located within a module.
+     */
+    protected $lang_model_location = NULL;
+
+    /**
      * The instance of the language model that is to serve language translations.
      * See Core_Lang_Model.
      */
@@ -271,7 +278,12 @@ class Core_Model extends CI_Model
 
         if ($this->lang_model_name != '') {
 
-            $this->load->model($this->lang_model_name);
+            if ($this->lang_model_location != '') {
+                $this->load->model($this->lang_model_location, $this->lang_model_name);
+            } else {
+                $this->load->model($this->lang_model_name);
+            }
+
             $this->lang_model = $this->{$this->lang_model_name};
         }
     }
