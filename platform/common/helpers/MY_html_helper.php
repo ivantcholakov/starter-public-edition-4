@@ -2,7 +2,7 @@
 
 /**
  * Alternative and additional html helper functions
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013-2015
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013-2017
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -195,6 +195,58 @@ $(function () {
         ob_end_clean();
 
         return $result;
+    }
+
+}
+
+if (!function_exists('gmap_embed')) {
+
+    /**
+     * Shows within an iframe a simple Google Map at a given location and puts a marker on it.
+     * No JavaScript is used.
+     *
+     * @param   float       $latitude           The location's latitude.
+     * @param   float       $longitude          The location's longitude.
+     * @param   int         $zoom               The map zooming.
+     * @param   boolean     $show_marker        TRUE - show a marker at the location, FALSE - don't show a marker.
+     * @param   string      $marker_name        The name associated with the marker (an address for example)
+     * @param   string/array $attributes        iframe attributes
+     * @return  string                          Returns an iframe for displaying the map.
+     *
+     * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2017
+     * @license The MIT License, http://opensource.org/licenses/MIT
+     */
+    function gmap_embed($latitude, $longitude, $zoom = null, $show_marker = true, $marker_name = null, $attributes = null) {
+
+        $latitude = trim($latitude);
+        $longitude = trim($longitude);
+
+        if ($latitude == '' || !is_numeric($latitude) || $longitude == '' || !is_numeric($longitude)) {
+            return;
+        }
+
+        $zoom = (int) $zoom;
+
+        if ($zoom <= 0) {
+            $zoom = 1;
+        }
+
+        $show_marker = !empty($show_marker);
+        $marker_name = @ (string) $marker_name;
+
+        $query = array(
+            'll' => $latitude.','.$longitude,
+            'sll' => $latitude.','.$longitude,
+            'z' => $zoom,
+            'output' => 'embed',
+            'ie' => 'UTF8',
+        );
+
+        if ($show_marker) {
+            $query = array_merge(array('q' => $latitude.','.$longitude), $query);
+        }
+
+        return '<iframe src="'.html_attr_escape('https://maps.google.com/maps?'.http_build_query($query)).'" '.html_attr_merge('width="100%" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"', $attributes).'></iframe>';
     }
 
 }
