@@ -382,12 +382,13 @@ if (!function_exists('gmap_url')) {
      * @param   float       $longitude          The location's longitude.
      * @param   int         $zoom               The map zooming.
      * @param   boolean     $show_marker        TRUE - show a marker at the location, FALSE - don't show a marker.
+     * @param   string      $marker_name        The name associated with the marker (an address for example)
      * @return  string                          Returns a link to be opened with a browser.
      *
-     * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015
+     * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015-2017
      * @license The MIT License, http://opensource.org/licenses/MIT
      */
-    function gmap_url($latitude, $longitude, $zoom = null, $show_marker = true) {
+    function gmap_url($latitude, $longitude, $zoom = null, $show_marker = true, $marker_name = null) {
 
         $latitude = trim($latitude);
         $longitude = trim($longitude);
@@ -403,10 +404,20 @@ if (!function_exists('gmap_url')) {
         }
 
         $show_marker = !empty($show_marker);
+        $marker_name = @ (string) $marker_name;
 
         if ($show_marker) {
-            $result = "https://www.google.com/maps/place/$latitude+$longitude/@$latitude,$longitude,{$zoom}z";
+
+            if ($marker_name == '') {
+                $marker_name = "$latitude,$longitude";
+            }
+
+            $marker_name = urlencode($marker_name);
+
+            $result = "https://www.google.com/maps/place/$marker_name/@$latitude,$longitude,{$zoom}z";
+
         } else {
+
             $result = "https://www.google.com/maps/@$latitude,$longitude,{$zoom}z";
         }
 
