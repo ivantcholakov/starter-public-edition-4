@@ -34,6 +34,7 @@ $config['helpers'] = array(
     'language_extra',
     'template',
     'text',
+    'html',
     'url',
     'file',
 );
