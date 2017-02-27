@@ -7,7 +7,7 @@
         "paragonie/random_compat": "^2.0.2",
         "fg/multiplayer": "^1.2.1",
         "facebook/php-sdk-v4" : "~5.0",
-        "leafo/scssphp": "0.6.6",
+        "leafo/scssphp": "0.6.7",
         "guzzlehttp/guzzle": "~6.0",
         "whichbrowser/parser": "~2.0.24",
         "erusev/parsedown": "^1.6",
