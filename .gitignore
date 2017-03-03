@@ -21,6 +21,11 @@ platform/writable/*
 !platform/writable/.htaccess
 !platform/writable/index.html
 
+platform/upload/*
+!platform/upload/.htaccess
+!platform/upload/index.html
+!platform/upload/userphotos/.gitkeep
+
 www/editor/*
 !www/editor/.gitkeep
 
