@@ -1,0 +1,32 @@
+{
+    "name": "yohang88/letter-avatar",
+    "description": "Generate user avatar using name initials letter.",
+    "keywords": [
+        "letter avatar",
+        "avatar",
+        "profile picture"
+    ],
+    "homepage": "https://github.com/yohang88/letter-avatar",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yoga Hanggara",
+            "email": "yohang88@gmail.com",
+            "homepage": "https://yohang.net",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : ">=5.5.0",
+        "intervention/image": "^2.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*",
+        "scrutinizer/ocular": "~1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "YoHang88\\LetterAvatar\\": "src/"
+        }
+    }
+}

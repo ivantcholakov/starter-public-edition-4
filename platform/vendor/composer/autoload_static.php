@@ -22,6 +22,10 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
         array (
             't1st3\\' => 6,
         ),
+        'Y' => 
+        array (
+            'YoHang88\\LetterAvatar\\' => 22,
+        ),
         'W' => 
         array (
             'WhichBrowser\\' => 13,
@@ -48,6 +52,10 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
         'L' => 
         array (
             'Leafo\\ScssPhp\\' => 14,
+        ),
+        'I' => 
+        array (
+            'Intervention\\Image\\' => 19,
         ),
         'H' => 
         array (
@@ -79,6 +87,10 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
         't1st3\\' => 
         array (
             0 => __DIR__ . '/..' . '/t1st3/php-json-minify/src/t1st3',
+        ),
+        'YoHang88\\LetterAvatar\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yohang88/letter-avatar/src',
         ),
         'WhichBrowser\\' => 
         array (
@@ -116,6 +128,10 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
         'Leafo\\ScssPhp\\' => 
         array (
             0 => __DIR__ . '/..' . '/leafo/scssphp/src',
+        ),
+        'Intervention\\Image\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image',
         ),
         'Http\\Promise\\' => 
         array (
