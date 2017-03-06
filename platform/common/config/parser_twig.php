@@ -65,6 +65,7 @@ $config['functions'] = array(
     'file_exists',
     // CodeIgniter's Helpers
     array('is_https', 'is_https', array('is_safe' => array('html'))),
+    array('is_php', 'is_php', array('is_safe' => array('html'))),
     // Session
     array('session', array('Parser_Twig_Extension_Session', 'session')),
     array('session_flash', array('Parser_Twig_Extension_Session', 'session_flash')),
