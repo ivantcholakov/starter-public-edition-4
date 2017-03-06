@@ -31,6 +31,13 @@ if (!function_exists('redirect'))
         switch ($method)
         {
             case 'refresh':
+                // Added by Ivan Tcholakov, 06-MAR-2017. This is a workaround.
+                header('Expires: Sat, 01 Jan 2000 00:00:01 GMT', true);
+                header('Cache-Control: no-store, no-cache, must-revalidate', true);
+                header('Cache-Control: post-check=0, pre-check=0, max-age=0', false);
+                header('Last-Modified: ' . gmdate( 'D, d M Y H:i:s' ) . ' GMT', true);
+                header('Pragma: no-cache', true);
+                //
                 header('Refresh:0;url='.$uri);
                 break;
             default:
