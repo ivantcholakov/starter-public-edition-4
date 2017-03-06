@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2017
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -12,18 +12,13 @@ if (!function_exists('img')) {
 
 if (!function_exists('display_user')) {
 
-    function display_user($user_id, $photo_size = null, $attributes = null, $show_names = true) {
+    function display_user($user_id, $photo_size = null, $attributes = null, $show_names = true, $show_title = true) {
 
         $ci = get_instance();
         $ci->load->model('users');
         $ci->load->model('user_photo');
 
         $user_id = (int) $user_id;
-        $photo_size = (int) $photo_size;
-
-        if ($photo_size <= 0) {
-            $photo_size = 24;
-        }
 
         $user = $ci->users->with_deleted()->get($user_id);
 
@@ -31,16 +26,29 @@ if (!function_exists('display_user')) {
             return null;
         }
 
-        $attributes = _stringify_attributes($attributes);
+        if ($photo_size !== false) {
 
-        if (!$show_names) {
-            $attributes .= ' title="'.html_escape($user['first_name'].' '.$user['last_name'].' ('.$user['username'].')').'"';
-        }
+            $photo_size = (int) $photo_size;
 
-        $result = img($ci->user_photo->get($user, $photo_size), false, $attributes);
+            if ($photo_size <= 0) {
+                $photo_size = 32;
+            }
 
-        if ($show_names) {
-            $result .= ' '.$user['first_name'].' '.$user['last_name'].' ('.$user['username'].')';
+            $attributes = _stringify_attributes($attributes);
+
+            if (!$show_names && $show_title) {
+                $attributes .= ' title="'.html_escape($user['first_name'].' '.$user['last_name'].' ('.$user['username'].')').'"';
+            }
+
+            $result = img($ci->user_photo->get($user, $photo_size), false, $attributes);
+
+            if ($show_names) {
+                $result .= ' '.$user['first_name'].' '.$user['last_name'].' ('.$user['username'].')';
+            }
+
+        } else {
+
+            $result = $user['first_name'].' '.$user['last_name'].' ('.$user['username'].')';
         }
 
         return $result;
@@ -50,9 +58,18 @@ if (!function_exists('display_user')) {
 
 if (!function_exists('display_user_photo')) {
 
-    function display_user_photo($user_id, $photo_size = null, $attributes = null) {
+    function display_user_photo($user_id, $photo_size = null, $attributes = null, $show_title = true) {
 
-        return display_user($user_id, $photo_size, $attributes, false);
+        return display_user($user_id, $photo_size, $attributes, false, $show_title);
+    }
+
+}
+
+if (!function_exists('display_user_names')) {
+
+    function display_user_names($user_id) {
+
+        return display_user($user_id, false, null, false, false);
     }
 
 }
