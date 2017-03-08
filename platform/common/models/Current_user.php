@@ -473,4 +473,34 @@ class Current_user extends CI_Model {
         return $this->users->photo($this->get(), $options);
     }
 
+    /**
+     * Checks whether the currently logged in user id is equal to the given user id.
+     */
+    public function is($user_id) {
+
+        if (!ctype_digit(@ (string) $user_id) ) {
+            return false;
+        }
+
+        return $this->user_id !== null && $this->user_id == (int) $user_id;
+    }
+
+    /**
+     * Checks whether the current user is a member of specified groups.
+     */
+    public function is_group_member($group_ids) {
+
+        if (!is_array($group_ids)) {
+            $group_ids = array($group_ids);
+        }
+
+        $group_id = isset($this->data['group_id']) ? (int) $this->data['group_id'] : null;
+
+        if (!isset($group_id)) {
+            return false;
+        }
+
+        return in_array($group_id, $group_ids);
+    }
+
 }
