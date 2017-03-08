@@ -254,3 +254,4 @@ $lang['ui_save_note_1'] = 'Data for the corresponding language will be saved aft
 $lang['ui_example'] = 'Example';
 $lang['ui_examples'] = 'Examples';
 $lang['ui_unknown'] = 'Unknown';
+$lang['ui_access_denied'] = 'Access denied, no authorization exists.';
