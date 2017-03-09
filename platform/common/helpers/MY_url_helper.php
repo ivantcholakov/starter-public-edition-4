@@ -274,7 +274,7 @@ if ( ! function_exists('auto_link'))
         // Find and replace any URLs.
         // Modified by Ivan Tcholakov, 19-DEC-2013.
         //if ($type !== 'email' && preg_match_all('#(\w*://|www\.)[^\s()<>;]+\w#i', $str, $matches, PREG_OFFSET_CAPTURE | PREG_SET_ORDER))
-        if ($type !== 'email' && preg_match_all('#(\w*://|www\.)[^\s()<>;]+(\w|/)#ui', $str, $matches, PREG_OFFSET_CAPTURE | PREG_SET_ORDER))
+        if ($type !== 'email' && preg_match_all('#(\w*://|www\.)[^\s()<>;]+(\w|/)#i'.(UTF8_ENABLED ? 'u' : ''), $str, $matches, PREG_OFFSET_CAPTURE | PREG_SET_ORDER))
         //
         {
             // We process the links in reverse order (last -> first) so that
