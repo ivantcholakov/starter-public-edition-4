@@ -246,14 +246,6 @@ if ( ! function_exists('auto_link'))
      */
     function auto_link($str, $type = 'both', $attributes = '')
     {
-        static $html_helper_loaded = null;
-
-        if ($html_helper_loaded !== true)
-        {
-            get_instance()->load->helper('html');
-            $html_helper_loaded = true;
-        }
-
         // MAKE THE THIRD ARGUMENT BACKWARD COMPATIBLE
         // here we deal with the original third argument $pop
         // which could be TRUE or FALSE, and was FALSE by default.
@@ -268,11 +260,11 @@ if ( ! function_exists('auto_link'))
 
         if (!empty($attributes))
         {
-            $attributes = html_attr($attributes);
+            $attributes = _stringify_attributes($attributes);
         }
 
         // Find and replace any URLs.
-        // Modified by Ivan Tcholakov, 19-DEC-2013.
+        // Modified by Ivan Tcholakov, 19-DEC-2013, 09-MAR-2017.
         //if ($type !== 'email' && preg_match_all('#(\w*://|www\.)[^\s()<>;]+\w#i', $str, $matches, PREG_OFFSET_CAPTURE | PREG_SET_ORDER))
         if ($type !== 'email' && preg_match_all('#(\w*://|www\.)[^\s()<>;]+(\w|/)#i'.(UTF8_ENABLED ? 'u' : ''), $str, $matches, PREG_OFFSET_CAPTURE | PREG_SET_ORDER))
         //
