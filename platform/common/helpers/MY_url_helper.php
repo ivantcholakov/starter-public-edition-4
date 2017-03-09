@@ -233,7 +233,7 @@ if ( ! function_exists('auto_link'))
      * use:  auto_link($string, 'email', array('class' => 'email_link' , 'style' => 'color:red;'));
      * use(legacy): auto_link($string, 'url' , TRUE);
      *
-     * @link https://github.com/EllisLab/CodeIgniter/wiki/auto-link
+     * @link https://github.com/bcit-ci/CodeIgniter/wiki/auto-link
      * @author Derek Jones (original author)
      * @author Ivan Tcholakov (adaptation)
      *
