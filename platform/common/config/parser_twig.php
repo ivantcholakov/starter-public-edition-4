@@ -215,6 +215,7 @@ $config['filters'] = array(
     array('strpos', 'strpos', array('is_safe' => array('html'))),
     array('wordwrap', array('Parser_Twig_Extension_Php', 'wordwrap')),
     array('array_plus', array('Parser_Twig_Extension_Php', 'array_plus')),
+    array('array_replace', array('Parser_Twig_Extension_Php', 'array_replace')),
     // CodeIgniter's Helpers
     'character_limiter',
     'ellipsize',

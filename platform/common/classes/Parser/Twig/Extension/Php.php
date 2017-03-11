@@ -79,4 +79,21 @@ class Parser_Twig_Extension_Php {
         return $arr1 + $arr2;
     }
 
+    public static function array_replace($arr1, $arr2) {
+
+        if ($arr1 instanceof Traversable) {
+            $arr1 = iterator_to_array($arr1);
+        } elseif (!is_array($arr1)) {
+            throw new Twig_Error_Runtime(sprintf('The array_plus filter only works with arrays or "Traversable", got "%s" as first argument.', gettype($arr1)));
+        }
+
+        if ($arr2 instanceof Traversable) {
+            $arr2 = iterator_to_array($arr2);
+        } elseif (!is_array($arr2)) {
+            throw new Twig_Error_Runtime(sprintf('The array_plus filter only works with arrays or "Traversable", got "%s" as second argument.', gettype($arr2)));
+        }
+
+        return array_replace($arr1, $arr2);
+    }
+
 }
