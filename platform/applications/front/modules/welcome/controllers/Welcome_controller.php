@@ -47,6 +47,11 @@ class Welcome_controller extends Base_Controller {
                     'path' => PUBLIC_CACHE_PATH,
                     'is_writable' => NULL
                 ),
+            'www/editor/' =>
+                array(
+                    'path' => DEFAULTFCPATH.'editor/',
+                    'is_writable' => NULL
+                ),
         );
 
         foreach ($writable_folders as $key => $folder) {
