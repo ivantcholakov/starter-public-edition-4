@@ -9,13 +9,13 @@
 
                     <div class="ui dropdown item">
 
-                            {% if item_active['flag'] is not empty %}{{ image('lib/flags-iso/flat/24/' ~ item_active['flag'] ~ '.png', 'class="ui middle aligned umage"') }}{% else %}{{ item_active['label'] }}{% endif %}
+                            {% if item_active['flag'] is not empty %}{{ image('lib/flags-iso/flat/24/' ~ item_active['flag'] ~ '.png', 'class="ui middle aligned image" style="max-width: inherit !important;"') }}{% else %}{{ item_active['label'] }}{% endif %}
                             <i class="dropdown icon"></i>
 
                             <div class="menu">
 
         {% for item in language_switcher %}
-                                <a class="item{% if item['active'] is not empty %} active {% endif %}" href="{{ item['link'] }}">{% if item['flag'] is not empty %}{{ image('lib/flags-iso/flat/24/' ~ item['flag'] ~ '.png', 'class="ui middle aligned umage"') }} {{ item['label'] }}{% else %}{{ item['label'] }}{% endif %}</a>
+                                <a class="item{% if item['active'] is not empty %} active {% endif %}" href="{{ item['link'] }}">{% if item['flag'] is not empty %}{{ image('lib/flags-iso/flat/24/' ~ item['flag'] ~ '.png', 'class="ui middle aligned image" style="max-width: inherit !important;"') }} {{ item['label'] }}{% else %}{{ item['label'] }}{% endif %}</a>
         {% endfor %}
 
                             </div>
