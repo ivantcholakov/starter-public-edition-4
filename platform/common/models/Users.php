@@ -302,7 +302,7 @@ class Users extends Core_Model {
     }
 
     // Use the following methods outside cycles for not increasing database
-    // queries number too much, use them for testing for example..
+    // queries number too much, use them for testing for example.
     //
     // For getting several properties simultaneously the following example is more effective:
     //
