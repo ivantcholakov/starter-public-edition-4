@@ -1,7 +1,8 @@
-HTML Purifier 4.9.0 is a bugfix release, collecting a half year of
-accumulated bug fixes.  A nice user-visible fix is that embedded
-semicolons in CSS strings are now handled correctly; this should
-make it possible to embed data URLs inside CSS (when they are
-enabled).  Other helpful bugfixes are better URL handling when
-idn_to_ascii() is defined, as well as less chmod'ing with the Serializer
-cache.
+HTML Purifier 4.9.0 is a maintenance release, collecting a year
+of accumulated bug fixes plus a few new feature.  New features
+include support for min/max-width/height CSS, and rgba/hsl/hsla
+in color specifications.  Major bugfixes include improvements
+in the Serializer cache to avoid chmod'ing directories, better
+entity decoding (we won't accidentally encode entities that occur
+in URLs) and rel="noopener" on links with target attributes,
+to prevent them from overwriting the original frame.
