@@ -47,6 +47,7 @@ After such a rearrangement open the file config.php (www/config.php before rearr
 The following directories (the locations are the original) must have writable access:
 
 ```
+platform/upload/
 platform/writable/
 www/cache/
 www/editor/
