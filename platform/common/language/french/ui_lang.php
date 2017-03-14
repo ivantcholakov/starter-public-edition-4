@@ -265,3 +265,5 @@ $lang['ui_users'] = 'Users';
 $lang['ui_user'] = 'User';
 $lang['ui_administrators'] = 'Administrators';
 $lang['ui_operators'] = 'Operators';
+$lang['ui_save_and_exit'] = 'Save & Exit';
+$lang['ui_save_and_close'] = 'Save & Close';

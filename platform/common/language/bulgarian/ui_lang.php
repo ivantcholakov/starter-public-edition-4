@@ -265,3 +265,5 @@ $lang['ui_users'] = 'Потребители';
 $lang['ui_user'] = 'Потребител';
 $lang['ui_administrators'] = 'Администратори';
 $lang['ui_operators'] = 'Оператори';
+$lang['ui_save_and_exit'] = 'Запис и изход';
+$lang['ui_save_and_close'] = 'Запис и затваряне';
