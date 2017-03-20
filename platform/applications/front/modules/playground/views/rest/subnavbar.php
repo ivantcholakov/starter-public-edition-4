@@ -11,7 +11,7 @@ if (!isset($subnavbar_item_active)) {
 
 ?>
 
-                <div class="ui secondary stackable menu">
+                <div class="ui secondary stackable wrappable menu">
                     <a class="<?php if ($subnavbar_item_active == 'restserver') { ?>active <?php } ?>item" href="<?php echo site_url('playground/rest/server'); ?>">REST Server</a>
                     <a class="<?php if ($subnavbar_item_active == 'curl') { ?>active <?php } ?>item" href="<?php echo site_url('playground/rest/curl'); ?>">Curl Library</a>
                     <a class="<?php if ($subnavbar_item_active == 'restclient') { ?>active <?php } ?>item" href="<?php echo site_url('playground/rest/client'); ?>">Rest Client Library</a>
