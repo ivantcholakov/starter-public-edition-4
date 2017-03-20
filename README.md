@@ -493,6 +493,8 @@ Reported by Webnice Ltd., http://webnicebg.com
 * http://tciships.com/ - logistics
 * http://matracimore.com - a provider of mattresses
 * http://freshway-bg.com - an air fresheners provider
+* http://rosifashion.com - a womenswear provider
+* http://shop.rosifashion.com - a womenswear shop
 
 Reported by Krishna Guragai, @krishnaguragain
 
