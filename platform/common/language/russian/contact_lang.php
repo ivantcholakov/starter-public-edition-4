@@ -5,22 +5,22 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$lang['contact_send_us_a_message'] = 'Send Us a Message';
-$lang['contact_subject'] = 'Subject';
-$lang['contact_message'] = 'Message';
-$lang['contact_send_message'] = 'Send message';
-$lang['contact_our_location'] = 'Our Location';
-$lang['contact'] = 'Contact Information';
-$lang['contact_name'] = 'Name';
-$lang['contact_first_name'] = 'First name';
-$lang['contact_last_name'] = 'Last name';
-$lang['contact_person'] = 'Contact person';
-$lang['contact_organization'] = 'Organization';
-$lang['contact_address'] = 'Address';
-$lang['contact_map'] = 'Map';
-$lang['contact_location'] = 'Location';
-$lang['contact_email'] = 'E-mail';
-$lang['contact_phone'] = 'Phone';
+$lang['contact_send_us_a_message'] = 'Отправьте нам сообщение';
+$lang['contact_subject'] = 'Тема';
+$lang['contact_message'] = 'Сообщение';
+$lang['contact_send_message'] = 'Отправить сообщение';
+$lang['contact_our_location'] = 'Наше место нахождения';
+$lang['contact'] = 'Контактная информация';
+$lang['contact_name'] = 'Имя';
+$lang['contact_first_name'] = 'Имя';
+$lang['contact_last_name'] = 'Фамилия';
+$lang['contact_person'] = 'Контактное лицо';
+$lang['contact_organization'] = 'Организация';
+$lang['contact_address'] = 'Адрес';
+$lang['contact_map'] = 'Kарта';
+$lang['contact_location'] = 'Место нахождения';
+$lang['contact_email'] = 'Электронная почта';
+$lang['contact_phone'] = 'Телефон';
 $lang['contact_fax'] = 'Fax';
 $lang['contact_web_site'] = 'Web-site';
 $lang['contact_facebook'] = 'Facebook';
