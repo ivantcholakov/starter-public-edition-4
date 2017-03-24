@@ -474,6 +474,7 @@ Real Life Usage
 * http://iridadesign.com (we), designer: Irina Stancheva
 * http://profitherm.bg - water pumps supplier, designer: Irina Stancheva (Semantic UI based design)
 * http://art-tochka.com/ - an online shop, gifts, migrated from starter-public-edition-3, designer: Irina Stancheva (still Bootstrap-based design)
+* http://viapontica123.bg - a small hotel, designer: Irina Stancheva
 
 Reported by Webnice Ltd., http://webnicebg.com
 
