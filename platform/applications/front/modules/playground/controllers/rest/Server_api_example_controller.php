@@ -49,6 +49,8 @@ class Server_api_example_controller extends REST_Controller {
             {
                 // Set the response and exit
                 $this->response($users, REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
+
+                return;
             }
             else
             {
@@ -57,6 +59,8 @@ class Server_api_example_controller extends REST_Controller {
                     'status' => FALSE,
                     'message' => 'No users were found'
                 ), REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
+
+                return;
             }
         }
 
@@ -69,6 +73,8 @@ class Server_api_example_controller extends REST_Controller {
         {
             // Invalid id, set the response and exit.
             $this->response(NULL, REST_Controller::HTTP_BAD_REQUEST); // BAD_REQUEST (400) being the HTTP response code
+
+            return;
         }
 
         // Get the user from the array, using the id as key for retrieval.
@@ -122,6 +128,8 @@ class Server_api_example_controller extends REST_Controller {
         {
             // Set the response and exit
             $this->response(NULL, REST_Controller::HTTP_BAD_REQUEST); // BAD_REQUEST (400) being the HTTP response code
+
+            return;
         }
 
         // $this->some_model->delete_something($id);
