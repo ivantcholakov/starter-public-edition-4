@@ -12,4 +12,5 @@
 */
 
 $autoload['classes'] = array(
+    'Restserver\\Libraries\\REST_Controller' => COMMONPATH.'libraries/REST_Controller.php',
 );

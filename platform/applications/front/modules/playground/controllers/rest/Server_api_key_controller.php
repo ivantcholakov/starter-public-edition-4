@@ -2,6 +2,8 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+use Restserver\Libraries\REST_Controller;
+
 /**
  * Keys Controller
  * This is a basic Key Management REST controller to make and delete keys
