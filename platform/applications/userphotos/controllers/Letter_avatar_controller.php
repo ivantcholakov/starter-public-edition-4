@@ -29,7 +29,10 @@ class Letter_avatar_controller extends Base_Controller {
 
             try {
 
-                $avatar = new \YoHang88\LetterAvatar\LetterAvatar($name, 'square', $size);
+                // Modified by Ivan Tcholakov, 30-APR-2017.
+                //$avatar = new \YoHang88\LetterAvatar\LetterAvatar($name, 'square', $size);
+                $avatar = new LetterAvatar($name, 'square', $size);
+                //
                 $output = $avatar->generate()->response('png', 100);
 
                 $this->output->set_header('Content-type: image/png');
