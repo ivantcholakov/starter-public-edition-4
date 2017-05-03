@@ -37,6 +37,7 @@ $config['helpers'] = array(
     'html',
     'url',
     'file',
+    'countries',
 );
 
 // Extending the Twig parser: Choose Twig extensions to be loaded.
@@ -86,6 +87,7 @@ $config['functions'] = array(
     array('view', array('Parser_Twig_Extension_Platform', 'view'), array('is_safe' => array('html'))),
     array('file_type_icon_fa', 'file_type_icon_fa', array('is_safe' => array('html', 'html_attr', 'js'))),
     array('file_type_icon', 'file_type_icon', array('is_safe' => array('html', 'html_attr', 'js'))),
+    'country_flag',
     // Web Assets
     array('css', array('Parser_Twig_Extension_Asset', 'css'), array('is_safe' => array('html'))),
     'css_path',

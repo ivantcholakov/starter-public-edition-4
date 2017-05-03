@@ -16,6 +16,7 @@ class Datatables_ssp_ajax_controller extends Base_Ajax_Controller {
             ->library('datatable')
             ->model('countries')
             ->helper('url')
+            ->helper('countries')
         ;
     }
 
@@ -74,7 +75,7 @@ class Datatables_ssp_ajax_controller extends Base_Ajax_Controller {
 
     public function _formatter_flag($value, $item) {
 
-        return '<img src="'.BASE_URI.'assets/img/lib/flags-iso/shiny/32/'.$item['code'].'.png" />';
+        return '<img src="'.BASE_URI.'assets/img/lib/flags-iso/shiny/32/'.country_flag($item['code']).'.png" />';
     }
 
     public function _formatter_actions($value, $item) {

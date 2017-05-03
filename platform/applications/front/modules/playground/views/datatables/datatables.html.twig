@@ -43,7 +43,7 @@
                                     <td>{{ item['id'] }}</td>
                                     <td>{{ item['code'] }}</td>
                                     <td>{{ item['name'] }}</td>
-                                    <td><img src="{{ constant('BASE_URI') }}assets/img/lib/flags-iso/shiny/32/{{ item['code'] }}.png" /></td>
+                                    <td><img src="{{ constant('BASE_URI') }}assets/img/lib/flags-iso/shiny/32/{{ country_flag(item['code']) }}.png" /></td>
                                     <td>
                                         <div class="ui icon buttons">
                                             <a href="javascript://" class="compact primary ui icon button" title="{{ lang('ui_edit')|e('html_attr') }}"><i class="write icon"></i></a>
