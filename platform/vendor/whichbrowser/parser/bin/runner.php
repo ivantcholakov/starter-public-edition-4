@@ -55,11 +55,11 @@ switch ($command) {
             $coverage->start('Testrunner');
         }
 
-        $result = Testrunner::compare($files);
+        $result = Testrunner::compare($files, false);
 
         if (in_array('coverage', $options)) {
             $coverage->stop();
-            
+
             $writer = new PHP_CodeCoverage_Report_Clover;
             $writer->process($coverage, 'runner.xml');
 
@@ -80,7 +80,7 @@ switch ($command) {
         break;
 
     case 'compare':
-        $result = Testrunner::compare($files, true);
+        $result = Testrunner::compare($files, false);
 
         if (!$result) {
             echo "\033[0;31mTestrunner failed, please look at runner.log for the details!\033[0m\n\n";

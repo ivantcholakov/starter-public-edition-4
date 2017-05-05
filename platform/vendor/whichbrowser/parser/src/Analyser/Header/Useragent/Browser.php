@@ -240,6 +240,33 @@ trait Browser
                         $this->data->device->type = Constants\DeviceType::HEADSET;
                     }
                 }
+
+                /* Oculus Chromium based browsers */
+                if (preg_match('/OculusBrowser\/([0-9.]*)/u', $ua, $match)) {
+                    $this->data->browser->name = "Oculus Internet";
+                    $this->data->browser->channel = null;
+                    $this->data->browser->stock = true;
+                    $this->data->browser->version = new Version([ 'value' => $match[1], 'details' => 2 ]);
+
+                    if (preg_match('/Mobile VR/', $ua)) {
+                        $this->data->device->manufacturer = 'Samsung';
+                        $this->data->device->model = 'Gear VR';
+                        $this->data->device->type = Constants\DeviceType::HEADSET;
+                    }
+                }
+            } elseif (isset($this->data->os->name) && $this->data->os->name == 'Linux' && preg_match('/SamsungBrowser\/([0-9.]*)/u', $ua, $match)) {
+                $this->data->browser->name = "Samsung Internet";
+                $this->data->browser->channel = null;
+                $this->data->browser->stock = true;
+                $this->data->browser->version = new Version([ 'value' => $match[1] ]);
+
+                $this->data->os->name = 'Android';
+                $this->data->os->version = null;
+
+                $this->data->device->manufacturer = 'Samsung';
+                $this->data->device->model = 'DeX';
+                $this->data->device->identifier = '';
+                $this->data->device->type = Constants\DeviceType::DESKTOP;
             } else {
                 $channel = Data\Chrome::getChannel('desktop', $version);
 
