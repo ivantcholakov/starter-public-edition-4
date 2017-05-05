@@ -238,7 +238,15 @@ class Datatable {
         $this->clear();
 
         if ($as_json) {
-            return json_encode($result);
+
+            $result = json_encode($result);
+
+            // Trigger an exception when json_encode() fails, let us know the cause.
+            // For example, failure is possible when data contains broken UTF-8 strings.
+
+            if (JSON_ERROR_NONE !== json_last_error()) {
+                throw new InvalidArgumentException('json_encode error: ' . json_last_error_msg());
+            }
         }
 
         return $result;
