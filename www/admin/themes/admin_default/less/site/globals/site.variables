@@ -7,3 +7,13 @@
 --------------------*/
 
 @fontName          : 'Open Sans';
+
+/*-------------------
+     Breakpoints
+--------------------*/
+
+@mobileBreakpoint            : 480px;
+@tabletBreakpoint            : 800px;
+@computerBreakpoint          : 1200px;
+@largeMonitorBreakpoint      : 1400px;
+@widescreenMonitorBreakpoint : 1800px;
