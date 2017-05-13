@@ -151,7 +151,7 @@ class CI_DB_Cache {
 		//
 		$filepath = $this->db->cachedir.$segment_one.'+'.$segment_two.'/'.md5($sql);
 
-		if (FALSE === ($cachedata = @file_get_contents($filepath)))
+		if ( ! is_file($filepath) OR FALSE === ($cachedata = file_get_contents($filepath)))
 		{
 			return FALSE;
 		}
