@@ -38,7 +38,16 @@ if (!function_exists('detect_url')) {
 
         if (defined('FCPATH')) {
 
-            $base_url = $server_url . rtrim(preg_replace('/'.preg_quote(str_replace(FCPATH, '', merge_paths(FCPATH, $script_path).'/'), '/').'$/', '', $script_path), '/').'/';
+            $fcpath = FCPATH;
+
+            // Added by Ivan Tcholakov, 17-MAY-2017.
+            // A patch that has been tested on host.bg:
+            if (strpos($script_path, '/~') === 0) {
+                $fcpath = rtrim($fcpath, '/').$script_path;
+            }
+            //
+
+            $base_url = $server_url . rtrim(preg_replace('/'.preg_quote(str_replace($fcpath, '', merge_paths($fcpath, $script_path).'/'), '/').'$/', '', $script_path), '/').'/';
 
         } else {
 
