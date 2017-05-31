@@ -3,7 +3,14 @@
 defined('BASEPATH') OR exit('No direct script access allowed.');
 
 // Created by Ivan Tcholakov, 30-APR-2017.
-// Some colors need to be tweaked.
+// Note, Ivan Tcholakov, 31-MAY-2017:
+// This class was introduced for tweaking some
+// hard-coded color values. Since the original
+// project improved color generation, this class
+// appears not to be needed at the moment. I am
+// going to keep it for backward compatibility
+// and as a way for introducing future patches,
+// if such become needed.
 
 class LetterAvatar extends \YoHang88\LetterAvatar\LetterAvatar {
 
@@ -29,6 +36,7 @@ class LetterAvatar extends \YoHang88\LetterAvatar\LetterAvatar {
         $words = $this->break_words($this->name);
 
         $number_of_word = 1;
+        $this->name_initials = '';
         foreach ($words as $word) {
 
             if ($number_of_word > 2)
@@ -39,21 +47,7 @@ class LetterAvatar extends \YoHang88\LetterAvatar\LetterAvatar {
             $number_of_word++;
         }
 
-        // Modified by Ivan Tcholakov, 30-APR-2017.
-        //$colors = [
-        //    "#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e", "#16a085", "#27ae60", "#2980b9", "#8e44ad", "#2c3e50",
-        //    "#f1c40f", "#e67e22", "#e74c3c", "#ecf0f1", "#95a5a6", "#f39c12", "#d35400", "#c0392b", "#bdc3c7", "#7f8c8d",
-        //];
-        $colors = [
-            "#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e", "#16a085", "#27ae60", "#2980b9", "#8e44ad", "#2c3e50",
-            "#f1c40f", "#e67e22", "#e74c3c", "#afbdc1", "#95a5a6", "#f39c12", "#d35400", "#c0392b", "#bdc3c7", "#7f8c8d",
-        ];
-        //
-
-        $char_index  = ord($this->name_initials[0]) - 64;
-        $color_index = $char_index % 20;
-        $color       = $colors[$color_index];
-
+        $color = $this->stringToColor($this->name);
 
         if ($this->shape == 'circle') {
             $canvas = $this->image_manager->canvas(480, 480);
