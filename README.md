@@ -409,7 +409,6 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * JSMinPlus - a JavaScript minifier, https://github.com/mrclay/minify/blob/2.2.0/min/lib/JSMinPlus.php
 * less.js script for client-side usage (for learning and development purposes, for production compile less assets before deploying), https://github.com/less/less.js
 * Ellipsis (jQuery version) - A plugin to truncate strings that are too long, https://github.com/danbeam/ellipsis/
-* Facebook PHP SDK v5 for CodeIgniter - Library for integration of Facebook PHP SDK v5 with CodeIgniter 3, https://github.com/darkwhispering/facebook-sdk-codeigniter
 * Roave Security Advisories - This package ensures that your application doesn't have installed dependencies with known security vulnerabilities, https://github.com/Roave/SecurityAdvisories
 * Requests for PHP - A HTTP library written in PHP, for human beings, https://github.com/rmccue/Requests, http://requests.ryanmccue.info
 * Pjax jQuery plugin - pushState + ajax = pjax, https://github.com/defunkt/jquery-pjax, http://pjax.herokuapp.com
