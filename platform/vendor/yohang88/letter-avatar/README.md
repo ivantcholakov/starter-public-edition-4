@@ -30,6 +30,9 @@ $avatar = new LetterAvatar('Steven Spielberg');
 // Square Shape, Size 64px
 $avatar = new LetterAvatar('Steven Spielberg', 'square', 64);
 
+// Save Image As PNG/JPEG
+$avatar->saveAs('path/to/filename');
+$avatar->saveAs('path/to/filename', "image/jpeg");
 
 ```
 
