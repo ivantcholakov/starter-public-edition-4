@@ -783,7 +783,7 @@ if (NORMAL_MVC_EXECUTION) {
          * ReflectionMethod::isConstructor() is the ONLY reliable check,
          * knowing which method will be executed as a constructor.
          */
-        elseif ( ! is_callable(array($class, $method)) && strcasecmp($class, $method) === 0)
+        elseif ( ! is_callable(array($class, $method)))
         {
             $reflection = new ReflectionMethod($class, $method);
             if ( ! $reflection->isPublic() OR $reflection->isConstructor())
