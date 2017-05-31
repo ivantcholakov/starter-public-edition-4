@@ -1,0 +1,72 @@
+
+                        <p>Source repository: <a href="https://github.com/yohang88/letter-avatar" target="_blank">https://github.com/yohang88/letter-avatar</a></p>
+
+                        <div class="ui grid stackable two column">
+
+                            <div class="column">
+
+                                <table class="ui celled table">
+
+                                    <tbody>
+
+                                    {% for actor in actors %}
+
+                                        <tr>
+
+                                            <td class='collapsing'>
+                                                <img src="{{ letter_avatar.get(actor['name'], 32)|e('html_attr') }}" class="ui avatar image" />
+                                            </td>
+
+                                            <td>
+                                                {{ actor['name'] }}
+                                            </td>
+
+                                        </tr>
+
+                                    {% endfor %}
+
+                                    <tbody>
+
+                                </table>
+
+                            </div>
+
+                            <div class="column">
+
+                                <div class="ui comments">
+
+                                    {% for actor in actors %}
+
+                                    <div class="comment">
+
+                                        <a class="avatar">
+                                            <img src="{{ letter_avatar.get(actor['name'], 48)|e('html_attr') }}">
+                                        </a>
+
+                                        <div class="content">
+
+                                            <a class="author">{{ actor['name'] }}</a>
+
+                                            <div class="metadata">
+                                                <span class="date">Date</span>
+                                            </div>
+
+                                            <div class="text">
+                                                A comment.
+                                            </div>
+
+                                            <div class="actions">
+                                                <a class="reply">Reply</a>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    {% endfor %}
+
+                                </div>
+
+                            </div>
+
+                        </div>
