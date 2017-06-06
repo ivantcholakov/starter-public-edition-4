@@ -317,7 +317,10 @@ class CI_Session_files_driver extends CI_Session_driver implements SessionHandle
 			if (file_exists($this->_file_path.$session_id))
 			{
 				$this->_cookie_destroy();
-				return unlink($this->_file_path.$session_id)
+				// Modified by Ivan Tcholakov, 21-FEB-2015.
+				//return unlink($this->_file_path.$session_id)
+				return @ unlink($this->_file_path.$session_id)
+				//
 					? $this->_success
 					: $this->_failure;
 			}
@@ -330,7 +333,10 @@ class CI_Session_files_driver extends CI_Session_driver implements SessionHandle
 			if (file_exists($this->_file_path.$session_id))
 			{
 				$this->_cookie_destroy();
-				return unlink($this->_file_path.$session_id)
+				// Modified by Ivan Tcholakov, 21-FEB-2015.
+				//return unlink($this->_file_path.$session_id)
+				return @ unlink($this->_file_path.$session_id)
+				//
 					? $this->_success
 					: $this->_failure;
 			}
@@ -375,13 +381,21 @@ class CI_Session_files_driver extends CI_Session_driver implements SessionHandle
 			// If the filename doesn't match this pattern, it's either not a session file or is not ours
 			if ( ! preg_match($pattern, $file)
 				OR ! is_file($this->_config['save_path'].DIRECTORY_SEPARATOR.$file)
-				OR ($mtime = filemtime($this->_config['save_path'].DIRECTORY_SEPARATOR.$file)) === FALSE
+				// Modified by Ivan Tcholakov, 06-OCT-2014.
+				// See https://github.com/bcit-ci/CodeIgniter/issues/3073
+				//OR ($mtime = filemtime($this->_config['save_path'].DIRECTORY_SEPARATOR.$file)) === FALSE
+				OR ($mtime = @ filemtime($this->_config['save_path'].DIRECTORY_SEPARATOR.$file)) === FALSE
+				//
 				OR $mtime > $ts)
 			{
 				continue;
 			}
 
-			unlink($this->_config['save_path'].DIRECTORY_SEPARATOR.$file);
+			// Modified by Ivan Tcholakov, 06-OCT-2014.
+			// See https://github.com/bcit-ci/CodeIgniter/issues/3073
+			//unlink($this->_config['save_path'].DIRECTORY_SEPARATOR.$file);
+			@ unlink($this->_config['save_path'].DIRECTORY_SEPARATOR.$file);
+			//
 		}
 
 		closedir($directory);
