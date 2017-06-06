@@ -121,7 +121,7 @@ class Core_Exceptions extends CI_Exceptions {
      * @param   string          $message        Error message
      * @param   string          $filepath       File path
      * @param   int             $line           Line number
-     * @return  string                          Error page output
+     * @return  void
      */
     public function show_php_error($severity, $message, $filepath, $line)
     {
