@@ -173,22 +173,16 @@ class CI_Image_lib {
 	public $wm_type			= 'text';
 
 	/**
-	 * X-coordinate of the watermark's pixel which color is to be
-	 * set as transparent within the watermark before merging
-	 * with the source image. The value FALSE forces using only transparency
-	 * information inside the image, if present.
+	 * Default transparency for watermark
 	 *
-	 * @var int/bool
+	 * @var int
 	 */
 	public $wm_x_transp		= 4;
 
 	/**
-	 * Y-coordinate of the watermark's pixel which color is to be
-	 * set as transparent within the watermark before merging
-	 * with the source image. The value FALSE forces using only transparency
-	 * information inside the image, if present.
+	 * Default transparency for watermark
 	 *
-	 * @var int/bool
+	 * @var int
 	 */
 	public $wm_y_transp		= 4;
 
@@ -765,10 +759,7 @@ class CI_Image_lib {
 		{
 			if ($this->source_image !== $this->new_image && @copy($this->full_src_path, $this->full_dst_path))
 			{
-				// Modified by Ivan Tcholakov, 12-APR-2015.
-				//chmod($this->full_dst_path, $this->file_permissions);
-				@chmod($this->full_dst_path, $this->file_permissions);
-				//
+				chmod($this->full_dst_path, $this->file_permissions);
 			}
 
 			return TRUE;
@@ -844,10 +835,7 @@ class CI_Image_lib {
 		imagedestroy($dst_img);
 		imagedestroy($src_img);
 
-		// Modified by Ivan Tcholakov, 12-APR-2015.
-		//chmod($this->full_dst_path, $this->file_permissions);
-		@chmod($this->full_dst_path, $this->file_permissions);
-		//
+		chmod($this->full_dst_path, $this->file_permissions);
 
 		return TRUE;
 	}
@@ -917,10 +905,7 @@ class CI_Image_lib {
 			return FALSE;
 		}
 
-		// Modified by Ivan Tcholakov, 12-APR-2015.
-		//chmod($this->full_dst_path, $this->file_permissions);
-		@chmod($this->full_dst_path, $this->file_permissions);
-		//
+		chmod($this->full_dst_path, $this->file_permissions);
 
 		return TRUE;
 	}
@@ -1008,10 +993,7 @@ class CI_Image_lib {
 		// we have to rename the temp file.
 		copy($this->dest_folder.'netpbm.tmp', $this->full_dst_path);
 		unlink($this->dest_folder.'netpbm.tmp');
-		// Modified by Ivan Tcholakov, 12-APR-2015.
-		//chmod($this->full_dst_path, $this->file_permissions);
-		@chmod($this->full_dst_path, $this->file_permissions);
-		//
+		chmod($this->full_dst_path, $this->file_permissions);
 
 		return TRUE;
 	}
@@ -1055,10 +1037,7 @@ class CI_Image_lib {
 		imagedestroy($dst_img);
 		imagedestroy($src_img);
 
-		// Modified by Ivan Tcholakov, 12-APR-2015.
-		//chmod($this->full_dst_path, $this->file_permissions);
-		@chmod($this->full_dst_path, $this->file_permissions);
-		//
+		chmod($this->full_dst_path, $this->file_permissions);
 
 		return TRUE;
 	}
@@ -1136,10 +1115,7 @@ class CI_Image_lib {
 		// Kill the file handles
 		imagedestroy($src_img);
 
-		// Modified by Ivan Tcholakov, 12-APR-2015.
-		//chmod($this->full_dst_path, $this->file_permissions);
-		@chmod($this->full_dst_path, $this->file_permissions);
-		//
+		chmod($this->full_dst_path, $this->file_permissions);
 
 		return TRUE;
 	}
@@ -1234,7 +1210,7 @@ class CI_Image_lib {
 		}
 
 		// Set RGB values for text and shadow
-		$rgba = imagecolorat($wm_img, (int) $this->wm_x_transp, (int) $this->wm_y_transp);
+		$rgba = imagecolorat($wm_img, $this->wm_x_transp, $this->wm_y_transp);
 		$alpha = ($rgba & 0x7F000000) >> 24;
 
 		// make a best guess as to whether we're dealing with an image with alpha transparency or no/binary transparency
@@ -1245,13 +1221,8 @@ class CI_Image_lib {
 		}
 		else
 		{
-			if ($this->wm_x_transp !== FALSE && $this->wm_y_transp !== FALSE)
-			{
-				// Set our RGB value from above to be transparent.
-				imagecolortransparent($wm_img, imagecolorat($wm_img, $this->wm_x_transp, $this->wm_y_transp));
-			}
-
-			// Merge the images with the specified opacity.
+			// set our RGB value from above to be transparent and merge the images with the specified opacity
+			imagecolortransparent($wm_img, imagecolorat($wm_img, $this->wm_x_transp, $this->wm_y_transp));
 			imagecopymerge($src_img, $wm_img, $x_axis, $y_axis, 0, 0, $wm_width, $wm_height, $this->wm_opacity);
 		}
 
