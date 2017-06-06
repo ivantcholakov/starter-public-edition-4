@@ -200,24 +200,13 @@ class CI_Session {
 			require_once(
 				file_exists(APPPATH.'libraries/Session/Session_driver.php')
 					? APPPATH.'libraries/Session/Session_driver.php'
-					// Modified by Ivan Tcholakov, 12-DEC-2014.
-					//: BASEPATH.'libraries/Session/Session_driver.php'
-					: (file_exists(COMMONPATH.'libraries/Session/Session_driver.php')
-						? COMMONPATH.'libraries/Session/Session_driver.php'
-						: BASEPATH.'libraries/Session/Session_driver.php')
-					//
+					: BASEPATH.'libraries/Session/Session_driver.php'
 			);
 
 			if (file_exists($file_path = APPPATH.'libraries/Session/'.$prefix.'Session_driver.php'))
 			{
 				require_once($file_path);
 			}
-			// Added by Ivan Tcholakov, 12-DEC-2014.
-			elseif (file_exists($file_path = COMMONPATH.'libraries/Session/'.$prefix.'Session_driver.php'))
-			{
-				require_once($file_path);
-			}
-			//
 		}
 
 		$class = 'Session_'.$driver.'_driver';
@@ -231,23 +220,10 @@ class CI_Session {
 				return $class;
 			}
 		}
-		// Added by Ivan Tcholakov, 12-DEC-2014.
-		elseif ( ! class_exists($class, FALSE) && file_exists($file_path = COMMONPATH.'libraries/Session/drivers/'.$class.'.php'))
-		{
-			require_once($file_path);
-			if (class_exists($class, FALSE))
-			{
-				return $class;
-			}
-		}
-		//
 
 		if ( ! class_exists('CI_'.$class, FALSE))
 		{
-			// Modified by Ivan Tcholakov, 12-DEC-2014.
-			//if (file_exists($file_path = APPPATH.'libraries/Session/drivers/'.$class.'.php') OR file_exists($file_path = BASEPATH.'libraries/Session/drivers/'.$class.'.php'))
-			if (file_exists($file_path = APPPATH.'libraries/Session/drivers/'.$class.'.php') OR file_exists($file_path = COMMONPATH.'libraries/Session/drivers/'.$class.'.php') OR file_exists($file_path = BASEPATH.'libraries/Session/drivers/'.$class.'.php'))
-			//
+			if (file_exists($file_path = APPPATH.'libraries/Session/drivers/'.$class.'.php') OR file_exists($file_path = BASEPATH.'libraries/Session/drivers/'.$class.'.php'))
 			{
 				require_once($file_path);
 			}
@@ -258,10 +234,7 @@ class CI_Session {
 			}
 		}
 
-		// Modified by Ivan Tcholakov, 12-DEC-2014.
-		//if ( ! class_exists($prefix.$class, FALSE) && file_exists($file_path = APPPATH.'libraries/Session/drivers/'.$prefix.$class.'.php'))
-		if ( ! class_exists($prefix.$class, FALSE) && (file_exists($file_path = APPPATH.'libraries/Session/drivers/'.$prefix.$class.'.php') OR file_exists($file_path = COMMONPATH.'libraries/Session/drivers/'.$prefix.$class.'.php')))
-		//
+		if ( ! class_exists($prefix.$class, FALSE) && file_exists($file_path = APPPATH.'libraries/Session/drivers/'.$prefix.$class.'.php'))
 		{
 			require_once($file_path);
 			if (class_exists($prefix.$class, FALSE))
