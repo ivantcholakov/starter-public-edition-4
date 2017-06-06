@@ -32,13 +32,13 @@
  * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
- * @since	Version 3.0.0
+ * @since	Version 1.0.0
  * @filesource
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * PDO MySQL Database Adapter Class
+ * MySQL Database Adapter Class
  *
  * Note: _DB is an extender class that the app controller
  * creates dynamically based on whether the query builder
@@ -50,14 +50,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author		EllisLab Dev Team
  * @link		https://codeigniter.com/user_guide/database/
  */
-class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
+class CI_DB_mysql_driver extends CI_DB {
 
 	/**
-	 * Sub-driver
+	 * Database driver
 	 *
 	 * @var	string
 	 */
-	public $subdriver = 'mysql';
+	public $dbdriver = 'mysql';
 
 	/**
 	 * Compression flag
@@ -65,6 +65,17 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
 	 * @var	bool
 	 */
 	public $compress = FALSE;
+
+	/**
+	 * DELETE hack flag
+	 *
+	 * Whether to use the MySQL "delete hack" which allows the number
+	 * of affected rows to be shown. Uses a preg_replace when enabled,
+	 * adding a bit more processing to all queries.
+	 *
+	 * @var	bool
+	 */
+	public $delete_hack = TRUE;
 
 	/**
 	 * Strict ON flag
@@ -89,8 +100,6 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
 	/**
 	 * Class constructor
 	 *
-	 * Builds the DSN if not already set.
-	 *
 	 * @param	array	$params
 	 * @return	void
 	 */
@@ -98,94 +107,101 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
 	{
 		parent::__construct($params);
 
-		if (empty($this->dsn))
+		if ( ! empty($this->port))
 		{
-			$this->dsn = 'mysql:host='.(empty($this->hostname) ? '127.0.0.1' : $this->hostname);
-
-			empty($this->port) OR $this->dsn .= ';port='.$this->port;
-			empty($this->database) OR $this->dsn .= ';dbname='.$this->database;
-			empty($this->char_set) OR $this->dsn .= ';charset='.$this->char_set;
-		}
-		elseif ( ! empty($this->char_set) && strpos($this->dsn, 'charset=', 6) === FALSE)
-		{
-			$this->dsn .= ';charset='.$this->char_set;
+			$this->hostname .= ':'.$this->port;
 		}
 	}
 
 	// --------------------------------------------------------------------
 
 	/**
-	 * Database connection
+	 * Non-persistent database connection
 	 *
 	 * @param	bool	$persistent
-	 * @return	object
+	 * @return	resource
 	 */
 	public function db_connect($persistent = FALSE)
 	{
-		if (isset($this->stricton))
+		$client_flags = ($this->compress === FALSE) ? 0 : MYSQL_CLIENT_COMPRESS;
+
+		if ($this->encrypt === TRUE)
 		{
-			if ($this->stricton)
+			$client_flags = $client_flags | MYSQL_CLIENT_SSL;
+		}
+
+		// Error suppression is necessary mostly due to PHP 5.5+ issuing E_DEPRECATED messages
+		$this->conn_id = ($persistent === TRUE)
+			? mysql_pconnect($this->hostname, $this->username, $this->password, $client_flags)
+			: mysql_connect($this->hostname, $this->username, $this->password, TRUE, $client_flags);
+
+		// ----------------------------------------------------------------
+
+		// Select the DB... assuming a database name is specified in the config file
+		if ($this->database !== '' && ! $this->db_select())
+		{
+			log_message('error', 'Unable to select database: '.$this->database);
+
+			return ($this->db_debug === TRUE)
+				? $this->display_error('db_unable_to_select', $this->database)
+				: FALSE;
+		}
+
+		if (isset($this->stricton) && is_resource($this->conn_id))
+		{
+			// Added by Ivan Tcholakov, 27-JUL-2016.
+			// See https://github.com/bcit-ci/CodeIgniter/issues/4727
+			if (is_string($this->stricton))
 			{
-				$sql = 'CONCAT(@@sql_mode, ",", "STRICT_ALL_TABLES")';
+				$this->simple_query('SET SESSION sql_mode = "'.$this->stricton.'"');
 			}
 			else
 			{
-				$sql = 'REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
-                                        @@sql_mode,
-                                        "STRICT_ALL_TABLES,", ""),
-                                        ",STRICT_ALL_TABLES", ""),
-                                        "STRICT_ALL_TABLES", ""),
-                                        "STRICT_TRANS_TABLES,", ""),
-                                        ",STRICT_TRANS_TABLES", ""),
-                                        "STRICT_TRANS_TABLES", "")';
-			}
+			//
 
-			if ( ! empty($sql))
+			if ($this->stricton)
 			{
-				if (empty($this->options[PDO::MYSQL_ATTR_INIT_COMMAND]))
-				{
-					$this->options[PDO::MYSQL_ATTR_INIT_COMMAND] = 'SET SESSION sql_mode = '.$sql;
-				}
-				else
-				{
-					$this->options[PDO::MYSQL_ATTR_INIT_COMMAND] .= ', @@session.sql_mode = '.$sql;
-				}
+				$this->simple_query('SET SESSION sql_mode = CONCAT(@@sql_mode, ",", "STRICT_ALL_TABLES")');
 			}
+			else
+			{
+				$this->simple_query(
+					'SET SESSION sql_mode =
+					REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+					@@sql_mode,
+					"STRICT_ALL_TABLES,", ""),
+					",STRICT_ALL_TABLES", ""),
+					"STRICT_ALL_TABLES", ""),
+					"STRICT_TRANS_TABLES,", ""),
+					",STRICT_TRANS_TABLES", ""),
+					"STRICT_TRANS_TABLES", "")'
+				);
+			}
+
+			//
+                        }
+			//
 		}
 
-		if ($this->compress === TRUE)
+		return $this->conn_id;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Reconnect
+	 *
+	 * Keep / reestablish the db connection if no queries have been
+	 * sent for a length of time exceeding the server's idle timeout
+	 *
+	 * @return	void
+	 */
+	public function reconnect()
+	{
+		if (mysql_ping($this->conn_id) === FALSE)
 		{
-			$this->options[PDO::MYSQL_ATTR_COMPRESS] = TRUE;
+			$this->conn_id = FALSE;
 		}
-
-		if (is_array($this->encrypt))
-		{
-			$ssl = array();
-			empty($this->encrypt['ssl_key'])    OR $ssl[PDO::MYSQL_ATTR_SSL_KEY]    = $this->encrypt['ssl_key'];
-			empty($this->encrypt['ssl_cert'])   OR $ssl[PDO::MYSQL_ATTR_SSL_CERT]   = $this->encrypt['ssl_cert'];
-			empty($this->encrypt['ssl_ca'])     OR $ssl[PDO::MYSQL_ATTR_SSL_CA]     = $this->encrypt['ssl_ca'];
-			empty($this->encrypt['ssl_capath']) OR $ssl[PDO::MYSQL_ATTR_SSL_CAPATH] = $this->encrypt['ssl_capath'];
-			empty($this->encrypt['ssl_cipher']) OR $ssl[PDO::MYSQL_ATTR_SSL_CIPHER] = $this->encrypt['ssl_cipher'];
-
-			// DO NOT use array_merge() here!
-			// It re-indexes numeric keys and the PDO_MYSQL_ATTR_SSL_* constants are integers.
-			empty($ssl) OR $this->options += $ssl;
-		}
-
-		// Prior to version 5.7.3, MySQL silently downgrades to an unencrypted connection if SSL setup fails
-		if (
-			($pdo = parent::db_connect($persistent)) !== FALSE
-			&& ! empty($ssl)
-			&& version_compare($pdo->getAttribute(PDO::ATTR_CLIENT_VERSION), '5.7.3', '<=')
-			&& empty($pdo->query("SHOW STATUS LIKE 'ssl_cipher'")->fetchObject()->Value)
-		)
-		{
-			$message = 'PDO_MYSQL was configured for an SSL connection, but got an unencrypted connection instead!';
-			log_message('error', $message);
-			return ($this->db_debug) ? $this->display_error($message, '', TRUE) : FALSE;
-		}
-
-		return $pdo;
 	}
 
 	// --------------------------------------------------------------------
@@ -203,7 +219,7 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
 			$database = $this->database;
 		}
 
-		if (FALSE !== $this->simple_query('USE '.$this->escape_identifiers($database)))
+		if (mysql_select_db($database, $this->conn_id))
 		{
 			$this->database = $database;
 			$this->data_cache = array();
@@ -216,14 +232,84 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
 	// --------------------------------------------------------------------
 
 	/**
+	 * Set client character set
+	 *
+	 * @param	string	$charset
+	 * @return	bool
+	 */
+	protected function _db_set_charset($charset)
+	{
+		return mysql_set_charset($charset, $this->conn_id);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Database version number
+	 *
+	 * @return	string
+	 */
+	public function version()
+	{
+		if (isset($this->data_cache['version']))
+		{
+			return $this->data_cache['version'];
+		}
+
+		if ( ! $this->conn_id OR ($version = mysql_get_server_info($this->conn_id)) === FALSE)
+		{
+			return FALSE;
+		}
+
+		return $this->data_cache['version'] = $version;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Execute the query
+	 *
+	 * @param	string	$sql	an SQL query
+	 * @return	mixed
+	 */
+	protected function _execute($sql)
+	{
+		return mysql_query($this->_prep_query($sql), $this->conn_id);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Prep the query
+	 *
+	 * If needed, each database adapter can prep the query string
+	 *
+	 * @param	string	$sql	an SQL query
+	 * @return	string
+	 */
+	protected function _prep_query($sql)
+	{
+		// mysql_affected_rows() returns 0 for "DELETE FROM TABLE" queries. This hack
+		// modifies the query so that it a proper number of affected rows is returned.
+		if ($this->delete_hack === TRUE && preg_match('/^\s*DELETE\s+FROM\s+(\S+)\s*$/i', $sql))
+		{
+			return trim($sql).' WHERE 1=1';
+		}
+
+		return $sql;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
 	 * Begin Transaction
 	 *
 	 * @return	bool
 	 */
 	protected function _trans_begin()
 	{
-		$this->conn_id->setAttribute(PDO::ATTR_AUTOCOMMIT, FALSE);
-		return $this->conn_id->beginTransaction();
+		$this->simple_query('SET AUTOCOMMIT=0');
+		return $this->simple_query('START TRANSACTION'); // can also be BEGIN or BEGIN WORK
 	}
 
 	// --------------------------------------------------------------------
@@ -235,9 +321,9 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
 	 */
 	protected function _trans_commit()
 	{
-		if ($this->conn_id->commit())
+		if ($this->simple_query('COMMIT'))
 		{
-			$this->conn_id->setAttribute(PDO::ATTR_AUTOCOMMIT, TRUE);
+			$this->simple_query('SET AUTOCOMMIT=1');
 			return TRUE;
 		}
 
@@ -253,9 +339,9 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
 	 */
 	protected function _trans_rollback()
 	{
-		if ($this->conn_id->rollBack())
+		if ($this->simple_query('ROLLBACK'))
 		{
-			$this->conn_id->setAttribute(PDO::ATTR_AUTOCOMMIT, TRUE);
+			$this->simple_query('SET AUTOCOMMIT=1');
 			return TRUE;
 		}
 
@@ -265,7 +351,44 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Show table query
+	 * Platform-dependent string escape
+	 *
+	 * @param	string
+	 * @return	string
+	 */
+	protected function _escape_str($str)
+	{
+		return mysql_real_escape_string($str, $this->conn_id);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Affected Rows
+	 *
+	 * @return	int
+	 */
+	public function affected_rows()
+	{
+		return mysql_affected_rows($this->conn_id);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Insert ID
+	 *
+	 * @return	int
+	 */
+	public function insert_id()
+	{
+		return mysql_insert_id($this->conn_id);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * List table query
 	 *
 	 * Generates a platform-specific query string so that the table names can be fetched
 	 *
@@ -274,9 +397,9 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
 	 */
 	protected function _list_tables($prefix_limit = FALSE)
 	{
-		$sql = 'SHOW TABLES';
+		$sql = 'SHOW TABLES FROM '.$this->escape_identifiers($this->database);
 
-		if ($prefix_limit === TRUE && $this->dbprefix !== '')
+		if ($prefix_limit !== FALSE && $this->dbprefix !== '')
 		{
 			return $sql." LIKE '".$this->escape_like_str($this->dbprefix)."%'";
 		}
@@ -336,19 +459,16 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Truncate statement
+	 * Error
 	 *
-	 * Generates a platform-specific truncate string from the supplied data
+	 * Returns an array containing code and message of the last
+	 * database error that has occurred.
 	 *
-	 * If the database does not support the TRUNCATE statement,
-	 * then this method maps to 'DELETE FROM table'
-	 *
-	 * @param	string	$table
-	 * @return	string
+	 * @return	array
 	 */
-	protected function _truncate($table)
+	public function error()
 	{
-		return 'TRUNCATE '.$table;
+		return array('code' => mysql_errno($this->conn_id), 'message' => mysql_error($this->conn_id));
 	}
 
 	// --------------------------------------------------------------------
@@ -369,6 +489,20 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
 		}
 
 		return implode(', ', $this->qb_from);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Close DB Connection
+	 *
+	 * @return	void
+	 */
+	protected function _close()
+	{
+		// Error suppression to avoid annoying E_WARNINGs in cases
+		// where the connection has already been closed for some reason.
+		@mysql_close($this->conn_id);
 	}
 
 }

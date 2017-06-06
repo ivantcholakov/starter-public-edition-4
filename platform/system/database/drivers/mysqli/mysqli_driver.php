@@ -138,16 +138,6 @@ class CI_DB_mysqli_driver extends CI_DB {
 
 		if (isset($this->stricton))
 		{
-			// Added by Ivan Tcholakov, 27-JUL-2016.
-			// See https://github.com/bcit-ci/CodeIgniter/issues/4727
-			if (is_string($this->stricton))
-			{
-				$this->_mysqli->options(MYSQLI_INIT_COMMAND, 'SET SESSION sql_mode = "'.$this->stricton.'"');
-			}
-			else
-			{
-			//
-
 			if ($this->stricton)
 			{
 				$this->_mysqli->options(MYSQLI_INIT_COMMAND, 'SET SESSION sql_mode = CONCAT(@@sql_mode, ",", "STRICT_ALL_TABLES")');
@@ -166,10 +156,6 @@ class CI_DB_mysqli_driver extends CI_DB {
 					"STRICT_TRANS_TABLES", "")'
 				);
 			}
-
-			//
-                        }
-			//
 		}
 
 		if (is_array($this->encrypt))

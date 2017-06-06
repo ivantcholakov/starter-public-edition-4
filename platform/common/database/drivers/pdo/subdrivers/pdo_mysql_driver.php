@@ -124,6 +124,16 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
 	{
 		if (isset($this->stricton))
 		{
+			// Added by Ivan Tcholakov, 27-JUL-2016.
+			// See https://github.com/bcit-ci/CodeIgniter/issues/4727
+			if (is_string($this->stricton))
+			{
+				$sql = '"'.$this->stricton.'"';
+			}
+			else
+			{
+			//
+
 			if ($this->stricton)
 			{
 				$sql = 'CONCAT(@@sql_mode, ",", "STRICT_ALL_TABLES")';
@@ -139,6 +149,10 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver {
                                         ",STRICT_TRANS_TABLES", ""),
                                         "STRICT_TRANS_TABLES", "")';
 			}
+
+			//
+                        }
+			//
 
 			if ( ! empty($sql))
 			{
