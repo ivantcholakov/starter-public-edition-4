@@ -4,9 +4,10 @@
 
 Kratt Tools PRINT_D
 Written by Pertti Soomann, 2014
+https://github.com/vikerlane
 
 Check for latest version and report issues at
-https://github.com/vikerlane/print_d
+https://github.com/CesiumComputer/print_d
 
 Copyright (c) 2014, Pertti Soomann @ Vikerlane
 All rights reserved.
@@ -69,6 +70,7 @@ function print_d($var, $options = false)
 		'type-string' => 'font-weight: bold; max-width: 250px; color: #d00;',
 		'type-boolean' => 'font-weight: bold; max-width: 250px; color: #bbb;',
 		'type-null' => 'font-weight: bold; max-width: 250px; color: #bbb;',
+		'type-resource' => 'font-weight: bold; max-width: 250px; color: #bbb;',
 		'void' => 'font-style: italic; color: #bbb;',
 		'emptystring' => 'color: #bbb; font-style: italic; font-weight: normal;'
 	);
