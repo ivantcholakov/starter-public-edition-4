@@ -53,22 +53,55 @@ function &DB($params = '', $query_builder_override = NULL)
 	// Load the DB config file if a DSN string wasn't passed
 	if (is_string($params) && strpos($params, '://') === FALSE)
 	{
-		// Is the config file in the environment folder?
-		if ( ! file_exists($file_path = APPPATH.'config/'.ENVIRONMENT.'/database.php')
-			&& ! file_exists($file_path = APPPATH.'config/database.php'))
+		// Modified by Ivan Tcholakov, 09-OCT-2013.
+		//// Is the config file in the environment folder?
+		//if ( ! file_exists($file_path = APPPATH.'config/'.ENVIRONMENT.'/database.php')
+		//	&& ! file_exists($file_path = APPPATH.'config/database.php'))
+		//{
+		//	show_error('The configuration file database.php does not exist.');
+		//}
+		//
+		//include($file_path);
+		$config_database_found = false;
+		if (file_exists(COMMONPATH.'config/database.php'))
+		{
+			include COMMONPATH.'config/database.php';
+			$config_database_found = true;
+		}
+		if (file_exists(COMMONPATH.'config/'.ENVIRONMENT.'/database.php'))
+		{
+			include COMMONPATH.'config/'.ENVIRONMENT.'/database.php';
+			$config_database_found = true;
+		}
+		if (file_exists(APPPATH.'config/database.php'))
+		{
+			include APPPATH.'config/database.php';
+			$config_database_found = true;
+		}
+		if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/database.php'))
+		{
+			include APPPATH.'config/'.ENVIRONMENT.'/database.php';
+			$config_database_found = true;
+		}
+		if (!$config_database_found)
 		{
 			show_error('The configuration file database.php does not exist.');
 		}
+		//
 
-		include($file_path);
-
-		// Make packages contain database config files,
-		// given that the controller instance already exists
-		if (class_exists('CI_Controller', FALSE))
+		// Modified by Ivan Tcholakov, 05-FEB-2015.
+		//// Make packages contain database config files,
+		//// given that the controller instance already exists
+		//if (class_exists('CI_Controller', FALSE))
+		if (is_object(get_instance()))
+		//
 		{
 			foreach (get_instance()->load->get_package_paths() as $path)
 			{
-				if ($path !== APPPATH)
+				// Modified by Ivan Tcholakov, 02-OCT-2013.
+				//if ($path !== APPPATH)
+				if ($path !== APPPATH && $path != COMMONPATH)
+				//
 				{
 					if (file_exists($file_path = $path.'config/'.ENVIRONMENT.'/database.php'))
 					{
@@ -82,7 +115,7 @@ function &DB($params = '', $query_builder_override = NULL)
 			}
 		}
 
-		if ( ! isset($db) OR count($db) === 0)
+		if (empty($db))
 		{
 			show_error('No database connection settings were found in the database config file.');
 		}
@@ -164,11 +197,41 @@ function &DB($params = '', $query_builder_override = NULL)
 		$query_builder = $active_record;
 	}
 
-	require_once(BASEPATH.'database/DB_driver.php');
+	// Modified by Ivan Tcholakov, 25-DEC-2013.
+	// See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
+	//require_once(BASEPATH.'database/DB_driver.php');
+	if (file_exists(APPPATH.'database/DB_driver.php'))
+	{
+		require_once(APPPATH.'database/DB_driver.php');
+	}
+	elseif (file_exists(COMMONPATH.'database/DB_driver.php'))
+	{
+		require_once(COMMONPATH.'database/DB_driver.php');
+	}
+	else
+	{
+		require_once(BASEPATH.'database/DB_driver.php');
+	}
+	//
 
 	if ( ! isset($query_builder) OR $query_builder === TRUE)
 	{
-		require_once(BASEPATH.'database/DB_query_builder.php');
+		// Modified by Ivan Tcholakov, 25-DEC-2013.
+		// See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
+		//require_once(BASEPATH.'database/DB_query_builder.php');
+		if (file_exists(APPPATH.'database/DB_query_builder.php'))
+		{
+			require_once(APPPATH.'database/DB_query_builder.php');
+		}
+		elseif (file_exists(COMMONPATH.'database/DB_query_builder.php'))
+		{
+			require_once(COMMONPATH.'database/DB_query_builder.php');
+		}
+		else
+		{
+			require_once(BASEPATH.'database/DB_query_builder.php');
+		}
+		//
 		if ( ! class_exists('CI_DB', FALSE))
 		{
 			/**
@@ -191,9 +254,28 @@ function &DB($params = '', $query_builder_override = NULL)
 	}
 
 	// Load the DB driver
-	$driver_file = BASEPATH.'database/drivers/'.$params['dbdriver'].'/'.$params['dbdriver'].'_driver.php';
+	// Modified by Ivan Tcholakov, 25-DEC-2013.
+	// See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
+	//$driver_file = BASEPATH.'database/drivers/'.$params['dbdriver'].'/'.$params['dbdriver'].'_driver.php';
+	//
+	//file_exists($driver_file) OR show_error('Invalid DB driver');
+	$driver_file = APPPATH.'database/drivers/'.$params['dbdriver'].'/'.$params['dbdriver'].'_driver.php';
+	if (!file_exists($driver_file))
+	{
+		$driver_file = COMMONPATH.'database/drivers/'.$params['dbdriver'].'/'.$params['dbdriver'].'_driver.php';
+	}
+	if (!file_exists($driver_file))
+	{
+		$driver_file = BASEPATH.'database/drivers/'.$params['dbdriver'].'/'.$params['dbdriver'].'_driver.php';
+	}
+	if (!file_exists($driver_file))
+	{
+		$driver_file = FALSE;
+	}
 
 	file_exists($driver_file) OR show_error('Invalid DB driver');
+	//
+
 	require_once($driver_file);
 
 	// Instantiate the DB adapter
@@ -203,14 +285,37 @@ function &DB($params = '', $query_builder_override = NULL)
 	// Check for a subdriver
 	if ( ! empty($DB->subdriver))
 	{
-		$driver_file = BASEPATH.'database/drivers/'.$DB->dbdriver.'/subdrivers/'.$DB->dbdriver.'_'.$DB->subdriver.'_driver.php';
+		// Modified by Ivan Tcholakov, 25-DEC-2013.
+		// See https://github.com/ivantcholakov/starter-public-edition-4/issues/5
+		//$driver_file = BASEPATH.'database/drivers/'.$DB->dbdriver.'/subdrivers/'.$DB->dbdriver.'_'.$DB->subdriver.'_driver.php';
+		//
+		//if (file_exists($driver_file))
+		//{
+		//	require_once($driver_file);
+		//	$driver = 'CI_DB_'.$DB->dbdriver.'_'.$DB->subdriver.'_driver';
+		//	$DB = new $driver($params);
+		//}
+		$driver_file = APPPATH.'database/drivers/'.$DB->dbdriver.'/subdrivers/'.$DB->dbdriver.'_'.$DB->subdriver.'_driver.php';
+		if (!file_exists($driver_file))
+		{
+			$driver_file = COMMONPATH.'database/drivers/'.$DB->dbdriver.'/subdrivers/'.$DB->dbdriver.'_'.$DB->subdriver.'_driver.php';
+		}
+		if (!file_exists($driver_file))
+		{
+			$driver_file = BASEPATH.'database/drivers/'.$DB->dbdriver.'/subdrivers/'.$DB->dbdriver.'_'.$DB->subdriver.'_driver.php';
+		}
+		if (!file_exists($driver_file))
+		{
+			$driver_file = FALSE;
+		}
 
-		if (file_exists($driver_file))
+		if ($driver_file !== FALSE)
 		{
 			require_once($driver_file);
 			$driver = 'CI_DB_'.$DB->dbdriver.'_'.$DB->subdriver.'_driver';
 			$DB = new $driver($params);
 		}
+		//
 	}
 
 	$DB->initialize();
