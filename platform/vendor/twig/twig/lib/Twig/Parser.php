@@ -10,6 +10,9 @@
  * file that was distributed with this source code.
  */
 
+class_exists('Twig_Node');
+class_exists('Twig_TokenStream');
+
 /**
  * Default parser implementation.
  *
@@ -404,3 +407,5 @@ class Twig_Parser implements Twig_ParserInterface
         return $node;
     }
 }
+
+class_alias('Twig_Parser', 'Twig\Parser', false);

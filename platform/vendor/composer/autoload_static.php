@@ -32,6 +32,7 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
         'T' => 
         array (
             'Twig\\Extensions\\' => 16,
+            'Twig\\' => 5,
             'Test\\Markdownify\\' => 17,
         ),
         'S' => 
@@ -96,6 +97,10 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
         'Twig\\Extensions\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/extensions/src',
+        ),
+        'Twig\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/twig/twig/src',
         ),
         'Test\\Markdownify\\' => 
         array (
