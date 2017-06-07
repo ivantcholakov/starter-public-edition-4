@@ -142,14 +142,13 @@ For CodeIgniter system files, third-party libraries, components, etc.:
 Features
 --------
 
-* CodeIgniter 3, https://codeigniter.com/, https://github.com/bcit-ci/CodeIgniter
+* CodeIgniter 3, https://codeigniter.com/, https://github.com/bcit-ci/CodeIgniter , installed by using Composer.
 * On a web-server you can place your site (www folder) within a subdirectory.
 * Codeigniter Cross Modular Extensions - XHMVC,
 https://bitbucket.org/xperez/codeigniter-cross-modular-extensions-xhmvc,
 http://www.4amics.com/x.perez/2013/06/xhmvc-common-modular-extensions/ (only the essential piece of code).
 * Support for the old CI 2.x class/file name convention. When you port your older libraries, models, and controllers,
 you would not be forced to rename them according to the new strict "ucfirst" naming convention.
-* Native PHP session support by default.
 * Modular Extensions - HMVC for CodeIgniter, https://bitbucket.org/wiredesignz/codeigniter-modular-extensions-hmvc
 * Enhanced bootsrapping process, see the content of the folder platform/core/bootstrap/.
 * In addition to the normal MVC execution, it is possible to run non-MVC scripts, look at the folder www/non-mvc/ for examples.
