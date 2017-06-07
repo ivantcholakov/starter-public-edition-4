@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "18076aa24d027a00736a1d40f4a15f11",
+    "content-hash": "260e6d9ac10a0b12484f16824f26e763",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -54,6 +54,39 @@
                 "stream_filter_register"
             ],
             "time": "2015-11-08T23:41:30+00:00"
+        },
+        {
+            "name": "codeigniter/framework",
+            "version": "dev-3.1-stable",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bcit-ci/CodeIgniter.git",
+                "reference": "ee9d428171dc201f51eaffdb62616312915681ff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bcit-ci/CodeIgniter/zipball/ee9d428171dc201f51eaffdb62616312915681ff",
+                "reference": "ee9d428171dc201f51eaffdb62616312915681ff",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.4"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "1.1.*",
+                "phpunit/phpunit": "4.* || 5.*"
+            },
+            "suggest": {
+                "paragonie/random_compat": "Provides better randomness in PHP 5.x"
+            },
+            "type": "project",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "The CodeIgniter framework",
+            "homepage": "https://codeigniter.com",
+            "time": "2017-06-05T07:45:35+00:00"
         },
         {
             "name": "erusev/parsedown",
@@ -2082,6 +2115,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "codeigniter/framework": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
