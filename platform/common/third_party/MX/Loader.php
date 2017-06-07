@@ -344,12 +344,13 @@ class MX_Loader extends CI_Loader
 
         list($path, $_helper) = Modules::find($helper.'_helper', $this->_module, 'helpers/');
 
-        // Modified by Ivan Tcholakov, 12-DEC-2013.
+        // Modified by Ivan Tcholakov, 12-DEC-2013, 07-JUN-2017.
         // See https://github.com/EllisLab/CodeIgniter/issues/2165
         //if ($path === FALSE) return parent::helper($helper);
         if ($path === FALSE) {
 
-            parent::helper($helper);
+            //parent::helper($helper);
+            $this->_ci_load_helper($helper);
             return $this;
         }
         //
@@ -361,6 +362,75 @@ class MX_Loader extends CI_Loader
         // See https://github.com/EllisLab/CodeIgniter/issues/2165
         return $this;
         //
+    }
+
+    // This is a customized version of the method CI_Loader::helper().
+    protected function _ci_load_helper($helpers = array())
+    {
+        is_array($helpers) OR $helpers = array($helpers);
+        foreach ($helpers as &$helper)
+        {
+            $filename = basename($helper);
+            $filepath = ($filename === $helper) ? '' : substr($helper, 0, strlen($helper) - strlen($filename));
+            $filename = strtolower(preg_replace('#(_helper)?(\.php)?$#i', '', $filename)).'_helper';
+            $helper   = $filepath.$filename;
+
+            if (isset($this->_ci_helpers[$helper]))
+            {
+                continue;
+            }
+
+            // Is this a helper extension request?
+            $ext_helper = config_item('subclass_prefix').$filename;
+            $ext_loaded = FALSE;
+            foreach ($this->_ci_helper_paths as $path)
+            {
+                if (file_exists($path.'helpers/'.$ext_helper.'.php'))
+                {
+                    include_once($path.'helpers/'.$ext_helper.'.php');
+                    $ext_loaded = TRUE;
+                }
+            }
+
+            // If we have loaded extensions - check if the base one is here
+            if ($ext_loaded === TRUE)
+            {
+                $base_helper = BASEPATH.'helpers/'.$helper.'.php';
+                if ( ! file_exists($base_helper))
+                {
+                    // Modified by Ivan Tcholakov, 17-AUG-2014.
+                    //show_error('Unable to load the requested file: helpers/'.$helper.'.php');
+                    continue;
+                    //
+                }
+
+                include_once($base_helper);
+                $this->_ci_helpers[$helper] = TRUE;
+                log_message('info', 'Helper loaded: '.$helper);
+                continue;
+            }
+
+            // No extensions found ... try loading regular helpers and/or overrides
+            foreach ($this->_ci_helper_paths as $path)
+            {
+                if (file_exists($path.'helpers/'.$helper.'.php'))
+                {
+                    include_once($path.'helpers/'.$helper.'.php');
+
+                    $this->_ci_helpers[$helper] = TRUE;
+                    log_message('info', 'Helper loaded: '.$helper);
+                    break;
+                }
+            }
+
+            // unable to load the helper
+            if ( ! isset($this->_ci_helpers[$helper]))
+            {
+                show_error('Unable to load the requested file: helpers/'.$helper.'.php');
+            }
+        }
+
+        return $this;
     }
 
     /** Load an array of helpers **/
