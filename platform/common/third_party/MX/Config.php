@@ -35,6 +35,17 @@
  **/
 class MX_Config extends CI_Config
 {
+    /**
+     * List of paths to search when trying to load a config file.
+     *
+     * @used-by    CI_Loader
+     * @var        array
+     */
+    // Modified by Ivan Tcholakov, 24-DEC-2014.
+    //public $_config_paths = array(APPPATH);
+    public $_config_paths = array(COMMONPATH, APPPATH);
+    //
+
     public function load($file = 'config', $use_sections = FALSE, $fail_gracefully = FALSE, $_module = '') {
 
         if (in_array($file, $this->is_loaded, TRUE)) {
@@ -46,7 +57,7 @@ class MX_Config extends CI_Config
 
         if ($path === FALSE) {
 
-            parent::load($file, $use_sections, $fail_gracefully);
+            $this->_ci_config_load($file, $use_sections, $fail_gracefully);
             return $this->item($file);
         }
 
@@ -73,6 +84,73 @@ class MX_Config extends CI_Config
 
             return $this->item($file);
         }
+    }
+
+    // This is a customized version of the method CI_Config::load().
+    protected function _ci_config_load($file = '', $use_sections = FALSE, $fail_gracefully = FALSE)
+    {
+        $file = ($file === '') ? 'config' : str_replace('.php', '', $file);
+        $loaded = FALSE;
+
+        foreach ($this->_config_paths as $path)
+        {
+            foreach (array($file, ENVIRONMENT.DIRECTORY_SEPARATOR.$file) as $location)
+            {
+                $file_path = $path.'config/'.$location.'.php';
+                if (in_array($file_path, $this->is_loaded, TRUE))
+                {
+                    // Modified by Ivan Tcholakov, 24-DEC-2014.
+                    //return TRUE;
+                    $loaded = TRUE;
+                    continue 2;
+                    //
+                }
+
+                if ( ! file_exists($file_path))
+                {
+                    continue;
+                }
+
+                include($file_path);
+
+                if ( ! isset($config) OR ! is_array($config))
+                {
+                    if ($fail_gracefully === TRUE)
+                    {
+                        return FALSE;
+                    }
+
+                    show_error('Your '.$file_path.' file does not appear to contain a valid configuration array.');
+                }
+
+                if ($use_sections === TRUE)
+                {
+                    $this->config[$file] = isset($this->config[$file])
+                        ? array_merge($this->config[$file], $config)
+                        : $config;
+                }
+                else
+                {
+                    $this->config = array_merge($this->config, $config);
+                }
+
+                $this->is_loaded[] = $file_path;
+                $config = NULL;
+                $loaded = TRUE;
+                log_message('info', 'Config file loaded: '.$file_path);
+            }
+        }
+
+        if ($loaded === TRUE)
+        {
+            return TRUE;
+        }
+        elseif ($fail_gracefully === TRUE)
+        {
+            return FALSE;
+        }
+
+        show_error('The configuration file '.$file.'.php does not exist.');
     }
 
 }
