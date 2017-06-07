@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') || exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015 - 2016
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015 - 2017
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -88,29 +88,28 @@ class CI_Parser_cssmin extends CI_Parser_driver {
 
                 $options['raise_php_limits'] = !empty($options['raise_php_limits']);
 
-                $parser = new CSSmin($options['raise_php_limits']);
+                $parser = new tubalmartin\CssMin\Minifier($options['raise_php_limits']);
 
                 if ($options['raise_php_limits'])
                 {
-
                     if ($options['memory_limit'] != '')
                     {
-                        $parser->set_memory_limit($options['memory_limit']);
+                        $parser->setMemoryLimit($options['memory_limit']);
                     }
 
                     if ($options['max_execution_time'] != '')
                     {
-                        $parser->set_max_execution_time($options['max_execution_time']);
+                        $parser->setMaxExecutionTime($options['max_execution_time']);
                     }
 
                     if ($options['pcre_backtrack_limit'] != '')
                     {
-                        $parser->set_pcre_backtrack_limit($options['pcre_backtrack_limit']);
+                        $parser->setPcreBacktrackLimit($options['pcre_backtrack_limit']);
                     }
 
                     if ($options['pcre_recursion_limit'] != '')
                     {
-                        $parser->set_pcre_recursion_limit($options['pcre_recursion_limit']);
+                        $parser->setPcreRecursionLimit($options['pcre_recursion_limit']);
                     }
                 }
 
@@ -155,29 +154,28 @@ class CI_Parser_cssmin extends CI_Parser_driver {
 
                 $options['raise_php_limits'] = !empty($options['raise_php_limits']);
 
-                $parser = new CSSmin($options['raise_php_limits']);
+                $parser = new tubalmartin\CssMin\Minifier($options['raise_php_limits']);
 
                 if ($options['raise_php_limits'])
                 {
-
                     if ($options['memory_limit'] != '')
                     {
-                        $parser->set_memory_limit($options['memory_limit']);
+                        $parser->setMemoryLimit($options['memory_limit']);
                     }
 
                     if ($options['max_execution_time'] != '')
                     {
-                        $parser->set_max_execution_time($options['max_execution_time']);
+                        $parser->setMaxExecutionTime($options['max_execution_time']);
                     }
 
                     if ($options['pcre_backtrack_limit'] != '')
                     {
-                        $parser->set_pcre_backtrack_limit($options['pcre_backtrack_limit']);
+                        $parser->setPcreBacktrackLimit($options['pcre_backtrack_limit']);
                     }
 
                     if ($options['pcre_recursion_limit'] != '')
                     {
-                        $parser->set_pcre_recursion_limit($options['pcre_recursion_limit']);
+                        $parser->setPcreRecursionLimit($options['pcre_recursion_limit']);
                     }
                 }
 
