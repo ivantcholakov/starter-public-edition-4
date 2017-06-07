@@ -148,43 +148,40 @@ class CI_URI {
 	 * @param 	string	$str
 	 * @return	void
 	 */
-	/* protected */ public function _set_uri_string($str)
+	protected function _set_uri_string($str)
 	{
 		// Filter out control characters and trim slashes
 		$this->uri_string = trim(remove_invisible_characters($str, FALSE), '/');
 
-		// Removed by Ivan Tcholakov, 19-JAN-2014.
-		// TODO: This is for supporting HMVC library, resolve at first chance.
-		//if ($this->uri_string !== '')
-		//{
-		//	// Remove the URL suffix, if present
-		//	if (($suffix = (string) $this->config->item('url_suffix')) !== '')
-		//	{
-		//		$slen = strlen($suffix);
-		//
-		//		if (substr($this->uri_string, -$slen) === $suffix)
-		//		{
-		//			$this->uri_string = substr($this->uri_string, 0, -$slen);
-		//		}
-		//	}
-		//
-		//	$this->segments[0] = NULL;
-		//	// Populate the segments array
-		//	foreach (explode('/', trim($this->uri_string, '/')) as $val)
-		//	{
-		//		$val = trim($val);
-		//		// Filter segments for security
-		//		$this->filter_uri($val);
-		//
-		//		if ($val !== '')
-		//		{
-		//			$this->segments[] = $val;
-		//		}
-		//	}
-		//
-		//	unset($this->segments[0]);
-		//}
-		//
+		if ($this->uri_string !== '')
+		{
+			// Remove the URL suffix, if present
+			if (($suffix = (string) $this->config->item('url_suffix')) !== '')
+			{
+				$slen = strlen($suffix);
+
+				if (substr($this->uri_string, -$slen) === $suffix)
+				{
+					$this->uri_string = substr($this->uri_string, 0, -$slen);
+				}
+			}
+
+			$this->segments[0] = NULL;
+			// Populate the segments array
+			foreach (explode('/', trim($this->uri_string, '/')) as $val)
+			{
+				$val = trim($val);
+				// Filter segments for security
+				$this->filter_uri($val);
+
+				if ($val !== '')
+				{
+					$this->segments[] = $val;
+				}
+			}
+
+			unset($this->segments[0]);
+		}
 	}
 
 	// --------------------------------------------------------------------
@@ -197,7 +194,7 @@ class CI_URI {
 	 *
 	 * @return	string
 	 */
-	/* protected */ public function _parse_request_uri()
+	protected function _parse_request_uri()
 	{
 		if ( ! isset($_SERVER['REQUEST_URI'], $_SERVER['SCRIPT_NAME']))
 		{
@@ -208,10 +205,7 @@ class CI_URI {
 		// contains a colon followed by a number
 		$uri = parse_url('http://dummy'.$_SERVER['REQUEST_URI']);
 		$query = isset($uri['query']) ? $uri['query'] : '';
-		// Modified by Ivan Tcholakov, 19-FEB-2015.
-		//$uri = isset($uri['path']) ? $uri['path'] : '';
-		$uri = isset($uri['path']) ? rawurldecode($uri['path']) : '';
-		//
+		$uri = isset($uri['path']) ? $uri['path'] : '';
 
 		if (isset($_SERVER['SCRIPT_NAME'][0]))
 		{
@@ -230,10 +224,7 @@ class CI_URI {
 		if (trim($uri, '/') === '' && strncmp($query, '/', 1) === 0)
 		{
 			$query = explode('?', $query, 2);
-			// Modified by Ivan Tcholakov, 19-FEB-2015.
-			//$uri = $query[0];
-			$uri = rawurldecode($query[0]);
-			//
+			$uri = $query[0];
 			$_SERVER['QUERY_STRING'] = isset($query[1]) ? $query[1] : '';
 		}
 		else
@@ -261,7 +252,7 @@ class CI_URI {
 	 *
 	 * @return	string
 	 */
-	/* protected */ public function _parse_query_string()
+	protected function _parse_query_string()
 	{
 		$uri = isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : @getenv('QUERY_STRING');
 
@@ -273,10 +264,7 @@ class CI_URI {
 		{
 			$uri = explode('?', $uri, 2);
 			$_SERVER['QUERY_STRING'] = isset($uri[1]) ? $uri[1] : '';
-			// Modified by Ivan Tcholakov, 19-FEB-2015.
-			//$uri = $uri[0];
-			$uri = rawurldecode($uri[0]);
-			//
+			$uri = $uri[0];
 		}
 
 		parse_str($_SERVER['QUERY_STRING'], $_GET);
@@ -293,7 +281,7 @@ class CI_URI {
 	 *
 	 * @return	string
 	 */
-	/* protected */ public function _parse_argv()
+	protected function _parse_argv()
 	{
 		$args = array_slice($_SERVER['argv'], 1);
 		return $args ? implode('/', $args) : '';

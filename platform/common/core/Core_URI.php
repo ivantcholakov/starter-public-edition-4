@@ -2,15 +2,11 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Core_URI extends CI_URI {
+class Core_URI extends MX_URI {
 
-    public function ruri_string()
+    public function __construct()
     {
-        return ltrim(load_class('Router', 'core')->rdir, '/').implode('/', $this->rsegments);
+        parent::__construct();
     }
 
-    public function language_segment()
-    {
-        return load_class('Router', 'core')->language_uri_segment;
-    }
 }
