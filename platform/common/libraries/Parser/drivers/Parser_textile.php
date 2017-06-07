@@ -68,7 +68,7 @@ class CI_Parser_textile extends CI_Parser_driver {
         // For security reasons don't parse PHP content.
         $template = @ file_get_contents($template);
 
-        $parser = new \Netcarver\Textile\Parser($options['doctype']);
+        $parser = new TextileParser($options['doctype']);
 
         if ($options['restricted_mode'])
         {
@@ -99,7 +99,7 @@ class CI_Parser_textile extends CI_Parser_driver {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
-        $parser = new \Netcarver\Textile\Parser($options['doctype']);
+        $parser = new TextileParser($options['doctype']);
 
         if ($options['restricted_mode'])
         {
