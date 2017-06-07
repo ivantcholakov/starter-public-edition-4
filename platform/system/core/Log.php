@@ -230,10 +230,7 @@ class CI_Log {
 
 		if (isset($newfile) && $newfile === TRUE)
 		{
-			// Modified by Ivan Tcholakov, 12-APR-2015.
-			//chmod($filepath, $this->_file_permissions);
-			@chmod($filepath, $this->_file_permissions);
-			//
+			chmod($filepath, $this->_file_permissions);
 		}
 
 		return is_int($result);
@@ -254,10 +251,7 @@ class CI_Log {
 	 */
 	protected function _format_line($level, $date, $message)
 	{
-		// Modified by Ivan Tcholakov, URL recording feature, 16-FEB-2016.
-		//return $level.' - '.$date.' --> '.$message."\n";
-		return $level.' - '.$date.' --> '.$message.(!is_cli() ? (defined('CURRENT_URL') ? ' --> URL: '.CURRENT_URL : '') : (isset($_SERVER['argv']) && is_array($_SERVER['argv']) ? ' --> Command: '.implode(' ', $_SERVER['argv']) : ''))."\n";
-		//
+		return $level.' - '.$date.' --> '.$message."\n";
 	}
 
 	// --------------------------------------------------------------------
