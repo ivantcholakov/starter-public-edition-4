@@ -213,7 +213,7 @@ if (!is_file(FCPATH.SELF)) {
 }
 
 // Path to the system directory
-define('BASEPATH', rtrim(str_replace('\\', '/', realpath(dirname(__FILE__).'/../system')), '/').'/');
+define('BASEPATH', rtrim(str_replace('\\', '/', realpath(dirname(__FILE__).'/../vendor/codeigniter/framework/system')), '/').'/');
 
 // Is the system path correct?
 if (BASEPATH == '' || BASEPATH == '/' || !is_dir(BASEPATH)) {
