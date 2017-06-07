@@ -19,6 +19,7 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
     public static $prefixLengthsPsr4 = array (
         't' => 
         array (
+            'tubalmartin\\CssMin\\' => 19,
             't1st3\\' => 6,
         ),
         'Y' => 
@@ -81,6 +82,10 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
     );
 
     public static $prefixDirsPsr4 = array (
+        'tubalmartin\\CssMin\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tubalmartin/cssmin/src',
+        ),
         't1st3\\' => 
         array (
             0 => __DIR__ . '/..' . '/t1st3/php-json-minify/src/t1st3',
