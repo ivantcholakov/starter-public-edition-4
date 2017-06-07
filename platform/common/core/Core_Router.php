@@ -2,9 +2,9 @@
 
 class Core_Router extends MX_Router {
 
-    public function __construct() {
+    public function __construct($routing = NULL) {
 
-        parent::__construct();
+        parent::__construct($routing);
     }
 
 }

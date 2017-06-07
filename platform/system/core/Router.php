@@ -121,31 +121,23 @@ class CI_Router {
 	 * @param	array	$routing
 	 * @return	void
 	 */
-	// Modified by Ivan Tcholakov, 15-APR-2014.
-	//public function __construct($routing = NULL)
-	public function __construct()
-	//
+	public function __construct($routing = NULL)
 	{
-		// Removed by Ivan Tcholakov, 14-JAN-2014.
-		//global $routing;
-		//
-
 		$this->config =& load_class('Config', 'core');
 		$this->uri =& load_class('URI', 'core');
 
 		$this->enable_query_strings = ( ! is_cli() && $this->config->item('enable_query_strings') === TRUE);
-		// Removed by Ivan Tcholakov, 14-JAN-2014.
-		//// If a directory override is configured, it has to be set before any dynamic routing logic
-		//is_array($routing) && isset($routing['directory']) && $this->set_directory($routing['directory']);
-		//$this->_set_routing();
-		//
-		//// Set any routing overrides that may exist in the main index file
-		//if (isset($routing) && is_array($routing))
-		//{
-		//	empty($routing['controller']) OR $this->set_class($routing['controller']);
-		//	empty($routing['function'])   OR $this->set_method($routing['function']);
-		//}
-		//
+
+		// If a directory override is configured, it has to be set before any dynamic routing logic
+		is_array($routing) && isset($routing['directory']) && $this->set_directory($routing['directory']);
+		$this->_set_routing();
+
+		// Set any routing overrides that may exist in the main index file
+		if (is_array($routing))
+		{
+			empty($routing['controller']) OR $this->set_class($routing['controller']);
+			empty($routing['function'])   OR $this->set_method($routing['function']);
+		}
 
 		log_message('info', 'Router Class Initialized');
 	}
@@ -160,10 +152,7 @@ class CI_Router {
 	 *
 	 * @return	void
 	 */
-	// Modified by Ivan Tcholakov, 25-JUL-2013.
-	//protected function _set_routing()
-	public function _set_routing()
-	//
+	protected function _set_routing()
 	{
 		// Load the routes.php file. It would be great if we could
 		// skip this for enable_query_strings = TRUE, but then
@@ -190,10 +179,6 @@ class CI_Router {
 		// Are query strings enabled in the config file? Normally CI doesn't utilize query strings
 		// since URI segments are more search-engine friendly, but they can optionally be used.
 		// If this feature is enabled, we will gather the directory/class/method a little differently
-		// Added by Ivan Tcholakov, 19-JAN-2014.
-		// TODO: This is for supporting HMVC library, remove at first chance.
-		$segments = array();
-		//
 		if ($this->enable_query_strings)
 		{
 			// If the directory is set at this time, it means an override exists, so skip the checks
@@ -238,96 +223,14 @@ class CI_Router {
 		}
 
 		// Is there anything to parse?
-		// Modified by Ivan Tcholakov, 19-JAN-2014.
-		// TODO: This is for supporting HMVC library, resolve at first chance.
-		//if ($this->uri->uri_string !== '')
-		//{
-		//	$this->_parse_routes();
-		//}
-		//else
-		//{
-		//	$this->_set_default_controller();
-		//}
-		if (count($segments) > 0)
+		if ($this->uri->uri_string !== '')
 		{
-			$this->_validate_request($segments);
-		}
-
-		// Fetch the complete URI string
-
-		// If it's a CLI request, ignore the configuration
-		if (is_cli())
-		{
-			// Modified by Ivan Tcholakov, 19-FEB-2015.
-			//$uri = $this->_parse_argv();
-			$uri = $this->uri->_parse_argv();
-			//
+			$this->_parse_routes();
 		}
 		else
 		{
-			$protocol = strtoupper($this->uri->config->item('uri_protocol'));
-			empty($protocol) && $protocol = 'REQUEST_URI';
-
-			switch ($protocol)
-			{
-				case 'AUTO': // For BC purposes only
-				case 'REQUEST_URI':
-					$uri = $this->uri->_parse_request_uri();
-					break;
-				case 'QUERY_STRING':
-					$uri = $this->uri->_parse_query_string();
-					break;
-				case 'PATH_INFO':
-				default:
-					$uri = isset($_SERVER[$protocol])
-						? $_SERVER[$protocol]
-						: $this->uri->_parse_request_uri();
-					break;
-			}
-		}
-
-		$this->uri->_set_uri_string($uri);
-
-		// Is there a URI string? If not, the default controller specified in the "routes" file will be shown.
-		if ($this->uri->uri_string == '')
-		{
 			$this->_set_default_controller();
 		}
-
-		// Remove the URL suffix
-		$suffix = (string) $this->uri->config->item('url_suffix');
-
-		if ($suffix !== '')
-		{
-			$slen = strlen($suffix);
-
-			if (substr($this->uri->uri_string, -$slen) === $suffix)
-			{
-				$this->uri->uri_string = substr($this->uri->uri_string, 0, -$slen);
-			}
-		}
-
-		// Compile the segments into an array
-		foreach (explode('/', preg_replace('|/*(.+?)/*$|', '\\1', $this->uri->uri_string)) as $val)
-		{
-			// Filter segments for security
-			$val = trim($val);
-			$this->uri->filter_uri($val);
-
-			if ($val !== '')
-			{
-				$this->uri->segments[] = $val;
-			}
-		}
-
-		$this->_parse_routes(); // Parse any custom routing that may exist
-
-		// Re-index the segment array so that it starts with 1 rather than 0
-		array_unshift($this->uri->segments, NULL);
-		array_unshift($this->uri->rsegments, NULL);
-		unset($this->uri->segments[0]);
-		unset($this->uri->rsegments[0]);
-		//
 	}
 
 	// --------------------------------------------------------------------
@@ -397,18 +300,14 @@ class CI_Router {
 			$method = 'index';
 		}
 
-		// Modified by Ivan Tcholakov, 19-JAN-2014.
-		// TODO: This is for supporting HMVC library, resolve at first chance.
-		//if ( ! file_exists(APPPATH.'controllers/'.$this->directory.ucfirst($class).'.php'))
-		//{
-		//	// This will trigger 404 later
-		//	return;
-		//}
-		//
-		//$this->set_class($class);
-		//$this->set_method($method);
-		$this->_set_request(array($class, $method));
-		//
+		if ( ! file_exists(APPPATH.'controllers/'.$this->directory.ucfirst($class).'.php'))
+		{
+			// This will trigger 404 later
+			return;
+		}
+
+		$this->set_class($class);
+		$this->set_method($method);
 
 		// Assign routed segments, index starting from 1
 		$this->uri->rsegments = array(
