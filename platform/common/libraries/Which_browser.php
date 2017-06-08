@@ -3,6 +3,8 @@
 /**
  * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2016-2017
  * @license The MIT License, http://opensource.org/licenses/MIT
+ *
+ * See also https://github.com/WhichBrowser/Parser
  */
 
 class Which_browser {
