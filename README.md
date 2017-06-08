@@ -460,7 +460,7 @@ Installed Composer Packages
 | fg/multiplayer                      | Builds customizable video embed codes from any URL                 | Multiplayer library                               |
 | leafo/scssphp                       | A compiler for SCSS written in PHP                                 | Parser 'scss' driver                              |
 | guzzlehttp/guzzle                   | A HTTP client library                                              | Playground, REST service test                     |
-| whichbrowser/parser                 | Useragent sniffing library for PHP                                 | Playground, WhichBrowser test                     |
+| whichbrowser/parser                 | Useragent sniffing library for PHP                                 | Which_browser library                             |
 | erusev/parsedown                    | Parser for Markdown                                                | Parser 'markdown' driver                          |
 | erusev/parsedown-extra              | An extension of Parsedown that adds support for Markdown Extra     | Parser 'markdown' driver                          |
 | pixel418/markdownify                | A HTML to Markdown converter                                       | Parser 'markdownify' driver                       |
