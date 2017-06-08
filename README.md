@@ -449,6 +449,35 @@ A contact form has been created that with minimal adaptation you may use directl
 If you have no previous experience with CodeIgniter, get familiar with its User Guide first:
 https://www.codeigniter.com/user_guide/
 
+Installed Composer Packages
+---------------------------
+
+| Package                             | Description                                                        | Usage                                             |
+|:------------------------------------|:-------------------------------------------------------------------|:--------------------------------------------------|
+| codeigniter/framework               | CodeIgniter 3                                                      | Everywhere                                        |
+| roave/security-advisories           | Blocks installing packages with known security vulnerabilities     | Composer                                          |
+| paragonie/random_compat             | PHP 5.x polyfill for random_bytes() and random_int() from PHP 7    | CodeIgniter, other components                     |
+| fg/multiplayer                      | Builds customizable video embed codes from any URL                 | Multiplayer library                               |
+| leafo/scssphp                       | A compiler for SCSS written in PHP                                 | Parser 'scss' driver                              |
+| guzzlehttp/guzzle                   | A HTTP client library                                              | Playground, REST service test                     |
+| whichbrowser/parser                 | Useragent sniffing library for PHP                                 | Playground, WhichBrowser test                     |
+| erusev/parsedown                    | Parser for Markdown                                                | Parser 'markdown' driver                          |
+| erusev/parsedown-extra              | An extension of Parsedown that adds support for Markdown Extra     | Parser 'markdown' driver                          |
+| pixel418/markdownify                | A HTML to Markdown converter                                       | Parser 'markdownify' driver                       |
+| mustache/mustache                   | A Mustache template engine implementation in PHP                   | Parser 'mustache' driver                          |
+| netcarver/textile                   | Textile markup language parser                                     | Parser 'textile' driver                           |
+| twig/twig                           | Twig template language for PHP                                     | Parser 'twig' driver                              |
+| twig/extensions                     | Common additional features for Twig                                | Parser 'twig' driver                              |
+| ezyang/htmlpurifier                 | Standards compliant HTML filter written in PHP                     | admin and user HTML filters for the online editor |
+| rmccue/requests                     | A HTTP library written in PHP                                      | Playground, REST service test                     |
+| t1st3/php-json-minify               | A JSON minifier                                                    | Parser 'jsonmin' driver                           |
+| php-http/*                          | An abstract HTTP client and its drivers/dependencies               | Playground, REST service test                     |
+| matthiasmullie/minify               | CSS & JS minifier                                                  | Parser 'cssmin' and 'jsmin' drivers               |
+| phpmailer/phpmailer                 | An email creation and transfer component for PHP                   | The custom Email library                          |
+| yohang88/letter-avatar              | Generates user avatars based on name initials                      | userphotos application                            |
+| intervention/image                  | Image handling and manipulation library                            | yohang88/letter-avatar                            |
+| tubalmartin/cssmin                  | A PHP port of the YUI CSS compressor                               | Parser 'cssmin' driver                            |
+
 Real Life Usage
 ---------------
 

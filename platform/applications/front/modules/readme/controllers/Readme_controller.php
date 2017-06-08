@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013 - 2016
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013 - 2017
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -42,7 +42,7 @@ class Readme_controller extends Base_Controller {
 
         $this->template
             ->set(compact('path', 'content'))
-            //->enable_parser_body(array('i18n' => false))    // Actually, this disables the 'i18n' parser.
+            ->set_partial('scripts', 'readme_scripts')
             ->build('readme');
     }
 
