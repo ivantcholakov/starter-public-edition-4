@@ -31,6 +31,7 @@
         "xamin/handlebars.php": "^0.10.4",
         "intervention/image": "^2.3",
         "yohang88/letter-avatar": "^1.0",
-        "tubalmartin/cssmin": "^4.1"
+        "tubalmartin/cssmin": "^4.1",
+        "oyejorge/less.php": "~1.7.0.14"
     }
 }

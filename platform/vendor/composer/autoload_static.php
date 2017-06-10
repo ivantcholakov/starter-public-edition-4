@@ -238,6 +238,13 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
                 0 => __DIR__ . '/..' . '/fg/multiplayer/lib',
             ),
         ),
+        'L' => 
+        array (
+            'Less' => 
+            array (
+                0 => __DIR__ . '/..' . '/oyejorge/less.php/lib',
+            ),
+        ),
         'H' => 
         array (
             'Handlebars' => 
@@ -258,6 +265,7 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
         'PHPMailerOAuthGoogle' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmaileroauthgoogle.php',
         'POP3' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.pop3.php',
         'SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.smtp.php',
+        'lessc' => __DIR__ . '/..' . '/oyejorge/less.php/lessc.inc.php',
         'ntlm_sasl_client_class' => __DIR__ . '/..' . '/phpmailer/phpmailer/extras/ntlm_sasl_client.php',
         'phpmailerException' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmailer.php',
     );
