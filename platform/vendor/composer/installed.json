@@ -1671,64 +1671,6 @@
         ]
     },
     {
-        "name": "twig/extensions",
-        "version": "v1.5.0",
-        "version_normalized": "1.5.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/twigphp/Twig-extensions.git",
-            "reference": "d6d74d6f3213a9574c460c4390c25a1a67c17cc3"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/twigphp/Twig-extensions/zipball/d6d74d6f3213a9574c460c4390c25a1a67c17cc3",
-            "reference": "d6d74d6f3213a9574c460c4390c25a1a67c17cc3",
-            "shasum": ""
-        },
-        "require": {
-            "twig/twig": "~1.27|~2.0"
-        },
-        "require-dev": {
-            "symfony/phpunit-bridge": "~3.3@dev",
-            "symfony/translation": "~2.3|~3.0"
-        },
-        "suggest": {
-            "symfony/translation": "Allow the time_diff output to be translated"
-        },
-        "time": "2017-05-24T06:24:07+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.5-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Twig_Extensions_": "lib/"
-            },
-            "psr-4": {
-                "Twig\\Extensions\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            }
-        ],
-        "description": "Common additional features for Twig that do not directly belong in core",
-        "homepage": "http://twig.sensiolabs.org/doc/extensions/index.html",
-        "keywords": [
-            "i18n",
-            "text"
-        ]
-    },
-    {
         "name": "yohang88/letter-avatar",
         "version": "1.0.4",
         "version_normalized": "1.0.4.0",
@@ -2177,5 +2119,63 @@
         ],
         "description": "The CodeIgniter framework",
         "homepage": "https://codeigniter.com"
+    },
+    {
+        "name": "twig/extensions",
+        "version": "v1.5.1",
+        "version_normalized": "1.5.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/twigphp/Twig-extensions.git",
+            "reference": "d188c76168b853481cc75879ea045bf93d718e9c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/twigphp/Twig-extensions/zipball/d188c76168b853481cc75879ea045bf93d718e9c",
+            "reference": "d188c76168b853481cc75879ea045bf93d718e9c",
+            "shasum": ""
+        },
+        "require": {
+            "twig/twig": "~1.27|~2.0"
+        },
+        "require-dev": {
+            "symfony/phpunit-bridge": "~3.3@dev",
+            "symfony/translation": "~2.3|~3.0"
+        },
+        "suggest": {
+            "symfony/translation": "Allow the time_diff output to be translated"
+        },
+        "time": "2017-06-08T18:19:53+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.5-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Twig_Extensions_": "lib/"
+            },
+            "psr-4": {
+                "Twig\\Extensions\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            }
+        ],
+        "description": "Common additional features for Twig that do not directly belong in core",
+        "homepage": "http://twig.sensiolabs.org/doc/extensions/index.html",
+        "keywords": [
+            "i18n",
+            "text"
+        ]
     }
 ]
