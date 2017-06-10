@@ -477,6 +477,7 @@ Installed Composer Packages
 | yohang88/letter-avatar              | Generates user avatars based on name initials                      | userphotos application                            |
 | intervention/image                  | Image handling and manipulation library                            | yohang88/letter-avatar                            |
 | tubalmartin/cssmin                  | A PHP port of the YUI CSS compressor                               | Parser 'cssmin' driver                            |
+| oyejorge/less.php                   | A PHP port of the Javascript version of LESS                       | Parser 'less' driver                              |
 
 Real Life Usage
 ---------------
