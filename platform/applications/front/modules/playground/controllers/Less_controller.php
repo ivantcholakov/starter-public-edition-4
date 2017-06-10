@@ -35,7 +35,7 @@ class Less_controller extends Playground_Base_Controller {
 
         } elseif ($is_example) {
 
-            $input = @ file_get_contents($this->load->path('test.less'));
+            $input = $this->load->source('test.less');
 
             try {
                 $output = $this->parser->parse_string($input, null, true, 'less');

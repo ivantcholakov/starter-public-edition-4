@@ -36,7 +36,7 @@ class Typescript_controller extends Playground_Base_Controller {
 
         } elseif ($is_example) {
 
-            $input = @ file_get_contents($this->load->path('test.ts'));
+            $input = $this->load->source('test.ts');
 
             try {
                 $output = $this->parser->parse_string($input, null, true, 'ts');

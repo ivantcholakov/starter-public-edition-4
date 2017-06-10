@@ -1003,6 +1003,13 @@ class MX_Loader extends CI_Loader
         return $_ci_path;
     }
 
+    // Added by Ivan Tcholakov, 10-JUN-2017.
+    // Return source code of a found view.
+    public function source($view) {
+
+        return @ file_get_contents($this->load->path($view));
+    }
+
     // Added by Ivan Tcholakov, FEB-2016.
     public function locations($base = null) {
 

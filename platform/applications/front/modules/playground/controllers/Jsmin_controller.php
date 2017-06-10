@@ -35,7 +35,7 @@ class Jsmin_controller extends Playground_Base_Controller {
 
         } elseif ($is_example) {
 
-            $input = @ file_get_contents($this->load->path('test.js'));
+            $input = $this->load->source('test.js');
 
             try {
                 $output = $this->parser->parse_string($input, null, true, 'jsmin');

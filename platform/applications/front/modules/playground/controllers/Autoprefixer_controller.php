@@ -38,7 +38,7 @@ class Autoprefixer_controller extends Playground_Base_Controller {
 
         } elseif ($is_example) {
 
-            $input = @ file_get_contents($this->load->path('test.css'));
+            $input = $this->load->source('test.css');
 
             try {
                 $output = $this->parser->parse_string($input, null, true, array('autoprefixer' => $options));

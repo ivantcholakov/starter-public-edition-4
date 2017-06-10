@@ -35,7 +35,7 @@ class Jsonmin_controller extends Playground_Base_Controller {
 
         } elseif ($is_example) {
 
-            $input = @ file_get_contents($this->load->path('test.json'));
+            $input = $this->load->source('test.json');
 
             try {
                 $output = $this->parser->parse_string($input, null, true, 'jsonmin');
