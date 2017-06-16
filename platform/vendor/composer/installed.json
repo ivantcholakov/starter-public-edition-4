@@ -1313,65 +1313,6 @@
         "description": "PHPMailer is a full-featured email creation and transfer class for PHP"
     },
     {
-        "name": "matthiasmullie/minify",
-        "version": "1.3.44",
-        "version_normalized": "1.3.44.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/matthiasmullie/minify.git",
-            "reference": "a7fc4a98ef8f2cf38bba701b51f1a84a1d67bc5c"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/matthiasmullie/minify/zipball/a7fc4a98ef8f2cf38bba701b51f1a84a1d67bc5c",
-            "reference": "a7fc4a98ef8f2cf38bba701b51f1a84a1d67bc5c",
-            "shasum": ""
-        },
-        "require": {
-            "ext-pcre": "*",
-            "matthiasmullie/path-converter": "~1.1",
-            "php": ">=5.3.0"
-        },
-        "require-dev": {
-            "friendsofphp/php-cs-fixer": "~1.0",
-            "matthiasmullie/scrapbook": "~1.0",
-            "phpunit/phpunit": "~4.8"
-        },
-        "time": "2017-03-16T16:42:50+00:00",
-        "bin": [
-            "bin/minifycss",
-            "bin/minifyjs"
-        ],
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "MatthiasMullie\\Minify\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Matthias Mullie",
-                "email": "minify@mullie.eu",
-                "homepage": "http://www.mullie.eu",
-                "role": "Developer"
-            }
-        ],
-        "description": "CSS & JS minifier",
-        "homepage": "http://www.minifier.org",
-        "keywords": [
-            "JS",
-            "css",
-            "javascript",
-            "minifier",
-            "minify"
-        ]
-    },
-    {
         "name": "guzzlehttp/psr7",
         "version": "1.4.2",
         "version_normalized": "1.4.2.0",
@@ -2086,41 +2027,6 @@
         "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
     },
     {
-        "name": "codeigniter/framework",
-        "version": "dev-3.1-stable",
-        "version_normalized": "dev-3.1-stable",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/bcit-ci/CodeIgniter.git",
-            "reference": "ee9d428171dc201f51eaffdb62616312915681ff"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/bcit-ci/CodeIgniter/zipball/ee9d428171dc201f51eaffdb62616312915681ff",
-            "reference": "ee9d428171dc201f51eaffdb62616312915681ff",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.2.4"
-        },
-        "require-dev": {
-            "mikey179/vfsstream": "1.1.*",
-            "phpunit/phpunit": "4.* || 5.*"
-        },
-        "suggest": {
-            "paragonie/random_compat": "Provides better randomness in PHP 5.x"
-        },
-        "time": "2017-06-05T07:45:35+00:00",
-        "type": "project",
-        "installation-source": "dist",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "description": "The CodeIgniter framework",
-        "homepage": "https://codeigniter.com"
-    },
-    {
         "name": "twig/extensions",
         "version": "v1.5.1",
         "version_normalized": "1.5.1.0",
@@ -2241,5 +2147,102 @@
             "php",
             "stylesheet"
         ]
+    },
+    {
+        "name": "matthiasmullie/minify",
+        "version": "1.3.45",
+        "version_normalized": "1.3.45.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/matthiasmullie/minify.git",
+            "reference": "09b83e9dbdc50cf6734c6a9652a54891c0651998"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/matthiasmullie/minify/zipball/09b83e9dbdc50cf6734c6a9652a54891c0651998",
+            "reference": "09b83e9dbdc50cf6734c6a9652a54891c0651998",
+            "shasum": ""
+        },
+        "require": {
+            "ext-pcre": "*",
+            "matthiasmullie/path-converter": "~1.1",
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "~1.0",
+            "matthiasmullie/scrapbook": "~1.0",
+            "phpunit/phpunit": "~4.8"
+        },
+        "suggest": {
+            "psr/cache-implementation": "Cache implementation to use with Minify::cache"
+        },
+        "time": "2017-06-13T15:54:31+00:00",
+        "bin": [
+            "bin/minifycss",
+            "bin/minifyjs"
+        ],
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "MatthiasMullie\\Minify\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Matthias Mullie",
+                "email": "minify@mullie.eu",
+                "homepage": "http://www.mullie.eu",
+                "role": "Developer"
+            }
+        ],
+        "description": "CSS & JS minifier",
+        "homepage": "http://www.minifier.org",
+        "keywords": [
+            "JS",
+            "css",
+            "javascript",
+            "minifier",
+            "minify"
+        ]
+    },
+    {
+        "name": "codeigniter/framework",
+        "version": "dev-3.1-stable",
+        "version_normalized": "dev-3.1-stable",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/bcit-ci/CodeIgniter.git",
+            "reference": "da6ac585e32ffb036ec3cb6b0475407901146e4a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/bcit-ci/CodeIgniter/zipball/da6ac585e32ffb036ec3cb6b0475407901146e4a",
+            "reference": "da6ac585e32ffb036ec3cb6b0475407901146e4a",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.4"
+        },
+        "require-dev": {
+            "mikey179/vfsstream": "1.1.*",
+            "phpunit/phpunit": "4.* || 5.*"
+        },
+        "suggest": {
+            "paragonie/random_compat": "Provides better randomness in PHP 5.x"
+        },
+        "time": "2017-06-15T11:24:51+00:00",
+        "type": "project",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "The CodeIgniter framework",
+        "homepage": "https://codeigniter.com"
     }
 ]

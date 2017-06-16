@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a7b0bfcc41d5472639c98b32c8edcbf9",
+    "content-hash": "c5d0877940e3b0761c8fbc188ba8d837",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -61,12 +61,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bcit-ci/CodeIgniter.git",
-                "reference": "ee9d428171dc201f51eaffdb62616312915681ff"
+                "reference": "da6ac585e32ffb036ec3cb6b0475407901146e4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bcit-ci/CodeIgniter/zipball/ee9d428171dc201f51eaffdb62616312915681ff",
-                "reference": "ee9d428171dc201f51eaffdb62616312915681ff",
+                "url": "https://api.github.com/repos/bcit-ci/CodeIgniter/zipball/da6ac585e32ffb036ec3cb6b0475407901146e4a",
+                "reference": "da6ac585e32ffb036ec3cb6b0475407901146e4a",
                 "shasum": ""
             },
             "require": {
@@ -86,7 +86,7 @@
             ],
             "description": "The CodeIgniter framework",
             "homepage": "https://codeigniter.com",
-            "time": "2017-06-05T07:45:35+00:00"
+            "time": "2017-06-15T11:24:51+00:00"
         },
         {
             "name": "erusev/parsedown",
@@ -559,16 +559,16 @@
         },
         {
             "name": "matthiasmullie/minify",
-            "version": "1.3.44",
+            "version": "1.3.45",
             "source": {
                 "type": "git",
                 "url": "https://github.com/matthiasmullie/minify.git",
-                "reference": "a7fc4a98ef8f2cf38bba701b51f1a84a1d67bc5c"
+                "reference": "09b83e9dbdc50cf6734c6a9652a54891c0651998"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/matthiasmullie/minify/zipball/a7fc4a98ef8f2cf38bba701b51f1a84a1d67bc5c",
-                "reference": "a7fc4a98ef8f2cf38bba701b51f1a84a1d67bc5c",
+                "url": "https://api.github.com/repos/matthiasmullie/minify/zipball/09b83e9dbdc50cf6734c6a9652a54891c0651998",
+                "reference": "09b83e9dbdc50cf6734c6a9652a54891c0651998",
                 "shasum": ""
             },
             "require": {
@@ -580,6 +580,9 @@
                 "friendsofphp/php-cs-fixer": "~1.0",
                 "matthiasmullie/scrapbook": "~1.0",
                 "phpunit/phpunit": "~4.8"
+            },
+            "suggest": {
+                "psr/cache-implementation": "Cache implementation to use with Minify::cache"
             },
             "bin": [
                 "bin/minifycss",
@@ -612,7 +615,7 @@
                 "minifier",
                 "minify"
             ],
-            "time": "2017-03-16T16:42:50+00:00"
+            "time": "2017-06-13T15:54:31+00:00"
         },
         {
             "name": "matthiasmullie/path-converter",
