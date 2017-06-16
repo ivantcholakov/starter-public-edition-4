@@ -526,6 +526,8 @@ Reported by Webnice Ltd., http://webnicebg.com
 * http://rosifashion.com - a womenswear provider
 * http://shop.rosifashion.com - a womenswear shop
 * http://mkferavita.com - herbal products
+* https://stefanystyle.com - a furniture manufacturer
+* http://rusalkakiten.com - a family hotel
 
 Reported by Krishna Guragai, @krishnaguragain
 
