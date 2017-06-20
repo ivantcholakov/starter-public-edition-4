@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c5d0877940e3b0761c8fbc188ba8d837",
+    "content-hash": "8c18a24b45f4489ef4a020682c8bc1f5",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -57,16 +57,16 @@
         },
         {
             "name": "codeigniter/framework",
-            "version": "dev-3.1-stable",
+            "version": "3.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bcit-ci/CodeIgniter.git",
-                "reference": "da6ac585e32ffb036ec3cb6b0475407901146e4a"
+                "reference": "6c7a4266410070d30f8f6bcdf9c9e67f3d6478e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bcit-ci/CodeIgniter/zipball/da6ac585e32ffb036ec3cb6b0475407901146e4a",
-                "reference": "da6ac585e32ffb036ec3cb6b0475407901146e4a",
+                "url": "https://api.github.com/repos/bcit-ci/CodeIgniter/zipball/6c7a4266410070d30f8f6bcdf9c9e67f3d6478e3",
+                "reference": "6c7a4266410070d30f8f6bcdf9c9e67f3d6478e3",
                 "shasum": ""
             },
             "require": {
@@ -86,7 +86,7 @@
             ],
             "description": "The CodeIgniter framework",
             "homepage": "https://codeigniter.com",
-            "time": "2017-06-15T11:24:51+00:00"
+            "time": "2017-06-19T08:33:58+00:00"
         },
         {
             "name": "erusev/parsedown",
@@ -2180,7 +2180,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "codeigniter/framework": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
