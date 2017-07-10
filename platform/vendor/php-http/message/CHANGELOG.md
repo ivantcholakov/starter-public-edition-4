@@ -1,7 +1,15 @@
 # Change Log
 
 
-## Unreleased
+## 1.6.0 - 2017-07-05
+
+### Added
+
+- CookieUtil::parseDate to create a date from cookie date string
+
+### Fixed
+
+- Fix curl command of CurlFormatter when there is an user-agent header   
 
 ## 1.5.0 - 2017-02-14
 
