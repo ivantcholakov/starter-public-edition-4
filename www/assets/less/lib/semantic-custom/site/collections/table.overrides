@@ -5,3 +5,22 @@
 .ui.table thead td {
     border-bottom: @headerBorder;
 }
+
+// Added by Ivan Tcholakov, 10-JUL-2017.
+// Neutral (information) coloring,
+// see https://github.com/Semantic-Org/Semantic-UI/issues/2279
+
+.ui.table tr.info,
+.ui.table td.info,
+.ui.table tr.neutral,
+.ui.table td.neutral {
+    box-shadow: @stateMarkerWidth 0px 0px @infoBorderColor inset;
+}
+
+.ui.table tr.info,
+.ui.table td.info,
+.ui.table tr.neutral,
+.ui.table td.neutral {
+    background: @infoBackgroundColor !important;
+    color: @infoTextColor !important;
+}

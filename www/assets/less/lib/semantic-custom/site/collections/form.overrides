@@ -18,3 +18,164 @@
 }
 
 /* End Fieldsets */
+
+
+// Added by Ivan Tcholakov, 10-JUL-2017.
+// Success state coloring,
+// see https://github.com/Semantic-Org/Semantic-UI/issues/2406
+
+/* On Form */
+.ui.form.success .success.message:not(:empty) {
+    display: block;
+}
+.ui.form.success .compact.success.message:not(:empty) {
+    display: inline-block;
+}
+.ui.form.success .icon.success.message:not(:empty) {
+    display: flex;
+}
+
+/* On Field(s) */
+.ui.form .fields.success .field label,
+.ui.form .field.success label,
+.ui.form .fields.success .field .input,
+.ui.form .field.success .input {
+    color: @positiveTextColor;
+}
+
+.ui.form .fields.success .field .corner.label,
+.ui.form .field.success .corner.label {
+    border-color: @positiveTextColor;
+    color: @white;
+}
+
+.ui.form .fields.success .field textarea,
+.ui.form .fields.success .field select,
+.ui.form .fields.success .field input:not([type]),
+.ui.form .fields.success .field input[type="date"],
+.ui.form .fields.success .field input[type="datetime-local"],
+.ui.form .fields.success .field input[type="email"],
+.ui.form .fields.success .field input[type="number"],
+.ui.form .fields.success .field input[type="password"],
+.ui.form .fields.success .field input[type="search"],
+.ui.form .fields.success .field input[type="tel"],
+.ui.form .fields.success .field input[type="time"],
+.ui.form .fields.success .field input[type="text"],
+.ui.form .fields.success .field input[type="file"],
+.ui.form .fields.success .field input[type="url"],
+.ui.form .field.success textarea,
+.ui.form .field.success select,
+.ui.form .field.success input:not([type]),
+.ui.form .field.success input[type="date"],
+.ui.form .field.success input[type="datetime-local"],
+.ui.form .field.success input[type="email"],
+.ui.form .field.success input[type="number"],
+.ui.form .field.success input[type="password"],
+.ui.form .field.success input[type="search"],
+.ui.form .field.success input[type="tel"],
+.ui.form .field.success input[type="time"],
+.ui.form .field.success input[type="text"],
+.ui.form .field.success input[type="file"],
+.ui.form .field.success input[type="url"] {
+    background: @positiveBackgroundColor;
+    border-color: @positiveBorderColor;
+    color: @positiveTextColor;
+}
+.ui.form .field.success textarea:focus,
+.ui.form .field.success select:focus,
+.ui.form .field.success input:not([type]):focus,
+.ui.form .field.success input[type="date"]:focus,
+.ui.form .field.success input[type="datetime-local"]:focus,
+.ui.form .field.success input[type="email"]:focus,
+.ui.form .field.success input[type="number"]:focus,
+.ui.form .field.success input[type="password"]:focus,
+.ui.form .field.success input[type="search"]:focus,
+.ui.form .field.success input[type="tel"]:focus,
+.ui.form .field.success input[type="time"]:focus,
+.ui.form .field.success input[type="text"]:focus,
+.ui.form .field.success input[type="file"]:focus,
+.ui.form .field.success input[type="url"]:focus {
+    background: @positiveBackgroundColor;
+    border-color: @positiveBorderColor;
+    color: @positiveTextColor;
+
+    -webkit-appearance: none;
+}
+
+/* Preserve Native Select Stylings */
+.ui.form .field.success select {
+    -webkit-appearance: menulist-button;
+}
+
+/*------------------
+    Dropdown Success
+--------------------*/
+
+.ui.form .fields.success .field .ui.dropdown,
+.ui.form .fields.success .field .ui.dropdown .item,
+.ui.form .field.success .ui.dropdown,
+.ui.form .field.success .ui.dropdown .text,
+.ui.form .field.success .ui.dropdown .item {
+    background: @positiveBackgroundColor;
+    color: @positiveTextColor;
+}
+.ui.form .fields.success .field .ui.dropdown,
+.ui.form .field.success .ui.dropdown {
+    border-color: @positiveBorderColor !important;
+}
+.ui.form .fields.success .field .ui.dropdown:hover,
+.ui.form .field.success .ui.dropdown:hover {
+    border-color: @positiveBorderColor !important;
+}
+.ui.form .fields.success .field .ui.dropdown:hover .menu,
+.ui.form .field.success .ui.dropdown:hover .menu {
+    border-color: @positiveBorderColor;
+}
+.ui.form .fields.success .field .ui.multiple.selection.dropdown > .label,
+.ui.form .field.success .ui.multiple.selection.dropdown > .label {
+    background-color: #CBEACB;
+    color: @positiveTextColor;
+}
+
+/* Hover */
+.ui.form .fields.success .field .ui.dropdown .menu .item:hover,
+.ui.form .field.success .ui.dropdown .menu .item:hover {
+    background-color: #F2FFF2;
+}
+
+/* Selected */
+.ui.form .fields.success .field .ui.dropdown .menu .selected.item,
+.ui.form .field.success .ui.dropdown .menu .selected.item {
+    background-color: #F2FFF2;
+}
+
+
+/* Active */
+.ui.form .fields.success .field .ui.dropdown .menu .active.item,
+.ui.form .field.success .ui.dropdown .menu .active.item {
+    background-color: #CFFDCF !important;
+}
+
+/*--------------------
+    Checkbox Success
+---------------------*/
+
+.ui.form .fields.success .field .checkbox:not(.toggle):not(.slider) label,
+.ui.form .field.success .checkbox:not(.toggle):not(.slider) label,
+.ui.form .fields.success .field .checkbox:not(.toggle):not(.slider) .box,
+.ui.form .field.success .checkbox:not(.toggle):not(.slider) .box {
+    color: @positiveTextColor;
+}
+.ui.form .fields.success .field .checkbox:not(.toggle):not(.slider) label:before,
+.ui.form .field.success .checkbox:not(.toggle):not(.slider) label:before,
+.ui.form .fields.success .field .checkbox:not(.toggle):not(.slider) .box:before,
+.ui.form .field.success .checkbox:not(.toggle):not(.slider) .box:before {
+    background: @positiveBackgroundColor;
+    border-color: @positiveBorderColor;
+}
+.ui.form .fields.success .field .checkbox label:after,
+.ui.form .field.success .checkbox label:after,
+.ui.form .fields.success .field .checkbox .box:after,
+.ui.form .field.success .checkbox .box:after {
+    color: @positiveTextColor;
+}
