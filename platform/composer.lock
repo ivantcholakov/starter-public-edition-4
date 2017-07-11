@@ -679,16 +679,16 @@
         },
         {
             "name": "mustache/mustache",
-            "version": "v2.11.1",
+            "version": "v2.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/mustache.php.git",
-                "reference": "a3f6d55996dd28b58f3a909d474189a3c1aa693f"
+                "reference": "fe8fe72e9d580591854de404cc59a1b83ca4d19e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/mustache.php/zipball/a3f6d55996dd28b58f3a909d474189a3c1aa693f",
-                "reference": "a3f6d55996dd28b58f3a909d474189a3c1aa693f",
+                "url": "https://api.github.com/repos/bobthecow/mustache.php/zipball/fe8fe72e9d580591854de404cc59a1b83ca4d19e",
+                "reference": "fe8fe72e9d580591854de404cc59a1b83ca4d19e",
                 "shasum": ""
             },
             "require": {
@@ -721,7 +721,7 @@
                 "mustache",
                 "templating"
             ],
-            "time": "2016-07-31T06:18:27+00:00"
+            "time": "2017-07-11T12:54:05+00:00"
         },
         {
             "name": "netcarver/textile",
@@ -2041,16 +2041,16 @@
         },
         {
             "name": "whichbrowser/parser",
-            "version": "v2.0.25",
+            "version": "v2.0.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WhichBrowser/Parser.git",
-                "reference": "3cc92b2402b19f3bd1e184ef0f9f262d09b29d33"
+                "reference": "9e3e504336b97eec5803a3fcfeec9d254c0ba6bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WhichBrowser/Parser/zipball/3cc92b2402b19f3bd1e184ef0f9f262d09b29d33",
-                "reference": "3cc92b2402b19f3bd1e184ef0f9f262d09b29d33",
+                "url": "https://api.github.com/repos/WhichBrowser/Parser/zipball/9e3e504336b97eec5803a3fcfeec9d254c0ba6bf",
+                "reference": "9e3e504336b97eec5803a3fcfeec9d254c0ba6bf",
                 "shasum": ""
             },
             "require": {
@@ -2096,7 +2096,7 @@
                 "ua",
                 "useragent"
             ],
-            "time": "2017-05-04T13:20:28+00:00"
+            "time": "2017-07-11T20:50:10+00:00"
         },
         {
             "name": "xamin/handlebars.php",

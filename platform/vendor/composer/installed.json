@@ -608,54 +608,6 @@
         ]
     },
     {
-        "name": "mustache/mustache",
-        "version": "v2.11.1",
-        "version_normalized": "2.11.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/bobthecow/mustache.php.git",
-            "reference": "a3f6d55996dd28b58f3a909d474189a3c1aa693f"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/bobthecow/mustache.php/zipball/a3f6d55996dd28b58f3a909d474189a3c1aa693f",
-            "reference": "a3f6d55996dd28b58f3a909d474189a3c1aa693f",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.2.4"
-        },
-        "require-dev": {
-            "friendsofphp/php-cs-fixer": "~1.11",
-            "phpunit/phpunit": "~3.7|~4.0|~5.0"
-        },
-        "time": "2016-07-31T06:18:27+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Mustache": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Justin Hileman",
-                "email": "justin@justinhileman.info",
-                "homepage": "http://justinhileman.com"
-            }
-        ],
-        "description": "A Mustache implementation in PHP.",
-        "homepage": "https://github.com/bobthecow/mustache.php",
-        "keywords": [
-            "mustache",
-            "templating"
-        ]
-    },
-    {
         "name": "rmccue/requests",
         "version": "v1.7.0",
         "version_normalized": "1.7.0.0",
@@ -1305,67 +1257,6 @@
             "common",
             "http",
             "httplug"
-        ]
-    },
-    {
-        "name": "whichbrowser/parser",
-        "version": "v2.0.25",
-        "version_normalized": "2.0.25.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/WhichBrowser/Parser.git",
-            "reference": "3cc92b2402b19f3bd1e184ef0f9f262d09b29d33"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/WhichBrowser/Parser/zipball/3cc92b2402b19f3bd1e184ef0f9f262d09b29d33",
-            "reference": "3cc92b2402b19f3bd1e184ef0f9f262d09b29d33",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.4.0",
-            "psr/cache": "^1.0"
-        },
-        "require-dev": {
-            "cache/array-adapter": "^0.4",
-            "icomefromthenet/reverse-regex": "dev-master",
-            "league/csv": "^8.0",
-            "phpdocumentor/reflection-docblock": "^2.0",
-            "phpunit/php-code-coverage": "^2.2|^3.0",
-            "phpunit/phpunit": "^4.0",
-            "satooshi/php-coveralls": "^0.6",
-            "squizlabs/php_codesniffer": "2.5.*",
-            "symfony/yaml": "^2.7"
-        },
-        "time": "2017-05-04T13:20:28+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "WhichBrowser\\": [
-                    "src/",
-                    "tests/src/"
-                ]
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Niels Leenheer",
-                "email": "niels@leenheer.nl",
-                "role": "Developer"
-            }
-        ],
-        "description": "Useragent sniffing library for PHP",
-        "homepage": "http://whichbrowser.net",
-        "keywords": [
-            "browser",
-            "sniffing",
-            "ua",
-            "useragent"
         ]
     },
     {
@@ -2257,6 +2148,115 @@
             "config",
             "configuration",
             "options"
+        ]
+    },
+    {
+        "name": "whichbrowser/parser",
+        "version": "v2.0.26",
+        "version_normalized": "2.0.26.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/WhichBrowser/Parser.git",
+            "reference": "9e3e504336b97eec5803a3fcfeec9d254c0ba6bf"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/WhichBrowser/Parser/zipball/9e3e504336b97eec5803a3fcfeec9d254c0ba6bf",
+            "reference": "9e3e504336b97eec5803a3fcfeec9d254c0ba6bf",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0",
+            "psr/cache": "^1.0"
+        },
+        "require-dev": {
+            "cache/array-adapter": "^0.4",
+            "icomefromthenet/reverse-regex": "dev-master",
+            "league/csv": "^8.0",
+            "phpdocumentor/reflection-docblock": "^2.0",
+            "phpunit/php-code-coverage": "^2.2|^3.0",
+            "phpunit/phpunit": "^4.0",
+            "satooshi/php-coveralls": "^0.6",
+            "squizlabs/php_codesniffer": "2.5.*",
+            "symfony/yaml": "^2.7"
+        },
+        "time": "2017-07-11T20:50:10+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "WhichBrowser\\": [
+                    "src/",
+                    "tests/src/"
+                ]
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Niels Leenheer",
+                "email": "niels@leenheer.nl",
+                "role": "Developer"
+            }
+        ],
+        "description": "Useragent sniffing library for PHP",
+        "homepage": "http://whichbrowser.net",
+        "keywords": [
+            "browser",
+            "sniffing",
+            "ua",
+            "useragent"
+        ]
+    },
+    {
+        "name": "mustache/mustache",
+        "version": "v2.12.0",
+        "version_normalized": "2.12.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/bobthecow/mustache.php.git",
+            "reference": "fe8fe72e9d580591854de404cc59a1b83ca4d19e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/bobthecow/mustache.php/zipball/fe8fe72e9d580591854de404cc59a1b83ca4d19e",
+            "reference": "fe8fe72e9d580591854de404cc59a1b83ca4d19e",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.4"
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "~1.11",
+            "phpunit/phpunit": "~3.7|~4.0|~5.0"
+        },
+        "time": "2017-07-11T12:54:05+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Mustache": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Justin Hileman",
+                "email": "justin@justinhileman.info",
+                "homepage": "http://justinhileman.com"
+            }
+        ],
+        "description": "A Mustache implementation in PHP.",
+        "homepage": "https://github.com/bobthecow/mustache.php",
+        "keywords": [
+            "mustache",
+            "templating"
         ]
     }
 ]
