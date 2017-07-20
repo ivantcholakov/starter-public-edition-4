@@ -504,6 +504,7 @@ Real Life Usage
 * http://art-tochka.com/ - an online shop, gifts, migrated from starter-public-edition-3, designer: Irina Stancheva (still Bootstrap-based design)
 * http://viapontica123.bg - a small hotel, designer: Irina Stancheva
 * http://ivetfashion.com - a model management company, designer: Irina Stancheva
+* http://geopro2009.com - geodetic services, designer: Irina Stancheva
 
 Reported by Webnice Ltd., http://webnicebg.com
 
