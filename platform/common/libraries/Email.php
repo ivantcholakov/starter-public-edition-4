@@ -2,12 +2,12 @@
 
 /**
  * CodeIgniter compatible email-library powered by PHPMailer.
- * Version: 1.2.21
+ * Version: 1.2.22
  * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2017.
  * @license The MIT License (MIT), http://opensource.org/licenses/MIT
  * @link https://github.com/ivantcholakov/codeigniter-phpmailer
  *
- * Tested on CodeIgniter 3.1.3+ (March 15th, 2017) and
+ * Tested on CodeIgniter 3.1.5 (June 19th, 2017) and
  * PHPMailer Version 5.2.23 (March 15th, 2017).
  */
 
@@ -56,7 +56,6 @@ class Email extends CI_Email {
 
     protected $mailer_engine = 'codeigniter';
     protected $CI;
-    protected $_is_ci_3 = NULL;
 
     protected static $protocols = array('mail', 'sendmail', 'smtp');
     protected static $mailtypes = array('html', 'text');
@@ -67,8 +66,6 @@ class Email extends CI_Email {
     // The Constructor ---------------------------------------------------------
 
     public function __construct(array $config = array()) {
-
-        $this->_is_ci_3 = (bool) ((int) CI_VERSION >= 3);
 
         $this->CI = get_instance();
         $this->CI->load->helper('email');
