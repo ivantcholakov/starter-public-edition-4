@@ -63,20 +63,20 @@ class Letter_avatar {
 
         $query = array();
 
-        $name = preg_replace('/[^A-Z\s]/', '', strtoupper(url_title($name, ' ')));
+        $name = preg_replace('/[^\p{L}\s]/u', '', UTF8::strtoupper(url_title($name, ' ', false, false)));
         $name = preg_split('/\s/m', $name, null, PREG_SPLIT_NO_EMPTY);
 
         if (!empty($name)) {
 
             if (count($name) == 1) {
 
-                $name = str_split($name[0]);
+                $name = UTF8::str_split($name[0]);
                 $name = array_slice($name, 0, 2);
 
             } else {
 
-                $name0 = str_split($name[0]);
-                $name1 = str_split($name[1]);
+                $name0 = UTF8::str_split($name[0]);
+                $name1 = UTF8::str_split($name[1]);
 
                 $name = array($name0[0], $name1[0]);
             }

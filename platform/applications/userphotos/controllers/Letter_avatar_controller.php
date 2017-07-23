@@ -2,9 +2,17 @@
 
 class Letter_avatar_controller extends Base_Controller {
 
+    protected $transliterate_to_ascii = false;
+
     public function __construct() {
 
         parent::__construct();
+
+        $transliterate_to_ascii = config_item('letter_avatar_transliterate_to_ascii');
+
+        if ($transliterate_to_ascii !== null) {
+            $this->transliterate_to_ascii = !empty($transliterate_to_ascii);
+        }
     }
 
     public function index() {
@@ -16,13 +24,13 @@ class Letter_avatar_controller extends Base_Controller {
         }
 
         $name = urldecode($this->input->get('n'));
-        $name = preg_replace('/[^A-Z\s]/', '', strtoupper(url_title($name, ' ')));
+        $name = preg_replace('/[^\p{L}\s]/u', '', UTF8::strtoupper(url_title($name, ' ', false, $this->transliterate_to_ascii)));
         $name = preg_split('/\s/m', $name, null, PREG_SPLIT_NO_EMPTY);
 
         if (!empty($name) && is_php('5.5')) {
 
             if (count($name) == 1) {
-                $name = str_split($name[0]);
+                $name = UTF8::str_split($name[0]);
             }
 
             $name = implode(' ', $name);

@@ -3,14 +3,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed.');
 
 // Created by Ivan Tcholakov, 30-APR-2017.
-// Note, Ivan Tcholakov, 31-MAY-2017:
-// This class was introduced for tweaking some
-// hard-coded color values. Since the original
-// project improved color generation, this class
-// appears not to be needed at the moment. I am
-// going to keep it for backward compatibility
-// and as a way for introducing future patches,
-// if such become needed.
+// This class was introduced for patching and customizations.
 
 class LetterAvatar extends \YoHang88\LetterAvatar\LetterAvatar {
 
@@ -42,7 +35,10 @@ class LetterAvatar extends \YoHang88\LetterAvatar\LetterAvatar {
             if ($number_of_word > 2)
                 break;
 
-            $this->name_initials .= strtoupper(trim($word[0]));
+            // Modified by Ivan Tcholakov, 23-JUL-2017.
+            //$this->name_initials .= mb_strtoupper(trim(mb_substr($word, 0, 1, 'UTF-8')));
+            $this->name_initials .= $this->strtoupper(trim($this->substr($word, 0, 1)));
+            //
 
             $number_of_word++;
         }
@@ -73,6 +69,18 @@ class LetterAvatar extends \YoHang88\LetterAvatar\LetterAvatar {
         });
 
         return $canvas->resize($this->size, $this->size);
+    }
+
+    // Added by Ivan Tcholakov, 23-JUL-2017.
+    protected function strtoupper($str)
+    {
+        return UTF8::strtoupper($str);
+    }
+
+    // Added by Ivan Tcholakov, 23-JUL-2017.
+    protected function substr($str, $offset, $length = NULL)
+    {
+        return UTF8::substr($str, $offset, $length);
     }
 
     public function __toString()

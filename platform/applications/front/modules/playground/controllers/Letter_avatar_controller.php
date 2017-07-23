@@ -35,6 +35,8 @@ class Letter_avatar_controller extends Playground_Base_Controller {
             array('name' => 'Steve McQueen'),
             array('name' => 'Toshiro Mifune'),
             array('name' => 'Yul Brynner'),
+            array('name' => 'Николай Волев'),
+            array('name' => 'Теди Москов'),
         );
 
         $this->template
