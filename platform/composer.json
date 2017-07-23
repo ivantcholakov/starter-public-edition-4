@@ -30,7 +30,7 @@
         "phpmailer/phpmailer": "^5.2.17",
         "xamin/handlebars.php": "^0.10.4",
         "intervention/image": "^2.3",
-        "yohang88/letter-avatar": "^1.0",
+        "yohang88/letter-avatar": "1.0.5",
         "tubalmartin/cssmin": "^4.1",
         "oyejorge/less.php": "~1.7.0.14"
     }
