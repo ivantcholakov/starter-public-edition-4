@@ -557,15 +557,16 @@ class MX_Router extends CI_Router
     {
         // Added by Ivan Tcholakov, 14-MAR-2014.
         // Resolving the language.
-        // The same check has been placed in locate() method too.
         $segments = $this->uri->segments;
+
+        $current_language = $this->config->item('language');
 
         if (!empty($segments)) {
 
             if ($this->config->valid_language_uri_segment($segments[0])) {
 
                 $this->language_uri_segment = $segments[0];
-                $this->config->set_current_language($this->config->language_by_uri_segment($this->language_uri_segment));
+                $current_language = $this->config->language_by_uri_segment($this->language_uri_segment);
                 array_shift($segments);
 
                 // Added by Ivan Tcholakov, 11-JAN-2016.
@@ -578,6 +579,8 @@ class MX_Router extends CI_Router
                 }
             }
         }
+
+        $this->config->set_current_language($current_language);
         //
 
         // Turn the segment array into a URI string

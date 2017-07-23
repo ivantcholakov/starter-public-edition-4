@@ -68,12 +68,22 @@ if (!function_exists('base_uri')) {
 
 }
 
+if (!function_exists('site_url')) {
+
+    // Added by Ivan Tcholakov, 23-JUL-2017.
+    function site_url($uri = '', $protocol = NULL, $language = NULL) {
+
+        return get_instance()->config->site_url($uri, $protocol, $language);
+    }
+
+}
+
 if (!function_exists('site_uri')) {
 
     // Added by Ivan Tcholakov, 09-NOV-2013.
-    function site_uri($uri = '') {
+    function site_uri($uri = '', $language = NULL) {
 
-        return get_instance()->config->site_uri($uri);
+        return get_instance()->config->site_uri($uri, $language);
     }
 
 }

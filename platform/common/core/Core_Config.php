@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013-2017
  * @license The MIT License, http://opensource.org/licenses/MIT for my modifications.
  */
 
@@ -9,14 +9,24 @@ class Core_Config extends MX_Config {
 
     /**
      * Class constructor
-     *
-     * Sets the $config data from the primary config.php file as a class variable.
-     *
      * @return    void
      */
-    public function __construct()
-    {
+    public function __construct() {
+
+        $this->initialize();
+        log_message('info', 'Config Class Initialized');
+    }
+
+    // --------------------------------------------------------------------
+
+    protected function read_config() {
+
         $this->config =& get_config();
+    }
+
+    // --------------------------------------------------------------------
+
+    protected function read_language_config() {
 
         // Added by Ivan Tcholakov, 20-JAN-2014.
         // Load additional configuration data for languages.
@@ -52,8 +62,6 @@ class Core_Config extends MX_Config {
             $config = array();
         }
 
-        $c['hide_default_uri_segment'] = !empty($c['hide_default_uri_segment']);
-
         $languages = isset($c['languages']) && is_array($c['languages']) ? $c['languages'] : array();
 
         foreach ($languages as $key => $value) {
@@ -68,19 +76,46 @@ class Core_Config extends MX_Config {
         }
 
         $c['languages'] = $languages;
-
+        $c['hide_default_uri_segment'] = !empty($c['hide_default_uri_segment']);
         $c['default_language'] = $this->config['language'];
-
-        if (!isset($c['enabled_languages']) && !is_array($c['enabled_languages'])) {
-            $c['enabled_languages'] = array($c['default_language']);
-        }
-
-        if (!in_array($c['default_language'], $c['enabled_languages'])) {
-            $c['enabled_languages'][] = $c['default_language'];
-        }
 
         $this->config = array_replace_recursive($this->config, $c);
         //
+    }
+
+    // --------------------------------------------------------------------
+
+    protected function initialize_languages() {
+
+        $this->config['language'] = $this->config['default_language'];
+
+        if (!isset($this->config['enabled_languages']) && !is_array($this->config['enabled_languages'])) {
+            $this->config['enabled_languages'] = array($this->config['default_language']);
+        }
+
+        if (!in_array($this->config['default_language'], $this->config['enabled_languages'])) {
+            $this->config['enabled_languages'][] = $this->config['default_language'];
+        }
+
+        get_config(array(array_only($this->config, array(
+            'language',
+            'hide_default_uri_segment',
+            'enabled_languages',
+            'languages',
+            'default_language'
+        ))));
+    }
+
+    // --------------------------------------------------------------------
+
+    protected function initialize() {
+
+        if (empty($this->config)) {
+
+            $this->read_config();
+            $this->read_language_config();
+            $this->initialize_languages();
+        }
 
         global $DETECT_URL;
 
@@ -347,8 +382,6 @@ class Core_Config extends MX_Config {
         if (!defined('THEME_CSS_URI')) {
             define('THEME_CSS_URI', THEME_ASSET_URI.$this->add_slash($c['asset_css_dir']));
         }
-
-        log_message('info', 'Config Class Initialized');
     }
 
     // --------------------------------------------------------------------
@@ -658,11 +691,12 @@ class Core_Config extends MX_Config {
     // Added by Ivan Tcholakov, 22-JAN-2014.
     public function set_current_language($language) {
 
-        if ($this->valid_language($language)) {
-            $this->set_item('language', $language);
-        } else {
-            $this->set_item('language', $this->default_language());
+        if (!$this->valid_language($language)) {
+            $language = $this->default_language();
         }
+
+        $this->set_item('language', $language);
+        get_config(array('language' => $language));
     }
 
     // Added by Ivan Tcholakov, 22-JAN-2014.
