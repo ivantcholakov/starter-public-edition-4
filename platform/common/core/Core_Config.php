@@ -96,14 +96,6 @@ class Core_Config extends MX_Config {
         if (!in_array($this->config['default_language'], $this->config['enabled_languages'])) {
             $this->config['enabled_languages'][] = $this->config['default_language'];
         }
-
-        get_config(array(array_only($this->config, array(
-            'language',
-            'hide_default_uri_segment',
-            'enabled_languages',
-            'languages',
-            'default_language'
-        ))));
     }
 
     // --------------------------------------------------------------------
@@ -696,7 +688,6 @@ class Core_Config extends MX_Config {
         }
 
         $this->set_item('language', $language);
-        get_config(array('language' => $language));
     }
 
     // Added by Ivan Tcholakov, 22-JAN-2014.
