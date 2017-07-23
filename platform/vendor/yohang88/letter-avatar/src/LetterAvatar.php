@@ -122,7 +122,7 @@ class LetterAvatar
             if ($number_of_word > 2)
                 break;
 
-            $this->name_initials .= strtoupper(trim($word[0]));
+            $this->name_initials .= mb_strtoupper(trim(mb_substr($word, 0, 1, 'UTF-8')));
 
             $number_of_word++;
         }
