@@ -21,16 +21,6 @@ class Core_Controller extends MX_Controller {
         $ci->controller = $this->controller = $this->router->class;
         $ci->method = $this->method = $this->router->method;
 
-        // If the current URI has no a language segment, check also whether
-        // the default language has been set within the database.
-        // $this->lang->leading() needs to be implemented for this purpose.
-        if ($this->uri->language_segment() == '') {
-
-            if (is_callable(array($this->lang, 'leading'))) {
-                $this->lang->set_current($this->lang->leading());
-            }
-        }
-
         $this->load->library('form_validation');
         $this->form_validation->CI =& $this;    // Hack to make form validation work properly with HMVC.
                                                 // See https://bitbucket.org/wiredesignz/codeigniter-modular-extensions-hmvc/wiki/Home
