@@ -482,11 +482,11 @@ if (!function_exists('css_normalize')) {
         ci()->load->helper('asset');
 
         if (template_enable_oldie()) {
-            return css('lib/normalize-1/normalize.css');
+            return css('lib/normalize-1/normalize.min.css');
         }
 
-        //return css('lib/normalize-2/normalize.css');
-        return css('lib/normalize-3/normalize.css');
+        //return css('lib/normalize-2/normalize.min.css');
+        return css('lib/normalize-3/normalize.min.css');
     }
 
 }
