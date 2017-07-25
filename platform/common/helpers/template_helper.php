@@ -486,7 +486,8 @@ if (!function_exists('css_normalize')) {
         }
 
         //return css('lib/normalize-2/normalize.min.css');
-        return css('lib/normalize-3/normalize.min.css');
+        //return css('lib/normalize-3/normalize.min.css');
+        return css('lib/normalize-7/normalize.min.css');
     }
 
 }
