@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.3.0 - 2017-08-03
+
+### Added
+
+- Discovery support for CakePHP adapter
+- Discovery support for Zend adapter
+- Discovery support for Artax adapter
 
 ## 1.2.1 - 2017-03-02
 

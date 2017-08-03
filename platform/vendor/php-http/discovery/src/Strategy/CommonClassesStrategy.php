@@ -20,6 +20,9 @@ use Http\Client\Curl\Client as Curl;
 use Http\Client\Socket\Client as Socket;
 use Http\Adapter\React\Client as React;
 use Http\Adapter\Buzz\Client as Buzz;
+use Http\Adapter\Cake\Client as Cake;
+use Http\Adapter\Zend\Client as Zend;
+use Http\Adapter\Artax\Client as Artax;
 
 /**
  * @internal
@@ -59,6 +62,9 @@ final class CommonClassesStrategy implements DiscoveryStrategy
             ['class' => Socket::class, 'condition' => Socket::class],
             ['class' => Buzz::class, 'condition' => Buzz::class],
             ['class' => React::class, 'condition' => React::class],
+            ['class' => Cake::class, 'condition' => Cake::class],
+            ['class' => Zend::class, 'condition' => Zend::class],
+            ['class' => Artax::class, 'condition' => Artax::class],
         ],
     ];
 
