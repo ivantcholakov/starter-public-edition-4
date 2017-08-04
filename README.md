@@ -505,6 +505,7 @@ Real Life Usage
 * http://viapontica123.bg - a small hotel, designer: Irina Stancheva
 * http://ivetfashion.com - a model management company, designer: Irina Stancheva
 * http://geopro2009.com - geodetic services, designer: Irina Stancheva
+* http://trenchovahouse.com - a family hotel, designer: Irina Stancheva
 
 Reported by Webnice Ltd., http://webnicebg.com
 
