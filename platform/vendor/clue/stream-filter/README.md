@@ -11,6 +11,7 @@ A simple and modern approach to stream filtering in PHP
   * [fun()](#fun)
   * [remove()](#remove)
 * [Install](#install)
+* [Tests](#tests)
 * [License](#license)
 
 ## Why?
@@ -139,6 +140,17 @@ Filter\append($stream, function ($chunk) {
 }, STREAM_FILTER_READ);
 ```
 
+> Note that once a filter has been added to stream, the stream can no longer be passed to
+> [`stream_select()`](http://php.net/manual/en/function.stream-select.php)
+> (and family).
+>
+> > Warning: stream_select(): cannot cast a filtered stream on this system in {file} on line {line}
+>
+> This is due to limitations of PHP's stream filter support, as it can no longer reliably
+> tell when the underlying stream resource is actually ready.
+> As an alternative, consider calling `stream_select()` on the unfiltered stream and
+> then pass the unfiltered data through the [`fun()`](#fun) function.
+
 ### prepend()
 
 The `prepend($stream, $callback, $read_write = STREAM_FILTER_ALL)` function can be used to
@@ -156,6 +168,10 @@ $filter = Filter\prepend($stream, function ($chunk) {
     return $chunk;
 });
 ```
+
+Except for the position in the list of filters, this function behaves exactly
+like the [`append()`](#append) function.
+For more details about its behavior, see also the [`append()`](#append) function.
 
 ### fun()
 
@@ -183,8 +199,12 @@ Accessing an unknown filter function will result in a `RuntimeException`:
 Filter\fun('unknown'); // throws RuntimeException
 ```
 
-Some filters may accept or require additional filter parameters.
-The optional `$parameters` argument will be passed to the filter handler as-is.
+Some filters may accept or require additional filter parameters – most
+filters do not require filter parameters.
+If given, the optional `$parameters` argument will be passed to the
+underlying filter handler as-is.
+In particular, note how *not passing* this parameter at all differs from
+explicitly passing a `null` value (which many filters do not accept).
 Please refer to the individual filter definition for more details.
 For example, the `string.strip_tags` filter can be invoked like this:
 
@@ -240,11 +260,36 @@ Filter\remove($filter);
 
 ## Install
 
-The recommended way to install this library is [through composer](https://getcomposer.org).
-[New to composer?](https://getcomposer.org/doc/00-intro.md)
+The recommended way to install this library is [through Composer](https://getcomposer.org).
+[New to Composer?](https://getcomposer.org/doc/00-intro.md)
+
+This will install the latest supported version:
 
 ```bash
-$ composer require clue/stream-filter:~1.3
+$ composer require clue/stream-filter:^1.4
+```
+
+See also the [CHANGELOG](CHANGELOG.md) for details about version upgrades.
+
+This project aims to run on any platform and thus does not require any PHP
+extensions and supports running on legacy PHP 5.3 through current PHP 7+ and
+HHVM.
+It's *highly recommended to use PHP 7+* for this project.
+Older PHP versions may suffer from a number of inconsistencies documented above.
+
+## Tests
+
+To run the test suite, you first need to clone this repo and then install all
+dependencies [through Composer](http://getcomposer.org):
+
+```bash
+$ composer install
+```
+
+To run the test suite, go to the project root and run:
+
+```bash
+$ php vendor/bin/phpunit
 ```
 
 ## License
