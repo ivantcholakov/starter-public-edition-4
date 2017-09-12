@@ -533,7 +533,6 @@ Reported by Webnice Ltd., http://webnicebg.com
 * http://technet.bg/ - computer maintenance
 * http://rusalkakiten.com/ - a hotel
 * http://rusepress-bg.com/ - printing services
-* http://dda.zashevdesign.com/ - Dibla Design Award event
 
 Reported by Krishna Guragai, @krishnaguragain
 
