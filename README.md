@@ -530,6 +530,10 @@ Reported by Webnice Ltd., http://webnicebg.com
 * http://mkferavita.com - herbal products
 * https://stefanystyle.com - a furniture manufacturer
 * http://rusalkakiten.com - a family hotel
+* http://technet.bg/ - computer maintenance
+* http://rusalkakiten.com/ - a hotel
+* http://rusepress-bg.com/ - printing services
+* http://dda.zashevdesign.com/ - Dibla Design Award event
 
 Reported by Krishna Guragai, @krishnaguragain
 
