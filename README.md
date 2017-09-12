@@ -533,6 +533,7 @@ Reported by Webnice Ltd., http://webnicebg.com
 * http://technet.bg/ - computer maintenance
 * http://rusalkakiten.com/ - a hotel
 * http://rusepress-bg.com/ - printing services
+* http://mirage-group.eu - a printing machines provider
 
 Reported by Krishna Guragai, @krishnaguragain
 
