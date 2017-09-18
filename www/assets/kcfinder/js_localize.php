@@ -16,6 +16,7 @@ namespace kcfinder;
 
 // Added by Ivan Tcholakov, 20-OCT-2013.
 require dirname(__FILE__).'/../../config.php';
+$assign_to_config['csrf_protection'] = false;
 require $PLATFORMCREATE;
 ci()->load->helper('template');
 //
