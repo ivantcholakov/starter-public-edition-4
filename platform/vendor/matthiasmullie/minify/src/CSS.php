@@ -437,12 +437,14 @@ class CSS extends Minify
              * Urls with `)` (as could happen with data: uris) should also be
              * quoted to avoid being confused for the url() closing parentheses.
              * And urls with a # have also been reported to cause issues.
+             * Urls with quotes inside should also remain escaped.
              *
              * @see https://developer.mozilla.org/nl/docs/Web/CSS/url#The_url()_functional_notation
              * @see https://hg.mozilla.org/mozilla-central/rev/14abca4e7378
+             * @see https://github.com/matthiasmullie/minify/issues/193
              */
             $url = trim($url);
-            if (preg_match('/[\s\)#\x{7f}-\x{9f}]/u', $url)) {
+            if (preg_match('/[\s\)\'"#\x{7f}-\x{9f}]/u', $url)) {
                 $url = $match['quotes'] . $url . $match['quotes'];
             }
 
@@ -639,10 +641,12 @@ class CSS extends Minify
         $content = preg_replace('/\s+([\]\)])/', '$1', $content);
         $content = preg_replace('/\s+(:)(?![^\}]*\{)/', '$1', $content);
 
-        // whitespace around + and - can only be stripped in selectors, like
-        // :nth-child(3+2n), not in things like calc(3px + 2px) or shorthands
-        // like 3px -2px
-        $content = preg_replace('/\s*([+-])\s*(?=[^}]*{)/', '$1', $content);
+        // whitespace around + and - can only be stripped inside some pseudo-
+        // classes, like `:nth-child(3+2n)`
+        // not in things like `calc(3px + 2px)`, shorthands like `3px -2px`, or
+        // selectors like `div.weird- p`
+        $pseudos = array('nth-child', 'nth-last-child', 'nth-last-of-type', 'nth-of-type');
+        $content = preg_replace('/:('.implode('|', $pseudos).')\(\s*([+-]?)\s*(.+?)\s*([+-]?)\s*(.*?)\s*\)/', ':$1($2$3$4$5)', $content);
 
         // remove semicolon/whitespace followed by closing bracket
         $content = str_replace(';}', '}', $content);
