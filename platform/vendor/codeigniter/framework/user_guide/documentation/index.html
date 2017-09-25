@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Writing CodeIgniter Documentation &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Writing CodeIgniter Documentation &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Contributing to CodeIgniter" href="../contributing/index.html"/>
         <link rel="next" title="Developer’s Certificate of Origin 1.1" href="../DCO.html"/>
         <link rel="prev" title="Contributing to CodeIgniter" href="../contributing/index.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -84,8 +85,8 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Writing CodeIgniter Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -270,8 +269,8 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Writing CodeIgniter Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -447,7 +446,7 @@ It is created automatically by inserting the following:</p>
 <li><a class="reference internal" href="#method-documentation" id="id3">Method Documentation</a></li>
 </ul>
 </div>
-<div class="custom-index container"></div><p>The &lt;div&gt; that is inserted as raw HTML is a hook for the documentation&#8217;s
+<div class="custom-index container"></div><p>The &lt;div&gt; that is inserted as raw HTML is a hook for the documentation’s
 JavaScript to dynamically add links to any function and method definitions
 contained in the current page.</p>
 <div class="section" id="tools-required">
@@ -460,7 +459,7 @@ Pygments, so that code blocks can be properly highlighted.</p>
 easy_install <span class="s2">&quot;sphinxcontrib-phpdomain==0.1.3.post1&quot;</span>
 </pre></div>
 </div>
-<p>Then follow the directions in the README file in the <tt class="samp docutils literal"><span class="pre">cilexer</span></tt> folder
+<p>Then follow the directions in the README file in the <code class="samp docutils literal"><span class="pre">cilexer</span></code> folder
 inside the documentation repository to install the CI Lexer.</p>
 </div>
 <div class="section" id="page-and-section-headings-and-subheadings">
@@ -478,7 +477,7 @@ overlines.  Other headings just use underlines, with the following hierarchy:</p
 <span class="s2">&quot; for subsubsubsubsections (!)</span>
 </pre></div>
 </div>
-<p>The <a class="reference download internal" href="../_downloads/ELDocs.tmbundle.zip"><tt class="xref download docutils literal"><span class="pre">TextMate</span> <span class="pre">ELDocs</span> <span class="pre">Bundle</span></tt></a> can help you
+<p>The <a class="reference download internal" href="../_downloads/ELDocs.tmbundle.zip" download=""><code class="xref download docutils literal"><span class="pre">TextMate</span> <span class="pre">ELDocs</span> <span class="pre">Bundle</span></code></a> can help you
 create these with the following tab triggers:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nx">title</span><span class="o">-&gt;</span>
 
@@ -564,21 +563,21 @@ For example, consider the following ReST:</p>
 <p>It creates the following display:</p>
 <dl class="class">
 <dt id="Some_class">
-<em class="property">class </em><tt class="descname">Some_class</tt><a class="headerlink" href="#Some_class" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">Some_class</code><a class="headerlink" href="#Some_class" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="Some_class::some_method">
-<tt class="descname">some_method</tt><big>(</big><em>$foo</em><span class="optional">[</span>, <em>$bar</em><span class="optional">[</span>, <em>$bat</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#Some_class::some_method" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function will perform some action. The <tt class="docutils literal"><span class="pre">$bar</span></tt> array must contain
-a something and something else, and along with <tt class="docutils literal"><span class="pre">$bat</span></tt> is an optional
+<code class="descname">some_method</code><span class="sig-paren">(</span><em>$foo</em><span class="optional">[</span>, <em>$bar</em><span class="optional">[</span>, <em>$bat</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Some_class::some_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function will perform some action. The <code class="docutils literal"><span class="pre">$bar</span></code> array must contain
+a something and something else, and along with <code class="docutils literal"><span class="pre">$bat</span></code> is an optional
 parameter.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$foo</strong> (<em>int</em>) &#8211; the foo id to do something in</li>
-<li><strong>$bar</strong> (<em>mixed</em>) &#8211; A data array that must contain a something and something else</li>
-<li><strong>$bat</strong> (<em>bool</em>) &#8211; whether or not to do something</li>
+<li><strong>$foo</strong> (<em>int</em>) – the foo id to do something in</li>
+<li><strong>$bar</strong> (<em>mixed</em>) – A data array that must contain a something and something else</li>
+<li><strong>$bat</strong> (<em>bool</em>) – whether or not to do something</li>
 </ul>
 </td>
 </tr>
@@ -610,12 +609,12 @@ parameter.</p>
 <p class="last">Here is something that you should be aware of when using some_method().
 For real.</p>
 </div>
-<p>See also <tt class="xref py py-meth docutils literal"><span class="pre">Some_class::should_do_something()</span></tt></p>
+<p>See also <code class="xref py py-meth docutils literal"><span class="pre">Some_class::should_do_something()</span></code></p>
 </dd></dl>
 
 <dl class="method">
 <dt id="Some_class::should_do_something">
-<tt class="descname">should_do_something</tt><big>(</big><big>)</big><a class="headerlink" href="#Some_class::should_do_something" title="Permalink to this definition">¶</a></dt>
+<code class="descname">should_do_something</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Some_class::should_do_something" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -652,7 +651,7 @@ For real.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -673,7 +672,7 @@ For real.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

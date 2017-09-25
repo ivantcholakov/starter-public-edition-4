@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Database Caching Class &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Database Caching Class &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Database Reference" href="index.html"/>
         <link rel="next" title="Database Forge Class" href="forge.html"/>
         <link rel="prev" title="Custom Function Calls" href="call_function.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -167,7 +168,7 @@
 <li class="toctree-l2"><a class="reference internal" href="transactions.html">Transactions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metadata.html">Getting MetaData</a></li>
 <li class="toctree-l2"><a class="reference internal" href="call_function.html">Custom Function Calls</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Query Caching</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Query Caching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="forge.html">Database Manipulation with Database Forge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="utilities.html">Database Utilities Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="db_driver_reference.html">Database Driver Reference</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -353,7 +352,7 @@
 <li class="toctree-l2"><a class="reference internal" href="transactions.html">Transactions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metadata.html">Getting MetaData</a></li>
 <li class="toctree-l2"><a class="reference internal" href="call_function.html">Custom Function Calls</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Query Caching</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Query Caching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="forge.html">Database Manipulation with Database Forge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="utilities.html">Database Utilities Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="db_driver_reference.html">Database Driver Reference</a></li>
@@ -454,7 +453,7 @@ loaded that contains database queries.</p>
 </div>
 <div class="section" id="how-does-caching-work">
 <h2>How Does Caching Work?<a class="headerlink" href="#how-does-caching-work" title="Permalink to this headline">¶</a></h2>
-<p>CodeIgniter&#8217;s query caching system happens dynamically when your pages
+<p>CodeIgniter’s query caching system happens dynamically when your pages
 are viewed. When caching is enabled, the first time a web page is
 loaded, the query result object will be serialized and stored in a text
 file on your server. The next time the page is loaded the cache file
@@ -462,20 +461,20 @@ will be used instead of accessing your database. Your database usage can
 effectively be reduced to zero for any pages that have been cached.</p>
 <p>Only read-type (SELECT) queries can be cached, since these are the only
 type of queries that produce a result. Write-type (INSERT, UPDATE, etc.)
-queries, since they don&#8217;t generate a result, will not be cached by the
+queries, since they don’t generate a result, will not be cached by the
 system.</p>
 <p>Cache files DO NOT expire. Any queries that have been cached will remain
 cached until you delete them. The caching system permits you clear
 caches associated with individual pages, or you can delete the entire
-collection of cache files. Typically you&#8217;ll want to use the housekeeping
+collection of cache files. Typically you’ll want to use the housekeeping
 functions described below to delete cache files after certain events
-take place, like when you&#8217;ve added new information to your database.</p>
+take place, like when you’ve added new information to your database.</p>
 </div>
 <div class="section" id="will-caching-improve-your-site-s-performance">
-<h2>Will Caching Improve Your Site&#8217;s Performance?<a class="headerlink" href="#will-caching-improve-your-site-s-performance" title="Permalink to this headline">¶</a></h2>
+<h2>Will Caching Improve Your Site’s Performance?<a class="headerlink" href="#will-caching-improve-your-site-s-performance" title="Permalink to this headline">¶</a></h2>
 <p>Getting a performance gain as a result of caching depends on many
 factors. If you have a highly optimized database under very little load,
-you probably won&#8217;t see a performance boost. If your database is under
+you probably won’t see a performance boost. If your database is under
 heavy use you probably will see an improved response, assuming your
 file-system is not overly taxed. Remember that caching simply changes
 how your information is retrieved, shifting it from being a database
@@ -493,22 +492,22 @@ Sets of cache files are further organized into sub-folders corresponding
 to your controller functions. To be precise, the sub-folders are named
 identically to the first two segments of your URI (the controller class
 name and function name).</p>
-<p>For example, let&#8217;s say you have a controller called blog with a function
+<p>For example, let’s say you have a controller called blog with a function
 called comments that contains three queries. The caching system will
 create a cache folder called blog+comments, into which it will write
 three cache files.</p>
 <p>If you use dynamic queries that change based on information in your URI
 (when using pagination, for example), each instance of the query will
-produce its own cache file. It&#8217;s possible, therefore, to end up with
+produce its own cache file. It’s possible, therefore, to end up with
 many times more cache files than you have queries.</p>
 </div>
 <div class="section" id="managing-your-cache-files">
 <h2>Managing your Cache Files<a class="headerlink" href="#managing-your-cache-files" title="Permalink to this headline">¶</a></h2>
-<p>Since cache files do not expire, you&#8217;ll need to build deletion routines
-into your application. For example, let&#8217;s say you have a blog that
-allows user commenting. Whenever a new comment is submitted you&#8217;ll want
+<p>Since cache files do not expire, you’ll need to build deletion routines
+into your application. For example, let’s say you have a blog that
+allows user commenting. Whenever a new comment is submitted you’ll want
 to delete the cache files associated with the controller function that
-serves up your comments. You&#8217;ll find two delete functions described
+serves up your comments. You’ll find two delete functions described
 below that help you clear data.</p>
 </div>
 <div class="section" id="not-all-database-functions-work-with-caching">
@@ -592,7 +591,7 @@ determining what should be cleared.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -613,7 +612,7 @@ determining what should be cleared.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

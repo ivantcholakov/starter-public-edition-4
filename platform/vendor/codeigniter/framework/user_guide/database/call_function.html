@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Custom Function Calls &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Custom Function Calls &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Database Reference" href="index.html"/>
         <link rel="next" title="Database Caching Class" href="caching.html"/>
         <link rel="prev" title="Database Metadata" href="metadata.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -166,7 +167,7 @@
 <li class="toctree-l2"><a class="reference internal" href="query_builder.html">Query Builder Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="transactions.html">Transactions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metadata.html">Getting MetaData</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Custom Function Calls</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Custom Function Calls</a></li>
 <li class="toctree-l2"><a class="reference internal" href="caching.html">Query Caching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="forge.html">Database Manipulation with Database Forge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="utilities.html">Database Utilities Class</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -352,7 +351,7 @@
 <li class="toctree-l2"><a class="reference internal" href="query_builder.html">Query Builder Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="transactions.html">Transactions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metadata.html">Getting MetaData</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Custom Function Calls</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Custom Function Calls</a></li>
 <li class="toctree-l2"><a class="reference internal" href="caching.html">Query Caching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="forge.html">Database Manipulation with Database Forge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="utilities.html">Database Utilities Class</a></li>
@@ -429,7 +428,7 @@
 <h2>$this-&gt;db-&gt;call_function();<a class="headerlink" href="#this-db-call-function" title="Permalink to this headline">¶</a></h2>
 <p>This function enables you to call PHP database functions that are not
 natively included in CodeIgniter, in a platform independent manner. For
-example, let&#8217;s say you want to call the mysql_get_client_info()
+example, let’s say you want to call the mysql_get_client_info()
 function, which is <strong>not</strong> natively supported by CodeIgniter. You could
 do so like this:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">call_function</span><span class="p">(</span><span class="s1">&#39;get_client_info&#39;</span><span class="p">);</span>
@@ -479,7 +478,7 @@ database result ID. The connection ID can be accessed using:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -500,7 +499,7 @@ database result ID. The connection ID can be accessed using:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

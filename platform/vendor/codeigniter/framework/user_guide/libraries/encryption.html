@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Encryption Library &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Encryption Library &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Libraries" href="index.html"/>
         <link rel="next" title="File Uploading Class" href="file_uploading.html"/>
         <link rel="prev" title="Encrypt Class" href="encrypt.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -129,7 +130,7 @@
 <li class="toctree-l2"><a class="reference internal" href="config.html">Config Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="email.html">Email Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="encrypt.html">Encrypt Class</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Encryption Library</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Encryption Library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file_uploading.html">File Uploading Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="form_validation.html">Form Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ftp.html">FTP Class</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -315,7 +314,7 @@
 <li class="toctree-l2"><a class="reference internal" href="config.html">Config Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="email.html">Email Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="encrypt.html">Encrypt Class</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Encryption Library</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Encryption Library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file_uploading.html">File Uploading Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="form_validation.html">Form Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ftp.html">FTP Class</a></li>
@@ -429,7 +428,7 @@
 <p class="first admonition-title">Important</p>
 <p class="last">DO NOT use this or any other <em>encryption</em> library for
 user password storage! Passwords must be <em>hashed</em> instead, and you
-should do that via PHP&#8217;s own <a class="reference external" href="http://php.net/password">Password Hashing extension</a>.</p>
+should do that via PHP’s own <a class="reference external" href="http://php.net/password">Password Hashing extension</a>.</p>
 </div>
 <p>The Encryption Library provides two-way data encryption. To do so in
 a cryptographically secure way, it utilizes PHP extensions that are
@@ -473,7 +472,7 @@ for proper cryptography.</p>
 <div class="section" id="initializing-the-class">
 <h3><a class="toc-backref" href="#id3">Initializing the Class</a><a class="headerlink" href="#initializing-the-class" title="Permalink to this headline">¶</a></h3>
 <p>Like most other classes in CodeIgniter, the Encryption library is
-initialized in your controller using the <tt class="docutils literal"><span class="pre">$this-&gt;load-&gt;library()</span></tt>
+initialized in your controller using the <code class="docutils literal"><span class="pre">$this-&gt;load-&gt;library()</span></code>
 method:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">library</span><span class="p">(</span><span class="s1">&#39;encryption&#39;</span><span class="p">);</span>
 </pre></div>
@@ -491,7 +490,7 @@ mode, using your configured <em>encryption_key</em> and SHA512 HMAC authenticati
 <p class="first admonition-title">Note</p>
 <p class="last">AES-128 is chosen both because it is proven to be strong and
 because of its wide availability across different cryptographic
-software and programming languages&#8217; APIs.</p>
+software and programming languages’ APIs.</p>
 </div>
 <p>However, the <em>encryption_key</em> is not used as is.</p>
 <p>If you are somewhat familiar with cryptography, you should already know
@@ -505,9 +504,9 @@ done via a technique called <a class="reference external" href="http://en.wikipe
 <h3><a class="toc-backref" href="#id5">Setting your encryption_key</a><a class="headerlink" href="#setting-your-encryption-key" title="Permalink to this headline">¶</a></h3>
 <p>An <em>encryption key</em> is a piece of information that controls the
 cryptographic process and permits a plain-text string to be encrypted,
-and afterwards - decrypted. It is the secret &#8220;ingredient&#8221; in the whole
+and afterwards - decrypted. It is the secret “ingredient” in the whole
 process that allows you to be the only one who is able to decrypt data
-that you&#8217;ve decided to hide from the eyes of the public.
+that you’ve decided to hide from the eyes of the public.
 After one key is used to encrypt data, that same key provides the <strong>only</strong>
 means to decrypt it, so not only must you chose one carefully, but you
 must not lose it or you will also lose access to the data.</p>
@@ -518,16 +517,16 @@ CodeIgniter gives you the ability to configure a single key that is to be
 used (almost) every time.</p>
 <p>It goes without saying that you should guard your key carefully. Should
 someone gain access to your key, the data will be easily decrypted. If
-your server is not totally under your control it&#8217;s impossible to ensure
+your server is not totally under your control it’s impossible to ensure
 key security so you may want to think carefully before using it for
 anything that requires high security, like storing credit card numbers.</p>
 <p>Your encryption key <strong>must</strong> be as long as the encyption algorithm in use
-allows. For AES-128, that&#8217;s 128 bits or 16 bytes (charcters) long.
+allows. For AES-128, that’s 128 bits or 16 bytes (charcters) long.
 You will find a table below that shows the supported key lengths of
 different ciphers.</p>
 <p>The key should be as random as possible and it <strong>must not</strong> be a regular
 text string, nor the output of a hashing function, etc. In order to create
-a proper key, you must use the Encryption library&#8217;s <tt class="docutils literal"><span class="pre">create_key()</span></tt> method</p>
+a proper key, you must use the Encryption library’s <code class="docutils literal"><span class="pre">create_key()</span></code> method</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="c1">// $key will be assigned a 16-byte (128-bit) random key</span>
 <span class="nv">$key</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">create_key</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
 </pre></div>
@@ -540,9 +539,9 @@ and set:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;encryption_key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;YOUR KEY&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>You&#8217;ll notice that the <tt class="docutils literal"><span class="pre">create_key()</span></tt> method outputs binary data, which
+<p>You’ll notice that the <code class="docutils literal"><span class="pre">create_key()</span></code> method outputs binary data, which
 is hard to deal with (i.e. a copy-paste may damage it), so you may use
-<tt class="docutils literal"><span class="pre">bin2hex()</span></tt>, <tt class="docutils literal"><span class="pre">hex2bin()</span></tt> or Base64-encoding to work with the key in
+<code class="docutils literal"><span class="pre">bin2hex()</span></code>, <code class="docutils literal"><span class="pre">hex2bin()</span></code> or Base64-encoding to work with the key in
 a more friendly manner. For example:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="c1">// Get a hex-encoded representation of the key:</span>
 <span class="nv">$key</span> <span class="o">=</span> <span class="nb">bin2hex</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">create_key</span><span class="p">(</span><span class="mi">16</span><span class="p">));</span>
@@ -557,7 +556,7 @@ a more friendly manner. For example:</p>
 <span id="ciphers-and-modes"></span><h3><a class="toc-backref" href="#id6">Supported encryption ciphers and modes</a><a class="headerlink" href="#supported-encryption-ciphers-and-modes" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The terms &#8216;cipher&#8217; and &#8216;encryption algorithm&#8217; are interchangeable.</p>
+<p class="last">The terms ‘cipher’ and ‘encryption algorithm’ are interchangeable.</p>
 </div>
 <div class="section" id="portable-ciphers">
 <h4><a class="toc-backref" href="#id7">Portable ciphers</a><a class="headerlink" href="#portable-ciphers" title="Permalink to this headline">¶</a></h4>
@@ -568,8 +567,8 @@ a portable fashion, or in other words - it enables you to use them
 interchangeably, at least for the ciphers supported by both drivers.</p>
 <p>It is also implemented in a way that aims to match the standard
 implementations in other programming languages and libraries.</p>
-<p>Here&#8217;s a list of the so called &#8220;portable&#8221; ciphers, where
-&#8220;CodeIgniter name&#8221; is the string value that you&#8217;d have to pass to the
+<p>Here’s a list of the so called “portable” ciphers, where
+“CodeIgniter name” is the string value that you’d have to pass to the
 Encryption library to use that cipher:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -636,7 +635,7 @@ algorithm than the one configured, so be really careful with that!</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">In case it isn&#8217;t clear from the above table, Blowfish, CAST5
+<p class="last">In case it isn’t clear from the above table, Blowfish, CAST5
 and RC4 support variable length keys. That is, any number in the
 shown ranges is valid, although in bit terms that only happens
 in 8-bit increments.</p>
@@ -658,9 +657,9 @@ also a bad practice to use such low-length keys anyway.</p>
 <div class="section" id="driver-specific-ciphers">
 <h4><a class="toc-backref" href="#id8">Driver-specific ciphers</a><a class="headerlink" href="#driver-specific-ciphers" title="Permalink to this headline">¶</a></h4>
 <p>As noted above, MCrypt and OpenSSL support different sets of encryption
-ciphers. For portability reasons and because we haven&#8217;t tested them
+ciphers. For portability reasons and because we haven’t tested them
 properly, we do not advise you to use the ones that are driver-specific,
-but regardless, here&#8217;s a list of most of them:</p>
+but regardless, here’s a list of most of them:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="15%" />
@@ -780,12 +779,12 @@ but regardless, here&#8217;s a list of most of them:</p>
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">If you wish to use one of those ciphers, you&#8217;d have to pass
+<p class="last">If you wish to use one of those ciphers, you’d have to pass
 its name in lower-case to the Encryption library.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">You&#8217;ve probably noticed that all AES cipers (and Rijndael-128)
+<p class="last">You’ve probably noticed that all AES cipers (and Rijndael-128)
 are also listed in the portable ciphers list. This is because
 drivers support different modes for these ciphers. Also, it is
 important to note that AES-128 and Rijndael-128 are actually
@@ -794,8 +793,8 @@ the same cipher, but <strong>only</strong> when used with a 128-bit key.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">CAST-128 / CAST-5 is also listed in both the portable and
-driver-specific ciphers list. This is because OpenSSL&#8217;s
-implementation doesn&#8217;t appear to be working correctly with
+driver-specific ciphers list. This is because OpenSSL’s
+implementation doesn’t appear to be working correctly with
 key sizes of 80 bits and lower.</p>
 </div>
 <div class="admonition note">
@@ -812,7 +811,7 @@ is not properly implementing it.</p>
 <p>Different modes of encryption have different characteristics and serve
 for different purposes. Some are stronger than others, some are faster
 and some offer extra features.
-We are not going in depth into that here, we&#8217;ll leave that to the
+We are not going in depth into that here, we’ll leave that to the
 cryptography experts. The table below is to provide brief informational
 reference to our more experienced users. If you are a beginner, just
 stick to the CBC mode - it is widely accepted as strong and secure for
@@ -883,7 +882,7 @@ general purposes.</p>
 </div>
 <div class="section" id="message-length">
 <h3><a class="toc-backref" href="#id10">Message Length</a><a class="headerlink" href="#message-length" title="Permalink to this headline">¶</a></h3>
-<p>It&#8217;s probably important for you to know that an encrypted string is usually
+<p>It’s probably important for you to know that an encrypted string is usually
 longer than the original, plain-text string (depending on the cipher).</p>
 <p>This is influenced by the cipher algorithm itself, the IV prepended to the
 cipher-text and the HMAC authentication message that is also prepended.
@@ -895,12 +894,12 @@ Cookies, for example, can only hold 4K of information.</p>
 <div class="section" id="configuring-the-library">
 <span id="configuration"></span><h3><a class="toc-backref" href="#id11">Configuring the library</a><a class="headerlink" href="#configuring-the-library" title="Permalink to this headline">¶</a></h3>
 <p>For usability, performance, but also historical reasons tied to our old
-<a class="reference internal" href="encrypt.html"><em>Encrypt Class</em></a>, the Encryption library is designed to
+<a class="reference internal" href="encrypt.html"><span class="doc">Encrypt Class</span></a>, the Encryption library is designed to
 use repeatedly the same driver, encryption cipher, mode and key.</p>
-<p>As noted in the &#8220;Default behavior&#8221; section above, this means using an
+<p>As noted in the “Default behavior” section above, this means using an
 auto-detected driver (OpenSSL has a higher priority), the AES-128 ciper
-in CBC mode, and your <tt class="docutils literal"><span class="pre">$config['encryption_key']</span></tt> value.</p>
-<p>If you wish to change that however, you need to use the <tt class="docutils literal"><span class="pre">initialize()</span></tt>
+in CBC mode, and your <code class="docutils literal"><span class="pre">$config['encryption_key']</span></code> value.</p>
+<p>If you wish to change that however, you need to use the <code class="docutils literal"><span class="pre">initialize()</span></code>
 method. It accepts an associative array of parameters, all of which are
 optional:</p>
 <table border="1" class="docutils">
@@ -915,13 +914,13 @@ optional:</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>driver</td>
-<td>&#8216;mcrypt&#8217;, &#8216;openssl&#8217;</td>
+<td>‘mcrypt’, ‘openssl’</td>
 </tr>
 <tr class="row-odd"><td>cipher</td>
-<td>Cipher name (see <a class="reference internal" href="#ciphers-and-modes"><em>Supported encryption ciphers and modes</em></a>)</td>
+<td>Cipher name (see <a class="reference internal" href="#ciphers-and-modes"><span class="std std-ref">Supported encryption ciphers and modes</span></a>)</td>
 </tr>
 <tr class="row-even"><td>mode</td>
-<td>Encryption mode (see <a class="reference internal" href="#encryption-modes"><em>Encryption modes</em></a>)</td>
+<td>Encryption mode (see <a class="reference internal" href="#encryption-modes"><span class="std std-ref">Encryption modes</span></a>)</td>
 </tr>
 <tr class="row-odd"><td>key</td>
 <td>Encryption key</td>
@@ -942,7 +941,7 @@ mode to AES-256 in CTR mode, this is what you should do:</p>
 <p>Note that we only mentioned that you want to change the ciper and mode,
 but we also included a key in the example. As previously noted, it is
 important that you choose a key with a proper size for the used algorithm.</p>
-<p>There&#8217;s also the ability to change the driver, if for some reason you
+<p>There’s also the ability to change the driver, if for some reason you
 have both, but want to use MCrypt instead of OpenSSL:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="c1">// Switch to the MCrypt driver</span>
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">initialize</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;driver&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mcrypt&#39;</span><span class="p">));</span>
@@ -956,7 +955,7 @@ have both, but want to use MCrypt instead of OpenSSL:</p>
 <h3><a class="toc-backref" href="#id12">Encrypting and decrypting data</a><a class="headerlink" href="#encrypting-and-decrypting-data" title="Permalink to this headline">¶</a></h3>
 <p>Encrypting and decrypting data with the already configured library
 settings is simple. As simple as just passing the string to the
-<tt class="docutils literal"><span class="pre">encrypt()</span></tt> and/or <tt class="docutils literal"><span class="pre">decrypt()</span></tt> methods:</p>
+<code class="docutils literal"><span class="pre">encrypt()</span></code> and/or <code class="docutils literal"><span class="pre">decrypt()</span></code> methods:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$plain_text</span> <span class="o">=</span> <span class="s1">&#39;This is a plain-text message!&#39;</span><span class="p">;</span>
 <span class="nv">$ciphertext</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">encrypt</span><span class="p">(</span><span class="nv">$plain_text</span><span class="p">);</span>
 
@@ -964,22 +963,22 @@ settings is simple. As simple as just passing the string to the
 <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">decrypt</span><span class="p">(</span><span class="nv">$ciphertext</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>And that&#8217;s it! The Encryption library will do everything necessary
+<p>And that’s it! The Encryption library will do everything necessary
 for the whole process to be cryptographically secure out-of-the-box.
-You don&#8217;t need to worry about it.</p>
+You don’t need to worry about it.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
 <p class="last">Both methods will return FALSE in case of an error.
-While for <tt class="docutils literal"><span class="pre">encrypt()</span></tt> this can only mean incorrect
+While for <code class="docutils literal"><span class="pre">encrypt()</span></code> this can only mean incorrect
 configuration, you should always check the return value
-of <tt class="docutils literal"><span class="pre">decrypt()</span></tt> in production code.</p>
+of <code class="docutils literal"><span class="pre">decrypt()</span></code> in production code.</p>
 </div>
 <div class="section" id="how-it-works">
 <h4><a class="toc-backref" href="#id13">How it works</a><a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h4>
-<p>If you must know how the process works, here&#8217;s what happens under
+<p>If you must know how the process works, here’s what happens under
 the hood:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">$this-&gt;encryption-&gt;encrypt($plain_text)</span></tt><ol class="arabic">
+<li><code class="docutils literal"><span class="pre">$this-&gt;encryption-&gt;encrypt($plain_text)</span></code><ol class="arabic">
 <li>Derive an encryption key and a HMAC key from your configured
 <em>encryption_key</em> via HKDF, using the SHA-512 digest algorithm.</li>
 <li>Generate a random initialization vector (IV).</li>
@@ -994,12 +993,12 @@ HMAC key to ensure data integrity and prepend it to the Base64
 string.</li>
 </ol>
 </li>
-<li><tt class="docutils literal"><span class="pre">$this-&gt;encryption-&gt;decrypt($ciphertext)</span></tt><ol class="arabic">
+<li><code class="docutils literal"><span class="pre">$this-&gt;encryption-&gt;decrypt($ciphertext)</span></code><ol class="arabic">
 <li>Derive an encryption key and a HMAC key from your configured
 <em>encryption_key</em> via HKDF, using the SHA-512 digest algorithm.
 Because your configured <em>encryption_key</em> is the same, this
-will produce the same result as in the <tt class="docutils literal"><span class="pre">encrypt()</span></tt> method
-above - otherwise you won&#8217;t be able to decrypt it.</li>
+will produce the same result as in the <code class="docutils literal"><span class="pre">encrypt()</span></code> method
+above - otherwise you won’t be able to decrypt it.</li>
 <li>Check if the string is long enough, separate the HMAC out of
 it and validate if it is correct (this is done in a way that
 prevents timing attacks against it). Return FALSE if either of
@@ -1013,7 +1012,7 @@ cipher-text using that IV and the derived encryption key.</li>
 </div>
 <div class="section" id="using-custom-parameters">
 <span id="custom-parameters"></span><h4><a class="toc-backref" href="#id14">Using custom parameters</a><a class="headerlink" href="#using-custom-parameters" title="Permalink to this headline">¶</a></h4>
-<p>Let&#8217;s say you have to interact with another system that is out
+<p>Let’s say you have to interact with another system that is out
 of your control and uses another method to encrypt data. A
 method that will most certainly not match the above-described
 sequence and probably not use all of the steps either.</p>
@@ -1026,8 +1025,8 @@ custom solution for such situations.</p>
 setting an <em>encryption_key</em> in your configuration file.</p>
 </div>
 <p>All you have to do is to pass an associative array with a few
-parameters to either the <tt class="docutils literal"><span class="pre">encrypt()</span></tt> or <tt class="docutils literal"><span class="pre">decrypt()</span></tt> method.
-Here&#8217;s an example:</p>
+parameters to either the <code class="docutils literal"><span class="pre">encrypt()</span></code> or <code class="docutils literal"><span class="pre">decrypt()</span></code> method.
+Here’s an example:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="c1">// Assume that we have $ciphertext, $key and $hmac_key</span>
 <span class="c1">// from on outside source</span>
 
@@ -1048,7 +1047,7 @@ using the Blowfish cipher in CBC mode and authenticated via a SHA-256
 HMAC.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
-<p class="last">Note that both &#8216;key&#8217; and &#8216;hmac_key&#8217; are used in this
+<p class="last">Note that both ‘key’ and ‘hmac_key’ are used in this
 example. When using custom parameters, encryption and HMAC keys
 are not derived like the default behavior of the library is.</p>
 </div>
@@ -1074,12 +1073,12 @@ impact security, so please do so with caution.</p>
 <tr class="row-even"><td>cipher</td>
 <td>N/A</td>
 <td>Yes</td>
-<td>Encryption algorithm (see <a class="reference internal" href="#ciphers-and-modes"><em>Supported encryption ciphers and modes</em></a>).</td>
+<td>Encryption algorithm (see <a class="reference internal" href="#ciphers-and-modes"><span class="std std-ref">Supported encryption ciphers and modes</span></a>).</td>
 </tr>
 <tr class="row-odd"><td>mode</td>
 <td>N/A</td>
 <td>Yes</td>
-<td>Encryption mode (see <a class="reference internal" href="#encryption-modes"><em>Encryption modes</em></a>).</td>
+<td>Encryption mode (see <a class="reference internal" href="#encryption-modes"><span class="std std-ref">Encryption modes</span></a>).</td>
 </tr>
 <tr class="row-even"><td>key</td>
 <td>N/A</td>
@@ -1096,7 +1095,7 @@ Boolean. If set to FALSE, then <em>hmac_digest</em> and
 <tr class="row-even"><td>hmac_digest</td>
 <td>sha512</td>
 <td>No</td>
-<td>HMAC message digest algorithm (see <a class="reference internal" href="#digests"><em>Supported HMAC authentication algorithms</em></a>).</td>
+<td>HMAC message digest algorithm (see <a class="reference internal" href="#digests"><span class="std std-ref">Supported HMAC authentication algorithms</span></a>).</td>
 </tr>
 <tr class="row-odd"><td>hmac_key</td>
 <td>N/A</td>
@@ -1115,7 +1114,7 @@ be a hexadecimal string.</td>
 </table>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
-<p class="last"><tt class="docutils literal"><span class="pre">encrypt()</span></tt> and <tt class="docutils literal"><span class="pre">decrypt()</span></tt> will return FALSE if
+<p class="last"><code class="docutils literal"><span class="pre">encrypt()</span></code> and <code class="docutils literal"><span class="pre">decrypt()</span></code> will return FALSE if
 a mandatory parameter is not provided or if a provided
 value is incorrect. This includes <em>hmac_key</em>, unless <em>hmac</em>
 is set to FALSE.</p>
@@ -1158,8 +1157,8 @@ usage of the SHA-2 family of algorithms:</p>
 </table>
 <p>The reason for not including other popular algorithms, such as
 MD5 or SHA1 is that they are no longer considered secure enough
-and as such, we don&#8217;t want to encourage their usage.
-If you absolutely need to use them, it is easy to do so via PHP&#8217;s
+and as such, we don’t want to encourage their usage.
+If you absolutely need to use them, it is easy to do so via PHP’s
 native <a class="reference external" href="http://php.net/manual/en/function.hash-hmac.php">hash_hmac()</a> function.</p>
 <p>Stronger algorithms of course will be added in the future as they
 appear and become widely available.</p>
@@ -1170,16 +1169,16 @@ appear and become widely available.</p>
 <h2><a class="toc-backref" href="#id16">Class Reference</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="CI_Encryption">
-<em class="property">class </em><tt class="descname">CI_Encryption</tt><a class="headerlink" href="#CI_Encryption" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">CI_Encryption</code><a class="headerlink" href="#CI_Encryption" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="CI_Encryption::initialize">
-<tt class="descname">initialize</tt><big>(</big><em>$params</em><big>)</big><a class="headerlink" href="#CI_Encryption::initialize" title="Permalink to this definition">¶</a></dt>
+<code class="descname">initialize</code><span class="sig-paren">(</span><em>$params</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Encryption::initialize" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$params</strong> (<em>array</em>) &#8211; Configuration parameters</li>
+<li><strong>$params</strong> (<em>array</em>) – Configuration parameters</li>
 </ul>
 </td>
 </tr>
@@ -1199,19 +1198,19 @@ driver, cipher, mode or key.</p>
 <span class="p">);</span>
 </pre></div>
 </div>
-<p>Please refer to the <a class="reference internal" href="#configuration"><em>Configuring the library</em></a> section for detailed info.</p>
+<p>Please refer to the <a class="reference internal" href="#configuration"><span class="std std-ref">Configuring the library</span></a> section for detailed info.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="CI_Encryption::encrypt">
-<tt class="descname">encrypt</tt><big>(</big><em>$data</em><span class="optional">[</span>, <em>$params = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Encryption::encrypt" title="Permalink to this definition">¶</a></dt>
+<code class="descname">encrypt</code><span class="sig-paren">(</span><em>$data</em><span class="optional">[</span>, <em>$params = NULL</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Encryption::encrypt" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$data</strong> (<em>string</em>) &#8211; Data to encrypt</li>
-<li><strong>$params</strong> (<em>array</em>) &#8211; Optional parameters</li>
+<li><strong>$data</strong> (<em>string</em>) – Data to encrypt</li>
+<li><strong>$params</strong> (<em>array</em>) – Optional parameters</li>
 </ul>
 </td>
 </tr>
@@ -1228,20 +1227,20 @@ driver, cipher, mode or key.</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$ciphertext</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">encrypt</span><span class="p">(</span><span class="s1">&#39;My secret message&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Please refer to the <a class="reference internal" href="#custom-parameters"><em>Using custom parameters</em></a> section for information
+<p>Please refer to the <a class="reference internal" href="#custom-parameters"><span class="std std-ref">Using custom parameters</span></a> section for information
 on the optional parameters.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="CI_Encryption::decrypt">
-<tt class="descname">decrypt</tt><big>(</big><em>$data</em><span class="optional">[</span>, <em>$params = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Encryption::decrypt" title="Permalink to this definition">¶</a></dt>
+<code class="descname">decrypt</code><span class="sig-paren">(</span><em>$data</em><span class="optional">[</span>, <em>$params = NULL</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Encryption::decrypt" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$data</strong> (<em>string</em>) &#8211; Data to decrypt</li>
-<li><strong>$params</strong> (<em>array</em>) &#8211; Optional parameters</li>
+<li><strong>$data</strong> (<em>string</em>) – Data to decrypt</li>
+<li><strong>$params</strong> (<em>array</em>) – Optional parameters</li>
 </ul>
 </td>
 </tr>
@@ -1258,19 +1257,19 @@ on the optional parameters.</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">decrypt</span><span class="p">(</span><span class="nv">$ciphertext</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Please refer to the <a class="reference internal" href="#custom-parameters"><em>Using custom parameters</em></a> secrion for information
+<p>Please refer to the <a class="reference internal" href="#custom-parameters"><span class="std std-ref">Using custom parameters</span></a> secrion for information
 on the optional parameters.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="CI_Encryption::create_key">
-<tt class="descname">create_key</tt><big>(</big><em>$length</em><big>)</big><a class="headerlink" href="#CI_Encryption::create_key" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_key</code><span class="sig-paren">(</span><em>$length</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Encryption::create_key" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$length</strong> (<em>int</em>) &#8211; Output length</li>
+<li><strong>$length</strong> (<em>int</em>) – Output length</li>
 </ul>
 </td>
 </tr>
@@ -1283,22 +1282,22 @@ on the optional parameters.</p>
 </tbody>
 </table>
 <p>Creates a cryptographic key by fetching random data from
-the operating system&#8217;s sources (i.e. /dev/urandom).</p>
+the operating system’s sources (i.e. /dev/urandom).</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="CI_Encryption::hkdf">
-<tt class="descname">hkdf</tt><big>(</big><em>$key</em><span class="optional">[</span>, <em>$digest = 'sha512'</em><span class="optional">[</span>, <em>$salt = NULL</em><span class="optional">[</span>, <em>$length = NULL</em><span class="optional">[</span>, <em>$info = ''</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Encryption::hkdf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">hkdf</code><span class="sig-paren">(</span><em>$key</em><span class="optional">[</span>, <em>$digest = 'sha512'</em><span class="optional">[</span>, <em>$salt = NULL</em><span class="optional">[</span>, <em>$length = NULL</em><span class="optional">[</span>, <em>$info = ''</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Encryption::hkdf" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$key</strong> (<em>string</em>) &#8211; Input key material</li>
-<li><strong>$digest</strong> (<em>string</em>) &#8211; A SHA-2 family digest algorithm</li>
-<li><strong>$salt</strong> (<em>string</em>) &#8211; Optional salt</li>
-<li><strong>$length</strong> (<em>int</em>) &#8211; Optional output length</li>
-<li><strong>$info</strong> (<em>string</em>) &#8211; Optional context/application-specific info</li>
+<li><strong>$key</strong> (<em>string</em>) – Input key material</li>
+<li><strong>$digest</strong> (<em>string</em>) – A SHA-2 family digest algorithm</li>
+<li><strong>$salt</strong> (<em>string</em>) – Optional salt</li>
+<li><strong>$length</strong> (<em>int</em>) – Optional output length</li>
+<li><strong>$info</strong> (<em>string</em>) – Optional context/application-specific info</li>
 </ul>
 </td>
 </tr>
@@ -1316,7 +1315,7 @@ from your configured <em>encryption_key</em>.</p>
 <p>It is publicly available due to its otherwise general purpose. It is
 described in <a class="reference external" href="https://tools.ietf.org/rfc/rfc5869.txt">RFC 5869</a>.</p>
 <p>However, as opposed to the description in RFC 5869, this implementation
-doesn&#8217;t support SHA1.</p>
+doesn’t support SHA1.</p>
 <p>Example:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$hmac_key</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encryption</span><span class="o">-&gt;</span><span class="na">hkdf</span><span class="p">(</span>
         <span class="nv">$key</span><span class="p">,</span>
@@ -1355,7 +1354,7 @@ doesn&#8217;t support SHA1.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -1376,7 +1375,7 @@ doesn&#8217;t support SHA1.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Input Class &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Input Class &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Libraries" href="index.html"/>
         <link rel="next" title="Javascript Class" href="javascript.html"/>
         <link rel="prev" title="Image Manipulation Class" href="image_lib.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -134,7 +135,7 @@
 <li class="toctree-l2"><a class="reference internal" href="form_validation.html">Form Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ftp.html">FTP Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="image_lib.html">Image Manipulation Class</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Input Class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Input Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="javascript.html">Javascript Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="language.html">Language Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="loader.html">Loader Class</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -320,7 +319,7 @@
 <li class="toctree-l2"><a class="reference internal" href="form_validation.html">Form Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ftp.html">FTP Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="image_lib.html">Image Manipulation Class</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Input Class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Input Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="javascript.html">Javascript Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="language.html">Language Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="loader.html">Loader Class</a></li>
@@ -455,10 +454,10 @@ is no need to do it manually.</p>
 <div class="section" id="security-filtering">
 <h3><a class="toc-backref" href="#id2">Security Filtering</a><a class="headerlink" href="#security-filtering" title="Permalink to this headline">¶</a></h3>
 <p>The security filtering method is called automatically when a new
-<a class="reference internal" href="../general/controllers.html"><em>controller</em></a> is invoked. It does the
+<a class="reference internal" href="../general/controllers.html"><span class="doc">controller</span></a> is invoked. It does the
 following:</p>
 <ul class="simple">
-<li>If <tt class="docutils literal"><span class="pre">$config['allow_get_array']</span></tt> is FALSE (default is TRUE), destroys
+<li>If <code class="docutils literal"><span class="pre">$config['allow_get_array']</span></code> is FALSE (default is TRUE), destroys
 the global GET array.</li>
 <li>Destroys all global variables in the event register_globals is
 turned on.</li>
@@ -466,7 +465,7 @@ turned on.</li>
 (and a few other) characters.</li>
 <li>Provides XSS (Cross-site Scripting Hacks) filtering. This can be
 enabled globally, or upon request.</li>
-<li>Standardizes newline characters to <tt class="docutils literal"><span class="pre">PHP_EOL</span></tt> (\n in UNIX-based OSes,
+<li>Standardizes newline characters to <code class="docutils literal"><span class="pre">PHP_EOL</span></code> (\n in UNIX-based OSes,
 \r\n under Windows). This is configurable.</li>
 </ul>
 </div>
@@ -480,11 +479,11 @@ this:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;global_xss_filtering&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">TRUE</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>Please refer to the <a class="reference internal" href="security.html"><em>Security class</em></a> documentation for
+<p>Please refer to the <a class="reference internal" href="security.html"><span class="doc">Security class</span></a> documentation for
 information on using XSS Filtering in your application.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
-<p class="last">The &#8216;global_xss_filtering&#8217; setting is DEPRECATED and kept
+<p class="last">The ‘global_xss_filtering’ setting is DEPRECATED and kept
 solely for backwards-compatibility purposes. XSS escaping should
 be performed on <em>output</em>, not <em>input</em>!</p>
 </div>
@@ -496,7 +495,7 @@ be performed on <em>output</em>, not <em>input</em>!</p>
 <h3><a class="toc-backref" href="#id5">Using POST, GET, COOKIE, or SERVER Data</a><a class="headerlink" href="#using-post-get-cookie-or-server-data" title="Permalink to this headline">¶</a></h3>
 <p>CodeIgniter comes with helper methods that let you fetch POST, GET,
 COOKIE or SERVER items. The main advantage of using the provided
-methods rather than fetching an item directly (<tt class="docutils literal"><span class="pre">$_POST['something']</span></tt>)
+methods rather than fetching an item directly (<code class="docutils literal"><span class="pre">$_POST['something']</span></code>)
 is that the methods will check to see if the item is set and return
 NULL if not. This lets you conveniently use data without
 having to test whether an item exists first. In other words, normally
@@ -504,41 +503,41 @@ you might do something like this:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$something</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;something&#39;</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;something&#39;</span><span class="p">]</span> <span class="o">:</span> <span class="k">NULL</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>With CodeIgniter&#8217;s built in methods you can simply do this:</p>
+<p>With CodeIgniter’s built in methods you can simply do this:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$something</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">input</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;something&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>The main methods are:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">$this-&gt;input-&gt;post()</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">$this-&gt;input-&gt;get()</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">$this-&gt;input-&gt;cookie()</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">$this-&gt;input-&gt;server()</span></tt></li>
+<li><code class="docutils literal"><span class="pre">$this-&gt;input-&gt;post()</span></code></li>
+<li><code class="docutils literal"><span class="pre">$this-&gt;input-&gt;get()</span></code></li>
+<li><code class="docutils literal"><span class="pre">$this-&gt;input-&gt;cookie()</span></code></li>
+<li><code class="docutils literal"><span class="pre">$this-&gt;input-&gt;server()</span></code></li>
 </ul>
 </div>
 <div class="section" id="using-the-php-input-stream">
 <h3><a class="toc-backref" href="#id6">Using the php://input stream</a><a class="headerlink" href="#using-the-php-input-stream" title="Permalink to this headline">¶</a></h3>
 <p>If you want to utilize the PUT, DELETE, PATCH or other exotic request
 methods, they can only be accessed via a special input stream, that
-can only be read once. This isn&#8217;t as easy as just reading from e.g.
-the <tt class="docutils literal"><span class="pre">$_POST</span></tt> array, because it will always exist and you can try
+can only be read once. This isn’t as easy as just reading from e.g.
+the <code class="docutils literal"><span class="pre">$_POST</span></code> array, because it will always exist and you can try
 and access multiple variables without caring that you might only have
 one shot at all of the POST data.</p>
 <p>CodeIgniter will take care of that for you, and you can read the data
 from the <strong>php://input</strong> stream at any time, just by using the
-<tt class="docutils literal"><span class="pre">$raw_input_stream</span></tt> property:</p>
+<code class="docutils literal"><span class="pre">$raw_input_stream</span></code> property:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">input</span><span class="o">-&gt;</span><span class="na">raw_input_stream</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Additionally if the input stream is form-encoded like $_POST you can
 access its values by calling the
-<tt class="docutils literal"><span class="pre">input_stream()</span></tt> method:</p>
+<code class="docutils literal"><span class="pre">input_stream()</span></code> method:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">input</span><span class="o">-&gt;</span><span class="na">input_stream</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Similar to other methods such as <tt class="docutils literal"><span class="pre">get()</span></tt> and <tt class="docutils literal"><span class="pre">post()</span></tt>, if the
+<p>Similar to other methods such as <code class="docutils literal"><span class="pre">get()</span></code> and <code class="docutils literal"><span class="pre">post()</span></code>, if the
 requested data is not found, it will return NULL and you can also
-decide whether to run the data through <tt class="docutils literal"><span class="pre">xss_clean()</span></tt> by passing
+decide whether to run the data through <code class="docutils literal"><span class="pre">xss_clean()</span></code> by passing
 a boolean value as the second parameter:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">input</span><span class="o">-&gt;</span><span class="na">input_stream</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="k">TRUE</span><span class="p">);</span> <span class="c1">// XSS Clean</span>
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">input</span><span class="o">-&gt;</span><span class="na">input_stream</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="k">FALSE</span><span class="p">);</span> <span class="c1">// No XSS filter</span>
@@ -546,7 +545,7 @@ a boolean value as the second parameter:</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">You can utilize <tt class="docutils literal"><span class="pre">method()</span></tt> in order to know if you&#8217;re reading
+<p class="last">You can utilize <code class="docutils literal"><span class="pre">method()</span></code> in order to know if you’re reading
 PUT, DELETE or PATCH data.</p>
 </div>
 </div>
@@ -555,24 +554,24 @@ PUT, DELETE or PATCH data.</p>
 <h2><a class="toc-backref" href="#id7">Class Reference</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="CI_Input">
-<em class="property">class </em><tt class="descname">CI_Input</tt><a class="headerlink" href="#CI_Input" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">CI_Input</code><a class="headerlink" href="#CI_Input" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt>
-<tt class="descname">$raw_input_stream</tt></dt>
+<code class="descname">$raw_input_stream</code></dt>
 <dd><p>Read only property that will return php://input data as is.</p>
 <p>The property can be read multiple times.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="CI_Input::post">
-<tt class="descname">post</tt><big>(</big><span class="optional">[</span><em>$index = NULL</em><span class="optional">[</span>, <em>$xss_clean = NULL</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Input::post" title="Permalink to this definition">¶</a></dt>
+<code class="descname">post</code><span class="sig-paren">(</span><span class="optional">[</span><em>$index = NULL</em><span class="optional">[</span>, <em>$xss_clean = NULL</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Input::post" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$index</strong> (<em>mixed</em>) &#8211; POST parameter name</li>
-<li><strong>$xss_clean</strong> (<em>bool</em>) &#8211; Whether to apply XSS filtering</li>
+<li><strong>$index</strong> (<em>mixed</em>) – POST parameter name</li>
+<li><strong>$xss_clean</strong> (<em>bool</em>) – Whether to apply XSS filtering</li>
 </ul>
 </td>
 </tr>
@@ -592,8 +591,8 @@ looking for:</p>
 <p>The method returns NULL if the item you are attempting to retrieve
 does not exist.</p>
 <p>The second optional parameter lets you run the data through the XSS
-filter. It&#8217;s enabled by setting the second parameter to boolean TRUE
-or by setting your <tt class="docutils literal"><span class="pre">$config['global_xss_filtering']</span></tt> to TRUE.</p>
+filter. It’s enabled by setting the second parameter to boolean TRUE
+or by setting your <code class="docutils literal"><span class="pre">$config['global_xss_filtering']</span></code> to TRUE.</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">input</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;some_data&#39;</span><span class="p">,</span> <span class="k">TRUE</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -618,14 +617,14 @@ second parameter to boolean TRUE.</p>
 
 <dl class="method">
 <dt id="CI_Input::get">
-<tt class="descname">get</tt><big>(</big><span class="optional">[</span><em>$index = NULL</em><span class="optional">[</span>, <em>$xss_clean = NULL</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Input::get" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get</code><span class="sig-paren">(</span><span class="optional">[</span><em>$index = NULL</em><span class="optional">[</span>, <em>$xss_clean = NULL</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Input::get" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$index</strong> (<em>mixed</em>) &#8211; GET parameter name</li>
-<li><strong>$xss_clean</strong> (<em>bool</em>) &#8211; Whether to apply XSS filtering</li>
+<li><strong>$index</strong> (<em>mixed</em>) – GET parameter name</li>
+<li><strong>$xss_clean</strong> (<em>bool</em>) – Whether to apply XSS filtering</li>
 </ul>
 </td>
 </tr>
@@ -637,7 +636,7 @@ second parameter to boolean TRUE.</p>
 </tr>
 </tbody>
 </table>
-<p>This method is identical to <tt class="docutils literal"><span class="pre">post()</span></tt>, only it fetches GET data.</p>
+<p>This method is identical to <code class="docutils literal"><span class="pre">post()</span></code>, only it fetches GET data.</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">input</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;some_data&#39;</span><span class="p">,</span> <span class="k">TRUE</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -662,14 +661,14 @@ second parameter to boolean TRUE.</p>
 
 <dl class="method">
 <dt id="CI_Input::post_get">
-<tt class="descname">post_get</tt><big>(</big><em>$index</em><span class="optional">[</span>, <em>$xss_clean = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Input::post_get" title="Permalink to this definition">¶</a></dt>
+<code class="descname">post_get</code><span class="sig-paren">(</span><em>$index</em><span class="optional">[</span>, <em>$xss_clean = NULL</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Input::post_get" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$index</strong> (<em>string</em>) &#8211; POST/GET parameter name</li>
-<li><strong>$xss_clean</strong> (<em>bool</em>) &#8211; Whether to apply XSS filtering</li>
+<li><strong>$index</strong> (<em>string</em>) – POST/GET parameter name</li>
+<li><strong>$xss_clean</strong> (<em>bool</em>) – Whether to apply XSS filtering</li>
 </ul>
 </td>
 </tr>
@@ -681,7 +680,7 @@ second parameter to boolean TRUE.</p>
 </tr>
 </tbody>
 </table>
-<p>This method works pretty much the same way as <tt class="docutils literal"><span class="pre">post()</span></tt> and <tt class="docutils literal"><span class="pre">get()</span></tt>,
+<p>This method works pretty much the same way as <code class="docutils literal"><span class="pre">post()</span></code> and <code class="docutils literal"><span class="pre">get()</span></code>,
 only combined. It will search through both POST and GET streams for data,
 looking in POST first, and then in GET:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">input</span><span class="o">-&gt;</span><span class="na">post_get</span><span class="p">(</span><span class="s1">&#39;some_data&#39;</span><span class="p">,</span> <span class="k">TRUE</span><span class="p">);</span>
@@ -691,14 +690,14 @@ looking in POST first, and then in GET:</p>
 
 <dl class="method">
 <dt id="CI_Input::get_post">
-<tt class="descname">get_post</tt><big>(</big><em>$index</em><span class="optional">[</span>, <em>$xss_clean = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Input::get_post" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_post</code><span class="sig-paren">(</span><em>$index</em><span class="optional">[</span>, <em>$xss_clean = NULL</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Input::get_post" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$index</strong> (<em>string</em>) &#8211; GET/POST parameter name</li>
-<li><strong>$xss_clean</strong> (<em>bool</em>) &#8211; Whether to apply XSS filtering</li>
+<li><strong>$index</strong> (<em>string</em>) – GET/POST parameter name</li>
+<li><strong>$xss_clean</strong> (<em>bool</em>) – Whether to apply XSS filtering</li>
 </ul>
 </td>
 </tr>
@@ -710,27 +709,27 @@ looking in POST first, and then in GET:</p>
 </tr>
 </tbody>
 </table>
-<p>This method works the same way as <tt class="docutils literal"><span class="pre">post_get()</span></tt> only it looks for GET
+<p>This method works the same way as <code class="docutils literal"><span class="pre">post_get()</span></code> only it looks for GET
 data first.</p>
 <blockquote>
-<div>$this-&gt;input-&gt;get_post(&#8216;some_data&#8217;, TRUE);</div></blockquote>
+<div>$this-&gt;input-&gt;get_post(‘some_data’, TRUE);</div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This method used to act EXACTLY like <tt class="docutils literal"><span class="pre">post_get()</span></tt>, but it&#8217;s
+<p class="last">This method used to act EXACTLY like <code class="docutils literal"><span class="pre">post_get()</span></code>, but it’s
 behavior has changed in CodeIgniter 3.0.</p>
 </div>
 </dd></dl>
 
 <dl class="method">
 <dt id="CI_Input::cookie">
-<tt class="descname">cookie</tt><big>(</big><span class="optional">[</span><em>$index = NULL</em><span class="optional">[</span>, <em>$xss_clean = NULL</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Input::cookie" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cookie</code><span class="sig-paren">(</span><span class="optional">[</span><em>$index = NULL</em><span class="optional">[</span>, <em>$xss_clean = NULL</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Input::cookie" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$index</strong> (<em>mixed</em>) &#8211; COOKIE name</li>
-<li><strong>$xss_clean</strong> (<em>bool</em>) &#8211; Whether to apply XSS filtering</li>
+<li><strong>$index</strong> (<em>mixed</em>) – COOKIE name</li>
+<li><strong>$xss_clean</strong> (<em>bool</em>) – Whether to apply XSS filtering</li>
 </ul>
 </td>
 </tr>
@@ -742,10 +741,10 @@ behavior has changed in CodeIgniter 3.0.</p>
 </tr>
 </tbody>
 </table>
-<p>This method is identical to <tt class="docutils literal"><span class="pre">post()</span></tt> and <tt class="docutils literal"><span class="pre">get()</span></tt>, only it fetches cookie
+<p>This method is identical to <code class="docutils literal"><span class="pre">post()</span></code> and <code class="docutils literal"><span class="pre">get()</span></code>, only it fetches cookie
 data:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span>$this-&gt;input-&gt;cookie(&#39;some_cookie&#39;);
-$this-&gt;input-&gt;cookie(&#39;some_cookie, TRUE); // with XSS filter
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">input</span><span class="o">-&gt;</span><span class="na">cookie</span><span class="p">(</span><span class="s1">&#39;some_cookie&#39;</span><span class="p">);</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">input</span><span class="o">-&gt;</span><span class="na">cookie</span><span class="p">(</span><span class="s1">&#39;some_cookie&#39;</span><span class="p">,</span> <span class="k">TRUE</span><span class="p">);</span> <span class="c1">// with XSS filter</span>
 </pre></div>
 </div>
 <p>To return an array of multiple cookie values, pass all the required keys
@@ -755,22 +754,22 @@ as an array.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Unlike the <a class="reference internal" href="../helpers/cookie_helper.html"><em>Cookie Helper</em></a>
-function <a class="reference internal" href="../helpers/cookie_helper.html#get_cookie" title="get_cookie"><tt class="xref php php-func docutils literal"><span class="pre">get_cookie()</span></tt></a>, this method does NOT prepend
-your configured <tt class="docutils literal"><span class="pre">$config['cookie_prefix']</span></tt> value.</p>
+<p class="last">Unlike the <a class="reference internal" href="../helpers/cookie_helper.html"><span class="doc">Cookie Helper</span></a>
+function <a class="reference internal" href="../helpers/cookie_helper.html#get_cookie" title="get_cookie"><code class="xref php php-func docutils literal"><span class="pre">get_cookie()</span></code></a>, this method does NOT prepend
+your configured <code class="docutils literal"><span class="pre">$config['cookie_prefix']</span></code> value.</p>
 </div>
 </dd></dl>
 
 <dl class="method">
 <dt id="CI_Input::server">
-<tt class="descname">server</tt><big>(</big><em>$index</em><span class="optional">[</span>, <em>$xss_clean = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Input::server" title="Permalink to this definition">¶</a></dt>
+<code class="descname">server</code><span class="sig-paren">(</span><em>$index</em><span class="optional">[</span>, <em>$xss_clean = NULL</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Input::server" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$index</strong> (<em>mixed</em>) &#8211; Value name</li>
-<li><strong>$xss_clean</strong> (<em>bool</em>) &#8211; Whether to apply XSS filtering</li>
+<li><strong>$index</strong> (<em>mixed</em>) – Value name</li>
+<li><strong>$xss_clean</strong> (<em>bool</em>) – Whether to apply XSS filtering</li>
 </ul>
 </td>
 </tr>
@@ -782,12 +781,12 @@ your configured <tt class="docutils literal"><span class="pre">$config['cookie_p
 </tr>
 </tbody>
 </table>
-<p>This method is identical to the <tt class="docutils literal"><span class="pre">post()</span></tt>, <tt class="docutils literal"><span class="pre">get()</span></tt> and <tt class="docutils literal"><span class="pre">cookie()</span></tt>
-methods, only it fetches server data (<tt class="docutils literal"><span class="pre">$_SERVER</span></tt>):</p>
+<p>This method is identical to the <code class="docutils literal"><span class="pre">post()</span></code>, <code class="docutils literal"><span class="pre">get()</span></code> and <code class="docutils literal"><span class="pre">cookie()</span></code>
+methods, only it fetches server data (<code class="docutils literal"><span class="pre">$_SERVER</span></code>):</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">input</span><span class="o">-&gt;</span><span class="na">server</span><span class="p">(</span><span class="s1">&#39;some_data&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>To return an array of multiple <tt class="docutils literal"><span class="pre">$_SERVER</span></tt> values, pass all the required keys
+<p>To return an array of multiple <code class="docutils literal"><span class="pre">$_SERVER</span></code> values, pass all the required keys
 as an array.</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">input</span><span class="o">-&gt;</span><span class="na">server</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;SERVER_PROTOCOL&#39;</span><span class="p">,</span> <span class="s1">&#39;REQUEST_URI&#39;</span><span class="p">));</span>
 </pre></div>
@@ -796,14 +795,14 @@ as an array.</p>
 
 <dl class="method">
 <dt id="CI_Input::input_stream">
-<tt class="descname">input_stream</tt><big>(</big><span class="optional">[</span><em>$index = NULL</em><span class="optional">[</span>, <em>$xss_clean = NULL</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Input::input_stream" title="Permalink to this definition">¶</a></dt>
+<code class="descname">input_stream</code><span class="sig-paren">(</span><span class="optional">[</span><em>$index = NULL</em><span class="optional">[</span>, <em>$xss_clean = NULL</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Input::input_stream" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$index</strong> (<em>mixed</em>) &#8211; Key name</li>
-<li><strong>$xss_clean</strong> (<em>bool</em>) &#8211; Whether to apply XSS filtering</li>
+<li><strong>$index</strong> (<em>mixed</em>) – Key name</li>
+<li><strong>$xss_clean</strong> (<em>bool</em>) – Whether to apply XSS filtering</li>
 </ul>
 </td>
 </tr>
@@ -815,26 +814,26 @@ as an array.</p>
 </tr>
 </tbody>
 </table>
-<p>This method is identical to <tt class="docutils literal"><span class="pre">get()</span></tt>, <tt class="docutils literal"><span class="pre">post()</span></tt> and <tt class="docutils literal"><span class="pre">cookie()</span></tt>,
+<p>This method is identical to <code class="docutils literal"><span class="pre">get()</span></code>, <code class="docutils literal"><span class="pre">post()</span></code> and <code class="docutils literal"><span class="pre">cookie()</span></code>,
 only it fetches the <em>php://input</em> stream data.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="CI_Input::set_cookie">
-<tt class="descname">set_cookie</tt><big>(</big><em>$name = ''</em><span class="optional">[</span>, <em>$value = ''</em><span class="optional">[</span>, <em>$expire = ''</em><span class="optional">[</span>, <em>$domain = ''</em><span class="optional">[</span>, <em>$path = '/'</em><span class="optional">[</span>, <em>$prefix = ''</em><span class="optional">[</span>, <em>$secure = NULL</em><span class="optional">[</span>, <em>$httponly = NULL</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Input::set_cookie" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_cookie</code><span class="sig-paren">(</span><em>$name = ''</em><span class="optional">[</span>, <em>$value = ''</em><span class="optional">[</span>, <em>$expire = ''</em><span class="optional">[</span>, <em>$domain = ''</em><span class="optional">[</span>, <em>$path = '/'</em><span class="optional">[</span>, <em>$prefix = ''</em><span class="optional">[</span>, <em>$secure = NULL</em><span class="optional">[</span>, <em>$httponly = NULL</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Input::set_cookie" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$name</strong> (<em>mixed</em>) &#8211; Cookie name or an array of parameters</li>
-<li><strong>$value</strong> (<em>string</em>) &#8211; Cookie value</li>
-<li><strong>$expire</strong> (<em>int</em>) &#8211; Cookie expiration time in seconds</li>
-<li><strong>$domain</strong> (<em>string</em>) &#8211; Cookie domain</li>
-<li><strong>$path</strong> (<em>string</em>) &#8211; Cookie path</li>
-<li><strong>$prefix</strong> (<em>string</em>) &#8211; Cookie name prefix</li>
-<li><strong>$secure</strong> (<em>bool</em>) &#8211; Whether to only transfer the cookie through HTTPS</li>
-<li><strong>$httponly</strong> (<em>bool</em>) &#8211; Whether to only make the cookie accessible for HTTP requests (no JavaScript)</li>
+<li><strong>$name</strong> (<em>mixed</em>) – Cookie name or an array of parameters</li>
+<li><strong>$value</strong> (<em>string</em>) – Cookie value</li>
+<li><strong>$expire</strong> (<em>int</em>) – Cookie expiration time in seconds</li>
+<li><strong>$domain</strong> (<em>string</em>) – Cookie domain</li>
+<li><strong>$path</strong> (<em>string</em>) – Cookie path</li>
+<li><strong>$prefix</strong> (<em>string</em>) – Cookie name prefix</li>
+<li><strong>$secure</strong> (<em>bool</em>) – Whether to only transfer the cookie through HTTPS</li>
+<li><strong>$httponly</strong> (<em>bool</em>) – Whether to only make the cookie accessible for HTTP requests (no JavaScript)</li>
 </ul>
 </td>
 </tr>
@@ -876,7 +875,7 @@ URL to the <strong>domain</strong> starting with a period, like this:
 <p>The prefix is only needed if you need to avoid name collisions with
 other identically named cookies for your server.</p>
 <p>The <em>httponly</em> and <em>secure</em> flags, when omitted, will default to your
-<tt class="docutils literal"><span class="pre">$config['cookie_httponly']</span></tt> and <tt class="docutils literal"><span class="pre">$config['cookie_secure']</span></tt> settings.</p>
+<code class="docutils literal"><span class="pre">$config['cookie_httponly']</span></code> and <code class="docutils literal"><span class="pre">$config['cookie_secure']</span></code> settings.</p>
 <p><strong>Discrete Parameters</strong></p>
 <p>If you prefer, you can set the cookie by passing data using individual
 parameters:</p>
@@ -887,25 +886,25 @@ parameters:</p>
 
 <dl class="method">
 <dt id="CI_Input::ip_address">
-<tt class="descname">ip_address</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Input::ip_address" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ip_address</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Input::ip_address" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Visitor&#8217;s IP address or &#8216;0.0.0.0&#8217; if not valid</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Visitor’s IP address or ‘0.0.0.0’ if not valid</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">string</td>
 </tr>
 </tbody>
 </table>
 <p>Returns the IP address for the current user. If the IP address is not
-valid, the method will return &#8216;0.0.0.0&#8217;:</p>
+valid, the method will return ‘0.0.0.0’:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">input</span><span class="o">-&gt;</span><span class="na">ip_address</span><span class="p">();</span>
 </pre></div>
 </div>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
-<p class="last">This method takes into account the <tt class="docutils literal"><span class="pre">$config['proxy_ips']</span></tt>
+<p class="last">This method takes into account the <code class="docutils literal"><span class="pre">$config['proxy_ips']</span></code>
 setting and will return the reported HTTP_X_FORWARDED_FOR,
 HTTP_CLIENT_IP, HTTP_X_CLIENT_IP or HTTP_X_CLUSTER_CLIENT_IP
 address for the allowed IP addresses.</p>
@@ -914,14 +913,14 @@ address for the allowed IP addresses.</p>
 
 <dl class="method">
 <dt id="CI_Input::valid_ip">
-<tt class="descname">valid_ip</tt><big>(</big><em>$ip</em><span class="optional">[</span>, <em>$which = ''</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Input::valid_ip" title="Permalink to this definition">¶</a></dt>
+<code class="descname">valid_ip</code><span class="sig-paren">(</span><em>$ip</em><span class="optional">[</span>, <em>$which = ''</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Input::valid_ip" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$ip</strong> (<em>string</em>) &#8211; IP address</li>
-<li><strong>$which</strong> (<em>string</em>) &#8211; IP protocol (&#8216;ipv4&#8217; or &#8216;ipv6&#8217;)</li>
+<li><strong>$ip</strong> (<em>string</em>) – IP address</li>
+<li><strong>$which</strong> (<em>string</em>) – IP protocol (‘ipv4’ or ‘ipv6’)</li>
 </ul>
 </td>
 </tr>
@@ -950,13 +949,13 @@ validates the IP address.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Accepts an optional second string parameter of &#8216;ipv4&#8217; or &#8216;ipv6&#8217; to specify
+<p>Accepts an optional second string parameter of ‘ipv4’ or ‘ipv6’ to specify
 an IP format. The default checks for both formats.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="CI_Input::user_agent">
-<tt class="descname">user_agent</tt><big>(</big><span class="optional">[</span><em>$xss_clean = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Input::user_agent" title="Permalink to this definition">¶</a></dt>
+<code class="descname">user_agent</code><span class="sig-paren">(</span><span class="optional">[</span><em>$xss_clean = NULL</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Input::user_agent" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -965,7 +964,7 @@ an IP format. The default checks for both formats.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$xss_clean</strong> (<em>bool</em>) &#8211; Whether to apply XSS filtering</li>
+<li><strong>$xss_clean</strong> (<em>bool</em>) – Whether to apply XSS filtering</li>
 </ul>
 </td>
 </tr>
@@ -975,23 +974,23 @@ an IP format. The default checks for both formats.</p>
 </tbody>
 </table>
 <p>Returns the user agent string (web browser) being used by the current user,
-or NULL if it&#8217;s not available.</p>
+or NULL if it’s not available.</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">input</span><span class="o">-&gt;</span><span class="na">user_agent</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>See the <a class="reference internal" href="user_agent.html"><em>User Agent Class</em></a> for methods which extract
+<p>See the <a class="reference internal" href="user_agent.html"><span class="doc">User Agent Class</span></a> for methods which extract
 information from the user agent string.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="CI_Input::request_headers">
-<tt class="descname">request_headers</tt><big>(</big><span class="optional">[</span><em>$xss_clean = FALSE</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Input::request_headers" title="Permalink to this definition">¶</a></dt>
+<code class="descname">request_headers</code><span class="sig-paren">(</span><span class="optional">[</span><em>$xss_clean = FALSE</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Input::request_headers" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$xss_clean</strong> (<em>bool</em>) &#8211; Whether to apply XSS filtering</li>
+<li><strong>$xss_clean</strong> (<em>bool</em>) – Whether to apply XSS filtering</li>
 </ul>
 </td>
 </tr>
@@ -1014,14 +1013,14 @@ will not be supported.</p>
 
 <dl class="method">
 <dt id="CI_Input::get_request_header">
-<tt class="descname">get_request_header</tt><big>(</big><em>$index</em><span class="optional">[</span>, <em>$xss_clean = FALSE</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Input::get_request_header" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_request_header</code><span class="sig-paren">(</span><em>$index</em><span class="optional">[</span>, <em>$xss_clean = FALSE</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Input::get_request_header" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$index</strong> (<em>string</em>) &#8211; HTTP request header name</li>
-<li><strong>$xss_clean</strong> (<em>bool</em>) &#8211; Whether to apply XSS filtering</li>
+<li><strong>$index</strong> (<em>string</em>) – HTTP request header name</li>
+<li><strong>$xss_clean</strong> (<em>bool</em>) – Whether to apply XSS filtering</li>
 </ul>
 </td>
 </tr>
@@ -1042,7 +1041,7 @@ if the searched header is not found.</p>
 
 <dl class="method">
 <dt id="CI_Input::is_ajax_request">
-<tt class="descname">is_ajax_request</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Input::is_ajax_request" title="Permalink to this definition">¶</a></dt>
+<code class="descname">is_ajax_request</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Input::is_ajax_request" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1059,7 +1058,7 @@ set, and returns boolean TRUE if it is or FALSE if not.</p>
 
 <dl class="method">
 <dt id="CI_Input::is_cli_request">
-<tt class="descname">is_cli_request</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Input::is_cli_request" title="Permalink to this definition">¶</a></dt>
+<code class="descname">is_cli_request</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Input::is_cli_request" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1075,7 +1074,7 @@ interface.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This method checks both the PHP SAPI name currently in use
-and if the <tt class="docutils literal"><span class="pre">STDIN</span></tt> constant is defined, which is usually a
+and if the <code class="docutils literal"><span class="pre">STDIN</span></code> constant is defined, which is usually a
 failsafe way to see if PHP is being run via the command line.</p>
 </div>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">input</span><span class="o">-&gt;</span><span class="na">is_cli_request</span><span class="p">()</span>
@@ -1084,19 +1083,19 @@ failsafe way to see if PHP is being run via the command line.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This method is DEPRECATED and is now just an alias for the
-<tt class="xref py py-func docutils literal"><span class="pre">is_cli()</span></tt> function.</p>
+<code class="xref py py-func docutils literal"><span class="pre">is_cli()</span></code> function.</p>
 </div>
 </dd></dl>
 
 <dl class="method">
 <dt id="CI_Input::method">
-<tt class="descname">method</tt><big>(</big><span class="optional">[</span><em>$upper = FALSE</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Input::method" title="Permalink to this definition">¶</a></dt>
+<code class="descname">method</code><span class="sig-paren">(</span><span class="optional">[</span><em>$upper = FALSE</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Input::method" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$upper</strong> (<em>bool</em>) &#8211; Whether to return the request method name in upper or lower case</li>
+<li><strong>$upper</strong> (<em>bool</em>) – Whether to return the request method name in upper or lower case</li>
 </ul>
 </td>
 </tr>
@@ -1108,7 +1107,7 @@ failsafe way to see if PHP is being run via the command line.</p>
 </tr>
 </tbody>
 </table>
-<p>Returns the <tt class="docutils literal"><span class="pre">$_SERVER['REQUEST_METHOD']</span></tt>, with the option to set it
+<p>Returns the <code class="docutils literal"><span class="pre">$_SERVER['REQUEST_METHOD']</span></code>, with the option to set it
 in uppercase or lowercase.</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">input</span><span class="o">-&gt;</span><span class="na">method</span><span class="p">(</span><span class="k">TRUE</span><span class="p">);</span> <span class="c1">// Outputs: POST</span>
 <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">input</span><span class="o">-&gt;</span><span class="na">method</span><span class="p">(</span><span class="k">FALSE</span><span class="p">);</span> <span class="c1">// Outputs: post</span>
@@ -1141,7 +1140,7 @@ in uppercase or lowercase.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -1162,7 +1161,7 @@ in uppercase or lowercase.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

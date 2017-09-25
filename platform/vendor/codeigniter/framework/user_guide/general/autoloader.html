@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Auto-loading Resources &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Auto-loading Resources &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="General Topics" href="index.html"/>
         <link rel="next" title="Common Functions" href="common_functions.html"/>
         <link rel="prev" title="Hooks - Extending the Framework Core" href="hooks.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -104,7 +105,7 @@
 <li class="toctree-l2"><a class="reference internal" href="core_classes.html">Creating Core System Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ancillary_classes.html">Creating Ancillary Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hooks.html">Hooks - Extending the Framework Core</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Auto-loading Resources</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Auto-loading Resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="common_functions.html">Common Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="compatibility_functions.html">Compatibility Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="routing.html">URI Routing</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -290,7 +289,7 @@
 <li class="toctree-l2"><a class="reference internal" href="core_classes.html">Creating Core System Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ancillary_classes.html">Creating Ancillary Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hooks.html">Hooks - Extending the Framework Core</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Auto-loading Resources</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Auto-loading Resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="common_functions.html">Common Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="compatibility_functions.html">Compatibility Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="routing.html">URI Routing</a></li>
@@ -425,7 +424,7 @@
             
   <div class="section" id="auto-loading-resources">
 <h1>Auto-loading Resources<a class="headerlink" href="#auto-loading-resources" title="Permalink to this headline">¶</a></h1>
-<p>CodeIgniter comes with an &#8220;Auto-load&#8221; feature that permits libraries,
+<p>CodeIgniter comes with an “Auto-load” feature that permits libraries,
 helpers, and models to be initialized automatically every time the
 system runs. If you need certain resources globally throughout your
 application you should consider auto-loading them for convenience.</p>
@@ -438,7 +437,7 @@ application you should consider auto-loading them for convenience.</p>
 <li>Models found in the <em>models/</em> folder</li>
 </ul>
 <p>To autoload resources, open the <strong>application/config/autoload.php</strong>
-file and add the item you want loaded to the autoload array. You&#8217;ll
+file and add the item you want loaded to the autoload array. You’ll
 find instructions in that file corresponding to each type of item.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -446,7 +445,7 @@ find instructions in that file corresponding to each type of item.</p>
 the autoload array.</p>
 </div>
 <p>Additionally, if you want CodeIgniter to use a <a class="reference external" href="https://getcomposer.org/">Composer</a>
-auto-loader, just set <tt class="docutils literal"><span class="pre">$config['composer_autoload']</span></tt> to <tt class="docutils literal"><span class="pre">TRUE</span></tt> or
+auto-loader, just set <code class="docutils literal"><span class="pre">$config['composer_autoload']</span></code> to <code class="docutils literal"><span class="pre">TRUE</span></code> or
 a custom path in <strong>application/config/config.php</strong>.</p>
 </div>
 
@@ -469,7 +468,7 @@ a custom path in <strong>application/config/config.php</strong>.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -490,7 +489,7 @@ a custom path in <strong>application/config/config.php</strong>.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

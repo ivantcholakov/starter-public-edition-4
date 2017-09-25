@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Email Helper &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Email Helper &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Helpers" href="index.html"/>
         <link rel="next" title="File Helper" href="file_helper.html"/>
         <link rel="prev" title="Download Helper" href="download_helper.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -182,7 +183,7 @@
 <li class="toctree-l2"><a class="reference internal" href="date_helper.html">Date Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="directory_helper.html">Directory Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="download_helper.html">Download Helper</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Email Helper</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Email Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file_helper.html">File Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="form_helper.html">Form Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="html_helper.html">HTML Helper</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -368,7 +367,7 @@
 <li class="toctree-l2"><a class="reference internal" href="date_helper.html">Date Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="directory_helper.html">Directory Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="download_helper.html">Download Helper</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Email Helper</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Email Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file_helper.html">File Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="form_helper.html">Form Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="html_helper.html">HTML Helper</a></li>
@@ -426,8 +425,8 @@
   <div class="section" id="email-helper">
 <h1>Email Helper<a class="headerlink" href="#email-helper" title="Permalink to this headline">¶</a></h1>
 <p>The Email Helper provides some assistive functions for working with
-Email. For a more robust email solution, see CodeIgniter&#8217;s <a class="reference internal" href="../libraries/email.html"><em>Email
-Class</em></a>.</p>
+Email. For a more robust email solution, see CodeIgniter’s <a class="reference internal" href="../libraries/email.html"><span class="doc">Email
+Class</span></a>.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
 <p class="last">The Email helper is DEPRECATED and is currently
@@ -451,13 +450,13 @@ only kept for backwards compatibility.</p>
 <p>The following functions are available:</p>
 <dl class="function">
 <dt id="valid_email">
-<tt class="descname">valid_email</tt><big>(</big><em>$email</em><big>)</big><a class="headerlink" href="#valid_email" title="Permalink to this definition">¶</a></dt>
+<code class="descname">valid_email</code><span class="sig-paren">(</span><em>$email</em><span class="sig-paren">)</span><a class="headerlink" href="#valid_email" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$email</strong> (<em>string</em>) &#8211; E-mail address</li>
+<li><strong>$email</strong> (<em>string</em>) – E-mail address</li>
 </ul>
 </td>
 </tr>
@@ -470,7 +469,7 @@ only kept for backwards compatibility.</p>
 </tbody>
 </table>
 <p>Checks if the input is a correctly formatted e-mail address. Note that is
-doesn&#8217;t actually prove that the address will be able recieve mail, but
+doesn’t actually prove that the address will be able recieve mail, but
 simply that it is a validly formed address.</p>
 <p>Example:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="nx">valid_email</span><span class="p">(</span><span class="s1">&#39;email@somesite.com&#39;</span><span class="p">))</span>
@@ -485,7 +484,7 @@ simply that it is a validly formed address.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>All that this function does is to use PHP&#8217;s native <tt class="docutils literal"><span class="pre">filter_var()</span></tt>:</p>
+<p>All that this function does is to use PHP’s native <code class="docutils literal"><span class="pre">filter_var()</span></code>:</p>
 <div class="last highlight-ci"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nx">bool</span><span class="p">)</span> <span class="nb">filter_var</span><span class="p">(</span><span class="nv">$email</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_EMAIL</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -494,15 +493,15 @@ simply that it is a validly formed address.</p>
 
 <dl class="function">
 <dt id="send_email">
-<tt class="descname">send_email</tt><big>(</big><em>$recipient</em>, <em>$subject</em>, <em>$message</em><big>)</big><a class="headerlink" href="#send_email" title="Permalink to this definition">¶</a></dt>
+<code class="descname">send_email</code><span class="sig-paren">(</span><em>$recipient</em>, <em>$subject</em>, <em>$message</em><span class="sig-paren">)</span><a class="headerlink" href="#send_email" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$recipient</strong> (<em>string</em>) &#8211; E-mail address</li>
-<li><strong>$subject</strong> (<em>string</em>) &#8211; Mail subject</li>
-<li><strong>$message</strong> (<em>string</em>) &#8211; Message body</li>
+<li><strong>$recipient</strong> (<em>string</em>) – E-mail address</li>
+<li><strong>$subject</strong> (<em>string</em>) – Mail subject</li>
+<li><strong>$message</strong> (<em>string</em>) – Message body</li>
 </ul>
 </td>
 </tr>
@@ -514,16 +513,16 @@ simply that it is a validly formed address.</p>
 </tr>
 </tbody>
 </table>
-<p>Sends an email using PHP&#8217;s native <a class="reference external" href="http://php.net/function.mail">mail()</a>
+<p>Sends an email using PHP’s native <a class="reference external" href="http://php.net/function.mail">mail()</a>
 function.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>All that this function does is to use PHP&#8217;s native <tt class="docutils literal"><span class="pre">mail</span></tt></p>
+<p>All that this function does is to use PHP’s native <code class="docutils literal"><span class="pre">mail</span></code></p>
 <div class="last highlight-ci"><div class="highlight"><pre><span></span><span class="nb">mail</span><span class="p">(</span><span class="nv">$recipient</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
-<p>For a more robust email solution, see CodeIgniter&#8217;s <a class="reference internal" href="../libraries/email.html"><em>Email Library</em></a>.</p>
+<p>For a more robust email solution, see CodeIgniter’s <a class="reference internal" href="../libraries/email.html"><span class="doc">Email Library</span></a>.</p>
 </dd></dl>
 
 </div>
@@ -548,7 +547,7 @@ function.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -569,7 +568,7 @@ function.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

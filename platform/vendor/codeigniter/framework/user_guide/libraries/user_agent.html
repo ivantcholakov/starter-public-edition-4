@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>User Agent Class &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>User Agent Class &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Libraries" href="index.html"/>
         <link rel="next" title="XML-RPC and XML-RPC Server Classes" href="xmlrpc.html"/>
         <link rel="prev" title="URI Class" href="uri.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -149,7 +150,7 @@
 <li class="toctree-l2"><a class="reference internal" href="typography.html">Typography Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unit_testing.html">Unit Testing Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uri.html">URI Class</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">User Agent Class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">User Agent Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xmlrpc.html">XML-RPC and XML-RPC Server Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="zip.html">Zip Encoding Class</a></li>
 </ul>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -335,7 +334,7 @@
 <li class="toctree-l2"><a class="reference internal" href="typography.html">Typography Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unit_testing.html">Unit Testing Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uri.html">URI Class</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">User Agent Class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">User Agent Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xmlrpc.html">XML-RPC and XML-RPC Server Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="zip.html">Zip Encoding Class</a></li>
 </ul>
@@ -449,7 +448,7 @@ initialized in your controller using the $this-&gt;load-&gt;library function:</p
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">library</span><span class="p">(</span><span class="s1">&#39;user_agent&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Once loaded, the object will be available using: <tt class="docutils literal"><span class="pre">$this-&gt;agent</span></tt></p>
+<p>Once loaded, the object will be available using: <code class="docutils literal"><span class="pre">$this-&gt;agent</span></code></p>
 </div>
 <div class="section" id="user-agent-definitions">
 <h3><a class="toc-backref" href="#id3">User Agent Definitions</a><a class="headerlink" href="#user-agent-definitions" title="Permalink to this headline">¶</a></h3>
@@ -493,16 +492,16 @@ is available.</p>
 <h2><a class="toc-backref" href="#id5">Class Reference</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="CI_User_agent">
-<em class="property">class </em><tt class="descname">CI_User_agent</tt><a class="headerlink" href="#CI_User_agent" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">CI_User_agent</code><a class="headerlink" href="#CI_User_agent" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="CI_User_agent::is_browser">
-<tt class="descname">is_browser</tt><big>(</big><span class="optional">[</span><em>$key = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_User_agent::is_browser" title="Permalink to this definition">¶</a></dt>
+<code class="descname">is_browser</code><span class="sig-paren">(</span><span class="optional">[</span><em>$key = NULL</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_User_agent::is_browser" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$key</strong> (<em>string</em>) &#8211; Optional browser name</li>
+<li><strong>$key</strong> (<em>string</em>) – Optional browser name</li>
 </ul>
 </td>
 </tr>
@@ -527,7 +526,7 @@ is available.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The string &#8220;Safari&#8221; in this example is an array key in the list of browser definitions.
+<p class="last">The string “Safari” in this example is an array key in the list of browser definitions.
 You can find this list in <strong>application/config/user_agents.php</strong> if you want to add new
 browsers or change the stings.</p>
 </div>
@@ -535,13 +534,13 @@ browsers or change the stings.</p>
 
 <dl class="method">
 <dt id="CI_User_agent::is_mobile">
-<tt class="descname">is_mobile</tt><big>(</big><span class="optional">[</span><em>$key = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_User_agent::is_mobile" title="Permalink to this definition">¶</a></dt>
+<code class="descname">is_mobile</code><span class="sig-paren">(</span><span class="optional">[</span><em>$key = NULL</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_User_agent::is_mobile" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$key</strong> (<em>string</em>) &#8211; Optional mobile device name</li>
+<li><strong>$key</strong> (<em>string</em>) – Optional mobile device name</li>
 </ul>
 </td>
 </tr>
@@ -572,13 +571,13 @@ browsers or change the stings.</p>
 
 <dl class="method">
 <dt id="CI_User_agent::is_robot">
-<tt class="descname">is_robot</tt><big>(</big><span class="optional">[</span><em>$key = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_User_agent::is_robot" title="Permalink to this definition">¶</a></dt>
+<code class="descname">is_robot</code><span class="sig-paren">(</span><span class="optional">[</span><em>$key = NULL</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_User_agent::is_robot" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$key</strong> (<em>string</em>) &#8211; Optional robot name</li>
+<li><strong>$key</strong> (<em>string</em>) – Optional robot name</li>
 </ul>
 </td>
 </tr>
@@ -602,7 +601,7 @@ that commonly visit your site are missing from the list you can add them to your
 
 <dl class="method">
 <dt id="CI_User_agent::is_referral">
-<tt class="descname">is_referral</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_User_agent::is_referral" title="Permalink to this definition">¶</a></dt>
+<code class="descname">is_referral</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_User_agent::is_referral" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -618,7 +617,7 @@ that commonly visit your site are missing from the list you can add them to your
 
 <dl class="method">
 <dt id="CI_User_agent::browser">
-<tt class="descname">browser</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_User_agent::browser" title="Permalink to this definition">¶</a></dt>
+<code class="descname">browser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_User_agent::browser" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -634,7 +633,7 @@ that commonly visit your site are missing from the list you can add them to your
 
 <dl class="method">
 <dt id="CI_User_agent::version">
-<tt class="descname">version</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_User_agent::version" title="Permalink to this definition">¶</a></dt>
+<code class="descname">version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_User_agent::version" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -650,7 +649,7 @@ that commonly visit your site are missing from the list you can add them to your
 
 <dl class="method">
 <dt id="CI_User_agent::mobile">
-<tt class="descname">mobile</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_User_agent::mobile" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mobile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_User_agent::mobile" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -666,7 +665,7 @@ that commonly visit your site are missing from the list you can add them to your
 
 <dl class="method">
 <dt id="CI_User_agent::robot">
-<tt class="descname">robot</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_User_agent::robot" title="Permalink to this definition">¶</a></dt>
+<code class="descname">robot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_User_agent::robot" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -682,7 +681,7 @@ that commonly visit your site are missing from the list you can add them to your
 
 <dl class="method">
 <dt id="CI_User_agent::platform">
-<tt class="descname">platform</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_User_agent::platform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">platform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_User_agent::platform" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -698,7 +697,7 @@ that commonly visit your site are missing from the list you can add them to your
 
 <dl class="method">
 <dt id="CI_User_agent::referrer">
-<tt class="descname">referrer</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_User_agent::referrer" title="Permalink to this definition">¶</a></dt>
+<code class="descname">referrer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_User_agent::referrer" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -709,7 +708,7 @@ that commonly visit your site are missing from the list you can add them to your
 </tr>
 </tbody>
 </table>
-<p>The referrer, if the user agent was referred from another site. Typically you&#8217;ll test for this as follows:</p>
+<p>The referrer, if the user agent was referred from another site. Typically you’ll test for this as follows:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">agent</span><span class="o">-&gt;</span><span class="na">is_referral</span><span class="p">())</span>
 <span class="p">{</span>
         <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">agent</span><span class="o">-&gt;</span><span class="na">referrer</span><span class="p">();</span>
@@ -720,7 +719,7 @@ that commonly visit your site are missing from the list you can add them to your
 
 <dl class="method">
 <dt id="CI_User_agent::agent_string">
-<tt class="descname">agent_string</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_User_agent::agent_string" title="Permalink to this definition">¶</a></dt>
+<code class="descname">agent_string</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_User_agent::agent_string" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -739,13 +738,13 @@ that commonly visit your site are missing from the list you can add them to your
 
 <dl class="method">
 <dt id="CI_User_agent::accept_lang">
-<tt class="descname">accept_lang</tt><big>(</big><span class="optional">[</span><em>$lang = 'en'</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_User_agent::accept_lang" title="Permalink to this definition">¶</a></dt>
+<code class="descname">accept_lang</code><span class="sig-paren">(</span><span class="optional">[</span><em>$lang = 'en'</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_User_agent::accept_lang" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$lang</strong> (<em>string</em>) &#8211; Language key</li>
+<li><strong>$lang</strong> (<em>string</em>) – Language key</li>
 </ul>
 </td>
 </tr>
@@ -773,7 +772,7 @@ and even among those that do, it is not always accurate.</p>
 
 <dl class="method">
 <dt id="CI_User_agent::languages">
-<tt class="descname">languages</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_User_agent::languages" title="Permalink to this definition">¶</a></dt>
+<code class="descname">languages</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_User_agent::languages" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -789,13 +788,13 @@ and even among those that do, it is not always accurate.</p>
 
 <dl class="method">
 <dt id="CI_User_agent::accept_charset">
-<tt class="descname">accept_charset</tt><big>(</big><span class="optional">[</span><em>$charset = 'utf-8'</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_User_agent::accept_charset" title="Permalink to this definition">¶</a></dt>
+<code class="descname">accept_charset</code><span class="sig-paren">(</span><span class="optional">[</span><em>$charset = 'utf-8'</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_User_agent::accept_charset" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$charset</strong> (<em>string</em>) &#8211; Character set</li>
+<li><strong>$charset</strong> (<em>string</em>) – Character set</li>
 </ul>
 </td>
 </tr>
@@ -823,7 +822,7 @@ and even among those that do, it is not always accurate.</p>
 
 <dl class="method">
 <dt id="CI_User_agent::charsets">
-<tt class="descname">charsets</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_User_agent::charsets" title="Permalink to this definition">¶</a></dt>
+<code class="descname">charsets</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_User_agent::charsets" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -839,13 +838,13 @@ and even among those that do, it is not always accurate.</p>
 
 <dl class="method">
 <dt id="CI_User_agent::parse">
-<tt class="descname">parse</tt><big>(</big><em>$string</em><big>)</big><a class="headerlink" href="#CI_User_agent::parse" title="Permalink to this definition">¶</a></dt>
+<code class="descname">parse</code><span class="sig-paren">(</span><em>$string</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_User_agent::parse" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$string</strong> (<em>string</em>) &#8211; A custom user-agent string</li>
+<li><strong>$string</strong> (<em>string</em>) – A custom user-agent string</li>
 </ul>
 </td>
 </tr>
@@ -881,7 +880,7 @@ and even among those that do, it is not always accurate.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -902,7 +901,7 @@ and even among those that do, it is not always accurate.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

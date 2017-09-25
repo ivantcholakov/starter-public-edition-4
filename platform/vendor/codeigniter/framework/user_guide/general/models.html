@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Models &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Models &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="General Topics" href="index.html"/>
         <link rel="next" title="Helper Functions" href="helpers.html"/>
         <link rel="prev" title="Views" href="views.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -95,7 +96,7 @@
 <li class="toctree-l2"><a class="reference internal" href="controllers.html">Controllers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reserved_names.html">Reserved Names</a></li>
 <li class="toctree-l2"><a class="reference internal" href="views.html">Views</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Models</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="helpers.html">Helpers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libraries.html">Using CodeIgniter Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="creating_libraries.html">Creating Libraries</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -281,7 +280,7 @@
 <li class="toctree-l2"><a class="reference internal" href="controllers.html">Controllers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reserved_names.html">Reserved Names</a></li>
 <li class="toctree-l2"><a class="reference internal" href="views.html">Views</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Models</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="helpers.html">Helpers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libraries.html">Using CodeIgniter Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="creating_libraries.html">Creating Libraries</a></li>
@@ -443,7 +442,7 @@ traditional MVC approach.</p>
 <div class="section" id="what-is-a-model">
 <h2><a class="toc-backref" href="#id2">What is a Model?</a><a class="headerlink" href="#what-is-a-model" title="Permalink to this headline">¶</a></h2>
 <p>Models are PHP classes that are designed to work with information in
-your database. For example, let&#8217;s say you use CodeIgniter to manage a
+your database. For example, let’s say you use CodeIgniter to manage a
 blog. You might have a model class that contains functions to insert,
 update, and retrieve your blog data. Here is an example of what such a
 model class might look like:</p>
@@ -482,14 +481,14 @@ model class might look like:</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The methods in the above example use the <a class="reference internal" href="../database/query_builder.html"><em>Query Builder</em></a> database methods.</p>
+<p class="last">The methods in the above example use the <a class="reference internal" href="../database/query_builder.html"><span class="doc">Query Builder</span></a> database methods.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">For the sake of simplicity in this example we&#8217;re using <tt class="docutils literal"><span class="pre">$_POST</span></tt>
+<p class="last">For the sake of simplicity in this example we’re using <code class="docutils literal"><span class="pre">$_POST</span></code>
 directly. This is generally bad practice, and a more common approach
-would be to use the <a class="reference internal" href="../libraries/input.html"><em>Input Library</em></a>
-<tt class="docutils literal"><span class="pre">$this-&gt;input-&gt;post('title')</span></tt>.</p>
+would be to use the <a class="reference internal" href="../libraries/input.html"><span class="doc">Input Library</span></a>
+<code class="docutils literal"><span class="pre">$this-&gt;input-&gt;post('title')</span></code>.</p>
 </div>
 </div>
 <div class="section" id="anatomy-of-a-model">
@@ -532,14 +531,14 @@ sure your class extends the base Model class.</p>
 <div class="section" id="loading-a-model">
 <h2><a class="toc-backref" href="#id4">Loading a Model</a><a class="headerlink" href="#loading-a-model" title="Permalink to this headline">¶</a></h2>
 <p>Your models will typically be loaded and called from within your
-<a class="reference internal" href="controllers.html"><em>controller</em></a> methods. To load a model you will use
+<a class="reference internal" href="controllers.html"><span class="doc">controller</span></a> methods. To load a model you will use
 the following method:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">model</span><span class="p">(</span><span class="s1">&#39;model_name&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>If your model is located in a sub-directory, include the relative path
 from your models directory. For example, if you have a model located at
-<em>application/models/blog/Queries.php</em> you&#8217;ll load it using:</p>
+<em>application/models/blog/Queries.php</em> you’ll load it using:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">model</span><span class="p">(</span><span class="s1">&#39;blog/queries&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -586,8 +585,8 @@ autoload array.</p>
 <p>When a model is loaded it does <strong>NOT</strong> connect automatically to your
 database. The following options for connecting are available to you:</p>
 <ul>
-<li><p class="first">You can connect using the standard database methods <a class="reference internal" href="../database/connecting.html"><em>described
-here</em></a>, either from within your
+<li><p class="first">You can connect using the standard database methods <a class="reference internal" href="../database/connecting.html"><span class="doc">described
+here</span></a>, either from within your
 Controller class or your Model class.</p>
 </li>
 <li><p class="first">You can tell the model loading method to auto-connect by passing
@@ -635,7 +634,7 @@ parameter:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -656,7 +655,7 @@ parameter:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

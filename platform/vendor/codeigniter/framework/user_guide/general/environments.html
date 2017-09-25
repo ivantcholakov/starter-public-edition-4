@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Handling Multiple Environments &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Handling Multiple Environments &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="General Topics" href="index.html"/>
         <link rel="next" title="Alternate PHP Syntax for View Files" href="alternative_php.html"/>
         <link rel="prev" title="Managing your Applications" href="managing_apps.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -113,7 +114,7 @@
 <li class="toctree-l2"><a class="reference internal" href="profiling.html">Profiling Your Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cli.html">Running via the CLI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="managing_apps.html">Managing your Applications</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Handling Multiple Environments</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Handling Multiple Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="alternative_php.html">Alternate PHP Syntax for View Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
 <li class="toctree-l2"><a class="reference internal" href="styleguide.html">PHP Style Guide</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -299,7 +298,7 @@
 <li class="toctree-l2"><a class="reference internal" href="profiling.html">Profiling Your Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cli.html">Running via the CLI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="managing_apps.html">Managing your Applications</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Handling Multiple Environments</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Handling Multiple Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="alternative_php.html">Alternate PHP Syntax for View Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
 <li class="toctree-l2"><a class="reference internal" href="styleguide.html">PHP Style Guide</a></li>
@@ -429,19 +428,19 @@
 an application is running in a development or production environment.
 For example, verbose error output is something that would be useful
 while developing an application, but it may also pose a security issue
-when &#8220;live&#8221;.</p>
+when “live”.</p>
 <div class="section" id="the-environment-constant">
 <h2>The ENVIRONMENT Constant<a class="headerlink" href="#the-environment-constant" title="Permalink to this headline">¶</a></h2>
 <p>By default, CodeIgniter comes with the environment constant set to use
-the value provided in <tt class="docutils literal"><span class="pre">$_SERVER['CI_ENV']</span></tt>, otherwise defaults to
-&#8216;development&#8217;. At the top of index.php, you will see:</p>
+the value provided in <code class="docutils literal"><span class="pre">$_SERVER['CI_ENV']</span></code>, otherwise defaults to
+‘development’. At the top of index.php, you will see:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nb">define</span><span class="p">(</span><span class="s1">&#39;ENVIRONMENT&#39;</span><span class="p">,</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;CI_ENV&#39;</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;CI_ENV&#39;</span><span class="p">]</span> <span class="o">:</span> <span class="s1">&#39;development&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>This server variable can be set in your .htaccess file, or Apache
 config using <a class="reference external" href="https://httpd.apache.org/docs/2.2/mod/mod_env.html#setenv">SetEnv</a>.
 Alternative methods are available for nginx and other servers, or you can
-remove this logic entirely and set the constant based on the server&#8217;s IP address.</p>
+remove this logic entirely and set the constant based on the server’s IP address.</p>
 <p>In addition to affecting some basic framework behavior (see the next
 section), you may use this constant in your own development to
 differentiate between which environment you are running in.</p>
@@ -453,18 +452,18 @@ constant is used. This section describes how default framework behavior
 is affected.</p>
 <div class="section" id="error-reporting">
 <h3>Error Reporting<a class="headerlink" href="#error-reporting" title="Permalink to this headline">¶</a></h3>
-<p>Setting the ENVIRONMENT constant to a value of &#8216;development&#8217; will cause
+<p>Setting the ENVIRONMENT constant to a value of ‘development’ will cause
 all PHP errors to be rendered to the browser when they occur.
-Conversely, setting the constant to &#8216;production&#8217; will disable all error
-output. Disabling error reporting in production is a <a class="reference internal" href="security.html"><em>good security
-practice</em></a>.</p>
+Conversely, setting the constant to ‘production’ will disable all error
+output. Disabling error reporting in production is a <a class="reference internal" href="security.html"><span class="doc">good security
+practice</span></a>.</p>
 </div>
 <div class="section" id="configuration-files">
 <h3>Configuration Files<a class="headerlink" href="#configuration-files" title="Permalink to this headline">¶</a></h3>
 <p>Optionally, you can have CodeIgniter load environment-specific
 configuration files. This may be useful for managing things like
 differing API keys across multiple environments. This is described in
-more detail in the environment section of the <a class="reference internal" href="../libraries/config.html"><em>Config Class</em></a> documentation.</p>
+more detail in the environment section of the <a class="reference internal" href="../libraries/config.html"><span class="doc">Config Class</span></a> documentation.</p>
 </div>
 </div>
 </div>
@@ -488,7 +487,7 @@ more detail in the environment section of the <a class="reference internal" href
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -509,7 +508,7 @@ more detail in the environment section of the <a class="reference internal" href
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

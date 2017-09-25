@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Text Helper &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Text Helper &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Helpers" href="index.html"/>
         <link rel="next" title="Typography Helper" href="typography_helper.html"/>
         <link rel="prev" title="String Helper" href="string_helper.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -193,7 +194,7 @@
 <li class="toctree-l2"><a class="reference internal" href="security_helper.html">Security Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="smiley_helper.html">Smiley Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="string_helper.html">String Helper</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Text Helper</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Text Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="typography_helper.html">Typography Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="url_helper.html">URL Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xml_helper.html">XML Helper</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -379,7 +378,7 @@
 <li class="toctree-l2"><a class="reference internal" href="security_helper.html">Security Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="smiley_helper.html">Smiley Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="string_helper.html">String Helper</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Text Helper</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Text Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="typography_helper.html">Typography Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="url_helper.html">URL Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xml_helper.html">XML Helper</a></li>
@@ -445,15 +444,15 @@ text.</p>
 <p>The following functions are available:</p>
 <dl class="function">
 <dt id="word_limiter">
-<tt class="descname">word_limiter</tt><big>(</big><em>$str</em><span class="optional">[</span>, <em>$limit = 100</em><span class="optional">[</span>, <em>$end_char = '&amp;#8230;'</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#word_limiter" title="Permalink to this definition">¶</a></dt>
+<code class="descname">word_limiter</code><span class="sig-paren">(</span><em>$str</em><span class="optional">[</span>, <em>$limit = 100</em><span class="optional">[</span>, <em>$end_char = '&amp;#8230;'</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#word_limiter" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
-<li><strong>$limit</strong> (<em>int</em>) &#8211; Limit</li>
-<li><strong>$end_char</strong> (<em>string</em>) &#8211; End character (usually an ellipsis)</li>
+<li><strong>$str</strong> (<em>string</em>) – Input string</li>
+<li><strong>$limit</strong> (<em>int</em>) – Limit</li>
+<li><strong>$end_char</strong> (<em>string</em>) – End character (usually an ellipsis)</li>
 </ul>
 </td>
 </tr>
@@ -477,15 +476,15 @@ default it adds an ellipsis.</p>
 
 <dl class="function">
 <dt id="character_limiter">
-<tt class="descname">character_limiter</tt><big>(</big><em>$str</em><span class="optional">[</span>, <em>$n = 500</em><span class="optional">[</span>, <em>$end_char = '&amp;#8230;'</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#character_limiter" title="Permalink to this definition">¶</a></dt>
+<code class="descname">character_limiter</code><span class="sig-paren">(</span><em>$str</em><span class="optional">[</span>, <em>$n = 500</em><span class="optional">[</span>, <em>$end_char = '&amp;#8230;'</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#character_limiter" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
-<li><strong>$n</strong> (<em>int</em>) &#8211; Number of characters</li>
-<li><strong>$end_char</strong> (<em>string</em>) &#8211; End character (usually an ellipsis)</li>
+<li><strong>$str</strong> (<em>string</em>) – Input string</li>
+<li><strong>$n</strong> (<em>int</em>) – Number of characters</li>
+<li><strong>$end_char</strong> (<em>string</em>) – End character (usually an ellipsis)</li>
 </ul>
 </td>
 </tr>
@@ -511,19 +510,19 @@ undeclared this helper uses an ellipsis.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">If you need to truncate to an exact number of characters please
-see the <a class="reference internal" href="#ellipsize" title="ellipsize"><tt class="xref php php-func docutils literal"><span class="pre">ellipsize()</span></tt></a> function below.</p>
+see the <a class="reference internal" href="#ellipsize" title="ellipsize"><code class="xref php php-func docutils literal"><span class="pre">ellipsize()</span></code></a> function below.</p>
 </div>
 </dd></dl>
 
 <dl class="function">
 <dt id="ascii_to_entities">
-<tt class="descname">ascii_to_entities</tt><big>(</big><em>$str</em><big>)</big><a class="headerlink" href="#ascii_to_entities" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ascii_to_entities</code><span class="sig-paren">(</span><em>$str</em><span class="sig-paren">)</span><a class="headerlink" href="#ascii_to_entities" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
+<li><strong>$str</strong> (<em>string</em>) – Input string</li>
 </ul>
 </td>
 </tr>
@@ -538,7 +537,7 @@ see the <a class="reference internal" href="#ellipsize" title="ellipsize"><tt cl
 <p>Converts ASCII values to character entities, including high ASCII and MS
 Word characters that can cause problems when used in a web page, so that
 they can be shown consistently regardless of browser settings or stored
-reliably in a database. There is some dependence on your server&#8217;s
+reliably in a database. There is some dependence on your server’s
 supported character sets, so it may not be 100% reliable in all cases,
 but for the most part it should correctly identify characters outside
 the normal range (like accented characters).</p>
@@ -550,13 +549,13 @@ the normal range (like accented characters).</p>
 
 <dl class="function">
 <dt id="convert_accented_characters">
-<tt class="descname">convert_accented_characters</tt><big>(</big><em>$str</em><big>)</big><a class="headerlink" href="#convert_accented_characters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">convert_accented_characters</code><span class="sig-paren">(</span><em>$str</em><span class="sig-paren">)</span><a class="headerlink" href="#convert_accented_characters" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
+<li><strong>$str</strong> (<em>string</em>) – Input string</li>
 </ul>
 </td>
 </tr>
@@ -585,15 +584,15 @@ from array for transliteration.</p>
 
 <dl class="function">
 <dt id="word_censor">
-<tt class="descname">word_censor</tt><big>(</big><em>$str</em>, <em>$censored</em><span class="optional">[</span>, <em>$replacement = ''</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#word_censor" title="Permalink to this definition">¶</a></dt>
+<code class="descname">word_censor</code><span class="sig-paren">(</span><em>$str</em>, <em>$censored</em><span class="optional">[</span>, <em>$replacement = ''</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#word_censor" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
-<li><strong>$censored</strong> (<em>array</em>) &#8211; List of bad words to censor</li>
-<li><strong>$replacement</strong> (<em>string</em>) &#8211; What to replace bad words with</li>
+<li><strong>$str</strong> (<em>string</em>) – Input string</li>
+<li><strong>$censored</strong> (<em>array</em>) – List of bad words to censor</li>
+<li><strong>$replacement</strong> (<em>string</em>) – What to replace bad words with</li>
 </ul>
 </td>
 </tr>
@@ -619,13 +618,13 @@ with pound signs: ####.</p>
 
 <dl class="function">
 <dt id="highlight_code">
-<tt class="descname">highlight_code</tt><big>(</big><em>$str</em><big>)</big><a class="headerlink" href="#highlight_code" title="Permalink to this definition">¶</a></dt>
+<code class="descname">highlight_code</code><span class="sig-paren">(</span><em>$str</em><span class="sig-paren">)</span><a class="headerlink" href="#highlight_code" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
+<li><strong>$str</strong> (<em>string</em>) – Input string</li>
 </ul>
 </td>
 </tr>
@@ -641,22 +640,22 @@ with pound signs: ####.</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$string</span> <span class="o">=</span> <span class="nx">highlight_code</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>The function uses PHP&#8217;s <tt class="docutils literal"><span class="pre">highlight_string()</span></tt> function, so the
+<p>The function uses PHP’s <code class="docutils literal"><span class="pre">highlight_string()</span></code> function, so the
 colors used are the ones specified in your php.ini file.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="highlight_phrase">
-<tt class="descname">highlight_phrase</tt><big>(</big><em>$str</em>, <em>$phrase</em><span class="optional">[</span>, <em>$tag_open = '&lt;mark&gt;'</em><span class="optional">[</span>, <em>$tag_close = '&lt;/mark&gt;'</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#highlight_phrase" title="Permalink to this definition">¶</a></dt>
+<code class="descname">highlight_phrase</code><span class="sig-paren">(</span><em>$str</em>, <em>$phrase</em><span class="optional">[</span>, <em>$tag_open = '&lt;mark&gt;'</em><span class="optional">[</span>, <em>$tag_close = '&lt;/mark&gt;'</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#highlight_phrase" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
-<li><strong>$phrase</strong> (<em>string</em>) &#8211; Phrase to highlight</li>
-<li><strong>$tag_open</strong> (<em>string</em>) &#8211; Opening tag used for the highlight</li>
-<li><strong>$tag_close</strong> (<em>string</em>) &#8211; Closing tag for the highlight</li>
+<li><strong>$str</strong> (<em>string</em>) – Input string</li>
+<li><strong>$phrase</strong> (<em>string</em>) – Phrase to highlight</li>
+<li><strong>$tag_open</strong> (<em>string</em>) – Opening tag used for the highlight</li>
+<li><strong>$tag_close</strong> (<em>string</em>) – Closing tag for the highlight</li>
 </ul>
 </td>
 </tr>
@@ -683,7 +682,7 @@ opening/closing HTML tags you would like the phrase wrapped in.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>This function used to use the <tt class="docutils literal"><span class="pre">&lt;strong&gt;</span></tt> tag by default. Older browsers
+<p>This function used to use the <code class="docutils literal"><span class="pre">&lt;strong&gt;</span></code> tag by default. Older browsers
 might not support the new HTML5 mark tag, so it is recommended that you
 insert the following CSS code into your stylesheet if you need to support
 such browsers:</p>
@@ -698,14 +697,14 @@ such browsers:</p>
 
 <dl class="function">
 <dt id="word_wrap">
-<tt class="descname">word_wrap</tt><big>(</big><em>$str</em><span class="optional">[</span>, <em>$charlim = 76</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#word_wrap" title="Permalink to this definition">¶</a></dt>
+<code class="descname">word_wrap</code><span class="sig-paren">(</span><em>$str</em><span class="optional">[</span>, <em>$charlim = 76</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#word_wrap" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
-<li><strong>$charlim</strong> (<em>int</em>) &#8211; Character limit</li>
+<li><strong>$str</strong> (<em>string</em>) – Input string</li>
+<li><strong>$charlim</strong> (<em>int</em>) – Character limit</li>
 </ul>
 </td>
 </tr>
@@ -734,16 +733,16 @@ complete words.</p>
 
 <dl class="function">
 <dt id="ellipsize">
-<tt class="descname">ellipsize</tt><big>(</big><em>$str</em>, <em>$max_length</em><span class="optional">[</span>, <em>$position = 1</em><span class="optional">[</span>, <em>$ellipsis = '&amp;hellip;'</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#ellipsize" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ellipsize</code><span class="sig-paren">(</span><em>$str</em>, <em>$max_length</em><span class="optional">[</span>, <em>$position = 1</em><span class="optional">[</span>, <em>$ellipsis = '&amp;hellip;'</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#ellipsize" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
-<li><strong>$max_length</strong> (<em>int</em>) &#8211; String length limit</li>
-<li><strong>$position</strong> (<em>mixed</em>) &#8211; Position to split at (int or float)</li>
-<li><strong>$ellipsis</strong> (<em>string</em>) &#8211; What to use as the ellipsis character</li>
+<li><strong>$str</strong> (<em>string</em>) – Input string</li>
+<li><strong>$max_length</strong> (<em>int</em>) – String length limit</li>
+<li><strong>$position</strong> (<em>mixed</em>) – Position to split at (int or float)</li>
+<li><strong>$ellipsis</strong> (<em>string</em>) – What to use as the ellipsis character</li>
 </ul>
 </td>
 </tr>
@@ -797,7 +796,7 @@ string, .5 in the middle, and 0 at the left.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -818,7 +817,7 @@ string, .5 in the middle, and 0 at the left.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

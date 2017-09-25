@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Views &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Views &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="General Topics" href="index.html"/>
         <link rel="next" title="Models" href="models.html"/>
         <link rel="prev" title="Reserved Names" href="reserved_names.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -94,7 +95,7 @@
 <li class="toctree-l2"><a class="reference internal" href="urls.html">CodeIgniter URLs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="controllers.html">Controllers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reserved_names.html">Reserved Names</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Views</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Views</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html">Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="helpers.html">Helpers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libraries.html">Using CodeIgniter Libraries</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -280,7 +279,7 @@
 <li class="toctree-l2"><a class="reference internal" href="urls.html">CodeIgniter URLs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="controllers.html">Controllers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reserved_names.html">Reserved Names</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Views</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Views</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html">Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="helpers.html">Helpers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libraries.html">Using CodeIgniter Libraries</a></li>
@@ -429,13 +428,13 @@
 sidebar, etc. In fact, views can flexibly be embedded within other views
 (within other views, etc., etc.) if you need this type of hierarchy.</p>
 <p>Views are never called directly, they must be loaded by a
-<a class="reference internal" href="controllers.html"><em>controller</em></a>. Remember that in an MVC framework, the
+<a class="reference internal" href="controllers.html"><span class="doc">controller</span></a>. Remember that in an MVC framework, the
 Controller acts as the traffic cop, so it is responsible for fetching a
 particular view. If you have not read the
-<a class="reference internal" href="controllers.html"><em>Controllers</em></a> page you should do so before
+<a class="reference internal" href="controllers.html"><span class="doc">Controllers</span></a> page you should do so before
 continuing.</p>
 <p>Using the example controller you created in the
-<a class="reference internal" href="controllers.html"><em>controller</em></a> page, let&#8217;s add a view to it.</p>
+<a class="reference internal" href="controllers.html"><span class="doc">controller</span></a> page, let’s add a view to it.</p>
 <div class="section" id="creating-a-view">
 <h2>Creating a View<a class="headerlink" href="#creating-a-view" title="Permalink to this headline">¶</a></h2>
 <p>Using your text editor, create a file called blogview.php, and put this
@@ -485,7 +484,7 @@ new view. The URL was similar to this:</p>
 <div class="section" id="loading-multiple-views">
 <h2>Loading multiple views<a class="headerlink" href="#loading-multiple-views" title="Permalink to this headline">¶</a></h2>
 <p>CodeIgniter will intelligently handle multiple calls to
-<tt class="docutils literal"><span class="pre">$this-&gt;load-&gt;view()</span></tt> from within a controller. If more than one call
+<code class="docutils literal"><span class="pre">$this-&gt;load-&gt;view()</span></code> from within a controller. If more than one call
 happens they will be appended together. For example, you may wish to
 have a header view, a menu view, a content view, and a footer view. That
 might look something like this:</p>
@@ -505,7 +504,7 @@ might look something like this:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In the example above, we are using &#8220;dynamically added data&#8221;, which you
+<p>In the example above, we are using “dynamically added data”, which you
 will see below.</p>
 </div>
 <div class="section" id="storing-views-within-sub-directories">
@@ -531,7 +530,7 @@ is an example using an array:</p>
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">view</span><span class="p">(</span><span class="s1">&#39;blogview&#39;</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>And here&#8217;s an example using an object:</p>
+<p>And here’s an example using an object:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$data</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Someclass</span><span class="p">();</span>
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">view</span><span class="p">(</span><span class="s1">&#39;blogview&#39;</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
 </pre></div>
@@ -541,7 +540,7 @@ is an example using an array:</p>
 <p class="last">If you use an object, the class variables will be turned
 into array elements.</p>
 </div>
-<p>Let&#8217;s try it with your controller file. Open it add this code:</p>
+<p>Let’s try it with your controller file. Open it add this code:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">class</span> <span class="nc">Blog</span> <span class="k">extends</span> <span class="nx">CI_Controller</span> <span class="p">{</span>
 
@@ -567,7 +566,7 @@ to the array keys in your data:</p>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
-<p>Then load the page at the URL you&#8217;ve been using and you should see the
+<p>Then load the page at the URL you’ve been using and you should see the
 variables replaced.</p>
 </div>
 <div class="section" id="creating-loops">
@@ -576,7 +575,7 @@ variables replaced.</p>
 variables. You can pass multi dimensional arrays, which can be looped to
 generate multiple rows. For example, if you pull data from your database
 it will typically be in the form of a multi-dimensional array.</p>
-<p>Here&#8217;s a simple example. Add this to your controller:</p>
+<p>Here’s a simple example. Add this to your controller:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">class</span> <span class="nc">Blog</span> <span class="k">extends</span> <span class="nx">CI_Controller</span> <span class="p">{</span>
 
@@ -616,9 +615,9 @@ it will typically be in the form of a multi-dimensional array.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">You&#8217;ll notice that in the example above we are using PHP&#8217;s
+<p class="last">You’ll notice that in the example above we are using PHP’s
 alternative syntax. If you are not familiar with it you can read about
-it <a class="reference internal" href="alternative_php.html"><em>here</em></a>.</p>
+it <a class="reference internal" href="alternative_php.html"><span class="doc">here</span></a>.</p>
 </div>
 </div>
 <div class="section" id="returning-views-as-data">
@@ -654,7 +653,7 @@ Remember to assign it to a variable if you want the data returned:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -675,7 +674,7 @@ Remember to assign it to a variable if you want the data returned:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

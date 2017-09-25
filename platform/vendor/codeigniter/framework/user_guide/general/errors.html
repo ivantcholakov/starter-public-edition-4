@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Error Handling &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Error Handling &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="General Topics" href="index.html"/>
         <link rel="next" title="Web Page Caching" href="caching.html"/>
         <link rel="prev" title="URI Routing" href="routing.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -108,7 +109,7 @@
 <li class="toctree-l2"><a class="reference internal" href="common_functions.html">Common Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="compatibility_functions.html">Compatibility Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="routing.html">URI Routing</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Error Handling</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Error Handling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="caching.html">Caching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="profiling.html">Profiling Your Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cli.html">Running via the CLI</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -294,7 +293,7 @@
 <li class="toctree-l2"><a class="reference internal" href="common_functions.html">Common Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="compatibility_functions.html">Compatibility Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="routing.html">URI Routing</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Error Handling</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Error Handling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="caching.html">Caching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="profiling.html">Profiling Your Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cli.html">Running via the CLI</a></li>
@@ -432,7 +431,7 @@ files.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">By default, CodeIgniter displays all PHP errors. You might
-wish to change this behavior once your development is complete. You&#8217;ll
+wish to change this behavior once your development is complete. You’ll
 find the error_reporting() function located at the top of your main
 index.php file. Disabling error reporting will NOT prevent log files
 from being written if there are errors.</p>
@@ -442,7 +441,7 @@ procedural interfaces that are available globally throughout the
 application. This approach permits error messages to get triggered
 without having to worry about class/function scoping.</p>
 <p>CodeIgniter also returns a status code whenever a portion of the core
-calls <tt class="docutils literal"><span class="pre">exit()</span></tt>. This exit status code is separate from the HTTP status
+calls <code class="docutils literal"><span class="pre">exit()</span></code>. This exit status code is separate from the HTTP status
 code, and serves as a notice to other processes that may be watching of
 whether the script completed successfully, or if not, what kind of
 problem it encountered that caused it to abort. These values are
@@ -452,15 +451,15 @@ software keep track of your scripts and the health of your application.</p>
 <p>The following functions let you generate errors:</p>
 <dl class="function">
 <dt id="show_error">
-<tt class="descname">show_error</tt><big>(</big><em>$message</em>, <em>$status_code</em>, <em>$heading = 'An Error Was Encountered'</em><big>)</big><a class="headerlink" href="#show_error" title="Permalink to this definition">¶</a></dt>
+<code class="descname">show_error</code><span class="sig-paren">(</span><em>$message</em>, <em>$status_code</em>, <em>$heading = 'An Error Was Encountered'</em><span class="sig-paren">)</span><a class="headerlink" href="#show_error" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$message</strong> (<em>mixed</em>) &#8211; Error message</li>
-<li><strong>$status_code</strong> (<em>int</em>) &#8211; HTTP Response status code</li>
-<li><strong>$heading</strong> (<em>string</em>) &#8211; Error page heading</li>
+<li><strong>$message</strong> (<em>mixed</em>) – Error message</li>
+<li><strong>$status_code</strong> (<em>int</em>) – HTTP Response status code</li>
+<li><strong>$heading</strong> (<em>string</em>) – Error page heading</li>
 </ul>
 </td>
 </tr>
@@ -477,26 +476,26 @@ the error template appropriate to your execution:</p>
 <p>or:</p>
 <blockquote>
 <div>application/views/errors/cli/error_general.php</div></blockquote>
-<p>The optional parameter <tt class="docutils literal"><span class="pre">$status_code</span></tt> determines what HTTP status
-code should be sent with the error. If <tt class="docutils literal"><span class="pre">$status_code</span></tt> is less
+<p>The optional parameter <code class="docutils literal"><span class="pre">$status_code</span></code> determines what HTTP status
+code should be sent with the error. If <code class="docutils literal"><span class="pre">$status_code</span></code> is less
 than 100, the HTTP status code will be set to 500, and the exit
-status code will be set to <tt class="docutils literal"><span class="pre">$status_code</span> <span class="pre">+</span> <span class="pre">EXIT__AUTO_MIN</span></tt>.
-If that value is larger than <tt class="docutils literal"><span class="pre">EXIT__AUTO_MAX</span></tt>, or if
-<tt class="docutils literal"><span class="pre">$status_code</span></tt> is 100 or higher, the exit status code will be set
-to <tt class="docutils literal"><span class="pre">EXIT_ERROR</span></tt>.
+status code will be set to <code class="docutils literal"><span class="pre">$status_code</span> <span class="pre">+</span> <span class="pre">EXIT__AUTO_MIN</span></code>.
+If that value is larger than <code class="docutils literal"><span class="pre">EXIT__AUTO_MAX</span></code>, or if
+<code class="docutils literal"><span class="pre">$status_code</span></code> is 100 or higher, the exit status code will be set
+to <code class="docutils literal"><span class="pre">EXIT_ERROR</span></code>.
 You can check in <em>application/config/constants.php</em> for more detail.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="show_404">
-<tt class="descname">show_404</tt><big>(</big><em>$page = ''</em>, <em>$log_error = TRUE</em><big>)</big><a class="headerlink" href="#show_404" title="Permalink to this definition">¶</a></dt>
+<code class="descname">show_404</code><span class="sig-paren">(</span><em>$page = ''</em>, <em>$log_error = TRUE</em><span class="sig-paren">)</span><a class="headerlink" href="#show_404" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$page</strong> (<em>string</em>) &#8211; URI string</li>
-<li><strong>$log_error</strong> (<em>bool</em>) &#8211; Whether to log the error</li>
+<li><strong>$page</strong> (<em>string</em>) – URI string</li>
+<li><strong>$log_error</strong> (<em>bool</em>) – Whether to log the error</li>
 </ul>
 </td>
 </tr>
@@ -514,24 +513,24 @@ using the error template appropriate to your execution:</p>
 <blockquote>
 <div>application/views/errors/cli/error_404.php</div></blockquote>
 <p>The function expects the string passed to it to be the file path to
-the page that isn&#8217;t found. The exit status code will be set to
-<tt class="docutils literal"><span class="pre">EXIT_UNKNOWN_FILE</span></tt>.
+the page that isn’t found. The exit status code will be set to
+<code class="docutils literal"><span class="pre">EXIT_UNKNOWN_FILE</span></code>.
 Note that CodeIgniter automatically shows 404 messages if
 controllers are not found.</p>
-<p>CodeIgniter automatically logs any <tt class="docutils literal"><span class="pre">show_404()</span></tt> calls. Setting the
+<p>CodeIgniter automatically logs any <code class="docutils literal"><span class="pre">show_404()</span></code> calls. Setting the
 optional second parameter to FALSE will skip logging.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="log_message">
-<tt class="descname">log_message</tt><big>(</big><em>$level</em>, <em>$message</em><big>)</big><a class="headerlink" href="#log_message" title="Permalink to this definition">¶</a></dt>
+<code class="descname">log_message</code><span class="sig-paren">(</span><em>$level</em>, <em>$message</em><span class="sig-paren">)</span><a class="headerlink" href="#log_message" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$level</strong> (<em>string</em>) &#8211; Log level: &#8216;error&#8217;, &#8216;debug&#8217; or &#8216;info&#8217;</li>
-<li><strong>$message</strong> (<em>string</em>) &#8211; Message to log</li>
+<li><strong>$level</strong> (<em>string</em>) – Log level: ‘error’, ‘debug’ or ‘info’</li>
+<li><strong>$message</strong> (<em>string</em>) – Message to log</li>
 </ul>
 </td>
 </tr>
@@ -541,7 +540,7 @@ optional second parameter to FALSE will skip logging.</p>
 </tbody>
 </table>
 <p>This function lets you write messages to your log files. You must
-supply one of three &#8220;levels&#8221; in the first parameter, indicating what
+supply one of three “levels” in the first parameter, indicating what
 type of message it is (debug, error, info), with the message itself
 in the second parameter.</p>
 <p>Example:</p>
@@ -571,7 +570,7 @@ simply giving information regarding some process.</li>
 <p class="first admonition-title">Note</p>
 <p class="last">In order for the log file to actually be written, the
 <em>logs/</em> directory must be writable. In addition, you must
-set the &#8220;threshold&#8221; for logging in
+set the “threshold” for logging in
 <em>application/config/config.php</em>. You might, for example,
 only want error messages to be logged, and not the other
 two types. If you set it to zero logging will be disabled.</p>
@@ -599,7 +598,7 @@ two types. If you set it to zero logging will be disabled.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -620,7 +619,7 @@ two types. If you set it to zero logging will be disabled.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Compatibility Functions &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Compatibility Functions &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="General Topics" href="index.html"/>
         <link rel="next" title="URI Routing" href="routing.html"/>
         <link rel="prev" title="Common Functions" href="common_functions.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -106,7 +107,7 @@
 <li class="toctree-l2"><a class="reference internal" href="hooks.html">Hooks - Extending the Framework Core</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoloader.html">Auto-loading Resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="common_functions.html">Common Functions</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Compatibility Functions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Compatibility Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="routing.html">URI Routing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="errors.html">Error Handling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="caching.html">Caching</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -292,7 +291,7 @@
 <li class="toctree-l2"><a class="reference internal" href="hooks.html">Hooks - Extending the Framework Core</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoloader.html">Auto-loading Resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="common_functions.html">Common Functions</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Compatibility Functions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Compatibility Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="routing.html">URI Routing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="errors.html">Error Handling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="caching.html">Caching</a></li>
@@ -430,10 +429,10 @@ you to use functions what are otherwise natively available in PHP,
 but only in higher versions or depending on a certain extension.</p>
 <p>Being custom implementations, these functions will also have some
 set of dependencies on their own, but are still useful if your
-PHP setup doesn&#8217;t offer them natively.</p>
+PHP setup doesn’t offer them natively.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Much like the <a class="reference internal" href="common_functions.html"><em>common functions</em></a>, the
+<p class="last">Much like the <a class="reference internal" href="common_functions.html"><span class="doc">common functions</span></a>, the
 compatibility functions are always available, as long as
 their dependencies are met.</p>
 </div>
@@ -464,34 +463,34 @@ their dependencies are met.</p>
 </div>
 <div class="custom-index container"></div><div class="section" id="password-hashing">
 <h2><a class="toc-backref" href="#id7">Password Hashing</a><a class="headerlink" href="#password-hashing" title="Permalink to this headline">¶</a></h2>
-<p>This set of compatibility functions offers a &#8220;backport&#8221; of PHP&#8217;s
+<p>This set of compatibility functions offers a “backport” of PHP’s
 standard <a class="reference external" href="http://php.net/password">Password Hashing extension</a>
 that is otherwise available only since PHP 5.5.</p>
 <div class="section" id="dependencies">
 <h3><a class="toc-backref" href="#id8">Dependencies</a><a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>PHP 5.3.7</li>
-<li><tt class="docutils literal"><span class="pre">CRYPT_BLOWFISH</span></tt> support for <tt class="docutils literal"><span class="pre">crypt()</span></tt></li>
+<li><code class="docutils literal"><span class="pre">CRYPT_BLOWFISH</span></code> support for <code class="docutils literal"><span class="pre">crypt()</span></code></li>
 </ul>
 </div>
 <div class="section" id="constants">
 <h3><a class="toc-backref" href="#id9">Constants</a><a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">PASSWORD_BCRYPT</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">PASSWORD_DEFAULT</span></tt></li>
+<li><code class="docutils literal"><span class="pre">PASSWORD_BCRYPT</span></code></li>
+<li><code class="docutils literal"><span class="pre">PASSWORD_DEFAULT</span></code></li>
 </ul>
 </div>
 <div class="section" id="function-reference">
 <h3><a class="toc-backref" href="#id10">Function reference</a><a class="headerlink" href="#function-reference" title="Permalink to this headline">¶</a></h3>
 <dl class="function">
 <dt id="password_get_info">
-<tt class="descname">password_get_info</tt><big>(</big><em>$hash</em><big>)</big><a class="headerlink" href="#password_get_info" title="Permalink to this definition">¶</a></dt>
+<code class="descname">password_get_info</code><span class="sig-paren">(</span><em>$hash</em><span class="sig-paren">)</span><a class="headerlink" href="#password_get_info" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$hash</strong> (<em>string</em>) &#8211; Password hash</li>
+<li><strong>$hash</strong> (<em>string</em>) – Password hash</li>
 </ul>
 </td>
 </tr>
@@ -509,15 +508,15 @@ password_get_info()</a>.</p>
 
 <dl class="function">
 <dt id="password_hash">
-<tt class="descname">password_hash</tt><big>(</big><em>$password</em>, <em>$algo</em><span class="optional">[</span>, <em>$options = array()</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#password_hash" title="Permalink to this definition">¶</a></dt>
+<code class="descname">password_hash</code><span class="sig-paren">(</span><em>$password</em>, <em>$algo</em><span class="optional">[</span>, <em>$options = array()</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#password_hash" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$password</strong> (<em>string</em>) &#8211; Plain-text password</li>
-<li><strong>$algo</strong> (<em>int</em>) &#8211; Hashing algorithm</li>
-<li><strong>$options</strong> (<em>array</em>) &#8211; Hashing options</li>
+<li><strong>$password</strong> (<em>string</em>) – Plain-text password</li>
+<li><strong>$algo</strong> (<em>int</em>) – Hashing algorithm</li>
+<li><strong>$options</strong> (<em>array</em>) – Hashing options</li>
 </ul>
 </td>
 </tr>
@@ -536,8 +535,8 @@ password_hash()</a>.</p>
 <p class="last">Unless you provide your own (and valid) salt, this function
 has a further dependency on an available CSPRNG source. Each
 of the following would satisfy that:
-- <tt class="docutils literal"><span class="pre">mcrypt_create_iv()</span></tt> with <tt class="docutils literal"><span class="pre">MCRYPT_DEV_URANDOM</span></tt>
-- <tt class="docutils literal"><span class="pre">openssl_random_pseudo_bytes()</span></tt>
+- <code class="docutils literal"><span class="pre">mcrypt_create_iv()</span></code> with <code class="docutils literal"><span class="pre">MCRYPT_DEV_URANDOM</span></code>
+- <code class="docutils literal"><span class="pre">openssl_random_pseudo_bytes()</span></code>
 - /dev/arandom
 - /dev/urandom</p>
 </div>
@@ -545,15 +544,15 @@ of the following would satisfy that:
 
 <dl class="function">
 <dt id="password_needs_rehash">
-<tt class="descname">password_needs_rehash</tt><big>(</big><big>)</big><a class="headerlink" href="#password_needs_rehash" title="Permalink to this definition">¶</a></dt>
+<code class="descname">password_needs_rehash</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#password_needs_rehash" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$hash</strong> (<em>string</em>) &#8211; Password hash</li>
-<li><strong>$algo</strong> (<em>int</em>) &#8211; Hashing algorithm</li>
-<li><strong>$options</strong> (<em>array</em>) &#8211; Hashing options</li>
+<li><strong>$hash</strong> (<em>string</em>) – Password hash</li>
+<li><strong>$algo</strong> (<em>int</em>) – Hashing algorithm</li>
+<li><strong>$options</strong> (<em>array</em>) – Hashing options</li>
 </ul>
 </td>
 </tr>
@@ -571,14 +570,14 @@ password_needs_rehash()</a>.</p>
 
 <dl class="function">
 <dt id="password_verify">
-<tt class="descname">password_verify</tt><big>(</big><em>$password</em>, <em>$hash</em><big>)</big><a class="headerlink" href="#password_verify" title="Permalink to this definition">¶</a></dt>
+<code class="descname">password_verify</code><span class="sig-paren">(</span><em>$password</em>, <em>$hash</em><span class="sig-paren">)</span><a class="headerlink" href="#password_verify" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$password</strong> (<em>string</em>) &#8211; Plain-text password</li>
-<li><strong>$hash</strong> (<em>string</em>) &#8211; Password hash</li>
+<li><strong>$password</strong> (<em>string</em>) – Plain-text password</li>
+<li><strong>$hash</strong> (<em>string</em>) – Password hash</li>
 </ul>
 </td>
 </tr>
@@ -598,8 +597,8 @@ password_verify()</a>.</p>
 </div>
 <div class="section" id="hash-message-digest">
 <h2><a class="toc-backref" href="#id11">Hash (Message Digest)</a><a class="headerlink" href="#hash-message-digest" title="Permalink to this headline">¶</a></h2>
-<p>This compatibility layer contains backports for the <tt class="docutils literal"><span class="pre">hash_equals()</span></tt>
-and <tt class="docutils literal"><span class="pre">hash_pbkdf2()</span></tt> functions, which otherwise require PHP 5.6 and/or
+<p>This compatibility layer contains backports for the <code class="docutils literal"><span class="pre">hash_equals()</span></code>
+and <code class="docutils literal"><span class="pre">hash_pbkdf2()</span></code> functions, which otherwise require PHP 5.6 and/or
 PHP 5.5 respectively.</p>
 <div class="section" id="id1">
 <h3><a class="toc-backref" href="#id12">Dependencies</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
@@ -611,14 +610,14 @@ PHP 5.5 respectively.</p>
 <h3><a class="toc-backref" href="#id13">Function reference</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <dl class="function">
 <dt id="hash_equals">
-<tt class="descname">hash_equals</tt><big>(</big><em>$known_string</em>, <em>$user_string</em><big>)</big><a class="headerlink" href="#hash_equals" title="Permalink to this definition">¶</a></dt>
+<code class="descname">hash_equals</code><span class="sig-paren">(</span><em>$known_string</em>, <em>$user_string</em><span class="sig-paren">)</span><a class="headerlink" href="#hash_equals" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$known_string</strong> (<em>string</em>) &#8211; Known string</li>
-<li><strong>$user_string</strong> (<em>string</em>) &#8211; User-supplied string</li>
+<li><strong>$known_string</strong> (<em>string</em>) – Known string</li>
+<li><strong>$user_string</strong> (<em>string</em>) – User-supplied string</li>
 </ul>
 </td>
 </tr>
@@ -636,18 +635,18 @@ hash_equals()</a>.</p>
 
 <dl class="function">
 <dt id="hash_pbkdf2">
-<tt class="descname">hash_pbkdf2</tt><big>(</big><em>$algo</em>, <em>$password</em>, <em>$salt</em>, <em>$iterations</em><span class="optional">[</span>, <em>$length = 0</em><span class="optional">[</span>, <em>$raw_output = FALSE</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#hash_pbkdf2" title="Permalink to this definition">¶</a></dt>
+<code class="descname">hash_pbkdf2</code><span class="sig-paren">(</span><em>$algo</em>, <em>$password</em>, <em>$salt</em>, <em>$iterations</em><span class="optional">[</span>, <em>$length = 0</em><span class="optional">[</span>, <em>$raw_output = FALSE</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#hash_pbkdf2" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$algo</strong> (<em>string</em>) &#8211; Hashing algorithm</li>
-<li><strong>$password</strong> (<em>string</em>) &#8211; Password</li>
-<li><strong>$salt</strong> (<em>string</em>) &#8211; Hash salt</li>
-<li><strong>$iterations</strong> (<em>int</em>) &#8211; Number of iterations to perform during derivation</li>
-<li><strong>$length</strong> (<em>int</em>) &#8211; Output string length</li>
-<li><strong>$raw_output</strong> (<em>bool</em>) &#8211; Whether to return raw binary data</li>
+<li><strong>$algo</strong> (<em>string</em>) – Hashing algorithm</li>
+<li><strong>$password</strong> (<em>string</em>) – Password</li>
+<li><strong>$salt</strong> (<em>string</em>) – Hash salt</li>
+<li><strong>$iterations</strong> (<em>int</em>) – Number of iterations to perform during derivation</li>
+<li><strong>$length</strong> (<em>int</em>) – Output string length</li>
+<li><strong>$raw_output</strong> (<em>bool</em>) – Whether to return raw binary data</li>
 </ul>
 </td>
 </tr>
@@ -667,13 +666,13 @@ hash_pbkdf2()</a>.</p>
 </div>
 <div class="section" id="multibyte-string">
 <h2><a class="toc-backref" href="#id14">Multibyte String</a><a class="headerlink" href="#multibyte-string" title="Permalink to this headline">¶</a></h2>
-<p>This set of compatibility functions offers limited support for PHP&#8217;s
+<p>This set of compatibility functions offers limited support for PHP’s
 <a class="reference external" href="http://php.net/mbstring">Multibyte String extension</a>. Because of
 the limited alternative solutions, only a few functions are available.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">When a character set parameter is ommited,
-<tt class="docutils literal"><span class="pre">$config['charset']</span></tt> will be used.</p>
+<code class="docutils literal"><span class="pre">$config['charset']</span></code> will be used.</p>
 </div>
 <div class="section" id="id3">
 <h3><a class="toc-backref" href="#id15">Dependencies</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
@@ -694,21 +693,21 @@ supported by iconv and in a format that it recognizes.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">For you own dependency check on the actual mbstring
-extension, use the <tt class="docutils literal"><span class="pre">MB_ENABLED</span></tt> constant.</p>
+extension, use the <code class="docutils literal"><span class="pre">MB_ENABLED</span></code> constant.</p>
 </div>
 </div>
 <div class="section" id="id4">
 <h3><a class="toc-backref" href="#id16">Function reference</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <dl class="function">
 <dt id="mb_strlen">
-<tt class="descname">mb_strlen</tt><big>(</big><em>$str</em><span class="optional">[</span>, <em>$encoding = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#mb_strlen" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mb_strlen</code><span class="sig-paren">(</span><em>$str</em><span class="optional">[</span>, <em>$encoding = NULL</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mb_strlen" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
-<li><strong>$encoding</strong> (<em>string</em>) &#8211; Character set</li>
+<li><strong>$str</strong> (<em>string</em>) – Input string</li>
+<li><strong>$encoding</strong> (<em>string</em>) – Character set</li>
 </ul>
 </td>
 </tr>
@@ -726,16 +725,16 @@ mb_strlen()</a>.</p>
 
 <dl class="function">
 <dt id="mb_strpos">
-<tt class="descname">mb_strpos</tt><big>(</big><em>$haystack</em>, <em>$needle</em><span class="optional">[</span>, <em>$offset = 0</em><span class="optional">[</span>, <em>$encoding = NULL</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#mb_strpos" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mb_strpos</code><span class="sig-paren">(</span><em>$haystack</em>, <em>$needle</em><span class="optional">[</span>, <em>$offset = 0</em><span class="optional">[</span>, <em>$encoding = NULL</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mb_strpos" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$haystack</strong> (<em>string</em>) &#8211; String to search in</li>
-<li><strong>$needle</strong> (<em>string</em>) &#8211; Part of string to search for</li>
-<li><strong>$offset</strong> (<em>int</em>) &#8211; Search offset</li>
-<li><strong>$encoding</strong> (<em>string</em>) &#8211; Character set</li>
+<li><strong>$haystack</strong> (<em>string</em>) – String to search in</li>
+<li><strong>$needle</strong> (<em>string</em>) – Part of string to search for</li>
+<li><strong>$offset</strong> (<em>int</em>) – Search offset</li>
+<li><strong>$encoding</strong> (<em>string</em>) – Character set</li>
 </ul>
 </td>
 </tr>
@@ -753,16 +752,16 @@ mb_strpos()</a>.</p>
 
 <dl class="function">
 <dt id="mb_substr">
-<tt class="descname">mb_substr</tt><big>(</big><em>$str</em>, <em>$start</em><span class="optional">[</span>, <em>$length = NULL</em><span class="optional">[</span>, <em>$encoding = NULL</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#mb_substr" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mb_substr</code><span class="sig-paren">(</span><em>$str</em>, <em>$start</em><span class="optional">[</span>, <em>$length = NULL</em><span class="optional">[</span>, <em>$encoding = NULL</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#mb_substr" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
-<li><strong>$start</strong> (<em>int</em>) &#8211; Position of first character</li>
-<li><strong>$length</strong> (<em>int</em>) &#8211; Maximum number of characters</li>
-<li><strong>$encoding</strong> (<em>string</em>) &#8211; Character set</li>
+<li><strong>$str</strong> (<em>string</em>) – Input string</li>
+<li><strong>$start</strong> (<em>int</em>) – Position of first character</li>
+<li><strong>$length</strong> (<em>int</em>) – Maximum number of characters</li>
+<li><strong>$encoding</strong> (<em>string</em>) – Character set</li>
 </ul>
 </td>
 </tr>
@@ -794,15 +793,15 @@ standard functions in PHP that otherwise require a newer PHP version.</p>
 <h3><a class="toc-backref" href="#id19">Function reference</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <dl class="function">
 <dt id="array_column">
-<tt class="descname">array_column</tt><big>(</big><em>array $array</em>, <em>$column_key</em><span class="optional">[</span>, <em>$index_key = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#array_column" title="Permalink to this definition">¶</a></dt>
+<code class="descname">array_column</code><span class="sig-paren">(</span><em>array $array</em>, <em>$column_key</em><span class="optional">[</span>, <em>$index_key = NULL</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#array_column" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$array</strong> (<em>array</em>) &#8211; Array to fetch results from</li>
-<li><strong>$column_key</strong> (<em>mixed</em>) &#8211; Key of the column to return values from</li>
-<li><strong>$index_key</strong> (<em>mixed</em>) &#8211; Key to use for the returned values</li>
+<li><strong>$array</strong> (<em>array</em>) – Array to fetch results from</li>
+<li><strong>$column_key</strong> (<em>mixed</em>) – Key of the column to return values from</li>
+<li><strong>$index_key</strong> (<em>mixed</em>) – Key to use for the returned values</li>
 </ul>
 </td>
 </tr>
@@ -820,13 +819,13 @@ array_column()</a>.</p>
 
 <dl class="function">
 <dt id="hex2bin">
-<tt class="descname">hex2bin</tt><big>(</big><em>$data</em><big>)</big><a class="headerlink" href="#hex2bin" title="Permalink to this definition">¶</a></dt>
+<code class="descname">hex2bin</code><span class="sig-paren">(</span><em>$data</em><span class="sig-paren">)</span><a class="headerlink" href="#hex2bin" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$data</strong> (<em>array</em>) &#8211; Hexadecimal representation of data</li>
+<li><strong>$data</strong> (<em>array</em>) – Hexadecimal representation of data</li>
 </ul>
 </td>
 </tr>
@@ -864,7 +863,7 @@ array_column()</a>.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -885,7 +884,7 @@ array_column()</a>.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

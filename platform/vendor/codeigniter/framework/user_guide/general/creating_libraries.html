@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Creating Libraries &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Creating Libraries &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="General Topics" href="index.html"/>
         <link rel="next" title="Using CodeIgniter Drivers" href="drivers.html"/>
         <link rel="prev" title="Using CodeIgniter Libraries" href="libraries.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -98,7 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="models.html">Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="helpers.html">Helpers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libraries.html">Using CodeIgniter Libraries</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Creating Libraries</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Creating Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="drivers.html">Using CodeIgniter Drivers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="creating_drivers.html">Creating Drivers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="core_classes.html">Creating Core System Classes</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -284,7 +283,7 @@
 <li class="toctree-l2"><a class="reference internal" href="models.html">Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="helpers.html">Helpers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libraries.html">Using CodeIgniter Libraries</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Creating Libraries</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Creating Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="drivers.html">Using CodeIgniter Drivers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="creating_drivers.html">Creating Drivers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="core_classes.html">Creating Core System Classes</a></li>
@@ -425,7 +424,7 @@
             
   <div class="section" id="creating-libraries">
 <h1>Creating Libraries<a class="headerlink" href="#creating-libraries" title="Permalink to this headline">¶</a></h1>
-<p>When we use the term &#8220;Libraries&#8221; we are normally referring to the
+<p>When we use the term “Libraries” we are normally referring to the
 classes that are located in the libraries directory and described in the
 Class Reference of this user guide. In this case, however, we will
 instead describe how you can create your own libraries within your
@@ -482,14 +481,14 @@ initialized.</p>
 </div>
 <div class="section" id="using-your-class">
 <h2>Using Your Class<a class="headerlink" href="#using-your-class" title="Permalink to this headline">¶</a></h2>
-<p>From within any of your <a class="reference internal" href="controllers.html"><em>Controller</em></a> methods you
+<p>From within any of your <a class="reference internal" href="controllers.html"><span class="doc">Controller</span></a> methods you
 can initialize your class using the standard:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">library</span><span class="p">(</span><span class="s1">&#39;someclass&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Where <em>someclass</em> is the file name, without the &#8221;.php&#8221; file extension.
+<p>Where <em>someclass</em> is the file name, without the “.php” file extension.
 You can submit the file name capitalized or lower case. CodeIgniter
-doesn&#8217;t care.</p>
+doesn’t care.</p>
 <p>Once loaded you can access your class using the lower case version:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">someclass</span><span class="o">-&gt;</span><span class="na">some_method</span><span class="p">();</span><span class="nx"> </span> <span class="c1">// Object instances will always be lower case</span>
 </pre></div>
@@ -526,26 +525,26 @@ available.</p>
 </div>
 <div class="section" id="utilizing-codeigniter-resources-within-your-library">
 <h2>Utilizing CodeIgniter Resources within Your Library<a class="headerlink" href="#utilizing-codeigniter-resources-within-your-library" title="Permalink to this headline">¶</a></h2>
-<p>To access CodeIgniter&#8217;s native resources within your library use the
-<tt class="docutils literal"><span class="pre">get_instance()</span></tt> method. This method returns the CodeIgniter super
+<p>To access CodeIgniter’s native resources within your library use the
+<code class="docutils literal"><span class="pre">get_instance()</span></code> method. This method returns the CodeIgniter super
 object.</p>
 <p>Normally from within your controller methods you will call any of the
-available CodeIgniter methods using the <tt class="docutils literal"><span class="pre">$this</span></tt> construct:</p>
+available CodeIgniter methods using the <code class="docutils literal"><span class="pre">$this</span></code> construct:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">helper</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">);</span>
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">library</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">);</span>
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">config</span><span class="o">-&gt;</span><span class="na">item</span><span class="p">(</span><span class="s1">&#39;base_url&#39;</span><span class="p">);</span>
 <span class="c1">// etc.</span>
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">$this</span></tt>, however, only works directly within your controllers, your
-models, or your views. If you would like to use CodeIgniter&#8217;s classes
+<p><code class="docutils literal"><span class="pre">$this</span></code>, however, only works directly within your controllers, your
+models, or your views. If you would like to use CodeIgniter’s classes
 from within your own custom classes you can do so as follows:</p>
 <p>First, assign the CodeIgniter object to a variable:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$CI</span> <span class="o">=&amp;</span> <span class="nx">get_instance</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>Once you&#8217;ve assigned the object to a variable, you&#8217;ll use that variable
-<em>instead</em> of <tt class="docutils literal"><span class="pre">$this</span></tt>:</p>
+<p>Once you’ve assigned the object to a variable, you’ll use that variable
+<em>instead</em> of <code class="docutils literal"><span class="pre">$this</span></code>:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$CI</span> <span class="o">=&amp;</span> <span class="nx">get_instance</span><span class="p">();</span>
 
 <span class="nv">$CI</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">helper</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">);</span>
@@ -556,7 +555,7 @@ from within your own custom classes you can do so as follows:</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>You&#8217;ll notice that the above <tt class="docutils literal"><span class="pre">get_instance()</span></tt> function is being
+<p>You’ll notice that the above <code class="docutils literal"><span class="pre">get_instance()</span></code> function is being
 passed by reference:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$CI</span> <span class="o">=&amp;</span> <span class="nx">get_instance</span><span class="p">();</span>
 </pre></div>
@@ -567,7 +566,7 @@ original CodeIgniter object rather than creating a copy of it.</p>
 <p>However, since a library is a class, it would be better if you
 take full advantage of the OOP principles. So, in order to
 be able to use the CodeIgniter super-object in all of the class
-methods, you&#8217;re encouraged to assign it to a property instead:</p>
+methods, you’re encouraged to assign it to a property instead:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Example_library</span> <span class="p">{</span>
 
         <span class="k">protected</span> <span class="nv">$CI</span><span class="p">;</span>
@@ -601,7 +600,7 @@ methods, you&#8217;re encouraged to assign it to a property instead:</p>
 cause CodeIgniter to use it instead of the native one. To use this
 feature you must name the file and the class declaration exactly the
 same as the native library. For example, to replace the native Email
-library you&#8217;ll create a file named <em>application/libraries/Email.php</em>,
+library you’ll create a file named <em>application/libraries/Email.php</em>,
 and declare your class with:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CI_Email</span> <span class="p">{</span>
 
@@ -609,7 +608,7 @@ and declare your class with:</p>
 </pre></div>
 </div>
 <p>Note that most native classes are prefixed with CI_.</p>
-<p>To load your library you&#8217;ll see the standard loading method:</p>
+<p>To load your library you’ll see the standard loading method:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">library</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -622,8 +621,8 @@ your own versions.</p>
 <div class="section" id="extending-native-libraries">
 <h2>Extending Native Libraries<a class="headerlink" href="#extending-native-libraries" title="Permalink to this headline">¶</a></h2>
 <p>If all you need to do is add some functionality to an existing library -
-perhaps add a method or two - then it&#8217;s overkill to replace the entire
-library with your version. In this case it&#8217;s better to simply extend the
+perhaps add a method or two - then it’s overkill to replace the entire
+library with your version. In this case it’s better to simply extend the
 class. Extending a class is nearly identical to replacing a class with a
 couple exceptions:</p>
 <ul class="simple">
@@ -631,7 +630,7 @@ couple exceptions:</p>
 <li>Your new class name and filename must be prefixed with MY_ (this
 item is configurable. See below.).</li>
 </ul>
-<p>For example, to extend the native Email class you&#8217;ll create a file named
+<p>For example, to extend the native Email class you’ll create a file named
 <em>application/libraries/MY_Email.php</em>, and declare your class with:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MY_Email</span> <span class="k">extends</span> <span class="nx">CI_Email</span> <span class="p">{</span>
 
@@ -653,12 +652,12 @@ extend the parent constructor:</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Not all of the libraries have the same (or any) parameters
-in their constructor. Take a look at the library that you&#8217;re
+in their constructor. Take a look at the library that you’re
 extending first to see how it should be implemented.</p>
 </div>
 <div class="section" id="loading-your-sub-class">
 <h3>Loading Your Sub-class<a class="headerlink" href="#loading-your-sub-class" title="Permalink to this headline">¶</a></h3>
-<p>To load your sub-class you&#8217;ll use the standard syntax normally used. DO
+<p>To load your sub-class you’ll use the standard syntax normally used. DO
 NOT include your prefix. For example, to load the example above, which
 extends the Email class, you will use:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">library</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">);</span>
@@ -703,7 +702,7 @@ so DO NOT use that as your prefix.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -724,7 +723,7 @@ so DO NOT use that as your prefix.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

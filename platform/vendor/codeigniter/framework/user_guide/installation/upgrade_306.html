@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Upgrading from 3.0.5 to 3.0.6 &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Upgrading from 3.0.5 to 3.0.6 &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Upgrading From a Previous Version" href="upgrading.html"/>
         <link rel="next" title="Upgrading from 3.0.4 to 3.0.5" href="upgrade_305.html"/>
         <link rel="prev" title="Upgrading from 3.0.6 to 3.1.0" href="upgrade_310.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation Instructions</a><ul class="current">
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation Instructions</a><ul class="current">
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -440,10 +439,10 @@ please make copies of them first.</p>
 </div>
 <div class="section" id="step-2-update-your-index-php-file-optional">
 <h2>Step 2: Update your index.php file (optional)<a class="headerlink" href="#step-2-update-your-index-php-file-optional" title="Permalink to this headline">¶</a></h2>
-<p>We&#8217;ve made some tweaks to the index.php file, mostly related to proper
-usage of directory separators (i.e. use the <tt class="docutils literal"><span class="pre">DIRECTORY_SEPARATOR</span></tt>
-constant instead of a hard coded forward slash &#8220;/&#8221;).</p>
-<p>Nothing will break if you skip this step, but if you&#8217;re running Windows
+<p>We’ve made some tweaks to the index.php file, mostly related to proper
+usage of directory separators (i.e. use the <code class="docutils literal"><span class="pre">DIRECTORY_SEPARATOR</span></code>
+constant instead of a hard coded forward slash “/”).</p>
+<p>Nothing will break if you skip this step, but if you’re running Windows
 or just want to be up to date with every change - we do recommend that
 you update your index.php file.</p>
 <p><em>Tip: Just copy the ``ENVIRONMENT``, ``$system_path``, ``$application_folder``
@@ -451,20 +450,20 @@ and ``$view_folder`` declarations from the old file and put them into the
 new one, replacing the defaults.</em></p>
 </div>
 <div class="section" id="step-3-remove-prep-for-form-usage-deprecation">
-<h2>Step 3: Remove &#8216;prep_for_form&#8217; usage (deprecation)<a class="headerlink" href="#step-3-remove-prep-for-form-usage-deprecation" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference internal" href="../libraries/form_validation.html"><em>Form Validation Library</em></a> has a
-<tt class="docutils literal"><span class="pre">prep_for_form()</span></tt> method, which is/can also be used as a rule in
-<tt class="docutils literal"><span class="pre">set_rules()</span></tt> to automatically perform HTML encoding on input data.</p>
+<h2>Step 3: Remove ‘prep_for_form’ usage (deprecation)<a class="headerlink" href="#step-3-remove-prep-for-form-usage-deprecation" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="../libraries/form_validation.html"><span class="doc">Form Validation Library</span></a> has a
+<code class="docutils literal"><span class="pre">prep_for_form()</span></code> method, which is/can also be used as a rule in
+<code class="docutils literal"><span class="pre">set_rules()</span></code> to automatically perform HTML encoding on input data.</p>
 <p>Automatically encoding input (instead of output) data is a bad practice in
 the first place, and CodeIgniter and PHP itself offer other alternatives
 to this method anyway.
-For example, <a class="reference internal" href="../helpers/form_helper.html"><em>Form Helper</em></a> functions will
+For example, <a class="reference internal" href="../helpers/form_helper.html"><span class="doc">Form Helper</span></a> functions will
 automatically perform HTML escaping when necessary.</p>
 <p>Therefore, the <em>prep_for_form</em> method/rule is pretty much useless and is now
 deprecated and scheduled for removal in 3.1+.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The method is still available, but you&#8217;re strongly encouraged to
+<p class="last">The method is still available, but you’re strongly encouraged to
 remove its usage sooner rather than later.</p>
 </div>
 </div>
@@ -489,7 +488,7 @@ remove its usage sooner rather than later.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -510,7 +509,7 @@ remove its usage sooner rather than later.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

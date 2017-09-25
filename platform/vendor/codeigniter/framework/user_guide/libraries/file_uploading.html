@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>File Uploading Class &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>File Uploading Class &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Libraries" href="index.html"/>
         <link rel="next" title="Form Validation" href="form_validation.html"/>
         <link rel="prev" title="Encryption Library" href="encryption.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -130,7 +131,7 @@
 <li class="toctree-l2"><a class="reference internal" href="email.html">Email Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="encrypt.html">Encrypt Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="encryption.html">Encryption Library</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">File Uploading Class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">File Uploading Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="form_validation.html">Form Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ftp.html">FTP Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="image_lib.html">Image Manipulation Class</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -316,7 +315,7 @@
 <li class="toctree-l2"><a class="reference internal" href="email.html">Email Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="encrypt.html">Encrypt Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="encryption.html">Encryption Library</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">File Uploading Class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">File Uploading Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="form_validation.html">Form Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ftp.html">FTP Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="image_lib.html">Image Manipulation Class</a></li>
@@ -425,7 +424,7 @@
             
   <div class="section" id="file-uploading-class">
 <h1>File Uploading Class<a class="headerlink" href="#file-uploading-class" title="Permalink to this headline">¶</a></h1>
-<p>CodeIgniter&#8217;s File Uploading Class permits files to be uploaded. You can
+<p>CodeIgniter’s File Uploading Class permits files to be uploaded. You can
 set various preferences, restricting the type and size of the files.</p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
@@ -459,7 +458,7 @@ you specify.</li>
 uploaded based on the preferences you set.</li>
 <li>Once uploaded, the user will be shown a success message.</li>
 </ul>
-<p>To demonstrate this process here is brief tutorial. Afterward you&#8217;ll
+<p>To demonstrate this process here is brief tutorial. Afterward you’ll
 find reference information.</p>
 <div class="section" id="creating-the-upload-form">
 <h3><a class="toc-backref" href="#id2">Creating the Upload Form</a><a class="headerlink" href="#creating-the-upload-form" title="Permalink to this headline">¶</a></h3>
@@ -487,9 +486,9 @@ this code and save it to your <strong>application/views/</strong> directory:</p>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
-<p>You&#8217;ll notice we are using a form helper to create the opening form tag.
+<p>You’ll notice we are using a form helper to create the opening form tag.
 File uploads require a multipart form, so the helper creates the proper
-syntax for you. You&#8217;ll also notice we have an $error variable. This is
+syntax for you. You’ll also notice we have an $error variable. This is
 so we can show error messages in the event the user does something
 wrong.</p>
 </div>
@@ -567,7 +566,7 @@ this code and save it to your <strong>application/controllers/</strong> director
 </div>
 <div class="section" id="the-upload-directory">
 <h3><a class="toc-backref" href="#id5">The Upload Directory</a><a class="headerlink" href="#the-upload-directory" title="Permalink to this headline">¶</a></h3>
-<p>You&#8217;ll need a destination directory for your uploaded images. Create a
+<p>You’ll need a destination directory for your uploaded images. Create a
 directory at the root of your CodeIgniter installation called uploads
 and set its file permissions to 777.</p>
 </div>
@@ -587,7 +586,7 @@ work.</p>
 <div class="section" id="initializing-the-upload-class">
 <h3><a class="toc-backref" href="#id8">Initializing the Upload Class</a><a class="headerlink" href="#initializing-the-upload-class" title="Permalink to this headline">¶</a></h3>
 <p>Like most other classes in CodeIgniter, the Upload class is initialized
-in your controller using the <tt class="docutils literal"><span class="pre">$this-&gt;load-&gt;library()</span></tt> method:</p>
+in your controller using the <code class="docutils literal"><span class="pre">$this-&gt;load-&gt;library()</span></code> method:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">library</span><span class="p">(</span><span class="s1">&#39;upload&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -596,7 +595,7 @@ $this-&gt;upload</p>
 </div>
 <div class="section" id="setting-preferences">
 <h3><a class="toc-backref" href="#id9">Setting Preferences</a><a class="headerlink" href="#setting-preferences" title="Permalink to this headline">¶</a></h3>
-<p>Similar to other libraries, you&#8217;ll control what is allowed to be upload
+<p>Similar to other libraries, you’ll control what is allowed to be upload
 based on your preferences. In the controller you built above you set the
 following preferences:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;upload_path&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;./uploads/&#39;</span><span class="p">;</span>
@@ -744,7 +743,7 @@ is a security risk.</td>
 instead put them into a config file. Simply create a new file called the
 upload.php, add the $config array in that file. Then save the file in:
 <strong>config/upload.php</strong> and it will be used automatically. You will NOT
-need to use the <tt class="docutils literal"><span class="pre">$this-&gt;upload-&gt;initialize()</span></tt> method if you save your
+need to use the <code class="docutils literal"><span class="pre">$this-&gt;upload-&gt;initialize()</span></code> method if you save your
 preferences in a config file.</p>
 </div>
 </div>
@@ -752,17 +751,17 @@ preferences in a config file.</p>
 <h2><a class="toc-backref" href="#id12">Class Reference</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="CI_Upload">
-<em class="property">class </em><tt class="descname">CI_Upload</tt><a class="headerlink" href="#CI_Upload" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">CI_Upload</code><a class="headerlink" href="#CI_Upload" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="CI_Upload::initialize">
-<tt class="descname">initialize</tt><big>(</big><span class="optional">[</span><em>array $config = array()</em><span class="optional">[</span>, <em>$reset = TRUE</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Upload::initialize" title="Permalink to this definition">¶</a></dt>
+<code class="descname">initialize</code><span class="sig-paren">(</span><span class="optional">[</span><em>array $config = array()</em><span class="optional">[</span>, <em>$reset = TRUE</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Upload::initialize" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$config</strong> (<em>array</em>) &#8211; Preferences</li>
-<li><strong>$reset</strong> (<em>bool</em>) &#8211; Whether to reset preferences (that are not provided in $config) to their defaults</li>
+<li><strong>$config</strong> (<em>array</em>) – Preferences</li>
+<li><strong>$reset</strong> (<em>bool</em>) – Whether to reset preferences (that are not provided in $config) to their defaults</li>
 </ul>
 </td>
 </tr>
@@ -778,13 +777,13 @@ preferences in a config file.</p>
 
 <dl class="method">
 <dt id="CI_Upload::do_upload">
-<tt class="descname">do_upload</tt><big>(</big><span class="optional">[</span><em>$field = 'userfile'</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Upload::do_upload" title="Permalink to this definition">¶</a></dt>
+<code class="descname">do_upload</code><span class="sig-paren">(</span><span class="optional">[</span><em>$field = 'userfile'</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Upload::do_upload" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$field</strong> (<em>string</em>) &#8211; Name of the form field</li>
+<li><strong>$field</strong> (<em>string</em>) – Name of the form field</li>
 </ul>
 </td>
 </tr>
@@ -796,18 +795,18 @@ preferences in a config file.</p>
 </tr>
 </tbody>
 </table>
-<p>Performs the upload based on the preferences you&#8217;ve set.</p>
+<p>Performs the upload based on the preferences you’ve set.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">By default the upload routine expects the file to come from
 a form field called userfile, and the form must be of type
-&#8220;multipart&#8221;.</p>
+“multipart”.</p>
 </div>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">form</span> <span class="nx">method</span><span class="o">=</span><span class="s2">&quot;post&quot;</span> <span class="nx">action</span><span class="o">=</span><span class="s2">&quot;some_action&quot;</span> <span class="nx">enctype</span><span class="o">=</span><span class="s2">&quot;multipart/form-data&quot;</span> <span class="o">/&gt;</span>
 </pre></div>
 </div>
 <p>If you would like to set your own field name simply pass its value to
-the <tt class="docutils literal"><span class="pre">do_upload()</span></tt> method:</p>
+the <code class="docutils literal"><span class="pre">do_upload()</span></code> method:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$field_name</span> <span class="o">=</span> <span class="s2">&quot;some_field_name&quot;</span><span class="p">;</span>
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">upload</span><span class="o">-&gt;</span><span class="na">do_upload</span><span class="p">(</span><span class="nv">$field_name</span><span class="p">);</span>
 </pre></div>
@@ -816,14 +815,14 @@ the <tt class="docutils literal"><span class="pre">do_upload()</span></tt> metho
 
 <dl class="method">
 <dt id="CI_Upload::display_errors">
-<tt class="descname">display_errors</tt><big>(</big><span class="optional">[</span><em>$open = '&lt;p&gt;'</em><span class="optional">[</span>, <em>$close = '&lt;/p&gt;'</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Upload::display_errors" title="Permalink to this definition">¶</a></dt>
+<code class="descname">display_errors</code><span class="sig-paren">(</span><span class="optional">[</span><em>$open = '&lt;p&gt;'</em><span class="optional">[</span>, <em>$close = '&lt;/p&gt;'</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Upload::display_errors" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$open</strong> (<em>string</em>) &#8211; Opening markup</li>
-<li><strong>$close</strong> (<em>string</em>) &#8211; Closing markup</li>
+<li><strong>$open</strong> (<em>string</em>) – Opening markup</li>
+<li><strong>$close</strong> (<em>string</em>) – Closing markup</li>
 </ul>
 </td>
 </tr>
@@ -835,7 +834,7 @@ the <tt class="docutils literal"><span class="pre">do_upload()</span></tt> metho
 </tr>
 </tbody>
 </table>
-<p>Retrieves any error messages if the <tt class="docutils literal"><span class="pre">do_upload()</span></tt> method returned
+<p>Retrieves any error messages if the <code class="docutils literal"><span class="pre">do_upload()</span></code> method returned
 false. The method does not echo automatically, it returns the data so
 you can assign it however you need.</p>
 <p><strong>Formatting Errors</strong></p>
@@ -850,13 +849,13 @@ set your own delimiters like this:</p>
 
 <dl class="method">
 <dt id="CI_Upload::data">
-<tt class="descname">data</tt><big>(</big><span class="optional">[</span><em>$index = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Upload::data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">data</code><span class="sig-paren">(</span><span class="optional">[</span><em>$index = NULL</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Upload::data" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$data</strong> (<em>string</em>) &#8211; Element to return instead of the full array</li>
+<li><strong>$data</strong> (<em>string</em>) – Element to return instead of the full array</li>
 </ul>
 </td>
 </tr>
@@ -893,7 +892,7 @@ data related to the file you uploaded. Here is the array prototype:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">upload</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">(</span><span class="s1">&#39;file_name&#39;</span><span class="p">);</span>       <span class="c1">// Returns: mypic.jpg</span>
 </pre></div>
 </div>
-<p>Here&#8217;s a table explaining the above-displayed array items:</p>
+<p>Here’s a table explaining the above-displayed array items:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="14%" />
@@ -975,7 +974,7 @@ data related to the file you uploaded. Here is the array prototype:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -996,7 +995,7 @@ data related to the file you uploaded. Here is the array prototype:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

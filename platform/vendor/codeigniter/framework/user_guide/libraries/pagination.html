@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Pagination Class &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Pagination Class &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Libraries" href="index.html"/>
         <link rel="next" title="Template Parser Class" href="parser.html"/>
         <link rel="prev" title="Output Class" href="output.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -140,7 +141,7 @@
 <li class="toctree-l2"><a class="reference internal" href="loader.html">Loader Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration.html">Migrations Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="output.html">Output Class</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Pagination Class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Pagination Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parser.html">Template Parser Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="security.html">Security Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sessions.html">Session Library</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -326,7 +325,7 @@
 <li class="toctree-l2"><a class="reference internal" href="loader.html">Loader Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration.html">Migrations Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="output.html">Output Class</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Pagination Class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Pagination Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parser.html">Template Parser Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="security.html">Security Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sessions.html">Session Library</a></li>
@@ -425,7 +424,7 @@
             
   <div class="section" id="pagination-class">
 <h1>Pagination Class<a class="headerlink" href="#pagination-class" title="Permalink to this headline">¶</a></h1>
-<p>CodeIgniter&#8217;s Pagination class is very easy to use, and it is 100%
+<p>CodeIgniter’s Pagination class is very easy to use, and it is 100%
 customizable, either dynamically or via stored preferences.</p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
@@ -438,17 +437,17 @@ customizable, either dynamically or via stored preferences.</p>
 <li><a class="reference internal" href="#adding-enclosing-markup" id="id5">Adding Enclosing Markup</a></li>
 <li><a class="reference internal" href="#customizing-the-first-link" id="id6">Customizing the First Link</a></li>
 <li><a class="reference internal" href="#customizing-the-last-link" id="id7">Customizing the Last Link</a></li>
-<li><a class="reference internal" href="#customizing-the-next-link" id="id8">Customizing the &#8220;Next&#8221; Link</a></li>
-<li><a class="reference internal" href="#customizing-the-previous-link" id="id9">Customizing the &#8220;Previous&#8221; Link</a></li>
-<li><a class="reference internal" href="#customizing-the-current-page-link" id="id10">Customizing the &#8220;Current Page&#8221; Link</a></li>
-<li><a class="reference internal" href="#customizing-the-digit-link" id="id11">Customizing the &#8220;Digit&#8221; Link</a></li>
+<li><a class="reference internal" href="#customizing-the-next-link" id="id8">Customizing the “Next” Link</a></li>
+<li><a class="reference internal" href="#customizing-the-previous-link" id="id9">Customizing the “Previous” Link</a></li>
+<li><a class="reference internal" href="#customizing-the-current-page-link" id="id10">Customizing the “Current Page” Link</a></li>
+<li><a class="reference internal" href="#customizing-the-digit-link" id="id11">Customizing the “Digit” Link</a></li>
 <li><a class="reference internal" href="#hiding-the-pages" id="id12">Hiding the Pages</a></li>
 <li><a class="reference internal" href="#adding-attributes-to-anchors" id="id13">Adding attributes to anchors</a></li>
-<li><a class="reference internal" href="#disabling-the-rel-attribute" id="id14">Disabling the &#8220;rel&#8221; attribute</a></li>
+<li><a class="reference internal" href="#disabling-the-rel-attribute" id="id14">Disabling the “rel” attribute</a></li>
 <li><a class="reference internal" href="#class-reference" id="id15">Class Reference</a></li>
 </ul>
 </div>
-<div class="custom-index container"></div><p>If you are not familiar with the term &#8220;pagination&#8221;, it refers to links
+<div class="custom-index container"></div><p>If you are not familiar with the term “pagination”, it refers to links
 that allows you to navigate from page to page, like this:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nx">«</span> <span class="nx">First  </span><span class="o">&lt;</span><span class="nx"> 1 2 3 4 5 </span><span class="o">&gt;</span><span class="nx">  Last</span> <span class="nx">»</span>
 </pre></div>
@@ -456,7 +455,7 @@ that allows you to navigate from page to page, like this:</p>
 <div class="section" id="example">
 <h2><a class="toc-backref" href="#id1">Example</a><a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <p>Here is a simple example showing how to create pagination in one of your
-<a class="reference internal" href="../general/controllers.html"><em>controller</em></a> methods:</p>
+<a class="reference internal" href="../general/controllers.html"><span class="doc">controller</span></a> methods:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">library</span><span class="p">(</span><span class="s1">&#39;pagination&#39;</span><span class="p">);</span>
 
 <span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;base_url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;http://example.com/index.php/test/page/&#39;</span><span class="p">;</span>
@@ -470,15 +469,15 @@ that allows you to navigate from page to page, like this:</p>
 </div>
 <div class="section" id="notes">
 <h3><a class="toc-backref" href="#id2">Notes</a><a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
-<p>The <tt class="docutils literal"><span class="pre">$config</span></tt> array contains your configuration variables. It is passed to
-the <tt class="docutils literal"><span class="pre">$this-&gt;pagination-&gt;initialize()</span></tt> method as shown above. Although
+<p>The <code class="docutils literal"><span class="pre">$config</span></code> array contains your configuration variables. It is passed to
+the <code class="docutils literal"><span class="pre">$this-&gt;pagination-&gt;initialize()</span></code> method as shown above. Although
 there are some twenty items you can configure, at minimum you need the
 three shown. Here is a description of what those items represent:</p>
 <ul class="simple">
 <li><strong>base_url</strong> This is the full URL to the controller class/function
 containing your pagination. In the example above, it is pointing to a
-controller called &#8220;Test&#8221; and a function called &#8220;page&#8221;. Keep in mind
-that you can <a class="reference internal" href="../general/routing.html"><em>re-route your URI</em></a> if you
+controller called “Test” and a function called “page”. Keep in mind
+that you can <a class="reference internal" href="../general/routing.html"><span class="doc">re-route your URI</span></a> if you
 need a different structure.</li>
 <li><strong>total_rows</strong> This number represents the total rows in the result
 set you are creating pagination for. Typically this number will be
@@ -486,16 +485,16 @@ the total rows that your database query returned.</li>
 <li><strong>per_page</strong> The number of items you intend to show per page. In the
 above example, you would be showing 20 items per page.</li>
 </ul>
-<p>The <tt class="docutils literal"><span class="pre">create_links()</span></tt> method returns an empty string when there is no
+<p>The <code class="docutils literal"><span class="pre">create_links()</span></code> method returns an empty string when there is no
 pagination to show.</p>
 </div>
 <div class="section" id="setting-preferences-in-a-config-file">
 <h3><a class="toc-backref" href="#id3">Setting preferences in a config file</a><a class="headerlink" href="#setting-preferences-in-a-config-file" title="Permalink to this headline">¶</a></h3>
 <p>If you prefer not to set preferences using the above method, you can
 instead put them into a config file. Simply create a new file called
-pagination.php, add the <tt class="docutils literal"><span class="pre">$config</span></tt> array in that file. Then save the file
+pagination.php, add the <code class="docutils literal"><span class="pre">$config</span></code> array in that file. Then save the file
 in <em>application/config/pagination.php</em> and it will be used automatically.
-You will NOT need to use <tt class="docutils literal"><span class="pre">$this-&gt;pagination-&gt;initialize()</span></tt> if you save
+You will NOT need to use <code class="docutils literal"><span class="pre">$this-&gt;pagination-&gt;initialize()</span></code> if you save
 your preferences in a config file.</p>
 </div>
 </div>
@@ -503,35 +502,35 @@ your preferences in a config file.</p>
 <h2><a class="toc-backref" href="#id4">Customizing the Pagination</a><a class="headerlink" href="#customizing-the-pagination" title="Permalink to this headline">¶</a></h2>
 <p>The following is a list of all the preferences you can pass to the
 initialization function to tailor the display.</p>
-<p><strong>$config[&#8216;uri_segment&#8217;] = 3;</strong></p>
+<p><strong>$config[‘uri_segment’] = 3;</strong></p>
 <p>The pagination function automatically determines which segment of your
 URI contains the page number. If you need something different you can
 specify it.</p>
-<p><strong>$config[&#8216;num_links&#8217;] = 2;</strong></p>
-<p>The number of &#8220;digit&#8221; links you would like before and after the selected
+<p><strong>$config[‘num_links’] = 2;</strong></p>
+<p>The number of “digit” links you would like before and after the selected
 page number. For example, the number 2 will place two digits on either
 side, as in the example links at the very top of this page.</p>
-<p><strong>$config[&#8216;use_page_numbers&#8217;] = TRUE;</strong></p>
+<p><strong>$config[‘use_page_numbers’] = TRUE;</strong></p>
 <p>By default, the URI segment will use the starting index for the items
 you are paginating. If you prefer to show the the actual page number,
 set this to TRUE.</p>
-<p><strong>$config[&#8216;page_query_string&#8217;] = TRUE;</strong></p>
-<p>By default, the pagination library assume you are using <a class="reference internal" href="../general/urls.html"><em>URI
-Segments</em></a>, and constructs your links something
+<p><strong>$config[‘page_query_string’] = TRUE;</strong></p>
+<p>By default, the pagination library assume you are using <a class="reference internal" href="../general/urls.html"><span class="doc">URI
+Segments</span></a>, and constructs your links something
 like:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nx">http</span><span class="o">://</span><span class="nx">example</span><span class="o">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">index</span><span class="o">.</span><span class="nx">php</span><span class="o">/</span><span class="nx">test</span><span class="o">/</span><span class="nx">page</span><span class="o">/</span><span class="mi">20</span>
 </pre></div>
 </div>
-<p>If you have <tt class="docutils literal"><span class="pre">$config['enable_query_strings']</span></tt> set to TRUE your links
+<p>If you have <code class="docutils literal"><span class="pre">$config['enable_query_strings']</span></code> set to TRUE your links
 will automatically be re-written using Query Strings. This option can
-also be explicitly set. Using <tt class="docutils literal"><span class="pre">$config['page_query_string']</span></tt> set to TRUE,
+also be explicitly set. Using <code class="docutils literal"><span class="pre">$config['page_query_string']</span></code> set to TRUE,
 the pagination link will become:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nx">http</span><span class="o">://</span><span class="nx">example</span><span class="o">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">index</span><span class="o">.</span><span class="nx">php</span><span class="o">?</span><span class="nx">c</span><span class="o">=</span><span class="nx">test</span><span class="o">&amp;</span><span class="nx">m</span><span class="o">=</span><span class="nx">page</span><span class="o">&amp;</span><span class="nx">per_page</span><span class="o">=</span><span class="mi">20</span>
 </pre></div>
 </div>
-<p>Note that &#8220;per_page&#8221; is the default query string passed, however can be
-configured using <tt class="docutils literal"><span class="pre">$config['query_string_segment']</span> <span class="pre">=</span> <span class="pre">'your_string'</span></tt></p>
-<p><strong>$config[&#8216;reuse_query_string&#8217;] = FALSE;</strong></p>
+<p>Note that “per_page” is the default query string passed, however can be
+configured using <code class="docutils literal"><span class="pre">$config['query_string_segment']</span> <span class="pre">=</span> <span class="pre">'your_string'</span></code></p>
+<p><strong>$config[‘reuse_query_string’] = FALSE;</strong></p>
 <p>By default your Query String arguments (nothing to do with other
 query string options) will be ignored. Setting this config to
 TRUE will add existing query string arguments back into the
@@ -539,104 +538,104 @@ URL after the URI segment and before the suffix.:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nx">http</span><span class="o">://</span><span class="nx">example</span><span class="o">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">index</span><span class="o">.</span><span class="nx">php</span><span class="o">/</span><span class="nx">test</span><span class="o">/</span><span class="nx">page</span><span class="o">/</span><span class="mi">20</span><span class="o">?</span><span class="nx">query</span><span class="o">=</span><span class="nx">search</span><span class="o">%</span><span class="nx">term</span>
 </pre></div>
 </div>
-<p>This helps you mix together normal <a class="reference internal" href="../general/urls.html"><em>URI Segments</em></a>
+<p>This helps you mix together normal <a class="reference internal" href="../general/urls.html"><span class="doc">URI Segments</span></a>
 as well as query string arguments, which until 3.0 was not possible.</p>
-<p><strong>$config[&#8216;prefix&#8217;] = &#8216;&#8217;;</strong></p>
+<p><strong>$config[‘prefix’] = ‘’;</strong></p>
 <p>A custom prefix added to the path. The prefix value will be right before
 the offset segment.</p>
-<p><strong>$config[&#8216;suffix&#8217;] = &#8216;&#8217;;</strong></p>
+<p><strong>$config[‘suffix’] = ‘’;</strong></p>
 <p>A custom suffix added to the path. The sufix value will be right after
 the offset segment.</p>
-<p><strong>$config[&#8216;use_global_url_suffix&#8217;] = FALSE;</strong></p>
-<p>When set to TRUE, it will <strong>override</strong> the <tt class="docutils literal"><span class="pre">$config['suffix']</span></tt> value and
-instead set it to the one that you have in <tt class="docutils literal"><span class="pre">$config['url_suffix']</span></tt> in
+<p><strong>$config[‘use_global_url_suffix’] = FALSE;</strong></p>
+<p>When set to TRUE, it will <strong>override</strong> the <code class="docutils literal"><span class="pre">$config['suffix']</span></code> value and
+instead set it to the one that you have in <code class="docutils literal"><span class="pre">$config['url_suffix']</span></code> in
 your <strong>application/config/config.php</strong> file.</p>
 </div>
 <div class="section" id="adding-enclosing-markup">
 <h2><a class="toc-backref" href="#id5">Adding Enclosing Markup</a><a class="headerlink" href="#adding-enclosing-markup" title="Permalink to this headline">¶</a></h2>
 <p>If you would like to surround the entire pagination with some markup you
 can do it with these two preferences:</p>
-<p><strong>$config[&#8216;full_tag_open&#8217;] = &#8216;&lt;p&gt;&#8217;;</strong></p>
+<p><strong>$config[‘full_tag_open’] = ‘&lt;p&gt;’;</strong></p>
 <p>The opening tag placed on the left side of the entire result.</p>
-<p><strong>$config[&#8216;full_tag_close&#8217;] = &#8216;&lt;/p&gt;&#8217;;</strong></p>
+<p><strong>$config[‘full_tag_close’] = ‘&lt;/p&gt;’;</strong></p>
 <p>The closing tag placed on the right side of the entire result.</p>
 </div>
 <div class="section" id="customizing-the-first-link">
 <h2><a class="toc-backref" href="#id6">Customizing the First Link</a><a class="headerlink" href="#customizing-the-first-link" title="Permalink to this headline">¶</a></h2>
-<p><strong>$config[&#8216;first_link&#8217;] = &#8216;First&#8217;;</strong></p>
-<p>The text you would like shown in the &#8220;first&#8221; link on the left. If you do
+<p><strong>$config[‘first_link’] = ‘First’;</strong></p>
+<p>The text you would like shown in the “first” link on the left. If you do
 not want this link rendered, you can set its value to FALSE.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This value can also be translated via a language file.</p>
 </div>
-<p><strong>$config[&#8216;first_tag_open&#8217;] = &#8216;&lt;div&gt;&#8217;;</strong></p>
-<p>The opening tag for the &#8220;first&#8221; link.</p>
-<p><strong>$config[&#8216;first_tag_close&#8217;] = &#8216;&lt;/div&gt;&#8217;;</strong></p>
-<p>The closing tag for the &#8220;first&#8221; link.</p>
-<p><strong>$config[&#8216;first_url&#8217;] = &#8216;&#8217;;</strong></p>
-<p>An alternative URL to use for the &#8220;first page&#8221; link.</p>
+<p><strong>$config[‘first_tag_open’] = ‘&lt;div&gt;’;</strong></p>
+<p>The opening tag for the “first” link.</p>
+<p><strong>$config[‘first_tag_close’] = ‘&lt;/div&gt;’;</strong></p>
+<p>The closing tag for the “first” link.</p>
+<p><strong>$config[‘first_url’] = ‘’;</strong></p>
+<p>An alternative URL to use for the “first page” link.</p>
 </div>
 <div class="section" id="customizing-the-last-link">
 <h2><a class="toc-backref" href="#id7">Customizing the Last Link</a><a class="headerlink" href="#customizing-the-last-link" title="Permalink to this headline">¶</a></h2>
-<p><strong>$config[&#8216;last_link&#8217;] = &#8216;Last&#8217;;</strong></p>
-<p>The text you would like shown in the &#8220;last&#8221; link on the right. If you do
+<p><strong>$config[‘last_link’] = ‘Last’;</strong></p>
+<p>The text you would like shown in the “last” link on the right. If you do
 not want this link rendered, you can set its value to FALSE.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This value can also be translated via a language file.</p>
 </div>
-<p><strong>$config[&#8216;last_tag_open&#8217;] = &#8216;&lt;div&gt;&#8217;;</strong></p>
-<p>The opening tag for the &#8220;last&#8221; link.</p>
-<p><strong>$config[&#8216;last_tag_close&#8217;] = &#8216;&lt;/div&gt;&#8217;;</strong></p>
-<p>The closing tag for the &#8220;last&#8221; link.</p>
+<p><strong>$config[‘last_tag_open’] = ‘&lt;div&gt;’;</strong></p>
+<p>The opening tag for the “last” link.</p>
+<p><strong>$config[‘last_tag_close’] = ‘&lt;/div&gt;’;</strong></p>
+<p>The closing tag for the “last” link.</p>
 </div>
 <div class="section" id="customizing-the-next-link">
-<h2><a class="toc-backref" href="#id8">Customizing the &#8220;Next&#8221; Link</a><a class="headerlink" href="#customizing-the-next-link" title="Permalink to this headline">¶</a></h2>
-<p><strong>$config[&#8216;next_link&#8217;] = &#8216;&amp;gt;&#8217;;</strong></p>
-<p>The text you would like shown in the &#8220;next&#8221; page link. If you do not
+<h2><a class="toc-backref" href="#id8">Customizing the “Next” Link</a><a class="headerlink" href="#customizing-the-next-link" title="Permalink to this headline">¶</a></h2>
+<p><strong>$config[‘next_link’] = ‘&amp;gt;’;</strong></p>
+<p>The text you would like shown in the “next” page link. If you do not
 want this link rendered, you can set its value to FALSE.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This value can also be translated via a language file.</p>
 </div>
-<p><strong>$config[&#8216;next_tag_open&#8217;] = &#8216;&lt;div&gt;&#8217;;</strong></p>
-<p>The opening tag for the &#8220;next&#8221; link.</p>
-<p><strong>$config[&#8216;next_tag_close&#8217;] = &#8216;&lt;/div&gt;&#8217;;</strong></p>
-<p>The closing tag for the &#8220;next&#8221; link.</p>
+<p><strong>$config[‘next_tag_open’] = ‘&lt;div&gt;’;</strong></p>
+<p>The opening tag for the “next” link.</p>
+<p><strong>$config[‘next_tag_close’] = ‘&lt;/div&gt;’;</strong></p>
+<p>The closing tag for the “next” link.</p>
 </div>
 <div class="section" id="customizing-the-previous-link">
-<h2><a class="toc-backref" href="#id9">Customizing the &#8220;Previous&#8221; Link</a><a class="headerlink" href="#customizing-the-previous-link" title="Permalink to this headline">¶</a></h2>
-<p><strong>$config[&#8216;prev_link&#8217;] = &#8216;&amp;lt;&#8217;;</strong></p>
-<p>The text you would like shown in the &#8220;previous&#8221; page link. If you do not
+<h2><a class="toc-backref" href="#id9">Customizing the “Previous” Link</a><a class="headerlink" href="#customizing-the-previous-link" title="Permalink to this headline">¶</a></h2>
+<p><strong>$config[‘prev_link’] = ‘&amp;lt;’;</strong></p>
+<p>The text you would like shown in the “previous” page link. If you do not
 want this link rendered, you can set its value to FALSE.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This value can also be translated via a language file.</p>
 </div>
-<p><strong>$config[&#8216;prev_tag_open&#8217;] = &#8216;&lt;div&gt;&#8217;;</strong></p>
-<p>The opening tag for the &#8220;previous&#8221; link.</p>
-<p><strong>$config[&#8216;prev_tag_close&#8217;] = &#8216;&lt;/div&gt;&#8217;;</strong></p>
-<p>The closing tag for the &#8220;previous&#8221; link.</p>
+<p><strong>$config[‘prev_tag_open’] = ‘&lt;div&gt;’;</strong></p>
+<p>The opening tag for the “previous” link.</p>
+<p><strong>$config[‘prev_tag_close’] = ‘&lt;/div&gt;’;</strong></p>
+<p>The closing tag for the “previous” link.</p>
 </div>
 <div class="section" id="customizing-the-current-page-link">
-<h2><a class="toc-backref" href="#id10">Customizing the &#8220;Current Page&#8221; Link</a><a class="headerlink" href="#customizing-the-current-page-link" title="Permalink to this headline">¶</a></h2>
-<p><strong>$config[&#8216;cur_tag_open&#8217;] = &#8216;&lt;b&gt;&#8217;;</strong></p>
-<p>The opening tag for the &#8220;current&#8221; link.</p>
-<p><strong>$config[&#8216;cur_tag_close&#8217;] = &#8216;&lt;/b&gt;&#8217;;</strong></p>
-<p>The closing tag for the &#8220;current&#8221; link.</p>
+<h2><a class="toc-backref" href="#id10">Customizing the “Current Page” Link</a><a class="headerlink" href="#customizing-the-current-page-link" title="Permalink to this headline">¶</a></h2>
+<p><strong>$config[‘cur_tag_open’] = ‘&lt;b&gt;’;</strong></p>
+<p>The opening tag for the “current” link.</p>
+<p><strong>$config[‘cur_tag_close’] = ‘&lt;/b&gt;’;</strong></p>
+<p>The closing tag for the “current” link.</p>
 </div>
 <div class="section" id="customizing-the-digit-link">
-<h2><a class="toc-backref" href="#id11">Customizing the &#8220;Digit&#8221; Link</a><a class="headerlink" href="#customizing-the-digit-link" title="Permalink to this headline">¶</a></h2>
-<p><strong>$config[&#8216;num_tag_open&#8217;] = &#8216;&lt;div&gt;&#8217;;</strong></p>
-<p>The opening tag for the &#8220;digit&#8221; link.</p>
-<p><strong>$config[&#8216;num_tag_close&#8217;] = &#8216;&lt;/div&gt;&#8217;;</strong></p>
-<p>The closing tag for the &#8220;digit&#8221; link.</p>
+<h2><a class="toc-backref" href="#id11">Customizing the “Digit” Link</a><a class="headerlink" href="#customizing-the-digit-link" title="Permalink to this headline">¶</a></h2>
+<p><strong>$config[‘num_tag_open’] = ‘&lt;div&gt;’;</strong></p>
+<p>The opening tag for the “digit” link.</p>
+<p><strong>$config[‘num_tag_close’] = ‘&lt;/div&gt;’;</strong></p>
+<p>The closing tag for the “digit” link.</p>
 </div>
 <div class="section" id="hiding-the-pages">
 <h2><a class="toc-backref" href="#id12">Hiding the Pages</a><a class="headerlink" href="#hiding-the-pages" title="Permalink to this headline">¶</a></h2>
 <p>If you wanted to not list the specific pages (for example, you only want
-&#8220;next&#8221; and &#8220;previous&#8221; links), you can suppress their rendering by
+“next” and “previous” links), you can suppress their rendering by
 adding:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;display_pages&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">FALSE</span><span class="p">;</span>
 </pre></div>
@@ -646,19 +645,19 @@ adding:</p>
 <h2><a class="toc-backref" href="#id13">Adding attributes to anchors</a><a class="headerlink" href="#adding-attributes-to-anchors" title="Permalink to this headline">¶</a></h2>
 <p>If you want to add an extra attribute to be added to every link rendered
 by the pagination class, you can set them as key/value pairs in the
-&#8220;attributes&#8221; config:</p>
+“attributes” config:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="c1">// Produces: class=&quot;myclass&quot;</span>
 <span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;attributes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;myclass&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Usage of the old method of setting classes via &#8220;anchor_class&#8221;
+<p class="last">Usage of the old method of setting classes via “anchor_class”
 is deprecated.</p>
 </div>
 </div>
 <div class="section" id="disabling-the-rel-attribute">
-<h2><a class="toc-backref" href="#id14">Disabling the &#8220;rel&#8221; attribute</a><a class="headerlink" href="#disabling-the-rel-attribute" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id14">Disabling the “rel” attribute</a><a class="headerlink" href="#disabling-the-rel-attribute" title="Permalink to this headline">¶</a></h2>
 <p>By default the rel attribute is dynamically generated and appended to
 the appropriate anchors. If for some reason you want to turn it off,
 you can pass boolean FALSE as a regular attribute</p>
@@ -670,16 +669,16 @@ you can pass boolean FALSE as a regular attribute</p>
 <h2><a class="toc-backref" href="#id15">Class Reference</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="CI_Pagination">
-<em class="property">class </em><tt class="descname">CI_Pagination</tt><a class="headerlink" href="#CI_Pagination" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">CI_Pagination</code><a class="headerlink" href="#CI_Pagination" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="CI_Pagination::initialize">
-<tt class="descname">initialize</tt><big>(</big><span class="optional">[</span><em>$params = array()</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Pagination::initialize" title="Permalink to this definition">¶</a></dt>
+<code class="descname">initialize</code><span class="sig-paren">(</span><span class="optional">[</span><em>$params = array()</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Pagination::initialize" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$params</strong> (<em>array</em>) &#8211; Configuration parameters</li>
+<li><strong>$params</strong> (<em>array</em>) – Configuration parameters</li>
 </ul>
 </td>
 </tr>
@@ -696,7 +695,7 @@ you can pass boolean FALSE as a regular attribute</p>
 
 <dl class="method">
 <dt id="CI_Pagination::create_links">
-<tt class="descname">create_links</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Pagination::create_links" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_links</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Pagination::create_links" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -707,7 +706,7 @@ you can pass boolean FALSE as a regular attribute</p>
 </tr>
 </tbody>
 </table>
-<p>Returns a &#8220;pagination&#8221; bar, containing the generated links or an empty string if there&#8217;s just a single page.</p>
+<p>Returns a “pagination” bar, containing the generated links or an empty string if there’s just a single page.</p>
 </dd></dl>
 
 </dd></dl>
@@ -734,7 +733,7 @@ you can pass boolean FALSE as a regular attribute</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -755,7 +754,7 @@ you can pass boolean FALSE as a regular attribute</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

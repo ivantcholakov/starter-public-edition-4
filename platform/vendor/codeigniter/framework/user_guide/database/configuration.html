@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Database Configuration &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Database Configuration &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Database Reference" href="index.html"/>
         <link rel="next" title="Connecting to your Database" href="connecting.html"/>
         <link rel="prev" title="Database Quick Start: Example Code" href="examples.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -158,7 +159,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Database Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="examples.html">Quick Start: Usage Examples</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Database Configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Database Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="connecting.html">Connecting to a Database</a></li>
 <li class="toctree-l2"><a class="reference internal" href="queries.html">Running Queries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="results.html">Generating Query Results</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -344,7 +343,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Database Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="examples.html">Quick Start: Usage Examples</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Database Configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Database Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="connecting.html">Connecting to a Database</a></li>
 <li class="toctree-l2"><a class="reference internal" href="queries.html">Running Queries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="results.html">Generating Query Results</a></li>
@@ -429,7 +428,7 @@
 connection values (username, password, database name, etc.). The config
 file is located at application/config/database.php. You can also set
 database connection values for specific
-<a class="reference internal" href="../libraries/config.html"><em>environments</em></a> by placing <strong>database.php</strong>
+<a class="reference internal" href="../libraries/config.html"><span class="doc">environments</span></a> by placing <strong>database.php</strong>
 in the respective environment config folder.</p>
 <p>The config settings are stored in a multi-dimensional array with this
 prototype:</p>
@@ -457,8 +456,8 @@ prototype:</p>
 </div>
 <p>Some database drivers (such as PDO, PostgreSQL, Oracle, ODBC) might
 require a full DSN string to be provided. If that is the case, you
-should use the &#8216;dsn&#8217; configuration setting, as if you&#8217;re using the
-driver&#8217;s underlying native PHP extension, like this:</p>
+should use the ‘dsn’ configuration setting, as if you’re using the
+driver’s underlying native PHP extension, like this:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="c1">// PDO</span>
 <span class="nv">$db</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">][</span><span class="s1">&#39;dsn&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;pgsql:host=localhost;port=5432;dbname=database_name&#39;</span><span class="p">;</span>
 
@@ -525,7 +524,7 @@ one is to permit you to optionally store multiple sets of connection
 values. If, for example, you run multiple environments (development,
 production, test, etc.) under a single installation, you can set up a
 connection group for each, then switch between groups as needed. For
-example, to set up a &#8220;test&#8221; environment you would do this:</p>
+example, to set up a “test” environment you would do this:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$db</span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">&#39;dsn&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
         <span class="s1">&#39;hostname&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
@@ -555,13 +554,13 @@ variable located in the config file:</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The name &#8216;test&#8217; is arbitrary. It can be anything you want. By
-default we&#8217;ve used the word &#8220;default&#8221; for the primary connection,
+<p class="last">The name ‘test’ is arbitrary. It can be anything you want. By
+default we’ve used the word “default” for the primary connection,
 but it too can be renamed to something more relevant to your project.</p>
 </div>
 <div class="section" id="query-builder">
 <h2>Query Builder<a class="headerlink" href="#query-builder" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference internal" href="query_builder.html"><em>Query Builder Class</em></a> is globally enabled or
+<p>The <a class="reference internal" href="query_builder.html"><span class="doc">Query Builder Class</span></a> is globally enabled or
 disabled by setting the $query_builder variable in the database
 configuration file to TRUE/FALSE (boolean). The default setting is TRUE.
 If you are not using the
@@ -593,7 +592,7 @@ Builder to be enabled to access certain functionality.</p>
 <td>The DSN connect string (an all-in-one configuration sequence).</td>
 </tr>
 <tr class="row-odd"><td><strong>hostname</strong></td>
-<td>The hostname of your database server. Often this is &#8216;localhost&#8217;.</td>
+<td>The hostname of your database server. Often this is ‘localhost’.</td>
 </tr>
 <tr class="row-even"><td><strong>username</strong></td>
 <td>The username used to connect to the database.</td>
@@ -609,7 +608,7 @@ Builder to be enabled to access certain functionality.</p>
 </tr>
 <tr class="row-even"><td><strong>dbprefix</strong></td>
 <td>An optional table prefix which will added to the table name when running
-<a class="reference internal" href="query_builder.html"><em>Query Builder</em></a> queries. This permits multiple CodeIgniter
+<a class="reference internal" href="query_builder.html"><span class="doc">Query Builder</span></a> queries. This permits multiple CodeIgniter
 installations to share one database.</td>
 </tr>
 <tr class="row-odd"><td><strong>pconnect</strong></td>
@@ -620,7 +619,7 @@ installations to share one database.</td>
 </tr>
 <tr class="row-odd"><td><strong>cache_on</strong></td>
 <td>TRUE/FALSE (boolean) - Whether database query caching is enabled,
-see also <a class="reference internal" href="caching.html"><em>Database Caching Class</em></a>.</td>
+see also <a class="reference internal" href="caching.html"><span class="doc">Database Caching Class</span></a>.</td>
 </tr>
 <tr class="row-even"><td><strong>cachedir</strong></td>
 <td>The absolute server path to your database query cache directory.</td>
@@ -632,7 +631,7 @@ see also <a class="reference internal" href="caching.html"><em>Database Caching 
 <td><p class="first">The character collation used in communicating with the database</p>
 <div class="last admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Only used in the &#8216;mysql&#8217; and &#8216;mysqli&#8217; drivers.</p>
+<p class="last">Only used in the ‘mysql’ and ‘mysqli’ drivers.</p>
 </div>
 </td>
 </tr>
@@ -642,20 +641,20 @@ applications where you might run manually written queries, and need the prefix t
 customizable by the end user.</td>
 </tr>
 <tr class="row-even"><td><strong>schema</strong></td>
-<td>The database schema, defaults to &#8216;public&#8217;. Used by PostgreSQL and ODBC drivers.</td>
+<td>The database schema, defaults to ‘public’. Used by PostgreSQL and ODBC drivers.</td>
 </tr>
 <tr class="row-odd"><td><strong>encrypt</strong></td>
 <td><p class="first">Whether or not to use an encrypted connection.</p>
 <blockquote class="last">
 <div><ul class="simple">
-<li>&#8216;mysql&#8217; (deprecated), &#8216;sqlsrv&#8217; and &#8216;pdo/sqlsrv&#8217; drivers accept TRUE/FALSE</li>
-<li>&#8216;mysqli&#8217; and &#8216;pdo/mysql&#8217; drivers accept an array with the following options:<ul>
-<li>&#8216;ssl_key&#8217;    - Path to the private key file</li>
-<li>&#8216;ssl_cert&#8217;   - Path to the public key certificate file</li>
-<li>&#8216;ssl_ca&#8217;     - Path to the certificate authority file</li>
-<li>&#8216;ssl_capath&#8217; - Path to a directory containing trusted CA certificats in PEM format</li>
-<li>&#8216;ssl_cipher&#8217; - List of <em>allowed</em> ciphers to be used for the encryption, separated by colons (&#8216;:&#8217;)</li>
-<li>&#8216;ssl_verify&#8217; - TRUE/FALSE; Whether to verify the server certificate or not (&#8216;mysqli&#8217; only)</li>
+<li>‘mysql’ (deprecated), ‘sqlsrv’ and ‘pdo/sqlsrv’ drivers accept TRUE/FALSE</li>
+<li>‘mysqli’ and ‘pdo/mysql’ drivers accept an array with the following options:<ul>
+<li>‘ssl_key’    - Path to the private key file</li>
+<li>‘ssl_cert’   - Path to the public key certificate file</li>
+<li>‘ssl_ca’     - Path to the certificate authority file</li>
+<li>‘ssl_capath’ - Path to a directory containing trusted CA certificats in PEM format</li>
+<li>‘ssl_cipher’ - List of <em>allowed</em> ciphers to be used for the encryption, separated by colons (‘:’)</li>
+<li>‘ssl_verify’ - TRUE/FALSE; Whether to verify the server certificate or not (‘mysqli’ only)</li>
 </ul>
 </li>
 </ul>
@@ -666,7 +665,7 @@ customizable by the end user.</td>
 <td>Whether or not to use client compression (MySQL only).</td>
 </tr>
 <tr class="row-odd"><td><strong>stricton</strong></td>
-<td>TRUE/FALSE (boolean) - Whether to force &#8220;Strict Mode&#8221; connections, good for ensuring strict SQL
+<td>TRUE/FALSE (boolean) - Whether to force “Strict Mode” connections, good for ensuring strict SQL
 while developing an application.</td>
 </tr>
 <tr class="row-even"><td><strong>port</strong></td>
@@ -708,7 +707,7 @@ you are using MySQL.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -729,7 +728,7 @@ you are using MySQL.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

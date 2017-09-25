@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>FTP Class &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>FTP Class &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Libraries" href="index.html"/>
         <link rel="next" title="Image Manipulation Class" href="image_lib.html"/>
         <link rel="prev" title="Form Validation" href="form_validation.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -132,7 +133,7 @@
 <li class="toctree-l2"><a class="reference internal" href="encryption.html">Encryption Library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file_uploading.html">File Uploading Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="form_validation.html">Form Validation</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">FTP Class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">FTP Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="image_lib.html">Image Manipulation Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="input.html">Input Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="javascript.html">Javascript Class</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -318,7 +317,7 @@
 <li class="toctree-l2"><a class="reference internal" href="encryption.html">Encryption Library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file_uploading.html">File Uploading Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="form_validation.html">Form Validation</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">FTP Class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">FTP Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="image_lib.html">Image Manipulation Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="input.html">Input Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="javascript.html">Javascript Class</a></li>
@@ -425,9 +424,9 @@
             
   <div class="section" id="ftp-class">
 <h1>FTP Class<a class="headerlink" href="#ftp-class" title="Permalink to this headline">¶</a></h1>
-<p>CodeIgniter&#8217;s FTP Class permits files to be transferred to a remote
+<p>CodeIgniter’s FTP Class permits files to be transferred to a remote
 server. Remote files can also be moved, renamed, and deleted. The FTP
-class also includes a &#8220;mirroring&#8221; function that permits an entire local
+class also includes a “mirroring” function that permits an entire local
 directory to be recreated remotely via FTP.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -512,16 +511,16 @@ file is read and uploaded in ASCII mode. The file permissions are set to
 <h2><a class="toc-backref" href="#id4">Class Reference</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="CI_FTP">
-<em class="property">class </em><tt class="descname">CI_FTP</tt><a class="headerlink" href="#CI_FTP" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">CI_FTP</code><a class="headerlink" href="#CI_FTP" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="CI_FTP::connect">
-<tt class="descname">connect</tt><big>(</big><span class="optional">[</span><em>$config = array()</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_FTP::connect" title="Permalink to this definition">¶</a></dt>
+<code class="descname">connect</code><span class="sig-paren">(</span><span class="optional">[</span><em>$config = array()</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_FTP::connect" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$config</strong> (<em>array</em>) &#8211; Connection values</li>
+<li><strong>$config</strong> (<em>array</em>) – Connection values</li>
 </ul>
 </td>
 </tr>
@@ -598,16 +597,16 @@ will be used automatically.</p>
 
 <dl class="method">
 <dt id="CI_FTP::upload">
-<tt class="descname">upload</tt><big>(</big><em>$locpath</em>, <em>$rempath</em><span class="optional">[</span>, <em>$mode = 'auto'</em><span class="optional">[</span>, <em>$permissions = NULL</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_FTP::upload" title="Permalink to this definition">¶</a></dt>
+<code class="descname">upload</code><span class="sig-paren">(</span><em>$locpath</em>, <em>$rempath</em><span class="optional">[</span>, <em>$mode = 'auto'</em><span class="optional">[</span>, <em>$permissions = NULL</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_FTP::upload" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$locpath</strong> (<em>string</em>) &#8211; Local file path</li>
-<li><strong>$rempath</strong> (<em>string</em>) &#8211; Remote file path</li>
-<li><strong>$mode</strong> (<em>string</em>) &#8211; FTP mode, defaults to &#8216;auto&#8217; (options are: &#8216;auto&#8217;, &#8216;binary&#8217;, &#8216;ascii&#8217;)</li>
-<li><strong>$permissions</strong> (<em>int</em>) &#8211; File permissions (octal)</li>
+<li><strong>$locpath</strong> (<em>string</em>) – Local file path</li>
+<li><strong>$rempath</strong> (<em>string</em>) – Remote file path</li>
+<li><strong>$mode</strong> (<em>string</em>) – FTP mode, defaults to ‘auto’ (options are: ‘auto’, ‘binary’, ‘ascii’)</li>
+<li><strong>$permissions</strong> (<em>int</em>) – File permissions (octal)</li>
 </ul>
 </td>
 </tr>
@@ -625,21 +624,21 @@ Example:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">ftp</span><span class="o">-&gt;</span><span class="na">upload</span><span class="p">(</span><span class="s1">&#39;/local/path/to/myfile.html&#39;</span><span class="p">,</span> <span class="s1">&#39;/public_html/myfile.html&#39;</span><span class="p">,</span> <span class="s1">&#39;ascii&#39;</span><span class="p">,</span> <span class="mo">0775</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>If &#8216;auto&#8217; mode is used it will base the mode on the file extension of the source file.</p>
+<p>If ‘auto’ mode is used it will base the mode on the file extension of the source file.</p>
 <p>If set, permissions have to be passed as an octal value.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="CI_FTP::download">
-<tt class="descname">download</tt><big>(</big><em>$rempath</em>, <em>$locpath</em><span class="optional">[</span>, <em>$mode = 'auto'</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_FTP::download" title="Permalink to this definition">¶</a></dt>
+<code class="descname">download</code><span class="sig-paren">(</span><em>$rempath</em>, <em>$locpath</em><span class="optional">[</span>, <em>$mode = 'auto'</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_FTP::download" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$rempath</strong> (<em>string</em>) &#8211; Remote file path</li>
-<li><strong>$locpath</strong> (<em>string</em>) &#8211; Local file path</li>
-<li><strong>$mode</strong> (<em>string</em>) &#8211; FTP mode, defaults to &#8216;auto&#8217; (options are: &#8216;auto&#8217;, &#8216;binary&#8217;, &#8216;ascii&#8217;)</li>
+<li><strong>$rempath</strong> (<em>string</em>) – Remote file path</li>
+<li><strong>$locpath</strong> (<em>string</em>) – Local file path</li>
+<li><strong>$mode</strong> (<em>string</em>) – FTP mode, defaults to ‘auto’ (options are: ‘auto’, ‘binary’, ‘ascii’)</li>
 </ul>
 </td>
 </tr>
@@ -656,22 +655,22 @@ the local path, and you can optionally set the mode. Example:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">ftp</span><span class="o">-&gt;</span><span class="na">download</span><span class="p">(</span><span class="s1">&#39;/public_html/myfile.html&#39;</span><span class="p">,</span> <span class="s1">&#39;/local/path/to/myfile.html&#39;</span><span class="p">,</span> <span class="s1">&#39;ascii&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>If &#8216;auto&#8217; mode is used it will base the mode on the file extension of the source file.</p>
+<p>If ‘auto’ mode is used it will base the mode on the file extension of the source file.</p>
 <p>Returns FALSE if the download does not execute successfully
 (including if PHP does not have permission to write the local file).</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="CI_FTP::rename">
-<tt class="descname">rename</tt><big>(</big><em>$old_file</em>, <em>$new_file</em><span class="optional">[</span>, <em>$move = FALSE</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_FTP::rename" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rename</code><span class="sig-paren">(</span><em>$old_file</em>, <em>$new_file</em><span class="optional">[</span>, <em>$move = FALSE</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_FTP::rename" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$old_file</strong> (<em>string</em>) &#8211; Old file name</li>
-<li><strong>$new_file</strong> (<em>string</em>) &#8211; New file name</li>
-<li><strong>$move</strong> (<em>bool</em>) &#8211; Whether a move is being performed</li>
+<li><strong>$old_file</strong> (<em>string</em>) – Old file name</li>
+<li><strong>$new_file</strong> (<em>string</em>) – New file name</li>
+<li><strong>$move</strong> (<em>bool</em>) – Whether a move is being performed</li>
 </ul>
 </td>
 </tr>
@@ -692,14 +691,14 @@ the local path, and you can optionally set the mode. Example:</p>
 
 <dl class="method">
 <dt id="CI_FTP::move">
-<tt class="descname">move</tt><big>(</big><em>$old_file</em>, <em>$new_file</em><big>)</big><a class="headerlink" href="#CI_FTP::move" title="Permalink to this definition">¶</a></dt>
+<code class="descname">move</code><span class="sig-paren">(</span><em>$old_file</em>, <em>$new_file</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_FTP::move" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$old_file</strong> (<em>string</em>) &#8211; Old file name</li>
-<li><strong>$new_file</strong> (<em>string</em>) &#8211; New file name</li>
+<li><strong>$old_file</strong> (<em>string</em>) – Old file name</li>
+<li><strong>$new_file</strong> (<em>string</em>) – New file name</li>
 </ul>
 </td>
 </tr>
@@ -724,13 +723,13 @@ the local path, and you can optionally set the mode. Example:</p>
 
 <dl class="method">
 <dt id="CI_FTP::delete_file">
-<tt class="descname">delete_file</tt><big>(</big><em>$filepath</em><big>)</big><a class="headerlink" href="#CI_FTP::delete_file" title="Permalink to this definition">¶</a></dt>
+<code class="descname">delete_file</code><span class="sig-paren">(</span><em>$filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_FTP::delete_file" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$filepath</strong> (<em>string</em>) &#8211; Path to file to delete</li>
+<li><strong>$filepath</strong> (<em>string</em>) – Path to file to delete</li>
 </ul>
 </td>
 </tr>
@@ -750,13 +749,13 @@ the local path, and you can optionally set the mode. Example:</p>
 
 <dl class="method">
 <dt id="CI_FTP::delete_dir">
-<tt class="descname">delete_dir</tt><big>(</big><em>$filepath</em><big>)</big><a class="headerlink" href="#CI_FTP::delete_dir" title="Permalink to this definition">¶</a></dt>
+<code class="descname">delete_dir</code><span class="sig-paren">(</span><em>$filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_FTP::delete_dir" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$filepath</strong> (<em>string</em>) &#8211; Path to directory to delete</li>
+<li><strong>$filepath</strong> (<em>string</em>) – Path to directory to delete</li>
 </ul>
 </td>
 </tr>
@@ -775,7 +774,7 @@ source path to the directory with a trailing slash.</p>
 <p class="last">Be VERY careful with this method!
 It will recursively delete <strong>everything</strong> within the supplied path,
 including sub-folders and all files. Make absolutely sure your path
-is correct. Try using <tt class="docutils literal"><span class="pre">list_files()</span></tt> first to verify that your path is correct.</p>
+is correct. Try using <code class="docutils literal"><span class="pre">list_files()</span></code> first to verify that your path is correct.</p>
 </div>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">ftp</span><span class="o">-&gt;</span><span class="na">delete_dir</span><span class="p">(</span><span class="s1">&#39;/public_html/path/to/folder/&#39;</span><span class="p">);</span>
 </pre></div>
@@ -784,13 +783,13 @@ is correct. Try using <tt class="docutils literal"><span class="pre">list_files(
 
 <dl class="method">
 <dt id="CI_FTP::list_files">
-<tt class="descname">list_files</tt><big>(</big><span class="optional">[</span><em>$path = '.'</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_FTP::list_files" title="Permalink to this definition">¶</a></dt>
+<code class="descname">list_files</code><span class="sig-paren">(</span><span class="optional">[</span><em>$path = '.'</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_FTP::list_files" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$path</strong> (<em>string</em>) &#8211; Directory path</li>
+<li><strong>$path</strong> (<em>string</em>) – Directory path</li>
 </ul>
 </td>
 </tr>
@@ -812,14 +811,14 @@ array. You must supply the path to the desired directory.</p>
 
 <dl class="method">
 <dt id="CI_FTP::mirror">
-<tt class="descname">mirror</tt><big>(</big><em>$locpath</em>, <em>$rempath</em><big>)</big><a class="headerlink" href="#CI_FTP::mirror" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mirror</code><span class="sig-paren">(</span><em>$locpath</em>, <em>$rempath</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_FTP::mirror" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$locpath</strong> (<em>string</em>) &#8211; Local path</li>
-<li><strong>$rempath</strong> (<em>string</em>) &#8211; Remote path</li>
+<li><strong>$locpath</strong> (<em>string</em>) – Local path</li>
+<li><strong>$rempath</strong> (<em>string</em>) – Remote path</li>
 </ul>
 </td>
 </tr>
@@ -842,14 +841,14 @@ server. You must supply a source path and a destination path:</p>
 
 <dl class="method">
 <dt id="CI_FTP::mkdir">
-<tt class="descname">mkdir</tt><big>(</big><em>$path</em><span class="optional">[</span>, <em>$permissions = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_FTP::mkdir" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mkdir</code><span class="sig-paren">(</span><em>$path</em><span class="optional">[</span>, <em>$permissions = NULL</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_FTP::mkdir" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$path</strong> (<em>string</em>) &#8211; Path to directory to create</li>
-<li><strong>$permissions</strong> (<em>int</em>) &#8211; Permissions (octal)</li>
+<li><strong>$path</strong> (<em>string</em>) – Path to directory to create</li>
+<li><strong>$permissions</strong> (<em>int</em>) – Permissions (octal)</li>
 </ul>
 </td>
 </tr>
@@ -872,14 +871,14 @@ the folder name you wish to create, with a trailing slash.</p>
 
 <dl class="method">
 <dt id="CI_FTP::chmod">
-<tt class="descname">chmod</tt><big>(</big><em>$path</em>, <em>$perm</em><big>)</big><a class="headerlink" href="#CI_FTP::chmod" title="Permalink to this definition">¶</a></dt>
+<code class="descname">chmod</code><span class="sig-paren">(</span><em>$path</em>, <em>$perm</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_FTP::chmod" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$path</strong> (<em>string</em>) &#8211; Path to alter permissions for</li>
-<li><strong>$perm</strong> (<em>int</em>) &#8211; Permissions (octal)</li>
+<li><strong>$path</strong> (<em>string</em>) – Path to alter permissions for</li>
+<li><strong>$perm</strong> (<em>int</em>) – Permissions (octal)</li>
 </ul>
 </td>
 </tr>
@@ -901,14 +900,14 @@ directory you wish to alter permissions on:</p>
 
 <dl class="method">
 <dt id="CI_FTP::changedir">
-<tt class="descname">changedir</tt><big>(</big><em>$path</em><span class="optional">[</span>, <em>$suppress_debug = FALSE</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_FTP::changedir" title="Permalink to this definition">¶</a></dt>
+<code class="descname">changedir</code><span class="sig-paren">(</span><em>$path</em><span class="optional">[</span>, <em>$suppress_debug = FALSE</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_FTP::changedir" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$path</strong> (<em>string</em>) &#8211; Directory path</li>
-<li><strong>$suppress_debug</strong> (<em>bool</em>) &#8211; Whether to turn off debug messages for this command</li>
+<li><strong>$path</strong> (<em>string</em>) – Directory path</li>
+<li><strong>$suppress_debug</strong> (<em>bool</em>) – Whether to turn off debug messages for this command</li>
 </ul>
 </td>
 </tr>
@@ -921,13 +920,13 @@ directory you wish to alter permissions on:</p>
 </tbody>
 </table>
 <p>Changes the current working directory to the specified path.</p>
-<p>The <tt class="docutils literal"><span class="pre">$suppress_debug</span></tt> parameter is useful in case you want to use this method
-as an <tt class="docutils literal"><span class="pre">is_dir()</span></tt> alternative for FTP.</p>
+<p>The <code class="docutils literal"><span class="pre">$suppress_debug</span></code> parameter is useful in case you want to use this method
+as an <code class="docutils literal"><span class="pre">is_dir()</span></code> alternative for FTP.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="CI_FTP::close">
-<tt class="descname">close</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_FTP::close" title="Permalink to this definition">¶</a></dt>
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_FTP::close" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -938,7 +937,7 @@ as an <tt class="docutils literal"><span class="pre">is_dir()</span></tt> altern
 </tr>
 </tbody>
 </table>
-<p>Closes the connection to your server. It&#8217;s recommended that you use this
+<p>Closes the connection to your server. It’s recommended that you use this
 when you are finished uploading.</p>
 </dd></dl>
 
@@ -966,7 +965,7 @@ when you are finished uploading.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -987,7 +986,7 @@ when you are finished uploading.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

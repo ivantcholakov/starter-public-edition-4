@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Zip Encoding Class &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Zip Encoding Class &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Libraries" href="index.html"/>
         <link rel="next" title="Database Reference" href="../database/index.html"/>
         <link rel="prev" title="XML-RPC and XML-RPC Server Classes" href="xmlrpc.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -151,7 +152,7 @@
 <li class="toctree-l2"><a class="reference internal" href="uri.html">URI Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user_agent.html">User Agent Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xmlrpc.html">XML-RPC and XML-RPC Server Classes</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Zip Encoding Class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Zip Encoding Class</a></li>
 </ul>
 </li>
 </ul>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -337,7 +336,7 @@
 <li class="toctree-l2"><a class="reference internal" href="uri.html">URI Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user_agent.html">User Agent Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xmlrpc.html">XML-RPC and XML-RPC Server Classes</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Zip Encoding Class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Zip Encoding Class</a></li>
 </ul>
 </li>
 </ul>
@@ -425,7 +424,7 @@
             
   <div class="section" id="zip-encoding-class">
 <h1>Zip Encoding Class<a class="headerlink" href="#zip-encoding-class" title="Permalink to this headline">¶</a></h1>
-<p>CodeIgniter&#8217;s Zip Encoding Class permits you to create Zip archives.
+<p>CodeIgniter’s Zip Encoding Class permits you to create Zip archives.
 Archives can be downloaded to your desktop or saved to a directory.</p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
@@ -473,10 +472,10 @@ your server, and download it to your desktop.</p>
 <h2><a class="toc-backref" href="#id4">Class Reference</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="CI_Zip">
-<em class="property">class </em><tt class="descname">CI_Zip</tt><a class="headerlink" href="#CI_Zip" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">CI_Zip</code><a class="headerlink" href="#CI_Zip" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt>
-<tt class="descname">$compression_level = 2</tt></dt>
+<code class="descname">$compression_level = 2</code></dt>
 <dd><p>The compression level to use.</p>
 <p>It can range from 0 to 9, with 9 being the highest and 0 effectively disabling compression:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">compression_level</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -486,14 +485,14 @@ your server, and download it to your desktop.</p>
 
 <dl class="method">
 <dt id="CI_Zip::add_data">
-<tt class="descname">add_data</tt><big>(</big><em>$filepath</em><span class="optional">[</span>, <em>$data = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Zip::add_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_data</code><span class="sig-paren">(</span><em>$filepath</em><span class="optional">[</span>, <em>$data = NULL</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Zip::add_data" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$filepath</strong> (<em>mixed</em>) &#8211; A single file path or an array of file =&gt; data pairs</li>
-<li><strong>$data</strong> (<em>array</em>) &#8211; File contents (ignored if $filepath is an array)</li>
+<li><strong>$filepath</strong> (<em>mixed</em>) – A single file path or an array of file =&gt; data pairs</li>
+<li><strong>$data</strong> (<em>array</em>) – File contents (ignored if $filepath is an array)</li>
 </ul>
 </td>
 </tr>
@@ -537,13 +536,13 @@ the path as part of the filename(s):</p>
 
 <dl class="method">
 <dt id="CI_Zip::add_dir">
-<tt class="descname">add_dir</tt><big>(</big><em>$directory</em><big>)</big><a class="headerlink" href="#CI_Zip::add_dir" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_dir</code><span class="sig-paren">(</span><em>$directory</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Zip::add_dir" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$directory</strong> (<em>mixed</em>) &#8211; Directory name string or an array of multiple directories</li>
+<li><strong>$directory</strong> (<em>mixed</em>) – Directory name string or an array of multiple directories</li>
 </ul>
 </td>
 </tr>
@@ -553,7 +552,7 @@ the path as part of the filename(s):</p>
 </tbody>
 </table>
 <p>Permits you to add a directory. Usually this method is unnecessary since you can place
-your data into directories when using <tt class="docutils literal"><span class="pre">$this-&gt;zip-&gt;add_data()</span></tt>, but if you would like
+your data into directories when using <code class="docutils literal"><span class="pre">$this-&gt;zip-&gt;add_data()</span></code>, but if you would like
 to create an empty directory you can do so:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">add_dir</span><span class="p">(</span><span class="s1">&#39;myfolder&#39;</span><span class="p">);</span> <span class="c1">// Creates a directory called &quot;myfolder&quot;</span>
 </pre></div>
@@ -562,14 +561,14 @@ to create an empty directory you can do so:</p>
 
 <dl class="method">
 <dt id="CI_Zip::read_file">
-<tt class="descname">read_file</tt><big>(</big><em>$path</em><span class="optional">[</span>, <em>$archive_filepath = FALSE</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Zip::read_file" title="Permalink to this definition">¶</a></dt>
+<code class="descname">read_file</code><span class="sig-paren">(</span><em>$path</em><span class="optional">[</span>, <em>$archive_filepath = FALSE</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Zip::read_file" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$path</strong> (<em>string</em>) &#8211; Path to file</li>
-<li><strong>$archive_filepath</strong> (<em>mixed</em>) &#8211; New file name/path (string) or (boolean) whether to maintain the original filepath</li>
+<li><strong>$path</strong> (<em>string</em>) – Path to file</li>
+<li><strong>$archive_filepath</strong> (<em>mixed</em>) – New file name/path (string) or (boolean) whether to maintain the original filepath</li>
 </ul>
 </td>
 </tr>
@@ -616,15 +615,15 @@ the file in it, pass TRUE (boolean) in the second parameter. Example:</p>
 
 <dl class="method">
 <dt id="CI_Zip::read_dir">
-<tt class="descname">read_dir</tt><big>(</big><em>$path</em><span class="optional">[</span>, <em>$preserve_filepath = TRUE</em><span class="optional">[</span>, <em>$root_path = NULL</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Zip::read_dir" title="Permalink to this definition">¶</a></dt>
+<code class="descname">read_dir</code><span class="sig-paren">(</span><em>$path</em><span class="optional">[</span>, <em>$preserve_filepath = TRUE</em><span class="optional">[</span>, <em>$root_path = NULL</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Zip::read_dir" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$path</strong> (<em>string</em>) &#8211; Path to directory</li>
-<li><strong>$preserve_filepath</strong> (<em>bool</em>) &#8211; Whether to maintain the original path</li>
-<li><strong>$root_path</strong> (<em>string</em>) &#8211; Part of the path to exclude from the archive directory</li>
+<li><strong>$path</strong> (<em>string</em>) – Path to directory</li>
+<li><strong>$preserve_filepath</strong> (<em>bool</em>) – Whether to maintain the original path</li>
+<li><strong>$root_path</strong> (<em>string</em>) – Part of the path to exclude from the archive directory</li>
 </ul>
 </td>
 </tr>
@@ -655,19 +654,19 @@ you can pass FALSE (boolean) in the second parameter. Example:</p>
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="o">-&gt;</span><span class="na">read_dir</span><span class="p">(</span><span class="nv">$path</span><span class="p">,</span> <span class="k">FALSE</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>This will create a ZIP with a directory named &#8220;directory&#8221; inside, then all sub-directories
+<p>This will create a ZIP with a directory named “directory” inside, then all sub-directories
 stored correctly inside that, but will not include the <em>/path/to/your</em> part of the path.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="CI_Zip::archive">
-<tt class="descname">archive</tt><big>(</big><em>$filepath</em><big>)</big><a class="headerlink" href="#CI_Zip::archive" title="Permalink to this definition">¶</a></dt>
+<code class="descname">archive</code><span class="sig-paren">(</span><em>$filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Zip::archive" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$filepath</strong> (<em>string</em>) &#8211; Path to target zip archive</li>
+<li><strong>$filepath</strong> (<em>string</em>) – Path to target zip archive</li>
 </ul>
 </td>
 </tr>
@@ -689,13 +688,13 @@ Example:</p>
 
 <dl class="method">
 <dt id="CI_Zip::download">
-<tt class="descname">download</tt><big>(</big><em>$filename = 'backup.zip'</em><big>)</big><a class="headerlink" href="#CI_Zip::download" title="Permalink to this definition">¶</a></dt>
+<code class="descname">download</code><span class="sig-paren">(</span><em>$filename = 'backup.zip'</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Zip::download" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$filename</strong> (<em>string</em>) &#8211; Archive file name</li>
+<li><strong>$filename</strong> (<em>string</em>) – Archive file name</li>
 </ul>
 </td>
 </tr>
@@ -719,7 +718,7 @@ download to happen and the file to be treated as binary.</p>
 
 <dl class="method">
 <dt id="CI_Zip::get_zip">
-<tt class="descname">get_zip</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Zip::get_zip" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_zip</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Zip::get_zip" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -744,7 +743,7 @@ want to do something unique with the data. Example:</p>
 
 <dl class="method">
 <dt id="CI_Zip::clear_data">
-<tt class="descname">clear_data</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Zip::clear_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">clear_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Zip::clear_data" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -753,7 +752,7 @@ want to do something unique with the data. Example:</p>
 </tr>
 </tbody>
 </table>
-<p>The Zip class caches your zip data so that it doesn&#8217;t need to recompile the Zip archive
+<p>The Zip class caches your zip data so that it doesn’t need to recompile the Zip archive
 for each method you use above. If, however, you need to create multiple Zip archives,
 each with different data, you can clear the cache between calls. Example:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$name</span> <span class="o">=</span> <span class="s1">&#39;my_bio.txt&#39;</span><span class="p">;</span>
@@ -796,7 +795,7 @@ each with different data, you can clear the cache between calls. Example:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -817,7 +816,7 @@ each with different data, you can clear the cache between calls. Example:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

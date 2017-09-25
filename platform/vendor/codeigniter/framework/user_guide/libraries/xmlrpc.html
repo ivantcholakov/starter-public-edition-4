@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>XML-RPC and XML-RPC Server Classes &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>XML-RPC and XML-RPC Server Classes &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Libraries" href="index.html"/>
         <link rel="next" title="Zip Encoding Class" href="zip.html"/>
         <link rel="prev" title="User Agent Class" href="user_agent.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -150,7 +151,7 @@
 <li class="toctree-l2"><a class="reference internal" href="unit_testing.html">Unit Testing Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uri.html">URI Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user_agent.html">User Agent Class</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">XML-RPC and XML-RPC Server Classes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">XML-RPC and XML-RPC Server Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="zip.html">Zip Encoding Class</a></li>
 </ul>
 </li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -336,7 +335,7 @@
 <li class="toctree-l2"><a class="reference internal" href="unit_testing.html">Unit Testing Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uri.html">URI Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user_agent.html">User Agent Class</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">XML-RPC and XML-RPC Server Classes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">XML-RPC and XML-RPC Server Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="zip.html">Zip Encoding Class</a></li>
 </ul>
 </li>
@@ -425,7 +424,7 @@
             
   <div class="section" id="xml-rpc-and-xml-rpc-server-classes">
 <h1>XML-RPC and XML-RPC Server Classes<a class="headerlink" href="#xml-rpc-and-xml-rpc-server-classes" title="Permalink to this headline">¶</a></h1>
-<p>CodeIgniter&#8217;s XML-RPC classes permit you to send requests to another
+<p>CodeIgniter’s XML-RPC classes permit you to send requests to another
 server, or set up your own XML-RPC server to receive requests.</p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
@@ -592,21 +591,21 @@ processing.</p>
 the Server allows. The allowed methods are on the left side of the
 array. When either of those are received, they will be mapped to the
 class and method on the right.</p>
-<p>The &#8216;object&#8217; key is a special key that you pass an instantiated class
+<p>The ‘object’ key is a special key that you pass an instantiated class
 object with, which is necessary when the method you are mapping to is
 not part of the CodeIgniter super object.</p>
 <p>In other words, if an XML-RPC Client sends a request for the new_post
 method, your server will load the My_blog class and call the new_entry
 function. If the request is for the update_post method, your server
-will load the My_blog class and call the <tt class="docutils literal"><span class="pre">update_entry()</span></tt> method.</p>
-<p>The function names in the above example are arbitrary. You&#8217;ll decide
+will load the My_blog class and call the <code class="docutils literal"><span class="pre">update_entry()</span></code> method.</p>
+<p>The function names in the above example are arbitrary. You’ll decide
 what they should be called on your server, or if you are using
-standardized APIs, like the Blogger or MetaWeblog API, you&#8217;ll use their
+standardized APIs, like the Blogger or MetaWeblog API, you’ll use their
 function names.</p>
 <p>There are two additional configuration keys you may make use of when
 initializing the server class: debug can be set to TRUE in order to
 enable debugging, and xss_clean may be set to FALSE to prevent sending
-data through the Security library&#8217;s <tt class="docutils literal"><span class="pre">xss_clean()</span></tt> method.</p>
+data through the Security library’s <code class="docutils literal"><span class="pre">xss_clean()</span></code> method.</p>
 </div>
 <div class="section" id="processing-server-requests">
 <h3><a class="toc-backref" href="#id10">Processing Server Requests</a><a class="headerlink" href="#processing-server-requests" title="Permalink to this headline">¶</a></h3>
@@ -629,7 +628,7 @@ contains the data sent by the XML-RPC Client. Using this object you will
 have access to the <em>request parameters</em> enabling you to process the
 request. When you are done you will send a Response back to the Client.</p>
 <p>Below is a real-world example, using the Blogger API. One of the methods
-in the Blogger API is <tt class="docutils literal"><span class="pre">getUserInfo()</span></tt>. Using this method, an XML-RPC
+in the Blogger API is <code class="docutils literal"><span class="pre">getUserInfo()</span></code>. Using this method, an XML-RPC
 Client can send the Server a username and password, in return the Server
 sends back information about that particular user (nickname, user ID,
 email address, etc.). Here is how the processing function might look:</p>
@@ -668,13 +667,13 @@ email address, etc.). Here is how the processing function might look:</p>
 </div>
 <div class="section" id="notes">
 <h4><a class="toc-backref" href="#id11">Notes:</a><a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h4>
-<p>The <tt class="docutils literal"><span class="pre">output_parameters()</span></tt> method retrieves an indexed array
+<p>The <code class="docutils literal"><span class="pre">output_parameters()</span></code> method retrieves an indexed array
 corresponding to the request parameters sent by the client. In the above
 example, the output parameters will be the username and password.</p>
 <p>If the username and password sent by the client were not valid, and
-error message is returned using <tt class="docutils literal"><span class="pre">send_error_message()</span></tt>.</p>
+error message is returned using <code class="docutils literal"><span class="pre">send_error_message()</span></code>.</p>
 <p>If the operation was successful, the client will be sent back a response
-array containing the user&#8217;s info.</p>
+array containing the user’s info.</p>
 </div>
 </div>
 <div class="section" id="formatting-a-response">
@@ -690,7 +689,7 @@ prototype is this:</p>
 <p>Responses, however, usually contain multiple pieces of information. In
 order to accomplish this we must put the response into its own array so
 that the primary array continues to contain a single piece of data.
-Here&#8217;s an example showing how this might be accomplished:</p>
+Here’s an example showing how this might be accomplished:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$response</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
         <span class="k">array</span><span class="p">(</span>
                 <span class="s1">&#39;first_name&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="s1">&#39;string&#39;</span><span class="p">),</span>
@@ -719,8 +718,8 @@ the error message.</p>
 </div>
 <div class="section" id="creating-your-own-client-and-server">
 <h3><a class="toc-backref" href="#id14">Creating Your Own Client and Server</a><a class="headerlink" href="#creating-your-own-client-and-server" title="Permalink to this headline">¶</a></h3>
-<p>To help you understand everything we&#8217;ve covered thus far, let&#8217;s create a
-couple controllers that act as XML-RPC Client and Server. You&#8217;ll use the
+<p>To help you understand everything we’ve covered thus far, let’s create a
+couple controllers that act as XML-RPC Client and Server. You’ll use the
 Client to send a request to the Server and receive a response.</p>
 <div class="section" id="the-client">
 <h4><a class="toc-backref" href="#id15">The Client</a><a class="headerlink" href="#the-client" title="Permalink to this headline">¶</a></h4>
@@ -761,8 +760,8 @@ folder:</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">In the above code we are using a &#8220;url helper&#8221;. You can find more
-information in the <a class="reference internal" href="../general/helpers.html"><em>Helpers Functions</em></a> page.</p>
+<p class="last">In the above code we are using a “url helper”. You can find more
+information in the <a class="reference internal" href="../general/helpers.html"><span class="doc">Helpers Functions</span></a> page.</p>
 </div>
 </div>
 <div class="section" id="the-server">
@@ -812,9 +811,9 @@ folder:</p>
 </div>
 <p>You should now see the message you sent to the server, and its response
 back to you.</p>
-<p>The client you created sends a message (&#8220;How&#8217;s is going?&#8221;) to the
-server, along with a request for the &#8220;Greetings&#8221; method. The Server
-receives the request and maps it to the <tt class="docutils literal"><span class="pre">process()</span></tt> method, where a
+<p>The client you created sends a message (“How’s is going?”) to the
+server, along with a request for the “Greetings” method. The Server
+receives the request and maps it to the <code class="docutils literal"><span class="pre">process()</span></code> method, where a
 response is sent back.</p>
 </div>
 </div>
@@ -870,16 +869,16 @@ seven types of values that you can send via XML-RPC:</p>
 <h2><a class="toc-backref" href="#id20">Class Reference</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="CI_Xmlrpc">
-<em class="property">class </em><tt class="descname">CI_Xmlrpc</tt><a class="headerlink" href="#CI_Xmlrpc" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">CI_Xmlrpc</code><a class="headerlink" href="#CI_Xmlrpc" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="CI_Xmlrpc::initialize">
-<tt class="descname">initialize</tt><big>(</big><span class="optional">[</span><em>$config = array()</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Xmlrpc::initialize" title="Permalink to this definition">¶</a></dt>
+<code class="descname">initialize</code><span class="sig-paren">(</span><span class="optional">[</span><em>$config = array()</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Xmlrpc::initialize" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$config</strong> (<em>array</em>) &#8211; Configuration data</li>
+<li><strong>$config</strong> (<em>array</em>) – Configuration data</li>
 </ul>
 </td>
 </tr>
@@ -893,16 +892,16 @@ seven types of values that you can send via XML-RPC:</p>
 
 <dl class="method">
 <dt id="CI_Xmlrpc::server">
-<tt class="descname">server</tt><big>(</big><em>$url</em><span class="optional">[</span>, <em>$port = 80</em><span class="optional">[</span>, <em>$proxy = FALSE</em><span class="optional">[</span>, <em>$proxy_port = 8080</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Xmlrpc::server" title="Permalink to this definition">¶</a></dt>
+<code class="descname">server</code><span class="sig-paren">(</span><em>$url</em><span class="optional">[</span>, <em>$port = 80</em><span class="optional">[</span>, <em>$proxy = FALSE</em><span class="optional">[</span>, <em>$proxy_port = 8080</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Xmlrpc::server" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$url</strong> (<em>string</em>) &#8211; XML-RPC server URL</li>
-<li><strong>$port</strong> (<em>int</em>) &#8211; Server port</li>
-<li><strong>$proxy</strong> (<em>string</em>) &#8211; Optional proxy</li>
-<li><strong>$proxy_port</strong> (<em>int</em>) &#8211; Proxy listening port</li>
+<li><strong>$url</strong> (<em>string</em>) – XML-RPC server URL</li>
+<li><strong>$port</strong> (<em>int</em>) – Server port</li>
+<li><strong>$proxy</strong> (<em>string</em>) – Optional proxy</li>
+<li><strong>$proxy_port</strong> (<em>int</em>) – Proxy listening port</li>
 </ul>
 </td>
 </tr>
@@ -923,13 +922,13 @@ seven types of values that you can send via XML-RPC:</p>
 
 <dl class="method">
 <dt id="CI_Xmlrpc::timeout">
-<tt class="descname">timeout</tt><big>(</big><em>$seconds = 5</em><big>)</big><a class="headerlink" href="#CI_Xmlrpc::timeout" title="Permalink to this definition">¶</a></dt>
+<code class="descname">timeout</code><span class="sig-paren">(</span><em>$seconds = 5</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Xmlrpc::timeout" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$seconds</strong> (<em>int</em>) &#8211; Timeout in seconds</li>
+<li><strong>$seconds</strong> (<em>int</em>) – Timeout in seconds</li>
 </ul>
 </td>
 </tr>
@@ -944,18 +943,18 @@ seven types of values that you can send via XML-RPC:</p>
 </div>
 <p>This timeout period will be used both for an initial connection to
 the remote server, as well as for getting a response from it.
-Make sure you set the timeout before calling <tt class="docutils literal"><span class="pre">send_request()</span></tt>.</p>
+Make sure you set the timeout before calling <code class="docutils literal"><span class="pre">send_request()</span></code>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="CI_Xmlrpc::method">
-<tt class="descname">method</tt><big>(</big><em>$function</em><big>)</big><a class="headerlink" href="#CI_Xmlrpc::method" title="Permalink to this definition">¶</a></dt>
+<code class="descname">method</code><span class="sig-paren">(</span><em>$function</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Xmlrpc::method" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$function</strong> (<em>string</em>) &#8211; Method name</li>
+<li><strong>$function</strong> (<em>string</em>) – Method name</li>
 </ul>
 </td>
 </tr>
@@ -973,13 +972,13 @@ Make sure you set the timeout before calling <tt class="docutils literal"><span 
 
 <dl class="method">
 <dt id="CI_Xmlrpc::request">
-<tt class="descname">request</tt><big>(</big><em>$incoming</em><big>)</big><a class="headerlink" href="#CI_Xmlrpc::request" title="Permalink to this definition">¶</a></dt>
+<code class="descname">request</code><span class="sig-paren">(</span><em>$incoming</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Xmlrpc::request" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$incoming</strong> (<em>array</em>) &#8211; Request data</li>
+<li><strong>$incoming</strong> (<em>array</em>) – Request data</li>
 </ul>
 </td>
 </tr>
@@ -997,7 +996,7 @@ Make sure you set the timeout before calling <tt class="docutils literal"><span 
 
 <dl class="method">
 <dt id="CI_Xmlrpc::send_request">
-<tt class="descname">send_request</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Xmlrpc::send_request" title="Permalink to this definition">¶</a></dt>
+<code class="descname">send_request</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Xmlrpc::send_request" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1013,7 +1012,7 @@ Make sure you set the timeout before calling <tt class="docutils literal"><span 
 
 <dl class="method">
 <dt id="CI_Xmlrpc::display_error">
-<tt class="descname">display_error</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Xmlrpc::display_error" title="Permalink to this definition">¶</a></dt>
+<code class="descname">display_error</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Xmlrpc::display_error" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1032,7 +1031,7 @@ Make sure you set the timeout before calling <tt class="docutils literal"><span 
 
 <dl class="method">
 <dt id="CI_Xmlrpc::display_response">
-<tt class="descname">display_response</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Xmlrpc::display_response" title="Permalink to this definition">¶</a></dt>
+<code class="descname">display_response</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Xmlrpc::display_response" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1051,14 +1050,14 @@ Make sure you set the timeout before calling <tt class="docutils literal"><span 
 
 <dl class="method">
 <dt id="CI_Xmlrpc::send_error_message">
-<tt class="descname">send_error_message</tt><big>(</big><em>$number</em>, <em>$message</em><big>)</big><a class="headerlink" href="#CI_Xmlrpc::send_error_message" title="Permalink to this definition">¶</a></dt>
+<code class="descname">send_error_message</code><span class="sig-paren">(</span><em>$number</em>, <em>$message</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Xmlrpc::send_error_message" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$number</strong> (<em>int</em>) &#8211; Error number</li>
-<li><strong>$message</strong> (<em>string</em>) &#8211; Error message</li>
+<li><strong>$number</strong> (<em>int</em>) – Error number</li>
+<li><strong>$message</strong> (<em>string</em>) – Error message</li>
 </ul>
 </td>
 </tr>
@@ -1101,7 +1100,7 @@ First parameter is the error number while the second parameter is the error mess
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -1122,7 +1121,7 @@ First parameter is the error number while the second parameter is the error mess
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

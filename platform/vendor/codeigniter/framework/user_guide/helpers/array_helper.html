@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Array Helper &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Array Helper &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Helpers" href="index.html"/>
         <link rel="next" title="CAPTCHA Helper" href="captcha_helper.html"/>
         <link rel="prev" title="Helpers" href="index.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -176,7 +177,7 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Helpers</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">Array Helper</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Array Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="captcha_helper.html">CAPTCHA Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cookie_helper.html">Cookie Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="date_helper.html">Date Helper</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -362,7 +361,7 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Helpers</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">Array Helper</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Array Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="captcha_helper.html">CAPTCHA Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cookie_helper.html">Cookie Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="date_helper.html">Date Helper</a></li>
@@ -445,15 +444,15 @@ arrays.</p>
 <p>The following functions are available:</p>
 <dl class="function">
 <dt id="element">
-<tt class="descname">element</tt><big>(</big><em>$item</em>, <em>$array</em><span class="optional">[</span>, <em>$default = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#element" title="Permalink to this definition">¶</a></dt>
+<code class="descname">element</code><span class="sig-paren">(</span><em>$item</em>, <em>$array</em><span class="optional">[</span>, <em>$default = NULL</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#element" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$item</strong> (<em>string</em>) &#8211; Item to fetch from the array</li>
-<li><strong>$array</strong> (<em>array</em>) &#8211; Input array</li>
-<li><strong>$default</strong> (<em>bool</em>) &#8211; What to return if the array isn&#8217;t valid</li>
+<li><strong>$item</strong> (<em>string</em>) – Item to fetch from the array</li>
+<li><strong>$array</strong> (<em>array</em>) – Input array</li>
+<li><strong>$default</strong> (<em>bool</em>) – What to return if the array isn’t valid</li>
 </ul>
 </td>
 </tr>
@@ -467,7 +466,7 @@ arrays.</p>
 </table>
 <p>Lets you fetch an item from an array. The function tests whether the
 array index is set and whether it has a value. If a value exists it is
-returned. If a value does not exist it returns NULL, or whatever you&#8217;ve
+returned. If a value does not exist it returns NULL, or whatever you’ve
 specified as the default value via the third parameter.</p>
 <p>Example:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
@@ -484,15 +483,15 @@ specified as the default value via the third parameter.</p>
 
 <dl class="function">
 <dt id="elements">
-<tt class="descname">elements</tt><big>(</big><em>$items</em>, <em>$array</em><span class="optional">[</span>, <em>$default = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#elements" title="Permalink to this definition">¶</a></dt>
+<code class="descname">elements</code><span class="sig-paren">(</span><em>$items</em>, <em>$array</em><span class="optional">[</span>, <em>$default = NULL</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#elements" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$item</strong> (<em>string</em>) &#8211; Item to fetch from the array</li>
-<li><strong>$array</strong> (<em>array</em>) &#8211; Input array</li>
-<li><strong>$default</strong> (<em>bool</em>) &#8211; What to return if the array isn&#8217;t valid</li>
+<li><strong>$item</strong> (<em>string</em>) – Item to fetch from the array</li>
+<li><strong>$array</strong> (<em>array</em>) – Input array</li>
+<li><strong>$default</strong> (<em>bool</em>) – What to return if the array isn’t valid</li>
 </ul>
 </td>
 </tr>
@@ -506,7 +505,7 @@ specified as the default value via the third parameter.</p>
 </table>
 <p>Lets you fetch a number of items from an array. The function tests
 whether each of the array indices is set. If an index does not exist it
-is set to NULL, or whatever you&#8217;ve specified as the default value via
+is set to NULL, or whatever you’ve specified as the default value via
 the third parameter.</p>
 <p>Example:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
@@ -539,7 +538,7 @@ the third parameter.</p>
 <span class="p">);</span>
 </pre></div>
 </div>
-<p>This is useful when sending the <tt class="docutils literal"><span class="pre">$_POST</span></tt> array to one of your Models.
+<p>This is useful when sending the <code class="docutils literal"><span class="pre">$_POST</span></code> array to one of your Models.
 This prevents users from sending additional POST data to be entered into
 your tables.</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">model</span><span class="p">(</span><span class="s1">&#39;post_model&#39;</span><span class="p">);</span>
@@ -554,13 +553,13 @@ updated.</p>
 
 <dl class="function">
 <dt id="random_element">
-<tt class="descname">random_element</tt><big>(</big><em>$array</em><big>)</big><a class="headerlink" href="#random_element" title="Permalink to this definition">¶</a></dt>
+<code class="descname">random_element</code><span class="sig-paren">(</span><em>$array</em><span class="sig-paren">)</span><a class="headerlink" href="#random_element" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$array</strong> (<em>array</em>) &#8211; Input array</li>
+<li><strong>$array</strong> (<em>array</em>) – Input array</li>
 </ul>
 </td>
 </tr>
@@ -610,7 +609,7 @@ updated.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -631,7 +630,7 @@ updated.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

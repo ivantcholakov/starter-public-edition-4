@@ -1293,41 +1293,6 @@
         ]
     },
     {
-        "name": "codeigniter/framework",
-        "version": "3.1.5",
-        "version_normalized": "3.1.5.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/bcit-ci/CodeIgniter.git",
-            "reference": "6c7a4266410070d30f8f6bcdf9c9e67f3d6478e3"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/bcit-ci/CodeIgniter/zipball/6c7a4266410070d30f8f6bcdf9c9e67f3d6478e3",
-            "reference": "6c7a4266410070d30f8f6bcdf9c9e67f3d6478e3",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.7"
-        },
-        "require-dev": {
-            "mikey179/vfsstream": "1.1.*",
-            "phpunit/phpunit": "4.* || 5.*"
-        },
-        "suggest": {
-            "paragonie/random_compat": "Provides better randomness in PHP 5.x"
-        },
-        "time": "2017-06-19T08:33:58+00:00",
-        "type": "project",
-        "installation-source": "dist",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "description": "The CodeIgniter framework",
-        "homepage": "https://codeigniter.com"
-    },
-    {
         "name": "guzzlehttp/guzzle",
         "version": "6.3.0",
         "version_normalized": "6.3.0.0",
@@ -2264,5 +2229,40 @@
             "thumbnail",
             "watermark"
         ]
+    },
+    {
+        "name": "codeigniter/framework",
+        "version": "3.1.6",
+        "version_normalized": "3.1.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/bcit-ci/CodeIgniter.git",
+            "reference": "7e4f63cd4b792e7dc2dc4b8b0183a6072a3f9462"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/bcit-ci/CodeIgniter/zipball/7e4f63cd4b792e7dc2dc4b8b0183a6072a3f9462",
+            "reference": "7e4f63cd4b792e7dc2dc4b8b0183a6072a3f9462",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.7"
+        },
+        "require-dev": {
+            "mikey179/vfsstream": "1.1.*",
+            "phpunit/phpunit": "4.* || 5.*"
+        },
+        "suggest": {
+            "paragonie/random_compat": "Provides better randomness in PHP 5.x"
+        },
+        "time": "2017-09-25T16:43:58+00:00",
+        "type": "project",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "The CodeIgniter framework",
+        "homepage": "https://codeigniter.com"
     }
 ]

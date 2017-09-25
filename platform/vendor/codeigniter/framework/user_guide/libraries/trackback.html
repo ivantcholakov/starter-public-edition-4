@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Trackback Class &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Trackback Class &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Libraries" href="index.html"/>
         <link rel="next" title="Typography Class" href="typography.html"/>
         <link rel="prev" title="HTML Table Class" href="table.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -145,7 +146,7 @@
 <li class="toctree-l2"><a class="reference internal" href="security.html">Security Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sessions.html">Session Library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="table.html">HTML Table Class</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Trackback Class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Trackback Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="typography.html">Typography Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unit_testing.html">Unit Testing Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uri.html">URI Class</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -331,7 +330,7 @@
 <li class="toctree-l2"><a class="reference internal" href="security.html">Security Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sessions.html">Session Library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="table.html">HTML Table Class</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Trackback Class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Trackback Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="typography.html">Typography Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unit_testing.html">Unit Testing Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uri.html">URI Class</a></li>
@@ -427,7 +426,7 @@
 <h1>Trackback Class<a class="headerlink" href="#trackback-class" title="Permalink to this headline">¶</a></h1>
 <p>The Trackback Class provides functions that enable you to send and
 receive Trackback data.</p>
-<p>If you are not familiar with Trackbacks you&#8217;ll find more information
+<p>If you are not familiar with Trackbacks you’ll find more information
 <a class="reference external" href="http://en.wikipedia.org/wiki/Trackback">here</a>.</p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
@@ -451,7 +450,7 @@ receive Trackback data.</p>
 <div class="section" id="initializing-the-class">
 <h3><a class="toc-backref" href="#id2">Initializing the Class</a><a class="headerlink" href="#initializing-the-class" title="Permalink to this headline">¶</a></h3>
 <p>Like most other classes in CodeIgniter, the Trackback class is
-initialized in your controller using the <tt class="docutils literal"><span class="pre">$this-&gt;load-&gt;library()</span></tt> method:</p>
+initialized in your controller using the <code class="docutils literal"><span class="pre">$this-&gt;load-&gt;library()</span></code> method:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">library</span><span class="p">(</span><span class="s1">&#39;trackback&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -508,8 +507,8 @@ or failure. If it fails, you can retrieve the error message using:</p>
 </div>
 <div class="section" id="receiving-trackbacks">
 <h3><a class="toc-backref" href="#id4">Receiving Trackbacks</a><a class="headerlink" href="#receiving-trackbacks" title="Permalink to this headline">¶</a></h3>
-<p>Before you can receive Trackbacks you must create a weblog. If you don&#8217;t
-have a blog yet there&#8217;s no point in continuing.</p>
+<p>Before you can receive Trackbacks you must create a weblog. If you don’t
+have a blog yet there’s no point in continuing.</p>
 <p>Receiving Trackbacks is a little more complex than sending them, only
 because you will need a database table in which to store them, and you
 will need to validate the incoming trackback data. You are encouraged to
@@ -523,10 +522,10 @@ validation is what takes most of the effort.</p>
 <h3><a class="toc-backref" href="#id5">Your Ping URL</a><a class="headerlink" href="#your-ping-url" title="Permalink to this headline">¶</a></h3>
 <p>In order to accept Trackbacks you must display a Trackback URL next to
 each one of your weblog entries. This will be the URL that people will
-use to send you Trackbacks (we will refer to this as your &#8220;Ping URL&#8221;).</p>
+use to send you Trackbacks (we will refer to this as your “Ping URL”).</p>
 <p>Your Ping URL must point to a controller function where your Trackback
 receiving code is located, and the URL must contain the ID number for
-each particular entry, so that when the Trackback is received you&#8217;ll be
+each particular entry, so that when the Trackback is received you’ll be
 able to associate it with a particular entry.</p>
 <p>For example, if your controller class is called Trackback, and the
 receiving function is called receive, your Ping URLs will look something
@@ -557,7 +556,7 @@ store them. Here is a basic prototype for such a table:</p>
 </div>
 <p>The Trackback specification only requires four pieces of information to
 be sent in a Trackback (url, title, excerpt, blog_name), but to make
-the data more useful we&#8217;ve added a few more fields in the above table
+the data more useful we’ve added a few more fields in the above table
 schema (date, IP address, etc.).</p>
 </div>
 <div class="section" id="processing-a-trackback">
@@ -608,7 +607,7 @@ using:</p>
 </pre></div>
 </div>
 <p>In our Trackback receiving code above, if the third segment is missing,
-we will issue an error. Without a valid entry ID, there&#8217;s no reason to
+we will issue an error. Without a valid entry ID, there’s no reason to
 continue.</p>
 <p>The $this-&gt;trackback-&gt;receive() function is simply a validation function
 that looks at the incoming data and makes sure it contains the four
@@ -638,28 +637,28 @@ encouraged to add.</p>
 <h2><a class="toc-backref" href="#id9">Class Reference</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="CI_Trackback">
-<em class="property">class </em><tt class="descname">CI_Trackback</tt><a class="headerlink" href="#CI_Trackback" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">CI_Trackback</code><a class="headerlink" href="#CI_Trackback" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt>
-<tt class="descname">$data = array('url' =&gt; '', 'title' =&gt; '', 'excerpt' =&gt; '', 'blog_name' =&gt; '', 'charset' =&gt; '')</tt></dt>
+<code class="descname">$data = array('url' =&gt; '', 'title' =&gt; '', 'excerpt' =&gt; '', 'blog_name' =&gt; '', 'charset' =&gt; '')</code></dt>
 <dd><p>Trackback data array.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt>
-<tt class="descname">$convert_ascii = TRUE</tt></dt>
+<code class="descname">$convert_ascii = TRUE</code></dt>
 <dd><p>Whether to convert high ASCII and MS Word characters to HTML entities.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="CI_Trackback::send">
-<tt class="descname">send</tt><big>(</big><em>$tb_data</em><big>)</big><a class="headerlink" href="#CI_Trackback::send" title="Permalink to this definition">¶</a></dt>
+<code class="descname">send</code><span class="sig-paren">(</span><em>$tb_data</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Trackback::send" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$tb_data</strong> (<em>array</em>) &#8211; Trackback data</li>
+<li><strong>$tb_data</strong> (<em>array</em>) – Trackback data</li>
 </ul>
 </td>
 </tr>
@@ -676,7 +675,7 @@ encouraged to add.</p>
 
 <dl class="method">
 <dt id="CI_Trackback::receive">
-<tt class="descname">receive</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Trackback::receive" title="Permalink to this definition">¶</a></dt>
+<code class="descname">receive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Trackback::receive" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -688,18 +687,18 @@ encouraged to add.</p>
 </tbody>
 </table>
 <p>This method simply validates the incoming TB data, returning TRUE on success and FALSE on failure.
-If the data is valid it is set to the <tt class="docutils literal"><span class="pre">$this-&gt;data</span></tt> array so that it can be inserted into a database.</p>
+If the data is valid it is set to the <code class="docutils literal"><span class="pre">$this-&gt;data</span></code> array so that it can be inserted into a database.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="CI_Trackback::send_error">
-<tt class="descname">send_error</tt><big>(</big><span class="optional">[</span><em>$message = 'Incomplete information'</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Trackback::send_error" title="Permalink to this definition">¶</a></dt>
+<code class="descname">send_error</code><span class="sig-paren">(</span><span class="optional">[</span><em>$message = 'Incomplete information'</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Trackback::send_error" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$message</strong> (<em>string</em>) &#8211; Error message</li>
+<li><strong>$message</strong> (<em>string</em>) – Error message</li>
 </ul>
 </td>
 </tr>
@@ -717,7 +716,7 @@ If the data is valid it is set to the <tt class="docutils literal"><span class="
 
 <dl class="method">
 <dt id="CI_Trackback::send_success">
-<tt class="descname">send_success</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Trackback::send_success" title="Permalink to this definition">¶</a></dt>
+<code class="descname">send_success</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Trackback::send_success" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -735,13 +734,13 @@ If the data is valid it is set to the <tt class="docutils literal"><span class="
 
 <dl class="method">
 <dt id="CI_Trackback::data">
-<tt class="descname">data</tt><big>(</big><em>$item</em><big>)</big><a class="headerlink" href="#CI_Trackback::data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">data</code><span class="sig-paren">(</span><em>$item</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Trackback::data" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$item</strong> (<em>string</em>) &#8211; Data key</li>
+<li><strong>$item</strong> (<em>string</em>) – Data key</li>
 </ul>
 </td>
 </tr>
@@ -758,14 +757,14 @@ If the data is valid it is set to the <tt class="docutils literal"><span class="
 
 <dl class="method">
 <dt id="CI_Trackback::process">
-<tt class="descname">process</tt><big>(</big><em>$url</em>, <em>$data</em><big>)</big><a class="headerlink" href="#CI_Trackback::process" title="Permalink to this definition">¶</a></dt>
+<code class="descname">process</code><span class="sig-paren">(</span><em>$url</em>, <em>$data</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Trackback::process" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$url</strong> (<em>string</em>) &#8211; Target url</li>
-<li><strong>$data</strong> (<em>string</em>) &#8211; Raw POST data</li>
+<li><strong>$url</strong> (<em>string</em>) – Target url</li>
+<li><strong>$data</strong> (<em>string</em>) – Raw POST data</li>
 </ul>
 </td>
 </tr>
@@ -782,13 +781,13 @@ If the data is valid it is set to the <tt class="docutils literal"><span class="
 
 <dl class="method">
 <dt id="CI_Trackback::extract_urls">
-<tt class="descname">extract_urls</tt><big>(</big><em>$urls</em><big>)</big><a class="headerlink" href="#CI_Trackback::extract_urls" title="Permalink to this definition">¶</a></dt>
+<code class="descname">extract_urls</code><span class="sig-paren">(</span><em>$urls</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Trackback::extract_urls" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$urls</strong> (<em>string</em>) &#8211; Comma-separated URL list</li>
+<li><strong>$urls</strong> (<em>string</em>) – Comma-separated URL list</li>
 </ul>
 </td>
 </tr>
@@ -805,13 +804,13 @@ If the data is valid it is set to the <tt class="docutils literal"><span class="
 
 <dl class="method">
 <dt id="CI_Trackback::validate_url">
-<tt class="descname">validate_url</tt><big>(</big><em>&amp;$url</em><big>)</big><a class="headerlink" href="#CI_Trackback::validate_url" title="Permalink to this definition">¶</a></dt>
+<code class="descname">validate_url</code><span class="sig-paren">(</span><em>&amp;$url</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Trackback::validate_url" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$url</strong> (<em>string</em>) &#8211; Trackback URL</li>
+<li><strong>$url</strong> (<em>string</em>) – Trackback URL</li>
 </ul>
 </td>
 </tr>
@@ -820,18 +819,18 @@ If the data is valid it is set to the <tt class="docutils literal"><span class="
 </tr>
 </tbody>
 </table>
-<p>Simply adds the <em>http://</em> prefix it it&#8217;s not already present in the URL.</p>
+<p>Simply adds the <em>http://</em> prefix it it’s not already present in the URL.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="CI_Trackback::get_id">
-<tt class="descname">get_id</tt><big>(</big><em>$url</em><big>)</big><a class="headerlink" href="#CI_Trackback::get_id" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_id</code><span class="sig-paren">(</span><em>$url</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Trackback::get_id" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$url</strong> (<em>string</em>) &#8211; Trackback URL</li>
+<li><strong>$url</strong> (<em>string</em>) – Trackback URL</li>
 </ul>
 </td>
 </tr>
@@ -843,18 +842,18 @@ If the data is valid it is set to the <tt class="docutils literal"><span class="
 </tr>
 </tbody>
 </table>
-<p>Find and return a trackback URL&#8217;s ID or FALSE on failure.</p>
+<p>Find and return a trackback URL’s ID or FALSE on failure.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="CI_Trackback::convert_xml">
-<tt class="descname">convert_xml</tt><big>(</big><em>$str</em><big>)</big><a class="headerlink" href="#CI_Trackback::convert_xml" title="Permalink to this definition">¶</a></dt>
+<code class="descname">convert_xml</code><span class="sig-paren">(</span><em>$str</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Trackback::convert_xml" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
+<li><strong>$str</strong> (<em>string</em>) – Input string</li>
 </ul>
 </td>
 </tr>
@@ -871,15 +870,15 @@ If the data is valid it is set to the <tt class="docutils literal"><span class="
 
 <dl class="method">
 <dt id="CI_Trackback::limit_characters">
-<tt class="descname">limit_characters</tt><big>(</big><em>$str</em><span class="optional">[</span>, <em>$n = 500</em><span class="optional">[</span>, <em>$end_char = '&amp;#8230;'</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Trackback::limit_characters" title="Permalink to this definition">¶</a></dt>
+<code class="descname">limit_characters</code><span class="sig-paren">(</span><em>$str</em><span class="optional">[</span>, <em>$n = 500</em><span class="optional">[</span>, <em>$end_char = '&amp;#8230;'</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Trackback::limit_characters" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
-<li><strong>$n</strong> (<em>int</em>) &#8211; Max characters number</li>
-<li><strong>$end_char</strong> (<em>string</em>) &#8211; Character to put at end of string</li>
+<li><strong>$str</strong> (<em>string</em>) – Input string</li>
+<li><strong>$n</strong> (<em>int</em>) – Max characters number</li>
+<li><strong>$end_char</strong> (<em>string</em>) – Character to put at end of string</li>
 </ul>
 </td>
 </tr>
@@ -896,13 +895,13 @@ If the data is valid it is set to the <tt class="docutils literal"><span class="
 
 <dl class="method">
 <dt id="CI_Trackback::convert_ascii">
-<tt class="descname">convert_ascii</tt><big>(</big><em>$str</em><big>)</big><a class="headerlink" href="#CI_Trackback::convert_ascii" title="Permalink to this definition">¶</a></dt>
+<code class="descname">convert_ascii</code><span class="sig-paren">(</span><em>$str</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Trackback::convert_ascii" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
+<li><strong>$str</strong> (<em>string</em>) – Input string</li>
 </ul>
 </td>
 </tr>
@@ -919,13 +918,13 @@ If the data is valid it is set to the <tt class="docutils literal"><span class="
 
 <dl class="method">
 <dt id="CI_Trackback::set_error">
-<tt class="descname">set_error</tt><big>(</big><em>$msg</em><big>)</big><a class="headerlink" href="#CI_Trackback::set_error" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_error</code><span class="sig-paren">(</span><em>$msg</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Trackback::set_error" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$msg</strong> (<em>string</em>) &#8211; Error message</li>
+<li><strong>$msg</strong> (<em>string</em>) – Error message</li>
 </ul>
 </td>
 </tr>
@@ -939,14 +938,14 @@ If the data is valid it is set to the <tt class="docutils literal"><span class="
 
 <dl class="method">
 <dt id="CI_Trackback::display_errors">
-<tt class="descname">display_errors</tt><big>(</big><span class="optional">[</span><em>$open = '&lt;p&gt;'</em><span class="optional">[</span>, <em>$close = '&lt;/p&gt;'</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Trackback::display_errors" title="Permalink to this definition">¶</a></dt>
+<code class="descname">display_errors</code><span class="sig-paren">(</span><span class="optional">[</span><em>$open = '&lt;p&gt;'</em><span class="optional">[</span>, <em>$close = '&lt;/p&gt;'</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Trackback::display_errors" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$open</strong> (<em>string</em>) &#8211; Open tag</li>
-<li><strong>$close</strong> (<em>string</em>) &#8211; Close tag</li>
+<li><strong>$open</strong> (<em>string</em>) – Open tag</li>
+<li><strong>$close</strong> (<em>string</em>) – Close tag</li>
 </ul>
 </td>
 </tr>
@@ -985,7 +984,7 @@ If the data is valid it is set to the <tt class="docutils literal"><span class="
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -1006,7 +1005,7 @@ If the data is valid it is set to the <tt class="docutils literal"><span class="
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

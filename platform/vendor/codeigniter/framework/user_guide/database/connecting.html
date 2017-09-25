@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Connecting to your Database &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Connecting to your Database &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Database Reference" href="index.html"/>
         <link rel="next" title="Queries" href="queries.html"/>
         <link rel="prev" title="Database Configuration" href="configuration.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -159,7 +160,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Database Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="examples.html">Quick Start: Usage Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configuration.html">Database Configuration</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Connecting to a Database</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Connecting to a Database</a></li>
 <li class="toctree-l2"><a class="reference internal" href="queries.html">Running Queries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="results.html">Generating Query Results</a></li>
 <li class="toctree-l2"><a class="reference internal" href="helpers.html">Query Helper Functions</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -345,7 +344,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Database Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="examples.html">Quick Start: Usage Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configuration.html">Database Configuration</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Connecting to a Database</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Connecting to a Database</a></li>
 <li class="toctree-l2"><a class="reference internal" href="queries.html">Running Queries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="results.html">Generating Query Results</a></li>
 <li class="toctree-l2"><a class="reference internal" href="helpers.html">Query Helper Functions</a></li>
@@ -428,8 +427,8 @@
 <p>There are two ways to connect to a database:</p>
 <div class="section" id="automatically-connecting">
 <h2>Automatically Connecting<a class="headerlink" href="#automatically-connecting" title="Permalink to this headline">¶</a></h2>
-<p>The &#8220;auto connect&#8221; feature will load and instantiate the database class
-with every page load. To enable &#8220;auto connecting&#8221;, add the word database
+<p>The “auto connect” feature will load and instantiate the database class
+with every page load. To enable “auto connecting”, add the word database
 to the library array, as indicated in the following file:</p>
 <p>application/config/autoload.php</p>
 </div>
@@ -485,15 +484,15 @@ values:</p>
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">database</span><span class="p">(</span><span class="nv">$config</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>For information on each of these values please see the <a class="reference internal" href="configuration.html"><em>configuration
-page</em></a>.</p>
+<p>For information on each of these values please see the <a class="reference internal" href="configuration.html"><span class="doc">configuration
+page</span></a>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>For the PDO driver, you should use the $config[&#8216;dsn&#8217;] setting
-instead of &#8216;hostname&#8217; and &#8216;database&#8217;:</p>
+<p>For the PDO driver, you should use the $config[‘dsn’] setting
+instead of ‘hostname’ and ‘database’:</p>
 <div class="last line-block">
 <div class="line"><br /></div>
-<div class="line">$config[&#8216;dsn&#8217;] = &#8216;mysql:host=localhost;dbname=mydatabase&#8217;;</div>
+<div class="line">$config[‘dsn’] = ‘mysql:host=localhost;dbname=mydatabase’;</div>
 </div>
 </div>
 <p>Or you can submit your database values as a Data Source Name. DSNs must
@@ -518,7 +517,7 @@ do so as follows:</p>
 <span class="nv">$DB2</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">database</span><span class="p">(</span><span class="s1">&#39;group_two&#39;</span><span class="p">,</span> <span class="k">TRUE</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Note: Change the words &#8220;group_one&#8221; and &#8220;group_two&#8221; to the specific
+<p>Note: Change the words “group_one” and “group_two” to the specific
 group names you are connecting to (or you can pass the connection values
 as indicated above).</p>
 <p>By setting the second parameter to TRUE (boolean) the function will
@@ -532,18 +531,18 @@ words, rather than issuing commands with:</p>
 <div class="line"><br /></div>
 <div class="line">$this-&gt;db-&gt;query();</div>
 <div class="line">$this-&gt;db-&gt;result();</div>
-<div class="line">etc...</div>
+<div class="line">etc…</div>
 <div class="line"><br /></div>
 <div class="line">You will instead use:</div>
 <div class="line"><br /></div>
 <div class="line">$DB1-&gt;query();</div>
 <div class="line">$DB1-&gt;result();</div>
-<div class="line">etc...</div>
+<div class="line">etc…</div>
 </div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>You don&#8217;t need to create separate database configurations if you
+<p>You don’t need to create separate database configurations if you
 only need to use a different database on the same connection. You
 can switch to a different database when you need to, like this:</p>
 <div class="last line-block">
@@ -553,7 +552,7 @@ can switch to a different database when you need to, like this:</p>
 </div>
 <div class="section" id="reconnecting-keeping-the-connection-alive">
 <h2>Reconnecting / Keeping the Connection Alive<a class="headerlink" href="#reconnecting-keeping-the-connection-alive" title="Permalink to this headline">¶</a></h2>
-<p>If the database server&#8217;s idle timeout is exceeded while you&#8217;re doing
+<p>If the database server’s idle timeout is exceeded while you’re doing
 some heavy PHP lifting (processing an image, for instance), you should
 consider pinging the server by using the reconnect() method before
 sending further queries, which can gracefully keep the connection alive
@@ -591,7 +590,7 @@ connections, you can explicitly close the connection.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -612,7 +611,7 @@ connections, you can explicitly close the connection.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

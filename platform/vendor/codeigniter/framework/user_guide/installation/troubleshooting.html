@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Troubleshooting &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Troubleshooting &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,9 +30,12 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Installation Instructions" href="index.html"/>
-        <link rel="next" title="General Topics" href="../general/index.html"/>
+        <link rel="next" title="CodeIgniter Overview" href="../overview/index.html"/>
         <link rel="prev" title="Upgrading From Beta 1.0 to Beta 1.1" href="upgrade_b11.html"/> 
 
   
@@ -49,16 +52,14 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation Instructions</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="downloads.html">Downloading CodeIgniter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html">Installation Instructions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrading.html">Upgrading From a Previous Version</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Troubleshooting</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Troubleshooting</a></li>
 </ul>
 </li>
 </ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -235,16 +236,14 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation Instructions</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="downloads.html">Downloading CodeIgniter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html">Installation Instructions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrading.html">Upgrading From a Previous Version</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Troubleshooting</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Troubleshooting</a></li>
 </ul>
 </li>
 </ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -430,8 +429,8 @@ page is loading, it might be that your server does not support the
 REQUEST_URI variable needed to serve search-engine friendly URLs. As a
 first step, open your <em>application/config/config.php</em> file and look for
 the URI Protocol information. It will recommend that you try a couple
-alternate settings. If it still doesn&#8217;t work after you&#8217;ve tried this
-you&#8217;ll need to force CodeIgniter to add a question mark to your URLs. To
+alternate settings. If it still doesn’t work after you’ve tried this
+you’ll need to force CodeIgniter to add a question mark to your URLs. To
 do this open your <em>application/config/config.php</em> file and change this:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;index_page&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;index.php&quot;</span><span class="p">;</span>
 </pre></div>
@@ -448,7 +447,7 @@ do this open your <em>application/config/config.php</em> file and change this:</
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../general/index.html" class="btn btn-neutral float-right" title="General Topics">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../overview/index.html" class="btn btn-neutral float-right" title="CodeIgniter Overview">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="upgrade_b11.html" class="btn btn-neutral" title="Upgrading From Beta 1.0 to Beta 1.1"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -461,7 +460,7 @@ do this open your <em>application/config/config.php</em> file and change this:</
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -482,7 +481,7 @@ do this open your <em>application/config/config.php</em> file and change this:</
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

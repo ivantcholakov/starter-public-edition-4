@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Helper Functions &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Helper Functions &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="General Topics" href="index.html"/>
         <link rel="next" title="Using CodeIgniter Libraries" href="libraries.html"/>
         <link rel="prev" title="Models" href="models.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -96,7 +97,7 @@
 <li class="toctree-l2"><a class="reference internal" href="reserved_names.html">Reserved Names</a></li>
 <li class="toctree-l2"><a class="reference internal" href="views.html">Views</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html">Models</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Helpers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Helpers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libraries.html">Using CodeIgniter Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="creating_libraries.html">Creating Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="drivers.html">Using CodeIgniter Drivers</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -282,7 +281,7 @@
 <li class="toctree-l2"><a class="reference internal" href="reserved_names.html">Reserved Names</a></li>
 <li class="toctree-l2"><a class="reference internal" href="views.html">Views</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html">Models</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Helpers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Helpers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libraries.html">Using CodeIgniter Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="creating_libraries.html">Creating Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="drivers.html">Using CodeIgniter Drivers</a></li>
@@ -437,8 +436,8 @@ helper function performs one specific task, with no dependence on other
 functions.</p>
 <p>CodeIgniter does not load Helper Files by default, so the first step in
 using a Helper is to load it. Once loaded, it becomes globally available
-in your <a class="reference internal" href="controllers.html"><em>controller</em></a> and
-<a class="reference internal" href="views.html"><em>views</em></a>.</p>
+in your <a class="reference internal" href="controllers.html"><span class="doc">controller</span></a> and
+<a class="reference internal" href="views.html"><span class="doc">views</span></a>.</p>
 <p>Helpers are typically stored in your <strong>system/helpers</strong>, or
 <strong>application/helpers directory</strong>. CodeIgniter will look first in your
 <strong>application/helpers directory</strong>. If the directory does not exist or the
@@ -451,14 +450,14 @@ global <em>system/helpers/</em> directory.</p>
 </pre></div>
 </div>
 <p>Where <strong>name</strong> is the file name of the helper, without the .php file
-extension or the &#8220;helper&#8221; part.</p>
+extension or the “helper” part.</p>
 <p>For example, to load the <strong>URL Helper</strong> file, which is named
 <strong>url_helper.php</strong>, you would do this:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">helper</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>A helper can be loaded anywhere within your controller methods (or
-even within your View files, although that&#8217;s not a good practice), as
+even within your View files, although that’s not a good practice), as
 long as you load it before you use it. You can load your helpers in your
 controller constructor so that they become available automatically in
 any function, or you can load a helper in a specific function that needs
@@ -466,7 +465,7 @@ it.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The Helper loading method above does not return a value, so
-don&#8217;t try to assign it to a variable. Just use it as shown.</p>
+don’t try to assign it to a variable. Just use it as shown.</p>
 </div>
 </div>
 <div class="section" id="loading-multiple-helpers">
@@ -488,33 +487,33 @@ file and adding the helper to the autoload array.</p>
 </div>
 <div class="section" id="using-a-helper">
 <h2>Using a Helper<a class="headerlink" href="#using-a-helper" title="Permalink to this headline">¶</a></h2>
-<p>Once you&#8217;ve loaded the Helper File containing the function you intend to
-use, you&#8217;ll call it the way you would a standard PHP function.</p>
-<p>For example, to create a link using the <tt class="docutils literal"><span class="pre">anchor()</span></tt> function in one of
+<p>Once you’ve loaded the Helper File containing the function you intend to
+use, you’ll call it the way you would a standard PHP function.</p>
+<p>For example, to create a link using the <code class="docutils literal"><span class="pre">anchor()</span></code> function in one of
 your view files you would do this:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nx">anchor</span><span class="p">(</span><span class="s1">&#39;blog/comments&#39;</span><span class="p">,</span> <span class="s1">&#39;Click Here&#39;</span><span class="p">);</span><span class="cp">?&gt;</span>
 </pre></div>
 </div>
-<p>Where &#8220;Click Here&#8221; is the name of the link, and &#8220;blog/comments&#8221; is the
+<p>Where “Click Here” is the name of the link, and “blog/comments” is the
 URI to the controller/method you wish to link to.</p>
 </div>
 <div class="section" id="extending-helpers">
-<h2>&#8220;Extending&#8221; Helpers<a class="headerlink" href="#extending-helpers" title="Permalink to this headline">¶</a></h2>
-<p>To &#8220;extend&#8221; Helpers, create a file in your <strong>application/helpers/</strong> folder
+<h2>“Extending” Helpers<a class="headerlink" href="#extending-helpers" title="Permalink to this headline">¶</a></h2>
+<p>To “extend” Helpers, create a file in your <strong>application/helpers/</strong> folder
 with an identical name to the existing Helper, but prefixed with <strong>MY_</strong>
 (this item is configurable. See below.).</p>
 <p>If all you need to do is add some functionality to an existing helper -
 perhaps add a function or two, or change how a particular helper
-function operates - then it&#8217;s overkill to replace the entire helper with
-your version. In this case it&#8217;s better to simply &#8220;extend&#8221; the Helper.</p>
+function operates - then it’s overkill to replace the entire helper with
+your version. In this case it’s better to simply “extend” the Helper.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The term &#8220;extend&#8221; is used loosely since Helper functions are
+<p class="last">The term “extend” is used loosely since Helper functions are
 procedural and discrete and cannot be extended in the traditional
 programmatic sense. Under the hood, this gives you the ability to
 add to or or to replace the functions a Helper provides.</p>
 </div>
-<p>For example, to extend the native <strong>Array Helper</strong> you&#8217;ll create a file
+<p>For example, to extend the native <strong>Array Helper</strong> you’ll create a file
 named <strong>application/helpers/MY_array_helper.php</strong>, and add or override
 functions:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="c1">// any_in_array() is not in the Array Helper, so it defines a new function</span>
@@ -543,7 +542,7 @@ functions:</p>
 </div>
 <div class="section" id="setting-your-own-prefix">
 <h3>Setting Your Own Prefix<a class="headerlink" href="#setting-your-own-prefix" title="Permalink to this headline">¶</a></h3>
-<p>The filename prefix for &#8220;extending&#8221; Helpers is the same used to extend
+<p>The filename prefix for “extending” Helpers is the same used to extend
 libraries and core classes. To set your own prefix, open your
 <strong>application/config/config.php</strong> file and look for this item:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;subclass_prefix&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;MY_&#39;</span><span class="p">;</span>
@@ -555,7 +554,7 @@ so DO NOT use that as your prefix.</p>
 </div>
 <div class="section" id="now-what">
 <h2>Now What?<a class="headerlink" href="#now-what" title="Permalink to this headline">¶</a></h2>
-<p>In the Table of Contents you&#8217;ll find a list of all the available Helper
+<p>In the Table of Contents you’ll find a list of all the available Helper
 Files. Browse each one to see what they do.</p>
 </div>
 </div>
@@ -579,7 +578,7 @@ Files. Browse each one to see what they do.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -600,7 +599,7 @@ Files. Browse each one to see what they do.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

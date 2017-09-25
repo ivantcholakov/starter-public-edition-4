@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Query Helper Methods &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Query Helper Methods &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Database Reference" href="index.html"/>
         <link rel="next" title="Query Builder Class" href="query_builder.html"/>
         <link rel="prev" title="Generating Query Results" href="results.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -162,7 +163,7 @@
 <li class="toctree-l2"><a class="reference internal" href="connecting.html">Connecting to a Database</a></li>
 <li class="toctree-l2"><a class="reference internal" href="queries.html">Running Queries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="results.html">Generating Query Results</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Query Helper Functions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Query Helper Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="query_builder.html">Query Builder Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="transactions.html">Transactions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metadata.html">Getting MetaData</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -348,7 +347,7 @@
 <li class="toctree-l2"><a class="reference internal" href="connecting.html">Connecting to a Database</a></li>
 <li class="toctree-l2"><a class="reference internal" href="queries.html">Running Queries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="results.html">Generating Query Results</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Query Helper Functions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Query Helper Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="query_builder.html">Query Builder Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="transactions.html">Transactions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metadata.html">Getting MetaData</a></li>
@@ -436,11 +435,11 @@ driver, this function requires a $name parameter, which specifies the
 appropriate sequence to check for the insert id.</p>
 </div>
 <p><strong>$this-&gt;db-&gt;affected_rows()</strong></p>
-<p>Displays the number of affected rows, when doing &#8220;write&#8221; type queries
+<p>Displays the number of affected rows, when doing “write” type queries
 (insert, update, etc.).</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">In MySQL &#8220;DELETE FROM TABLE&#8221; returns 0 affected rows. The database
+<p class="last">In MySQL “DELETE FROM TABLE” returns 0 affected rows. The database
 class has a small hack that allows it to return the correct number of
 affected rows. By default this hack is enabled but it can be turned off
 in the database driver file.</p>
@@ -471,7 +470,7 @@ Submit the table name in the first parameter. Example:</p>
 </div>
 <p><strong>$this-&gt;db-&gt;platform()</strong></p>
 <p>Outputs the database platform you are running (MySQL, MS SQL, Postgres,
-etc...):</p>
+etc…):</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">platform</span><span class="p">();</span>
 </pre></div>
 </div>
@@ -512,7 +511,7 @@ returns a correctly formatted SQL update string. Example:</p>
 </div>
 <p>The first parameter is the table name, the second is an associative
 array with the data to be updated, and the third parameter is the
-&#8220;where&#8221; clause. The above example produces:</p>
+“where” clause. The above example produces:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nx">UPDATE</span> <span class="nx">table_name</span> <span class="nx">SET</span> <span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;Rick&#39;</span><span class="p">,</span> <span class="nx">email</span> <span class="o">=</span> <span class="s1">&#39;rick@example.com&#39;</span><span class="p">,</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">&#39;example.com&#39;</span> <span class="nx">WHERE</span> <span class="nx">author_id</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">AND</span> <span class="nx">status</span> <span class="o">=</span> <span class="s1">&#39;active&#39;</span>
 </pre></div>
 </div>
@@ -542,7 +541,7 @@ array with the data to be updated, and the third parameter is the
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -563,7 +562,7 @@ array with the data to be updated, and the third parameter is the
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

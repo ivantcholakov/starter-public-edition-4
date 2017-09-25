@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>String Helper &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>String Helper &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Helpers" href="index.html"/>
         <link rel="next" title="Text Helper" href="text_helper.html"/>
         <link rel="prev" title="Smiley Helper" href="smiley_helper.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -192,7 +193,7 @@
 <li class="toctree-l2"><a class="reference internal" href="path_helper.html">Path Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="security_helper.html">Security Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="smiley_helper.html">Smiley Helper</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">String Helper</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">String Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="text_helper.html">Text Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="typography_helper.html">Typography Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="url_helper.html">URL Helper</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -378,7 +377,7 @@
 <li class="toctree-l2"><a class="reference internal" href="path_helper.html">Path Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="security_helper.html">Security Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="smiley_helper.html">Smiley Helper</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">String Helper</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">String Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="text_helper.html">Text Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="typography_helper.html">Typography Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="url_helper.html">URL Helper</a></li>
@@ -450,14 +449,14 @@ suitable to be used for any kind of security-related logic.</p>
 <p>The following functions are available:</p>
 <dl class="function">
 <dt id="random_string">
-<tt class="descname">random_string</tt><big>(</big><span class="optional">[</span><em>$type = 'alnum'</em><span class="optional">[</span>, <em>$len = 8</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#random_string" title="Permalink to this definition">¶</a></dt>
+<code class="descname">random_string</code><span class="sig-paren">(</span><span class="optional">[</span><em>$type = 'alnum'</em><span class="optional">[</span>, <em>$len = 8</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#random_string" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$type</strong> (<em>string</em>) &#8211; Randomization type</li>
-<li><strong>$len</strong> (<em>int</em>) &#8211; Output string length</li>
+<li><strong>$type</strong> (<em>string</em>) – Randomization type</li>
+<li><strong>$len</strong> (<em>int</em>) – Output string length</li>
 </ul>
 </td>
 </tr>
@@ -476,11 +475,11 @@ specifies the length. The following choices are available:</p>
 <ul class="simple">
 <li><strong>alpha</strong>: A string with lower and uppercase letters only.</li>
 <li><strong>alnum</strong>: Alpha-numeric string with lower and uppercase characters.</li>
-<li><strong>basic</strong>: A random number based on <tt class="docutils literal"><span class="pre">mt_rand()</span></tt>.</li>
+<li><strong>basic</strong>: A random number based on <code class="docutils literal"><span class="pre">mt_rand()</span></code>.</li>
 <li><strong>numeric</strong>: Numeric string.</li>
 <li><strong>nozero</strong>: Numeric string with no zeros.</li>
-<li><strong>md5</strong>: An encrypted random number based on <tt class="docutils literal"><span class="pre">md5()</span></tt> (fixed length of 32).</li>
-<li><strong>sha1</strong>: An encrypted random number based on <tt class="docutils literal"><span class="pre">sha1()</span></tt> (fixed length of 40).</li>
+<li><strong>md5</strong>: An encrypted random number based on <code class="docutils literal"><span class="pre">md5()</span></code> (fixed length of 32).</li>
+<li><strong>sha1</strong>: An encrypted random number based on <code class="docutils literal"><span class="pre">sha1()</span></code> (fixed length of 40).</li>
 </ul>
 <p>Usage example:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">echo</span> <span class="nx">random_string</span><span class="p">(</span><span class="s1">&#39;alnum&#39;</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
@@ -495,15 +494,15 @@ are just aliases for <em>md5</em> and <em>sha1</em> respectively.</p>
 
 <dl class="function">
 <dt id="increment_string">
-<tt class="descname">increment_string</tt><big>(</big><em>$str</em><span class="optional">[</span>, <em>$separator = '_'</em><span class="optional">[</span>, <em>$first = 1</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#increment_string" title="Permalink to this definition">¶</a></dt>
+<code class="descname">increment_string</code><span class="sig-paren">(</span><em>$str</em><span class="optional">[</span>, <em>$separator = '_'</em><span class="optional">[</span>, <em>$first = 1</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#increment_string" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
-<li><strong>$separator</strong> (<em>string</em>) &#8211; Separator to append a duplicate number with</li>
-<li><strong>$first</strong> (<em>int</em>) &#8211; Starting number</li>
+<li><strong>$str</strong> (<em>string</em>) – Input string</li>
+<li><strong>$separator</strong> (<em>string</em>) – Separator to append a duplicate number with</li>
+<li><strong>$first</strong> (<em>int</em>) – Starting number</li>
 </ul>
 </td>
 </tr>
@@ -516,7 +515,7 @@ are just aliases for <em>md5</em> and <em>sha1</em> respectively.</p>
 </tbody>
 </table>
 <p>Increments a string by appending a number to it or increasing the
-number. Useful for creating &#8220;copies&#8221; or a file or duplicating database
+number. Useful for creating “copies” or a file or duplicating database
 content which has unique titles or slugs.</p>
 <p>Usage example:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">echo</span> <span class="nx">increment_string</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">);</span> <span class="c1">// &quot;file_1&quot;</span>
@@ -528,13 +527,13 @@ content which has unique titles or slugs.</p>
 
 <dl class="function">
 <dt id="alternator">
-<tt class="descname">alternator</tt><big>(</big><em>$args</em><big>)</big><a class="headerlink" href="#alternator" title="Permalink to this definition">¶</a></dt>
+<code class="descname">alternator</code><span class="sig-paren">(</span><em>$args</em><span class="sig-paren">)</span><a class="headerlink" href="#alternator" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$args</strong> (<em>mixed</em>) &#8211; A variable number of arguments</li>
+<li><strong>$args</strong> (<em>mixed</em>) – A variable number of arguments</li>
 </ul>
 </td>
 </tr>
@@ -571,14 +570,14 @@ function with no arguments to re-initialize.</p>
 
 <dl class="function">
 <dt id="repeater">
-<tt class="descname">repeater</tt><big>(</big><em>$data</em><span class="optional">[</span>, <em>$num = 1</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#repeater" title="Permalink to this definition">¶</a></dt>
+<code class="descname">repeater</code><span class="sig-paren">(</span><em>$data</em><span class="optional">[</span>, <em>$num = 1</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#repeater" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$data</strong> (<em>string</em>) &#8211; Input</li>
-<li><strong>$num</strong> (<em>int</em>) &#8211; Number of times to repeat</li>
+<li><strong>$data</strong> (<em>string</em>) – Input</li>
+<li><strong>$num</strong> (<em>int</em>) – Number of times to repeat</li>
 </ul>
 </td>
 </tr>
@@ -598,20 +597,20 @@ function with no arguments to re-initialize.</p>
 <p>The above would generate 30 newlines.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This function is DEPRECATED. Use the native <tt class="docutils literal"><span class="pre">str_repeat()</span></tt>
+<p class="last">This function is DEPRECATED. Use the native <code class="docutils literal"><span class="pre">str_repeat()</span></code>
 instead.</p>
 </div>
 </dd></dl>
 
 <dl class="function">
 <dt id="reduce_double_slashes">
-<tt class="descname">reduce_double_slashes</tt><big>(</big><em>$str</em><big>)</big><a class="headerlink" href="#reduce_double_slashes" title="Permalink to this definition">¶</a></dt>
+<code class="descname">reduce_double_slashes</code><span class="sig-paren">(</span><em>$str</em><span class="sig-paren">)</span><a class="headerlink" href="#reduce_double_slashes" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
+<li><strong>$str</strong> (<em>string</em>) – Input string</li>
 </ul>
 </td>
 </tr>
@@ -634,13 +633,13 @@ found in URL protocol prefixes (e.g. http&amp;#58;//).</p>
 
 <dl class="function">
 <dt id="strip_slashes">
-<tt class="descname">strip_slashes</tt><big>(</big><em>$data</em><big>)</big><a class="headerlink" href="#strip_slashes" title="Permalink to this definition">¶</a></dt>
+<code class="descname">strip_slashes</code><span class="sig-paren">(</span><em>$data</em><span class="sig-paren">)</span><a class="headerlink" href="#strip_slashes" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$data</strong> (<em>mixed</em>) &#8211; Input string or an array of strings</li>
+<li><strong>$data</strong> (<em>mixed</em>) – Input string or an array of strings</li>
 </ul>
 </td>
 </tr>
@@ -673,19 +672,19 @@ found in URL protocol prefixes (e.g. http&amp;#58;//).</p>
 <p class="first admonition-title">Note</p>
 <p class="last">For historical reasons, this function will also accept
 and handle string inputs. This however makes it just an
-alias for <tt class="docutils literal"><span class="pre">stripslashes()</span></tt>.</p>
+alias for <code class="docutils literal"><span class="pre">stripslashes()</span></code>.</p>
 </div>
 </dd></dl>
 
 <dl class="function">
 <dt id="trim_slashes">
-<tt class="descname">trim_slashes</tt><big>(</big><em>$str</em><big>)</big><a class="headerlink" href="#trim_slashes" title="Permalink to this definition">¶</a></dt>
+<code class="descname">trim_slashes</code><span class="sig-paren">(</span><em>$str</em><span class="sig-paren">)</span><a class="headerlink" href="#trim_slashes" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
+<li><strong>$str</strong> (<em>string</em>) – Input string</li>
 </ul>
 </td>
 </tr>
@@ -704,23 +703,23 @@ alias for <tt class="docutils literal"><span class="pre">stripslashes()</span></
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This function is DEPRECATED. Use the native <tt class="docutils literal"><span class="pre">trim()</span></tt> instead:
+<p class="last">This function is DEPRECATED. Use the native <code class="docutils literal"><span class="pre">trim()</span></code> instead:
 |
-| trim($str, &#8216;/&#8217;);</p>
+| trim($str, ‘/’);</p>
 </div>
 </dd></dl>
 
 <dl class="function">
 <dt id="reduce_multiples">
-<tt class="descname">reduce_multiples</tt><big>(</big><em>$str</em><span class="optional">[</span>, <em>$character = ''</em><span class="optional">[</span>, <em>$trim = FALSE</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#reduce_multiples" title="Permalink to this definition">¶</a></dt>
+<code class="descname">reduce_multiples</code><span class="sig-paren">(</span><em>$str</em><span class="optional">[</span>, <em>$character = ''</em><span class="optional">[</span>, <em>$trim = FALSE</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#reduce_multiples" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Text to search in</li>
-<li><strong>$character</strong> (<em>string</em>) &#8211; Character to reduce</li>
-<li><strong>$trim</strong> (<em>bool</em>) &#8211; Whether to also trim the specified character</li>
+<li><strong>$str</strong> (<em>string</em>) – Text to search in</li>
+<li><strong>$character</strong> (<em>string</em>) – Character to reduce</li>
+<li><strong>$trim</strong> (<em>bool</em>) – Whether to also trim the specified character</li>
 </ul>
 </td>
 </tr>
@@ -748,13 +747,13 @@ character at the beginning and the end of the string. Example:</p>
 
 <dl class="function">
 <dt id="quotes_to_entities">
-<tt class="descname">quotes_to_entities</tt><big>(</big><em>$str</em><big>)</big><a class="headerlink" href="#quotes_to_entities" title="Permalink to this definition">¶</a></dt>
+<code class="descname">quotes_to_entities</code><span class="sig-paren">(</span><em>$str</em><span class="sig-paren">)</span><a class="headerlink" href="#quotes_to_entities" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
+<li><strong>$str</strong> (<em>string</em>) – Input string</li>
 </ul>
 </td>
 </tr>
@@ -776,13 +775,13 @@ entities. Example:</p>
 
 <dl class="function">
 <dt id="strip_quotes">
-<tt class="descname">strip_quotes</tt><big>(</big><em>$str</em><big>)</big><a class="headerlink" href="#strip_quotes" title="Permalink to this definition">¶</a></dt>
+<code class="descname">strip_quotes</code><span class="sig-paren">(</span><em>$str</em><span class="sig-paren">)</span><a class="headerlink" href="#strip_quotes" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$str</strong> (<em>string</em>) &#8211; Input string</li>
+<li><strong>$str</strong> (<em>string</em>) – Input string</li>
 </ul>
 </td>
 </tr>
@@ -823,7 +822,7 @@ entities. Example:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -844,7 +843,7 @@ entities. Example:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Download Helper &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Download Helper &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Helpers" href="index.html"/>
         <link rel="next" title="Email Helper" href="email_helper.html"/>
         <link rel="prev" title="Directory Helper" href="directory_helper.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -181,7 +182,7 @@
 <li class="toctree-l2"><a class="reference internal" href="cookie_helper.html">Cookie Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="date_helper.html">Date Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="directory_helper.html">Directory Helper</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Download Helper</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Download Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="email_helper.html">Email Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file_helper.html">File Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="form_helper.html">Form Helper</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -367,7 +366,7 @@
 <li class="toctree-l2"><a class="reference internal" href="cookie_helper.html">Cookie Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="date_helper.html">Date Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="directory_helper.html">Directory Helper</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Download Helper</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Download Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="email_helper.html">Email Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file_helper.html">File Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="form_helper.html">Form Helper</a></li>
@@ -444,15 +443,15 @@
 <p>The following functions are available:</p>
 <dl class="function">
 <dt id="force_download">
-<tt class="descname">force_download</tt><big>(</big><span class="optional">[</span><em>$filename = ''</em><span class="optional">[</span>, <em>$data = ''</em><span class="optional">[</span>, <em>$set_mime = FALSE</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#force_download" title="Permalink to this definition">¶</a></dt>
+<code class="descname">force_download</code><span class="sig-paren">(</span><span class="optional">[</span><em>$filename = ''</em><span class="optional">[</span>, <em>$data = ''</em><span class="optional">[</span>, <em>$set_mime = FALSE</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#force_download" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$filename</strong> (<em>string</em>) &#8211; Filename</li>
-<li><strong>$data</strong> (<em>mixed</em>) &#8211; File contents</li>
-<li><strong>$set_mime</strong> (<em>bool</em>) &#8211; Whether to try to send the actual MIME type</li>
+<li><strong>$filename</strong> (<em>string</em>) – Filename</li>
+<li><strong>$data</strong> (<em>mixed</em>) – File contents</li>
+<li><strong>$set_mime</strong> (<em>bool</em>) – Whether to try to send the actual MIME type</li>
 </ul>
 </td>
 </tr>
@@ -465,7 +464,7 @@
 desktop. Useful with file downloads. The first parameter is the <strong>name
 you want the downloaded file to be named</strong>, the second parameter is the
 file data.</p>
-<p>If you set the second parameter to NULL and <tt class="docutils literal"><span class="pre">$filename</span></tt> is an existing, readable
+<p>If you set the second parameter to NULL and <code class="docutils literal"><span class="pre">$filename</span></code> is an existing, readable
 file path, then its content will be read instead.</p>
 <p>If you set the third parameter to boolean TRUE, then the actual file MIME type
 (based on the filename extension) will be sent, so that if your browser has a
@@ -476,7 +475,7 @@ handler for that type - it can use it.</p>
 <span class="nx">force_download</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>If you want to download an existing file from your server you&#8217;ll need to
+<p>If you want to download an existing file from your server you’ll need to
 do the following:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="c1">// Contents of photo.jpg will be automatically read</span>
 <span class="nx">force_download</span><span class="p">(</span><span class="s1">&#39;/path/to/photo.jpg&#39;</span><span class="p">,</span> <span class="k">NULL</span><span class="p">);</span>
@@ -506,7 +505,7 @@ do the following:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -527,7 +526,7 @@ do the following:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

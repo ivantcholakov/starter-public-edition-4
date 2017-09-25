@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Database Utility Class &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Database Utility Class &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Database Reference" href="index.html"/>
         <link rel="next" title="DB Driver Reference" href="db_driver_reference.html"/>
         <link rel="prev" title="Database Forge Class" href="forge.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -169,7 +170,7 @@
 <li class="toctree-l2"><a class="reference internal" href="call_function.html">Custom Function Calls</a></li>
 <li class="toctree-l2"><a class="reference internal" href="caching.html">Query Caching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="forge.html">Database Manipulation with Database Forge</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Database Utilities Class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Database Utilities Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="db_driver_reference.html">Database Driver Reference</a></li>
 </ul>
 </li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -355,7 +354,7 @@
 <li class="toctree-l2"><a class="reference internal" href="call_function.html">Custom Function Calls</a></li>
 <li class="toctree-l2"><a class="reference internal" href="caching.html">Query Caching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="forge.html">Database Manipulation with Database Forge</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Database Utilities Class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Database Utilities Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="db_driver_reference.html">Database Driver Reference</a></li>
 </ul>
 </li>
@@ -462,19 +461,19 @@ driver must already be running, since the utilities class relies on it.</p>
 </pre></div>
 </div>
 <p>You can also pass another database object to the DB Utility loader, in case
-the database you want to manage isn&#8217;t the default one:</p>
+the database you want to manage isn’t the default one:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">myutil</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">dbutil</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">other_db</span><span class="p">,</span> <span class="k">TRUE</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>In the above example, we&#8217;re passing a custom database object as the first
+<p>In the above example, we’re passing a custom database object as the first
 parameter and then tell it to return the dbutil object, instead of
-assigning it directly to <tt class="docutils literal"><span class="pre">$this-&gt;dbutil</span></tt>.</p>
+assigning it directly to <code class="docutils literal"><span class="pre">$this-&gt;dbutil</span></code>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Both of the parameters can be used individually, just pass an empty
 value as the first one if you wish to skip it.</p>
 </div>
-<p>Once initialized you will access the methods using the <tt class="docutils literal"><span class="pre">$this-&gt;dbutil</span></tt>
+<p>Once initialized you will access the methods using the <code class="docutils literal"><span class="pre">$this-&gt;dbutil</span></code>
 object:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbutil</span><span class="o">-&gt;</span><span class="na">some_method</span><span class="p">();</span>
 </pre></div>
@@ -496,7 +495,7 @@ object:</p>
 </div>
 <div class="section" id="determine-if-a-database-exists">
 <h3><a class="toc-backref" href="#id4">Determine If a Database Exists</a><a class="headerlink" href="#determine-if-a-database-exists" title="Permalink to this headline">¶</a></h3>
-<p>Sometimes it&#8217;s helpful to know whether a particular database exists.
+<p>Sometimes it’s helpful to know whether a particular database exists.
 Returns a boolean TRUE/FALSE. Usage example:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dbutil</span><span class="o">-&gt;</span><span class="na">database_exists</span><span class="p">(</span><span class="s1">&#39;database_name&#39;</span><span class="p">))</span>
 <span class="p">{</span>
@@ -574,7 +573,7 @@ query. Example:</p>
 </div>
 <p>The second, third, and fourth parameters allow you to set the delimiter
 newline, and enclosure characters respectively. By default commas are
-used as the delimiter, &#8220;n&#8221; is used as a new line, and a double-quote
+used as the delimiter, “n” is used as a new line, and a double-quote
 is used as the enclosure. Example:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$delimiter</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="p">;</span>
 <span class="nv">$newline</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">;</span>
@@ -587,7 +586,7 @@ is used as the enclosure. Example:</p>
 <p class="first admonition-title">Important</p>
 <p class="last">This method will NOT write the CSV file for you. It
 simply creates the CSV layout. If you need to write the file
-use the <a class="reference internal" href="../helpers/file_helper.html"><em>File Helper</em></a>.</p>
+use the <a class="reference internal" href="../helpers/file_helper.html"><span class="doc">File Helper</span></a>.</p>
 </div>
 </div>
 <div class="section" id="export-a-query-result-as-an-xml-document">
@@ -613,7 +612,7 @@ optional array of config parameters. Example:</p>
 <p class="first admonition-title">Important</p>
 <p class="last">This method will NOT write the XML file for you. It
 simply creates the XML layout. If you need to write the file
-use the <a class="reference internal" href="../helpers/file_helper.html"><em>File Helper</em></a>.</p>
+use the <a class="reference internal" href="../helpers/file_helper.html"><span class="doc">File Helper</span></a>.</p>
 </div>
 </div>
 </div>
@@ -630,7 +629,7 @@ backup data can be compressed in either Zip or Gzip format.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>For Interbase/Firebird databases, the backup file name is the only parameter.</p>
-<p class="last">$this-&gt;dbutil-&gt;backup(&#8216;db_backup_filename&#8217;);</p>
+<p class="last">$this-&gt;dbutil-&gt;backup(‘db_backup_filename’);</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -662,7 +661,7 @@ have root privileges.</p>
 <div class="section" id="setting-backup-preferences">
 <h3><a class="toc-backref" href="#id13">Setting Backup Preferences</a><a class="headerlink" href="#setting-backup-preferences" title="Permalink to this headline">¶</a></h3>
 <p>Backup preferences are set by submitting an array of values to the first
-parameter of the <tt class="docutils literal"><span class="pre">backup()</span></tt> method. Example:</p>
+parameter of the <code class="docutils literal"><span class="pre">backup()</span></code> method. Example:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$prefs</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">&#39;tables&#39;</span>        <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;table1&#39;</span><span class="p">,</span> <span class="s1">&#39;table2&#39;</span><span class="p">),</span>   <span class="c1">// Array of tables to backup.</span>
         <span class="s1">&#39;ignore&#39;</span>        <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(),</span>                     <span class="c1">// List of tables to omit from the backup</span>
@@ -727,8 +726,8 @@ zip compression.</td>
 <td>Whether to include INSERT statements in your SQL export file.</td>
 </tr>
 <tr class="row-even"><td><strong>newline</strong></td>
-<td>&#8220;\n&#8221;</td>
-<td>&#8220;\n&#8221;, &#8220;\r&#8221;, &#8220;\r\n&#8221;</td>
+<td>“\n”</td>
+<td>“\n”, “\r”, “\r\n”</td>
 <td>Type of newline to use in your SQL export file.</td>
 </tr>
 <tr class="row-odd"><td><strong>foreign_key_checks</strong></td>
@@ -744,16 +743,16 @@ zip compression.</td>
 <h2><a class="toc-backref" href="#id15">Class Reference</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="CI_DB_utility">
-<em class="property">class </em><tt class="descname">CI_DB_utility</tt><a class="headerlink" href="#CI_DB_utility" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">CI_DB_utility</code><a class="headerlink" href="#CI_DB_utility" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="CI_DB_utility::backup">
-<tt class="descname">backup</tt><big>(</big><span class="optional">[</span><em>$params = array()</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_utility::backup" title="Permalink to this definition">¶</a></dt>
+<code class="descname">backup</code><span class="sig-paren">(</span><span class="optional">[</span><em>$params = array()</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_DB_utility::backup" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$params</strong> (<em>array</em>) &#8211; An associative array of options</li>
+<li><strong>$params</strong> (<em>array</em>) – An associative array of options</li>
 </ul>
 </td>
 </tr>
@@ -770,13 +769,13 @@ zip compression.</td>
 
 <dl class="method">
 <dt id="CI_DB_utility::database_exists">
-<tt class="descname">database_exists</tt><big>(</big><em>$database_name</em><big>)</big><a class="headerlink" href="#CI_DB_utility::database_exists" title="Permalink to this definition">¶</a></dt>
+<code class="descname">database_exists</code><span class="sig-paren">(</span><em>$database_name</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_DB_utility::database_exists" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$database_name</strong> (<em>string</em>) &#8211; Database name</li>
+<li><strong>$database_name</strong> (<em>string</em>) – Database name</li>
 </ul>
 </td>
 </tr>
@@ -793,7 +792,7 @@ zip compression.</td>
 
 <dl class="method">
 <dt id="CI_DB_utility::list_databases">
-<tt class="descname">list_databases</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_DB_utility::list_databases" title="Permalink to this definition">¶</a></dt>
+<code class="descname">list_databases</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_DB_utility::list_databases" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -809,7 +808,7 @@ zip compression.</td>
 
 <dl class="method">
 <dt id="CI_DB_utility::optimize_database">
-<tt class="descname">optimize_database</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_DB_utility::optimize_database" title="Permalink to this definition">¶</a></dt>
+<code class="descname">optimize_database</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_DB_utility::optimize_database" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -825,13 +824,13 @@ zip compression.</td>
 
 <dl class="method">
 <dt id="CI_DB_utility::optimize_table">
-<tt class="descname">optimize_table</tt><big>(</big><em>$table_name</em><big>)</big><a class="headerlink" href="#CI_DB_utility::optimize_table" title="Permalink to this definition">¶</a></dt>
+<code class="descname">optimize_table</code><span class="sig-paren">(</span><em>$table_name</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_DB_utility::optimize_table" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$table_name</strong> (<em>string</em>) &#8211; Name of the table to optimize</li>
+<li><strong>$table_name</strong> (<em>string</em>) – Name of the table to optimize</li>
 </ul>
 </td>
 </tr>
@@ -848,13 +847,13 @@ zip compression.</td>
 
 <dl class="method">
 <dt id="CI_DB_utility::repair_table">
-<tt class="descname">repair_table</tt><big>(</big><em>$table_name</em><big>)</big><a class="headerlink" href="#CI_DB_utility::repair_table" title="Permalink to this definition">¶</a></dt>
+<code class="descname">repair_table</code><span class="sig-paren">(</span><em>$table_name</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_DB_utility::repair_table" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$table_name</strong> (<em>string</em>) &#8211; Name of the table to repair</li>
+<li><strong>$table_name</strong> (<em>string</em>) – Name of the table to repair</li>
 </ul>
 </td>
 </tr>
@@ -871,16 +870,16 @@ zip compression.</td>
 
 <dl class="method">
 <dt id="CI_DB_utility::csv_from_result">
-<tt class="descname">csv_from_result</tt><big>(</big><em>$query</em><span class="optional">[</span>, <em>$delim = '</em>, <em>'</em><span class="optional">[</span>, <em>$newline = &quot;n&quot;</em><span class="optional">[</span>, <em>$enclosure = '&quot;'</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_utility::csv_from_result" title="Permalink to this definition">¶</a></dt>
+<code class="descname">csv_from_result</code><span class="sig-paren">(</span><em>$query</em><span class="optional">[</span>, <em>$delim = '</em>, <em>'</em><span class="optional">[</span>, <em>$newline = &quot;n&quot;</em><span class="optional">[</span>, <em>$enclosure = '&quot;'</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_DB_utility::csv_from_result" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$query</strong> (<em>object</em>) &#8211; A database result object</li>
-<li><strong>$delim</strong> (<em>string</em>) &#8211; The CSV field delimiter to use</li>
-<li><strong>$newline</strong> (<em>string</em>) &#8211; The newline character to use</li>
-<li><strong>$enclosure</strong> (<em>string</em>) &#8211; The enclosure delimiter to use</li>
+<li><strong>$query</strong> (<em>object</em>) – A database result object</li>
+<li><strong>$delim</strong> (<em>string</em>) – The CSV field delimiter to use</li>
+<li><strong>$newline</strong> (<em>string</em>) – The newline character to use</li>
+<li><strong>$enclosure</strong> (<em>string</em>) – The enclosure delimiter to use</li>
 </ul>
 </td>
 </tr>
@@ -897,14 +896,14 @@ zip compression.</td>
 
 <dl class="method">
 <dt id="CI_DB_utility::xml_from_result">
-<tt class="descname">xml_from_result</tt><big>(</big><em>$query</em><span class="optional">[</span>, <em>$params = array()</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_utility::xml_from_result" title="Permalink to this definition">¶</a></dt>
+<code class="descname">xml_from_result</code><span class="sig-paren">(</span><em>$query</em><span class="optional">[</span>, <em>$params = array()</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_DB_utility::xml_from_result" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$query</strong> (<em>object</em>) &#8211; A database result object</li>
-<li><strong>$params</strong> (<em>array</em>) &#8211; An associative array of preferences</li>
+<li><strong>$query</strong> (<em>object</em>) – A database result object</li>
+<li><strong>$params</strong> (<em>array</em>) – An associative array of preferences</li>
 </ul>
 </td>
 </tr>
@@ -943,7 +942,7 @@ zip compression.</td>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -964,7 +963,7 @@ zip compression.</td>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>HTML Helper &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>HTML Helper &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Helpers" href="index.html"/>
         <link rel="next" title="Inflector Helper" href="inflector_helper.html"/>
         <link rel="prev" title="Form Helper" href="form_helper.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -185,7 +186,7 @@
 <li class="toctree-l2"><a class="reference internal" href="email_helper.html">Email Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file_helper.html">File Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="form_helper.html">Form Helper</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">HTML Helper</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">HTML Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inflector_helper.html">Inflector Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="language_helper.html">Language Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="number_helper.html">Number Helper</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -371,7 +370,7 @@
 <li class="toctree-l2"><a class="reference internal" href="email_helper.html">Email Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file_helper.html">File Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="form_helper.html">Form Helper</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">HTML Helper</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">HTML Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inflector_helper.html">Inflector Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="language_helper.html">Language Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="number_helper.html">Number Helper</a></li>
@@ -445,15 +444,15 @@ HTML.</p>
 <p>The following functions are available:</p>
 <dl class="function">
 <dt id="heading">
-<tt class="descname">heading</tt><big>(</big><span class="optional">[</span><em>$data = ''</em><span class="optional">[</span>, <em>$h = '1'</em><span class="optional">[</span>, <em>$attributes = ''</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#heading" title="Permalink to this definition">¶</a></dt>
+<code class="descname">heading</code><span class="sig-paren">(</span><span class="optional">[</span><em>$data = ''</em><span class="optional">[</span>, <em>$h = '1'</em><span class="optional">[</span>, <em>$attributes = ''</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#heading" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$data</strong> (<em>string</em>) &#8211; Content</li>
-<li><strong>$h</strong> (<em>string</em>) &#8211; Heading level</li>
-<li><strong>$attributes</strong> (<em>mixed</em>) &#8211; HTML attributes</li>
+<li><strong>$data</strong> (<em>string</em>) – Content</li>
+<li><strong>$h</strong> (<em>string</em>) – Heading level</li>
+<li><strong>$attributes</strong> (<em>mixed</em>) – HTML attributes</li>
 </ul>
 </td>
 </tr>
@@ -487,15 +486,15 @@ or an array:</p>
 
 <dl class="function">
 <dt id="img">
-<tt class="descname">img</tt><big>(</big><span class="optional">[</span><em>$src = ''</em><span class="optional">[</span>, <em>$index_page = FALSE</em><span class="optional">[</span>, <em>$attributes = ''</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#img" title="Permalink to this definition">¶</a></dt>
+<code class="descname">img</code><span class="sig-paren">(</span><span class="optional">[</span><em>$src = ''</em><span class="optional">[</span>, <em>$index_page = FALSE</em><span class="optional">[</span>, <em>$attributes = ''</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#img" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$src</strong> (<em>string</em>) &#8211; Image source data</li>
-<li><strong>$index_page</strong> (<em>bool</em>) &#8211; Whether to treat $src as a routed URI string</li>
-<li><strong>$attributes</strong> (<em>array</em>) &#8211; HTML attributes</li>
+<li><strong>$src</strong> (<em>string</em>) – Image source data</li>
+<li><strong>$index_page</strong> (<em>bool</em>) – Whether to treat $src as a routed URI string</li>
+<li><strong>$attributes</strong> (<em>array</em>) – HTML attributes</li>
 </ul>
 </td>
 </tr>
@@ -514,12 +513,12 @@ image source. Example:</p>
 </div>
 <p>There is an optional second parameter that is a TRUE/FALSE value that
 specifics if the <em>src</em> should have the page specified by
-<tt class="docutils literal"><span class="pre">$config['index_page']</span></tt> added to the address it creates.
+<code class="docutils literal"><span class="pre">$config['index_page']</span></code> added to the address it creates.
 Presumably, this would be if you were using a media controller:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">echo</span> <span class="nx">img</span><span class="p">(</span><span class="s1">&#39;images/picture.jpg&#39;</span><span class="p">,</span> <span class="k">TRUE</span><span class="p">);</span> <span class="c1">// gives &lt;img src=&quot;http://site.com/index.php/images/picture.jpg&quot; alt=&quot;&quot; /&gt;</span>
 </pre></div>
 </div>
-<p>Additionally, an associative array can be passed to the <tt class="docutils literal"><span class="pre">img()</span></tt> function
+<p>Additionally, an associative array can be passed to the <code class="docutils literal"><span class="pre">img()</span></code> function
 for complete control over all attributes and values. If an <em>alt</em> attribute
 is not provided, CodeIgniter will generate an empty string.</p>
 <p>Example:</p>
@@ -541,18 +540,18 @@ is not provided, CodeIgniter will generate an empty string.</p>
 
 <dl class="function">
 <dt id="link_tag">
-<tt class="descname">link_tag</tt><big>(</big><span class="optional">[</span><em>$href = ''</em><span class="optional">[</span>, <em>$rel = 'stylesheet'</em><span class="optional">[</span>, <em>$type = 'text/css'</em><span class="optional">[</span>, <em>$title = ''</em><span class="optional">[</span>, <em>$media = ''</em><span class="optional">[</span>, <em>$index_page = FALSE</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#link_tag" title="Permalink to this definition">¶</a></dt>
+<code class="descname">link_tag</code><span class="sig-paren">(</span><span class="optional">[</span><em>$href = ''</em><span class="optional">[</span>, <em>$rel = 'stylesheet'</em><span class="optional">[</span>, <em>$type = 'text/css'</em><span class="optional">[</span>, <em>$title = ''</em><span class="optional">[</span>, <em>$media = ''</em><span class="optional">[</span>, <em>$index_page = FALSE</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#link_tag" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$href</strong> (<em>string</em>) &#8211; What are we linking to</li>
-<li><strong>$rel</strong> (<em>string</em>) &#8211; Relation type</li>
-<li><strong>$type</strong> (<em>string</em>) &#8211; Type of the related document</li>
-<li><strong>$title</strong> (<em>string</em>) &#8211; Link title</li>
-<li><strong>$media</strong> (<em>string</em>) &#8211; Media type</li>
-<li><strong>$index_page</strong> (<em>bool</em>) &#8211; Whether to treat $src as a routed URI string</li>
+<li><strong>$href</strong> (<em>string</em>) – What are we linking to</li>
+<li><strong>$rel</strong> (<em>string</em>) – Relation type</li>
+<li><strong>$type</strong> (<em>string</em>) – Type of the related document</li>
+<li><strong>$title</strong> (<em>string</em>) – Link title</li>
+<li><strong>$media</strong> (<em>string</em>) – Media type</li>
+<li><strong>$index_page</strong> (<em>bool</em>) – Whether to treat $src as a routed URI string</li>
 </ul>
 </td>
 </tr>
@@ -568,7 +567,7 @@ is not provided, CodeIgniter will generate an empty string.</p>
 as well as other links. The parameters are <em>href</em>, with optional <em>rel</em>,
 <em>type</em>, <em>title</em>, <em>media</em> and <em>index_page</em>.</p>
 <p><em>index_page</em> is a boolean value that specifies if the <em>href</em> should have
-the page specified by <tt class="docutils literal"><span class="pre">$config['index_page']</span></tt> added to the address it creates.</p>
+the page specified by <code class="docutils literal"><span class="pre">$config['index_page']</span></code> added to the address it creates.</p>
 <p>Example:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">echo</span> <span class="nx">link_tag</span><span class="p">(</span><span class="s1">&#39;css/mystyles.css&#39;</span><span class="p">);</span>
 <span class="c1">// gives &lt;link href=&quot;http://site.com/css/mystyles.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</span>
@@ -582,7 +581,7 @@ the page specified by <tt class="docutils literal"><span class="pre">$config['in
 <span class="c1">// &lt;link href=&quot;http://site.com/feed&quot; rel=&quot;alternate&quot; type=&quot;application/rss+xml&quot; title=&quot;My RSS Feed&quot; /&gt;</span>
 </pre></div>
 </div>
-<p>Additionally, an associative array can be passed to the <tt class="docutils literal"><span class="pre">link()</span></tt> function
+<p>Additionally, an associative array can be passed to the <code class="docutils literal"><span class="pre">link()</span></code> function
 for complete control over all attributes and values:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$link</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">&#39;href&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;css/printer.css&#39;</span><span class="p">,</span>
@@ -599,14 +598,14 @@ for complete control over all attributes and values:</p>
 
 <dl class="function">
 <dt id="ul">
-<tt class="descname">ul</tt><big>(</big><em>$list</em><span class="optional">[</span>, <em>$attributes = ''</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#ul" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ul</code><span class="sig-paren">(</span><em>$list</em><span class="optional">[</span>, <em>$attributes = ''</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#ul" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$list</strong> (<em>array</em>) &#8211; List entries</li>
-<li><strong>$attributes</strong> (<em>array</em>) &#8211; HTML attributes</li>
+<li><strong>$list</strong> (<em>array</em>) – List entries</li>
+<li><strong>$attributes</strong> (<em>array</em>) – HTML attributes</li>
 </ul>
 </td>
 </tr>
@@ -731,14 +730,14 @@ multi-dimensional arrays. Example:</p>
 
 <dl class="function">
 <dt id="ol">
-<tt class="descname">ol</tt><big>(</big><em>$list</em>, <em>$attributes = ''</em><big>)</big><a class="headerlink" href="#ol" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ol</code><span class="sig-paren">(</span><em>$list</em>, <em>$attributes = ''</em><span class="sig-paren">)</span><a class="headerlink" href="#ol" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$list</strong> (<em>array</em>) &#8211; List entries</li>
-<li><strong>$attributes</strong> (<em>array</em>) &#8211; HTML attributes</li>
+<li><strong>$list</strong> (<em>array</em>) – List entries</li>
+<li><strong>$attributes</strong> (<em>array</em>) – HTML attributes</li>
 </ul>
 </td>
 </tr>
@@ -750,22 +749,22 @@ multi-dimensional arrays. Example:</p>
 </tr>
 </tbody>
 </table>
-<p>Identical to <a class="reference internal" href="#ul" title="ul"><tt class="xref php php-func docutils literal"><span class="pre">ul()</span></tt></a>, only it produces the &lt;ol&gt; tag for
+<p>Identical to <a class="reference internal" href="#ul" title="ul"><code class="xref php php-func docutils literal"><span class="pre">ul()</span></code></a>, only it produces the &lt;ol&gt; tag for
 ordered lists instead of &lt;ul&gt;.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="meta">
-<tt class="descname">meta</tt><big>(</big><span class="optional">[</span><em>$name = ''</em><span class="optional">[</span>, <em>$content = ''</em><span class="optional">[</span>, <em>$type = 'name'</em><span class="optional">[</span>, <em>$newline = &quot;n&quot;</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#meta" title="Permalink to this definition">¶</a></dt>
+<code class="descname">meta</code><span class="sig-paren">(</span><span class="optional">[</span><em>$name = ''</em><span class="optional">[</span>, <em>$content = ''</em><span class="optional">[</span>, <em>$type = 'name'</em><span class="optional">[</span>, <em>$newline = &quot;n&quot;</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#meta" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$name</strong> (<em>string</em>) &#8211; Meta name</li>
-<li><strong>$content</strong> (<em>string</em>) &#8211; Meta content</li>
-<li><strong>$type</strong> (<em>string</em>) &#8211; Meta type</li>
-<li><strong>$newline</strong> (<em>string</em>) &#8211; Newline character</li>
+<li><strong>$name</strong> (<em>string</em>) – Meta name</li>
+<li><strong>$content</strong> (<em>string</em>) – Meta content</li>
+<li><strong>$type</strong> (<em>string</em>) – Meta type</li>
+<li><strong>$newline</strong> (<em>string</em>) – Newline character</li>
 </ul>
 </td>
 </tr>
@@ -826,13 +825,13 @@ simple arrays, or multidimensional ones.</p>
 
 <dl class="function">
 <dt id="doctype">
-<tt class="descname">doctype</tt><big>(</big><span class="optional">[</span><em>$type = 'xhtml1-strict'</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#doctype" title="Permalink to this definition">¶</a></dt>
+<code class="descname">doctype</code><span class="sig-paren">(</span><span class="optional">[</span><em>$type = 'xhtml1-strict'</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#doctype" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$type</strong> (<em>string</em>) &#8211; Doctype name</li>
+<li><strong>$type</strong> (<em>string</em>) – Doctype name</li>
 </ul>
 </td>
 </tr>
@@ -844,7 +843,7 @@ simple arrays, or multidimensional ones.</p>
 </tr>
 </tbody>
 </table>
-<p>Helps you generate document type declarations, or DTD&#8217;s. XHTML 1.0
+<p>Helps you generate document type declarations, or DTD’s. XHTML 1.0
 Strict is used by default, but many doctypes are available.</p>
 <p>Example:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">echo</span> <span class="nx">doctype</span><span class="p">();</span> <span class="c1">// &lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</span>
@@ -869,23 +868,23 @@ pulled from application/config/doctypes.php</p>
 <tbody valign="top">
 <tr class="row-even"><td>XHTML 1.1</td>
 <td>xhtml11</td>
-<td>&lt;!DOCTYPE html PUBLIC &#8220;-//W3C//DTD XHTML 1.1//EN&#8221; &#8220;<a class="reference external" href="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd</a>&#8220;&gt;</td>
+<td>&lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.1//EN” “<a class="reference external" href="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd</a>”&gt;</td>
 </tr>
 <tr class="row-odd"><td>XHTML 1.0 Strict</td>
 <td>xhtml1-strict</td>
-<td>&lt;!DOCTYPE html PUBLIC &#8220;-//W3C//DTD XHTML 1.0 Strict//EN&#8221; &#8220;<a class="reference external" href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd</a>&#8220;&gt;</td>
+<td>&lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Strict//EN” “<a class="reference external" href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd</a>”&gt;</td>
 </tr>
 <tr class="row-even"><td>XHTML 1.0 Transitional</td>
 <td>xhtml1-trans</td>
-<td>&lt;!DOCTYPE html PUBLIC &#8220;-//W3C//DTD XHTML 1.0 Transitional//EN&#8221; &#8220;<a class="reference external" href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd</a>&#8220;&gt;</td>
+<td>&lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN” “<a class="reference external" href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd</a>”&gt;</td>
 </tr>
 <tr class="row-odd"><td>XHTML 1.0 Frameset</td>
 <td>xhtml1-frame</td>
-<td>&lt;!DOCTYPE html PUBLIC &#8220;-//W3C//DTD XHTML 1.0 Frameset//EN&#8221; &#8220;<a class="reference external" href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd</a>&#8220;&gt;</td>
+<td>&lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Frameset//EN” “<a class="reference external" href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd</a>”&gt;</td>
 </tr>
 <tr class="row-even"><td>XHTML Basic 1.1</td>
 <td>xhtml-basic11</td>
-<td>&lt;!DOCTYPE html PUBLIC &#8220;-//W3C//DTD XHTML Basic 1.1//EN&#8221; &#8220;<a class="reference external" href="http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd</a>&#8220;&gt;</td>
+<td>&lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML Basic 1.1//EN” “<a class="reference external" href="http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd</a>”&gt;</td>
 </tr>
 <tr class="row-odd"><td>HTML 5</td>
 <td>html5</td>
@@ -893,55 +892,55 @@ pulled from application/config/doctypes.php</p>
 </tr>
 <tr class="row-even"><td>HTML 4 Strict</td>
 <td>html4-strict</td>
-<td>&lt;!DOCTYPE HTML PUBLIC &#8220;-//W3C//DTD HTML 4.01//EN&#8221; &#8220;<a class="reference external" href="http://www.w3.org/TR/html4/strict.dtd">http://www.w3.org/TR/html4/strict.dtd</a>&#8220;&gt;</td>
+<td>&lt;!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01//EN” “<a class="reference external" href="http://www.w3.org/TR/html4/strict.dtd">http://www.w3.org/TR/html4/strict.dtd</a>”&gt;</td>
 </tr>
 <tr class="row-odd"><td>HTML 4 Transitional</td>
 <td>html4-trans</td>
-<td>&lt;!DOCTYPE HTML PUBLIC &#8220;-//W3C//DTD HTML 4.01 Transitional//EN&#8221; &#8220;<a class="reference external" href="http://www.w3.org/TR/html4/loose.dtd">http://www.w3.org/TR/html4/loose.dtd</a>&#8220;&gt;</td>
+<td>&lt;!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01 Transitional//EN” “<a class="reference external" href="http://www.w3.org/TR/html4/loose.dtd">http://www.w3.org/TR/html4/loose.dtd</a>”&gt;</td>
 </tr>
 <tr class="row-even"><td>HTML 4 Frameset</td>
 <td>html4-frame</td>
-<td>&lt;!DOCTYPE HTML PUBLIC &#8220;-//W3C//DTD HTML 4.01 Frameset//EN&#8221; &#8220;<a class="reference external" href="http://www.w3.org/TR/html4/frameset.dtd">http://www.w3.org/TR/html4/frameset.dtd</a>&#8220;&gt;</td>
+<td>&lt;!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01 Frameset//EN” “<a class="reference external" href="http://www.w3.org/TR/html4/frameset.dtd">http://www.w3.org/TR/html4/frameset.dtd</a>”&gt;</td>
 </tr>
 <tr class="row-odd"><td>MathML 1.01</td>
 <td>mathml1</td>
-<td>&lt;!DOCTYPE math SYSTEM &#8220;<a class="reference external" href="http://www.w3.org/Math/DTD/mathml1/mathml.dtd">http://www.w3.org/Math/DTD/mathml1/mathml.dtd</a>&#8220;&gt;</td>
+<td>&lt;!DOCTYPE math SYSTEM “<a class="reference external" href="http://www.w3.org/Math/DTD/mathml1/mathml.dtd">http://www.w3.org/Math/DTD/mathml1/mathml.dtd</a>”&gt;</td>
 </tr>
 <tr class="row-even"><td>MathML 2.0</td>
 <td>mathml2</td>
-<td>&lt;!DOCTYPE math PUBLIC &#8220;-//W3C//DTD MathML 2.0//EN&#8221; &#8220;<a class="reference external" href="http://www.w3.org/Math/DTD/mathml2/mathml2.dtd">http://www.w3.org/Math/DTD/mathml2/mathml2.dtd</a>&#8220;&gt;</td>
+<td>&lt;!DOCTYPE math PUBLIC “-//W3C//DTD MathML 2.0//EN” “<a class="reference external" href="http://www.w3.org/Math/DTD/mathml2/mathml2.dtd">http://www.w3.org/Math/DTD/mathml2/mathml2.dtd</a>”&gt;</td>
 </tr>
 <tr class="row-odd"><td>SVG 1.0</td>
 <td>svg10</td>
-<td>&lt;!DOCTYPE svg PUBLIC &#8220;-//W3C//DTD SVG 1.0//EN&#8221; &#8220;<a class="reference external" href="http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd</a>&#8220;&gt;</td>
+<td>&lt;!DOCTYPE svg PUBLIC “-//W3C//DTD SVG 1.0//EN” “<a class="reference external" href="http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd</a>”&gt;</td>
 </tr>
 <tr class="row-even"><td>SVG 1.1 Full</td>
 <td>svg11</td>
-<td>&lt;!DOCTYPE svg PUBLIC &#8220;-//W3C//DTD SVG 1.1//EN&#8221; &#8220;<a class="reference external" href="http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd</a>&#8220;&gt;</td>
+<td>&lt;!DOCTYPE svg PUBLIC “-//W3C//DTD SVG 1.1//EN” “<a class="reference external" href="http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd</a>”&gt;</td>
 </tr>
 <tr class="row-odd"><td>SVG 1.1 Basic</td>
 <td>svg11-basic</td>
-<td>&lt;!DOCTYPE svg PUBLIC &#8220;-//W3C//DTD SVG 1.1 Basic//EN&#8221; &#8220;<a class="reference external" href="http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd">http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd</a>&#8220;&gt;</td>
+<td>&lt;!DOCTYPE svg PUBLIC “-//W3C//DTD SVG 1.1 Basic//EN” “<a class="reference external" href="http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd">http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd</a>”&gt;</td>
 </tr>
 <tr class="row-even"><td>SVG 1.1 Tiny</td>
 <td>svg11-tiny</td>
-<td>&lt;!DOCTYPE svg PUBLIC &#8220;-//W3C//DTD SVG 1.1 Tiny//EN&#8221; &#8220;<a class="reference external" href="http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd</a>&#8220;&gt;</td>
+<td>&lt;!DOCTYPE svg PUBLIC “-//W3C//DTD SVG 1.1 Tiny//EN” “<a class="reference external" href="http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd</a>”&gt;</td>
 </tr>
 <tr class="row-odd"><td>XHTML+MathML+SVG (XHTML host)</td>
 <td>xhtml-math-svg-xh</td>
-<td>&lt;!DOCTYPE html PUBLIC &#8220;-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN&#8221; &#8220;<a class="reference external" href="http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd">http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd</a>&#8220;&gt;</td>
+<td>&lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN” “<a class="reference external" href="http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd">http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd</a>”&gt;</td>
 </tr>
 <tr class="row-even"><td>XHTML+MathML+SVG (SVG host)</td>
 <td>xhtml-math-svg-sh</td>
-<td>&lt;!DOCTYPE svg:svg PUBLIC &#8220;-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN&#8221; &#8220;http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd&#8221;&gt;</td>
+<td>&lt;!DOCTYPE svg:svg PUBLIC “-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN” “http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd”&gt;</td>
 </tr>
 <tr class="row-odd"><td>XHTML+RDFa 1.0</td>
 <td>xhtml-rdfa-1</td>
-<td>&lt;!DOCTYPE html PUBLIC &#8220;-//W3C//DTD XHTML+RDFa 1.0//EN&#8221; &#8220;<a class="reference external" href="http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd</a>&#8220;&gt;</td>
+<td>&lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML+RDFa 1.0//EN” “<a class="reference external" href="http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd</a>”&gt;</td>
 </tr>
 <tr class="row-even"><td>XHTML+RDFa 1.1</td>
 <td>xhtml-rdfa-2</td>
-<td>&lt;!DOCTYPE html PUBLIC &#8220;-//W3C//DTD XHTML+RDFa 1.1//EN&#8221; &#8220;<a class="reference external" href="http://www.w3.org/MarkUp/DTD/xhtml-rdfa-2.dtd">http://www.w3.org/MarkUp/DTD/xhtml-rdfa-2.dtd</a>&#8220;&gt;</td>
+<td>&lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML+RDFa 1.1//EN” “<a class="reference external" href="http://www.w3.org/MarkUp/DTD/xhtml-rdfa-2.dtd">http://www.w3.org/MarkUp/DTD/xhtml-rdfa-2.dtd</a>”&gt;</td>
 </tr>
 </tbody>
 </table>
@@ -949,13 +948,13 @@ pulled from application/config/doctypes.php</p>
 
 <dl class="function">
 <dt id="br">
-<tt class="descname">br</tt><big>(</big><span class="optional">[</span><em>$count = 1</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#br" title="Permalink to this definition">¶</a></dt>
+<code class="descname">br</code><span class="sig-paren">(</span><span class="optional">[</span><em>$count = 1</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#br" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$count</strong> (<em>int</em>) &#8211; Number of times to repeat the tag</li>
+<li><strong>$count</strong> (<em>int</em>) – Number of times to repeat the tag</li>
 </ul>
 </td>
 </tr>
@@ -978,20 +977,20 @@ Example:</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This function is DEPRECATED. Use the native <tt class="docutils literal"><span class="pre">str_repeat()</span></tt>
-in combination with <tt class="docutils literal"><span class="pre">&lt;br</span> <span class="pre">/&gt;</span></tt> instead.</p>
+<p class="last">This function is DEPRECATED. Use the native <code class="docutils literal"><span class="pre">str_repeat()</span></code>
+in combination with <code class="docutils literal"><span class="pre">&lt;br</span> <span class="pre">/&gt;</span></code> instead.</p>
 </div>
 </dd></dl>
 
 <dl class="function">
 <dt id="nbs">
-<tt class="descname">nbs</tt><big>(</big><span class="optional">[</span><em>$num = 1</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#nbs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">nbs</code><span class="sig-paren">(</span><span class="optional">[</span><em>$num = 1</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#nbs" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$num</strong> (<em>int</em>) &#8211; Number of space entities to produce</li>
+<li><strong>$num</strong> (<em>int</em>) – Number of space entities to produce</li>
 </ul>
 </td>
 </tr>
@@ -1014,8 +1013,8 @@ Example:</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This function is DEPRECATED. Use the native <tt class="docutils literal"><span class="pre">str_repeat()</span></tt>
-in combination with <tt class="docutils literal"><span class="pre">&amp;nbsp;</span></tt> instead.</p>
+<p class="last">This function is DEPRECATED. Use the native <code class="docutils literal"><span class="pre">str_repeat()</span></code>
+in combination with <code class="docutils literal"><span class="pre">&amp;nbsp;</span></code> instead.</p>
 </div>
 </dd></dl>
 
@@ -1041,7 +1040,7 @@ in combination with <tt class="docutils literal"><span class="pre">&amp;nbsp;</s
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -1062,7 +1061,7 @@ in combination with <tt class="docutils literal"><span class="pre">&amp;nbsp;</s
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

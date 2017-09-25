@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Creating Drivers &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Creating Drivers &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="General Topics" href="index.html"/>
         <link rel="next" title="Creating Core System Classes" href="core_classes.html"/>
         <link rel="prev" title="Using CodeIgniter Drivers" href="drivers.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -100,7 +101,7 @@
 <li class="toctree-l2"><a class="reference internal" href="libraries.html">Using CodeIgniter Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="creating_libraries.html">Creating Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="drivers.html">Using CodeIgniter Drivers</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Creating Drivers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Creating Drivers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="core_classes.html">Creating Core System Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ancillary_classes.html">Creating Ancillary Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hooks.html">Hooks - Extending the Framework Core</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -286,7 +285,7 @@
 <li class="toctree-l2"><a class="reference internal" href="libraries.html">Using CodeIgniter Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="creating_libraries.html">Creating Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="drivers.html">Using CodeIgniter Drivers</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Creating Drivers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Creating Drivers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="core_classes.html">Creating Core System Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ancillary_classes.html">Creating Ancillary Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hooks.html">Hooks - Extending the Framework Core</a></li>
@@ -444,12 +443,12 @@
 <p class="first admonition-title">Note</p>
 <p class="last">In order to maintain compatibility on case-sensitive
 file systems, the Driver_name directory must be
-named in the format returned by <tt class="docutils literal"><span class="pre">ucfirst()</span></tt>.</p>
+named in the format returned by <code class="docutils literal"><span class="pre">ucfirst()</span></code>.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The Driver library&#8217;s architecture is such that
-the subclasses don&#8217;t extend and therefore don&#8217;t inherit
+<p class="last">The Driver library’s architecture is such that
+the subclasses don’t extend and therefore don’t inherit
 properties or methods of the main driver.</p>
 </div>
 </div>
@@ -474,7 +473,7 @@ properties or methods of the main driver.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -495,7 +494,7 @@ properties or methods of the main driver.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>News section &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>News section &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Tutorial" href="index.html"/>
         <link rel="next" title="Create news items" href="create_news_items.html"/>
         <link rel="prev" title="Static pages" href="static_pages.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -76,7 +77,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="static_pages.html">Static pages</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">News section</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">News section</a></li>
 <li class="toctree-l2"><a class="reference internal" href="create_news_items.html">Create news items</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conclusion.html">Conclusion</a></li>
 </ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -262,7 +261,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="static_pages.html">Static pages</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">News section</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">News section</a></li>
 <li class="toctree-l2"><a class="reference internal" href="create_news_items.html">Create news items</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conclusion.html">Conclusion</a></li>
 </ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -427,7 +426,7 @@
 <h1>News section<a class="headerlink" href="#news-section" title="Permalink to this headline">¶</a></h1>
 <p>In the last section, we went over some basic concepts of the framework
 by writing a class that includes static pages. We cleaned up the URI by
-adding custom routing rules. Now it&#8217;s time to introduce dynamic content
+adding custom routing rules. Now it’s time to introduce dynamic content
 and start using a database.</p>
 <div class="section" id="setting-up-your-model">
 <h2>Setting up your model<a class="headerlink" href="#setting-up-your-model" title="Permalink to this headline">¶</a></h2>
@@ -436,8 +435,8 @@ should be placed in a model, so they can easily be reused later. Models
 are the place where you retrieve, insert, and update information in your
 database or other data stores. They represent your data.</p>
 <p>Open up the <em>application/models/</em> directory and create a new file called
-<em>News_model.php</em> and add the following code. Make sure you&#8217;ve configured
-your database properly as described <a class="reference internal" href="../database/configuration.html"><em>here</em></a>.</p>
+<em>News_model.php</em> and add the following code. Make sure you’ve configured
+your database properly as described <a class="reference internal" href="../database/configuration.html"><span class="doc">here</span></a>.</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">class</span> <span class="nc">News_model</span> <span class="k">extends</span> <span class="nx">CI_Model</span> <span class="p">{</span>
 
@@ -449,9 +448,9 @@ your database properly as described <a class="reference internal" href="../datab
 </pre></div>
 </div>
 <p>This code looks similar to the controller code that was used earlier. It
-creates a new model by extending <tt class="docutils literal"><span class="pre">CI_Model</span></tt> and loads the database
+creates a new model by extending <code class="docutils literal"><span class="pre">CI_Model</span></code> and loads the database
 library. This will make the database class available through the
-<tt class="docutils literal"><span class="pre">$this-&gt;db</span></tt> object.</p>
+<code class="docutils literal"><span class="pre">$this-&gt;db</span></code> object.</p>
 <p>Before querying the database, a database schema has to be created.
 Connect to your database and run the SQL command below (MySQL).
 Also add some seed records.</p>
@@ -465,12 +464,12 @@ Also add some seed records.</p>
 <span class="p">);</span>
 </pre></div>
 </div>
-<p>Now that the database and a model have been set up, you&#8217;ll need a method
+<p>Now that the database and a model have been set up, you’ll need a method
 to get all of our posts from our database. To do this, the database
 abstraction layer that is included with CodeIgniter —
-<a class="reference internal" href="../database/query_builder.html"><em>Query Builder</em></a> — is used. This makes it
-possible to write your &#8216;queries&#8217; once and make them work on <a class="reference internal" href="../general/requirements.html"><em>all
-supported database systems</em></a>. Add the
+<a class="reference internal" href="../database/query_builder.html"><span class="doc">Query Builder</span></a> — is used. This makes it
+possible to write your ‘queries’ once and make them work on <a class="reference internal" href="../general/requirements.html"><span class="doc">all
+supported database systems</span></a>. Add the
 following code to your model.</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">get_news</span><span class="p">(</span><span class="nv">$slug</span> <span class="o">=</span> <span class="k">FALSE</span><span class="p">)</span>
 <span class="p">{</span>
@@ -487,15 +486,15 @@ following code to your model.</p>
 </div>
 <p>With this code you can perform two different queries. You can get all
 news records, or get a news item by its <a class="reference external" href="#">slug</a>. You might have
-noticed that the <tt class="docutils literal"><span class="pre">$slug</span></tt> variable wasn&#8217;t sanitized before running the
-query; <a class="reference internal" href="../database/query_builder.html"><em>Query Builder</em></a> does this for you.</p>
+noticed that the <code class="docutils literal"><span class="pre">$slug</span></code> variable wasn’t sanitized before running the
+query; <a class="reference internal" href="../database/query_builder.html"><span class="doc">Query Builder</span></a> does this for you.</p>
 </div>
 <div class="section" id="display-the-news">
 <h2>Display the news<a class="headerlink" href="#display-the-news" title="Permalink to this headline">¶</a></h2>
 <p>Now that the queries are written, the model should be tied to the views
 that are going to display the news items to the user. This could be done
-in our <tt class="docutils literal"><span class="pre">Pages</span></tt> controller created earlier, but for the sake of clarity,
-a new <tt class="docutils literal"><span class="pre">News</span></tt> controller is defined. Create the new controller at
+in our <code class="docutils literal"><span class="pre">Pages</span></code> controller created earlier, but for the sake of clarity,
+a new <code class="docutils literal"><span class="pre">News</span></code> controller is defined. Create the new controller at
 <em>application/controllers/News.php</em>.</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">class</span> <span class="nc">News</span> <span class="k">extends</span> <span class="nx">CI_Controller</span> <span class="p">{</span>
@@ -520,13 +519,13 @@ a new <tt class="docutils literal"><span class="pre">News</span></tt> controller
 </pre></div>
 </div>
 <p>Looking at the code, you may see some similarity with the files we
-created earlier. First, the <tt class="docutils literal"><span class="pre">__construct()</span></tt> method: it calls the
-constructor of its parent class (<tt class="docutils literal"><span class="pre">CI_Controller</span></tt>) and loads the model,
+created earlier. First, the <code class="docutils literal"><span class="pre">__construct()</span></code> method: it calls the
+constructor of its parent class (<code class="docutils literal"><span class="pre">CI_Controller</span></code>) and loads the model,
 so it can be used in all other methods in this controller.
-It also loads a collection of <a class="reference internal" href="../helpers/url_helper.html"><em>URL Helper</em></a>
-functions, because we&#8217;ll use one of them in a view later.</p>
+It also loads a collection of <a class="reference internal" href="../helpers/url_helper.html"><span class="doc">URL Helper</span></a>
+functions, because we’ll use one of them in a view later.</p>
 <p>Next, there are two methods to view all news items and one for a specific
-news item. You can see that the <tt class="docutils literal"><span class="pre">$slug</span></tt> variable is passed to the model&#8217;s
+news item. You can see that the <code class="docutils literal"><span class="pre">$slug</span></code> variable is passed to the model’s
 method in the second method. The model is using this slug to identify the
 news item to be returned.</p>
 <p>Now the data is retrieved by the controller through our model, but
@@ -544,7 +543,7 @@ the views.</p>
 </pre></div>
 </div>
 <p>The code above gets all news records from the model and assigns it to a
-variable. The value for the title is also assigned to the <tt class="docutils literal"><span class="pre">$data['title']</span></tt>
+variable. The value for the title is also assigned to the <code class="docutils literal"><span class="pre">$data['title']</span></code>
 element and all data is passed to the views. You now need to create a
 view to render the news items. Create <em>application/views/news/index.php</em>
 and add the next piece of code.</p>
@@ -563,13 +562,13 @@ and add the next piece of code.</p>
 </div>
 <p>Here, each news item is looped and displayed to the user. You can see we
 wrote our template in PHP mixed with HTML. If you prefer to use a template
-language, you can use CodeIgniter&#8217;s <a class="reference internal" href="../libraries/parser.html"><em>Template
-Parser</em></a> class or a third party parser.</p>
+language, you can use CodeIgniter’s <a class="reference internal" href="../libraries/parser.html"><span class="doc">Template
+Parser</span></a> class or a third party parser.</p>
 <p>The news overview page is now done, but a page to display individual
 news items is still absent. The model created earlier is made in such
 way that it can easily be used for this functionality. You only need to
 add some code to the controller and create a new view. Go back to the
-<tt class="docutils literal"><span class="pre">News</span></tt> controller and update <tt class="docutils literal"><span class="pre">view()</span></tt> with the following:</p>
+<code class="docutils literal"><span class="pre">News</span></code> controller and update <code class="docutils literal"><span class="pre">view()</span></code> with the following:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">view</span><span class="p">(</span><span class="nv">$slug</span> <span class="o">=</span> <span class="k">NULL</span><span class="p">)</span>
 <span class="p">{</span>
         <span class="nv">$data</span><span class="p">[</span><span class="s1">&#39;news_item&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">news_model</span><span class="o">-&gt;</span><span class="na">get_news</span><span class="p">(</span><span class="nv">$slug</span><span class="p">);</span>
@@ -587,8 +586,8 @@ add some code to the controller and create a new view. Go back to the
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Instead of calling the <tt class="docutils literal"><span class="pre">get_news()</span></tt> method without a parameter, the
-<tt class="docutils literal"><span class="pre">$slug</span></tt> variable is passed, so it will return the specific news item.
+<p>Instead of calling the <code class="docutils literal"><span class="pre">get_news()</span></code> method without a parameter, the
+<code class="docutils literal"><span class="pre">$slug</span></code> variable is passed, so it will return the specific news item.
 The only things left to do is create the corresponding view at
 <em>application/views/news/view.php</em>. Put the following code in this file.</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
@@ -602,9 +601,9 @@ The only things left to do is create the corresponding view at
 <p>Because of the wildcard routing rule created earlier, you need an extra
 route to view the controller that you just made. Modify your routing file
 (<em>application/config/routes.php</em>) so it looks as follows.
-This makes sure the requests reaches the <tt class="docutils literal"><span class="pre">News</span></tt> controller instead of
-going directly to the <tt class="docutils literal"><span class="pre">Pages</span></tt> controller. The first line routes URI&#8217;s
-with a slug to the <tt class="docutils literal"><span class="pre">view()</span></tt> method in the <tt class="docutils literal"><span class="pre">News</span></tt> controller.</p>
+This makes sure the requests reaches the <code class="docutils literal"><span class="pre">News</span></code> controller instead of
+going directly to the <code class="docutils literal"><span class="pre">Pages</span></code> controller. The first line routes URI’s
+with a slug to the <code class="docutils literal"><span class="pre">view()</span></code> method in the <code class="docutils literal"><span class="pre">News</span></code> controller.</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$route</span><span class="p">[</span><span class="s1">&#39;news/(:any)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;news/view/$1&#39;</span><span class="p">;</span>
 <span class="nv">$route</span><span class="p">[</span><span class="s1">&#39;news&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;news&#39;</span><span class="p">;</span>
 <span class="nv">$route</span><span class="p">[</span><span class="s1">&#39;(:any)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;pages/view/$1&#39;</span><span class="p">;</span>
@@ -635,7 +634,7 @@ watch your news page.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -656,7 +655,7 @@ watch your news page.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

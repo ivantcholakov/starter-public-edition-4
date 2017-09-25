@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CodeIgniter at a Glance &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>CodeIgniter at a Glance &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="CodeIgniter Overview" href="index.html"/>
         <link rel="next" title="CodeIgniter Features" href="features.html"/>
         <link rel="prev" title="Getting Started With CodeIgniter" href="getting_started.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -65,7 +66,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">CodeIgniter Overview</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">CodeIgniter at a Glance</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CodeIgniter at a Glance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="features.html">Supported Features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appflow.html">Application Flow Chart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mvc.html">Model-View-Controller</a></li>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -251,7 +250,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">CodeIgniter Overview</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">CodeIgniter at a Glance</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CodeIgniter at a Glance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="features.html">Supported Features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appflow.html">Application Flow Chart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mvc.html">Model-View-Controller</a></li>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -439,7 +438,7 @@ for a given task.</p>
 <h2>CodeIgniter is Free<a class="headerlink" href="#codeigniter-is-free" title="Permalink to this headline">¶</a></h2>
 <p>CodeIgniter is licensed under the MIT license so you can use it however
 you please. For more information please read the
-<a class="reference internal" href="../license.html"><em>license agreement</em></a>.</p>
+<a class="reference internal" href="../license.html"><span class="doc">license agreement</span></a>.</p>
 </div>
 <div class="section" id="codeigniter-is-light-weight">
 <h2>CodeIgniter is Light Weight<a class="headerlink" href="#codeigniter-is-light-weight" title="Permalink to this headline">¶</a></h2>
@@ -465,7 +464,7 @@ detail on its own page.</p>
 <div class="section" id="codeigniter-generates-clean-urls">
 <h2>CodeIgniter Generates Clean URLs<a class="headerlink" href="#codeigniter-generates-clean-urls" title="Permalink to this headline">¶</a></h2>
 <p>The URLs generated by CodeIgniter are clean and search-engine friendly.
-Rather than using the standard &#8220;query string&#8221; approach to URLs that is
+Rather than using the standard “query string” approach to URLs that is
 synonymous with dynamic systems, CodeIgniter uses a segment-based
 approach:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nx">example</span><span class="o">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">news</span><span class="o">/</span><span class="nx">article</span><span class="o">/</span><span class="mi">345</span>
@@ -518,7 +517,7 @@ require the use of a template engine.</p>
 </div>
 <div class="section" id="codeigniter-is-thoroughly-documented">
 <h2>CodeIgniter is Thoroughly Documented<a class="headerlink" href="#codeigniter-is-thoroughly-documented" title="Permalink to this headline">¶</a></h2>
-<p>Programmers love to code and hate to write documentation. We&#8217;re no
+<p>Programmers love to code and hate to write documentation. We’re no
 different, of course, but since documentation is <strong>as important</strong> as the
 code itself, we are committed to doing it. Our source code is extremely
 clean and well commented as well.</p>
@@ -549,7 +548,7 @@ clean and well commented as well.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -570,7 +569,7 @@ clean and well commented as well.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Image Manipulation Class &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Image Manipulation Class &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Libraries" href="index.html"/>
         <link rel="next" title="Input Class" href="input.html"/>
         <link rel="prev" title="FTP Class" href="ftp.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -133,7 +134,7 @@
 <li class="toctree-l2"><a class="reference internal" href="file_uploading.html">File Uploading Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="form_validation.html">Form Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ftp.html">FTP Class</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Image Manipulation Class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Image Manipulation Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="input.html">Input Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="javascript.html">Javascript Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="language.html">Language Class</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -319,7 +318,7 @@
 <li class="toctree-l2"><a class="reference internal" href="file_uploading.html">File Uploading Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="form_validation.html">Form Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ftp.html">FTP Class</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Image Manipulation Class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Image Manipulation Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="input.html">Input Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="javascript.html">Javascript Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="language.html">Language Class</a></li>
@@ -425,7 +424,7 @@
             
   <div class="section" id="image-manipulation-class">
 <h1>Image Manipulation Class<a class="headerlink" href="#image-manipulation-class" title="Permalink to this headline">¶</a></h1>
-<p>CodeIgniter&#8217;s Image Manipulation class lets you perform the following
+<p>CodeIgniter’s Image Manipulation class lets you perform the following
 actions:</p>
 <ul class="simple">
 <li>Image Resizing</li>
@@ -473,14 +472,14 @@ in your controller using the $this-&gt;load-&gt;library function:</p>
 </pre></div>
 </div>
 <p>Once the library is loaded it will be ready for use. The image library
-object you will use to call all functions is: <tt class="docutils literal"><span class="pre">$this-&gt;image_lib</span></tt></p>
+object you will use to call all functions is: <code class="docutils literal"><span class="pre">$this-&gt;image_lib</span></code></p>
 <div class="section" id="processing-an-image">
 <h3><a class="toc-backref" href="#id2">Processing an Image</a><a class="headerlink" href="#processing-an-image" title="Permalink to this headline">¶</a></h3>
 <p>Regardless of the type of processing you would like to perform
 (resizing, cropping, rotation, or watermarking), the general process is
 identical. You will set some preferences corresponding to the action you
 intend to perform, then call one of four available processing functions.
-For example, to create an image thumbnail you&#8217;ll do this:</p>
+For example, to create an image thumbnail you’ll do this:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;image_library&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;gd2&#39;</span><span class="p">;</span>
 <span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;source_image&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/path/to/image/mypic.jpg&#39;</span><span class="p">;</span>
 <span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;create_thumb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">TRUE</span><span class="p">;</span>
@@ -553,7 +552,7 @@ to suit your needs.</p>
 <p>Note that not all preferences are available for every function. For
 example, the x/y axis preferences are only available for image cropping.
 Likewise, the width and height preferences have no effect on cropping.
-The &#8220;availability&#8221; column indicates which functions support a given
+The “availability” column indicates which functions support a given
 preference.</p>
 <p>Availability Legend:</p>
 <ul class="simple">
@@ -598,14 +597,14 @@ R, C, S, W</td>
 <td>None</td>
 <td>Sets the source image name/path. The path must be a relative or absolute
 server path, not a URL.</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-odd"><td><strong>dynamic_output</strong></td>
 <td>FALSE</td>
 <td>TRUE/FALSE (boolean)</td>
 <td>Determines whether the new image file should be written to disk or
 generated dynamically. Note: If you choose the dynamic setting, only one
-image can be shown at a time, and it can&#8217;t be positioned on the page. It
+image can be shown at a time, and it can’t be positioned on the page. It
 simply outputs the raw image dynamically to your browser, along with
 image headers.</td>
 <td>R, C, X, W</td>
@@ -627,7 +626,7 @@ file size.</td>
 <tr class="row-even"><td><strong>new_image</strong></td>
 <td>None</td>
 <td>None</td>
-<td>Sets the destination image name/path. You&#8217;ll use this preference when
+<td>Sets the destination image name/path. You’ll use this preference when
 creating an image copy. The path must be a relative or absolute server
 path, not a URL.</td>
 <td>R, C, X, W</td>
@@ -668,10 +667,10 @@ use hard values.</td>
 <td>auto</td>
 <td>auto, width, height</td>
 <td>Specifies what to use as the master axis when resizing or creating
-thumbs. For example, let&#8217;s say you want to resize an image to 100 X 75
+thumbs. For example, let’s say you want to resize an image to 100 X 75
 pixels. If the source image size does not allow perfect resizing to
 those dimensions, this setting determines which axis should be used as
-the hard value. &#8220;auto&#8221; sets the axis automatically based on whether the
+the hard value. “auto” sets the axis automatically based on whether the
 image is taller than wider, or vice versa.</td>
 <td>R</td>
 </tr>
@@ -706,7 +705,7 @@ setting of 30 will crop an image 30 pixels from the top.</td>
 instead put them into a config file. Simply create a new file called
 image_lib.php, add the $config array in that file. Then save the file
 in <em>config/image_lib.php</em> and it will be used automatically. You will
-NOT need to use the <tt class="docutils literal"><span class="pre">$this-&gt;image_lib-&gt;initialize()</span></tt> method if you save
+NOT need to use the <code class="docutils literal"><span class="pre">$this-&gt;image_lib-&gt;initialize()</span></code> method if you save
 your preferences in a config file.</p>
 </div>
 </div>
@@ -749,12 +748,12 @@ watermark function. Here is an example:</p>
 </pre></div>
 </div>
 <p>The above example will use a 16 pixel True Type font to create the text
-&#8220;Copyright 2006 - John Doe&#8221;. The watermark will be positioned at the
+“Copyright 2006 - John Doe”. The watermark will be positioned at the
 bottom/center of the image, 20 pixels from the bottom of the image.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">In order for the image class to be allowed to do any
-processing, the image file must have &#8220;write&#8221; file permissions
+processing, the image file must have “write” file permissions
 For example, 777.</p>
 </div>
 </div>
@@ -793,7 +792,7 @@ server path, not a URL.</td>
 <td>TRUE/FALSE (boolean)</td>
 <td>Determines whether the new image file should be written to disk or
 generated dynamically. Note: If you choose the dynamic setting, only one
-image can be shown at a time, and it can&#8217;t be positioned on the page. It
+image can be shown at a time, and it can’t be positioned on the page. It
 simply outputs the raw image dynamically to your browser, along with
 image headers.</td>
 </tr>
@@ -824,7 +823,7 @@ watermark to set it away from the edge of your images.</td>
 <td>None</td>
 <td>You may specify a horizontal offset (in pixels) to apply to the
 watermark position. The offset normally moves the watermark to the
-right, except if you have your alignment set to &#8220;right&#8221; then your offset
+right, except if you have your alignment set to “right” then your offset
 value will move the watermark toward the left of the image.</td>
 </tr>
 <tr class="row-even"><td><strong>wm_vrt_offset</strong></td>
@@ -832,7 +831,7 @@ value will move the watermark toward the left of the image.</td>
 <td>None</td>
 <td>You may specify a vertical offset (in pixels) to apply to the watermark
 position. The offset normally moves the watermark down, except if you
-have your alignment set to &#8220;bottom&#8221; then your offset value will move the
+have your alignment set to “bottom” then your offset value will move the
 watermark toward the top of the image.</td>
 </tr>
 </tbody>
@@ -873,7 +872,7 @@ not use this option, the native GD font will be used.</td>
 <td>None</td>
 <td>The size of the text. Note: If you are not using the True Type option
 above, the number is set using a range of 1 - 5. Otherwise, you can use
-any valid pixel size for the font you&#8217;re using.</td>
+any valid pixel size for the font you’re using.</td>
 </tr>
 <tr class="row-odd"><td><strong>wm_font_color</strong></td>
 <td>ffffff</td>
@@ -934,9 +933,9 @@ opacity is typical.</td>
 <td>4</td>
 <td>A number</td>
 <td>If your watermark image is a PNG or GIF image, you may specify a color
-on the image to be &#8220;transparent&#8221;. This setting (along with the next)
-will allow you to specify that color. This works by specifying the &#8220;X&#8221;
-and &#8220;Y&#8221; coordinate pixel (measured from the upper left) within the image
+on the image to be “transparent”. This setting (along with the next)
+will allow you to specify that color. This works by specifying the “X”
+and “Y” coordinate pixel (measured from the upper left) within the image
 that corresponds to a pixel representative of the color you want to be
 transparent.</td>
 </tr>
@@ -956,16 +955,16 @@ transparent.</td>
 <h2><a class="toc-backref" href="#id12">Class Reference</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="CI_Image_lib">
-<em class="property">class </em><tt class="descname">CI_Image_lib</tt><a class="headerlink" href="#CI_Image_lib" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">CI_Image_lib</code><a class="headerlink" href="#CI_Image_lib" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="CI_Image_lib::initialize">
-<tt class="descname">initialize</tt><big>(</big><span class="optional">[</span><em>$props = array()</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Image_lib::initialize" title="Permalink to this definition">¶</a></dt>
+<code class="descname">initialize</code><span class="sig-paren">(</span><span class="optional">[</span><em>$props = array()</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Image_lib::initialize" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$props</strong> (<em>array</em>) &#8211; Image processing preferences</li>
+<li><strong>$props</strong> (<em>array</em>) – Image processing preferences</li>
 </ul>
 </td>
 </tr>
@@ -982,7 +981,7 @@ transparent.</td>
 
 <dl class="method">
 <dt id="CI_Image_lib::resize">
-<tt class="descname">resize</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Image_lib::resize" title="Permalink to this definition">¶</a></dt>
+<code class="descname">resize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Image_lib::resize" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -998,7 +997,7 @@ copy (with or without resizing), or create a thumbnail image.</p>
 <p>For practical purposes there is no difference between creating a copy
 and creating a thumbnail except a thumb will have the thumbnail marker
 as part of the name (i.e. mypic_thumb.jpg).</p>
-<p>All preferences listed in the <a class="reference internal" href="#processing-preferences"><em>Preferences</em></a> table are available for this
+<p>All preferences listed in the <a class="reference internal" href="#processing-preferences"><span class="std std-ref">Preferences</span></a> table are available for this
 method except these three: <em>rotation_angle</em>, <em>x_axis</em> and <em>y_axis</em>.</p>
 <p><strong>Creating a Thumbnail</strong></p>
 <p>The resizing method will create a thumbnail file (and preserve the
@@ -1031,7 +1030,7 @@ original image for processing.</p>
 
 <dl class="method">
 <dt id="CI_Image_lib::crop">
-<tt class="descname">crop</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Image_lib::crop" title="Permalink to this definition">¶</a></dt>
+<code class="descname">crop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Image_lib::crop" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1049,9 +1048,9 @@ pixels) specifying where to crop, like this:</p>
 <span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;y_axis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>All preferences listed in the <a class="reference internal" href="#processing-preferences"><em>Preferences</em></a> table are available for this
+<p>All preferences listed in the <a class="reference internal" href="#processing-preferences"><span class="std std-ref">Preferences</span></a> table are available for this
 method except these: <em>rotation_angle</em>, <em>create_thumb</em> and <em>new_image</em>.</p>
-<p>Here&#8217;s an example showing how you might crop an image:</p>
+<p>Here’s an example showing how you might crop an image:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;image_library&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;imagemagick&#39;</span><span class="p">;</span>
 <span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;library_path&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/usr/X11R6/bin/&#39;</span><span class="p">;</span>
 <span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;source_image&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/path/to/image/mypic.jpg&#39;</span><span class="p">;</span>
@@ -1070,7 +1069,7 @@ method except these: <em>rotation_angle</em>, <em>create_thumb</em> and <em>new_
 <p class="first admonition-title">Note</p>
 <p class="last">Without a visual interface it is difficult to crop images, so this
 method is not very useful unless you intend to build such an
-interface. That&#8217;s exactly what we did using for the photo gallery module
+interface. That’s exactly what we did using for the photo gallery module
 in ExpressionEngine, the CMS we develop. We added a JavaScript UI that
 lets the cropping area be selected.</p>
 </div>
@@ -1078,7 +1077,7 @@ lets the cropping area be selected.</p>
 
 <dl class="method">
 <dt id="CI_Image_lib::rotate">
-<tt class="descname">rotate</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Image_lib::rotate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rotate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Image_lib::rotate" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1102,7 +1101,7 @@ via its preference:</p>
 <li>hor - flips the image horizontally.</li>
 <li>vrt - flips the image vertically.</li>
 </ol>
-<p>Here&#8217;s an example showing how you might rotate an image:</p>
+<p>Here’s an example showing how you might rotate an image:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;image_library&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;netpbm&#39;</span><span class="p">;</span>
 <span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;library_path&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/usr/bin/&#39;</span><span class="p">;</span>
 <span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;source_image&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/path/to/image/mypic.jpg&#39;</span><span class="p">;</span>
@@ -1120,7 +1119,7 @@ via its preference:</p>
 
 <dl class="method">
 <dt id="CI_Image_lib::watermark">
-<tt class="descname">watermark</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Image_lib::watermark" title="Permalink to this definition">¶</a></dt>
+<code class="descname">watermark</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Image_lib::watermark" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1131,13 +1130,13 @@ via its preference:</p>
 </tr>
 </tbody>
 </table>
-<p>Creates a watermark over an image, please refer to the <a class="reference internal" href="#watermarking"><em>Watermarking an Image</em></a>
+<p>Creates a watermark over an image, please refer to the <a class="reference internal" href="#watermarking"><span class="std std-ref">Watermarking an Image</span></a>
 section for more info.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="CI_Image_lib::clear">
-<tt class="descname">clear</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_Image_lib::clear" title="Permalink to this definition">¶</a></dt>
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Image_lib::clear" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1156,14 +1155,14 @@ loop.</p>
 
 <dl class="method">
 <dt id="CI_Image_lib::display_errors">
-<tt class="descname">display_errors</tt><big>(</big><span class="optional">[</span><em>$open = '&lt;p&gt;</em><span class="optional">[</span>, <em>$close = '&lt;/p&gt;'</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Image_lib::display_errors" title="Permalink to this definition">¶</a></dt>
+<code class="descname">display_errors</code><span class="sig-paren">(</span><span class="optional">[</span><em>$open = '&lt;p&gt;</em><span class="optional">[</span>, <em>$close = '&lt;/p&gt;'</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Image_lib::display_errors" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$open</strong> (<em>string</em>) &#8211; Error message opening tag</li>
-<li><strong>$close</strong> (<em>string</em>) &#8211; Error message closing tag</li>
+<li><strong>$open</strong> (<em>string</em>) – Error message opening tag</li>
+<li><strong>$close</strong> (<em>string</em>) – Error message closing tag</li>
 </ul>
 </td>
 </tr>
@@ -1205,7 +1204,7 @@ loop.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -1226,7 +1225,7 @@ loop.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

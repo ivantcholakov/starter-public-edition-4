@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Cookie Helper &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Cookie Helper &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Helpers" href="index.html"/>
         <link rel="next" title="Date Helper" href="date_helper.html"/>
         <link rel="prev" title="CAPTCHA Helper" href="captcha_helper.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -178,7 +179,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Helpers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="array_helper.html">Array Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="captcha_helper.html">CAPTCHA Helper</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Cookie Helper</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Cookie Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="date_helper.html">Date Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="directory_helper.html">Directory Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="download_helper.html">Download Helper</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -364,7 +363,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Helpers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="array_helper.html">Array Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="captcha_helper.html">CAPTCHA Helper</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Cookie Helper</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Cookie Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="date_helper.html">Date Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="directory_helper.html">Directory Helper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="download_helper.html">Download Helper</a></li>
@@ -445,20 +444,20 @@ cookies.</p>
 <p>The following functions are available:</p>
 <dl class="function">
 <dt id="set_cookie">
-<tt class="descname">set_cookie</tt><big>(</big><em>$name</em><span class="optional">[</span>, <em>$value = ''</em><span class="optional">[</span>, <em>$expire = ''</em><span class="optional">[</span>, <em>$domain = ''</em><span class="optional">[</span>, <em>$path = '/'</em><span class="optional">[</span>, <em>$prefix = ''</em><span class="optional">[</span>, <em>$secure = NULL</em><span class="optional">[</span>, <em>$httponly = NULL</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#set_cookie" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_cookie</code><span class="sig-paren">(</span><em>$name</em><span class="optional">[</span>, <em>$value = ''</em><span class="optional">[</span>, <em>$expire = ''</em><span class="optional">[</span>, <em>$domain = ''</em><span class="optional">[</span>, <em>$path = '/'</em><span class="optional">[</span>, <em>$prefix = ''</em><span class="optional">[</span>, <em>$secure = NULL</em><span class="optional">[</span>, <em>$httponly = NULL</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#set_cookie" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$name</strong> (<em>mixed</em>) &#8211; Cookie name <em>or</em> associative array of all of the parameters available to this function</li>
-<li><strong>$value</strong> (<em>string</em>) &#8211; Cookie value</li>
-<li><strong>$expire</strong> (<em>int</em>) &#8211; Number of seconds until expiration</li>
-<li><strong>$domain</strong> (<em>string</em>) &#8211; Cookie domain (usually: .yourdomain.com)</li>
-<li><strong>$path</strong> (<em>string</em>) &#8211; Cookie path</li>
-<li><strong>$prefix</strong> (<em>string</em>) &#8211; Cookie name prefix</li>
-<li><strong>$secure</strong> (<em>bool</em>) &#8211; Whether to only send the cookie through HTTPS</li>
-<li><strong>$httponly</strong> (<em>bool</em>) &#8211; Whether to hide the cookie from JavaScript</li>
+<li><strong>$name</strong> (<em>mixed</em>) – Cookie name <em>or</em> associative array of all of the parameters available to this function</li>
+<li><strong>$value</strong> (<em>string</em>) – Cookie value</li>
+<li><strong>$expire</strong> (<em>int</em>) – Number of seconds until expiration</li>
+<li><strong>$domain</strong> (<em>string</em>) – Cookie domain (usually: .yourdomain.com)</li>
+<li><strong>$path</strong> (<em>string</em>) – Cookie path</li>
+<li><strong>$prefix</strong> (<em>string</em>) – Cookie name prefix</li>
+<li><strong>$secure</strong> (<em>bool</em>) – Whether to only send the cookie through HTTPS</li>
+<li><strong>$httponly</strong> (<em>bool</em>) – Whether to hide the cookie from JavaScript</li>
 </ul>
 </td>
 </tr>
@@ -468,21 +467,21 @@ cookies.</p>
 </tbody>
 </table>
 <p>This helper function gives you friendlier syntax to set browser
-cookies. Refer to the <a class="reference internal" href="../libraries/input.html"><em>Input Library</em></a> for
+cookies. Refer to the <a class="reference internal" href="../libraries/input.html"><span class="doc">Input Library</span></a> for
 a description of its use, as this function is an alias for
-<tt class="docutils literal"><span class="pre">CI_Input::set_cookie()</span></tt>.</p>
+<code class="docutils literal"><span class="pre">CI_Input::set_cookie()</span></code>.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="get_cookie">
-<tt class="descname">get_cookie</tt><big>(</big><em>$index</em><span class="optional">[</span>, <em>$xss_clean = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#get_cookie" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_cookie</code><span class="sig-paren">(</span><em>$index</em><span class="optional">[</span>, <em>$xss_clean = NULL</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_cookie" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$index</strong> (<em>string</em>) &#8211; Cookie name</li>
-<li><strong>$xss_clean</strong> (<em>bool</em>) &#8211; Whether to apply XSS filtering to the returned value</li>
+<li><strong>$index</strong> (<em>string</em>) – Cookie name</li>
+<li><strong>$xss_clean</strong> (<em>bool</em>) – Whether to apply XSS filtering to the returned value</li>
 </ul>
 </td>
 </tr>
@@ -495,25 +494,25 @@ a description of its use, as this function is an alias for
 </tbody>
 </table>
 <p>This helper function gives you friendlier syntax to get browser
-cookies. Refer to the <a class="reference internal" href="../libraries/input.html"><em>Input Library</em></a> for
+cookies. Refer to the <a class="reference internal" href="../libraries/input.html"><span class="doc">Input Library</span></a> for
 detailed description of its use, as this function acts very
-similarly to <tt class="docutils literal"><span class="pre">CI_Input::cookie()</span></tt>, except it will also prepend
-the <tt class="docutils literal"><span class="pre">$config['cookie_prefix']</span></tt> that you might&#8217;ve set in your
+similarly to <code class="docutils literal"><span class="pre">CI_Input::cookie()</span></code>, except it will also prepend
+the <code class="docutils literal"><span class="pre">$config['cookie_prefix']</span></code> that you might’ve set in your
 <em>application/config/config.php</em> file.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="delete_cookie">
-<tt class="descname">delete_cookie</tt><big>(</big><em>$name</em><span class="optional">[</span>, <em>$domain = ''</em><span class="optional">[</span>, <em>$path = '/'</em><span class="optional">[</span>, <em>$prefix = ''</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#delete_cookie" title="Permalink to this definition">¶</a></dt>
+<code class="descname">delete_cookie</code><span class="sig-paren">(</span><em>$name</em><span class="optional">[</span>, <em>$domain = ''</em><span class="optional">[</span>, <em>$path = '/'</em><span class="optional">[</span>, <em>$prefix = ''</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#delete_cookie" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$name</strong> (<em>string</em>) &#8211; Cookie name</li>
-<li><strong>$domain</strong> (<em>string</em>) &#8211; Cookie domain (usually: .yourdomain.com)</li>
-<li><strong>$path</strong> (<em>string</em>) &#8211; Cookie path</li>
-<li><strong>$prefix</strong> (<em>string</em>) &#8211; Cookie name prefix</li>
+<li><strong>$name</strong> (<em>string</em>) – Cookie name</li>
+<li><strong>$domain</strong> (<em>string</em>) – Cookie domain (usually: .yourdomain.com)</li>
+<li><strong>$path</strong> (<em>string</em>) – Cookie path</li>
+<li><strong>$prefix</strong> (<em>string</em>) – Cookie name prefix</li>
 </ul>
 </td>
 </tr>
@@ -522,12 +521,12 @@ the <tt class="docutils literal"><span class="pre">$config['cookie_prefix']</spa
 </tr>
 </tbody>
 </table>
-<p>Lets you delete a cookie. Unless you&#8217;ve set a custom path or other
+<p>Lets you delete a cookie. Unless you’ve set a custom path or other
 values, only the name of the cookie is needed.</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nx">delete_cookie</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>This function is otherwise identical to <tt class="docutils literal"><span class="pre">set_cookie()</span></tt>, except that it
+<p>This function is otherwise identical to <code class="docutils literal"><span class="pre">set_cookie()</span></code>, except that it
 does not have the value and expiration parameters. You can submit an
 array of values in the first parameter or you can set discrete
 parameters.</p>
@@ -558,7 +557,7 @@ parameters.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -579,7 +578,7 @@ parameters.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

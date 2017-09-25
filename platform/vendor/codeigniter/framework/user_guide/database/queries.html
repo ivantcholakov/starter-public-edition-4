@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Queries &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Queries &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Database Reference" href="index.html"/>
         <link rel="next" title="Generating Query Results" href="results.html"/>
         <link rel="prev" title="Connecting to your Database" href="connecting.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -160,7 +161,7 @@
 <li class="toctree-l2"><a class="reference internal" href="examples.html">Quick Start: Usage Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configuration.html">Database Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="connecting.html">Connecting to a Database</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Running Queries</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Running Queries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="results.html">Generating Query Results</a></li>
 <li class="toctree-l2"><a class="reference internal" href="helpers.html">Query Helper Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="query_builder.html">Query Builder Class</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -346,7 +345,7 @@
 <li class="toctree-l2"><a class="reference internal" href="examples.html">Quick Start: Usage Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configuration.html">Database Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="connecting.html">Connecting to a Database</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Running Queries</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Running Queries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="results.html">Generating Query Results</a></li>
 <li class="toctree-l2"><a class="reference internal" href="helpers.html">Query Helper Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="query_builder.html">Query Builder Class</a></li>
@@ -433,9 +432,9 @@
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;YOUR QUERY HERE&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>The query() function returns a database result <strong>object</strong> when &#8220;read&#8221;
-type queries are run, which you can use to <a class="reference internal" href="results.html"><em>show your
-results</em></a>. When &#8220;write&#8221; type queries are run it simply
+<p>The query() function returns a database result <strong>object</strong> when “read”
+type queries are run, which you can use to <a class="reference internal" href="results.html"><span class="doc">show your
+results</span></a>. When “write” type queries are run it simply
 returns TRUE or FALSE depending on success or failure. When retrieving
 data you will typically assign the query to your own variable, like
 this:</p>
@@ -450,7 +449,7 @@ $this-&gt;db-&gt;query() method. It DOES
 NOT return a database result set, nor does it set the query timer, or
 compile bind data, or store your query for debugging. It simply lets you
 submit a query. Most users will rarely use this function.</p>
-<p>It returns whatever the database drivers&#8217; &#8220;execute&#8221; function returns.
+<p>It returns whatever the database drivers’ “execute” function returns.
 That typically is TRUE/FALSE on success or failure for write type queries
 such as INSERT, DELETE or UPDATE statements (which is what it really
 should be used for) and a resource/object on success for queries with
@@ -467,9 +466,9 @@ fetchable results.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">PostgreSQL&#8217;s <tt class="docutils literal"><span class="pre">pg_exec()</span></tt> function (for example) always
+<p class="last">PostgreSQL’s <code class="docutils literal"><span class="pre">pg_exec()</span></code> function (for example) always
 returns a resource on success, even for write type queries.
-So take that in mind if you&#8217;re looking for a boolean value.</p>
+So take that in mind if you’re looking for a boolean value.</p>
 </div>
 </div>
 </div>
@@ -483,7 +482,7 @@ the following:</p>
 </div>
 <p>If for any reason you would like to change the prefix programatically
 without needing to create a new connection, you can use this method:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">set_dbprefix</span><span class="p">(</span><span class="s1">&#39;newprefix&#39;</span><span class="p">);</span>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">set_dbprefix</span><span class="p">(</span><span class="s1">&#39;newprefix_&#39;</span><span class="p">);</span>
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">dbprefix</span><span class="p">(</span><span class="s1">&#39;tablename&#39;</span><span class="p">);</span> <span class="c1">// outputs newprefix_tablename</span>
 </pre></div>
 </div>
@@ -513,19 +512,19 @@ prefixing set TRUE (boolean) via the second parameter:</p>
 </div>
 <div class="section" id="escaping-queries">
 <h2>Escaping Queries<a class="headerlink" href="#escaping-queries" title="Permalink to this headline">¶</a></h2>
-<p>It&#8217;s a very good security practice to escape your data before submitting
+<p>It’s a very good security practice to escape your data before submitting
 it into your database. CodeIgniter has three methods that help you do
 this:</p>
 <ol class="arabic">
 <li><p class="first"><strong>$this-&gt;db-&gt;escape()</strong> This function determines the data type so
 that it can escape only string data. It also automatically adds
-single quotes around the data so you don&#8217;t have to:</p>
+single quotes around the data so you don’t have to:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO table (title) VALUES(&quot;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">escape</span><span class="p">(</span><span class="nv">$title</span><span class="p">)</span><span class="o">.</span><span class="s2">&quot;)&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first"><strong>$this-&gt;db-&gt;escape_str()</strong> This function escapes the data passed to
-it, regardless of type. Most of the time you&#8217;ll use the above
+it, regardless of type. Most of the time you’ll use the above
 function rather than this one. Use the function like this:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO table (title) VALUES(&#39;&quot;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">escape_str</span><span class="p">(</span><span class="nv">$title</span><span class="p">)</span><span class="o">.</span><span class="s2">&quot;&#39;)&quot;</span><span class="p">;</span>
 </pre></div>
@@ -533,7 +532,7 @@ function rather than this one. Use the function like this:</p>
 </li>
 <li><p class="first"><strong>$this-&gt;db-&gt;escape_like_str()</strong> This method should be used when
 strings are to be used in LIKE conditions so that LIKE wildcards
-(&#8216;%&#8217;, &#8216;_&#8217;) in the string are also properly escaped.</p>
+(‘%’, ‘_’) in the string are also properly escaped.</p>
 </li>
 </ol>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$search</span> <span class="o">=</span> <span class="s1">&#39;20% raise&#39;</span><span class="p">;</span>
@@ -543,11 +542,11 @@ strings are to be used in LIKE conditions so that LIKE wildcards
 </div>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
-<p class="last">The <tt class="docutils literal"><span class="pre">escape_like_str()</span></tt> method uses &#8216;!&#8217; (exclamation mark)
+<p class="last">The <code class="docutils literal"><span class="pre">escape_like_str()</span></code> method uses ‘!’ (exclamation mark)
 to escape special characters for <em>LIKE</em> conditions. Because this
 method escapes partial strings that you would wrap in quotes
-yourself, it cannot automatically add the <tt class="docutils literal"><span class="pre">ESCAPE</span> <span class="pre">'!'</span></tt>
-condition for you, and so you&#8217;ll have to manually do that.</p>
+yourself, it cannot automatically add the <code class="docutils literal"><span class="pre">ESCAPE</span> <span class="pre">'!'</span></code>
+condition for you, and so you’ll have to manually do that.</p>
 </div>
 </div>
 <div class="section" id="query-bindings">
@@ -570,7 +569,7 @@ values in the array in the second parameter of the query function.</p>
 </pre></div>
 </div>
 <p>The secondary benefit of using binds is that the values are
-automatically escaped, producing safer queries. You don&#8217;t have to
+automatically escaped, producing safer queries. You don’t have to
 remember to manually escape data; the engine does it automatically for
 you.</p>
 </div>
@@ -578,7 +577,7 @@ you.</p>
 <h2>Handling Errors<a class="headerlink" href="#handling-errors" title="Permalink to this headline">¶</a></h2>
 <p><strong>$this-&gt;db-&gt;error();</strong></p>
 <p>If you need to get the last error that has occurred, the error() method
-will return an array containing its code and message. Here&#8217;s a quick
+will return an array containing its code and message. Here’s a quick
 example:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">simple_query</span><span class="p">(</span><span class="s1">&#39;SELECT `example_field` FROM `example_table`&#39;</span><span class="p">))</span>
 <span class="p">{</span>
@@ -608,7 +607,7 @@ example:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -629,7 +628,7 @@ example:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

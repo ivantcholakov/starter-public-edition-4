@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Encrypt Class &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Encrypt Class &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="Libraries" href="index.html"/>
         <link rel="next" title="Encryption Library" href="encryption.html"/>
         <link rel="prev" title="Email Class" href="email.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -128,7 +129,7 @@
 <li class="toctree-l2"><a class="reference internal" href="cart.html">Shopping Cart Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config.html">Config Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="email.html">Email Class</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Encrypt Class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Encrypt Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="encryption.html">Encryption Library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file_uploading.html">File Uploading Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="form_validation.html">Form Validation</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -314,7 +313,7 @@
 <li class="toctree-l2"><a class="reference internal" href="cart.html">Shopping Cart Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config.html">Config Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="email.html">Email Class</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Encrypt Class</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Encrypt Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="encryption.html">Encryption Library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file_uploading.html">File Uploading Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="form_validation.html">Form Validation</a></li>
@@ -430,7 +429,7 @@ the Mcrypt PHP extension, which is required for the Encrypt Class to run.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
 <p class="last">This library has been DEPRECATED and is only kept for
-backwards compatibility. Please use the new <a class="reference internal" href="encryption.html"><em>Encryption Library</em></a>.</p>
+backwards compatibility. Please use the new <a class="reference internal" href="encryption.html"><span class="doc">Encryption Library</span></a>.</p>
 </div>
 <div class="contents local topic" id="contents">
 <ul class="simple">
@@ -454,7 +453,7 @@ encrypted with that key, so not only must you choose the key carefully,
 you must never change it if you intend use it for persistent data.</p>
 <p>It goes without saying that you should guard your key carefully. Should
 someone gain access to your key, the data will be easily decoded. If
-your server is not totally under your control it&#8217;s impossible to ensure
+your server is not totally under your control it’s impossible to ensure
 key security so you may want to think carefully before using it for
 anything that requires high security, like storing credit card numbers.</p>
 <p>To take maximum advantage of the encryption algorithm, your key should
@@ -473,12 +472,12 @@ and set:</p>
 </div>
 <div class="section" id="message-length">
 <h3><a class="toc-backref" href="#id3">Message Length</a><a class="headerlink" href="#message-length" title="Permalink to this headline">¶</a></h3>
-<p>It&#8217;s important for you to know that the encoded messages the encryption
+<p>It’s important for you to know that the encoded messages the encryption
 function generates will be approximately 2.6 times longer than the
-original message. For example, if you encrypt the string &#8220;my super
-secret data&#8221;, which is 21 characters in length, you&#8217;ll end up with an
-encoded string that is roughly 55 characters (we say &#8220;roughly&#8221; because
-the encoded string length increments in 64 bit clusters, so it&#8217;s not
+original message. For example, if you encrypt the string “my super
+secret data”, which is 21 characters in length, you’ll end up with an
+encoded string that is roughly 55 characters (we say “roughly” because
+the encoded string length increments in 64 bit clusters, so it’s not
 exactly linear). Keep this information in mind when selecting your data
 storage mechanism. Cookies, for example, can only hold 4K of
 information.</p>
@@ -486,7 +485,7 @@ information.</p>
 <div class="section" id="initializing-the-class">
 <h3><a class="toc-backref" href="#id4">Initializing the Class</a><a class="headerlink" href="#initializing-the-class" title="Permalink to this headline">¶</a></h3>
 <p>Like most other classes in CodeIgniter, the Encrypt class is
-initialized in your controller using the <tt class="docutils literal"><span class="pre">$this-&gt;load-&gt;library()</span></tt>
+initialized in your controller using the <code class="docutils literal"><span class="pre">$this-&gt;load-&gt;library()</span></code>
 method:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">library</span><span class="p">(</span><span class="s1">&#39;encrypt&#39;</span><span class="p">);</span>
 </pre></div>
@@ -501,17 +500,17 @@ method:</p>
 <h2><a class="toc-backref" href="#id5">Class Reference</a><a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="CI_Encrypt">
-<em class="property">class </em><tt class="descname">CI_Encrypt</tt><a class="headerlink" href="#CI_Encrypt" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">CI_Encrypt</code><a class="headerlink" href="#CI_Encrypt" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="CI_Encrypt::encode">
-<tt class="descname">encode</tt><big>(</big><em>$string</em><span class="optional">[</span>, <em>$key = ''</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Encrypt::encode" title="Permalink to this definition">¶</a></dt>
+<code class="descname">encode</code><span class="sig-paren">(</span><em>$string</em><span class="optional">[</span>, <em>$key = ''</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Encrypt::encode" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$string</strong> (<em>string</em>) &#8211; Data to encrypt</li>
-<li><strong>$key</strong> (<em>string</em>) &#8211; Encryption key</li>
+<li><strong>$string</strong> (<em>string</em>) – Data to encrypt</li>
+<li><strong>$key</strong> (<em>string</em>) – Encryption key</li>
 </ul>
 </td>
 </tr>
@@ -530,7 +529,7 @@ method:</p>
 </pre></div>
 </div>
 <p>You can optionally pass your encryption key via the second parameter if
-you don&#8217;t want to use the one in your config file:</p>
+you don’t want to use the one in your config file:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$msg</span> <span class="o">=</span> <span class="s1">&#39;My secret message&#39;</span><span class="p">;</span>
 <span class="nv">$key</span> <span class="o">=</span> <span class="s1">&#39;super-secret-key&#39;</span><span class="p">;</span>
 
@@ -541,14 +540,14 @@ you don&#8217;t want to use the one in your config file:</p>
 
 <dl class="method">
 <dt id="CI_Encrypt::decode">
-<tt class="descname">decode</tt><big>(</big><em>$string</em><span class="optional">[</span>, <em>$key = ''</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Encrypt::decode" title="Permalink to this definition">¶</a></dt>
+<code class="descname">decode</code><span class="sig-paren">(</span><em>$string</em><span class="optional">[</span>, <em>$key = ''</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Encrypt::decode" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$string</strong> (<em>string</em>) &#8211; String to decrypt</li>
-<li><strong>$key</strong> (<em>string</em>) &#8211; Encryption key</li>
+<li><strong>$string</strong> (<em>string</em>) – String to decrypt</li>
+<li><strong>$key</strong> (<em>string</em>) – Encryption key</li>
 </ul>
 </td>
 </tr>
@@ -567,7 +566,7 @@ you don&#8217;t want to use the one in your config file:</p>
 </pre></div>
 </div>
 <p>You can optionally pass your encryption key via the second parameter if
-you don&#8217;t want to use the one in your config file:</p>
+you don’t want to use the one in your config file:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$msg</span> <span class="o">=</span> <span class="s1">&#39;My secret message&#39;</span><span class="p">;</span>
 <span class="nv">$key</span> <span class="o">=</span> <span class="s1">&#39;super-secret-key&#39;</span><span class="p">;</span>
 
@@ -578,13 +577,13 @@ you don&#8217;t want to use the one in your config file:</p>
 
 <dl class="method">
 <dt id="CI_Encrypt::set_cipher">
-<tt class="descname">set_cipher</tt><big>(</big><em>$cipher</em><big>)</big><a class="headerlink" href="#CI_Encrypt::set_cipher" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_cipher</code><span class="sig-paren">(</span><em>$cipher</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Encrypt::set_cipher" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$cipher</strong> (<em>int</em>) &#8211; Valid PHP MCrypt cypher constant</li>
+<li><strong>$cipher</strong> (<em>int</em>) – Valid PHP MCrypt cypher constant</li>
 </ul>
 </td>
 </tr>
@@ -597,12 +596,12 @@ you don&#8217;t want to use the one in your config file:</p>
 </tbody>
 </table>
 <p>Permits you to set an Mcrypt cipher. By default it uses
-<tt class="docutils literal"><span class="pre">MCRYPT_RIJNDAEL_256</span></tt>. Example:</p>
+<code class="docutils literal"><span class="pre">MCRYPT_RIJNDAEL_256</span></code>. Example:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">encrypt</span><span class="o">-&gt;</span><span class="na">set_cipher</span><span class="p">(</span><span class="nx">MCRYPT_BLOWFISH</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Please visit php.net for a list of <a class="reference external" href="http://php.net/mcrypt">available ciphers</a>.</p>
-<p>If you&#8217;d like to manually test whether your server supports MCrypt you
+<p>If you’d like to manually test whether your server supports MCrypt you
 can use:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="k">echo</span> <span class="nb">extension_loaded</span><span class="p">(</span><span class="s1">&#39;mcrypt&#39;</span><span class="p">)</span> <span class="o">?</span> <span class="s1">&#39;Yup&#39;</span> <span class="o">:</span> <span class="s1">&#39;Nope&#39;</span><span class="p">;</span>
 </pre></div>
@@ -611,13 +610,13 @@ can use:</p>
 
 <dl class="method">
 <dt id="CI_Encrypt::set_mode">
-<tt class="descname">set_mode</tt><big>(</big><em>$mode</em><big>)</big><a class="headerlink" href="#CI_Encrypt::set_mode" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_mode</code><span class="sig-paren">(</span><em>$mode</em><span class="sig-paren">)</span><a class="headerlink" href="#CI_Encrypt::set_mode" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$mode</strong> (<em>int</em>) &#8211; Valid PHP MCrypt mode constant</li>
+<li><strong>$mode</strong> (<em>int</em>) – Valid PHP MCrypt mode constant</li>
 </ul>
 </td>
 </tr>
@@ -639,15 +638,15 @@ Example:</p>
 
 <dl class="method">
 <dt id="CI_Encrypt::encode_from_legacy">
-<tt class="descname">encode_from_legacy</tt><big>(</big><em>$string</em><span class="optional">[</span>, <em>$legacy_mode = MCRYPT_MODE_ECB</em><span class="optional">[</span>, <em>$key = ''</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_Encrypt::encode_from_legacy" title="Permalink to this definition">¶</a></dt>
+<code class="descname">encode_from_legacy</code><span class="sig-paren">(</span><em>$string</em><span class="optional">[</span>, <em>$legacy_mode = MCRYPT_MODE_ECB</em><span class="optional">[</span>, <em>$key = ''</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#CI_Encrypt::encode_from_legacy" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>$string</strong> (<em>string</em>) &#8211; String to encrypt</li>
-<li><strong>$legacy_mode</strong> (<em>int</em>) &#8211; Valid PHP MCrypt cipher constant</li>
-<li><strong>$key</strong> (<em>string</em>) &#8211; Encryption key</li>
+<li><strong>$string</strong> (<em>string</em>) – String to encrypt</li>
+<li><strong>$legacy_mode</strong> (<em>int</em>) – Valid PHP MCrypt cipher constant</li>
+<li><strong>$key</strong> (<em>string</em>) – Encryption key</li>
 </ul>
 </td>
 </tr>
@@ -663,7 +662,7 @@ Example:</p>
 CodeIgniter 1.x to be compatible with the Encrypt library in
 CodeIgniter 2.x. It is only necessary to use this method if you have
 encrypted data stored permanently such as in a file or database and are
-on a server that supports Mcrypt. &#8220;Light&#8221; use encryption such as
+on a server that supports Mcrypt. “Light” use encryption such as
 encrypted session data or transitory encrypted flashdata require no
 intervention on your part. However, existing encrypted Sessions will be
 destroyed since data encrypted prior to 2.x will not be decoded.</p>
@@ -696,12 +695,12 @@ developer should make cautiously and deliberately, if at all.</p>
 <tbody valign="top">
 <tr class="row-even"><td><strong>$orig_data</strong></td>
 <td>n/a</td>
-<td>The original encrypted data from CodeIgniter 1.x&#8217;s Encryption library</td>
+<td>The original encrypted data from CodeIgniter 1.x’s Encryption library</td>
 </tr>
 <tr class="row-odd"><td><strong>$legacy_mode</strong></td>
 <td>MCRYPT_MODE_ECB</td>
 <td>The Mcrypt mode that was used to generate the original encrypted data.
-CodeIgniter 1.x&#8217;s default was MCRYPT_MODE_ECB, and it will assume that
+CodeIgniter 1.x’s default was MCRYPT_MODE_ECB, and it will assume that
 to be the case unless overridden by this parameter.</td>
 </tr>
 <tr class="row-even"><td><strong>$key</strong></td>
@@ -737,7 +736,7 @@ outlined above.</td>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -758,7 +757,7 @@ outlined above.</td>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

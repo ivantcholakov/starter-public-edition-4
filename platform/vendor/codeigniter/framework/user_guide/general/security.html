@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Security &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Security &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="General Topics" href="index.html"/>
         <link rel="next" title="PHP Style Guide" href="styleguide.html"/>
         <link rel="prev" title="Alternate PHP Syntax for View Files" href="alternative_php.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -115,7 +116,7 @@
 <li class="toctree-l2"><a class="reference internal" href="managing_apps.html">Managing your Applications</a></li>
 <li class="toctree-l2"><a class="reference internal" href="environments.html">Handling Multiple Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="alternative_php.html">Alternate PHP Syntax for View Files</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Security</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Security</a></li>
 <li class="toctree-l2"><a class="reference internal" href="styleguide.html">PHP Style Guide</a></li>
 </ul>
 </li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -301,7 +300,7 @@
 <li class="toctree-l2"><a class="reference internal" href="managing_apps.html">Managing your Applications</a></li>
 <li class="toctree-l2"><a class="reference internal" href="environments.html">Handling Multiple Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="alternative_php.html">Alternate PHP Syntax for View Files</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Security</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Security</a></li>
 <li class="toctree-l2"><a class="reference internal" href="styleguide.html">PHP Style Guide</a></li>
 </ul>
 </li>
@@ -425,8 +424,8 @@
             
   <div class="section" id="security">
 <h1>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h1>
-<p>This page describes some &#8220;best practices&#8221; regarding web security, and
-details CodeIgniter&#8217;s internal security features.</p>
+<p>This page describes some “best practices” regarding web security, and
+details CodeIgniter’s internal security features.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">If you came here looking for a security contact, please refer to
@@ -452,25 +451,25 @@ the following:</p>
 <div class="section" id="register-globals">
 <h2>Register_globals<a class="headerlink" href="#register-globals" title="Permalink to this headline">¶</a></h2>
 <p>During system initialization all global variables that are found to exist
-in the <tt class="docutils literal"><span class="pre">$_GET</span></tt>, <tt class="docutils literal"><span class="pre">$_POST</span></tt>, <tt class="docutils literal"><span class="pre">$_REQUEST</span></tt> and <tt class="docutils literal"><span class="pre">$_COOKIE</span></tt> are unset.</p>
+in the <code class="docutils literal"><span class="pre">$_GET</span></code>, <code class="docutils literal"><span class="pre">$_POST</span></code>, <code class="docutils literal"><span class="pre">$_REQUEST</span></code> and <code class="docutils literal"><span class="pre">$_COOKIE</span></code> are unset.</p>
 <p>The unsetting routine is effectively the same as <em>register_globals = off</em>.</p>
 </div>
 <div class="section" id="display-errors">
 <h2>display_errors<a class="headerlink" href="#display-errors" title="Permalink to this headline">¶</a></h2>
-<p>In production environments, it is typically desirable to &#8220;disable&#8221; PHP&#8217;s
+<p>In production environments, it is typically desirable to “disable” PHP’s
 error reporting by setting the internal <em>display_errors</em> flag to a value
 of 0. This disables native PHP errors from being rendered as output,
 which may potentially contain sensitive information.</p>
-<p>Setting CodeIgniter&#8217;s <strong>ENVIRONMENT</strong> constant in index.php to a value of
-<strong>&#8216;production&#8217;</strong> will turn off these errors. In development mode, it is
-recommended that a value of &#8216;development&#8217; is used. More information
+<p>Setting CodeIgniter’s <strong>ENVIRONMENT</strong> constant in index.php to a value of
+<strong>‘production’</strong> will turn off these errors. In development mode, it is
+recommended that a value of ‘development’ is used. More information
 about differentiating between environments can be found on the
-<a class="reference internal" href="environments.html"><em>Handling Environments</em></a> page.</p>
+<a class="reference internal" href="environments.html"><span class="doc">Handling Environments</span></a> page.</p>
 </div>
 <div class="section" id="magic-quotes-runtime">
 <h2>magic_quotes_runtime<a class="headerlink" href="#magic-quotes-runtime" title="Permalink to this headline">¶</a></h2>
 <p>The <em>magic_quotes_runtime</em> directive is turned off during system
-initialization so that you don&#8217;t have to remove slashes when retrieving
+initialization so that you don’t have to remove slashes when retrieving
 data from your database.</p>
 <div class="section" id="best-practices">
 <h3>Best Practices<a class="headerlink" href="#best-practices" title="Permalink to this headline">¶</a></h3>
@@ -495,7 +494,7 @@ in this process:</p>
 looks for commonly used techniques to embed malicious JavaScript into
 your data, or other types of code that attempt to hijack cookies or
 do other malicious things. The XSS Filter is described
-<a class="reference internal" href="../libraries/security.html"><em>here</em></a>.</p>
+<a class="reference internal" href="../libraries/security.html"><span class="doc">here</span></a>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">XSS filtering should <em>only be performed on output</em>. Filtering
@@ -511,14 +510,14 @@ attacker tricking their victim into unknowingly submitting a request.</p>
 <p>CodeIgniter provides CSRF protection out of the box, which will get
 automatically triggered for every non-GET HTTP request, but also needs
 you to create your submit forms in a certain way. This is explained in
-the <a class="reference internal" href="../libraries/security.html"><em>Security Library</em></a> documentation.</p>
+the <a class="reference internal" href="../libraries/security.html"><span class="doc">Security Library</span></a> documentation.</p>
 </div>
 <div class="section" id="password-handling">
 <h2>Password handling<a class="headerlink" href="#password-handling" title="Permalink to this headline">¶</a></h2>
 <p>It is <em>critical</em> that you handle passwords in your application properly.</p>
-<p>Unfortunately, many developers don&#8217;t know how to do that, and the web is
-full of outdated or otherwise wrongful advices, which doesn&#8217;t help.</p>
-<p>We would like to give you a list of combined do&#8217;s and don&#8217;ts to help you
+<p>Unfortunately, many developers don’t know how to do that, and the web is
+full of outdated or otherwise wrongful advices, which doesn’t help.</p>
+<p>We would like to give you a list of combined do’s and don’ts to help you
 with that. Please read below.</p>
 <ul>
 <li><p class="first">DO NOT store passwords in plain-text format.</p>
@@ -529,63 +528,63 @@ with that. Please read below.</p>
 not <em>encoding</em>.</p>
 <p>Encoding, and encryption too, are two-way processes. Passwords are
 secrets that must only be known to their owner, and thus must work
-only in one direction. Hashing does that - there&#8217;s <em>no</em> un-hashing or
+only in one direction. Hashing does that - there’s <em>no</em> un-hashing or
 de-hashing, but there is decoding and decryption.</p>
 </li>
 <li><p class="first">DO NOT use weak or broken hashing algorithms like MD5 or SHA1.</p>
 <p>These algorithms are old, proven to be flawed, and not designed for
 password hashing in the first place.</p>
-<p>Also, DON&#8217;T invent your own algorithms.</p>
+<p>Also, DON’T invent your own algorithms.</p>
 <p>Only use strong password hashing algorithms like BCrypt, which is used
-in PHP&#8217;s own <a class="reference external" href="http://php.net/password">Password Hashing</a> functions.</p>
-<p>Please use them, even if you&#8217;re not running PHP 5.5+, CodeIgniter
+in PHP’s own <a class="reference external" href="http://php.net/password">Password Hashing</a> functions.</p>
+<p>Please use them, even if you’re not running PHP 5.5+, CodeIgniter
 provides them for you.</p>
 </li>
 <li><p class="first">DO NOT ever display or send a password in plain-text format!</p>
-<p>Even to the password&#8217;s owner, if you need a &#8220;Forgotten password&#8221;
+<p>Even to the password’s owner, if you need a “Forgotten password”
 feature, just randomly generate a new, one-time (this is also important)
 password and send that instead.</p>
 </li>
-<li><p class="first">DO NOT put unnecessary limits on your users&#8217; passwords.</p>
-<p>If you&#8217;re using a hashing algorithm other than BCrypt (which has a limit
+<li><p class="first">DO NOT put unnecessary limits on your users’ passwords.</p>
+<p>If you’re using a hashing algorithm other than BCrypt (which has a limit
 of 72 characters), you should set a relatively high limit on password
 lengths in order to mitigate DoS attacks - say, 1024 characters.</p>
-<p>Other than that however, there&#8217;s no point in forcing a rule that a
-password can only be up to a number of characters, or that it can&#8217;t
+<p>Other than that however, there’s no point in forcing a rule that a
+password can only be up to a number of characters, or that it can’t
 contain a certain set of special characters.</p>
 <p>Not only does this <strong>reduce</strong> security instead of improving it, but
-there&#8217;s literally no reason to do it. No technical limitations and
-no (practical) storage constraints apply once you&#8217;ve hashed them, none!</p>
+there’s literally no reason to do it. No technical limitations and
+no (practical) storage constraints apply once you’ve hashed them, none!</p>
 </li>
 </ul>
 </div>
 <div class="section" id="validate-input-data">
 <h2>Validate input data<a class="headerlink" href="#validate-input-data" title="Permalink to this headline">¶</a></h2>
-<p>CodeIgniter has a <a class="reference internal" href="../libraries/form_validation.html"><em>Form Validation Library</em></a> that assists you in
+<p>CodeIgniter has a <a class="reference internal" href="../libraries/form_validation.html"><span class="doc">Form Validation Library</span></a> that assists you in
 validating, filtering, and prepping your data.</p>
-<p>Even if that doesn&#8217;t work for your use case however, be sure to always
+<p>Even if that doesn’t work for your use case however, be sure to always
 validate and sanitize all input data. For example, if you expect a numeric
-string for an input variable, you can check for that with <tt class="docutils literal"><span class="pre">is_numeric()</span></tt>
-or <tt class="docutils literal"><span class="pre">ctype_digit()</span></tt>. Always try to narrow down your checks to a certain
+string for an input variable, you can check for that with <code class="docutils literal"><span class="pre">is_numeric()</span></code>
+or <code class="docutils literal"><span class="pre">ctype_digit()</span></code>. Always try to narrow down your checks to a certain
 pattern.</p>
-<p>Have it in mind that this includes not only <tt class="docutils literal"><span class="pre">$_POST</span></tt> and <tt class="docutils literal"><span class="pre">$_GET</span></tt>
+<p>Have it in mind that this includes not only <code class="docutils literal"><span class="pre">$_POST</span></code> and <code class="docutils literal"><span class="pre">$_GET</span></code>
 variables, but also cookies, the user-agent string and basically
 <em>all data that is not created directly by your own code</em>.</p>
 </div>
 <div class="section" id="escape-all-data-before-database-insertion">
 <h2>Escape all data before database insertion<a class="headerlink" href="#escape-all-data-before-database-insertion" title="Permalink to this headline">¶</a></h2>
 <p>Never insert information into your database without escaping it.
-Please see the section that discusses <a class="reference internal" href="../database/queries.html"><em>database queries</em></a> for more information.</p>
+Please see the section that discusses <a class="reference internal" href="../database/queries.html"><span class="doc">database queries</span></a> for more information.</p>
 </div>
 <div class="section" id="hide-your-files">
 <h2>Hide your files<a class="headerlink" href="#hide-your-files" title="Permalink to this headline">¶</a></h2>
 <p>Another good security practice is to only leave your <em>index.php</em>
-and &#8220;assets&#8221; (e.g. .js, css and image files) under your server&#8217;s
-<em>webroot</em> directory (most commonly named &#8220;htdocs/&#8221;). These are
+and “assets” (e.g. .js, css and image files) under your server’s
+<em>webroot</em> directory (most commonly named “htdocs/”). These are
 the only files that you would need to be accessible from the web.</p>
 <p>Allowing your visitors to see anything else would potentially
 allow them to access sensitive data, execute scripts, etc.</p>
-<p>If you&#8217;re not allowed to do that, you can try using a .htaccess
+<p>If you’re not allowed to do that, you can try using a .htaccess
 file to restrict access to those resources.</p>
 <p>CodeIgniter will have an index.html file in all of its
 directories in an attempt to hide some of this data, but have
@@ -613,7 +612,7 @@ attacker.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -634,7 +633,7 @@ attacker.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

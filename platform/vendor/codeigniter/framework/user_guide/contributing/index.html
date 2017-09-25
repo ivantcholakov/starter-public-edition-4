@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Contributing to CodeIgniter &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Contributing to CodeIgniter &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="next" title="Writing CodeIgniter Documentation" href="../documentation/index.html"/>
         <link rel="prev" title="Conclusion" href="../tutorial/conclusion.html"/> 
 
@@ -48,9 +51,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -82,9 +83,9 @@
 </li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Contributing to CodeIgniter</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -234,9 +235,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../general/welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -268,9 +267,9 @@
 </li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Contributing to CodeIgniter</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -424,10 +423,8 @@
 <h1>Contributing to CodeIgniter<a class="headerlink" href="#contributing-to-codeigniter" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a><ul class="simple">
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </div>
 <p>CodeIgniter is a community driven project and accepts contributions of code
@@ -443,7 +440,7 @@ closed Issues)</li>
 <li>Is it something really obvious that you fix it yourself?</li>
 </ul>
 <p>Reporting issues is helpful but an even better approach is to send a Pull
-Request, which is done by &#8220;Forking&#8221; the main repository and committing to your
+Request, which is done by “Forking” the main repository and committing to your
 own copy. This will require you to use the version control system called Git.</p>
 <div class="section" id="support">
 <h2>Support<a class="headerlink" href="#support" title="Permalink to this headline">¶</a></h2>
@@ -456,9 +453,9 @@ have found a bug, again - please ask on the forums first.</p>
 <div class="section" id="security">
 <h2>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h2>
 <p>Did you find a security issue in CodeIgniter?</p>
-<p>Please <em>don&#8217;t</em> disclose it publicly, but e-mail us at <a class="reference external" href="mailto:security&#37;&#52;&#48;codeigniter&#46;com">security<span>&#64;</span>codeigniter<span>&#46;</span>com</a>,
+<p>Please <em>don’t</em> disclose it publicly, but e-mail us at <a class="reference external" href="mailto:security&#37;&#52;&#48;codeigniter&#46;com">security<span>&#64;</span>codeigniter<span>&#46;</span>com</a>,
 or report it via our page on <a class="reference external" href="https://hackerone.com/codeigniter">HackerOne</a>.</p>
-<p>If you&#8217;ve found a critical vulnerability, we&#8217;d be happy to credit you in our
+<p>If you’ve found a critical vulnerability, we’d be happy to credit you in our
 <cite>ChangeLog &lt;../changelog&gt;</cite>.</p>
 </div>
 <div class="section" id="tips-for-a-good-issue-report">
@@ -507,12 +504,12 @@ there must be a fallback for PHP 5.3.7.</p>
 <div class="section" id="branching">
 <h3>Branching<a class="headerlink" href="#branching" title="Permalink to this headline">¶</a></h3>
 <p>CodeIgniter uses the <a class="reference external" href="http://nvie.com/posts/a-successful-git-branching-model/">Git-Flow</a> branching model
-which requires all pull requests to be sent to the &#8220;develop&#8221; branch. This is
-where the next planned version will be developed. The &#8220;master&#8221; branch will
-always contain the latest stable version and is kept clean so a &#8220;hotfix&#8221; (e.g:
+which requires all pull requests to be sent to the “develop” branch. This is
+where the next planned version will be developed. The “master” branch will
+always contain the latest stable version and is kept clean so a “hotfix” (e.g:
 an emergency security patch) can be applied to master to create a new version,
 without worrying about other features holding it up. For this reason all
-commits need to be made to &#8220;develop&#8221; and any sent to &#8220;master&#8221; will be closed
+commits need to be made to “develop” and any sent to “master” will be closed
 automatically. If you have multiple changes to submit, please place all
 changes into their own branch on your fork.</p>
 <p>One thing at a time: A pull request should only contain one change. That does
@@ -526,7 +523,7 @@ new branches for both of these features and send two requests.</p>
 <h3>Signing<a class="headerlink" href="#signing" title="Permalink to this headline">¶</a></h3>
 <p>You must sign your work, certifying that you either wrote the work or
 otherwise have the right to pass it on to an open source project. git makes
-this trivial as you merely have to use <cite>&#8211;signoff</cite> on your commits to your
+this trivial as you merely have to use <cite>–signoff</cite> on your commits to your
 CodeIgniter fork.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>git commit --signoff
 </pre></div>
@@ -538,11 +535,11 @@ CodeIgniter fork.</p>
 <p>This will sign your commits with the information setup in your git config, e.g.</p>
 <blockquote>
 <div>Signed-off-by: John Q Public &lt;<a class="reference external" href="mailto:john&#46;public&#37;&#52;&#48;example&#46;com">john<span>&#46;</span>public<span>&#64;</span>example<span>&#46;</span>com</a>&gt;</div></blockquote>
-<p>If you are using Tower there is a &#8220;Sign-Off&#8221; checkbox in the commit window. You
+<p>If you are using Tower there is a “Sign-Off” checkbox in the commit window. You
 could even alias git commit to use the -s flag so you don’t have to think about
 it.</p>
-<p>By signing your work in this manner, you certify to a &#8220;Developer&#8217;s Certificate
-of Origin&#8221;. The current version of this certificate is in the <a class="reference internal" href="../DCO.html"><em>Developer&#8217;s Certificate of Origin 1.1</em></a> file
+<p>By signing your work in this manner, you certify to a “Developer’s Certificate
+of Origin”. The current version of this certificate is in the <a class="reference internal" href="../DCO.html"><span class="doc">Developer’s Certificate of Origin 1.1</span></a> file
 in the root of this documentation.</p>
 </div>
 </div>
@@ -567,7 +564,7 @@ in the root of this documentation.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -588,7 +585,7 @@ in the root of this documentation.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

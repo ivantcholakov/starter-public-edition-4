@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Using CodeIgniter Libraries &mdash; CodeIgniter 3.1.5 documentation</title>
+  <title>Using CodeIgniter Libraries &mdash; CodeIgniter 3.1.6 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="CodeIgniter 3.1.5 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
         <link rel="up" title="General Topics" href="index.html"/>
         <link rel="next" title="Creating Libraries" href="creating_libraries.html"/>
         <link rel="prev" title="Helper Functions" href="helpers.html"/> 
@@ -49,9 +52,7 @@
     
       <div id="pulldown-menu" class="ciNav">
         <ul>
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -85,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -97,7 +98,7 @@
 <li class="toctree-l2"><a class="reference internal" href="views.html">Views</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html">Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="helpers.html">Helpers</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Using CodeIgniter Libraries</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using CodeIgniter Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="creating_libraries.html">Creating Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="drivers.html">Using CodeIgniter Drivers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="creating_drivers.html">Creating Drivers</a></li>
@@ -235,9 +236,7 @@
           
           
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -271,7 +270,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">Contributing to CodeIgniter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/index.html">Writing CodeIgniter Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer&#8217;s Certificate of Origin 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DCO.html">Developer’s Certificate of Origin 1.1</a></li>
 </ul>
 </li>
 </ul>
@@ -283,7 +282,7 @@
 <li class="toctree-l2"><a class="reference internal" href="views.html">Views</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html">Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="helpers.html">Helpers</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Using CodeIgniter Libraries</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using CodeIgniter Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="creating_libraries.html">Creating Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="drivers.html">Using CodeIgniter Drivers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="creating_drivers.html">Creating Drivers</a></li>
@@ -427,13 +426,13 @@
 <h1>Using CodeIgniter Libraries<a class="headerlink" href="#using-codeigniter-libraries" title="Permalink to this headline">¶</a></h1>
 <p>All of the available libraries are located in your <em>system/libraries/</em>
 directory. In most cases, to use one of these classes involves initializing
-it within a <a class="reference internal" href="controllers.html"><em>controller</em></a> using the following
+it within a <a class="reference internal" href="controllers.html"><span class="doc">controller</span></a> using the following
 initialization method:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">library</span><span class="p">(</span><span class="s1">&#39;class_name&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Where &#8216;class_name&#8217; is the name of the class you want to invoke. For
-example, to load the <a class="reference internal" href="../libraries/form_validation.html"><em>Form Validation Library</em></a> you would do this:</p>
+<p>Where ‘class_name’ is the name of the class you want to invoke. For
+example, to load the <a class="reference internal" href="../libraries/form_validation.html"><span class="doc">Form Validation Library</span></a> you would do this:</p>
 <div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">library</span><span class="p">(</span><span class="s1">&#39;form_validation&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -448,7 +447,7 @@ passing an array of libraries to the load method.</p>
 <div class="section" id="creating-your-own-libraries">
 <h2>Creating Your Own Libraries<a class="headerlink" href="#creating-your-own-libraries" title="Permalink to this headline">¶</a></h2>
 <p>Please read the section of the user guide that discusses how to
-<a class="reference internal" href="creating_libraries.html"><em>create your own libraries</em></a>.</p>
+<a class="reference internal" href="creating_libraries.html"><span class="doc">create your own libraries</span></a>.</p>
 </div>
 </div>
 
@@ -471,7 +470,7 @@ passing an array of libraries to the load method.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Jun 19, 2017.
+      Last updated on Sep 25, 2017.
     </p>
   </div>
 
@@ -492,7 +491,7 @@ passing an array of libraries to the load method.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.5',
+            VERSION:'3.1.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
