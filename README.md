@@ -16,6 +16,13 @@ Live Demo
 
 http://iridadesign.com/starter-public-edition-4/www/
 
+PHP
+---
+
+If you are a beginner with little or no PHP experience, you might need to read a training tutorial like this one:
+
+PHP Tutorial for Beginners: Learn in 7 Days, https://www.guru99.com/php-tutorials.html
+
 CodeIgniter 3 Documentation
 -----------------------------
 
