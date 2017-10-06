@@ -81,6 +81,18 @@ class Welcome_controller extends Base_Controller {
 
         //----------------------------------------------------------------------
 
+        if (function_exists('apache_get_modules')) {
+
+            $apache_modules = apache_get_modules();
+            $mod_rewrite_enabled = in_array('mod_rewrite', $apache_modules);
+
+            $diagnostics[] = '<br /><strong>Apache:</strong>';
+
+            $diagnostics[] = 'mod_rewrite enabled - '.($mod_rewrite_enabled ? $yes : $no);
+        }
+
+        //----------------------------------------------------------------------
+
         $diagnostics[] = '<br /><strong>Mailer:</strong>';
 
         $mailer_enabled = (bool) $this->settings->get('mailer_enabled');
