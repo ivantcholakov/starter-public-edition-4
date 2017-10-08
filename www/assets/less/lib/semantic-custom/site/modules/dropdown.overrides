@@ -9,3 +9,13 @@ select.ui.selection.dropdown:not([multiple]) {
 select.ui.dropdown:not([multiple]) {
     height: auto;
 }
+
+/* IE10 and IE11 fixes */
+
+// https://stackoverflow.com/questions/25178017/how-to-remove-selected-option-background-color-in-ie-browser-through-css
+select:focus::-ms-value {
+  background: @selectionBackground;
+  color: @selectionTextColor;
+}
+
+/* End IE10 and IE11 fixes */
