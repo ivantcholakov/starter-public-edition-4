@@ -87,10 +87,36 @@ node -v
 npm -v
 ```
 
+* (Optional, Linux, Ubuntu) Install the interactive node.js updater:
+
+```sh
+sudo npm install -g n
+```
+
+* Later you can use the following commands for updates:
+
+Updating Node.js:
+
+```sh
+sudo n lts
+```
+
+Updating npm:
+
+```sh
+sudo npm i -g npm
+```
+
+Updating all the globally installed packages:
+
+```sh
+sudo npm update -g
+```
+
 * Install less.js compiler (http://lesscss.org/) globally:
 
 ```sh
-npm install less -g
+sudo npm install less -g
 ```
 
 Then the following command should work:
@@ -102,7 +128,7 @@ lessc -v
 * Install PostCSS and its CLI utility (https://github.com/postcss/postcss-cli) globally:
 
 ```sh
-npm -g install postcss-cli
+sudo npm -g install postcss-cli
 ```
 
 And this command should work:
@@ -114,19 +140,19 @@ postcss -v
 * Install Autoprefixer (https://github.com/postcss/autoprefixer) globally:
 
 ```sh
-npm -g install autoprefixer
+sudo npm -g install autoprefixer
 ```
 
 * Install cssnano (https://github.com/ben-eb/cssnano):
 
 ```sh
-npm -g install cssnano
+sudo npm -g install cssnano
 ```
 
 * Install TypeScript compiler (if it is needed):
 
 ```sh
-npm -g install typescript-compiler
+sudo npm -g install typescript-compiler
 ```
 
 This command should work:
