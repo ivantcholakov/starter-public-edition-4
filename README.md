@@ -567,6 +567,7 @@ Reported by Webnice Ltd., http://webnicebg.com
 * http://rusalkakiten.com/ - a hotel
 * http://rusepress-bg.com/ - printing services
 * http://mirage-group.eu - a printing machines provider
+* http://dibla-awards.com - Dibla Design Awards event
 
 Reported by Krishna Guragai, @krishnaguragain
 
