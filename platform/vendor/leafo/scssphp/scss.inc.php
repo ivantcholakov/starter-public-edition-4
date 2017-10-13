@@ -3,7 +3,7 @@ if (version_compare(PHP_VERSION, '5.4') < 0) {
     throw new \Exception('scssphp requires PHP 5.4 or above');
 }
 
-if (! class_exists('scssc', false)) {
+if (! class_exists('Leafo\ScssPhp\Version', false)) {
     include_once __DIR__ . '/src/Base/Range.php';
     include_once __DIR__ . '/src/Block.php';
     include_once __DIR__ . '/src/Colors.php';
@@ -26,5 +26,4 @@ if (! class_exists('scssc', false)) {
     include_once __DIR__ . '/src/Type.php';
     include_once __DIR__ . '/src/Util.php';
     include_once __DIR__ . '/src/Version.php';
-    include_once __DIR__ . '/src/Server.php';
 }
