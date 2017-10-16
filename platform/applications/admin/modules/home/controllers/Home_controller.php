@@ -12,9 +12,11 @@ class Home_controller extends Base_Authenticated_Controller {
     public function index() {
 
         $title = 'Administrator\'s Home Page';
+        $this->registry->set('title', $title);
+        $this->_set_header_icon('dashboard');
 
         $this->template
-            ->title($title)
+            ->prepend_title($title)
             ->set_partial('scripts', 'home_scripts')
             ->build('home');
     }

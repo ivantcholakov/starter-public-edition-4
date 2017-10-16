@@ -13,9 +13,8 @@ class Base_Controller extends Core_Controller {
 
         $this->load->library('template');
 
-        $this->template->set_layout('default');
-
         //$default_title = config_item('default_title');
+        //$default_title = $this->settings->lang('site_name');
         $default_title = 'Application Starter 4 Public Edition';
         //
 
@@ -23,10 +22,10 @@ class Base_Controller extends Core_Controller {
              $this->template->title($default_title);
         }
 
-        $this->template->set_metadata('robots', 'noindex,nofollow,noarchive');
-
         $this->template
-            ->prepend_title('Site Administrator')
+            ->set_layout('default')
+            ->set_metadata('robots', 'noindex,nofollow,noarchive')
+            ->set_breadcrumb('<i class="dashboard icon"></i>'.$this->lang->line('ui_home'), site_url())
         ;
     }
 
@@ -90,7 +89,7 @@ class Base_Controller extends Core_Controller {
 
             if ($this->input->is_ajax_request()) {
 
-                $this->session->set_flashdata('error_message', $this->lang->line('ui_session_expired'));
+                $this->session->set_flashdata('warning_message', $this->lang->line('ui_session_expired'));
 
                 set_status_header(403);
 
@@ -101,7 +100,7 @@ class Base_Controller extends Core_Controller {
 
                 // Session expiration message is not to be shown
                 // when we are comming from the protected home page.
-                $this->session->set_flashdata('error_message', $this->lang->line('ui_session_expired'));
+                $this->session->set_flashdata('warning_message', $this->lang->line('ui_session_expired'));
             }
 
             if ($this->input->method() != 'get') {
@@ -112,6 +111,34 @@ class Base_Controller extends Core_Controller {
         }
 
         return true;
+    }
+
+    protected function _set_title($title, $title_short = null) {
+
+        if ($title_short == '') {
+            $title_short = $title;
+        }
+
+        $this->registry->set('title', $title);
+
+        $this->template
+            ->prepend_title($title_short)
+            ->set_breadcrumb($title_short)
+        ;
+    }
+
+    protected function _set_header_icon($icon) {
+
+        if (trim($icon) != '') {
+            $this->registry->set('header_icon', '<i class="circular '.$icon.' icon"></i>');
+        } else {
+            $this->registry->delete('header_icon');
+        }
+    }
+
+    protected function _set_subtitle($subtitle) {
+
+        $this->registry->set('subtitle', $subtitle);
     }
 
     protected function _set_nav($id) {

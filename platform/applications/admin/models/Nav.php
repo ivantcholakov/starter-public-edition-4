@@ -52,6 +52,10 @@ class Nav extends CI_Model {
         $nav['settings/contact_page'] = array('label' => 'Contact Page', 'icon' => 'phone icon', 'location' => '#', 'parent_id' => 'settings');
         $nav['settings/modules'] = array('label' => 'Modules and Components', 'icon' => 'cubes icon', 'location' => '#', 'parent_id' => 'settings');
 
+        if (function_exists('phpinfo') && $this->config->item('phpinfo_allow')) {
+            $nav['settings/phpinfo'] = array('label' => 'phpinfo()', 'icon' => 'info circle icon', 'location' => site_url('phpinfo'), 'parent_id' => 'settings');
+        }
+
         return $nav;
     }
 

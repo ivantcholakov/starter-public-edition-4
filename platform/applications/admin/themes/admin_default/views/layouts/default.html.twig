@@ -54,19 +54,28 @@
 
     <header id="header">
 
-        <div class="ui vertically padded grid">
+        <div class="ui grid" style="padding-top: 1.3em; padding-bottom: .3em;">
 
-{{ widget('breadcrumb_widget') }}
+{% set breadcrumb_widget = widget('breadcrumb_widget') %}
 
-{% if template.page_title is not empty %}
+{% if registry('title') is not empty or breadcrumb_widget is not empty %}
 
-            <div class="row">
-                <div class="column">
+                <div class="sixteen wide column">
 
-                    <h1 class="ui header">{{ template.page_title }}</h1>
+                    <h1 class="ui header clearfix">
+    {% if breadcrumb_widget is not empty %}
+                        <div class="breadcrumb">{{ breadcrumb_widget|raw }}</div>
+    {% endif %}
+                        {{ registry('header_icon')|raw }}
+                        <div class="content">
+                            {{ registry('title')|raw }}
+    {% if registry('subtitle') is not empty %}
+                            <div class="sub header">{{ registry('subtitle')|raw }}</div>
+    {% endif %}
+                        </div>
+                    </h1>
 
                 </div>
-            </div>
 
 {% endif %}
 
