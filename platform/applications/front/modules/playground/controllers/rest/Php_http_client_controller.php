@@ -51,8 +51,13 @@ class Php_http_client_controller extends Playground_Base_Controller {
         \$authentication = new Http\\Message\\Authentication\\BasicAuth('admin', '1234');
         \$authenticationPlugin = new Http\\Client\\Common\\Plugin\\AuthenticationPlugin(\$authentication);
 
+        //\$client = Http\\Discovery\\HttpClientDiscovery::find();
+        \$client = Http\\Adapter\\Guzzle6\\Client::createWithConfig([
+            'verify' => false,  // Disable SSL verification, this option value is insecure and should be avoided!
+        ]);
+
         \$pluginClient = new Http\\Client\\Common\\PluginClient(
-            Http\\Discovery\\HttpClientDiscovery::find(),
+            \$client,
             [\$authenticationPlugin]
         );
 

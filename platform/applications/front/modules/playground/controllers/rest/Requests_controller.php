@@ -42,7 +42,10 @@ class Requests_controller extends Playground_Base_Controller {
         \$this->load->helper('url');
 
         \$headers = array('Accept' => 'application/json');
-        \$options = array('auth' => array('admin', '1234'));
+        \$options = array(
+            'auth' => array('admin', '1234'),
+            'verify' => false,  // Disable SSL verification, this option value is insecure and should be avoided!
+        );
         \$request = Requests::get(site_url('playground/rest/server-api-example/users/id/'.\$user_id.'/format/json'), \$headers, \$options);
 
         \$result = \$request->body;

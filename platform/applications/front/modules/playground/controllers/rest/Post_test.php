@@ -42,7 +42,10 @@ class Post_test extends Playground_Base_Controller {
         \$this->load->helper('url');
 
         \$headers = array('Accept' => 'application/json');
-        \$options = array('auth' => array('admin', '1234'));
+        \$options = array(
+            'auth' => array('admin', '1234'),
+            'verify' => false,  // Disable SSL verification, this option value is insecure and should be avoided!
+        );
         \$data = array('name' => 'John', 'email' => 'john@example.com');
         \$request = Requests::post(site_url('playground/rest/server-api-example/users'), \$headers, \$data, \$options);
 
