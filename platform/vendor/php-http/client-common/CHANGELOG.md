@@ -1,10 +1,34 @@
 # Change Log
 
-## 1.5.0
+## 1.6.0 - 2017-10-16
 
 ### Added
 
-- `QueryDefaultsPlugin` to add default query parameters. 
+- Add HttpClientPool client to leverage load balancing and fallback mechanism [see the documentation](http://docs.php-http.org/en/latest/components/client-common.html) for more details.
+- `PluginClientFactory` to create `PluginClient` instances.
+- Added new option 'delay' for `RetryPlugin`.
+- Added new option 'decider' for `RetryPlugin`.
+- Supports more cookie date formats in the Cookie Plugin
+
+### Changed
+
+- The `RetryPlugin` does now wait between retries. To disable/change this feature you must write something like: 
+ 
+```php
+$plugin = new RetryPlugin(['delay' => function(RequestInterface $request, Exception $e, $retries) { 
+  return 0; 
+}); 
+```
+
+### Deprecated
+
+- The `debug_plugins` option for `PluginClient` is deprecated and will be removed in 2.0. Use the decorator design pattern instead like in [ProfilePlugin](https://github.com/php-http/HttplugBundle/blob/de33f9c14252f22093a5ec7d84f17535ab31a384/Collector/ProfilePlugin.php).
+
+## 1.5.0 - 2017-03-30
+
+### Added
+
+- `QueryDefaultsPlugin` to add default query parameters.
 
 ## 1.4.2 - 2017-03-18
 
@@ -14,6 +38,7 @@
 
 ### Fixed
 
+- `CookiePlugin` allows main domain cookies to be sent/stored for subdomains
 - `DecoderPlugin` uses the right `FilteredStream` to handle `deflate` content encoding
 
 

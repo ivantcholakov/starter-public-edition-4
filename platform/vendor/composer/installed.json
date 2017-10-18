@@ -899,69 +899,6 @@
         ]
     },
     {
-        "name": "php-http/client-common",
-        "version": "1.5.0",
-        "version_normalized": "1.5.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/php-http/client-common.git",
-            "reference": "154d36542eb96ee95daa504591eab78af2484baa"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/php-http/client-common/zipball/154d36542eb96ee95daa504591eab78af2484baa",
-            "reference": "154d36542eb96ee95daa504591eab78af2484baa",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.4",
-            "php-http/httplug": "^1.1",
-            "php-http/message": "^1.2",
-            "php-http/message-factory": "^1.0",
-            "symfony/options-resolver": "^2.6 || ^3.0"
-        },
-        "require-dev": {
-            "henrikbjorn/phpspec-code-coverage": "^1.0",
-            "phpspec/phpspec": "^2.4"
-        },
-        "suggest": {
-            "php-http/cache-plugin": "PSR-6 Cache plugin",
-            "php-http/logger-plugin": "PSR-3 Logger plugin",
-            "php-http/stopwatch-plugin": "Symfony Stopwatch plugin"
-        },
-        "time": "2017-03-30T12:50:04+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.5-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Http\\Client\\Common\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Márk Sági-Kazár",
-                "email": "mark.sagikazar@gmail.com"
-            }
-        ],
-        "description": "Common HTTP Client implementations and tools for HTTPlug",
-        "homepage": "http://httplug.io",
-        "keywords": [
-            "client",
-            "common",
-            "http",
-            "httplug"
-        ]
-    },
-    {
         "name": "ezyang/htmlpurifier",
         "version": "v4.9.3",
         "version_normalized": "4.9.3.0",
@@ -2262,6 +2199,70 @@
             "javascript",
             "minifier",
             "minify"
+        ]
+    },
+    {
+        "name": "php-http/client-common",
+        "version": "v1.6.0",
+        "version_normalized": "1.6.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/php-http/client-common.git",
+            "reference": "1901ad36347227c14751a218d8f4ea1467d1f1ed"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/php-http/client-common/zipball/1901ad36347227c14751a218d8f4ea1467d1f1ed",
+            "reference": "1901ad36347227c14751a218d8f4ea1467d1f1ed",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4",
+            "php-http/httplug": "^1.1",
+            "php-http/message": "^1.6",
+            "php-http/message-factory": "^1.0",
+            "symfony/options-resolver": "^2.6 || ^3.0"
+        },
+        "require-dev": {
+            "guzzlehttp/psr7": "^1.4",
+            "henrikbjorn/phpspec-code-coverage": "^1.0",
+            "phpspec/phpspec": "^2.4"
+        },
+        "suggest": {
+            "php-http/cache-plugin": "PSR-6 Cache plugin",
+            "php-http/logger-plugin": "PSR-3 Logger plugin",
+            "php-http/stopwatch-plugin": "Symfony Stopwatch plugin"
+        },
+        "time": "2017-10-16T16:16:36+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.7-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Http\\Client\\Common\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Márk Sági-Kazár",
+                "email": "mark.sagikazar@gmail.com"
+            }
+        ],
+        "description": "Common HTTP Client implementations and tools for HTTPlug",
+        "homepage": "http://httplug.io",
+        "keywords": [
+            "client",
+            "common",
+            "http",
+            "httplug"
         ]
     }
 ]

@@ -14,12 +14,13 @@
         "php": ">=5.4",
         "php-http/httplug": "^1.1",
         "php-http/message-factory": "^1.0",
-        "php-http/message": "^1.2",
+        "php-http/message": "^1.6",
         "symfony/options-resolver": "^2.6 || ^3.0"
     },
     "require-dev": {
         "phpspec/phpspec": "^2.4",
-        "henrikbjorn/phpspec-code-coverage" : "^1.0"
+        "henrikbjorn/phpspec-code-coverage" : "^1.0",
+        "guzzlehttp/psr7": "^1.4"
     },
     "suggest": {
         "php-http/logger-plugin": "PSR-3 Logger plugin",
@@ -37,7 +38,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.5-dev"
+            "dev-master": "1.7-dev"
         }
     }
 }
