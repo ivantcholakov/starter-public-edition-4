@@ -11,7 +11,21 @@ class Base_Controller extends Core_Controller {
         //    ->model('current_user')
         //;
 
+        $this->load->model('visual_themes');
         $this->load->library('template');
+
+        // Determine the current visual theme.
+        if ($this->input->get('theme') != '' && $this->input->method() == 'get' && !$this->input->is_ajax_request()) {
+
+            $theme = (string) $this->input->get('theme');
+            $this->visual_themes->set_current($theme);
+
+            parse_str(parse_url(CURRENT_URL, PHP_URL_QUERY), $query);
+            unset($query['theme']);
+            redirect(http_build_url(current_url(), array('query' => http_build_query($query))));
+        }
+
+        $this->template->set_theme($this->visual_themes->get_current());
 
         //$default_title = config_item('default_title');
         //$default_title = $this->settings->lang('site_name');
