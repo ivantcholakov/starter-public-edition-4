@@ -176,6 +176,10 @@ if (!function_exists('set_email_settings')) {
             $ci->settings->set('email_smtp_debug', (int) $config['smtp_debug']);
         }
 
+        if (array_key_exists('debug_output', $config)) {
+            $ci->settings->set('email_debug_output', (int) $config['debug_output']);
+        }
+
         if (array_key_exists('wordwrap', $config)) {
             $ci->settings->set('email_wordwrap', empty($config['wordwrap']) ? 0 : 1);
         }
@@ -322,6 +326,7 @@ if (!function_exists('get_email_settings')) {
         $config['smtp_timeout'] = array_key_exists('smtp_timeout', $config) ? $config['smtp_timeout'] : 5;
         $config['smtp_crypto'] = array_key_exists('smtp_crypto', $config) ? $config['smtp_crypto'] : '';
         $config['smtp_debug'] = array_key_exists('smtp_debug', $config) ? $config['smtp_debug'] : 0;
+        $config['debug_output'] = array_key_exists('debug_output', $config) ? $config['debug_output'] : '';
         $config['wordwrap'] = array_key_exists('wordwrap', $config) ? $config['wordwrap'] : true;
         $config['wrapchars'] = array_key_exists('wrapchars', $config) ? $config['wrapchars'] : 76;
         $config['mailtype'] = array_key_exists('mailtype', $config) ? $config['mailtype'] : 'html';
@@ -361,6 +366,7 @@ if (!function_exists('get_email_settings')) {
             'email_smtp_timeout',
             'email_smtp_crypto',
             'email_smtp_debug',
+            'email_debug_output',
             'email_wordwrap',
             'email_wrapchars',
             'email_mailtype',
@@ -398,6 +404,7 @@ if (!function_exists('get_email_settings')) {
         $config['smtp_timeout'] = isset($settings['email_smtp_timeout']) ? (int) $settings['email_smtp_timeout'] : $config['smtp_timeout'];
         $config['smtp_crypto'] = isset($settings['email_smtp_crypto']) ? (string) $settings['email_smtp_crypto'] : $config['smtp_crypto'];
         $config['smtp_debug'] = isset($settings['email_smtp_debug']) ? (int) $settings['email_smtp_debug'] : $config['smtp_debug'];
+        $config['debug_output'] = isset($settings['email_debug_output']) ? $settings['email_debug_output'] : $config['debug_output'];
         $config['wordwrap'] = isset($settings['email_wordwrap']) ? !empty($settings['email_wordwrap']) : $config['wordwrap'];
         $config['wrapchars'] = isset($settings['email_wrapchars']) ? (int) $settings['email_wrapchars'] : $config['wrapchars'];
         $config['mailtype'] = isset($settings['email_mailtype']) ? (string) $settings['email_mailtype'] : $config['mailtype'];
