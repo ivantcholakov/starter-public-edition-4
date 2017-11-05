@@ -2,7 +2,7 @@
 
 /**
  * CodeIgniter compatible email-library powered by PHPMailer.
- * Version: 1.2.26
+ * Version: 1.2.27
  * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2017.
  * @license The MIT License (MIT), http://opensource.org/licenses/MIT
  * @link https://github.com/ivantcholakov/codeigniter-phpmailer
@@ -966,15 +966,15 @@ class Email extends CI_Email {
     // PHPMailer's SMTP debug output.
     // How to handle debug output.
     // Options:
-    // `html` - Output escaped, line breaks converted to `<br>`, appropriate for browser output. This is default value for CodeIgniter
-    // `echo` - Output plain-text as-is, should be avoid in web production
-    // `error_log` - Output to error log as configured in php.ini
+    // `html` - the output gets escaped, line breaks are to be converted to `<br>`, appropriate for browser output;
+    // `echo` - the output is plain-text "as-is", it should be avoided in production web pages;
+    // `error_log` - the output is saved in error log as it is configured in php.ini;
     // NULL or '' - default: 'echo' on CLI, 'html' otherwise.
     //
     // Alternatively, you can provide a callable expecting two params: a message string and the debug level:
     // <code>
     // function custom_debug($str, $level) {echo "debug level $level; message: $str";};
-    // set_debug_output(custom_debug);
+    // $this->email->set_debug_output('custom_debug');
     // </code>
     public function set_debug_output($handle) {
 
