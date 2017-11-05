@@ -173,6 +173,66 @@ $config['less_compile'] = array(
         'cssmin' => array('implementation' => 'minifycss'),
     ),
 
+    // php cli.php less compile admin-default-18-min admin-default-18-login-min admin-default-18-error-min
+
+    array(
+        'name' => 'admin-default-18-min',
+        'source' => DEFAULTFCPATH.'admin/themes/admin_default_18/less/index.less',
+        'destination' => DEFAULTFCPATH.'admin/themes/admin_default_18/css/admin.min.css',
+        'relativeUrls' => false,
+        'implementation' => 'less.js',
+        'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
+        'cssmin' => array('implementation' => 'minifycss'),
+    ),
+    array(
+        'name' => 'admin-default-18-login-min',
+        'source' => DEFAULTFCPATH.'admin/themes/admin_default_18/less/login.less',
+        'destination' => DEFAULTFCPATH.'admin/themes/admin_default_18/css/login.min.css',
+        'relativeUrls' => false,
+        'implementation' => 'less.js',
+        'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
+        'cssmin' => array('implementation' => 'minifycss'),
+    ),
+    array(
+        'name' => 'admin-default-18-error-min',
+        'source' => DEFAULTFCPATH.'admin/themes/admin_default_18/less/error.less',
+        'destination' => DEFAULTFCPATH.'admin/themes/admin_default_18/css/error.min.css',
+        'relativeUrls' => false,
+        'implementation' => 'less.js',
+        'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
+        'cssmin' => array('implementation' => 'minifycss'),
+    ),
+
+    // php cli.php less compile admin-default-17-min admin-default-17-login-min admin-default-17-error-min
+
+    array(
+        'name' => 'admin-default-17-min',
+        'source' => DEFAULTFCPATH.'admin/themes/admin_default_17/less/index.less',
+        'destination' => DEFAULTFCPATH.'admin/themes/admin_default_17/css/admin.min.css',
+        'relativeUrls' => false,
+        'implementation' => 'less.js',
+        'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
+        'cssmin' => array('implementation' => 'minifycss'),
+    ),
+    array(
+        'name' => 'admin-default-17-login-min',
+        'source' => DEFAULTFCPATH.'admin/themes/admin_default_17/less/login.less',
+        'destination' => DEFAULTFCPATH.'admin/themes/admin_default_17/css/login.min.css',
+        'relativeUrls' => false,
+        'implementation' => 'less.js',
+        'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
+        'cssmin' => array('implementation' => 'minifycss'),
+    ),
+    array(
+        'name' => 'admin-default-17-error-min',
+        'source' => DEFAULTFCPATH.'admin/themes/admin_default_17/less/error.less',
+        'destination' => DEFAULTFCPATH.'admin/themes/admin_default_17/css/error.min.css',
+        'relativeUrls' => false,
+        'implementation' => 'less.js',
+        'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
+        'cssmin' => array('implementation' => 'minifycss'),
+    ),
+
     // php cli.php less compile admin-default-min admin-default-login-min admin-default-error-min
 
     array(

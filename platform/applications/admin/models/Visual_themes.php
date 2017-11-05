@@ -21,6 +21,14 @@ class Visual_themes extends CI_Model {
 
         $this->items = array(
             array(
+                'key' => 'admin_default_18',
+                'name' => 'Font 18px',
+            ),
+            array(
+                'key' => 'admin_default_17',
+                'name' => 'Font 17px',
+            ),
+            array(
                 'key' => 'admin_default',
                 'name' => 'Font 16px',
             ),
