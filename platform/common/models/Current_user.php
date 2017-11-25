@@ -305,6 +305,12 @@ class Current_user extends CI_Model {
             $this->session->sess_regenerate(false);
         }
 
+        if (!ctype_digit(@ (string) $id)) {
+
+            $this->assign(null);
+            return $this->login_failed(LOGIN_NO_USER_FOUND);
+        }
+
         $id = (int) $id;
 
         Events::trigger('before_user_login_by_id', array('id' => $id));
