@@ -51,7 +51,7 @@ class Visual_themes extends CI_Model {
             return null;
         }
 
-        return $keys[0];
+        return $keys[2];
     }
 
     public function get_current() {
