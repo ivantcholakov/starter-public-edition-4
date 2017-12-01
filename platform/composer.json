@@ -27,7 +27,7 @@
         "guzzlehttp/psr7": "^1.3",
         "php-http/message": "^1.4",
         "matthiasmullie/minify": "^1.3",
-        "phpmailer/phpmailer": "^5.2.17",
+        "phpmailer/phpmailer": "^5.2.26",
         "xamin/handlebars.php": "^0.10.4",
         "intervention/image": "^2.3",
         "yohang88/letter-avatar": "1.0.5",
