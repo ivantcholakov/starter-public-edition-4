@@ -568,6 +568,9 @@ Reported by Webnice Ltd., http://webnicebg.com
 * http://rusepress-bg.com/ - printing services
 * http://mirage-group.eu - a printing machines provider
 * http://dibla-awards.com - Dibla Design Awards event
+* https://www.industrialbatteries.bg - industrial batteries, distribution and services
+* http://luxviewblinds.com - custom printed blinds
+* http://piccadillykids.bg - children's center "Piccadilly Kids"
 
 Reported by Krishna Guragai, @krishnaguragain
 
