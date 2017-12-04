@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f59b358f960a0641ec847145fcb78959",
+    "content-hash": "6ed4c195a099d1ad692d1e64badbb4f7",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -893,29 +893,28 @@
         },
         {
             "name": "php-http/client-common",
-            "version": "v1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/client-common.git",
-                "reference": "1901ad36347227c14751a218d8f4ea1467d1f1ed"
+                "reference": "9accb4a082eb06403747c0ffd444112eda41a0fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/client-common/zipball/1901ad36347227c14751a218d8f4ea1467d1f1ed",
-                "reference": "1901ad36347227c14751a218d8f4ea1467d1f1ed",
+                "url": "https://api.github.com/repos/php-http/client-common/zipball/9accb4a082eb06403747c0ffd444112eda41a0fd",
+                "reference": "9accb4a082eb06403747c0ffd444112eda41a0fd",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4",
+                "php": "^5.4 || ^7.0",
                 "php-http/httplug": "^1.1",
                 "php-http/message": "^1.6",
                 "php-http/message-factory": "^1.0",
-                "symfony/options-resolver": "^2.6 || ^3.0"
+                "symfony/options-resolver": "^2.6 || ^3.0 || ^4.0"
             },
             "require-dev": {
                 "guzzlehttp/psr7": "^1.4",
-                "henrikbjorn/phpspec-code-coverage": "^1.0",
-                "phpspec/phpspec": "^2.4"
+                "phpspec/phpspec": "^2.5 || ^3.4 || ^4.2"
             },
             "suggest": {
                 "php-http/cache-plugin": "PSR-6 Cache plugin",
@@ -951,7 +950,7 @@
                 "http",
                 "httplug"
             ],
-            "time": "2017-10-16T16:16:36+00:00"
+            "time": "2017-11-30T11:06:59+00:00"
         },
         {
             "name": "php-http/curl-client",
@@ -1783,25 +1782,25 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "v3.3.13",
+            "version": "v4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/options-resolver.git",
-                "reference": "623d9c210a137205f7e6e98166105625402cbb2f"
+                "reference": "ef617a2867c7d889d4ecee3c29595698d87474a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/623d9c210a137205f7e6e98166105625402cbb2f",
-                "reference": "623d9c210a137205f7e6e98166105625402cbb2f",
+                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/ef617a2867c7d889d4ecee3c29595698d87474a4",
+                "reference": "ef617a2867c7d889d4ecee3c29595698d87474a4",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5.9|>=7.0.8"
+                "php": "^7.1.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.3-dev"
+                    "dev-master": "4.0-dev"
                 }
             },
             "autoload": {
@@ -1833,7 +1832,7 @@
                 "configuration",
                 "options"
             ],
-            "time": "2017-11-05T15:47:03+00:00"
+            "time": "2017-11-07T14:45:01+00:00"
         },
         {
             "name": "t1st3/php-json-minify",
@@ -2056,16 +2055,16 @@
         },
         {
             "name": "whichbrowser/parser",
-            "version": "v2.0.26",
+            "version": "v2.0.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WhichBrowser/Parser-PHP.git",
-                "reference": "9e3e504336b97eec5803a3fcfeec9d254c0ba6bf"
+                "reference": "d5ca384803a2f927c7bd79b164cf050c35ff6c1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WhichBrowser/Parser-PHP/zipball/9e3e504336b97eec5803a3fcfeec9d254c0ba6bf",
-                "reference": "9e3e504336b97eec5803a3fcfeec9d254c0ba6bf",
+                "url": "https://api.github.com/repos/WhichBrowser/Parser-PHP/zipball/d5ca384803a2f927c7bd79b164cf050c35ff6c1d",
+                "reference": "d5ca384803a2f927c7bd79b164cf050c35ff6c1d",
                 "shasum": ""
             },
             "require": {
@@ -2074,6 +2073,8 @@
             },
             "require-dev": {
                 "cache/array-adapter": "^0.4",
+                "doctrine/common": "<2.8",
+                "doctrine/instantiator": "<1.1",
                 "icomefromthenet/reverse-regex": "dev-master",
                 "league/csv": "^8.0",
                 "phpdocumentor/reflection-docblock": "^2.0",
@@ -2111,7 +2112,7 @@
                 "ua",
                 "useragent"
             ],
-            "time": "2017-07-11T20:50:10+00:00"
+            "time": "2017-12-01T16:41:35+00:00"
         },
         {
             "name": "xamin/handlebars.php",

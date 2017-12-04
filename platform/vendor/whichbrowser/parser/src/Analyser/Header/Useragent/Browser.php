@@ -475,13 +475,14 @@ trait Browser
             $this->data->browser->type = Constants\BrowserType::BROWSER;
             $this->data->browser->channel = '';
             $this->data->browser->version = new Version([ 'value' => $match[1], 'details' => 1 ]);
+
+            unset($this->data->browser->family);
         }
 
-
-        /* Set the browser family */
-
-        if ($this->data->isBrowser('Edge')) {
-            unset($this->data->browser->family);
+        if (preg_match('/Edg(iOS|A)\/([0-9.]*)/u', $ua, $match)) {
+            $this->data->browser->name = 'Edge';
+            $this->data->browser->version = new Version([ 'value' => $match[2], 'details' => 1, 'hidden' => true ]);
+            $this->data->browser->type = Constants\BrowserType::BROWSER;
         }
     }
 
@@ -687,6 +688,11 @@ trait Browser
                         $device->identified |= $this->data->device->identified;
                         $this->data->os->reset([ 'name' => 'Firefox OS' ]);
                         $this->data->device = $device;
+
+                        if (preg_match('/Kai(OS)?\/([0-9.]+)/', $ua, $match)) {
+                            $this->data->os->reset([ 'name' => 'KaiOS', 'version' => new Version([ 'value' => $match[2] ]) ]);
+                            $this->data->os->family = new Family([ 'name' => 'Firefox OS' ]);
+                        }
                     }
                 }
             }
