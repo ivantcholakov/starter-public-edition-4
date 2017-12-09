@@ -120,15 +120,6 @@ class JS extends Minify
     protected $operatorsAfter = array();
 
     /**
-     * Public property so it can be accessed from inside the closure in
-     * extractRegex. Once PHP5.3 compatibility is dropped, we can make this
-     * property protected again.
-     *
-     * @var array
-     */
-    public $nestedExtracted = array();
-
-    /**
      * {@inheritdoc}
      */
     public function __construct()
@@ -201,12 +192,8 @@ class JS extends Minify
 
     /**
      * Strip comments from source code.
-     *
-     * Public method so it can be accessed from inside the closure in
-     * extractRegex. Once PHP5.3 compatibility is dropped, we can make this
-     * method protected again.
      */
-    public function stripComments()
+    protected function stripComments()
     {
         // single-line comments
         $this->registerPattern('/\/\/.*$/m', '');
@@ -239,33 +226,23 @@ class JS extends Minify
         $callback = function ($match) use ($minifier) {
             $count = count($minifier->extracted);
             $placeholder = '"'.$count.'"';
-            $minifier->extracted[$placeholder] = $match['regex'];
+            $minifier->extracted[$placeholder] = $match[0];
 
-            // because we're also trying to find regular expressions that follow
-            // if/when/for statements, we should also make sure that the content
-            // within these statements is also minified...
-            // e.g. `if("some   string"/* or comment */)` should become
-            //      `if("some   string")`
-            if (isset($match['before'])) {
-                $other = new $minifier();
-                $other->extractStrings('\'"`', "$count-");
-                $other->stripComments();
-                $match['before'] = $other->replace($match['before']);
-                $minifier->nestedExtracted += $other->extracted;
-            }
-
-            return (isset($match['before']) ? $match['before'] : '').
-                $placeholder.
-                (isset($match['after']) ? $match['after'] : '');
+            return $placeholder;
         };
 
-        $pattern = '(?P<regex>\/(?!\/).*?(?<!\\\\)(\\\\\\\\)*\/[gimy]*)(?![0-9a-zA-Z\/])';
+        // match all chars except `/` and `\`
+        // `\` is allowed though, along with whatever char follows (which is the
+        // one being escaped)
+        // this should allow all chars, except for an unescaped `/` (= the one
+        // closing the regex)
+        $pattern = '\\/([^\\/\\\\]*+|(\\\\.)*+)+\\/[gimy]*';
 
         // a regular expression can only be followed by a few operators or some
         // of the RegExp methods (a `\` followed by a variable or value is
         // likely part of a division, not a regex)
         $keywords = array('do', 'in', 'new', 'else', 'throw', 'yield', 'delete', 'return',  'typeof');
-        $before = '(?P<before>[=:,;\}\(\{\[&\|!]|^|'.implode('|', $keywords).')';
+        $before = '([=:,;\}\(\{\[&\|!\)]|^|'.implode('|', $keywords).')\s*';
         $propertiesAndMethods = array(
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp#Properties_2
             'constructor',
@@ -285,20 +262,8 @@ class JS extends Minify
         );
         $delimiters = array_fill(0, count($propertiesAndMethods), '/');
         $propertiesAndMethods = array_map('preg_quote', $propertiesAndMethods, $delimiters);
-        $after = '(?P<after>[\.,;\)\}&\|+]|$|\.('.implode('|', $propertiesAndMethods).'))';
-        $this->registerPattern('/'.$before.'\s*'.$pattern.'\s*'.$after.'/', $callback);
-
-        // we didn't check for regular expressions after `)`, because that is
-        // more often than not not a character where a regex can follow (e.g.
-        // (1+2)/3/4 -> /3/ could be considered a regex, but it's not)
-        // however, after single-line if/while/for, there could very well be a
-        // regex after `)` (e.g. if(true)/regex/)
-        // there is one problem, though: it's (near) impossible to check for
-        // when the if/while/for statement is closed (same amount of closing
-        // brackets as there were opened), so I'll ignore single-line statements
-        // with nested brackets followed by a regex for now...
-        $before = '(?P<before>\b(if|while|for)\s*\((?P<code>[^\(]+?)\))';
-        $this->registerPattern('/'.$before.'\s*'.$pattern.'\s*'.$after.'/', $callback);
+        $after = '(?=\s*[\.,;\)\}&\|+]|\/\/|$|\.('.implode('|', $propertiesAndMethods).'))';
+        $this->registerPattern('/'.$before.'\K'.$pattern.$after.'/', $callback);
 
         // 1 more edge case: a regex can be followed by a lot more operators or
         // keywords if there's a newline (ASI) in between, where the operator
@@ -306,25 +271,8 @@ class JS extends Minify
         // (https://github.com/matthiasmullie/minify/issues/56)
         $operators = $this->getOperatorsForRegex($this->operatorsBefore, '/');
         $operators += $this->getOperatorsForRegex($this->keywordsReserved, '/');
-        $after = '(?P<after>\n\s*('.implode('|', $operators).'))';
-        $this->registerPattern('/'.$pattern.'\s*'.$after.'/', $callback);
-    }
-
-    /**
-     * In addition to the regular restore routine, we also need to restore a few
-     * more things that have been extracted as part of the regex extraction...
-     *
-     * {@inheritdoc}
-     */
-    protected function restoreExtractedData($content)
-    {
-        // restore regular extracted stuff
-        $content = parent::restoreExtractedData($content);
-
-        // restore nested stuff from within regex extraction
-        $content = strtr($content, $this->nestedExtracted);
-
-        return $content;
+        $after = '(?=\s*\n\s*('.implode('|', $operators).'))';
+        $this->registerPattern('/'.$pattern.$after.'/', $callback);
     }
 
     /**
@@ -397,6 +345,12 @@ class JS extends Minify
         $content = preg_replace('/[^\S\n]+('.implode('|', $operatorsDiffAfter).')/', '\\1', $content);
 
         /*
+         * Whitespace after `return` can be omitted in a few occasions
+         * (such as when followed by a string or regex)
+         */
+        $content = preg_replace('/\breturn\s+(["\'\/\+\-])/', 'return$1', $content);
+
+        /*
          * Get rid of double semicolons, except where they can be used like:
          * "for(v=1,_=b;;)", "for(v=1;;v++)" or "for(;;ja||(ja=true))".
          * I'll safeguard these double semicolons inside for-loops by
@@ -419,7 +373,13 @@ class JS extends Minify
          */
         $content = preg_replace('/(for\([^;\{]*;[^;\{]*;[^;\{]*\));(\}|$)/s', '\\1;;\\2', $content);
         $content = preg_replace('/(for\([^;\{]+\s+in\s+[^;\{]+\));(\}|$)/s', '\\1;;\\2', $content);
-        $content = preg_replace('/(while\([^;\{]+\));(\}|$)/s', '\\1;;\\2', $content); // @todo: no if part of a do{}while()
+        /*
+         * Below will also keep `;` after a `do{}while();` along with `while();`
+         * While these could be stripped after do-while, detecting this
+         * distinction is cumbersome, so I'll play it safe and make sure `;`
+         * after any kind of `while` is kept.
+         */
+        $content = preg_replace('/(while\([^;\{]+\));(\}|$)/s', '\\1;;\\2', $content);
 
         /*
          * We also can't strip empty else-statements. Even though they're
@@ -613,27 +573,5 @@ class JS extends Minify
         }
 
         return $content;
-    }
-
-    /**
-     * Protected method in parent made public, so it can be accessed from inside
-     * the closure in extractRegex. Once PHP5.3 compatibility is dropped, we can
-     * remove this.
-     *
-     * {@inheritdoc}
-     */
-    public function extractStrings($chars = '\'"', $placeholderPrefix = '') {
-        parent::extractStrings($chars, $placeholderPrefix);
-    }
-
-    /**
-     * Protected method in parent made public, so it can be accessed from inside
-     * the closure in extractRegex. Once PHP5.3 compatibility is dropped, we can
-     * remove this.
-     *
-     * {@inheritdoc}
-     */
-    public function replace($content) {
-        return parent::replace($content);
     }
 }
