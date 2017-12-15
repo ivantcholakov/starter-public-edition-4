@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6ed4c195a099d1ad692d1e64badbb4f7",
+    "content-hash": "023711b5e9c2dba3c951debbcf2f4e4f",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -523,16 +523,16 @@
         },
         {
             "name": "leafo/scssphp",
-            "version": "v0.7.1",
+            "version": "v0.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/leafo/scssphp.git",
-                "reference": "9eaf3a6db4d88ce2c265a89e3fc495fbec9bf7a6"
+                "reference": "4f605a51462c85cf6df5bb45460483a138e04025"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/leafo/scssphp/zipball/9eaf3a6db4d88ce2c265a89e3fc495fbec9bf7a6",
-                "reference": "9eaf3a6db4d88ce2c265a89e3fc495fbec9bf7a6",
+                "url": "https://api.github.com/repos/leafo/scssphp/zipball/4f605a51462c85cf6df5bb45460483a138e04025",
+                "reference": "4f605a51462c85cf6df5bb45460483a138e04025",
                 "shasum": ""
             },
             "require": {
@@ -571,7 +571,7 @@
                 "scss",
                 "stylesheet"
             ],
-            "time": "2017-10-13T15:53:00+00:00"
+            "time": "2017-10-14T21:35:01+00:00"
         },
         {
             "name": "matthiasmullie/minify",
@@ -1642,12 +1642,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "497fce9103b12b99e8d166bc466d015f5b07c0d8"
+                "reference": "40b035345ed34a4cc92c842f60a6cc739101542f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/497fce9103b12b99e8d166bc466d015f5b07c0d8",
-                "reference": "497fce9103b12b99e8d166bc466d015f5b07c0d8",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/40b035345ed34a4cc92c842f60a6cc739101542f",
+                "reference": "40b035345ed34a4cc92c842f60a6cc739101542f",
                 "shasum": ""
             },
             "conflict": {
@@ -1680,6 +1680,7 @@
                 "firebase/php-jwt": "<2",
                 "friendsofsymfony/rest-bundle": ">=1.2,<1.2.2",
                 "friendsofsymfony/user-bundle": ">=1.2,<1.3.5",
+                "gree/jose": "<=2.2",
                 "gregwar/rst": "<1.0.3",
                 "guzzlehttp/guzzle": ">=6,<6.2.1|>=4.0.0-rc2,<4.2.4|>=5,<5.3.1",
                 "illuminate/auth": ">=4,<4.0.99|>=4.1,<4.1.26",
@@ -1778,20 +1779,20 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2017-12-05T17:52:25+00:00"
+            "time": "2017-12-12T00:38:43+00:00"
         },
         {
             "name": "symfony/options-resolver",
-            "version": "v4.0.1",
+            "version": "v4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/options-resolver.git",
-                "reference": "ef617a2867c7d889d4ecee3c29595698d87474a4"
+                "reference": "75fdda335eb0adbd464089e8a0184c61097808e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/ef617a2867c7d889d4ecee3c29595698d87474a4",
-                "reference": "ef617a2867c7d889d4ecee3c29595698d87474a4",
+                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/75fdda335eb0adbd464089e8a0184c61097808e0",
+                "reference": "75fdda335eb0adbd464089e8a0184c61097808e0",
                 "shasum": ""
             },
             "require": {
@@ -1832,7 +1833,7 @@
                 "configuration",
                 "options"
             ],
-            "time": "2017-11-07T14:45:01+00:00"
+            "time": "2017-12-14T19:48:22+00:00"
         },
         {
             "name": "t1st3/php-json-minify",
