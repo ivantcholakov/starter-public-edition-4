@@ -236,6 +236,7 @@ class Parser
         'sup' => false,
         'textarea' => false,
         'tt' => false,
+        'u' => false,
         'var' => false,
     );
 
@@ -256,7 +257,7 @@ class Parser
         if ($this->isStartTag && !$this->isEmptyTag) {
             array_push($this->openTags, $this->tagName);
             if (in_array($this->tagName, $this->preformattedTags)) {
-                // dont truncate whitespaces for <code> or <pre> contents
+                // don't truncate whitespaces for <code> or <pre> contents
                 $this->keepWhitespace++;
             }
         }
