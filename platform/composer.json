@@ -7,7 +7,7 @@
         "roave/security-advisories": "dev-master",
         "paragonie/random_compat": "^2.0.2",
         "fg/multiplayer": "^1.2.1",
-        "leafo/scssphp": "0.7.2",
+        "leafo/scssphp": "0.7.4",
         "guzzlehttp/guzzle": "~6.0",
         "whichbrowser/parser": "~2.0.24",
         "erusev/parsedown": "^1.6",
