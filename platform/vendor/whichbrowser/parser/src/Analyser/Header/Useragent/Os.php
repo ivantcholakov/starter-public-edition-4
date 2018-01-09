@@ -160,7 +160,7 @@ trait Os
 
         /* Mac OS */
 
-        if (preg_match('/\(Macintosh;/u', $ua) && !preg_match('/OS X/u', $ua)) {
+        if (preg_match('/(; |\()Macintosh;/u', $ua) && !preg_match('/OS X/u', $ua)) {
             $this->data->os->name = 'Mac OS';
             $this->data->device->type = Constants\DeviceType::DESKTOP;
         }
@@ -1301,7 +1301,7 @@ trait Os
             $this->data->device->type = Constants\DeviceType::MOBILE;
         }
 
-        if (preg_match('/Series[ ]?60/u', $ua) || preg_match('/S60[V\/;]/u', $ua)) {
+        if (preg_match('/Series[ ]?60/u', $ua) || preg_match('/S60[V\/;]/u', $ua) || preg_match('/S60 Symb/u', $ua)) {
             $this->data->os->name = 'Series60';
             $this->data->os->family = new Family([ 'name' => 'Symbian' ]);
             $this->data->device->type = Constants\DeviceType::MOBILE;
@@ -1332,7 +1332,8 @@ trait Os
 
         if (preg_match('/Symbian/u', $ua)) {
             $this->data->os->family = new Family([ 'name' => 'Symbian' ]);
-
+            $this->data->device->type = Constants\DeviceType::MOBILE;
+            
             if (preg_match('/SymbianOS\/([0-9.]*)/u', $ua, $match)) {
                 $this->data->os->family->version = new Version([ 'value' => $match[1] ]);
             }
@@ -2058,15 +2059,6 @@ trait Os
                 $this->data->device->type = Constants\DeviceType::DESKTOP;
             }
 
-            if (preg_match('/elementary OS/u', $ua)) {
-                $this->data->os->name = 'elementary OS';
-                if (preg_match('/elementary OS ([A-Za-z]+)/u', $ua, $match)) {
-                    $this->data->os->version = new Version([ 'alias' => $match[1] ]);
-                }
-
-                $this->data->device->type = Constants\DeviceType::DESKTOP;
-            }
-
             if (preg_match('/Fedora/u', $ua)) {
                 $this->data->os->name = 'Fedora';
                 if (preg_match('/Fedora\/[0-9\.\-]+fc([0-9]+)/u', $ua, $match)) {
@@ -2238,6 +2230,15 @@ trait Os
                 $this->data->os->name = 'EZX Linux';
                 $this->data->device->type = Constants\DeviceType::MOBILE;
             }
+        }
+
+        if (preg_match('/elementary OS/u', $ua)) {
+            $this->data->os->name = 'elementary OS';
+            if (preg_match('/elementary OS ([A-Za-z]+)/u', $ua, $match)) {
+                $this->data->os->version = new Version([ 'alias' => $match[1] ]);
+            }
+
+            $this->data->device->type = Constants\DeviceType::DESKTOP;
         }
 
         if (preg_match('/\(Ubuntu; (Mobile|Tablet)/u', $ua)) {

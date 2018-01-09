@@ -155,10 +155,11 @@ DeviceModels::$FEATURE_INDEX = array (
   ),
   '@SC' => 
   array (
-    0 => 'SCP-5500',
-    1 => 'SCP-6600',
-    2 => 'SCH-W169',
-    3 => 'SCH-W279',
+    0 => 'SCP-5300',
+    1 => 'SCP-5500',
+    2 => 'SCP-6600',
+    3 => 'SCH-W169',
+    4 => 'SCH-W279',
   ),
   '@SE' => 
   array (
@@ -190,7 +191,8 @@ DeviceModels::$FEATURE_INDEX = array (
   array (
     0 => 'SM-B313E',
     1 => 'SM-B350E',
-    2 => 'SM-B780(A|W)!',
+    2 => 'SM-B360E',
+    3 => 'SM-B780(A|W)!',
   ),
   '@TE' => 
   array (

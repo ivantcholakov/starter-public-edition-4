@@ -96,8 +96,8 @@
     readable: 'NetFront 2.6'
 -
     headers: 'User-Agent: Mozilla/3.0 KOMATSU (AveFront/2.6 WebLight) WL/3.0 V2.45ohi M=11E2A2499945'
-    result: { browser: { name: NetFront, version: '2.6', type: browser }, engine: { name: NetFront } }
-    readable: 'NetFront 2.6'
+    result: { browser: { name: NetFront, version: '2.6', type: browser }, engine: { name: NetFront }, device: { type: desktop, manufacturer: KOMATSU, model: WebLight } }
+    readable: 'NetFront 2.6 on a KOMATSU WebLight'
 -
     headers: 'User-Agent: Mozilla/3.0N AVE-Front/2.5 (BrowserInfo Screen=620x400x256; InputMethod=REMOCON, KEYBOARD; Page=3M; Product=Winbond/STB; HTML-Level=3.2; Category=STB; Language=en_US; CPU=PARISC; Storage=NO;)'
     result: { browser: { name: NetFront, version: '2.5', type: browser }, engine: { name: NetFront }, device: { type: television } }
@@ -122,3 +122,11 @@
     headers: 'User-Agent: Samsung -B5702/B5702BMIJ1 NetFront/3.5 Profile/MIDP-2.0 Configuration/CLDC-1.1'
     readable: 'NetFront 3.5 on a Samsung B5702'
     result: { browser: { name: NetFront, version: '3.5', type: browser }, engine: { name: NetFront }, device: { type: mobile, subtype: feature, manufacturer: Samsung, model: B5702 } }
+-
+    headers: 'User-Agent: GT-E3210/E3213KDDKD2 NetFront/4.1 Profile/MIDP-2.0 Configuration/CLDC-1.1'
+    readable: 'NetFront 4.1 on a Samsung GT-E3210'
+    result: { browser: { name: NetFront, version: '4.1', type: browser }, engine: { name: NetFront }, device: { type: mobile, subtype: feature, manufacturer: Samsung, model: GT-E3210 } }
+-
+    headers: 'User-Agent: Mozilla/4.0 (MobilePhone SCP-5300/1.0) NetFront/3.0 MMP/2.0'
+    readable: 'NetFront 3.0 on a Sanyo SCP-5300'
+    result: { browser: { name: NetFront, version: '3.0', type: browser }, engine: { name: NetFront }, device: { type: mobile, subtype: feature, manufacturer: Sanyo, model: SCP-5300 } }

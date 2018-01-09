@@ -266,6 +266,7 @@ trait Browser
                 $this->data->device->manufacturer = 'Samsung';
                 $this->data->device->model = 'DeX';
                 $this->data->device->identifier = '';
+                $this->data->device->identified |= Constants\Id::PATTERN;
                 $this->data->device->type = Constants\DeviceType::DESKTOP;
             } else {
                 $channel = Data\Chrome::getChannel('desktop', $version);
@@ -1128,6 +1129,15 @@ trait Browser
             unset($this->data->browser->channel);
         }
 
+        if (preg_match('/UCLite\/([0-9.]*)/u', $ua, $match)) {
+            $this->data->browser->stock = false;
+            $this->data->browser->name = 'UC Browser';
+            $this->data->browser->version = new Version([ 'value' => $match[1], 'details' => 2 ]);
+            $this->data->browser->type = Constants\BrowserType::BROWSER;
+
+            unset($this->data->browser->channel);
+        }
+
         /* U2 is the Proxy service used by UC Browser on low-end phones */
         if (preg_match('/U2\//u', $ua)) {
             $this->data->browser->stock = false;
@@ -1311,7 +1321,7 @@ trait Browser
 
         /* Netfront NX */
 
-        if (preg_match('/NX\/([0-9.]*)/u', $ua, $match)) {
+        if (preg_match('/NX[\/ ]([0-9.]+)/u', $ua, $match)) {
             $this->data->browser->name = 'NetFront NX';
             $this->data->browser->version = new Version([ 'value' => $match[1], 'details' => 2 ]);
             $this->data->browser->type = Constants\BrowserType::BROWSER;
@@ -1905,8 +1915,25 @@ trait Browser
 
     private function detectMobileBrowsers($ua)
     {
-        if (!preg_match('/(Ninesky|Skyfire|Dolphin|QQ|360|QHBrowser|Mercury|iBrowser|Puffin|MiniB|MxNitro|Sogou|Xiino|Palmscape|WebPro|Vision)/ui', $ua)) {
+        if (!preg_match('/(Ninesky|Skyfire|Dolphin|QQ|360|QHBrowser|Mercury|iBrowser|Puffin|MiniB|MxNitro|Sogou|Xiino|Palmscape|WebPro|Vision|MiuiBrowser)/ui', $ua)) {
             return;
+        }
+
+        /* Xiaomi MIUI Browser */
+
+        if (preg_match('/MiuiBrowser\/([0-9.]*)/u', $ua, $match)) {
+            $this->data->browser->name = 'MIUI Browser';
+            $this->data->browser->version = new Version([ 'value' => $match[1] ]);
+            $this->data->browser->type = Constants\BrowserType::BROWSER;
+
+            if (!$this->data->os->isFamily('Android')) {
+                $this->data->os->reset();
+                $this->data->os->name = 'Android';
+
+                $this->data->device->manufacturer = 'Xiaomi';
+                $this->data->device->model = null;
+                $this->data->device->type = Constants\DeviceType::MOBILE;
+            }
         }
 
         /* NineSky */
@@ -1944,7 +1971,7 @@ trait Browser
 
         /* Dolphin HD */
 
-        if (preg_match('/Dolphin(?:HDCN)?\/(?:INT|CN)?-?([0-9.]*)/u', $ua, $match)) {
+        if (preg_match('/Dolphin(?:HD|Browser)?(?:INT|CN)?\/(?:INT|CN)?-?([0-9.]*)/u', $ua, $match)) {
             $this->data->browser->name = 'Dolphin';
             $this->data->browser->version = new Version([ 'value' => $match[1] ]);
             $this->data->browser->type = Constants\BrowserType::BROWSER;
@@ -2021,6 +2048,13 @@ trait Browser
         }
 
         /* 360 Phone Browser */
+
+        if (preg_match('/360 (?:Aphone|Android Phone) Browser/u', $ua, $match)) {
+            $this->data->browser->name = 'Qihoo 360 Browser';
+            $this->data->browser->family = null;
+            $this->data->browser->channel = '';
+            $this->data->browser->type = Constants\BrowserType::BROWSER;
+        }
 
         if (preg_match('/360 (?:Aphone|Android Phone) Browser \((?:Version |V)?([0-9.]*)(?:beta)?\)/u', $ua, $match)) {
             $this->data->browser->name = 'Qihoo 360 Browser';
