@@ -11,11 +11,6 @@ Note
 
 This version supports multiple applications.
 
-Live Demo
----------
-
-http://iridadesign.com/starter-public-edition-4/www/
-
 PHP
 ---
 
