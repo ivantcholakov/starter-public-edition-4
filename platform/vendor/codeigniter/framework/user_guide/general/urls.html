@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CodeIgniter URLs &mdash; CodeIgniter 3.1.6 documentation</title>
+  <title>CodeIgniter URLs &mdash; CodeIgniter 3.1.7 documentation</title>
   
 
   
@@ -33,7 +33,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="CodeIgniter 3.1.6 documentation" href="../index.html"/>
+    <link rel="top" title="CodeIgniter 3.1.7 documentation" href="../index.html"/>
         <link rel="up" title="General Topics" href="index.html"/>
         <link rel="next" title="Controllers" href="controllers.html"/>
         <link rel="prev" title="General Topics" href="index.html"/> 
@@ -465,14 +465,12 @@ with your URI data. In addition, your URLs can be remapped using the
 file by using a .htaccess file with some simple rules. Here is an example
 of such a file, using the “negative” method in which everything is redirected
 except the specified items:</p>
-<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="nx">code</span><span class="o">-</span><span class="nx">block</span><span class="o">::</span> <span class="na">console</span>
+<div class="highlight-apache"><div class="highlight"><pre><span></span><span class="nb">RewriteEngine</span> <span class="k">On</span>
+<span class="nb">RewriteCond</span> %{REQUEST_FILENAME} !-f
+<span class="nb">RewriteCond</span> %{REQUEST_FILENAME} !-d
+<span class="nb">RewriteRule</span> ^(.*)$ index.php/$1 [L]
 </pre></div>
 </div>
-<blockquote>
-<div>RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php/$1 [L]</div></blockquote>
 <p>In the above example, any HTTP request other than those for existing
 directories and existing files is treated as a request for your index.php file.</p>
 <div class="admonition note">
@@ -547,8 +545,8 @@ designed to work with segment based URLs.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014 - 2017, British Columbia Institute of Technology.
-      Last updated on Sep 25, 2017.
+        &copy; Copyright 2014 - 2018, British Columbia Institute of Technology.
+      Last updated on Jan 13, 2018.
     </p>
   </div>
 
@@ -569,7 +567,7 @@ designed to work with segment based URLs.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.1.6',
+            VERSION:'3.1.7',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
