@@ -261,7 +261,7 @@ if ( ! function_exists('auto_link'))
         // which could be TRUE or FALSE, and was FALSE by default.
         if ($attributes === TRUE)
         {
-            $attributes = ' target="_blank"';
+            $attributes = ' target="_blank" rel="noopener"';
         }
         elseif ($attributes === FALSE)
         {
