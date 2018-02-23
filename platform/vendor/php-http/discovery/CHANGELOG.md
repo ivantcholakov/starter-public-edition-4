@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.4.0 - 2018-02-06
+
+### Added
+
+- Discovery support for nyholm/psr7
+
 ## 1.3.0 - 2017-08-03
 
 ### Added

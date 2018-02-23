@@ -3,8 +3,13 @@
 namespace Http\Discovery\Strategy;
 
 use GuzzleHttp\Psr7\Request as GuzzleRequest;
+use Http\Client\HttpAsyncClient;
+use Http\Client\HttpClient;
+use Http\Message\MessageFactory;
 use Http\Message\MessageFactory\GuzzleMessageFactory;
+use Http\Message\StreamFactory;
 use Http\Message\StreamFactory\GuzzleStreamFactory;
+use Http\Message\UriFactory;
 use Http\Message\UriFactory\GuzzleUriFactory;
 use Http\Message\MessageFactory\DiactorosMessageFactory;
 use Http\Message\StreamFactory\DiactorosStreamFactory;
@@ -23,6 +28,10 @@ use Http\Adapter\Buzz\Client as Buzz;
 use Http\Adapter\Cake\Client as Cake;
 use Http\Adapter\Zend\Client as Zend;
 use Http\Adapter\Artax\Client as Artax;
+use Nyholm\Psr7\Request as NyholmRequest;
+use Nyholm\Psr7\Factory\MessageFactory as NyholmMessageFactory;
+use Nyholm\Psr7\Factory\StreamFactory as NyholmStreamFactory;
+use Nyholm\Psr7\Factory\UriFactory as NyholmUriFactory;
 
 /**
  * @internal
@@ -35,27 +44,30 @@ final class CommonClassesStrategy implements DiscoveryStrategy
      * @var array
      */
     private static $classes = [
-        'Http\Message\MessageFactory' => [
+        MessageFactory::class => [
+            ['class' => NyholmMessageFactory::class, 'condition' => [NyholmRequest::class, NyholmMessageFactory::class]],
             ['class' => GuzzleMessageFactory::class, 'condition' => [GuzzleRequest::class, GuzzleMessageFactory::class]],
             ['class' => DiactorosMessageFactory::class, 'condition' => [DiactorosRequest::class, DiactorosMessageFactory::class]],
             ['class' => SlimMessageFactory::class, 'condition' => [SlimRequest::class, SlimMessageFactory::class]],
         ],
-        'Http\Message\StreamFactory' => [
+        StreamFactory::class => [
+            ['class' => NyholmStreamFactory::class, 'condition' => [NyholmRequest::class, NyholmStreamFactory::class]],
             ['class' => GuzzleStreamFactory::class, 'condition' => [GuzzleRequest::class, GuzzleStreamFactory::class]],
             ['class' => DiactorosStreamFactory::class, 'condition' => [DiactorosRequest::class, DiactorosStreamFactory::class]],
             ['class' => SlimStreamFactory::class, 'condition' => [SlimRequest::class, SlimStreamFactory::class]],
         ],
-        'Http\Message\UriFactory' => [
+        UriFactory::class => [
+            ['class' => NyholmUriFactory::class, 'condition' => [NyholmRequest::class, NyholmUriFactory::class]],
             ['class' => GuzzleUriFactory::class, 'condition' => [GuzzleRequest::class, GuzzleUriFactory::class]],
             ['class' => DiactorosUriFactory::class, 'condition' => [DiactorosRequest::class, DiactorosUriFactory::class]],
             ['class' => SlimUriFactory::class, 'condition' => [SlimRequest::class, SlimUriFactory::class]],
         ],
-        'Http\Client\HttpAsyncClient' => [
+        HttpAsyncClient::class => [
             ['class' => Guzzle6::class, 'condition' => Guzzle6::class],
             ['class' => Curl::class, 'condition' => Curl::class],
             ['class' => React::class, 'condition' => React::class],
         ],
-        'Http\Client\HttpClient' => [
+        HttpClient::class => [
             ['class' => Guzzle6::class, 'condition' => Guzzle6::class],
             ['class' => Guzzle5::class, 'condition' => Guzzle5::class],
             ['class' => Curl::class, 'condition' => Curl::class],

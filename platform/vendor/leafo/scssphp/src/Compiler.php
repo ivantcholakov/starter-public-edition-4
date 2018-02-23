@@ -2,7 +2,7 @@
 /**
  * SCSSPHP
  *
- * @copyright 2012-2017 Leaf Corcoran
+ * @copyright 2012-2018 Leaf Corcoran
  *
  * @license http://opensource.org/licenses/MIT MIT
  *
@@ -207,8 +207,13 @@ class Compiler
 
         $sourceMapGenerator = null;
 
-        if ($this->sourceMap && $this->sourceMap !== self::SOURCE_MAP_NONE) {
-            $sourceMapGenerator = new SourceMapGenerator($this->sourceMapOptions);
+        if ($this->sourceMap) {
+            if (is_object($this->sourceMap) && $this->sourceMap instanceof SourceMapGenerator) {
+                $sourceMapGenerator = $this->sourceMap;
+                $this->sourceMap = self::SOURCE_MAP_FILE;
+            } elseif ($this->sourceMap !== self::SOURCE_MAP_NONE) {
+                $sourceMapGenerator = new SourceMapGenerator($this->sourceMapOptions);
+            }
         }
 
         $out = $this->formatter->format($this->scope, $sourceMapGenerator);
@@ -1767,9 +1772,18 @@ class Compiler
                 list(, $for) = $child;
 
                 $start = $this->reduce($for->start, true);
+                $end   = $this->reduce($for->end, true);
+
+                if (! ($start[2] == $end[2] || $end->unitless())) {
+                    $this->throwError('Incompatible units: "%s" and "%s".', $start->unitStr(), $end->unitStr());
+
+                    break;
+                }
+
+                $unit  = $start[2];
                 $start = $start[1];
-                $end = $this->reduce($for->end, true);
-                $end = $end[1];
+                $end   = $end[1];
+
                 $d = $start < $end ? 1 : -1;
 
                 for (;;) {
@@ -1779,7 +1793,7 @@ class Compiler
                         break;
                     }
 
-                    $this->set($for->var, new Node\Number($start, ''));
+                    $this->set($for->var, new Node\Number($start, $unit));
                     $start += $d;
 
                     $ret = $this->compileChildren($for->children, $out);
@@ -4735,36 +4749,32 @@ class Compiler
     protected function libRound($args)
     {
         $num = $args[0];
-        $num[1] = round($num[1]);
 
-        return $num;
+        return new Node\Number(round($num[1]), $num[2]);
     }
 
     protected static $libFloor = ['value'];
     protected function libFloor($args)
     {
         $num = $args[0];
-        $num[1] = floor($num[1]);
 
-        return $num;
+        return new Node\Number(floor($num[1]), $num[2]);
     }
 
     protected static $libCeil = ['value'];
     protected function libCeil($args)
     {
         $num = $args[0];
-        $num[1] = ceil($num[1]);
 
-        return $num;
+        return new Node\Number(ceil($num[1]), $num[2]);
     }
 
     protected static $libAbs = ['value'];
     protected function libAbs($args)
     {
         $num = $args[0];
-        $num[1] = abs($num[1]);
 
-        return $num;
+        return new Node\Number(abs($num[1]), $num[2]);
     }
 
     protected function libMin($args)
