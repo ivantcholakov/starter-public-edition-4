@@ -680,7 +680,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 			{
 				if ($escape === TRUE)
 				{
-					$v = ' '.$this->escape($v);
+					$v = $this->escape($v);
 				}
 
 				if ( ! $this->_has_operator($k))
@@ -698,10 +698,11 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 				$k = substr($k, 0, $match[0][1]).($match[1][0] === '=' ? ' IS NULL' : ' IS NOT NULL');
 			}
 
-			$this->{$qb_key}[] = array('condition' => $prefix.$k.$v, 'escape' => $escape);
+			${$qb_key} = array('condition' => $prefix.$k, 'value' => $v, 'escape' => $escape);
+			$this->{$qb_key}[] = ${$qb_key};
 			if ($this->qb_caching === TRUE)
 			{
-				$this->{$qb_cache_key}[] = array('condition' => $prefix.$k.$v, 'escape' => $escape);
+				$this->{$qb_cache_key}[] = ${$qb_key};
 				$this->qb_cache_exists[] = substr($qb_key, 3);
 			}
 
@@ -834,6 +835,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 
 		$where_in = array(
 			'condition' => $prefix.$key.$not.' IN('.implode(', ', $where_in).')',
+			'value' => NULL,
 			'escape' => $escape
 		);
 
@@ -962,56 +964,45 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 				$v = $this->escape_like_str($v);
 			}
 
-			if ($this->dbdriver == 'postgre' || $this->subdriver == 'pgsql')
+			switch ($side)
 			{
-				// Case-Insensitive LIKE for PostgreSQL
-				if ($side === 'none')
-				{
-					$like_statement = "{$prefix} CAST({$k} AS TEXT) {$not} ILIKE '{$v}'";
-				}
-				elseif ($side === 'before')
-				{
-					$like_statement = "{$prefix} CAST({$k} AS TEXT) {$not} ILIKE '%{$v}'";
-				}
-				elseif ($side === 'after')
-				{
-					$like_statement = "{$prefix} CAST({$k} AS TEXT) {$not} ILIKE '{$v}%'";
-				}
-				else
-				{
-					$like_statement = "{$prefix} CAST({$k} AS TEXT) {$not} ILIKE '%{$v}%'";
-				}
-			}
-			else
-			{
-				if ($side === 'none')
-				{
-					$like_statement = "{$prefix} {$k} {$not} LIKE '{$v}'";
-				}
-				elseif ($side === 'before')
-				{
-					$like_statement = "{$prefix} {$k} {$not} LIKE '%{$v}'";
-				}
-				elseif ($side === 'after')
-				{
-					$like_statement = "{$prefix} {$k} {$not} LIKE '{$v}%'";
-				}
-				else
-				{
-					$like_statement = "{$prefix} {$k} {$not} LIKE '%{$v}%'";
-				}
+				case 'none':
+					$v = "'{$v}'";
+					break;
+				case 'before':
+					$v = "%'{$v}'";
+					break;
+				case 'after':
+					$v = "'{$v}%'";
+					break;
+				case 'both':
+				default:
+					$v = "'%{$v}%'";
+					break;
 			}
 
 			// some platforms require an escape sequence definition for LIKE wildcards
 			if ($escape === TRUE && $this->_like_escape_str !== '')
 			{
-				$like_statement .= sprintf($this->_like_escape_str, $this->_like_escape_chr);
+				$v .= sprintf($this->_like_escape_str, $this->_like_escape_chr);
 			}
 
-			$this->qb_where[] = array('condition' => $like_statement, 'escape' => $escape);
+			// Modified by Ivan Tcholakov, 23-FEB-2018.
+			// Case-Insensitive LIKE for PostgreSQL
+			//$qb_where = array('condition' => "{$prefix} {$k} {$not} LIKE", 'value' => $v, 'escape' => $escape);
+			if ($this->dbdriver == 'postgre' || $this->subdriver == 'pgsql')
+			{
+				$qb_where = array('condition' => "{$prefix} CAST({$k} AS TEXT) {$not} ILIKE", 'value' => $v, 'escape' => $escape);
+			}
+			else
+			{
+				$qb_where = array('condition' => "{$prefix} {$k} {$not} LIKE", 'value' => $v, 'escape' => $escape);
+			}
+			//
+			$this->qb_where[] = $qb_where;
 			if ($this->qb_caching === TRUE)
 			{
-				$this->qb_cache_where[] = array('condition' => $like_statement, 'escape' => $escape);
+				$this->qb_cache_where[] = $qb_where;
 				$this->qb_cache_exists[] = 'where';
 			}
 		}
@@ -1036,6 +1027,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 		$prefix = (count($this->qb_where) === 0 && count($this->qb_cache_where) === 0) ? '' : $type;
 		$where = array(
 			'condition' => $prefix.$not.str_repeat(' ', ++$this->qb_where_group_count).' (',
+			'value' => NULL,
 			'escape' => FALSE
 		);
 
@@ -1096,6 +1088,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 		$this->qb_where_group_started = FALSE;
 		$where = array(
 			'condition' => str_repeat(' ', $this->qb_where_group_count--).')',
+			'value' => NULL,
 			'escape' => FALSE
 		);
 
@@ -1456,7 +1449,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Get_Where
+	 * get_where()
 	 *
 	 * Allows the where clause, limit and offset to be added directly
 	 *
@@ -2418,7 +2411,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 				}
 				elseif ($this->{$qb_key}[$i]['escape'] === FALSE)
 				{
-					$this->{$qb_key}[$i] = $this->{$qb_key}[$i]['condition'];
+					$this->{$qb_key}[$i] = $this->{$qb_key}[$i]['condition'].(isset($this->{$qb_key}[$i]['value']) ? ' '.$this->{$qb_key}[$i]['value'] : '');
 					continue;
 				}
 
@@ -2457,7 +2450,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 						.' '.trim($matches[3]).$matches[4].$matches[5];
 				}
 
-				$this->{$qb_key}[$i] = implode('', $conditions);
+				$this->{$qb_key}[$i] = implode('', $conditions).(isset($this->{$qb_key}[$i]['value']) ? ' '.$this->{$qb_key}[$i]['value'] : '');
 			}
 
 			return ($qb_key === 'qb_having' ? "\nHAVING " : "\nWHERE ")
