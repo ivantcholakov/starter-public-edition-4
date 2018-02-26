@@ -8,6 +8,12 @@ class Core_Log extends CI_Log {
 
     public function __construct()
     {
+        $config =& get_config();
+
+        $this->_log_path = ($config['log_path'] !== '') ? $config['log_path'] : APPPATH.'logs/';
+        file_exists($this->_log_path) OR mkdir($this->_log_path, DIR_WRITE_MODE, TRUE);
+        $this->_file_permissions = FILE_WRITE_MODE;
+
         parent::__construct();
     }
 

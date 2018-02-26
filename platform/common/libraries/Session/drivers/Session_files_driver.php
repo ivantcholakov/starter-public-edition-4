@@ -133,7 +133,10 @@ class CI_Session_files_driver extends CI_Session_driver implements SessionHandle
 	{
 		if ( ! is_dir($save_path))
 		{
-			if ( ! mkdir($save_path, 0700, TRUE))
+			// Modified by Ivan Tcholakov, 26-FEB-2018.
+			//if ( ! mkdir($save_path, 0700, TRUE))
+			if ( ! @mkdir($save_path, 0700, TRUE))
+			//
 			{
 				throw new Exception("Session: Configured save path '".$this->_config['save_path']."' is not a directory, doesn't exist or cannot be created.");
 			}
@@ -188,7 +191,10 @@ class CI_Session_files_driver extends CI_Session_driver implements SessionHandle
 
 			if ($this->_file_new)
 			{
-				chmod($this->_file_path.$session_id, 0600);
+				// Modified by Ivan Tcholakov, 26-FEB-2018.
+				//chmod($this->_file_path.$session_id, 0600);
+				@chmod($this->_file_path.$session_id, 0600);
+				//
 				$this->_fingerprint = md5('');
 				return '';
 			}

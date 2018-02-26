@@ -165,7 +165,7 @@ class Thumbnail {
 
             if (!is_dir($config['image_cache_path'])) {
 
-                @mkdir($config['image_cache_path'], 0755, TRUE);
+                @mkdir($config['image_cache_path'], DIR_WRITE_MODE, TRUE);
 
                 if (!is_dir($config['image_cache_path'])) {
                     throw new RuntimeException('Thumbnail: image_cache_path can not be created.');
@@ -189,7 +189,7 @@ class Thumbnail {
 
             if (!is_dir($config['image_public_cache_path'])) {
 
-                @mkdir($config['image_public_cache_path'], 0755, TRUE);
+                @mkdir($config['image_public_cache_path'], DIR_WRITE_MODE, TRUE);
 
                 if (!is_dir($config['image_public_cache_path'])) {
                     throw new RuntimeException('Thumbnail: image_public_cache_path can not be created.');
@@ -445,7 +445,7 @@ class Thumbnail {
 
         // The image seems to be valid, so create the corresponding
         // subdirectory that should contain the image's thumbnails.
-        file_exists($image_cache_path) OR @mkdir($image_cache_path, 0755, TRUE);
+        file_exists($image_cache_path) OR @mkdir($image_cache_path, DIR_WRITE_MODE, TRUE);
 
         // Determine whether a watermark should be put.
 

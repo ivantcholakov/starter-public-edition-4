@@ -57,7 +57,13 @@ class Compile_controller extends Core_Controller {
             $options['full_path'] = true;
 
             $dir = pathinfo($destination, PATHINFO_DIRNAME);
-            file_exists($dir) OR mkdir($dir, 0755, TRUE);
+            file_exists($dir) OR mkdir($dir, DIR_WRITE_MODE, TRUE);
+
+            if (!is_dir($dir)) {
+
+                echo sprintf('Failed to create the destination directory "%s".', $dir).PHP_EOL;
+                return;
+            }
 
             $parsers = array();
 
@@ -81,6 +87,7 @@ class Compile_controller extends Core_Controller {
 
             try {
                 write_file($destination, $this->parser->parse($source, null, true, $parsers));
+                @chmod($destination, FILE_WRITE_MODE);
             } catch(Exception $e) {
                 echo $e->getMessage().PHP_EOL;
             }

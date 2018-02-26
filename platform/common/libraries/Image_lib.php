@@ -72,6 +72,8 @@ class Image_lib extends CI_Image_lib
 
     public function __construct($props = array())
     {
+        $this->file_permissions = FILE_WRITE_MODE;
+
         parent::__construct($props);
     }
 

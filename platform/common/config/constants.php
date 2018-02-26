@@ -27,9 +27,9 @@ defined('SHOW_DEBUG_BACKTRACE') OR define('SHOW_DEBUG_BACKTRACE', TRUE);
 |
 */
 defined('FILE_READ_MODE')  OR define('FILE_READ_MODE', 0644);
-defined('FILE_WRITE_MODE') OR define('FILE_WRITE_MODE', 0666);
+defined('FILE_WRITE_MODE') OR define('FILE_WRITE_MODE', 0664);
 defined('DIR_READ_MODE')   OR define('DIR_READ_MODE', 0755);
-defined('DIR_WRITE_MODE')  OR define('DIR_WRITE_MODE', 0755);
+defined('DIR_WRITE_MODE')  OR define('DIR_WRITE_MODE', 0775);
 
 /*
 |--------------------------------------------------------------------------

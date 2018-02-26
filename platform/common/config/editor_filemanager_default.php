@@ -7,8 +7,8 @@ $config['denyExtensionRename'] = true;
 $config['theme'] = 'default';
 $config['uploadURL'] = resolve_path(DEFAULT_BASE_URI.'editor/');
 $config['uploadDir'] = resolve_path(DEFAULTFCPATH.'editor/');
-$config['dirPerms'] = DIR_READ_MODE;
-$config['filePerms'] = FILE_READ_MODE;
+$config['dirPerms'] = DIR_WRITE_MODE;
+$config['filePerms'] = FILE_WRITE_MODE;
 
 $config['access'] = array(
 

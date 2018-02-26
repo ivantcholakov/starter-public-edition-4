@@ -324,7 +324,7 @@ function &ci()
 
 // CodeIgniter's database cache folder.
 define('CACHE_DB_PATH', WRITABLEPATH.'cache_db/'.APPNAME.'/');
-file_exists(CACHE_DB_PATH) OR @mkdir(CACHE_DB_PATH, 0755, TRUE);
+file_exists(CACHE_DB_PATH) OR @mkdir(CACHE_DB_PATH, DIR_WRITE_MODE, TRUE);
 
 // Added by Ivan Tcholakov, 28-MAY-2016.
 // Corrected by Ivan Tcholakov, 29-JUN-2016.
@@ -424,31 +424,31 @@ $EXT->call_hook('pre_system');
 
 // A folder that is to contain temporary files only, with a trailing slash.
 define('TMP_PATH', WRITABLEPATH.'tmp/');
-file_exists(TMP_PATH) OR @mkdir(TMP_PATH, 0755, TRUE);
+file_exists(TMP_PATH) OR @mkdir(TMP_PATH, DIR_WRITE_MODE, TRUE);
 
 // CodeIgniter's cache folder.
 $cache_path = $CFG->item('cache_path') == '' ? APPPATH.'cache/' : $CFG->item('cache_path');
-file_exists($cache_path) OR @mkdir($cache_path, 0755, TRUE);
+file_exists($cache_path) OR @mkdir($cache_path, DIR_WRITE_MODE, TRUE);
 
 // For HTMLPurifier, no trailing slash.
 define('HTMLPURIFIER_CACHE_SERIALIZER_PATH', WRITABLEPATH.'htmlpurifier');
-file_exists(HTMLPURIFIER_CACHE_SERIALIZER_PATH) OR @mkdir(HTMLPURIFIER_CACHE_SERIALIZER_PATH, 0755, TRUE);
+file_exists(HTMLPURIFIER_CACHE_SERIALIZER_PATH) OR @mkdir(HTMLPURIFIER_CACHE_SERIALIZER_PATH, DIR_WRITE_MODE, TRUE);
 
 // For Handlebars, with a trailing slash.
 define('HANDLEBARS_CACHE', WRITABLEPATH.'handlebars/'.APPNAME.'/');
-file_exists(HANDLEBARS_CACHE) OR @mkdir(HANDLEBARS_CACHE, 0755, TRUE);
+file_exists(HANDLEBARS_CACHE) OR @mkdir(HANDLEBARS_CACHE, DIR_WRITE_MODE, TRUE);
 
 // For Mustache, with a trailing slash.
 define('MUSTACHE_CACHE', WRITABLEPATH.'mustache/'.APPNAME.'/');
-file_exists(MUSTACHE_CACHE) OR @mkdir(MUSTACHE_CACHE, 0755, TRUE);
+file_exists(MUSTACHE_CACHE) OR @mkdir(MUSTACHE_CACHE, DIR_WRITE_MODE, TRUE);
 
 // For the LESS-compiler, with a trailing slash.
 define('LESS_CACHE', WRITABLEPATH.'less/'.APPNAME.'/');
-file_exists(LESS_CACHE) OR @mkdir(LESS_CACHE, 0755, TRUE);
+file_exists(LESS_CACHE) OR @mkdir(LESS_CACHE, DIR_WRITE_MODE, TRUE);
 
 // For Twig template engine, with a trailing slash.
 define('TWIG_CACHE', WRITABLEPATH.'twig/'.APPNAME.'/');
-file_exists(TWIG_CACHE) OR @mkdir(TWIG_CACHE, 0755, TRUE);
+file_exists(TWIG_CACHE) OR @mkdir(TWIG_CACHE, DIR_WRITE_MODE, TRUE);
 
 /*
  * ------------------------------------------------------

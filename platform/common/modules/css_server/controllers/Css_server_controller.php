@@ -113,7 +113,7 @@ class Css_server_controller extends Core_Controller {
         $options = array_merge($defaults, $options);
 
         $cache_dir = WRITABLEPATH.'cache_scssphp/'.sha1($name).'/';
-        is_dir($cache_dir) OR @mkdir($cache_dir, 0755, TRUE);
+        is_dir($cache_dir) OR @mkdir($cache_dir, DIR_WRITE_MODE, TRUE);
 
         $allowed_formatters = array(
             'expanded',
@@ -172,7 +172,7 @@ class Css_server_controller extends Core_Controller {
         $options = array_merge($defaults, $options);
 
         $cache_dir = WRITABLEPATH.'cache_lessphp/'.sha1($name).'/';
-        is_dir($cache_dir) OR @mkdir($cache_dir, 0755, TRUE);
+        is_dir($cache_dir) OR @mkdir($cache_dir, DIR_WRITE_MODE, TRUE);
 
         $options['cache_dir'] = $cache_dir;
         $options['cache_method'] = 'serialize';
