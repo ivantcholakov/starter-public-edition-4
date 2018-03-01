@@ -41,18 +41,18 @@ $config['less_compile'] = array(
         'cssmin' => array('implementation' => 'minifycss'),
     ),
 
-    // php cli.php less compile font-awesome-4 font-awesome-4-min
+    // php cli.php less compile font-awesome-5 font-awesome-5-min
 
     array(
-        'name' => 'font-awesome-4',
-        'source' => DEFAULTFCPATH.'assets/less/lib/font-awesome-4/font-awesome.less',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/font-awesome-4/font-awesome.css',
+        'name' => 'font-awesome-5',
+        'source' => DEFAULTFCPATH.'assets/less/lib/font-awesome-5/fontawesome-all.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/font-awesome-5/fontawesome-all.css',
         'compress' => false
     ),
     array(
-        'name' => 'font-awesome-4-min',
-        'source' => DEFAULTFCPATH.'assets/less/lib/font-awesome-4/font-awesome.less',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/font-awesome-4/font-awesome.min.css',
+        'name' => 'font-awesome-5-min',
+        'source' => DEFAULTFCPATH.'assets/less/lib/font-awesome-5/fontawesome-all.less',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/font-awesome-5/fontawesome-all.min.css',
         'compress' => true
     ),
 

@@ -17,11 +17,12 @@
             custom: {
                 families: [
                     'Material Icons',
-                    'FontAwesome'
+                    'Font Awesome 5 Free',
+                    'Font Awesome 5 Brands'
                 ],
                 urls: [
                     ASSET_CSS_URI + 'lib/material-icons/material-icons.min.css',
-                    ASSET_CSS_URI + 'lib/font-awesome-4/font-awesome.min.css'
+                    ASSET_CSS_URI + 'lib/font-awesome-5/fontawesome-all.min.css'
                 ]
             },
             timeout: 2000

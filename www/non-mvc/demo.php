@@ -66,7 +66,7 @@ echo js_platform();
                 urls: [
                     ASSET_CSS_URI + 'lib/lato/latofonts.min.css',
                     ASSET_CSS_URI + 'lib/semantic-icons-default/icons.css',
-                    ASSET_CSS_URI + 'lib/font-awesome-4/font-awesome.min.css',
+                    ASSET_CSS_URI + 'lib/font-awesome-5/fontawesome-all.min.css',
                     ASSET_CSS_URI + 'lib/material-icons/material-icons.min.css'
                 ]
             },
