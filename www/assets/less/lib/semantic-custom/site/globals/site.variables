@@ -12,6 +12,14 @@
 /* The size of page text  */
 @fontSize : 16px;
 
+/*--------------
+   Form Input
+---------------*/
+
+/* Input Text Color */
+@inputPlaceholderColor: lighten(@inputColor, 45);
+@inputPlaceholderFocusColor: lighten(@inputColor, 25);
+
 /*-------------------
         Page
 --------------------*/
