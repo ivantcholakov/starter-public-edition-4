@@ -1,4 +1,4 @@
-> You might also like [Caret](https://caret.io?ref=parsedown) - our Markdown editor for Mac / Windows / Linux.
+> I also make [Caret](https://caret.io?ref=parsedown) - a Markdown editor for Mac and PC.
 
 ## Parsedown
 
@@ -38,7 +38,7 @@ More examples in [the wiki](https://github.com/erusev/parsedown/wiki/) and in [t
 
 ### Security
 
-Parsedown does not sanitize the HTML that it generates. When you deal with untrusted content (ex: user commnets) you should also use a HTML sanitizer like [HTML Purifier](http://htmlpurifier.org/).
+Parsedown does not sanitize the HTML that it generates. When you deal with untrusted content (ex: user comments) you should also use a HTML sanitizer like [HTML Purifier](http://htmlpurifier.org/).
 
 ### Questions
 

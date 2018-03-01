@@ -49,11 +49,11 @@
         {% if item['children'] is empty %}
 
             {% if item['is_header'] %}
-                            <div class="item">
+                            <div class="item" style="font-size: 1em;">
                                 <span class="title">{{ side_menu_macro.display_item(item) }}</span>
                             </div>
             {% else %}
-                            <div class="item">
+                            <div class="item" style="font-size: 1em; padding-right: 0;">
                                 <a href="{{ item['link'] }}" class="{% if item['is_active'] %}active {% endif %}title">
                                     {{ side_menu_macro.display_item(item) }}
                                 </a>
@@ -62,7 +62,7 @@
                             
         {% else %}
 
-                            <div class="item">
+                            <div class="item" style="font-size: 1em; padding-right: 0;">
 
                                 <span class="{% if item['is_active'] %}active {% endif %}title">
                                     <i class="dropdown icon"></i>
@@ -97,11 +97,11 @@
         {% if item['children'] is empty %}
 
             {% if item['is_header'] %}
-                            <div class="item">
+                            <div class="item" style="font-size: 1em;">
                                 <span class="title">{{ side_menu_macro.display_item(item) }}</span>
                             </div>
             {% else %}
-                            <div class="item">
+                            <div class="item" style="font-size: 1em;">
                                 <a href="{{ item['link'] }}" class="{% if item['is_active'] %}active {% endif %}title">
                                     {{ side_menu_macro.display_item(item) }}
                                 </a>
@@ -110,14 +110,14 @@
                             
         {% else %}
 
-                            <div class="item">
+                            <div class="item" style="font-size: 1em;">
 
                                 <span class="{% if item['is_active'] %}active {% endif %}title">
                                     <i class="dropdown icon"></i>
                                     {{ side_menu_macro.display_item(item) }}
                                 </span>
 
-                                <div class="{% if item['is_active'] %}active {% endif %}content">
+                                <div class="{% if item['is_active'] %}active {% endif %}content" style="width: 100%;">
                                     {{ side_menu_macro.display_children(item['children']) }}
                                 </div>
 
