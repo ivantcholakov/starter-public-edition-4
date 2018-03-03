@@ -36,7 +36,7 @@ $config['scss_compile'] = array(
         'formatter' => 'compressed'
     ),
 
-    // php cli.php scss compile sweetalert sweetalert-min sweetalert-facebook sweetalert-facebook-min sweetalert-google sweetalert-google-min sweetalert-twitter sweetalert-twitter-min
+    // php cli.php scss compile sweetalert sweetalert-min sweetalert-custom sweetalert-custom-min sweetalert-facebook sweetalert-facebook-min sweetalert-google sweetalert-google-min sweetalert-twitter sweetalert-twitter-min
 
     // php cli.php scss compile sweetalert sweetalert-min
 
@@ -50,6 +50,21 @@ $config['scss_compile'] = array(
         'name' => 'sweetalert-min',
         'source' => DEFAULTFCPATH.'assets/scss/lib/sweetalert/sweetalert.scss',
         'destination' => DEFAULTFCPATH.'assets/css/lib/sweetalert/sweetalert.min.css',
+        'formatter' => 'compressed'
+    ),
+
+    // php cli.php scss compile sweetalert-custom sweetalert-custom-min
+
+    array(
+        'name' => 'sweetalert-custom',
+        'source' => DEFAULTFCPATH.'assets/scss/lib/sweetalert/sweetalert-custom.scss',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/sweetalert/sweetalert-custom.css',
+        'formatter' => 'expanded'
+    ),
+    array(
+        'name' => 'sweetalert-custom-min',
+        'source' => DEFAULTFCPATH.'assets/scss/lib/sweetalert/sweetalert-custom.scss',
+        'destination' => DEFAULTFCPATH.'assets/css/lib/sweetalert/sweetalert-custom.min.css',
         'formatter' => 'compressed'
     ),
 
