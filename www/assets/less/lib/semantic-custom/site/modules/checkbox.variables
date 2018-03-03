@@ -1,0 +1,5 @@
+/*******************************
+        User Overrides
+*******************************/
+
+@checkboxBorder: 2px solid @solidBorderColor;
