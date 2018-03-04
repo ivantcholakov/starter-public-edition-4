@@ -50,7 +50,7 @@ The MIT License, http://opensource.org/licenses/MIT
 
                 if (data.found) {
 
-                    $('#larger_map').html('<a href="' + data.link + '" target="_blank">' + '{{ lang('ui_see_a_larger_map')|e('js') }}' + '</a>');
+                    $('#larger_map').html('<a href="' + data.link + '" target="_blank" rel="noopener">' + '{{ lang('ui_see_a_larger_map')|e('js') }}' + '</a>');
                     $('#larger_map').show();
 
                 } else {

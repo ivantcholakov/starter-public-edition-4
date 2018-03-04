@@ -259,7 +259,7 @@ echo body_begin('id="page-top"');
 
                 <div class="column">
 
-                    <p>See information about the menu example: <a href="http://chineque.com.br/labs/navbeer/" target="_blank">http://chineque.com.br/labs/navbeer/</a></p>
+                    <p>See information about the menu example: <a href="http://chineque.com.br/labs/navbeer/" target="_blank" rel="noopener">http://chineque.com.br/labs/navbeer/</a></p>
 
                 </div>
 

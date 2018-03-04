@@ -9,5 +9,5 @@
 $config['type'] = 'both';
 
 // Atthibutes to be added to automatically created links.
-// Example: $config['attributes'] = 'target="_blank"';
+// Example: $config['attributes'] = 'target="_blank" rel="noopener"';
 $config['attributes'] = '';

@@ -11,7 +11,7 @@ template_partial('subnavbar');
 
                         <p>
                             See the article
-                            <a href="http://net.tutsplus.com/tutorials/php/working-with-restful-services-in-codeigniter-2/" target="_blank">
+                            <a href="http://net.tutsplus.com/tutorials/php/working-with-restful-services-in-codeigniter-2/" target="_blank" rel="noopener">
                                 http://net.tutsplus.com/tutorials/php/working-with-restful-services-in-codeigniter-2/
                             </a>
                         </p>

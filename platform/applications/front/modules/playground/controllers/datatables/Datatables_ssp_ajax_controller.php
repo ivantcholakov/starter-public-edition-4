@@ -85,11 +85,11 @@ class Datatables_ssp_ajax_controller extends Base_Ajax_Controller {
         $gmap_url = gmap_url($item['latitude'], $item['longitude'], 6);
 
         if ($gmap_url != '') {
-            $result[] = '<a href="'.$gmap_url.'" class="compact ui icon button" title="'.$this->lang->line('ui_map').'" target="_blank"><i class="marker icon"></i></a>';
+            $result[] = '<a href="'.$gmap_url.'" class="compact ui icon button" title="'.$this->lang->line('ui_map').'" target="_blank" rel="noopener"><i class="marker icon"></i></a>';
         }
 
         if ($item['link'] != '') {
-            $result[] = '<a href="'.$item['link'].'" class="compact ui icon button" title="'.$this->lang->line('ui_information').'" target="_blank"><i class="external icon"></i></a>';
+            $result[] = '<a href="'.$item['link'].'" class="compact ui icon button" title="'.$this->lang->line('ui_information').'" target="_blank" rel="noopener"><i class="external icon"></i></a>';
         }
 
         $result[] = '<a href="javascript://" class="compact primary ui icon button" title="'.$this->lang->line('ui_edit').'"><i class="write icon"></i></a>';

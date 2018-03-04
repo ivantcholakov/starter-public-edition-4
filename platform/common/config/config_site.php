@@ -35,7 +35,7 @@ $config['contact_map'] = '<iframe width="100%" height="250" frameborder="0" scro
 | Copyright Note by the Site's Owner
 |--------------------------------------------------------------------------
 */
-$config['copyright_note'] = 'Copyright &copy; 2012 - {year} Ivan Tcholakov and other contributors. License: <a href="http://opensource.org/licenses/MIT" target="_blank">MIT</a>. This page has been generated in <strong>{elapsed_time} seconds</strong> using <strong>{memory_usage}</strong> of memory.';
+$config['copyright_note'] = 'Copyright &copy; 2012 - {year} Ivan Tcholakov and other contributors. License: <a href="http://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT</a>. This page has been generated in <strong>{elapsed_time} seconds</strong> using <strong>{memory_usage}</strong> of memory.';
 
 
 /*

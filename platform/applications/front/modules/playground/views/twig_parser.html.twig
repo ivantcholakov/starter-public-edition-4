@@ -26,12 +26,12 @@
 
                             <p><big>The current Twig version is {{ constant('Twig_Environment::VERSION') }}</big></p>
 
-                            <p>See <a href="http://twig.sensiolabs.org" target="_blank">http://twig.sensiolabs.org</a>, <a href="http://twig.sensiolabs.org/doc/templates.html" target="_blank">http://twig.sensiolabs.org/doc/templates.html</a></p>
+                            <p>See <a href="http://twig.sensiolabs.org" target="_blank" rel="noopener">http://twig.sensiolabs.org</a>, <a href="http://twig.sensiolabs.org/doc/templates.html" target="_blank" rel="noopener">http://twig.sensiolabs.org/doc/templates.html</a></p>
                             <p>
-                                Other readings: <a href="http://fabien.potencier.org/templating-engines-in-php.html" target="_blank">http://fabien.potencier.org/templating-engines-in-php.html</a>,
-                                <a href="http://www.slideshare.net/fabpot/twig-the-flexible-fast-and-securetemplate-language-for-php" target="_blank">http://www.slideshare.net/fabpot/twig-the-flexible-fast-and-securetemplate-language-for-php</a>,
-                                <a href="http://www.slideshare.net/javier.eguiluz/twig-tips-and-tricks" target="_blank">http://www.slideshare.net/javier.eguiluz/twig-tips-and-tricks</a>,
-                                <a href="http://www.slideshare.net/javier.eguiluz/mastering-twig-druaplcon-barcelona-2015" target="_blank">http://www.slideshare.net/javier.eguiluz/mastering-twig-druaplcon-barcelona-2015</a>
+                                Other readings: <a href="http://fabien.potencier.org/templating-engines-in-php.html" target="_blank" rel="noopener">http://fabien.potencier.org/templating-engines-in-php.html</a>,
+                                <a href="http://www.slideshare.net/fabpot/twig-the-flexible-fast-and-securetemplate-language-for-php" target="_blank" rel="noopener">http://www.slideshare.net/fabpot/twig-the-flexible-fast-and-securetemplate-language-for-php</a>,
+                                <a href="http://www.slideshare.net/javier.eguiluz/twig-tips-and-tricks" target="_blank" rel="noopener">http://www.slideshare.net/javier.eguiluz/twig-tips-and-tricks</a>,
+                                <a href="http://www.slideshare.net/javier.eguiluz/mastering-twig-druaplcon-barcelona-2015" target="_blank" rel="noopener">http://www.slideshare.net/javier.eguiluz/mastering-twig-druaplcon-barcelona-2015</a>
                             </p>
                             <p>Note: After Twig parser configuration change delete Twig's cache. This is not always necessary, but you do it just in case.</p>
 
@@ -156,7 +156,7 @@ Hello, {{ name }}!
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ dog|<strong>raw</strong> }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/raw.html" target="_blank">raw</a>
+<a href="http://twig.sensiolabs.org/doc/filters/raw.html" target="_blank" rel="noopener">raw</a>
                                         </td>
                                         <td>
 {{ dog|raw }}
@@ -208,7 +208,7 @@ Hello, {{ name }}!
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>print_d</strong>(array_1) }}{% endverbatim %}</code></pre>
-<a href="https://github.com/vikerlane/print_d" target="_blank">print_d</a>
+<a href="https://github.com/vikerlane/print_d" target="_blank" rel="noopener">print_d</a>
                                         </td>
                                         <td>
 {{ print_d(array_1) }}
@@ -218,7 +218,7 @@ Hello, {{ name }}!
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>dump</strong>(array_1) }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/functions/dump.html" target="_blank">dump</a>
+<a href="http://twig.sensiolabs.org/doc/functions/dump.html" target="_blank" rel="noopener">dump</a>
                                         </td>
                                         <td>
 {{ dump(array_1) }}
@@ -228,7 +228,7 @@ Hello, {{ name }}!
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>print_r</strong>(array_1) }}{% endverbatim %}</code></pre>
-<a href="http://php.net/manual/en/function.print-r.php" target="_blank">print_r</a>
+<a href="http://php.net/manual/en/function.print-r.php" target="_blank" rel="noopener">print_r</a>
                                         </td>
                                         <td>
 {{ print_r(array_1) }}
@@ -238,7 +238,7 @@ Hello, {{ name }}!
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>var_export</strong>(array_1) }}{% endverbatim %}</code></pre>
-<a href="http://php.net/manual/en/function.var-export.php" target="_blank">var_export</a>
+<a href="http://php.net/manual/en/function.var-export.php" target="_blank" rel="noopener">var_export</a>
                                         </td>
                                         <td>
 {{ var_export(array_1) }}
@@ -264,7 +264,7 @@ Hello, {{ name }}!
 {% else %}
     Nothing here
 {% endif %}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/tests/defined.html" target="_blank">defined</a>
+<a href="http://twig.sensiolabs.org/doc/tests/defined.html" target="_blank" rel="noopener">defined</a>
                                         </td>
                                         <td>
 {% if foo is defined %}
@@ -288,7 +288,7 @@ Hello, {{ name }}!
 {{ print_d("" is <strong>empty</strong>) }}
 &lt;div class="clearfix"&gt;&lt;/div&gt;
 {{ print_d([] is <strong>empty</strong>) }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/tests/empty.html" target="_blank">empty</a>
+<a href="http://twig.sensiolabs.org/doc/tests/empty.html" target="_blank" rel="noopener">empty</a>
                                         </td>
                                         <td>
 {{ print_d(value_0 is empty) }} {# Careful here, it is a differency in comparison to PHP. #}
@@ -309,7 +309,7 @@ Hello, {{ name }}!
                                         <td>
 <pre><code>{% verbatim %}{% <strong>set</strong> my_var = null %}
 {{ print_d(my_var) }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/tags/set.html" target="_blank">set</a>
+<a href="http://twig.sensiolabs.org/doc/tags/set.html" target="_blank" rel="noopener">set</a>
                                         </td>
                                         <td>
 {% set my_var = null %}
@@ -397,7 +397,7 @@ Hello, {{ name }}!
                                     <tr class="positive">
                                         <td colspan="2" class="center aligned">
                                             <h4>Type Casting</h4>
-                                            <p>See <a href="http://php.net/manual/en/language.types.type-juggling.php#language.types.typecasting" target="_blank">PHP Type Casting</a></p>
+                                            <p>See <a href="http://php.net/manual/en/language.types.type-juggling.php#language.types.typecasting" target="_blank" rel="noopener">PHP Type Casting</a></p>
                                         </td>
                                     </tr>
 
@@ -467,16 +467,16 @@ Hello, {{ name }}!
                                     <tr class="positive">
                                         <td colspan="2" class="center aligned">
                                             <h4>Built-In Twig Tags, Functions, Filters, and Operators</h4>
-                                            <p>See <a href="http://twig.sensiolabs.org/documentation" target="_blank">Twig Reference</a></p>
+                                            <p>See <a href="http://twig.sensiolabs.org/documentation" target="_blank" rel="noopener">Twig Reference</a></p>
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>
-<p><a href="http://twig.sensiolabs.org/doc/templates.html#math" target="_blank">Math operators</a>: +, -, /, %, //, *, **</p>
-<p><a href="http://twig.sensiolabs.org/doc/templates.html#math" target="_blank">Logic operators</a>: and, or, not, (), b-and, b-xor, b-or</p>
-<p><a href="http://twig.sensiolabs.org/doc/templates.html#comparisons" target="_blank">Comparisons</a>: ==, !=, &lt;, &gt;, &gt;=, &lt;=, <a href="http://twig.sensiolabs.org/doc/tests/sameas.html" target="_blank">===</a>, starts with, ends with, matches</p>
-<p><a href="http://twig.sensiolabs.org/doc/templates.html#other-operators" target="_blank">Other operators</a>: .., |, ~, ., [], ?:</p>
+<p><a href="http://twig.sensiolabs.org/doc/templates.html#math" target="_blank" rel="noopener">Math operators</a>: +, -, /, %, //, *, **</p>
+<p><a href="http://twig.sensiolabs.org/doc/templates.html#math" target="_blank" rel="noopener">Logic operators</a>: and, or, not, (), b-and, b-xor, b-or</p>
+<p><a href="http://twig.sensiolabs.org/doc/templates.html#comparisons" target="_blank" rel="noopener">Comparisons</a>: ==, !=, &lt;, &gt;, &gt;=, &lt;=, <a href="http://twig.sensiolabs.org/doc/tests/sameas.html" target="_blank" rel="noopener">===</a>, starts with, ends with, matches</p>
+<p><a href="http://twig.sensiolabs.org/doc/templates.html#other-operators" target="_blank" rel="noopener">Other operators</a>: .., |, ~, ., [], ?:</p>
                                         </td>
                                         <td>
                                         </td>
@@ -485,7 +485,7 @@ Hello, {{ name }}!
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ (-10)|<strong>abs</strong> }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/abs.html" target="_blank">abs</a>
+<a href="http://twig.sensiolabs.org/doc/filters/abs.html" target="_blank" rel="noopener">abs</a>
                                         </td>
                                         <td>
 {{ (-10)|abs }}
@@ -495,7 +495,7 @@ Hello, {{ name }}!
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>attribute</strong>(template, 'title') }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/functions/attribute.html" target="_blank">attribute</a>
+<a href="http://twig.sensiolabs.org/doc/functions/attribute.html" target="_blank" rel="noopener">attribute</a>
                                         </td>
                                         <td>
 {{ attribute(template, 'title') }}
@@ -507,7 +507,7 @@ Hello, {{ name }}!
 <pre><code>{% verbatim %}{% <strong>autoescape</strong> %}
     {{ dog }} Static expressions &lt;strong&gt;are not&lt;/strong&gt; escaped.
 {% endautoescape %}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/tags/autoescape.html" target="_blank">autoescape</a>
+<a href="http://twig.sensiolabs.org/doc/tags/autoescape.html" target="_blank" rel="noopener">autoescape</a>
                                         </td>
                                         <td>
 {% autoescape %}
@@ -525,8 +525,8 @@ Line 2
 {{ <strong>block</strong>('separator') }}
 Line 3
 {{ <strong>block</strong>('separator') }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/tags/block.html" target="_blank">block (tag)</a>
-<a href="http://twig.sensiolabs.org/doc/functions/block.html" target="_blank">block (function)</a>
+<a href="http://twig.sensiolabs.org/doc/tags/block.html" target="_blank" rel="noopener">block (tag)</a>
+<a href="http://twig.sensiolabs.org/doc/functions/block.html" target="_blank" rel="noopener">block (function)</a>
                                         </td>
                                         <td>
 {% block separator %}<div class="clearfix" /><hr />{% endblock %}
@@ -542,7 +542,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ ['a', 'b', 'c', 'd', 'e', 'f', 'g']|<strong>batch</strong>(3, 'x') }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/batch.html" target="_blank">batch</a>
+<a href="http://twig.sensiolabs.org/doc/filters/batch.html" target="_blank" rel="noopener">batch</a>
                                         </td>
                                         <td>
 {{ print_d(['a', 'b', 'c', 'd', 'e', 'f', 'g']|batch(3, 'x')) }}
@@ -554,7 +554,7 @@ Line 3
 <pre><code>{% verbatim %}{{ "limp bizkit"|<strong>capitalize</strong> }}
 &lt;br /&gt;
 {{ "лимп бизкит"|<strong>capitalize</strong> }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/capitalize.html" target="_blank">capitalize</a>
+<a href="http://twig.sensiolabs.org/doc/filters/capitalize.html" target="_blank" rel="noopener">capitalize</a>
                                         </td>
                                         <td>
 {{ "limp bizkit"|capitalize }}
@@ -566,8 +566,8 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>constant</strong>('BASE_URL') }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/functions/constant.html" target="_blank">constant (function)</a>
-<a href="http://twig.sensiolabs.org/doc/tests/constant.html" target="_blank">constant (test)</a>
+<a href="http://twig.sensiolabs.org/doc/functions/constant.html" target="_blank" rel="noopener">constant (function)</a>
+<a href="http://twig.sensiolabs.org/doc/tests/constant.html" target="_blank" rel="noopener">constant (test)</a>
                                         </td>
                                         <td>
 {{ constant('BASE_URL') }}
@@ -581,7 +581,7 @@ Line 3
 {{ "лимп бизкит"|<strong>convert_encoding</strong>('HTML-ENTITIES', _charset) }}
 &lt;br /&gt;
 {{ "лимп бизкит"|<strong>convert_encoding</strong>('HTML-ENTITIES', _charset)|raw }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/convert_encoding.html" target="_blank">convert_encoding</a>
+<a href="http://twig.sensiolabs.org/doc/filters/convert_encoding.html" target="_blank" rel="noopener">convert_encoding</a>
                                         </td>
                                         <td>
 {{ "limp bizkit"|convert_encoding('HTML-ENTITIES', _charset) }}
@@ -597,7 +597,7 @@ Line 3
 <pre><code>{% verbatim %}{% for i in 0..10 %}
     {{ <strong>cycle</strong>(array_1, i) }}&lt;br /&gt;
 {% endfor %}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/functions/cycle.html" target="_blank">cycle</a>
+<a href="http://twig.sensiolabs.org/doc/functions/cycle.html" target="_blank" rel="noopener">cycle</a>
                                         </td>
                                         <td>
 {% for i in 0..10 %}
@@ -615,8 +615,8 @@ Line 3
 {{ "now"|<strong>date</strong>("Y") }}
 &lt;br /&gt;
 {{ 2524608000|<strong>date</strong>("Y") }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/functions/date.html" target="_blank">date (function)</a>
-<a href="http://twig.sensiolabs.org/doc/filters/date.html" target="_blank">date (filter)</a>
+<a href="http://twig.sensiolabs.org/doc/functions/date.html" target="_blank" rel="noopener">date (function)</a>
+<a href="http://twig.sensiolabs.org/doc/filters/date.html" target="_blank" rel="noopener">date (filter)</a>
                                         </td>
                                         <td>
 {{ print_d(date()) }}
@@ -632,7 +632,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ date()|<strong>date_modify</strong>("+1 day")|date("Y-m-d") }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/date_modify.html" target="_blank">date_modify</a>
+<a href="http://twig.sensiolabs.org/doc/filters/date_modify.html" target="_blank" rel="noopener">date_modify</a>
                                         </td>
                                         <td>
 {{ date()|date_modify("+1 day")|date("Y-m-d") }}
@@ -642,7 +642,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ undefined_or_empty_variable|<strong>default</strong>("Undefined or empty variable.") }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/default.html" target="_blank">default</a>
+<a href="http://twig.sensiolabs.org/doc/filters/default.html" target="_blank" rel="noopener">default</a>
                                         </td>
                                         <td>
 {{ undefined_or_empty_variable|default("Undefined or empty variable.") }}
@@ -652,7 +652,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% if value_2 is <strong>divisible by</strong>(2) %}Yes{% else %}No{% endif %}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/tests/divisibleby.html" target="_blank">divisible by</a>
+<a href="http://twig.sensiolabs.org/doc/tests/divisibleby.html" target="_blank" rel="noopener">divisible by</a>
                                         </td>
                                         <td>
 {% if value_2 is divisible by(2) %}Yes{% else %}No{% endif %}
@@ -662,7 +662,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% if undefined_or_empty_variable is not <strong>defined</strong> %}Not defined{% else %}Defined{% endif %}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/tests/defined.html" target="_blank">defined</a>
+<a href="http://twig.sensiolabs.org/doc/tests/defined.html" target="_blank" rel="noopener">defined</a>
                                         </td>
                                         <td>
 {% if undefined_or_empty_variable is not defined %}Not defined{% else %}Defined{% endif %}
@@ -672,7 +672,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% <strong>do</strong> 1 + 2 %}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/tags/do.html" target="_blank">do</a>
+<a href="http://twig.sensiolabs.org/doc/tags/do.html" target="_blank" rel="noopener">do</a>
                                         </td>
                                         <td>
 {% do 1 + 2 %}
@@ -682,7 +682,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% autoescape false %}{{ dangerous_value|<strong>escape</strong> }}{% endautoescape %}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/escape.html" target="_blank">escape</a>
+<a href="http://twig.sensiolabs.org/doc/filters/escape.html" target="_blank" rel="noopener">escape</a>
                                         </td>
                                         <td>
 {% autoescape false %}{{ dangerous_value|escape }}{% endautoescape %}
@@ -691,7 +691,7 @@ Line 3
 
                                     <tr>
                                         <td>
-<a href="http://twig.sensiolabs.org/doc/tags/embed.html" target="_blank">embed</a>
+<a href="http://twig.sensiolabs.org/doc/tags/embed.html" target="_blank" rel="noopener">embed</a>
                                         </td>
                                         <td>
                                         </td>
@@ -700,7 +700,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% if string_empty is <strong>empty</strong> %}Empty{% else %}Non-empty{% endif %}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/tests/empty.html" target="_blank">empty</a>
+<a href="http://twig.sensiolabs.org/doc/tests/empty.html" target="_blank" rel="noopener">empty</a>
                                         </td>
                                         <td>
 {% if string_empty is empty %}Empty{% else %}Non-empty{% endif %}
@@ -710,7 +710,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% if value_2 is <strong>even</strong> %}Even{% else %}Odd{% endif %}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/tests/even.html" target="_blank">even</a>
+<a href="http://twig.sensiolabs.org/doc/tests/even.html" target="_blank" rel="noopener">even</a>
                                         </td>
                                         <td>
 {% if value_2 is even %}Even{% else %}Odd{% endif %}
@@ -719,7 +719,7 @@ Line 3
 
                                     <tr>
                                         <td>
-<a href="http://twig.sensiolabs.org/doc/tags/extends.html" target="_blank">extends</a>
+<a href="http://twig.sensiolabs.org/doc/tags/extends.html" target="_blank" rel="noopener">extends</a>
                                         </td>
                                         <td>
                                         </td>
@@ -728,7 +728,7 @@ Line 3
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ array_1|<strong>first</strong> }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/first.html" target="_blank">first</a>
+<a href="http://twig.sensiolabs.org/doc/filters/first.html" target="_blank" rel="noopener">first</a>
                                         </td>
                                         <td>
 {{ array_1|first }}
@@ -742,7 +742,7 @@ limp bizkit
 &lt;br /&gt;
 лимп бизкит
 {% endfilter %}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/tags/filter.html" target="_blank">filter</a>
+<a href="http://twig.sensiolabs.org/doc/tags/filter.html" target="_blank" rel="noopener">filter</a>
                                         </td>
                                         <td>
 {% filter upper|raw %}
@@ -755,7 +755,7 @@ limp bizkit
 
                                     <tr>
                                         <td>
-<a href="http://twig.sensiolabs.org/doc/tags/flush.html" target="_blank">flush</a>
+<a href="http://twig.sensiolabs.org/doc/tags/flush.html" target="_blank" rel="noopener">flush</a>
                                         </td>
                                         <td>
                                         </td>
@@ -768,7 +768,7 @@ limp bizkit
         &lt;li&gt;{{ value|e }}&lt;/li&gt;
     {% endfor %}
 &lt;/ul&gt;{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/tags/for.html" target="_blank">for</a>
+<a href="http://twig.sensiolabs.org/doc/tags/for.html" target="_blank" rel="noopener">for</a>
                                         </td>
                                         <td>
 <ul>
@@ -782,7 +782,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ "There are %d monkeys in the %s."|<strong>format(5, 'tree')</strong> }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/format.html" target="_blank">format</a>
+<a href="http://twig.sensiolabs.org/doc/filters/format.html" target="_blank" rel="noopener">format</a>
                                         </td>
                                         <td>
 {{ "There are %d monkeys in the %s."|format(5, 'tree') }}
@@ -791,7 +791,7 @@ limp bizkit
 
                                     <tr>
                                         <td>
-<a href="http://twig.sensiolabs.org/doc/tags/from.html" target="_blank">from</a>
+<a href="http://twig.sensiolabs.org/doc/tags/from.html" target="_blank" rel="noopener">from</a>
                                         </td>
                                         <td>
                                         </td>
@@ -800,7 +800,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% <strong>if</strong> array_1[0] == 'One' %}Ok{% endif %}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/tags/if.html" target="_blank">if</a>
+<a href="http://twig.sensiolabs.org/doc/tags/if.html" target="_blank" rel="noopener">if</a>
                                         </td>
                                         <td>
 {% if array_1[0] == 'one' %}Ok{% endif %}
@@ -810,7 +810,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ array_1|<strong>join('; ')</strong> }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/join.html" target="_blank">join</a>
+<a href="http://twig.sensiolabs.org/doc/filters/join.html" target="_blank" rel="noopener">join</a>
                                         </td>
                                         <td>
 {{ array_1|join('; ') }}
@@ -819,7 +819,7 @@ limp bizkit
 
                                     <tr>
                                         <td>
-<a href="http://twig.sensiolabs.org/doc/tags/import.html" target="_blank">import</a>
+<a href="http://twig.sensiolabs.org/doc/tags/import.html" target="_blank" rel="noopener">import</a>
                                         </td>
                                         <td>
                                         </td>
@@ -828,7 +828,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% if 'one' <strong>in</strong> array_1 %}Yes{% else %}No{% endif %}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/templates.html#containment-operator" target="_blank">in</a>
+<a href="http://twig.sensiolabs.org/doc/templates.html#containment-operator" target="_blank" rel="noopener">in</a>
                                         </td>
                                         <td>
 {% if 'one' in array_1 %}Yes{% else %}No{% endif %}
@@ -838,8 +838,8 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>include</strong>('test.html') }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/tags/include.html" target="_blank">include (tag)</a>
-<a href="http://twig.sensiolabs.org/doc/functions/include.html" target="_blank">include (function)</a>
+<a href="http://twig.sensiolabs.org/doc/tags/include.html" target="_blank" rel="noopener">include (tag)</a>
+<a href="http://twig.sensiolabs.org/doc/functions/include.html" target="_blank" rel="noopener">include (function)</a>
                                         </td>
                                         <td>
 {{ include('test.html') }}
@@ -849,7 +849,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% if value_1 <strong>is</strong> odd %}Odd{% else %}Even{% endif %}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/templates.html#test-operator" target="_blank">is</a>
+<a href="http://twig.sensiolabs.org/doc/templates.html#test-operator" target="_blank" rel="noopener">is</a>
                                         </td>
                                         <td>
 {% if value_1 is odd %}Odd{% else %}Even{% endif %}
@@ -859,7 +859,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% if array_1 is <strong>iterable</strong> %}Iterable{% else %}Non-iterable{% endif %}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/tests/iterable.html" target="_blank">iterable</a>
+<a href="http://twig.sensiolabs.org/doc/tests/iterable.html" target="_blank" rel="noopener">iterable</a>
                                         </td>
                                         <td>
 {% if array_1 is iterable %}Iterable{% else %}Non-iterable{% endif %}
@@ -869,7 +869,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ array_1|<strong>json_encode</strong> }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/json_encode.html" target="_blank">json_encode</a>
+<a href="http://twig.sensiolabs.org/doc/filters/json_encode.html" target="_blank" rel="noopener">json_encode</a>
                                         </td>
                                         <td>
 {{ array_1|json_encode }}
@@ -879,7 +879,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ print_d(array_1|<strong>keys</strong>) }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/keys.html" target="_blank">keys</a>
+<a href="http://twig.sensiolabs.org/doc/filters/keys.html" target="_blank" rel="noopener">keys</a>
                                         </td>
                                         <td>
 {{ print_d(array_1|keys) }}
@@ -889,7 +889,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ array_1|<strong>last</strong> }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/last.html" target="_blank">last</a>
+<a href="http://twig.sensiolabs.org/doc/filters/last.html" target="_blank" rel="noopener">last</a>
                                         </td>
                                         <td>
 {{ array_1|last }}
@@ -899,7 +899,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ array_1|<strong>length</strong> }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/length.html" target="_blank">length</a>
+<a href="http://twig.sensiolabs.org/doc/filters/length.html" target="_blank" rel="noopener">length</a>
                                         </td>
                                         <td>
 {{ array_1|length }}
@@ -911,7 +911,7 @@ limp bizkit
 <pre><code>{% verbatim %}{{ "LIMP BIZKIT"|<strong>lower</strong> }}
 &lt;br /&gt;
 {{ "ЛИМП БИЗКИТ"|<strong>lower</strong> }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/lower.html" target="_blank">lower</a>
+<a href="http://twig.sensiolabs.org/doc/filters/lower.html" target="_blank" rel="noopener">lower</a>
                                         </td>
                                         <td>
 {{ "LIMP BIZKIT"|lower }}
@@ -922,7 +922,7 @@ limp bizkit
 
                                     <tr>
                                         <td>
-<a href="http://twig.sensiolabs.org/doc/tags/macro.html" target="_blank">macro</a>
+<a href="http://twig.sensiolabs.org/doc/tags/macro.html" target="_blank" rel="noopener">macro</a>
                                         </td>
                                         <td>
                                         </td>
@@ -931,7 +931,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>max</strong>(array_1) }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/functions/max.html" target="_blank">max</a>
+<a href="http://twig.sensiolabs.org/doc/functions/max.html" target="_blank" rel="noopener">max</a>
                                         </td>
                                         <td>
 {{ max(array_1) }}
@@ -941,7 +941,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ print_d(array_1|<strong>merge</strong>(array_2)) }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/merge.html" target="_blank">merge</a>
+<a href="http://twig.sensiolabs.org/doc/filters/merge.html" target="_blank" rel="noopener">merge</a>
                                         </td>
                                         <td>
 {{ print_d(array_1|merge(array_2)) }}
@@ -951,7 +951,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>min</strong>(array_1) }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/functions/min.html" target="_blank">min</a>
+<a href="http://twig.sensiolabs.org/doc/functions/min.html" target="_blank" rel="noopener">min</a>
                                         </td>
                                         <td>
 {{ min(array_1) }}
@@ -961,7 +961,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ "I like Twig.\nYou will like it too."|<strong>nl2br</strong> }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/nl2br.html" target="_blank">nl2br</a>
+<a href="http://twig.sensiolabs.org/doc/filters/nl2br.html" target="_blank" rel="noopener">nl2br</a>
                                         </td>
                                         <td>
 {{ "I like Twig.\nYou will like it too."|nl2br }}
@@ -971,7 +971,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ 1234.56|<strong>number_format</strong>(2, ',', ' ') }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/number_format.html" target="_blank">number_format</a>
+<a href="http://twig.sensiolabs.org/doc/filters/number_format.html" target="_blank" rel="noopener">number_format</a>
                                         </td>
                                         <td>
 {{ 1234.56|number_format(2, ',', ' ') }}
@@ -981,7 +981,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% if value_null is <strong>null</strong> %}Null{% else %}Non-null{% endif %}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/tests/null.html" target="_blank">null</a>
+<a href="http://twig.sensiolabs.org/doc/tests/null.html" target="_blank" rel="noopener">null</a>
                                         </td>
                                         <td>
 {% if value_null is null %}Null{% else %}Non-null{% endif %}
@@ -991,7 +991,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% if value_1 is <strong>odd</strong> %}Odd{% else %}Even{% endif %}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/tests/odd.html" target="_blank">odd</a>
+<a href="http://twig.sensiolabs.org/doc/tests/odd.html" target="_blank" rel="noopener">odd</a>
                                         </td>
                                         <td>
 {% if value_1 is odd %}Odd{% else %}Even{% endif %}
@@ -1000,7 +1000,7 @@ limp bizkit
 
                                     <tr>
                                         <td>
-<a href="http://twig.sensiolabs.org/doc/functions/parent.html" target="_blank">parent</a>
+<a href="http://twig.sensiolabs.org/doc/functions/parent.html" target="_blank" rel="noopener">parent</a>
                                         </td>
                                         <td>
                                         </td>
@@ -1009,7 +1009,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ dog|<strong>raw</strong> }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/raw.html" target="_blank">raw</a>
+<a href="http://twig.sensiolabs.org/doc/filters/raw.html" target="_blank" rel="noopener">raw</a>
                                         </td>
                                         <td>
 {{ dog|raw }}
@@ -1019,7 +1019,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>random</strong>(array_1) }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/functions/random.html" target="_blank">random</a>
+<a href="http://twig.sensiolabs.org/doc/functions/random.html" target="_blank" rel="noopener">random</a>
                                         </td>
                                         <td>
 {{ random(array_1) }}
@@ -1031,7 +1031,7 @@ limp bizkit
 <pre><code>{% verbatim %}{{ print_d(<strong>range</strong>(0, 3)) }}
 &lt;div class="clearfix"&gt;&lt;/div&gt;
 {{ print_d(0..3) }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/functions/range.html" target="_blank">range</a>
+<a href="http://twig.sensiolabs.org/doc/functions/range.html" target="_blank" rel="noopener">range</a>
                                         </td>
                                         <td>
 {{ print_d(range(0, 3)) }}
@@ -1043,7 +1043,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ "I like %this% with %that%."|<strong>replace</strong>({'%this%': 'whiskey', '%that%': 'ice'}) }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/replace.html" target="_blank">replace</a>
+<a href="http://twig.sensiolabs.org/doc/filters/replace.html" target="_blank" rel="noopener">replace</a>
                                         </td>
                                         <td>
 {{ "I like %this% with %that%."|replace({'%this%': 'whiskey', '%that%': 'ice'}) }}
@@ -1053,7 +1053,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ print_d(array_1|<strong>reverse</strong>) }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/reverse.html" target="_blank">reverse</a>
+<a href="http://twig.sensiolabs.org/doc/filters/reverse.html" target="_blank" rel="noopener">reverse</a>
                                         </td>
                                         <td>
 {{ print_d(array_1|reverse) }}
@@ -1065,7 +1065,7 @@ limp bizkit
 <pre><code>{% verbatim %}{{ 42.55|<strong>round</strong> }}
 &lt;br /&gt;
 {{ 42.55|<strong>round</strong>(1, 'floor') }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/round.html" target="_blank">round</a>
+<a href="http://twig.sensiolabs.org/doc/filters/round.html" target="_blank" rel="noopener">round</a>
                                         </td>
                                         <td>
 {{ 42.55|round }}
@@ -1077,7 +1077,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% if value_1 is <strong>same as</strong>(1) %}It is the same (===){% else %}It is not the same (!==){% endif %}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/tests/sameas.html" target="_blank">same as</a>
+<a href="http://twig.sensiolabs.org/doc/tests/sameas.html" target="_blank" rel="noopener">same as</a>
                                         </td>
                                         <td>
 {% if value_1 is same as(1) %}It is the same (===){% else %}It is not the same (!==){% endif %}
@@ -1086,7 +1086,7 @@ limp bizkit
 
                                     <tr>
                                         <td>
-<a href="http://twig.sensiolabs.org/doc/tags/sandbox.html" target="_blank">sandbox</a>
+<a href="http://twig.sensiolabs.org/doc/tags/sandbox.html" target="_blank" rel="noopener">sandbox</a>
                                         </td>
                                         <td>
                                         </td>
@@ -1100,7 +1100,7 @@ limp bizkit
     {% <strong>set</strong> counter = counter + 1 %}
 {% endfor %}
 {% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/tags/set.html" target="_blank">set</a>
+<a href="http://twig.sensiolabs.org/doc/tags/set.html" target="_blank" rel="noopener">set</a>
                                         </td>
                                         <td>
 {% set counter = 1 %}
@@ -1116,7 +1116,7 @@ limp bizkit
 <pre><code>{% verbatim %}{{ '12345'|<strong>slice</strong>(0, 2) }}
 &lt;br /&gt;
 {{ print_d(array_1|<strong>slice</strong>(0, 2)) }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/slice.html" target="_blank">slice</a>
+<a href="http://twig.sensiolabs.org/doc/filters/slice.html" target="_blank" rel="noopener">slice</a>
                                         </td>
                                         <td>
 {{ '12345'|slice(0, 2) }}
@@ -1128,7 +1128,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ print_d(array_1|<strong>sort</strong>) }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/sort.html" target="_blank">sort</a>
+<a href="http://twig.sensiolabs.org/doc/filters/sort.html" target="_blank" rel="noopener">sort</a>
                                         </td>
                                         <td>
 {{ print_d(array_1|sort) }}
@@ -1138,7 +1138,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}&lt;pre&gt;&lt;code&gt;{{ <strong>source</strong>('test.html')|escape }}&lt;/code&gt;&lt;/pre&gt;{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/functions/source.html" target="_blank">source</a>
+<a href="http://twig.sensiolabs.org/doc/functions/source.html" target="_blank" rel="noopener">source</a>
                                         </td>
                                         <td>
 <pre><code>{{ source('test.html')|escape }}</code></pre>
@@ -1152,7 +1152,7 @@ limp bizkit
         &lt;strong&gt;spaceless&lt;/strong&gt;
     &lt;/div&gt;
 {% endspaceless %}{% endfilter %}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/tags/spaceless.html" target="_blank">spaceless</a>
+<a href="http://twig.sensiolabs.org/doc/tags/spaceless.html" target="_blank" rel="noopener">spaceless</a>
                                         </td>
                                         <td>
 {% filter escape('html') %}{% spaceless %}
@@ -1166,7 +1166,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ print_d("one, two, three"|<strong>split(', ')</strong>) }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/split.html" target="_blank">split</a>
+<a href="http://twig.sensiolabs.org/doc/filters/split.html" target="_blank" rel="noopener">split</a>
                                         </td>
                                         <td>
 {{ print_d("one, two, three"|split(', ')) }}
@@ -1176,7 +1176,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ dog|<strong>striptags</strong> }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/striptags.html" target="_blank">striptags</a>
+<a href="http://twig.sensiolabs.org/doc/filters/striptags.html" target="_blank" rel="noopener">striptags</a>
                                         </td>
                                         <td>
 {{ dog|striptags }}
@@ -1188,7 +1188,7 @@ limp bizkit
 <pre><code>{% verbatim %}{{ "limp bizkit"|<strong>title</strong> }}
 &lt;br /&gt;
 {{ "лимп бизкит"|<strong>title</strong> }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/title.html" target="_blank">title</a>
+<a href="http://twig.sensiolabs.org/doc/filters/title.html" target="_blank" rel="noopener">title</a>
                                         </td>
                                         <td>
 {{ "limp bizkit"|title }}
@@ -1200,7 +1200,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ include(<strong>template_from_string</strong>("Hello {{ name }}")) }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/functions/template_from_string.html" target="_blank">template_from_string</a>
+<a href="http://twig.sensiolabs.org/doc/functions/template_from_string.html" target="_blank" rel="noopener">template_from_string</a>
                                         </td>
                                         <td>
 {{ include(template_from_string("Hello {{ name }}")) }}
@@ -1210,7 +1210,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ "****STRING****"|<strong>trim</strong>('*') }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/trim.html" target="_blank">trim</a>
+<a href="http://twig.sensiolabs.org/doc/filters/trim.html" target="_blank" rel="noopener">trim</a>
                                         </td>
                                         <td>
 {{ "****STRING****"|trim('*') }}
@@ -1222,7 +1222,7 @@ limp bizkit
 <pre><code>{% verbatim %}{{ "limp bizkit"|<strong>upper</strong> }}
 &lt;br /&gt;
 {{ "лимп бизкит"|<strong>upper</strong> }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/upper.html" target="_blank">upper</a>
+<a href="http://twig.sensiolabs.org/doc/filters/upper.html" target="_blank" rel="noopener">upper</a>
                                         </td>
                                         <td>
 {{ "limp bizkit"|upper }}
@@ -1234,7 +1234,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ "path-seg*ment"|<strong>url_encode</strong> }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/url_encode.html" target="_blank">url_encode</a>
+<a href="http://twig.sensiolabs.org/doc/filters/url_encode.html" target="_blank" rel="noopener">url_encode</a>
                                         </td>
                                         <td>
 {{ "path-seg*ment"|url_encode }}
@@ -1243,7 +1243,7 @@ limp bizkit
 
                                     <tr>
                                         <td>
-<a href="http://twig.sensiolabs.org/doc/tags/use.html" target="_blank">use</a>
+<a href="http://twig.sensiolabs.org/doc/tags/use.html" target="_blank" rel="noopener">use</a>
                                         </td>
                                         <td>
                                         </td>
@@ -1256,7 +1256,7 @@ limp bizkit
         &lt;li&gt;{{ value|e }}&lt;/li&gt;
     {% endfor %}
 &lt;/ul&gt;{&#37 endverbatim %}{% endfilter %}&lt;/code&gt;&lt;/pre&gt;{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/tags/verbatim.html" target="_blank">verbatim</a>
+<a href="http://twig.sensiolabs.org/doc/tags/verbatim.html" target="_blank" rel="noopener">verbatim</a>
                                         </td>
                                         <td>
 <pre><code>{% filter escape('html') %}{% verbatim %}<ul>
@@ -1280,7 +1280,7 @@ limp bizkit
 {{ array_2|<strong>count</strong> }}
 &lt;br /&gt;
 {{ array_2|<strong>count</strong>(true) }}{% endverbatim %}</code></pre>
-<a href="http://php.net/manual/en/function.count.php" target="_blank">count</a>
+<a href="http://php.net/manual/en/function.count.php" target="_blank" rel="noopener">count</a>
                                         </td>
                                         <td>
 {{ array_1|count }}
@@ -1294,7 +1294,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ array_1|<strong>gettype</strong> }}{% endverbatim %}</code></pre>
-<a href="http://php.net/manual/en/function.gettype.php" target="_blank">gettype</a>
+<a href="http://php.net/manual/en/function.gettype.php" target="_blank" rel="noopener">gettype</a>
                                         </td>
                                         <td>
 {{ array_1|gettype }}
@@ -1304,7 +1304,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ array_1 <strong>is array</strong> }}{% endverbatim %}</code></pre>
-<a href="http://php.net/manual/en/function.is-array.php" target="_blank">is_array</a>
+<a href="http://php.net/manual/en/function.is-array.php" target="_blank" rel="noopener">is_array</a>
                                         </td>
                                         <td>
 {{ array_1 is array }}
@@ -1314,7 +1314,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ boolean_true <strong>is bool</strong> }}{% endverbatim %}</code></pre>
-<a href="http://php.net/manual/en/function.is-bool.php" target="_blank">is_bool</a>
+<a href="http://php.net/manual/en/function.is-bool.php" target="_blank" rel="noopener">is_bool</a>
                                         </td>
                                         <td>
 {{ boolean_true is bool }}
@@ -1324,7 +1324,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ boolean_true <strong>is boolean</strong> }}{% endverbatim %}</code></pre>
-<a href="http://php.net/manual/en/function.is-bool.php" target="_blank">an alias of is_bool()</a>
+<a href="http://php.net/manual/en/function.is-bool.php" target="_blank" rel="noopener">an alias of is_bool()</a>
                                         </td>
                                         <td>
 {{ boolean_true is boolean }}
@@ -1334,7 +1334,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ float_value <strong>is float</strong> }}{% endverbatim %}</code></pre>
-<a href="http://php.net/manual/en/function.is-float.php" target="_blank">is_float</a>
+<a href="http://php.net/manual/en/function.is-float.php" target="_blank" rel="noopener">is_float</a>
                                         </td>
                                         <td>
 {{ float_value is float }}
@@ -1344,7 +1344,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ value_0 <strong>is int</strong> }}{% endverbatim %}</code></pre>
-<a href="http://php.net/manual/en/function.is-int.php" target="_blank">is_int</a>
+<a href="http://php.net/manual/en/function.is-int.php" target="_blank" rel="noopener">is_int</a>
                                         </td>
                                         <td>
 {{ value_0 is int }}
@@ -1354,7 +1354,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ value_0 <strong>is integer</strong> }}{% endverbatim %}</code></pre>
-<a href="http://php.net/manual/en/function.is-integer.php" target="_blank">is_integer</a>
+<a href="http://php.net/manual/en/function.is-integer.php" target="_blank" rel="noopener">is_integer</a>
                                         </td>
                                         <td>
 {{ value_0 is integer }}
@@ -1364,7 +1364,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ string_10 <strong>is numeric</strong> }}{% endverbatim %}</code></pre>
-<a href="http://php.net/manual/en/function.is-numeric.php" target="_blank">is_numeric</a>
+<a href="http://php.net/manual/en/function.is-numeric.php" target="_blank" rel="noopener">is_numeric</a>
                                         </td>
                                         <td>
 {{ string_10 is numeric }}
@@ -1374,7 +1374,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ object_123 <strong>is object</strong> }}{% endverbatim %}</code></pre>
-<a href="http://php.net/manual/en/function.is-object.php" target="_blank">is_iobject</a>
+<a href="http://php.net/manual/en/function.is-object.php" target="_blank" rel="noopener">is_iobject</a>
                                         </td>
                                         <td>
 {{ object_123 is object }}
@@ -1384,7 +1384,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ string_123 <strong>is scalar</strong> }}{% endverbatim %}</code></pre>
-<a href="http://php.net/manual/en/function.is-scalar.php" target="_blank">is_scalar</a>
+<a href="http://php.net/manual/en/function.is-scalar.php" target="_blank" rel="noopener">is_scalar</a>
                                         </td>
                                         <td>
 {{ string_123 is scalar }}
@@ -1394,7 +1394,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ string_123 <strong>is string</strong> }}{% endverbatim %}</code></pre>
-<a href="http://php.net/manual/en/function.is-string.php" target="_blank">is_string</a>
+<a href="http://php.net/manual/en/function.is-string.php" target="_blank" rel="noopener">is_string</a>
                                         </td>
                                         <td>
 {{ string_123 is string }}
@@ -1404,7 +1404,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ '****STRING****'|<strong>ltrim</strong>('*') }}{% endverbatim %}</code></pre>
-<a href="http://php.net/manual/en/function.ltrim.php" target="_blank">ltrim</a>
+<a href="http://php.net/manual/en/function.ltrim.php" target="_blank" rel="noopener">ltrim</a>
                                         </td>
                                         <td>
 {{ '****STRING****'|ltrim('*') }}
@@ -1414,7 +1414,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ 1234.56|<strong>money_format</strong>('%i') }}{% endverbatim %}</code></pre>
-<a href="http://php.net/manual/en/function.money-format.php" target="_blank">money_format</a>
+<a href="http://php.net/manual/en/function.money-format.php" target="_blank" rel="noopener">money_format</a>
                                         </td>
                                         <td>
 {{ 1234.56|money_format('%i') }}
@@ -1424,7 +1424,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ '****STRING****'|<strong>rtrim</strong>('*') }}{% endverbatim %}</code></pre>
-<a href="http://php.net/manual/en/function.rtrim.php" target="_blank">rtrim</a>
+<a href="http://php.net/manual/en/function.rtrim.php" target="_blank" rel="noopener">rtrim</a>
                                         </td>
                                         <td>
 {{ '****STRING****'|rtrim('*') }}
@@ -1434,7 +1434,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ 'There are %d monkeys in the %s.'|<strong>sprintf</strong>(5, 'tree') }}{% endverbatim %}</code></pre>
-<a href="http://php.net/manual/en/function.sprintf.php" target="_blank">sprintf</a>
+<a href="http://php.net/manual/en/function.sprintf.php" target="_blank" rel="noopener">sprintf</a>
                                         </td>
                                         <td>
 {{ 'There are %d monkeys in the %s.'|sprintf(5, 'tree') }}
@@ -1444,7 +1444,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ 'abcdEf'|<strong>stripos</strong>('deF') }}{% endverbatim %}</code></pre>
-<a href="http://php.net/manual/en/function.stripos.php" target="_blank">stripos</a>
+<a href="http://php.net/manual/en/function.stripos.php" target="_blank" rel="noopener">stripos</a>
                                         </td>
                                         <td>
 {{ 'abcdEf'|stripos('deF') }}
@@ -1454,7 +1454,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ 'abcdef'|<strong>strpos</strong>('def') }}{% endverbatim %}</code></pre>
-<a href="http://php.net/manual/en/function.strpos.php" target="_blank">strpos</a>
+<a href="http://php.net/manual/en/function.strpos.php" target="_blank" rel="noopener">strpos</a>
                                         </td>
                                         <td>
 {{ 'abcdef'|strpos('def') }}
@@ -1464,7 +1464,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ 'The quick brown fox jumped over the lazy dog.'|<strong>wordwrap</strong>(20)|nl2br }}{% endverbatim %}</code></pre>
-<a href="http://php.net/manual/en/function.wordwrap.php" target="_blank">wordwrap</a>
+<a href="http://php.net/manual/en/function.wordwrap.php" target="_blank" rel="noopener">wordwrap</a>
                                         </td>
                                         <td>
 {{ 'The quick brown fox jumped over the lazy dog.'|wordwrap(20)|nl2br }}
@@ -1482,7 +1482,7 @@ limp bizkit
 <pre><code>{% verbatim %}{{ "Very long text. Very long text."|<strong>character_limiter</strong>(10) }}
 &lt;br /&gt;
 {{ very_long_text|<strong>character_limiter</strong>(10, "&amp;#8230;") }}{% endverbatim %}</code></pre>
-<a href="https://codeigniter.com/user_guide/helpers/text_helper.html#character_limiter" target="_blank">character_limiter</a>
+<a href="https://codeigniter.com/user_guide/helpers/text_helper.html#character_limiter" target="_blank" rel="noopener">character_limiter</a>
                                         </td>
                                         <td>
 {{ "Very long text. Very long text."|character_limiter(10) }}
@@ -1494,7 +1494,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ 'abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef'|<strong>ellipsize</strong>(20) }}{% endverbatim %}</code></pre>
-<a href="https://codeigniter.com/user_guide/helpers/text_helper.html#ellipsize" target="_blank">ellipsize</a>
+<a href="https://codeigniter.com/user_guide/helpers/text_helper.html#ellipsize" target="_blank" rel="noopener">ellipsize</a>
                                         </td>
                                         <td>
 {{ 'abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef'|ellipsize(20) }}
@@ -1504,7 +1504,7 @@ limp bizkit
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ dog|<strong>highlight_phrase</strong>('dog')|xss_clean }}{% endverbatim %}</code></pre>
-<a href="https://codeigniter.com/user_guide/helpers/text_helper.html#highlight_phrase" target="_blank">highlight_phrase</a>
+<a href="https://codeigniter.com/user_guide/helpers/text_helper.html#highlight_phrase" target="_blank" rel="noopener">highlight_phrase</a>
                                         </td>
                                         <td>
 {{ dog|highlight_phrase('dog')|xss_clean }}
@@ -1518,7 +1518,7 @@ limp bizkit
 {{ 'FILE_READ_MODE'|<strong>humanize</strong>('_') }}
 &lt;br /&gt;
 {{ 'трейси_чапман'|<strong>humanize</strong> }}{% endverbatim %}</code></pre>
-<a href="https://codeigniter.com/user_guide/helpers/inflector_helper.html#humanize" target="_blank">humanize</a>
+<a href="https://codeigniter.com/user_guide/helpers/inflector_helper.html#humanize" target="_blank" rel="noopener">humanize</a>
                                         </td>
                                         <td>
 {{ 'FILE_READ_MODE'|humanize }}
@@ -1563,7 +1563,7 @@ $(function() {
 
 //]]&gt;
 &lt;/script&gt;{% endverbatim %}</code></pre>
-<a href="https://codeigniter.com/user_guide/general/common_functions.html#is_https" target="_blank">is_https</a>
+<a href="https://codeigniter.com/user_guide/general/common_functions.html#is_https" target="_blank" rel="noopener">is_https</a>
                                         </td>
                                         <td>
 <div id="map_canvas" class="google-maps"></div>
@@ -1605,7 +1605,7 @@ $(function() {
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ 'contact@example.com'|<strong>safe_mailto</strong>('Contact Us', 'alt="Contact Us"') }}{% endverbatim %}</code></pre>
-<a href="https://codeigniter.com/user_guide/helpers/url_helper.html#safe_mailto" target="_blank">safe_mailto</a>
+<a href="https://codeigniter.com/user_guide/helpers/url_helper.html#safe_mailto" target="_blank" rel="noopener">safe_mailto</a>
                                         </td>
                                         <td>
 {{ 'contact@example.com'|safe_mailto('Contact Us', 'alt="Contact Us"') }}
@@ -1615,7 +1615,7 @@ $(function() {
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ 1451529295|<strong>timespan</strong> }}{% endverbatim %}</code></pre>
-<a href="https://codeigniter.com/user_guide/helpers/date_helper.html#timespan" target="_blank">timespan</a>
+<a href="https://codeigniter.com/user_guide/helpers/date_helper.html#timespan" target="_blank" rel="noopener">timespan</a>
                                         </td>
                                         <td>
 {{ 1451529295|timespan }}
@@ -1627,7 +1627,7 @@ $(function() {
 <pre><code>{% verbatim %}{{ 'Limp Bizkit'|<strong>url_title</strong>('-', true) }}
 &lt;br /&gt;
 {{ 'Лимп Бизкит'|<strong>url_title</strong>('-', true, true) }}{% endverbatim %}</code></pre>
-<a href="https://codeigniter.com/user_guide/helpers/url_helper.html#url_title" target="_blank">url_title</a>
+<a href="https://codeigniter.com/user_guide/helpers/url_helper.html#url_title" target="_blank" rel="noopener">url_title</a>
                                         </td>
                                         <td>
 {{'Limp Bizkit'|url_title('-', true) }}
@@ -1639,7 +1639,7 @@ $(function() {
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ 'abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef'|<strong>word_limiter</strong>(5) }}{% endverbatim %}</code></pre>
-<a href="https://codeigniter.com/user_guide/helpers/text_helper.html#word_limiter" target="_blank">word_limiter</a>
+<a href="https://codeigniter.com/user_guide/helpers/text_helper.html#word_limiter" target="_blank" rel="noopener">word_limiter</a>
                                         </td>
                                         <td>
 {{ 'abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef'|word_limiter(5) }}
@@ -1649,7 +1649,7 @@ $(function() {
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ 'The quick brown fox jumped over the lazy dog.'|<strong>word_wrap</strong>(20)|nl2br }}{% endverbatim %}</code></pre>
-<a href="https://codeigniter.com/user_guide/helpers/text_helper.html#word_wrap" target="_blank">word_wrap</a>
+<a href="https://codeigniter.com/user_guide/helpers/text_helper.html#word_wrap" target="_blank" rel="noopener">word_wrap</a>
 
                                         </td>
                                         <td>
@@ -1667,8 +1667,8 @@ $(function() {
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>session</strong>('sess_var_1', 'test_1') }} &lt;!-- Set --&gt;
 {{ <strong>session</strong>('sess_var_1') }} &lt;!-- Get --&gt;{% endverbatim %}</code></pre>
-<a href="https://codeigniter.com/user_guide/libraries/sessions.html#retrieving-session-data" target="_blank">session-&gt;userdata</a>
-<a href="https://codeigniter.com/user_guide/libraries/sessions.html#adding-session-data" target="_blank">session-&gt;set_userdata</a>
+<a href="https://codeigniter.com/user_guide/libraries/sessions.html#retrieving-session-data" target="_blank" rel="noopener">session-&gt;userdata</a>
+<a href="https://codeigniter.com/user_guide/libraries/sessions.html#adding-session-data" target="_blank" rel="noopener">session-&gt;set_userdata</a>
 
                                         </td>
                                         <td>
@@ -1681,7 +1681,7 @@ $(function() {
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>session_flash</strong>('sess_var_2', 'test_2') }} &lt;!-- Set --&gt;
 {{ <strong>session_flash</strong>('sess_var_2') }} &lt;!-- Get --&gt;{% endverbatim %}</code></pre>
-<a href="https://codeigniter.com/user_guide/libraries/sessions.html#flashdata" target="_blank">session-&gt;flashdata</a>
+<a href="https://codeigniter.com/user_guide/libraries/sessions.html#flashdata" target="_blank" rel="noopener">session-&gt;flashdata</a>
                                         </td>
                                         <td>
 {{ session_flash('sess_var_2', 'test_2') }} <!-- Set -->
@@ -1696,7 +1696,7 @@ $(function() {
 &lt;br /&gt;
 {{ <strong>session_temp</strong>('sess_var_4', 'test_4', 1000) }} &lt;!-- Set with TTL in seconds, the default is 300 --&gt;
 {{ <strong>session_temp</strong>('sess_var_4') }} &lt;!-- Get --&gt;{% endverbatim %}</code></pre>
-<a href="https://codeigniter.com/user_guide/libraries/sessions.html#tempdata" target="_blank">session-&gt;tempdata</a>
+<a href="https://codeigniter.com/user_guide/libraries/sessions.html#tempdata" target="_blank" rel="noopener">session-&gt;tempdata</a>
                                         </td>
                                         <td>
 {{ session_temp('sess_var_3', 'test_3') }} <!-- Set -->
@@ -2123,7 +2123,7 @@ $(function() {
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ dangerous_value|<strong>xss_clean</strong> }}{% endverbatim %}</code></pre>
-<a href="https://codeigniter.com/user_guide/libraries/security.html#xss-filtering" target="_blank">security-&gt;xss_clean</a>
+<a href="https://codeigniter.com/user_guide/libraries/security.html#xss-filtering" target="_blank" rel="noopener">security-&gt;xss_clean</a>
                                         </td>
                                         <td>
 {{ dangerous_value|xss_clean }}
@@ -2927,7 +2927,7 @@ width = 180px, height = 120px
 <pre><code>{% verbatim %}{{ <strong>lang</strong>('welcome.hello') }}
 &lt;br /&gt;
 {{ <strong>lang</strong>('ui_file_upload_success', '&lt;strong&gt;photo.png&lt;/strong&gt;')|raw }}{% endverbatim %}</code></pre>
-<a href="https://codeigniter.com/user_guide/libraries/language.html#fetching-a-line-of-text" target="_blank">lang-&gt;line</a>
+<a href="https://codeigniter.com/user_guide/libraries/language.html#fetching-a-line-of-text" target="_blank" rel="noopener">lang-&gt;line</a>
                                         </td>
                                         <td>
 {{ lang('welcome.hello') }}
@@ -3113,11 +3113,11 @@ width = 180px, height = 120px
     {{ parent() }}
     <p>{{ text_in_body }}</p>
 {% endblock %}{% endverbatim %}{% endfilter %}
-<a href="http://twig.sensiolabs.org/doc/tags/extends.html" target="_blank">extends</a>
-<a href="http://twig.sensiolabs.org/doc/tags/block.html" target="_blank">block (tag)</a>
-<a href="http://twig.sensiolabs.org/doc/functions/block.html" target="_blank">block (function)</a>
-<a href="http://twig.sensiolabs.org/doc/functions/parent.html" target="_blank">parent</a>
-<a href="http://twig.sensiolabs.org/doc/tags/use.html" target="_blank">use</a>
+<a href="http://twig.sensiolabs.org/doc/tags/extends.html" target="_blank" rel="noopener">extends</a>
+<a href="http://twig.sensiolabs.org/doc/tags/block.html" target="_blank" rel="noopener">block (tag)</a>
+<a href="http://twig.sensiolabs.org/doc/functions/block.html" target="_blank" rel="noopener">block (function)</a>
+<a href="http://twig.sensiolabs.org/doc/functions/parent.html" target="_blank" rel="noopener">parent</a>
+<a href="http://twig.sensiolabs.org/doc/tags/use.html" target="_blank" rel="noopener">use</a>
 
                                         </td>
                                         <td>

@@ -11,8 +11,8 @@ template_partial('subnavbar');
 
                         <p>
                             See
-                            <a href="https://github.com/php-http" target="_blank">https://github.com/php-http</a>,
-                            <a href="http://httplug.io" target="_blank">http://httplug.io</a>
+                            <a href="https://github.com/php-http" target="_blank" rel="noopener">https://github.com/php-http</a>,
+                            <a href="http://httplug.io" target="_blank" rel="noopener">http://httplug.io</a>
                         </p>
 
                         <h3>Code:</h3>

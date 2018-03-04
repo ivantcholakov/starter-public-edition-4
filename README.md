@@ -368,7 +368,7 @@ echo $this->parser->parse_string($mustache_template, $data, true, 'mustache');
 echo $this->parser->parse_string($content, null, true, array('markdown', 'auto_link'));
 
 // The same chaining example, this time a configuration option of the second parser has been altered.
-echo $this->parser->parse_string($content, null, true, array('markdown', 'auto_link' => array('attributes' => 'target="_blank"')));
+echo $this->parser->parse_string($content, null, true, array('markdown', 'auto_link' => array('attributes' => 'target="_blank" rel="noopener"')));
 ```
 
 Using parsers indirectly on rendering views:
