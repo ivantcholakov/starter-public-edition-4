@@ -161,7 +161,7 @@ class Image_lib extends CI_Image_lib
         // Let's set up our values based on the action
         if ($action === 'crop')
         {
-            //  Reassign the source width/height if cropping
+            // Reassign the source width/height if cropping
             $this->orig_width  = $this->width;
             $this->orig_height = $this->height;
 
@@ -179,7 +179,7 @@ class Image_lib extends CI_Image_lib
             $this->y_axis = 0;
         }
 
-        //  Create the image handle
+        // Create the image handle
         if ( ! ($src_img = $this->image_create_gd()))
         {
             return FALSE;
@@ -243,7 +243,7 @@ class Image_lib extends CI_Image_lib
         {
             $this->image_display_gd($dst_img);
         }
-        elseif ( ! $this->image_save_gd($dst_img)) // ... or save it
+        elseif ( ! $this->image_save_gd($dst_img)) // Or save it
         {
             return FALSE;
         }
@@ -252,10 +252,13 @@ class Image_lib extends CI_Image_lib
         imagedestroy($dst_img);
         imagedestroy($src_img);
 
-        // Modified by Ivan Tcholakov, 12-APR-2015.
-        //chmod($this->full_dst_path, $this->file_permissions);
-        @chmod($this->full_dst_path, $this->file_permissions);
-        //
+        if ($this->dynamic_output !== TRUE)
+        {
+            // Modified by Ivan Tcholakov, 12-APR-2015.
+            //chmod($this->full_dst_path, $this->file_permissions);
+            @chmod($this->full_dst_path, $this->file_permissions);
+            //
+        }
 
         return TRUE;
     }
@@ -697,7 +700,7 @@ class Image_lib extends CI_Image_lib
 
         switch ($image_type)
         {
-            case 1 :
+            case 1:
                 if ( ! function_exists('imagecreatefromgif'))
                 {
                     $this->set_error(array('imglib_unsupported_imagecreate', 'imglib_gif_not_supported'));
