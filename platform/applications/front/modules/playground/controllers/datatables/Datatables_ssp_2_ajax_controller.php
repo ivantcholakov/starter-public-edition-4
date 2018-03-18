@@ -40,7 +40,8 @@ class Datatables_ssp_2_ajax_controller extends Base_Ajax_Controller {
             ),
             array(
                 'db' => 'name',
-                'dt' => 'name'
+                'dt' => 'name',
+                'formatter' => array($this, '_formatter_name')
             ),
             array(
                 'dt' => 'flag',
@@ -102,6 +103,12 @@ class Datatables_ssp_2_ajax_controller extends Base_Ajax_Controller {
     public function _formatter_code($value, $item) {
 
         return '<span class="loud">'.$value.'</span>';
+    }
+
+    public function _formatter_name($value, $item) {
+
+        // HTML escaping demo.
+        return html_escape($value);
     }
 
     public function _formatter_flag($value, $item) {
