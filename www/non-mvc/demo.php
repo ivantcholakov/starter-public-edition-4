@@ -59,8 +59,9 @@ echo js_platform();
             custom: {
                 families: [
                     'Lato',
-                    'Icons',
-                    'FontAwesome',
+                    'Icons', 'outline-icons', 'brand-icons',
+                    'Font Awesome 5 Free',
+                    'Font Awesome 5 Brands',
                     'Material Icons'
                 ],
                 urls: [

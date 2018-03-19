@@ -9,3 +9,25 @@
     text-decoration: inherit;
     text-transform: none;
 }
+
+@font-face {
+  font-family: 'outline-icons';
+  src: url("../../../fonts/semantic/default/outline-icons.eot");
+  src: url("../../../fonts/semantic/default/outline-icons.eot?#iefix") format('embedded-opentype'), url("../../../fonts/semantic/default/outline-icons.woff2") format('woff2'), url("../../../fonts/semantic/default/outline-icons.woff") format('woff'), url("../../../fonts/semantic/default/outline-icons.ttf") format('truetype'), url("../../../fonts/semantic/default/outline-icons.svg#icons") format('svg');
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-decoration: inherit;
+  text-transform: none;
+}
+
+@font-face {
+  font-family: 'brand-icons';
+  src: url("../../../fonts/semantic/default/brand-icons.eot");
+  src: url("../../../fonts/semantic/default/brand-icons.eot?#iefix") format('embedded-opentype'), url("../../../fonts/semantic/default/brand-icons.woff2") format('woff2'), url("../../../fonts/semantic/default/brand-icons.woff") format('woff'), url("../../../fonts/semantic/default/brand-icons.ttf") format('truetype'), url("../../../fonts/semantic/default/brand-icons.svg#icons") format('svg');
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-decoration: inherit;
+  text-transform: none;
+}
