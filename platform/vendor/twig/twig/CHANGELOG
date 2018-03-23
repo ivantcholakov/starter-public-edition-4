@@ -1,3 +1,10 @@
+* 1.35.3 (2018-03-20)
+
+ * fixed block names unicity
+ * fixed counting children of SimpleXMLElement objects
+ * added missing else clause to avoid infinite loops
+ * fixed .. (range operator) in sandbox policy
+
 * 1.35.2 (2018-03-03)
 
  * fixed a regression in the way the profiler is registered in templates

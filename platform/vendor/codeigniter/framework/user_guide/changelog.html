@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Change Log &mdash; CodeIgniter 3.1.7 documentation</title>
+  <title>Change Log &mdash; CodeIgniter 3.1.8 documentation</title>
   
 
   
@@ -33,7 +33,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="CodeIgniter 3.1.7 documentation" href="index.html"/>
+    <link rel="top" title="CodeIgniter 3.1.8 documentation" href="index.html"/>
         <link rel="next" title="The MIT License (MIT)" href="license.html"/>
         <link rel="prev" title="XML Helper" href="helpers/xml_helper.html"/> 
 
@@ -421,6 +421,38 @@
             
   <div class="section" id="change-log">
 <h1>Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="version-3-1-8">
+<h2>Version 3.1.8<a class="headerlink" href="#version-3-1-8" title="Permalink to this headline">¶</a></h2>
+<p>Release Date: Mar 22, 2018</p>
+<ul>
+<li><p class="first"><strong>Security</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>Updated <a class="reference internal" href="helpers/url_helper.html"><span class="doc">URL Helper</span></a> function <a class="reference internal" href="helpers/url_helper.html#auto_link" title="auto_link"><code class="xref php php-func docutils literal"><span class="pre">auto_link()</span></code></a> to add <code class="docutils literal"><span class="pre">rel=&quot;noopener&quot;</span></code> to generated links in order to prevent tab hijacking.</li>
+<li>Updated <a class="reference internal" href="libraries/security.html"><span class="doc">Security Library</span></a> method <code class="docutils literal"><span class="pre">xss_clean()</span></code> to also filter JavaScript tag functions.</li>
+<li>Fixed a bug where <a class="reference internal" href="libraries/security.html"><span class="doc">Security Library</span></a> method <code class="docutils literal"><span class="pre">xss_clean()</span></code> didn’t check for parentheses around JavaScript’s <code class="docutils literal"><span class="pre">document</span></code>.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">General Changes</p>
+<ul class="simple">
+<li>Updated <a class="reference internal" href="libraries/email.html"><span class="doc">Email Library</span></a> to always negotiate between TLS 1.0, 1.1, 1.2 when possible (PHP 5.6+) for SMTP connections.</li>
+<li>Updated <a class="reference internal" href="database/index.html"><span class="doc">Database Library</span></a> method <code class="docutils literal"><span class="pre">version()</span></code> to exclude suffixes to the main version numbers with the ‘postgre’ driver.</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="bug-fixes-for-3-1-8">
+<h3>Bug fixes for 3.1.8<a class="headerlink" href="#bug-fixes-for-3-1-8" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Fixed a bug where <a class="reference internal" href="libraries/form_validation.html"><span class="doc">Form Validation Library</span></a>, <a class="reference internal" href="libraries/email.html"><span class="doc">Email Library</span></a> tried to use <code class="docutils literal"><span class="pre">INTL_IDNA_VARIANT_UTS46</span></code> when it was undeclared.</li>
+<li>Fixed a bug where <a class="reference internal" href="database/query_builder.html"><span class="doc">Query Builder</span></a> methods <code class="docutils literal"><span class="pre">where()</span></code>, <code class="docutils literal"><span class="pre">having()</span></code> treated values passed to them as arbitrary SQL.</li>
+<li>Fixed a bug (#5423) - <a class="reference internal" href="database/index.html"><span class="doc">Database Library</span></a> method <code class="docutils literal"><span class="pre">insert_id()</span></code> failed due to incorrect server version parsing with the ‘postgre’ driver.</li>
+<li>Fixed a bug (#5425) - <a class="reference internal" href="libraries/xmlrpc.html"><span class="doc">XML-RPC Library</span></a> produced an error message related to <code class="docutils literal"><span class="pre">count()</span></code> on PHP 7.2.</li>
+<li>Fixed a bug (#5434) - <a class="reference internal" href="libraries/image_lib.html"><span class="doc">Image Manipulation Library</span></a> attempted to <code class="docutils literal"><span class="pre">chmod()</span></code> while rendering images with the <code class="docutils literal"><span class="pre">dynamic_output</span></code> option.</li>
+<li>Fixed a bug (#5435) - <a class="reference internal" href="database/results.html"><span class="doc">Database Results</span></a> method <code class="docutils literal"><span class="pre">field_data()</span></code> hid info about one field if <code class="docutils literal"><span class="pre">limit()</span></code> was previously used with the ‘oci8’ driver.</li>
+</ul>
+</div>
+</div>
 <div class="section" id="version-3-1-7">
 <h2>Version 3.1.7<a class="headerlink" href="#version-3-1-7" title="Permalink to this headline">¶</a></h2>
 <p>Release Date: Jan 13, 2018</p>
@@ -2387,7 +2419,7 @@ Helper</span></a> to return FALSE on failure.</li>
 precision.</li>
 <li>Added alpha, and sha1 string types to random_string() in the
 <a class="reference internal" href="helpers/string_helper.html"><span class="doc">String Helper</span></a>.</li>
-<li>Modified prep_url() so as to not prepend http&amp;#58;// if the supplied
+<li>Modified prep_url() so as to not prepend http:// if the supplied
 string already has a scheme.</li>
 <li>Modified get_file_info in the file helper, changing filectime()
 to filemtime() for dates.</li>
@@ -3138,7 +3170,7 @@ performed on lines that begin with a dot.</li>
 instantiating new Language and Exception objects, and not using the
 error heading.</li>
 <li>Fixed a bug (#4413) where a URI containing slashes only e.g.
-‘http&amp;#58;//example.com/index.php?//’ would result in PHP errors</li>
+‘http://example.com/index.php?//’ would result in PHP errors</li>
 <li>Fixed an array to string conversion error in the Validation library
 (#4425)</li>
 <li>Fixed bug (#4451, #4299, #4339) where failed transactions will not
@@ -4100,7 +4132,7 @@ and fixed various typos.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2018, British Columbia Institute of Technology.
-      Last updated on Jan 13, 2018.
+      Last updated on Mar 22, 2018.
     </p>
   </div>
 
@@ -4121,7 +4153,7 @@ and fixed various typos.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.1.7',
+            VERSION:'3.1.8',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
