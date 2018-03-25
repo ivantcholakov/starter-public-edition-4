@@ -22,17 +22,17 @@ class Login_controller extends Base_Controller {
             array(
                 'field' => 'username',
                 'label' => $this->lang->line('ui_username').' / '.'E-mail',
-                'rules' => 'nohtml|trim|required'
+                'rules' => 'nohtml|trim|max_length[256]|required'
             ),
             array(
                 'field' => 'password',
                 'label' => 'lang:ui_password',
-                'rules' => 'nohtml|trim|required'
+                'rules' => 'nohtml|trim|max_length[256]|required'
             ),
             array(
                 'field' => 'captcha',
                 'label' => 'Captcha',
-                'rules' => 'nohtml|trim|callback__captcha'
+                'rules' => 'nohtml|trim|max_length[256]|callback__captcha'
             ),
         );
 
