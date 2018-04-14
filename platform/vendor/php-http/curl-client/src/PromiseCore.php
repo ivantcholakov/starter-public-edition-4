@@ -1,4 +1,5 @@
 <?php
+
 namespace Http\Client\Curl;
 
 use Http\Client\Exception;
@@ -10,41 +11,40 @@ use Psr\Http\Message\ResponseInterface;
  * Shared promises core.
  *
  * @license http://opensource.org/licenses/MIT MIT
- *
  * @author  Михаил Красильников <m.krasilnikov@yandex.ru>
  */
 class PromiseCore
 {
     /**
-     * HTTP request
+     * HTTP request.
      *
      * @var RequestInterface
      */
     private $request;
 
     /**
-     * cURL handle
+     * cURL handle.
      *
      * @var resource
      */
     private $handle;
 
     /**
-     * Response builder
+     * Response builder.
      *
      * @var ResponseBuilder
      */
     private $responseBuilder;
 
     /**
-     * Promise state
+     * Promise state.
      *
      * @var string
      */
     private $state;
 
     /**
-     * Exception
+     * Exception.
      *
      * @var Exception|null
      */
@@ -67,17 +67,34 @@ class PromiseCore
     /**
      * Create shared core.
      *
-     * @param RequestInterface $request HTTP request
-     * @param resource         $handle  cURL handle
-     * @param ResponseBuilder  $responseBuilder
+     * @param RequestInterface $request HTTP request.
+     * @param resource         $handle cURL handle.
+     * @param ResponseBuilder  $responseBuilder Response builder.
+     *
+     * @throws \InvalidArgumentException If $handle is not a cURL resource.
      */
     public function __construct(
         RequestInterface $request,
         $handle,
         ResponseBuilder $responseBuilder
     ) {
-        assert('is_resource($handle)');
-        assert('get_resource_type($handle) === "curl"');
+        if (!is_resource($handle)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    'Parameter $handle expected to be a cURL resource, %s given',
+                    gettype($handle)
+                )
+            );
+        }
+
+        if (get_resource_type($handle) !== 'curl') {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    'Parameter $handle expected to be a cURL resource, %s resource given',
+                    get_resource_type($handle)
+                )
+            );
+        }
 
         $this->request = $request;
         $this->handle = $handle;
@@ -117,7 +134,7 @@ class PromiseCore
     }
 
     /**
-     * Return cURL handle
+     * Return cURL handle.
      *
      * @return resource
      */
@@ -137,7 +154,7 @@ class PromiseCore
     }
 
     /**
-     * Return request
+     * Return request.
      *
      * @return RequestInterface
      */
@@ -149,7 +166,7 @@ class PromiseCore
     /**
      * Return the value of the promise (fulfilled).
      *
-     * @return ResponseInterface Response Object only when the Promise is fulfilled.
+     * @return ResponseInterface Response Object only when the Promise is fulfilled
      */
     public function getResponse()
     {
@@ -162,9 +179,9 @@ class PromiseCore
      * If the exception is an instance of Http\Client\Exception\HttpException it will contain
      * the response object with the status code and the http reason.
      *
-     * @return Exception Exception Object only when the Promise is rejected.
+     * @return Exception Exception Object only when the Promise is rejected
      *
-     * @throws \LogicException When the promise is not rejected.
+     * @throws \LogicException When the promise is not rejected
      */
     public function getException()
     {
@@ -204,7 +221,7 @@ class PromiseCore
     /**
      * Reject promise.
      *
-     * @param Exception $exception Reject reason.
+     * @param Exception $exception Reject reason
      */
     public function reject(Exception $exception)
     {

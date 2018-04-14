@@ -1,5 +1,15 @@
 # Change Log
 
+## Unreleased
+
+
+## 1.7.1 - 2018-03-36
+
+### Fixed
+
+- #36: Failure evaluating code: is_resource($handle) (string assertions are deprecated in PHP 7.2)
+
+
 ## 1.7 - 2017-02-09
 
 ### Changed
