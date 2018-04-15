@@ -970,7 +970,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 					$v = "'{$v}'";
 					break;
 				case 'before':
-					$v = "%'{$v}'";
+					$v = "'%{$v}'";
 					break;
 				case 'after':
 					$v = "'{$v}%'";
@@ -989,14 +989,14 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 
 			// Modified by Ivan Tcholakov, 23-FEB-2018.
 			// Case-Insensitive LIKE for PostgreSQL
-			//$qb_where = array('condition' => "{$prefix} {$k} {$not} LIKE", 'value' => $v, 'escape' => $escape);
+			//$qb_where = array('condition' => "{$prefix} {$k} {$not} LIKE {$v}", 'value' => NULL, 'escape' => $escape);
 			if ($this->dbdriver == 'postgre' || $this->subdriver == 'pgsql')
 			{
-				$qb_where = array('condition' => "{$prefix} CAST({$k} AS TEXT) {$not} ILIKE", 'value' => $v, 'escape' => $escape);
+				$qb_where = array('condition' => "{$prefix} CAST({$k} AS TEXT) {$not} ILIKE {$v}", 'value' => NULL, 'escape' => $escape);
 			}
 			else
 			{
-				$qb_where = array('condition' => "{$prefix} {$k} {$not} LIKE", 'value' => $v, 'escape' => $escape);
+				$qb_where = array('condition' => "{$prefix} {$k} {$not} LIKE {$v}", 'value' => NULL, 'escape' => $escape);
 			}
 			//
 			$this->qb_where[] = $qb_where;
