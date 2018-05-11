@@ -238,7 +238,7 @@ class JS extends Minify
         // closing the regex)
         // then also ignore bare `/` inside `[]`, where they don't need to be
         // escaped: anything inside `[]` can be ignored safely
-        $pattern = '\\/(?:[^\\[\\/\\\\\n\r]+|(?:\\\\.)+|(?:\\[(?:[^\\]\\\\\n\r]+|(?:\\\\.)+)+\\])+)++\\/[gimy]*';
+        $pattern = '\\/(?:[^\\[\\/\\\\\n\r]+|(?:\\\\.)+|(?:\\[(?:[^\\]\\\\\n\r]+|(?:\\\\.)+)+\\])+)++\\/[gimuy]*';
 
         // a regular expression can only be followed by a few operators or some
         // of the RegExp methods (a `\` followed by a variable or value is
@@ -264,7 +264,7 @@ class JS extends Minify
         );
         $delimiters = array_fill(0, count($propertiesAndMethods), '/');
         $propertiesAndMethods = array_map('preg_quote', $propertiesAndMethods, $delimiters);
-        $after = '(?=\s*[\.,;\)\}&\|+]|\/\/|$|\.('.implode('|', $propertiesAndMethods).'))';
+        $after = '(?=\s*([\.,;\)\}&\|+]|\/\/|$|\.('.implode('|', $propertiesAndMethods).')))';
         $this->registerPattern('/'.$before.'\K'.$pattern.$after.'/', $callback);
 
         // regular expressions following a `)` are rather annoying to detect...
