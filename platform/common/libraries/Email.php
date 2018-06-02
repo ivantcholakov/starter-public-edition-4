@@ -2,12 +2,12 @@
 
 /**
  * CodeIgniter compatible email-library powered by PHPMailer.
- * Version: 1.2.28
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2017.
+ * Version: 1.2.30
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2018.
  * @license The MIT License (MIT), http://opensource.org/licenses/MIT
  * @link https://github.com/ivantcholakov/codeigniter-phpmailer
  *
- * Tested on CodeIgniter 3.1.6 (September 25th, 2017) and
+ * Tested on CodeIgniter 3.1.8 (March 22th, 2018) and
  * PHPMailer Version 5.2.26 (November 4th, 2017).
  */
 
@@ -20,6 +20,7 @@ class Email extends CI_Email {
         'mailpath' => '/usr/sbin/sendmail',
         'protocol' => 'mail',
         'smtp_host' => '',
+        'smtp_auth' => NULL,
         'smtp_user' => '',
         'smtp_pass' => '',
         'smtp_port' => 25,
@@ -697,12 +698,33 @@ class Email extends CI_Email {
         return $this;
     }
 
+    // See https://github.com/ivantcholakov/codeigniter-phpmailer/issues/31
+    public function set_smtp_auth($value) {
+
+        $this->properties['smtp_auth'] = $value;
+
+        $this->_smtp_auth =
+            $value === NULL
+                ? !($this->smtp_user == '' && $this->smtp_pass == '')
+                : !empty($value);
+
+        if ($this->mailer_engine == 'phpmailer') {
+            $this->phpmailer->SMTPAuth = $this->_smtp_auth;
+        }
+
+        return $this;
+    }
+
     public function set_smtp_user($value) {
 
         $value = (string) $value;
 
         $this->properties['smtp_user'] = $value;
-        $this->_smtp_auth = !($value == '' && $this->smtp_pass == '');
+
+        $this->_smtp_auth =
+            $this->smtp_auth === NULL
+                ? !($value == '' && $this->smtp_pass == '')
+                : !empty($this->smtp_auth);
 
         if ($this->mailer_engine == 'phpmailer') {
 
@@ -718,7 +740,11 @@ class Email extends CI_Email {
         $value = (string) $value;
 
         $this->properties['smtp_pass'] = $value;
-        $this->_smtp_auth = !($this->smtp_user == '' && $value == '');
+
+        $this->_smtp_auth =
+            $this->smtp_auth === NULL
+                ? !($this->smtp_user == '' && $value == '')
+                : !empty($this->smtp_auth);
 
         if ($this->mailer_engine == 'phpmailer') {
 
