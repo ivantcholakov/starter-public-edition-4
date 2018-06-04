@@ -830,13 +830,18 @@ class Image_lib extends CI_Image_lib
 
         if ($dynamic_output) {
 
-            $temp = tmpfile();
-            $tempfile = array_search('uri', @array_flip(stream_get_meta_data($temp)));
+            $image_temp_path = TMP_PATH.'image_lib/';
+            file_exists($image_temp_path) OR @mkdir($image_temp_path, DIR_WRITE_MODE, TRUE);
+            $tempfile = $image_temp_path.'image_lib_'.rand(0, getrandmax()).rand(0, getrandmax()).'.tmp';
             $this->full_dst_path = $tempfile;
         }
 
         // Resize stage
         if (!$this->resize()) {
+
+            // Reset dynamic output to initial value.
+            $this->dynamic_output = $dynamic_output;
+
             return FALSE;
         }
 
@@ -871,8 +876,8 @@ class Image_lib extends CI_Image_lib
         }
 
         // Close (and remove) the temporary file.
-        if ($tempfile) {
-            @ fclose($temp);
+        if ($tempfile != '') {
+            @ unlink($tempfile);
         }
 
         return TRUE;
