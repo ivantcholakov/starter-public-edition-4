@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Change Log &mdash; CodeIgniter 3.1.8 documentation</title>
+  <title>Change Log &mdash; CodeIgniter 3.1.9 documentation</title>
   
 
   
@@ -33,7 +33,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="CodeIgniter 3.1.8 documentation" href="index.html"/>
+    <link rel="top" title="CodeIgniter 3.1.9 documentation" href="index.html"/>
         <link rel="next" title="The MIT License (MIT)" href="license.html"/>
         <link rel="prev" title="XML Helper" href="helpers/xml_helper.html"/> 
 
@@ -421,6 +421,34 @@
             
   <div class="section" id="change-log">
 <h1>Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="version-3-1-9">
+<h2>Version 3.1.9<a class="headerlink" href="#version-3-1-9" title="Permalink to this headline">¶</a></h2>
+<p>Release Date: Jun 12, 2018</p>
+<ul>
+<li><p class="first"><strong>Security</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>Updated <a class="reference internal" href="helpers/url_helper.html"><span class="doc">URL Helper</span></a> function <a class="reference internal" href="helpers/url_helper.html#auto_link" title="auto_link"><code class="xref php php-func docutils literal"><span class="pre">auto_link()</span></code></a> to add <code class="docutils literal"><span class="pre">rel=&quot;noopener&quot;</span></code> to generated links in order to prevent tab hijacking.</li>
+<li>Fixed a possible session fixation vulnerability where the <a class="reference internal" href="libraries/sessions.html"><span class="doc">Session Library</span></a> enabled <code class="docutils literal"><span class="pre">session.use_strict_mode</span></code> but it didn’t actually do anything (thanks to Aamer Shah, Prasanna Kumar).</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">General Changes</p>
+<ul class="simple">
+<li>Updated <a class="reference internal" href="database/query_builder.html"><span class="doc">Query Builder</span></a> method <code class="docutils literal"><span class="pre">limit()</span></code> to allow <code class="docutils literal"><span class="pre">0</span></code> values.</li>
+<li>Updated <a class="reference internal" href="libraries/email.html"><span class="doc">Email Library</span></a> and <a class="reference internal" href="libraries/form_validation.html"><span class="doc">Form Validation Library</span></a> to discard the results of failed <code class="docutils literal"><span class="pre">idn_to_ascii()</span></code> calls while validating e-mail addresses.</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="bug-fixes-for-3-1-9">
+<h3>Bug fixes for 3.1.9<a class="headerlink" href="#bug-fixes-for-3-1-9" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Fixed a regression (#5448) - <a class="reference internal" href="database/query_builder.html"><span class="doc">Query Builder</span></a> methods <code class="docutils literal"><span class="pre">like()</span></code>, <code class="docutils literal"><span class="pre">or_like()</span></code> (and siblings) didn’t apply <em>dbprefix</em> or identifier escaping.</li>
+<li>Fixed a regression (#5462) - <a class="reference internal" href="database/query_builder.html"><span class="doc">Query Builder</span></a> methods <code class="docutils literal"><span class="pre">like()</span></code>, <code class="docutils literal"><span class="pre">or_like()</span></code> (and siblings) produced incorrect SQL syntax when used with <code class="docutils literal"><span class="pre">'before'</span></code> as the third parameter.</li>
+<li>Fixed a bug (#5516) - <a class="reference internal" href="helpers/html_helper.html"><span class="doc">HTML Helper</span></a> functions <a class="reference internal" href="helpers/html_helper.html#img" title="img"><code class="xref php php-func docutils literal"><span class="pre">img()</span></code></a>, <a class="reference internal" href="helpers/html_helper.html#link_tag" title="link_tag"><code class="xref php php-func docutils literal"><span class="pre">link_tag()</span></code></a> would output results with double slashes if a prefix slash was included in their path inputs.</li>
+</ul>
+</div>
+</div>
 <div class="section" id="version-3-1-8">
 <h2>Version 3.1.8<a class="headerlink" href="#version-3-1-8" title="Permalink to this headline">¶</a></h2>
 <p>Release Date: Mar 22, 2018</p>
@@ -428,7 +456,6 @@
 <li><p class="first"><strong>Security</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li>Updated <a class="reference internal" href="helpers/url_helper.html"><span class="doc">URL Helper</span></a> function <a class="reference internal" href="helpers/url_helper.html#auto_link" title="auto_link"><code class="xref php php-func docutils literal"><span class="pre">auto_link()</span></code></a> to add <code class="docutils literal"><span class="pre">rel=&quot;noopener&quot;</span></code> to generated links in order to prevent tab hijacking.</li>
 <li>Updated <a class="reference internal" href="libraries/security.html"><span class="doc">Security Library</span></a> method <code class="docutils literal"><span class="pre">xss_clean()</span></code> to also filter JavaScript tag functions.</li>
 <li>Fixed a bug where <a class="reference internal" href="libraries/security.html"><span class="doc">Security Library</span></a> method <code class="docutils literal"><span class="pre">xss_clean()</span></code> didn’t check for parentheses around JavaScript’s <code class="docutils literal"><span class="pre">document</span></code>.</li>
 </ul>
@@ -4132,7 +4159,7 @@ and fixed various typos.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2018, British Columbia Institute of Technology.
-      Last updated on Mar 22, 2018.
+      Last updated on Jun 12, 2018.
     </p>
   </div>
 
@@ -4153,7 +4180,7 @@ and fixed various typos.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.1.8',
+            VERSION:'3.1.9',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
