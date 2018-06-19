@@ -534,6 +534,7 @@ Real Life Usage
 * http://ivetfashion.com - a model management company, designer: Irina Stancheva
 * http://geopro2009.com - geodetic services, designer: Irina Stancheva
 * http://trenchovahouse.com - a family hotel, designer: Irina Stancheva
+* A new student accommodation management system for Sofia University "St. Kliment Ohridski", Bulgaria, running as of 18-th July, 2018.
 
 Reported by Webnice Ltd., http://webnicebg.com
 
