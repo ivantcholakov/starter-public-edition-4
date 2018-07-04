@@ -1,10 +1,5 @@
 <div class="ncontainer">
-        
-    
-        
-        
-        
-                <div class="signup-header signup-header signup-header--home">
+<div class="signup-header signup-header signup-header--home">
       <div class="container signup-header__container">
           
           <h1 class="h1 signup-header__h1 signup-header__h1--three signup-header__h1--home dont-break-out">
@@ -36,70 +31,11 @@
             
             <img class="p signup-header__img" src="https://static.monese.com/img/monese-phone-card-2-sm_171020_015023.png?mtime=20171103133606">
 
-            <script>
-              var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-              var os = 'unknown';
-              var $btn = document.getElementsByClassName('signup-header__btn')[0];
-              var $getStarted = document.getElementsByClassName('signup-header__getstarted')[0];
-              var $btn_app_android = document.getElementsByClassName('signup-header__install--android')[0];
-              var $copy = document.getElementsByClassName('signup-header__p')[0];
-
-              if (/android/i.test(userAgent)) {
-                os = "Android";
-              }
-
-              if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                os = "iOS";
-              }
-
-              if (os == 'Android') {
-                $btn_app_android.style.float = "left";
-              } else if (os == 'unknown') {
-                $getStarted.classList.add('signup-header__getstarted--active');
-                $btn.classList.add('signup-header__btn--disable');
-                $copy.classList.add('signup-header__copy--minus');
-              }
-
-            </script>
           </div>
 
           <div class="signup-header__tablet">
             
-  <script type="text/javascript">
-
-        (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent".split(" "), 0);
-
-        branch.init('key_live_kelIj9q9tvkPOy51f4m7UoogyxpoKN8u', function(err, data) {
-            // callback to handle err or data
-        });
-
-        window.signup_t = new Array();
-        window.signup_t['global.banking_boundaries'] = 'Banking without boundaries';
-        window.signup_t['signup.your_mobile_number'] = 'Your mobile number';
-        window.signup_t['signup.error'] = 'Error, try again or download the app <a href="/download/?r=signupError#download">here</a>';
-        window.signup_t['signup.sending_message'] = 'Sending message...';
-        window.signup_t['signup.link.description'] = 'Banking without boundaries';
-        window.signup_t['signup.text_message_sent'] = 'Text message sent';
-        window.signup_t['signup.enter_a_mobile'] = 'Please enter a mobile';
-        window.signup_t['signup.enter_a_valid_number'] = 'Enter a valid number';
-        window.signup_t['signup.saving_name'] = 'Saving name...';
-
-        window.BRANCH_CHANNEL = 'Website';
-        window.BRANCH_CAMPAIGN = 'Website';
-        window.BRANCH_FEATURE = 'DownloadNow';
-        window.BRANCH_STAGE = 'new user';
-        window.MAILCHIMP_ID = '62e8a1c3e8';
-        window.PLAN = 'default';
-
-        
-        
-        
-        
-                  window.PLAN = 'paid';
-        
-</script>
-
-<div class="signup">
+  <div class="signup">
     <div v-bind:class="{ 'signup__box--active': showBox, 'signup__box--ended': isCompleted }" class="signup__box signup-header__box clearfix">
         <form v-on:submit.prevent="onSubmit" class="signup__form" action="" method="post" autocomplete="off">
             <a v-on:click.prevent="togglePrefix"  href="" class="signup__prefix" v-bind:class="{ 'signup__prefix--active': isPhone}">
@@ -372,7 +308,7 @@
 
 
 
-    <div class="ui padded centered grid hidden">
+    <div class="ui padded centered grid ">
 
         <div class="column">
 
@@ -412,22 +348,7 @@
                         </div>
                     </div>
 
-                    <div class="field">
-                        <img id="captcha_image"
-                            class="ui middle aligned image pointer"
-                            src="{{ captcha().src ~ '?nocache=' ~ rand(100000000, 999999999) }}"
-                            title="{{ lang('captcha.tip')|e('html_attr') }}"
-                        />
-                        <button type="button" id="captcha_refresh" class="ui icon button" title="{{ lang('ui_refresh')|e('html_attr') }}"><i class="refresh icon"></i></button>
-                    </div>
-
-                    <div class="field{% if validation_errors['captcha'] %} error{% endif %}">
-                        <div class="ui big left icon input">
-                            <input type="text" id="captcha" name="captcha" placeholder="* {{ lang('captcha.label')|e('html_attr') }}" maxlength="{{ captcha().length }}" autocomplete="off" autocorrect="off" autocapitalize="off" />
-                            <i class="privacy icon"></i>
-                        </div>
-                    </div>
-
+                    
                     <button class="ui fluid big primary button" type="submit"><i class="sign in icon"> {{ lang('ui_login') }}</i></button>
 
                 </div>
