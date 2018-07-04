@@ -8,4 +8,4 @@ Disallow: /assets/
 Disallow: /editor/
 
 # Update the site address and enable this line.
-# Sitemap: http://my-site.com/sitemap.xml
+# Sitemap: http://elektropay-app.herokuapp.com/sitemap.xml
