@@ -1,22 +1,67 @@
 
+ <script>
+    //<![CDATA[
+              var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+              var os = 'unknown';
+              var $btn = document.getElementsByClassName('signup-header__btn')[0];
+              var $getStarted = document.getElementsByClassName('signup-header__getstarted')[0];
+              var $btn_app_android = document.getElementsByClassName('signup-header__install--android')[0];
+              var $copy = document.getElementsByClassName('signup-header__p')[0];
+
+              if (/android/i.test(userAgent)) {
+                os = "Android";
+              }
+
+              if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                os = "iOS";
+              }
+
+              if (os == 'Android') {
+                $btn_app_android.style.float = "left";
+              } else if (os == 'unknown') {
+                $getStarted.classList.add('signup-header__getstarted--active');
+                $btn.classList.add('signup-header__btn--disable');
+                $copy.classList.add('signup-header__copy--minus');
+              }
+
+    //]]>
+  </script>
+  
+  <script type="text/javascript">
+//<![CDATA[
+        (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent".split(" "), 0);
+
+        branch.init('key_live_mevXmeYgLS0CW0SvwzTTZmkkAqfthkZw', function(err, data) {
+            // callback to handle err or data
+        });
+
+        window.signup_t = new Array();
+        window.signup_t['global.banking_boundaries'] = 'Payments without boundaries';
+        window.signup_t['signup.your_mobile_number'] = 'Your email address';
+        window.signup_t['signup.error'] = 'Error, try again or download the app <a href="/download/?r=signupError#download">here</a>';
+        window.signup_t['signup.sending_message'] = 'Sending message...';
+        window.signup_t['signup.link.description'] = 'Commerce without boundaries';
+        window.signup_t['signup.text_message_sent'] = 'Text message sent';
+        window.signup_t['signup.enter_a_mobile'] = 'Please enter a mobile';
+        window.signup_t['signup.enter_a_valid_number'] = 'Enter a valid email';
+        window.signup_t['signup.saving_name'] = 'Saving name...';
+
+        window.BRANCH_CHANNEL = 'Website';
+        window.BRANCH_CAMPAIGN = 'Website';
+        window.BRANCH_FEATURE = 'DownloadNow';
+        window.BRANCH_STAGE = 'new user';
+        window.MAILCHIMP_ID = '62e8a1c3e8';
+        window.PLAN = 'default';
+        window.PLAN = 'paid';
+
+    //]]>       
+</script>
+
+            
     <script type="text/javascript">
     //<![CDATA[
 
-    function refresh_captcha() {
-
-        $('#captcha_image').attr('src', '{{ captcha().src }}' + '?nocache=' + Math.random()*999999999);
-        $('#captcha').val('');
-    }
-
     $(function () {
-
-        $('#captcha_image').on('click', function() {
-            refresh_captcha();
-        });
-
-        $('#captcha_refresh').on('click', function() {
-            refresh_captcha();
-        });
 
         $('#login_form').on('submit', function(e) {
 
