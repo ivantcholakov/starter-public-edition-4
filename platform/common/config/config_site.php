@@ -5,12 +5,12 @@
 | Site Name & Contact Data
 |--------------------------------------------------------------------------
 */
-$config['site_name'] = 'Starter 4';
-$config['contact_organization'] = 'Organization Name';
+$config['site_name'] = 'Elektropay';
+$config['contact_organization'] = 'Everpay Inc.';
 $config['contact_address'] = 'Milky Way, Solar System, Planet Earth, Sofia, BULGARIA';
 $config['contact_phone'] = '+359 2 00 00 00';
 $config['contact_fax'] = '';
-$config['contact_email'] = 'my@organization.com';
+$config['contact_email'] = 'hello@elektropay.com';
 $config['contact_first_name'] = '';     // Contact person, first name.
 $config['contact_last_name'] = '';      // Contact person, last name.
 $config['contact_web_site'] = DEFAULT_BASE_URL;
@@ -35,7 +35,7 @@ $config['contact_map'] = '<iframe width="100%" height="250" frameborder="0" scro
 | Copyright Note by the Site's Owner
 |--------------------------------------------------------------------------
 */
-$config['copyright_note'] = 'Copyright &copy; 2012 - {year} Ivan Tcholakov and other contributors. License: <a href="http://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT</a>. This page has been generated in <strong>{elapsed_time} seconds</strong> using <strong>{memory_usage}</strong> of memory.';
+$config['copyright_note'] = 'Copyright &copy; 2012 - {year} Elektropay.com. License: <a href="http://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT</a>. This page has been generated in <strong>{elapsed_time} seconds</strong> using <strong>{memory_usage}</strong> of memory.';
 
 
 /*
@@ -43,7 +43,7 @@ $config['copyright_note'] = 'Copyright &copy; 2012 - {year} Ivan Tcholakov and o
 | Default Metadata: Title, Description, and Keywords.
 |--------------------------------------------------------------------------
 */
-$config['default_title'] = 'Application Starter 4 Public Edition';
+$config['default_title'] = 'Complete Payment Processing';
 $config['default_description'] = '';
 $config['default_keywords'] = '';
 
@@ -63,7 +63,7 @@ $config['mailer_enabled'] = false;
 // sending e-mails from a fake address to be forbidden. So, this setting
 // should match to the credential settings for the e-mail server, see
 // the configuration file email.php.
-$config['site_email'] = 'mailer@organization.com';
+$config['site_email'] = 'no-reply@elektropay.com';
 
 // E-mail addresses (receivers), where notification/confirmation messages
 // are to be automatically sent.
