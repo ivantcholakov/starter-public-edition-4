@@ -36,6 +36,48 @@
           <div class="signup-header__tablet">
             
   <div class="signup">
+        {{ form_open('', 'method="post" class="ui form" id="login_form"') }}
+
+                <div class="ui segment">
+
+                    <h2 class="ui blue image header">
+                        <img src="{{ default_base_url('apple-touch-icon-precomposed.png') }}" class="image" />
+                        <div class="content">
+                            Admin Login Page
+                        </div>
+                    </h2>
+
+                    <div class="field">
+                        {{ widget('feedback_messages_widget', {
+                            'feedback_message_target': feedback_message_target,
+                            'normal_message': normal_message,
+                            'confirmation_message': confirmation_message,
+                            'warning_message': warning_message,
+                            'error_message': error_message,
+                            'with_javascript': false
+                        }) }}
+                    </div>
+
+                    <div class="field{% if validation_errors['username'] %} error{% endif %}">
+                        <div class="ui big left icon input">
+                            <i class="user icon"></i>
+                            <input type="text" name="username" id="username" value="{{ set_value('username') }}" placeholder="* {{ lang('ui_username')|e('html_attr') }}" maxlength="256">
+                        </div>
+                    </div>
+
+                    <div class="field{% if validation_errors['password'] %} error{% endif %}">
+                        <div class="ui big left icon input">
+                            <i class="lock icon"></i>
+                            <input type="password" name="password" id="password" value="{{ set_value('password') }}" placeholder="* {{ lang('ui_password')|e('html_attr') }}" maxlength="256">
+                        </div>
+                    </div>
+
+                    
+                    <button class="ui fluid big primary button" type="submit"><i class="sign in icon"> {{ lang('ui_login') }}</i></button>
+
+                </div>
+
+            {{ form_close() }}
     <div v-bind:class="{ 'signup__box--active': showBox, 'signup__box--ended': isCompleted }" class="signup__box signup-header__box clearfix">
         <form v-on:submit.prevent="onSubmit" class="signup__form" action="" method="post" autocomplete="off">
             <a v-on:click.prevent="togglePrefix"  href="" class="signup__prefix" v-bind:class="{ 'signup__prefix--active': isPhone}">
