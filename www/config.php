@@ -2,7 +2,7 @@
 
 $PLATFORMPATH = dirname(__FILE__).'/../platform';
 
-$DEFAULTAPPNAME = 'front';
+$DEFAULTAPPNAME = 'admin';
 $DEFAULTFCPATH = dirname(__FILE__);
 
 if (!isset($APPNAME)) {
