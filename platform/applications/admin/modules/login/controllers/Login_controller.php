@@ -6,11 +6,6 @@ class Login_controller extends Base_Controller {
 
         parent::__construct();
 
-        $this->load
-            ->library('')
-            ->language('')
-        ;
-
         $this->template->set_layout('login');
     }
 
