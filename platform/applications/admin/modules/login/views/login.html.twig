@@ -3,323 +3,70 @@
       <div class="container signup-header__container">
           
           <h1 class="h1 signup-header__h1 signup-header__h1--three signup-header__h1--home dont-break-out">
-           Returning Users<span class="main-header__span">Login</span>
+           Returning Users<span class="main-header__span"> Login</span>
           </h1>
-
-          <div class="signup-header__mobile">
-
-
-            <p class="p signup-header__p ">Open an account on your mobile, without a local address or credit history.</p>
-
-            <p class="signup-header__getstarted">Get started free:</p>
-
-            <div class="signup-header__ctas">
-              <a class="ctajs ctajs--ios" href="https://itunes.apple.com/gb/app/monese/id1102793407">
-                  <svg class="app-install signup-header__install signup-header__install--download-now signup-header__install--first">
-                      <use xlink:href="#icon-app-store" />
-                  </svg>
-              </a>
-              <a class="ctajs ctajs--android" href="https://play.google.com/store/apps/details?id=com.monese.monese.live&hl=en_GB&referrer=">
-                  <svg class="app-install signup-header__install signup-header__install--android">
-                      <use xlink:href="#icon-googleplay" />
-                  </svg>
-                </a>
-            </div>
-            
-            <img class="p signup-header__img" src="https://static.monese.com/img/monese-phone-card-2-sm_171020_015023.png?mtime=20171103133606">
-
-          </div>
-
-          <div class="signup-header__tablet">
             
   <div class="signup">
-
-    <div v-bind:class="{ 'signup__box--active': showBox, 'signup__box--ended': isCompleted }" class="signup__box signup-header__box clearfix">
-         {{ form_open('', ' v-on:submit.prevent="onSubmit" method="post" class="signup__form" id="login_form" autocomplete="off"') }}
-
-            <a v-on:click.prevent="togglePrefix"  href="" class="signup__prefix" v-bind:class="{ 'signup__prefix--active': isPhone}">
-                <img class="signup__prefix--flag" v-bind:src="flag">
-                <svg v-bind:class="{ 'signup__arrow--active': isSelectPrefix }" class="arrow signup__arrow signup__prefix--arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow"></use></svg>
-                <span v-bind:class="{ 'signup__prefix--long': isLongPrefix }" class="signup__prefix--prefix">+${ prefix }</span>
-            </a>
-
-            <div class="signup__inputs">
-                <input v-bind:class="{ 'signup__input--prefix': isPhone, 'signup__box--ended': isCompleted }" v-model="signupData" v-on:keyup="checkKeyup" v-on:focus="checkFocus" class="signup__input" id="userInput" type="input" value="" placeholder="Your first name" autocomplete="off">
-                <div class="signup__progress">
-                    <div v-bind:class="{ 'signup__progress--one': stage == 1, 'signup__progress--error': isError, 'signup__progress--success': isSuccess }" class="signup__progress--bar"></div>
-                </div>
-            </div>
-            
-            <div class="signup__inputs{% if validation_errors['username'] %} error{% endif %}">
-                        <div class="ui big left icon input">
-                            <i class="user icon"></i>
-                            <input type="text" name="username" class="signup__input" id="username" value="{{ set_value('username') }}" placeholder="* {{ lang('ui_username')|e('html_attr') }}" maxlength="256">
-                        </div>
+  <div class="signup__box clearfix signup__box--active">
+{{ form_open('', 'method="post" class="signup__form" id="login_form"') }}
+  <div class="field">
+                        {{ widget('feedback_messages_widget', {
+                            'feedback_message_target': feedback_message_target,
+                            'normal_message': normal_message,
+                            'confirmation_message': confirmation_message,
+                            'warning_message': warning_message,
+                            'error_message': error_message,
+                            'with_javascript': false
+                        }) }}
                     </div>
-
-                    <div class="signup__inputs{% if validation_errors['password'] %} error{% endif %}">
-                        <div class="ui big left icon input">
-                            <i class="lock icon"></i>
-                            <input type="password" name="password" class="signup__input" id="password" value="{{ set_value('password') }}" placeholder="* {{ lang('ui_password')|e('html_attr') }}" maxlength="256">
-                        </div>
-                    </div>
-
-            
-            
-            <p v-bind:class="{ 'signup__message--error': isError, 'signup__message--success': isSuccess }" class="signup__message">&nbsp;</p>
-            
-     <a v-on:click="onButton" v-bind:class="{ 'signup__btn--disabled': !isValidNumber }" class="signup__btn btn btn--one" href=""><i class="sign in icon"> {{ lang('ui_login') }}</i></a>
-            
-            <p class="signup__gdpr" v-bind:class="{ 'signup__gdpr--error': isGDPRError }"><input v-model="gdprSelected" type="checkbox" class="signup__checkbox" id="gdprsignup" v-bind:class="{ 'signup__checkbox--error': isGDPRError }" name="terms" required> Monese Ltd will use the information you provide on this form to send a link to your phone in order for you to install the app. We won’t share your number with anyone. This link will allow us to track the installation of the app. By clicking this tick-box, you agree that we may process your information in accordance with the terms of our <a class="signup__a" href="/privacy">privacy policy</a>.</label></p>
-        
-            {{ form_close() }}
-    </div>
-
-    <div v-bind:class="{ 'signup__box--completed': isCompleted }" class="signup__box signup-header__box signup__box--hide clearfix">
-        <img class="signup__iconc" src="https://static.monese.com/s/signup/rocket-illustration.svg">
-        <p class="signup__p">We have sent you a download link!</p>
-        <p class="signup__p"><a v-on:click="onSendAnother" class="signup__sendanother" href="">Send another</a></p>
-    </div>
-
-    <div v-bind:class="{ 'signup__ulprefix--active': isSelectPrefix }" class="signup__ulprefix">
-        <ul class="signup__scroll">
-          <li class="signup__li" data-countrycode="gb" value="44"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_united_kingdom_17dp.png"> United Kingdom (+44)</a></li>
-           <li class="signup__li" data-countrycode="bg" value="359"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_bulgaria_17dp.png"> Bulgaria (+359)</a></li>
-          <li class="signup__li" data-countrycode="de" value="49"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_germany_17dp.png"> Germany (+49)</a></li>
-          <li class="signup__li" data-countrycode="es" value="34"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_spain_17dp.png"> Spain (+34)</a></li>
-          <li class="signup__li" data-countrycode="fr" value="33"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_france_17dp.png"> France (+33)</a></li>
-          <li class="signup__li" data-countrycode="it" value="39"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_italy_17dp.png"> Italy (+39)</a></li>
-        <li class="signup__li" data-countrycode="br" value="55"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_brazil_17dp.png"> Brazil (+55)</a></li>
-        <li class="signup__li" data-countrycode="ro" value="40"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_romania_17dp.png"> Romania (+40)</a></li>
-          <li class="signup__li">
-                <hr class="signup__hr">
-            </li>
-          <li class="signup__li" data-countrycode="dz" value="213"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_algeria_17dp.png"> Algeria (+213)</a></li>
-          <li class="signup__li" data-countrycode="ad" value="376"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_andorra_17dp.png"> Andorra (+376)</a></li>
-          <li class="signup__li" data-countrycode="ao" value="244"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_angola_17dp.png"> Angola (+244)</a></li>
-          <li class="signup__li" data-countrycode="ai" value="1264"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_anguilla_17dp.png"> Anguilla (+1264)</a></li>
-          <li class="signup__li" data-countrycode="ag" value="1268"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_antigua_and_barbuda_17dp.png"> Antigua and Barbuda (+1268)</a></li>
-          <li class="signup__li" data-countrycode="ar" value="54"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_argentina_17dp.png"> Argentina (+54)</a></li>
-          <li class="signup__li" data-countrycode="am" value="374"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_armenia_17dp.png"> Armenia (+374)</a></li>
-          <li class="signup__li" data-countrycode="aw" value="297"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_aruba_17dp.png"> Aruba (+297)</a></li>
-          <li class="signup__li" data-countrycode="au" value="61"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_australia_17dp.png"> Australia (+61)</a></li>
-          <li class="signup__li" data-countrycode="at" value="43"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_austria_17dp.png"> Austria (+43)</a></li>
-          <li class="signup__li" data-countrycode="az" value="994"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_azerbaijan_17dp.png"> Azerbaijan (+994)</a></li>
-          <li class="signup__li" data-countrycode="bs" value="1242"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_bahamas_17dp.png"> Bahamas (+1242)</a></li>
-          <li class="signup__li" data-countrycode="bh" value="973"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_bahrain_17dp.png"> Bahrain (+973)</a></li>
-          <li class="signup__li" data-countrycode="bd" value="880"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_bangladesh_17dp.png"> Bangladesh (+880)</a></li>
-          <li class="signup__li" data-countrycode="bb" value="1246"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_barbados_17dp.png"> Barbados (+1246)</a></li>
-          <li class="signup__li" data-countrycode="by" value="375"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_belarus_17dp.png"> Belarus (+375)</a></li>
-          <li class="signup__li" data-countrycode="be" value="32"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_belgium_17dp.png"> Belgium (+32)</a></li>
-          <li class="signup__li" data-countrycode="bz" value="501"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_belize_17dp.png"> Belize (+501)</a></li>
-          <li class="signup__li" data-countrycode="bj" value="229"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_benin_17dp.png"> Benin (+229)</a></li>
-          <li class="signup__li" data-countrycode="bm" value="1441"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_bermuda_17dp.png"> Bermuda (+1441)</a></li>
-          <li class="signup__li" data-countrycode="bt" value="975"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_bhutan_17dp.png"> Bhutan (+975)</a></li>
-          <li class="signup__li" data-countrycode="bo" value="591"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_bolivia_17dp.png"> Bolivia (+591)</a></li>
-          <li class="signup__li" data-countrycode="ba" value="387"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_bosnia_and_herzegowina_17dp.png"> Bosnia and Herzegowina (+387)</a></li>
-          <li class="signup__li" data-countrycode="bw" value="267"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_botswana_17dp.png"> Botswana (+267)</a></li>
-          <li class="signup__li" data-countrycode="br" value="55"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_brazil_17dp.png"> Brazil (+55)</a></li>
-          <li class="signup__li" data-countrycode="bn" value="673"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_brunei_darussalam_17dp.png"> Brunei Darussalam (+673)</a></li>
-          <li class="signup__li" data-countrycode="bg" value="359"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_bulgaria_17dp.png"> Bulgaria (+359)</a></li>
-          <li class="signup__li" data-countrycode="bf" value="226"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_burkina_faso_17dp.png"> Burkina Faso (+226)</a></li>
-          <li class="signup__li" data-countrycode="bi" value="257"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_burundi_17dp.png"> Burundi (+257)</a></li>
-          <li class="signup__li" data-countrycode="kh" value="855"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_cambodia_17dp.png"> Cambodia (+855)</a></li>
-          <li class="signup__li" data-countrycode="cm" value="237"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_cameroon_17dp.png"> Cameroon (+237)</a></li>
-          <li class="signup__li" data-countrycode="ca" value="1"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_canada_17dp.png"> Canada (+1)</a></li>
-          <li class="signup__li" data-countrycode="cv" value="238"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_cape_verde_17dp.png"> Cape Verde (+238)</a></li>
-          <li class="signup__li" data-countrycode="ky" value="1345"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_cayman_islands_17dp.png"> Cayman Islands (+1345)</a></li>
-          <li class="signup__li" data-countrycode="cf" value="236"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_central_african_republic_17dp.png"> Central African Republic (+236)</a></li>
-          <li class="signup__li" data-countrycode="cl" value="56"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_chile_17dp.png"> Chile (+56)</a></li>
-          <li class="signup__li" data-countrycode="cn" value="86"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_china_17dp.png"> China (+86)</a></li>
-          <li class="signup__li" data-countrycode="co" value="57"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_colombia_17dp.png"> Colombia (+57)</a></li>
-          <li class="signup__li" data-countrycode="km" value="269"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_comoros_17dp.png"> Comoros (+269)</a></li>
-          <li class="signup__li" data-countrycode="cg" value="242"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_congo_17dp.png"> Congo (+242)</a></li>
-          <li class="signup__li" data-countrycode="ck" value="682"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_cook_islands_17dp.png"> Cook Islands (+682)</a></li>
-          <li class="signup__li" data-countrycode="hr" value="385"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_croatia_17dp.png"> Croatia (+385)</a></li>
-          <li class="signup__li" data-countrycode="cu" value="53"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_cuba_17dp.png"> Cuba (+53)</a></li>
-          <li class="signup__li" data-countrycode="cy" value="90"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_cyprus_north_17dp.png"> Cyprus North (+90)</a></li>
-          <li class="signup__li" data-countrycode="cy" value="357"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_cyprus_south_17dp.png"> Cyprus South (+357)</a></li>
-          <li class="signup__li" data-countrycode="cz" value="420"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_czech_republic_17dp.png"> Czech Republic (+420)</a></li>
-          <li class="signup__li" data-countrycode="dk" value="45"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_denmark_17dp.png"> Denmark (+45)</a></li>
-          <li class="signup__li" data-countrycode="dj" value="253"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_djibouti_17dp.png"> Djibouti (+253)</a></li>
-          <li class="signup__li" data-countrycode="dm" value="1809"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_dominica_17dp.png"> Dominica (+1809)</a></li>
-          <li class="signup__li" data-countrycode="do" value="1809"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_dominican_republic_17dp.png"> Dominican Republic (+1809)</a></li>
-          <li class="signup__li" data-countrycode="ec" value="593"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_ecuador_17dp.png"> Ecuador (+593)</a></li>
-          <li class="signup__li" data-countrycode="eg" value="20"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_egypt_17dp.png"> Egypt (+20)</a></li>
-          <li class="signup__li" data-countrycode="sv" value="503"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_el_salvador_17dp.png"> El Salvador (+503)</a></li>
-          <li class="signup__li" data-countrycode="gq" value="240"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_equatorial_guinea_17dp.png"> Equatorial Guinea (+240)</a></li>
-          <li class="signup__li" data-countrycode="er" value="291"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_eritrea_17dp.png"> Eritrea (+291)</a></li>
-          <li class="signup__li" data-countrycode="ee" value="372"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_estonia_17dp.png"> Estonia (+372)</a></li>
-          <li class="signup__li" data-countrycode="et" value="251"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_ethiopia_17dp.png"> Ethiopia (+251)</a></li>
-          <li class="signup__li" data-countrycode="fk" value="500"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_falkland_islands_malvinas_17dp.png"> Falkland Islands (Malvinas) (+500)</a></li>
-          <li class="signup__li" data-countrycode="fo" value="298"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_faroe_islands_17dp.png"> Faroe Islands (+298)</a></li>
-          <li class="signup__li" data-countrycode="fj" value="679"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_fiji_17dp.png"> Fiji (+679)</a></li>
-          <li class="signup__li" data-countrycode="fi" value="358"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_finland_17dp.png"> Finland (+358)</a></li>
-          <li class="signup__li" data-countrycode="fr" value="33"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_france_17dp.png"> France (+33)</a></li>
-          <li class="signup__li" data-countrycode="gf" value="594"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_french_guiana_17dp.png"> French Guiana (+594)</a></li>
-          <li class="signup__li" data-countrycode="pf" value="689"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_french_polynesia_17dp.png"> French Polynesia (+689)</a></li>
-          <li class="signup__li" data-countrycode="ga" value="241"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_gabon_17dp.png"> Gabon (+241)</a></li>
-          <li class="signup__li" data-countrycode="gm" value="220"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_gambia_17dp.png"> Gambia (+220)</a></li>
-          <li class="signup__li" data-countrycode="ge" value="995"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_georgia_17dp.png"> Georgia (+995)</a></li>
-          <li class="signup__li" data-countrycode="de" value="49"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_germany_17dp.png"> Germany (+49)</a></li>
-          <li class="signup__li" data-countrycode="gh" value="233"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_ghana_17dp.png"> Ghana (+233)</a></li>
-          <li class="signup__li" data-countrycode="gi" value="350"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_gibraltar_17dp.png"> Gibraltar (+350)</a></li>
-          <li class="signup__li" data-countrycode="gr" value="30"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_greece_17dp.png"> Greece (+30)</a></li>
-          <li class="signup__li" data-countrycode="gl" value="299"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_greenland_17dp.png"> Greenland (+299)</a></li>
-          <li class="signup__li" data-countrycode="gd" value="1473"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_grenada_17dp.png"> Grenada (+1473)</a></li>
-          <li class="signup__li" data-countrycode="gp" value="590"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_guadeloupe_17dp.png"> Guadeloupe (+590)</a></li>
-          <li class="signup__li" data-countrycode="gu" value="671"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_guam_17dp.png"> Guam (+671)</a></li>
-          <li class="signup__li" data-countrycode="gt" value="502"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_guatemala_17dp.png"> Guatemala (+502)</a></li>
-          <li class="signup__li" data-countrycode="gn" value="224"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_guinea_17dp.png"> Guinea (+224)</a></li>
-          <li class="signup__li" data-countrycode="gw" value="245"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_guinea-bissau_17dp.png"> Guinea-Bissau (+245)</a></li>
-          <li class="signup__li" data-countrycode="gy" value="592"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_guyana_17dp.png"> Guyana (+592)</a></li>
-          <li class="signup__li" data-countrycode="ht" value="509"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_haiti_17dp.png"> Haiti (+509)</a></li>
-          <li class="signup__li" data-countrycode="hn" value="504"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_honduras_17dp.png"> Honduras (+504)</a></li>
-          <li class="signup__li" data-countrycode="hk" value="852"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_hong_kong_17dp.png"> Hong Kong (+852)</a></li>
-          <li class="signup__li" data-countrycode="hu" value="36"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_hungary_17dp.png"> Hungary (+36)</a></li>
-          <li class="signup__li" data-countrycode="is" value="354"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_iceland_17dp.png"> Iceland (+354)</a></li>
-          <li class="signup__li" data-countrycode="in" value="91"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_india_17dp.png"> India (+91)</a></li>
-          <li class="signup__li" data-countrycode="id" value="62"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_indonesia_17dp.png"> Indonesia (+62)</a></li>
-          <li class="signup__li" data-countrycode="iq" value="964"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_iraq_17dp.png"> Iraq (+964)</a></li>
-          <li class="signup__li" data-countrycode="ir" value="98"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_iran_17dp.png"> Iran (+98)</a></li>
-          <li class="signup__li" data-countrycode="ie" value="353"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_ireland_17dp.png"> Ireland (+353)</a></li>
-          <li class="signup__li" data-countrycode="il" value="972"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_israel_17dp.png"> Israel (+972)</a></li>
-          <li class="signup__li" data-countrycode="it" value="39"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_italy_17dp.png"> Italy (+39)</a></li>
-          <li class="signup__li" data-countrycode="jm" value="1876"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_jamaica_17dp.png"> Jamaica (+1876)</a></li>
-          <li class="signup__li" data-countrycode="jp" value="81"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_japan_17dp.png"> Japan (+81)</a></li>
-          <li class="signup__li" data-countrycode="jo" value="962"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_jordan_17dp.png"> Jordan (+962)</a></li>
-          <li class="signup__li" data-countrycode="kz" value="7"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_kazakhstan_17dp.png"> Kazakhstan (+7)</a></li>
-          <li class="signup__li" data-countrycode="ke" value="254"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_kenya_17dp.png"> Kenya (+254)</a></li>
-          <li class="signup__li" data-countrycode="ki" value="686"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_kiribati_17dp.png"> Kiribati (+686)</a></li>
-          <li class="signup__li" data-countrycode="kr" value="82"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_korea_17dp.png"> Korea, Democratic People&#039;s Republic of (+82)</a></li>
-          <li class="signup__li" data-countrycode="kw" value="965"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_kuwait_17dp.png"> Kuwait (+965)</a></li>
-          <li class="signup__li" data-countrycode="kg" value="996"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_kyrgyzstan_17dp.png"> Kyrgyzstan (+996)</a></li>
-          <li class="signup__li" data-countrycode="la" value="856"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_laos_17dp.png"> Laos (+856)</a></li>
-          <li class="signup__li" data-countrycode="lv" value="371"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_latvia_17dp.png"> Latvia (+371)</a></li>
-          <li class="signup__li" data-countrycode="lb" value="961"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_lebanon_17dp.png"> Lebanon (+961)</a></li>
-          <li class="signup__li" data-countrycode="ls" value="266"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_lesotho_17dp.png"> Lesotho (+266)</a></li>
-          <li class="signup__li" data-countrycode="lr" value="231"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_liberia_17dp.png"> Liberia (+231)</a></li>
-          <li class="signup__li" data-countrycode="ly" value="218"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_libya_17dp.png"> Libya (+218)</a></li>
-          <li class="signup__li" data-countrycode="li" value="417"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_liechtenstein_17dp.png"> Liechtenstein (+417)</a></li>
-          <li class="signup__li" data-countrycode="lt" value="370"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_lithuania_17dp.png"> Lithuania (+370)</a></li>
-          <li class="signup__li" data-countrycode="lu" value="352"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_luxembourg_17dp.png"> Luxembourg (+352)</a></li>
-          <li class="signup__li" data-countrycode="mk" value="389"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_macedonia_17dp.png"> Macedonia, The Former Yugoslav Republic of (+389)</a></li>
-          <li class="signup__li" data-countrycode="mg" value="261"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_madagascar_17dp.png"> Madagascar (+261)</a></li>
-          <li class="signup__li" data-countrycode="mw" value="265"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_malawi_17dp.png"> Malawi (+265)</a></li>
-          <li class="signup__li" data-countrycode="my" value="60"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_malaysia_17dp.png"> Malaysia (+60)</a></li>
-          <li class="signup__li" data-countrycode="mv" value="960"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_maldives_17dp.png"> Maldives (+960)</a></li>
-          <li class="signup__li" data-countrycode="ml" value="223"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_mali_17dp.png"> Mali (+223)</a></li>
-          <li class="signup__li" data-countrycode="mt" value="356"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_malta_17dp.png"> Malta (+356)</a></li>
-          <li class="signup__li" data-countrycode="mh" value="692"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_marshall_islands_17dp.png"> Marshall Islands (+692)</a></li>
-          <li class="signup__li" data-countrycode="mq" value="596"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_martinique_17dp.png"> Martinique (+596)</a></li>
-          <li class="signup__li" data-countrycode="mr" value="222"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_mauritania_17dp.png"> Mauritania (+222)</a></li>
-          <li class="signup__li" data-countrycode="yt" value="269"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_mayotte_17dp.png"> Mayotte (+269)</a></li>
-          <li class="signup__li" data-countrycode="mx" value="52"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_mexico_17dp.png"> Mexico (+52)</a></li>
-          <li class="signup__li" data-countrycode="fm" value="691"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_micronesia_17dp.png"> Micronesia, Federated States of (+691)</a></li>
-          <li class="signup__li" data-countrycode="md" value="373"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_moldova_17dp.png"> Moldova, Republic of (+373)</a></li>
-          <li class="signup__li" data-countrycode="mc" value="377"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_monaco_17dp.png"> Monaco (+377)</a></li>
-          <li class="signup__li" data-countrycode="mn" value="976"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_mongolia_17dp.png"> Mongolia (+976)</a></li>
-          <li class="signup__li" data-countrycode="ms" value="1664"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_montserrat_17dp.png"> Montserrat (+1664)</a></li>
-          <li class="signup__li" data-countrycode="ma" value="212"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_morocco_17dp.png"> Morocco (+212)</a></li>
-          <li class="signup__li" data-countrycode="mz" value="258"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_mozambique_17dp.png"> Mozambique (+258)</a></li>
-          <li class="signup__li" data-countrycode="mn" value="95"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_myanmar_17dp.png"> Myanmar (+95)</a></li>
-          <li class="signup__li" data-countrycode="na" value="264"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_namibia_17dp.png"> Namibia (+264)</a></li>
-          <li class="signup__li" data-countrycode="nr" value="674"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_nauru_17dp.png"> Nauru (+674)</a></li>
-          <li class="signup__li" data-countrycode="np" value="977"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_nepal_17dp.png"> Nepal (+977)</a></li>
-          <li class="signup__li" data-countrycode="nl" value="31"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_netherlands_17dp.png"> Netherlands (+31)</a></li>
-          <li class="signup__li" data-countrycode="nc" value="687"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_new_caledonia_17dp.png"> New Caledonia (+687)</a></li>
-          <li class="signup__li" data-countrycode="nz" value="64"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_new_zealand_17dp.png"> New Zealand (+64)</a></li>
-          <li class="signup__li" data-countrycode="ni" value="505"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_nicaragua_17dp.png"> Nicaragua (+505)</a></li>
-          <li class="signup__li" data-countrycode="ne" value="227"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_niger_17dp.png"> Niger (+227)</a></li>
-          <li class="signup__li" data-countrycode="ng" value="234"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_nigeria_17dp.png"> Nigeria (+234)</a></li>
-          <li class="signup__li" data-countrycode="nu" value="683"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_niue_17dp.png"> Niue (+683)</a></li>
-          <li class="signup__li" data-countrycode="nf" value="672"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_norfolk_island_17dp.png"> Norfolk Island (+672)</a></li>
-          <li class="signup__li" data-countrycode="np" value="670"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_northern_mariana_islands_17dp.png"> Northern Mariana Islands (+670)</a></li>
-          <li class="signup__li" data-countrycode="no" value="47"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_norway_17dp.png"> Norway (+47)</a></li>
-          <li class="signup__li" data-countrycode="om" value="968"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_oman_17dp.png"> Oman (+968)</a></li>
-          <li class="signup__li" data-countrycode="pk" value="92"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_pakistan_17dp.png"> Pakistan (+92)</a></li>
-          <li class="signup__li" data-countrycode="pw" value="680"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_palau_17dp.png"> Palau (+680)</a></li>
-          <li class="signup__li" data-countrycode="pa" value="507"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_panama_17dp.png"> Panama (+507)</a></li>
-          <li class="signup__li" data-countrycode="pg" value="675"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_papua_new_guinea_17dp.png"> Papua New Guinea (+675)</a></li>
-          <li class="signup__li" data-countrycode="py" value="595"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_paraguay_17dp.png"> Paraguay (+595)</a></li>
-          <li class="signup__li" data-countrycode="pe" value="51"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_peru_17dp.png"> Peru (+51)</a></li>
-          <li class="signup__li" data-countrycode="ph" value="63"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_philippines_17dp.png"> Philippines (+63)</a></li>
-          <li class="signup__li" data-countrycode="pl" value="48"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_poland_17dp.png"> Poland (+48)</a></li>
-          <li class="signup__li" data-countrycode="pt" value="351"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_portugal_17dp.png"> Portugal (+351)</a></li>
-          <li class="signup__li" data-countrycode="pr" value="1787"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_puerto_rico_17dp.png"> Puerto Rico (+1787)</a></li>
-          <li class="signup__li" data-countrycode="qa" value="974"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_qatar_17dp.png"> Qatar (+974)</a></li>
-          <li class="signup__li" data-countrycode="re" value="262"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_reunion_17dp.png"> Reunion (+262)</a></li>
-          <li class="signup__li" data-countrycode="ro" value="40"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_romania_17dp.png"> Romania (+40)</a></li>
-          <li class="signup__li" data-countrycode="ru" value="7"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_russian_federation_17dp.png"> Russian Federation (+7)</a></li>
-          <li class="signup__li" data-countrycode="rw" value="250"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_rwanda_17dp.png"> Rwanda (+250)</a></li>
-          <li class="signup__li" data-countrycode="sm" value="378"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_san_marino_17dp.png"> San Marino (+378)</a></li>
-          <li class="signup__li" data-countrycode="st" value="239"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_sao_tome_and_principe_17dp.png"> Sao Tome and Principe (+239)</a></li>
-          <li class="signup__li" data-countrycode="sa" value="966"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_saudi_arabia_17dp.png"> Saudi Arabia (+966)</a></li>
-          <li class="signup__li" data-countrycode="sn" value="221"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_senegal_17dp.png"> Senegal (+221)</a></li>
-          <li class="signup__li" data-countrycode="cs" value="381"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_serbia_17dp.png"> Serbia (+381)</a></li>
-          <li class="signup__li" data-countrycode="sc" value="248"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_seychelles_17dp.png"> Seychelles (+248)</a></li>
-          <li class="signup__li" data-countrycode="sl" value="232"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_sierra_leone_17dp.png"> Sierra Leone (+232)</a></li>
-          <li class="signup__li" data-countrycode="sg" value="65"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_singapore_17dp.png"> Singapore (+65)</a></li>
-          <li class="signup__li" data-countrycode="sk" value="421"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_slovakia_17dp.png"> Slovakia (+421)</a></li>
-          <li class="signup__li" data-countrycode="si" value="386"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_slovenia_17dp.png"> Slovenia (+386)</a></li>
-          <li class="signup__li" data-countrycode="sb" value="677"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_solomon_islands_17dp.png"> Solomon Islands (+677)</a></li>
-          <li class="signup__li" data-countrycode="so" value="252"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_somalia_17dp.png"> Somalia (+252)</a></li>
-          <li class="signup__li" data-countrycode="za" value="27"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_south_africa_17dp.png"> South Africa (+27)</a></li>
-          <li class="signup__li" data-countrycode="es" value="34"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_spain_17dp.png"> Spain (+34)</a></li>
-          <li class="signup__li" data-countrycode="lk" value="94"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_sri_lanka_17dp.png"> Sri Lanka (+94)</a></li>
-          <li class="signup__li" data-countrycode="sh" value="290"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_st_helena_17dp.png"> St. Helena (+290)</a></li>
-          <li class="signup__li" data-countrycode="kn" value="1869"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_saint_kitts_and_nevis_17dp.png"> Saint Kitts and Nevis (+1869)</a></li>
-          <li class="signup__li" data-countrycode="sc" value="1758"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_saint_lucia_17dp.png"> Saint Lucia (+1758)</a></li>
-          <li class="signup__li" data-countrycode="sr" value="597"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_suriname_17dp.png"> Suriname (+597)</a></li>
-          <li class="signup__li" data-countrycode="sd" value="249"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_sudan_17dp.png"> Sudan (+249)</a></li>
-          <li class="signup__li" data-countrycode="sz" value="268"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_swaziland_17dp.png"> Swaziland (+268)</a></li>
-          <li class="signup__li" data-countrycode="se" value="46"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_sweden_17dp.png"> Sweden (+46)</a></li>
-          <li class="signup__li" data-countrycode="ch" value="41"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_switzerland_17dp.png"> Switzerland (+41)</a></li>
-          <li class="signup__li" data-countrycode="sy" value="963"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_syrian_arab_republic_17dp.png"> Syrian Arab Republic (+963)</a></li>
-          <li class="signup__li" data-countrycode="tw" value="886"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_taiwan_17dp.png"> Taiwan, Province of China (+886)</a></li>
-          <li class="signup__li" data-countrycode="tj" value="992"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_tajikistan_17dp.png"> Tajikistan (+992)</a></li>
-          <li class="signup__li" data-countrycode="th" value="66"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_thailand_17dp.png"> Thailand (+66)</a></li>
-          <li class="signup__li" data-countrycode="tg" value="228"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_togo_17dp.png"> Togo (+228)</a></li>
-          <li class="signup__li" data-countrycode="to" value="676"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_tonga_17dp.png"> Tonga (+676)</a></li>
-          <li class="signup__li" data-countrycode="tt" value="1868"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_trinidad_and_tobago_17dp.png"> Trinidad and Tobago (+1868)</a></li>
-          <li class="signup__li" data-countrycode="tn" value="216"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_tunisia_17dp.png"> Tunisia (+216)</a></li>
-          <li class="signup__li" data-countrycode="tr" value="90"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_turkey_17dp.png"> Turkey (+90)</a></li>
-          <li class="signup__li" data-countrycode="tm" value="993"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_turkmenistan_17dp.png"> Turkmenistan (+993)</a></li>
-          <li class="signup__li" data-countrycode="tc" value="1649"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_turks_and_caicos_islands_17dp.png"> Turks and Caicos Islands (+1649)</a></li>
-          <li class="signup__li" data-countrycode="tv" value="688"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_tuvalu_17dp.png"> Tuvalu (+688)</a></li>
-          <li class="signup__li" data-countrycode="ug" value="256"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_uganda_17dp.png"> Uganda (+256)</a></li>
-          <li class="signup__li" data-countrycode="ua" value="380"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_ukraine_17dp.png"> Ukraine (+380)</a></li>
-          <li class="signup__li" data-countrycode="ae" value="971"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_united_arab_emirates_17dp.png"> United Arab Emirates (+971)</a></li>
-          <li class="signup__li" data-countrycode="uy" value="598"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_uruguay_17dp.png"> Uruguay (+598)</a></li>
-          <li class="signup__li" data-countrycode="uz" value="998"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_uzbekistan_17dp.png"> Uzbekistan (+998)</a></li>
-          <li class="signup__li" data-countrycode="vu" value="678"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_vanuatu_17dp.png"> Vanuatu (+678)</a></li>
-          <li class="signup__li" data-countrycode="va" value="379"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_vatican_city_17dp.png"> Vatican City (+379)</a></li>
-          <li class="signup__li" data-countrycode="ve" value="58"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_venezuela_17dp.png"> Venezuela (+58)</a></li>
-          <li class="signup__li" data-countrycode="vn" value="84"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_vietnam_17dp.png"> Vietnam (+84)</a></li>
-          <li class="signup__li" data-countrycode="vi" value="1"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_virgin_islands_17dp.png"> Virgin Islands (U.S.) (+1)</a></li>
-          <li class="signup__li" data-countrycode="wf" value="681"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_wallis_and_futuna_islands_17dp.png"> Wallis and Futuna Islands (+681)</a></li>
-          <li class="signup__li" data-countrycode="ye" value="969"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_yemen_north_17dp.png"> Yemen (+969)</a></li>
-          <li class="signup__li" data-countrycode="zm" value="260"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_zambia_17dp.png"> Zambia (+260)</a></li>
-          <li class="signup__li" data-countrycode="zw" value="263"><a v-on:click.prevent="selectPrefix" class="signup__country" href=""><img class="signup__flag" src="https://static.monese.com/s/flags-6/flag_zimbabwe_17dp.png"> Zimbabwe (+263)</a></li>
-        </ul>
-    </div>
-
-    <div class="signup__ctas signup__ctas--desktop main-header__ctas">
-        <a class="ctajs ctajs--ios" href="https://itunes.apple.com/gb/app/monese/id1102793407">
-            <svg class="app-install signup__install main-header__install main-header__install--first">
-                <use xlink:href="#icon-app-store" />
-            </svg>
-        </a>
-        <a class="ctajs ctajs--android" href="https://play.google.com/store/apps/details?id=com.monese.monese.live&hl=en_GB&referrer=">
-            <svg class="app-install signup__install main-header__install">
-                <use xlink:href="#icon-googleplay" />
-            </svg>
-        </a>
-    </div>
+    
+  <div class="signup__labels">
+  <div class="signup__carousel">
+  <label class="signup__label">Username</label>
+  </div>
+  </div> 
+  <a href="free-trial-account.html" class="signup__prefix">
+  <img src="https://static.monese.com/s/flags-5/flag_united_kingdom_17dp.png" class="signup__prefix--flag"> 
+  <svg class="arrow signup__arrow signup__prefix--arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow"></use></svg> 
+  <hr class="signup__prefix--hr"> 
+  <span class="signup__prefix--prefix">+44</span>
+  </a> 
+  
+ <div class="signup__inputs{% if validation_errors['username'] %} error{% endif %}">
+<div class="ui big left icon input">
+<i class="user icon"></i>
+<input type="text" name="username" id="username" class="signup__input" value="{{ set_value('username') }}" placeholder="* {{ lang('ui_username')|e('html_attr') }}" autocomplete="off" maxlength="256">
 </div>
-          </div>
-       </div>
-    </div>
+</div>
+
+<div class="signup__inputs{% if validation_errors['password'] %} error{% endif %}">
+<div class="ui big left icon input">
+<i class="lock icon"></i>
+<input type="password" name="password" id="password" class="signup__input" value="{{ set_value('password') }}" placeholder="* {{ lang('ui_password')|e('html_attr') }}" maxlength="256">
+</div>
+</div>
+  
+  <div class="signup__progress"><div class="signup__progress--bar"></div></div>
+  </div> 
+  <p class="signup__message">&nbsp;</p> 
+  <div class="signup__meta">
+  <p class="signup__stages">
+  <span class="signup__stages--one">0</span> 
+  <span class="signup__stages--two">/ 3</span></p> 
+  
+  <a href="free-trial-account.html#" class="signup__next" style="display: none;">
+  <svg class="signup__icon icon-roundarrow"><use xlink:href="#icon-roundarrow"></use></svg> 
+  <svg class="signup__icon icon-roundarrow signup__icon--hide"><use xlink:href="#icon-listtick"></use></svg> 
+  <svg class="signup__icon icon-roundarrow signup__icon--hide"><use xlink:href="#icon-attention"></use></svg>
+  </a>
+ 
+ <button class="signup__next" type="submit"><svg class="signup__icon icon-roundarrow"><use xlink:href="#icon-roundarrow"></use>{{ lang('ui_login') }}</svg> </button>
+
+  </div>
+  
+{{ form_close() }}
+  </div>
+  
 
 
 
