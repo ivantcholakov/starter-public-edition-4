@@ -8,7 +8,7 @@
 
           <div class="signup-header__mobile">
 
-            <a class="signup-header__btn signup-header__btn btn" href="https://monese.app.link/mobileweb">
+            <a class="signup-header__btn signup-header__btn btn hidden" href="https://monese.app.link/mobileweb">
                 Get started free
             </a>
 
@@ -77,9 +77,9 @@
 
                 </div>
 
-            {{ form_close() }}
     <div v-bind:class="{ 'signup__box--active': showBox, 'signup__box--ended': isCompleted }" class="signup__box signup-header__box clearfix">
-        <form v-on:submit.prevent="onSubmit" class="signup__form" action="" method="post" autocomplete="off">
+         {{ form_open('', ' v-on:submit.prevent="onSubmit" method="post" class="signup__form" id="login_form" autocomplete="off"') }}
+
             <a v-on:click.prevent="togglePrefix"  href="" class="signup__prefix" v-bind:class="{ 'signup__prefix--active': isPhone}">
                 <img class="signup__prefix--flag" v-bind:src="flag">
                 <svg v-bind:class="{ 'signup__arrow--active': isSelectPrefix }" class="arrow signup__arrow signup__prefix--arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow"></use></svg>
@@ -92,12 +92,30 @@
                     <div v-bind:class="{ 'signup__progress--one': stage == 1, 'signup__progress--error': isError, 'signup__progress--success': isSuccess }" class="signup__progress--bar"></div>
                 </div>
             </div>
+            
+            <div class="signup__inputs{% if validation_errors['username'] %} error{% endif %}">
+                        <div class="ui big left icon input">
+                            <i class="user icon"></i>
+                            <input type="text" name="username" class="signup__input" id="username" value="{{ set_value('username') }}" placeholder="* {{ lang('ui_username')|e('html_attr') }}" maxlength="256">
+                        </div>
+                    </div>
+
+                    <div class="signup__inputs{% if validation_errors['password'] %} error{% endif %}">
+                        <div class="ui big left icon input">
+                            <i class="lock icon"></i>
+                            <input type="password" name="password" class="signup__input" id="password" value="{{ set_value('password') }}" placeholder="* {{ lang('ui_password')|e('html_attr') }}" maxlength="256">
+                        </div>
+                    </div>
+
+            
+            
             <p v-bind:class="{ 'signup__message--error': isError, 'signup__message--success': isSuccess }" class="signup__message">&nbsp;</p>
             
-                          <a v-on:click="onButton" v-bind:class="{ 'signup__btn--disabled': !isValidNumber }" class="signup__btn btn btn--one" href="">Get started free</a>
+     <a v-on:click="onButton" v-bind:class="{ 'signup__btn--disabled': !isValidNumber }" class="signup__btn btn btn--one" href=""><i class="sign in icon"> {{ lang('ui_login') }}</i></a>
             
             <p class="signup__gdpr" v-bind:class="{ 'signup__gdpr--error': isGDPRError }"><input v-model="gdprSelected" type="checkbox" class="signup__checkbox" id="gdprsignup" v-bind:class="{ 'signup__checkbox--error': isGDPRError }" name="terms" required> Monese Ltd will use the information you provide on this form to send a link to your phone in order for you to install the app. We won’t share your number with anyone. This link will allow us to track the installation of the app. By clicking this tick-box, you agree that we may process your information in accordance with the terms of our <a class="signup__a" href="/privacy">privacy policy</a>.</label></p>
-        </form>
+        
+            {{ form_close() }}
     </div>
 
     <div v-bind:class="{ 'signup__box--completed': isCompleted }" class="signup__box signup-header__box signup__box--hide clearfix">
@@ -350,7 +368,7 @@
 
 
 
-    <div class="ui padded centered grid ">
+    <div class="ui padded centered grid hidden">
 
         <div class="column">
 
