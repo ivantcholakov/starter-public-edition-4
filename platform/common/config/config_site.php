@@ -8,7 +8,7 @@
 $config['site_name'] = 'Elektropay';
 $config['contact_organization'] = 'Everpay Inc.';
 $config['contact_address'] = 'Milky Way, Solar System, Planet Earth, Sofia, BULGARIA';
-$config['contact_phone'] = '+359 2 00 00 00';
+$config['contact_phone'] = '+1.800.566.6003';
 $config['contact_fax'] = '';
 $config['contact_email'] = 'hello@elektropay.com';
 $config['contact_first_name'] = '';     // Contact person, first name.
