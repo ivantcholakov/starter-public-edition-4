@@ -41,3 +41,10 @@
     min-height: 100%;
     min-width: 180px;
 }
+
+#footer {
+   background-color:inherit;
+    height: auto;
+    min-height: 100%;
+    min-width: 180px;
+}
