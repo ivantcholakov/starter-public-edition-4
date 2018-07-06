@@ -100,14 +100,10 @@ body {
 .elektro-logo {
     left: auto;
     margin-left: 2em;
-    padding-top: 0.25em!important;
+    padding-top: 0.35em!important;
     float: left;
 }
 	
-.navbar {
-background-color: #6b8cce!important
-}
-
 
 .main-header--one {
     background: linear-gradient(to top, #a2b6df 0%, #6b8cce 100%, #a2b6df 100%, #0c3483 100%)!important;	
@@ -219,9 +215,6 @@ background-color: #6b8cce!important
     background-size: 60% auto!important;
 }
 	
-.subnavbar__item {
-    color: #ffffff!important;
-}
 	
 .subnavbar__item--tactive {
     color: #eeeeee;
@@ -236,12 +229,6 @@ background-color: #6b8cce!important
    width: 90px!important;
 }
 	
-.subnavbar__arrow {
-    stroke: #ffffff!important;
-    -webkit-transition: stroke .5s;
-    transition: stroke .5s;
-}
-
 .region__text {
     color: #ffffff!important;
 }	
@@ -469,7 +456,7 @@ padding-right: 0.95em;
 .footer-terms {
     padding-top: 1.95em!important;
     padding-bottom: 0.95em!important;
-    background-color: #f5f5f5;
+    background-color: #ffffff!important;
 }
 	
 .footer-terms__copy {
