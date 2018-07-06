@@ -23,9 +23,9 @@
     line-height: 1.428571;
     padding: .75em 1.875em!important;
     border-radius: 2.5em;
-    font-size: 1em;
-    margin-right: 20px;
-    margin-top: 10px;
+    font-size: 1em!important;
+        margin-right: 20px;
+    margin-top: -70px;
     font-family: MarkWebPro-Book,Helvetica,sans-serif;
     font-size: .9355em!important;
     letter-spacing: .046875em;
