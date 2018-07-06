@@ -310,8 +310,10 @@ body {
 }
 	
 .login-now--active {
-    margin-top: 18px;
+    margin-top: 15px;
     padding: 6px 15px!important;
+
+    float: right!important;	
 }
 
 .login-now {
@@ -320,7 +322,7 @@ body {
     float: right!important;
     padding: 5.5px 15px!important;
     margin-right: 10px;
-    margin-top: 17.5px;
+    margin-top: 15.5px;
     font-family: MarkWebPro-Book,Helvetica,sans-serif;
     font-size: .9355em!important;
     letter-spacing: .046875em;
