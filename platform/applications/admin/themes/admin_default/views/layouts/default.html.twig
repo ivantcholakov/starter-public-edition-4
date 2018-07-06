@@ -15,7 +15,7 @@
 {% include 'partials/webfontloader' %}
 {{ css('lib/sweetalert/sweetalert-custom.min.css') }}
 {{ css('lib/jquery-ui-custom/jquery-ui.min.css') }}
-<link rel="stylesheet" href="https://brave-hawking-fe06eb.netlify.com/css/app.min.css">
+{{ css('elektroapp.css') }}
 {{ css('elektropay.min.css') }}
 {{ partial('css') }}
 
@@ -139,7 +139,7 @@
 
 {{ js('app.min.js') }}
      <noscript id="deferred-styles">
-      <link rel="stylesheet" type="text/css" href="https://brave-hawking-fe06eb.netlify.com/css/app.min.css"/>
+    {{ css('elektroapp.css') }} 
      </noscript>
      
             <script>
