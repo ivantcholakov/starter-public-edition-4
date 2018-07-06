@@ -68,7 +68,7 @@
 #footer {
    background-color:inherit;
     height: auto;
-    min-height: 80px;
+    min-height: 60px;
     min-width: 100%;
 }
 
@@ -467,4 +467,32 @@ padding-right: 0.95em;
     margin-bottom: 0.15em!important;
 }	
 	
+.ui.form .field>label {
+    display: block;
+    margin: 0em 0em .25rem 0em;
+    color: rgba(0,0,0,.87);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: none;
+}
 
+.ui.selection.dropdown {
+    cursor: pointer;
+    word-wrap: break-word;
+    line-height: 1.75em;
+    white-space: normal;
+    outline: 0;
+    -webkit-transform: rotateZ(0deg);
+    transform: rotateZ(0deg);
+    min-width: 14em;
+    font-size: 14px;
+    min-height: 2.52678571em;
+    background: #FFF;
+    display: inline-block;
+    padding: .6875em 1.975em .6875em .875em;
+    color: rgba(0,0,0,.87);
+    box-shadow: none;
+    border: 1px solid rgba(34,36,38,.15);
+    border-radius: .25rem;
+    transition: box-shadow 0.1s ease,width 0.1s ease;
+}
