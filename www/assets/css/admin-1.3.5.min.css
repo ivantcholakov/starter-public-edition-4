@@ -340,7 +340,7 @@ body {
 }
 	
 .login-now a {
-    color: #ffffff!important;
+    color: #210E4B!important;
      box-shadow: none!important;
 }
 
@@ -512,12 +512,15 @@ padding-right: 0.95em;
     max-width: 240px!important;
 }
 
+
+
 .btn--elektro {
     text-align: left;
     float: none;
     border: 1px solid #210E4B!important;
-    color: #210E4B;
+    color: #210E4B!important;
     box-shadow: none!important;
+    background-color: #fff!important;
 }
 
 #application {
