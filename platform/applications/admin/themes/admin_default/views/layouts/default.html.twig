@@ -87,11 +87,9 @@
     </header>
 
 
-<div class="main-account" id="main_content">
+<div class="copy-image copy-image--none copy-image--tall" id="main_content">
         <div class="container">
             <div class="row">
-
-
 {{ widget('feedback_messages_widget', {
     'feedback_message_target': feedback_message_target,
     'normal_message': normal_message,
@@ -99,21 +97,15 @@
     'warning_message': warning_message,
     'error_message': error_message
 }) }}
-
-
-                </div>
-            </div>
+</div>
+ </div>
             
-<div class="copy-image copy-image--none copy-image--tall">
-
+<div class="col-lg-12 col-md-12 col-xs-12">
 {{ body() }}
-
 </div>
 
-    </div>
 
-    </div>
-    </div>
+</div>
 
 {{ widget('footer_widget') }}
 
