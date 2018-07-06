@@ -555,15 +555,9 @@ h1.ui.header {
 }
 
 .ui.dropdown .menu {
-    top: 80px;
-    box-shadow: -5px 10px 20px 0 rgba(0,0,0,.15);
-    -webkit-transition: opacity 0s;
-    transition: opacity 0s;
-    opacity: 1;
-    pointer-events: auto;
+    box-shadow: -5px 10px 20px 0 rgba(0,0,0,.15)!important;
     border-bottom-right-radius: 25px;
     border-bottom-left-radius: 25px;
-    width: 200px;
     padding: 0 40px;
     padding-top: 2.1875em;
 }
