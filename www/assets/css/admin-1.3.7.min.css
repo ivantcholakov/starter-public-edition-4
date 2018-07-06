@@ -33,31 +33,6 @@
     transition: margin-top .25s ease-in-out .5s;
 }
 
-..page-header--btn {
-     display: inline-block!important;
-    position: relative!important;
-    float: right!important;
-    margin-bottom: 0;
-    font-weight: 400;
-    text-align: center;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    background-image: none;	
-    line-height: 1.428571;
-    padding: .75em 1.875em!important;
-    border-radius: 2.5em;
-    font-size: 1em;
-    margin-right: 20px;
-    margin-top: 10px;
-    font-family: MarkWebPro-Book,Helvetica,sans-serif;
-    font-size: .9355em!important;
-    letter-spacing: .046875em;
-    -webkit-transition: margin-top .25s ease-in-out .5s;
-    transition: margin-top .25s ease-in-out .5s;
-}
-
 .page-header--btn {
      display: inline-block!important;
     position: relative!important;
@@ -637,4 +612,45 @@ h1.ui.header {
     color: #6b8cce;
 }
 
+.ui.dropdown .menu>.item {
+    position: relative;
+    cursor: pointer;
+    display: block;
+    border: none;
+    height: auto;
+    text-align: left;
+    border-top: none;
+    line-height: 1em;
+    color: rgba(0,0,0,.87);
+    padding: 1.5125rem 2.725rem!important;
+    font-size: 1.25rem;
+    text-transform: none;
+    font-weight: 400;
+    box-shadow: none;
+    -webkit-touch-callout: none;
+}
+	
+.ui.dropdown .menu {
+    cursor: auto;
+    position: absolute;
+    display: none;
+    outline: none;
+    top: 38px!important;
+    min-width: -webkit-max-content;
+    min-width: -moz-max-content;
+    min-width: max-content;
+    margin: 0em;
+    padding: 1.2em 2em;
+    background: #FFF;
+    font-size: 1em;
+    text-shadow: none;
+    text-align: left;
+    box-shadow: 0 2px 3px 0 rgba(34,36,38,.15);
+    border: 1px solid rgba(34,36,38,.15);
+    border-radius: .25rem;
+    transition: opacity 0.1s ease;
+    z-index: 11;
+    will-change: transform,opacity;
+    margin-left: -30px;
+}
 
