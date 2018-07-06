@@ -14,9 +14,20 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child {
 
 .trial-account {
     background-color: transparent!important;
+}
+
+.trial-account {
     text-align: center;
     height: 55em;
     background-position: center 465px,top;
     background-size: 600px auto,100% 120%;
    background-image: none!important;
+}
+
+@media screen and (min-width: 992px) {
+.trial-account {
+    background-position: center 465px,50%;
+    background-size: 625px auto,cover;
+    background-image: none!important;
+}
 }
