@@ -89,7 +89,7 @@
 
             <nav id="sidebar" class="transition {% if session('side_menu_state') == 'hidden' %}hidden{% else %}visible{% endif %}">
 
-                <div class="ui vertical inverted attached borderless accordion menu" id="sidebar_menu">
+                <div class="ui vertical attached borderless accordion menu" id="sidebar_menu">
 
 {% if nav is not empty %}
     {% for item in nav %}
@@ -97,11 +97,11 @@
         {% if item['children'] is empty %}
 
             {% if item['is_header'] %}
-                            <div class="item" style="font-size: 1em;">
+                            <div class="item" style="font-size:1.295em;">
                                 <span class="title">{{ side_menu_macro.display_item(item) }}</span>
                             </div>
             {% else %}
-                            <div class="item" style="font-size: 1em;">
+                            <div class="item" style="font-size:1.295em;">
                                 <a href="{{ item['link'] }}" class="{% if item['is_active'] %}active {% endif %}title">
                                     {{ side_menu_macro.display_item(item) }}
                                 </a>
@@ -110,7 +110,7 @@
                             
         {% else %}
 
-                            <div class="item" style="font-size: 1em;">
+                            <div class="item" style="font-size:1.295em;">
 
                                 <span class="{% if item['is_active'] %}active {% endif %}title">
                                     <i class="dropdown icon"></i>
