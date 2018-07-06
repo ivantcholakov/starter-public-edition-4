@@ -9,7 +9,7 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child {
 }
 
 .signup__input {
-    width: 100%!important;
+    width: auto!important;
 }
 
 .trial-account {
