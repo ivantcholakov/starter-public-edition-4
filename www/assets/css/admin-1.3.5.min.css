@@ -553,13 +553,8 @@ h1.ui.header {
     text-transform: none;
     color: #6b8cce;
 }
+
 .ui.dropdown .menu {
-    cursor: auto;
-    position: absolute;
-    display: none;
-    outline: none;
-    background-color: #fff;
-    width: 50%;
     top: 80px;
     box-shadow: -5px 10px 20px 0 rgba(0,0,0,.15);
     -webkit-transition: opacity 0s;
@@ -568,13 +563,9 @@ h1.ui.header {
     pointer-events: auto;
     border-bottom-right-radius: 25px;
     border-bottom-left-radius: 25px;
-    transition: opacity 0.1s ease;
-    z-index: 11;
-    will-change: transform,opacity;
     width: 200px;
     padding: 0 40px;
     padding-top: 2.1875em;
-    height: 10.5em;
 }
 
 
