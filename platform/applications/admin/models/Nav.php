@@ -14,8 +14,16 @@ class Nav extends CI_Model {
         $nav['home'] = array('label' => $this->lang->line('ui_home'), 'icon' => 'dashboard icon', 'location' => site_url());
 
         //----------------------------------------------------------------------
+        
+        $nav['payments'] = array('label' => 'Payments', 'icon' => 'credit-card icon', 'location' => 'payments');
+        
+        $nav['customers'] = array('label' => 'Customers', 'icon' => 'gift icon', 'location' => '#');
+        
+        $nav['transfers'] = array('label' => 'Transfers', 'icon' => 'gift icon', 'location' => '#');
+        
+        $nav['products'] = array('label' => 'Products', 'icon' => 'gift icon', 'location' => '#');
 
-        $nav['pages'] = array('label' => 'Pages', 'icon' => 'file outline icon', 'location' => '#');
+        $nav['invoices'] = array('label' => 'Invoices', 'icon' => 'file outline icon', 'location' => '#');
 
         $nav['news'] = array('label' => 'News', 'icon' => 'bell outline icon', 'location' => '#');
 
