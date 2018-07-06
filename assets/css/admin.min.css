@@ -533,3 +533,19 @@ padding-right: 0.95em;
     flex-direction: row;
     background-color: #fff!important;
 }
+
+h1.ui.header {
+    font-size: 2.55rem;
+}
+.ui.header {
+    border: none;
+    margin: calc(2rem - 0.14285714em) 0em 1rem;
+    padding: 0em 0em;
+    font-family: 'Open Sans','Helvetica Neue',Arial,Helvetica,sans-serif;
+    font-weight: 700;
+    line-height: 1.28571429em;
+    text-transform: none;
+    color: #565656;
+}
+
+
