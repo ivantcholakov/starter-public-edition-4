@@ -10,16 +10,16 @@
       
     </ul>
 
-	<ul class="list-style-none d-flex flex-wrap social list-inline col-sm-4">
+	<ul class="list-style-none d-flex flex-wrap social list-inline col-sm-2">
 <li class="mr-3 footer-terms__copy">{% autoescape false %}{% endautoescape %} </li>            
       </ul>		    
 
-   <ul class="list-style-none d-flex flex-wrap footer-terms__copy col-sm-4">
+   <ul class="list-style-none d-flex flex-wrap footer-terms__copy col-sm-6">
         <li class="mr-3 footer-terms__copy"><a data-ga-click="Footer, go to terms, text:terms" href="//elektropay.com/terms">Terms</a></li>
         <li class="mr-3 footer-terms__copy"><a data-ga-click="Footer, go to privacy, text:privacy" href="//elektropay.com/privacy">Privacy</a></li>
         <li class="mr-3 footer-terms__copy"><a href="https://developer.elektropay.com" data-ga-click="Footer, go to api, text:api">API</a></li>
 	<li class="mr-3 footer-terms__copy"><a href="https://status.elektropay.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
-        <li class="mr-3 footer-terms__copy"><a href="#" text:platform">Platform Version: {{ constant('PLATFORM_VERSION') }}</a></li>
+        <li class="mr-3 footer-terms__copy"><a href="#" text:platform"><small>Platform Version: {{ constant('PLATFORM_VERSION') }}</small></a></li>
      
 <a class="circular ui icon huge blue scroll top button" href="{{ constant('CURRENT_URI') }}#page-top" title="{{ lang('ui_go_to_top')|e('html_attr') }}" style="display: none;"><i class="chevron up icon"></i></a>
  </ul>
