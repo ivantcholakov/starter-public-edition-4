@@ -7,7 +7,16 @@
                 <div class="trial-account__row">
                     <div class="trial-account__col">
                         <h1 class="trial-account__h1">Welcome Back <span class="trial-account__span"></span></h1>
-                         <div class="field">
+                        
+                    </div>
+                </div>
+            </div>        
+          
+            
+  <div class="signup">
+  <div class="signup__box clearfix signup__box--active">
+{{ form_open('', 'method="post" class="signup__form" id="login_form"') }}
+     <div class="field">
                         {{ widget('feedback_messages_widget', {
                             'feedback_message_target': feedback_message_target,
                             'normal_message': normal_message,
@@ -17,15 +26,6 @@
                             'with_javascript': false
                         }) }}
                     </div>   
-                    </div>
-                </div>
-            </div>        
-          
-            
-  <div class="signup">
-  <div class="signup__box clearfix signup__box--active">
-{{ form_open('', 'method="post" class="signup__form" id="login_form"') }}
-    
 <div class="signup__inputs{% if validation_errors['username'] %} error{% endif %}">
 <div class="ui left icon">
 <input type="text" name="username" id="username" class="signup__input signup__input--prefix" value="{{ set_value('username') }}" placeholder=" {{ lang('ui_username')|e('html_attr') }}" autocomplete="off" maxlength="256">
