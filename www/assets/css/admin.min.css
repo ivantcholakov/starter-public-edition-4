@@ -39,7 +39,7 @@
    background-color: hsla(0,0%,100%,.9);
     height: auto;
     min-height: 100%;
-    min-width: 180px;
+    min-width: 220px;
 }
 
 @media only screen and (min-width: 992px){
