@@ -1,10 +1,20 @@
 <div class="ncontainer">
-<div class="signup-header signup-header signup-header--home">
-      <div class="container signup-header__container">
+
           
-          <h1 class="h1 signup-header__h1 signup-header__h1--three signup-header__h1--home dont-break-out">
-           Returning Users<span class="main-header__span"> Login</span>
-          </h1>
+ <div class="trial-account">         
+          
+ <div class="container">
+                <div class="trial-account__row">
+                    <div class="trial-account__col">
+                        <h1 class="trial-account__h1">Banking without <span class="trial-account__span">boundaries.</span></h1>
+                        <p class="trial-account__p trial-account__p--partner">Sign up only takes a few seconds, enter your details below and get the Monese app link sent instantly to your phone</p>
+
+                        
+                        
+                    </div>
+                </div>
+            </div>        
+          
             
   <div class="signup">
   <div class="signup__box clearfix signup__box--active">
@@ -21,14 +31,14 @@
                     </div>
     
 <div class="signup__inputs{% if validation_errors['username'] %} error{% endif %}">
-<div class="ui big left icon">
+<div class="ui left icon">
 <i class="user icon"></i>
 <input type="text" name="username" id="username" class="signup__input" value="{{ set_value('username') }}" placeholder="* {{ lang('ui_username')|e('html_attr') }}" autocomplete="off" maxlength="256">
 </div>
 </div>
 
 <div class="signup__inputs{% if validation_errors['password'] %} error{% endif %}">
-<div class="ui big left icon">
+<div class="ui left icon">
 <i class="lock icon"></i>
 <input type="password" name="password" id="password" class="signup__input" value="{{ set_value('password') }}" placeholder="* {{ lang('ui_password')|e('html_attr') }}" maxlength="256">
 </div>
@@ -43,5 +53,7 @@
   </div>
   
 
+                    </div>
+                </div>
 
 
