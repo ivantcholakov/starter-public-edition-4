@@ -34,3 +34,10 @@
     background-color: transparent!important;
     background-repeat: no-repeat;
 }
+
+#sidebar {
+   background-color: hsla(0,0%,100%,.9);
+    height: auto;
+    min-height: 100%;
+    min-width: 180px;
+}
