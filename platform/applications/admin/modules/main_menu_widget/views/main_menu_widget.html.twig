@@ -1,5 +1,10 @@
 <nav v-on:mouseleave="highlightActiveItem" v-bind:style="{ height: windowHeight + 'px' }" v-bind:class="{ 'navbar--active': isActive }" class="navbar">
-    <div class="navbar__container container">
+               <a class="elektro-logo" href="{{ site_url() }}">
+                <img src="https://res.cloudinary.com/lmj6rf6tz/image/upload/c_scale,e_grayscale,h_57,w_152/v1497453042/elektropay/assets/img/logo.png" alt="Elektropay icon white bg">
+                
+            </a> 
+            
+            <div class="navbar__container container">
         <div class="navbar__header">
             <button type="button" v-bind:class="{ 'ctablet--extended': isActive }" v-on:click="closeNavigation" class="ctablet">
                 <svg class="ctablet__arrow btn__arrow arrow">
@@ -11,10 +16,7 @@
                 <span class="hamburger__bar"></span>
                 <span class="hamburger__bar hamburger__bar--second"></span>
             </button>
-            <a class="elektro-logo" href="{{ site_url() }}">
-                <img src="https://res.cloudinary.com/lmj6rf6tz/image/upload/c_scale,e_grayscale,h_57,w_152/v1497453042/elektropay/assets/img/logo.png" alt="Elektropay icon white bg">
-                
-            </a>
+
             
                   
           <button type="button" v-bind:class="{ 'language--extended': isRegionActive, 'language--mextended': isActive  }" v-on:click="toggleRegion" class="language language--region">
