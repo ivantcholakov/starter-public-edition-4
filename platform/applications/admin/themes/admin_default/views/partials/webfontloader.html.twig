@@ -38,3 +38,26 @@ https://google-webfonts-helper.herokuapp.com
 
     //]]>
     </script>
+    
+<script>
+    //<![CDATA[
+
+    // Center the main menu on desktop
+      var $subnavbar = document.getElementsByClassName('subnavbar')[0];
+      var $items = document.getElementsByClassName('subnavbar__li');
+      var width = 0;
+
+      if (window.innerWidth > 991) {
+        for (i = 0; i < $items.length; i++) {
+          width += $items[i].clientWidth + 33;
+        }
+        $subnavbar.style.width = (width - 30) + 'px';
+      } else {
+        $subnavbar.style.width = '100%';
+      }
+
+      $subnavbar.classList.add('subnavbar--active');
+
+    //]]>
+    </script>
+   
