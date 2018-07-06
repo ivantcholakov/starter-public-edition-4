@@ -32,7 +32,7 @@
                 </svg>
             </button>
             
-       <button type="button" v-bind:class="{ 'login-now--active': showCta }" v-on:click="trackHeaderCTA" class="btn btn--elektro"> <a href="https://app.elektropay.com/user/login">Account</a> </button>
+       <button type="button" v-bind:class="{ 'login-now--active': showCta }" v-on:click="" class="btn btn--elektro"> {{ widget('account_widget') }} </button>
                    
                                
         </div>
@@ -122,7 +122,7 @@
                             </svg>
                         </span>
                         <span class="sublanguage__selection--title">Switch</span>
-                        <span class="sublanguage__selection--copy">{{ widget('theme_switcher_widget/index', 'navbar') }}</span>
+                        <span class="sublanguage__selection--copy">UK</span>
                         <svg class="arrow subnavbar__arrow subnavbar__arrow--region">
                             <use xlink:href="#icon-arrow" />
                         </svg>
@@ -135,8 +135,8 @@
                                 <use xlink:href="#icon-flagen" />
                             </svg>
                         </span>
-                        <span class="sublanguage__selection--title">Account</span>
-                        <span class="sublanguage__selection--copy"> {{ widget('account_widget') }}</span>
+                        <span class="sublanguage__selection--title">US</span>
+                        <span class="sublanguage__selection--copy">Accepting Payments from the US?</span>
                         <svg class="arrow subnavbar__arrow  subnavbar__arrow--region">
                             <use xlink:href="#icon-arrow" />
                         </svg>
