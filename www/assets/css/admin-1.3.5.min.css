@@ -8,6 +8,56 @@
   
 }
 
+.sub-header .page-header--btn {
+    display: block!important;
+    position: relative!important;
+    float: right!important;
+    padding: 5.5px 15px!important;
+    margin-right: 20px;
+    margin-top: 20.5px;
+    font-family: MarkWebPro-Book,Helvetica,sans-serif;
+    font-size: .9355em!important;
+    letter-spacing: .046875em;
+    -webkit-transition: margin-top .25s ease-in-out .5s;
+    transition: margin-top .25s ease-in-out .5s;
+}
+
+..page-header--btn {
+    display: block!important;
+    position: relative!important;
+    float: right!important;
+    padding: 5.5px 15px!important;
+    margin-right: 20px;
+    margin-top: 20.5px;
+    font-family: MarkWebPro-Book,Helvetica,sans-serif;
+    font-size: .9355em!important;
+    letter-spacing: .046875em;
+    -webkit-transition: margin-top .25s ease-in-out .5s;
+    transition: margin-top .25s ease-in-out .5s;
+}
+
+.page-header--btn {
+    display: block!important;
+    position: relative!important;
+    float: right!important;
+    padding: 5.5px 15px!important;
+    margin-right: 20px;
+    margin-top: 20.5px;
+    font-family: MarkWebPro-Book,Helvetica,sans-serif;
+    font-size: .9355em!important;
+    letter-spacing: .046875em;
+    -webkit-transition: margin-top .25s ease-in-out .5s;
+    transition: margin-top .25s ease-in-out .5s;
+}
+
+.btn--three:hover {
+    text-align: left;
+    float: none;
+    background-color: #8268bb;
+    border: 1px solid #8268bb;
+    color: #eee;
+    box-shadow: none;
+}
 
 @media screen and (min-width: 992px){
 .main-account {
@@ -558,8 +608,6 @@ h1.ui.header {
     box-shadow: -5px 10px 20px 0 rgba(0,0,0,.15)!important;
     border-bottom-right-radius: 25px;
     border-bottom-left-radius: 25px;
-    padding: 0 40px;
-    padding-top: 2.1875em;
 }
 
 
