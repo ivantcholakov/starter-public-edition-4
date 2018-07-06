@@ -638,9 +638,6 @@ h1.ui.header {
 }
 
 .ui.dropdown .menu {
-    box-shadow: -5px 10px 20px 0 rgba(0,0,0,.15)!important;
-    border-bottom-right-radius: 25px;
-    border-bottom-left-radius: 25px;
 }
 
 
