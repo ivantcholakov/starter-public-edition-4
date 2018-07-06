@@ -20,33 +20,21 @@
                         }) }}
                     </div>
     
-  <div class="signup__labels">
-  <div class="signup__carousel">
-  <label class="signup__label">Username</label>
-  </div>
-  </div> 
-  <a href="free-trial-account.html" class="signup__prefix">
-  <img src="https://static.monese.com/s/flags-5/flag_united_kingdom_17dp.png" class="signup__prefix--flag"> 
-  <svg class="arrow signup__arrow signup__prefix--arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow"></use></svg> 
-  <hr class="signup__prefix--hr"> 
-  <span class="signup__prefix--prefix">+44</span>
-  </a> 
-  
- <div class="signup__inputs{% if validation_errors['username'] %} error{% endif %}">
-<div class="ui big left icon input">
+<div class="signup__inputs{% if validation_errors['username'] %} error{% endif %}">
+<div class="ui big left icon">
 <i class="user icon"></i>
 <input type="text" name="username" id="username" class="signup__input" value="{{ set_value('username') }}" placeholder="* {{ lang('ui_username')|e('html_attr') }}" autocomplete="off" maxlength="256">
 </div>
 </div>
 
 <div class="signup__inputs{% if validation_errors['password'] %} error{% endif %}">
-<div class="ui big left icon input">
+<div class="ui big left icon">
 <i class="lock icon"></i>
 <input type="password" name="password" id="password" class="signup__input" value="{{ set_value('password') }}" placeholder="* {{ lang('ui_password')|e('html_attr') }}" maxlength="256">
 </div>
 </div>
   
- <button class="ui btn btn--two fluid big" type="submit"><i class="sign in icon"> {{ lang('ui_login') }}</i></button>
+ <button class="ui btn btn--two fluid big" type="submit"> {{ lang('ui_login') }} <i class="sign in icon"></i></button>
 
  
   </div>
