@@ -9,12 +9,23 @@
 }
 
 .sub-header .page-header--btn {
-    display: block!important;
+    display: inline-block!important;
     position: relative!important;
     float: right!important;
-    padding: 5.5px 15px!important;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;	
+    line-height: 1.428571;
+    padding: .75em 1.875em!important;
+    border-radius: 2.5em;
+    font-size: 1em;
     margin-right: 20px;
-    margin-top: 20.5px;
+    margin-top: 10px;
     font-family: MarkWebPro-Book,Helvetica,sans-serif;
     font-size: .9355em!important;
     letter-spacing: .046875em;
@@ -23,12 +34,23 @@
 }
 
 ..page-header--btn {
-    display: block!important;
+     display: inline-block!important;
     position: relative!important;
     float: right!important;
-    padding: 5.5px 15px!important;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;	
+    line-height: 1.428571;
+    padding: .75em 1.875em!important;
+    border-radius: 2.5em;
+    font-size: 1em;
     margin-right: 20px;
-    margin-top: 20.5px;
+    margin-top: 10px;
     font-family: MarkWebPro-Book,Helvetica,sans-serif;
     font-size: .9355em!important;
     letter-spacing: .046875em;
@@ -37,12 +59,23 @@
 }
 
 .page-header--btn {
-    display: block!important;
+     display: inline-block!important;
     position: relative!important;
     float: right!important;
-    padding: 5.5px 15px!important;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;	
+    line-height: 1.428571;
+    padding: .75em 1.875em!important;
+    border-radius: 2.5em;
+    font-size: 1em;
     margin-right: 20px;
-    margin-top: 20.5px;
+    margin-top: 10px;
     font-family: MarkWebPro-Book,Helvetica,sans-serif;
     font-size: .9355em!important;
     letter-spacing: .046875em;
@@ -50,11 +83,11 @@
     transition: margin-top .25s ease-in-out .5s;
 }
 
-.btn--three:hover {
+.btn--three:active, .btn--three:focus, .btn--three:hover { {
     text-align: left;
     float: none;
-    background-color: #8268bb;
-    border: 1px solid #8268bb;
+    background-color: #8268bb!important;
+    border: 1px solid #8268bb!important;
     color: #eee;
     box-shadow: none;
 }
