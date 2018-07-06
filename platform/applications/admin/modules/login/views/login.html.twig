@@ -7,16 +7,7 @@
                 <div class="trial-account__row">
                     <div class="trial-account__col">
                         <h1 class="trial-account__h1">Welcome Back <span class="trial-account__span"></span></h1>
-                           
-                    </div>
-                </div>
-            </div>        
-          
-            
-  <div class="signup">
-  <div class="signup__box clearfix signup__box--active">
-{{ form_open('', 'method="post" class="signup__form" id="login_form"') }}
-  <div class="field">
+                         <div class="field">
                         {{ widget('feedback_messages_widget', {
                             'feedback_message_target': feedback_message_target,
                             'normal_message': normal_message,
@@ -25,7 +16,15 @@
                             'error_message': error_message,
                             'with_javascript': false
                         }) }}
+                    </div>   
                     </div>
+                </div>
+            </div>        
+          
+            
+  <div class="signup">
+  <div class="signup__box clearfix signup__box--active">
+{{ form_open('', 'method="post" class="signup__form" id="login_form"') }}
     
 <div class="signup__inputs{% if validation_errors['username'] %} error{% endif %}">
 <div class="ui left icon">
@@ -42,7 +41,7 @@
 
 </div>
 
- <button class="login__btn btn btn--one" type="submit"> {{ lang('ui_login') }} <i class="sign in icon"></i></button>
+ <button class="login__btn btn btn--two" type="submit"> {{ lang('ui_login') }} <i class="sign in icon"></i></button>
 
  
   </div>
