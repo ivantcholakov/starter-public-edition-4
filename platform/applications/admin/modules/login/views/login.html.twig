@@ -30,17 +30,20 @@
 <div class="signup__inputs{% if validation_errors['username'] %} error{% endif %}">
 <div class="ui left icon">
 <i class="user icon"></i>
-<input type="text" name="username" id="username" class="signup__input" value="{{ set_value('username') }}" placeholder="* {{ lang('ui_username')|e('html_attr') }}" autocomplete="off" maxlength="256">
+<input type="text" name="username" id="username" class="signup__input signup__input--prefix" value="{{ set_value('username') }}" placeholder=" {{ lang('ui_username')|e('html_attr') }}" autocomplete="off" maxlength="256">
 </div>
 </div>
+<div class="signup__progress"><div class="signup__progress--bar signup__progress--one"></div></div>
 
 <div class="signup__inputs{% if validation_errors['password'] %} error{% endif %}">
 <div class="ui left icon">
 <i class="lock icon"></i>
-<input type="password" name="password" id="password" class="signup__input" value="{{ set_value('password') }}" placeholder="* {{ lang('ui_password')|e('html_attr') }}" maxlength="256">
+<input type="password" name="password" id="password" class="signup__input signup__input--prefix" value="{{ set_value('password') }}" placeholder=" {{ lang('ui_password')|e('html_attr') }}" maxlength="256">
 </div>
 </div>
-  
+ 
+<div class="signup__progress"><div class="signup__progress--bar signup__progress--one"></div></div>
+
  <button class="ui btn btn--two fluid big" type="submit"> {{ lang('ui_login') }} <i class="sign in icon"></i></button>
 
  
