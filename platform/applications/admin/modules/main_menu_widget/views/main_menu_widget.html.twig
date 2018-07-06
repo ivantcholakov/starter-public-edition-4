@@ -18,7 +18,13 @@
             </button>
 
             
-                  
+           <div class="right menu">
+
+                    {{ widget('theme_switcher_widget/index', 'navbar') }}
+                    {{ widget('account_widget') }}
+
+                </div>
+                
           <button type="button" v-bind:class="{ 'language--extended': isRegionActive, 'language--mextended': isActive  }" v-on:click="toggleRegion" class="language language--region">
                 <span class="region__flag">
                     <svg class="language__flag language__flag--region language__flag--pin">
@@ -36,7 +42,7 @@
             
        <button type="button" v-bind:class="{ 'login-now--active': showCta }" v-on:click="trackHeaderCTA" class="btn btn--elektro login-now"> <a href="https://app.elektropay.com/user/login">Dashboard</a> </button>
   
-      <a v-on:click="trackHeaderCTA" v-bind:class="{ 'sign-up-free--active': showCta }" class="subnavbar__item" href="#">Help</a>                   
+      <a v-on:click="trackHeaderCTA" v-bind:class="{ 'sign-up-free--active': showCta }" class="" href="#">Help</a>                   
                                
         </div>
         
