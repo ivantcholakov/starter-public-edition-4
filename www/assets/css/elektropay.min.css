@@ -34,30 +34,7 @@
     transition: margin-top .25s ease-in-out .5s;
 }
 
-.page-header--btn {
-     display: inline-block!important;
-    position: relative!important;
-    float: right!important;
-    margin-bottom: 0;
-    font-weight: 400;
-    text-align: center;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    background-image: none;	
-    line-height: 1.428571;
-    padding: .75em 1.875em!important;
-    border-radius: 2.5em;
-    font-size: 1em;
-    margin-right: 20px;
-    margin-top: 10px;
-    font-family: MarkWebPro-Book,Helvetica,sans-serif;
-    font-size: .9355em!important;
-    letter-spacing: .046875em;
-    -webkit-transition: margin-top .25s ease-in-out .5s;
-    transition: margin-top .25s ease-in-out .5s;
-}
+
 
 .btn--three:active, .btn--three:focus, .btn--three:hover { {
     text-align: left;
@@ -505,7 +482,7 @@ body {
 }
 
 	
-.list-style-none {
+#footer .list-style-none {
     list-style: none !important;
 }
 	
@@ -513,7 +490,7 @@ body {
     flex-wrap: wrap !important;
 }
 	
-.mr-3 {
+#footer .mr-3 {
 padding-left: 0.95em;
 padding-right: 0.95em;
 }
@@ -522,13 +499,13 @@ padding-right: 0.95em;
     color: #c6cbd1;
 }
 	
-.footer-terms {
+#footer .footer-terms {
     padding-top: 1.95em!important;
     padding-bottom: 0.95em!important;
     background-color: #ffffff!important;
 }
 	
-.footer-terms__copy {
+#footer .footer-terms__copy {
     font-size: .875em!important;
     line-height: 4.0625em!important;
     color: #8f86a2;
