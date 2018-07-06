@@ -16,14 +16,6 @@
                 <span class="hamburger__bar"></span>
                 <span class="hamburger__bar hamburger__bar--second"></span>
             </button>
-
-            
-           <div class="right menu">
-
-                    {{ widget('theme_switcher_widget/index', 'navbar') }}
-                    {{ widget('account_widget') }}
-
-                </div>
                 
           <button type="button" v-bind:class="{ 'language--extended': isRegionActive, 'language--mextended': isActive  }" v-on:click="toggleRegion" class="language language--region">
                 <span class="region__flag">
@@ -32,17 +24,16 @@
                     </svg>
                 </span>
                 <span class="region__text">
-                                            UK
-               <span class="region__span">(EN)</span>
+                                      My
+               <span class="region__span">Account</span>
                                     </span>
                 <svg v-bind:class="{ 'language__arrow--active': isRegionActive }" class="language__arrow btn__arrow arrow language__arrow--region">
                     <use xlink:href="#icon-arrow" />
                 </svg>
             </button>
             
-       <button type="button" v-bind:class="{ 'login-now--active': showCta }" v-on:click="trackHeaderCTA" class="btn btn--elektro login-now"> <a href="https://app.elektropay.com/user/login">Dashboard</a> </button>
-  
-      <a v-on:click="trackHeaderCTA" v-bind:class="{ 'sign-up-free--active': showCta }" class="" href="#">Help</a>                   
+       <button type="button" v-bind:class="{ 'login-now--active': showCta }" v-on:click="trackHeaderCTA" class="btn btn--elektro"> <a href="https://app.elektropay.com/user/login">Account</a> </button>
+                   
                                
         </div>
         
@@ -130,8 +121,8 @@
                                 <use xlink:href="#icon-flageu" />
                             </svg>
                         </span>
-                        <span class="sublanguage__selection--title">Eurozone</span>
-                        <span class="sublanguage__selection--copy">Banking in The EU?</span>
+                        <span class="sublanguage__selection--title">Switch</span>
+                        <span class="sublanguage__selection--copy">{{ widget('theme_switcher_widget/index', 'navbar') }}</span>
                         <svg class="arrow subnavbar__arrow subnavbar__arrow--region">
                             <use xlink:href="#icon-arrow" />
                         </svg>
@@ -144,8 +135,8 @@
                                 <use xlink:href="#icon-flagen" />
                             </svg>
                         </span>
-                        <span class="sublanguage__selection--title">UK</span>
-                        <span class="sublanguage__selection--copy">Banking in The UK?</span>
+                        <span class="sublanguage__selection--title">Account</span>
+                        <span class="sublanguage__selection--copy"> {{ widget('account_widget') }}</span>
                         <svg class="arrow subnavbar__arrow  subnavbar__arrow--region">
                             <use xlink:href="#icon-arrow" />
                         </svg>
