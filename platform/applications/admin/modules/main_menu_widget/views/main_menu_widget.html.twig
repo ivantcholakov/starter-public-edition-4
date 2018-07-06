@@ -1,3 +1,738 @@
+<nav v-on:mouseleave="highlightActiveItem" v-bind:style="{ height: windowHeight + 'px' }" v-bind:class="{ 'navbar--active': isActive }" class="navbar">
+    <div class="navbar__container container">
+        <div class="navbar__header">
+            <button type="button" v-bind:class="{ 'ctablet--extended': isActive }" v-on:click="closeNavigation" class="ctablet">
+                <svg class="ctablet__arrow btn__arrow arrow">
+                    <use xlink:href="#icon-arrow" />
+                </svg>
+            </button>
+            <button type="button" v-bind:class="{ 'hamburger--extended': isActive }" v-on:click="toggle" class="hamburger">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="hamburger__bar"></span>
+                <span class="hamburger__bar hamburger__bar--second"></span>
+            </button>
+            <a class="elektro-logo" href="/">
+                <img src="https://res.cloudinary.com/lmj6rf6tz/image/upload/c_scale,e_grayscale,h_57,w_152/v1497453042/elektropay/assets/img/logo.png" alt="Elektropay icon white bg">
+                
+            </a>
+            
+                  
+          <button type="button" v-bind:class="{ 'language--extended': isRegionActive, 'language--mextended': isActive  }" v-on:click="toggleRegion" class="language language--region">
+                <span class="region__flag">
+                    <svg class="language__flag language__flag--region language__flag--pin">
+                        <use xlink:href="#icon-pin" />
+                    </svg>
+                </span>
+                <span class="region__text">
+                                            UK
+               <span class="region__span">(EN)</span>
+                                    </span>
+                <svg v-bind:class="{ 'language__arrow--active': isRegionActive }" class="language__arrow btn__arrow arrow language__arrow--region">
+                    <use xlink:href="#icon-arrow" />
+                </svg>
+            </button>
+            
+       <button type="button" v-bind:class="{ 'login-now--active': showCta }" v-on:click="trackHeaderCTA" class="btn btn--ghost login-now"> <a href="https://app.elektropay.com/user/login">Dashboard</a> </button>
+  
+      <a v-on:click="trackHeaderCTA" v-bind:class="{ 'sign-up-free--active': showCta }" class="btn btn--three sign-up-free" href="/free-trial-account.html">Sign up</a>                   
+                               
+        </div>
+        
+        <div v-bind:style="{ height: regionHeight + 'px' }" class="sublanguage sublanguage--header sublanguage--region" v-bind:class="{ 'sublanguage--extended': isRegionActive }">
+            <div class="sublanguage__scroll">
+
+                <div class="sublanguage--language">
+                    <h2 class="sublanguage__h2 sublanguage__h2--region">Select a language</h2>
+
+                    <ul class="sublanguage__ul sublanguage__ul--region">
+                        <li class="sublanguage__li">
+                            <a class="sublanguage__a" href="/gb/bg/contact?l=c">
+                                <svg class="language__flag language__flag--left">
+                                    <use xlink:href="#icon-flagbg" />
+                                </svg>
+                                български
+                            </a>
+                        </li>
+                        <li class="sublanguage__li">
+                            <a class="sublanguage__a" href="https://monese.com/gb/de/contact?l=c">
+                                <svg class="language__flag language__flag--left">
+                                    <use xlink:href="#icon-flagde" />
+                                </svg>
+                                Deutsch
+                            </a>
+                        </li>
+                        <li class="sublanguage__li">
+
+                                                                                                                    
+                            <a class="sublanguage__a" href="https://monese.com/contact?l=c">
+                                <svg class="language__flag language__flag--left">
+                                    <use xlink:href="#icon-flagen" />
+                                </svg>
+                                English
+                            </a>
+                        </li>
+                        <li class="sublanguage__li">
+                            <a class="sublanguage__a" href="https://monese.com/gb/es/contact?l=c">
+                                <svg class="language__flag language__flag--left">
+                                    <use xlink:href="#icon-flages" />
+                                </svg>
+                                Español
+                            </a>
+                        </li>
+                        <li class="sublanguage__li">
+                            <a class="sublanguage__a" href="https://monese.com/gb/fr/contact?l=c">
+                                <svg class="language__flag language__flag--left">
+                                    <use xlink:href="#icon-flagfr" />
+                                </svg>
+                                Français
+                            </a>
+                        </li>
+                        <li class="sublanguage__li">
+                            <a class="sublanguage__a" href="https://monese.com/gb/it/contact?l=c">
+                                <svg class="language__flag language__flag--left">
+                                    <use xlink:href="#icon-flagit" />
+                                </svg>
+                                Italiano
+                            </a>
+                        </li>
+                        <li class="sublanguage__li">
+                            <a class="sublanguage__a" href="https://monese.com/gb/pt_br/contact?l=c">
+                                <svg class="language__flag language__flag--left">
+                                    <use xlink:href="#icon-flagpt_br" />
+                                </svg>
+                                Português
+                            </a>
+                        </li>
+                        <li class="sublanguage__li">
+                            <a class="sublanguage__a" href="https://monese.com/gb/ro/contact?l=c">
+                                <svg class="language__flag language__flag--left">
+                                    <use xlink:href="#icon-flagro" />
+                                </svg>
+                                Română
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="sublanguage--region">
+
+                                                                                    
+                    <a class="sublanguage__selection" href="https://elektropay.com/eu/contact">
+                        <span class="sublanguage__selection--flag">
+                            <svg class="language__flag language__flag--left">
+                                <use xlink:href="#icon-flageu" />
+                            </svg>
+                        </span>
+                        <span class="sublanguage__selection--title">Eurozone</span>
+                        <span class="sublanguage__selection--copy">Banking in The EU?</span>
+                        <svg class="arrow subnavbar__arrow subnavbar__arrow--region">
+                            <use xlink:href="#icon-arrow" />
+                        </svg>
+                    </a>
+
+                                                                                    
+                    <a v-on:click="switchRegion('gb');" class="sublanguage__selection sublanguage__selection--last sublanguage__selection--active" href="/contact.html">
+                        <span class="sublanguage__selection--flag">
+                            <svg class="language__flag language__flag--left">
+                                <use xlink:href="#icon-flagen" />
+                            </svg>
+                        </span>
+                        <span class="sublanguage__selection--title">UK</span>
+                        <span class="sublanguage__selection--copy">Banking in The UK?</span>
+                        <svg class="arrow subnavbar__arrow  subnavbar__arrow--region">
+                            <use xlink:href="#icon-arrow" />
+                        </svg>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <div v-bind:class="{ 'subnavbar--extended': isActive, 'subnavbar--over': isOverActive }" class="subnavbar">
+            <ul v-bind:class="{ 'subnavbar__nav--dropdown': dropdownIsActive }" class="subnavbar__ul">
+                <li v-bind:class="{ 'subnavbar__li--active': isOverFeaturesActive }" class="subnavbar__li">
+                    <a v-bind:class="{ 'subnavbar__item--tactive': isOverFeaturesActive }" v-on:click="openOverMenus('features', $event)" v-on:mouseover="mouseOverHighlight" class="subnavbar__item " href="/features.html">
+                        Platform
+                        <svg v-bind:class="{ 'subnavbar__arrow--tactive': isOverFeaturesActive }" class="arrow subnavbar__arrow">
+                            <use xlink:href="#icon-arrow" />
+                        </svg>
+                    </a>
+                </li>
+
+                <li class="subnavbar__li">
+                    <a v-on:mouseover="mouseOverHighlight" class="subnavbar__item " href="/pricing.html">
+                        Pricing
+                        <svg class="arrow subnavbar__arrow subnavbar__arrow--hidedt">
+                            <use xlink:href="#icon-arrow" />
+                        </svg>
+                    </a>
+                </li>  
+                
+                 <li class="subnavbar__li">
+                    <a v-on:mouseover="mouseOverHighlight" class="subnavbar__item " href="https://developers.elektropay.com">
+                       Developers
+                        <svg class="arrow subnavbar__arrow subnavbar__arrow--hidedt">
+                            <use xlink:href="#icon-arrow" />
+                        </svg>
+                    </a>
+                </li> 
+                
+              <li v-bind:class="{ 'subnavbar__li--active': isOverCompanyActive }" class="subnavbar__li">
+                    <a v-bind:class="{ 'subnavbar__item--tactive': isOverCompanyActive }" v-on:click="openOverMenus('company', $event)" v-on:mouseover="mouseOverHighlight" class="subnavbar__item " href="/about.html">
+                        Company
+                        <svg v-bind:class="{ 'subnavbar__arrow--tactive': isOverCompanyActive }" class="arrow subnavbar__arrow">
+                            <use xlink:href="#icon-arrow" />
+                        </svg>
+                    </a>
+                </li>
+                
+       <li v-bind:class="{ 'subnavbar__li--active': isOverHelpActive }" class="subnavbar__li">
+                    <a v-bind:class="{ 'subnavbar__item--tactive': isOverHelpActive }" v-on:click="openOverMenus('help', $event)" v-on:mouseover="mouseOverHighlight" class="subnavbar__item subnavbar__item--active" href="https://support.monese.com/hc/en-gb">
+                       Resources
+                        <svg v-bind:class="{ 'subnavbar__arrow--tactive': isOverHelpActive }" class="arrow subnavbar__arrow">
+                            <use xlink:href="#icon-arrow" />
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="subnavbar__li--cta">
+                <a class="btn subnavbar__btn btn--three" href="/free-trial-account.html">Sign up now
+                    <svg class="btn__arrow arrow">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </div>
+
+            <div class="sublanguage__scroll">
+
+                <hr class="sublanguage__hr" />
+                <div class="sublanguage--language">
+                    <h2 class="sublanguage__h2 sublanguage__h2--region">Select a language</h2>
+
+                    <ul class="sublanguage__ul sublanguage__ul--region">
+                        <li class="sublanguage__li">
+                            <a class="sublanguage__a" href="/gb/bg/contact.html">
+                                <svg class="language__flag language__flag--left">
+                                    <use xlink:href="#icon-flagbg" />
+                                </svg>
+                                български
+                            </a>
+                        </li>
+                        <li class="sublanguage__li">
+                            <a class="sublanguage__a" href="/gb/de/contact.html">
+                                <svg class="language__flag language__flag--left">
+                                    <use xlink:href="#icon-flagde" />
+                                </svg>
+                                Deutsch
+                            </a>
+                        </li>
+                        <li class="sublanguage__li">
+
+                                                                                                                    
+                            <a class="sublanguage__a" href="/contact.html">
+                                <svg class="language__flag language__flag--left">
+                                    <use xlink:href="#icon-flagen" />
+                                </svg>
+                                English
+                            </a>
+                        </li>
+                        <li class="sublanguage__li">
+                            <a class="sublanguage__a" href="/gb/es/contact.html">
+                                <svg class="language__flag language__flag--left">
+                                    <use xlink:href="#icon-flages" />
+                                </svg>
+                                Español
+                            </a>
+                        </li>
+                        <li class="sublanguage__li">
+                            <a class="sublanguage__a" href="/gb/fr/contact.html">
+                                <svg class="language__flag language__flag--left">
+                                    <use xlink:href="#icon-flagfr" />
+                                </svg>
+                                Français
+                            </a>
+                        </li>
+                        <li class="sublanguage__li">
+                            <a class="sublanguage__a" href="/gb/it/contact.html">
+                                <svg class="language__flag language__flag--left">
+                                    <use xlink:href="#icon-flagit" />
+                                </svg>
+                                Italiano
+                            </a>
+                        </li>
+                        <li class="sublanguage__li">
+                            <a class="sublanguage__a" href="/gb/pt_br/contact.html">
+                                <svg class="language__flag language__flag--left">
+                                    <use xlink:href="#icon-flagpt_br" />
+                                </svg>
+                                Português
+                            </a>
+                        </li>
+                        <li class="sublanguage__li">
+                            <a class="sublanguage__a" href="/gb/ro/contact.html">
+                                <svg class="language__flag language__flag--left">
+                                    <use xlink:href="#icon-flagro" />
+                                </svg>
+                                Română
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <hr class="sublanguage__hr sublanguage__hr--hidetab" />
+
+                <div class="sublanguage--region">
+
+                                                                                    
+                    <a class="sublanguage__selection" href="/eu/contact">
+                        <span class="sublanguage__selection--flag">
+                            <svg class="language__flag language__flag--left">
+                                <use xlink:href="#icon-flageu" />
+                            </svg>
+                        </span>
+                        <span class="sublanguage__selection--title">Eurozone</span>
+                        <span class="sublanguage__selection--copy">Banking in The EU?</span>
+                        <svg class="arrow subnavbar__arrow">
+                            <use xlink:href="#icon-arrow" />
+                        </svg>
+                    </a>
+
+                                                                                    
+                    <a v-on:click="switchRegion('gb');" class="sublanguage__selection sublanguage__selection--last sublanguage__selection--active" href="/contact.html">
+                        <span class="sublanguage__selection--flag">
+                            <svg class="language__flag language__flag--left">
+                                <use xlink:href="#icon-flagen" />
+                            </svg>
+                        </span>
+                        <span class="sublanguage__selection--title">UK</span>
+                        <span class="sublanguage__selection--copy">Banking in The UK?</span>
+                        <svg class="arrow subnavbar__arrow">
+                            <use xlink:href="#icon-arrow" />
+                        </svg>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+<div v-bind:class="{ 'overmenu--active': isOverTransferActive }" class="overmenu overmenu--transfers">
+    <a v-on:click="closeOverMenus" href="contact.html#" class="overmenu__header">
+        <svg class="arrow overmenu__arrow">
+            <use xlink:href="#icon-arrow" />
+        </svg>
+        <h2 class="overmenu__h2">Transfers</h2>
+    </a>
+    <div class="overmenu__list overmenu__list--transfers">
+        <div class="overmenu__col">
+                    <h2 class="sublanguage__h2">Countries</h2>
+
+            <ul class="sublanguage__ul overmenu__ul--transfers">
+                <li class="sublanguage__li">
+                    <a class="sublanguage__a" href="international-money-transfer/transfer-money-to-bulgaria.html">
+                        <img class="language__flag language__flag--left" class="search-country__flag" src="https://static.monese.com/s/flags-2/flag_bulgaria_17dp.svg">
+                        Bulgaria
+                    </a>
+                </li>
+                <li class="sublanguage__li">
+                    <a class="sublanguage__a" href="international-money-transfer/transfer-money-to-hungary.html">
+                        <img class="language__flag language__flag--left" class="search-country__flag" src="https://static.monese.com/s/flags-2/flag_hungary_17dp.svg">
+                        Hungary
+                    </a>
+                </li>
+                <li class="sublanguage__li">
+                    <a class="sublanguage__a" href="international-money-transfer/transfer-money-to-italy.html">
+                        <img class="language__flag language__flag--left" class="search-country__flag" src="https://static.monese.com/s/flags-2/flag_italy_17dp.svg">
+                        Italy
+                    </a>
+                </li>
+                <li class="sublanguage__li">
+                    <a class="sublanguage__a" href="international-money-transfer/transfer-money-to-romania.html">
+                        <img class="language__flag language__flag--left" class="search-country__flag" src="https://static.monese.com/s/flags-2/flag_romania_17dp.svg">
+                        Romania
+                    </a>
+                </li>
+                <li class="sublanguage__li">
+                    <a class="sublanguage__a" href="international-money-transfer/transfer-money-to-poland.html">
+                        <img class="language__flag language__flag--left" class="search-country__flag" src="https://static.monese.com/s/flags-2/flag_poland_17dp.svg">
+                        Poland
+                    </a>
+                </li>
+                <li class="sublanguage__li">
+                    <a class="sublanguage__a" href="international-money-transfer/transfer-money-to-spain.html">
+                        <img class="language__flag language__flag--left" class="search-country__flag" src="https://static.monese.com/s/flags-2/flag_spain_17dp.svg">
+                        Spain
+                    </a>
+                </li>
+            </ul>
+
+            <a class="subnavbar__item overmenu__item overmenu__item--features"  href="international-money-transfer.html#countries">
+                <svg class="overmenu__svg">
+                    <use xlink:href="#icon-nworld" />
+                </svg>
+                <p class="overmenu__title">All countries</p>
+                <p class="overmenu__sub">Find a country</p>
+                <svg class="arrow overmenu__arr subnavbar__arrow">
+                    <use xlink:href="#icon-arrow" />
+                </svg>
+            </a>
+                </div>
+
+        <div class="overmenu__col overmenu__col--last">
+        <h2 class="sublanguage__h2">Currencies</h2>
+
+        
+            <ul class="sublanguage__ul overmenu__ul--transfers">
+                <li class="sublanguage__li">
+                    <a class="sublanguage__a" href="/international-money-transfer/gbp-to-eur.html">
+                        <span class="overmenu__span--currency">&#8364;</span> EUR
+                    </a>
+                </li>
+                <li class="sublanguage__li">
+                    <a class="sublanguage__a" href="/international-money-transfer/gbp-to-usd.html">
+                        <span class="overmenu__span--currency">&#36;</span> USD
+                    </a>
+                </li>
+                <li class="sublanguage__li">
+                    <a class="sublanguage__a" href="/international-money-transfer/gbp-to-bgn.html">
+                        <span class="overmenu__span--currency">&#1083;&#1074;</span> BGN
+                    </a>
+                </li>
+                <li class="sublanguage__li">
+                    <a class="sublanguage__a" href="/international-money-transfer/gbp-to-ron.html">
+                        <span class="overmenu__span--currency">&#108;&#101;&#105;</span> RON
+                    </a>
+                </li>
+                <li class="sublanguage__li">
+                    <a class="sublanguage__a" href="/international-money-transfer/gbp-to-pln.html">
+                        <span class="overmenu__span--currency">&#122;&#322;</span> PLN
+                    </a>
+                </li>
+            </ul>
+
+                </div>
+
+        <a class="subnavbar__item overmenu__item overmenu__item--features"  href="international-money-transfer.html#currencies">
+            <svg class="overmenu__svg">
+                <use xlink:href="#icon-ncurrencies" />
+            </svg>
+            <p class="overmenu__title">All currencies</p>
+            <p class="overmenu__sub">Find a currency</p>
+            <svg class="arrow overmenu__arr subnavbar__arrow">
+                <use xlink:href="#icon-arrow" />
+            </svg>
+        </a>
+
+    </div>
+</div>
+    
+<div v-bind:class="{ 'overmenu--active': isOverFeaturesActive }" class="overmenu overmenu--features">
+    <a v-on:click="closeOverMenus" href="/features.html#" class="overmenu__header">
+        <svg class="arrow overmenu__arrow">
+            <use xlink:href="#icon-arrow" />
+        </svg>
+        <h2 class="overmenu__h2">Features</h2>
+    </a>
+    <div class="overmenu__list overmenu__list--features">
+        <ul class="overmenu__ul">
+            <li>
+                <a class="subnavbar__item overmenu__item overmenu__item--features"  href="/features.html">
+                    <svg class="overmenu__svg">
+                        <use xlink:href="#icon-naccount" />
+                    </svg>
+                    <p class="overmenu__title">Features</p>
+                    <p class="overmenu__sub">Manage your payments</p>
+                    <svg class="arrow overmenu__arr subnavbar__arrow">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="subnavbar__item overmenu__item overmenu__item--features"  href="/card-types.html">
+                    <svg class="overmenu__svg">
+                        <use xlink:href="#icon-ncard" />
+                    </svg>
+                    <p class="overmenu__title">Card Processing</p>
+                    <p class="overmenu__sub">Accept All Types</p>
+                    <svg class="arrow overmenu__arr subnavbar__arrow">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="subnavbar__item overmenu__item overmenu__item--features"  href="/invoicing.html">
+                    <svg class="overmenu__svg">
+                        <use xlink:href="#icon-nbudgeting" />
+                    </svg>
+                    <p class="overmenu__title">Invoicing</p>
+                    <p class="overmenu__sub">Save money and time</p>
+                    <svg class="arrow overmenu__arr subnavbar__arrow">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="subnavbar__item overmenu__item overmenu__item--features"  href="/devices.html">
+                    <svg class="overmenu__svg">
+                        <use xlink:href="#icon-ndeposits" />
+                    </svg>
+                    <p class="overmenu__title">Devices</p>
+                    <p class="overmenu__sub">Support EMV </p>
+                    <svg class="arrow overmenu__arr subnavbar__arrow">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="subnavbar__item overmenu__item overmenu__item--features"  href="/payments.html">
+                    <svg class="overmenu__svg">
+                        <use xlink:href="#icon-npayments" />
+                    </svg>
+                    <p class="overmenu__title">Payments</p>
+                    <p class="overmenu__sub">Bank transfers</p>
+                    <svg class="arrow overmenu__arr subnavbar__arrow">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="subnavbar__item overmenu__item overmenu__item--features"  href="/security.html">
+                    <svg class="overmenu__svg">
+                        <use xlink:href="#icon-nsecurity" />
+                    </svg>
+                    <p class="overmenu__title">Security</p>
+                    <p class="overmenu__sub">Strong Cryptography</p>
+                    <svg class="arrow overmenu__arr subnavbar__arrow">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>    
+    
+<div v-bind:class="{ 'overmenu--active': isOverCompanyActive }" class="overmenu overmenu--company">
+    <a v-on:click="closeOverMenus" href="/contact.html#" class="overmenu__header">
+        <svg class="arrow overmenu__arrow">
+            <use xlink:href="#icon-arrow" />
+        </svg>
+        <h2 class="overmenu__h2">Company</h2>
+    </a>
+    <div class="overmenu__list">
+        <ul class="overmenu__ul">
+
+            <li>
+                <a class="subnavbar__item overmenu__item"  href="/about.html">
+                    About
+                    <svg class="arrow subnavbar__arrow">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="subnavbar__item overmenu__item"  href="https://elektropay.statuspage.io">
+                    Service Status
+                    <svg class="arrow subnavbar__arrow">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="subnavbar__item overmenu__item"  href="https://elektropay.workable.com">
+                    Careers
+                    <svg class="arrow subnavbar__arrow">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+                        <li>
+                <a class="subnavbar__item overmenu__item"  href="/blog/">
+                    Blog
+                    <svg class="arrow subnavbar__arrow">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+                        <li>
+                <a class="subnavbar__item overmenu__item"  href="/media.html">
+                    Media
+                    <svg class="arrow subnavbar__arrow">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="subnavbar__item overmenu__item"  href="/terms.html">
+                    Terms
+                    <svg class="arrow subnavbar__arrow">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="subnavbar__item overmenu__item"  href="/privacy.html">
+                     Privacy
+                    <svg class="arrow subnavbar__arrow">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="subnavbar__item overmenu__item"  href="/cookies.html">
+                    Cookies
+                    <svg class="arrow subnavbar__arrow">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>       
+<div v-bind:class="{ 'overmenu--active': isOverHelpActive }" class="overmenu overmenu--help">
+    <a v-on:click="closeOverMenus" href="/contact.html#" class="overmenu__header">
+        <svg class="arrow overmenu__arrow">
+            <use xlink:href="#icon-arrow" />
+        </svg>
+        <h2 class="overmenu__h2">Resources</h2>
+    </a>
+    <div class="overmenu__list overmenu__list--help">
+        <ul class="overmenu__ul overmenu__ul--help">
+            <li>
+                <a class="subnavbar__item overmenu__item overmenu__item--help"  href="https://support.elektropay.com/hc/en-gb">
+                    FAQs
+                    <svg class="arrow subnavbar__arrow subnavbar__arrow--help">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="subnavbar__item overmenu__item overmenu__item--help"  href="https://support.elektropay.com/hc/en-gb/categories/115000387109-Monese">
+                    General
+                    <svg class="arrow subnavbar__arrow subnavbar__arrow--help">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="subnavbar__item overmenu__item overmenu__item--help"  href="https://support.elektropay.com/hc/en-gb/categories/115000387129-Account">
+                    Accounts
+                    <svg class="arrow subnavbar__arrow subnavbar__arrow--help">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="subnavbar__item overmenu__item overmenu__item--help"  href="https://support.monese.com/hc/en-gb/categories/115000387149-Deposits">
+                    Deposits
+                    <svg class="arrow subnavbar__arrow subnavbar__arrow--help">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="subnavbar__item overmenu__item overmenu__item--help"  href="https://support.monese.com/hc/en-gb/categories/115000394165-Payments">
+                    Payments
+                    <svg class="arrow subnavbar__arrow subnavbar__arrow--help">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="subnavbar__item overmenu__item overmenu__item--help"  href="https://support.monese.com/hc/en-gb/categories/115000394185-Card">
+                    Card
+                    <svg class="arrow subnavbar__arrow subnavbar__arrow--help">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="subnavbar__item overmenu__item overmenu__item--help"  href="https://support.monese.com/hc/en-gb/categories/115000387169-Pricing">
+                    Pricing
+                    <svg class="arrow subnavbar__arrow subnavbar__arrow--help">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="subnavbar__item overmenu__item overmenu__item--help"  href="https://support.monese.com/hc/en-gb/categories/115000387189-Security">
+                Security
+                    <svg class="arrow subnavbar__arrow subnavbar__arrow--help">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>    
+
+<div v-bind:class="{ 'overmenu--active': isOverCustomersActive }" class="overmenu overmenu--customers">
+    <a v-on:click="closeOverMenus" href="/contact.html#" class="overmenu__header">
+        <svg class="arrow overmenu__arrow">
+            <use xlink:href="#icon-arrow" />
+        </svg>
+        <h2 class="overmenu__h2">Customers</h2>
+    </a>
+    <div class="overmenu__list">
+        <ul class="overmenu__ul">
+            <li>
+                <a class="subnavbar__item overmenu__item"  href="/customers.html">
+                    All customers
+                    <svg class="arrow subnavbar__arrow">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="subnavbar__item overmenu__item"  href="/customers/expats.html">
+                    Expats
+                    <svg class="arrow subnavbar__arrow">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="subnavbar__item overmenu__item"  href="/customers/freelancers.html">
+                    Freelancers
+                    <svg class="arrow subnavbar__arrow">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="subnavbar__item overmenu__item"  href="/customers/foreign-nationals.html">
+                    Foreign Nationals
+                    <svg class="arrow subnavbar__arrow">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="subnavbar__item overmenu__item"  href="/customers/basic-account.html">
+                    Basic Account
+                    <svg class="arrow subnavbar__arrow">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a class="subnavbar__item overmenu__item"  href="/customers/no-proof-of-address.html">
+                    No proof of address
+                    <svg class="arrow subnavbar__arrow">
+                        <use xlink:href="#icon-arrow" />
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>    
+    <div v-bind:style="{ left: highlightLeft + 'px', width: highlightWidth + 'px' }" v-bind:class="{ 'navbar__highlight--active': highlightActive }" class="navbar__highlight"></div>
+</nav>
+
+
+
 
         <nav id="main_navigation">
 
