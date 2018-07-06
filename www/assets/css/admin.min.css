@@ -42,9 +42,34 @@
     min-width: 180px;
 }
 
+@media only screen and (min-width: 992px){
+#sidebar {
+    min-width: 200px;
+    }}
+#sidebar {
+    background-color: hsla(0,0%,100%,.9)!important;
+    height: auto;
+    min-height: 100%;
+    min-width: 180px;
+}
+
 #footer {
    background-color:inherit;
     height: auto;
     min-height: 100%;
     min-width: 180px;
+}
+
+#sidebar_menu .item .title {
+    color: #210e4a;
+}
+
+#sidebar_menu .item .title.active {
+    color: #28dc8e;
+}
+
+.ui.accordion.menu .item .title {
+    display: block;
+    padding: 0em;
+    padding-left: 10px;
 }
