@@ -75,7 +75,8 @@
 #sidebar_menu .item .title {
        display: block;
     color: #210e4a;
-    font-size: 0.875em;
+    font-size: 1.375em;
+	margin-left: 10px;
     letter-spacing: .046875em;
     font-family: MarkWebPro-Book-Bold,Helvetica,sans-serif;
     margin-bottom: 1em;
