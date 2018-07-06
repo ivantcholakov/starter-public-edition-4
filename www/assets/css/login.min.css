@@ -4,8 +4,7 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child {
 }
 
 .signup__box {
-    width: 500px!important;
- min-height: 19.125em!important;
+    width: 480px!important;
 }
 
 .signup__input {
@@ -36,7 +35,7 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    width: 290px;
+    width: 260px;
     margin: 0 auto;
     text-align: center;
     margin-bottom: .625em;
