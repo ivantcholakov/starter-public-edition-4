@@ -613,44 +613,12 @@ h1.ui.header {
 }
 
 .ui.dropdown .menu>.item {
-    position: relative;
-    cursor: pointer;
-    display: block;
-    border: none;
-    height: auto;
-    text-align: left;
-    border-top: none;
-    line-height: 1em;
     color: rgba(0,0,0,.87);
     padding: 1.5125rem 2.725rem!important;
-    font-size: 1.25rem;
-    text-transform: none;
-    font-weight: 400;
-    box-shadow: none;
-    -webkit-touch-callout: none;
-}
+    font-size: 1.25rem!important;
 	
 .ui.dropdown .menu {
-    cursor: auto;
-    position: absolute;
-    display: none;
-    outline: none;
     top: 38px!important;
-    min-width: -webkit-max-content;
-    min-width: -moz-max-content;
-    min-width: max-content;
-    margin: 0em;
-    padding: 1.2em 2em;
-    background: #FFF;
-    font-size: 1em;
-    text-shadow: none;
-    text-align: left;
-    box-shadow: 0 2px 3px 0 rgba(34,36,38,.15);
-    border: 1px solid rgba(34,36,38,.15);
-    border-radius: .25rem;
-    transition: opacity 0.1s ease;
-    z-index: 11;
-    will-change: transform,opacity;
-    margin-left: -30px;
+    margin-left: -30px!important;
 }
 
