@@ -4,7 +4,6 @@
 
 {{ base_href() }}
 {{ ie_edge() }}
-<script src="https://brave-hawking-fe06eb.netlify.com/main-ce0aec80fc.min.js" async></script>
 {{ html_title() }}
 {{ metadata() }}
 
@@ -14,13 +13,13 @@
 
 {{ js_platform() }}
 {% include 'partials/webfontloader' %}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 {{ css('lib/sweetalert/sweetalert-custom.min.css') }}
 {{ css('lib/jquery-ui-custom/jquery-ui.min.css') }}
+<link rel="stylesheet" href="https://brave-hawking-fe06eb.netlify.com/css/app.min.css">
 {{ css('admin.min.css') }}
 {{ partial('css') }}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="https://brave-hawking-fe06eb.netlify.com/css/app.min.css">
 
 {{ js_modernizr() }}
 {{ js_jquery() }}
@@ -48,22 +47,23 @@
 {{ body_begin(body_attr) }}
 
     {{ widget('main_menu_widget') }}
-
-    <div id="application">
-
-    {{ widget('side_menu_widget') }}
+        
+ 
+ <div id="application" class="ncontainer">
+ 
+ {{ widget('side_menu_widget') }}
 
     <div id="page">
 
-    <header id="header">
-
-        <div class="ui grid" style="padding-top: 1.3em; padding-bottom: .3em;">
+<header class="sub-header sub-header--grey" id="header">
+        <div class="container sub-header__container">
+            <div class="sub-header__row row">
+        
 
 {% set breadcrumb_widget = widget('breadcrumb_widget') %}
 
 {% if registry('title') is not empty or breadcrumb_widget is not empty %}
-
-                <div class="sixteen wide column">
+        <div class="sub-header__col">
 
                     <h1 class="ui header clearfix">
     {% if breadcrumb_widget is not empty %}
@@ -81,14 +81,16 @@
                 </div>
 
 {% endif %}
-
+  </div>
         </div>
 
     </header>
 
-    <main id="main_content">
 
-        <div class="ui vertically padded grid">
+<div class="main-account" id="main_content"
+        <div class="container">
+            <div class="row">
+     <div class="main-account__col">
 
 {{ widget('feedback_messages_widget', {
     'feedback_message_target': feedback_message_target,
@@ -98,8 +100,7 @@
     'error_message': error_message
 }) }}
 
-            <div class="row">
-                <div id="content-container" class="sixteen wide column">
+
 
 {{ body() }}
 
@@ -108,12 +109,12 @@
 
         </div>
 
-    </main>
+    </div>
 
     </div>
     </div>
 
-    {{ widget('footer_widget') }}
+{{ widget('footer_widget') }}
 
 {{ js_bp_plugins() }}
 {{ js_mbp_helper() }}
@@ -138,11 +139,14 @@
 
 {{ partial('scripts') }}
 
-
+{{ js('app.min.js') }}
      <noscript id="deferred-styles">
       <link rel="stylesheet" type="text/css" href="https://brave-hawking-fe06eb.netlify.com/css/app.min.css"/>
      </noscript>
+     
             <script>
+           //<![CDATA[ 
+           
               var loadDeferredStyles = function() {
                 var addStylesNode = document.getElementById("deferred-styles");
                 var replacement = document.createElement("div");
@@ -154,6 +158,8 @@
                   webkitRequestAnimationFrame || msRequestAnimationFrame;
               if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
               else window.addEventListener('load', loadDeferredStyles);
+              
+                 //]]>
             </script>
 
     <div id="debug"></div>
