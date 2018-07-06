@@ -53,7 +53,7 @@
 
     <div id="page">
 
-<header class="sub-header sub-header--grey" id="header">
+<header class="sub-header sub-header--white" id="header">
         <div class="sub-header__container">
             <div class="sub-header__row row-fluid">
         
@@ -75,6 +75,10 @@
     {% endif %}
                         </div>
                     </h1>
+
+
+
+            <a v-on:click="trackHeaderCTA" v-bind:class="{ 'sign-up-free--active': showCta }" class="btn btn--one sign-up-free" href="#">Add New</a>
 
                 </div>
 
