@@ -7,3 +7,16 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child {
     width: 500px!important;
  min-height: 19.125em!important;
 }
+
+.signup__input {
+    width: 100%!important;
+}
+
+.trial-account {
+    background-color: transparent!important;
+    text-align: center;
+    height: 55em;
+    background-position: center 465px,top;
+    background-size: 600px auto,100% 120%;
+   background-image: none!important;
+}
