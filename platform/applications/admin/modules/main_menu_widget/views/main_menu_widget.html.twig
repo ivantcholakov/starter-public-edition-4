@@ -11,7 +11,7 @@
                 <span class="hamburger__bar"></span>
                 <span class="hamburger__bar hamburger__bar--second"></span>
             </button>
-            <a class="elektro-logo" href="/">
+            <a class="elektro-logo" href="{{ site_url() }}">
                 <img src="https://res.cloudinary.com/lmj6rf6tz/image/upload/c_scale,e_grayscale,h_57,w_152/v1497453042/elektropay/assets/img/logo.png" alt="Elektropay icon white bg">
                 
             </a>
@@ -732,9 +732,10 @@
 </nav>
 
 
+{{ widget('main_menu_widget/main_menu_scripts/index') }}
 
 
-        <nav id="main_navigation">
+        <nav id="main_navigation" style="display:none;">
 
             <div class="ui blue inverted attached menu">
 
