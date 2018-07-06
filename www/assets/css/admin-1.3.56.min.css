@@ -323,7 +323,7 @@ body {
 }
 	
 .region__text {
-    color: #ffffff!important;
+    color: #210E4B!important;
 }	
 	
 .overmenu__item {
@@ -635,9 +635,6 @@ h1.ui.header {
     line-height: 1.28571429em;
     text-transform: none;
     color: #6b8cce;
-}
-
-.ui.dropdown .menu {
 }
 
 
