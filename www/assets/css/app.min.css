@@ -15574,10 +15574,10 @@ sub {
     }
     
 #content {
-    background: transparent;
-    margin-left: 220px!important;
+    background: transparent!important;
+    margin-left: 240px!important;
     padding: 40px;
-    padding-top: 70px;
+    padding-top: 70px!important;
     position: relative;
     min-height: 900px;
     -webkit-transition: all 0.3s ease-out;
