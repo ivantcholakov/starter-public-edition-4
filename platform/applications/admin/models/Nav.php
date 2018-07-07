@@ -17,13 +17,15 @@ class Nav extends CI_Model {
         
         $nav['payments'] = array('label' => 'Payments', 'icon' => 'creditcard icon', 'location' => 'payments');
         
-        $nav['customers'] = array('label' => 'Customers', 'icon' => 'gift icon', 'location' => '#');
+        $nav['customers'] = array('label' => 'Customers', 'icon' => 'gift icon', 'location' => 'customers');
         
-        $nav['transfers'] = array('label' => 'Transfers', 'icon' => 'gift icon', 'location' => '#');
+        $nav['transfers'] = array('label' => 'Transfers', 'icon' => 'gift icon', 'location' => 'transfers');
         
-        $nav['products'] = array('label' => 'Products', 'icon' => 'gift icon', 'location' => '#');
+        $nav['plans'] = array('label' => 'Plans', 'icon' => 'gift icon', 'location' => 'plans');
 
-        $nav['invoices'] = array('label' => 'Invoices', 'icon' => 'file outline icon', 'location' => '#');
+        $nav['invoices'] = array('label' => 'Invoices', 'icon' => 'file outline icon', 'location' => 'invoices');
+        
+        $nav['products'] = array('label' => 'Products', 'icon' => 'shoppingcart icon', 'location' => 'products');
 
         $nav['news'] = array('label' => 'News', 'icon' => 'bell outline icon', 'location' => '#');
 
@@ -32,12 +34,12 @@ class Nav extends CI_Model {
         $nav['slideshow'] = array('label' => 'Slideshow', 'icon' => 'film icon', 'location' => '#');
 
         $nav['categories'] = array('label' => 'Product Categories', 'icon' => $this->registry->get('nav') == 'categories' ? 'folder open outline icon' : 'folder outline icon', 'location' => '#');
-        $nav['products'] = array('label' => 'Products', 'icon' => 'gift icon', 'location' => '#');
+     
 
 
         //----------------------------------------------------------------------
 
-        $nav['nomenclatures'] = array('label' => 'Nomenclatures', 'icon' => 'archive icon', 'location' => '#');
+        $nav['nomenclatures'] = array('label' => 'Integrations', 'icon' => 'archive icon', 'location' => 'integrations');
 
         $nav['nomenclatures/social_networks'] = array('label' => 'Social Networks', 'icon' => 'thumbs up outline icon', 'location' => '#', 'parent_id' => 'nomenclatures');
 
@@ -47,8 +49,8 @@ class Nav extends CI_Model {
 
         $nav['settings/languages'] = array('label' => $this->lang->line('ui_languages'), 'icon' => 'translate icon', 'location' => '#', 'parent_id' => 'settings');
 
-        $nav['settings/site'] = array('label' => $this->lang->line('ui_site'), 'icon' => 'home icon', 'location' => '#', 'parent_id' => 'settings');
-        $nav['settings/logos'] = array('label' => 'Brand', 'icon' => 'shield icon', 'location' => '#', 'parent_id' => 'settings');
+        $nav['settings/account'] = array('label' => $this->lang->line('ui_site'), 'icon' => 'home icon', 'location' => '#', 'parent_id' => 'settings');
+        $nav['settings/api'] = array('label' => 'API', 'icon' => 'shield icon', 'location' => '#', 'parent_id' => 'settings');
         $nav['settings/metadata'] = array('label' => $this->lang->line('ui_metadata'), 'icon' => 'tag icon', 'location' => '#', 'parent_id' => 'settings');
         $nav['settings/google_analytics'] = array('label' => 'Google Analytics', 'icon' => 'google icon', 'location' => '#', 'parent_id' => 'settings');
         $nav['settings/email_settings'] = array('label' => 'Email Settings', 'icon' => 'mail outline icon',  'location' => '#', 'parent_id' => 'settings');
