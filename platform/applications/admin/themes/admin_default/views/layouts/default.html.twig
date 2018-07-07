@@ -16,33 +16,9 @@
 {{ css('css/compiled/theme.css') }}
 {{ css('css/vendor/ionicons.min.css') }}
 {{ css('css/vendor/brankic.css') }}
-{{ css('css/vendor/animate.css') }}
-{{ js('app.min.js') }}
-     <noscript id="deferred-styles">
-  {{ css('app.min.css') }}
-     </noscript>
-     
-            <script>
-           //<![CDATA[ 
-           
-              var loadDeferredStyles = function() {
-                var addStylesNode = document.getElementById("deferred-styles");
-                var replacement = document.createElement("div");
-                replacement.innerHTML = addStylesNode.textContent;
-                document.body.appendChild(replacement)
-                addStylesNode.parentElement.removeChild(addStylesNode);
-              };
-              var raf = requestAnimationFrame || mozRequestAnimationFrame ||
-                  webkitRequestAnimationFrame || msRequestAnimationFrame;
-              if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
-              else window.addEventListener('load', loadDeferredStyles);
-              
-                 //]]>
-            </script>
-	    
+{{ css('css/vendor/animate.css') }}    
 {{ css('lib/sweetalert/sweetalert-custom.min.css') }}
 {{ css('lib/jquery-ui-custom/jquery-ui.min.css') }}
-
 {{ css('css/vendor/datepicker.css') }}
 {{ css('css/vendor/shepherd.css') }}
 {{ css('css/vendor/offline.chrome.css') }}
@@ -798,7 +774,28 @@ h1.ui.header {
 {{ js('admin.js') }}
 {{ js('elektropay.min.js') }}
 {{ partial('scripts') }}
-
+{{ js('app.min.js') }}
+     <noscript id="deferred-styles">
+  {{ css('app.min.css') }}
+     </noscript>
+     
+            <script>
+           //<![CDATA[ 
+           
+              var loadDeferredStyles = function() {
+                var addStylesNode = document.getElementById("deferred-styles");
+                var replacement = document.createElement("div");
+                replacement.innerHTML = addStylesNode.textContent;
+                document.body.appendChild(replacement)
+                addStylesNode.parentElement.removeChild(addStylesNode);
+              };
+              var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+                  webkitRequestAnimationFrame || msRequestAnimationFrame;
+              if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+              else window.addEventListener('load', loadDeferredStyles);
+              
+                 //]]>
+            </script>
 <div id="debug"></div>
 
 {{ body_end() }}
