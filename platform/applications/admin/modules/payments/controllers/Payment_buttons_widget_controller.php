@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
-class Quick_buttons_widget_controller extends Base_Widget_Controller {
+class Payments_buttons_widget_controller extends Base_Widget_Controller {
     public function __construct() {
         parent::__construct();
     }
@@ -64,6 +64,6 @@ class Quick_buttons_widget_controller extends Base_Widget_Controller {
             'total_category_count',
             'total_product_count'
         );
-        $this->load->view('quick_buttons_widget', $data);
+        $this->load->view('payments_buttons_widget', $data);
     }
 }
