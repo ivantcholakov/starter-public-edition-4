@@ -15574,11 +15574,10 @@ sub {
     }
     
 #content {
-    background: #FFF;
-    margin-left: 0px!important;
-    margin: auto!important;
-    padding: 0px;
-    padding-top: 67px;
+    background: transparent;
+    margin-left: 220px!important;
+    padding: 40px;
+    padding-top: 70px;
     position: relative;
     min-height: 900px;
     -webkit-transition: all 0.3s ease-out;
