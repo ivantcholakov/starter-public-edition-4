@@ -1,0 +1,284 @@
+#pricing {
+
+	#content {
+		min-height: 850px;
+	}
+
+	.pricing-wizard {
+		h4 {
+			margin-top: 40px;
+			font-weight: 500;
+			text-transform: uppercase;
+			letter-spacing: .5px;
+			text-align: center;
+			font-size: 21px;
+			color: #59646F;
+		}
+
+		.steps {
+			width: 660px;
+			margin: 0 auto;
+			margin-top: 55px;
+			border-bottom: 1px solid #ECECEC;
+			padding-bottom: 15px;
+
+			.step {
+				display: inline-block;
+				font-size: 14px;
+				text-transform: uppercase;
+				font-weight: 600;
+				color: #ABBBC7;
+				position: relative;
+				padding-left: 50px;
+				margin-right: 40px;
+
+				@include transition(all .2s linear);
+
+				&.active {
+					color: #5A6A81;
+
+					&:after {
+						content: '';
+						height: 2px;
+						width: 100%;
+						background: #5D8DB9;
+						position: absolute;
+						top: 35px;
+						left: 25px;
+					}
+				}
+			}
+		}
+
+		.step-panel {
+			position: absolute;
+			left: 0;
+			right: 0;
+			z-index: 1;
+			opacity: 0;
+
+			@include transition(all .2s linear);
+
+			@media (max-width: $maxSmall) {
+				position: relative;
+				display: none;
+
+				&.active {
+					display: block;
+				}
+			}
+			
+			&.active {
+				opacity: 1;
+				z-index: 2;
+			}
+		}
+
+		.choose-plan {
+			max-width: 640px;
+			margin: 0 auto;
+			margin-top: 40px;
+
+			.instructions {
+				color: #444;
+				padding-bottom: 20px;
+				padding-left: 10px;
+
+				strong {
+					font-size: 15px;
+					color: #555;
+				}
+
+				span {
+					font-weight: 600;
+					display: block;
+					margin-top: 30px;
+					color: #929191;
+					border-bottom: 1px solid #E6E6E6;
+					padding-bottom: 15px;
+				}
+			}
+
+			.plans {
+				.plan {
+					margin-top: 5px;
+					position: relative;
+					padding: 12px 0;
+					border-radius: 5px;
+					cursor: pointer;
+
+					@include transition(all .15s linear);
+
+					@media (max-width: $maxSmall) {
+						padding: 12px 8px;
+					}
+
+					&.selected {
+						.select {
+							.fa-check {
+								display: inline-block;
+							}
+						}
+					}
+
+					&.selected, 
+					&:hover {
+						background: #ebf2fb;
+
+						.price {
+							color: #458EDB;
+						}
+
+						.info {
+							.details {
+								color: #73ACE9;
+							}
+						}
+
+						.select {
+							border: 2px solid #8FC4FD;
+						}
+					}
+
+					.price {
+						float: left;
+						width: 115px;
+						padding-left: 10px;
+						font-size: 20px;
+						position: relative;
+						top: 4px;
+						color: #81838A;
+
+						@media (max-width: $maxSmall) {
+							font-size: 17px;
+							float: none;
+							padding-left: 0;
+							top: 0;
+							margin-bottom: 5px;
+						}
+					}
+
+					.info {
+						float: left;
+						width: 260px;
+
+						.name {
+							font-size: 17px;
+							font-weight: 600;
+							color: #3e95f1;
+						}
+
+						.details {
+							color: #888;
+						}
+					}
+
+					.select {
+						position: absolute;
+						right: 10px;
+						top: 18px;
+						width: 27px;
+						height: 27px;
+						border-radius: 25px;
+						border: 2px solid #ccc;
+
+						.fa-check {
+							position: relative;
+							top: 2px;
+							left: 4px;
+							color: #057DFF;
+							display: none;
+						}
+					}
+				}
+
+				.action {
+					text-align: right;
+					margin-top: 40px;
+
+					@media (max-width: $maxSmall) {
+						text-align: center;
+					}
+
+					.btn {
+						font-size: 17px;
+						
+						i {
+							font-size: 13px;
+							margin-left: 7px;
+						}
+					}
+				}
+			}
+		}
+
+		.billing {
+			max-width: 640px;
+			margin: 0 auto;
+			margin-top: 40px;
+
+			.secure {
+				margin-bottom: 20px;
+
+				.lock {
+					font-weight: 600;
+					color: #666;
+
+					.fa-lock {
+						color: #ccc;
+						font-size: 17px;
+						margin-right: 7px;
+						position: relative;
+						top: 1px;
+					}
+				}
+			}
+
+			#billing-form {
+				.control-label {
+					text-align: left;
+				}
+
+				.instructions {
+					margin-top: 40px;
+
+					strong {
+						font-size: 15px;
+						color: #454545;
+					}
+				}
+
+				.mobile-margin-bottom {
+					@media (max-width: $maxSmall) {
+						margin-bottom: 15px;
+					}
+				}
+
+				.action {
+					margin-top: 40px;
+
+					.btn {
+						font-size: 16px;
+						@include transition(all .2s linear);
+						
+						i.fa-chevron-right {
+							font-size: 13px;
+							margin-left: 7px;
+						}
+
+						i.fa-chevron-left {
+							font-size: 13px;
+							margin-right: 7px;
+							color: #777;
+						}
+					}
+				}
+			}
+		}
+	}
+
+}
+
+
+
+

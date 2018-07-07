@@ -1,0 +1,369 @@
+#sidebar {
+
+	#wrapper {
+		height: 100%;
+	}
+
+	.main-sidebar {
+		overflow: hidden;
+		height: 100% !important;
+
+		@media (min-width: $minMedium) and (max-width: $maxMedium) {
+			overflow: visible;
+			height: auto;
+		}
+
+		.scroll-wrapper {
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: -30px;
+			padding-right: 15px;
+			position: absolute;
+			overflow-y: scroll;
+
+			@media (min-width: $minMedium) and (max-width: $maxMedium) {
+				overflow-y: initial;
+				right: auto;
+				left: auto;
+				padding: 0;
+				position: relative;
+			}
+		}
+	}
+
+	#content {
+		padding: 0;
+		position: relative;
+		min-height: 100%;
+
+		#app-sidebar {
+			left: 0;
+			top: 0;
+			bottom: 0;
+			position: absolute;
+			width: 31%;
+			z-index: 99;
+			border-right: 1px solid #EBEEF1;
+			overflow: hidden;
+			background: #fff;
+
+			@media (max-width: $maxSmall) {
+				width: 100%;
+				z-index: 999;
+			}
+
+			.scroll-wrapper {
+				left: 0;
+				top: 0;
+				bottom: 0;
+				right: -30px;
+				padding-right: 15px;
+				position: absolute;
+				overflow-y: scroll;
+			}
+
+			.menubar {
+				z-index: 99;
+				width: 100%;
+
+				@media (max-width: $maxMedium) {
+					padding-left: 20px;
+				}
+
+				form {
+					@media (max-width: $maxSmall) {
+						float: left;
+						margin-left: 10px;
+					}
+
+					.fa-search {
+						position: absolute;
+						top: 24px;
+						z-index: 10;
+						color: #BBB;
+						font-size: 16px;
+					}
+
+					input {
+						border: 0;
+						padding: 0;
+						padding-left: 25px;
+						line-height: 17px;
+						position: relative;
+						top: -4px;
+					}
+
+					input[type="submit"] {
+						visibility: hidden;
+						position: absolute;
+					}
+				}
+			}
+
+			.messages {
+				margin-top: 20px;
+
+				.message {
+					padding: 15px;
+					border-bottom: 1px solid #EBEEF1;
+					position: relative;
+
+					@include transition(all .2s linear);
+
+					&.active,
+					&:hover {
+						background: #F7F9FD;
+					}
+
+					.time {
+						position: absolute;
+						top: 13px;
+						right: 18px;
+						font-size: 12px;
+						font-weight: 600;
+						color: rgb(128, 155, 202);
+					}
+
+					.avatar {
+						width: 23%;
+
+						@media (max-width: $maxMedium) {
+							display: none;
+						}
+
+						img {
+							width: 50px;
+							border-radius: 50%;
+						}
+					}
+
+					.info {
+						width: 76%;
+						display: block;
+						text-decoration: none;
+						color: #444;
+
+						@media (max-width: $maxMedium) {
+							width: 95%;
+						}
+
+						.name {
+							font-weight: 600;
+							display: block;
+						}
+
+						.subject {
+							font-weight: 600;
+							color: #7B8085;
+							margin-top: 3px;
+							display: block;
+						}
+
+						.intro {
+							font-size: 13px;
+							line-height: 20px;
+							margin-top: 7px;
+							width: 80%;
+							color: #707780;
+							display: block;
+
+							@media (max-width: $maxMedium) {
+								width: 90%;
+							}
+						}
+					}
+				}
+			}
+
+			.paging {
+				margin: 40px 0 50px;
+				text-align: center;
+			}
+		}
+
+		#app-message {
+			left: 0;
+			top: 0;
+			bottom: 0;
+			position: absolute;
+			width: 69%;
+			margin-left: 31%;
+			overflow: hidden;
+			background: #fff;
+
+			@media (max-width: $maxSmall) {
+				width: 100%;
+				margin-left: 0;
+				z-index: 99;
+			}
+
+			.scroll-wrapper {
+				left: 0;
+				top: 0;
+				bottom: 0;
+				right: -30px;
+				padding-right: 15px;
+				position: absolute;
+				overflow-y: scroll;
+			}
+
+			.menubar {
+				z-index: 99;
+				width: 100%;
+
+				.page-title {
+					@media (max-width: $maxSmall) {
+						font-size: 15px;
+					}
+				}
+
+				.paging {
+					float: right;
+				}
+			}
+
+			section {
+				padding-bottom: 50px;
+				
+				.message {
+					padding: 0 40px;
+					padding-bottom: 60px;
+					border-bottom: 1px solid #EBEEF1;
+
+					@media (max-width: $maxSmall) {
+						padding-left: 20px;
+						padding-right: 20px;
+					}
+
+					&.collapsed {
+						padding: 25px 40px;
+						margin: 0;
+						border-bottom: 1px solid #EBEEF1;
+
+						a {
+							text-decoration: none;
+
+							.sender {
+								font-weight: 600;
+								color: #333;
+							}
+
+							.receiver {
+								margin-left: 10px;
+								color: #8294A5;
+							}
+
+							.date {
+								font-size: 12px;
+								font-weight: 600;
+								color: #868A91;
+							}
+						}
+					}
+
+					.header {
+						margin-top: 30px;
+						margin-bottom: 30px;
+
+						.subject {
+							font-size: 24px;
+							color: #454545;
+						}
+
+						.info {
+							margin-top: 5px;
+							font-size: 12px;
+							color: #7B8FA5;
+
+							.avatar {
+								max-width: 45px;
+								border-radius: 50%;
+								margin-right: 15px;
+							}
+
+							strong {
+								font-weight: 600;
+							}
+
+							i {
+								display: inline-block;
+								margin: 0 3px;
+							}
+						}
+					}
+
+					.body {
+						line-height: 22px;
+						color: #484A4B;
+
+						p {
+							margin-bottom: 20px;
+						}
+					}
+
+					.attachments {
+						margin-top: 28px;
+						padding-top: 18px;
+						padding-bottom: 3px;
+						border-top: 1px solid #EAEDF1;
+						border-bottom: 1px solid #EAEDF1;
+
+						.attachment {
+							margin-bottom: 15px;
+
+							a {
+								text-decoration: none;
+
+								.file-type {
+									font-family: $arial;
+									display: inline-block;
+									border-radius: 4px;
+									font-size: 11px;
+									font-weight: 600;
+									padding: 3px 5px;
+									min-width: 40px;
+									text-align: center;
+									text-transform: uppercase;
+									position: relative;
+									top: -1px;
+									margin-right: 4px;
+									color: #fff;
+
+									&.zip {
+										background: #000;
+									}
+
+									&.html {
+										background: #00bbb4;
+									}
+								}
+
+								.name {
+									font-size: 14px;
+									color: #484A4B;
+
+									.size {
+										font-size: 12px;
+										display: inline-block;
+										margin-left: 2px;
+									}
+								}
+							}
+						}
+					}
+
+					.reply {
+						margin-top: 50px;
+
+						textarea {
+							margin-bottom: 25px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+}
+

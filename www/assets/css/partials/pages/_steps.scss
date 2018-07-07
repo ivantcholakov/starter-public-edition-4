@@ -1,0 +1,115 @@
+#steps {
+
+	#content {
+		padding: 0;
+		/*padding-top: 64px;*/
+
+		.content-wrapper {
+			margin-top: 0;
+		}
+	}
+
+	.sidebar-toggler {
+		position: absolute;
+		color: #fff;
+		font-size: 34px;
+		top: 0px;
+		left: 8px;
+		padding: 15px;
+		cursor: pointer;
+	}
+
+	.header {
+		padding: 28px;
+		background: #5A6474;
+		font-family: $helvetica;
+		text-shadow: 1px 1px rgba(0, 0, 0, 0.45);
+		color: #fff;
+		text-align: center;
+		font-size: 19px;
+		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
+
+		@media (max-width: $maxSmall) {
+			font-size: 16px;
+		}
+	}
+
+	.steps {
+		@media (max-width: $maxMedium) {
+			padding-bottom: 30px;
+		}
+
+		.step {
+			margin: 0px 55px;
+			padding: 35px 20px;
+			border-bottom: 1px solid #eee;
+
+			@media (max-width: $maxMedium) {
+				text-align: center;
+				padding-top: 30px !important;
+			}
+
+			&.done {
+				margin: 0;
+				background: #F8F8FA;
+				padding: 35px 75px;
+
+				.info {
+					top: -6px;
+				}
+			}
+
+			.info {
+				float: left;
+				position: relative;
+
+				@media (max-width: $maxMedium) {
+					float: none;
+					margin-bottom: 15px;
+				}
+
+				.number {
+					font-size: 26px;
+					margin-right: 20px;
+					position: relative;
+					top: 2px;
+
+					@media (max-width: $maxMedium) {
+						display: block;
+						margin: 0;
+						margin-bottom: 10px;
+					}
+
+					.ion-checkmark-circled {
+						font-size: 38px;
+						color: #44B83F;
+						position: relative;
+						top: 6px;
+						left: -6px;
+						margin-right: -8px;
+					}
+				}
+			}
+
+			.button {
+				position: relative;
+				top: 2px;
+				float: right;
+
+				@media (max-width: $maxMedium) {
+					float: none;
+				}
+
+				span {
+					font-size: 13px;
+					min-width: 150px;
+					text-align: center;
+				}
+			}
+		}
+	}
+
+}
+
+
+

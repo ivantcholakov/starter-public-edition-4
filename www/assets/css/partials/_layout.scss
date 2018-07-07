@@ -1,0 +1,3044 @@
+body {
+	font-family: $sourceSans;
+	-webkit-font-smoothing: antialiased;
+	background: #fff;
+
+	&.open-sidebar {
+		#wrapper {
+			#content {
+				-webkit-perspective: 0px;
+			    -ms-perspective: 0px;
+			    -moz-perspective: 0px;
+			    
+				@include transform(translate3d(230px, 0, 0));
+			}
+		}
+	}
+}
+
+#wrapper {
+	position: relative;
+	-webkit-backface-visibility: hidden;
+	margin: 0 auto;
+}
+
+.main-sidebar {
+	bottom: 0px;
+
+	@media screen and (min-height: 901px) {
+		position: fixed !important;
+	}
+}
+
+/* ==============================================================================
+// Sidebar dark
+// ============================================================================== */
+#sidebar-dark {
+	background: $sidebarBg;
+	left: 0;
+	top: 0;
+	position: absolute;
+	width: 230px;
+	z-index: 999;
+
+	@include transition(all .2s linear);
+
+	@media (min-width: $minMedium) and (max-width: $maxMedium) {
+		width: 80px;
+	}
+
+	.current-user {
+		padding: 0px 20px;
+		height: 63px;
+		position: relative;
+
+		.name {
+			position: relative;
+			padding: 10px 0;
+			display: block;
+			color: #DFE8F0;
+			font-size: 14px;
+			text-decoration: none;
+
+			.avatar {
+				max-width: 41px;
+				border-radius: 50%;
+				position: relative;
+				top: 2px;
+				margin-right: 12px;
+			}
+
+			span {
+				position: relative;
+				top: 4px;
+
+				@media (min-width: $minMedium) and (max-width: $maxMedium) {
+					display: none;
+				}
+
+				.fa-chevron-down {
+					font-size: 10px;
+					margin-left: 9px;
+					position: relative;
+					top: -1px;
+				}
+			}
+		}
+
+		.menu {
+			position: absolute;
+			left: 35px;
+			top: 60px;
+			background: #fff;
+			width: 165px;
+			z-index: 999;
+			border-radius: 3px;
+			padding: 8px 0;
+			list-style-type: none;
+			box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.25);
+
+			opacity: 0;
+			@include transform(scale(0));
+			@include transition(all 300ms cubic-bezier(0.34,1.61,0.7,1));
+			@include transform-origin(50% 0);
+
+			@media (min-width: $minMedium) and (max-width: $maxMedium) {
+				left: 80px;
+				top: 10px;
+				@include transform-origin(0 15px);
+			}
+
+			&.active {
+				opacity: 1;
+				@include transform(scale(1));
+			}
+			
+			&:before {
+				content: "";
+				position: absolute;
+				display: block;
+				width: 37px;
+				height: 12px;
+				top: -12px;
+				left: 49%;
+				margin-left: -18.5px;
+				background-image: url("#{$imagesPath}/popover-arrow.png");
+				background-size: 100% 100%;
+
+				@media (min-width: $minMedium) and (max-width: $maxMedium) {
+					top: 16px;
+					left: -5px;
+					@include transform(rotate(270deg));
+				}
+			}
+
+			li {
+				padding: 8px 15px;
+				border-bottom: 1px solid #E6E6E6;
+
+				&:last-child {
+					border-bottom: 0;
+				}
+
+				a {
+					text-decoration: none;
+					display: block;
+					color: #4C5661;
+					font-size: 15px;
+
+					@include transition(all .2s linear);
+
+					&:hover {
+						color: #000;
+					}
+				}
+			}
+		}
+	}
+
+	.menu-section {
+		h3 {
+			color: #A9B8C7;
+			text-transform: uppercase;
+			letter-spacing: .5px;
+			font-weight: bold;
+			font-size: 11px;
+			margin-bottom: 0;
+			margin-top: 0;
+			text-shadow: 1px 1px #000;
+			padding: 10px 25px;
+			background: #232830;
+			box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.64);
+
+			@media (min-width: $minMedium) and (max-width: $maxMedium) {
+				display: none;
+			}
+		}
+
+		ul {
+			list-style-type: none;
+			padding-left: 0;
+			margin-bottom: 0;
+
+			li {
+				@media (min-width: $minMedium) and (max-width: $maxMedium) {
+					position: relative;
+				}
+
+				a {
+					color: #e2e2e2;
+					font-weight: 400;
+					font-size: 14px;
+					box-shadow: inset 0px 1px #414852;
+					padding: 12px 0px 15px 23px;
+					border-top: 1px solid #1A2331;
+					background: $sidebarBg;
+					text-decoration: none;
+					display: inline-block;
+					width: 100%;
+
+					@include transition(background .13s linear);
+
+					@media (min-width: $minMedium) and (max-width: $maxMedium) {
+						position: relative;
+						padding-left: 0px;
+						text-align: center;
+
+						&:hover + .submenu {
+							visibility: visible;
+							opacity: 1;
+							@include transform(translateX(0px));
+						}
+					}
+
+					&.active,
+					&:hover,
+					&.toggled {
+						background: #3C424C;
+					}
+
+					i {
+						min-width: 17px;
+						font-size: 19px;
+						margin-right: 9px;
+						position: relative;
+						top: 1px;
+
+						@media (min-width: $minMedium) and (max-width: $maxMedium) {
+							font-size: 23px;
+							margin: 0;
+
+							&.fa-chevron-down {
+								display: none;
+							}
+						}
+
+						&.ion-card,
+						&.ion-android-inbox {
+							font-size: 18px;
+						}
+
+						&.ion-code-working {
+							font-size: 23px;
+							top: 4px;
+						}
+
+						&.ion-usb {
+							font-size: 22px;
+						}
+
+						&.fa-chevron-down {
+							float: right;
+							font-size: 11px;
+							top: 7px;
+							right: 11px;
+						}
+					}
+
+					span {
+						@media (min-width: $minMedium) and (max-width: $maxMedium) {
+							display: none;
+						}
+					}
+
+					.counter {
+						display: inline-block;
+						background: #479ccf;
+						height: 19px;
+						padding: 3px 8px;
+						line-height: 1;
+						text-align: center;
+						border-radius: 20px;
+						color: #fff;
+						font-family: $helvetica;
+						font-size: 11px;
+						font-weight: 600;
+						float: right;
+						position: relative;
+						top: 2px;
+						right: 13px;
+
+						@media (min-width: $minMedium) and (max-width: $maxMedium) {
+							display: none;
+						}
+					}
+				}
+
+				> .submenu {
+					display: none;
+					position: relative;
+					margin-top: 0;
+					margin-bottom: 10px;
+
+					@include animationDuration(.4s);
+
+					@media (min-width: $minMedium) and (max-width: $maxMedium) {
+						background: #2a313a;
+						position: absolute;
+						display: block;
+						visibility: hidden;
+						opacity: 0;
+						@include transform(translateX(-20px));
+						border-radius: 0 4px 4px 0;
+
+						min-width: 185px;
+						top: 0px;
+						left: 79px;
+						padding-bottom: 0px;
+						box-shadow: 0 1px 0px rgba(255, 255, 255, 0.09);
+
+						@include transition(all .15s ease-in);
+
+						&:hover {
+							opacity: 1;
+							@include transform(translateX(0px));
+							visibility: visible;
+						}
+					}
+
+					&.active {
+						display: block;
+					}
+
+					li {
+						a {
+							padding: 12px 0px 12px 52px;
+							font-size: 14px;
+
+							@media (min-width: $minMedium) and (max-width: $maxMedium) {
+								padding-left: 15px;
+								padding-right: 15px;
+								text-align: left;
+								border-radius: 0 4px 4px 0;
+							}
+
+							&.active {
+								background: #232830;
+								box-shadow: none;
+							}
+						}
+
+						> .submenu {
+							display: none;
+							position: relative;
+							border-bottom: 0px;
+							box-shadow: none;
+							margin-bottom: 10px;
+
+							@include animationDuration(.4s);
+
+							@media (min-width: $minMedium) and (max-width: $maxMedium) {
+								display: block;
+								position: absolute;
+								top: 0px;
+								left: 185px;
+							}
+
+							&.active {
+								display: block;
+							}
+
+							li {
+								a {
+									padding-left: 75px;
+
+									@media (min-width: $minMedium) and (max-width: $maxMedium) {
+										padding-left: 10px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.bottom-menu {
+		position: fixed;
+		bottom: 0;
+		width: 230px;
+		z-index: 999;
+
+		> ul {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+
+			> li {
+				float: left;
+				display: block;
+				width: 33.333%;
+				border-right: 1px solid #3E4E55;
+				border-top: 1px solid #3E4E55;
+
+				&:last-child {
+					border-right: 0;
+				}
+
+				> a {
+					display: block;
+					position: relative;
+					text-align: center;
+					padding: 6px 0;
+					background: #333D4B;
+
+					&:hover {
+						i {
+							color: #89A2BB;
+						}
+					}
+
+					&:hover + .menu {
+						opacity: 1;
+						@include transform(scale(1));
+					}
+
+					i {
+						color: #CBD3DB;
+						font-size: 19px;
+
+						@include transition(all .1s linear);
+					}
+
+					.flag {
+						width: 7px;
+						height: 7px;
+						display: block;
+						position: absolute;
+						background: #9ed166;
+						border-radius: 25px;
+						top: 4px;
+						right: 25px;
+					}
+				}
+
+				.menu {
+					position: absolute;
+					left: 39px;
+					bottom: 34px;
+					background: #fff;
+					width: 155px;
+					z-index: 999;
+					border-radius: 3px;
+					padding: 7px 0;
+					list-style-type: none;
+					box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.25);
+
+					opacity: 0;
+					@include transform(scale(0));
+					@include transition(all 300ms cubic-bezier(0.34,1.61,0.7,1));
+					@include transform-origin(50% 100%);
+
+					&:hover {
+						opacity: 1;
+						@include transform(scale(1));
+					}
+					
+					&:after {
+						content: "";
+						position: absolute;
+						display: block;
+						width: 37px;
+						height: 12px;
+						bottom: -12px;
+						left: 49%;
+						margin-left: -18.5px;
+						background-image: url("#{$imagesPath}/popover-arrow.png");
+						background-size: 100% 100%;
+						@include transform(rotateX(180deg));
+					}
+
+					li {
+						padding: 8px 0;
+						border-bottom: 1px solid #E6E6E6;
+						text-align: center;
+
+						&:last-child {
+							border-bottom: 0;
+						}
+
+						a {
+							text-decoration: none;
+							display: block;
+							color: #54A0E2;
+							font-weight: 600;
+
+							@include transition(all .2s linear);
+
+							&:hover {
+								color: #000;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ==============================================================================
+// Sidebar black
+// ============================================================================== */
+#sidebar-black {
+	background: #111E22;
+	left: 0;
+	top: 0;
+	position: absolute;
+	width: 230px;
+	z-index: 999;
+
+	@include transition(all .2s linear);
+
+	@media (min-width: $minMedium) and (max-width: $maxMedium) {
+		width: 80px;
+	}
+
+	.current-user {
+		height: 63px;
+		color: #fff;
+		margin-bottom: 30px;
+		position: relative;
+		border-bottom: 1px solid #353A44;
+		padding: 0 20px;
+
+		.name {
+			color: #D6DDEB;
+			font-size: 15px;
+			font-weight: 400;
+			text-decoration: none;
+			position: relative;
+			padding: 10px 0;
+			display: block;
+
+			.avatar {
+				max-width: 41px;
+				border-radius: 50%;
+				position: relative;
+				top: 2px;
+				margin-right: 12px;
+			}
+
+			span {
+				position: relative;
+				top: 4px;
+
+				@media (min-width: $minMedium) and (max-width: $maxMedium) {
+					display: none;
+				}
+
+				.fa-chevron-down {
+					font-size: 10px;
+					margin-left: 9px;
+					position: relative;
+					top: -1px;
+				}
+			}
+		}
+
+		.menu {
+			position: absolute;
+			left: 35px;
+			top: 60px;
+			background: #fff;
+			width: 165px;
+			z-index: 999;
+			border-radius: 3px;
+			padding: 8px 0;
+			list-style-type: none;
+			box-shadow: 1px 3px 1px rgba(0, 0, 0, 0.25);
+
+			opacity: 0;
+			@include transform(scale(0));
+			@include transition(all 300ms cubic-bezier(0.34,1.61,0.7,1));
+			@include transform-origin(50% 0);
+
+			@media (min-width: $minMedium) and (max-width: $maxMedium) {
+				left: 80px;
+				top: 10px;
+				@include transform-origin(0 15px);
+			}
+
+			&.active {
+				opacity: 1;
+				@include transform(scale(1));
+			}
+			
+			&:before {
+				content: "";
+				position: absolute;
+				display: block;
+				width: 37px;
+				height: 12px;
+				top: -12px;
+				left: 49%;
+				margin-left: -18.5px;
+				background-image: url("#{$imagesPath}/popover-arrow.png");
+				background-size: 100% 100%;
+
+				@media (min-width: $minMedium) and (max-width: $maxMedium) {
+					top: 16px;
+					left: -5px;
+					@include transform(rotate(270deg));
+				}
+			}
+
+			li {
+				padding: 8px 15px;
+				border-bottom: 1px solid #E6E6E6;
+
+				&:last-child {
+					border-bottom: 0;
+				}
+
+				a {
+					text-decoration: none;
+					display: block;
+					color: #4C5661;
+					font-size: 15px;
+
+					@include transition(all .2s linear);
+
+					&:hover {
+						color: #000;
+					}
+				}
+			}
+		}
+	}
+
+	.menu-section {
+		margin-bottom: 35px;
+
+		h3 {
+			color: #9E9E9E;
+			text-transform: uppercase;
+			font-weight: bold;
+			font-size: 11px;
+			margin-bottom: 0;
+			letter-spacing: .4px;
+			margin-top: 0;
+			text-shadow: 1px 1px #000;
+			padding-left: 25px;
+
+			@media (min-width: $minMedium) and (max-width: $maxMedium) {
+				display: none;
+			}
+		}
+
+		ul {
+			list-style-type: none;
+			padding-left: 0;
+			margin-bottom: 0;
+			margin-top: 10px;
+
+			li {
+				margin: 3px 0;
+
+				@media (min-width: $minMedium) and (max-width: $maxMedium) {
+					margin-bottom: 7px;
+					position: relative;
+				}
+
+				a {
+					color: #f8f8f8;
+					font-weight: 400;
+					font-size: 14px;
+					padding: 8px 10px;
+					background: transparent;
+					text-decoration: none;
+					display: inline-block;
+					width: 100%;
+					border-radius: 2px 0 0 2px;
+					padding-left: 23px;
+
+					@include transition(background .13s linear);
+
+					@media (min-width: $minMedium) and (max-width: $maxMedium) {
+						position: relative;
+						padding-left: 10px;
+						text-align: center;
+
+						&:hover + .submenu {
+							visibility: visible;
+							opacity: 1;
+							@include transform(translateX(0px));
+						}
+					}
+
+					&:hover {
+						color: #fff;
+					}
+
+					&.active {
+						background: #43b9af;
+						color: #fff;
+
+						i {
+							color: #fff;
+						}
+					}
+
+					i {
+						font-size: 19px;
+						color: #ebebe8;
+						margin-right: 9px;
+						min-width: 17px;
+						text-align: center;
+						position: relative;
+						top: 1px;
+
+						@media (min-width: $minMedium) and (max-width: $maxMedium) {
+							font-size: 23px;
+							margin: 0;
+
+							&.fa-chevron-down {
+								display: none;
+							}
+						}
+
+						&.ion-card,
+						&.ion-android-inbox {
+							font-size: 18px;
+						}
+
+						&.ion-code-working {
+							font-size: 23px;
+							top: 4px;
+						}
+
+						&.ion-usb {
+							font-size: 22px;
+						}
+
+						&.fa-chevron-down {
+							float: right;
+							font-size: 11px;
+							top: 7px;
+							right: 8px;
+						}
+					}
+
+					span {
+						@media (min-width: $minMedium) and (max-width: $maxMedium) {
+							display: none;
+						}
+					}
+
+					.counter {
+						display: inline-block;
+						background: #479ccf;
+						height: 19px;
+						padding: 3px 8px;
+						line-height: 1;
+						text-align: center;
+						border-radius: 20px;
+						color: #fff;
+						font-family: $helvetica;
+						font-size: 11px;
+						font-weight: 600;
+						float: right;
+						position: relative;
+						top: 2px;
+						right: 9px;
+
+						@media (min-width: $minMedium) and (max-width: $maxMedium) {
+							display: none;
+						}
+					}
+				}
+
+				> .submenu {
+					display: none;
+					position: relative;
+					top: 5px;
+					margin-top: 0;
+					margin-bottom: 30px;
+					padding-bottom: 15px;
+					border-bottom: 1px solid #000;
+					box-shadow: 0 1px 0px rgba(255, 255, 255, 0.09);
+
+					@include animationDuration(.4s);
+
+					@media (min-width: $minMedium) and (max-width: $maxMedium) {
+						background: #1A1E22;
+						position: absolute;
+						display: block;
+						visibility: hidden;
+						opacity: 0;
+						@include transform(translateX(-20px));
+						border-radius: 0 4px 4px 0;
+
+						min-width: 170px;
+						top: 0px;
+						left: 79px;
+						padding-bottom: 0px;
+						box-shadow: 0 1px 0px rgba(255, 255, 255, 0.09);
+
+						@include transition(all .15s ease-in);
+
+						&:hover {
+							opacity: 1;
+							@include transform(translateX(0px));
+							visibility: visible;
+						}
+					}
+
+					&.active {
+						display: block;
+					}
+
+					li {
+						a {
+							padding-left: 53px;
+							font-size: 14px;
+
+							@media (min-width: $minMedium) and (max-width: $maxMedium) {
+								padding-left: 10px;
+								text-align: left;
+							}
+
+							&.active {
+								background: #000;
+								box-shadow: none;
+							}
+						}
+
+						> .submenu {
+							display: none;
+							position: relative;
+							top: 5px;
+							border-bottom: 0px;
+							box-shadow: none;
+							margin-bottom: 10px;
+
+							@include animationDuration(.4s);
+
+							@media (min-width: $minMedium) and (max-width: $maxMedium) {
+								display: block;
+								position: absolute;
+								top: 0px;
+								left: 170px;
+							}
+
+							&.active {
+								display: block;
+							}
+
+							li {
+								a {
+									padding-left: 73px;
+
+									@media (min-width: $minMedium) and (max-width: $maxMedium) {
+										padding-left: 10px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.bottom-menu {
+		position: fixed;
+		bottom: 0;
+		width: 230px;
+		z-index: 999;
+
+		> ul {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+
+			> li {
+				float: left;
+				display: block;
+				width: 33.333%;
+				border-right: 1px solid #2C3C44;
+				border-top: 1px solid #2C3C44;
+
+				&:last-child {
+					border-right: 0;
+				}
+
+				> a {
+					display: block;
+					position: relative;
+					text-align: center;
+					padding: 6px 0;
+					background: #142125;
+
+					&:hover {
+						i {
+							color: #CBD3DB;
+						}
+					}
+
+					&:hover + .menu {
+						opacity: 1;
+						@include transform(scale(1));
+					}
+
+					i {
+						color: #CBD3DB;
+						font-size: 19px;
+
+						@include transition(all .1s linear);
+					}
+
+					.flag {
+						width: 7px;
+						height: 7px;
+						display: block;
+						position: absolute;
+						background: #43b9af;
+						border-radius: 25px;
+						top: 4px;
+						right: 25px;
+					}
+				}
+
+				.menu {
+					position: absolute;
+					left: 39px;
+					bottom: 34px;
+					background: #fff;
+					width: 155px;
+					z-index: 999;
+					border-radius: 3px;
+					padding: 7px 0;
+					list-style-type: none;
+					box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.25);
+
+					opacity: 0;
+					@include transform(scale(0));
+					@include transition(all 300ms cubic-bezier(0.34,1.61,0.7,1));
+					@include transform-origin(50% 100%);
+
+					&:hover {
+						opacity: 1;
+						@include transform(scale(1));
+					}
+					
+					&:after {
+						content: "";
+						position: absolute;
+						display: block;
+						width: 37px;
+						height: 12px;
+						bottom: -12px;
+						left: 49%;
+						margin-left: -18.5px;
+						background-image: url("#{$imagesPath}/popover-arrow.png");
+						background-size: 100% 100%;
+						@include transform(rotateX(180deg));
+					}
+
+					li {
+						padding: 8px 0;
+						border-bottom: 1px solid #E6E6E6;
+						text-align: center;
+
+						&:last-child {
+							border-bottom: 0;
+						}
+
+						a {
+							text-decoration: none;
+							display: block;
+							color: #54A0E2;
+							font-weight: 600;
+
+							@include transition(all .2s linear);
+
+							&:hover {
+								color: #000;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ==============================================================================
+// Sidebar clear
+// ============================================================================== */
+#sidebar-clear {
+	background: #F2F5F8;
+	box-shadow: inset 0px -2px 3px rgba(0, 0, 0, 0.25);
+	left: 0;
+	top: 0;
+	position: absolute;
+	width: 230px;
+	z-index: 999;
+
+	@include transition(all .2s linear);
+
+	@media (min-width: $minMedium) and (max-width: $maxMedium) {
+		width: 80px;
+	}
+
+	.current-user {
+		position: relative;
+		padding: 0 20px;
+		margin-bottom: 20px;
+		height: 63px;
+
+		.name {
+			color: #444;
+			font-size: 15px;
+			text-decoration: none;
+			padding: 10px 0;
+			display: block;
+			position: relative;
+
+			.avatar {
+				max-width: 41px;
+				border-radius: 50%;
+				position: relative;
+				top: 2px;
+				margin-right: 12px;
+			}
+
+			span {
+				position: relative;
+				top: 5px;
+
+				@media (min-width: $minMedium) and (max-width: $maxMedium) {
+					display: none;
+				}
+
+				.fa-chevron-down {
+					font-size: 10px;
+					margin-left: 7px;
+					position: relative;
+					top: -1px;
+				}
+			}
+		}
+
+		.menu {
+			position: absolute;
+			left: 35px;
+			top: 60px;
+			background: #fff;
+			width: 165px;
+			z-index: 999;
+			border-radius: 3px;
+			padding: 8px 0;
+			list-style-type: none;
+			box-shadow: 0 6px 13px rgba(0, 0, 0, 0.26), 0 0 0 1px rgba(0, 0, 0, 0.06);
+
+			opacity: 0;
+			@include transform(scale(0));
+			@include transition(all 300ms cubic-bezier(0.34,1.61,0.7,1));
+			@include transform-origin(50% 0);
+
+			@media (min-width: $minMedium) and (max-width: $maxMedium) {
+				left: 80px;
+				top: 10px;
+				@include transform-origin(0 15px);
+			}
+
+			&.active {
+				opacity: 1;
+				@include transform(scale(1));
+			}
+			
+			&:before {
+				content: "";
+				position: absolute;
+				display: block;
+				width: 37px;
+				height: 12px;
+				top: -12px;
+				left: 49%;
+				margin-left: -18.5px;
+				background-image: url("#{$imagesPath}/popover-arrow.png");
+				background-size: 100% 100%;
+
+				@media (min-width: $minMedium) and (max-width: $maxMedium) {
+					top: 16px;
+					left: -5px;
+					@include transform(rotate(270deg));
+				}
+			}
+
+			li {
+				padding: 8px 15px;
+				border-bottom: 1px solid #E6E6E6;
+
+				&:last-child {
+					border-bottom: 0;
+				}
+
+				a {
+					text-decoration: none;
+					display: block;
+					color: #4C5661;
+					font-size: 15px;
+
+					@include transition(all .2s linear);
+
+					&:hover {
+						color: #000;
+					}
+				}
+			}
+		}
+	}
+
+	.menu-section {
+		margin-bottom: 40px;
+
+		h3 {
+			color: #6D7785;
+			text-transform: uppercase;
+			letter-spacing: .5px;
+			font-weight: bold;
+			font-size: 11px;
+			margin-bottom: 0;
+			margin-top: 0;
+			padding-left: 25px;
+
+			@media (min-width: $minMedium) and (max-width: $maxMedium) {
+				display: none;
+			}
+		}
+
+		ul {
+			list-style-type: none;
+			padding-left: 0;
+			margin-bottom: 0;
+			margin-top: 15px;
+
+			li {
+				margin: 3px 0;
+
+				@media (min-width: $minMedium) and (max-width: $maxMedium) {
+					margin-bottom: 7px;
+					position: relative;
+				}
+
+				a {
+					color: #303030;
+					font-weight: 400;
+					font-size: 14px;
+					padding: 6px 10px;
+					padding-left: 25px;
+					background: transparent;
+					text-decoration: none;
+					display: inline-block;
+					width: 99%;
+					border-top: 1px solid #F2F5F8;
+					border-bottom: 1px solid #F2F5F8;
+
+					@include transition(all .13s linear);
+
+					@media (min-width: $minMedium) and (max-width: $maxMedium) {
+						position: relative;
+						padding-left: 10px;
+						text-align: center;
+
+						&:hover + .submenu {
+							visibility: visible;
+							opacity: 1;
+							@include transform(translateX(0px));
+						}
+					}
+
+					&.active,
+					&:hover {
+						background: #E7EDF3;
+						border-top: 1px solid #BED3EA;
+						border-bottom: 1px solid #BED3EA;
+					}
+
+					&.toggled {
+						background: #E7EDF3;
+					}
+
+					i {
+						font-size: 18px;
+						margin-right: 9px;
+						min-width: 17px;
+						text-align: center;
+						position: relative;
+						top: 1px;
+
+						@media (min-width: $minMedium) and (max-width: $maxMedium) {
+							font-size: 23px;
+							margin: 0;
+
+							&.fa-chevron-down {
+								display: none;
+							}
+						}
+
+						&.ion-card,
+						&.ion-android-inbox {
+							font-size: 18px;
+						}
+
+						&.ion-code-working {
+							font-size: 23px;
+							top: 4px;
+						}
+
+						&.ion-usb {
+							font-size: 22px;
+						}
+
+						&.fa-chevron-down {
+							float: right;
+							font-size: 11px;
+							top: 6px;
+							right: 4px;
+						}
+					}
+
+					span {
+						@media (min-width: $minMedium) and (max-width: $maxMedium) {
+							display: none;
+						}
+					}
+
+					.counter {
+						display: inline-block;
+						background: #FFF;
+						height: 19px;
+						min-width: 25px;
+						line-height: 17px;
+						text-align: center;
+						border-radius: 5px;
+						font-size: 11px;
+						float: right;
+						position: relative;
+						top: 2px;
+						right: 9px;
+						border: 1px solid #BFDAF3;
+
+						@media (min-width: $minMedium) and (max-width: $maxMedium) {
+							display: none;
+						}
+					}
+				}
+
+				> .submenu {
+					display: none;
+					position: relative;
+					top: 10px;
+					margin-top: 0;
+					margin-bottom: 30px;
+					padding-bottom: 15px;
+					border-bottom: 1px solid #D4DBE0;
+					box-shadow: 0 1px 0px rgba(255, 255, 255, 0.09);
+
+					@include animationDuration(.4s);
+
+					@media (min-width: $minMedium) and (max-width: $maxMedium) {
+						background: #F2F5F8;
+						border-top: 1px solid #D4DBE0;
+						border-right: 1px solid #D4DBE0;
+						position: absolute;
+						display: block;
+						visibility: hidden;
+						opacity: 0;
+						@include transform(translateX(-20px));
+						border-radius: 0 4px 4px 0;
+
+						min-width: 170px;
+						top: 0px;
+						left: 79px;
+						padding-bottom: 0px;
+						box-shadow: 0 1px 0px rgba(255, 255, 255, 0.09);
+
+						@include transition(all .15s ease-in);
+
+						&:hover {
+							opacity: 1;
+							@include transform(translateX(0px));
+							visibility: visible;
+						}
+					}
+
+					&.active {
+						display: block;
+					}
+
+					li {
+						a {
+							padding-left: 54px;
+
+							@media (min-width: $minMedium) and (max-width: $maxMedium) {
+								padding-left: 10px;
+								text-align: left;
+							}
+
+							&.active {
+								border: 0;
+								box-shadow: none;
+							}
+						}
+
+						> .submenu {
+							display: none;
+							position: relative;
+							top: 10px;
+							border-bottom: 0px;
+							box-shadow: none;
+							margin-bottom: 10px;
+
+							@include animationDuration(.4s);
+
+							@media (min-width: $minMedium) and (max-width: $maxMedium) {
+								display: block;
+								position: absolute;
+								top: 0px;
+								left: 170px;
+							}
+
+							&.active {
+								display: block;
+							}
+
+							li {
+								a {
+									padding-left: 75px;
+
+									@media (min-width: $minMedium) and (max-width: $maxMedium) {
+										padding-left: 10px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.bottom-menu {
+		position: fixed;
+		bottom: 0;
+		width: 230px;
+		z-index: 999;
+
+		> ul {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+
+			> li {
+				float: left;
+				display: block;
+				width: 33.333%;
+				border-right: 1px solid #D1DFEC;
+				border-top: 1px solid #D1DFEC;
+
+				&:last-child {
+					/*border-right: 0;*/
+				}
+
+				> a {
+					display: block;
+					position: relative;
+					text-align: center;
+					padding: 6px 0;
+					background: #E8EFF6;
+
+					&:hover {
+						i {
+							color: #333;
+						}
+					}
+
+					&:hover + .menu {
+						opacity: 1;
+						@include transform(scale(1));
+					}
+
+					i {
+						color: #677786;
+						font-size: 19px;
+
+						@include transition(all .1s linear);
+					}
+
+					.flag {
+						width: 7px;
+						height: 7px;
+						display: block;
+						position: absolute;
+						background: #9ed166;
+						border-radius: 25px;
+						top: 4px;
+						right: 25px;
+					}
+				}
+
+				.menu {
+					position: absolute;
+					left: 39px;
+					bottom: 34px;
+					background: #fff;
+					width: 155px;
+					z-index: 999;
+					border-radius: 3px;
+					padding: 7px 0;
+					list-style-type: none;
+					box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.25);
+
+					opacity: 0;
+					@include transform(scale(0));
+					@include transition(all 300ms cubic-bezier(0.34,1.61,0.7,1));
+					@include transform-origin(50% 100%);
+
+					&:hover {
+						opacity: 1;
+						@include transform(scale(1));
+					}
+					
+					&:after {
+						content: "";
+						position: absolute;
+						display: block;
+						width: 37px;
+						height: 12px;
+						bottom: -12px;
+						left: 49%;
+						margin-left: -18.5px;
+						background-image: url("#{$imagesPath}/popover-arrow.png");
+						background-size: 100% 100%;
+						@include transform(rotateX(180deg));
+					}
+
+					li {
+						padding: 8px 0;
+						border-bottom: 1px solid #E6E6E6;
+						text-align: center;
+
+						&:last-child {
+							border-bottom: 0;
+						}
+
+						a {
+							text-decoration: none;
+							display: block;
+							color: #54A0E2;
+							font-weight: 600;
+
+							@include transition(all .2s linear);
+
+							&:hover {
+								color: #000;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ==============================================================================
+// Sidebar flat
+// ============================================================================== */
+#sidebar-flat {
+	background: #d8dfe6;
+	border-right: 1px solid #b2c1d0;
+	left: 0;
+	top: 0;
+	position: absolute;
+	width: 230px;
+	z-index: 999;
+
+	@include transition(all .2s linear);
+
+	@media (min-width: $minMedium) and (max-width: $maxMedium) {
+		width: 80px;
+	}
+
+	.current-user {
+		position: relative;
+		padding: 0 20px;
+		margin-bottom: 20px;
+		height: 63px;
+
+		.name {
+			color: #444;
+			font-size: 15px;
+			text-decoration: none;
+			padding: 10px 0;
+			display: block;
+			position: relative;
+
+			.avatar {
+				max-width: 41px;
+				border-radius: 50%;
+				position: relative;
+				top: 2px;
+				margin-right: 12px;
+			}
+
+			span {
+				position: relative;
+				top: 5px;
+
+				@media (min-width: $minMedium) and (max-width: $maxMedium) {
+					display: none;
+				}
+
+				.fa-chevron-down {
+					font-size: 10px;
+					margin-left: 7px;
+					position: relative;
+					top: -1px;
+					color: #738597;
+				}
+			}
+		}
+
+		.menu {
+			position: absolute;
+			left: 35px;
+			top: 60px;
+			background: #fff;
+			width: 165px;
+			z-index: 999;
+			border-radius: 3px;
+			padding: 8px 0;
+			list-style-type: none;
+			box-shadow: 0 6px 13px rgba(0, 0, 0, 0.26), 0 0 0 1px rgba(0, 0, 0, 0.06);
+
+			opacity: 0;
+			@include transform(scale(0));
+			@include transition(all 300ms cubic-bezier(0.34,1.61,0.7,1));
+			@include transform-origin(50% 0);
+
+			@media (min-width: $minMedium) and (max-width: $maxMedium) {
+				left: 80px;
+				top: 10px;
+				@include transform-origin(0 15px);
+			}
+
+			&.active {
+				opacity: 1;
+				@include transform(scale(1));
+			}
+			
+			&:before {
+				content: "";
+				position: absolute;
+				display: block;
+				width: 37px;
+				height: 12px;
+				top: -12px;
+				left: 49%;
+				margin-left: -18.5px;
+				background-image: url("#{$imagesPath}/popover-arrow.png");
+				background-size: 100% 100%;
+
+				@media (min-width: $minMedium) and (max-width: $maxMedium) {
+					top: 16px;
+					left: -5px;
+					@include transform(rotate(270deg));
+				}
+			}
+
+			li {
+				padding: 8px 15px;
+				border-bottom: 1px solid #E6E6E6;
+
+				&:last-child {
+					border-bottom: 0;
+				}
+
+				a {
+					text-decoration: none;
+					display: block;
+					color: #4C5661;
+					font-size: 15px;
+
+					@include transition(all .2s linear);
+
+					&:hover {
+						color: #000;
+					}
+				}
+			}
+		}
+	}
+
+	.menu-section {
+		margin-bottom: 40px;
+
+		h3 {
+			color: #7E8C9E;
+			text-transform: uppercase;
+			letter-spacing: .5px;
+			font-weight: bold;
+			font-size: 11px;
+			margin-bottom: 0;
+			margin-top: 0;
+			padding-left: 25px;
+
+			@media (min-width: $minMedium) and (max-width: $maxMedium) {
+				display: none;
+			}
+		}
+
+		ul {
+			list-style-type: none;
+			padding-left: 0;
+			margin-bottom: 0;
+			margin-top: 15px;
+
+			li {
+				margin: 3px 0;
+
+				@media (min-width: $minMedium) and (max-width: $maxMedium) {
+					margin-bottom: 7px;
+					position: relative;
+				}
+
+				a {
+					color: #4B5F72;
+					font-weight: 400;
+					font-size: 14px;
+					padding: 6px 10px;
+					padding-left: 25px;
+					background: transparent;
+					text-decoration: none;
+					display: inline-block;
+					width: 99%;
+
+					@include transition(all .13s linear);
+
+					@media (min-width: $minMedium) and (max-width: $maxMedium) {
+						position: relative;
+						padding-left: 10px;
+						text-align: center;
+
+						&:hover + .submenu {
+							visibility: visible;
+							opacity: 1;
+							@include transform(translateX(0px));
+						}
+					}
+
+					&.active,
+					&:hover {
+						color: #181C20;
+					}
+
+					&.active {
+						font-weight: 600;
+					}
+
+					&.toggled {
+						color: #181C20;
+						background: #CBD4DD;
+					}
+
+					i {
+						font-size: 18px;
+						margin-right: 9px;
+						min-width: 17px;
+						text-align: center;
+						position: relative;
+						top: 1px;
+
+						@media (min-width: $minMedium) and (max-width: $maxMedium) {
+							font-size: 23px;
+							margin: 0;
+
+							&.fa-chevron-down {
+								display: none;
+							}
+						}
+
+						&.ion-card,
+						&.ion-android-inbox {
+							font-size: 18px;
+						}
+
+						&.ion-code-working {
+							font-size: 23px;
+							top: 4px;
+						}
+
+						&.ion-usb {
+							font-size: 22px;
+						}
+
+						&.fa-chevron-down {
+							float: right;
+							font-size: 10px;
+							top: 7px;
+							right: 4px;
+							color: #738597;
+						}
+					}
+
+					span {
+						@media (min-width: $minMedium) and (max-width: $maxMedium) {
+							display: none;
+						}
+					}
+
+					.counter {
+						display: inline-block;
+						background: #99aaba;
+						color: #fff;
+						font-family: $helvetica;
+						height: 20px;
+						min-width: 25px;
+						line-height: 19px;
+						text-align: center;
+						border-radius: 15px;
+						font-size: 11px;
+						font-weight: 600;
+						float: right;
+						position: relative;
+						top: 2px;
+						right: 9px;
+
+						@media (min-width: $minMedium) and (max-width: $maxMedium) {
+							display: none;
+						}
+					}
+				}
+
+				> .submenu {
+					display: none;
+					position: relative;
+					top: 10px;
+					margin-top: 0;
+					margin-bottom: 30px;
+					padding-bottom: 15px;
+					border-bottom: 1px solid #D4DBE0;
+					box-shadow: 0 1px 0px rgba(255, 255, 255, 0.09);
+
+					@include animationDuration(.4s);
+
+					@media (min-width: $minMedium) and (max-width: $maxMedium) {
+						background: #d8dfe6;
+						position: absolute;
+						display: block;
+						visibility: hidden;
+						opacity: 0;
+						@include transform(translateX(-20px));
+						border-radius: 0 4px 4px 0;
+
+						min-width: 170px;
+						top: 0px;
+						left: 79px;
+						padding-bottom: 0px;
+						box-shadow: 0 1px 0px rgba(255, 255, 255, 0.09);
+
+						@include transition(all .15s ease-in);
+
+						&:hover {
+							opacity: 1;
+							@include transform(translateX(0px));
+							visibility: visible;
+						}
+					}
+
+					&.active {
+						display: block;
+					}
+
+					li {
+						a {
+							padding-left: 54px;
+
+							@media (min-width: $minMedium) and (max-width: $maxMedium) {
+								padding-left: 10px;
+								text-align: left;
+								color: #3C4C5C;
+
+								&:hover {
+									color: #000;
+								}
+							}
+
+							&.active {
+								background: #CBD4DD;
+								box-shadow: none;
+							}
+						}
+
+						> .submenu {
+							display: none;
+							position: relative;
+							top: 10px;
+							border-bottom: 0px;
+							box-shadow: none;
+							margin-bottom: 10px;
+
+							@include animationDuration(.4s);
+
+							@media (min-width: $minMedium) and (max-width: $maxMedium) {
+								display: block;
+								position: absolute;
+								top: 0px;
+								left: 170px;
+							}
+
+							&.active {
+								display: block;
+							}
+
+							li {
+								a {
+									padding-left: 75px;
+
+									@media (min-width: $minMedium) and (max-width: $maxMedium) {
+										padding-left: 10px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.bottom-menu {
+		position: fixed;
+		bottom: 0;
+		width: 230px;
+		z-index: 999;
+
+		> ul {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+
+			> li {
+				float: left;
+				display: block;
+				width: 33.333%;
+				border-right: 1px solid #C1CFDD;
+				border-top: 1px solid #C1CFDD;
+
+				&:last-child {
+					/*border-right: 0;*/
+				}
+
+				> a {
+					display: block;
+					position: relative;
+					text-align: center;
+					padding: 6px 0;
+					background: #E5EBF1;
+
+					&:hover {
+						i {
+							color: #333;
+						}
+					}
+
+					&:hover + .menu {
+						opacity: 1;
+						@include transform(scale(1));
+					}
+
+					i {
+						color: #677786;
+						font-size: 19px;
+
+						@include transition(all .1s linear);
+					}
+
+					.flag {
+						width: 7px;
+						height: 7px;
+						display: block;
+						position: absolute;
+						background: #9ed166;
+						border-radius: 25px;
+						top: 4px;
+						right: 25px;
+					}
+				}
+
+				.menu {
+					position: absolute;
+					left: 39px;
+					bottom: 34px;
+					background: #fff;
+					width: 155px;
+					z-index: 999;
+					border-radius: 3px;
+					padding: 7px 0;
+					list-style-type: none;
+					box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.25);
+
+					opacity: 0;
+					@include transform(scale(0));
+					@include transition(all 300ms cubic-bezier(0.34,1.61,0.7,1));
+					@include transform-origin(50% 100%);
+
+					&:hover {
+						opacity: 1;
+						@include transform(scale(1));
+					}
+					
+					&:after {
+						content: "";
+						position: absolute;
+						display: block;
+						width: 37px;
+						height: 12px;
+						bottom: -12px;
+						left: 49%;
+						margin-left: -18.5px;
+						background-image: url("#{$imagesPath}/popover-arrow.png");
+						background-size: 100% 100%;
+						@include transform(rotateX(180deg));
+					}
+
+					li {
+						padding: 8px 0;
+						border-bottom: 1px solid #E6E6E6;
+						text-align: center;
+
+						&:last-child {
+							border-bottom: 0;
+						}
+
+						a {
+							text-decoration: none;
+							display: block;
+							color: #54A0E2;
+							font-weight: 600;
+
+							@include transition(all .2s linear);
+
+							&:hover {
+								color: #000;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ==============================================================================
+// Sidebar flat dark
+// ============================================================================== */
+#sidebar-flat-dark {
+	background: #363e45;
+	border-right: 1px solid #363e45;
+	left: 0;
+	top: 0;
+	position: absolute;
+	width: 230px;
+	z-index: 999;
+
+	@include transition(all .2s linear);
+
+	@media (min-width: $minMedium) and (max-width: $maxMedium) {
+		width: 80px;
+	}
+
+	.current-user {
+		position: relative;
+		padding: 0 20px;
+		margin-bottom: 20px;
+		height: 63px;
+
+		.name {
+			color: #fff;
+			font-size: 15px;
+			text-decoration: none;
+			padding: 10px 0;
+			display: block;
+			position: relative;
+
+			.avatar {
+				max-width: 41px;
+				border-radius: 50%;
+				position: relative;
+				top: 2px;
+				margin-right: 12px;
+			}
+
+			span {
+				position: relative;
+				top: 5px;
+
+				@media (min-width: $minMedium) and (max-width: $maxMedium) {
+					display: none;
+				}
+
+				.fa-chevron-down {
+					font-size: 10px;
+					margin-left: 7px;
+					position: relative;
+					top: -1px;
+					color: #9BABBB;
+				}
+			}
+		}
+
+		.menu {
+			position: absolute;
+			left: 35px;
+			top: 60px;
+			background: #fff;
+			width: 165px;
+			z-index: 999;
+			border-radius: 3px;
+			padding: 8px 0;
+			list-style-type: none;
+			box-shadow: 0 6px 13px rgba(0, 0, 0, 0.26), 0 0 0 1px rgba(0, 0, 0, 0.06);
+
+			opacity: 0;
+			@include transform(scale(0));
+			@include transition(all 300ms cubic-bezier(0.34,1.61,0.7,1));
+			@include transform-origin(50% 0);
+
+			@media (min-width: $minMedium) and (max-width: $maxMedium) {
+				left: 80px;
+				top: 10px;
+				@include transform-origin(0 15px);
+			}
+
+			&.active {
+				opacity: 1;
+				@include transform(scale(1));
+			}
+			
+			&:before {
+				content: "";
+				position: absolute;
+				display: block;
+				width: 37px;
+				height: 12px;
+				top: -12px;
+				left: 49%;
+				margin-left: -18.5px;
+				background-image: url("#{$imagesPath}/popover-arrow.png");
+				background-size: 100% 100%;
+
+				@media (min-width: $minMedium) and (max-width: $maxMedium) {
+					top: 16px;
+					left: -5px;
+					@include transform(rotate(270deg));
+				}
+			}
+
+			li {
+				padding: 8px 15px;
+				border-bottom: 1px solid #E6E6E6;
+
+				&:last-child {
+					border-bottom: 0;
+				}
+
+				a {
+					text-decoration: none;
+					display: block;
+					color: #4C5661;
+					font-size: 15px;
+
+					@include transition(all .2s linear);
+
+					&:hover {
+						color: #000;
+					}
+				}
+			}
+		}
+	}
+
+	.menu-section {
+		margin-bottom: 40px;
+
+		h3 {
+			color: #A6AFBB;
+			text-transform: uppercase;
+			letter-spacing: .5px;
+			font-weight: bold;
+			font-size: 11px;
+			margin-bottom: 0;
+			margin-top: 0;
+			padding-left: 25px;
+
+			@media (min-width: $minMedium) and (max-width: $maxMedium) {
+				display: none;
+			}
+		}
+
+		ul {
+			list-style-type: none;
+			padding-left: 0;
+			margin-bottom: 0;
+			margin-top: 15px;
+
+			li {
+				margin: 3px 0;
+
+				@media (min-width: $minMedium) and (max-width: $maxMedium) {
+					margin-bottom: 7px;
+					position: relative;
+				}
+
+				a {
+					color: #C1D0DF;
+					font-weight: 400;
+					font-size: 14px;
+					padding: 6px 10px;
+					padding-left: 25px;
+					background: transparent;
+					text-decoration: none;
+					display: inline-block;
+					width: 99%;
+
+					@include transition(all .13s linear);
+
+					@media (min-width: $minMedium) and (max-width: $maxMedium) {
+						position: relative;
+						padding-left: 10px;
+						text-align: center;
+
+						&:hover + .submenu {
+							visibility: visible;
+							opacity: 1;
+							@include transform(translateX(0px));
+						}
+					}
+
+					&.active,
+					&:hover {
+						color: #fff;
+					}
+
+					&.active {
+						font-weight: 600;
+					}
+
+					&.toggled {
+						background: #3F4852;
+					}
+
+					i {
+						font-size: 18px;
+						margin-right: 9px;
+						min-width: 17px;
+						text-align: center;
+						position: relative;
+						top: 1px;
+
+						@media (min-width: $minMedium) and (max-width: $maxMedium) {
+							font-size: 23px;
+							margin: 0;
+
+							&.fa-chevron-down {
+								display: none;
+							}
+						}
+
+						&.ion-card,
+						&.ion-android-inbox {
+							font-size: 18px;
+						}
+
+						&.ion-code-working {
+							font-size: 23px;
+							top: 4px;
+						}
+
+						&.ion-usb {
+							font-size: 22px;
+						}
+
+						&.fa-chevron-down {
+							float: right;
+							font-size: 10px;
+							top: 7px;
+							right: 4px;
+							color: #9BABBB;
+						}
+					}
+
+					span {
+						@media (min-width: $minMedium) and (max-width: $maxMedium) {
+							display: none;
+						}
+					}
+
+					.counter {
+						display: inline-block;
+						background: #8796A5;
+						color: #fff;
+						font-family: $helvetica;
+						height: 20px;
+						min-width: 25px;
+						line-height: 19px;
+						text-align: center;
+						border-radius: 15px;
+						font-size: 11px;
+						font-weight: 600;
+						float: right;
+						position: relative;
+						top: 2px;
+						right: 9px;
+
+						@media (min-width: $minMedium) and (max-width: $maxMedium) {
+							display: none;
+						}
+					}
+				}
+
+				> .submenu {
+					display: none;
+					position: relative;
+					top: 10px;
+					margin-top: 0;
+					margin-bottom: 30px;
+					padding-bottom: 15px;
+					border-bottom: 1px solid #454F57;
+
+					@include animationDuration(.4s);
+
+					@media (min-width: $minMedium) and (max-width: $maxMedium) {
+						background: #363e45;
+						position: absolute;
+						display: block;
+						visibility: hidden;
+						opacity: 0;
+						@include transform(translateX(-20px));
+						border-radius: 0 4px 4px 0;
+
+						min-width: 170px;
+						top: 0px;
+						left: 79px;
+						padding-bottom: 0px;
+						box-shadow: 0 1px 0px rgba(255, 255, 255, 0.09);
+
+						@include transition(all .15s ease-in);
+
+						&:hover {
+							opacity: 1;
+							@include transform(translateX(0px));
+							visibility: visible;
+						}
+					}
+
+					&.active {
+						display: block;
+					}
+
+					li {
+						a {
+							padding-left: 54px;
+
+							@media (min-width: $minMedium) and (max-width: $maxMedium) {
+								padding-left: 10px;
+								text-align: left;
+							}
+
+							&.active {
+								background: #3F4852;
+								box-shadow: none;
+							}
+						}
+
+						> .submenu {
+							display: none;
+							position: relative;
+							top: 10px;
+							border-bottom: 0px;
+							box-shadow: none;
+							margin-bottom: 10px;
+
+							@include animationDuration(.4s);
+
+							@media (min-width: $minMedium) and (max-width: $maxMedium) {
+								display: block;
+								position: absolute;
+								top: 0px;
+								left: 170px;
+							}
+
+							&.active {
+								display: block;
+							}
+
+							li {
+								a {
+									padding-left: 75px;
+
+									@media (min-width: $minMedium) and (max-width: $maxMedium) {
+										padding-left: 10px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.bottom-menu {
+		position: fixed;
+		bottom: 0;
+		width: 230px;
+		z-index: 999;
+
+		> ul {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+
+			> li {
+				float: left;
+				display: block;
+				width: 33.333%;
+				border-right: 1px solid #68747E;
+				border-top: 1px solid #68747E;
+
+				&:last-child {
+					border-right: 0;
+				}
+
+				> a {
+					display: block;
+					position: relative;
+					text-align: center;
+					padding: 6px 0;
+					background: #4E5861;
+
+					&:hover + .menu {
+						opacity: 1;
+						@include transform(scale(1));
+					}
+
+					i {
+						color: #C4D1DF;
+						font-size: 19px;
+
+						@include transition(all .1s linear);
+					}
+
+					.flag {
+						width: 7px;
+						height: 7px;
+						display: block;
+						position: absolute;
+						background: #9ed166;
+						border-radius: 25px;
+						top: 4px;
+						right: 25px;
+					}
+				}
+
+				.menu {
+					position: absolute;
+					left: 39px;
+					bottom: 34px;
+					background: #fff;
+					width: 155px;
+					z-index: 999;
+					border-radius: 3px;
+					padding: 7px 0;
+					list-style-type: none;
+					box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.25);
+
+					opacity: 0;
+					@include transform(scale(0));
+					@include transition(all 300ms cubic-bezier(0.34,1.61,0.7,1));
+					@include transform-origin(50% 100%);
+
+					&:hover {
+						opacity: 1;
+						@include transform(scale(1));
+					}
+					
+					&:after {
+						content: "";
+						position: absolute;
+						display: block;
+						width: 37px;
+						height: 12px;
+						bottom: -12px;
+						left: 49%;
+						margin-left: -18.5px;
+						background-image: url("#{$imagesPath}/popover-arrow.png");
+						background-size: 100% 100%;
+						@include transform(rotateX(180deg));
+					}
+
+					li {
+						padding: 8px 0;
+						border-bottom: 1px solid #E6E6E6;
+						text-align: center;
+
+						&:last-child {
+							border-bottom: 0;
+						}
+
+						a {
+							text-decoration: none;
+							display: block;
+							color: #54A0E2;
+							font-weight: 600;
+
+							@include transition(all .2s linear);
+
+							&:hover {
+								color: #000;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ==============================================================================
+// Sidebar default
+// ============================================================================== */
+#sidebar-default {
+	background: #2a313a;
+	border-right: 1px solid #3C434D;
+	left: 0;
+	top: 0;
+	position: absolute;
+	width: 230px;
+	z-index: 999;
+
+	@include transition(all .2s linear);
+
+	@media (min-width: $minMedium) and (max-width: $maxMedium) {
+		width: 80px;
+	}
+
+	.current-user {
+		position: relative;
+		background: linear-gradient(#3D4A5D, #3F4C5C), #686e78;
+		-webkit-box-shadow: inset rgba(255,255,255,0.16) 0 1px 0;
+		-moz-box-shadow: inset rgba(255,255,255,0.16) 0 1px 0;
+		color: #fff;
+		padding: 0 20px;
+		height: 63px;
+		margin-bottom: 20px;
+
+		.name {
+			color: #F0F5FA;
+			font-size: 15px;
+			padding: 10px 0;
+			display: block;
+			text-decoration: none;
+			position: relative;
+			text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 0;
+
+			.avatar {
+				max-width: 41px;
+				border-radius: 50%;
+				position: relative;
+				top: 2px;
+				margin-right: 12px;
+			}
+
+			span {
+				position: relative;
+				top: 4px;
+
+				@media (min-width: $minMedium) and (max-width: $maxMedium) {
+					display: none;
+				}
+
+				.fa-chevron-down {
+					font-size: 10px;
+					margin-left: 7px;
+					position: relative;
+					top: -2px;
+				}
+			}
+		}
+
+		.menu {
+			position: absolute;
+			left: 35px;
+			top: 60px;
+			background: #fff;
+			width: 165px;
+			z-index: 999;
+			border-radius: 3px;
+			padding: 8px 0;
+			list-style-type: none;
+			box-shadow: 1px 3px 1px rgba(0, 0, 0, 0.25);
+			opacity: 0;
+			@include transform(scale(0));
+			@include transition(all 300ms cubic-bezier(0.34,1.61,0.7,1));
+			@include transform-origin(50% 0);
+
+			@media (min-width: $minMedium) and (max-width: $maxMedium) {
+				left: 80px;
+				top: 10px;
+				@include transform-origin(0 15px);
+			}
+
+			&.active {
+				opacity: 1;
+				@include transform(scale(1));
+			}
+			
+			&:before {
+				content: "";
+				position: absolute;
+				display: block;
+				width: 37px;
+				height: 12px;
+				top: -12px;
+				left: 49%;
+				margin-left: -18.5px;
+				background-image: url("#{$imagesPath}/popover-arrow.png");
+				background-size: 100% 100%;
+
+				@media (min-width: $minMedium) and (max-width: $maxMedium) {
+					top: 16px;
+					left: -5px;
+					@include transform(rotate(270deg));
+				}
+			}
+
+			li {
+				padding: 8px 15px;
+				border-bottom: 1px solid #E6E6E6;
+
+				&:last-child {
+					border-bottom: 0;
+				}
+
+				a {
+					text-decoration: none;
+					display: block;
+					color: #4C5661;
+					font-size: 15px;
+
+					@include transition(all .2s linear);
+
+					&:hover {
+						color: #000;
+					}
+				}
+			}
+		}
+	}
+
+	.menu-section {
+		margin-bottom: 35px;
+
+		h3 {
+			padding-left: 23px;
+			color: #fff;
+			text-transform: uppercase;
+			letter-spacing: .5px;
+			font-weight: bold;
+			font-size: 11px;
+			margin-bottom: 0;
+			margin-top: 0;
+			text-shadow: 1px 1px #000;
+
+			@media (min-width: $minMedium) and (max-width: $maxMedium) {
+				display: none;
+			}
+		}
+
+		ul {
+			list-style-type: none;
+			padding-left: 0;
+			margin-bottom: 0;
+			margin-top: 15px;
+
+			li {
+				margin: 3px 0;
+
+				@media (min-width: $minMedium) and (max-width: $maxMedium) {
+					margin-bottom: 7px;
+					position: relative;
+				}
+
+				a {
+					color: #ECF6FF;
+					font-weight: 400;
+					font-size: 14px;
+					padding: 7px 10px 9px 10px;
+					padding-left: 23px;
+					background: transparent;
+					text-decoration: none;
+					display: inline-block;
+					width: 100%;
+
+					@include transition(background .13s linear);
+
+					@media (min-width: $minMedium) and (max-width: $maxMedium) {
+						position: relative;
+						padding-left: 10px;
+						text-align: center;
+
+						&:hover + .submenu {
+							visibility: visible;
+							opacity: 1;
+							@include transform(translateX(0px));
+						}
+					}
+
+					&:hover,
+					&.toggled {
+						background: #343E4E;
+					}
+
+					&.active {
+						background: #202E3F;
+						text-shadow: rgba(0,0,0,0.25) 0 -1px 0;
+						background-color: #545E6F;
+						background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5B6479), color-stop(100%, #4C5566)),#686e78; 
+						background: -webkit-linear-gradient(#5B6479,#4C5566),#686e78; 
+						background: -moz-linear-gradient(#5B6479,#4C5566),#686e78;
+						background: -o-linear-gradient(#5B6479,#4C5566),#686e78;
+						background: linear-gradient(#5B6479,#4C5566),#686e78; 
+						-webkit-box-shadow: rgba(0,0,0,0.25) 0 1px 0,inset rgba(255,255,255,0.16) 0 1px 0;
+						-moz-box-shadow: rgba(0,0,0,0.25) 0 1px 0,inset rgba(255,255,255,0.16) 0 1px 0;
+						box-shadow: rgba(0,0,0,0.25) 0 1px 0,inset rgba(255,255,255,0.16) 0 1px 0;
+
+						i.fa-chevron-down {
+							color: #ECF6FF;
+						}
+					}
+
+					i {
+						font-size: 19px;
+						margin-right: 9px;
+						min-width: 17px;
+						text-align: center;
+						position: relative;
+						top: 1px;
+
+						@media (min-width: $minMedium) and (max-width: $maxMedium) {
+							font-size: 23px;
+							margin: 0;
+
+							&.fa-chevron-down {
+								display: none;
+							}
+						}
+
+						&.ion-card,
+						&.ion-android-inbox {
+							font-size: 18px;
+						}
+
+						&.ion-code-working {
+							font-size: 23px;
+							top: 4px;
+						}
+
+						&.ion-usb {
+							font-size: 22px;
+						}
+
+						&.ion-earth {
+							top: 2px;
+						}
+
+						&.fa-chevron-down {
+							float: right;
+							font-size: 10px;
+							top: 7px;
+							right: 7px;
+							min-width: inherit;
+							color: #C4CFDA;
+						}
+					}
+
+					span {
+						@media (min-width: $minMedium) and (max-width: $maxMedium) {
+							display: none;
+						}
+					}
+
+					.counter {
+						display: inline-block;
+						background: #479ccf;
+						height: 19px;
+						padding: 3px 8px;
+						line-height: 1;
+						text-align: center;
+						border-radius: 20px;
+						color: #fff;
+						font-family: $helvetica;
+						font-size: 11px;
+						font-weight: 600;
+						float: right;
+						position: relative;
+						top: 2px;
+						right: 10px;
+
+						@media (min-width: $minMedium) and (max-width: $maxMedium) {
+							display: none;
+						}
+					}
+				}
+
+				> .submenu {
+					display: none;
+					position: relative;
+					top: 10px;
+					margin-top: 0;
+					margin-bottom: 30px;
+					padding-bottom: 15px;
+					border-bottom: 1px solid #000;
+					box-shadow: 0 1px 0px rgba(255, 255, 255, 0.09);
+
+					@include animationDuration(.4s);
+
+					@media (min-width: $minMedium) and (max-width: $maxMedium) {
+						background: #2a313a;
+						position: absolute;
+						display: block;
+						visibility: hidden;
+						opacity: 0;
+						@include transform(translateX(-20px));
+						border-radius: 0 4px 4px 0;
+
+						min-width: 170px;
+						top: 0px;
+						left: 79px;
+						padding-bottom: 0px;
+						box-shadow: 0 1px 0px rgba(255, 255, 255, 0.09);
+
+						@include transition(all .15s ease-in);
+
+						&:hover {
+							opacity: 1;
+							@include transform(translateX(0px));
+							visibility: visible;
+						}
+					}
+
+					&.active {
+						display: block;
+					}
+
+					li {
+						a {
+							padding-left: 53px;
+
+							@media (min-width: $minMedium) and (max-width: $maxMedium) {
+								padding-left: 10px;
+								text-align: left;
+							}
+
+							&.active {
+								background: #343E4E;
+								box-shadow: none;
+							}
+						}
+
+						> .submenu {
+							display: none;
+							position: relative;
+							top: 10px;
+							border-bottom: 0px;
+							box-shadow: none;
+							margin-bottom: 10px;
+
+							@include animationDuration(.4s);
+
+							@media (min-width: $minMedium) and (max-width: $maxMedium) {
+								display: block;
+								position: absolute;
+								top: 0px;
+								left: 170px;
+							}
+
+							&.active {
+								display: block;
+							}
+
+							li {
+								a {
+									padding-left: 75px;
+
+									@media (min-width: $minMedium) and (max-width: $maxMedium) {
+										padding-left: 10px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.bottom-menu {
+		position: fixed;
+		bottom: 0;
+		width: 230px;
+		z-index: 999;
+
+		> ul {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+
+			> li {
+				float: left;
+				display: block;
+				width: 33.333%;
+				border-right: 1px solid #3E4E55;
+				border-top: 1px solid #3E4E55;
+
+				&:last-child {
+					border-right: 0;
+				}
+
+				> a {
+					display: block;
+					position: relative;
+					text-align: center;
+					padding: 6px 0;
+					background: #333D4B;
+
+					&:hover {
+						i {
+							color: #89A2BB;
+						}
+					}
+
+					&:hover + .menu {
+						opacity: 1;
+						@include transform(scale(1));
+					}
+
+					i {
+						color: #CBD3DB;
+						font-size: 19px;
+
+						@include transition(all .1s linear);
+					}
+
+					.flag {
+						width: 7px;
+						height: 7px;
+						display: block;
+						position: absolute;
+						background: #9ed166;
+						border-radius: 25px;
+						top: 4px;
+						right: 25px;
+					}
+				}
+
+				.menu {
+					position: absolute;
+					left: 39px;
+					bottom: 34px;
+					background: #fff;
+					width: 155px;
+					z-index: 999;
+					border-radius: 3px;
+					padding: 7px 0;
+					list-style-type: none;
+					box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.25);
+
+					opacity: 0;
+					@include transform(scale(0));
+					@include transition(all 300ms cubic-bezier(0.34,1.61,0.7,1));
+					@include transform-origin(50% 100%);
+
+					&:hover {
+						opacity: 1;
+						@include transform(scale(1));
+					}
+					
+					&:after {
+						content: "";
+						position: absolute;
+						display: block;
+						width: 37px;
+						height: 12px;
+						bottom: -12px;
+						left: 49%;
+						margin-left: -18.5px;
+						background-image: url("#{$imagesPath}/popover-arrow.png");
+						background-size: 100% 100%;
+						@include transform(rotateX(180deg));
+					}
+
+					li {
+						padding: 8px 0;
+						border-bottom: 1px solid #E6E6E6;
+						text-align: center;
+
+						&:last-child {
+							border-bottom: 0;
+						}
+
+						a {
+							text-decoration: none;
+							display: block;
+							color: #54A0E2;
+							font-weight: 600;
+
+							@include transition(all .2s linear);
+
+							&:hover {
+								color: #000;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+/* ==============================================================================
+// Main Content
+// ============================================================================== */
+#content {
+	background: #FFF;
+	margin-left: 230px;
+	padding: 40px;
+	padding-top: 67px;
+	position: relative;
+	min-height: 900px;
+
+	@include transition(all .3s ease-out);
+
+	@media (max-width: $maxMedium) {
+		margin-left: 80px;
+	}
+
+	@media (max-width: $maxSmall) {
+		margin-left: 0px;
+		z-index: 9999;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	.menubar {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 63px;
+		padding: 20px 40px;
+		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
+		background: rgb(255, 255, 255);
+		z-index: 99;
+
+		@media(max-width: $maxSmall) {
+			padding: 20px;
+		}
+
+		&.relative {
+			position: relative;
+		}
+
+		&.fixed {
+			position: fixed;
+			padding-left: 230px;
+
+			@media(max-width: $maxMedium) {
+				padding-left: 90px;
+			}
+
+			@media(max-width: $maxSmall) {
+				padding-left: 20px;
+			}
+		}
+
+		&.transparent {
+			background: -webkit-linear-gradient(top, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0.85) 100%);
+			background: -moz-linear-gradient(top, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0.85) 100%);
+			background: -o-linear-gradient(top, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0.85) 100%);
+			background: linear-gradient(top, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0.85) 100%);
+		}
+
+		.sidebar-toggler {
+			float: left;
+			padding: 10px;
+			position: relative;
+			top: -15px;
+			left: -5px;
+			margin-right: 10px;
+			cursor: pointer;
+
+			i {
+				font-size: 37px;
+			}
+		}
+
+		.page-title {
+			float: left;
+			position: relative;
+			font-size: 17px;
+			line-height: 26px;
+			color: #333;
+
+			@media (max-width: $maxSmall) {
+				font-size: 15px;
+			}
+
+			small {
+				margin-left: 10px;
+			}
+		}
+
+		.btn.pull-right {
+			position: relative;
+			top: -5px;
+			font-weight: bold;
+			letter-spacing: .3px;
+		}
+	}
+
+	.content-wrapper {
+		margin-top: 20px;
+	}
+}
+
+
+
+

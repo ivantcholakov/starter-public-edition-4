@@ -1,0 +1,374 @@
+#users {
+	#content {
+
+		.sidebar-toggler {
+			z-index: 9;	
+		}
+
+		.page-title {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			padding: 20px 30px;
+			font-size: 16px;
+			color: #7e7e7e;
+			text-transform: uppercase;
+			font-weight: 600;
+			letter-spacing: .3px;
+			border-right: 1px solid #E6E6E6;
+
+			@media (max-width: $maxSmall) {
+				border-right: 0;
+				padding-left: 50px;
+			}
+		}
+
+		form.search {
+			position: relative;
+			float: left;
+			width: 260px;
+			top: -2px;
+			margin-left: 170px;
+
+			.fa-search {
+				position: absolute;
+				color: #BBB;
+				top: 7px;
+				left: 11px;
+				font-size: 16px;
+			}
+
+			input[type="text"] {
+				border: 0;
+				padding: 6px 15px 6px 37px;
+				border-radius: 3px;
+				width: 100%;
+
+				@include placeholder {
+					font-weight: normal;
+					font-family: $lato;
+					color: #9B9B9B;
+				}
+			}
+
+			input[type="submit"] {
+				visibility: hidden;
+				position: absolute;
+			}
+		}
+
+		.content-wrapper {
+			.page-controls {
+				margin-top: 30px;
+
+				.filters {
+					> label {
+						font-size: 15px;
+						margin-right: 20px;
+					}
+
+					> a {
+						margin-right: 35px;
+						color: #666;
+						padding-bottom: 2px;
+						text-decoration: none;
+						@include transition(all .1s linear);
+
+						&:hover {
+							color: #378FCA;
+						}
+
+						&.active {
+							color: #378FCA;
+							font-weight: 600;
+							border-bottom: 1px solid #82BFE9;
+						}
+					}
+
+					.show-options {
+						float: right;
+
+						@media(max-width: $maxMedium) {
+							float: none;
+							margin-top: 23px;
+						}
+						
+						.dropdown {
+							display: inline-block;
+							position: relative;
+							top: -7px;
+							margin-right: 20px;
+
+							> a {
+								text-decoration: none;
+								height: 31px;
+
+								span {
+									font-size: 13px;
+									height: 29px;
+									line-height: 29px;
+
+									.fa-unsorted {
+										font-size: 11px;
+										margin-left: 6px;
+									}
+								}
+							}
+
+							.dropdown-menu {
+								left: -40%;
+								top: 115%;
+								
+								&:before {
+									content: "";
+									position: absolute;
+									display: block;
+									width: 37px;
+									height: 12px;
+									top: -12px;
+									left: 50%;
+									margin-left: -18.5px;
+									background-image: url("#{$imagesPath}/popover-arrow.png");
+									background-size: 100% 100%;
+								}
+							}
+						}
+
+						.grid-view {
+							position: relative;
+							top: -4px;
+							font-size: 18px;
+							color: #bbb;
+							text-decoration: none;
+							margin-left: 14px;
+
+							&.active {
+								color: #111;
+							}
+						}
+					}
+				}
+			}
+
+			.users-list {
+				margin-top: 35px;
+				margin-bottom: 40px;
+
+				.headers {
+					padding-bottom: 10px;
+					min-height: 35px;
+
+					.header {
+
+						&.select-users {
+
+							&.active {
+								display: block !important;
+
+								.bulk-actions {
+									display: block !important;
+								}
+							}
+
+							.bulk-actions {
+								position: absolute;
+								top: 0px;
+								left: 75px;
+								width: 300px;
+								display: none;
+
+								> a {
+									text-decoration: none;
+
+									.total-checked {
+										padding-left: 10px;
+									}
+
+									.fa-chevron-down {
+										font-size: 10px;
+										position: relative;
+										top: -1px;
+										margin-left: 5px;
+									}
+								}
+
+								.dropdown-menu {
+									top: 30px;
+
+									&:before {
+										content: "";
+										position: absolute;
+										display: block;
+										width: 37px;
+										height: 12px;
+										top: -12px;
+										left: 50%;
+										margin-left: -18.5px;
+										background-image: url("#{$imagesPath}/popover-arrow.png");
+										background-size: 100% 100%;
+									}
+								}
+							}
+						}
+
+						label {
+							height: 100%;
+							width: 100%;
+							font-weight: 600;
+							color: #333;
+
+							a {
+								display: block;
+								font-weight: 600;
+								color: #333;
+								text-decoration: none;
+								background: #fff;
+								
+								@include transition(all .14s linear);
+
+								&:hover {
+									background: #EFFAFF;
+								}
+							}
+						}
+					}
+				}
+
+				.user {
+					border-bottom: 1px solid #f0f0f0;
+					padding: 8px 0;
+
+					@media(max-width: $maxMedium) {
+						padding: 13px 0;
+					}
+
+					&:first-child {
+						border-top: 1px solid #e0e0e0;
+					}
+
+					&:nth-child(2n) {
+						background: #FAFAFC;
+					}
+
+					.avatar {
+						input[type="checkbox"] {
+							margin-right: 25px;
+							cursor: pointer;
+						}
+
+						img {
+							border-radius: 50%;
+							max-width: 45px;
+
+							@media(max-width: $maxMedium) {
+								display: none;
+							}
+						}
+					}
+
+					.name {
+						position: relative;
+						top: 13px;
+						color: #333;
+						text-decoration: none;
+
+						@media(max-width: $maxMedium) {
+							top: 0;
+						}
+
+						&:hover {
+							text-decoration: underline;
+						}
+
+						.label {
+							margin-left: 6px;
+							position: relative;
+							display: inline-block;
+							top: -1px;
+							text-decoration: none !important;
+						}
+					}
+
+					.email {
+						position: relative;
+						top: 13px;
+						font-size: 13px;
+
+						@media(max-width: $maxMedium) {
+							top: 0;
+						}
+					}
+
+					.total-spent {
+						position: relative;
+						top: 13px;
+
+						@media(max-width: $maxMedium) {
+							top: 0;
+						}
+					}
+
+					.created-at {
+						position: relative;
+						top: 13px;
+						font-size: 13px;
+						text-align: right;
+
+						@media(max-width: $maxMedium) {
+							top: 0;
+						}
+					}
+				}
+
+				.pager-wrapper {
+					margin-top: 30px;
+
+					.pager li > a, 
+					.pager li > span {
+						margin: 0 5px;
+					}
+				}
+			}
+
+			.users-grid {
+				margin-top: 35px;
+				margin-bottom: 40px;
+				display: none;
+
+				.user {
+					margin-bottom: 35px;
+
+					@media (max-width: $maxMedium) {
+						min-height: 205px;
+					}
+
+					img {
+						border-radius: 5px;
+						margin-bottom: 15px;
+						border: 0;
+					}
+
+					.name {
+						font-weight: 600;
+					}
+
+					.email {
+						font-size: 13px;
+						color: #555;
+						margin-top: 4px;
+					}
+				}
+
+				.pager-wrapper {
+					margin-top: 30px;
+
+					.pager li > a, 
+					.pager li > span {
+						margin: 0 5px;
+					}
+				}
+			}
+		}
+
+	}
+}
