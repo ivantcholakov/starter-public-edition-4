@@ -15,7 +15,7 @@ class Nav extends CI_Model {
 
         //----------------------------------------------------------------------
         
-        $nav['payments'] = array('label' => 'Payments', 'icon' => 'credit-card icon', 'location' => 'payments');
+        $nav['payments'] = array('label' => $this->lang->line('ui_payments'), 'icon' => 'card icon', 'location' => 'payments');
         
         $nav['customers'] = array('label' => 'Customers', 'icon' => 'gift icon', 'location' => '#');
         
