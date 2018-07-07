@@ -40778,6 +40778,7 @@ button:hover .ui.dashboard.segments {
     height: auto;
     min-height: 100%;
     min-width: 240px;
+    z-index: 100!important;
 }
 
 .ui.vertical.menu {
