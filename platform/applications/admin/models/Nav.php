@@ -15,17 +15,17 @@ class Nav extends CI_Model {
 
         //----------------------------------------------------------------------
         
-        $nav['payments'] = array('label' => 'Payments', 'icon' => 'creditcard icon', 'location' => 'payments');
+        $nav['payments'] = array('label' => 'Payments', 'icon' => 'credit card icon', 'location' => 'payments');
         
-        $nav['customers'] = array('label' => 'Customers', 'icon' => 'gift icon', 'location' => 'customers');
+        $nav['customers'] = array('label' => 'Customers', 'icon' => 'user outline icon', 'location' => 'customers');
         
-        $nav['transfers'] = array('label' => 'Transfers', 'icon' => 'gift icon', 'location' => 'transfers');
+        $nav['transfers'] = array('label' => 'Transfers', 'icon' => 'rocketchat icon', 'location' => 'transfers');
         
-        $nav['plans'] = array('label' => 'Plans', 'icon' => 'gift icon', 'location' => 'plans');
+        $nav['plans'] = array('label' => 'Plans', 'icon' => 'envelope square icon', 'location' => 'plans');
 
-        $nav['invoices'] = array('label' => 'Invoices', 'icon' => 'file outline icon', 'location' => 'invoices');
+        $nav['invoices'] = array('label' => 'Invoices', 'icon' => 'file pdf icon', 'location' => 'invoices');
         
-        $nav['products'] = array('label' => 'Products', 'icon' => 'shoppingcart icon', 'location' => 'products');
+        $nav['products'] = array('label' => 'Products', 'icon' => 'plus cart icon', 'location' => 'products');
 
         $nav['news'] = array('label' => 'News', 'icon' => 'bell outline icon', 'location' => '#');
 
