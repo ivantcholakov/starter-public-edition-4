@@ -27,13 +27,13 @@ class Nav extends CI_Model {
         
         $nav['products'] = array('label' => 'Products', 'icon' => 'plus cart icon', 'location' => 'products');
 
-        $nav['news'] = array('label' => 'News', 'icon' => 'bell outline icon', 'location' => '#');
+        $nav['news'] = array('label' => 'Coupons', 'icon' => 'bell outline icon', 'location' => 'coupons');
 
-        $nav['galleries'] = array('label' => 'Galleries', 'icon' => 'picture outline icon', 'location' => '#');
+        $nav['galleries'] = array('label' => 'Analytics', 'icon' => 'picture outline icon', 'location' => 'reports');
 
-        $nav['slideshow'] = array('label' => 'Slideshow', 'icon' => 'film icon', 'location' => '#');
+        $nav['slideshow'] = array('label' => 'Hosted pages', 'icon' => 'film icon', 'location' => 'hosted-pages');
 
-        $nav['categories'] = array('label' => 'Product Categories', 'icon' => $this->registry->get('nav') == 'categories' ? 'folder open outline icon' : 'folder outline icon', 'location' => '#');
+        $nav['categories'] = array('label' => 'Integrations', 'icon' => $this->registry->get('nav') == 'integrations' ? 'folder open outline icon' : 'folder outline icon', 'location' => 'integrations');
      
 
 
@@ -49,11 +49,11 @@ class Nav extends CI_Model {
 
         $nav['settings/languages'] = array('label' => $this->lang->line('ui_languages'), 'icon' => 'translate icon', 'location' => '#', 'parent_id' => 'settings');
 
-        $nav['settings/account'] = array('label' => $this->lang->line('ui_site'), 'icon' => 'home icon', 'location' => '#', 'parent_id' => 'settings');
-        $nav['settings/api'] = array('label' => 'API', 'icon' => 'shield icon', 'location' => '#', 'parent_id' => 'settings');
+        $nav['settings/account'] = array('label' => $this->lang->line('ui_site'), 'icon' => 'home icon', 'location' => 'settings/account', 'parent_id' => 'settings');
+        $nav['settings/api'] = array('label' => 'API', 'icon' => 'shield icon', 'location' => 'settings/api', 'parent_id' => 'settings');
         $nav['settings/metadata'] = array('label' => $this->lang->line('ui_metadata'), 'icon' => 'tag icon', 'location' => '#', 'parent_id' => 'settings');
-        $nav['settings/google_analytics'] = array('label' => 'Google Analytics', 'icon' => 'google icon', 'location' => '#', 'parent_id' => 'settings');
-        $nav['settings/email_settings'] = array('label' => 'Email Settings', 'icon' => 'mail outline icon',  'location' => '#', 'parent_id' => 'settings');
+        $nav['settings/gateway'] = array('label' => 'Gateway', 'icon' => 'google icon', 'location' => 'settings/gateway', 'parent_id' => 'settings');
+        $nav['settings/email_settings'] = array('label' => 'Email Settings', 'icon' => 'mail outline icon',  'location' => 'settings/emails', 'parent_id' => 'settings');
 
         if ($this->settings->get('mailer_enabled')) {
             $nav['settings/email_test'] = array('label' => 'Email Test', 'icon' => 'mail outline icon', 'location' => '#', 'parent_id' => 'settings');
