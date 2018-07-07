@@ -6,7 +6,7 @@ class Home_controller extends Base_Authenticated_Controller {
 
         parent::__construct();
 
-        $this->_set_nav('home');
+        $this->_set_nav('Dashboard');
     }
 
     public function index() {
