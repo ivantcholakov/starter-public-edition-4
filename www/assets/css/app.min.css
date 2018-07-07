@@ -15573,3 +15573,17 @@ sub {
         display: block
     }
     
+#content {
+    background: #FFF;
+    margin: auto!important;
+    padding: 0px;
+    padding-top: 67px;
+    position: relative;
+    min-height: 900px;
+    max-width: 95.5%!important;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
