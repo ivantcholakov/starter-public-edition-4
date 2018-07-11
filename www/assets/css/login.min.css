@@ -265,6 +265,7 @@ body {
     font-size: 16px;
     line-height: 1.4285em;
     color: rgba(0, 0, 0, .87);
+    background-color: #e9ebee;
     font-smoothing: antialiased
 }
 
@@ -39972,8 +39973,7 @@ ol.linenums li {
 }
 
 body.login-page {
-    display: block;
-    background-color: #e9ebee
+    background-color: #e9ebee!important;
 }
 
 .login-page>.grid {
