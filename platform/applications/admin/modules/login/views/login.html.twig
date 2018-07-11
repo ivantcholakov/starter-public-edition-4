@@ -15,6 +15,7 @@
             
   <div class="signup">
   <div class="signup__box clearfix signup__box--active">
+         <h3>Log in to your account</h3>
 {{ form_open('', 'method="post" class="signup__form" id="login_form"') }}
      <div class="field">
                         {{ widget('feedback_messages_widget', {
@@ -43,6 +44,7 @@
 
  <button class="login__btn btn btn--two" type="submit"> {{ lang('ui_login') }} <i class="sign in icon"></i></button>
 
+<a class="panel-footer" href="/signup/">Need an Account? &nbsp;<span>Sign Up</span></a>
  
   </div>
   
