@@ -1,8 +1,12 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
+
 class Dashboard_graph_widget_controller extends Base_Widget_Controller {
+    
     public function __construct() {
+        
         parent::__construct();
     }
+    
     public function index() {
 
         $this->load->library('letter_avatar');
@@ -24,6 +28,6 @@ class Dashboard_graph_widget_controller extends Base_Widget_Controller {
             ->set('letter_avatar', $this->letter_avatar)
             ->build('letter_avatar');
         
-        $this->load->view('dashboard_graph_widget', $data);
+        $this->load->view('dashboard_graph_widget');
     }
 }
