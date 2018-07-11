@@ -7,6 +7,14 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child {
     width: 420px!important;
 }
 
+.signup__box--h3, h3 {
+    font-size: 1.75em;
+    margin-top: -0.625em;
+    margin-bottom: .64375em;
+    text-align: center;
+    font-weight: 100;
+}
+
 .signup__input {
     width: auto!important;
 }
