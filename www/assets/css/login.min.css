@@ -21,12 +21,15 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child {
     background-position: center 465px,top;
     background-size: 600px auto,100% 120%;
    background-image: none!important;
+    padding-top: 0.6875em!important;
+    background-repeat: no-repeat;
 }
 
 @media screen and (min-width: 992px) {
 .trial-account {
     background-position: center 465px,50%;
     background-size: 625px auto,cover;
+    padding-top: 0.6875em!important;
     background-image: none!important;
 }
 }
@@ -35,8 +38,9 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    width: 260px;
+    width: 220px;
     margin: 0 auto;
     text-align: center;
+     margin-top: .925em; 
     margin-bottom: .625em;
 }
