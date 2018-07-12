@@ -15586,3 +15586,19 @@ sub {
     -o-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
 }
+    
+ 
+
+.btn--elektro {
+    text-align: center!important;
+    float: right!important;
+    border: 0px solid #210E4B!important;
+    color: #210E4B!important;
+    box-shadow: none!important;
+    background-color: #fff!important;
+    margin-top: 20px!important;
+    margin-right: 20px!important;
+    border-radius: 25px!important;
+    padding: 7px 20px!important;
+    line-height: 1.7525em!important;
+}  
