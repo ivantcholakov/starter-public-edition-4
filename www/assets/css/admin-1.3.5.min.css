@@ -40525,7 +40525,7 @@ body {
 }
 
 #sidebar {
-    background-color: #1B1C1D;
+    background-color: #6b8cce;
     height: auto;
     min-height: 100%;
     min-width: 210px
@@ -40536,11 +40536,11 @@ body {
 }
 
 #sidebar_menu .item .title {
-    color: rgba(255, 255, 255, .498039)
+    color: #fff
 }
 
 #sidebar_menu .item .title.active {
-    color: #fff
+    color: rgba(255, 255, 255, .498039)
 }
 
 @media only screen and (min-width:768px) and (max-width:991px) {
