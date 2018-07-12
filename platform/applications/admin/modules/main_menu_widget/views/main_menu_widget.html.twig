@@ -18,7 +18,7 @@
                 
             </a>  
           <button type="button" v-bind:class="{ 'language--extended': isRegionActive, 'language--mextended': isActive  }" v-on:click="toggleRegion" class="language language--region">
-                <span class="region__flag">
+                <span>
                 <i class="user icon"></i>
                 </span>
                 <span class="region__text">
@@ -226,7 +226,8 @@
     </div>
 
     
-    
+    </div>
+    </div>
 
 
 <div v-bind:style="{ left: highlightLeft + 'px', width: highlightWidth + 'px' }" v-bind:class="{ 'navbar__highlight--active': highlightActive }" class="navbar__highlight"></div>
