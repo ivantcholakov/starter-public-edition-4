@@ -1,22 +1,26 @@
 <div id="dashboard">
 
-<div id="content">
+<div class="one-col">
 
+<div id="content" class="container">
+
+<div class="content-wrapper">	
+
+<div class="one-col__row row">
 {{ widget('home/home_menubar_widget/index') }}
-
-<div class="content-wrapper">
-				
-{{ widget('home/dashboard_graph_widget/index') }}
-
-<p> You have to build your administration interface here. </p>
 </div>
 
+<div class="one-col__row row">
+{{ widget('home/dashboard_graph_widget/index') }}
+</div>
 
- </div> 
-
+<div class="one-col__row row">
+<p> You have to build your administration interface here. </p>
 {{ widget('home/quick_buttons_widget/index') }}
+</div>
 
-            <div class="ui hidden divider"></div>
+<div class="one-col__row row">
+<div class="ui hidden divider"></div>
 
             <div class="ui segment">
 
@@ -137,3 +141,7 @@
             </div>
         
         
+</div>
+</div>
+</div>
+ </div> 
