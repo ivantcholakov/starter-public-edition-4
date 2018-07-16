@@ -80,7 +80,7 @@ echo js_platform();
 <?php
 
 // A CSS loading example.
-echo css('lib/semantic-custom/semantic-custom.min.css');
+echo css('lib/semantic-custom/semantic-custom.min.css?v='.PLATFORM_VERSION);
 
 ?>
 
@@ -348,7 +348,7 @@ echo js_bp_plugins();
 echo js_mbp_helper();
 echo js_scale_fix_ios();
 
-echo js('lib/semantic/semantic.min.js');
+echo js('lib/semantic/semantic.min.js?v='.PLATFORM_VERSION);
 
 ?>
 

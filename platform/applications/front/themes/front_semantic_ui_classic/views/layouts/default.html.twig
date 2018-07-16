@@ -16,7 +16,7 @@
 {{ file_partial('webfontloader') }}
 {{ css('lib/sweetalert/sweetalert-custom.min.css') }}
 {{ css('lib/jquery-ui-custom/jquery-ui.min.css') }}
-{{ theme_css('front.min.css') }}
+{{ theme_css('front.min.css?v=' ~ constant('PLATFORM_VERSION')) }}
 {{ file_partial('css') }}
 {{ partial('css') }}
 {{ js('lib/phpjs/phpjs.min.js') }}
@@ -99,7 +99,7 @@
 {{ js_mbp_helper() }}
 {{ js_scale_fix_ios() }}
 
-{{ js('lib/semantic/semantic.min.js') }}
+{{ js('lib/semantic/semantic.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
 
 {{ file_partial('scripts') }}
 {{ partial('scripts') }}
