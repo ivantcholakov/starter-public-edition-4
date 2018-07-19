@@ -11,7 +11,7 @@ class Nav extends CI_Model {
 
         $nav = array();
 
-        $nav['home'] = array('label' => $this->lang->line('ui_home'), 'icon' => 'dashboard icon', 'location' => site_url());
+        $nav['dashboard'] = array('label' => $this->lang->line('ui_home'), 'icon' => 'dashboard icon', 'location' => site_url());
 
         //----------------------------------------------------------------------
         
