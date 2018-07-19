@@ -1,0 +1,57 @@
+{
+    "name"        : "league/geotools",
+    "type"        : "library",
+    "description" : "Geo-related tools PHP 5.3 library",
+    "keywords"    : ["geotools", "geometry", "geocoder", "geocoding", "geoip", "bounds", "distance", "batch", "async"],
+    "homepage"    : "http://geotools-php.org/",
+    "license"     : "MIT",
+
+    "authors" : [{
+        "name"     : "Antoine Corcy",
+        "email"    : "contact@sbin.dk",
+        "homepage" : "http://sbin.dk",
+        "role"     : "Developer"
+    }],
+
+    "support" : {
+        "email"  : "support@geotools-php.org",
+        "issues" : "https://github.com/thephpleague/geotools/issues",
+        "source" : "https://github.com/thephpleague/geotools"
+    },
+
+    "replace" : {
+        "toin0u/geotools" : "*"
+    },
+
+    "require" : {
+        "php"                 : ">=5.4",
+        "willdurand/geocoder" : "~2.4",
+        "react/promise"       : "~2.2",
+        "symfony/console"     : "~2.4",
+        "symfony/serializer"  : "~2.4",
+        "react/event-loop"    : "0.4.*"
+    },
+
+    "require-dev" : {
+        "kriswallsmith/buzz"      : "~0.10",
+        "guzzle/guzzle"           : "~3.7",
+        "zendframework/zend-http" : "~2.2",
+        "predis/predis"           : "~0.8"
+    },
+
+    "autoload" : {
+        "psr-4" : {
+            "League\\Geotools\\"        : "src",
+            "League\\Geotools\\Tests\\" : "tests"
+        },
+        "classmap" : [ "stubs/" ]
+    },
+
+    "bin" : ["bin/geotools"],
+
+    "extra" : {
+        "branch-alias" : {
+            "dev-master" : "0.4-dev"
+        }
+    }
+}

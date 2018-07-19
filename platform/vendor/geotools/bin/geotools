@@ -1,0 +1,69 @@
+#!/usr/bin/env php
+<?php
+
+/*
+ * This file is part of the Geotools library.
+ *
+ * (c) Antoine Corcy <contact@sbin.dk>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+function includeIfExists($file)
+{
+    if (file_exists($file)) {
+        return include $file;
+    }
+}
+
+if (!extension_loaded('curl') || !function_exists('curl_init')) {
+    die(<<<EOT
+cURL has to be enabled!
+EOT
+    );
+}
+
+if ((!$loader = includeIfExists(__DIR__ . '/../vendor/autoload.php')) &&
+    (!$loader = includeIfExists(__DIR__ . '/../../../autoload.php'))) {
+        die(<<<EOT
+You must set up the project dependencies, run the following commands:
+$ wget http://getcomposer.org/composer.phar
+OR
+$ curl -sS https://getcomposer.org/installer | php
+$ php composer.phar install --dev
+EOT
+    );
+}
+
+use League\Geotools\CLI\Application;
+use League\Geotools\CLI\Command\Convert;
+use League\Geotools\CLI\Command\Distance;
+use League\Geotools\CLI\Command\Geocoder;
+use League\Geotools\CLI\Command\Geohash;
+use League\Geotools\CLI\Command\Point;
+use League\Geotools\Geotools;
+
+$geotools = new Geotools;
+$console = new Application;
+$console->setName('Geotools :: Geo-related tools PHP 5.3+ library');
+$console->setVersion($geotools::VERSION);
+$console->add(new Convert\DM);
+$console->add(new Convert\DMS);
+$console->add(new Convert\UTM);
+$console->add(new Distance\All);
+$console->add(new Distance\Flat);
+$console->add(new Distance\GreatCircle);
+$console->add(new Distance\Haversine);
+$console->add(new Distance\Vincenty);
+$console->add(new Geocoder\Geocode);
+$console->add(new Geocoder\Reverse);
+$console->add(new Geohash\Decode);
+$console->add(new Geohash\Encode);
+$console->add(new Point\Destination);
+$console->add(new Point\FinalBearing);
+$console->add(new Point\FinalCardinal);
+$console->add(new Point\InitialBearing);
+$console->add(new Point\InitialCardinal);
+$console->add(new Point\Middle);
+$console->run();
