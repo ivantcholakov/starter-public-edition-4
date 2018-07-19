@@ -1,0 +1,24 @@
+HTTP/1.1 200 OK
+cache-control: private, max-age=0
+content-type: text/html; charset=utf-8
+server: Microsoft-IIS/7.0
+x-aspnet-version: 2.0.50727
+x-powered-by: ASP.NET
+date: Thu, 28 May 2015 15:45:49 GMT
+set-cookie: visid_incap_50119=KdBy9Dh4QP62wHcE2Rx27C44Z1UAAAAAQUIPAAAAAABxcolBxxpoT65mZ/AsLGoD; expires=Sat, 27 May 2017 07:21:02 GMT; path=/; Domain=.safecharge.com, incap_ses_238_50119=TSGrVZmPoTCIcDusMYxNAy44Z1UAAAAARxLBM2Gz/Fnx4kxt2TolLQ==; path=/; Domain=.safecharge.com
+x-iinfo: 7-113178674-113178705 SNNN RT(1432827948360 1358) q(0 0 0 -1) r(4 4) U6
+x-cdn: Incapsula
+
+<Response>
+<ClientLoginID>SafeChargeTestTRX</ClientLoginID>
+<ClientUniqueID>1432827949</ClientUniqueID>
+<TransactionID>1504674408</TransactionID>
+<Status>APPROVED</Status>
+<AuthCode>111692</AuthCode>
+<AVSCode></AVSCode>
+<CVV2Reply></CVV2Reply>
+<Reason></Reason>
+<ErrCode>0</ErrCode>
+<ExErrCode>0</ExErrCode>
+<CustomData></CustomData>
+</Response>
