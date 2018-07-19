@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
 * CodeIgniter MongoDB Active Record Library
@@ -14,7 +14,7 @@
 * Thanks to Alex Bilbie (http://alexbilbie.com) for help.
 */
 
-Class Mongo_db{
+class Mongo_db extends CI_Model {
 
 	private $CI;
 	private $config = array();
