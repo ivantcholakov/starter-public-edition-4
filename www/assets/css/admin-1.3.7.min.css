@@ -40783,7 +40783,7 @@ button:hover .ui.dashboard.segments {
 }
 
 .ui.vertical.menu {
-     margin-top: 20px;
+     margin-top: 80px;
     display: block;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -40821,7 +40821,7 @@ button:hover .ui.dashboard.segments {
 .ui.accordion.menu .item .title {
     display: block;
     padding: 0em;
-    padding-left: 10px;
+    padding-left: 15px;
 }
 
 i.icon {
