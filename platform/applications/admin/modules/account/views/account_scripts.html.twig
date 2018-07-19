@@ -1,0 +1,22 @@
+
+{{ js('lib/form.address.js') }}
+{{ js('lib/jquery.inputlimiter.1.3.1.min.js') }}
+{{ js('lib/jquery.maskedinput.min.js') }}
+{{ js('lib/pwdwidget.js') }}
+{{ js('lib/formmapper.js') }}
+
+
+<script type="text/javascript">
+            //<![CDATA[
+            (function($) {
+                $('#date_picker_test').datepicker({
+                    dateFormat: 'yy-mm-dd',
+                    changeMonth: true,
+                    changeYear: true
+                });
+                $('#test_4').on('click', function() {
+                    swal("Good job!", "You clicked the button!", "success");
+                });
+            })(jQuery);
+            //]]>
+            </script>
