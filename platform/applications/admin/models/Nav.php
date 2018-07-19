@@ -49,7 +49,7 @@ class Nav extends CI_Model {
 
         $nav['settings/languages'] = array('label' => $this->lang->line('ui_languages'), 'icon' => 'translate icon', 'location' => '#', 'parent_id' => 'settings');
 
-        $nav['settings/account'] = array('label' => $this->lang->line('ui_site'), 'icon' => 'home icon', 'location' => 'settings/account', 'parent_id' => 'settings');
+        $nav['settings/account'] = array('label' => $this->lang->line('ui_site'), 'icon' => 'home icon', 'location' => 'account', 'parent_id' => 'settings');
         $nav['settings/api'] = array('label' => 'API', 'icon' => 'shield icon', 'location' => 'settings/api', 'parent_id' => 'settings');
         $nav['settings/metadata'] = array('label' => $this->lang->line('ui_metadata'), 'icon' => 'tag icon', 'location' => '#', 'parent_id' => 'settings');
         $nav['settings/gateway'] = array('label' => 'Gateway', 'icon' => 'google icon', 'location' => 'settings/gateway', 'parent_id' => 'settings');
