@@ -1,8 +1,8 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed.');
-class Home_controller extends Base_Authenticated_Controller {
+class Account_controller extends Base_Authenticated_Controller {
     public function __construct() {
         parent::__construct();
-        $this->_set_nav('home');
+        $this->_set_nav('account');
     }
     public function index() {
         $title = 'Manage Your Account';
