@@ -1,0 +1,155 @@
+#reports {
+
+	.menubar {
+		.options {
+			a {
+				margin-left: 25px;
+				color: #96AEC4;
+				text-decoration: none;
+
+				@include transition(all .2s linear);
+
+				@media (max-width: $maxSmall) {
+					position: relative;
+					top: 4px;
+				}
+
+				&:hover {
+					color: #344D63;
+				}
+
+				i {
+					margin-right: 3px;
+
+					@media (max-width: $maxSmall) {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	.stats {
+		margin: 0 -40px;
+		margin-top: -24px;
+		padding: 26px 40px 29px;
+		background: #FAFBFD;
+		border-top: 3px solid #ADBDD5;
+		border-bottom: 1px solid #E2E4F5;
+
+		@media (max-width: $maxSmall) {
+			margin-left: -20px;
+			margin-right: -20px;
+			padding-bottom: 15px;
+		}
+
+		.stat {
+			float: left;
+			width: 25%;
+
+			@media (max-width: $maxSmall) {
+				width: 50%;
+				margin-bottom: 20px;
+			}
+
+			label {
+				font-weight: normal;
+				color: rgba(147, 156, 190, 1);
+			}
+
+			.value {
+				font-size: 21px;
+				font-weight: 600;
+				color: #454545;
+				text-shadow: 1px 1px #fff;
+
+				.change {
+					display: inline-block;
+					margin-left: 10px;
+					font-size: 13px;
+
+					&.up {
+						color: rgb(72, 180, 63);
+					}
+
+					&.down {
+						color: rgb(221, 94, 94);
+					}
+
+					i {
+						font-size: 16px;
+						position: relative;
+						top: 1px;
+					}
+				}
+			}
+		}
+	}
+
+	.chart {
+		margin-top: 35px;
+
+		h3 {
+			font-size: 19px;
+
+			.btn-group {
+				.btn {
+					border-color: #B7D5F5;
+					background: #fff;
+					color: #555F8A;
+
+					&.active {
+						background: #F9FBFF;
+						box-shadow: inset 0 2px 4px rgba(0,0,0,.125);
+					}
+				}
+			}
+		}
+
+		#sales-chart {
+			height: 230px;
+			margin-top: 30px;
+		}
+	}
+
+	.dataTables_wrapper {
+		margin: 80px -40px;
+
+		@media (max-width: $maxSmall) {
+			margin: 80px -20px;
+		}
+
+		thead th {
+			border-top: 1px solid #D4DBE4;
+			border-bottom: 1px solid #dee3ea;
+			box-shadow: inset 0 1px rgba(255, 255, 255, 0.79);
+			padding: 10px 18px 12px 20px;
+			text-shadow: 1px 1px #fff;
+			background: linear-gradient(#F7F8FC, #F8F9FC);
+			position: relative;
+			color: #444;
+
+			&:after {
+				content: '';
+				position: absolute;
+				width: 100%;
+				height: 1px;
+				left: 0;
+				bottom: -1px;
+				box-shadow: 0 1px 1px rgba(66, 85, 124, 0.14);
+			}
+		}
+
+		td {
+			padding: 11px 20px;
+		}
+
+		.dataTables_filter,
+		.dataTables_length,
+		.dataTables_paginate,
+		.dataTables_info {
+			display: none;
+		}
+	}
+
+}

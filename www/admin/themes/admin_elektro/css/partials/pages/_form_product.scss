@@ -1,0 +1,112 @@
+#form-product {
+
+	form {
+		margin-top: 35px;
+		margin-bottom: 80px;
+
+		input[type="file"] {
+			position: relative;
+			top: 7px;
+			height: 40px;
+		}
+
+		.fake-select-wrap {
+			width: 250px;
+			margin-bottom: 8px;
+		}
+
+		.help {
+			position: relative;
+			top: -6px;
+			left: 5px;
+
+			.fa-question-circle {
+				color: #959595;
+			}
+		}
+
+		.well {
+			.pic {
+				margin-bottom: 15px;
+
+				img {
+					max-width: 300px;
+				}
+			}
+
+			.remove-image {
+				display: inline-block;
+				margin-top: 15px;
+			}
+		}
+
+		/* rating plugin */
+		#raty {
+			margin-top: 6px;
+			margin-bottom: 8px;
+		}
+
+		/* datepicker input */
+		input.datepicker {
+			display: inline-block;
+			margin-right: 10px;
+			width: 150px;
+			color: #555;
+			padding-left: 15px;
+		}
+
+		/* colorpicker input */
+		div.minicolors {
+			width: 250px;
+			margin-bottom: 10px;
+		}
+
+		.fa-calendar {
+			color: #789BCE;
+		}
+
+		.form-control-feedback {
+			color: #60B5EE;
+			font-size: 19px;
+		}
+
+		.form-actions {
+			margin-top: 55px;
+
+			.btn {
+				margin-right: 15px;
+			}
+		}
+	}
+
+	/* Description summernote plugin editor */
+	.note-editor {
+		border: 1px solid #ccc;
+		border-radius: 4px;
+
+		.note-toolbar {
+			border-radius: 4px 4px 0 0;
+			background: #FAFCFF;
+			border-bottom: 1px solid #ccc;
+
+			.btn-default {
+				box-shadow: none;
+			}
+		}
+
+		.note-statusbar {
+			border-radius: 0 0 4px 4px;
+			background: #FAFCFF;
+
+			.note-resizebar {
+				border-top: 1px solid #ccc;
+
+				.note-icon-bar {
+					width: 17px;
+					border-top: 1px solid #C9C9C9;
+				}
+			}
+		}
+	}
+
+}

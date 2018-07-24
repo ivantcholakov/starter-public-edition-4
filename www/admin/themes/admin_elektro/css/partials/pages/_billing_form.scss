@@ -1,0 +1,63 @@
+#billing-form {
+
+	.billing {
+		max-width: 640px;
+		margin: 0 auto;
+		margin-top: 40px;
+
+		.secure {
+			margin-bottom: 20px;
+
+			.lock {
+				font-weight: 600;
+				color: #666;
+
+				.fa-lock {
+					color: #ccc;
+					font-size: 17px;
+					margin-right: 7px;
+					position: relative;
+					top: 1px;
+				}
+			}
+		}
+
+		#billing {
+			.control-label {
+				text-align: left;
+			}
+
+			.instructions {
+				margin-top: 40px;
+
+				strong {
+					font-size: 15px;
+					color: #454545;
+				}
+			}
+
+			.mobile-margin-bottom {
+				@media (max-width: $maxSmall) {
+					margin-bottom: 15px;
+				}
+			}
+
+			.action {
+				margin-top: 40px;
+				text-align: center;
+
+				.btn {
+					font-size: 16px;
+					padding: 10px 14px;
+					@include transition(all .2s linear);
+					
+					i.fa-chevron-right {
+						font-size: 13px;
+						margin-left: 13px;
+					}
+				}
+			}
+		}
+	}
+
+}

@@ -1,0 +1,41 @@
+#form {
+
+	#content {
+		
+		form {
+			margin-top: 35px;
+
+			input[type="file"] {
+				position: relative;
+				top: 7px;
+				height: 40px;
+			}
+
+			.address {
+				margin: 25px 0;
+
+				.form-group {
+					.col-sm-3 {
+						@media (max-width: $maxSmall) {
+							margin-bottom: 15px;
+						}
+					}
+				}
+			}
+
+			.form-control-feedback {
+				color: #60B5EE;
+				font-size: 19px;
+			}
+
+			.form-actions {
+				margin-top: 35px;
+
+				.btn {
+					margin-right: 15px;
+				}
+			}
+		}
+	}
+
+}

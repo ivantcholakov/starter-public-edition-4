@@ -1,0 +1,263 @@
+#pricing-alt {
+
+	#content {
+		padding: 40px;
+
+		.content-wrapper {
+			margin-top: 0;
+		}
+	}
+
+	.sidebar-toggler {
+		position: absolute;
+		font-size: 37px;
+		padding: 12px;
+		top: 0;
+		left: 8px;
+		cursor: pointer;
+	}
+
+	#first-option {
+		margin-bottom: 100px;
+
+		.header {
+			text-align: center;
+
+			h3 {
+				font-size: 24px;
+				color: #444;
+				line-height: 25px;
+				font-weight: 500;
+				margin-bottom: 7px;
+			}
+
+			p {
+				font-size: 16px;
+				font-weight: 400;
+				color: #888;
+			}
+		}
+
+		.charts {
+			margin-top: 45px;
+
+			.chart {
+				background-color: #fff;
+				border: 1px solid #D8D8D8;
+				border-radius: 5px;			
+				box-shadow: 0px 0px 2px 0px rgba(181, 181, 181, 0.3);
+				padding: 20px 40px 30px;
+				position: relative;
+				text-align: center;
+				width: 97%;
+
+				min-height: 315px;
+				position: relative;
+				top: 18px;
+
+				@media(min-width: 992px) {
+					&.first {
+						float: right;
+						left: 45px;
+					}
+
+					&.last {
+						left: -45px;
+					}
+				}
+
+				@media (max-width: 991px) {
+					float: none !important;
+					left: 0px !important;
+					top: 0px !important;
+					margin: 0 auto;
+					width: 55%;
+					margin-bottom: 25px !important;
+
+					&.last {
+						margin-bottom: 0px !important;
+					}
+				}
+
+				@media (max-width: 600px) {
+					width: 90% !important;
+				}			
+
+				&.featured {					
+					z-index: 999;
+					border-color: #C3DCEB;
+					box-shadow: 0 0 13px -2px #B4DAF1;
+
+					@media(min-width: 992px) {
+						margin: 0 auto;
+						top: 5px;
+						min-height: 450px;
+					}
+
+					.popular {
+						position: absolute;
+						top: 0px;
+						left: 0px;
+					}
+
+					.quantity {
+						margin-top: 15px;
+						padding-bottom: 5px;
+					}
+
+					.button {
+						margin-top: 22px;
+					}
+				}
+
+				.plan-name {
+					text-align: center;
+					font-size: 20px;
+					font-weight: 400;
+					color: #444;
+					width: 90%;
+					margin: 0 auto;
+					margin-top: 5px;
+				}
+
+				.quantity {
+					text-align: center;
+					border-bottom: 1px solid #d5d5d5;					
+					margin-top: 10px;
+
+					.dollar {
+						font-size: 19px;
+						position: relative;
+						top: -18px;
+					}
+
+					.price {
+						font-size: 49px;
+					}
+
+					.period {
+						font-size: 17px;
+						position: relative;
+						top: -8px;
+						margin-left: 4px;
+					}
+				}	
+
+				.specs {
+					margin-top: 20px;
+
+					.spec {
+						font-size: 15px;
+						color: #5D636D;
+						text-align: center;
+						margin-bottom: 15px;
+
+						.variable {
+							color: #1FAFE7;
+							font-weight: 600;
+						}
+					}
+				}
+
+				.button {
+					margin-top: 20px;
+					height: 38px;
+
+					span {
+						height: 36px;
+						line-height: 35px;
+						padding-left: 23px;
+						padding-right: 23px;
+					}
+				}
+			}			
+		}
+
+		.message {
+			p {
+				text-align: center;
+				color: #4A5366;
+				margin-top: 23px;
+			}
+		}
+
+		.faq {
+			margin-top: 40px;
+			
+			.header h3 {
+				font-size: 22px;
+				color: #454545;
+				text-align: left;
+			}
+
+			.questions {
+				margin-top: 30px;
+
+				.question {
+					margin-bottom: 45px;
+					
+					@media(min-width: 992px) {
+						width: 90%;
+					}
+
+					strong {
+						font-weight: 500;
+						font-size: 17px;
+						color: #333;
+					}
+					p {
+						color: #555;
+						margin-top: 12px;
+						font-size: 14px;
+						line-height: 22px;
+					}
+				}
+			}
+		}
+
+		.contact {
+			margin-top: 40px;
+
+			.wrapper {
+				background: #F7F8FB;
+				border: 1px solid #EAEDF7;
+				border-radius: 8px;
+				padding: 25px 60px;
+				box-shadow: inset rgba(100, 100, 100, 0.25) 0 1px 1px;			
+				margin: 0 auto;
+
+				@media (max-width: $maxSmall) {
+					padding: 20px;
+				}
+			}
+
+			h4 {
+				font-size: 15px;
+				position: relative;
+				color: #373F46;
+				text-align: center;
+				font-weight: 500;
+				text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
+				
+				@media (max-width: 991px) {
+					line-height: 26px;
+				}
+
+				span {
+					position: relative;
+					font-size: 23px;
+					top: 4px;
+					margin-right: 4px;
+					color: #626E7A;
+
+					@media (max-width: 991px) {
+						position: relative;
+						left: 0px;
+						top: 5px;
+					}
+				}
+			}
+		}
+	}
+
+}

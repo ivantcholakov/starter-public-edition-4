@@ -1,0 +1,574 @@
+*:focus {
+    outline: none;
+}
+
+a, 
+button,
+input[type="submit"] {
+	&:focus {
+		outline: none !important;
+	}
+}
+
+
+/* ==============================================================================
+// Custom buttons
+// ============================================================================== */
+.button {
+	-webkit-font-smoothing: antialiased;
+	border: 0;
+	outline: none;
+	padding: 1px;
+	display: inline-block;
+	text-decoration: none;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.075);
+	-moz-box-shadow: 0 1px 0 rgba(0,0,0,0.075);
+	-ms-box-shadow: 0 1px 0 rgba(0,0,0,0.075);
+	-o-box-shadow: 0 1px 0 rgba(0,0,0,0.075);
+	box-shadow: 0 1px 0 rgba(0,0,0,0.075);
+	height: 33px;
+
+	background: #adb2bb;
+	background: -webkit-linear-gradient(#ccd0d6, #adb2bb);
+	background: -moz-linear-gradient(#ccd0d6, #adb2bb);
+	background: -ms-linear-gradient(#ccd0d6, #adb2bb);
+	background: -o-linear-gradient(#ccd0d6, #adb2bb);
+	background: linear-gradient(#ccd0d6, #adb2bb);
+
+	@include transition(all .1s linear);
+	@include transform(scale3d(1, 1, 1));
+
+	&[disabled],
+	&.disabled {
+		pointer-events: none;
+  		cursor: not-allowed;
+  		box-shadow: none;
+
+  		span {
+  			box-shadow: none;
+  			background: #E7EBF0;
+			background: #E7EBF0;
+			background: -webkit-linear-gradient(#E7EBF0, #E7EBF0);
+			background: -moz-linear-gradient(#E7EBF0, #E7EBF0);
+			background: -ms-linear-gradient(#E7EBF0, #E7EBF0);
+			background: -o-linear-gradient(#E7EBF0, #E7EBF0);
+			background: linear-gradient(#E7EBF0, #E7EBF0);
+  		}
+	}
+
+	&:hover {
+		text-decoration: none;
+	}
+
+	&:active,
+	&.active {
+		background: #b5bac2;
+		background: -webkit-linear-gradient(#b5bac2, #b5bac2);
+		background: -moz-linear-gradient(#b5bac2, #b5bac2);
+		background: -ms-linear-gradient(#b5bac2, #b5bac2);
+		background: -o-linear-gradient(#b5bac2, #b5bac2);
+		background: linear-gradient(#b5bac2, #b5bac2);
+
+		@include transform(scale3d(0.95, 0.95, 0.95));
+
+		span,
+		span {
+			color: #444;
+			background: #eff1f4;
+			background: -webkit-linear-gradient(#e6e8eb, #eff1f4);
+			background: -moz-linear-gradient(#e6e8eb, #eff1f4);
+			background: -ms-linear-gradient(#e6e8eb, #eff1f4);
+			background: -o-linear-gradient(#e6e8eb, #eff1f4);
+			background: linear-gradient(#e6e8eb, #eff1f4);
+			-webkit-box-shadow: inset 0 1px 0 rgba(0,0,0,0.1);
+			-moz-box-shadow: inset 0 1px 0 rgba(0,0,0,0.1);
+			-ms-box-shadow: inset 0 1px 0 rgba(0,0,0,0.1);
+			-o-box-shadow: inset 0 1px 0 rgba(0,0,0,0.1);
+			box-shadow: inset 0 1px 0 rgba(0,0,0,0.1);
+		}
+	}
+
+	span {
+		display: block;
+		font-size: 14px;
+		padding-left: 15px;
+		padding-right: 15px;
+		height: 31px;
+		line-height: 31px;
+		border-radius: 4px;
+		font-weight: bold;
+		font-family: $helvetica;
+
+		color: #333;
+		text-shadow: 0 1px 0 #fff;
+		background: #f6f9fc;
+		background: #eff1f4;
+		background: -webkit-linear-gradient(#f7f8fa, #eff1f4);
+		background: -moz-linear-gradient(#f7f8fa, #eff1f4);
+		background: -ms-linear-gradient(#f7f8fa, #eff1f4);
+		background: -o-linear-gradient(#f7f8fa, #eff1f4);
+		background: linear-gradient(#f7f8fa, #eff1f4);
+		-webkit-box-shadow: inset 0 1px 0 white;
+		-moz-box-shadow: inset 0 1px 0 white;
+		-ms-box-shadow: inset 0 1px 0 white;
+		-o-box-shadow: inset 0 1px 0 white;
+		box-shadow: inset 0 1px 0 white;
+
+		@include transition(all .1s linear);
+	}
+}
+
+/* ==============================================================================
+// Custom pager
+// ============================================================================== */
+.paging {
+	a {
+		position: relative;
+		font-size: 11px;
+		display: inline-block;
+		width: 28px;
+		height: 27px;
+		border: 1px solid #D7DADD;
+		text-align: center;
+		line-height: 26px;
+		border-radius: 5px;
+		color: #60A3D8;
+
+		&:active {
+			background: #fafafa;
+			box-shadow: inset 0 3px 5px rgba(0,0,0,.1)
+		}
+
+		&.disabled {
+			color: #B9B9B9;
+			cursor: default;
+		}
+
+		i {
+			&.fa-chevron-left {
+				position: relative;
+				left: -1px;
+			}
+
+			&.fa-trash-o {
+				font-size: 14px;
+			}
+		}
+	}
+}
+
+/* ==============================================================================
+// Welcome modal
+// ============================================================================== */
+#welcome-modal {
+	.modal-dialog {
+		margin-top: 65px;
+	}
+
+	.modal-content {
+		background: #f5f8fc;
+		background: -webkit-linear-gradient(#fff,#f5f8fc);
+		background: -moz-linear-gradient(#fff,#f5f8fc);
+		background: -ms-linear-gradient(#fff,#f5f8fc);
+		background: -o-linear-gradient(#fff,#f5f8fc);
+		background: linear-gradient(#fff,#f5f8fc);
+
+		font-family: $helvetica;
+
+		.modal-header {
+			border-bottom: 0;
+		}
+
+		.modal-body {
+			padding-bottom: 50px;
+
+			header {
+				text-align: center;
+				font-weight: 600;
+				font-size: 22px;
+				color: #444;
+				margin-bottom: 23px;
+			}
+
+			p {
+				font-size: 13px;
+				color: #555;
+				margin: 0 auto;
+				width: 80%;
+				text-align: center;
+				line-height: 20px;
+			}
+
+			.get-started {
+				margin-top: 40px;
+
+				.col-md-4 {
+					text-align: center;
+					padding-bottom: 50px;
+
+					i {
+						font-size: 38px;
+						color: #7FA5BE;
+					}
+
+					a {
+						color: #576C91;
+						display: block;
+						margin-top: 12px;
+						font-size: 13px;
+					}
+				}
+			}
+
+			.go-dashboard {
+				color: #008cdd;
+				text-align: center;
+				display: block;
+				margin-top: 10px;
+			}
+		}
+	}
+}
+
+
+/* ==============================================================================
+// Form controls
+// ============================================================================== */
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+
+	&.form-control {
+		/*box-shadow: inset 0 1px 1px rgba(0,0,0,0.2);
+		-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.2);
+		-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.2);*/
+		/*height: 39px;*/
+		box-shadow: none;
+
+		@include placeholder {
+			color: #B1B1B1;
+			font-weight: 400;
+			font-size: 14px;
+		}
+		&:focus {
+			/*border-color: #98D2FF;*/
+			outline: none;
+			/*box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba(166, 205, 236, 0.6);*/
+			box-shadow: none;
+		}
+	}
+}
+
+textarea {
+	&.form-control {
+		/*box-shadow: inset 0 1px 1px rgba(0,0,0,0.2);
+		-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.2);
+		-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.2);*/
+		box-shadow: none;
+
+		@include placeholder {
+			color: #B1B1B1;
+			font-weight: 400;
+			font-size: 14px;
+		}
+		&:focus {
+			/*border-color: #98D2FF;*/
+			outline: none;
+			/*box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba(166, 205, 236, 0.6);*/
+			box-shadow: none;
+		}
+	}
+}
+
+/* 
+	Create a custom select by adding a [data-smart-select]
+	to any select. e.g. <select class="form-control" data-smart-select>
+	and it will automatically be converted into a customized select
+	that is wrapped inside a .fake-select-wrap
+*/
+.fake-select-wrap {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	height: 34px;
+	line-height: 30px;
+	margin: 0;
+
+	> select {
+		position: absolute !important;
+		z-index: 3;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+		opacity: 0;
+		top: 0 !important;
+		left: 0 !important;
+		right: 0 !important;
+		bottom: 0 !important;
+		padding: 0 !important;
+		margin: 0 !important;
+		width: 100% !important;
+		height: 100% !important;
+		cursor: pointer;
+	}
+
+	> .fake-select {
+		position: relative;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		border-radius: 4px;
+		width: 100%;
+		margin: 0;
+		vertical-align: bottom;
+		padding: 0 10px;
+		white-space: nowrap;
+		padding-right: 20px;
+		text-overflow: ellipsis;
+		/*overflow: hidden;*/
+
+		border: 1px solid #ccc;
+		background: #fff;
+		height: 34px;
+		line-height: 30px;
+		cursor: pointer;
+		color: #444;
+
+		&.focus {
+			border-color: #98c7f8;
+
+			&:after {
+				color: #81B5EC;
+			}
+		}
+
+		&:after {
+			font-family: 'FontAwesome';
+			font-size: 13px;
+			content: "\f078";
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			font-weight: 400;
+			color: #757575;
+			display: block;
+			position: absolute;
+			right: 13px;
+			height: 100%;
+			top: 17px;
+			line-height: 0;
+		}
+	}
+}
+
+
+/* ==============================================================================
+// jQuery Validate messages
+// ============================================================================== */
+form {
+	label.error {
+		position: relative !important;
+		display: inline-block !important;
+		margin-top: -2px !important;
+		margin-bottom: -8px !important;
+		color: #fff !important;
+		font-weight: normal !important;
+		font-size: 14px !important;
+		padding: 5px 8px !important;
+		background: #589BC9 !important;
+		border-radius: 4px !important;
+		&.valid {
+			display: none !important;
+		}
+		&:after {
+			bottom: 100%;
+			border: solid transparent;
+			content: " ";
+			height: 0;
+			width: 0;
+			position: absolute;
+			pointer-events: none;
+			border-bottom-color: #589BC9;
+			border-width: 5px;
+			left: 30px;
+			margin-left: -5px;
+		}
+	}
+}
+
+
+/* ==============================================================================
+// Flot charts tooltip
+// ============================================================================== */
+#flotTip {
+	background-color: #000;
+	color: #fff;
+	/*border: 1px solid rgb(204, 204, 204);*/
+	/*box-shadow: rgba(0, 0, 0, 0.0980392) 0px 1px;*/
+	padding: 3px 11px 4px;
+	border-radius: 4px;
+	z-index: 9999;
+
+	.value {
+		display: block;
+		text-align: center;
+		font-weight: 600;
+	}
+}
+
+
+/* ==============================================================================
+// Skin Switcher
+// ============================================================================== */
+.skin-switcher {
+	position: fixed;
+	right: 0px;
+	top: 160px;
+	z-index: 999999;
+
+	.toggler {
+		cursor: pointer;
+		/*padding: 10px 15px;*/
+		padding: 8px 15px;
+		border-radius: 4px 0 0 4px;
+		background: #fff;
+		box-shadow: -1px 0px 3px rgba(0, 0, 0, 0.25), 2px 2px 3px rgba(0, 0, 0, 0.12);
+
+		.ion-settings {
+			color: #666;
+			font-size: 21px;
+		}
+
+		.brankic-brush {
+			font-size: 25px;
+			color: #8C6DEC;
+		}
+	}
+
+	.menu {
+		position: absolute;
+		right: 50px;
+		top: -4px;
+		background: #fff;
+		width: 165px;
+		border-radius: 3px;
+		padding: 8px 0;
+		list-style-type: none;
+		box-shadow: 0 8px 13px rgba(0,0,0,0.36),0 0 0 1px rgba(0,0,0,0.06);
+
+		opacity: 0;
+		@include transform(scale(0));
+		@include transition(all 300ms cubic-bezier(0.34,1.41,0.7,1));
+		@include transform-origin(100% 15px);
+
+		&.active {
+			opacity: 1;
+			@include transform(scale(1));
+		}
+		
+		&:before {
+			content: "";
+			position: absolute;
+			display: block;
+			width: 37px;
+			height: 12px;
+			right: -24px;
+			top: 20px;
+			background-image: url("../../images/popover-arrow.png");
+			background-size: 100% 100%;
+			@include transform(rotate(90deg));
+		}
+
+		li {
+			padding: 8px 15px;
+			border-bottom: 1px solid #E6E6E6;
+
+			&:last-child {
+				border-bottom: 0;
+			}
+
+			a {
+				position: relative;
+				text-decoration: none;
+				display: block;
+				color: #4C5661;
+				font-size: 15px;
+
+				@include transition(all .2s linear);
+
+				&:hover {
+					color: #000;
+				}
+
+				&.active {
+					.fa-check {
+						opacity: 1;
+					}
+				}
+
+				.color {
+					width: 10px;
+					height: 10px;
+					border-radius: 50%;
+					display: inline-block;
+					margin-right: 5px;
+
+					&.default {
+						border: 3px solid #319DDB;
+					}
+
+					&.clear {
+						border: 3px solid #BFDFF1;
+					}
+
+					&.dark {
+						border: 3px solid #808FCA;
+					}
+
+					&.black {
+						border: 3px solid #3E4052;
+					}
+
+					&.flat {
+						border: 3px solid #d8dfe6;
+					}
+
+					&.flat-dark {
+						border: 3px solid #363e45;
+					}
+				}
+
+				.fa-check {
+					color: #83C490;
+					font-size: 14px;
+					position: absolute;
+					top: 4px;
+					right: 4px;
+					opacity: 0;
+
+					@include transition(all .2s linear);
+				}
+			}
+		}
+	}
+}
+
+
+/* ==============================================================================
+// jQuery Datepicker 
+// ============================================================================== */
+.datepicker-dropdown {
+	z-index: 9999999 !important;
+}
+
+
+

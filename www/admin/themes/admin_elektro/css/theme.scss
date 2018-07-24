@@ -1,0 +1,46 @@
+/* config variables */
+@import "partials/config";
+
+/* modules */
+@import "modules/mixins";
+@import "modules/elements";
+
+/* snippets */
+@import "partials/snippets/custom_animations";
+
+/* vendor */
+@import "../bootstrap/bootstrap.min.css";
+@import "bootstrap/bootstrap-overrides";
+
+/* layout */
+@import "partials/layout";
+
+/* pages */
+@import "partials/pages/index";
+@import "partials/pages/users";
+@import "partials/pages/form";
+@import "partials/pages/form_product";
+@import "partials/pages/invoice";
+@import "partials/pages/calendar";
+@import "partials/pages/sidebar";
+@import "partials/pages/datatables";
+@import "partials/pages/projects";
+@import "partials/pages/reports";
+@import "partials/pages/reports_alt";
+@import "partials/pages/pricing";
+@import "partials/pages/pricing_alt";
+@import "partials/pages/billing_form";
+@import "partials/pages/docs";
+@import "partials/pages/user_profile";
+@import "partials/pages/latest_activity";
+@import "partials/pages/status";
+@import "partials/pages/search";
+@import "partials/pages/signup";
+@import "partials/pages/signin";
+@import "partials/pages/account";
+@import "partials/pages/ui";
+@import "partials/pages/gallery";
+@import "partials/pages/steps";
+@import "partials/pages/wizard";
+@import "partials/pages/email_templates";
+

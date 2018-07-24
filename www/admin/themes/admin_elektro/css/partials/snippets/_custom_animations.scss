@@ -1,0 +1,241 @@
+/* Used in user-profile.html page for the user info right sidebar */
+
+@include keyFrame(showProfileInfo) {
+	0% {
+		right: -23%;
+	}
+
+	100% {
+		right: 0;
+	}
+}
+
+
+/* Fade in left for wizard steps */
+
+@-webkit-keyframes fadeInLeftStep {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateX(-40px);
+	}
+
+	100% {
+		opacity: 1;
+		-webkit-transform: translateX(0);
+	}
+}
+
+@-moz-keyframes fadeInLeftStep {
+	0% {
+		opacity: 0;
+		-moz-transform: translateX(-40px);
+	}
+
+	100% {
+		opacity: 1;
+		-moz-transform: translateX(0);
+	}
+}
+
+@-o-keyframes fadeInLeftStep {
+	0% {
+		opacity: 0;
+		-o-transform: translateX(-40px);
+	}
+
+	100% {
+		opacity: 1;
+		-o-transform: translateX(0);
+	}
+}
+
+@keyframes fadeInLeftStep {
+	0% {
+		opacity: 0;
+		transform: translateX(-40px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+.fadeInLeftStep {
+	-webkit-animation-name: fadeInLeftStep;
+	-moz-animation-name: fadeInLeftStep;
+	-o-animation-name: fadeInLeftStep;
+	animation-name: fadeInLeftStep;
+}
+
+/* Fade in right for wizard steps */
+
+@-webkit-keyframes fadeInRightStep {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateX(40px);
+	}
+
+	100% {
+		opacity: 1;
+		-webkit-transform: translateX(0);
+	}
+}
+
+@-moz-keyframes fadeInRightStep {
+	0% {
+		opacity: 0;
+		-moz-transform: translateX(40px);
+	}
+
+	100% {
+		opacity: 1;
+		-moz-transform: translateX(0);
+	}
+}
+
+@-o-keyframes fadeInRightStep {
+	0% {
+		opacity: 0;
+		-o-transform: translateX(40px);
+	}
+
+	100% {
+		opacity: 1;
+		-o-transform: translateX(0);
+	}
+}
+
+@keyframes fadeInRightStep {
+	0% {
+		opacity: 0;
+		transform: translateX(40px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+.fadeInRightStep {
+	-webkit-animation-name: fadeInRightStep;
+	-moz-animation-name: fadeInRightStep;
+	-o-animation-name: fadeInRightStep;
+	animation-name: fadeInRightStep;
+}
+
+
+/* Fade out left for wizard steps */
+
+@-webkit-keyframes fadeOutLeftStep {
+	0% {
+		opacity: 1;
+		-webkit-transform: translateX(0);
+	}
+
+	100% {
+		opacity: 0;
+		-webkit-transform: translateX(-40px);
+	}
+}
+
+@-moz-keyframes fadeOutLeftStep {
+	0% {
+		opacity: 1;
+		-moz-transform: translateX(0);
+	}
+
+	100% {
+		opacity: 0;
+		-moz-transform: translateX(-40px);
+	}
+}
+
+@-o-keyframes fadeOutLeftStep {
+	0% {
+		opacity: 1;
+		-o-transform: translateX(0);
+	}
+
+	100% {
+		opacity: 0;
+		-o-transform: translateX(-40px);
+	}
+}
+
+@keyframes fadeOutLeftStep {
+	0% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateX(-40px);
+	}
+}
+
+.fadeOutLeftStep {
+	-webkit-animation-name: fadeOutLeftStep;
+	-moz-animation-name: fadeOutLeftStep;
+	-o-animation-name: fadeOutLeftStep;
+	animation-name: fadeOutLeftStep;
+}
+
+/* Fade out right for wizard steps */
+
+@-webkit-keyframes fadeOutRightStep {
+	0% {
+		opacity: 1;
+		-webkit-transform: translateX(0);
+	}
+
+	100% {
+		opacity: 0;
+		-webkit-transform: translateX(40px);
+	}
+}
+
+@-moz-keyframes fadeOutRightStep {
+	0% {
+		opacity: 1;
+		-moz-transform: translateX(0);
+	}
+
+	100% {
+		opacity: 0;
+		-moz-transform: translateX(40px);
+	}
+}
+
+@-o-keyframes fadeOutRightStep {
+	0% {
+		opacity: 1;
+		-o-transform: translateX(0);
+	}
+
+	100% {
+		opacity: 0;
+		-o-transform: translateX(40px);
+	}
+}
+
+@keyframes fadeOutRightStep {
+	0% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateX(40px);
+	}
+}
+
+.fadeOutRightStep {
+	-webkit-animation-name: fadeOutRightStep;
+	-moz-animation-name: fadeOutRightStep;
+	-o-animation-name: fadeOutRightStep;
+	animation-name: fadeOutRightStep;
+}
