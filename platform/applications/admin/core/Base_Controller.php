@@ -29,7 +29,7 @@ class Base_Controller extends Core_Controller {
 
         //$default_title = config_item('default_title');
         //$default_title = $this->settings->lang('site_name');
-        $default_title = 'Application Starter 4 Public Edition';
+        $default_title = 'Elektropay Platform';
         //
 
         if ($default_title != '') {
