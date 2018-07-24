@@ -3129,7 +3129,7 @@ body {
           #sidebar-default .current-user .menu li a:hover {
             color: #000; }
   #sidebar-default .menu-section {
-    margin-bottom: 35px; margin-top: 40px;}
+    margin-bottom: 35px; margin-top: 100px;}
     #sidebar-default .menu-section h3 {
       padding-left: 23px;
       color: #fff;
