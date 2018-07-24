@@ -3134,7 +3134,7 @@ body {
       padding-left: 23px;
       color: #210e4a;
       text-transform: uppercase;
-      letter-spacing: .5px;
+      letter-spacing: .65px;
       font-weight: bold;
       font-size: 11px;
       margin-bottom: 0;
@@ -3159,7 +3159,7 @@ body {
           font-weight: 400;
           font-size: 13px;
           padding: 7px 10px 9px 10px;
-          padding-left: 25px;
+          padding-left: 35px;
           background: transparent;
           text-decoration: none;
           display: inline-block;
