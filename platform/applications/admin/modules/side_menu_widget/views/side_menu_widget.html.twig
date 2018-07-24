@@ -88,33 +88,8 @@
 {% import _self as side_menu_macro %}
 <div id="sidebar-default" class="main-sidebar transition {% if session('side_menu_state') == 'hidden' %}hidden{% else %}visible{% endif %}">
 		
-		<div class="current-user">
-				<a href="index.html" class="name">
-					<img class="avatar" src="images/avatars/1.jpg" />
-					<span>
-						John Smith
-						<i class="fa fa-chevron-down"></i>
-					</span>
-				</a>
-<ul class="menu">
-					<li>
-						<a href="account-profile.html">Account settings</a>
-					</li>
-					<li>
-						<a href="account-billing.html">Billing</a>
-					</li>
-					<li>
-						<a href="account-notifications.html">Notifications</a>
-					</li>
-					<li>
-						<a href="account-support.html">Help / Support</a>
-					</li>
-					<li>
-						<a href="signup.html">Sign out</a>
-					</li>
-				</ul>
-			</div>
-			<div class="menu-section">
+	
+<div class="menu-section">
             
     <ul class="menu">
 
@@ -136,7 +111,7 @@
             {% endif %}
                             
         {% else %}
-
+<ul>
                             <li>
 
                                 <span class="{% if item['is_active'] %}active {% endif %}title">
@@ -149,6 +124,7 @@
                                 </span>
 
                             </li>
+	 </ul>
 
         {% endif %}
 
