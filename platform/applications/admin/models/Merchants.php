@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Merchants_model extends CI_Model {
+class Merchants extends CI_Model {
 
     /**
      * @vars
