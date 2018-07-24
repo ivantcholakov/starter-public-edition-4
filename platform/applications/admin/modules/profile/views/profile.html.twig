@@ -1,0 +1,45 @@
+
+{{ widget('profile/profile_buttons_widget/index') }}
+
+<hr>
+
+<h1>Edit Your Profile</h1>
+	<p>Complete the fields below to update your  account profile.</p>
+	<form class="form validate" enctype="multipart/form-data" method="post" action="users/post_profile">
+
+	
+		<fieldset>
+			<legend>Access Information</legend>
+			<ul class="form">
+				<li>
+					<label for="username">Username</label>
+					<input type="text" class="text required" id="username" name="username" value="">
+				</li>
+				<li>
+					<label for="email">Email</label>
+					<input type="email" class="text required" id="email" name="email" value="" />
+				</li>
+			</ul>
+		</fieldset>
+		
+		<fieldset>
+			<legend>Profile Information</legend>
+			<ul class="form">
+				<li>
+					<label class="full" for="first_name">First Name</label>
+				</li>
+				<li>
+					<input type="text" class="text required" id="first_name" name="first_name" value="">
+				</li>
+				<li>
+					<label class="full" for="last_name">Last Name</label>
+				</li>
+				<li>
+					<input type="text" class="text required" id="last_name" name="last_name" value="">
+				</li>
+		
+			</ul>
+		</fieldset>
+		
+		<input type="submit" class="button" name="go" value="Save Changes" />
+	</form>
