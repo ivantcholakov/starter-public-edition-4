@@ -3157,9 +3157,9 @@ body {
         #sidebar-default .menu-section ul li a {
           color: #ECF6FF;
           font-weight: 400;
-          font-size: 14px;
+          font-size: 13px;
           padding: 7px 10px 9px 10px;
-          padding-left: 23px;
+          padding-left: 25px;
           background: transparent;
           text-decoration: none;
           display: inline-block;
@@ -3199,15 +3199,15 @@ body {
             #sidebar-default .menu-section ul li a.active i.fa-chevron-down {
               color: #ECF6FF; }
           #sidebar-default .menu-section ul li a i {
-            font-size: 19px;
-            margin-right: 9px;
+            font-size: 17px;
+            margin-right: 10px;
             min-width: 17px;
             text-align: center;
             position: relative;
             top: 1px; }
             @media (min-width: 768px) and (max-width: 991px) {
               #sidebar-default .menu-section ul li a i {
-                font-size: 23px;
+                font-size: 22px;
                 margin: 0; }
                 #sidebar-default .menu-section ul li a i.fa-chevron-down {
                   display: none; } }
