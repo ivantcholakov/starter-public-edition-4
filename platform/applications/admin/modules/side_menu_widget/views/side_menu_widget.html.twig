@@ -86,12 +86,36 @@
 {# -------------------------------------------------------------------------- #}
 
 {% import _self as side_menu_macro %}
-
-            <nav id="sidebar" class="main-sidebar transition {% if session('side_menu_state') == 'hidden' %}hidden{% else %}visible{% endif %}">
-
-<p class="p main-header__p "> </p>
-
-                <div class="ui vertical attached borderless accordion menu" id="sidebar_menu">
+<div id="sidebar-default" class="main-sidebar transition {% if session('side_menu_state') == 'hidden' %}hidden{% else %}visible{% endif %}">
+			<div class="current-user">
+				<a href="index.html" class="name">
+					<img class="avatar" src="images/avatars/1.jpg" />
+					<span>
+						John Smith
+						<i class="fa fa-chevron-down"></i>
+					</span>
+				</a>
+<ul class="menu">
+					<li>
+						<a href="account-profile.html">Account settings</a>
+					</li>
+					<li>
+						<a href="account-billing.html">Billing</a>
+					</li>
+					<li>
+						<a href="account-notifications.html">Notifications</a>
+					</li>
+					<li>
+						<a href="account-support.html">Help / Support</a>
+					</li>
+					<li>
+						<a href="signup.html">Sign out</a>
+					</li>
+				</ul>
+			</div>
+			<div class="menu-section">
+            
+    <ul class="menu">
 
 {% if nav is not empty %}
     {% for item in nav %}
@@ -99,37 +123,37 @@
         {% if item['children'] is empty %}
 
             {% if item['is_header'] %}
-                            <div class="item">
+                            <li>
                                 <span class="title">{{ side_menu_macro.display_item(item) }}</span>
-                            </div>
+                            </li>
             {% else %}
-                            <div class="item">
+                            <li>
                                 <a href="{{ item['link'] }}" class="{% if item['is_active'] %}active {% endif %}title">
                                     {{ side_menu_macro.display_item(item) }}
                                 </a>
-                            </div>
+                            </li>
             {% endif %}
                             
         {% else %}
 
-                            <div class="item">
+                            <li>
 
                                 <span class="{% if item['is_active'] %}active {% endif %}title">
                                     <i class="dropdown icon"></i>
                                     {{ side_menu_macro.display_item(item) }}
                                 </span>
 
-                                <div class="{% if item['is_active'] %}active {% endif %}content" style="width: 100%;">
+                                <span class="{% if item['is_active'] %}active {% endif %}content" style="width: 100%;">
                                     {{ side_menu_macro.display_children(item['children']) }}
-                                </div>
+                                </span>
 
-                            </div>
+                            </li>
 
         {% endif %}
 
     {% endfor %}
 {% endif %}
 
-                </div>
+                </ul>
 
-            </nav>
+            </div>
