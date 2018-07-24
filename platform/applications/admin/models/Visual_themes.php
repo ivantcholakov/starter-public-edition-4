@@ -40,6 +40,10 @@ class Visual_themes extends CI_Model {
                 'key' => 'admin_default_14',
                 'name' => 'Font 14px',
             ),
+              array(
+                'key' => 'admin_elektro',
+                'name' => 'Elektro',
+            ),
         );
     }
 
