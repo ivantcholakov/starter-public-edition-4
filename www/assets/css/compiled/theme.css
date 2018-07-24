@@ -2999,8 +2999,8 @@ body {
                 color: #000; }
 
 #sidebar-default {
-  background: #2a313a;
-  border-right: 1px solid #3C434D;
+  background: #FEFEFE;
+  border-right: 1px solid #ECF6FF;
   left: 0;
   top: 0;
   position: absolute;
@@ -3132,7 +3132,7 @@ body {
     margin-bottom: 35px; margin-top: 100px;}
     #sidebar-default .menu-section h3 {
       padding-left: 23px;
-      color: #fff;
+      color: #210e4a;
       text-transform: uppercase;
       letter-spacing: .5px;
       font-weight: bold;
@@ -3155,7 +3155,7 @@ body {
             margin-bottom: 7px;
             position: relative; } }
         #sidebar-default .menu-section ul li a {
-          color: #ECF6FF;
+          color: #210e4a;
           font-weight: 400;
           font-size: 13px;
           padding: 7px 10px 9px 10px;
@@ -3185,19 +3185,19 @@ body {
           #sidebar-default .menu-section ul li a:hover, #sidebar-default .menu-section ul li a.toggled {
             background: #343E4E; }
           #sidebar-default .menu-section ul li a.active {
-            background: #202E3F;
+            background: #5c3f9a;
             text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 0;
-            background-color: #545E6F;
-            background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5b6479), color-stop(100%, #4c5566)), #686e78;
-            background: -webkit-linear-gradient(#5b6479, #4c5566), #686e78;
-            background: -moz-linear-gradient(#5b6479, #4c5566), #686e78;
-            background: -o-linear-gradient(#5b6479, #4c5566), #686e78;
-            background: linear-gradient(#5b6479, #4c5566), #686e78;
+            background-color: #5c3f9a;
+            background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5c3f9a), color-stop(100%, #4c5566)), #686e78;
+            background: -webkit-linear-gradient(#5c3f9a, #4c5566), #686e78;
+            background: -moz-linear-gradient(#5c3f9a, #4c5566), #686e78;
+            background: -o-linear-gradient(#5c3f9a, #4c5566), #686e78;
+            background: linear-gradient(#5c3f9a, #4c5566), #686e78;
             -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0;
             -moz-box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0;
             box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0; }
             #sidebar-default .menu-section ul li a.active i.fa-chevron-down {
-              color: #ECF6FF; }
+              color: #210e4a; }
           #sidebar-default .menu-section ul li a i {
             font-size: 17px;
             margin-right: 10px;
