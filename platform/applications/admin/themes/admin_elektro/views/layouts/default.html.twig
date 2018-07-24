@@ -59,6 +59,8 @@
     {{ widget('side_menu_widget') }}
     
 
+    <header>
+    
 {% set breadcrumb_widget = widget('breadcrumb_widget') %}
 
 {% if registry('title') is not empty or breadcrumb_widget is not empty %}
@@ -132,7 +134,6 @@
 {{ js('lib/jquery-ui-custom/i18n/jquery.ui.datepicker-' ~ language_jquery_ui() ~ '.js') }}
 {% endif %}
 {{ js('admin.js') }}
-{{ js('eleem.js') }}
 
 {{ partial('scripts') }}
 
