@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Currencys_model extends CI_Model {
+class Currencys extends CI_Model {
 
     /**
      * @vars
