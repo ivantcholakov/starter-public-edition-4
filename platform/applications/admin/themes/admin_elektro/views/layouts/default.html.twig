@@ -54,16 +54,10 @@
 
 
     {{ widget('main_menu_widget') }}
-
-    <div id="application">
+    
 
     {{ widget('side_menu_widget') }}
-
-    <div id="page">
-
-    <header id="header">
-
-        <div class="ui grid" style="padding-top: 1.3em; padding-bottom: .3em;">
+    
 
 {% set breadcrumb_widget = widget('breadcrumb_widget') %}
 
@@ -76,6 +70,7 @@
                         <div class="breadcrumb">{{ breadcrumb_widget|raw }}</div>
     {% endif %}
                         {{ registry('header_icon')|raw }}
+                        
                         <div class="content">
                             {{ registry('title')|raw }}
     {% if registry('subtitle') is not empty %}
@@ -91,11 +86,10 @@
         </div>
 
     </header>
-
-    <main id="main_content">
-
-        <div class="ui vertically padded grid">
-
+    
+    
+<div id="content">
+            
 {{ widget('feedback_messages_widget', {
     'feedback_message_target': feedback_message_target,
     'normal_message': normal_message,
@@ -104,20 +98,19 @@
     'error_message': error_message
 }) }}
 
-
+            
 {{ body() }}
 
-                </div>
-            </div>
+            
+ </div>
 
         </div>
 
-    </main>
-
     </div>
-    </div>
-
+    
     {{ widget('footer_widget') }}
+    </div>
+
 
 {{ js_bp_plugins() }}
 {{ js_mbp_helper() }}
