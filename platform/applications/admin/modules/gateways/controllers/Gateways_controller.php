@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed.');
-class Gateway_controller extends Base_Authenticated_Controller {
+class Gateways_controller extends Base_Authenticated_Controller {
     public function __construct() {
         parent::__construct();
         $this->_set_nav('gateways');
