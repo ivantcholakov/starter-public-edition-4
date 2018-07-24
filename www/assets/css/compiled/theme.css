@@ -3183,9 +3183,10 @@ body {
                 -webkit-transform: translateX(0px);
                 transform: translateX(0px); } }
           #sidebar-default .menu-section ul li a:hover, #sidebar-default .menu-section ul li a.toggled {
-            background: #343E4E; }
+            background: #5c3f9a; color: #FFFFFF; }
           #sidebar-default .menu-section ul li a.active {
             background: #5c3f9a;
+	    color: #FFFFFF;	  
             text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 0;
             background-color: #5c3f9a;
             background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5c3f9a), color-stop(100%, #4c5566)), #686e78;
