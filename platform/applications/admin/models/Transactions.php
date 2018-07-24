@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Transactions_model extends CI_Model {
+class Transactions extends CI_Model {
 
     /**
      * @vars
