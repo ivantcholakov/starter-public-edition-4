@@ -12054,7 +12054,7 @@ sub {
     .navbar__header {
         min-height: 5em;
         box-shadow: none;
-        margin-top: .5em;
+        margin-top: .15em;
         background-color: transparent
     }
 }
