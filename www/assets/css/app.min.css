@@ -15602,3 +15602,117 @@ sub {
     padding: 7px 20px!important;
     line-height: 1.7525em!important;
 }  
+
+
+.current-user {
+    position: relative;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    height: 63px; }
+.current-user .name {
+      color: #444;
+      font-size: 15px;
+      text-decoration: none;
+      padding: 10px 0;
+      display: block;
+      position: relative; }
+.current-user .name .avatar {
+        max-width: 41px;
+        border-radius: 50%;
+        position: relative;
+        top: 2px;
+        margin-right: 12px; }
+.current-user .name span {
+        position: relative;
+        top: 5px; }
+        @media (min-width: 768px) and (max-width: 991px) {
+.current-user .name span {
+            display: none; } }
+.current-user .name span .fa-chevron-down {
+          font-size: 10px;
+          margin-left: 7px;
+          position: relative;
+          top: -1px;
+          color: #738597; }
+.current-user .menu {
+      position: absolute;
+      left: 35px;
+      top: 60px;
+      background: #fff;
+      width: 165px;
+      z-index: 999;
+      border-radius: 3px;
+      padding: 8px 0;
+      list-style-type: none;
+      box-shadow: 0 6px 13px rgba(0, 0, 0, 0.26), 0 0 0 1px rgba(0, 0, 0, 0.06);
+      opacity: 0;
+      -moz-transform: scale(0);
+      -o-transform: scale(0);
+      -ms-transform: scale(0);
+      -webkit-transform: scale(0);
+      transform: scale(0);
+      -webkit-transition: all 300ms cubic-bezier(0.34, 1.61, 0.7, 1);
+      -moz-transition: all 300ms cubic-bezier(0.34, 1.61, 0.7, 1);
+      -ms-transition: all 300ms cubic-bezier(0.34, 1.61, 0.7, 1);
+      -o-transition: all 300ms cubic-bezier(0.34, 1.61, 0.7, 1);
+      transition: all 300ms cubic-bezier(0.34, 1.61, 0.7, 1);
+      -webkit-transform-origin: 50% 0;
+      -moz-transform-origin: 50% 0;
+      -o-transform-origin: 50% 0;
+      -ms-transform-origin: 50% 0;
+      transform-origin: 50% 0; }
+ @media (min-width: 768px) and (max-width: 991px) {
+.current-user .menu {
+          left: 80px;
+          top: 10px;
+          -webkit-transform-origin: 0 15px;
+          -moz-transform-origin: 0 15px;
+          -o-transform-origin: 0 15px;
+          -ms-transform-origin: 0 15px;
+          transform-origin: 0 15px; } }
+.current-user .menu.active {
+        opacity: 1;
+        -moz-transform: scale(1);
+        -o-transform: scale(1);
+        -ms-transform: scale(1);
+        -webkit-transform: scale(1);
+        transform: scale(1); }
+.current-user .menu:before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 37px;
+        height: 12px;
+        top: -12px;
+        left: 49%;
+        margin-left: -18.5px;
+        background-image: url("../../images/popover-arrow.png");
+        background-size: 100% 100%; }
+        @media (min-width: 768px) and (max-width: 991px) {
+.current-user .menu:before {
+            top: 16px;
+            left: -5px;
+            -moz-transform: rotate(270deg);
+            -o-transform: rotate(270deg);
+            -ms-transform: rotate(270deg);
+            -webkit-transform: rotate(270deg);
+            transform: rotate(270deg); } }
+.current-user .menu li {
+        padding: 8px 15px;
+        border-bottom: 1px solid #E6E6E6; }
+.current-user .menu li:last-child {
+          border-bottom: 0; }
+.current-user .menu li a {
+          text-decoration: none;
+          display: block;
+          color: #4C5661;
+          font-size: 15px;
+          -webkit-transition: all 0.2s linear;
+          -moz-transition: all 0.2s linear;
+          -ms-transition: all 0.2s linear;
+          -o-transition: all 0.2s linear;
+          transition: all 0.2s linear; }
+.current-user .menu li a:hover {
+            color: #000; }
+
+    
