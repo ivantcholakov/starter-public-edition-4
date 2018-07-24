@@ -87,7 +87,8 @@
 
 {% import _self as side_menu_macro %}
 <div id="sidebar-default" class="main-sidebar transition {% if session('side_menu_state') == 'hidden' %}hidden{% else %}visible{% endif %}">
-			<div class="current-user">
+		
+		<div class="current-user">
 				<a href="index.html" class="name">
 					<img class="avatar" src="images/avatars/1.jpg" />
 					<span>
@@ -153,7 +154,9 @@
 
     {% endfor %}
 {% endif %}
+</ul>
 
-                </ul>
+</div>
+
 
             </div>
