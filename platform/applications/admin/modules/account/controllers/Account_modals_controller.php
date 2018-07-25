@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
-class Account_menu_widget_controller extends Base_Widget_Controller {
+class Account_modals_controller extends Base_Widget_Controller {
     public function __construct() {
         parent::__construct();
     }
