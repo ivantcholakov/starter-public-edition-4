@@ -80,5 +80,5 @@ $config['cc_email'] = '';
 | Also, see the file robots.txt on how to enable sitemap.xml.
 |--------------------------------------------------------------------------
 */
-$config['google_analytics_enabled'] = false;
-$config['google_analytics_id'] = 'UA-XXXXX-X';  // Change UA-XXXXX-X to be your site's ID.
+$config['google_analytics_enabled'] = true;
+$config['google_analytics_id'] = 'UA-33663829-1';  // Change UA-XXXXX-X to be your site's ID.
