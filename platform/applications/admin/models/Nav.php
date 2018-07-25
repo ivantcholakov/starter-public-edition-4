@@ -17,7 +17,7 @@ class Nav extends CI_Model {
         
         $nav['customers'] = array('label' => 'Customers', 'icon' => 'user outline icon', 'location' => 'customers');
         
-        $nav['charges'] = array('label' => 'Charges', 'icon' => 'credit card icon', 'location' => 'charges');
+        $nav['charges'] = array('label' => 'Charges', 'icon' => 'credit card icon', 'location' => 'payments');
                 
         $nav['transfers'] = array('label' => 'Transfers', 'icon' => 'rocketchat icon', 'location' => 'transfers');
         
