@@ -1845,25 +1845,41 @@ textarea.input-lg {
 .btn {
     display: inline-block;
     margin-bottom: 0;
+    font-family: inherit;
+    font-size: 1em;
     font-weight: 600!important;
     text-align: center;
     vertical-align: middle;
     touch-action: manipulation;
     cursor: pointer;
     background-image: none;
+    border-radius: 2.5em;
     border: 1px solid transparent;
+    outline:0!important;
     white-space: nowrap;
-    font-size: 14px;
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
-    border-radius: 4px;
     border: none;
+    padding: .75em 1.875em;
     padding-left: 15px;
     padding-right: 15px;
     -webkit-transition: background-color ease .2s;
     -o-transition: background-color ease .2s;
     transition: background-color ease .2s;
+     box-shadow: 0 6px 16px 0 rgba(40, 220, 142, .4);
+    letter-spacing: .046875em;
+    transition: background-color .25s ease-in-out;
+    white-space: normal;
+    position: relative
+}
+
+.btn:active,
+.btn:focus,
+.btn:hover {
+    color: #fff;
+    background-color: #28dc8e;
+    opacity: .9
 }
 
 .btn.active.focus,
@@ -4794,29 +4810,6 @@ sub {
     margin-top: .125em;
     margin-right: .625em;
     margin-left: -1.875em
-}
-
-.btn {
-    font-family: MarkWebPro-Book-Bold, Helvetica, sans-serif;
-    color: #fff;
-    background-color: #28dc8e;
-    padding: .75em 1.875em;
-    border-radius: 2.5em;
-    font-size: 1em;
-    box-shadow: 0 6px 16px 0 rgba(40, 220, 142, .4);
-    border: 0;
-    letter-spacing: .046875em;
-    transition: background-color .25s ease-in-out;
-    white-space: normal;
-    position: relative
-}
-
-.btn:active,
-.btn:focus,
-.btn:hover {
-    color: #fff;
-    background-color: #28dc8e;
-    opacity: .9
 }
 
 .btn--transparent {
