@@ -1352,6 +1352,33 @@ body {
     position: relative;
     top: 4px;
     margin: 0 12px; }
+
+
+#dashboard .Sidemenubar .period-select {
+  float: right;
+  min-width: 350px;
+  position: relative;
+  top: -3px; }
+  #dashboard .Sidemenubar .period-select .input-group {
+    width: 130px;
+    float: left; }
+    #dashboard .Sidemenubar .period-select .input-group .input-group-addon {
+      background: #F0F4F8; }
+    #dashboard .Sidemenubar .period-select .input-group i {
+      font-size: 14px;
+      color: #577FC7;
+      position: relative;
+      top: 1px; }
+    #dashboard .Sidemenubar .period-select .input-group input[type="text"] {
+      height: 31px;
+      line-height: 18px;
+      font-size: 14px;
+      color: #777; }
+  #dashboard .Sidemenubar .period-select p {
+    position: relative;
+    top: 4px;
+    margin: 0 12px; }
+
 #dashboard .metrics {
   margin-top: 30px;
   border: 1px solid #210e4a;
