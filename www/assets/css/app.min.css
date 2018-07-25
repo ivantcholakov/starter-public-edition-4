@@ -15590,7 +15590,7 @@ sub {
     
 #content {
     background: transparent!important;
-    padding: 40px;
+    padding: 10px;
     position: relative;
     min-height: 900px;
     -webkit-transition: all 0.3s ease-out;
