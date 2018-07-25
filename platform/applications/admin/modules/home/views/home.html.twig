@@ -1,6 +1,6 @@
 
 <header class="sub-header sub-header--white" id="header">
-        <div class="sub-header__container container">
+        <div class="sub-header__container">
             <div class="sub-header__row row">
         
 
@@ -8,7 +8,7 @@
 {% if registry('title') is not empty %}
         <div class="sub-header__col">
 
-                    <h1 class="ui header clearfix">
+                    <h1 class="ui header clearfix pull-left">
                         {{ registry('header_icon')|raw }}
                             {{ registry('title')|raw }}
     {% if registry('subtitle') is not empty %}
@@ -20,7 +20,7 @@
 
 
 
-  <a v-on:click="trackHeaderCTA" v-bind:class="{ 'page-header--btn': showCta }" class="btn btn--three page-header--btn" href="#">Add New</a>
+  <a v-on:click="trackHeaderCTA" v-bind:class="{ 'page-header--btn': showCta }" class="btn btn--three page-header--btn pull-right" href="#">Add New</a>
 
                 </div>
 
@@ -63,10 +63,41 @@
 <h5 class="mt2 dark-gray">
         Deploy the current state of a branch to this app.
       </h5>
+{{ widget('home/home_menubar_widget/index') }}
+<div class="charts-half clearfix mt2">
+					<div class="chart pull-left">
+						<h3>
+							Succesful payments
+
+							<div class="total pull-right hidden-xs">
+								$3,124.00 total
+								
+								<div class="change up">
+									<i class="fa fa-chevron-up"></i>
+									6.5%
+								</div>
+							</div>
+						</h3>
+					</div>
+					<div class="chart pull-right">
+						<h3>
+							New customers
+
+							<div class="total pull-right hidden-xs">
+								1,402 total
+								
+								<div class="change down">
+									<i class="fa fa-chevron-down"></i>
+									3.5%
+								</div>
+							</div>
+						</h3>
+					</div>
+				</div>
+
 <!---->  </div>
 
 <div class="panel-content">
-{{ widget('home/home_menubar_widget/index') }}
 <p></p>
 {{ widget('home/dashboard_graph_widget/index') }}
 </div>
