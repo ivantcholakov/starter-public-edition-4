@@ -1846,7 +1846,7 @@ textarea.input-lg {
 .btn {
     display: inline-block;
     margin-bottom: 0;
-    font-weight: 600;
+    font-weight: 600!important;
     text-align: center;
     vertical-align: middle;
     touch-action: manipulation;
@@ -1855,8 +1855,6 @@ textarea.input-lg {
     border: 1px solid transparent;
     white-space: nowrap;
     font-size: 14px;
-    line-height: 1.428571;
-    border-radius: 4px;
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
