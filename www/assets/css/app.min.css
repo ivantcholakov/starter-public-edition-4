@@ -15856,4 +15856,16 @@ ul.list-group-lg>li:first-of-type {
     list-style: none;
 }
     
-    
+ .f5 {
+    font-size: 13px;
+}
+
+.mt2 {
+    margin-top: 10px;
+}
+.dark-gray {
+    color: #596981;
+}
+.lh-copy {
+    line-height: 1.5;
+}   
