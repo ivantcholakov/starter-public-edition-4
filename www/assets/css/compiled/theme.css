@@ -3004,7 +3004,7 @@ body {
   left: 0;
   top: 0;
   position: absolute;
-  width: 230px;
+  width: 245px;
   z-index: 999;
   -webkit-transition: all 0.2s linear;
   -moz-transition: all 0.2s linear;
@@ -3158,10 +3158,13 @@ body {
           color: #210e4a;
           font-weight: 400;
           font-size: 13px;
+	  height: 48px;
+          line-height: 48px;	
           padding: 7px 10px 9px 10px;
-          padding-left: 35px;
+          padding-left: 15px;
           background: transparent;
           text-decoration: none;
+	  text-transform: uppercase;
           display: inline-block;
           width: 100%;
           -webkit-transition: background 0.13s linear;
@@ -3200,12 +3203,12 @@ body {
             #sidebar-default .menu-section ul li a.active i.fa-chevron-down {
               color: #210e4a; }
           #sidebar-default .menu-section ul li a i {
-            font-size: 17px;
-            margin-right: 10px;
-            min-width: 17px;
-            text-align: center;
-            position: relative;
-            top: 1px; }
+            font-size: 18px;
+            min-width: 20px;
+           text-align: center;
+    position: relative;
+    margin: 0 16px 0 20px!important;
+    top: 1px; }
             @media (min-width: 768px) and (max-width: 991px) {
               #sidebar-default .menu-section ul li a i {
                 font-size: 22px;
