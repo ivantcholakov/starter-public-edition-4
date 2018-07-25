@@ -131,6 +131,26 @@ select {
     text-transform: none
 }
 
+input, select, textarea {
+    font-family: inherit;
+    border: 1px solid #cfd7e6;
+    box-shadow: 0 1px 3px 0 rgba(89,105,129,.05), 0 1px 1px 0 rgba(0,0,0,.025);
+    background-color: #fff;
+    line-height: 20px;
+    transition: background .1s ease,border-color .1s ease;
+    border-radius: 4px;
+    font-size: 13px;
+    padding: 0 30px 0 15px;
+    height: 38px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: 100%;
+    background-image: url(data:image/svg+xml;utf8,<svg width="24" height="10" viewBox="0 0 7 10" xmln…3.25c0-.13.084-.322.188-.41z" fill="%2400A3B6" fill-rule="evenodd"/></svg>);
+    /* outline: 0; */
+    /* -webkit-appearance: none; */
+    -moz-appearance: none;
+}
+
 [type=reset],
 [type=submit],
 button,
@@ -1251,11 +1271,12 @@ output {
 
 .form-control {
     width: 100%;
-    height: 34px;
+    height: 39px;
     padding: 6px 12px;
     background-color: #fff;
     background-image: none;
-    border: 1px solid #ccc;
+    border: 1px solid #cfd7e6;
+    line-height: 20px;
     border-radius: 4px;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
