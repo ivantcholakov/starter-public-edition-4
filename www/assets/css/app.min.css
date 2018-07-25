@@ -15884,5 +15884,22 @@ ul.list-group-lg>li:first-of-type {
     margin-left: auto!important;
 }    
     
+#content .Sidemenubar {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 63px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px 20px;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
+    background: white;
+    z-index: 99;
+}
     
+#content .Sidemenubar.transparent {
+    background: -webkit-linear-gradient(top, white 0%, rgba(255, 255, 255, 0.85) 100%);
+    background: -o-linear-gradient(top, white 0%, rgba(255, 255, 255, 0.85) 100%);
+}    
     
