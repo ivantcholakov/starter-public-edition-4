@@ -952,7 +952,7 @@ body {
         #sidebar-default .menu-section ul li a {
           color: #210e4a;
           font-weight: 500;
-          font-size: 13px;
+          font-size: 14px;
 	  letter-spacing: 1.25px;	
 	  height: 48px;
           line-height: 28px;	
@@ -4414,6 +4414,7 @@ body {
       cursor: pointer; }
     #account #content #sidebar h3 {
       margin: 0;
+      margin-top: 22px;
       text-align: center;
       font-size: 19px;
       padding: 22px 0; }
@@ -4431,8 +4432,8 @@ body {
       #account #content #sidebar .menu li a {
         display: block;
         padding: 13px 30px;
-        font-size: 15px;
-        color: #555;
+        font-size: 14px;
+        color: #444;
         text-decoration: none;
         -webkit-transition: all 0.2s linear;
         -moz-transition: all 0.2s linear;
@@ -4442,28 +4443,28 @@ body {
         #account #content #sidebar .menu li a.active, #account #content #sidebar .menu li a:hover {
           color: #6787DA; }
         #account #content #sidebar .menu li a i {
-          min-width: 30px; }
+          min-width: 20px; }
           #account #content #sidebar .menu li a i.ion-ios7-person-outline {
-            font-size: 30px;
+            font-size: 20px;
             position: relative;
             top: 4px; }
           #account #content #sidebar .menu li a i.ion-ios7-email-outline {
-            font-size: 24px;
+            font-size: 19px;
             position: relative;
             top: 4px; }
           #account #content #sidebar .menu li a i.ion-ios7-help-outline {
-            font-size: 24px;
+            font-size: 19px;
             position: relative;
             top: 4px; }
           #account #content #sidebar .menu li a i.ion-card {
-            font-size: 21px;
+            font-size: 19px;
             position: relative;
             top: 3px; }
   #account #content #panel {
     top: 0;
     position: relative;
-    width: 78%;
-    margin-left: 22%;
+    width: 79%;
+    margin-left: 28%;
     padding: 24px 50px;
     padding-bottom: 80px;
     /* account-profile.html specific styles */
@@ -4482,7 +4483,8 @@ body {
         padding: 24px; } }
     #account #content #panel.profile h3 {
       margin: 0;
-      font-size: 18px; }
+      font-size: 18px; 
+}
     #account #content #panel.profile .intro {
       margin-top: 25px;
       color: #555; }
