@@ -1,28 +1,28 @@
-	<div class="ui dropdown item current-user" tabindex="0">
-                            <i class="user icon"></i>
+	<div class="ui dropdown item" tabindex="0">
+                            <i class="circular user icon"></i>
                             <span class="mobile hidden">
-                                {# {{ current_user().username() }} #}  John Smith
+                            {# {{ current_user().username() }} #} Everpay
                             </span>
                             <i class="fa fa-chevron-down" tabindex="0"><div class="menu" tabindex="-1"></div></i>
                             <div class="menu transition hidden" tabindex="-1">
-                                <a href="{{ site_url('account') }}" class="item">
+                                <a href="{{ site_url('account/profile') }}" class="item">
                                     <i class="user icon"></i>
                                     {{ lang('ui_profile') }}
                                 </a>
 				
-				<a href="{{ site_url('account') }}" class="item">
+				<a href="{{ site_url('account/billing') }}" class="item">
                                     <i class="user icon"></i>
-                                    {{ lang('ui_billing') }}
+                                    Billing
                                 </a>
 				
-				 <a href="{{ site_url('account') }}" class="item">
+				 <a href="{{ site_url('account/notifications') }}" class="item">
                                     <i class="user icon"></i>
-                                    {{ lang('ui_notifications') }}
+                                   Notifications
                                 </a>
 				
-				<a href="{{ site_url('account') }}" class="item">
+				<a href="{{ site_url('account/support') }}" class="item">
                                     <i class="user icon"></i>
-                                    {{ lang('ui_support') }}
+                                    Help/ Support
                                 </a>
 				
 				
