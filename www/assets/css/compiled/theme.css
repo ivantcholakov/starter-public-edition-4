@@ -1381,17 +1381,17 @@ body {
     margin: 0 12px; }
 
 #dashboard .metrics {
-  margin-top: 30px;
-  border: 1px solid #210e4a;
+  margin-top: 1px;
+  border: 1px solid #ECF6FF;
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.3);
   background-color: #FEFEFE;
-  border-radius: 5px; }
+  border-radius: 1px; }
   #dashboard .metrics .metric {
     float: left;
     width: 25%;
     padding: 23px 0;
     text-align: center;
-    border-right: 1px solid #210e4a; }
+    border-right: 0px solid #210e4a; }
     @media (max-width: 767px) {
       #dashboard .metrics .metric {
         width: 50%; } }
