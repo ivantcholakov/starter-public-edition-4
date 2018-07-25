@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
-class Dashboard_metrics_controller extends Base_Widget_Controller {
+class Dashboard_metrics_widget_controller extends Base_Widget_Controller {
     public function __construct() {
         parent::__construct();
     }
