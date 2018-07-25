@@ -33,33 +33,35 @@
 <div class="container">
 
 <div class="row">
-<div class="col-md-12">
- {{ widget('home/quick_buttons_widget/index') }}
-<h2> You have to build your administration interface here. </h2>
-    </div>
-</div>
-
-<div class="row">
    <div class="col-md-12">
 {{ widget('home/dashboard_metrics_widget/index') }}
     </div>
 </div>
+
+<br/>
 
 <div class="row">		    
 <div class=" col-md-12 col-sm-12 com-xs-12">
 {{ widget('home/home_menubar_widget/index') }}
 {{ widget('home/dashboard_graph_widget/index') }}
 </div>
-			
+	
+<br/>	
+
+</div>
+<div class="row">
+<div class="col-md-12">
+ {{ widget('home/quick_buttons_widget/index') }}
+ <p></p>
+<h2> You have to build your administration interface here. </h2>
+<br/>
+    </div>
 </div>
 
+<br/>
 <div class="row">		    
-<div class="two-col__col col-md-6 col-sm-6 com-xs-12">
 
-space
-</div>
-
-<div class="col-md-6 col-sm-6 com-xs-12 two-col__col two-col__col--second">
+<div class="col-md-12 col-sm-12 com-xs-12 two-col__col two-col__col--second">
                      {{ widget('home/activity_feed_widget/index') }}
                             <p class="two-col__copy">      </p>
                             <a class="two-col__btn btn btn--transparent btn--full" href="i#l">
