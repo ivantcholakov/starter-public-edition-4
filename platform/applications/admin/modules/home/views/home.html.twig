@@ -1,10 +1,41 @@
+
+<header class="sub-header sub-header--white" id="header">
+        <div class="sub-header__container container">
+            <div class="sub-header__row row">
+        
+
+{% set breadcrumb_widget = widget('breadcrumb_widget') %}
+
+{% if breadcrumb_widget is not empty %}
+        <div class="sub-header__col">
+
+                    <h1 class="ui header clearfix">
+    {% if breadcrumb_widget is not empty %}
+     <div class="breadcrumb">{{ breadcrumb_widget|raw }}</div>
+    {% endif %}
+                        </div>
+                    </h1>
+
+
+
+  <a v-on:click="trackHeaderCTA" v-bind:class="{ 'page-header--btn': showCta }" class="btn btn--three page-header--btn" href="#">Add New</a>
+
+                </div>
+
+{% endif %}
+  </div>
+        </div>
+
+    </header>
+
 <div class="content-wrapper">	
 
 <div class="container">
 
 <div class="row">
-   <div class="col-md-12">
-{{ widget('home/home_menubar_widget/index') }}
+<div class="col-md-12">
+ {{ widget('home/quick_buttons_widget/index') }}
+<h2> You have to build your administration interface here. </h2>
     </div>
 </div>
 
@@ -15,7 +46,8 @@
 </div>
 
 <div class="row">		    
-<div class="two-col__col col-md-12 col-sm-12 com-xs-12">
+<div class=" col-md-12 col-sm-12 com-xs-12">
+{{ widget('home/home_menubar_widget/index') }}
 {{ widget('home/dashboard_graph_widget/index') }}
 </div>
 			
@@ -40,15 +72,6 @@ space
 			
 </div>
 
-
-<div class="row">
-<div class="col-md-12">
-   
-<h2> You have to build your administration interface here. </h2>
-
-{{ widget('home/quick_buttons_widget/index') }}
-    </div>
-</div>
 
 <div class="row">
 
