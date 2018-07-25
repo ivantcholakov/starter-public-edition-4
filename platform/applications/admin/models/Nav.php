@@ -15,11 +15,11 @@ class Nav extends CI_Model {
 
         //----------------------------------------------------------------------
         
-        $nav['payments'] = array('label' => 'Payments', 'icon' => 'credit card icon', 'location' => site_url('payments'));
+        $nav['payments'] = array('label' => 'Payments', 'icon' => 'credit card icon', 'location' => site_url('payments');
         
         $nav['customers'] = array('label' => 'Customers', 'icon' => 'user outline icon', 'location' => site_url('customers');
         
-        $nav['transfers'] = array('label' => 'Transfers', 'icon' => 'rocketchat icon', 'location' => site_url('transfers'));
+        $nav['transfers'] = array('label' => 'Transfers', 'icon' => 'rocketchat icon', 'location' => site_url('transfers');
         
         $nav['plans'] = array('label' => 'Plans', 'icon' => 'envelope square icon', 'location' => site_url('plans');
 
