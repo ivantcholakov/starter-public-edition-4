@@ -4471,25 +4471,22 @@ a:hover {
 
 @font-face {
     font-family: MarkWebPro-Book-Bold;
-    src: url(/fonts/markpro-bold.woff) format("woff")
+    src: url(../fonts/markpro-bold.woff) format("woff")
 }
 
 @font-face {
     font-family: MarkWebPro-Book;
-    src: url(/fonts/markpro-book.woff) format("woff")
+    src: url(../fonts/markpro-book.woff) format("woff")
 }
 
 @font-face {
     font-family: MarkWebPro-Heavy;
-    src: url(/fonts/markpro-heavy.woff) format("woff")
+    src: url(../fonts/markpro-heavy.woff) format("woff")
 }
 
 body {
     color: #64577f;
     font: normal 125%/1.4 Open Sans, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    line-height: 32px;
-    font-family: MarkWebPro-Book, Helvetica, sans-serif
 }
 
 h1,
