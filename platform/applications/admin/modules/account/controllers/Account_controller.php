@@ -2,7 +2,7 @@
 class Account_controller extends Base_Authenticated_Controller {
     public function __construct() {
         parent::__construct();
-        $this->_set_nav('account');
+        $this->_set_nav('account/profile');
         $this->template->set_layout('account');
     }
     public function index() {
