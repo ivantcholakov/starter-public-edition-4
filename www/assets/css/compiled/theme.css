@@ -1355,12 +1355,13 @@ body {
 
 
 #dashboard .Sidemenubar .period-select {
-  float: right;
-  min-width: 350px;
-  position: relative;
-  top: -3px; }
+      float: left;
+    min-width: 350px;
+    position: relative;
+    top: -3px;
+    margin-left: -20px;}
   #dashboard .Sidemenubar .period-select .input-group {
-    width: 130px;
+    width: 140px;
     float: left; }
     #dashboard .Sidemenubar .period-select .input-group .input-group-addon {
       background: #F0F4F8; }
