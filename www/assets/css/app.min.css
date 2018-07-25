@@ -1264,9 +1264,8 @@ output {
 .form-control,
 output {
     display: block;
-    font-size: 14px;
     line-height: 1.428571;
-    color: #555
+    color: #010101
 }
 
 .form-control {
