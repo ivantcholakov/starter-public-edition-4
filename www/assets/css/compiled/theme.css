@@ -799,7 +799,7 @@ body {
   left: 0;
   top: 0;
   position: absolute;
-  width: 245px;
+  width: 255px;
   z-index: 999;
   -webkit-transition: all 0.2s linear;
   -moz-transition: all 0.2s linear;
