@@ -4413,11 +4413,12 @@ body {
       font-size: 36px;
       cursor: pointer; }
     #account #content #sidebar h3 {
-      margin: 0;
-      margin-top: 22px;
-      text-align: center;
-      font-size: 19px;
-      padding: 22px 0; }
+    margin: 0;
+    margin-top: 22px;
+    text-align: left;
+    font-size: 18px;
+    padding: 32px 0px 20px 25px;
+}
       @media (max-width: 767px) {
         #account #content #sidebar h3 {
           padding: 22px 0 0; } }
@@ -4463,7 +4464,7 @@ body {
   #account #content #panel {
     top: 0;
     position: relative;
-    width: 79%;
+    width: 63%;
     margin-left: 28%;
     padding: 24px 50px;
     padding-bottom: 80px;
