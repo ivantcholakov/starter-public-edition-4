@@ -15612,7 +15612,7 @@ sub {
     box-shadow: none!important;
     background-color: #fff!important;
     margin-top: 20px!important;
-    margin-right: 20px!important;
+    margin-right: 10px!important;
     border-radius: 25px!important;
     padding: 7px 20px!important;
     line-height: 1.7525em!important;
@@ -15760,3 +15760,24 @@ sub {
     top: 50px!important;
 }   
     
+ .ui.header:first-child {
+    margin-top: 1.257143em;
+}
+
+h1.ui.header {
+    font-size: 1.95rem;
+}
+h1.ui.header {
+    font-size: 2rem;
+}
+.ui.header {
+    border: none;
+    margin: calc(2rem - 0.14285714em) 0em 1rem;
+    padding: 1.0em 0em;
+    padding-left: 20px;
+    font-family: inherit;
+    font-weight: 700;
+    line-height: 1.28571429em;
+    text-transform: none;
+    color: #444;
+}   
