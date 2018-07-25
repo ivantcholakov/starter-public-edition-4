@@ -252,11 +252,26 @@ html {
 }
 
 body {
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
     font-size: 14px;
     line-height: 1.428571;
-    color: #222;
-    background-color: #fff
+    color: #565656!important;
+    background-color: #f4f6f6!important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: 100%;
+    min-height: 100%;
+    word-wrap: break-word;
+    padding: 0;
+    overflow-x: hidden;
+    min-width: 320px;
+    color: rgba(0, 0, 0, .87);
+    font-smoothing: antialiased;
 }
 
 button,
