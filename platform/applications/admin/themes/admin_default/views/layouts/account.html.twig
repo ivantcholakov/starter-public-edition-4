@@ -112,22 +112,6 @@
     background-color: transparent!important;
     background-repeat: no-repeat;
 }
-#sidebar {
-   background-color: hsla(0,0%,100%,.9);
-    height: auto;
-    min-height: 100%;
-    min-width: 240px;
-}
-@media only screen and (min-width: 992px){
-#sidebar {
-    min-width: 240px;
-    }}
-#sidebar {
-    background-color: hsla(0,0%,100%,.9)!important;
-    height: auto;
-    min-height: 100%;
-    min-width: 240px;
-}
 .ui.vertical.menu {
      margin-top: 80px;
     display: block;
@@ -618,7 +602,7 @@ h1.ui.header {
 
 {{ head_end() }}
 
-{% set body_attr = {'id': 'page-top'} %}
+{% set body_attr = {'id': 'account'} %}
 {% if template.module is not empty %}
     {% set body_attr = html_attr_add_class(body_attr, template.module ~ '_module') %}
 {% endif %}
@@ -633,22 +617,18 @@ h1.ui.header {
 {% endif %}
 {{ body_begin(body_attr) }}
 
-    {{ widget('main_menu_widget') }}
+ {{ widget('main_menu_widget') }}
         
  
- <div id="application" class="ncontainer">
+<div id="application" class="ncontainer">
  
- {{ widget('side_menu_widget') }}
+{{ widget('side_menu_widget') }}
 
-    <div id="page">
-
-
-
-
+<div id="page">
 <div class="copy-image--none copy-image--tall" id="main_content">
 
-        <div class="container">
-            <div class="row">
+<div class="container">
+<div class="row">
 {{ widget('feedback_messages_widget', {
     'feedback_message_target': feedback_message_target,
     'normal_message': normal_message,
@@ -657,14 +637,19 @@ h1.ui.header {
     'error_message': error_message
 }) }}
 </div>
- </div>
+</div>
  
+<div id="content">
+{{ widget('account/account_menu_widget/index') }}
+
 {{ body() }}
 
 {{ widget('footer_widget') }}
+</div>
 
 </div>
 </div>
+
 </div>
 
 
