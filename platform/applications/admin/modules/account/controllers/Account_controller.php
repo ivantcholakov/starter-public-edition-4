@@ -8,7 +8,7 @@ class Account_controller extends Base_Authenticated_Controller {
         $title = 'Account';
         $this->registry->set('title', $title);
         $this->_set_header_icon('wrench');
-        $this->template
+        $this->template->set_layout('account');
             ->prepend_title($title)
             ->set_partial('scripts', 'account_scripts')
             ->build('account');
