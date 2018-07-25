@@ -4397,7 +4397,7 @@ body {
     bottom: 0;
     position: absolute;
     width: 16%;
-    background: #fcfcfc;
+    background: none;
     border-right: 1px solid #E8ECF1; }
     @media (max-width: 991px) {
       #account #content #sidebar {
