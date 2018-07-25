@@ -15,21 +15,21 @@ class Nav extends CI_Model {
 
         //----------------------------------------------------------------------
         
-        $nav['payments'] = array('label' => 'Payments', 'icon' => 'credit card icon', 'location' => site_url('payments');
+        $nav['payments'] = array('label' => 'Payments', 'icon' => 'credit card icon', 'location' => 'payments');
         
-        $nav['customers'] = array('label' => 'Customers', 'icon' => 'user outline icon', 'location' => site_url('customers');
+        $nav['customers'] = array('label' => 'Customers', 'icon' => 'user outline icon', 'location' => 'customers');
         
-        $nav['transfers'] = array('label' => 'Transfers', 'icon' => 'rocketchat icon', 'location' => site_url('transfers');
+        $nav['transfers'] = array('label' => 'Transfers', 'icon' => 'rocketchat icon', 'location' => 'transfers');
         
-        $nav['plans'] = array('label' => 'Plans', 'icon' => 'envelope square icon', 'location' => site_url('plans');
+        $nav['plans'] = array('label' => 'Plans', 'icon' => 'envelope square icon', 'location' => 'plans');
 
-        $nav['coupons'] = array('label' => 'Coupons', 'icon' => 'bell outline icon', 'location' => site_url('coupons');
+        $nav['coupons'] = array('label' => 'Coupons', 'icon' => 'bell outline icon', 'location' => 'coupons');
         
-        $nav['invoices'] = array('label' => 'Invoices', 'icon' => 'file pdf icon', 'location' => site_url('invoices');
+        $nav['invoices'] = array('label' => 'Invoices', 'icon' => 'file pdf icon', 'location' => 'invoices');
         
-        $nav['products'] = array('label' => 'Products', 'icon' => 'plus cart icon', 'location' => site_url('products');
+        $nav['products'] = array('label' => 'Products', 'icon' => 'plus cart icon', 'location' => 'products');
 
-        $nav['categories'] = array('label' => 'Categories', 'icon' => $this->registry->get('nav') == 'categoriess' ? 'folder open outline icon' : 'folder outline icon', 'location' => 'integrations');
+        $nav['categories'] = array('label' => 'Categories', 'icon' => $this->registry->get('nav') == 'categories' ? 'folder open outline icon' : 'folder outline icon', 'location' => 'integrations');
         
         $nav['slideshow'] = array('label' => 'Hosted pages', 'icon' => 'film icon', 'location' => 'hosted-pages');
 
