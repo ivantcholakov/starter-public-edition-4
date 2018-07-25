@@ -660,7 +660,7 @@ h1.ui.header {
 
 {{ head_end() }}
 
-{% set body_attr = {'id': 'page-top'} %}
+{% set body_attr = {'id': 'dashboard'} %}
 {% if template.module is not empty %}
     {% set body_attr = html_attr_add_class(body_attr, template.module ~ '_module') %}
 {% endif %}
@@ -675,55 +675,18 @@ h1.ui.header {
 {% endif %}
 {{ body_begin(body_attr) }}
 
-    {{ widget('main_menu_widget') }}
-        
+ {{ widget('main_menu_widget') }}   
  
  <div id="application" class="ncontainer">
  
  {{ widget('side_menu_widget') }}
 
-    <div id="page">
-
-<header class="sub-header sub-header--white" id="header">
-        <div class="sub-header__container container">
-            <div class="sub-header__row row">
-        
-
-{% set breadcrumb_widget = widget('breadcrumb_widget') %}
-
-{% if registry('title') is not empty or breadcrumb_widget is not empty %}
-        <div class="sub-header__col">
-
-                    <h1 class="ui header clearfix">
-    {% if breadcrumb_widget is not empty %}
-                        <div class="breadcrumb">{{ breadcrumb_widget|raw }}</div>
-    {% endif %}
-                        {{ registry('header_icon')|raw }}
-                        <div class="content">
-                            {{ registry('title')|raw }}
-    {% if registry('subtitle') is not empty %}
-                            <div class="sub header">{{ registry('subtitle')|raw }}</div>
-    {% endif %}
-                        </div>
-                    </h1>
-
-
-
-  <a v-on:click="trackHeaderCTA" v-bind:class="{ 'page-header--btn': showCta }" class="btn btn--three page-header--btn" href="#">Add New</a>
-
-                </div>
-
-{% endif %}
-  </div>
-        </div>
-
-    </header>
-
+<div id="page">
 
 <div class="copy-image--none copy-image--tall" id="main_content">
 
-        <div class="container">
-            <div class="row">
+<div class="container">
+<div class="row">
 {{ widget('feedback_messages_widget', {
     'feedback_message_target': feedback_message_target,
     'normal_message': normal_message,
@@ -733,15 +696,18 @@ h1.ui.header {
 }) }}
 </div>
  </div>
- 
+
+<div id="content">
 {{ body() }}
 
-</div>
-
-</div>
-</div>
-
 {{ widget('footer_widget') }}
+</div>
+
+</div>
+
+</div>
+</div>
+
 
 {{ js_bp_plugins() }}
 {{ js_mbp_helper() }}
