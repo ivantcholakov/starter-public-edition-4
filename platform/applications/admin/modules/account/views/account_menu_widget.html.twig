@@ -1,6 +1,25 @@
 <div id="sidebar">
 				
-				<h3>My account</h3>
+	{% set breadcrumb_widget = widget('breadcrumb_widget') %}
+
+{% if registry('title') is not empty %}
+        <div class="sub-header__col">
+
+                    <h3 class="ui header clearfix">
+                        {{ registry('header_icon')|raw }}
+                            {{ registry('title')|raw }}
+    {% if registry('subtitle') is not empty %}
+                      <div class="sub header">{{ registry('subtitle')|raw }}</div>
+    {% endif %}
+                       
+                    </h3>
+
+
+
+  
+                </div>
+
+{% endif %}
 				<ul class="menu">
 					<li>
 						<a href="account/profile" class="active">
