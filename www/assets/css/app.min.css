@@ -15839,6 +15839,7 @@ ul.list-group-lg>li:first-of-type {
 .panel-section .section-description {
     width: 25%;
     float: left;
+    padding-left: 20px;
 }
     
 .panel-section .panel-content {
