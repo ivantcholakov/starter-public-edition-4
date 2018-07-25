@@ -1,11 +1,25 @@
 <div class="menubar">
-				<div class="sidebar-toggler visible-xs">
-					<i class="ion-navicon"></i>
-				</div>
+{% set breadcrumb_widget = widget('breadcrumb_widget') %}
 
-				<div class="page-title">
-					Display user Information
-				</div>
+{% if registry('title') is not empty %}
+        <div class="sub-header__col">
+
+                    <h3 class="ui header clearfix">
+                        {{ registry('header_icon')|raw }}
+                            {{ registry('title')|raw }}
+    {% if registry('subtitle') is not empty %}
+                      <div class="sub header">{{ registry('subtitle')|raw }}</div>
+    {% endif %}
+                       
+                    </h3>
+
+
+
+  
+                </div>
+
+{% endif %}
+
 
 				<div class="period-select hidden-xs">
 					<form class="input-daterange">
