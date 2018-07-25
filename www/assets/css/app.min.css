@@ -15716,3 +15716,32 @@ sub {
             color: #000; }
 
     
+.ui.dropdown .menu {
+    cursor: auto;
+    position: absolute;
+    display: none;
+    outline: none;
+    top: 100%;
+    min-width: -webkit-max-content;
+    min-width: -moz-max-content;
+    min-width: max-content;
+    margin: 0em;
+    padding: 0.1em 0.72em!important;
+    background: #FFF;
+    font-size: 1.95em;
+    text-shadow: none;
+    text-align: left;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, .15);
+    border: 1px solid rgba(34, 36, 38, .15);
+    border-radius: 1.25rem!important;
+    transition: opacity 0.1s ease;
+    z-index: 11;
+    will-change: transform, opacity;
+}
+    
+ .ui.dropdown>.left.menu {
+    left: auto!important;
+    right: -40px!important;
+    top: 50px!important;
+}   
+    
