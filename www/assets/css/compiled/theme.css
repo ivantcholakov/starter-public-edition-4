@@ -4396,12 +4396,12 @@ body {
     top: 0;
     bottom: 0;
     position: absolute;
-    width: 22%;
+    width: 16%;
     background: #fcfcfc;
     border-right: 1px solid #E8ECF1; }
     @media (max-width: 991px) {
       #account #content #sidebar {
-        width: 28%; } }
+        width: 25%; } }
     @media (max-width: 767px) {
       #account #content #sidebar {
         position: relative;
