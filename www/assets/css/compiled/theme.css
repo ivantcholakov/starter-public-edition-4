@@ -960,7 +960,7 @@ body {
           padding-left: 15px;
           background: transparent;
           text-decoration: none;
-	  text-transform: uppercase;
+	  text-transform: none;
           display: inline-block;
           width: 100%;
           -webkit-transition: background 0.13s linear;
