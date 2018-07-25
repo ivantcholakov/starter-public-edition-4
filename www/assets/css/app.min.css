@@ -15609,7 +15609,8 @@ sub {
     color: #210E4B!important;
     box-shadow: none!important;
     background-color: #fff!important;
-    margin-top: 20px!important;
+    margin-top: 10px!important;
+    font-size: 17px;
     margin-right: 10px!important;
     border-radius: 25px!important;
     padding: 7px 20px!important;
