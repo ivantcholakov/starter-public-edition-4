@@ -6,18 +6,12 @@
 
 {% set breadcrumb_widget = widget('breadcrumb_widget') %}
 
-{% if registry('title') is not empty or breadcrumb_widget is not empty %}
+{% if breadcrumb_widget is not empty %}
         <div class="sub-header__col">
 
                     <h1 class="ui header clearfix">
     {% if breadcrumb_widget is not empty %}
-                        <div class="breadcrumb">{{ breadcrumb_widget|raw }}</div>
-    {% endif %}
-                        {{ registry('header_icon')|raw }}
-                        <div class="content">
-                            {{ registry('title')|raw }}
-    {% if registry('subtitle') is not empty %}
-                            <div class="sub header">{{ registry('subtitle')|raw }}</div>
+     <div class="breadcrumb">{{ breadcrumb_widget|raw }}</div>
     {% endif %}
                         </div>
                     </h1>
