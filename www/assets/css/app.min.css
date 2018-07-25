@@ -15764,20 +15764,20 @@ sub {
     margin-top: 1.257143em;
 }
 
-h1.ui.header {
+h3.ui.header {
     font-size: 1.95rem;
 }
-h1.ui.header {
-    font-size: 2rem;
+h3.ui.header {
+    font-size: 1.95rem;
 }
 .ui.header {
     border: none;
     margin: calc(2rem - 0.14285714em) 0em 1rem;
-    padding: 1.0em 0em;
-    padding-left: 20px;
+    padding: 0em 0em!important;
+    padding-left: 0px;
     font-family: inherit;
     font-weight: 700;
     line-height: 1.28571429em;
     text-transform: none;
-    color: #444;
+    color: #210e4a!important;
 }   
