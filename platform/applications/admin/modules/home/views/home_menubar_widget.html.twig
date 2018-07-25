@@ -1,25 +1,8 @@
 <div class="menubar">
-{% set breadcrumb_widget = widget('breadcrumb_widget') %}
 
-{% if registry('title') is not empty %}
-        <div class="sub-header__col">
-
-                    <h3 class="ui header clearfix">
-                        {{ registry('header_icon')|raw }}
-                            {{ registry('title')|raw }}
-    {% if registry('subtitle') is not empty %}
-                      <div class="sub header">{{ registry('subtitle')|raw }}</div>
-    {% endif %}
-                       
-                    </h3>
-
-
-
-  
-                </div>
-
-{% endif %}
-
+<div class="page-title">
+	<b>Welcome back</b> firstname latname
+	</div>
 
 				<div class="period-select hidden-xs text-center">
 					<form class="input-daterange">
@@ -41,11 +24,4 @@
 					</form>
 				</div>
 				
-				
-				<a class="btn btn--three btn--full" href="#">
-                                Add New
-                                <svg class="btn__arrow arrow btn__arrow--one">
-                                    <use xlink:href="#icon-arrow" />
-                                </svg>
-                            </a>
-			</div>
+						</div>
