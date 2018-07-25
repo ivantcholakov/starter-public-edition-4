@@ -1217,7 +1217,15 @@ input[type=radio] {
 }
 
 input[type=file] {
-    display: block
+    display: block;
+   color: #fff!important;
+    background-color: #3F3F44;
+    background-image: -webkit-gradient(linear,left top,right bottom,color-stop(0,rgba(97,97,101,0)),color-stop(1,#616165));
+    background-image: -o-linear-gradient(left top,rgba(97,97,101,0) 0,#616165 100%);
+    background-image: -moz-linear-gradient(left top,rgba(97,97,101,0) 0,#616165 100%);
+    background-image: -webkit-linear-gradient(left top,rgba(97,97,101,0) 0,#616165 100%);
+    background-image: -ms-linear-gradient(left top,rgba(97,97,101,0) 0,#616165 100%);
+    background-image: linear-gradient(to left top,rgba(97,97,101,0) 0,#616165 100%); 
 }
 
 input[type=range] {
