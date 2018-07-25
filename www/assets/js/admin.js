@@ -46,7 +46,7 @@ $(function () {
 
     $('#sidebar_toggle').on('click', function() {
 
-        $('#sidebar').transition({
+        $('#sidebar-default').transition({
             animation: 'slide right',
             onComplete : function() {
 
@@ -55,7 +55,7 @@ $(function () {
                     mode: 'queue',
                     url: SITE_URL + 'side-menu-widget/toggle-ajax',
                     data: {
-                        state: $('#sidebar').hasClass('hidden') ? 'hidden' : 'visible'
+                        state: $('#sidebar-default').hasClass('hidden') ? 'hidden' : 'visible'
                     },
                     success: function(data) {
 
