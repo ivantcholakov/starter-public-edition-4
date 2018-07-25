@@ -40763,27 +40763,8 @@ button:hover .ui.dashboard.segments {
     background-repeat: no-repeat;
 }
 
-#sidebar {
-   background-color: hsla(0,0%,100%,.9);
-    height: auto;
-    min-height: 100%;
-    min-width: 240px;
-}
-
-@media only screen and (min-width: 992px){
-#sidebar {
-    min-width: 240px;
-    }}
-#sidebar {
-    background-color: #6b8cce!important;
-    height: auto;
-    min-height: 100%;
-    min-width: 240px;
-    z-index: 100!important;
-}
-
 .ui.vertical.menu {
-     margin-top: 80px;
+     margin-top: 100px;
     display: block;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
