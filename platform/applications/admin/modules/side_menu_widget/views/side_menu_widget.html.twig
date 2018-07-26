@@ -42,7 +42,7 @@
     {% import _self as side_menu_macro %}
     {% set level = level|default(0) %}
 
-                            <div class="accordion menu">
+ <div class="accordion menu">
 
     {% for item in items %}
 
@@ -54,14 +54,13 @@
                             </div>
             {% else %}
                             <div class="item">
-                                <a href="{{ item['link'] }}" class="{% if item['is_active'] %}active {% endif %}title">
-                                    {{ side_menu_macro.display_item(item) }}
+                                <a href="{{ item['link'] }}" class="{% if item['is_active'] %}active {% endif %}title" data-toggle="sidebar">
+                                   <span> {{ side_menu_macro.display_item(item) }}</span>
                                 </a>
                             </div>
             {% endif %}
                             
         {% else %}
-
                             <div class="item">
 
                                 <span class="{% if item['is_active'] %}active {% endif %}title">
@@ -107,22 +106,21 @@
                                 <a href="{{ item['link'] }}" class="{% if item['is_active'] %}active {% endif %}title">
                                     {{ side_menu_macro.display_item(item) }}
                                 </a>
-				</li>
+			</li>
             {% endif %}
                             
         {% else %}
-<ul>
-                            <li class="item">
+	                       <li class="item">
                                 <span class="{% if item['is_active'] %}active {% endif %}title">
                                  <i class="fa fa-chevron-down pull-right"></i>
                                     {{ side_menu_macro.display_item(item) }}
                                 </span>
-
+				</li>
+                      <li class="small">
                                 <span class="{% if item['is_active'] %}active {% endif %}content" style="width:100%;">
                                     {{ side_menu_macro.display_children(item['children']) }}
                                 </span>
-                          </li>
-</ul>
+                        </li>      
 
         {% endif %}
 
