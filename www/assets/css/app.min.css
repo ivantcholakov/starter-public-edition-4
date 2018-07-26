@@ -15977,24 +15977,55 @@ ul.list-group-lg>li:first-of-type {
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 1.5px;
-    font-size: 12px;
-     line-height: 16px;
+    font-size: 10px;
+    line-height: 14px;
 }  
     
-#content .status-declined {
-    position: absolute;
+#content .trans-status-declined {
+    position: relative;
     top: 0;
     right: 0;
-    border: 2px solid #de7575;
+    border: 0px solid #de7575;
     padding: 1px 12px;
     border-radius: 4px;
     color: #de0a0a;
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 1.5px;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 16px;
 }  
+    
+ #content .trans-status-pending {
+    position: relative;
+    top: 0;
+    right: 0;
+    border: 0px solid #9bc970;
+    padding: 1px 12px;
+    border-radius: 4px;
+    color: #6bad2c;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    font-size: 14px;  
+    line-height: 16px;
+}  
+    
+ #content .trans-status-declined {
+    position: relative;
+    top: 0;
+    right: 0;
+    border: 0px solid #de7575;
+    padding: 1px 12px;
+    border-radius: 4px;
+    color: #de0a0a;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    font-size: 14px;
+    line-height: 16px;
+}       
+    
 
 #content .pager {
     padding-left: 0;
