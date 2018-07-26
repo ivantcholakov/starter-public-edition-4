@@ -592,11 +592,15 @@ h1.ui.header {
 </style>
 
 {{ js_modernizr() }}
-{{ js_jquery() }}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 {{ js('lib/jquery-json/jquery.json.js') }}
 {{ partial('ckeditor') }}
 {{ js('lib/phpjs/phpjs.min.js') }}
 {{ js('lib/sweetalert/sweetalert.min.js') }}
+{{ js('vendor/jquery.cookie.js') }}
+{{ js('vendor/moment.min.js') }}
+{{ js('elektrobase.js') }}
 
 {{ partial('head') }}
 
