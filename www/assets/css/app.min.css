@@ -15893,7 +15893,6 @@ ul.list-group-lg>li:first-of-type {
     -ms-flex: none;
     flex: none;
     width: 100%;
-    max-width: 1200px!important;
     margin-right: auto!important;
     margin-left: auto!important;
 }    
@@ -15919,7 +15918,7 @@ ul.list-group-lg>li:first-of-type {
     
 .mt0{margin-top:0}.mt1{margin-top:5px}.mt2{margin-top:10px}.mt3{margin-top:15px}.mt4{margin-top:20px}.mt5{margin-top:30px}.mt6{margin-top:40px}    
     
-.status-active {
+#content .status-active {
     position: absolute;
     top: 0;
     right: 0;
@@ -15934,7 +15933,7 @@ ul.list-group-lg>li:first-of-type {
     line-height: 16px;
 }
     
- .status-pending {
+ #content .status-pending {
     position: absolute;
     top: 0;
     right: 0;
@@ -15948,7 +15947,7 @@ ul.list-group-lg>li:first-of-type {
     font-size: 16px;
 }  
     
- .status-closed {
+ #content .status-closed {
     position: absolute;
     top: 0;
     right: 0;
@@ -15963,7 +15962,7 @@ ul.list-group-lg>li:first-of-type {
      line-height: 16px;
 }   
     
- .status-approved {
+ #content .status-approved {
     position: absolute;
     top: 0;
     right: 0;
@@ -15978,7 +15977,7 @@ ul.list-group-lg>li:first-of-type {
      line-height: 16px;
 }  
     
-.status-declined {
+#content .status-declined {
     position: absolute;
     top: 0;
     right: 0;
