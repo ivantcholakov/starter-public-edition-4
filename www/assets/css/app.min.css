@@ -16011,7 +16011,42 @@ ul.list-group-lg>li:first-of-type {
     border-radius: 15px;
 }    
     
-    
+form.search {
+  position: relative;
+  float: left;
+  width: 260px;
+  top: -2px;
+  margin-left: 170px; }
+form.search .fa-search {
+    position: absolute;
+    color: #BBB;
+    top: 7px;
+    left: 11px;
+    font-size: 16px; }
+form.search input[type="text"] {
+    border: 0;
+    padding: 6px 15px 6px 37px;
+    border-radius: 3px;
+    width: 100%; }
+form.search input[type="text"]::-webkit-input-placeholder {
+      font-weight: normal;
+      font-family: "Lato", "Helvetica Neue", Arial;
+      color: #9B9B9B; }
+form.search input[type="text"]:-moz-placeholder {
+      font-weight: normal;
+      font-family: "Lato", "Helvetica Neue", Arial;
+      color: #9B9B9B; }
+form.search input[type="text"]::-moz-placeholder {
+      font-weight: normal;
+      font-family: "Lato", "Helvetica Neue", Arial;
+      color: #9B9B9B; }
+form.search input[type="text"]:-ms-input-placeholder {
+      font-weight: normal;
+      font-family: "Lato", "Helvetica Neue", Arial;
+      color: #9B9B9B; }
+form.search input[type="submit"] {
+    visibility: hidden;
+    position: absolute; }    
     
     
     
