@@ -15893,6 +15893,7 @@ ul.list-group-lg>li:first-of-type {
     -ms-flex: none;
     flex: none;
     width: 100%;
+    max-width: 1280px;
     margin-right: auto!important;
     margin-left: auto!important;
 }    
