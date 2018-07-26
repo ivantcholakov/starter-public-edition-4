@@ -99,21 +99,25 @@
         {% if item['children'] is empty %}
 
             {% if item['is_header'] %}
+	    <li>
                            <div class="item">
                                 <span class="title">{{ side_menu_macro.display_item(item) }}</span>
                            </div>
+			   </li>
             {% else %}
-                         
+                         <li>
                             <div class="item">
                                 <a href="{{ item['link'] }}" class="{% if item['is_active'] %}active {% endif %}title">
                                     {{ side_menu_macro.display_item(item) }}
                                 </a>
                             </div>
+			    </li>
             {% endif %}
                             
         {% else %}
 
-                            <div class="item">
+                            <li>
+			    <div class="item">
 
                                 <span class="{% if item['is_active'] %}active {% endif %}title">
                                  <i class="fa fa-chevron-down"></i>
@@ -123,7 +127,7 @@
                                 <span class="{% if item['is_active'] %}active {% endif %}content" style="width:100%;">
                                     {{ side_menu_macro.display_children(item['children']) }}
                                 </span>
-
+</div>
                             </li>
 	 </ul>
 
