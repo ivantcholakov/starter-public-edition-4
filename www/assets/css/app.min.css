@@ -15892,7 +15892,6 @@ ul.list-group-lg>li:first-of-type {
     -ms-flex: none;
     flex: none;
     width: 100%;
-    max-width: 1280px;
     margin-right: auto!important;
     margin-left: auto!important;
 }    
@@ -16090,7 +16089,8 @@ form.search input[type="submit"] {
 #sidebar_toggle .sidebar-toggler i {
     font-size: 37px;
 }   
- .sidebar-toggler i {
+
+.sidebar-toggler i {
     font-size: 37px;
 }  
     
