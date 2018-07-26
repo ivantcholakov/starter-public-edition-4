@@ -6,7 +6,7 @@ class Account_controller extends Base_Authenticated_Controller {
     }
     public function index() {
         $title = 'Account';
-        $this->_set_nav('account/profile');
+        $this->_set_nav('account');
         $this->registry->set('title', $title);
         $this->_set_header_icon('wrench');
         $this->template
