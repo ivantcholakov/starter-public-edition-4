@@ -255,7 +255,7 @@ body {
     font-family: 'Open Sans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
     font-size: 14px;
     line-height: 1.428571;
-    color: #565656!important;
+    color: #565656;
     background-color: #f4f6f6!important;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1882,7 +1882,6 @@ textarea.input-lg {
     -webkit-transition: background-color ease .2s;
     -o-transition: background-color ease .2s;
     transition: background-color ease .2s;
-     box-shadow: 0 6px 16px 0 rgba(40, 220, 142, .4);
     letter-spacing: .046875em;
     transition: background-color .25s ease-in-out;
     white-space: normal;
@@ -16052,6 +16051,12 @@ form.search input[type="text"]:-ms-input-placeholder {
 form.search input[type="submit"] {
     visibility: hidden;
     position: absolute; }    
-    
+ 
+   .sidebar-toggler i {
+    font-size: 37px;
+}   
+ .sidebar-toggler i {
+    font-size: 37px;
+}  
     
     
