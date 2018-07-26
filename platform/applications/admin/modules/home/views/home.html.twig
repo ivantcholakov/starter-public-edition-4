@@ -38,15 +38,15 @@
 <div class="panel-section">
   <div class="section-description">
     <h4 class="purple" role="heading" aria-level="3">
-      <span>  Account ID:</span> 12335459IOOKAJDJDSS</span> <span class="status-active"> Active </span>
+      <span>  Account ID:</span> 12335459IOOKAJDJDSS</span> 
 </h4>
-      <h5 class="mt1">
-        <span class="dark-gray"> Plan Level:</span> <span class="info"><strong>Professional</strong></span>
+      <h5 class="mt0">
+        <span class="dark-gray"> Plan Level:</span> <span class="info"><strong>Professional</strong></span><span class="status-active"> Active </span>
       </h5>
-      <h5 class="mt1 dark-gray">
+      <h5 class="mt0 dark-gray">
          <span> API ID:</span> <span>FXMNSMNSJHDS76DHJMNDE </span> <span><a v-on:click="" v-bind:class="{ 'btn--transparent': showCta }" class="btn--transparent btn-xs" href="#">show</a></span>
       </h5>
-      <h5 class="mt1">
+      <h5 class="mt0">
        <span class="dark-gray"> API usage:</span><span><div class="referrals"><div class="progress">
 	<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="26" aria-valuemin="0" aria-valuemax="100" style="width: 67%"></div></div></span>
       </h5>
@@ -72,35 +72,63 @@
       </h5>
 {{ widget('home/home_menubar_widget/index') }}
 <div class="chart-nborder clearfix mt2">
-					<div class="clearfix mt2">
+					<div class="clearfix mt0">
 						<h4>
-							<span>Succesful payments</span>
+							<span class="dark-gray">Succesful charges</span>
 
-							<span><div class="total pull-right hidden-xs">
-								$3,124.00 total
+							<span class="total hidden-xs">
+								$3,124.00 total</span>
 								
-							<span><div class="change up">
-									<i class="fa fa-chevron-up"></i>
-									6.5%
-								</div></span>
-								
-							</div></span>
+							<span class="change up status-approved">
+					<i class="fa fa-chevron-up"></i> 6.5%
+					</span>
 						</h4>
 					</div>
-					<div class="mt2 clearfix">
+					<div class="mt0 clearfix">
 						<h4>
-							<span>New customers</span>
+							<span class="dark-gray">Declined charges</span>
 
-							<span><div class="total pull-right hidden-xs">
-								1,402 total
+							<span class="total hidden-xs">
+								478 total
+								</span>
 								
-								<span><div class="change down">
+								<span class="change down status-declined">
 									<i class="fa fa-chevron-down"></i>
 									3.5%
-								</div></span>
-							</div></span>
+								</span>
 						</h4>
 					</div>
+					
+					<div class="mt0 clearfix">
+						<h4>
+							<span class="dark-gray">Refunded charges</span>
+
+							<span class="total hidden-xs">
+								12 total
+								</span>
+								
+								<span class="change down status-declined">
+									<i class="fa fa-chevron-down"></i>
+									3.5%
+								</span>
+						</h4>
+					</div><div class="mt0 clearfix">
+						<h4>
+							<span class="dark-gray">Paid Invoices</span>
+
+							<span class="total hidden-xs">
+								1,402 total
+								</span>
+								
+								<span class="change down status-declined">
+									<i class="fa fa-chevron-down"></i>
+									3.5%
+								</span>
+						</h4>
+					</div>
+					
+					
+					
 				</div>
 
 <!---->  </div>
@@ -117,17 +145,35 @@
 <div class="panel-section">
   <div class="section-description">
     <h4 class="purple" role="heading" aria-level="3">
-      Welcome: First Last Name
+      Platform Activity
 <!---->    </h4>
 <h5 class="mt2 dark-gray">
-        Deploy the current state of a branch to this app.
+        New Customers.
+      </h5>
+      
+      <h5 class="mt0 dark-gray">
+       New Tickets.
+      </h5>
+      
+      <h5 class="mt0 dark-gray">
+        New Orders.
+      </h5>
+      
+      <h5 class="mt0 dark-gray">
+       New Invoices.
       </h5>
 <!---->  </div>
 
 <div class="panel-content">
- {{ widget('home/quick_buttons_widget/index') }}
- <br/>
-<h3> You have to build your administration interface here. </h3>
+                     {{ widget('home/activity_feed_widget/index') }}  
+		     <br/> 
+		     <a class="two-col__btn btn btn--transparent btn--half" href="#">
+                                See More
+                                <svg class="btn__arrow arrow btn__arrow--one">
+                                    <use xlink:href="#icon-arrow" />
+                                </svg>
+                            </a>
+
 
 </div>
 <!----> </div>
@@ -137,22 +183,18 @@
 <div class="panel-section">
   <div class="section-description">
     <h4 class="purple" role="heading" aria-level="3">
-      Welcome: First Last Name
+      My Invoices
 <!---->    </h4>
 <h5 class="mt2 dark-gray">
-        Deploy the current state of a branch to this app.
+        Check the current state of your invoices.
       </h5>
 <!---->  </div>
 
 <div class="panel-content">
-                     {{ widget('home/activity_feed_widget/index') }}
+<h3> You have to build your administration interface here. </h3>
                             <p class="two-col__copy">      </p>
-                            <a class="two-col__btn btn btn--transparent btn--full" href="#">
-                                See More
-                                <svg class="btn__arrow arrow btn__arrow--one">
-                                    <use xlink:href="#icon-arrow" />
-                                </svg>
-                            </a>
+ {{ widget('home/quick_buttons_widget/index') }}
+                          
                         </div>
 
 <!----> </div>
