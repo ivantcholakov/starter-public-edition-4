@@ -12,7 +12,7 @@ class Customers_controller extends Base_Authenticated_Controller {
         $this->_set_header_icon('user');
         $this->template
             ->prepend_title($title)
-            ->set_partial('scripts', 'customer_scripts')
+            ->set_partial('scripts', 'customers_scripts')
             ->build('customers');
     }
 }
