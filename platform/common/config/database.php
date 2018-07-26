@@ -76,8 +76,8 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-    'dsn'      => '',
-    'hostname' => 'mysql://mk90duhq4b3e7dcl:edka9tndayxt3bmp@if0ck476y7axojpg.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/v8s74erkcfn251i2',
+    'dsn'      => 'mysql://mk90duhq4b3e7dcl:edka9tndayxt3bmp@if0ck476y7axojpg.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/v8s74erkcfn251i2',
+    'hostname' => 'if0ck476y7axojpg.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
     'username' => 'mk90duhq4b3e7dcl',
     'password' => 'edka9tndayxt3bmp',
     'database' => 'v8s74erkcfn251i2',
