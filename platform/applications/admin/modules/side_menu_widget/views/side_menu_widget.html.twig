@@ -62,7 +62,7 @@
                             
         {% else %}
 
-                            <div class="item"  style="padding-right: 0;">
+                            <div class="item">
 
                                 <span class="{% if item['is_active'] %}active {% endif %}title">
                                     <i class="dropdown icon"></i>
@@ -99,37 +99,30 @@
         {% if item['children'] is empty %}
 
             {% if item['is_header'] %}
-	    <li>
-                           <div class="item">
+                           <li class="item">
                                 <span class="title">{{ side_menu_macro.display_item(item) }}</span>
-                           </div>
 			   </li>
             {% else %}
-                         <li>
-                            <div class="item">
+                         <li class="item">
                                 <a href="{{ item['link'] }}" class="{% if item['is_active'] %}active {% endif %}title">
                                     {{ side_menu_macro.display_item(item) }}
                                 </a>
-                            </div>
-			    </li>
+				</li>
             {% endif %}
                             
         {% else %}
-
-                            <li>
-			    <div class="item">
-
+<ul>
+                            <li class="item">
                                 <span class="{% if item['is_active'] %}active {% endif %}title">
-                                 <i class="fa fa-chevron-down"></i>
+                                 <i class="fa fa-chevron-down pull-right"></i>
                                     {{ side_menu_macro.display_item(item) }}
                                 </span>
 
                                 <span class="{% if item['is_active'] %}active {% endif %}content" style="width:100%;">
                                     {{ side_menu_macro.display_children(item['children']) }}
                                 </span>
-</div>
-                            </li>
-	 </ul>
+                          </li>
+</ul>
 
         {% endif %}
 
