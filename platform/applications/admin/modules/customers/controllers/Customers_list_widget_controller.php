@@ -19,6 +19,6 @@ class Customers_list_widget_controller extends Base_Widget_Controller {
         $data = compact(
             'total_customer_count'
         );
-        $this->load->view('customer_list_widget', $data);
+        $this->load->view('customers_list_widget', $data);
     }
 }
