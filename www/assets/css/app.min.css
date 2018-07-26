@@ -15993,18 +15993,18 @@ ul.list-group-lg>li:first-of-type {
     line-height: 16px;
 }  
 
- .pager {
+#content .pager {
     padding-left: 0;
     margin: 20px 0;
     list-style: none;
     text-align: center;
 }
 
-.pager li {
+#content .pager li {
     display: inline;
 }
     
-.pager li>a, .pager li>span {
+#content .pager li>a, #content .pager li>span {
     display: inline-block;
     padding: 5px 14px;
     background-color: #fff;
