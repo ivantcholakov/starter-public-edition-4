@@ -19,8 +19,17 @@
 
 
 
-
-  <a v-on:click="trackHeaderCTA" v-bind:class="{ 'page-header--btn': showCta }" class="btn btn--three page-header--btn" href="#">Add New</a>
+<div class="btn-group" role="group">
+    <button id="btnGroupAddnew" type="button" class="btn btn--three page-header--btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Add new
+    </button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupAddnew"> 
+      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#newChargeModal"> Charge</a>
+      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#newInvoiceModal"> Invoice</a>
+      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#newCustomerModal"> Customer</a>
+      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#newProductModal"> Product</a>
+    </div>
+  </div>
 
                 </div>
 
