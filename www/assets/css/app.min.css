@@ -15920,55 +15920,59 @@ ul.list-group-lg>li:first-of-type {
 .mt0{margin-top:0}.mt1{margin-top:5px}.mt2{margin-top:10px}.mt3{margin-top:15px}.mt4{margin-top:20px}.mt5{margin-top:30px}.mt6{margin-top:40px}    
     
 #content .status-active {
-    position: absolute;
+    position: relative;
     top: 0;
     right: 0;
-    border: 2px solid #9bc970;
-    padding: 1px 12px;
+    margin-left:10px;
+    border: 1px solid #9bc970;
+    padding: 1px 7.5px;
     border-radius: 4px;
     color: #6bad2c;
     text-transform: uppercase;
     font-weight: 500;
     letter-spacing: 1.5px;
-    font-size: 12px;
-    line-height: 16px;
+    font-size: 10px;
+    line-height: 14px;
 }
     
  #content .status-pending {
-    position: absolute;
+    position: relative;
     top: 0;
     right: 0;
-    border: 2px solid #9bc970;
-    padding: 1px 12px;
+    margin-left:10px;
+    border: 1px solid #9bc970;
+    padding: 1px 7.5px;
     border-radius: 4px;
     color: #6bad2c;
     text-transform: uppercase;
     font-weight: 500;
     letter-spacing: 1.5px;
-    font-size: 16px;
+    font-size: 10px;
 }  
     
  #content .status-closed {
-    position: absolute;
+    position: relative;
     top: 0;
     right: 0;
-    border: 2px solid #de7575;
-    padding: 1px 12px;
+    margin-left:10px;
+    border: 1px solid #de7575;
+    padding: 1px 7.5px;
     border-radius: 4px;
     color: #de0a0a;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 1.5px;
-    font-size: 12px;
-     line-height: 16px;
+    font-size: 10px;
+    line-height: 14px;
 }   
     
  #content .status-approved {
-    position: absolute;
+    position: relative;
     top: 0;
     right: 0;
-    border: 2px solid #9bc970;
-    padding: 1px 12px;
+    margin-left:10px;
+    border: 1px solid #9bc970;
+    padding: 1px 7.5px;
     border-radius: 4px;
     color: #6bad2c;
     text-transform: uppercase;
@@ -16014,16 +16018,16 @@ ul.list-group-lg>li:first-of-type {
     
 form.search {
   position: relative;
-  float: left;
-  width: 260px;
-  top: -2px;
-  margin-left: 170px; }
+    float: left;
+    width: 260px;
+    top: 18px;
+    margin-left: 50px; }
 form.search .fa-search {
     position: absolute;
     color: #BBB;
     top: 7px;
     left: 11px;
-    font-size: 16px; }
+    font-size: 18px; }
 form.search input[type="text"] {
     border: 0;
     padding: 6px 15px 6px 37px;
