@@ -1,4 +1,3 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddCustomerModal">
-  Add new
-</button>
+<a v-on:click="trackHeaderCTA" v-bind:class="{ 'page-header--btn': showCta }" class="btn btn--three page-header--btn" href="#" data-toggle="modal" data-target="#AddCustomerModal">Add New</a>
+
