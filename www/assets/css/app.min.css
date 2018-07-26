@@ -16051,12 +16051,18 @@ form.search input[type="text"]:-ms-input-placeholder {
 form.search input[type="submit"] {
     visibility: hidden;
     position: absolute; }    
+    
+#sidebar_toggle .sidebar-toggler a {
+    color: #444;
+}     
  
-   .sidebar-toggler i {
+#sidebar_toggle .sidebar-toggler i {
     font-size: 37px;
 }   
  .sidebar-toggler i {
     font-size: 37px;
 }  
     
-    
+#content .sub-header__col  {
+    padding-left: 12px;
+ }
