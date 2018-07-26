@@ -3,6 +3,9 @@
             
             <div class="navbar__container">
         <div class="navbar__header">
+          <a class="icon item" id="sidebar_toggle">
+                    <i class="sidebar icon"></i>
+                </a>
             <button type="button" v-bind:class="{ 'ctablet--extended': isActive }" v-on:click="closeNavigation" class="ctablet">
                 <svg class="ctablet__arrow btn__arrow arrow">
                     <use xlink:href="#icon-arrow" />
@@ -18,6 +21,14 @@
                 
             </a>  
 
+
+                <li class="subnavbar__li">
+          <form class="search hidden-xs">
+					<i class="fa fa-search"></i>
+					<input type="text" name="q" placeholder="Search customers, clients...">
+					<input type="submit">
+				</form>
+                </li>  
             
        <button type="button" v-bind:class="{ 'login-now--active': showCta }" v-on:click="" class="btn--elektro"> {{ widget('account_widget') }} </button>
 
@@ -28,32 +39,7 @@
 
 
 
-        <nav id="main_navigation" style="display:none;">
-
-            <div class="ui blue inverted attached menu">
-
-                <a class="icon item" id="sidebar_toggle">
-                    <i class="sidebar icon"></i>
-                </a>
-
-                <a href="{{ site_url() }}" class="brand item">
-                    <strong>{{ setting('site_name') is not empty ? setting('site_name') : lang('admin_panel') }}</strong>
-                </a>
-
-                <a href="{{ default_base_url() }}" target="_blank" rel="noopener" class="mobile hidden item">
-                    <i class="home icon"></i> <span class="tablet hidden">Go To Site</span>
-                </a>
-
-                <div class="right menu">
-
-                    {{ widget('theme_switcher_widget/index', 'navbar') }}
-                    {{ widget('account_widget') }}
-
-                </div>
-
-            </div>
-
-        </nav>
+      
 <script>
             //<![CDATA[
       var $subnavbar = document.getElementsByClassName('subnavbar')[0];
