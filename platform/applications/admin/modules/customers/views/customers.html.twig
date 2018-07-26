@@ -1,4 +1,37 @@
-<p>A Font Awesome 5 icon: <i class="fas fa-star"></i></p>
-<p>A Material Design icon: <i class="mdi mdi-star"></i></p>
+<header class="sub-header sub-header--white" id="header">
+        <div class="sub-header__container">
+            <div class="sub-header__row row">
+        
+
+{% set breadcrumb_widget = widget('breadcrumb_widget') %}
+{% if registry('title') is not empty %}
+        <div class="sub-header__col">
+
+                    <h1 class="ui header clearfix">
+                        {{ registry('header_icon')|raw }}
+                            {{ registry('title')|raw }}
+    {% if registry('subtitle') is not empty %}
+                      <div class="sub header">{{ registry('subtitle')|raw }}</div>
+    {% endif %}
+                       
+                    </h1>
+
+
+
+
+  <a v-on:click="trackHeaderCTA" v-bind:class="{ 'page-header--btn': showCta }" class="btn btn--three page-header--btn" href="#">Add New</a>
+
+                </div>
+
+{% endif %}
+  </div>
+        </div>
+
+    </header>
+
+<div class="content-wrapper">	
+
 
 {{ widget('customers/customer_list_widget/index') }}
+
+</div>
