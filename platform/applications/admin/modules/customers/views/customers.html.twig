@@ -19,7 +19,7 @@
 
 
 
-  <a v-on:click="trackHeaderCTA" v-bind:class="{ 'page-header--btn': showCta }" class="btn btn--three page-header--btn" href="#">Add New</a>
+  <a v-on:click="trackHeaderCTA" v-bind:class="{ 'page-header--btn': showCta }" class="btn btn--three page-header--btn" href="#" data-toggle="modal" data-target="#AddCustomerModal">Add New</a>
 
                 </div>
 
@@ -32,6 +32,6 @@
 <div class="content-wrapper">	
 
 
-{{ widget('customers/customer_list_widget/index') }}
+{{ widget('customers/customers_list_widget/index') }}
 
 </div>
