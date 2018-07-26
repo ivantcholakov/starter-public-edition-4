@@ -1,0 +1,21 @@
+<script type="text/javascript">
+            //<![CDATA[
+            (function($) {
+                $('#date_picker_test').datepicker({
+                    dateFormat: 'yy-mm-dd',
+                    changeMonth: true,
+                    changeYear: true
+                });
+                $('#add_cs').on('click', function() {
+                    swal("Good job!", "You added a new customer!", "success");
+                });
+                $('#edit_cs').on('click', function() {
+                    swal("Congrats!", "The record has been updated!", "success");
+                });
+                $('#delete_cs').on('click', function() {
+                    swal("Are You Sure?", "This will delete the record!", "danger");
+                });
+                
+            })(jQuery);
+            //]]>
+            </script>
