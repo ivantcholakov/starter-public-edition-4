@@ -2,6 +2,8 @@
 class Customers_controller extends Base_Authenticated_Controller {
     public function __construct() {
         parent::__construct();
+        
+        $this->template->set_layout('customer');
         $this->_set_nav('Customers');
     }
     public function index() {
