@@ -243,7 +243,7 @@ trait Browser
 
                 /* Oculus Chromium based browsers */
                 if (preg_match('/OculusBrowser\/([0-9.]*)/u', $ua, $match)) {
-                    $this->data->browser->name = "Oculus Internet";
+                    $this->data->browser->name = "Oculus Browser";
                     $this->data->browser->channel = null;
                     $this->data->browser->stock = true;
                     $this->data->browser->version = new Version([ 'value' => $match[1], 'details' => 2 ]);
@@ -251,6 +251,12 @@ trait Browser
                     if (preg_match('/Mobile VR/', $ua)) {
                         $this->data->device->manufacturer = 'Samsung';
                         $this->data->device->model = 'Gear VR';
+                        $this->data->device->type = Constants\DeviceType::HEADSET;
+                    }
+
+                    if (preg_match('/Pacific/', $ua)) {
+                        $this->data->device->manufacturer = 'Oculus';
+                        $this->data->device->model = 'Go';
                         $this->data->device->type = Constants\DeviceType::HEADSET;
                     }
                 }
