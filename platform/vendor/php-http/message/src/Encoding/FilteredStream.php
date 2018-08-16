@@ -57,11 +57,18 @@ abstract class FilteredStream implements StreamInterface
      */
     public function __construct(StreamInterface $stream, $readFilterOptions = null, $writeFilterOptions = null)
     {
-        $this->readFilterCallback = Filter\fun($this->readFilter(), $readFilterOptions);
-        $this->writeFilterCallback = Filter\fun($this->writeFilter(), $writeFilterOptions);
+        if (null !== $readFilterOptions) {
+            $this->readFilterCallback = Filter\fun($this->readFilter(), $readFilterOptions);
+        } else {
+            $this->readFilterCallback = Filter\fun($this->readFilter());
+        }
 
         if (null !== $writeFilterOptions) {
+            $this->writeFilterCallback = Filter\fun($this->writeFilter(), $writeFilterOptions);
+
             @trigger_error('The $writeFilterOptions argument is deprecated since version 1.5 and will be removed in 2.0.', E_USER_DEPRECATED);
+        } else {
+            $this->writeFilterCallback = Filter\fun($this->writeFilter());
         }
 
         $this->stream = $stream;
@@ -98,7 +105,7 @@ abstract class FilteredStream implements StreamInterface
      */
     public function eof()
     {
-        return $this->stream->eof() && $this->buffer === '';
+        return $this->stream->eof() && '' === $this->buffer;
     }
 
     /**
@@ -128,7 +135,7 @@ abstract class FilteredStream implements StreamInterface
         while (!$this->eof()) {
             $buf = $this->read(self::BUFFER_SIZE);
             // Using a loose equality here to match on '' and false.
-            if ($buf == null) {
+            if (null == $buf) {
                 break;
             }
 
