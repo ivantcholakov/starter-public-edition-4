@@ -72,6 +72,9 @@ $config['notification_email'] = $config['contact_email'];
 // An e-mail address that receives copies of sent/received messages.
 $config['cc_email'] = '';
 
+// An e-mail address that receives blank carbon copies of sent/received messages.
+$config['bcc_email'] = '';
+
 
 /*
 |--------------------------------------------------------------------------

@@ -283,6 +283,10 @@ if (!function_exists('set_email_settings')) {
             $ci->settings->set('cc_email', (string) $config['cc_email']);
         }
 
+        if (array_key_exists('bcc_email', $config)) {
+            $ci->settings->set('bcc_email', (string) $config['cc_email']);
+        }
+
     }
 
 }
@@ -312,6 +316,7 @@ if (!function_exists('get_email_settings')) {
             'site_email' => config_item('site_email'),
             'notification_email' => config_item('notification_email'),
             'cc_email' => config_item('cc_email'),
+            'bcc_email' => config_item('bcc_email'),
         );
 
         // Ensure default values presence.
@@ -352,6 +357,7 @@ if (!function_exists('get_email_settings')) {
         $config['site_email'] = array_key_exists('site_email', $config) ? $config['site_email'] : '';
         $config['notification_email'] = array_key_exists('notification_email', $config) ? $config['notification_email'] : '';
         $config['cc_email'] = array_key_exists('cc_email', $config) ? $config['cc_email'] : '';
+        $config['bcc_email'] = array_key_exists('bcc_email', $config) ? $config['bcc_email'] : '';
 
         // Read values from database stored settings, if there are any.
 
@@ -392,6 +398,7 @@ if (!function_exists('get_email_settings')) {
             'site_email',
             'notification_email',
             'cc_email',
+            'bcc_email',
         ));
 
         $config['useragent'] = isset($settings['email_useragent']) ? (string) $settings['email_useragent'] : $config['useragent'];
@@ -435,6 +442,7 @@ if (!function_exists('get_email_settings')) {
         $config['site_email'] = isset($settings['site_email']) ? (string) $settings['site_email'] : $config['site_email'];
         $config['notification_email'] = isset($settings['notification_email']) ? (string) $settings['notification_email'] : $config['notification_email'];
         $config['cc_email'] = isset($settings['cc_email']) ? (string) $settings['cc_email'] : $config['cc_email'];
+        $config['bcc_email'] = isset($settings['bcc_email']) ? (string) $settings['bcc_email'] : $config['bcc_email'];
 
         return $config;
     }

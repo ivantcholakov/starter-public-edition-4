@@ -143,6 +143,37 @@ class Email_controller extends Core_Controller {
             $cc = $cc_email;
         }
 
+        $bcc_email = $settings['bcc_email'];
+
+        if (!is_array($bcc_email)) {
+
+            if ($bcc_email != '') {
+                $bcc_email = array($bcc_email);
+            } else {
+                $bcc_email = array();
+            }
+        }
+
+        if (isset($data['bcc'])) {
+
+            if (!is_array($data['bcc'])) {
+
+                if ($data['bcc'] != '') {
+                    $bcc = array($data['bcc']);
+                } else {
+                    $bcc = array();
+                }
+
+            } else {
+
+                $bcc = $data['bcc'];
+            }
+
+        } else {
+
+            $bcc = $bcc_email;
+        }
+
         $subject = isset($data['subject']) ? trim($data['subject']) : '';
         $body = isset($data['body']) ? $data['body'] : '';
         $alt_body = isset($data['alt_body']) ? $data['alt_body'] : '';
@@ -159,6 +190,10 @@ class Email_controller extends Core_Controller {
 
             if (!empty($cc)) {
                 $this->email->cc($cc);
+            }
+
+            if (!empty($bcc)) {
+                $this->email->bcc($bcc);
             }
 
             if (isset($data['attach'])) {
