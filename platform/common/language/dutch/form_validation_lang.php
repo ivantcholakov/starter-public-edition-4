@@ -3,7 +3,7 @@
  * System messages translation for CodeIgniter(tm)
  *
  * @author	CodeIgniter community
- * @copyright	Copyright (c) 2014 - 2018, British Columbia Institute of Technology (http://bcit.ca/)
+ * @copyright	Copyright (c) 2014-2018, British Columbia Institute of Technology (http://bcit.ca/)
  * @copyright	Pieter Krul
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
@@ -16,6 +16,7 @@ $lang['form_validation_valid_email']		= 'Het {field}-veld dient een geldig e-mai
 $lang['form_validation_valid_emails']		= 'Het {field}-veld dient geldige e-mailadressen te bevatten.';
 $lang['form_validation_valid_url']		= 'Het {field}-veld dient een geldige URL te bevatten.';
 $lang['form_validation_valid_ip']		= 'Het {field}-veld dient een geldig IP-adres te bevatten.';
+$lang['form_validation_valid_base64']		= 'The {field} field must contain a valid Base64 string.';
 $lang['form_validation_min_length']		= 'Het {field}-veld dient tenminste {param} karakters lang te zijn.';
 $lang['form_validation_max_length']		= 'Het {field}-veld mag niet meer dan {param} karaktertekens bevatten.';
 $lang['form_validation_exact_length']		= 'Het {field}-veld dient precies {param} karaktertekens te bevatten.';

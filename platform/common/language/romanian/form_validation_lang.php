@@ -4,7 +4,7 @@
  *
  * @author	CodeIgniter community
  * @author  Cristian Robert Chiribuc
- * @copyright	Copyright (c) 2014 - 2018, British Columbia Institute of Technology (http://bcit.ca/)
+ * @copyright	Copyright (c) 2014-2018, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
  */
@@ -16,6 +16,7 @@ $lang['form_validation_valid_email']		= 'Câmpul {field} trebuie să conțină o
 $lang['form_validation_valid_emails']		= 'Câmpul {field} trebuie să conțină toate adresele de email valide.';
 $lang['form_validation_valid_url']		= 'Câmpul {field} trebuie să conțină un URL valid.';
 $lang['form_validation_valid_ip']		= 'Câmpul {field} trebuie să conțină un IP valid.';
+$lang['form_validation_valid_base64']		= 'The {field} field must contain a valid Base64 string.';
 $lang['form_validation_min_length']		= 'Câmpul {field} trebuie să fie de cel puțin {param} caractere lungime.';
 $lang['form_validation_max_length']		= 'Câmpul {field} nu poate să depășească {param} caractere lungime.';
 $lang['form_validation_exact_length']		= 'Câmpul {field} trebuie să fie de exact {param} caractere lungime.';

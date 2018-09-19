@@ -4,7 +4,7 @@
  *
  * @author	CodeIgniter community
  * @author	Iban Eguia
- * @copyright	Copyright (c) 2014 - 2018, British Columbia Institute of Technology (http://bcit.ca/)
+ * @copyright	Copyright (c) 2014-2018, British Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
  */
@@ -16,6 +16,7 @@ $lang['form_validation_valid_email']		= 'El campo {field} debe contener un email
 $lang['form_validation_valid_emails']		= 'El campo {field} debe contener todos los emails válidos.';
 $lang['form_validation_valid_url']		= 'El campo {field} debe contener una URL válida.';
 $lang['form_validation_valid_ip']		= 'El campo {field} debe contener una IP válida.';
+$lang['form_validation_valid_base64']		= 'The {field} field must contain a valid Base64 string.';
 $lang['form_validation_min_length']		= 'El campo {field} debe ser de al menos {param} caracteres de longitud.';
 $lang['form_validation_max_length']		= 'El campo {field} no puede superar los {param} caracteres de longitud.';
 $lang['form_validation_exact_length']		= 'El campo {field} debe ser de exactamente {param} caracteres de longitud.';

@@ -11,6 +11,7 @@ $lang['form_validation_valid_email']           = 'Le champ {field} doit contenir
 $lang['form_validation_valid_emails']          = 'Le champ {field} ne doit contenir que des adresses emails valides.';
 $lang['form_validation_valid_url']             = 'Le champ {field} doit contenir un URL valide.';
 $lang['form_validation_valid_ip']              = 'Le champ {field} doit contenir une adresse IP valide.';
+$lang['form_validation_valid_base64']		= 'The {field} field must contain a valid Base64 string.';
 $lang['form_validation_min_length']            = 'Le champ {field} doit avoir au moins {param} caractères.';
 $lang['form_validation_max_length']            = 'Le champ {field} ne peut pas avoir plus de {param} caractères.';
 $lang['form_validation_exact_length']          = 'Le champ {field} doit contenir exactement {param} caractères.';
