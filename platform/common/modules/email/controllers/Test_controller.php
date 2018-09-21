@@ -77,7 +77,7 @@ class Test_controller extends Core_Controller {
     {{/if}}
     <h1>This is a message for testing purpose</h1>
     {{{custom_text}}}
-    <p>Greetings from the team of <a href="{{site_url}}">{{site_name}}</a>.</p>
+    <p>Greetings from the team of <strong>{{site_name}}</strong>.</p>
 ';
 
         return compact('subject', 'body');
