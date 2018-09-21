@@ -3,7 +3,7 @@
         "preferred-install": "dist"
     },
     "require": {
-        "codeigniter/framework": "3.1.9",
+        "codeigniter/framework": "dev-3.1-stable#fef6972a5cf19bcbec2ddc404cde6d5c4b432314",
         "roave/security-advisories": "dev-master",
         "paragonie/random_compat": "^2.0.2",
         "fg/multiplayer": "^1.2.1",

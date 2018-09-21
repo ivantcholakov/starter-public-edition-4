@@ -1,5 +1,20 @@
 # Change Log
 
+## 1.8 (unreleased)
+
+### Added
+
+ - Add an option on ErrorPlugin to only throw exception on response with 5XX status code.
+
+### Changed
+
+- AddPathPlugin no longer add prefix multiple times if a request is restarted - it now only adds the prefix if that request chain has not yet passed through the AddPathPlugin
+- RetryPlugin no longer wait for retried requests and use a deferred promise instead
+
+### Fixed
+
+- Decoder plugin will now remove header when there is no more encoding, instead of setting to an empty array
+
 ## 1.7.0 - 2017-11-30
 
 ### Added 
