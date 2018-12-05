@@ -31,16 +31,17 @@ class Converter implements ConverterInterface
     /**
      * @param string $from The original base path (directory, not file!)
      * @param string $to   The new base path (directory, not file!)
+     * @param string $root Root directory (defaults to `getcwd`)
      */
-    public function __construct($from, $to)
+    public function __construct($from, $to, $root = '')
     {
         $shared = $this->shared($from, $to);
         if ($shared === '') {
             // when both paths have nothing in common, one of them is probably
             // absolute while the other is relative
-            $cwd = getcwd();
-            $from = strpos($from, $cwd) === 0 ? $from : $cwd.'/'.$from;
-            $to = strpos($to, $cwd) === 0 ? $to : $cwd.'/'.$to;
+            $root = $root ?: getcwd();
+            $from = strpos($from, $root) === 0 ? $from : preg_replace('/\/+/', '/', $root.'/'.$from);
+            $to = strpos($to, $root) === 0 ? $to : preg_replace('/\/+/', '/', $root.'/'.$to);
 
             // or traveling the tree via `..`
             // attempt to resolve path, or assume it's fine if it doesn't exist
@@ -155,7 +156,7 @@ class Converter implements ConverterInterface
         $to = mb_substr($this->to, mb_strlen($shared));
 
         // add .. for every directory that needs to be traversed to new path
-        $to = str_repeat('../', mb_substr_count($to, '/'));
+        $to = str_repeat('../', count(array_filter(explode('/', $to))));
 
         return $to.ltrim($path, '/');
     }

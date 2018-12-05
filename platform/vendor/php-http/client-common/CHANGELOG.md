@@ -1,6 +1,12 @@
 # Change Log
 
-## 1.8 (unreleased)
+## 1.8.1 - 2018-10-09
+
+### Fixed
+
+- Reverted change to RetryPlugin so it again waits when retrying to avoid "can only throw objects" error.
+
+## 1.8.0 - 2018-09-21
 
 ### Added
 
@@ -14,6 +20,7 @@
 ### Fixed
 
 - Decoder plugin will now remove header when there is no more encoding, instead of setting to an empty array
+
 
 ## 1.7.0 - 2017-11-30
 

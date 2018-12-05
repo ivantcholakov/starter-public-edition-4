@@ -17,10 +17,10 @@
  *
  * Additions and fixes Copyright (c) 2006    Alex Shiels       https://twitter.com/tellyworth
  * Additions and fixes Copyright (c) 2010    Stef Dawson       http://stefdawson.com/
- * Additions and fixes Copyright (c) 2010-16 Netcarver         https://github.com/netcarver
+ * Additions and fixes Copyright (c) 2010-17 Netcarver         https://github.com/netcarver
  * Additions and fixes Copyright (c) 2011    Jeff Soo          http://ipsedixit.net/
  * Additions and fixes Copyright (c) 2012    Robert Wetzlmayr  http://wetzlmayr.com/
- * Additions and fixes Copyright (c) 2012-14 Jukka Svahn       http://rahforum.biz/
+ * Additions and fixes Copyright (c) 2012-18 Jukka Svahn       http://rahforum.biz/
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -350,7 +350,7 @@ class Parser
      * @var string
      */
 
-    protected $ver = '3.6.0';
+    protected $ver = '3.6.1';
 
     /**
      * Regular expression snippets.
@@ -1425,12 +1425,13 @@ class Parser
     }
 
     /**
-     * Sets base image directory path.
+     * Sets base relative image and link directory path.
      *
-     * This is used when Textile is supplied with a relative image path.
-     * Allows client systems to have PHP-Textile convert relative image paths to
+     * This is used when Textile is supplied with a relative image or link path.
+     * Allows client systems to have PHP-Textile convert relative paths to
      * absolute or prefixed paths. This method is used to set that base path,
-     * usually a absolute HTTP address pointing to a directory.
+     * usually an absolute HTTP address pointing to a directory. Note that
+     * despite its name it applies to both links and images.
      *
      * bc. $parser = new \Netcarver\Textile\Parser();
      * $parser->setRelativeImagePrefix('http://static.example.com/');
@@ -1520,9 +1521,7 @@ class Parser
 
     public function textileEncode($text)
     {
-        $text = preg_replace("/&(?![#a-z0-9]+;)/i", "x%x%", $text);
-        $text = str_replace("x%x%", "&amp;", $text);
-        return $text;
+        return preg_replace('/&(?!(?:[a-z][a-z\d]*|#(?:\d+|x[a-f\d]+));)/i', '&amp;', $text);
     }
 
     /**
@@ -1645,12 +1644,17 @@ class Parser
     {
         if ($encode) {
             trigger_error(
-                'Use of the $encode argument is discouraged. Use Parser::textileEncode() instead.',
+                '$encode argument is deprecated. Use Parser::textileEncode() instead.',
                 E_USER_DEPRECATED
             );
 
             return $this->textileEncode($text);
         }
+
+        trigger_error(
+            'Parser::textileThis() is deprecated. Use Parser::parse() instead.',
+            E_USER_DEPRECATED
+        );
 
         return $this
             ->setRestricted(false)
@@ -1686,6 +1690,10 @@ class Parser
      * @param  bool   $noimage Allow images
      * @param  string $rel     Relationship attribute applied to generated links
      * @return string Parsed input
+     * @see    Parser::setRestricted()
+     * @see    Parser::setLite()
+     * @see    Parser::setImages()
+     * @see    Parser::setLinkRelationShip()
      * @see    Parser::parse()
      * @deprecated in 3.6.0
      * @api
@@ -1693,6 +1701,11 @@ class Parser
 
     public function textileRestricted($text, $lite = true, $noimage = true, $rel = 'nofollow')
     {
+        trigger_error(
+            'Parser::textileRestricted() is deprecated. Use Parser::parse() with Parser::setRestricted() instead.',
+            E_USER_DEPRECATED
+        );
+
         return $this
             ->setRestricted(true)
             ->setLite($lite)
@@ -2029,7 +2042,7 @@ class Parser
 
     protected function parseAttribsToArray($in, $element = '', $include_id = true, $autoclass = '')
     {
-        $style = '';
+        $style = array();
         $class = '';
         $lang = '';
         $colspan = '';
@@ -2166,7 +2179,7 @@ class Parser
             $o['span'] = $this->cleanAttribs($span);
         }
 
-        if ($style) {
+        if (!empty($style)) {
             $so = '';
             $tmps = array();
 
@@ -2188,8 +2201,7 @@ class Parser
                 }
             }
 
-            $style = trim(str_replace(array("\n", ';;'), array('', ';'), $so));
-            $o['style'] = $style;
+            $o['style'] = trim(str_replace(array("\n", ';;'), array('', ';'), $so));
         }
 
         if ($width) {
@@ -2816,7 +2828,6 @@ class Parser
             } else {
                 $whitespace = '';
             }
-
         }
 
         if ($ext) {
@@ -3884,18 +3895,18 @@ class Parser
         return $pre . $out . $pop . $tight;
     }
 
-     /**
-      * Finds URI aliases within the given input.
-      *
-      * This method finds URI aliases in the Textile input. Links are stored
-      * in an internal cache, so that they can be referenced from any link
-      * in the document.
-      *
-      * This operation happens before the actual link parsing takes place.
-      *
-      * @param  string $text Textile input
-      * @return string The Textile document with any URI aliases removed
-      */
+    /**
+     * Finds URI aliases within the given input.
+     *
+     * This method finds URI aliases in the Textile input. Links are stored
+     * in an internal cache, so that they can be referenced from any link
+     * in the document.
+     *
+     * This operation happens before the actual link parsing takes place.
+     *
+     * @param  string $text Textile input
+     * @return string The Textile document with any URI aliases removed
+     */
 
     protected function getRefs($text)
     {
@@ -4108,21 +4119,24 @@ class Parser
     }
 
     /**
-     * Checks the given path to see if it lies within, or below, the document root
+     * Checks that the given path is under the document root.
      *
      * @param  string Path to check
-     * @return bool True if path is within the image document root
+     * @return bool   TRUE if path is within the image document root
      * @see    Parser::images()
+     * @since  3.6.0
      */
 
     protected function isInDocumentRootDirectory($path)
     {
         $realpath = realpath($path);
+
         if ($realpath) {
-            $root     = str_replace('\\', '/', $this->getDocumentRootDirectory());
+            $root = str_replace('\\', '/', $this->getDocumentRootDirectory());
             $realpath = str_replace('\\', '/', $realpath);
             return (0 === strpos($realpath, $root));
         }
+
         return false;
     }
 
@@ -4178,10 +4192,10 @@ class Parser
 
         if (!$this->dimensionless_images && $this->isRelUrl($url)) {
             $location = $this->getDocumentRootDirectory().ltrim($url, '\\/');
-            $real_location = realpath($location);
-            if ($real_location) {
-                $location_ok = $this->isInDocumentRootDirectory($real_location);
-                if ($location_ok && $size = getimagesize($real_location)) {
+            $location_ok = $this->isInDocumentRootDirectory($location);
+            if ($location_ok) {
+                $real_location = realpath($location);
+                if ($size = getimagesize($real_location)) {
                     $img->height($size[1])->width($size[0]);
                 }
             }
@@ -4339,8 +4353,8 @@ class Parser
 
     protected function noTextile($text)
     {
-         $text = $this->doSpecial($text, '<notextile>', '</notextile>', 'fTextile');
-         return $this->doSpecial($text, '==', '==', 'fTextile');
+        $text = $this->doSpecial($text, '<notextile>', '</notextile>', 'fTextile');
+        return $this->doSpecial($text, '==', '==', 'fTextile');
     }
 
     /**
