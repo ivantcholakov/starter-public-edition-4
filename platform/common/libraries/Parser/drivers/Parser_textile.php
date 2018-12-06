@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') || exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013 - 2016
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013 - 2018
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -21,6 +21,11 @@ class CI_Parser_textile extends CI_Parser_driver {
             'full_path' => FALSE,
             'restricted_mode' => FALSE,
             'full_path' => FALSE,
+            'lite' => FALSE,
+            'encode' => FALSE,
+            'noimage' => FALSE,
+            'strict' => FALSE,
+            'rel' => '',
         );
 
         if ($this->ci->config->load('parser_textile', TRUE, TRUE))
@@ -52,6 +57,13 @@ class CI_Parser_textile extends CI_Parser_driver {
 
         $options = array_merge($this->config, $options);
 
+        $options['restricted_mode'] = !empty($options['restricted_mode']);
+        $options['lite'] = !empty($options['lite']);
+        $options['encode'] = !empty($options['encode']);
+        $options['noimage'] = !empty($options['noimage']);
+        $options['strict'] = !empty($options['strict']);
+        $options['rel'] = (string) $options['rel'];
+
         $ci = $this->ci;
         $is_mx = false;
 
@@ -68,15 +80,21 @@ class CI_Parser_textile extends CI_Parser_driver {
         // For security reasons don't parse PHP content.
         $template = @ file_get_contents($template);
 
-        $parser = new TextileParser($options['doctype']);
+        $parser = new \Netcarver\Textile\Parser($options['doctype']);
 
-        if ($options['restricted_mode'])
+        if ($options['encode'])
         {
-            $template = $parser->textileRestricted($template);
+            $template = $parser->textileEncode($template);
         }
         else
         {
-            $template = $parser->textileThis($template);
+            $template = $parser
+                ->setRestricted($options['restricted_mode'])
+                ->setLite($options['lite'])
+                ->setBlockTags(true)
+                ->setImages(!$options['noimage'])
+                ->setLinkRelationShip($options['rel'])
+                ->parse($template);
         }
 
         return $this->output($template, $return, $ci, $is_mx);
@@ -91,6 +109,13 @@ class CI_Parser_textile extends CI_Parser_driver {
 
         $options = array_merge($this->config, $options);
 
+        $options['restricted_mode'] = !empty($options['restricted_mode']);
+        $options['lite'] = !empty($options['lite']);
+        $options['encode'] = !empty($options['encode']);
+        $options['noimage'] = !empty($options['noimage']);
+        $options['strict'] = !empty($options['strict']);
+        $options['rel'] = (string) $options['rel'];
+
         $ci = $this->ci;
         $is_mx = false;
 
@@ -99,15 +124,21 @@ class CI_Parser_textile extends CI_Parser_driver {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
-        $parser = new TextileParser($options['doctype']);
+        $parser = new \Netcarver\Textile\Parser($options['doctype']);
 
-        if ($options['restricted_mode'])
+        if ($options['encode'])
         {
-            $template = $parser->textileRestricted($template);
+            $template = $parser->textileEncode($template);
         }
         else
         {
-            $template = $parser->textileThis($template);
+            $template = $parser
+                ->setRestricted($options['restricted_mode'])
+                ->setLite($options['lite'])
+                ->setBlockTags(true)
+                ->setImages(!$options['noimage'])
+                ->setLinkRelationShip($options['rel'])
+                ->parse($template);
         }
 
         return $this->output($template, $return, $ci, $is_mx);
