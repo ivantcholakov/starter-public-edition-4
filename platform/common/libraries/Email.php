@@ -2,13 +2,13 @@
 
 /**
  * CodeIgniter compatible email-library powered by PHPMailer.
- * Version: 1.2.30
+ * Version: 1.2.31
  * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2018.
  * @license The MIT License (MIT), http://opensource.org/licenses/MIT
  * @link https://github.com/ivantcholakov/codeigniter-phpmailer
  *
- * Tested on CodeIgniter 3.1.8 (March 22th, 2018) and
- * PHPMailer Version 5.2.26 (November 4th, 2017).
+ * Tested on CodeIgniter 3.1.10-dev (December 6th, 2018) and
+ * PHPMailer Version 5.2.27 (November 16th, 2018).
  */
 
 class Email extends CI_Email {
