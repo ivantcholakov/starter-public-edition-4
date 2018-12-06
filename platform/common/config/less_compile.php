@@ -38,7 +38,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
 
     // php cli.php less compile font-awesome-5 font-awesome-5-min
@@ -150,7 +150,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
 
     // php cli.php less compile semantic-ui-custom semantic-ui-custom-min
@@ -170,7 +170,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
 
     // php cli.php less compile admin-default-18-min admin-default-18-login-min admin-default-18-error-min
@@ -182,7 +182,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
     array(
         'name' => 'admin-default-18-login-min',
@@ -191,7 +191,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
     array(
         'name' => 'admin-default-18-error-min',
@@ -200,7 +200,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
 
     // php cli.php less compile admin-default-17-min admin-default-17-login-min admin-default-17-error-min
@@ -212,7 +212,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
     array(
         'name' => 'admin-default-17-login-min',
@@ -221,7 +221,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
     array(
         'name' => 'admin-default-17-error-min',
@@ -230,7 +230,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
 
     // php cli.php less compile admin-default-min admin-default-login-min admin-default-error-min
@@ -242,7 +242,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
     array(
         'name' => 'admin-default-login-min',
@@ -251,7 +251,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
     array(
         'name' => 'admin-default-error-min',
@@ -260,7 +260,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
 
     // php cli.php less compile admin-default-15-min admin-default-15-login-min admin-default-15-error-min
@@ -272,7 +272,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
     array(
         'name' => 'admin-default-15-login-min',
@@ -281,7 +281,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
     array(
         'name' => 'admin-default-15-error-min',
@@ -290,7 +290,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
 
     // php cli.php less compile admin-default-14-min admin-default-14-login-min admin-default-14-error-min
@@ -302,7 +302,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
     array(
         'name' => 'admin-default-14-login-min',
@@ -311,7 +311,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
     array(
         'name' => 'admin-default-14-error-min',
@@ -320,7 +320,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
 
     // php cli.php less compile front-semantic-ui-default-min
@@ -332,7 +332,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
 
     // php cli.php less compile front-semantic-ui-amazon-min
@@ -344,7 +344,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
 
     // php cli.php less compile front-semantic-ui-basic-min
@@ -356,7 +356,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
 
     // php cli.php less compile front-semantic-ui-chubby-min
@@ -368,7 +368,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
 
     // php cli.php less compile front-semantic-ui-classic-min
@@ -380,7 +380,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
 
     // php cli.php less compile front-semantic-ui-flat-min
@@ -392,7 +392,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
 
     // php cli.php less compile front-semantic-ui-github-min
@@ -404,7 +404,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
 
     // php cli.php less compile front-semantic-ui-material-min
@@ -416,7 +416,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
 
     // php cli.php less compile front-default-min
@@ -428,7 +428,7 @@ $config['less_compile'] = array(
         'relativeUrls' => false,
         'implementation' => 'less.js',
         'autoprefixer' => array('browsers' => array('> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4')),
-        'cssmin' => array('implementation' => 'minifycss'),
+        'cssmin' => array('implementation' => 'cssnano'),
     ),
 
 );
