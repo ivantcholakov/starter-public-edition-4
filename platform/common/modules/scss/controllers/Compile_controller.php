@@ -88,6 +88,7 @@ class Compile_controller extends Core_Controller {
             try {
                 write_file($destination, $this->parser->parse($source, null, true, $parsers));
                 @chmod($destination, FILE_WRITE_MODE);
+                echo $destination.PHP_EOL;
             } catch(Exception $e) {
                 echo $e->getMessage().PHP_EOL;
             }
