@@ -108,6 +108,18 @@ Updating all the globally installed packages:
 sudo npm update -g
 ```
 
+Another way for global updating is using the interactive utility npm-check. Installing:
+
+```sh
+sudo npm -g i npm-check
+```
+
+And then using it:
+
+```sh
+sudo npm-check -u -g
+```
+
 * Install less.js compiler (http://lesscss.org/) globally:
 
 ```sh
