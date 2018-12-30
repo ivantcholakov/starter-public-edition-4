@@ -4,7 +4,7 @@
         "optimize-autoloader": true
     },
     "require": {
-        "codeigniter/framework": "dev-3.1-stable#41bba2fea6fafa315db0a21093722f920455e3b1",
+        "codeigniter/framework": "dev-3.1-stable#11d0c860c94967a39e0a54607cb15ccc37568dec",
         "roave/security-advisories": "dev-master",
         "paragonie/random_compat": "^2.0.2",
         "fg/multiplayer": "^1.2.1",
@@ -15,7 +15,7 @@
         "erusev/parsedown-extra": "^0.7.1",
         "pixel418/markdownify": "^2.2.0",
         "mustache/mustache": "~2.5",
-        "netcarver/textile": "3.6.*",
+        "netcarver/textile": "^3.7.0",
         "twig/twig": "~1.0",
         "twig/extensions": "~1.3",
         "ezyang/htmlpurifier": "^4.8.0",
@@ -28,7 +28,7 @@
         "guzzlehttp/psr7": "^1.3",
         "php-http/message": "^1.4",
         "matthiasmullie/minify": "^1.3",
-        "phpmailer/phpmailer": "^5.2.26",
+        "phpmailer/phpmailer": "^5.2.27",
         "xamin/handlebars.php": "^0.10.4",
         "intervention/image": "^2.3",
         "yohang88/letter-avatar": "1.0.5",
