@@ -1045,25 +1045,28 @@
     },
     {
         "name": "php-http/discovery",
-        "version": "1.4.0",
-        "version_normalized": "1.4.0.0",
+        "version": "1.5.0",
+        "version_normalized": "1.5.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/php-http/discovery.git",
-            "reference": "9a6cb24de552bfe1aa9d7d1569e2d49c5b169a33"
+            "reference": "5e7bf246ec54b28ae543b018d2576579a102ac20"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/php-http/discovery/zipball/9a6cb24de552bfe1aa9d7d1569e2d49c5b169a33",
-            "reference": "9a6cb24de552bfe1aa9d7d1569e2d49c5b169a33",
+            "url": "https://api.github.com/repos/php-http/discovery/zipball/5e7bf246ec54b28ae543b018d2576579a102ac20",
+            "reference": "5e7bf246ec54b28ae543b018d2576579a102ac20",
             "shasum": ""
         },
         "require": {
             "php": "^5.5 || ^7.0"
         },
+        "conflict": {
+            "nyholm/psr7": "<1.0"
+        },
         "require-dev": {
             "henrikbjorn/phpspec-code-coverage": "^2.0.2",
-            "php-http/httplug": "^1.0",
+            "php-http/httplug": "^1.0|^2.0",
             "php-http/message-factory": "^1.0",
             "phpspec/phpspec": "^2.4",
             "puli/composer-plugin": "1.0.0-beta10"
@@ -1072,11 +1075,11 @@
             "php-http/message": "Allow to use Guzzle, Diactoros or Slim Framework factories",
             "puli/composer-plugin": "Sets up Puli which is recommended for Discovery to work. Check http://docs.php-http.org/en/latest/discovery.html for more details."
         },
-        "time": "2018-02-06T10:55:24+00:00",
+        "time": "2018-12-30T12:07:33+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.3-dev"
+                "dev-master": "1.5-dev"
             }
         },
         "installation-source": "dist",
@@ -1797,6 +1800,7 @@
             "la-haute-societe/tcpdf": "<6.2.22",
             "laravel/framework": ">=4,<4.0.99|>=4.1,<=4.1.31|>=4.2,<=4.2.22|>=5,<=5.0.35|>=5.1,<=5.1.46|>=5.2,<=5.2.45|>=5.3,<=5.3.31|>=5.4,<=5.4.36|>=5.5,<5.5.42|>=5.6,<5.6.30",
             "laravel/socialite": ">=1,<1.0.99|>=2,<2.0.10",
+            "league/commonmark": ">=0.15.6,<0.18.1",
             "magento/magento1ce": "<1.9.4",
             "magento/magento1ee": ">=1.9,<1.14.4",
             "magento/product-community-edition": ">=2,<2.2.7",
@@ -1909,7 +1913,7 @@
             "zfcampus/zf-apigility-doctrine": ">=1,<1.0.3",
             "zfr/zfr-oauth2-server-module": "<0.1.2"
         },
-        "time": "2018-12-28T16:50:10+00:00",
+        "time": "2018-12-30T13:00:21+00:00",
         "type": "metapackage",
         "notification-url": "https://packagist.org/downloads/",
         "license": [

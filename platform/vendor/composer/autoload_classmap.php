@@ -405,6 +405,7 @@ return array(
     'Http\\Discovery\\Exception' => $vendorDir . '/php-http/discovery/src/Exception.php',
     'Http\\Discovery\\Exception\\ClassInstantiationFailedException' => $vendorDir . '/php-http/discovery/src/Exception/ClassInstantiationFailedException.php',
     'Http\\Discovery\\Exception\\DiscoveryFailedException' => $vendorDir . '/php-http/discovery/src/Exception/DiscoveryFailedException.php',
+    'Http\\Discovery\\Exception\\NoCandidateFoundException' => $vendorDir . '/php-http/discovery/src/Exception/NoCandidateFoundException.php',
     'Http\\Discovery\\Exception\\NotFoundException' => $vendorDir . '/php-http/discovery/src/Exception/NotFoundException.php',
     'Http\\Discovery\\Exception\\PuliUnavailableException' => $vendorDir . '/php-http/discovery/src/Exception/PuliUnavailableException.php',
     'Http\\Discovery\\Exception\\StrategyUnavailableException' => $vendorDir . '/php-http/discovery/src/Exception/StrategyUnavailableException.php',
