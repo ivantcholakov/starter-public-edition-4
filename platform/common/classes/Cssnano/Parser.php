@@ -72,7 +72,7 @@ class Cssnano_Parser {
      */
     public function parse($filename) {
 
-        $cmd = $this->getCompilerPath().' --use cssnano'.$this->parseOptions().' '.$this->escapeShellArg($filename);
+        $cmd = $this->getCompilerPath().' --no-map --use cssnano'.$this->parseOptions().' '.$this->escapeShellArg($filename);
 
         $descriptorspec = array(
             0 => array('pipe', 'r'), // stdin
