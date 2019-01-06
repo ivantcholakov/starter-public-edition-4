@@ -117,7 +117,13 @@ class CI_Parser_handlebars extends CI_Parser_driver {
             $parser->setCache($cache);
         }
 
-        $template = $parser->render($detected_filename, $data);
+        // Modified by Ivan Tcholakov, 07-JAN-2019.
+        // PHP 7.3, handlebars.php v0.10.4
+        // Suppressing the warning "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"?
+        // See https://github.com/XaminProject/handlebars.php/issues/174
+        //$template = $parser->render($detected_filename, $data);
+        $template = @ $parser->render($detected_filename, $data);
+        //
 
         return $this->output($template, $return, $ci, $is_mx);
     }
@@ -155,7 +161,14 @@ class CI_Parser_handlebars extends CI_Parser_driver {
         }
 
         $parser = new Handlebars\Handlebars($options);
-        $template = $parser->render($template, $data);
+
+        // Modified by Ivan Tcholakov, 07-JAN-2019.
+        // PHP 7.3, handlebars.php v0.10.4
+        // Suppressing the warning "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"?
+        // See https://github.com/XaminProject/handlebars.php/issues/174
+        //$template = $parser->render($template, $data);
+        $template = @ $parser->render($template, $data);
+        //
 
         return $this->output($template, $return, $ci, $is_mx);
     }
