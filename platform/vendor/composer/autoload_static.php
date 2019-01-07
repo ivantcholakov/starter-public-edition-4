@@ -648,6 +648,8 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
         'Http\\Client\\Common\\Plugin\\RedirectPlugin' => __DIR__ . '/..' . '/php-http/client-common/src/Plugin/RedirectPlugin.php',
         'Http\\Client\\Common\\Plugin\\RequestMatcherPlugin' => __DIR__ . '/..' . '/php-http/client-common/src/Plugin/RequestMatcherPlugin.php',
         'Http\\Client\\Common\\Plugin\\RetryPlugin' => __DIR__ . '/..' . '/php-http/client-common/src/Plugin/RetryPlugin.php',
+        'Http\\Client\\Common\\Plugin\\VersionBridgePlugin' => __DIR__ . '/..' . '/php-http/client-common/src/Plugin/VersionBridgePlugin.php',
+        'Http\\Client\\Common\\VersionBridgeClient' => __DIR__ . '/..' . '/php-http/client-common/src/VersionBridgeClient.php',
         'Http\\Client\\Curl\\Client' => __DIR__ . '/..' . '/php-http/curl-client/src/Client.php',
         'Http\\Client\\Curl\\CurlPromise' => __DIR__ . '/..' . '/php-http/curl-client/src/CurlPromise.php',
         'Http\\Client\\Curl\\MultiRunner' => __DIR__ . '/..' . '/php-http/curl-client/src/MultiRunner.php',

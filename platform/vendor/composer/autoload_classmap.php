@@ -387,6 +387,8 @@ return array(
     'Http\\Client\\Common\\Plugin\\RedirectPlugin' => $vendorDir . '/php-http/client-common/src/Plugin/RedirectPlugin.php',
     'Http\\Client\\Common\\Plugin\\RequestMatcherPlugin' => $vendorDir . '/php-http/client-common/src/Plugin/RequestMatcherPlugin.php',
     'Http\\Client\\Common\\Plugin\\RetryPlugin' => $vendorDir . '/php-http/client-common/src/Plugin/RetryPlugin.php',
+    'Http\\Client\\Common\\Plugin\\VersionBridgePlugin' => $vendorDir . '/php-http/client-common/src/Plugin/VersionBridgePlugin.php',
+    'Http\\Client\\Common\\VersionBridgeClient' => $vendorDir . '/php-http/client-common/src/VersionBridgeClient.php',
     'Http\\Client\\Curl\\Client' => $vendorDir . '/php-http/curl-client/src/Client.php',
     'Http\\Client\\Curl\\CurlPromise' => $vendorDir . '/php-http/curl-client/src/CurlPromise.php',
     'Http\\Client\\Curl\\MultiRunner' => $vendorDir . '/php-http/curl-client/src/MultiRunner.php',

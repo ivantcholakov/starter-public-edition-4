@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d7affb43f65581dfd46c7850a48e12d4",
+    "content-hash": "eb04e7be2a1fba32d6136274523023c3",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -64,12 +64,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bcit-ci/CodeIgniter.git",
-                "reference": "11d0c860c94967a39e0a54607cb15ccc37568dec"
+                "reference": "c21c0359e1b4d96b1186ca2db78a01c7f38e904d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bcit-ci/CodeIgniter/zipball/11d0c860c94967a39e0a54607cb15ccc37568dec",
-                "reference": "11d0c860c94967a39e0a54607cb15ccc37568dec",
+                "url": "https://api.github.com/repos/bcit-ci/CodeIgniter/zipball/c21c0359e1b4d96b1186ca2db78a01c7f38e904d",
+                "reference": "c21c0359e1b4d96b1186ca2db78a01c7f38e904d",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
             ],
             "description": "The CodeIgniter framework",
             "homepage": "https://codeigniter.com",
-            "time": "2018-12-17T08:08:42+00:00"
+            "time": "2019-01-04T12:56:01+00:00"
         },
         {
             "name": "erusev/parsedown",
@@ -848,16 +848,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.17",
+            "version": "v2.0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "29af24f25bab834fcbb38ad2a69fa93b867e070d"
+                "reference": "0a58ef6e3146256cc3dc7cc393927bcc7d1b72db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/29af24f25bab834fcbb38ad2a69fa93b867e070d",
-                "reference": "29af24f25bab834fcbb38ad2a69fa93b867e070d",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/0a58ef6e3146256cc3dc7cc393927bcc7d1b72db",
+                "reference": "0a58ef6e3146256cc3dc7cc393927bcc7d1b72db",
                 "shasum": ""
             },
             "require": {
@@ -893,20 +893,20 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2018-07-04T16:31:37+00:00"
+            "time": "2019-01-03T20:59:08+00:00"
         },
         {
             "name": "php-http/client-common",
-            "version": "1.8.2",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/client-common.git",
-                "reference": "efe327f4305813aa9025662259b78323d25b9948"
+                "reference": "9c21b6058caafdf2fcc99a0cabdf31b3ecb33961"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/client-common/zipball/efe327f4305813aa9025662259b78323d25b9948",
-                "reference": "efe327f4305813aa9025662259b78323d25b9948",
+                "url": "https://api.github.com/repos/php-http/client-common/zipball/9c21b6058caafdf2fcc99a0cabdf31b3ecb33961",
+                "reference": "9c21b6058caafdf2fcc99a0cabdf31b3ecb33961",
                 "shasum": ""
             },
             "require": {
@@ -928,7 +928,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+                    "dev-master": "1.9.x-dev"
                 }
             },
             "autoload": {
@@ -954,7 +954,7 @@
                 "http",
                 "httplug"
             ],
-            "time": "2018-12-14T22:12:45+00:00"
+            "time": "2019-01-03T10:59:55+00:00"
         },
         {
             "name": "php-http/curl-client",
@@ -1014,16 +1014,16 @@
         },
         {
             "name": "php-http/discovery",
-            "version": "1.5.0",
+            "version": "1.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/discovery.git",
-                "reference": "5e7bf246ec54b28ae543b018d2576579a102ac20"
+                "reference": "ffef11d54171336d841a34816a35bc035fb8cef0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/discovery/zipball/5e7bf246ec54b28ae543b018d2576579a102ac20",
-                "reference": "5e7bf246ec54b28ae543b018d2576579a102ac20",
+                "url": "https://api.github.com/repos/php-http/discovery/zipball/ffef11d54171336d841a34816a35bc035fb8cef0",
+                "reference": "ffef11d54171336d841a34816a35bc035fb8cef0",
                 "shasum": ""
             },
             "require": {
@@ -1075,7 +1075,7 @@
                 "message",
                 "psr7"
             ],
-            "time": "2018-12-30T12:07:33+00:00"
+            "time": "2018-12-31T07:31:26+00:00"
         },
         {
             "name": "php-http/guzzle6-adapter",
@@ -1683,6 +1683,17 @@
         {
             "name": "roave/security-advisories",
             "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Roave/SecurityAdvisories.git",
+                "reference": "5f3e0c82ada2d16fdd637b24e095888f4abac43f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/5f3e0c82ada2d16fdd637b24e095888f4abac43f",
+                "reference": "5f3e0c82ada2d16fdd637b24e095888f4abac43f",
+                "shasum": ""
+            },
             "conflict": {
                 "3f/pygmentize": "<1.2",
                 "adodb/adodb-php": "<5.20.12",
@@ -1874,16 +1885,16 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "v4.2.1",
+            "version": "v4.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/options-resolver.git",
-                "reference": "a9c38e8a3da2c03b3e71fdffa6efb0bda51390ba"
+                "reference": "fbcb106aeee72f3450298bf73324d2cc00d083d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/a9c38e8a3da2c03b3e71fdffa6efb0bda51390ba",
-                "reference": "a9c38e8a3da2c03b3e71fdffa6efb0bda51390ba",
+                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/fbcb106aeee72f3450298bf73324d2cc00d083d1",
+                "reference": "fbcb106aeee72f3450298bf73324d2cc00d083d1",
                 "shasum": ""
             },
             "require": {
@@ -1924,7 +1935,7 @@
                 "configuration",
                 "options"
             ],
-            "time": "2018-11-11T19:52:12+00:00"
+            "time": "2019-01-03T09:07:35+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -2264,16 +2275,16 @@
         },
         {
             "name": "xamin/handlebars.php",
-            "version": "v0.10.4",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/XaminProject/handlebars.php.git",
-                "reference": "b85cee07eae96db0e1eec224ca90f5ce1e4d857a"
+                "reference": "38c743f79b8a2b501d9be97a413a56e5c2ed3e0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/XaminProject/handlebars.php/zipball/b85cee07eae96db0e1eec224ca90f5ce1e4d857a",
-                "reference": "b85cee07eae96db0e1eec224ca90f5ce1e4d857a",
+                "url": "https://api.github.com/repos/XaminProject/handlebars.php/zipball/38c743f79b8a2b501d9be97a413a56e5c2ed3e0f",
+                "reference": "38c743f79b8a2b501d9be97a413a56e5c2ed3e0f",
                 "shasum": ""
             },
             "require-dev": {
@@ -2302,7 +2313,7 @@
             ],
             "description": "Handlebars processor for php",
             "homepage": "https://github.com/XaminProject/handlebars.php",
-            "time": "2016-12-12T13:51:02+00:00"
+            "time": "2016-12-27T09:15:36+00:00"
         },
         {
             "name": "yohang88/letter-avatar",
@@ -2359,7 +2370,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "codeigniter/framework": 20,
-        "roave/security-advisories": 20
+        "roave/security-advisories": 20,
+        "xamin/handlebars.php": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
