@@ -47,6 +47,7 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
         array (
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Cache\\' => 10,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'N' => 
         array (
@@ -133,6 +134,10 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
         'Psr\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'Netcarver\\Textile\\' => 
         array (
@@ -268,7 +273,6 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
 
     public static $classMap = array (
         'Clue\\StreamFilter\\CallbackFilter' => __DIR__ . '/..' . '/clue/stream-filter/src/CallbackFilter.php',
-        'EasyPeasyICS' => __DIR__ . '/..' . '/phpmailer/phpmailer/extras/EasyPeasyICS.php',
         'GuzzleHttp\\Client' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Client.php',
         'GuzzleHttp\\ClientInterface' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/ClientInterface.php',
         'GuzzleHttp\\Cookie\\CookieJar' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Cookie/CookieJar.php',
@@ -999,10 +1003,11 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
         'Netcarver\\Textile\\DataBag' => __DIR__ . '/..' . '/netcarver/textile/src/Netcarver/Textile/DataBag.php',
         'Netcarver\\Textile\\Parser' => __DIR__ . '/..' . '/netcarver/textile/src/Netcarver/Textile/Parser.php',
         'Netcarver\\Textile\\Tag' => __DIR__ . '/..' . '/netcarver/textile/src/Netcarver/Textile/Tag.php',
-        'PHPMailer' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmailer.php',
-        'PHPMailerOAuth' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmaileroauth.php',
-        'PHPMailerOAuthGoogle' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmaileroauthgoogle.php',
-        'POP3' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.pop3.php',
+        'PHPMailer\\PHPMailer\\Exception' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/Exception.php',
+        'PHPMailer\\PHPMailer\\OAuth' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/OAuth.php',
+        'PHPMailer\\PHPMailer\\PHPMailer' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/PHPMailer.php',
+        'PHPMailer\\PHPMailer\\POP3' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/POP3.php',
+        'PHPMailer\\PHPMailer\\SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/SMTP.php',
         'Parsedown' => __DIR__ . '/..' . '/erusev/parsedown/Parsedown.php',
         'ParsedownExtra' => __DIR__ . '/..' . '/erusev/parsedown-extra/ParsedownExtra.php',
         'ParsedownExtraTest' => __DIR__ . '/..' . '/erusev/parsedown-extra/test/ParsedownExtraTest.php',
@@ -1075,7 +1080,6 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
         'Requests_Transport_fsockopen' => __DIR__ . '/..' . '/rmccue/requests/library/Requests/Transport/fsockopen.php',
         'Requests_Utility_CaseInsensitiveDictionary' => __DIR__ . '/..' . '/rmccue/requests/library/Requests/Utility/CaseInsensitiveDictionary.php',
         'Requests_Utility_FilteredIterator' => __DIR__ . '/..' . '/rmccue/requests/library/Requests/Utility/FilteredIterator.php',
-        'SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.smtp.php',
         'Symfony\\Component\\OptionsResolver\\Debug\\OptionsResolverIntrospector' => __DIR__ . '/..' . '/symfony/options-resolver/Debug/OptionsResolverIntrospector.php',
         'Symfony\\Component\\OptionsResolver\\Exception\\AccessException' => __DIR__ . '/..' . '/symfony/options-resolver/Exception/AccessException.php',
         'Symfony\\Component\\OptionsResolver\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/symfony/options-resolver/Exception/ExceptionInterface.php',
@@ -1559,8 +1563,6 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
         'WhichBrowser\\Tests' => __DIR__ . '/..' . '/whichbrowser/parser/tests/src/Tests.php',
         'YoHang88\\LetterAvatar\\LetterAvatar' => __DIR__ . '/..' . '/yohang88/letter-avatar/src/LetterAvatar.php',
         'lessc' => __DIR__ . '/..' . '/oyejorge/less.php/lessc.inc.php',
-        'ntlm_sasl_client_class' => __DIR__ . '/..' . '/phpmailer/phpmailer/extras/ntlm_sasl_client.php',
-        'phpmailerException' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmailer.php',
         't1st3\\JSONMin\\JSONMin' => __DIR__ . '/..' . '/t1st3/php-json-minify/src/t1st3/JSONMin/JSONMin.php',
         'tubalmartin\\CssMin\\Colors' => __DIR__ . '/..' . '/tubalmartin/cssmin/src/Colors.php',
         'tubalmartin\\CssMin\\Command' => __DIR__ . '/..' . '/tubalmartin/cssmin/src/Command.php',
