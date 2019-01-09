@@ -36,7 +36,7 @@ The MIT License, http://opensource.org/licenses/MIT
                             <div class="fields">
                                 <div class="field{% if validation_errors['email_test_form_captcha'] %} error{% endif %}">
                                     <div class="ui left icon input">
-                                        <input type="text" id="email_test_form_captcha" name="email_test_form_captcha" placeholder="{{ lang('captcha.label')|e('html_attr') }}" maxlength="{{ captcha().length }}" />
+                                        <input type="text" id="email_test_form_captcha" name="email_test_form_captcha" placeholder="{{ lang('captcha.label')|e('html_attr') }}" maxlength="{{ captcha().length }}" autocomplete="off" autocorrect="off" autocapitalize="off" />
                                         <i class="privacy icon"></i>
                                     </div>
                                 </div>
