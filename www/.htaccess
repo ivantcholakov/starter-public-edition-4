@@ -340,6 +340,8 @@ AddDefaultCharset utf-8
 # This includes directories used by version control systems such as Git and SVN.
 
 <IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_URI} !\.well-known/acme-challenge
+    RewriteCond %{REQUEST_URI} !\.well-known/pki-validation
     RewriteCond %{SCRIPT_FILENAME} -d [OR]
     RewriteCond %{SCRIPT_FILENAME} -f
     RewriteRule "(^|/)\." - [F]
