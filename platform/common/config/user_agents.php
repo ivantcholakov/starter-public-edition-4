@@ -112,6 +112,7 @@ $mobiles = array(
     // Phones and Manufacturers
     'motorola'           => 'Motorola',
     'nokia'              => 'Nokia',
+    'nexus'              => 'Nexus',
     'palm'               => 'Palm',
     'iphone'             => 'Apple iPhone',
     'ipad'               => 'iPad',

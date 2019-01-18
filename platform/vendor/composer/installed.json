@@ -55,17 +55,17 @@
     },
     {
         "name": "codeigniter/framework",
-        "version": "dev-3.1-stable",
-        "version_normalized": "dev-3.1-stable",
+        "version": "3.1.10",
+        "version_normalized": "3.1.10.0",
         "source": {
             "type": "git",
             "url": "https://github.com/bcit-ci/CodeIgniter.git",
-            "reference": "12ee9843877bf80159d1d89a0e3a4f170e902725"
+            "reference": "c576995304fc3609cca0b7b92d1b2cd611ec82f5"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/bcit-ci/CodeIgniter/zipball/12ee9843877bf80159d1d89a0e3a4f170e902725",
-            "reference": "12ee9843877bf80159d1d89a0e3a4f170e902725",
+            "url": "https://api.github.com/repos/bcit-ci/CodeIgniter/zipball/c576995304fc3609cca0b7b92d1b2cd611ec82f5",
+            "reference": "c576995304fc3609cca0b7b92d1b2cd611ec82f5",
             "shasum": ""
         },
         "require": {
@@ -78,7 +78,7 @@
         "suggest": {
             "paragonie/random_compat": "Provides better randomness in PHP 5.x"
         },
-        "time": "2019-01-04T12:56:01+00:00",
+        "time": "2019-01-16T15:49:35+00:00",
         "type": "project",
         "installation-source": "dist",
         "notification-url": "https://packagist.org/downloads/",
@@ -1731,12 +1731,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/Roave/SecurityAdvisories.git",
-            "reference": "7989c51d910c456aa07e8e149a98afac5de69e7a"
+            "reference": "d155baccb43ba2542941fbcba258b85ce7786419"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/7989c51d910c456aa07e8e149a98afac5de69e7a",
-            "reference": "7989c51d910c456aa07e8e149a98afac5de69e7a",
+            "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/d155baccb43ba2542941fbcba258b85ce7786419",
+            "reference": "d155baccb43ba2542941fbcba258b85ce7786419",
             "shasum": ""
         },
         "conflict": {
@@ -1745,6 +1745,7 @@
             "alterphp/easyadmin-extension-bundle": ">=1.2,<1.2.11|>=1.3,<1.3.1",
             "amphp/artax": "<1.0.6|>=2,<2.0.6",
             "amphp/http": "<1.0.1",
+            "api-platform/core": ">=2.2,<2.2.10|>=2.3,<2.3.6",
             "asymmetricrypt/asymmetricrypt": ">=0,<9.9.99",
             "aws/aws-sdk-php": ">=3,<3.2.1",
             "brightlocal/phpwhois": "<=4.2.5",
@@ -1773,7 +1774,6 @@
             "drupal/core": ">=7,<7.60|>=8,<8.5.8|>=8.6,<8.6.2",
             "drupal/drupal": ">=7,<7.60|>=8,<8.5.8|>=8.6,<8.6.2",
             "erusev/parsedown": "<1.7",
-            "ezsystems/ezplatform": "<1.7.8.1|>=1.8,<1.13.4.1|>=2,<2.2.3.1|>=2.3,<2.3.2.1",
             "ezsystems/ezpublish-kernel": ">=5.3,<5.3.12.1|>=5.4,<5.4.13.1|>=6,<6.7.9.1|>=6.8,<6.13.5.1|>=7,<7.2.4.1|>=7.3,<7.3.2.1",
             "ezsystems/ezpublish-legacy": ">=5.3,<5.3.12.6|>=5.4,<5.4.12.3|>=2011,<2017.12.4.3|>=2018.6,<2018.6.1.4|>=2018.9,<2018.9.1.3",
             "ezsystems/repository-forms": ">=2.3,<2.3.2.1",
@@ -1814,6 +1814,7 @@
             "pagarme/pagarme-php": ">=0,<3",
             "paragonie/random_compat": "<2",
             "paypal/merchant-sdk-php": "<3.12",
+            "pear/archive_tar": "<1.4.4",
             "phpmailer/phpmailer": ">=5,<5.2.27|>=6,<6.0.6",
             "phpoffice/phpexcel": "<=1.8.1",
             "phpoffice/phpspreadsheet": "<=1.5",
@@ -1868,7 +1869,7 @@
             "symfony/yaml": ">=2,<2.0.22|>=2.1,<2.1.7",
             "tecnickcom/tcpdf": "<6.2.22",
             "thelia/backoffice-default-template": ">=2.1,<2.1.2",
-            "thelia/thelia": ">=2.1,<2.1.2|>=2.1.0-beta1,<2.1.3",
+            "thelia/thelia": ">=2.1.0-beta1,<2.1.3|>=2.1,<2.1.2",
             "theonedemon/phpwhois": "<=4.2.5",
             "titon/framework": ">=0,<9.9.99",
             "truckersmp/phpwhois": "<=4.3.1",
@@ -1913,7 +1914,7 @@
             "zfcampus/zf-apigility-doctrine": ">=1,<1.0.3",
             "zfr/zfr-oauth2-server-module": "<0.1.2"
         },
-        "time": "2019-01-08T04:52:50+00:00",
+        "time": "2019-01-15T19:39:37+00:00",
         "type": "metapackage",
         "notification-url": "https://packagist.org/downloads/",
         "license": [
@@ -2205,21 +2206,21 @@
     },
     {
         "name": "twig/twig",
-        "version": "v1.36.0",
-        "version_normalized": "1.36.0.0",
+        "version": "v1.37.1",
+        "version_normalized": "1.37.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/twigphp/Twig.git",
-            "reference": "730c9c4471b5152d23061feb02b03382264c8a15"
+            "reference": "66be9366c76cbf23e82e7171d47cbfa54a057a62"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/twigphp/Twig/zipball/730c9c4471b5152d23061feb02b03382264c8a15",
-            "reference": "730c9c4471b5152d23061feb02b03382264c8a15",
+            "url": "https://api.github.com/repos/twigphp/Twig/zipball/66be9366c76cbf23e82e7171d47cbfa54a057a62",
+            "reference": "66be9366c76cbf23e82e7171d47cbfa54a057a62",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.3.3",
+            "php": ">=5.4.0",
             "symfony/polyfill-ctype": "^1.8"
         },
         "require-dev": {
@@ -2227,11 +2228,11 @@
             "symfony/debug": "^2.7",
             "symfony/phpunit-bridge": "^3.4.19|^4.1.8"
         },
-        "time": "2018-12-16T10:34:11+00:00",
+        "time": "2019-01-14T14:59:29+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.36-dev"
+                "dev-master": "1.37-dev"
             }
         },
         "installation-source": "dist",
