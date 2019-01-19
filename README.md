@@ -550,7 +550,7 @@ Real Life Usage
 * http://trenchovahouse.com - a family hotel, designer: Irina Stancheva
 * A new student accommodation management system for Sofia University "St. Kliment Ohridski", Bulgaria, running as of 18-th June, 2018.
 
-Reported by Webnice Ltd., http://webnicebg.com
+Reported by Zashev Design - Web Design Studio
 
 * http://katonovi.com (an online store)
 * http://lvhalsokost.se
@@ -581,6 +581,13 @@ Reported by Webnice Ltd., http://webnicebg.com
 * https://www.industrialbatteries.bg - industrial batteries, distribution and services
 * http://luxviewblinds.com - custom printed blinds
 * http://piccadillykids.bg - children's center "Piccadilly Kids"
+* https://pirgovo.com/ - a wine cellar
+* https://drdimitrovi.com/ - a dental studio
+* https://www.vetlab.bg/ - pet care products
+* https://garibaldi.bg/ - a restaurant
+* https://optikivega.com/ - glasses
+* http://lux-view.com - fashion and jewelry
+* https://andyvil.com/ - an online butique
 
 Reported by Krishna Guragai, @krishnaguragain
 
