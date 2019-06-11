@@ -1,4 +1,0 @@
-{
-    "a": "b", /* A comment (not officially supported, see RFC 4627). */
-    "c": "d"  // Yet another comment.
-}
