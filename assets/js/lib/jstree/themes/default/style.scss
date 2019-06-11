@@ -1,0 +1,8 @@
+@import '../../../../node_modules/jstree/dist/themes/default/style';
+
+$theme-name: 'default';
+$throbber-bg: "url('throbber.gif')";
+$small-bg: "url('32px.png')";
+$big-bg: "url('40px.png')";
+
+@import "../theme";

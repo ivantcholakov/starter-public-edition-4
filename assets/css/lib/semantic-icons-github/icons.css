@@ -1,0 +1,11 @@
+
+@font-face {
+    font-family: 'Icons';
+    src: '';
+    src: url("../../../fonts/semantic/github/octicons.eot?#iefix") format('embedded-opentype'), url("../../../fonts/semantic/github/octicons.woff2") format('woff2'), url("../../../fonts/semantic/github/octicons.woff") format('woff'), url("../../../fonts/semantic/github/octicons.ttf") format('truetype'), url("../../../fonts/semantic/github/octicons.svg#icons") format('svg');
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-decoration: inherit;
+    text-transform: none;
+}

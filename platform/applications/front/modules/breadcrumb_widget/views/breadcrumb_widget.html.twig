@@ -1,0 +1,22 @@
+
+        <div class="row">
+            <div class="column">
+
+                <div class="ui breadcrumb">
+
+{% set i = 1 %}
+{% for breadcrumb in breadcrumbs %}
+    {% if i < n %}
+                    <a href="{{ breadcrumb['uri'] }}" class="section">{{ breadcrumb['name']|raw }}</a>
+                    <span class="divider">/</span>
+    {% else %}
+                    <div class="active section">{{ breadcrumb['name']|raw }}</div>
+    {% endif %}
+    {% set i = i + 1 %}
+{% endfor %}
+
+                </div>
+
+            </div>
+        </div>
+

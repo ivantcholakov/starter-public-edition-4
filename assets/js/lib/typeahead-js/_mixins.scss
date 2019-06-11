@@ -1,0 +1,11 @@
+@import "../../css/_appwork/functions";
+
+@mixin typeahead-theme($background, $color: null) {
+  $color: if($color, $color, yiq($background));
+
+  .tt-suggestion:active,
+  .tt-cursor {
+    background: $background !important;
+    color: $color !important;
+  }
+}

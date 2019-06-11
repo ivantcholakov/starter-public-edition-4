@@ -1,0 +1,317 @@
+
+{#
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015-2016
+ * @license The MIT License, http://opensource.org/licenses/MIT
+#}
+
+{# The image we are playing with, get the full URL. #}
+{% set my_image = image_url('playground.jpg') %}
+
+    <style>
+
+.image-container {
+    border: 1px solid blue;
+    display:table-cell;
+    vertical-align:middle;
+    text-align: center;
+}
+
+.image-container-120x180 {
+    width: 120px;
+    height: 180px;
+}
+
+.image-container-180x120 {
+    width: 180px;
+    height: 120px;
+}
+
+    </style>
+
+                <h4>
+                    Here is an image from this site, given with its full URL:
+                </h4>
+
+                <p>
+                    <pre><code>{% filter escape %}{% verbatim %}{% set my_image = image_url('playground.jpg') %} {# Twig syntax #}{% endverbatim %}{% endfilter %}</code></pre>
+                </p>
+
+                <h4>
+                    Possible manipulations with the given image:
+                </h4>
+
+                <table class="ui celled fixed table">
+
+                    <thead>
+
+                        <tr>
+                            <th class="eight wide">Static Thumbnails</th>
+                            <th class="eight wide">Dynamic Thumbnails</th>
+                        </tr>
+
+                    </thead>
+
+                    <tfoot class="mobile hidden">
+
+                        <tr>
+                            <th>Static Thumbnails</th>
+                            <th>Dynamic Thumbnails</th>
+                        </tr>
+
+                    </tfoot>
+
+                    <tbody>
+
+                        <tr class="positive">
+                            <td colspan="2" class="center aligned">
+                                <h4>Fit the Image by Width</h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <p>
+                                    <img src="{{ thumbnail(my_image, 120) }}" />
+                                    <br />
+                                    width = 120px
+                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                </p>
+
+                                <div class="ui divider"></div>
+
+                                <p>
+                                    <img src="{{ thumbnail(my_image, 180) }}" />
+                                    <br />
+                                    width = 180px
+                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <img src="{{ thumbnail(my_image, 120, null, null, null, true) }}" />
+                                    <br />
+                                    width = 120px
+                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120, null, null, null, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                </p>
+
+                                <div class="ui divider"></div>
+
+                                <p>
+                                    <img src="{{ thumbnail(my_image, 180, null, null, null, true) }}" />
+                                    <br />
+                                    width = 180px
+                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180, null, null, null, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                </p>
+                            </td>
+                        </tr>
+
+                        <tr class="positive">
+                            <td colspan="2" class="center aligned">
+                                <h4>Fit the Image by Height</h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <p>
+                                    <img src="{{ thumbnail(my_image, null, 120) }}" />
+                                    <br />
+                                    height = 120px
+                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, null, 120) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                </p>
+
+                                <div class="ui divider"></div>
+
+                                <p>
+                                    <img src="{{ thumbnail(my_image, null, 180) }}" />
+                                    <br />
+                                    height = 180px
+                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, null, 180) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <img src="{{ thumbnail(my_image, null, 120, null, null, true) }}" />
+                                    <br />
+                                    height = 120px
+                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, null, 120, null, null, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                </p>
+
+                                <div class="ui divider"></div>
+
+                                <p>
+                                    <img src="{{ thumbnail(my_image, null, 180, null, null, true) }}" />
+                                    <br />
+                                    height = 180px
+                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, null, 180, null, null, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                </p>
+                            </td>
+                        </tr>
+
+                        <tr class="positive">
+                            <td colspan="2" class="center aligned">
+                                <h4>Fit the Image by Width and Height<br /><small>(the image is cropped for ratio maintaining)</small></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <p>
+                                    <img src="{{ thumbnail(my_image, 180, 120) }}" />
+                                    <br />
+                                    width = 180px, height = 120px
+                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180, 120) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                </p>
+
+                                <div class="ui divider"></div>
+
+                                <p>
+                                    <img src="{{ thumbnail(my_image, 120, 180) }}" />
+                                    <br />
+                                    width = 120px, height = 180px
+                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120, 180) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <img src="{{ thumbnail(my_image, 180, 120, null, null, true) }}" />
+                                    <br />
+                                    width = 180px, height = 120px
+                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180, 120, null, null, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                </p>
+
+                                <div class="ui divider"></div>
+
+                                <p>
+                                    <img src="{{ thumbnail(my_image, 120, 180, null, null, true) }}" />
+                                    <br />
+                                    width = 120px, height = 180px
+                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120, 180, null, null, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                </p>
+                            </td>
+                        </tr>
+
+                        <tr class="positive">
+                            <td colspan="2" class="center aligned">
+                                <h4>Resize the Image Within Width and Height<br /><small>(the image is not being cropped)</small></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <p>
+                                    <div class="image-container image-container-180x120">
+                                        <img src="{{ thumbnail(my_image, 180, 120, true) }}" />
+                                    </div>
+                                    width = 180px, height = 120px
+                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180, 120, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                </p>
+
+                                <div class="ui divider"></div>
+
+                                <p>
+                                    <div class="image-container image-container-120x180">
+                                        <img src="{{ thumbnail(my_image, 120, 180, true) }}" />
+                                    </div>
+                                    width = 120px, height = 180px
+                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120, 180, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <div class="image-container image-container-180x120">
+                                        <img src="{{ thumbnail(my_image, 180, 120, true, null, true) }}" />
+                                    </div>
+                                    width = 180px, height = 120px
+                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180, 120, true, null, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                </p>
+
+                                <div class="ui divider"></div>
+
+                                <p>
+                                    <div class="image-container image-container-120x180">
+                                        <img src="{{ thumbnail(my_image, 120, 180, true, null, true) }}" />
+                                    </div>
+                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120, 180, true, null, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                    width = 120px, height = 180px
+                                </p>
+                            </td>
+                        </tr>
+
+                        <tr class="positive">
+                            <td colspan="2" class="center aligned">
+                                <h4>Fit the Image Within a Canvas with Given Width and Height<br /><small>(the image fits within a canvas with a given backgrond color)</small></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <p>
+                                    <div class="image-container image-container-180x120">
+                                        <img src="{{ thumbnail(my_image, 180, 120, true, true) }}" />
+                                    </div>
+                                    width = 180px, height = 120px
+                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180, 120, true, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                </p>
+
+                                <div class="ui divider"></div>
+
+                                <p>
+                                    <div class="image-container image-container-120x180">
+                                        <img src="{{ thumbnail(my_image, 120, 180, true, true) }}" />
+                                    </div>
+                                    width = 120px, height = 180px
+                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120, 180, true, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <div class="image-container image-container-180x120">
+                                        <img src="{{ thumbnail(my_image, 180, 120, true, true, true) }}" />
+                                    </div>
+                                    width = 180px, height = 120px
+                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180, 120, true, true, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                </p>
+
+                                <div class="ui divider"></div>
+
+                                <p>
+                                    <div class="image-container image-container-120x180">
+                                        <img src="{{ thumbnail(my_image, 120, 180, true, true, true) }}" />
+                                    </div>
+                                    width = 120px, height = 180px
+                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120, 180, true, true, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                </p>
+                            </td>
+                        </tr>
+
+                        <tr class="positive">
+                            <td colspan="2" class="center aligned">
+                                <h4>Get the Image with its Original Width and Height<br /><small>(click on the image to see it in its full size)</small></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <p>
+                                    <a href="{{ thumbnail(my_image) }}" target="_blank" rel="noopener">
+                                        <img class="ui fluid image" src="{{ thumbnail(my_image) }}" />
+                                    </a>
+                                    <br />
+                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <a href="{{ thumbnail(my_image, null, null, null, null, true) }}" target="_blank" rel="noopener">
+                                        <img class="ui fluid image" src="{{ thumbnail(my_image, null, null, null, null, true) }}" />
+                                    </a>
+                                    <br />
+                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, null, null, null, null, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                </p>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>

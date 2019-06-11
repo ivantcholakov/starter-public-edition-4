@@ -1,0 +1,22 @@
+@function fullcalendar-event-bg($bg) {
+  @return rgba($bg, .15);
+}
+
+@mixin fullcalendar-event-variant($color) {
+  &.fc-event,
+  &.fc-event-dot {
+    background: fullcalendar-event-bg($color) !important;
+  }
+}
+
+@mixin fullcalendar-theme($color) {
+  .fc-event,
+  .fc-event-dot {
+    background: fullcalendar-event-bg($color) !important;
+  }
+
+  .fc-highlight,
+  .fc-bgevent {
+    background: $color !important;
+  }
+}

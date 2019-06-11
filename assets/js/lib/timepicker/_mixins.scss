@@ -1,0 +1,11 @@
+@import "../../css/_appwork/functions";
+
+@mixin timepicker-theme($background, $color: null) {
+  $color: if($color, $color, yiq($background));
+
+  li.ui-timepicker-selected,
+  .ui-timepicker-list .ui-timepicker-selected:hover {
+    background: $background !important;
+    color: $color !important;
+  }
+}

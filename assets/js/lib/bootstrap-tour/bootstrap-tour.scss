@@ -1,0 +1,62 @@
+@import "../../node_modules/bootstrap-tour/build/css/bootstrap-tour";
+
+.popover[class*="tour-"] .popover-navigation > .btn-group {
+  margin-right: .5rem;
+}
+
+[dir=rtl] .popover[class*="tour-"] .popover-navigation > * {
+  float: right;
+}
+
+[dir=rtl] .popover[class*="tour-"] .popover-navigation > .btn-group {
+  margin-right: 0;
+  margin-left: .5rem;
+}
+
+.default-style {
+  @import '../../css/_appwork/include';
+
+  .popover[class*="tour-"] .popover-header {
+    padding: $card-spacer-y $card-spacer-x-sm;
+    font-size: $font-size-base;
+  }
+
+  .popover[class*="tour-"] .popover-body {
+    padding: $card-spacer-x-sm $card-spacer-x-sm;
+    font-size: $font-size-base;
+  }
+
+  .popover[class*="tour-"] .popover-navigation {
+    padding: 0 $card-spacer-x $card-spacer-x-sm $card-spacer-x-sm;
+  }
+
+  .tour-backdrop {
+    background: $modal-backdrop-bg;
+    opacity: $modal-backdrop-opacity;
+    filter: alpha(opacity=$modal-backdrop-opacity*100);
+  }
+}
+
+.material-style {
+  @import '../../css/_appwork/include-material';
+
+  .popover[class*="tour-"] .popover-header {
+    padding: $card-spacer-y $card-spacer-x-sm;
+    font-size: $font-size-base;
+  }
+
+  .popover[class*="tour-"] .popover-body {
+    padding: $card-spacer-x-sm $card-spacer-x-sm;
+    font-size: $font-size-base;
+  }
+
+  .popover[class*="tour-"] .popover-navigation {
+    padding: 0 $card-spacer-x $card-spacer-x-sm $card-spacer-x-sm;
+  }
+
+  .tour-backdrop {
+    background: $modal-backdrop-bg;
+    opacity: $modal-backdrop-opacity;
+    filter: alpha(opacity=$modal-backdrop-opacity*100);
+  }
+}

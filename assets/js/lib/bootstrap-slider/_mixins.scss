@@ -1,0 +1,32 @@
+@mixin bs-slider-variant($color) {
+  .slider-selection,
+  .slider-reversed .slider-track-high,
+  &.slider-reversed .slider-track-high {
+    background: $color;
+  }
+}
+
+@mixin material-bs-slider-variant($color) {
+  .slider-handle {
+    box-shadow: none !important;
+  }
+
+  .slider-handle,
+  .slider-selection,
+  .slider-reversed .slider-track-high,
+  &.slider-reversed .slider-track-high {
+    background: $color;
+  }
+}
+
+@mixin bs-slider-theme($color) {
+  .slider-primary {
+    @include bs-slider-variant($color);
+  }
+}
+
+@mixin material-bs-slider-theme($color) {
+  .slider-primary {
+    @include material-bs-slider-variant($color);
+  }
+}

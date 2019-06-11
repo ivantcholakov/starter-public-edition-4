@@ -1,0 +1,91 @@
+@import '../../node_modules/blueimp-gallery/css/blueimp-gallery';
+
+.blueimp-gallery > .slides > .slide-loading {
+  background-image: url(img/loading.gif);
+}
+.blueimp-gallery > .slides > .slide-error {
+  background-image: url(img/error.png);
+}
+.blueimp-gallery > .play-pause {
+  background-image: url(img/play-pause.png);
+}
+body:last-child .blueimp-gallery > .slides > .slide-error {
+  background-image: url(img/error.svg);
+}
+body:last-child .blueimp-gallery > .play-pause {
+  background-image: url(img/play-pause.svg);
+}
+
+.blueimp-gallery {
+  a.close,
+  a.prev,
+  a.next {
+    &,
+    &:hover,
+    &:focus {
+      color: #fff;
+    }
+  }
+
+  .prev,
+  .next {
+    border-color: transparent;
+  }
+}
+
+.blueimp-gallery-carousel {
+  box-shadow: none;
+}
+
+[dir=rtl] {
+  .blueimp-gallery {
+    direction: rtl;
+  }
+  .blueimp-gallery > .slides > .slide {
+    float: right;
+  }
+  .blueimp-gallery > .prev,
+  .blueimp-gallery > .next {
+    left: auto;
+    right: 15px;
+  }
+  .blueimp-gallery > .next {
+    right: auto;
+    left: 15px;
+  }
+  .blueimp-gallery > .play-pause {
+    transform: scaleX(-1);
+  }
+  .blueimp-gallery > .close,
+  .blueimp-gallery > .title {
+    left: auto;
+    right: 15px;
+    margin-right: 0;
+    margin-left: 40px;
+  }
+  .blueimp-gallery > .close {
+    left: 15px;
+    right: auto;
+    margin: -15px;
+  }
+  .blueimp-gallery > .play-pause {
+    right: auto;
+    left: 15px;
+  }
+}
+
+.default-style {
+	@import "../../css/_appwork/include";
+
+  .blueimp-gallery:not(.blueimp-gallery-carousel) {
+    z-index: $zindex-modal-top;
+  }
+}
+
+.material-style {
+	@import "../../css/_appwork/include-material";
+
+  .blueimp-gallery:not(.blueimp-gallery-carousel) {
+    z-index: $zindex-modal-top;
+  }
+}

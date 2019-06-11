@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+{{ template:html_meta_charset }}
+{{ template:html_title }}
+</head>
+
+<body>
+
+    <div>
+        {{ layout:placeholder name="content" }}
+            {{ template:body /}}
+        {{ /layout:placeholder }}
+    </div>
+
+    <div>
+        {{ layout:placeholder name="sidebar" }}
+            <p>The sidebar, default content, defined within a placeholser "sidebar".<p>
+        {{ /layout:placeholder }}
+    </div>
+
+</body>
+
+</html>

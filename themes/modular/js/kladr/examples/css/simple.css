@@ -1,0 +1,39 @@
+body, input {
+    color: #555;
+    font-size: 14px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+input, button {
+    outline: none;
+}
+
+.address {
+    width: 400px;
+    margin: 40px auto 0;
+    padding: 40px 40px 30px;
+    border: 2px solid #e1e1e1;
+    background-color: #f7f7f7;
+    box-shadow: rgba(0, 0, 0, 0.075) 1px 1px 5px;
+}
+
+.address h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    padding-bottom: 40px;
+    text-align: center;
+}
+
+.field {
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+.field input {
+    height: 2em;
+    width: 370px;
+    border: 1px solid #d8d8d8;
+    padding: 0 7px;
+    color: #666;
+}

@@ -1,0 +1,143 @@
+{{ html_begin() }}
+{{ head_begin() }}
+{{ meta_charset() }}
+
+{{ base_href() }}
+{{ ie_edge() }}
+
+{{ html_title() }}
+{{ metadata() }}
+
+{{ viewport() }}
+{{ favicon() }}
+{{ apple_touch_icon_precomposed() }}
+
+{{ js_platform() }}
+{% include 'partials/webfontloader' %}
+
+{{ css('everpay.app.css?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ css('lib/sweetalert/sweetalert-custom.min.css') }}
+{{ css('lib/animate/animate.css') }}
+{{ css('vendor/brankic.css') }}
+{{ css('lib/dataTables/jquery.dataTables.min.css') }}
+{{ css('lib/jquery-ui-custom/jquery-ui.min.css') }}
+{{ partial('css') }}
+
+{{ js_modernizr() }}
+{{ js_jquery() }}
+
+{{ js('lib/phpjs/phpjs.min.js') }}
+{{ js('lib/sweetalert/sweetalert.min.js') }}
+{{ js('vendor/jquery.cookie.js') }}
+
+{{ partial('head') }}
+
+{{ head_end() }}
+
+{% set body_attr = {'id': 'page-top'} %}
+{% if template.module is not empty %}
+    {% set body_attr = html_attr_add_class(body_attr, template.module ~ '_module') %}
+{% endif %}
+{% if template.controller is not empty %}
+    {% set body_attr = html_attr_add_class(body_attr, template.controller) %}
+{% endif %}
+{% if template.method is not empty %}
+    {% set body_attr = html_attr_add_class(body_attr, template.method ~ '_method') %}
+{% endif %}
+{% if id is not empty %}
+    {% set body_attr = html_attr_add_class(body_attr, 'item_' ~ id) %}
+{% endif %}
+{{ body_begin(body_attr) }}
+<div id="wrapper">
+
+
+
+
+    {{ widget('main_menu_widget') }}
+    
+
+    {{ widget('side_menu_widget') }}
+    
+
+    <header>
+    
+{% set breadcrumb_widget = widget('breadcrumb_widget') %}
+
+{% if registry('title') is not empty or breadcrumb_widget is not empty %}
+
+                <div class="sixteen wide column">
+
+                    <h1 class="ui header clearfix">
+    {% if breadcrumb_widget is not empty %}
+                        <div class="breadcrumb">{{ breadcrumb_widget|raw }}</div>
+    {% endif %}
+                        {{ registry('header_icon')|raw }}
+                        
+                        <div class="content">
+                            {{ registry('title')|raw }}
+    {% if registry('subtitle') is not empty %}
+                            <div class="sub header">{{ registry('subtitle')|raw }}</div>
+    {% endif %}
+                        </div>
+                    </h1>
+
+                </div>
+
+{% endif %}
+
+        </div>
+
+    </header>
+    
+    
+<div id="content">
+            
+{{ widget('feedback_messages_widget', {
+    'feedback_message_target': feedback_message_target,
+    'normal_message': normal_message,
+    'confirmation_message': confirmation_message,
+    'warning_message': warning_message,
+    'error_message': error_message
+}) }}
+
+            
+{{ body() }}
+
+            
+ </div>
+
+        </div>
+
+    </div>
+    
+    {{ widget('footer_widget') }}
+    </div>
+
+
+{{ js_bp_plugins() }}
+{{ js_mbp_helper() }}
+{{ js_scale_fix_ios() }}
+
+{{ partial('handle_unauthenticated_ajax') }}
+{{ js('lib/semantic/semantic.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ js('lib/jquery-ajax-queue/jquery-ajax-queue.js') }}
+{{ js('lib/jquery-ellipsis/jquery.ellipsis.min.js') }}
+{{ js('lib/jquery-keepalive/jquery.keepalive.min.js') }}
+{{ js('lib/dataTables/jquery.dataTables.min.js') }}
+{{ js('lib/dataTables/dataTables.semanticui.min.js') }}
+{{ js('lib/dataTables/plug-ins/api/sortNeutral.js') }}
+{{ js('lib/dataTables/dataTables.responsive.min.js') }}
+{{ js('lib/dataTables/responsive.semanticui.min.js') }}
+{{ js('lib/dataTables/dataTables.select.min.js') }}
+{{ js('lib/jquery-ui-custom/jquery-ui.min.js') }}
+{% if language_jquery_ui() != 'en' %}
+{{ js('lib/jquery-ui-custom/i18n/jquery.ui.datepicker-' ~ language_jquery_ui() ~ '.js') }}
+{% endif %}
+{{ js('admin.js') }}
+
+{{ partial('scripts') }}
+
+    <div id="debug"></div>
+
+{{ body_end() }}
+{{ html_end() }}

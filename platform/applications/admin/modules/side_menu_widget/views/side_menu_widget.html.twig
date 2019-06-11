@@ -1,0 +1,149 @@
+
+{% macro display_item_class(item, full_class_attribute) %}{% spaceless %}
+
+    {% set full_class_attribute = full_class_attribute|default(true) %}
+
+    {% set result = '' %}
+    {% if item['is_header'] %}{% set result = result ~ 'header' %}{% endif %}
+    {% if item['children'] %}{% set result = result ~ ' treeview' %}{% endif %}
+
+    {% if item['is_active'] %}
+
+        {% set result = result ~ ' active' %}
+
+        {% if registry('nav') == item['id'] %}
+            {% set result = result ~ 'active-item' %}
+        {% endif %}
+
+    {% endif %}
+
+    {% if full_class_attribute and result is not empty %}
+        {% set result = ' class="' ~ result ~ '"' %}
+    {% endif %}
+
+    {{ result|raw }}
+
+{% endspaceless %}{% endmacro %}
+
+{% macro display_item(item) %}{% spaceless %}
+
+    {% if item['is_header'] %}
+        {{ item['label'] }}
+    {% else %}
+        {% if item['icon'] is not empty %}<i class="{{ item['icon']|e('html_attr') }}"></i>{% endif %}
+        <span>{{ item['label'] }}</span>
+        {% if item['badge'] is not empty %}{{ item['badge']|raw }}{% endif %}
+    {% endif %}
+
+{% endspaceless %}{% endmacro %}
+
+{% macro display_children(items, level = 0) %}
+
+    {% import _self as side_menu_macro %}
+    {% set level = level|default(0) %}
+
+
+
+    {% for item in items %}
+
+        {% if item['children'] is empty %}
+
+            {% if item['is_header'] %}
+                        
+	                       <li class="sidenav-item">
+                           {{ side_menu_macro.display_item(item) }}
+                            </li>
+            {% else %}
+                          
+	                       <li class="sidenav-item">
+                                <a href="{{ item['link'] }}" class="{% if item['is_active'] %}active sidenav-link {% endif %}title">
+                                   <span> {{ side_menu_macro.display_item(item) }}</span>
+                                </a>
+                            </li>
+            {% endif %}
+                            
+        {% else %}
+                            <li class="sidenav-item">
+
+                                <span class="{% if item['is_active'] %}active {% endif %}title">
+                                    <i class="dropdown icon"></i>
+                                    {{ side_menu_macro.display_item(item) }}
+                                </span>
+
+                                <div class="{% if item['is_active'] %}active {% endif %}content">
+                                    {{ side_menu_macro.display_children(item['children'], level + 1) }}
+                                </div>
+
+                            </li>
+
+        {% endif %}
+
+    {% endfor %}
+
+
+{% endmacro %}
+
+{# -------------------------------------------------------------------------- #}
+
+{% import _self as side_menu_macro %}
+<div id="layout-sidenav" class="layout-sidenav sidenav sidenav-vertical bg-white  sidenav-light">
+
+        <!-- Brand demo (see assets/css/demo/demo.css) -->
+        <div class="app-brand demo">
+        <a href="{{ site_url() }}" class="app-brand-logo demo">
+     <img src="https://res.cloudinary.com/lmj6rf6tz/image/upload/c_scale,w_96/v1496853334/Everpaylogo-261x67_jrwizm.png" alt="Everpay"></a>
+     
+          <a href="javascript:void(0)" class="layout-sidenav-toggle sidenav-link text-large ml-auto mt-2">
+            <i class="ion ion-md-menu align-middle"></i>
+          </a>
+        </div>
+
+        <div class="sidenav-divider mt-0"></div>
+		
+   <ul class="sidenav-inner py-1">
+
+{% if nav is not empty %}
+    {% for item in nav %}
+
+        {% if item['children'] is empty %}
+
+            {% if item['is_header'] %}
+                           <li class="sidenav-item">
+                                <span class="sidenav-link">{{ side_menu_macro.display_item(item) }}</span>
+			   </li>
+            {% else %}
+                         <li class="sidenav-item">
+                                <a href="{{ item['link'] }}" class="{% if item['is_active'] %}active {% endif %}sidenav-link">
+                                    {{ side_menu_macro.display_item(item) }}
+                                </a>
+			</li>
+            {% endif %}
+                            
+        {% else %}
+	      
+	               
+                      <li class="sidenav-item">   
+                      
+            <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
+                                <div class="{% if item['is_active'] %}active {% endif %}sidenav-link">
+                                    {{ side_menu_macro.display_item(item) }}
+                                </div>
+                                </a>
+				</li>
+				
+                <ul class="sidenav-menu">
+                      <li class="sidenav-item">
+                                <span class="{% if item['is_active'] %}active sidenav-link {% endif %}content" style="width:100%;">
+                                    {{ side_menu_macro.display_children(item['children']) }}
+                                </span>
+                        </li>  
+             </ul>
+
+        {% endif %}
+
+    {% endfor %}
+{% endif %}
+</ul>
+
+</div>
+

@@ -1,0 +1,129 @@
+@import '../../css/_custom-variables/libs';
+
+$plyr-range-track-height: 4px !default;
+$plyr-range-thumb-height: 14px !default;
+$plyr-range-thumb-width: 14px !default;
+$plyr-audio-controls-border: none !default;
+$plyr-progress-loading-size: 15px !default;
+$plyr-audio-controls-bg: transparent !default;
+$plyr-audio-progress-bg: rgba(0,0,0,.1) !default;
+$plyr-control-spacing: 10px !default;
+$plyr-bp-screen-sm: 480px !default;
+$plyr-bp-screen-md: 768px !default;
+
+@import "../../node_modules/plyr/src/scss/plyr.scss";
+
+.plyr--audio .plyr__controls {
+  padding: 0;
+}
+
+[dir=rtl] {
+  .plyr {
+    direction: rtl;
+  }
+
+  .plyr__play-large {
+    transform: translate(-50%, -50%) scaleX(-1);
+  }
+
+  .plyr__controls > button svg {
+    transform: scaleX(-1);
+  }
+
+  .plyr__controls > button,
+  .plyr__controls .plyr__progress,
+  .plyr__controls .plyr__time {
+    margin-right: ($plyr-control-spacing / 2);
+    margin-left: 0;
+
+    &:first-child {
+      margin-right: 0;
+    }
+  }
+
+  .plyr__controls .plyr__volume {
+    margin-right: ($plyr-control-spacing / 2);
+    margin-left: 0;
+  }
+
+  .plyr__controls [data-plyr="pause"] {
+    margin-right: 0;
+  }
+
+  @media (min-width: $plyr-bp-screen-sm) {
+    .plyr__controls > button,
+    .plyr__controls .plyr__progress,
+    .plyr__controls .plyr__time {
+      margin-right: $plyr-control-spacing;
+      margin-left: 0;
+    }
+  }
+
+  .plyr__progress--played,
+  .plyr__volume--display {
+    &::-webkit-progress-value {
+      border-radius: 100px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &::-moz-progress-bar {
+      border-radius: 100px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  .plyr__time + .plyr__time {
+    display: none;
+
+    @media (min-width: $plyr-bp-screen-md) {
+      display: inline-block;
+    }
+
+    &::before {
+      margin-right: 0;
+      margin-left: $plyr-control-spacing;
+    }
+  }
+}
+
+.default-style {
+  @import "../../css/_appwork/include";
+
+  .plyr {
+    font-family: $font-family-sans-serif;
+  }
+
+  .plyr--audio .plyr__progress--buffer {
+    color: $gray-200;
+  }
+  .plyr--audio.plyr--loading .plyr__progress--buffer {
+    background-color: $gray-200;
+  }
+
+  .plyr__tooltip {
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
+}
+
+.material-style {
+  @import "../../css/_appwork/include-material";
+
+  .plyr {
+    font-family: $font-family-sans-serif;
+  }
+
+  .plyr--audio .plyr__progress--buffer {
+    color: $gray-200;
+  }
+  .plyr--audio.plyr--loading .plyr__progress--buffer {
+    background-color: $gray-200;
+  }
+
+  .plyr__tooltip {
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
+}

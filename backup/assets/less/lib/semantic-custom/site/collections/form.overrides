@@ -1,0 +1,20 @@
+/*******************************
+         Site Overrides
+*******************************/
+
+/* Fieldsets */
+
+.ui.form legend {
+    display: block;
+    font-size: @emSize * 1.25;
+    font-weight: bold;
+}
+
+.ui.form fieldset {
+    border: @fieldsetBorder;
+    border-radius: @fieldsetBorderRadius;
+    padding: @fieldsetPadding;
+    margin: @fieldsetMargin;
+}
+
+/* End Fieldsets */

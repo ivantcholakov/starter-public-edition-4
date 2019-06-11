@@ -1,0 +1,157 @@
+{{ html_begin() }}
+{{ head_begin() }}
+{{ meta_charset() }}
+
+{{ base_href() }}
+{{ ie_edge() }}
+{{ html_title() }}
+{{ metadata() }}
+
+{{ viewport() }}
+{{ favicon() }}
+{{ apple_touch_icon_precomposed() }}
+
+{{ js_platform() }}
+{% include 'partials/webfontloader' %}
+
+<script src="//use.typekit.net/wkj3pfp.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&amp;subset=latin" rel="stylesheet" type="text/css">
+	
+<link href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' rel='stylesheet'>
+{{ css('lib/animate/animate.css') }}
+{{ css('lib/sweetalert/sweetalert-custom.min.css') }}
+{{ css('lib/jquery-ui-custom/jquery-ui.min.css') }}
+{{ css('app.min.css') }}
+{{ css('everpay.app.css?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ partial('css') }}
+
+{{ js('material-ripple.js') }}
+{{ js('app-layout.js') }}
+{{ js('app-settings.js') }}
+  <script>
+ //<![CDATA[ 
+    window.themeSettings = new ThemeSettings({
+      cssPath: 'assets/css/app/',
+      themesPath: 'assets/css/app/'
+    });
+ //]]>
+  </script>
+
+{{ js_modernizr() }}
+
+{{ js('pace.js') }}
+
+{{ js('lib/jquery/jquery-1.12.4.min.js') }}
+
+
+{{ js('lib/popper/popper.js') }}
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+{{ js('lib/jquery-json/jquery.json.js') }}
+{{ partial('ckeditor') }}
+{{ js('lib/phpjs/phpjs.min.js') }}
+{{ js('lib/sweetalert/sweetalert.min.js') }}
+
+
+{{ partial('head') }}
+
+{{ head_end() }}
+
+{% set body_attr = {'id': 'dashboard'} %}
+{% if template.module is not empty %}
+    {% set body_attr = html_attr_add_class(body_attr, template.module ~ '_module') %}
+{% endif %}
+{% if template.controller is not empty %}
+    {% set body_attr = html_attr_add_class(body_attr, template.controller) %}
+{% endif %}
+{% if template.method is not empty %}
+    {% set body_attr = html_attr_add_class(body_attr, template.method ~ '_method') %}
+{% endif %}
+{% if id is not empty %}
+    {% set body_attr = html_attr_add_class(body_attr, 'item_' ~ id) %}
+{% endif %}
+{{ body_begin(body_attr) }}
+
+<div class="page-loader">
+    <div class="bg-primary"></div>
+  </div>
+   <!-- Layout wrapper -->
+  <div class="layout-wrapper layout-2">
+    <div class="layout-inner">
+
+ {{ widget('side_menu_widget') }}
+
+<div class="layout-container">
+
+ {{ widget('main_menu_widget') }}   
+ 
+
+<div class="layout-content">
+
+<div class="container-fluid flex-grow-1 container-p-x">
+
+{{ widget('feedback_messages_widget', {
+    'feedback_message_target': feedback_message_target,
+    'normal_message': normal_message,
+    'confirmation_message': confirmation_message,
+    'warning_message': warning_message,
+    'error_message': error_message
+}) }}
+
+{{ body() }}
+
+</div>
+</div>
+
+{{ widget('footer_widget') }}
+
+        </div>
+        <!-- Layout content -->
+
+      </div>
+      <!-- / Layout container -->
+
+    </div>
+
+    <!-- Overlay -->
+    <div class="layout-overlay layout-sidenav-toggle"></div>
+  </div>
+  <!-- / Layout wrapper -->
+  
+
+{{ js_bp_plugins() }}
+{{ js_mbp_helper() }}
+{{ js_scale_fix_ios() }}
+
+{{ partial('handle_unauthenticated_ajax') }}
+
+{{ js('lib/semantic/semantic.min.js') }}
+{{ js('sidenav.js') }}
+{{ js('lib/jquery-ajax-queue/jquery-ajax-queue.js') }}
+{{ js('lib/jquery-ellipsis/jquery.ellipsis.min.js') }}
+{{ js('lib/jquery-keepalive/jquery.keepalive.min.js') }}
+{{ js('lib/dataTables/jquery.dataTables.min.js') }}
+{{ js('lib/dataTables/dataTables.semanticui.min.js') }}
+{{ js('lib/dataTables/plug-ins/api/sortNeutral.js') }}
+{{ js('lib/dataTables/dataTables.responsive.min.js') }}
+{{ js('lib/dataTables/responsive.semanticui.min.js') }}
+{{ js('lib/dataTables/dataTables.select.min.js') }}
+{{ js('lib/jquery-ui-custom/jquery-ui.min.js') }}
+{{ js('vendor/bootstrap-datepicker.js') }}
+{{ js('vendor/jquery.validate.min.js') }}
+{{ js('vendor/offline.min.js') }}
+{% if language_jquery_ui() != 'en' %}
+{{ js('lib/jquery-ui-custom/i18n/jquery.ui.datepicker-' ~ language_jquery_ui() ~ '.js') }}
+{{ js('lib/perfect-scrollbar/perfect-scrollbar.js') }}
+{% endif %}
+
+{{ js('everpay.app.js') }}
+{{ js('dashboard.js') }}
+{{ partial('scripts') }}
+<div id="debug"></div>
+
+{{ body_end() }}
+{{ html_end() }}

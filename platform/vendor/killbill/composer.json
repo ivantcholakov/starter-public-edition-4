@@ -1,0 +1,34 @@
+{
+  "name": "killbill/killbill-client",
+  "description": "Official PHP client to the Killbill HTTP API",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "Killbill\\Client\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Killbill\\Client\\": "test/"
+    }
+  },
+  "scripts": {
+    "test": "ENV=local phpunit",
+    "test-integration": "phpunit",
+    "record-mocks": "composer run test-integration && RECORD_REQUESTS=1 phpunit",
+    "phpcs": "phpcs --standard=vendor/escapestudios/symfony2-coding-standard/Symfony2 ./src/ ./test/ --extensions=php --ignore=src/Type -d memory_limit=1024M",
+    "phpcs-checkstyle": "phpcs --standard=vendor/escapestudios/symfony2-coding-standard/Symfony2 ./src/ ./test/ --extensions=php --ignore=src/Type -d memory_limit=1024M --report=checkstyle"
+  },
+  "license": "Apache-2.0",
+  "require": {
+    "php": "^5.5 || ^7.0",
+    "ext-curl": "*",
+    "psr/log": "^1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.8",
+    "squizlabs/php_codesniffer": "^2.0",
+    "escapestudios/symfony2-coding-standard": "^2.0",
+    "monolog/monolog": "^1.0"
+  }
+}

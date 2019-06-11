@@ -1,0 +1,145 @@
+#reports-alt {
+
+	.menubar {
+		.options {
+			a {
+				position: relative;
+				top: 2px;
+				margin-left: 20px;
+				color: #96AEC4;
+				text-decoration: none;
+
+				@include transition(all .2s linear);
+
+				@media (max-width: $maxSmall) {
+					margin-left: 10px;
+				}
+
+				&:hover {
+					color: #344D63;
+				}
+
+				i {
+					margin-right: 3px;
+				}
+			}
+		}
+
+		.date-range {
+			margin-right: 20px;
+
+			.input-group {
+				width: 200px;
+				position: relative;
+				top: -3px;
+
+				.input-group-addon {
+					background: #F0F4F8;
+				}
+
+				i {
+					font-size: 14px;
+					color: #577FC7;
+					position: relative;
+					top: 1px;
+				}
+
+				input[type="text"] {
+					height: 31px;
+					line-height: 18px;
+					font-size: 14px;
+					color: #777;
+				}
+			}
+		}
+	}
+
+	.daterangepicker_start_input,
+	.daterangepicker_end_input {
+		display: none;
+	}
+
+	.chart {
+		position: relative;
+		top: -24px;
+		padding-top: 30px;
+		margin: 0 -40px;
+		padding: 30px 30px 0px;
+		background: #fafafa;
+		border-bottom: 1px solid #ccc;
+
+		@media (max-width: $maxSmall) {
+			margin: 0 -20px;
+		}
+
+		.bar-chart-wrapper {
+			overflow: hidden;
+
+			#bar-chart {
+				height: 240px;
+				padding: 0px;
+				position: relative;
+				top: 26px;
+			}
+		}
+
+		label.yaxis {
+			text-align: center;
+			text-transform: uppercase;
+			color: #969696;
+			display: block;
+			margin-top: 12px;
+			position: absolute;
+			left: 0;
+			right: 0;
+			font-weight: 600;
+			font-size: 13px;
+		}
+	}
+
+	.filters {
+		margin-top: 40px;
+
+		.btn {
+			background: #FAFDFF;
+			color: #4C89B6;
+
+			.caret {
+				margin-left: 5px;
+			}
+		}
+	}
+
+	.data {
+		margin-top: 20px;
+		margin-bottom: 50px;
+
+		thead th {
+			border-top: 1px solid #dee3ea;
+			border-bottom: 1px solid #dee3ea;
+			padding: 10px 18px 15px 15px;
+		}
+
+		td {
+			padding: 11px 15px;
+		}
+
+		.dataTables_length {
+			display: none;
+		}
+
+		.dataTables_filter {
+			display: none;
+		}
+
+		.dataTables_info {
+			display: none;
+		}
+
+		.dataTables_paginate {
+			float: none;
+			text-align: center;
+			margin-top: 70px;
+		}
+	}
+}

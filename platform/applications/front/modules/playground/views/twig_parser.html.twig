@@ -1,0 +1,3156 @@
+
+{# Author: Ivan Tcholakov, ivantcholakov@gmail.com, 2016 #}
+{# License: The MIT License, http://opensource.org/licenses/MIT #}
+
+<style type="text/css">
+
+.image-container {
+    border: 1px solid blue;
+    display:table-cell;
+    vertical-align:middle;
+    text-align: center;
+}
+
+.image-container-120x180 {
+    width: 120px;
+    height: 180px;
+}
+
+.image-container-180x120 {
+    width: 180px;
+    height: 120px;
+}
+
+</style>
+
+
+                            <p><big>The current Twig version is {{ constant('Twig_Environment::VERSION') }}</big></p>
+
+                            <p>See <a href="http://twig.sensiolabs.org" target="_blank" rel="noopener">http://twig.sensiolabs.org</a>, <a href="http://twig.sensiolabs.org/doc/templates.html" target="_blank" rel="noopener">http://twig.sensiolabs.org/doc/templates.html</a></p>
+                            <p>
+                                Other readings: <a href="http://fabien.potencier.org/templating-engines-in-php.html" target="_blank" rel="noopener">http://fabien.potencier.org/templating-engines-in-php.html</a>,
+                                <a href="http://www.slideshare.net/fabpot/twig-the-flexible-fast-and-securetemplate-language-for-php" target="_blank" rel="noopener">http://www.slideshare.net/fabpot/twig-the-flexible-fast-and-securetemplate-language-for-php</a>,
+                                <a href="http://www.slideshare.net/javier.eguiluz/twig-tips-and-tricks" target="_blank" rel="noopener">http://www.slideshare.net/javier.eguiluz/twig-tips-and-tricks</a>,
+                                <a href="http://www.slideshare.net/javier.eguiluz/mastering-twig-druaplcon-barcelona-2015" target="_blank" rel="noopener">http://www.slideshare.net/javier.eguiluz/mastering-twig-druaplcon-barcelona-2015</a>
+                            </p>
+                            <p>Note: After Twig parser configuration change delete Twig's cache. This is not always necessary, but you do it just in case.</p>
+
+                            <table class="ui celled fixed table">
+
+                                <thead>
+
+                                    <tr>
+                                        <th class="eight wide">Twig Code</th>
+                                        <th class="eight wide">Result</th>
+                                    </tr>
+
+                                </thead>
+
+                                <tfoot class="mobile hidden">
+
+                                    <tr>
+                                        <th>Twig Code</th>
+                                        <th>Result</th>
+                                    </tr>
+
+                                </tfoot>
+
+                                <tbody>
+
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
+                                            <h4>Accessing Variables</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ template.title }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ template.title }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ template.module }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ template.module }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ template.controller }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ template.controller }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ template.method }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ template.method }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}Hello, {{ name }}!{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+Hello, {{ name }}!
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ value_0 }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ value_0 }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ value_1 }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ value_1 }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ value_2 }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ value_2 }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ value_3 }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ value_3 }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ string_123 }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ string_123 }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ dog|<strong>raw</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/raw.html" target="_blank" rel="noopener">raw</a>
+                                        </td>
+                                        <td>
+{{ dog|raw }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ dog_entities|<strong>raw</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ dog_entities|raw }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ _charset }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ _charset }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ _context.name }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ _context.name }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(_self) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(_self) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
+                                            <h4>Debugging Previews (Available Only on Non-Production Environments)</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>print_d</strong>(array_1) }}{% endverbatim %}</code></pre>
+<a href="https://github.com/vikerlane/print_d" target="_blank" rel="noopener">print_d</a>
+                                        </td>
+                                        <td>
+{{ print_d(array_1) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>dump</strong>(array_1) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/dump.html" target="_blank" rel="noopener">dump</a>
+                                        </td>
+                                        <td>
+{{ dump(array_1) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>print_r</strong>(array_1) }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.print-r.php" target="_blank" rel="noopener">print_r</a>
+                                        </td>
+                                        <td>
+{{ print_r(array_1) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>var_export</strong>(array_1) }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.var-export.php" target="_blank" rel="noopener">var_export</a>
+                                        </td>
+                                        <td>
+{{ var_export(array_1) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
+                                            <h4>Checking if a Variable Exists, and If a Variable is Empty</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% if foo is defined %}
+    Foo Exists
+{% elseif foo is not <strong>defined</strong> %}
+    Foo Does Not Exist
+{% endif %}
+&lt;br /&gt;
+{% if foo is <strong>defined</strong> and foo is not same as('bar') %}
+    Something here
+{% else %}
+    Nothing here
+{% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tests/defined.html" target="_blank" rel="noopener">defined</a>
+                                        </td>
+                                        <td>
+{% if foo is defined %}
+    Foo Exists
+{% elseif foo is not defined %}
+    Foo Does Not Exist
+{% endif %}
+<br />
+{% if foo is defined and foo is not same as('bar') %}
+    Something here
+{% else %}
+    Nothing here
+{% endif %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(value_0 is <strong>empty</strong>) }} {# Careful here, it is a differency in comparison to PHP. #}
+&lt;div class="clearfix"&gt;&lt;/div&gt;
+{{ print_d("" is <strong>empty</strong>) }}
+&lt;div class="clearfix"&gt;&lt;/div&gt;
+{{ print_d([] is <strong>empty</strong>) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tests/empty.html" target="_blank" rel="noopener">empty</a>
+                                        </td>
+                                        <td>
+{{ print_d(value_0 is empty) }} {# Careful here, it is a differency in comparison to PHP. #}
+<div class="clearfix"></div>
+{{ print_d("" is empty) }}
+<div class="clearfix"></div>
+{{ print_d([] is empty) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
+                                            <h4>Assigning Variables</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>set</strong> my_var = null %}
+{{ print_d(my_var) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tags/set.html" target="_blank" rel="noopener">set</a>
+                                        </td>
+                                        <td>
+{% set my_var = null %}
+{{ print_d(my_var) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>set</strong> my_var = "my variable" %}
+{{ print_d(my_var) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% set my_var = "my variable" %}
+{{ print_d(my_var) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>set</strong> my_var = "10" %}
+{{ print_d(my_var) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% set my_var = "10" %}
+{{ print_d(my_var) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>set</strong> my_var = array_1 %}
+{{ print_d(my_var) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% set my_var = array_1 %}
+{{ print_d(my_var) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>set</strong> my_var = ['one', 'two', 'three'] %}
+{{ print_d(my_var) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% set my_var = ['one', 'two', 'three'] %}
+{{ print_d(my_var) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>set</strong> my_var = true %}
+{{ print_d(my_var) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% set my_var = true %}
+{{ print_d(my_var) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>set</strong> my_var = 10 %}
+{{ print_d(my_var) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% set my_var = 10 %}
+{{ print_d(my_var) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>set</strong> my_var = 250.5 %}
+{{ print_d(my_var) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% set my_var = 250.5 %}
+{{ print_d(my_var) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
+                                            <h4>Type Casting</h4>
+                                            <p>See <a href="http://php.net/manual/en/language.types.type-juggling.php#language.types.typecasting" target="_blank" rel="noopener">PHP Type Casting</a></p>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(1|<strong>boolean</strong>) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(1|boolean) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d("10"|<strong>integer</strong>) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d("10"|integer) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d("250.5"|<strong>float</strong>) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d("250.5"|float) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(250.5|<strong>string</strong>) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(250.5|string) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(250.5|<strong>array</strong>) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(250.5|array) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(250.5|<strong>object</strong>) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(250.5|object) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(250.5|<strong>null</strong>) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(250.5|null) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
+                                            <h4>Built-In Twig Tags, Functions, Filters, and Operators</h4>
+                                            <p>See <a href="http://twig.sensiolabs.org/documentation" target="_blank" rel="noopener">Twig Reference</a></p>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<p><a href="http://twig.sensiolabs.org/doc/templates.html#math" target="_blank" rel="noopener">Math operators</a>: +, -, /, %, //, *, **</p>
+<p><a href="http://twig.sensiolabs.org/doc/templates.html#math" target="_blank" rel="noopener">Logic operators</a>: and, or, not, (), b-and, b-xor, b-or</p>
+<p><a href="http://twig.sensiolabs.org/doc/templates.html#comparisons" target="_blank" rel="noopener">Comparisons</a>: ==, !=, &lt;, &gt;, &gt;=, &lt;=, <a href="http://twig.sensiolabs.org/doc/tests/sameas.html" target="_blank" rel="noopener">===</a>, starts with, ends with, matches</p>
+<p><a href="http://twig.sensiolabs.org/doc/templates.html#other-operators" target="_blank" rel="noopener">Other operators</a>: .., |, ~, ., [], ?:</p>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ (-10)|<strong>abs</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/abs.html" target="_blank" rel="noopener">abs</a>
+                                        </td>
+                                        <td>
+{{ (-10)|abs }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>attribute</strong>(template, 'title') }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/attribute.html" target="_blank" rel="noopener">attribute</a>
+                                        </td>
+                                        <td>
+{{ attribute(template, 'title') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>autoescape</strong> %}
+    {{ dog }} Static expressions &lt;strong&gt;are not&lt;/strong&gt; escaped.
+{% endautoescape %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tags/autoescape.html" target="_blank" rel="noopener">autoescape</a>
+                                        </td>
+                                        <td>
+{% autoescape %}
+    {{ dog }} Static expressions <strong>are not</strong> escaped.
+{% endautoescape %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>block</strong> separator %}&lt;div class="clearfix" /&gt;&lt;hr /&gt;{% endblock %}
+Line 1
+{{ <strong>block</strong>('separator') }}
+Line 2
+{{ <strong>block</strong>('separator') }}
+Line 3
+{{ <strong>block</strong>('separator') }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tags/block.html" target="_blank" rel="noopener">block (tag)</a>
+<a href="http://twig.sensiolabs.org/doc/functions/block.html" target="_blank" rel="noopener">block (function)</a>
+                                        </td>
+                                        <td>
+{% block separator %}<div class="clearfix" /><hr />{% endblock %}
+Line 1
+{{ block('separator') }}
+Line 2
+{{ block('separator') }}
+Line 3
+{{ block('separator') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ ['a', 'b', 'c', 'd', 'e', 'f', 'g']|<strong>batch</strong>(3, 'x') }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/batch.html" target="_blank" rel="noopener">batch</a>
+                                        </td>
+                                        <td>
+{{ print_d(['a', 'b', 'c', 'd', 'e', 'f', 'g']|batch(3, 'x')) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ "limp bizkit"|<strong>capitalize</strong> }}
+&lt;br /&gt;
+{{ "лимп бизкит"|<strong>capitalize</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/capitalize.html" target="_blank" rel="noopener">capitalize</a>
+                                        </td>
+                                        <td>
+{{ "limp bizkit"|capitalize }}
+<br />
+{{ "лимп бизкит"|capitalize }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>constant</strong>('BASE_URL') }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/constant.html" target="_blank" rel="noopener">constant (function)</a>
+<a href="http://twig.sensiolabs.org/doc/tests/constant.html" target="_blank" rel="noopener">constant (test)</a>
+                                        </td>
+                                        <td>
+{{ constant('BASE_URL') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ "limp bizkit"|<strong>convert_encoding</strong>('HTML-ENTITIES', _charset) }}
+&lt;br /&gt;
+{{ "лимп бизкит"|<strong>convert_encoding</strong>('HTML-ENTITIES', _charset) }}
+&lt;br /&gt;
+{{ "лимп бизкит"|<strong>convert_encoding</strong>('HTML-ENTITIES', _charset)|raw }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/convert_encoding.html" target="_blank" rel="noopener">convert_encoding</a>
+                                        </td>
+                                        <td>
+{{ "limp bizkit"|convert_encoding('HTML-ENTITIES', _charset) }}
+<br />
+{{ "лимп бизкит"|convert_encoding('HTML-ENTITIES', _charset) }}
+<br />
+{{ "лимп бизкит"|convert_encoding('HTML-ENTITIES', _charset)|raw }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% for i in 0..10 %}
+    {{ <strong>cycle</strong>(array_1, i) }}&lt;br /&gt;
+{% endfor %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/cycle.html" target="_blank" rel="noopener">cycle</a>
+                                        </td>
+                                        <td>
+{% for i in 0..10 %}
+    {{ cycle(array_1, i) }}<br />
+{% endfor %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(<strong>date()</strong>) }}
+&lt;div class="clearfix"&gt;&lt;/div&gt;
+{{ "now"|<strong>date</strong>("Y-m-d H:i:s") }}
+&lt;br /&gt;
+{{ "now"|<strong>date</strong>("Y") }}
+&lt;br /&gt;
+{{ 2524608000|<strong>date</strong>("Y") }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/date.html" target="_blank" rel="noopener">date (function)</a>
+<a href="http://twig.sensiolabs.org/doc/filters/date.html" target="_blank" rel="noopener">date (filter)</a>
+                                        </td>
+                                        <td>
+{{ print_d(date()) }}
+<div class="clearfix"></div>
+{{ "now"|date("Y-m-d H:i:s") }}
+<br />
+{{ "now"|date("Y") }}
+<br />
+{{ 2524608000|date("Y") }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ date()|<strong>date_modify</strong>("+1 day")|date("Y-m-d") }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/date_modify.html" target="_blank" rel="noopener">date_modify</a>
+                                        </td>
+                                        <td>
+{{ date()|date_modify("+1 day")|date("Y-m-d") }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ undefined_or_empty_variable|<strong>default</strong>("Undefined or empty variable.") }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/default.html" target="_blank" rel="noopener">default</a>
+                                        </td>
+                                        <td>
+{{ undefined_or_empty_variable|default("Undefined or empty variable.") }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% if value_2 is <strong>divisible by</strong>(2) %}Yes{% else %}No{% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tests/divisibleby.html" target="_blank" rel="noopener">divisible by</a>
+                                        </td>
+                                        <td>
+{% if value_2 is divisible by(2) %}Yes{% else %}No{% endif %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% if undefined_or_empty_variable is not <strong>defined</strong> %}Not defined{% else %}Defined{% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tests/defined.html" target="_blank" rel="noopener">defined</a>
+                                        </td>
+                                        <td>
+{% if undefined_or_empty_variable is not defined %}Not defined{% else %}Defined{% endif %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>do</strong> 1 + 2 %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tags/do.html" target="_blank" rel="noopener">do</a>
+                                        </td>
+                                        <td>
+{% do 1 + 2 %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% autoescape false %}{{ dangerous_value|<strong>escape</strong> }}{% endautoescape %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/escape.html" target="_blank" rel="noopener">escape</a>
+                                        </td>
+                                        <td>
+{% autoescape false %}{{ dangerous_value|escape }}{% endautoescape %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<a href="http://twig.sensiolabs.org/doc/tags/embed.html" target="_blank" rel="noopener">embed</a>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% if string_empty is <strong>empty</strong> %}Empty{% else %}Non-empty{% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tests/empty.html" target="_blank" rel="noopener">empty</a>
+                                        </td>
+                                        <td>
+{% if string_empty is empty %}Empty{% else %}Non-empty{% endif %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% if value_2 is <strong>even</strong> %}Even{% else %}Odd{% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tests/even.html" target="_blank" rel="noopener">even</a>
+                                        </td>
+                                        <td>
+{% if value_2 is even %}Even{% else %}Odd{% endif %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<a href="http://twig.sensiolabs.org/doc/tags/extends.html" target="_blank" rel="noopener">extends</a>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ array_1|<strong>first</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/first.html" target="_blank" rel="noopener">first</a>
+                                        </td>
+                                        <td>
+{{ array_1|first }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>filter</strong> upper|raw %}
+limp bizkit
+&lt;br /&gt;
+лимп бизкит
+{% endfilter %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tags/filter.html" target="_blank" rel="noopener">filter</a>
+                                        </td>
+                                        <td>
+{% filter upper|raw %}
+limp bizkit
+<br />
+лимп бизкит
+{% endfilter %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<a href="http://twig.sensiolabs.org/doc/tags/flush.html" target="_blank" rel="noopener">flush</a>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}&lt;ul&gt;
+    {% <strong>for</strong> value in array_1 %}
+        &lt;li&gt;{{ value|e }}&lt;/li&gt;
+    {% endfor %}
+&lt;/ul&gt;{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tags/for.html" target="_blank" rel="noopener">for</a>
+                                        </td>
+                                        <td>
+<ul>
+    {% for value in array_1 %}
+        <li>{{ value|e }}</li>
+    {% endfor %}
+</ul>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ "There are %d monkeys in the %s."|<strong>format(5, 'tree')</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/format.html" target="_blank" rel="noopener">format</a>
+                                        </td>
+                                        <td>
+{{ "There are %d monkeys in the %s."|format(5, 'tree') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<a href="http://twig.sensiolabs.org/doc/tags/from.html" target="_blank" rel="noopener">from</a>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>if</strong> array_1[0] == 'One' %}Ok{% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tags/if.html" target="_blank" rel="noopener">if</a>
+                                        </td>
+                                        <td>
+{% if array_1[0] == 'one' %}Ok{% endif %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ array_1|<strong>join('; ')</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/join.html" target="_blank" rel="noopener">join</a>
+                                        </td>
+                                        <td>
+{{ array_1|join('; ') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<a href="http://twig.sensiolabs.org/doc/tags/import.html" target="_blank" rel="noopener">import</a>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% if 'one' <strong>in</strong> array_1 %}Yes{% else %}No{% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/templates.html#containment-operator" target="_blank" rel="noopener">in</a>
+                                        </td>
+                                        <td>
+{% if 'one' in array_1 %}Yes{% else %}No{% endif %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>include</strong>('test.html') }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tags/include.html" target="_blank" rel="noopener">include (tag)</a>
+<a href="http://twig.sensiolabs.org/doc/functions/include.html" target="_blank" rel="noopener">include (function)</a>
+                                        </td>
+                                        <td>
+{{ include('test.html') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% if value_1 <strong>is</strong> odd %}Odd{% else %}Even{% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/templates.html#test-operator" target="_blank" rel="noopener">is</a>
+                                        </td>
+                                        <td>
+{% if value_1 is odd %}Odd{% else %}Even{% endif %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% if array_1 is <strong>iterable</strong> %}Iterable{% else %}Non-iterable{% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tests/iterable.html" target="_blank" rel="noopener">iterable</a>
+                                        </td>
+                                        <td>
+{% if array_1 is iterable %}Iterable{% else %}Non-iterable{% endif %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ array_1|<strong>json_encode</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/json_encode.html" target="_blank" rel="noopener">json_encode</a>
+                                        </td>
+                                        <td>
+{{ array_1|json_encode }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(array_1|<strong>keys</strong>) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/keys.html" target="_blank" rel="noopener">keys</a>
+                                        </td>
+                                        <td>
+{{ print_d(array_1|keys) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ array_1|<strong>last</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/last.html" target="_blank" rel="noopener">last</a>
+                                        </td>
+                                        <td>
+{{ array_1|last }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ array_1|<strong>length</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/length.html" target="_blank" rel="noopener">length</a>
+                                        </td>
+                                        <td>
+{{ array_1|length }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ "LIMP BIZKIT"|<strong>lower</strong> }}
+&lt;br /&gt;
+{{ "ЛИМП БИЗКИТ"|<strong>lower</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/lower.html" target="_blank" rel="noopener">lower</a>
+                                        </td>
+                                        <td>
+{{ "LIMP BIZKIT"|lower }}
+<br />
+{{ "ЛИМП БИЗКИТ"|lower }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<a href="http://twig.sensiolabs.org/doc/tags/macro.html" target="_blank" rel="noopener">macro</a>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>max</strong>(array_1) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/max.html" target="_blank" rel="noopener">max</a>
+                                        </td>
+                                        <td>
+{{ max(array_1) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(array_1|<strong>merge</strong>(array_2)) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/merge.html" target="_blank" rel="noopener">merge</a>
+                                        </td>
+                                        <td>
+{{ print_d(array_1|merge(array_2)) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>min</strong>(array_1) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/min.html" target="_blank" rel="noopener">min</a>
+                                        </td>
+                                        <td>
+{{ min(array_1) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ "I like Twig.\nYou will like it too."|<strong>nl2br</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/nl2br.html" target="_blank" rel="noopener">nl2br</a>
+                                        </td>
+                                        <td>
+{{ "I like Twig.\nYou will like it too."|nl2br }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ 1234.56|<strong>number_format</strong>(2, ',', ' ') }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/number_format.html" target="_blank" rel="noopener">number_format</a>
+                                        </td>
+                                        <td>
+{{ 1234.56|number_format(2, ',', ' ') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% if value_null is <strong>null</strong> %}Null{% else %}Non-null{% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tests/null.html" target="_blank" rel="noopener">null</a>
+                                        </td>
+                                        <td>
+{% if value_null is null %}Null{% else %}Non-null{% endif %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% if value_1 is <strong>odd</strong> %}Odd{% else %}Even{% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tests/odd.html" target="_blank" rel="noopener">odd</a>
+                                        </td>
+                                        <td>
+{% if value_1 is odd %}Odd{% else %}Even{% endif %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<a href="http://twig.sensiolabs.org/doc/functions/parent.html" target="_blank" rel="noopener">parent</a>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ dog|<strong>raw</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/raw.html" target="_blank" rel="noopener">raw</a>
+                                        </td>
+                                        <td>
+{{ dog|raw }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>random</strong>(array_1) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/random.html" target="_blank" rel="noopener">random</a>
+                                        </td>
+                                        <td>
+{{ random(array_1) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(<strong>range</strong>(0, 3)) }}
+&lt;div class="clearfix"&gt;&lt;/div&gt;
+{{ print_d(0..3) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/range.html" target="_blank" rel="noopener">range</a>
+                                        </td>
+                                        <td>
+{{ print_d(range(0, 3)) }}
+<div class="clearfix"></div>
+{{ print_d(0..3) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ "I like %this% with %that%."|<strong>replace</strong>({'%this%': 'whiskey', '%that%': 'ice'}) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/replace.html" target="_blank" rel="noopener">replace</a>
+                                        </td>
+                                        <td>
+{{ "I like %this% with %that%."|replace({'%this%': 'whiskey', '%that%': 'ice'}) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(array_1|<strong>reverse</strong>) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/reverse.html" target="_blank" rel="noopener">reverse</a>
+                                        </td>
+                                        <td>
+{{ print_d(array_1|reverse) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ 42.55|<strong>round</strong> }}
+&lt;br /&gt;
+{{ 42.55|<strong>round</strong>(1, 'floor') }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/round.html" target="_blank" rel="noopener">round</a>
+                                        </td>
+                                        <td>
+{{ 42.55|round }}
+<br />
+{{ 42.55|round(1, 'floor') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% if value_1 is <strong>same as</strong>(1) %}It is the same (===){% else %}It is not the same (!==){% endif %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tests/sameas.html" target="_blank" rel="noopener">same as</a>
+                                        </td>
+                                        <td>
+{% if value_1 is same as(1) %}It is the same (===){% else %}It is not the same (!==){% endif %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<a href="http://twig.sensiolabs.org/doc/tags/sandbox.html" target="_blank" rel="noopener">sandbox</a>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% <strong>set</strong> counter = 1 %}
+{% for country in countries if counter <= 10 %}
+    {{ counter }} -- ({{ country.code }}) {{ country.name }}&lt;br /&gt;
+    {% <strong>set</strong> counter = counter + 1 %}
+{% endfor %}
+{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tags/set.html" target="_blank" rel="noopener">set</a>
+                                        </td>
+                                        <td>
+{% set counter = 1 %}
+{% for country in countries if counter <= 10 %}
+    {{ counter }} -- ({{ country.code }}) {{ country.name }}<br />
+    {% set counter = counter + 1 %}
+{% endfor %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ '12345'|<strong>slice</strong>(0, 2) }}
+&lt;br /&gt;
+{{ print_d(array_1|<strong>slice</strong>(0, 2)) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/slice.html" target="_blank" rel="noopener">slice</a>
+                                        </td>
+                                        <td>
+{{ '12345'|slice(0, 2) }}
+<br />
+{{ print_d(array_1|slice(0, 2)) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(array_1|<strong>sort</strong>) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/sort.html" target="_blank" rel="noopener">sort</a>
+                                        </td>
+                                        <td>
+{{ print_d(array_1|sort) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}&lt;pre&gt;&lt;code&gt;{{ <strong>source</strong>('test.html')|escape }}&lt;/code&gt;&lt;/pre&gt;{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/source.html" target="_blank" rel="noopener">source</a>
+                                        </td>
+                                        <td>
+<pre><code>{{ source('test.html')|escape }}</code></pre>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% filter escape('html') %}{% <strong>spaceless</strong> %}
+    &lt;div&gt;
+        &lt;strong&gt;spaceless&lt;/strong&gt;
+    &lt;/div&gt;
+{% endspaceless %}{% endfilter %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tags/spaceless.html" target="_blank" rel="noopener">spaceless</a>
+                                        </td>
+                                        <td>
+{% filter escape('html') %}{% spaceless %}
+    <div>
+        <strong>spaceless</strong>
+    </div>
+{% endspaceless %}{% endfilter %}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d("one, two, three"|<strong>split(', ')</strong>) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/split.html" target="_blank" rel="noopener">split</a>
+                                        </td>
+                                        <td>
+{{ print_d("one, two, three"|split(', ')) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ dog|<strong>striptags</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/striptags.html" target="_blank" rel="noopener">striptags</a>
+                                        </td>
+                                        <td>
+{{ dog|striptags }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ "limp bizkit"|<strong>title</strong> }}
+&lt;br /&gt;
+{{ "лимп бизкит"|<strong>title</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/title.html" target="_blank" rel="noopener">title</a>
+                                        </td>
+                                        <td>
+{{ "limp bizkit"|title }}
+<br />
+{{ "лимп бизкит"|title }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ include(<strong>template_from_string</strong>("Hello {{ name }}")) }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/functions/template_from_string.html" target="_blank" rel="noopener">template_from_string</a>
+                                        </td>
+                                        <td>
+{{ include(template_from_string("Hello {{ name }}")) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ "****STRING****"|<strong>trim</strong>('*') }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/trim.html" target="_blank" rel="noopener">trim</a>
+                                        </td>
+                                        <td>
+{{ "****STRING****"|trim('*') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ "limp bizkit"|<strong>upper</strong> }}
+&lt;br /&gt;
+{{ "лимп бизкит"|<strong>upper</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/upper.html" target="_blank" rel="noopener">upper</a>
+                                        </td>
+                                        <td>
+{{ "limp bizkit"|upper }}
+<br />
+{{ "лимп бизкит"|upper }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ "path-seg*ment"|<strong>url_encode</strong> }}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/url_encode.html" target="_blank" rel="noopener">url_encode</a>
+                                        </td>
+                                        <td>
+{{ "path-seg*ment"|url_encode }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<a href="http://twig.sensiolabs.org/doc/tags/use.html" target="_blank" rel="noopener">use</a>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}&lt;pre&gt;&lt;code&gt;{% filter escape('html') %}{% <strong>verbatim</strong> %}&lt;ul&gt;
+    {% for value in array_1 %}
+        &lt;li&gt;{{ value|e }}&lt;/li&gt;
+    {% endfor %}
+&lt;/ul&gt;{&#37 endverbatim %}{% endfilter %}&lt;/code&gt;&lt;/pre&gt;{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tags/verbatim.html" target="_blank" rel="noopener">verbatim</a>
+                                        </td>
+                                        <td>
+<pre><code>{% filter escape('html') %}{% verbatim %}<ul>
+    {% for value in array_1 %}
+        <li>{{ value|e }}</li>
+    {% endfor %}
+</ul>{% endverbatim %}{% endfilter %}</code></pre>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
+                                            <h4>PHP Functions</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ array_1|<strong>count</strong> }}
+&lt;br /&gt;
+{{ array_2|<strong>count</strong> }}
+&lt;br /&gt;
+{{ array_2|<strong>count</strong>(true) }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.count.php" target="_blank" rel="noopener">count</a>
+                                        </td>
+                                        <td>
+{{ array_1|count }}
+<br />
+{{ array_2|count }}
+<br />
+{{ array_2|count(true) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ array_1|<strong>gettype</strong> }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.gettype.php" target="_blank" rel="noopener">gettype</a>
+                                        </td>
+                                        <td>
+{{ array_1|gettype }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ array_1 <strong>is array</strong> }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.is-array.php" target="_blank" rel="noopener">is_array</a>
+                                        </td>
+                                        <td>
+{{ array_1 is array }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ boolean_true <strong>is bool</strong> }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.is-bool.php" target="_blank" rel="noopener">is_bool</a>
+                                        </td>
+                                        <td>
+{{ boolean_true is bool }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ boolean_true <strong>is boolean</strong> }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.is-bool.php" target="_blank" rel="noopener">an alias of is_bool()</a>
+                                        </td>
+                                        <td>
+{{ boolean_true is boolean }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ float_value <strong>is float</strong> }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.is-float.php" target="_blank" rel="noopener">is_float</a>
+                                        </td>
+                                        <td>
+{{ float_value is float }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ value_0 <strong>is int</strong> }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.is-int.php" target="_blank" rel="noopener">is_int</a>
+                                        </td>
+                                        <td>
+{{ value_0 is int }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ value_0 <strong>is integer</strong> }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.is-integer.php" target="_blank" rel="noopener">is_integer</a>
+                                        </td>
+                                        <td>
+{{ value_0 is integer }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ string_10 <strong>is numeric</strong> }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.is-numeric.php" target="_blank" rel="noopener">is_numeric</a>
+                                        </td>
+                                        <td>
+{{ string_10 is numeric }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ object_123 <strong>is object</strong> }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.is-object.php" target="_blank" rel="noopener">is_iobject</a>
+                                        </td>
+                                        <td>
+{{ object_123 is object }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ string_123 <strong>is scalar</strong> }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.is-scalar.php" target="_blank" rel="noopener">is_scalar</a>
+                                        </td>
+                                        <td>
+{{ string_123 is scalar }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ string_123 <strong>is string</strong> }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.is-string.php" target="_blank" rel="noopener">is_string</a>
+                                        </td>
+                                        <td>
+{{ string_123 is string }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ '****STRING****'|<strong>ltrim</strong>('*') }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.ltrim.php" target="_blank" rel="noopener">ltrim</a>
+                                        </td>
+                                        <td>
+{{ '****STRING****'|ltrim('*') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ 1234.56|<strong>money_format</strong>('%i') }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.money-format.php" target="_blank" rel="noopener">money_format</a>
+                                        </td>
+                                        <td>
+{{ 1234.56|money_format('%i') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ '****STRING****'|<strong>rtrim</strong>('*') }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.rtrim.php" target="_blank" rel="noopener">rtrim</a>
+                                        </td>
+                                        <td>
+{{ '****STRING****'|rtrim('*') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ 'There are %d monkeys in the %s.'|<strong>sprintf</strong>(5, 'tree') }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.sprintf.php" target="_blank" rel="noopener">sprintf</a>
+                                        </td>
+                                        <td>
+{{ 'There are %d monkeys in the %s.'|sprintf(5, 'tree') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ 'abcdEf'|<strong>stripos</strong>('deF') }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.stripos.php" target="_blank" rel="noopener">stripos</a>
+                                        </td>
+                                        <td>
+{{ 'abcdEf'|stripos('deF') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ 'abcdef'|<strong>strpos</strong>('def') }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.strpos.php" target="_blank" rel="noopener">strpos</a>
+                                        </td>
+                                        <td>
+{{ 'abcdef'|strpos('def') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ 'The quick brown fox jumped over the lazy dog.'|<strong>wordwrap</strong>(20)|nl2br }}{% endverbatim %}</code></pre>
+<a href="http://php.net/manual/en/function.wordwrap.php" target="_blank" rel="noopener">wordwrap</a>
+                                        </td>
+                                        <td>
+{{ 'The quick brown fox jumped over the lazy dog.'|wordwrap(20)|nl2br }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
+                                            <h4>CodeIgniter's Helpers</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ "Very long text. Very long text."|<strong>character_limiter</strong>(10) }}
+&lt;br /&gt;
+{{ very_long_text|<strong>character_limiter</strong>(10, "&amp;#8230;") }}{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/helpers/text_helper.html#character_limiter" target="_blank" rel="noopener">character_limiter</a>
+                                        </td>
+                                        <td>
+{{ "Very long text. Very long text."|character_limiter(10) }}
+<br />
+{{ very_long_text|character_limiter(10, "&#8230;") }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ 'abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef'|<strong>ellipsize</strong>(20) }}{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/helpers/text_helper.html#ellipsize" target="_blank" rel="noopener">ellipsize</a>
+                                        </td>
+                                        <td>
+{{ 'abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef'|ellipsize(20) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ dog|<strong>highlight_phrase</strong>('dog')|xss_clean }}{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/helpers/text_helper.html#highlight_phrase" target="_blank" rel="noopener">highlight_phrase</a>
+                                        </td>
+                                        <td>
+{{ dog|highlight_phrase('dog')|xss_clean }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ 'FILE_READ_MODE'|<strong>humanize</strong> }}
+&lt;br /&gt;
+{{ 'FILE_READ_MODE'|<strong>humanize</strong>('_') }}
+&lt;br /&gt;
+{{ 'трейси_чапман'|<strong>humanize</strong> }}{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/helpers/inflector_helper.html#humanize" target="_blank" rel="noopener">humanize</a>
+                                        </td>
+                                        <td>
+{{ 'FILE_READ_MODE'|humanize }}
+<br />
+{{ 'FILE_READ_MODE'|humanize('_') }}
+<br />
+{{ 'трейси_чапман'|humanize }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}&lt;div id=&quot;map_canvas&quot; class=&quot;google-maps&quot;&gt;&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;{{ <strong>is_https</strong>() ? 'https:' : 'http:' }}//maps.google.com/maps/api/js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+//&lt;![CDATA[
+
+$(function() {
+
+    var map;
+    var map_marker;
+
+    var data = {
+        latitude: 42.66667,
+        longitude: 25.25,
+        zoom: 6
+    }
+
+    var position = new google.maps.LatLng(data.latitude, data.longitude);
+
+    var options = {
+         center: position,
+         zoom: data.zoom,
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+     };
+
+     map = new google.maps.Map(document.getElementById(&#039;map_canvas&#039;), options);
+     map_marker = new google.maps.Marker({map: map, position: position});
+});
+
+//]]&gt;
+&lt;/script&gt;{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/general/common_functions.html#is_https" target="_blank" rel="noopener">is_https</a>
+                                        </td>
+                                        <td>
+<div id="map_canvas" class="google-maps"></div>
+
+<script type="text/javascript" src="{{ is_https() ? 'https:' : 'http:' }}//maps.google.com/maps/api/js"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+
+$(function() {
+
+    var map;
+    var map_marker;
+
+    var data = {
+        latitude: 42.66667,
+        longitude: 25.25,
+        zoom: 6
+    }
+
+    var position = new google.maps.LatLng(data.latitude, data.longitude);
+
+    var options = {
+         center: position,
+         zoom: data.zoom,
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+     };
+
+     map = new google.maps.Map(document.getElementById('map_canvas'), options);
+     map_marker = new google.maps.Marker({map: map, position: position});
+});
+
+//]]>
+</script>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ 'contact@example.com'|<strong>safe_mailto</strong>('Contact Us', 'alt="Contact Us"') }}{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/helpers/url_helper.html#safe_mailto" target="_blank" rel="noopener">safe_mailto</a>
+                                        </td>
+                                        <td>
+{{ 'contact@example.com'|safe_mailto('Contact Us', 'alt="Contact Us"') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ 1451529295|<strong>timespan</strong> }}{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/helpers/date_helper.html#timespan" target="_blank" rel="noopener">timespan</a>
+                                        </td>
+                                        <td>
+{{ 1451529295|timespan }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ 'Limp Bizkit'|<strong>url_title</strong>('-', true) }}
+&lt;br /&gt;
+{{ 'Лимп Бизкит'|<strong>url_title</strong>('-', true, true) }}{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/helpers/url_helper.html#url_title" target="_blank" rel="noopener">url_title</a>
+                                        </td>
+                                        <td>
+{{'Limp Bizkit'|url_title('-', true) }}
+<br />
+{{ 'Лимп Бизкит'|url_title('-', true, true) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ 'abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef'|<strong>word_limiter</strong>(5) }}{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/helpers/text_helper.html#word_limiter" target="_blank" rel="noopener">word_limiter</a>
+                                        </td>
+                                        <td>
+{{ 'abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef abcdef'|word_limiter(5) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ 'The quick brown fox jumped over the lazy dog.'|<strong>word_wrap</strong>(20)|nl2br }}{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/helpers/text_helper.html#word_wrap" target="_blank" rel="noopener">word_wrap</a>
+
+                                        </td>
+                                        <td>
+{{ 'The quick brown fox jumped over the lazy dog.'|word_wrap(20)|nl2br }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
+                                            <h4>Session</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>session</strong>('sess_var_1', 'test_1') }} &lt;!-- Set --&gt;
+{{ <strong>session</strong>('sess_var_1') }} &lt;!-- Get --&gt;{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/libraries/sessions.html#retrieving-session-data" target="_blank" rel="noopener">session-&gt;userdata</a>
+<a href="https://codeigniter.com/user_guide/libraries/sessions.html#adding-session-data" target="_blank" rel="noopener">session-&gt;set_userdata</a>
+
+                                        </td>
+                                        <td>
+{{ session('sess_var_1', 'test_1') }} <!-- Set -->
+{{ session('sess_var_1') }} <!-- Get -->
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>session_flash</strong>('sess_var_2', 'test_2') }} &lt;!-- Set --&gt;
+{{ <strong>session_flash</strong>('sess_var_2') }} &lt;!-- Get --&gt;{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/libraries/sessions.html#flashdata" target="_blank" rel="noopener">session-&gt;flashdata</a>
+                                        </td>
+                                        <td>
+{{ session_flash('sess_var_2', 'test_2') }} <!-- Set -->
+{{ session_flash('sess_var_2') }} <!-- Get -->
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>session_temp</strong>('sess_var_3', 'test_3') }} &lt;!-- Set --&gt;
+{{ <strong>session_temp</strong>('sess_var_3') }} &lt;!-- Get --&gt;
+&lt;br /&gt;
+{{ <strong>session_temp</strong>('sess_var_4', 'test_4', 1000) }} &lt;!-- Set with TTL in seconds, the default is 300 --&gt;
+{{ <strong>session_temp</strong>('sess_var_4') }} &lt;!-- Get --&gt;{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/libraries/sessions.html#tempdata" target="_blank" rel="noopener">session-&gt;tempdata</a>
+                                        </td>
+                                        <td>
+{{ session_temp('sess_var_3', 'test_3') }} <!-- Set -->
+{{ session_temp('sess_var_3') }} <!-- Get -->
+<br />
+{{ session_temp('sess_var_4', 'test_4', 1000) }} <!-- Set with TTL in seconds, the default is 300 -->
+{{ session_temp('sess_var_4') }} <!-- Get -->
+                                        </td>
+                                    </tr>
+
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
+                                            <h4>Useful Constants</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>BASE_URL</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('BASE_URL') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>BASE_URI</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('BASE_URI') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>SERVER_URL</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('SERVER_URL') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>SITE_URL</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('SITE_URL') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>SITE_URI</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('SITE_URI') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>CURRENT_SITE_URL</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('CURRENT_SITE_URL') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>CURRENT_SITE_URI</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('CURRENT_SITE_URI') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>CURRENT_URL</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('CURRENT_URL') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>CURRENT_URI</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('CURRENT_URI') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(constant('<strong>CURRENT_URL_IS_HTTPS</strong>')) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(constant('CURRENT_URL_IS_HTTPS')) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>CURRENT_URL_PROTOCOL</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('CURRENT_URL_PROTOCOL') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>CURRENT_URL_HOST</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('CURRENT_URL_HOST') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>CURRENT_URL_PORT</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('CURRENT_URL_PORT') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>CURRENT_URI_STRING</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('CURRENT_URI_STRING') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>CURRENT_QUERY_STRING</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('CURRENT_QUERY_STRING') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>DEFAULT_BASE_URL</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('DEFAULT_BASE_URL') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>DEFAULT_BASE_URI</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('DEFAULT_BASE_URI') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>ASSET_URL</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('ASSET_URL') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>ASSET_URI</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('ASSET_URI') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>THEME_ASSET_URL</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('THEME_ASSET_URL') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>THEME_ASSET_URI</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('THEME_ASSET_URI') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>ASSET_IMG_URL</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('ASSET_IMG_URL') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>ASSET_IMG_URI</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('ASSET_IMG_URI') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>ASSET_JS_URL</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('ASSET_JS_URL') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>ASSET_JS_URI</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('ASSET_JS_URI') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>ASSET_CSS_URL</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('ASSET_CSS_URL') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>ASSET_CSS_URI</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('ASSET_CSS_URI') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>THEME_IMG_URL</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('THEME_IMG_URL') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>THEME_IMG_URI</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('THEME_IMG_URI') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>THEME_JS_URL</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('THEME_JS_URL') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>THEME_JS_URI</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('THEME_JS_URI') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>THEME_CSS_URL</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('THEME_CSS_URL') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>THEME_CSS_URI</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('THEME_CSS_URI') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>PUBLIC_UPLOAD_URL</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('PUBLIC_UPLOAD_URL') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(constant('<strong>UA_IS_MOBILE</strong>')) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(constant('UA_IS_MOBILE')) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(constant('<strong>UA_IS_ROBOT</strong>')) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(constant('UA_IS_ROBOT')) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(constant('<strong>UA_IS_REFERRAL</strong>')) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(constant('UA_IS_REFERRAL')) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>CI_VERSION</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('CI_VERSION') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>PLATFORM_VERSION</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('PLATFORM_VERSION') }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ constant('<strong>Twig_Environment::VERSION</strong>') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ constant('Twig_Environment::VERSION') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
+                                            <h4>Configuration, Settings</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>config</strong>('language') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ config('language') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>setting</strong>('contact_address') }} &lt;!-- This result is language-sensitive. --&gt;{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ setting('contact_address') }} <!-- This result is language-sensitive. -->
+                                        </td>
+                                    </tr>
+
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
+                                            <h4>HTML</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% filter <strong>html_code</strong> %}&lt;div&gt;&lt;/div&gt;{% endfilter %}
+&lt;br /&gt;
+{% filter <strong>html_code</strong> %}{% verbatim %}&lt;div&gt;{{ dog }}&lt;/div&gt;{&#37; endverbatim %}{% endfilter %}
+&lt;br /&gt;
+{{ dog|<strong>html_code</strong> }}
+{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% filter html_code %}<div></div>{% endfilter %}
+<br />
+{% filter html_code %}{% verbatim %}<div>{{ dog }}</div>{% endverbatim %}{% endfilter %}
+<br />
+{{ dog|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ dangerous_value|<strong>xss_clean</strong> }}{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/libraries/security.html#xss-filtering" target="_blank" rel="noopener">security-&gt;xss_clean</a>
+                                        </td>
+                                        <td>
+{{ dangerous_value|xss_clean }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
+                                            <h4>Formatters, Parsers</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% filter <strong>markdown</strong> %} Formatted **text** {% endfilter %}
+{{ string_markdown|<strong>markdown</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% filter markdown %} Formatted **text** {% endfilter %}
+{{ string_markdown|markdown }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{% filter <strong>textile</strong> %} Formatted **text** {% endfilter %}
+{{ string_textile|<strong>textile</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{% filter textile %} Formatted **text** {% endfilter %}
+{{ string_textile|textile }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
+                                            <h4>Platform Routines</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>gravatar</strong>('ivantcholakov@gmail.com', 50, 'g') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ gravatar('ivantcholakov@gmail.com', 50, 'g') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ 'Pink Floyd'|<strong>slugify</strong>('-') }}
+&lt;br /&gt;
+{{ 'Пинк Флойд'|<strong>slugify</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ 'Pink Floyd'|slugify('-') }}
+<br />
+{{ 'Pink Floyd'|slugify }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}Fit an Image by Width
+&lt;br /&gt;
+&lt;img src=&quot;{{ <strong>thumbnail</strong>(my_image, 120) }}&quot; /&gt;
+&lt;br &gt;
+width = 120px
+
+&lt;hr /&gt;
+
+Fit an Image by Height
+&lt;br /&gt;
+&lt;img src=&quot;{{ <strong>thumbnail</strong>(my_image, null, 120) }}&quot; /&gt;
+&lt;br &gt;
+height = 120px
+
+&lt;hr /&gt;
+
+Fit an Image by Width and Height
+&lt;br /&gt;
+&lt;img src=&quot;{{ <strong>thumbnail</strong>(my_image, 180, 120) }}&quot; /&gt;
+&lt;br &gt;
+width = 180px, height = 120px
+
+&lt;hr /&gt;
+
+Resize an Image Within Width and Height
+&lt;br /&gt;
+&lt;div class=&quot;image-container image-container-180x120&quot;&gt;
+    &lt;img src=&quot;{{ <strong>thumbnail</strong>(my_image, 180, 120, true) }}&quot; /&gt;
+&lt;/div&gt;
+width = 180px, height = 120px
+
+&lt;hr /&gt;
+
+Fit an Image Within a Canvas with Given Width and Height
+&lt;br /&gt;
+&lt;div class=&quot;image-container image-container-180x120&quot;&gt;
+    &lt;img src=&quot;{{ <strong>thumbnail</strong>(my_image, 180, 120, true, true) }}&quot; /&gt;
+&lt;/div&gt;
+width = 180px, height = 120px{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+Fit an Image by Width
+<br />
+<img src="{{ thumbnail(my_image, 120) }}" />
+<br >
+width = 120px
+
+<hr />
+
+Fit an Image by Height
+<br />
+<img src="{{ thumbnail(my_image, null, 120) }}" />
+<br >
+height = 120px
+
+<hr />
+
+Fit an Image by Width and Height
+<br />
+<img src="{{ thumbnail(my_image, 180, 120) }}" />
+<br >
+width = 180px, height = 120px
+
+<hr />
+
+Resize an Image Within Width and Height
+<br />
+<div class="image-container image-container-180x120">
+    <img src="{{ thumbnail(my_image, 180, 120, true) }}" />
+</div>
+width = 180px, height = 120px
+
+<hr />
+
+Fit an Image Within a Canvas with Given Width and Height
+<br />
+<div class="image-container image-container-180x120">
+    <img src="{{ thumbnail(my_image, 180, 120, true, true) }}" />
+</div>
+width = 180px, height = 120px
+                                        </td>
+                                    </tr>
+
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
+                                            <h4>Web Assets</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>css</strong>('lib/common/common.min.css')|e }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ css('lib/common/common.min.css')|e }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>css</strong>('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', 'integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"')|e }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ css('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', 'integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"')|e }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>css</strong>('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', {'integrity': 'sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7', 'crossorigin': 'anonymous'})|e }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ css('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', {'integrity': 'sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7', 'crossorigin': 'anonymous'})|e }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>css_path</strong>('lib/common/common.min.css') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ css_path('lib/common/common.min.css') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>css_url</strong>('lib/common/common.min.css') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ css_url('lib/common/common.min.css') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js</strong>('lib/modernizr/modernizr.custom.min.js')|e }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js('lib/modernizr/modernizr.custom.min.js')|e }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js</strong>('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', 'integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"')|e }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', 'integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"')|e }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js</strong>('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', {'integrity': 'sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS', 'crossorigin': 'anonymous'})|e }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', 'integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"')|e }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_path</strong>('lib/modernizr/modernizr.custom.min.js') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_path('lib/modernizr/modernizr.custom.min.js') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_url</strong>('lib/modernizr/modernizr.custom.min.js') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_url('lib/modernizr/modernizr.custom.min.js') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>image</strong>('lib/default-person.png', 'alt="No Photo"') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ image('lib/default-person.png', 'alt="No Photo"') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>image</strong>('lib/default-person.png', {'alt': 'No Photo'}) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ image('lib/default-person.png', {'alt': 'No Photo'}) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>image</strong>(thumbnail(my_image, 180, 120)) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ image(thumbnail(my_image, 180, 120)) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>image</strong>('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACy0lEQVRYw+2WMY/bRhCFvxlSCiFf+lTX21WKFAHS55/497jKzwiQOk3aFCnSxDHSXBUgvQ2fxCXnpeAuueRJOru5xjfASqslte/tmzdDwnM8x5cehln799u3yd2JiCcBLVgvX73atUAnidvbWyRNrMzm4e6Y2cI4r5c5MP9P0jwvvyNiXq/3v7u7A+haoI0IUkpIWgG7O5JmEjVgTaomURMp4BGxImJmRe3WgdXFS6dc5e0z17bkCymAtiZwboPteNRUm3vM7MHeNQE/R+Aa4DUSl+7f7vWAwDiOVzc9R2ZrzE/5Tx0FswX44ec3/Pjd93wcEuaONQ5mmBtgYGeAt5tXlbCsTR8KgYTGQBEc2h2//vH7QoAITscj90PC3TDPBMzAbNrHbI15gcA8lSbexdwSiiBCNO0ItQmROI0jg0YUhqG1AlPHYiWFrjix7geqFIjAJE6jz4SzAmJA9BGYG4qp9hUZ3A3TOhVs06v1XEV6wLLpLJPZuSC0ViDFSB8D4JMPYlIBA8Ys/yeU4aLAzGRWRBEQwT6ahwr0MdBH5NzlTpdBDUO2PfkFCfKXZRXQRELZhGjCWinw0y+/8e27f+HDe8yMxgzPEI7WnfGxw2/b8eQoAhiLN26+5s93//C6EBgR6ntIaT65suKqHG+bVNsFP6qMuTQrb0hY6hmoFBgFjAMaB5TLroBN2Aups1nQGSKlB2yvSWgYJ8xCIAF9SpASOwOvci7bNKIHOqxfL5SvZe9NqajSMgpiSKTahH3Tci9ovMEbnzzgS+Wvhi2HXz3himpa0/NMJioz9oJj01YKfNXxcd/RHW7o9jv2jdO6Y5YfFqW/a+nM5wjMlWdL/iPLHhgmMaSB4+lEv+8WArvDC/46BR3wojE6HA/j8arX1be9dWqmyrsf4P0paA+HklK7Ab4Bbnja+AD8Z5i1QDc3paeLATjyHF98/A+hru2lkzlecAAAAABJRU5ErkJggg==') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ image('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACy0lEQVRYw+2WMY/bRhCFvxlSCiFf+lTX21WKFAHS55/497jKzwiQOk3aFCnSxDHSXBUgvQ2fxCXnpeAuueRJOru5xjfASqslte/tmzdDwnM8x5cehln799u3yd2JiCcBLVgvX73atUAnidvbWyRNrMzm4e6Y2cI4r5c5MP9P0jwvvyNiXq/3v7u7A+haoI0IUkpIWgG7O5JmEjVgTaomURMp4BGxImJmRe3WgdXFS6dc5e0z17bkCymAtiZwboPteNRUm3vM7MHeNQE/R+Aa4DUSl+7f7vWAwDiOVzc9R2ZrzE/5Tx0FswX44ec3/Pjd93wcEuaONQ5mmBtgYGeAt5tXlbCsTR8KgYTGQBEc2h2//vH7QoAITscj90PC3TDPBMzAbNrHbI15gcA8lSbexdwSiiBCNO0ItQmROI0jg0YUhqG1AlPHYiWFrjix7geqFIjAJE6jz4SzAmJA9BGYG4qp9hUZ3A3TOhVs06v1XEV6wLLpLJPZuSC0ViDFSB8D4JMPYlIBA8Ys/yeU4aLAzGRWRBEQwT6ahwr0MdBH5NzlTpdBDUO2PfkFCfKXZRXQRELZhGjCWinw0y+/8e27f+HDe8yMxgzPEI7WnfGxw2/b8eQoAhiLN26+5s93//C6EBgR6ntIaT65suKqHG+bVNsFP6qMuTQrb0hY6hmoFBgFjAMaB5TLroBN2Aups1nQGSKlB2yvSWgYJ8xCIAF9SpASOwOvci7bNKIHOqxfL5SvZe9NqajSMgpiSKTahH3Tci9ovMEbnzzgS+Wvhi2HXz3himpa0/NMJioz9oJj01YKfNXxcd/RHW7o9jv2jdO6Y5YfFqW/a+nM5wjMlWdL/iPLHhgmMaSB4+lEv+8WArvDC/46BR3wojE6HA/j8arX1be9dWqmyrsf4P0paA+HklK7Ab4Bbnja+AD8Z5i1QDc3paeLATjyHF98/A+hru2lkzlecAAAAABJRU5ErkJggg==') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>image_path</strong>('lib/default-person.png') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ image_path('lib/default-person.png') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>image_url</strong>('lib/default-person.png') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ image_url('lib/default-person.png') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
+                                            <h4>Template</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>template.title</strong>|raw }} &lt;!-- no tags, HTML escaped --&gt;{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ template.title|raw }} <!-- no tags, HTML escaped -->
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>template.page_title</strong> }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ template.page_title }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>body</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+-- Not to be shown here, use this function within layouts --
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>partial</strong>('twig_partial') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ partial('twig_partial') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>has_partial</strong>('twig_partial') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ has_partial('twig_partial') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>file_partial</strong>('test') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ file_partial('test') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>html_title</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ html_title()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>metadata</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ metadata()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>html_begin</strong>()|html_code }}
+{{ <strong>html_begin</strong>('class="my-class"')|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ html_begin()|html_code }}
+{{ html_begin('class="my-class"')|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>html_end</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ html_end()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>head_begin()</strong>|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ head_begin()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>head_end</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ head_end()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>body_begin</strong>()|html_code }}
+{{ <strong>body_begin</strong>('class="my-class"')|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ body_begin()|html_code }}
+{{ body_begin('class="my-class"')|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>body_end</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ body_end()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>meta_charset</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ meta_charset()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>base_href()</strong>|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ base_href()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>ie_edge</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ ie_edge()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>viewport</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ viewport()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>favicon</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ favicon()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>apple_touch_icon</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ apple_touch_icon()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>apple_touch_icon_precomposed</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ apple_touch_icon_precomposed()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>css_normalize</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ css_normalize()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_platform</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_platform()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_modernizr</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_modernizr()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_jquery</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_jquery()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>noscript</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ noscript()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>unsupported_browser</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ unsupported_browser()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_bp_plugins</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_bp_plugins()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_mbp_helper</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_mbp_helper()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>js_scale_fix_ios</strong>()|html_code }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ js_scale_fix_ios()|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
+                                            <h4>Visual Themes</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>theme_name</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ theme_name() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>theme_css</strong>('front.min.css')|e }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ theme_css('front.min.css')|e }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
+                                            <h4>URL/URI Handling</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>current_url</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ current_url() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>current_uri</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ current_uri() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>uri_string</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ uri_string() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>query_string</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ query_string() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>url_get</strong>('q_1') }}
+&lt;br /&gt;
+{{ print_d(<strong>url_get</strong>()) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ url_get('q_1') }}
+<br />
+{{ print_d(url_get()) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>site_url</strong>() }}
+&lt;br /&gt;
+&lt;a href="{{ <strong>site_url</strong>('playground') }}"&gt;The Playground&lt;/a&gt;{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ site_url() }}
+<br />
+<a href="{{ site_url('playground') }}">The Playground</a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>site_uri</strong>() }}
+&lt;br /&gt;
+&lt;a href="{{ <strong>site_uri</strong>('playground') }}"&gt;The Playground&lt;/a&gt;{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ site_uri() }}
+<br />
+<a href="{{ site_uri('playground') }}">The Playground</a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>base_url</strong>() }}
+&lt;br /&gt;
+{{ <strong>base_url</strong>('assets') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ base_url() }}
+<br />
+{{ base_url('assets') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>base_uri</strong>() }}
+&lt;br /&gt;
+{{ <strong>base_uri</strong>('assets') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ base_uri() }}
+<br />
+{{ base_uri('assets') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(<strong>segments</strong>()) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(segments()) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>segment</strong>(1) }}
+&lt;br /&gt;
+{{ <strong>segment</strong>(2) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ segment(1) }}
+<br />
+{{ segment(2) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>total_segments</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ total_segments() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(<strong>rsegments</strong>()) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(rsegments()) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>rsegment</strong>(1) }}
+&lt;br /&gt;
+{{ <strong>rsegment</strong>(2) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ rsegment(1) }}
+<br />
+{{ rsegment(2) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>total_rsegments</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ total_rsegments() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>anchor</strong>('playground/twig-parser', 'Twig Parser Test', 'class="test"') }}
+&lt;br /&gt;
+{{ <strong>anchor</strong>('playground/twig-parser', 'Twig Parser Test', {'class': 'test'}) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ anchor('playground/twig-parser', 'Twig Parser Test', 'class="test"') }}
+<br />
+{{ anchor('playground/twig-parser', 'Twig Parser Test', {'class': 'test'}) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>redirect</strong>('playground') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+-- Not applicable for this demo. --
+                                        </td>
+                                    </tr>
+
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
+                                            <h4>Language</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>lang</strong>('welcome.hello') }}
+&lt;br /&gt;
+{{ <strong>lang</strong>('ui_file_upload_success', '&lt;strong&gt;photo.png&lt;/strong&gt;')|raw }}{% endverbatim %}</code></pre>
+<a href="https://codeigniter.com/user_guide/libraries/language.html#fetching-a-line-of-text" target="_blank" rel="noopener">lang-&gt;line</a>
+                                        </td>
+                                        <td>
+{{ lang('welcome.hello') }}
+<br />
+{{ lang('ui_file_upload_success', '<strong>photo.png</strong>')|raw }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(<strong>lang_get</strong>()) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(lang_get()) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>lang_current</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang_current() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>lang_code</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang_code() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>lang_direction</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang_direction() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>lang_uri_segment</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang_uri_segment() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>lang_current_uri_segment</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang_current_uri_segment() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>lang_name</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang_name() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>lang_name_en</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang_name_en() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>lang_flag</strong>() }}
+&lt;br /&gt;
+&lt;img src="{{ asset_image_path file="lib/flags-iso/shiny/64/" }}{{ lang_flag }}.png" /&gt;{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ lang_flag() }}
+<br />
+<img src="{{ image_path('lib/flags-iso/shiny/64/') }}{{ lang_flag() }}.png" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ print_d(<strong>lang_enabled</strong>()) }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ print_d(lang_enabled()) }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>is_multilingual</strong>() }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ is_multilingual() }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
+                                            <h4>Widgets</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>widget</strong>('breadcrumb_widget') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ widget('breadcrumb_widget') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>widget</strong>('contact_map_widget') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ widget('contact_map_widget') }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<pre><code>{% verbatim %}{{ <strong>widget</strong>('contact_info_widget') }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ widget('contact_info_widget')}}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
+                                            <h4>Twig Template Inheritance Test</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<p>The layout base: themes/x/views/layouts/default_test.html.twig</p>
+{% filter html_code %}{% verbatim %}<!DOCTYPE html>
+<html>
+
+<head>
+{{ meta_charset() }}
+{{ html_title() }}
+</head>
+
+<body>
+
+    <div>
+        {% block content %}
+            <p>This is a static default text displayed within the template body.</p>
+        {% endblock %}
+    </div>
+
+    <div>
+        {% block sidebar %}
+            <p>The sidebar, default content, defined within a block "sidebar".<p>
+        {% endblock %}
+    </div>
+
+</body>
+
+</html>{% endverbatim %}{% endfilter %}
+
+<p>The template body: modules/playground/views/twig_template_inheritance_test.html.twig</p>
+{% filter html_code %}{% verbatim %}{% extends 'layouts/default_test.html' %}
+{% block content %}
+    {{ parent() }}
+    <p>{{ text_in_body }}</p>
+{% endblock %}{% endverbatim %}{% endfilter %}
+<a href="http://twig.sensiolabs.org/doc/tags/extends.html" target="_blank" rel="noopener">extends</a>
+<a href="http://twig.sensiolabs.org/doc/tags/block.html" target="_blank" rel="noopener">block (tag)</a>
+<a href="http://twig.sensiolabs.org/doc/functions/block.html" target="_blank" rel="noopener">block (function)</a>
+<a href="http://twig.sensiolabs.org/doc/functions/parent.html" target="_blank" rel="noopener">parent</a>
+<a href="http://twig.sensiolabs.org/doc/tags/use.html" target="_blank" rel="noopener">use</a>
+
+                                        </td>
+                                        <td>
+{{ twig_template_inheritance_test|html_code }}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="positive">
+                                        <td colspan="2" class="center aligned">
+                                            <h4>Miscellaneous Tests</h4>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+<p>Sample Template, test.html.twig:</p>
+<pre><code>{{ twig_test_source }}</code></pre>
+
+<p>PHP Code:</p>
+<pre><code>{% verbatim %}$twig_test_name = 'test.html.twig';
+$twig_test_path = $this->load->path($twig_test_name);
+$twig_test_source = @ (string) file_get_contents($twig_test_path);
+$twig_test_1 = $this->parser->parse_string($twig_test_source, array(), true, 'twig');
+$twig_test_2 = $this->load->view($twig_test_name, array(), true);{% endverbatim %}</code></pre>
+
+<p>Results To Be Shown:</p>
+<pre><code>{% verbatim %}{{ twig_test_1|raw }} &lt;hr /&gt; {{ twig_test_2|raw }}{% endverbatim %}</code></pre>
+                                        </td>
+                                        <td>
+{{ twig_test_1|raw }} <hr /> {{ twig_test_2|raw }}
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>

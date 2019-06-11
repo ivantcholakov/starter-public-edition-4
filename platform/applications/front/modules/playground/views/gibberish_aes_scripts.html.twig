@@ -1,0 +1,70 @@
+{#
+Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2016
+The MIT License, http://opensource.org/licenses/MIT
+#}
+
+{{ js('lib/gibberish-aes/gibberish-aes.min.js') }}
+
+    <script type="text/javascript">
+    //<![CDATA[
+
+    $(function () {
+
+        var pass = {{ pass|json_encode|raw }}; // Unsafe in browser environment, of course. Invent your own way for masking the secret pass-phrase (theoretically it would be unsafe too, sorry).
+        var secret_string = {{ secret_string|json_encode|raw }};
+
+        GibberishAES.size(256);
+        var encrypted_secret_string_256 = GibberishAES.enc(secret_string, pass);
+        var decrypted_secret_string_256 = GibberishAES.dec(encrypted_secret_string_256, pass);
+        GibberishAES.size(192);
+        var encrypted_secret_string_192 = GibberishAES.enc(secret_string, pass);
+        var decrypted_secret_string_192 = GibberishAES.dec(encrypted_secret_string_192, pass);
+        GibberishAES.size(128);
+        var encrypted_secret_string_128 = GibberishAES.enc(secret_string, pass);
+        var decrypted_secret_string_128 = GibberishAES.dec(encrypted_secret_string_128, pass);
+        GibberishAES.size(256); // Restore the default key size.
+
+        $('#encrypted_secret_string_256').html(encrypted_secret_string_256);
+        $('#decrypted_secret_string_256').html(decrypted_secret_string_256);
+        $('#encrypted_secret_string_192').html(encrypted_secret_string_192);
+        $('#decrypted_secret_string_192').html(decrypted_secret_string_192);
+        $('#encrypted_secret_string_128').html(encrypted_secret_string_128);
+        $('#decrypted_secret_string_128').html(decrypted_secret_string_128);
+
+        GibberishAES.size(256);
+        var encrypted_secret_string_256_php = {{ encrypted_secret_string_256|json_encode|raw }};
+        var decrypted_secret_string_256_js = GibberishAES.dec(encrypted_secret_string_256_php, pass);
+        GibberishAES.size(192);
+        var encrypted_secret_string_192_php = {{ encrypted_secret_string_192|json_encode|raw }};
+        var decrypted_secret_string_192_js = GibberishAES.dec(encrypted_secret_string_192_php, pass);
+        GibberishAES.size(128);
+        var encrypted_secret_string_128_php = {{ encrypted_secret_string_128|json_encode|raw }};
+        var decrypted_secret_string_128_js = GibberishAES.dec(encrypted_secret_string_128_php, pass);
+        GibberishAES.size(256); // Restore the default key size.
+
+        $('#decrypted_secret_string_256_js').html(decrypted_secret_string_256_js);
+        $('#decrypted_secret_string_192_js').html(decrypted_secret_string_192_js);
+        $('#decrypted_secret_string_128_js').html(decrypted_secret_string_128_js);
+
+        $('#encrypted_secret_string_256_js').html(encrypted_secret_string_256);
+        $('#encrypted_secret_string_192_js').html(encrypted_secret_string_192);
+        $('#encrypted_secret_string_128_js').html(encrypted_secret_string_128);
+
+        $.ajax({
+            type: 'POST',
+            url: '{{ site_url('playground/gibberish-aes/ajax-decryption-test') }}',
+            data: {
+                encrypted_secret_string_256: encrypted_secret_string_256,
+                encrypted_secret_string_192: encrypted_secret_string_192,
+                encrypted_secret_string_128: encrypted_secret_string_128
+            },
+            success: function(data) {
+                $('#decrypted_secret_string_256_php').html(data.decrypted_secret_string_256);
+                $('#decrypted_secret_string_192_php').html(data.decrypted_secret_string_192);
+                $('#decrypted_secret_string_128_php').html(data.decrypted_secret_string_128);
+            }
+        });
+    });
+
+    //]]>
+    </script>

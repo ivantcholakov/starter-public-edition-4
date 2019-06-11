@@ -1,0 +1,22 @@
+
+{% if theme_switcher is not empty %}
+
+    {% set i = 0 %}
+
+    {% for key, item in theme_switcher %}
+
+        {% if i > 0 %} | {% endif %}
+
+        {% set anchor = anchor(item['link'], item['label']) %}
+
+        {% if item['active'] is not empty %}
+            <strong>{{ anchor|raw }}</strong>
+        {% else %}
+            {{ anchor|raw }}
+        {% endif %}
+
+        {% set i = i + 1 %}
+
+    {% endfor %}
+
+{% endif %}

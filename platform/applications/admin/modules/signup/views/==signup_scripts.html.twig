@@ -1,0 +1,205 @@
+
+
+
+
+<script type="text/javascript">
+    //<![CDATA[
+    
+$(function() {
+  $('.smartwizard-example').smartWizard({
+    autoAdjustHeight: false,
+    backButtonSupport: false,
+    useURLhash: false,
+    showStepURLhash: false
+  });
+
+
+// With validation
+$(function() {
+  var $form = $('#get-everpay');
+  var $btnFinish = $('<button class="btn-finish btn btn-primary hidden mr-2" type="button">Finish</button>');
+
+  // Set up validator
+  $form.validate({
+    errorPlacement: function errorPlacement(error, element) {
+      $(element).parents('.form-group').append(
+        error.addClass('invalid-feedback small d-block')
+      )
+    },
+    highlight: function(element) {
+      $(element).addClass('is-invalid');
+    },
+    unhighlight: function(element) {
+      $(element).removeClass('is-invalid');
+    },
+    rules: {
+      'wizard-confirm': {
+        equalTo: 'input[name="wizard-password"]'
+      }
+    }
+  });
+
+  // Initialize wizard
+  $form
+    .smartwizard({
+      autoAdjustHeight: false,
+      backButtonSupport: false,
+      useURLhash: false,
+      showStepURLhash: false,
+      toolbarSettings: {
+        toolbarExtraButtons: [$btnFinish]
+      }
+    })
+    .on('leaveStep', function(e, anchorObject, stepNumber, stepDirection) {
+      // stepDirection === 'forward' :- this condition allows to do the form validation
+      // only on forward navigation, that makes easy navigation on backwards still do the validation when going next
+      if (stepDirection === 'forward'){ return $form.valid(); }
+      return true;
+    })
+    .on('showStep', function(e, anchorObject, stepNumber, stepDirection) {
+      var $btn = $form.find('.btn-finish');
+
+      // Enable finish button only on last step
+      if (stepNumber === 3) {
+        $btn.removeClass('hidden');
+      } else {
+        $btn.addClass('hidden');
+      }
+    });
+
+  // Click on finish button
+  $form.find('.btn-finish').on('click', function(){
+    if (!$form.valid()){ return; }
+
+    // Submit form
+    alert("Great! We're ready to setup your account.");
+    return false;
+  });
+});
+
+    //]]>
+  </script>
+  
+ <script>
+    //<![CDATA[
+              var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+              var os = 'unknown';
+              var $btn = document.getElementsByClassName('signup-header__btn')[0];
+              var $getStarted = document.getElementsByClassName('signup-header__getstarted')[0];
+              var $btn_app_android = document.getElementsByClassName('signup-header__install--android')[0];
+              var $copy = document.getElementsByClassName('signup-header__p')[0];
+
+              if (/android/i.test(userAgent)) {
+                os = "Android";
+              }
+
+              if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                os = "iOS";
+              }
+
+              if (os == 'Android') {
+                $btn_app_android.style.float = "left";
+              } else if (os == 'unknown') {
+                $getStarted.classList.add('signup-header__getstarted--active');
+                $btn.classList.add('signup-header__btn--disable');
+                $copy.classList.add('signup-header__copy--minus');
+              }
+
+    //]]>
+  </script>
+  
+  <script type="text/javascript">
+//<![CDATA[
+        (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent".split(" "), 0);
+
+        branch.init('key_live_mevXmeYgLS0CW0SvwzTTZmkkAqfthkZw', function(err, data) {
+            // callback to handle err or data
+        });
+
+        window.signup_t = new Array();
+        window.signup_t['global.payments_boundaries'] = 'Payments without boundaries';
+        window.signup_t['signup.your_mobile_number'] = 'Your email address';
+        window.signup_t['signup.error'] = 'Error, try again or download the app <a href="/download/?r=signupError#download">here</a>';
+        window.signup_t['signup.sending_message'] = 'Sending message...';
+        window.signup_t['signup.link.description'] = 'Commerce without boundaries';
+        window.signup_t['signup.text_message_sent'] = 'Text message sent';
+        window.signup_t['signup.enter_a_mobile'] = 'Please enter a mobile';
+        window.signup_t['signup.enter_a_valid_number'] = 'Enter a valid email';
+        window.signup_t['signup.saving_name'] = 'Saving name...';
+
+        window.BRANCH_CHANNEL = 'Website';
+        window.BRANCH_CAMPAIGN = 'Website';
+        window.BRANCH_FEATURE = 'DownloadNow';
+        window.BRANCH_STAGE = 'new user';
+        window.MAILCHIMP_ID = '62e8a1c3e8';
+        window.PLAN = 'default';
+        window.PLAN = 'paid';
+
+    //]]>       
+</script>
+
+            
+    <script type="text/javascript">
+    //<![CDATA[
+
+    $(function () {
+
+        $('#signup_form').on('submit', function(e) {
+
+            $('> .ui.segment', this).addClass('loading');
+        });
+    });
+
+    //]]>
+    </script>
+    
+<script type="text/javascript">
+//<![CDATA[
+
+$(function () {
+    
+    $('.btn-radio').click(function(e) {
+        $('.btn-radio').not(this).removeClass('active')
+    		.siblings('input').prop('checked',false)
+            .siblings('.img-radio').css('opacity','0.5');
+    	$(this).addClass('active')
+            .siblings('input').prop('checked',true)
+    		.siblings('.img-radio').css('opacity','1');
+    });
+});
+          
+  $('#consumer-selection').click(function() {
+    $('#signup_form').block({
+      message: '<div class="sk-wave sk-primary"><div class="sk-rect sk-rect1"></div> <div class="sk-rect sk-rect2"></div> <div class="sk-rect sk-rect3"></div> <div class="sk-rect sk-rect4"></div> <div class="sk-rect sk-rect5"></div></div>',
+      css: {
+        backgroundColor: 'transparent',
+        border: '0'
+      },
+      overlayCSS:  {
+        backgroundColor: '#fff',
+        opacity: 0.8
+      }
+    });
+  });
+  
+  $('#business-selection').click(function() {
+    $('#signup_form').block({
+      message: '<div class="sk-wave sk-primary"><div class="sk-rect sk-rect1"></div> <div class="sk-rect sk-rect2"></div> <div class="sk-rect sk-rect3"></div> <div class="sk-rect sk-rect4"></div> <div class="sk-rect sk-rect5"></div></div>',
+      css: {
+        backgroundColor: 'transparent',
+        border: '0'
+      },
+      overlayCSS:  {
+        backgroundColor: '#fff',
+        opacity: 0.8
+      }
+    });
+  });
+
+  $('#signup_form').click(function() {
+    $('#signup_form').unblock();
+  });
+});    
+
+ //]]>
+</script> 

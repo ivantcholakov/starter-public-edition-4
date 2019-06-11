@@ -1,0 +1,76 @@
+-
+    headers: 'User-Agent: GoogleEarth/7.1.0002.2011(Android;Android (HTC One X-endeavoru-user-4.2.2);de-DE;kml:2.2;client:Free;type:default)'
+    result: { browser: { name: 'Google Earth', version: '7.1', type: app }, os: { name: Android, version: 4.2.2 }, device: { type: mobile, subtype: smart, manufacturer: HTC, model: 'One X' } }
+    readable: 'Google Earth 7.1 on a HTC One X running Android 4.2.2'
+-
+    headers: 'User-Agent: GoogleEarth/7.1.0003.1255(Android;Android (LG-E986-geefhd-user-4.1.2);de-DE;kml:2.2;client:Free;type:default)'
+    result: { browser: { name: 'Google Earth', version: '7.1', type: app }, os: { name: Android, version: 4.1.2 }, device: { type: mobile, subtype: smart, manufacturer: LG, model: 'Optimus G Pro' } }
+    readable: 'Google Earth 7.1 on a LG Optimus G Pro running Android 4.1.2'
+-
+    headers: 'User-Agent: GoogleEarth/7.1.0003.1255(Android;Android (HTC Sensation XE with Beats Audio Z715e-pyramid-user-4.0.3);de-DE;kml:2.2;client:Free;type:default)'
+    result: { browser: { name: 'Google Earth', version: '7.1', type: app }, os: { name: Android, version: 4.0.3 }, device: { type: mobile, subtype: smart, manufacturer: HTC, model: 'Sensation XE' } }
+    readable: 'Google Earth 7.1 on a HTC Sensation XE running Android 4.0.3'
+-
+    headers: 'User-Agent: XCON Android Application (16, xcon v2.2.2) - LGE LG-E460 lge - FFFFFFFF-CD6E-390A-B636-8CB346AAE71C'
+    result: { browser: { name: XCON, type: app }, os: { name: Android }, device: { type: mobile, subtype: smart, manufacturer: LG, model: 'Optimus L5 II' } }
+    readable: 'XCON on a LG Optimus L5 II running Android'
+-
+    headers: 'User-Agent: XPOR Android Application (12, xpor v2.0) - motorola MB525 MOTO - FFFFFFFF-CC93-8438-FFFF-FFFFB4F77635'
+    result: { browser: { name: XPOR, type: app }, os: { name: Android }, device: { type: mobile, subtype: smart, manufacturer: Motorola, model: DEFY } }
+    readable: 'XPOR on a Motorola DEFY running Android'
+-
+    headers: 'User-Agent: ET1 Android Application (16, et1 v2.2.2) - samsung GT-S7390 samsung - 00000000-2D69-D71B-CE09-19FA5FA5A961'
+    result: { browser: { name: ET1, type: app }, os: { name: Android }, device: { type: mobile, subtype: smart, manufacturer: Samsung, model: 'Galaxy Trend Lite' } }
+    readable: 'ET1 on a Samsung Galaxy Trend Lite running Android'
+-
+    headers: 'User-Agent: ET1 Android Application - samsung GT-I9100 samsung'
+    readable: 'ET1 on a Samsung Galaxy S II running Android'
+    result: { browser: { name: ET1, type: app }, os: { name: Android }, device: { type: mobile, subtype: smart, manufacturer: Samsung, model: 'Galaxy S II' } }
+-
+    headers: 'User-Agent: ET1 Android Application - HTC HTC Wildfire S A510e orange_es'
+    readable: 'ET1 on a HTC Wildfire S running Android'
+    result: { browser: { name: ET1, type: app }, os: { name: Android }, device: { type: mobile, subtype: smart, manufacturer: HTC, model: 'Wildfire S' } }
+-
+    headers: 'User-Agent: ET1 Android Application - Desire_A8181 Build/FRF91  - FFFFFFFF-E289-5878-FFFF-FFFFFFEBBF74'
+    readable: 'ET1 on a HTC Desire running Android 2.2'
+    result: { browser: { name: ET1, type: app }, os: { name: Android, version: '2.2' }, device: { type: mobile, subtype: smart, manufacturer: HTC, model: Desire } }
+-
+    headers: 'User-Agent: PlacesDll Win32/SWchBvQ89wHhZhZGPH7ADQ:WVUjTbxpusEz-rl7htSN/3.2.315.8 (Windows Phone OS/8.0; NOKIA:Lumia 925; de-DE)'
+    result: { os: { name: 'Windows Phone', version: '8.0' }, device: { type: mobile, subtype: smart, manufacturer: Nokia, model: 'Lumia 925' } }
+    readable: 'a Nokia Lumia 925 running Windows Phone 8.0'
+-
+    headers: 'User-Agent: PlacesDll Win32/x4dXIL4zf4fEINN8j7e8GA:c5f40ce19e9659484ed40cba84c12227/3.5.487.8 (Windows Phone OS/8.0; NOKIA:Nokia 920T; zh-CN)'
+    result: { os: { name: 'Windows Phone', version: '8.0' }, device: { type: mobile, subtype: smart, manufacturer: Nokia, model: 'Lumia 920' } }
+    readable: 'a Nokia Lumia 920 running Windows Phone 8.0'
+-
+    headers: 'User-Agent: PlacesDll Win32/x4dXIL4zf4fEINN8j7e8GA:c5f40ce19e9659484ed40cba84c12227/3.5.481.8 (Windows Phone OS/8.0; NOKIA:Lumia 1320; de-DE)'
+    result: { os: { name: 'Windows Phone', version: '8.0' }, device: { type: mobile, subtype: smart, manufacturer: Nokia, model: 'Lumia 1320' } }
+    readable: 'a Nokia Lumia 1320 running Windows Phone 8.0'
+-
+    headers: 'User-Agent: SonySO-02F Build/14.1.H.1.281 UEP/0.1 com.sonyericsson.updatecenter/2.0.3.A.0.2'
+    readable: 'Sony Update Center on a Sony Xperia Z1 f SO-02F running Android'
+    result: { browser: { name: 'Sony Update Center', type: app }, os: { name: Android }, device: { type: mobile, subtype: smart, manufacturer: Sony, model: 'Xperia Z1 f SO-02F', carrier: DoCoMo } }
+-
+    headers: 'User-Agent: AiMeiTuan /samsung-4.0.4-SHV-E120S-1280x720-320-4.1.2-116-358362043662925-market'
+    readable: 'AiMeiTuan on a Samsung Galaxy S II HD LTE running Android 4.0.4'
+    result: { browser: { name: AiMeiTuan, type: app }, os: { name: Android, version: 4.0.4 }, device: { type: mobile, subtype: smart, manufacturer: Samsung, model: 'Galaxy S II HD LTE' } }
+-
+    headers: 'User-Agent: SonyLT25i Build/9.1.A.0.490 UpdateCenter/1.2'
+    readable: 'Sony Update Center on a Sony Xperia V running Android'
+    result: { browser: { name: 'Sony Update Center', type: app }, os: { name: Android }, device: { type: mobile, subtype: smart, manufacturer: Sony, model: 'Xperia V' } }
+-
+    headers: 'User-Agent: Dalvik/1.6.0(Linux; U; Android 4.2.2; C2105 Sony/15.3.A.0.26) SonySelectSDK/1.0.12 SonySelect/3.0.13'
+    readable: 'Sony Select SDK 1.0 on a Sony Xperia L running Android 4.2.2'
+    result: { browser: { using: { name: 'Sony Select SDK', version: '1.0' }, type: app }, os: { name: Android, version: 4.2.2 }, device: { type: mobile, subtype: smart, manufacturer: Sony, model: 'Xperia L' } }
+-
+    headers: 'User-Agent: Dalvik/1.6.0(Linux; U; Android 4.3; C6903 Sony/14.2.A.1.142) SonySelectSDK/1.0.17 mashup/0.2'
+    readable: 'Sony Select SDK 1.0 on a Sony Xperia Z1 running Android 4.3'
+    result: { browser: { using: { name: 'Sony Select SDK', version: '1.0' }, type: app }, os: { name: Android, version: '4.3' }, device: { type: mobile, subtype: smart, manufacturer: Sony, model: 'Xperia Z1' } }
+-
+    headers: 'User-Agent: Mozilla/5.0 (Linux; Android 4.4.4; MI 4LTE Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/33.0.0.0 Mobile Safari/537.36 AlipayDefined(nt:WIFI,ws:360|640|3.0) AliApp(AP/8.6.0.042102) AlipayClient/8.6.0.042102'
+    readable: 'AliPay 8.6.0 on a Xiaomi Mi 4 running Android 4.4.4'
+    result: { browser: { name: AliPay, using: { name: 'Chromium WebView', version: '33' }, version: 8.6.0, type: app }, engine: { name: Blink }, os: { name: Android, version: 4.4.4 }, device: { type: mobile, subtype: smart, manufacturer: Xiaomi, model: 'Mi 4' } }
+-
+    headers: 'User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 10_2_1 like Mac OS X) AppleWebKit/602.4.6 (KHTML, like Gecko) Mobile/14D27 ChannelId(11) Nebula PSDType(1) AlipayDefined(nt:WIFI,ws:375|647|2.0) AliApp(AP/10.0.3.020920) AlipayClient/10.0.3.020920 Alipay Language/zh-Hans'
+    readable: 'AliPay 10.0.3 on an Apple iPhone running iOS 10.2.1'
+    result: { browser: { name: AliPay, version: 10.0.3, type: app }, engine: { name: Webkit, version: 602.4.6 }, os: { name: iOS, version: 10.2.1 }, device: { type: mobile, subtype: smart, manufacturer: Apple, model: iPhone } }

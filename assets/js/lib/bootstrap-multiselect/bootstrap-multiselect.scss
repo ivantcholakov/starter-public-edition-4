@@ -1,0 +1,112 @@
+@import "../../node_modules/bootstrap-multiselect/dist/css/bootstrap-multiselect";
+
+.multiselect-container {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding: 13px 0;
+
+  label,
+  .multiselect-group > a > * {
+    position: relative;
+    z-index: 10;
+  }
+
+  .multiselect-group > a > * {
+    display: inline-block !important;
+  }
+}
+
+.multiselect-container li a,
+.multiselect-container .multiselect-item.filter {
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+
+.multiselect-container .multiselect-group a,
+.multiselect-container .multiselect-group > label {
+  display: block;
+  padding: 0.3125rem 16px !important;
+}
+
+.multiselect-container .multiselect-group ~ li:not(.multiselect-group) a {
+  padding-left: 24px !important;
+
+  [dir=rtl] & {
+    padding-left: 16px !important;
+    padding-right: 24px !important;
+  }
+}
+
+.multiselect-container > li > a > label {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.multiselect-container .hidden {
+  display: none !important;
+}
+
+.multiselect-container .input-group {
+  margin: 0 0 10px 0 !important;
+}
+
+.multiselect-container * {
+  outline: 0 !important;
+}
+
+.multiselect-container label.checkbox,
+.multiselect-container label.radio {
+  color: #444 !important;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.multiselect-container > li.multiselect-group label {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.multiselect-group-clickable a {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  color: #444 !important;
+}
+
+.multiselect-group-clickable a input {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.multiselect-item.multiselect-all {
+  margin-bottom: 10px;
+  background: none !important;
+}
+
+.multiselect-item.multiselect-all label {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.default-style {
+  @import "../../css/_appwork/include";
+  .multiselect-container li > a:active,
+  .multiselect-container .active > a {
+    background: $dropdown-link-hover-bg !important;
+  }
+}
+
+.material-style {
+  @import "../../css/_appwork/include-material";
+  .multiselect-container li > a:active,
+  .multiselect-container .active > a {
+    background: $dropdown-link-hover-bg !important;
+  }
+
+  // IE has a strange material ripple bug, so just hide the ripple element
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .multiselect .waves-ripple,
+    .multiselect-container .waves-ripple {
+      display: none !important;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+@import "variables";
+
+/* FONT PATH
+ * -------------------------- */
+
+@font-face {
+    font-family: $md-font-family;
+    font-style: normal;
+    font-weight: 400;
+    src: url('#{$md-font-path}/MaterialIcons-Regular.eot?v=#{$md-version}');
+    src: url('#{$md-font-path}/MaterialIcons-Regular.eot?v=#{$md-version}#iefix') format('embedded-opentype'),
+         //local('Material Icons'),
+         //local('MaterialIcons-Regular'),
+         url('#{$md-font-path}/MaterialIcons-Regular.woff2?v=#{$md-version}') format('woff2'),
+         url('#{$md-font-path}/MaterialIcons-Regular.woff?v=#{$md-version}') format('woff'),
+         url('#{$md-font-path}/MaterialIcons-Regular.ttf?v=#{$md-version}') format('truetype'),
+         url('#{$md-font-path}/MaterialIcons-Regular.svg?v=#{$md-version}#materialiconsregular') format('svg');
+}

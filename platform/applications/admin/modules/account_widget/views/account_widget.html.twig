@@ -1,0 +1,40 @@
+	<div class="ui dropdown item" tabindex="0">
+                            <i class="circular user icon"></i>
+                            <span class="mobile hidden">
+                            {# {{ current_user().username() }} #}
+                            </span>
+                            <i class="fa fa-chevron-down" tabindex="0"><div class="menu" tabindex="-1"></div></i>
+                            <div class="menu transition hidden" tabindex="-1">
+                                <a href="{{ site_url('account') }}" class="item">
+                                    <i class="user icon"></i>
+                                    {{ lang('ui_profile') }}
+                                </a>
+				
+				<a href="{{ site_url('account/billing') }}" class="item">
+                                    <i class="user icon"></i>
+                                    Billing
+                                </a>
+				
+				 <a href="{{ site_url('account/notifications') }}" class="item">
+                                    <i class="user icon"></i>
+                                   Notifications
+                                </a>
+				
+				<a href="{{ site_url('account/support') }}" class="item">
+                                    <i class="user icon"></i>
+                                    Help/ Support
+                                </a>
+				
+				
+                                <a href="{{ site_url('logout') }}" id="sylius-logout-button" class="item">
+                                    <i class="sign-out icon"></i>
+                                    {{ lang('ui_logout') }}
+                                </a>
+				
+                            </div>
+                        </div>
+	
+	
+	
+	
+	

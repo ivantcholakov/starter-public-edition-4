@@ -1,0 +1,38 @@
+language: php
+
+env:
+  global:
+    - COVERAGE=false
+    - SETUP=basic
+    - DEPLOY_DOCS=false
+
+install:
+  - if [[ $SETUP = 'basic' ]]; then travis_retry composer install --prefer-dist --no-interaction --no-suggest; fi
+  - if [[ $SETUP = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction --no-suggest --prefer-stable; fi
+  - if [[ $SETUP = 'lowest' ]]; then travis_retry composer update --prefer-dist --no-interaction --no-suggest --prefer-stable --prefer-lowest; fi
+
+before_script:
+  - mkdir -p ~/.phpenv/versions/$(phpenv version-name)/etc
+  - mkdir -p ~/.okta
+
+script:
+  - if [ -z $TRAVIS_SECURE_ENV_VARS ]; then vendor/bin/phpunit --verbose --coverage-clover build/logs/clover.xml; fi
+  - if [ ! -z $TRAVIS_SECURE_ENV_VARS ]; then vendor/bin/phpunit --verbose --testsuite=Unit --coverage-clover build/logs/clover.xml; fi
+
+after_success:
+  - if [[ $COVERAGE = 'true' ]]; then bash <(curl -s https://codecov.io/bash); fi
+  - if [[ $DEPLOY_DOCS = 'true' ]]; then chmod +x ./scripts/prepare-docs.sh; fi
+  - if [[ $DEPLOY_DOCS = 'true' ]]; then ./scripts/prepare-docs.sh; fi
+
+matrix:
+  include:
+    - php: 7.0
+      env: SETUP=lowest
+    - php: 7.0
+      env: SETUP=stable
+    - php: 7.1
+      env: SETUP=lowest
+    - php: 7.1
+      env:
+        - COVERAGE=true
+        - SETUP=stable

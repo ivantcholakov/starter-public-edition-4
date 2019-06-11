@@ -1,0 +1,47 @@
+   <!-- Layout footer -->
+          <nav class="layout-footer footer bg-footer-theme">
+            <div class="container-fluid d-flex flex-wrap justify-content-between text-center container-p-x pb-3">
+              <div class="pt-3">
+                <span class="footer-text font-weight-bolder"> © 2018 Everpay</span> - All rights reserved.
+              </div>
+              <div>
+                <a href="javascript:void(0)" class="footer-link pt-3">Terms&amp; Conditions</a>
+                <a href="javascript:void(0)" class="footer-link pt-3 ml-4">Privacy</a>
+                <a href="javascript:void(0)" class="footer-link pt-3 ml-4">API</a>
+                <a href="javascript:void(0)" class="footer-link pt-3 ml-4">Status</a>
+                
+                <a href="javascript:void(0)" class="footer-link pt-3 ml-4 text:platform"><small>Platform Version: {{ constant('PLATFORM_VERSION') }}</small></a>
+              </div>
+            </div>
+          </nav>
+          <!-- / Layout footer -->
+    <footer id="footer" style="display:none;">
+    
+        <div class="footer-terms">
+            <div class="container footer-terms__container">
+                <div class="row">
+                    <div class="footer-terms__col">
+	<ul class="list-style-none d-flex flex-wrap footer-terms__copy col-sm-4">
+      <li class="mr-3 footer-terms__copy">2018 Elektropay - All Rights Reserved.</li>
+      
+    </ul>
+
+	<ul class="list-style-none d-flex flex-wrap social list-inline col-sm-2">
+<li class="mr-3 footer-terms__copy">{% autoescape false %}{% endautoescape %} </li>            
+      </ul>		    
+
+   <ul class="list-style-none d-flex flex-wrap footer-terms__copy col-sm-6">
+        <li class="mr-3 footer-terms__copy"><a data-ga-click="Footer, go to terms, text:terms" href="//elektropay.com/terms">Terms</a></li>
+        <li class="mr-3 footer-terms__copy"><a data-ga-click="Footer, go to privacy, text:privacy" href="//elektropay.com/privacy">Privacy</a></li>
+        <li class="mr-3 footer-terms__copy"><a href="https://developer.elektropay.com" data-ga-click="Footer, go to api, text:api">API</a></li>
+	<li class="mr-3 footer-terms__copy"><a href="https://status.elektropay.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+        <li class="mr-3 footer-terms__copy"><a href="#" text:platform"><small>Platform Version: {{ constant('PLATFORM_VERSION') }}</small></a></li>
+     
+<a class="circular ui icon huge blue scroll top button" href="{{ constant('CURRENT_URI') }}#page-top" title="{{ lang('ui_go_to_top')|e('html_attr') }}" style="display: none;"><i class="chevron up icon"></i></a>
+ </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>

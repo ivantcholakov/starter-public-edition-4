@@ -1,0 +1,89 @@
+@import '../../node_modules/swiper/dist/css/swiper';
+
+.swiper-container {
+  overflow: hidden !important;
+  width: 100%;
+
+  .swiper-pagination-bullet.swiper-pagination-bullet-active.bg-transparent {
+    background: transparent !important;
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.custom-icon {
+    background-image: none;
+    font-size: 2rem;
+    line-height: 1;
+
+    [dir=rtl] & {
+      transform: scaleX(-1);
+    }
+  }
+
+  &.swiper-button-white {
+    color: #fff;
+  }
+}
+
+[dir=rtl] .swiper-button-next {
+  right: auto;
+  left: 10px;
+}
+
+[dir=rtl] .swiper-button-prev {
+  right: 10px;
+  left: auto;
+}
+
+.swiper-pagination-bullet {
+  background: rgba(0, 0, 0, .7);
+}
+
+.swiper-pagination-progressbar,
+.swiper-scrollbar {
+  background: rgba(0, 0, 0, .08);
+}
+
+.swiper-scrollbar-drag {
+  background: rgba(0, 0, 0, .3);
+}
+
+.swiper-pagination-white {
+  .swiper-pagination-bullet {
+    background: #fff !important;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: #fff !important;
+  }
+}
+
+.swiper-scrollbar-white {
+  background: rgba(255, 255, 255, .2) !important;
+
+  .swiper-scrollbar-drag {
+    background: #fff !important;
+  }
+}
+
+[dir=rtl] .swiper-container-vertical {
+   > .swiper-pagination-bullets {
+    right: auto;
+    left: 10px;
+  }
+
+   > .swiper-pagination-progressbar {
+    right: 0;
+    left: auto;
+  }
+
+   > .swiper-scrollbar {
+    right: auto;
+    left: 3px;
+  }
+}

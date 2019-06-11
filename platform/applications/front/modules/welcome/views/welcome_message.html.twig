@@ -1,0 +1,30 @@
+
+            <p>
+                Project repository: <a href="https://github.com/ivantcholakov/starter-public-edition-4/" target="_blank" rel="noopener">https://github.com/ivantcholakov/starter-public-edition-4/</a>
+            </p>
+
+            <div class="ui info message">
+                <i class="info circle icon"></i> Here you can start developing the administration part of your site: <strong><a href="{{ base_url('admin') }}">{{ base_url('admin') }}</a></strong>
+            </div>
+
+            <p>A Semantic UI icon: <i class="star icon"></i></p>
+            <p>A Material Design icon: <i class="mdi mdi-star"></i></p>
+            <p>A Font Awesome 5 icon: <i class="fas fa-star"></i></p>
+
+            <h2>Internationalization Test</h2>
+
+            <p>
+                Switch language by using the menu, see top, right. The text below should be properly translated.
+            </p>
+
+            <p>A translated text: <strong>{{ lang('welcome.hello') }}</strong></p>
+
+            <p>
+                Another language switcher test:
+            </p>
+
+            <p>{{ widget('language_switcher_widget') }}</p>
+
+            <h2>Self-Diagnostics</h2>
+
+            <p>{{ diagnostics|raw }}</p>

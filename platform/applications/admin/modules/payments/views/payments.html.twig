@@ -1,0 +1,99 @@
+
+            <p>Construct the Payments page here</p>
+
+{{ widget('payments/payments_buttons_widget/index') }}
+
+            <div class="ui hidden divider"></div>
+
+            <div class="ui segment">
+
+                <p>
+                    <form class="ui form">
+
+                        <div class="field">
+
+                            <label for="date_picker_test">
+                                * jQuery Date Picker Test (yyyy-mm-dd):
+                            </label>
+
+                            <div class="ui left icon input">
+                                <input type="text" class="signup__inputs" name="date_picker_test" id="date_picker_test"
+                                    value=""
+                                />
+                                <i class="calendar icon"></i>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </p>
+
+                <p>
+                    <button class="ui button" id="test_4">A success message</button>
+                </p>
+
+                <p>
+                    <a href="javascript://"
+                       class="popover"
+                       data-html="You see a popup here."
+                       data-variation="wide"
+                    >
+                        <i class="help circle icon"></i> A popup test
+                    </a>
+                </p>
+
+                <p>
+                    <form class="ui form">
+
+                        <div class="field">
+
+                            <label for="smtp_crypto_1">SMTP Encryption (testing a native select box 1):</label>
+
+                            <select name="smtp_crypto" id="smtp_crypto_1" class="ui native dropdown">
+                                <option value="" selected="selected">-- none --</option>
+                                <option value="ssl">ssl</option>
+                                <option value="tls">tls</option>
+                            </select>
+
+                        </div>
+
+                    </form>
+                </p>
+
+                <p>
+                    <form class="ui form">
+
+                        <div class="field">
+
+                            <label for="smtp_crypto_2">SMTP Encryption (testing a native select box 2):</label>
+
+                            <select name="smtp_crypto" id="smtp_crypto_2" class="ui native selection dropdown">
+                                <option value="" selected="selected">-- none --</option>
+                                <option value="ssl">ssl</option>
+                                <option value="tls">tls</option>
+                            </select>
+
+                        </div>
+
+                    </form>
+                </p>
+
+                <p>
+                    <form class="ui form">
+
+                        <div class="field">
+
+                            <label for="smtp_crypto">SMTP Encryption (testing a nullable dropdown):</label>
+
+                            <select name="smtp_crypto" id="smtp_crypto" class="ui nullable selection dropdown">
+                                <option value="" selected="selected">-- none --</option>
+                                <option value="ssl">ssl</option>
+                                <option value="tls">tls</option>
+                            </select>
+
+                        </div>
+
+                    </form>
+                </p>
+
+            </div>

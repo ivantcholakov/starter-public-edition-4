@@ -1,0 +1,41 @@
+.bootstrap-maxlength {
+  vertical-align: baseline;
+  text-align: center;
+  line-height: 1;
+}
+
+.default-style {
+  @import '../../css/_appwork/include';
+
+  .bootstrap-maxlength {
+    padding: $badge-padding-y $badge-padding-x;
+    background: $badge-default-bg;
+    font-weight: $badge-font-weight;
+    font-size: $badge-font-size;
+
+    @include border-bottom-radius($badge-border-radius);
+
+    &.label-danger {
+      background: map-get($theme-colors, danger);
+      color: yiq(map-get($theme-colors, danger));
+    }
+  }
+}
+
+.material-style {
+  @import '../../css/_appwork/include-material';
+
+  .bootstrap-maxlength {
+    padding: $badge-padding-y $badge-padding-x;
+    background: $badge-default-bg;
+    font-weight: $badge-font-weight;
+    font-size: $badge-font-size;
+
+    @include border-bottom-radius($badge-border-radius);
+
+    &.label-danger {
+      background: map-get($theme-colors, danger);
+      color: yiq(map-get($theme-colors, danger));
+    }
+  }
+}

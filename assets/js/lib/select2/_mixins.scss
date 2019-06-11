@@ -1,0 +1,58 @@
+@import "../../css/_appwork/functions";
+
+@mixin select2-variant($background, $color: null) {
+  $color: if($color, $color, yiq($background));
+
+  .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background: $background;
+    color: $color;
+  }
+}
+
+@mixin select2-validation-state($state, $color) {
+  .is-#{$state} .select2-container--default .select2-selection,
+  .is-#{$state}.select2-container--default .select2-selection  {
+    border-color: $color;
+  }
+}
+
+@mixin select2-theme($background, $color: null) {
+  $color: if($color, $color, yiq($background));
+
+  .default-style .select2-container--default {
+    .select2-results__option--highlighted[aria-selected] {
+      background-color: $background !important;
+      color: $color !important;
+    }
+
+    &.select2-container--focus .select2-selection,
+    &.select2-container--open .select2-selection {
+      border-color: $background !important;
+    }
+  }
+
+  .default-style .select2-primary {
+    @include select2-variant($background, $color);
+  }
+}
+
+@mixin material-select2-theme($background, $color: null) {
+  $color: if($color, $color, yiq($background));
+
+  .material-style .select2-container--default {
+    .select2-results__option--highlighted[aria-selected] {
+      background-color: $background !important;
+      color: $color !important;
+    }
+
+    &.select2-container--focus:not(.select2-container--disabled) .select2-selection,
+    &.select2-container--open:not(.select2-container--disabled) .select2-selection {
+      border-color: $background !important;
+      box-shadow: 0 -1px 0 0 $background inset !important;
+    }
+  }
+
+  .material-style .select2-primary {
+    @include select2-variant($background, $color);
+  }
+}

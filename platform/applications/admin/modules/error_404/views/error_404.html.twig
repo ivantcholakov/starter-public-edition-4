@@ -1,0 +1,117 @@
+<style>
+.body, body {
+padding-top: 1em!important;	
+background-color: #f5f5f5!important;
+text-align: center;
+    font: normal 125%/1.4 Open Sans,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    line-height: 32px;
+    font-family: MarkWebPro-Book,Helvetica,sans-serif;
+}
+
+.container {
+    padding-left: 4em;
+    padding-right: 4em;
+}
+.container {
+    max-width: 1160px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+
+#header {
+display: none;
+}
+	
+.sub-header {
+    padding-top: 6.0625em!important;
+    padding-bottom: 6.0525em!important;
+}
+	
+.sub-header--grey {
+    background-color: #f5f5f5;
+    min-height: 42em!important;
+background-image: url(https://res.cloudinary.com/lmj6rf6tz/image/upload/v1496127086/error_cnv3sn.png);
+    background-position: center 150px,center -50px;
+    background-size: 46% auto,cover;
+    background-repeat: no-repeat;
+     text-align: center;	
+}
+	
+.sub-header__col {
+padding-top: 0.0625em;
+}
+	
+.subnav {
+background-color: transparent!important;
+max-width: 70%!important;
+padding-bottom: 0.0625em;
+margin-bottom: 1.88125em!important;
+margin: 0 auto;
+}
+	
+.sub-header__h2 {
+padding-bottom: 0.0625em;
+font-family: MarkWebPro-Book,Helvetica,sans-serif;
+}
+.sub-header__h2 {
+    width: 100%;
+    font-size: 2em;
+    font-weight: 100;
+    text-align: center;
+    margin-bottom: 0.88125em!important;
+}
+	
+.sub-header__h1 {
+    display: block;
+    color: #28dc8e!important;
+    font-family: MarkWebPro-Book,Helvetica,sans-serif;
+    font-size: 5.9em!important;
+    text-align: center;
+    font-weight: 600;
+    width: 100%;
+    margin-bottom: 0.4875em!important;
+}
+
+.subnav__btn  {
+    margin-right: 20px;
+}
+	
+</style>  
+<div class="ncontainer">
+        
+            <header class="sub-header sub-header--grey">
+        <div class="container sub-header__container">
+            <div class="sub-header__row row">
+                <div class="sub-header__col">
+        <h1 class="h1 sub-header__h1"> 404 </h1>
+                    <h2 class="h2 sub-header__h2">            
+		    {{ lang('ui_error_404_description','
+                <script type="text/javascript">
+                //<![CDATA[
+                    document.write(htmlspecialchars(document.location.href));
+                //]]>
+                </script>
+')|raw
+            }}
+	    </h2>
+                     <div class="subnav">
+
+        <div class="subnav__col">
+           
+ <span class="subnav__slash"><a class="subnav__btn btn btn--tiny pull-left" href="{{ site_url() }}"><i class="dashboard icon"></i> {{ lang('ui_admin_panel') }}</a></span> 
+  <span class="subnav__cur"><a class="subnav__backc" href="{{ default_base_url() }}"><i class="home icon"></i> {{ lang('ui_to_public_site') }}</a></span>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+    </header>    
+	 
+        
+    
+
+            </div>
+       

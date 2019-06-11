@@ -1,0 +1,5 @@
+@mixin bs-markdown-theme($border) {
+  .md-editor.active {
+    border-color: $border !important;
+  }
+}

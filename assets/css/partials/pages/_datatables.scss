@@ -1,0 +1,50 @@
+#datatables {
+
+	.content-wrapper {
+		margin-top: 40px;
+		padding-bottom: 40px;
+
+		thead th {
+			border-top: 1px solid #dee3ea;
+			border-bottom: 1px solid #dee3ea;
+			padding: 10px 18px 15px 15px;
+		}
+
+		td {
+			padding: 11px 15px;
+		}
+
+		.dataTables_length {
+			float: right;
+			margin-bottom: 25px;
+
+			@media (max-width: $maxSmall) {
+				float: none;
+			}
+		}
+
+		.dataTables_filter {
+			float: left;
+			text-align: left;
+
+			@media (max-width: $maxSmall) {
+				float: none;
+				margin-bottom: 25px;
+			}
+		}
+
+		.dataTables_info {
+			display: none;
+		}
+
+		.dataTables_paginate {
+			float: none;
+			text-align: center;
+			margin-top: 70px;
+		}
+
+		#datatable-example {
+		}
+	}
+
+}

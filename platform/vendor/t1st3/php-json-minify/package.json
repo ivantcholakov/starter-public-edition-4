@@ -1,0 +1,24 @@
+{
+  "name": "php-json-minify",
+  "version": "0.6.2",
+  "author": "t1st3",
+  "homepage": "https://github.com/t1st3/php-json-minify",
+  "bugs": "https://github.com/t1st3/php-json-minify/issues",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/t1st3/php-json-minify.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-phplint": "0.0.8",
+    "grunt-phpunit": "^0.3.6",
+    "grunt-shell": "^1.3.0",
+    "grunt-version": "^1.1.1",
+    "load-grunt-tasks": "^3.5.0",
+    "time-grunt": "^1.4.0"
+  }
+}

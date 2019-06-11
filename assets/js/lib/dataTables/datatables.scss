@@ -1,0 +1,364 @@
+@import "../../node_modules/datatables.net-bs4/css/dataTables.bootstrap4";
+
+div.dataTables_wrapper {
+  padding: 0;
+}
+
+div.dataTables_wrapper div.dataTables_length label,
+div.dataTables_wrapper div.dataTables_filter label,
+div.dataTables_wrapper div.dataTables_info,
+div.dataTables_wrapper div.dataTables_paginate {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+div.dataTables_wrapper div.dataTables_length label,
+div.dataTables_wrapper div.dataTables_info {
+  justify-content: flex-start;
+}
+
+div.dataTables_wrapper div.dataTables_filter label,
+div.dataTables_wrapper div.dataTables_paginate,
+div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+  justify-content: flex-end;
+}
+
+div.dataTables_wrapper div.dataTables_length {
+  .form-control {
+    margin: 0 .5rem;
+  }
+
+  [dir=rtl] & label {
+    text-align: right;
+  }
+}
+
+[dir=rtl] div.dataTables_filter {
+  text-align: left;
+
+  label {
+    text-align: right;
+  }
+
+  input {
+    margin-right: .5em;
+    margin-left: 0;
+  }
+}
+
+div.dataTables_wrapper div.dataTables_info {
+  padding-top: .25rem;
+  white-space: normal;
+}
+
+[dir=rtl] div.dataTables_wrapper div.dataTables_paginate {
+  text-align: right;
+}
+
+div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+  flex-wrap: wrap;
+  justify-content: center;
+  white-space: normal;
+
+  .page-link {
+    outline: 0;
+  }
+}
+
+div.dataTables_wrapper [class*="col-md-"] {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+table.dataTable {
+  width: 100% !important;
+  border-collapse: collapse !important;
+
+  [dir=rtl] &.table-sm > thead > tr > th {
+    padding-left: 1.25rem;
+  }
+
+  [dir=rtl] &.table-sm .sorting:before,
+  [dir=rtl] &.table-sm .sorting_asc:before,
+  [dir=rtl] &.table-sm .sorting_desc:before {
+    right: auto;
+    left: .85em;
+  }
+}
+
+[dir=rtl] table.dataTable thead > tr > th,
+[dir=rtl] table.dataTable thead > tr > td {
+  &.sorting_asc,
+  &.sorting_desc,
+  &.sorting {
+    padding-left: 1.875rem;
+  }
+}
+
+table.dataTable thead th {
+  vertical-align: middle;
+}
+
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc,
+table.dataTable thead .sorting_asc_disabled,
+table.dataTable thead .sorting_desc_disabled {
+  &::before,
+  &::after {
+    top: 50%;
+    margin-top: -.625rem;
+    height: 1.25rem;
+    line-height: 1.25rem;
+  }
+
+  [dir=rtl] &::before {
+    right: auto;
+    left: 1em;
+  }
+
+  [dir=rtl] &::after {
+    right: auto;
+    left: .5em;
+  }
+}
+
+[dir=rtl] table.table-bordered.dataTable th,
+[dir=rtl] table.table-bordered.dataTable td {
+  border-right-width: 0;
+  border-left-width: 1px;
+
+  &:last-child {
+    border-left-width: 0;
+  }
+}
+
+// DataTable within card
+div.card-datatable.dataTable,
+div.card-datatable .dataTable {
+  border-right: 0;
+  border-left: 0;
+}
+
+.default-style {
+  @import "../../css/_appwork/include";
+
+  div.dataTables_wrapper div.dataTables_length label,
+  div.dataTables_wrapper div.dataTables_filter label {
+    margin-bottom: $spacer / 2;
+  }
+
+  div.dataTables_wrapper div.dataTables_info {
+    color: $text-muted;
+  }
+
+  div.dataTables_wrapper div.dataTables_paginate ul.pagination .page-link {
+    padding: $pagination-padding-y-sm $pagination-padding-x-sm;
+    min-width: calc(#{"#{($font-size-sm * $pagination-line-height) + ($pagination-padding-y-sm * 2)} + #{$pagination-border-width * 2}"});
+    font-size: $font-size-sm;
+    line-height: $pagination-line-height;
+  }
+
+  @media (max-width: (map-get($grid-breakpoints, md) - 1)) {
+    div.dataTables_wrapper div.dataTables_length label,
+    div.dataTables_wrapper div.dataTables_filter label,
+    div.dataTables_wrapper div.dataTables_info,
+    div.dataTables_wrapper div.dataTables_paginate {
+      justify-content: center;
+    }
+  }
+
+  // DataTable within card
+  div.card-datatable {
+    padding: $card-spacer-x 0;
+
+    [class*="col-md-"] {
+      padding-right: $card-spacer-x !important;
+      padding-left: $card-spacer-x !important;
+    }
+  }
+
+  &:not([dir=rtl]) {
+    @media (min-width: map-get($grid-breakpoints, md)) {
+      div.dataTables_wrapper .row [class*="col-sm-"] {
+        &:first-child {
+          padding-right: 0 !important;
+        }
+
+        &:last-child {
+          padding-left: 0 !important;
+        }
+      }
+    }
+
+    div.card-datatable table.dataTable thead th,
+    div.card-datatable table.dataTable tbody td,
+    div.card-datatable table.dataTable tfoot th {
+      &:first-child {
+        padding-left: $card-spacer-x;
+      }
+
+      &:last-child {
+        padding-right: $card-spacer-x;
+      }
+    }
+  }
+
+  &[dir=rtl] {
+    table.dataTable.table-sm > thead > tr > th {
+      padding-right: $table-cell-padding-sm;
+    }
+
+    @media (min-width: map-get($grid-breakpoints, md)) {
+      div.dataTables_wrapper .row [class*="col-sm-"] {
+        &:first-child {
+          padding-left: 0 !important;
+        }
+
+        &:last-child {
+          padding-right: 0 !important;
+        }
+      }
+    }
+
+    table.dataTable {
+      thead th,
+      tbody td,
+      tfoot th {
+        padding-right: $table-cell-padding;
+      }
+
+      &.table-sm thead th,
+      &.table-sm tbody td,
+      &.table-sm tfoot th {
+        padding-right: $table-cell-padding-sm;
+      }
+    }
+
+    div.card-datatable table.dataTable {
+      thead th,
+      tbody td,
+      tfoot th {
+        &:first-child {
+          padding-right: $card-spacer-x;
+        }
+
+        &:last-child {
+          padding-left: $card-spacer-x;
+        }
+      }
+    }
+  }
+}
+
+.material-style {
+  @import "../../css/_appwork/include-material";
+
+  div.dataTables_wrapper div.dataTables_length label,
+  div.dataTables_wrapper div.dataTables_filter label {
+    margin-bottom: $spacer / 2;
+  }
+
+  div.dataTables_wrapper div.dataTables_info {
+    color: $text-muted;
+  }
+
+  div.dataTables_wrapper div.dataTables_paginate ul.pagination .page-link {
+    padding: $pagination-padding-y-sm $pagination-padding-x-sm;
+    min-width: calc(#{"#{($font-size-sm * $pagination-line-height) + ($pagination-padding-y-sm * 2)} + #{$pagination-border-width * 2}"});
+    font-size: $font-size-sm;
+    line-height: $pagination-line-height;
+  }
+
+  @media (max-width: (map-get($grid-breakpoints, md) - 1)) {
+    div.dataTables_wrapper div.dataTables_length label,
+    div.dataTables_wrapper div.dataTables_filter label,
+    div.dataTables_wrapper div.dataTables_info,
+    div.dataTables_wrapper div.dataTables_paginate {
+      justify-content: center;
+    }
+  }
+
+  // DataTable within card
+  div.card-datatable {
+    padding: $card-spacer-x 0;
+
+    [class*="col-md-"] {
+      padding-right: $card-spacer-x !important;
+      padding-left: $card-spacer-x !important;
+    }
+  }
+
+  &:not([dir=rtl]) {
+    @media (min-width: map-get($grid-breakpoints, md)) {
+      div.dataTables_wrapper .row [class*="col-sm-"] {
+        &:first-child {
+          padding-right: 0 !important;
+        }
+
+        &:last-child {
+          padding-left: 0 !important;
+        }
+      }
+    }
+
+    div.card-datatable table.dataTable thead th,
+    div.card-datatable table.dataTable tbody td,
+    div.card-datatable table.dataTable tfoot th {
+      &:first-child {
+        padding-left: $card-spacer-x;
+      }
+
+      &:last-child {
+        padding-right: $card-spacer-x;
+      }
+    }
+  }
+
+  &[dir=rtl] {
+    table.dataTable.table-sm > thead > tr > th {
+      padding-right: $table-cell-padding-sm;
+    }
+
+    @media (min-width: map-get($grid-breakpoints, md)) {
+      div.dataTables_wrapper .row [class*="col-sm-"] {
+        &:first-child {
+          padding-left: 0 !important;
+        }
+
+        &:last-child {
+          padding-right: 0 !important;
+        }
+      }
+    }
+
+    table.dataTable {
+      thead th,
+      tbody td,
+      tfoot th {
+        padding-right: $table-cell-padding;
+      }
+
+      &.table-sm thead th,
+      &.table-sm tbody td,
+      &.table-sm tfoot th {
+        padding-right: $table-cell-padding-sm;
+      }
+    }
+
+    div.card-datatable table.dataTable {
+      thead th,
+      tbody td,
+      tfoot th {
+        &:first-child {
+          padding-right: $card-spacer-x;
+        }
+
+        &:last-child {
+          padding-left: $card-spacer-x;
+        }
+      }
+    }
+  }
+}

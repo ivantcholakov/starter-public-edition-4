@@ -1,0 +1,17 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+
+@fieldsetBorderWidth: 1px;
+@fieldsetBorderColor: @borderColor;
+@fieldsetBorder: @fieldsetBorderWidth solid @fieldsetBorderColor;
+
+@fieldsetVerticalPadding: 1em;
+@fieldsetHorizontalPadding: 1em;
+@fieldsetPadding: @fieldsetVerticalPadding @fieldsetHorizontalPadding;
+
+@fieldsetVerticalMargin: 1em;
+@fieldsetHorizontalMargin: 0em;
+@fieldsetMargin: @fieldsetVerticalMargin @fieldsetHorizontalMargin;
+
+@fieldsetBorderRadius: @defaultBorderRadius;

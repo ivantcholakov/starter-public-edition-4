@@ -1,0 +1,36 @@
+
+{% set show_map = setting('contact_show_map') %}
+{% set show_contact_info = setting('contact_show_info') %}
+{% set show_info_pane = setting('contact_show_map') or setting('contact_show_info') %}
+
+    <div class="ui grid">
+
+        <div class="row">
+
+            <div class="{{ show_info_pane ? 'sixteen wide mobile ten wide tablet ten wide computer column' : 'sixteen wide column' }}">
+
+                {{ widget('contact_form_widget/index') }}
+
+                <div class="ui hidden divider"></div>
+
+            </div>
+
+{% if show_info_pane %}
+
+            <div class="sixteen wide mobile six wide tablet six wide computer column">
+
+    {% if show_map %}
+                {{ widget('contact_map_widget/index') }}
+    {% endif %}
+
+    {% if show_contact_info %}
+                {{ widget('contact_info_widget/index') }}
+    {% endif %}
+
+            </div>
+
+{% endif %}
+
+        </div>
+
+    </div>

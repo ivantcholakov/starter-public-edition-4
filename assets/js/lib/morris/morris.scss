@@ -1,0 +1,53 @@
+.morris-hover {
+  position: absolute;
+  z-index: 1000;
+}
+
+.morris-default-style {
+  text-align: center;
+}
+
+.morris-default-style .morris-hover-row-label {
+  font-weight: bold;
+}
+
+.morris-default-style .morris-hover-point {
+  white-space: nowrap;
+  font-size: .6875rem;
+}
+
+.default-style {
+  @import "../../css/_appwork/include";
+
+  .morris-default-style {
+    padding: $tooltip-padding-y $tooltip-padding-x;
+    background-color: $tooltip-bg;
+    font-size: $font-size-sm;
+
+    @include border-radius($border-radius);
+  }
+
+  .morris-default-style .morris-hover-row-label {
+    margin: $tooltip-padding-y 0;
+    color: $tooltip-color;
+    font-weight: bold;
+  }
+}
+
+.material-style {
+  @import "../../css/_appwork/include-material";
+
+  .morris-default-style {
+    padding: $tooltip-padding-y $tooltip-padding-x;
+    background-color: $tooltip-bg;
+    font-size: $font-size-sm;
+
+    @include border-radius($border-radius);
+  }
+
+  .morris-default-style .morris-hover-row-label {
+    margin: $tooltip-padding-y 0;
+    color: $tooltip-color;
+    font-weight: bold;
+  }
+}

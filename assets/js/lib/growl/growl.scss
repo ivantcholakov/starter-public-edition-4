@@ -1,0 +1,87 @@
+@import "../../node_modules/jquery.growl/stylesheets/jquery.growl.sass";
+
+.growl {
+  opacity: 1;
+}
+
+.growl .growl-title {
+  padding-bottom: .125rem;
+  font-weight: 600;
+  line-height: inherit;
+}
+
+[dir=rtl] .growl .growl-close {
+  float: left;
+}
+
+.default-style {
+  @import "../../css/_appwork/include";
+
+  #growls {
+    z-index: $zindex-notification;
+  }
+
+  .growl {
+    border-radius: $border-radius;
+    box-shadow: $modal-content-box-shadow-xs !important;
+  }
+
+  .growl-title {
+    font-size: $font-size-base;
+  }
+
+  .growl-message {
+    font-size: $font-size-base;
+  }
+
+  .growl-error {
+    background: map-get($theme-colors, danger);
+    color: yiq(map-get($theme-colors, danger));
+  }
+
+  .growl-notice {
+    background: map-get($theme-colors, info);
+    color: yiq(map-get($theme-colors, info));
+  }
+
+  .growl-warning {
+    background: map-get($theme-colors, warning);
+    color: yiq(map-get($theme-colors, warning));
+  }
+}
+
+.material-style {
+  @import "../../css/_appwork/include-material";
+
+  #growls {
+    z-index: $zindex-notification;
+  }
+
+  .growl {
+    border-radius: $border-radius;
+    box-shadow: $modal-content-box-shadow-xs !important;
+  }
+
+  .growl-title {
+    font-size: $font-size-base;
+  }
+
+  .growl-message {
+    font-size: $font-size-base;
+  }
+
+  .growl-error {
+    background: map-get($theme-colors, danger);
+    color: yiq(map-get($theme-colors, danger));
+  }
+
+  .growl-notice {
+    background: map-get($theme-colors, info);
+    color: yiq(map-get($theme-colors, info));
+  }
+
+  .growl-warning {
+    background: map-get($theme-colors, warning);
+    color: yiq(map-get($theme-colors, warning));
+  }
+}

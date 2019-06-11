@@ -1,0 +1,37 @@
+@import "../../css/_appwork/functions";
+
+@mixin bs-material-datetimepicker-theme($background, $color: null) {
+  $color: if($color, $color, yiq($background));
+
+  .dtp-date,
+  .dtp-time {
+    background: $background;
+    color: $color;
+  }
+
+  .dtp-close > a { color: $color; }
+
+  header.dtp-header {
+    background: rgba-to-hex(rgba($background, .85), $background: #000);
+    color: $color;
+  }
+
+  table.dtp-picker-days tr > td > a.selected {
+    background: $background;
+    color: $color !important;
+  }
+
+  .dtp-actual-meridien a.selected {
+    background: $background !important;
+    color: $color !important;
+  }
+
+  .dtp .year-picker-item {
+    &:hover { color: $background; }
+    &.active { color: $background; }
+  }
+
+  .dtp .svg-clock [stroke="#8BC34A"] { stroke: $background !important; }
+  .dtp .svg-clock [fill="#8BC34A"] { fill: $background !important; }
+  .dtp .svg-clock [fill="#fff"] { fill: $color !important; }
+}

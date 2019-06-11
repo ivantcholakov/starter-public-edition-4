@@ -1,0 +1,433 @@
+@import '../../css/_custom-variables/libs';
+
+$datepicker-today-bg: #fff4df !default;
+$datepicker-highlighted-bg: #eff8fc !default;
+$datepicker-arrow-size: .5rem !default;
+
+.datepicker {
+  direction: ltr;
+
+  &.datepicker-rtl {
+    direction: rtl;
+
+    table tr td span {
+      float: right;
+    }
+  }
+
+  [dir=rtl] & {
+    direction: rtl;
+  }
+
+  .next,
+  .prev {
+    position: relative;
+    color: transparent !important;
+  }
+
+  .next::after,
+  .prev::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: $datepicker-arrow-size;
+    height: $datepicker-arrow-size;
+    border-style: solid;
+    border-radius: 0;
+    top: 50%;
+    left: 50%;
+    transform: rotate(-45deg);
+    transform-origin: left;
+  }
+
+  .next::after {
+    border-width: 0 1px 1px 0;
+    margin-left: -$datepicker-arrow-size / 2;
+
+    [dir=rtl] & {
+      margin-left: 0;
+      border-width: 1px 0 0 1px;
+      transform: rotate(-45deg);
+    }
+  }
+
+  .prev::after {
+    border-width: 1px 0 0 1px;
+
+    [dir=rtl] & {
+      margin-left: -$datepicker-arrow-size / 2;
+      border-width: 0 1px 1px 0;
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.datepicker-dropdown {
+  top: 0;
+  left: 0;
+  padding: .25rem;
+}
+
+.datepicker table {
+  margin: 0;
+  user-select: none;
+}
+
+.datepicker table tr td,
+.datepicker table tr th {
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  text-align: center;
+  line-height: calc(#{"2rem - 2px"});
+}
+
+.datepicker table tr td {
+  &.day:hover,
+  &.focused {
+    cursor: pointer;
+  }
+
+  &.disabled,
+  &.disabled:hover {
+    background: none;
+    cursor: default;
+  }
+
+  &.highlighted {
+    border-radius: 0 !important;
+    background: $datepicker-highlighted-bg;
+
+    &.focused {
+      background: darken($datepicker-highlighted-bg, 6%);
+    }
+  }
+
+  &.today {
+    background: $datepicker-today-bg !important;
+
+    &.focused {
+      background: darken($datepicker-today-bg, 6%) !important;
+    }
+
+    &.disabled,
+    &.disabled:active {
+      background: $datepicker-today-bg !important;
+    }
+  }
+
+  &.range {
+    border-radius: 0 !important;
+  }
+
+  &.range.highlighted {
+    $range-highlighted-bg: darken($datepicker-highlighted-bg, 3%);
+
+    background: $range-highlighted-bg;
+
+    &.focused {
+      background: darken($range-highlighted-bg, 6%);
+    }
+  }
+
+  &.range.today {
+    $range-today-bg: darken($datepicker-today-bg, 3%) !important;
+
+    background: $range-today-bg !important;
+
+    &.disabled,
+    &.disabled:active {
+      background: $range-today-bg !important;
+    }
+  }
+
+  &.range-start:not(.range-end) {
+    html:not([dir=rtl]) & {
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+    }
+    [dir=rtl] & {
+      border-top-left-radius: 0 !important;
+      border-bottom-left-radius: 0 !important;
+    }
+  }
+
+  &.range-end:not(.range-start) {
+    html:not([dir=rtl]) & {
+      border-top-left-radius: 0 !important;
+      border-bottom-left-radius: 0 !important;
+    }
+    [dir=rtl] & {
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+    }
+  }
+
+  &.selected,
+  &.selected:hover,
+  &.selected.highlighted {
+    color: #fff;
+  }
+}
+
+.datepicker table tr td span {
+  display: block;
+  float: left;
+  width: 3.375rem;
+  height: 3.375rem;
+  line-height: 3.375rem;
+  cursor: pointer;
+
+  &.disabled,
+  &.disabled:hover {
+    background: none;
+    cursor: default;
+  }
+
+  [dir=rtl] & {
+    float: right;
+  }
+}
+
+.table-striped .datepicker table tr td,
+.table-striped .datepicker table tr th {
+  background-color: transparent;
+}
+
+.datepicker .datepicker-switch,
+.datepicker .prev,
+.datepicker .next,
+.datepicker tfoot tr th {
+  cursor: pointer;
+}
+
+// Basic styling for calendar-week cells
+.datepicker .cw {
+  padding: 0 .125rem;
+  width: .75rem;
+  vertical-align: middle;
+  font-size: .625rem;
+}
+
+.datepicker-months table,
+.datepicker-years table,
+.datepicker-decades table,
+.datepicker-centuries table {
+  width: (3.375rem * 3) + 2.625rem;
+
+  td {
+    padding: 0 0 1.25rem 1.25rem;
+
+    [dir=rtl] & {
+      padding: 0 1.25rem 1.25rem 0;
+    }
+  }
+}
+
+.input-group.date .input-group-addon {
+  cursor: pointer;
+}
+
+.input-daterange input {
+  text-align: center;
+}
+
+.default-style {
+  @import "../../css/_appwork/include";
+
+  $datepicker-hover-bg      : $gray-50;
+  $datepicker-old-new-color : $text-light;
+
+  .datepicker-dropdown {
+    z-index: $zindex-popover !important;
+  }
+
+  .datepicker {
+    border-radius: $border-radius;
+  }
+
+  .datepicker table tr td,
+  .datepicker table tr th {
+    border-radius: $border-radius;
+  }
+
+  .datepicker table tr td {
+    &.old,
+    &.new {
+      color: $datepicker-old-new-color;
+    }
+
+    &.day:hover,
+    &.focused {
+      background: $datepicker-hover-bg;
+    }
+
+    &.disabled,
+    &.disabled:hover {
+      background: none;
+      color: $datepicker-old-new-color;
+    }
+
+    &.highlighted.disabled,
+    &.highlighted.disabled:active {
+      color: $datepicker-old-new-color;
+    }
+
+    &.today.disabled,
+    &.today.disabled:active {
+      color: $datepicker-old-new-color;
+    }
+  }
+
+  .datepicker table tr td span {
+    border-radius: $border-radius;
+
+    &:hover,
+    &.focused {
+      background: $datepicker-hover-bg;
+    }
+
+    &.disabled,
+    &.disabled:hover {
+      color: $datepicker-old-new-color;
+    }
+
+    &.old,
+    &.new {
+      color: $datepicker-old-new-color;
+    }
+  }
+
+  .datepicker .next,
+  .datepicker .prev {
+    &::after {
+      color: $text-light;
+    }
+
+    &:hover::after {
+      color: $body-color;
+    }
+  }
+
+  .datepicker .datepicker-switch:hover,
+  .datepicker tfoot tr th:hover {
+    background: $datepicker-hover-bg;
+  }
+
+  .datepicker tfoot tr th,
+  .datepicker .datepicker-switch {
+    font-weight: $font-weight-semibold;
+  }
+
+  .datepicker .cw,
+  .datepicker .dow {
+    color: $datepicker-old-new-color;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    background: $gray-50;
+    border-radius: 0 !important;
+  }
+}
+
+.material-style {
+  @import "../../css/_appwork/include-material";
+
+  $datepicker-hover-bg      : $gray-50;
+  $datepicker-old-new-color : $text-light;
+
+  .datepicker-dropdown {
+    z-index: $zindex-popover !important;
+    animation: none !important;
+  }
+
+  .datepicker {
+    border-radius: $border-radius;
+  }
+
+  .datepicker table tr td,
+  .datepicker table tr th,
+  .datepicker table tr td span {
+    border-radius: 99rem;
+  }
+
+  .datepicker table tr td.day,
+  .datepicker tfoot tr th {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+  }
+
+  .datepicker table tr td {
+    &.old,
+    &.new {
+      color: $datepicker-old-new-color;
+    }
+
+    &.day:hover,
+    &.focused {
+      background: $datepicker-hover-bg;
+    }
+
+    &.disabled,
+    &.disabled:hover {
+      background: none;
+      color: $datepicker-old-new-color;
+    }
+
+    &.highlighted.disabled,
+    &.highlighted.disabled:active {
+      color: $datepicker-old-new-color;
+    }
+
+    &.today.disabled,
+    &.today.disabled:active {
+      color: $datepicker-old-new-color;
+    }
+  }
+
+  .datepicker table tr td span {
+    &:hover,
+    &.focused {
+      background: $datepicker-hover-bg;
+    }
+
+    &.disabled,
+    &.disabled:hover {
+      color: $datepicker-old-new-color;
+    }
+
+    &.old,
+    &.new {
+      color: $datepicker-old-new-color;
+    }
+  }
+
+  .datepicker .next,
+  .datepicker .prev {
+    &::after {
+      color: $text-light;
+    }
+
+    &:hover::after {
+      color: $body-color;
+    }
+  }
+
+  .datepicker .datepicker-switch:hover,
+  .datepicker tfoot tr th:hover {
+    background: $datepicker-hover-bg;
+  }
+
+  .datepicker tfoot tr th,
+  .datepicker .datepicker-switch {
+    font-weight: $font-weight-semibold;
+  }
+
+  .datepicker .cw,
+  .datepicker .dow {
+    color: $datepicker-old-new-color;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    background: $gray-50;
+    border-radius: 0 !important;
+  }
+}

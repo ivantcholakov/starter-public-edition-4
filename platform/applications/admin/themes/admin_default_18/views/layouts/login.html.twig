@@ -1,0 +1,61 @@
+{{ html_begin() }}
+{{ head_begin() }}
+{{ meta_charset() }}
+
+{{ base_href() }}
+{{ ie_edge() }}
+
+{{ html_title() }}
+{{ metadata() }}
+
+{{ viewport() }}
+{{ favicon() }}
+{{ apple_touch_icon_precomposed() }}
+
+{{ js_platform() }}
+{% include 'partials/webfontloader' %}
+{{ theme_css('login.min.css') }}
+{{ partial('css') }}
+
+{{ js_modernizr() }}
+{{ js_jquery() }}
+
+{{ partial('head') }}
+
+{{ head_end() }}
+
+{{ body_begin({'id': 'page-top', 'class': 'login-page'}) }}
+{{ body() }}
+
+{{ js_bp_plugins() }}
+{{ js_mbp_helper() }}
+{{ js_scale_fix_ios() }}
+
+{{ js('lib/semantic/semantic.min.js') }}
+
+{{ partial('scripts') }}
+
+<script type="text/javascript">
+//<![CDATA[
+
+    $(function () {
+
+        $('.ui.dropdown').dropdown();
+
+        $('body').on('click', '.message .close', function() {
+
+            $(this)
+              .closest('.message')
+              .transition('fade')
+            ;
+        });
+;
+    });
+
+//]]>
+</script>
+
+    <div id="debug"></div>
+
+{{ body_end() }}
+{{ html_end() }}

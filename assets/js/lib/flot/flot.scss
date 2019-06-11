@@ -1,0 +1,35 @@
+.flot-overlay ~ .legend {
+   > * {
+    right: 0 !important;
+  }
+
+  .legendColorBox {
+    padding-right: 5px;
+  }
+}
+
+.default-style {
+  @import "../../css/_appwork/include";
+
+  .flotTip {
+    padding: 4px 10px !important;
+    border-color: $tooltip-bg !important;
+    border-radius: $border-radius !important;
+    background-color: $tooltip-bg !important;
+    color: $tooltip-color !important;
+    font-size: 11px !important;
+  }
+}
+
+.material-style {
+  @import "../../css/_appwork/include-material";
+
+  .flotTip {
+    padding: 4px 10px !important;
+    border-color: $tooltip-bg !important;
+    border-radius: $border-radius !important;
+    background-color: $tooltip-bg !important;
+    color: $tooltip-color !important;
+    font-size: 11px !important;
+  }
+}

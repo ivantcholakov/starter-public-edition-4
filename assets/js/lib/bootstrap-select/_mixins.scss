@@ -1,0 +1,10 @@
+@import "../../css/_appwork/functions";
+
+@mixin bs-select-theme($background, $color:null) {
+  $color: if($color, $color, yiq($background));
+
+  .bootstrap-select .dropdown-menu.inner a[aria-selected=true] {
+    background: $background !important;
+    color: $color !important;
+  }
+}

@@ -1,0 +1,10 @@
+@import "../../css/_appwork/functions";
+
+@mixin growl-theme($background, $color: null) {
+  $color: if($color, $color, yiq($background));
+
+  .growl-default {
+    background: $background !important;
+    color: $color !important;
+  }
+}

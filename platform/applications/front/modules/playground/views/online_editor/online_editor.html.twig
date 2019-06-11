@@ -1,0 +1,34 @@
+
+{# author: Ivan Tcholakov <ivantcholakov@gmail.com>, 2016 #}
+{# license The MIT License, http://opensource.org/licenses/MIT #}
+
+                        {{ partial('subnavbar') }}
+
+                        {{ form_open('', 'method="post"') }}
+
+                            <div>
+
+                                {{ form_ckeditor('content', content, editor_mode, { 'height': 150 }) }}
+
+                            </div>
+
+                            <br class="clear" />
+
+                            <button type="submit" class="ui primary button">Submit Content</button>
+
+                        {{ form_close() }}
+
+                        <h2>Result:</h2>
+
+                        {% if editor_mode == 'admin' %}
+
+                        {# See http://twig.sensiolabs.org/doc/functions/template_from_string.html #}
+                        {# Use Twig parsing if it is needed in the front-end for data that is entered through the admin panel only. #}
+                        <div>{{ include(template_from_string(set_value('content', content, false))) }}</div>
+
+                        {% else %}
+
+                        {# No Twig parsing for user data. #}
+                        <div>{{ set_value('content', content, false) }}</div>
+
+                        {% endif %}

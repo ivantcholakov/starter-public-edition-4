@@ -1,0 +1,157 @@
+<!-- Add New Customer Modal -->
+<div class="modal fade" id="newCustomerModal" tabindex="-1" role="dialog" aria-labelledby="newCustomerModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newCustomerModalLabel">New Customer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="form">
+      <form id="new-customer" class="form-horizontal" method="post" action="#" role="form">
+				  	<div class="form-group">
+					    <label class="col-sm-2 col-md-2 control-label">First name</label>
+					    <div class="col-sm-6 col-md-6">
+					      <input type="text" class="form-control" name="customer[first_name]" />
+					    </div>
+				  	</div>
+				  	<div class="form-group">
+					    <label class="col-sm-2 col-md-2 control-label">Last name</label>
+					    <div class="col-sm-6 col-md-6">
+					      <input type="text" class="form-control" name="customer[last_name]" />
+					    </div>
+				  	</div>
+				  	<div class="form-group">
+					    <label class="col-sm-2 col-md-2 control-label">Email address</label>
+					    <div class="col-sm-10 col-md-8">
+					      	<input type="text" class="form-control" name="customer[email]" />
+					    </div>
+				  	</div>
+				  	<div class="form-group">
+					    <label class="col-sm-2 col-md-2 control-label">Phone number</label>
+					    <div class="col-sm-10 col-md-8">
+					    	<div class="has-feedback">
+								<input type="text" class="form-control mask-phone" name="customer[phone]" />
+						      	<i class="ion-information-circled form-control-feedback" data-toggle="tooltip" title="Tooltip helper example">
+						      	</i>
+							</div>
+					    </div>
+				  	</div>
+				
+      </div>
+      <div class="modal-footer form-actions">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-success">Save customer</button>
+      </div> 
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- Edit Customer Modal -->
+<div class="modal fade" id="editCustomerModal" tabindex="-1" role="dialog" aria-labelledby="editCustomerModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editCustomerModalLabel">Edit Customer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="form">
+      <form id="new-customer" class="form-horizontal" method="post" action="#" role="form">
+				  	<div class="form-group">
+					    <label class="col-sm-2 col-md-2 control-label">First name</label>
+					    <div class="col-sm-10 col-md-8">
+					      <input type="text" class="form-control" name="customer[first_name]" />
+					    </div>
+				  	</div>
+				  	<div class="form-group">
+					    <label class="col-sm-2 col-md-2 control-label">Last name</label>
+					    <div class="col-sm-10 col-md-8">
+					      <input type="text" class="form-control" name="customer[last_name]" />
+					    </div>
+				  	</div>
+				  	<div class="form-group">
+					    <label class="col-sm-2 col-md-2 control-label">Display picture</label>
+					    <div class="col-sm-10 col-md-8">
+					    	<input type="file" name="customer[display]" />
+					    </div>
+				  	</div>
+				  	<div class="form-group">
+					    <label class="col-sm-2 col-md-2 control-label">Email address</label>
+					    <div class="col-sm-10 col-md-8">
+					      	<input type="text" class="form-control" name="customer[email]" />
+					    </div>
+				  	</div>
+				  	<div class="form-group">
+					    <label class="col-sm-2 col-md-2 control-label">Phone number</label>
+					    <div class="col-sm-10 col-md-8">
+					    	<div class="has-feedback">
+								<input type="text" class="form-control mask-phone" name="customer[phone]" />
+						      	<i class="ion-information-circled form-control-feedback" data-toggle="tooltip" title="Tooltip helper example">
+						      	</i>
+							</div>
+					    </div>
+				  	</div>
+				  	<div class="form-group">
+					    <label class="col-sm-2 col-md-2 control-label">Credit card number</label>
+					    <div class="col-sm-10 col-md-8">
+					    	<div class="has-feedback">
+					      		<input type="text" class="form-control mask-cc" name="customer[cc]" />
+					      		<i class="ion-information-circled form-control-feedback" data-toggle="tooltip" title="Credit card masked input example">
+						      	</i>
+							</div>
+					    </div>
+				  	</div>
+				  	<div class="address">
+				  		<div class="form-group">
+						    <label class="col-sm-2 col-md-2 control-label">Address</label>
+						    <div class="col-sm-10 col-md-8">
+						      	<input type="text" class="form-control" placeholder="Address" name="customer[address]" />
+						    </div>
+						</div>
+						<div class="form-group">
+						    <div class="col-sm-3 col-sm-offset-2">
+						      	<input type="text" class="form-control" placeholder="City" name="customer[city]" />
+						    </div>
+						    <div class="col-sm-3">
+						      	<input type="text" class="form-control" placeholder="State" name="customer[state]" />
+						    </div>
+						    <div class="col-sm-2 col-md-2">
+						      	<input type="text" class="form-control" placeholder="Zip code" name="customer[zip]" />
+						    </div>
+					  	</div>
+				  	</div>
+				  	<div class="form-group">
+					    <label for="inputPassword3" class="col-sm-2 col-md-2 control-label">Extra notes</label>
+					    <div class="col-sm-10 col-md-8">
+					    	<textarea class="form-control" rows="4" name="customer[notes]"></textarea>
+					    </div>
+				  	</div>
+				  	<div class="form-group">
+					    <label for="inputPassword3" class="col-sm-2 col-md-2 control-label">Customer tags</label>
+					    <div class="col-sm-10 col-md-8">
+					      	<input type="hidden" id="customer-tags" style="width:100%" value="client, developer, lead" name="customer[tags]" />
+					    </div>
+				  	</div>
+				  	<div class="form-group">
+					    <div class="col-sm-offset-2 col-sm-10">
+					      	<div class="checkbox">
+					        	<label>
+					          		<input type="checkbox" name="customer[send_marketing]" /> Send marketing emails
+				        		</label>
+					      	</div>
+					    </div>
+				  	</div>
+      </div>
+      <div class="modal-footer form-actions">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+       </form>
+    </div>
+  </div>
+</div>

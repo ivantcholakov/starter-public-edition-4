@@ -1,0 +1,40 @@
+@import "../../node_modules/bootstrap-duallistbox/src/bootstrap-duallistbox";
+
+.bootstrap-duallistbox-container .glyphicon-arrow-left,
+.bootstrap-duallistbox-container .glyphicon-arrow-right {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  [dir=rtl] & {
+    transform: scaleX(-1);
+  }
+}
+
+.bootstrap-duallistbox-container .glyphicon-arrow-left:before {
+  content: "←";
+}
+
+.bootstrap-duallistbox-container .glyphicon-arrow-right:before {
+  content: "→";
+}
+
+.bootstrap-duallistbox-container select {
+  padding: .3125rem 0;
+
+  option {
+    padding: .1875rem .625rem;
+    line-height: 1;
+  }
+}
+
+.material-style {
+  .bootstrap-duallistbox-container select {
+    padding: .625rem 0;
+  }
+}

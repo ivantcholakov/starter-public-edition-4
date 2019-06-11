@@ -1,0 +1,65 @@
+@import "../../node_modules/bootstrap-sortable/Contents/bootstrap-sortable";
+
+[dir=rtl] table.sortable {
+  span.sign {
+    right: auto;
+    left: .3125rem;
+  }
+
+  th:after {
+    right: auto;
+    left: .3125rem;
+  }
+
+   > thead th:not([data-defaultsort=disabled]) {
+    right: 0;
+    left: auto;
+  }
+
+  span.az:before,
+  th.az.down:after {
+    content: "z .. a";
+  }
+
+  span.az.up:before,
+  th.az.up:after {
+    content: "a .. z";
+  }
+
+  th.az.nosort:after,
+  th.AZ.nosort:after,
+  th._19.nosort:after,
+  th.month.nosort:after {
+    content: "..";
+  }
+
+  span.AZ:before,
+  th.AZ.down:after {
+    content: "Z .. A";
+  }
+
+  span.AZ.up:before,
+  th.AZ.up:after {
+    content: "A .. Z";
+  }
+
+  span._19:before,
+  th._19.down:after {
+    content: "9 .. 1";
+  }
+
+  span._19.up:before,
+  th._19.up:after {
+    content: "1 .. 9";
+  }
+
+  span.month:before,
+  th.month.down:after {
+    content: "dec .. jan";
+  }
+
+  span.month.up:before,
+  th.month.up:after {
+    content: "jan .. dec";
+  }
+}

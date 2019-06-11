@@ -1,0 +1,26 @@
+@import "../../css/_appwork/functions";
+
+@mixin bs-daterangepicker-theme($background, $color) {
+  $color: if($color, $color, yiq($background));
+  $higlighted-bg: rgba-to-hex(rgba($background, .15), #fff);
+  $higlighted-color: yiq($higlighted-bg);
+
+  .daterangepicker td.active {
+    background-color: $background !important;
+    color: $color !important;
+  }
+
+  .daterangepicker td.in-range:not(.start-date):not(.end-date):not(.off) {
+    background-color: $higlighted-bg !important;
+    color: $higlighted-color !important;
+  }
+
+  .daterangepicker .input-mini.active {
+    border-color: $background !important;
+  }
+
+  .ranges li.active {
+    background-color: $background !important;
+    color: $color !important;
+  }
+}

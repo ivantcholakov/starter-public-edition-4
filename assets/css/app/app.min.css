@@ -1,0 +1,269 @@
+.default-style .sidenav .app-brand.demo {
+  height: 66px;
+}
+
+.material-style .sidenav .app-brand.demo {
+  height: 70px;
+}
+
+.app-brand-logo.demo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.app-brand-logo.demo svg {
+  width: 20px;
+  height: 11px;
+}
+
+.app-brand-text.demo {
+  font-size: 1.1rem;
+}
+
+.layout-1 .layout-sidenav .app-brand.demo,
+.layout-1 .layout-sidenav .app-brand.demo + .sidenav-divider,
+.layout-reversed .layout-2 .layout-sidenav .app-brand.demo {
+  display: none;
+}
+
+.layout-1 .layout-navbar .app-brand.demo,
+.layout-reversed .layout-2 .layout-navbar .app-brand.demo {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.layout-1 .layout-navbar .layout-sidenav-toggle,
+.layout-reversed .layout-2 .layout-navbar .layout-sidenav-toggle,
+.layout-offcanvas .layout-navbar .layout-sidenav-toggle,
+.layout-fixed-offcanvas .layout-navbar .layout-sidenav-toggle {
+  display: block !important;
+}
+
+@media (min-width: 992px) {
+  .layout-offcanvas .layout-sidenav .layout-sidenav-toggle,
+  .layout-fixed-offcanvas .layout-sidenav .layout-sidenav-toggle {
+    display: none;
+  }
+}
+
+/* *****************************************************************************
+ * Navbar
+ */
+
+.demo-navbar-messages .dropdown-toggle,
+.demo-navbar-notifications .dropdown-toggle,
+.demo-navbar-user .dropdown-toggle,
+.demo-navbar-messages.b-nav-dropdown .nav-link,
+.demo-navbar-notifications.b-nav-dropdown .nav-link,
+.demo-navbar-user.b-nav-dropdown .nav-link {
+  white-space: nowrap;
+}
+
+.demo-navbar-messages .dropdown-menu,
+.demo-navbar-notifications .dropdown-menu {
+  overflow: hidden;
+  padding: 0;
+}
+
+@media (min-width: 992px) {
+  .demo-navbar-messages .dropdown-menu,
+  .demo-navbar-notifications .dropdown-menu {
+    margin-top: .5rem;
+    width: 22rem;
+  }
+
+  .demo-navbar-user .dropdown-menu {
+    margin-top: .25rem;
+  }
+}
+
+
+/* *****************************************************************************
+ * Content
+ */
+
+.demo-vertical-spacing > * + * {
+  margin-top: 1.875rem !important;
+  margin-bottom: 0 !important;
+}
+
+.demo-vertical-spacing-sm > * + * {
+  margin-top: .9375rem !important;
+  margin-bottom: 0 !important;
+}
+
+.demo-vertical-spacing-lg > * + * {
+  margin-top: 5rem !important;
+  margin-bottom: 0 !important;
+}
+
+.demo-inline-spacing > *,
+.demo-paragraph-spacing > p > * {
+  margin: 0 .375rem .9375rem 0 !important;
+}
+
+.demo-paragraph-spacing > p {
+  margin: 0;
+}
+
+.demo-blocks > * {
+  display: block !important;
+}
+
+html:not(.material-style) .material-style-only {
+  display: none !important;
+}
+
+.rtl-only {
+  display: none !important;
+  text-align: left !important;
+  direction: ltr !important;
+}
+
+[dir=rtl] .rtl-only {
+  display: block !important;
+}
+
+/* *****************************************************************************
+ * Layouts
+ */
+
+.layout-example-block {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid rgba(0,0,0,.04);
+  border-radius: 2px;
+  background: rgba(0,0,0,.04);
+  color: #c7254e;
+}
+.layout-example-block code {
+  background: none;
+  color: #666;
+}
+
+.layout-example-block-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 500px;
+}
+
+.layout-example-block-sidenav {
+  width: 24%;
+  background: #607d8b;
+}
+.layout-example-block-sidenav code {
+  color: #fff;
+}
+
+.layout-example-block-navbar {
+  background: #3ca99e;
+}
+.layout-example-block-navbar code {
+  color: #fff;
+}
+
+.layout-example-block-content {
+  background: #9e9e9e;
+}
+.layout-example-block-content code {
+  color: #fff;
+}
+
+.layout-example-block-1 .layout-example-block-content {
+  width: 74%;
+}
+
+.layout-example-block-2 .layout-example-block-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 74%;
+}
+.layout-example-block-2 > .layout-example-block {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+}
+.layout-example-block-2 .layout-example-block-content {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.layout-example-block-1-no-sidenav .layout-example-block-content {
+  width: 100%;
+}
+
+.layout-example-code {
+  display: block;
+  overflow: auto;
+  margin: 0;
+  padding: 30px;
+  min-width: 0;
+  width: 100%;
+  background: #fff;
+}
+
+.layout-example-run {
+  display: inline-block;
+  margin: 3px;
+  padding: 4px 6px;
+  border: 1px solid #eee;
+  background: transparent;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.layout-example-block-3 .layout-example-block-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.layout-example-block-3 .layout-example-block-inner > .layout-example-block {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+}
+.layout-example-block-3 .layout-example-block-inner .layout-example-block-container-fluid {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+.layout-example-block-3 .layout-example-block-sidenav-horizontal {
+  background: #607d8b;
+}
+.layout-example-block-3 .layout-example-block-container-fluid {
+  background: #fff;
+}
+.layout-example-block-3 .layout-example-block-container-fluid code {
+  color: #666;
+}
+.layout-example-block-3 .layout-example-block-footer {
+  background: #e6514a;
+}

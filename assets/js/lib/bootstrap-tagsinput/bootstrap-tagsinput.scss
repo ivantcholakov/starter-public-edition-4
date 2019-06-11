@@ -1,0 +1,225 @@
+@import '../../css/_custom-variables/libs';
+@import 'mixins';
+
+$tagsinput-tag-line-height: 1.5rem !default;
+
+.bootstrap-tagsinput {
+  display: block;
+  max-width: 100%;
+  vertical-align: middle;
+  cursor: text;
+  transition: border-color .15s;
+
+  // Clearfix
+
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+.bootstrap-tagsinput input,
+.bootstrap-tagsinput-input {
+  display: block;
+  float: left;
+  padding: 0 .375rem !important;
+  max-width: 100% !important;
+  width: auto;
+  outline: none !important;
+  border: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  line-height: $tagsinput-tag-line-height;
+
+  [dir=rtl] & {
+    float: right;
+  }
+}
+
+.bootstrap-tagsinput-input {
+  max-width: none !important;
+}
+
+.bootstrap-tagsinput.form-control input::-moz-placeholder {
+  opacity: 1;
+}
+
+.bootstrap-tagsinput .tag {
+  position: relative;
+  float: left;
+  padding: 0 .5rem;
+  font-weight: normal;
+  line-height: $tagsinput-tag-line-height;
+  cursor: default;
+
+  [dir=rtl] & {
+    float: right;
+  }
+}
+
+.bootstrap-tagsinput .tag [data-role="remove"] {
+  display: inline-block;
+  margin-right: -.375rem;
+  padding: 0 .375rem;
+  font-weight: bold;
+  line-height: $tagsinput-tag-line-height;
+  cursor: pointer;
+
+  [dir=rtl] & {
+    margin-right: 0;
+    margin-left: -.375rem;
+  }
+
+  &:after {
+    content: "×";
+  }
+
+  &:hover,
+  &:focus {
+    opacity: .5;
+  }
+}
+
+.bootstrap-tagsinput.disabled {
+  cursor: not-allowed !important;
+
+  input {
+    visibility: hidden !important;
+  }
+
+  .tag [data-role="remove"] {
+    display: none !important;
+  }
+}
+
+.default-style {
+  @import "../../css/_appwork/include";
+
+  $tagsinput-tag-spacer: px-to-rem(floor(rem-to-px(($input-height-inner - $tagsinput-tag-line-height) / 2)));
+
+  .bootstrap-tagsinput {
+    padding: 0 $tagsinput-tag-spacer $tagsinput-tag-spacer $tagsinput-tag-spacer;
+    border: 1px solid $input-border-color;
+    border-radius: $border-radius;
+    background-color: $input-bg;
+    color: $input-color;
+    transition: $input-transition;
+
+    &.disabled {
+      border-color: $input-border-color !important;
+      background-color: $input-disabled-bg !important;
+    }
+  }
+
+  .bootstrap-tagsinput input,
+  .bootstrap-tagsinput-input {
+    margin-top: $tagsinput-tag-spacer;
+  }
+
+  .bootstrap-tagsinput input {
+    color: $input-color;
+  }
+
+  .bootstrap-tagsinput .tag {
+    margin-top: $tagsinput-tag-spacer;
+    margin-right: $tagsinput-tag-spacer;
+    font-size: $font-size-base;
+
+    &:not(.badge) {
+      border-radius: $badge-border-radius;
+      background: $badge-default-bg;
+      color: $input-color;
+    }
+  }
+
+  &[dir=rtl] .bootstrap-tagsinput .tag {
+    margin-right: 0;
+    margin-left: $tagsinput-tag-spacer;
+  }
+
+  .bootstrap-tagsinput.form-control input {
+    &::-moz-placeholder {
+      color: $input-placeholder-color !important;
+    }
+
+    &:-ms-input-placeholder {
+      color: $input-placeholder-color !important;
+    }
+
+    &::-webkit-input-placeholder {
+      color: $input-placeholder-color !important;
+    }
+  }
+
+  @include bg-tagsinput-validation-state("valid", $form-feedback-valid-color);
+  @include bg-tagsinput-validation-state("invalid", $form-feedback-invalid-color);
+}
+
+.material-style {
+  @import "../../css/_appwork/include-material";
+
+  $tagsinput-tag-spacer: px-to-rem(floor(rem-to-px(($input-height-inner - $tagsinput-tag-line-height) / 2)));
+
+  .bootstrap-tagsinput {
+    padding: 0 $tagsinput-tag-spacer $tagsinput-tag-spacer $tagsinput-tag-spacer;
+    padding-right: 0;
+    padding-left: 0;
+    border-bottom: 1px solid $input-border-color;
+    background: $input-bg;
+    color: $input-color;
+    transition: $input-transition;
+
+    &.disabled {
+      border-color: $input-border-color !important;
+      background-color: $input-disabled-bg !important;
+    }
+  }
+
+  .bootstrap-tagsinput input,
+  .bootstrap-tagsinput-input {
+    margin-top: $tagsinput-tag-spacer;
+  }
+
+  .bootstrap-tagsinput input {
+    color: $input-color;
+  }
+
+  .bootstrap-tagsinput .tag {
+    margin-top: $tagsinput-tag-spacer;
+    margin-right: $tagsinput-tag-spacer;
+    font-size: $font-size-base;
+
+    &:not(.badge) {
+      border-radius: $badge-border-radius;
+      background: $badge-default-bg;
+      color: $input-color;
+    }
+  }
+
+  &[dir=rtl] .bootstrap-tagsinput .tag {
+    margin-right: 0;
+    margin-left: $tagsinput-tag-spacer;
+  }
+
+  .bootstrap-tagsinput.form-control input {
+    &::-moz-placeholder {
+      color: $input-placeholder-color !important;
+    }
+
+    &:-ms-input-placeholder {
+      color: $input-placeholder-color !important;
+    }
+
+    &::-webkit-input-placeholder {
+      color: $input-placeholder-color !important;
+    }
+  }
+
+  @include bg-tagsinput-validation-state("valid", $form-feedback-valid-color);
+  @include bg-tagsinput-validation-state("invalid", $form-feedback-invalid-color);
+}

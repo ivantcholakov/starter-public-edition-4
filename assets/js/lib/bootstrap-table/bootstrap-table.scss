@@ -1,0 +1,171 @@
+@import "../../node_modules/bootstrap-table/src/bootstrap-table";
+
+.bootstrap-table .pull-left {
+  float: left;
+
+  [dir=rtl] & {
+    float: right;
+  }
+}
+
+.bootstrap-table .pull-right {
+  float: right;
+
+  [dir=rtl] & {
+    float: left;
+  }
+}
+
+.bootstrap-table .pull-left .dropdown-menu,
+.bootstrap-table .pull-right .dropdown-menu {
+  left: auto;
+  right: auto;
+}
+
+.bootstrap-table .table.table-no-bordered > thead > tr > th,
+.bootstrap-table .table.table-no-bordered > tbody > tr > td {
+  border-color: transparent !important;
+
+  [dir=rtl] & {
+    border-right: 0;
+    border-left: 2px solid;
+
+    &:last-child {
+      border-left: 0;
+    }
+  }
+}
+
+.bootstrap-table .fixed-table-container {
+  border-radius: 0;
+
+  &.table-no-bordered {
+    border-color: transparent !important;
+  }
+}
+
+.bootstrap-table .fixed-table-container thead th {
+  padding: 0;
+  border-radius: 0 !important;
+}
+
+[dir=rtl] .bootstrap-table .fixed-table-container thead th,
+[dir=rtl] .bootstrap-table .fixed-table-container tbody td {
+  border-left: 0;
+  border-right: 1px solid;
+
+  .sortable {
+    background-position: left;
+    padding-left: 1.875rem;
+  }
+
+  &:first-child {
+    border-right: none;
+  }
+}
+
+[dir=rtl] .bootstrap-table .fixed-table-pagination .pagination-info {
+  margin-right: 0;
+  margin-left: .3125rem;
+}
+
+[dir=rtl] .bootstrap-table .fixed-table-toolbar {
+  .columns-left {
+    margin-right: 0;
+    margin-left: .3125rem;
+  }
+
+  .columns-right {
+    margin-right: .3125rem;
+    margin-left: 0;
+  }
+
+  .dropdown-menu {
+    text-align: right;
+  }
+}
+
+[dir=rtl] .bootstrap-table .fixed-table-body .card-view .title {
+  text-align: right !important;
+}
+
+[dir=rtl] .bootstrap-table .fixed-table-toolbar .btn-group > .btn-group {
+  margin-left: 0 !important;
+}
+
+[dir=rtl] .bootstrap-table div.fixed-table-scroll-outer {
+  left: auto;
+  right: 0;
+}
+
+.default-style {
+  @import "../../css/_appwork/include";
+
+  .bootstrap-table .table th,
+  .bootstrap-table .table td,
+  .bootstrap-table .fixed-table-container {
+    border-color: $table-border-color !important;
+  }
+
+  .bootstrap-table .fixed-table-pagination .pagination a {
+    padding: $pagination-padding-y $pagination-padding-x;
+  }
+
+  .bootstrap-table .fixed-table-container thead th .th-inner,
+  .bootstrap-table .fixed-table-container tbody td .th-inner {
+    padding: $table-cell-padding;
+  }
+
+  .bootstrap-table .fixed-table-container .bs-checkbox .th-inner {
+    padding: $table-cell-padding 0;
+  }
+
+  .bootstrap-table .table:not(.table-condensed),
+  .bootstrap-table .table:not(.table-condensed) > tbody > tr > th,
+  .bootstrap-table .table:not(.table-condensed) > tfoot > tr > th,
+  .bootstrap-table .table:not(.table-condensed) > thead > tr > td,
+  .bootstrap-table .table:not(.table-condensed) > tbody > tr > td,
+  .bootstrap-table .table:not(.table-condensed) > tfoot > tr > td  {
+    padding: $table-cell-padding;
+  }
+
+  &[dir=rtl] .bootstrap-table .fixed-table-container thead th .sortable {
+    padding-right: $table-cell-padding;
+  }
+}
+
+.material-style {
+  @import "../../css/_appwork/include-material";
+
+  .bootstrap-table .table th,
+  .bootstrap-table .table td,
+  .bootstrap-table .fixed-table-container {
+    border-color: $table-border-color !important;
+  }
+
+  .bootstrap-table .fixed-table-pagination .pagination a {
+    padding: $pagination-padding-y $pagination-padding-x;
+  }
+
+  .bootstrap-table .fixed-table-container thead th .th-inner,
+  .bootstrap-table .fixed-table-container tbody td .th-inner {
+    padding: $table-cell-padding;
+  }
+
+  .bootstrap-table .fixed-table-container .bs-checkbox .th-inner {
+    padding: $table-cell-padding 0;
+  }
+
+  .bootstrap-table .table:not(.table-condensed),
+  .bootstrap-table .table:not(.table-condensed) > tbody > tr > th,
+  .bootstrap-table .table:not(.table-condensed) > tfoot > tr > th,
+  .bootstrap-table .table:not(.table-condensed) > thead > tr > td,
+  .bootstrap-table .table:not(.table-condensed) > tbody > tr > td,
+  .bootstrap-table .table:not(.table-condensed) > tfoot > tr > td  {
+    padding: $table-cell-padding;
+  }
+
+  &[dir=rtl] .bootstrap-table .fixed-table-container thead th .sortable {
+    padding-right: $table-cell-padding;
+  }
+}

@@ -1,0 +1,24 @@
+@mixin nouislider-variant($color) {
+  .noUi-connect { background: $color; }
+}
+
+@mixin material-nouislider-variant($color) {
+  .noUi-connect { background: $color; }
+}
+
+@mixin nouislider-theme($color) {
+  .noUi-primary .noUi-base {
+    .noUi-connect { background: $color !important; }
+  }
+}
+
+@mixin material-nouislider-theme($color) {
+  .noUi-primary .noUi-base {
+    .noUi-handle {
+      box-shadow: none !important;
+      background: $color !important;
+    }
+
+    .noUi-connect { background: $color !important; }
+  }
+}

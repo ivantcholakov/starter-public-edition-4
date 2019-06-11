@@ -1,0 +1,1 @@
+.user-view-table{table-layout:fixed}.user-view-table td{padding-right:0;padding-left:0;border:0}.user-view-table td:first-child{width:9rem}.user-view-table td:not(:first-child){min-width:12rem}.user-edit-fileinput{position:absolute;visibility:hidden;width:1px;height:1px;opacity:0}.user-edit-multiselect ~ .select2-container{width:100% !important}

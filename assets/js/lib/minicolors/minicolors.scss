@@ -1,0 +1,127 @@
+@import '../../css/_custom-variables/libs';
+@import "../../node_modules/@claviska/jquery-minicolors/jquery.minicolors";
+
+$minicolors-padding: .25rem !default;
+
+.minicolors-panel {
+  padding: $minicolors-padding;
+
+  .minicolors-position-top & {
+    transform: translate(0, (-$minicolors-padding * 2) - .125rem);
+  }
+}
+
+.minicolors-slider,
+.minicolors-opacity-slider {
+  transform: translate($minicolors-padding, $minicolors-padding);
+
+  [dir=rtl] & {
+    right: 152px;
+    left: auto;
+    transform: translate(-$minicolors-padding, $minicolors-padding);
+  }
+}
+
+[dir=rtl] .minicolors-opacity-slider {
+  right: 173px;
+  left: auto;
+}
+
+.minicolors-grid {
+  left: 0 !important;
+}
+
+.minicolors-grid,
+.minicolors-slider,
+.minicolors-opacity-slider {
+  top: 0 !important;
+}
+
+.minicolors-sprite {
+  background-image: url(jquery.minicolors.png);
+}
+
+.minicolors-theme-default.minicolors,
+.minicolors-theme-default .minicolors-input {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.default-style {
+  @import "../../css/_appwork/include";
+
+  $swatch-size: 1.125rem;
+  $swatch-position: (($input-height-inner - $swatch-size) / 2) + px-to-rem($input-btn-border-width);
+
+  .minicolors-theme-default .minicolors-panel {
+    z-index: $zindex-dropdown;
+    margin: .125rem 0;
+    border: $dropdown-border-width solid $dropdown-border-color;
+    background-clip: padding-box;
+    box-shadow: $dropdown-box-shadow;
+
+    @include border-radius($border-radius);
+  }
+
+  .minicolors-theme-default .minicolors-swatch {
+    top: $swatch-position;
+    left: $swatch-position;
+    width: $swatch-size;
+    height: $swatch-size;
+    border: 0;
+  }
+
+  .minicolors-theme-default.minicolors-position-right .minicolors-swatch {
+    right: $swatch-position;
+    left: auto;
+  }
+
+  .minicolors-theme-default .minicolors-input {
+    padding-left: $swatch-size + ($swatch-position * 2);
+  }
+
+  .minicolors-theme-default.minicolors-position-right .minicolors-input {
+    padding-right: $swatch-size + ($swatch-position * 2);
+    padding-left: $input-padding-x;
+  }
+}
+
+.material-style {
+  @import "../../css/_appwork/include-material";
+
+  $swatch-size: 1.125rem;
+  $swatch-position: ($input-height-inner - $swatch-size) / 2;
+
+  .minicolors-theme-default .minicolors-panel {
+    z-index: $zindex-dropdown;
+    margin: .125rem 0;
+    border: $dropdown-border-width solid $dropdown-border-color;
+    background-clip: padding-box;
+    box-shadow: $dropdown-box-shadow;
+
+    @include border-radius($border-radius);
+  }
+
+  .minicolors-theme-default .minicolors-swatch {
+    top: $swatch-position;
+    left: 0;
+    width: $swatch-size;
+    height: $swatch-size;
+    border: 0;
+  }
+
+  .minicolors-theme-default.minicolors-position-right .minicolors-swatch {
+    right: 0;
+    left: auto;
+  }
+
+  .minicolors-theme-default .minicolors-input {
+    padding-left: $swatch-size + $swatch-position !important;
+  }
+
+  .minicolors-theme-default.minicolors-position-right .minicolors-input {
+    padding-right: $swatch-size + $swatch-position !important;
+    padding-left: 0 !important;
+  }
+}

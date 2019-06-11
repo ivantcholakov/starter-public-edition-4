@@ -1,0 +1,75 @@
+
+/* 
+    Created on : 29 Jan, 2015, 7:06:48 AM
+    Author     : Design_mylife
+    Purpose    : Revolution slider css
+    Version    : V1.3
+*/
+
+
+body { 
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    font-family: 'Open Sans', sans-serif !important;
+    color:#424242;
+    font-size: 14px;
+    line-height: 24px;
+    background-color: #fff;
+}
+.fullwidthbanner{
+    width:100%;
+    position: relative;
+}
+.rev-text-center{
+    text-align: center;
+    font-size: 24px;
+    color:#fff !important;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: 300;
+   line-height: 30px;
+}
+.rev-title-v1{
+  font-family: 'Open Sans', sans-serif !important;
+   font-weight: 800 !important;
+   text-transform: uppercase;
+}
+.rev-buttons a{
+    color:#fff ;
+    margin: 5px;
+}
+.rev-buttons .btn-theme-bg:hover{
+    color:#fff;
+}
+.rev-buttons .border-white:hover{
+    color:#333;
+}
+.tp-caption.modern_big_redbg{
+    font-family: 'Open Sans', sans-serif !important; 
+}
+.slider-text-title{
+    font-size: 50px;
+    color:#fff;
+}
+/************box slider*******/
+.tp-banner-container{
+    position: relative;
+    max-width:1170px;
+    margin: 20px auto;
+}
+
+/************ken burns***************/
+
+.Ken-burns-heading{
+    font-size: 60px;
+    color:#fff;
+    font-weight: 900;
+    text-transform: uppercase;
+   font-family: 'Open Sans', sans-serif !important; 
+}
+.ken-burns-cap{
+    color:#fff;
+    font-weight: 400;
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif !important;
+}

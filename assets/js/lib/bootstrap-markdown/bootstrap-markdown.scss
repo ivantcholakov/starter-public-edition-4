@@ -1,0 +1,96 @@
+@import "../../node_modules/bootstrap-markdown/css/bootstrap-markdown.min";
+
+.md-editor.active {
+  box-shadow: none !important;
+}
+
+.md-editor > .md-header,
+.md-editor .md-footer {
+  background: #fff;
+}
+
+.md-editor > textarea,
+.md-editor > .md-preview {
+  background: #fff;
+  padding: 14px;
+}
+
+.md-editor > .md-header > .btn-group {
+  margin-right: .3125rem;
+
+  [dir=rtl] & {
+    margin-right: 0;
+    margin-left: .3125rem;
+  }
+}
+
+[dir=rtl] .md-controls {
+  float: left;
+}
+
+[dir=rtl] .md-controls .md-control {
+  right: auto;
+  left: 5px;
+  padding-left: 3px;
+  padding-right: 10px;
+}
+
+[dir=rtl] .md-fullscreen-mode .md-fullscreen-controls {
+  right: auto;
+  left: 20px;
+  text-align: left;
+}
+
+.default-style {
+  @import "../../css/_appwork/include";
+
+  .md-editor {
+    border-color: $card-border-color;
+
+    &.md-fullscreen-mode {
+      z-index: $zindex-modal-top;
+    }
+  }
+
+  .md-editor:not(.md-fullscreen-mode) > .md-header,
+  .md-editor:not(.md-fullscreen-mode) .md-footer {
+    padding-left: $input-btn-padding-x / 2 !important;
+    padding-right: $input-btn-padding-x / 2 !important;
+  }
+
+  .md-editor > textarea,
+  .md-editor > .md-preview {
+    border-color: $card-border-color;
+    padding: $input-btn-padding-x !important;
+  }
+}
+
+.material-style {
+  @import "../../css/_appwork/include-material";
+
+  .md-editor {
+    border-color: $card-border-color;
+
+    &.md-fullscreen-mode {
+      z-index: $zindex-modal-top;
+    }
+  }
+
+  .md-editor:not(.md-fullscreen-mode) > .md-header,
+  .md-editor:not(.md-fullscreen-mode) .md-footer {
+    background: $gray-25;
+    padding-left: $input-btn-padding-x / 2 !important;
+    padding-right: $input-btn-padding-x / 2 !important;
+  }
+
+  .md-fullscreen-mode > .md-header .btn {
+    box-shadow: none !important;
+  }
+
+  // Some hack to rewrite default form-contol style
+  :not(.input-group) > div.md-editor[class] > textarea.md-input[class],
+  .md-editor > .md-preview {
+    border-color: $card-border-color;
+    padding: $input-btn-padding-x !important;
+  }
+}

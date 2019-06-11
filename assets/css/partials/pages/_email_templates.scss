@@ -1,0 +1,53 @@
+#email-templates {
+
+	.header {
+		margin-top: 10px;
+		font-size: 18px;
+		margin-bottom: 50px;
+	}
+
+	.emails {
+		text-align: center;
+		
+		.email {
+			display: inline-block;
+			position: relative;
+			margin-right: 45px;
+			margin-bottom: 55px;
+
+			&:hover {
+				i {
+					opacity: 1;
+				}
+			}
+
+			.name {
+				font-size: 19px;
+				margin-top: 10px;
+				text-align: center;
+			}
+
+			i {
+				font-size: 35px;
+				position: absolute;
+				left: calc(50% - 9px); 
+				top: calc(50% - 40px);
+				color: #AE92D1;
+				opacity: 0;
+				cursor: pointer;
+
+				@include transition(all .2s linear);
+			}
+
+			.wrapper {
+				border: 1px solid #eee;
+			}
+
+			img {
+				max-height: 345px;
+				cursor: pointer;
+			}
+		}
+	}
+
+}

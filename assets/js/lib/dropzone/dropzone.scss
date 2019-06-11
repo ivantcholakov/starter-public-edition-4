@@ -1,0 +1,412 @@
+@import '../../css/_custom-variables/libs';
+
+$dropzone-box-padding: 1.5rem !default;
+$dropzone-icon-size: 1.875rem !default;
+$dropzone-thumbnail-width: 10rem !default;
+$dropzone-thumbnail-height: 7.5rem !default;
+$dropzone-preview-padding: .625rem !default;
+$dropzone-progress-height: .5rem !default;
+$dropzone-icon-block-size: 3.75rem !default;
+
+// Fallback
+.dz-browser-not-supported {
+  .dz-message {
+    display: none !important;
+  }
+
+  &.dropzone-box {
+    padding: 0 !important;
+    min-height: auto !important;
+    width: auto !important;
+    border: none !important;
+    border-radius: 0 !important;
+    cursor: default !important;
+    transition: none;
+  }
+}
+
+.dropzone {
+  position: relative;
+  padding: 0 $dropzone-box-padding $dropzone-box-padding 0;
+  width: 100%;
+  cursor: pointer;
+
+  &.dz-drag-hover {
+    border-style: solid;
+
+    .dz-message {
+      opacity: .5;
+    }
+  }
+
+  // Disabled
+  &:not(.dz-clickable) {
+    opacity: .5;
+    cursor: not-allowed;
+  }
+}
+
+[dir=rtl] .dz-hidden-input {
+  right: 0 !important;
+  left: auto !important;
+}
+
+// Default message
+//
+
+.dz-message {
+  margin: 5rem 0;
+  padding-top: $dropzone-box-padding;
+  text-align: center;
+  font-weight: 500;
+
+  .note {
+    display: block;
+    margin-top: .625rem;
+    font-weight: 400;
+  }
+}
+
+.dz-started .dz-message {
+  display: none;
+}
+
+// Preview
+//
+
+.dz-preview {
+  position: relative;
+  box-sizing: content-box;
+  margin: $dropzone-box-padding 0 0 $dropzone-box-padding;
+  background: #fff;
+  vertical-align: top;
+  font-size: .8125rem;
+  cursor: default;
+}
+
+// File info
+//
+
+.dz-filename {
+  position: absolute;
+  overflow: hidden;
+  padding: $dropzone-preview-padding $dropzone-preview-padding 0 $dropzone-preview-padding;
+  width: 100%;
+  background: #fff;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &:hover {
+    text-overflow: inherit;
+    white-space: normal;
+  }
+}
+
+.dz-size {
+  padding: 1.875rem $dropzone-preview-padding $dropzone-preview-padding $dropzone-preview-padding;
+  font-style: italic;
+  font-size: .6875rem;
+}
+
+// Thumbnail
+//
+
+.dz-thumbnail {
+  position: relative;
+  box-sizing: content-box;
+  padding: $dropzone-preview-padding;
+  height: $dropzone-thumbnail-height;
+  text-align: center;
+
+   > img,
+  .dz-nopreview {
+    position: relative;
+    top: 50%;
+    display: block;
+    margin: 0 auto;
+    transform: translateY(-50%) scale(1);
+  }
+
+   > img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.dz-nopreview {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: .6875rem;
+}
+
+.dz-thumbnail img[src] ~ .dz-nopreview {
+  display: none;
+}
+
+// Progress
+//
+
+.dz-preview .progress,
+.dz-preview .progess-bar {
+  height: $dropzone-progress-height;
+}
+
+.dz-preview .progress {
+  position: absolute;
+  top: 50%;
+  right: 1.25rem;
+  left: 1.25rem;
+  z-index: 30;
+  margin-top: -$dropzone-progress-height / 2;
+}
+
+.dz-complete .progress {
+  display: none;
+}
+
+// Remove link
+//
+
+.dz-remove {
+  display: block;
+  padding: .375rem 0;
+  text-align: center;
+  font-size: .75rem;
+
+  &:hover,
+  &:focus {
+    border-top-color: transparent;
+    text-decoration: none;
+  }
+}
+
+// States
+//
+
+.dz-error-mark,
+.dz-success-mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: none;
+  margin-top: -$dropzone-icon-block-size / 2;
+  margin-left: -$dropzone-icon-block-size / 2;
+  width: $dropzone-icon-block-size;
+  height: $dropzone-icon-block-size;
+  border-radius: 50%;
+  background-position: center center;
+  background-size: $dropzone-icon-size $dropzone-icon-size;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 1.25rem rgba(0, 0, 0, .06);
+
+  [dir=rtl] & {
+    transform: scaleX(-1);
+  }
+}
+
+.dz-error-mark {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23d9534f' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E");
+}
+
+.dz-success-mark {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%235cb85c' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E");
+}
+
+.dz-error-message {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  left: -1px;
+  z-index: 40;
+  display: none;
+  overflow: auto;
+  padding: .75rem;
+  color: #fff;
+  text-align: left;
+  font-weight: 600;
+
+  [dir=rtl] & {
+    text-align: right;
+  }
+}
+
+// Error state
+.dz-error {
+  .dz-error-mark {
+    display: block;
+  }
+
+  .dz-error-message {
+    display: none;
+  }
+
+  &:hover {
+    .dz-error-mark {
+      display: none;
+    }
+
+    .dz-error-message {
+      display: block;
+    }
+  }
+}
+
+// Success state
+.dz-success .dz-success-mark {
+  display: block;
+}
+
+.default-style {
+  @import "../../css/_appwork/include";
+
+  $dropzone-border-color:     $card-border-color;
+  $dropzone-overlay-bg:       $gray-200;
+  $dropzone-thumbnail-bg:     $gray-25;
+
+  .dropzone {
+    border: 3px dashed $dropzone-border-color;
+  }
+
+  .dz-message {
+    font-size: $h4-font-size;
+
+    .note {
+      color: $text-muted;
+      font-size: $font-size-base;
+    }
+  }
+
+  .dz-preview {
+    border: $card-border-width solid $dropzone-border-color;
+    border-radius: $border-radius;
+    box-shadow: $card-shadow;
+  }
+
+  .dz-size {
+    color: $text-muted;
+  }
+
+  .dz-thumbnail {
+    border-bottom: 1px solid rgba-to-hex($dropzone-border-color);
+    background: $dropzone-thumbnail-bg;
+
+    @include border-top-radius(calc(if($border-radius, #{$border-radius} - 1px, 0)));
+  }
+
+  .dz-nopreview {
+    color: $text-muted;
+  }
+
+  .dz-remove {
+    border-top: 1px solid rgba-to-hex($dropzone-border-color);
+    color: $body-color;
+
+    @include border-bottom-radius(calc(if($border-radius, #{$border-radius} - 1px, 0)));
+
+    &:hover,
+    &:focus {
+      background: $gray-100;
+      color: $body-color;
+    }
+  }
+
+  .dz-error-mark,
+  .dz-success-mark {
+    background-color: $dropzone-overlay-bg;
+  }
+
+  .dz-error-message {
+    background: rgba(map-get($theme-colors, danger), .8);
+
+    @include border-top-radius($border-radius);
+  }
+
+  @media (min-width: map-get($grid-breakpoints, sm)) {
+    .dz-preview {
+      display: inline-block;
+      width: $dropzone-thumbnail-width + ($dropzone-preview-padding * 2);
+    }
+
+    .dz-thumbnail {
+      width: $dropzone-thumbnail-width;
+    }
+  }
+}
+
+.material-style {
+  @import "../../css/_appwork/include-material";
+
+  $dropzone-border-color:     $card-border-color;
+  $dropzone-overlay-bg:       $gray-200;
+  $dropzone-thumbnail-bg:     #fff;
+
+  .dropzone {
+    border: 3px dashed $dropzone-border-color;
+  }
+
+  .dz-message {
+    font-size: $h4-font-size;
+
+    .note {
+      color: $text-muted;
+      font-size: $font-size-base;
+    }
+  }
+
+  .dz-preview {
+    border: $card-border-width solid $dropzone-border-color;
+    border-radius: $border-radius;
+    box-shadow: $card-shadow;
+  }
+
+  .dz-size {
+    color: $text-muted;
+  }
+
+  .dz-thumbnail {
+    border-bottom: 1px solid rgba-to-hex($dropzone-border-color);
+    background: $dropzone-thumbnail-bg;
+
+    @include border-top-radius(if($border-radius, calc(#{$border-radius} - 1px), 0));
+  }
+
+  .dz-nopreview {
+    color: $text-muted;
+  }
+
+  .dz-remove {
+    border-top: 1px solid rgba-to-hex($dropzone-border-color);
+    color: $body-color;
+
+    @include border-bottom-radius(if($border-radius, calc(#{$border-radius} - 1px), 0));
+
+    &:hover,
+    &:focus {
+      background: $gray-100;
+      color: $body-color;
+    }
+  }
+
+  .dz-error-mark,
+  .dz-success-mark {
+    background-color: $dropzone-overlay-bg;
+  }
+
+  .dz-error-message {
+    background: rgba(map-get($theme-colors, danger), .8);
+
+    @include border-top-radius($border-radius);
+  }
+
+  @media (min-width: map-get($grid-breakpoints, sm)) {
+    .dz-preview {
+      display: inline-block;
+      width: $dropzone-thumbnail-width + ($dropzone-preview-padding * 2);
+    }
+
+    .dz-thumbnail {
+      width: $dropzone-thumbnail-width;
+    }
+  }
+}

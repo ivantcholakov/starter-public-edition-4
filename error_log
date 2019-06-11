@@ -1,0 +1,7 @@
+[15-Aug-2018 21:51:58 Europe/Sofia] PHP Fatal error:  Class 'ComposerAutoloaderInit7ec88c9c84ecdbd075c7338e7e8fd784' not found in /home2/everpay/public_html_admin/platform/vendor/autoload.php on line 7
+[15-Aug-2018 21:53:29 Europe/Sofia] PHP Fatal error:  Class 'ComposerAutoloaderInit7ec88c9c84ecdbd075c7338e7e8fd784' not found in /home2/everpay/public_html_admin/platform/vendor/autoload.php on line 7
+[29-Aug-2018 05:34:42 Europe/Sofia] PHP Fatal error:  Class 'ComposerAutoloaderInit7ec88c9c84ecdbd075c7338e7e8fd784' not found in /home2/everpay/public_html_admin/platform/vendor/autoload.php on line 7
+[29-Aug-2018 06:04:01 Europe/Sofia] PHP Fatal error:  Class 'ComposerAutoloaderInit7ec88c9c84ecdbd075c7338e7e8fd784' not found in /home2/everpay/public_html_admin/platform/vendor/autoload.php on line 7
+[29-Aug-2018 06:10:30 Europe/Sofia] PHP Fatal error:  Class 'ComposerAutoloaderInit7ec88c9c84ecdbd075c7338e7e8fd784' not found in /home2/everpay/public_html_admin/platform/vendor/autoload.php on line 5
+[30-Aug-2018 07:47:23 Europe/Sofia] PHP Fatal error:  Out of memory (allocated 414187520) (tried to allocate 16384 bytes) in /home2/everpay/public_html_admin/platform/vendor/twig/twig/lib/Twig/Template.php on line 409
+[30-Aug-2018 07:49:45 Europe/Sofia] PHP Fatal error:  Out of memory (allocated 414187520) (tried to allocate 16384 bytes) in /home2/everpay/public_html_admin/platform/vendor/twig/twig/lib/Twig/Environment.php(467) : eval()'d code on line 285

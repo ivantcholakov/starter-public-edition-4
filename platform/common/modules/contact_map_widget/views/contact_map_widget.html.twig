@@ -1,0 +1,9 @@
+{% if contact_map is not empty %}
+
+                <h4>{{ lang('contact_our_location') }}</h4>
+
+                <div class="ui 16:9 embed">
+                    {{ contact_map|raw }}
+                </div>
+
+{% endif %}

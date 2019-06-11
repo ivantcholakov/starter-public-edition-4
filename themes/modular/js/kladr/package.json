@@ -1,0 +1,37 @@
+{
+  "name": "jquery.kladr",
+  "version": "2.2.1",
+  "description": "jQuery Kladr",
+  "main": "jquery.kladr.min.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+	  "build": "npm install && (gulp || node node_modules/gulp/bin/gulp.js)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/garakh/kladrapi-jsclient.git"
+  },
+  "author": {
+    "name": "Alexandr Yakovlev",
+    "email": "xescoder@gmail.com",
+    "url": "https://www.linkedin.com/in/xescoder"
+  },
+  "keywords": [
+	"kladr",
+	"jquery"
+  ],
+  "license": "Public Domain",
+  "bugs": {
+    "url": "https://github.com/garakh/kladrapi-jsclient/issues"
+  },
+  "homepage": "https://github.com/garakh/kladrapi-jsclient",
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "gulp-csso": "^0.2.9",
+    "gulp-uglify": "^1.0.1",
+    "gulp-concat": "^2.4.1",
+    "gulp-rename": "^1.2.0"
+  }
+}

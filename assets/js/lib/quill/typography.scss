@@ -1,0 +1,286 @@
+@import 'mixins';
+
+.ql-editor,
+.ql-content {
+  $quill-indent: 2rem;
+
+  p,
+  ol,
+  ul,
+  pre,
+  blockquote,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    counter-reset: list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+  }
+
+  ol,
+  ul {
+    margin-right: 0;
+    margin-left: 0;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  ol > li,
+  ul > li {
+    list-style-type: none;
+
+    &:not(.ql-direction-rtl) {
+      padding-left: $quill-indent;
+
+      [dir=rtl] & {
+        padding-right: $quill-indent;
+        padding-left: 0;
+      }
+    }
+
+    &.ql-direction-rtl {
+      padding-right: $quill-indent;
+
+      [dir=rtl] & {
+        padding-right: 0;
+        padding-left: $quill-indent;
+      }
+    }
+  }
+
+  ul > li::before {
+    content: '\2022';
+  }
+
+  ul[data-checked=true],
+  ul[data-checked=false] {
+    pointer-events: none;
+
+     > li * {
+      pointer-events: all;
+
+      &::before {
+        color: #777;
+        cursor: pointer;
+        pointer-events: all;
+      }
+    }
+  }
+
+  ul[data-checked=true] > li::before {
+    content: '\2611';
+  }
+
+  ul[data-checked=false] > li::before {
+    content: '\2610';
+  }
+
+  li::before {
+    display: inline-block;
+    width: calc(#{$quill-indent} - .3em);
+    white-space: nowrap;
+  }
+
+  li:not(.ql-direction-rtl)::before {
+    margin-right: .3em;
+    margin-left: -$quill-indent;
+    text-align: right;
+
+    [dir=rtl] & {
+      margin-right: -$quill-indent;
+      margin-left: .3em;
+      text-align: left;
+    }
+  }
+
+  li.ql-direction-rtl::before {
+    margin-right: -$quill-indent;
+    margin-left: .3em;
+    text-align: left;
+
+    [dir=rtl] & {
+      margin-right: .3em;
+      margin-left: -$quill-indent;
+      text-align: right;
+    }
+  }
+
+  ol li {
+    counter-increment: list-0;
+    counter-reset: list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
+
+    &::before {
+      content: counter(list-0, decimal) '. ';
+    }
+  }
+
+  @include quill-generate-lists($quill-indent);
+
+  .ql-video {
+    display: block;
+    max-width: 100%;
+
+    &.ql-align-center {
+      margin: 0 auto;
+    }
+
+    &.ql-align-right {
+      margin: 0 0 0 auto;
+
+      [dir=rtl] & {
+        margin: 0 auto 0 0;
+      }
+    }
+  }
+
+  .ql-bg-black {
+    background-color: #000;
+  }
+
+  .ql-bg-red {
+    background-color: #e60000;
+  }
+
+  .ql-bg-orange {
+    background-color: #f90;
+  }
+
+  .ql-bg-yellow {
+    background-color: #ff0;
+  }
+
+  .ql-bg-green {
+    background-color: #008a00;
+  }
+
+  .ql-bg-blue {
+    background-color: #06c;
+  }
+
+  .ql-bg-purple {
+    background-color: #93f;
+  }
+
+  .ql-color-white {
+    color: #fff;
+  }
+
+  .ql-color-red {
+    color: #e60000;
+  }
+
+  .ql-color-orange {
+    color: #f90;
+  }
+
+  .ql-color-yellow {
+    color: #ff0;
+  }
+
+  .ql-color-green {
+    color: #008a00;
+  }
+
+  .ql-color-blue {
+    color: #06c;
+  }
+
+  .ql-color-purple {
+    color: #93f;
+  }
+
+  .ql-direction-rtl {
+    text-align: inherit;
+    direction: rtl;
+
+    [dir=rtl] & {
+      text-align: inherit;
+      direction: ltr;
+    }
+  }
+
+  .ql-align-center {
+    text-align: center;
+  }
+
+  .ql-align-justify {
+    text-align: justify;
+  }
+
+  .ql-align-right {
+    text-align: right;
+
+    [dir=rtl] & {
+      text-align: left;
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.default-style {
+  .ql-editor,
+  .ql-content {
+    @import "../../css/_appwork/include";
+
+    blockquote {
+      margin-bottom: $spacer;
+      font-size: $blockquote-font-size;
+    }
+
+    .ql-font-serif {
+      font-family: $font-family-serif;
+    }
+
+    .ql-font-monospace {
+      font-family: $font-family-monospace;
+    }
+
+    .ql-size-small {
+      font-size: $font-size-sm;
+    }
+
+    .ql-size-large {
+      font-size: $font-size-lg;
+    }
+
+    .ql-size-huge {
+      font-size: $font-size-xl;
+    }
+  }
+}
+
+.material-style {
+  .ql-editor,
+  .ql-content {
+    @import "../../css/_appwork/include-material";
+
+    blockquote {
+      margin-bottom: $spacer;
+      font-size: $blockquote-font-size;
+    }
+
+    .ql-font-serif {
+      font-family: $font-family-serif;
+    }
+
+    .ql-font-monospace {
+      font-family: $font-family-monospace;
+    }
+
+    .ql-size-small {
+      font-size: $font-size-sm;
+    }
+
+    .ql-size-large {
+      font-size: $font-size-lg;
+    }
+
+    .ql-size-huge {
+      font-size: $font-size-xl;
+    }
+  }
+}

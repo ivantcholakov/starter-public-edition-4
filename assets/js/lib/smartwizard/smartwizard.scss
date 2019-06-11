@@ -1,0 +1,292 @@
+@import '../../css/_custom-variables/libs';
+
+$sw-icon-size: 2.5rem !default;
+$sw-icon-border-width: 2px !default;
+$sw-icon-font-size: 1rem !default;
+$sw-spacer: 2rem !default;
+
+.sw-theme-default {
+  &.sw-main,
+  .sw-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .sw-container {
+    flex-shrink: 1;
+  }
+
+  .step-anchor {
+    flex-direction: row;
+
+    &:not(.card) {
+      border: 0;
+    }
+  }
+
+  .step-anchor li {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  .step-anchor li > a {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 $sw-spacer 0 ($sw-icon-size + 1.25rem);
+    min-height: $sw-icon-size;
+    outline: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    text-decoration: none;
+    font-weight: 500;
+    opacity: .4;
+    cursor: default;
+
+    [dir=rtl] & {
+      padding-right: ($sw-icon-size + 1.25rem);
+      padding-left: $sw-spacer;
+    }
+
+    small,
+    .small {
+      font-weight: normal;
+    }
+  }
+
+  .step-anchor li.clickable > a,
+  .step-anchor li.active > a,
+  .step-anchor li.done > a {
+    opacity: 1;
+  }
+
+  .step-anchor li.clickable > a,
+  .step-anchor li.active > a {
+    cursor: pointer;
+  }
+
+  .step-anchor li.done > a {
+    cursor: pointer;
+  }
+
+  .step-anchor li.disabled > a,
+  .step-anchor li.disabled > a:hover {
+    cursor: not-allowed !important;
+  }
+
+  .sw-number,
+  .sw-icon,
+  .sw-done-icon {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -$sw-icon-size / 2;
+    width: $sw-icon-size;
+    height: $sw-icon-size;
+    border: $sw-icon-border-width solid;
+    border-radius: 50%;
+    text-align: center;
+    line-height: calc(#{$sw-icon-size} - #{($sw-icon-border-width * 2)});
+
+    [dir=rtl] & {
+      right: 0;
+      left: auto;
+    }
+  }
+
+  .sw-icon,
+  .sw-done-icon {
+    font-size: $sw-icon-font-size;
+  }
+
+  .sw-done-icon {
+    display: none;
+  }
+
+  .step-anchor li.done .sw-done-icon {
+    display: block;
+
+     ~ .sw-number,
+     ~ .sw-icon {
+      display: none;
+    }
+  }
+
+  .wizard-number {
+    font-weight: 500;
+  }
+
+  .step-anchor li.done .sw-number,
+  .step-anchor li.done .sw-icon,
+  .step-anchor li.done .sw-done-icon {
+    opacity: .4;
+  }
+
+  .step-content {
+    position: relative;
+    display: none;
+    margin: 0;
+    width: 100%;
+  }
+
+  .sw-toolbar {
+    justify-content: flex-end;
+    padding: 0;
+  }
+}
+
+.default-style {
+  @import "../../css/_appwork/include";
+
+  .sw-theme-default {
+    .step-anchor li > a {
+      color: $body-color;
+    }
+
+    .step-anchor li.danger > a {
+      color: map-get($theme-colors, danger) !important;
+    }
+
+    .sw-number,
+    .sw-icon,
+    .sw-done-icon {
+      border-color: $border-color;
+    }
+
+    .step-anchor li.danger .sw-number,
+    .step-anchor li.danger .sw-icon,
+    .step-anchor li.danger .sw-done-icon {
+      border-color: map-get($theme-colors, danger) !important;
+      color: map-get($theme-colors, danger) !important;
+    }
+  }
+
+  @media (min-width: map-get($grid-breakpoints, md)) {
+    .smartwizard-vertical-left.sw-main,
+    .smartwizard-vertical-right.sw-main {
+      flex-direction: row;
+    }
+
+    .smartwizard-vertical-left .step-anchor,
+    .smartwizard-vertical-right .step-anchor {
+      align-self: flex-start;
+      flex-direction: column;
+
+      li {
+        flex-grow: 0;
+      }
+    }
+
+    .sw-theme-default {
+      &.smartwizard-vertical-right {
+        flex-direction: row-reverse;
+      }
+
+      &.smartwizard-vertical-right .step-anchor li > a {
+        padding: 0 0 0 (($sw-icon-size + 1.25rem) + 2rem);
+      }
+
+      &.smartwizard-vertical-right .sw-number,
+      &.smartwizard-vertical-right .sw-icon,
+      &.smartwizard-vertical-right .sw-done-icon {
+        left: 2rem;
+      }
+    }
+  }
+
+  &[dir=rtl] {
+    @media (min-width: map-get($grid-breakpoints, md)) {
+      .sw-theme-default {
+        &.smartwizard-vertical-right .step-anchor li > a {
+          padding: 0 (($sw-icon-size + 1.25rem) + 2rem) 0 0;
+        }
+
+        &.smartwizard-vertical-right .sw-number,
+        &.smartwizard-vertical-right .sw-icon,
+        &.smartwizard-vertical-right .sw-done-icon {
+          right: 2rem;
+          left: auto;
+        }
+      }
+    }
+  }
+}
+
+.material-style {
+  @import "../../css/_appwork/include-material";
+
+  .sw-theme-default {
+    .step-anchor li > a {
+      color: $body-color;
+    }
+
+    .step-anchor li.danger > a {
+      color: map-get($theme-colors, danger) !important;
+    }
+
+    .sw-number,
+    .sw-icon,
+    .sw-done-icon {
+      border-color: $border-color;
+    }
+
+    .step-anchor li.danger .sw-number,
+    .step-anchor li.danger .sw-icon,
+    .step-anchor li.danger .sw-done-icon {
+      border-color: map-get($theme-colors, danger) !important;
+      color: map-get($theme-colors, danger) !important;
+    }
+  }
+
+  @media (min-width: map-get($grid-breakpoints, md)) {
+    .smartwizard-vertical-left.sw-main,
+    .smartwizard-vertical-right.sw-main {
+      flex-direction: row;
+    }
+
+    .smartwizard-vertical-left .step-anchor,
+    .smartwizard-vertical-right .step-anchor {
+      align-self: flex-start;
+      flex-direction: column;
+
+      li {
+        flex-grow: 0;
+      }
+    }
+
+    .sw-theme-default {
+      &.smartwizard-vertical-right {
+        flex-direction: row-reverse;
+      }
+
+      &.smartwizard-vertical-right .step-anchor li > a {
+        padding: 0 0 0 (($sw-icon-size + 1.25rem) + 2rem);
+      }
+
+      &.smartwizard-vertical-right .sw-number,
+      &.smartwizard-vertical-right .sw-icon,
+      &.smartwizard-vertical-right .sw-done-icon {
+        left: 2rem;
+      }
+    }
+  }
+
+  &[dir=rtl] {
+    @media (min-width: map-get($grid-breakpoints, md)) {
+      .sw-theme-default {
+        &.smartwizard-vertical-right .step-anchor li > a {
+          padding: 0 (($sw-icon-size + 1.25rem) + 2rem) 0 0;
+        }
+
+        &.smartwizard-vertical-right .sw-number,
+        &.smartwizard-vertical-right .sw-icon,
+        &.smartwizard-vertical-right .sw-done-icon {
+          right: 2rem;
+          left: auto;
+        }
+      }
+    }
+  }
+}

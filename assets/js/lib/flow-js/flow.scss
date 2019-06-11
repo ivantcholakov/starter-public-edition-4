@@ -1,0 +1,36 @@
+@import '../../css/_custom-variables/libs';
+
+$flow-drop-padding-y: 3rem !default;
+$flow-drop-padding-x: 1.5rem !default;
+
+.flow-error {
+  display: none;
+}
+
+.flow-drop {
+  position: relative;
+  display: none;
+  width: 100%;
+  text-align: center;
+}
+
+.flow-progress .progress-resume-link,
+.flow-progress .progress-pause-link {
+  display: none;
+}
+
+.default-style {
+  @import "../../css/_appwork/include";
+
+  .flow-drop {
+    border: 3px dashed $card-border-color;
+  }
+}
+
+.material-style {
+  @import "../../css/_appwork/include-material";
+
+  .flow-drop {
+    border: 3px dashed $card-border-color;
+  }
+}

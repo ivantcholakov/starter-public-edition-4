@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Ввод адреса одной строкой</title>
+
+        <link href="../jquery.kladr.min.css" rel="stylesheet">
+        <link href="css/one_string.css" rel="stylesheet">
+
+        <script src="js/lib/jquery-1.11.1.min.js" type="text/javascript"></script>
+        <script src="../jquery.kladr.min.js" type="text/javascript"></script>
+        <script src="js/one_string.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div class ="address">
+            <h1>Ввод адреса одной строкой</h1>
+            <div class="field">
+                <input name="address" type="text" value="" placeholder="Адрес">
+            </div>
+            <div class="field">
+                <div class="group-name">
+                    Искать в
+                </div>
+                <label><input name="parent" type="radio" value="all" checked> Всей России</label>
+                <label><input name="parent" type="radio" value="moscow"> Москве</label>
+                <label><input name="parent" type="radio" value="petersburg"> Санкт-Петербурге</label>
+            </div>
+            <div class="addition">
+                <div class="block">
+                    <p class="title">Выбранный объект</p>
+                    <ul class="js-log">
+                        <li id="id" style="display: none;"><span class="name">Код:</span> <span class="value"></span></li>
+                        <li id="zip" style="display: none;"><span class="name">Почтовый индекс:</span> <span class="value"></span></li>
+                        <li id="name" style="display: none;"><span class="name">Название:</span> <span class="value"></span></li>
+                        <li id="fullName" style="display: none;"><span class="name">Полное название:</span> <span class="value"></span>
+                        <li id="type" style="display: none;"><span class="name">Подпись:</span> <span class="value"></span></li>
+                        <li id="typeShort" style="display: none;"><span class="name">Подпись коротко:</span> <span class="value"></span></li>
+                        <li id="contentType" style="display: none;"><span class="name">Тип объекта:</span> <span class="value"></span>
+                        <li id="okato" style="display: none;"><span class="name">ОКАТО:</span> <span class="value"></span>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,76 @@
+
+/* 
+    Created on : 2016-11-29
+    Author     : Ivan Tcholakov
+    License    : MIT
+*/
+
+
+// Semantic UI Customizations
+
+
+// Directories
+@base-uri:                      "../../../../";
+@default-base-uri:              @base-uri;
+@default-assets-uri:            "@{default-base-uri}assets/";
+
+@theme-path:                    "./";
+@default-assets-path:           "../../../";
+@default-assets-less-path:      "@{default-assets-path}less/";
+@default-assets-less-lib-path:  "@{default-assets-less-path}lib/";
+@default-assets-css-path:       "@{default-assets-path}css/";
+@default-assets-css-lib-path:   "@{default-assets-css-path}lib/";
+
+
+// Semantic UI
+@theme-loader-path:             "../semantic-custom/";
+@import "definitions/globals/mixins";
+@import "@{default-assets-less-lib-path}/semantic/semantic.vendor.less";
+& { @import "definitions/globals/utilities"; }
+
+
+/* DataTables - Semantic UI Integration */
+
+@import "@{default-assets-less-lib-path}dataTables/dataTables.semanticui-source.less";
+
+
+// Select Plugin
+@import '@{default-assets-less-lib-path}dataTables/select.semanticui-variables.less';
+@import '@{default-assets-less-lib-path}dataTables/select.semanticui-source.less';
+
+// Visual Corrections
+
+div.dataTables_wrapper div.dataTables_length .ui.selection.dropdown {
+    min-width: 100px;
+}
+
+div.dataTables_wrapper > div.ui.grid > div.row {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+div.dataTables_wrapper > div.ui.grid > div.row:first-child {
+    padding-top: 7px;
+}
+
+div.dataTables_wrapper > div.ui.grid > div.row div.column {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+// Item Details Controls
+
+th.details-control {
+    min-width: 35px;
+}
+
+td.details-control {
+    background: url('@{default-assets-uri}img/lib/details-open.png') no-repeat center center;
+    cursor: pointer;
+}
+
+tr.shown td.details-control {
+    background: url('@{default-assets-uri}img/lib/details-close.png') no-repeat center center;
+}
+
+/* End DataTables - Semantic UI Integration */

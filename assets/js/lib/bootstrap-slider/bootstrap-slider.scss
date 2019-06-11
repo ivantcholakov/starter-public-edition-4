@@ -1,0 +1,157 @@
+@import '../../css/_custom-variables/libs';
+
+$slider-line-height: .75rem !default;
+$slider-border-radius: 6.1875rem !default;
+$slider-horizontal-width: 100% !default;
+
+// DUMMY
+@mixin slider_background-image ($v...) {}
+@mixin slider_box-sizing ($v...) {}
+@mixin slider_box-shadow ($v...) {}
+@mixin slider_border-radius ($value) { border-radius: $value; }
+@function slider_border-radius($value) { @return $value; }
+
+// Imports
+@import "../../node_modules/bootstrap-slider/src/sass/variables";
+@import "mixins";
+@import "../../node_modules/bootstrap-slider/src/sass/rules";
+
+.slider {
+  user-select: none;
+}
+
+.slider .tooltip {
+  transition: opacity .2s;
+
+  &.top,
+  &.bottom {
+    transform: translateX(-50%);
+
+    [dir=rtl] & {
+      transform: translateX(50%);
+    }
+  }
+
+  &.left,
+  &.right {
+    transform: translateY(-50%);
+  }
+
+  &.in {
+    opacity: 1;
+  }
+
+  &.top {
+    margin-top: -($slider-line-height * 2.2) - .125rem;
+  }
+
+  &.right {
+    margin-left: .5rem;
+  }
+
+  &.left {
+    margin-right: .5rem;
+  }
+}
+
+.slider-handle {
+  background: #fff;
+  transition: transform .2s;
+
+  &:active {
+    transform: scale(1.4, 1.4);
+  }
+}
+
+// Horizontal track
+.slider.slider-horizontal .slider-track {
+  margin-top: -.0625rem;
+  height: .125rem;
+}
+
+// Vertical track
+.slider.slider-vertical .slider-track {
+  margin-left: .125rem;
+  width: .125rem;
+}
+
+// Reversed slider
+.slider-reversed .slider-selection {
+  background: transparent !important;
+}
+
+// Disabled
+//
+
+.slider-disabled .slider-track {
+  opacity: .3;
+  cursor: not-allowed;
+}
+
+.slider-disabled .slider-handle {
+  box-shadow: 0 0 0 1px rgba(0,0,0,.07);
+  cursor: not-allowed;
+  transform: none;
+}
+
+// Horizontal labels
+.slider.slider-horizontal .slider-tick-label-container .slider-tick-label {
+  padding-top: .25rem;
+}
+
+[dir=rtl] .slider.slider-vertical {
+  .slider-track {
+    margin-left: 0;
+    margin-right: .125rem;
+  }
+}
+
+.default-style {
+  @import '../../css/_appwork/include';
+
+  .slider-handle {
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1), $floating-component-shadow;
+  }
+
+  .slider-track {
+    background: $gray-200;
+  }
+
+  .slider-tick-label-container .slider-tick-label {
+    color: $text-muted;
+    font-size: $small-font-size;
+  }
+
+  @each $color, $value in $theme-colors {
+    @if $color != primary {
+      .slider-#{$color} {
+        @include bs-slider-variant($value);
+      }
+    }
+  }
+}
+
+.material-style {
+  @import '../../css/_appwork/include-material';
+
+  .slider-handle {
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1), $floating-component-shadow;
+  }
+
+  .slider-track {
+    background: $gray-200;
+  }
+
+  .slider-tick-label-container .slider-tick-label {
+    color: $text-muted;
+    font-size: $small-font-size;
+  }
+
+  @each $color, $value in $theme-colors {
+    @if $color != primary {
+      .slider-#{$color} {
+        @include material-bs-slider-variant($value);
+      }
+    }
+  }
+}

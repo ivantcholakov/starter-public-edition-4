@@ -1,0 +1,114 @@
+@import "../../node_modules/toastr/toastr.scss";
+
+#toast-container > div {
+  opacity: 1;
+  width: 20em !important;
+  padding: 15px 15px 15px 50px !important;
+
+  [dir=rtl] & {
+    background-position: center right .9375rem;
+    padding: 15px 50px 15px 15px !important;
+  }
+}
+
+.toast-progress {
+  position: absolute;
+  top: 0;
+  bottom: auto;
+  height: .1875rem;
+  opacity: .15;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=15);
+      filter: alpha(opacity=15);
+
+  [dir=rtl] & {
+    right: 0;
+    left: auto;
+  }
+}
+
+.toast-close-button {
+  position: absolute;
+  top: 0;
+  color: inherit;
+  text-shadow: none;
+  right: .25rem !important;
+
+  [dir=rtl] & {
+    right: auto !important;
+    left: .25rem !important;
+  }
+}
+
+.default-style {
+  @import "../../css/_appwork/include";
+
+  #toast-container {
+    z-index: $zindex-notification;
+
+    > div {
+      border-radius: $border-radius;
+      box-shadow: $modal-content-box-shadow-xs !important;
+    }
+
+    .toast-close-button {
+      font-weight: $close-font-weight;
+    }
+
+    > .toast-success {
+      background-color: map-get($theme-colors, success);
+      color: yiq(map-get($theme-colors, success));
+    }
+
+    > .toast-error {
+      background-color: map-get($theme-colors, danger);
+      color: yiq(map-get($theme-colors, danger));
+    }
+
+    > .toast-info {
+      background-color: map-get($theme-colors, info);
+      color: yiq(map-get($theme-colors, info));
+    }
+
+    > .toast-warning {
+      background-color: map-get($theme-colors, warning);
+      color: yiq(map-get($theme-colors, warning));
+    }
+  }
+}
+
+.material-style {
+  @import "../../css/_appwork/include-material";
+
+  #toast-container {
+    z-index: $zindex-notification;
+
+    > div {
+      border-radius: $border-radius;
+      box-shadow: $modal-content-box-shadow-xs !important;
+    }
+
+    .toast-close-button {
+      font-weight: $close-font-weight;
+    }
+
+    > .toast-success {
+      background-color: map-get($theme-colors, success);
+      color: yiq(map-get($theme-colors, success));
+    }
+
+    > .toast-error {
+      background-color: map-get($theme-colors, danger);
+      color: yiq(map-get($theme-colors, danger));
+    }
+
+    > .toast-info {
+      background-color: map-get($theme-colors, info);
+      color: yiq(map-get($theme-colors, info));
+    }
+
+    > .toast-warning {
+      background-color: map-get($theme-colors, warning);
+      color: yiq(map-get($theme-colors, warning));
+    }
+  }
+}

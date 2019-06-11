@@ -1,0 +1,10 @@
+@import "../../node_modules/ladda/dist/ladda-themeless.min";
+
+.ladda-button[data-style=contract-overlay][data-loading] {
+  box-shadow: 0px 0px 0px 2000px rgba(0, 0, 0, 0.8) !important;
+}
+
+.ladda-button[data-style="contract"],
+.ladda-button[data-style="contract-overlay"] {
+  width: auto;
+}

@@ -1,0 +1,24 @@
+
+{% set success = success is not zero %}
+{% set single_message = single_message is defined ? single_message : true %}
+{% set message = message is defined ? message : '' %}
+
+                <div class="status ui {% if success %}positive{% else %}negative{% endif %} message">
+                    <i class="close icon"></i>
+
+{% if single_message %}
+
+                    {{ message }}
+
+{% else %}
+
+                    <ul>
+
+    {% for message in messages %}
+                        <li>{{ message }}</li>
+    {% endfor %}
+
+                    </ul>
+{% endif %}
+
+                </div>

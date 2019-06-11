@@ -1,0 +1,111 @@
+body {
+    padding-top: 30px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+span.active {
+    color: #009900;
+}
+
+span.inactive {
+    color: #ff0000;
+}
+
+td.sorted {
+    background-color: #f1fced !important;
+}
+
+.sticky-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    text-align: center;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px;
+}
+
+.sticky-footer p {
+    margin-bottom: 0;
+}
+
+.pagination {
+    margin: 0 !important;
+}
+
+#session-language {
+    margin: 8px 15px 0 20px;
+}
+
+#session-language-dropdown {
+    margin: 13px 15px 0 0;
+}
+
+#session-language-dropdown li {
+    position: relative;
+}
+
+.selected-session-language {
+    position: absolute;
+    top: 6px;
+    left: 4px;
+}
+
+@media (max-width:767px) {
+    #session-language {
+        margin: 12px 0 0 15px;
+    }
+}
+
+
+/*****************************************************************************/
+/*  Additional color classes for striped tables (Bootstrap Standard Colors)  */
+/*****************************************************************************/
+
+.table-striped-error tbody > tr:nth-child(odd) > td,
+.table-striped-error tbody > tr:nth-child(odd) > th {
+    background-color: #f2dede; /* red-bar */
+}
+
+.table-hover-error > tbody > tr:hover > td,
+.table-hover-error > tbody > tr:hover > th {
+    background-color: #edd9d9 !important;
+}
+
+/*****************************************************************************/
+
+.table-striped-success tbody > tr:nth-child(odd) > td,
+.table-striped-success tbody > tr:nth-child(odd) > th {
+    background-color: #dff0d8; /* green-bar */
+}
+
+.table-hover-success > tbody > tr:hover > td,
+.table-hover-success > tbody > tr:hover > th {
+    background-color: #daebd3 !important;
+}
+
+/*****************************************************************************/
+
+.table-striped-info tbody > tr:nth-child(odd) > td,
+.table-striped-info tbody > tr:nth-child(odd) > th {
+    background-color: #d9edf7; /* blue-bar */
+}
+
+.table-hover-info > tbody > tr:hover > td,
+.table-hover-info > tbody > tr:hover > th {
+    background-color: #d4e8f2 !important;
+}
+
+/*****************************************************************************/
+
+.table-striped-warning tbody > tr:nth-child(odd) > td,
+.table-striped-warning tbody > tr:nth-child(odd) > th {
+    background-color: #fcf8e3; /* yellow-bar */
+}
+
+.table-hover-warning > tbody > tr:hover > td,
+.table-hover-warning > tbody > tr:hover > th {
+    background-color: #f7f3de !important;
+}

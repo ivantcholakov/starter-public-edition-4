@@ -1,0 +1,1144 @@
+@import '../../css/_custom-variables/libs';
+@import 'mixins';
+
+$fullcalendar-event-border-radius: .125rem !default;
+$fullcalendar-button-padding: .375rem .75rem !default;
+$fullcalendar-day-grid-event-padding: .0625rem .1875rem !default;
+$fullcalendar-highlight-opacity: .05 !default;
+$fullcalendar-bg-event-opacity: .1 !default;
+$fullcalendar-popover-header-padding: .3125rem .5rem !default;
+$fullcalendar-day-header-padding-y: .5rem !default;
+$fullcalendar-today-bg: rgba(#02BC77, .05) !default;
+$fullcalendar-nonbusiness-bg: rgba(0, 0, 0, .02) !default;
+$fullcalendar-event-selected-shadow: 0 .125rem .3125rem rgba(0, 0, 0, 0.2) !default;
+$fullcalendar-event-selected-dragging-shadow: 0 .125rem .4375rem rgba(0, 0, 0, 0.3) !default;
+$fullcalendar-now-indicator-color: red !default;
+$fullcalendar-toolbar-margin-x: 1em !default;
+$fullcalendar-list-table-cell-padding: .5rem .875rem !default;
+$fullcalendar-event-dot-size: .625rem !default;
+$fullcalendar-now-indicator-arrow-size: .3125rem !default;
+
+// *******************************************************************************
+// * Utilities
+
+.fc-divider {
+  border-style: solid;
+  border-width: 1px;
+}
+
+hr.fc-divider {
+  height: 0;
+  margin: 0;
+  padding: 0 0 .125rem;
+  border-width: 1px 0;
+}
+
+.fc-clear {
+  clear: both;
+}
+
+.fc-bg,
+.fc-bgevent-skeleton,
+.fc-highlight-skeleton,
+.fc-helper-skeleton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.fc-bg {
+  bottom: 0;
+
+  table {
+    height: 100%;
+  }
+}
+
+.fc-unselectable {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+// *******************************************************************************
+// * Popover
+
+.fc-popover {
+  position: absolute;
+}
+
+.fc-popover .fc-header {
+  padding: $fullcalendar-popover-header-padding;
+}
+
+.fc-popover .fc-header .fc-title {
+  margin: 0 .125rem;
+  float: left;
+
+  [dir=rtl] & {
+    float: right;
+  }
+}
+
+.fc-popover .fc-header .fc-close {
+  cursor: pointer;
+  float: right;
+
+  [dir=rtl] & {
+    float: left;
+  }
+}
+
+// *******************************************************************************
+// * Tables
+
+.fc table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.fc th {
+  text-align: center;
+  padding: 0;
+  vertical-align: top;
+}
+
+.fc td {
+  padding: 0;
+  vertical-align: top;
+  
+  &.fc-today {
+    border-style: double;
+
+    &.alert-info {
+      background: $fullcalendar-today-bg;
+    }
+  }
+}
+
+.fc-head .fc-day-header,
+.fc-head .fc-week-number {
+  padding-top: $fullcalendar-day-header-padding-y !important;
+  padding-bottom: $fullcalendar-day-header-padding-y !important;
+  text-transform: uppercase;
+}
+
+.fc .fc-view-container .fc-nonbusiness {
+  opacity: 1 !important;
+  background: $fullcalendar-nonbusiness-bg !important;
+}
+
+// *******************************************************************************
+// * Internal Nav Links
+
+a[data-goto] {
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// *******************************************************************************
+// * Fake Table Rows
+
+.fc .fc-row {
+  border-style: solid;
+  border-width: 0;
+}
+
+.fc-row {
+  position: relative;
+
+  table {
+    border-left: 0 hidden transparent;
+    border-right: 0 hidden transparent;
+    border-bottom: 0 hidden transparent;
+  }
+  
+  &:first-child table {
+    border-top: 0 hidden transparent;
+  }
+
+  .fc-bg {
+    z-index: 1;
+  }
+
+  .fc-bgevent-skeleton,
+  .fc-highlight-skeleton {
+    bottom: 0;
+  }
+
+  .fc-bgevent-skeleton {
+    z-index: 2;
+
+    table {
+      height: 100%;
+    }
+
+    td {
+      border-color: transparent;
+    }
+  }
+
+  .fc-highlight-skeleton {
+    z-index: 3;
+
+    table {
+      height: 100%;
+    }
+
+    td {
+      border-color: transparent;
+    }
+  }
+    
+  .fc-content-skeleton {
+    position: relative;
+    z-index: 4;
+    padding-bottom: .125rem;
+  }
+
+  .fc-helper-skeleton {
+    z-index: 5;
+  }
+}
+
+// *******************************************************************************
+// * Day Row (used within the header and the DayGrid)
+
+.fc .fc-row .fc-content-skeleton table,
+.fc .fc-row .fc-content-skeleton td {
+  background: none;
+  border-color: transparent;
+}
+
+.fc .fc-row .fc-helper-skeleton td {
+  background: none;
+  border-color: transparent;
+}
+
+.fc-row .fc-content-skeleton td,
+.fc-row .fc-helper-skeleton td {
+  border-bottom: 0;
+}
+
+.fc-row .fc-content-skeleton tbody td,
+.fc-row .fc-helper-skeleton tbody td {
+  border-top: 0;
+}
+
+// *******************************************************************************
+// * Scrolling Container
+
+.fc-scroller {
+  -webkit-overflow-scrolling: touch;
+  
+  > .fc-day-grid,
+  > .fc-time-grid {
+    position: relative;
+    width: 100%;
+  }
+}
+
+// *******************************************************************************
+// * Global Event Styles
+
+.fc-event {
+  position: relative;
+  display: block;
+  border-radius: $fullcalendar-event-border-radius;
+  text-decoration: none !important;
+
+  &[href],
+  &.fc-draggable {
+    cursor: pointer;
+  }
+}
+
+.fc-not-allowed,
+.fc-not-allowed .fc-event {
+  cursor: not-allowed;
+}
+
+.fc-event .fc-bg {
+  z-index: 1;
+  background: #fff;
+  opacity: .25;
+}
+
+.fc-event .fc-content {
+  position: relative;
+  z-index: 2;
+}
+
+.fc-event .fc-resizer {
+  position: absolute;
+  z-index: 4;
+  display: none;
+}
+
+.fc-event.fc-allow-mouse-resize .fc-resizer {
+  display: block;
+}
+
+.fc-event.fc-selected {
+  z-index: 9999 !important;
+  box-shadow: $fullcalendar-event-selected-shadow;
+
+  &.fc-dragging {
+    box-shadow: $fullcalendar-event-selected-dragging-shadow;
+  }
+}
+
+.fc-event.fc-selected .fc-resizer {
+  display: block;
+  
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: 9999;
+    top: 50%;
+    left: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-left: -1.25rem;
+    margin-top: -1.25rem;
+  }
+}
+
+
+.fc-highlight {
+  opacity: $fullcalendar-highlight-opacity;
+}
+
+.fc-bgevent {
+  opacity: $fullcalendar-bg-event-opacity;
+}
+
+// *******************************************************************************
+// * Horizontal Events
+
+.fc-h-event {
+  &.fc-selected:before {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    top: -.625rem;
+    bottom: -.625rem;
+    left: 0;
+    right: 0;
+  }
+
+  html:not([dir=rtl]) &.fc-not-start,
+  [dir=rtl] &.fc-not-end {
+    margin-left: 0;
+    border-left-width: 0;
+    padding-left: .0625rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  html:not([dir=rtl]) &.fc-not-end,
+  [dir=rtl] &.fc-not-start {
+    margin-right: 0;
+    border-right-width: 0;
+    padding-right: .0625rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  html:not([dir=rtl]) & .fc-start-resizer,
+  [dir=rtl] & .fc-end-resizer {
+    cursor: w-resize;
+    left: -.0625rem;
+  }
+
+  html:not([dir=rtl]) & .fc-end-resizer,
+  [dir=rtl] & .fc-start-resizer {
+    cursor: e-resize;
+    right: -.0625rem;
+  }
+}
+
+.fc-h-event.fc-allow-mouse-resize .fc-resizer {
+  width: .4375rem;
+  top: -.0625rem;
+  bottom: -.0625rem;
+}
+
+.fc-h-event.fc-selected .fc-resizer {
+  border-radius: .25rem;
+  width: .375rem;
+  height: .375rem;
+  border: 1px solid inherit;
+  background: #fff;
+  top: 50%;
+  margin-top: -.25rem;
+}
+
+.fc-h-event.fc-selected {
+  html:not([dir=rtl]) & .fc-start-resizer,
+  [dir=rtl] & .fc-end-resizer {
+    margin-left: -.25rem;
+  }
+
+  html:not([dir=rtl]) & .fc-end-resizer,
+  [dir=rtl] & .fc-start-resizer {
+    margin-right: -.25rem;
+  }
+}
+
+// *******************************************************************************
+// * DayGrid events
+
+.fc-day-grid-event {
+  margin: .0625rem .125rem 0;
+  padding: $fullcalendar-day-grid-event-padding;
+}
+
+tr:first-child > td > .fc-day-grid-event {
+  margin-top: .125rem;
+}
+
+.fc-day-grid-event.fc-selected:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: -.0625rem;
+  right: -.0625rem;
+  bottom: -.0625rem;
+  left: -.0625rem;
+  background: #000;
+  opacity: .25;
+}
+
+.fc-day-grid-event .fc-content {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.fc-day-grid-event .fc-time {
+  font-weight: bold;
+}
+
+.fc-day-grid-event.fc-allow-mouse-resize {
+  html:not([dir=rtl]) & .fc-start-resizer,
+  [dir=rtl] & .fc-end-resizer {
+    margin-left: -.125rem;
+  }
+
+  html:not([dir=rtl]) & .fc-end-resizer,
+  [dir=rtl] & .fc-start-resizer {
+    margin-right: -.125rem;
+  }
+}
+
+// *******************************************************************************
+// * Event Limiting
+
+a.fc-more {
+  margin: .0625rem .1875rem;
+  font-size: .85em;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.fc-limited {
+  display: none;
+}
+
+.fc-day-grid .fc-row {
+  z-index: 1;
+}
+
+.fc-more-popover {
+  z-index: 2;
+  width: 13.75rem;
+
+  .fc-event-container {
+    padding: .625rem;
+  }
+}
+
+// *******************************************************************************
+// * Now Indicator
+
+.fc-now-indicator {
+  position: absolute;
+  border: 0 solid $fullcalendar-now-indicator-color;
+}
+
+// *******************************************************************************
+// * Bootstrap 4 styling
+
+.fc.fc-bootstrap4 a {
+  text-decoration: none;
+
+  &[data-goto]:hover {
+    text-decoration: underline;
+  }
+}
+
+.fc-bootstrap4 {
+  hr.fc-divider {
+    border-color: inherit;
+  }
+
+  .fc-today.alert {
+    border-radius: 0;
+  }
+
+  .fc-popover {
+    &.card {
+      position: absolute;
+    }
+
+    .card-body {
+      padding: 0;
+    }
+  }
+  
+  .fc-time-grid .fc-slats table {
+    background: none;
+  }
+}
+
+// *******************************************************************************
+// * Toolbar
+
+.fc-toolbar {
+  text-align: center;
+
+  &.fc-header-toolbar {
+    margin-bottom: $fullcalendar-toolbar-margin-x;
+  }
+
+  &.fc-footer-toolbar {
+    margin-top: $fullcalendar-toolbar-margin-x;
+  }
+
+  .fc-left {
+    float: left;
+  }
+
+  .fc-right {
+    float: right;
+  }
+
+  .fc-center {
+    display: inline-block;
+  }
+
+  h2 {
+    margin: 0;
+  }
+
+  button {
+    position: relative;
+  }
+
+  .btn {
+    padding: $fullcalendar-button-padding;
+  }
+
+  .fc-state-hover,
+  .ui-state-hover {
+    z-index: 2;
+  }
+
+  .fc-state-down {
+    z-index: 3;
+  }
+
+  .fc-state-active,
+  .ui-state-active {
+    z-index: 4;
+  }
+
+  button:focus {
+    z-index: 5;
+  }
+}
+
+.fc .fc-toolbar > * > {
+  * {
+    float: left;
+    margin-left: .75em;
+  }
+
+  :first-child {
+    margin-left: 0;
+  }
+}
+
+// *******************************************************************************
+// * View Structure
+
+.fc-view-container * {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+
+  &:before,
+  &:after {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+  }
+}
+
+.fc-view {
+  position: relative;
+  z-index: 1;
+
+  > table {
+    position: relative;
+    z-index: 1;
+  }
+
+  &.card {
+    box-shadow: none !important;
+  }
+}
+
+// *******************************************************************************
+// * BasicView
+
+.fc-basicWeek-view .fc-content-skeleton,
+.fc-basicDay-view .fc-content-skeleton {
+  padding-bottom: 1em;
+}
+
+.fc-basic-view .fc-body .fc-row {
+  min-height: 4em;
+}
+
+.fc-row.fc-rigid {
+  overflow: hidden;
+
+  .fc-content-skeleton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.fc-day-top.fc-other-month {
+  opacity: .3;
+}
+
+.fc-basic-view {
+  .fc-week-number,
+  .fc-day-number {
+    padding: .125rem;
+  }
+
+  th.fc-week-number,
+  th.fc-day-number {
+    padding: 0 .125rem;
+  }
+}
+
+.fc-basic-view .fc-day-top {
+  .fc-day-number {
+    float: right;
+
+    [dir=rtl] & {
+      float: left;
+    }
+  }
+
+  .fc-week-number {
+    float: left;
+    border-radius: 0 0 .1875rem 0;
+    min-width: 1.5em;
+    text-align: center;
+    background-color: #f2f2f2;
+    color: #808080;
+
+    [dir=rtl] & {
+      float: right;
+      border-radius: 0 0 0 .1875rem;
+    }
+  }
+}
+
+.fc-basic-view td.fc-week-number {
+  text-align: center;
+  
+  > * {
+    display: inline-block;
+    min-width: 1.25em;
+  }
+}
+
+// *******************************************************************************
+// * AgendaView all-day area
+
+.fc-agenda-view .fc-day-grid {
+  position: relative;
+  z-index: 2;
+
+  .fc-row {
+    min-height: 3em;
+  }
+
+  .fc-row.fc-content-skeleton {
+    padding-bottom: 1em;
+  }
+}
+
+// *******************************************************************************
+// * TimeGrid axis running down the side (for both the all-day area and the slot area)
+
+.fc .fc-axis {
+  vertical-align: middle;
+  padding: 0 .25rem;
+  white-space: nowrap;
+  text-align: right;
+
+  [dir=rtl] & {
+    text-align: left;
+  }
+}
+
+// *******************************************************************************
+// * TimeGrid Structure
+
+.fc-time-grid-container {
+  position: relative;
+  z-index: 1;
+}
+
+.fc-time-grid {
+  position: relative;
+  z-index: 1;
+  min-height: 100%;
+
+  table {
+    border: 0 hidden transparent;
+  }
+
+  > .fc-bg {
+    z-index: 1;
+  }
+
+  .fc-slats,
+  > hr {
+    position: relative;
+    z-index: 2;
+  }
+
+  .fc-content-col {
+    position: relative;
+  }
+
+  .fc-content-skeleton {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .fc-business-container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .fc-bgevent-container {
+    position: relative;
+    z-index: 2;
+  }
+
+  .fc-highlight-container {
+    position: relative;
+    z-index: 3;
+  }
+
+  .fc-event-container {
+    position: relative;
+    z-index: 4;
+    margin: 0 2.5% 0 .125rem;
+
+    [dir=rtl] & {
+      margin: 0 .125rem 0 2.5%;
+    }
+  }
+
+  .fc-now-indicator-line {
+    z-index: 5;
+  }
+
+  .fc-helper-container {
+    position: relative;
+    z-index: 6;
+  }
+
+  .fc-slats {
+    td {
+      height: 1.5em;
+      border-bottom: 0;
+    }
+
+    .fc-minor td {
+      border-top-style: dotted;
+    }
+  }
+
+  .fc-highlight {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  .fc-event {
+    position: absolute;
+    z-index: 1;
+  }
+
+  .fc-bgevent {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+  }
+}
+
+// *******************************************************************************
+// * Generic Vertical Event
+
+.fc-v-event.fc-not-start {
+  border-top-width: 0;
+  padding-top: .0625rem;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.fc-v-event.fc-not-end {
+  border-bottom-width: 0;
+  padding-bottom: .0625rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+// *******************************************************************************
+// * TimeGrid Event Styling
+
+.fc-time-grid-event {
+  overflow: hidden;
+
+  &.fc-selected {
+    overflow: visible;
+
+    .fc-bg {
+      display: none;
+    }
+  }
+
+  .fc-content {
+    overflow: hidden;
+  }
+
+  .fc-time,
+  .fc-title {
+    padding: 0 .0625rem;
+  }
+
+  .fc-time {
+    font-size: .85em;
+    white-space: nowrap;
+  }
+
+  &.fc-short {
+    .fc-content {
+      white-space: nowrap;
+    }
+
+    .fc-time,
+    .fc-title {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .fc-time {
+      span {
+        display: none;
+      }
+
+      &:before {
+        content: attr(data-start);
+      }
+
+      &:after {
+        content: "\A0-\A0";
+      }
+    }
+
+    .fc-title {
+      font-size: .85em;
+      padding: 0;
+    }
+  }
+
+  &.fc-allow-mouse-resize .fc-resizer {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: .5rem;
+    overflow: hidden;
+    line-height: .5rem;
+    font-size: .75rem;
+    font-family: monospace;
+    text-align: center;
+    cursor: s-resize;
+
+    &:after {
+      content: "=";
+    }
+  }
+
+  &.fc-selected .fc-resizer {
+    border-radius: .3125rem;
+    border: 1px solid inherit;
+    width: .5rem;
+    height: .5rem;
+    background: #fff;
+    left: 50%;
+    margin-left: -.3125rem;
+    bottom: -.3125rem;
+  }
+}
+
+// *******************************************************************************
+// * Now Indicator
+
+.fc-time-grid {
+  .fc-enow-indicator-lin {
+    border-top-width: 1px;
+    left: 0;
+    right: 0;
+  }
+
+  .fc-now-indicator-arrow {
+    margin-top: -$fullcalendar-now-indicator-arrow-size;
+    left: 0;
+    border-width: $fullcalendar-now-indicator-arrow-size 0 $fullcalendar-now-indicator-arrow-size calc(#{$fullcalendar-now-indicator-arrow-size} + 1px);
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+
+    [dir=rtl] & {
+      left: auto;
+      right: 0;
+      border-width: $fullcalendar-now-indicator-arrow-size calc(#{$fullcalendar-now-indicator-arrow-size} + 1px) $fullcalendar-now-indicator-arrow-size 0;
+    }
+  }
+}
+
+// *******************************************************************************
+// * List View
+
+.fc-event-dot {
+  display: inline-block;
+  width: $fullcalendar-event-dot-size;
+  height: $fullcalendar-event-dot-size;
+  border-radius: 50%;
+}
+
+.fc-list-view {
+  border-width: 1px;
+  border-style: solid;
+
+  [dir=rtl] & {
+    direction: rtl;
+  }
+}
+
+.fc .fc-list-table {
+  table-layout: auto;
+}
+
+.fc-list-table td {
+  border-width: 1px 0 0;
+  padding: $fullcalendar-list-table-cell-padding;
+}
+
+.fc-list-table tr:first-child td {
+  border-top-width: 0;
+}
+
+.fc-list-heading {
+  border-bottom-width: 1px;
+  text-transform: uppercase;
+}
+
+.fc-list-heading-main {
+  float: left;
+
+  [dir=rtl] & {
+    float: right;
+  }
+}
+
+.fc-list-heading-alt {
+  float: right;
+
+  [dir=rtl] & {
+    float: left;
+  }
+}
+
+.fc-list-item.fc-has-url {
+  cursor: pointer;
+}
+
+.fc-list-item-marker,
+.fc-list-item-time {
+  white-space: nowrap;
+  width: 1px;
+}
+
+html:not([dir=rtl]) .fc-list-item-marker {
+  padding-right: 0;
+}
+
+[dir=rtl] .fc-list-item-marker {
+  padding-left: 0;
+}
+
+.fc-list-item-title a {
+  text-decoration: none;
+  color: inherit;
+
+  &[href]:hover {
+    text-decoration: underline;
+  }
+}
+
+.fc-list-empty-wrap2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.fc-list-empty-wrap1 {
+  width: 100%;
+  height: 100%;
+  display: table;
+}
+
+.fc-list-empty {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+// IE 10 - 11
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .fc-highlight {
+    display: none !important;
+  }
+}
+
+.default-style {
+  @import "../../css/_appwork/include";
+
+  .fc-popover {
+    border-color: $popover-border-color;
+    box-shadow: $popover-box-shadow;
+  }
+
+  .fc-event {
+    color: $body-color !important;
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
+
+  .fc-toolbar .btn {
+    font-size: $font-size-sm !important;
+    line-height: $line-height-sm !important;
+  }
+
+  .fc-toolbar h2 {
+    font-size: $h3-font-size;
+    font-weight: $font-weight-light;
+  }
+
+  .fc-head .fc-day-header,
+  .fc-list-heading,
+  .fc-head .fc-week-number {
+    font-size: $font-size-sm !important;
+    line-height: $line-height-sm;
+    font-weight: $font-weight-semibold;
+  }
+
+  .fc-popover .fc-header .fc-close {
+    line-height: $component-line-height;
+  }
+
+  @each $color, $value in $theme-colors {
+    @if $color !=primary {
+      .fc-event-#{$color} {
+        @include fullcalendar-event-variant($value);
+      }
+    }
+  }
+}
+
+.material-style {
+  @import "../../css/_appwork/include-material";
+
+  .fc-popover {
+    border-color: $popover-border-color;
+    box-shadow: $popover-box-shadow;
+  }
+
+  .fc-event {
+    color: $body-color !important;
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
+
+  .fc-toolbar .btn {
+    font-size: $font-size-sm !important;
+    line-height: $line-height-sm !important;
+  }
+
+  .fc-toolbar h2 {
+    font-size: $h3-font-size;
+    font-weight: $font-weight-light;
+  }
+
+  .fc-head .fc-day-header,
+  .fc-list-heading,
+  .fc-head .fc-week-number {
+    font-size: $font-size-sm !important;
+    line-height: $line-height-sm;
+    font-weight: $font-weight-semibold;
+  }
+
+  .fc-popover .fc-header .fc-close {
+    line-height: $component-line-height;
+  }
+
+  @each $color, $value in $theme-colors {
+    @if $color !=primary {
+      .fc-event-#{$color} {
+        @include fullcalendar-event-variant($value);
+      }
+    }
+  }
+}

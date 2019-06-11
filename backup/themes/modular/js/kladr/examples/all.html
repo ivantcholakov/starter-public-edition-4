@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Все примеры</title>
+
+        <link href="../jquery.kladr.min.css" rel="stylesheet">
+        <link href="css/all.css" rel="stylesheet">
+
+        <script src="js/lib/jquery-1.11.1.min.js" type="text/javascript"></script>
+        <script src="../jquery.kladr.min.js" type="text/javascript"></script>
+        <script src="js/all.js" type="text/javascript"></script>
+
+        <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    </head>
+    <body>
+	<!--embedded-->
+        <div id="simple">
+            <a name="simple"></a>
+            <div class ="address">
+                <h2>Простой пример</h2>
+                <div class="field">
+                    <input name="city" type="text" value="" placeholder="Город">
+                </div>
+            </div>
+        </div>
+
+        <div id="one_string">
+            <a name="one_string"></a>
+            <div class ="address">
+                <h2>Ввод адреса одной строкой</h2>
+                <div class="field">
+                    <input name="address" type="text" value="" placeholder="Адрес">
+                </div>
+                <div class="field">
+                    <div class="group-name">
+                        Искать в
+                    </div>
+                    <label><input name="parent" type="radio" value="all" checked> Всей России</label>
+                    <label><input name="parent" type="radio" value="moscow"> Москве</label>
+                    <label><input name="parent" type="radio" value="petersburg"> Санкт-Петербурге</label>
+                </div>
+                <div class="addition">
+                    <div class="block">
+                        <p class="title">Выбранный объект</p>
+                        <ul class="js-log">
+                            <li data-prop="id" style="display: none;"><span class="name">Код:</span> <span class="value"></span></li>
+                            <li data-prop="zip" style="display: none;"><span class="name">Почтовый индекс:</span> <span class="value"></span></li>
+                            <li data-prop="name" style="display: none;"><span class="name">Название:</span> <span class="value"></span></li>
+                            <li data-prop="fullName" style="display: none;"><span class="name">Полное название:</span> <span class="value"></span>
+                            <li data-prop="type" style="display: none;"><span class="name">Подпись:</span> <span class="value"></span></li>
+                            <li data-prop="typeShort" style="display: none;"><span class="name">Подпись коротко:</span> <span class="value"></span></li>
+                            <li data-prop="contentType" style="display: none;"><span class="name">Тип объекта:</span> <span class="value"></span>
+                            <li data-prop="okato" style="display: none;"><span class="name">ОКАТО:</span> <span class="value"></span>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="type_code">
+            <a name="type_code"></a>
+            <div class ="address">
+                <h2>Ограничение списка выводимых населённых пунктов</h2>
+                <div class="field">
+                    <input name="city" type="text" value="" placeholder="Город">
+                </div>
+                <div class="field">
+                    <label><input name="typecode" type="radio" value="city" checked="checked"> Только города</label>
+                    <label><input name="typecode" type="radio" value="settlement"> Города и посёлки</label>
+                    <label><input name="typecode" type="radio" value="all"> Все населённые пункты</label>
+                </div>
+            </div>
+        </div>
+
+        <div id="form">
+            <a name="form"></a>
+            <div class="address">
+                <h2>Форма для ввода адреса</h2>
+                <form class="js-form-address">
+                    <div class="field">
+                        <label>Индекс</label>
+                        <input type="text" name="zip">
+                    </div>
+                    <div class="field">
+                        <label>Регион</label>
+                        <input type="text" name="region">
+                    </div>
+                    <div class="field">
+                        <label>Район</label>
+                        <input type="text" name="district">
+                    </div>
+                    <div class="field">
+                        <label>Город</label>
+                        <input type="text" name="city">
+                    </div>
+                    <div class="field">
+                        <label>Улица</label>
+                        <input type="text" name="street">
+                    </div>
+                    <div class="field">
+                        <label>Дом</label>
+                        <input type="text" name="building">
+                    </div>
+                    <div class="tooltip" style="display: none;"><b></b><span></span></div>
+                </form>
+            </div>
+        </div>
+
+        <div id="form_with_map">
+            <a name="form_with_map"></a>
+            <div class="address">
+                <h2>Форма для ввода адреса с картой</h2>
+                <div class="col-1">
+                    <form class="js-form-address">
+                        <div class="field">
+                            <label>Регион</label>
+                            <input name="region" type="text">
+                        </div>
+                        <div class="field">
+                            <label>Район</label>
+                            <input name="district" type="text">
+                        </div>
+                        <div class="field">
+                            <label>Город</label>
+                            <input name="city" type="text">
+                        </div>
+                        <div class="field">
+                            <label>Улица</label>
+                            <input name="street" type="text">
+                        </div>
+                        <div class="field">
+                            <label>Номер дома</label>
+                            <input name="building" type="text">
+                        </div>
+                    </form>
+                    <div class="addition">
+                        <div class="block">
+                            <p class="title">Текстовое представление адреса</p>
+                            <p id="address" class="value"></p>
+                        </div>
+                        <div class="block">
+                            <p class="title">Выбранный объект</p>
+                            <ul class="js-log">
+                                <li data-prop="id" style="display: none;"><span class="name">Код:</span> <span class="value"></span></li>
+                                <li data-prop="zip" style="display: none;"><span class="name">Почтовый индекс:</span> <span class="value"></span></li>
+                                <li data-prop="name" style="display: none;"><span class="name">Название:</span> <span class="value"></span></li>
+                                <li data-prop="type" style="display: none;"><span class="name">Подпись:</span> <span class="value"></span></li>
+                                <li data-prop="typeShort" style="display: none;"><span class="name">Подпись коротко:</span> <span class="value"></span></li>
+                                <li data-prop="contentType" style="display: none;"><span class="name">Тип объекта:</span> <span class="value"></span>
+                                <li data-prop="okato" style="display: none;"><span class="name">ОКАТО:</span> <span class="value"></span>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div id="map" class="panel-map"></div>
+                </div>
+            </div>
+        </div>
+	<!--embedded-->
+    </body>
+</html>

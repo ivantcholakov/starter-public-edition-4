@@ -1,0 +1,8 @@
+# System, IDE, ...
+.DS_Store
+.idea
+
+# Composer
+composer.phar
+composer.lock
+vendor

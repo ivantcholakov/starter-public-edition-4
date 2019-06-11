@@ -1,0 +1,340 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<head>
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+
+<!--===============================================================================================-->
+
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/vendor/bootstrap/css/bootstrap.min.css">
+
+<!--===============================================================================================-->
+
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+
+<!--===============================================================================================-->
+
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+
+<!--===============================================================================================-->
+
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/vendor/animate/animate.css">
+
+<!--===============================================================================================-->
+
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/vendor/css-hamburgers/hamburgers.min.css">
+
+<!--===============================================================================================-->
+
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/vendor/animsition/css/animsition.min.css">
+
+<!--===============================================================================================-->
+
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/vendor/select2/select2.min.css">
+
+<!--===============================================================================================-->
+
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/vendor/daterangepicker/daterangepicker.css">
+
+<!--===============================================================================================-->
+
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/util.css">
+
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/main.css">
+	
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<!--===============================================================================================-->
+
+</head>
+
+<body>
+
+
+<div class="container-contact100">
+
+		<div class="wrap-contact100">
+
+			<!--<div class="contact100-more flex-col-c-m" style="background-image: url('../assets/images/bg-01.jpg');">-->
+			<div class="contact100-more flex-col-c-m" style="background-color: rgb(162, 92, 220);">
+				<h1>Welcome to <b>Just Wallet</b></h1>
+				<p style="color:#FFFFFF">Join 30,000+ teams</p>
+
+			</div>
+			<form class="contact100-form validate-form" id="regForm" name="regForm" method="post">
+
+				<span class="contact100-form-title">
+					<h1>Welcome to <b>Just Wallet</b></h1>
+				</span>
+					
+        <div class="alert alert-danger" id="unm" style="display:none"><?php echo lang('username signup error'); ?></div><br>
+
+					<div class="container-fluid">
+					 <div class="row">
+						<div  class="form-group col-sm-12">
+							  <label for="usr">User Name</label>
+							  <input type="text" class="form-control " id="username" name="username" value="<?php echo $this->session->userdata('reg_username'); ?>" readonly>
+							</div>
+					 </div>
+					 
+					 <div class="row">
+						<div class="col">
+							  <label for="usr">First Name</label>
+							  <input type="text" class="form-control" id="first_name" name="first_name">
+							</div> &nbsp;&nbsp;&nbsp;
+						<div class="col">
+					  <label for="usr">Last Name</label>
+					  <input type="text" class="form-control" id="last_name" name="last_name">
+					</div>	
+					 </div>
+					 <div class="row">
+					 	<div class="col">
+					    	<label for="exampleFormControlSelect1">Language</label>
+							<select class="form-control" id="language" name="language">
+								<option value="dutch">Dutch</option>
+								<option value="english" selected>English</option>
+								<option value="russian">Russian</option>
+								<option value="spanish">Spanish</option>
+							</select>
+	  					</div>
+						 &nbsp;&nbsp;&nbsp;
+						<div class="col">
+					  <label for="usr">Phone</label>
+					  <input type="text" class="form-control" name="phone" id="phone">
+					</div>	
+					 </div>
+					 
+					 <div class="row">
+					 	<div class="col col-md-12">
+							  <label for="usr">Email</label>
+							  <input type="text" class="form-control" id="email" name="email" value="<?php echo $this->session->userdata('reg_email'); ?>" readonly>
+							</div>
+						
+					 </div>
+					 <div class="row">
+							<div class="col">
+							  <label for="usr">Password</label>
+							  <input type="password" class="form-control" id="password" name="password">
+							</div> &nbsp;&nbsp;&nbsp;
+							<div class="col">
+							  <label for="usr">Repeat Password</label>
+							  <input type="password" class="form-control" name="c_password" id="c_password">
+							</div>	
+					 </div>
+
+					 </div><br>
+					<center><button type="submit" class="btn btn-primary">Sign In</button></center>
+			</form>
+		</div>
+
+	</div>
+
+<!--===============================================================================================-->
+
+	<script src="<?php echo base_url();?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+
+<!--===============================================================================================-->
+
+	<script src="<?php echo base_url();?>assets/vendor/animsition/js/animsition.min.js"></script>
+
+<!--===============================================================================================-->
+
+	<script src="<?php echo base_url();?>assets/vendor/bootstrap/js/popper.js"></script>
+
+	<script src="<?php echo base_url();?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!--===============================================================================================-->
+
+	<script src="<?php echo base_url();?>assets/vendor/select2/select2.min.js"></script>
+
+	<script>
+
+		$(".js-select2").each(function(){
+
+			$(this).select2({
+
+				minimumResultsForSearch: 20,
+
+				dropdownParent: $(this).next('.dropDownSelect2')
+
+			});
+
+		})
+
+		$(".js-select2").each(function(){
+
+			$(this).on('select2:open', function (e){
+
+				$(this).parent().next().addClass('eff-focus-selection');
+
+			});
+
+		});
+
+		$(".js-select2").each(function(){
+
+			$(this).on('select2:close', function (e){
+
+				$(this).parent().next().removeClass('eff-focus-selection');
+
+			});
+
+		});
+
+
+
+	</script>
+
+<!--===============================================================================================-->
+
+	<script src="<?php echo base_url();?>assets/vendor/daterangepicker/moment.min.js"></script>
+
+	<script src="<?php echo base_url();?>assets/vendor/daterangepicker/daterangepicker.js"></script>
+
+<!--===============================================================================================-->
+
+	<script src="<?php echo base_url();?>assets/vendor/countdowntime/countdowntime.js"></script>
+
+<!--===============================================================================================-->
+
+	<script src="<?php echo base_url();?>assets/js/main.js"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script type="text/javascript" src="<?php echo base_url('themes/default/js/jquery.validate.min.js') ?>"></script>
+
+	<script>
+
+	  window.dataLayer = window.dataLayer || [];
+
+	  function gtag(){dataLayer.push(arguments);}
+
+	  gtag('js', new Date());
+
+
+
+	  gtag('config', 'UA-23581568-13');
+
+	</script>
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#regForm").validate(
+    {
+        rules:
+        {
+          email:
+          {
+            required: true,
+            email:true
+          },
+          username:
+          {
+             required:true
+          },
+          first_name:
+          {
+             required:true
+          },
+          last_name:
+          {
+             required:true
+          },
+          password:
+          {
+             required:true
+          },
+          c_password:
+          {
+             required:true,
+			 equalTo:"#password",
+          },
+          language:
+          {
+             required:true
+          },
+          phone:
+          {
+             required:true,
+          },
+        },
+        messages:
+        {
+          email:
+          {
+            required: "Please Enter Email",
+            email:"email like abc@example.com"
+          },
+          username:
+          {
+            required:"Please Enter User Name"
+          },
+          first_name:
+          {
+            required: "Please Enter First Name"
+          },
+          last_name:
+          {
+            required:"Please Enter Last Name"
+          },
+          password:
+          {
+            required:"Please Enter Password"
+          },
+          c_password:
+          {
+            required:"Please Enter Confirm Password",
+			equalTo:"Password dose not match"
+          },
+          language:
+          {
+            required:"Please Enter Language"
+          },
+          phone:
+          {
+            required:"Please Enter Phone"
+          }
+        },
+        submitHandler: function(form) {
+
+
+            var email = $('#email').val();
+            var username = $('#username').val();
+            var first_name = $('#first_name').val();
+            var last_name = $('#last_name').val();
+            var phone = $('#phone').val();
+            var language = $('#language').val();
+            var password = $('#password').val();
+
+            // alert(username);
+            // alert(first_name);
+            // alert(last_name);
+            // alert(language);
+            // alert(phone);
+            // alert(email);
+            // alert(password);
+
+            $.ajax({
+                url: '<?php echo site_url("user/add_register_data") ?>',
+                type: 'POST',
+                data: { email:email , username:username, 
+            			first_name:first_name , last_name:last_name,
+            			phone:phone , language:language,password:password},
+                async: true,
+                success: function(data) {
+                    if(data=='sucess'){
+                      window.location.href = '<?php echo site_url("user/login"); ?>';
+                    }else if(data=='false'){
+                      $('#unm').css('display:block');
+                    }
+                }
+            });
+        }
+    });
+});
+</script>

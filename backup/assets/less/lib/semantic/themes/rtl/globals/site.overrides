@@ -1,0 +1,7 @@
+/*******************************
+        Global Overrides
+*******************************/
+
+/* Import Droid Arabic Kufi */
+// Removed by Ivan Tcholakov, 01-NOV-2016.
+//@import 'http://fonts.googleapis.com/earlyaccess/droidarabickufi.css';

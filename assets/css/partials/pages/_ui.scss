@@ -1,0 +1,106 @@
+#ui {
+	&:not(.shepherd-active) { 
+		.main-sidebar,
+		.content-wrapper section > * {
+			opacity: 1;
+		}
+	}
+
+	.shepherd-target.shepherd-enabled {
+		opacity: 1;
+	}
+
+	.main-sidebar {
+		opacity: 0.6;
+		@include transition(opacity .4s linear);
+	}
+
+	.content-wrapper {
+		font-family: $helvetica;
+
+		section > * {
+			opacity: 0.2;
+			@include transition(opacity .4s linear);
+		}
+	}
+
+	.intro {
+		margin-bottom: 30px;
+
+		h3 {
+			font-size: 22px;
+		}
+
+		p {
+			font-size: 13px;
+		}
+	}
+
+	section {
+		margin-bottom: 50px;
+		
+		h4 {
+			margin-bottom: 15px;
+
+			small {
+				display: block;
+				margin-top: 12px;
+			}
+		}
+
+		a {
+			color: #479ccf;
+			text-decoration: underline;
+			display: inline-block;
+			margin-right: 16px;
+		}
+
+		&.buttons {
+			a {
+				margin-right: 5px;
+			}
+		}
+	}
+
+	#form-modal {
+		input.datepicker {
+			color: #555;
+			padding-left: 15px;
+		}
+
+		.fa-calendar {
+			color: #789BCE;
+		}
+	}
+
+	#welcome-modal {
+		.animated {
+			@include animationDuration(.35s);
+			
+			-webkit-animation-timing-function: cubic-bezier(.4,1.49,.37,1.07);
+			-moz-animation-timing-function: cubic-bezier(.4,1.49,.37,1.07);
+			animation-timing-function: cubic-bezier(.4,1.49,.37,1.07);
+
+			&.two {
+				@include animationDuration(.45s);
+			}
+
+			&.three {
+				@include animationDuration(.55s);
+			}
+
+			&.four {
+				@include animationDuration(.62s);
+			}
+
+			&.five {
+				@include animationDuration(.7s);
+			}
+
+			&.six {
+				@include animationDuration(.73s);
+			}
+		}
+	}
+
+}

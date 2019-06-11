@@ -1,0 +1,107 @@
+
+  <!-- Content -->
+
+  <div class="authentication-wrapper authentication-3">
+    <div class="authentication-inner">
+
+      <!-- Side container -->
+      <!-- Do not display the container on extra small, small and medium screens -->
+      <div class="d-none d-lg-flex col-lg-8 align-items-center ui-bg-cover ui-bg-overlay-container p-5" style="background-image: url('https://res.cloudinary.com/lmj6rf6tz/image/upload/v1491859461/bg-intro-1_otljy4.jpg');">
+        <div class="ui-bg-overlay bg-dark opacity-50"></div>
+
+        <!-- Text -->
+        <div class="w-100 text-white px-5">
+          <h1 class="display-3 font-weight-bold mb-4">Get Everpay
+            <br>For free</h1>
+          <div class="text-large font-weight-light">
+           Everpay enables businesses of all sizes with a simple, secure way to pay people and also to do big commerce.
+          </div>
+        </div>
+        <!-- /.Text -->
+      </div>
+      <!-- / Side container -->
+
+
+      <div class="d-flex col-lg-4 align-items-center bg-white p-5">
+        <div class="d-flex col-sm-7 col-md-5 col-lg-12 px-0 px-xl-4 mx-auto">
+          <div class="w-100">
+
+            <div class="d-flex justify-content-center align-items-center mt-0">
+              <div class="ui-w-0">
+<img src="https://res.cloudinary.com/lmj6rf6tz/image/upload/v1496853370/everpay-rnd-logo_s7wmeh.png" class="image position-relative" />
+
+              </div>
+            </div>
+
+            <h4 class="text-center text-lighter font-weight-normal mt-4 mb-0">Claim Your Account</h4>
+
+{{ form_open('', 'method="post" class="ui sw-main sw-theme-default my-5" id="get-everpay"') }}
+
+     <div class="field">
+                        {{ widget('feedback_messages_widget', {
+                            'feedback_message_target': feedback_message_target,
+                            'normal_message': normal_message,
+                            'confirmation_message': confirmation_message,
+                            'warning_message': warning_message,
+                            'error_message': error_message,
+                            'with_javascript': false
+                        }) }}
+                    </div>
+
+
+
+  <div class="d-flex justify-content-center align-items-center">
+
+      <div id="icon-ios-person" data-title=".ion.ion-ios-person" class="card icon-example d-inline-flex justify-content-center align-items-center my-2 mx-2 img-radio">
+          <button type="button" class="btn btn-default btn-radio" id="consumer-selection">
+          <i class="ion ion-ios-person fa-5x d-block"></i> Consumer</button>
+        				<input type="checkbox" id="left-item" class="hidden">
+        			</div>
+
+        		<div id="icon-ios-business" data-title=".ion.ion-ios-business" class="card icon-example d-inline-flex justify-content-center align-items-center my-2 mx-2 img-radio">
+        		    <button type="button" class="btn btn-default btn-radio" id="business-selection"><i class="ion ion-ios-business fa-5x d-block"></i>	Business</button>
+        				<input type="checkbox" id="right-item" class="hidden">
+        			</div>
+        		</div>
+
+<div class="{% if validation_errors['username'] %} error{% endif %}">
+              <div class="form-group">
+                <label class="form-label">Username</label>
+                <input type="text" name="username" id="username" class="form-control" value="{{ set_value('username') }}" placeholder=" {{ lang('ui_username')|e('html_attr') }}" autocomplete="off" maxlength="256">
+              </div> </div>
+
+<div class="{% if validation_errors['email'] %} error{% endif %}">
+              <div class="form-group">
+                <label class="form-label">Your email</label>
+                 <input type="email" name="email" id="email" class="form-control" value="{{ set_value('email') }}" placeholder=" {{ lang('ui_email')|e('html_attr') }}" autocomplete="off" maxlength="256">
+              </div> </div>
+              <div class="{% if validation_errors['password'] %} error{% endif %}">
+              <div class="form-group">
+                <label class="form-label">Password</label>
+             <input type="password" name="password" id="password" class="form-control" value="{{ set_value('password') }}" placeholder=" {{ lang('ui_password')|e('html_attr') }}" maxlength="256">
+              </div> </div>
+
+              <button type="button" class="btn btn-primary btn-block mt-4" type="submit"> {{ lang('ui_signup') }} <i class="sign in icon"></i></button>
+              <div class="text-light small mt-4">
+                By clicking "Sign Up", you agree to our
+                <a href="https://everpayinc.com/terms">terms of service and privacy policy</a>. We’ll occasionally send you account related emails.
+              </div>
+
+{{ form_close() }}
+
+
+            <div class="text-center text-muted">
+              Already have an account?
+              <a href="{{ site_url('login') }}">{{ lang('ui_login') }}</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <!-- / Content -->
+

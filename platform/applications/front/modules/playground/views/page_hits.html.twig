@@ -1,0 +1,8 @@
+
+{% if demo_ok %}
+                        <h3>This page has been visited <strong>{{ visits }}</strong> times by <strong>{{ unique_visitors }}</strong> unique visitors.</h3>
+{% else %}
+                        <div class="ui negative message">
+                            {{ demo_error_message }}
+                        </div>
+{% endif %}

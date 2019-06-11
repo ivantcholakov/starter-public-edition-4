@@ -1,0 +1,156 @@
+@import '../../css/_custom-variables/libs';
+@import "../../node_modules/perfect-scrollbar/css/perfect-scrollbar";
+
+$ps-scrollbar-width: .25rem !default;
+$ps-scrollbar-hover-width: .375rem !default;
+
+.ps {
+  position: relative;
+}
+
+.ps__rail-x,
+.ps__rail-y,
+.ps__thumb-x,
+.ps__thumb-y {
+  border-radius: 10rem;
+}
+
+.ps__rail-x {
+  height: $ps-scrollbar-width;
+}
+
+.ps__rail-y {
+  width: $ps-scrollbar-width;
+}
+
+.ps__thumb-x {
+  bottom: 0;
+  height: $ps-scrollbar-width;
+}
+
+.ps__thumb-y {
+  right: 0;
+  width: $ps-scrollbar-width;
+}
+
+.ps__rail-x:hover,
+.ps__rail-x:focus,
+.ps__rail-x.ps--clicking,
+.ps__rail-x:hover > .ps__thumb-x,
+.ps__rail-x:focus > .ps__thumb-x,
+.ps__rail-x.ps--clicking > .ps__thumb-x {
+  height: $ps-scrollbar-hover-width;
+}
+
+.ps__rail-y:hover,
+.ps__rail-y:focus,
+.ps__rail-y.ps--clicking,
+.ps__rail-y:hover > .ps__thumb-y,
+.ps__rail-y:focus > .ps__thumb-y,
+.ps__rail-y.ps--clicking > .ps__thumb-y {
+  width: $ps-scrollbar-hover-width;
+}
+
+.default-style {
+  @import "../../css/_appwork/include";
+
+  .ps__rail-x:hover,
+  .ps__rail-y:hover,
+  .ps__rail-x:focus,
+  .ps__rail-y:focus,
+  .ps__rail-x.ps--clicking,
+  .ps__rail-y.ps--clicking {
+    background-color: $gray-200;
+  }
+
+  .ps__thumb-x,
+  .ps__thumb-y {
+    background-color: $gray-400;
+  }
+
+  .ps__rail-x:hover > .ps__thumb-x,
+  .ps__rail-y:hover > .ps__thumb-y,
+  .ps__rail-x:focus > .ps__thumb-x,
+  .ps__rail-y:focus > .ps__thumb-y,
+  .ps__rail-x.ps--clicking > .ps__thumb-x,
+  .ps__rail-y.ps--clicking > .ps__thumb-y {
+    background-color: $gray-700;
+  }
+
+  .ps-inverted {
+    .ps__rail-x:hover,
+    .ps__rail-y:hover,
+    .ps__rail-x:focus,
+    .ps__rail-y:focus,
+    .ps__rail-x.ps--clicking,
+    .ps__rail-y.ps--clicking {
+      background-color: rgba(#fff, .5);
+    }
+
+    .ps__thumb-x,
+    .ps__thumb-y {
+      background-color: rgba(#fff, .7);
+    }
+
+    .ps__rail-x:hover > .ps__thumb-x,
+    .ps__rail-y:hover > .ps__thumb-y,
+    .ps__rail-x:focus > .ps__thumb-x,
+    .ps__rail-y:focus > .ps__thumb-y,
+    .ps__rail-x.ps--clicking > .ps__thumb-x,
+    .ps__rail-y.ps--clicking > .ps__thumb-y {
+      background-color: #fff;
+    }
+  }
+}
+
+.material-style {
+  @import "../../css/_appwork/include-material";
+
+  .ps__rail-x:hover,
+  .ps__rail-y:hover,
+  .ps__rail-x:focus,
+  .ps__rail-y:focus,
+  .ps__rail-x.ps--clicking,
+  .ps__rail-y.ps--clicking {
+    background-color: $gray-200;
+  }
+
+  .ps__thumb-x,
+  .ps__thumb-y {
+    background-color: $gray-400;
+  }
+
+  .ps__rail-x:hover > .ps__thumb-x,
+  .ps__rail-y:hover > .ps__thumb-y,
+  .ps__rail-x:focus > .ps__thumb-x,
+  .ps__rail-y:focus > .ps__thumb-y,
+  .ps__rail-x.ps--clicking > .ps__thumb-x,
+  .ps__rail-y.ps--clicking > .ps__thumb-y {
+    background-color: $gray-700;
+  }
+
+  .ps-inverted {
+    .ps__rail-x:hover,
+    .ps__rail-y:hover,
+    .ps__rail-x:focus,
+    .ps__rail-y:focus,
+    .ps__rail-x.ps--clicking,
+    .ps__rail-y.ps--clicking {
+      background-color: rgba(#fff, .5);
+    }
+
+    .ps__thumb-x,
+    .ps__thumb-y {
+      background-color: rgba(#fff, .7);
+    }
+
+    .ps__rail-x:hover > .ps__thumb-x,
+    .ps__rail-y:hover > .ps__thumb-y,
+    .ps__rail-x:focus > .ps__thumb-x,
+    .ps__rail-y:focus > .ps__thumb-y,
+    .ps__rail-x.ps--clicking > .ps__thumb-x,
+    .ps__rail-y.ps--clicking > .ps__thumb-y {
+      background-color: #fff;
+    }
+  }
+}

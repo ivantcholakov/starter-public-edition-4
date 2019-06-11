@@ -1,0 +1,147 @@
+@import '../../css/_custom-variables/libs';
+
+$nestable-handle-padding-vertical: .3125rem !default;
+$nestable-handle-padding-horizontal: .75rem !default;
+$nestable-item-margin: .3125rem !default;
+$nestable-button-width: 2rem !default;
+
+.dd {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dd-list {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  .dd-collapsed & {
+    display: none;
+  }
+
+  html:not([dir=rtl]) & .dd-list {
+    padding-left: 2rem;
+  }
+
+  [dir=rtl] & .dd-list {
+    padding-right: 2rem;
+  }
+}
+
+.dd-item,
+.dd-empty,
+.dd-placeholder {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.dd-handle,
+.dd-content {
+  display: block;
+  margin: $nestable-item-margin 0;
+  padding: $nestable-handle-padding-vertical $nestable-handle-padding-horizontal;
+  text-decoration: none;
+  cursor: move;
+}
+
+.dd-handle + .dd-content {
+  cursor: auto;
+}
+
+.dd-item > button {
+  position: absolute;
+  display: block;
+  float: left;
+  overflow: hidden;
+  margin: $nestable-item-margin 0 $nestable-item-margin 1px;
+  padding: 0;
+  width: $nestable-button-width;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  text-indent: 100%;
+  white-space: nowrap;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+
+  &:before {
+    content: '+';
+    position: absolute;
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-indent: 0;
+  }
+
+  &[data-action="collapse"]:before {
+    content: '-';
+  }
+
+  html:not([dir=rtl]) & ~ .dd-handle {
+    padding-left: $nestable-button-width;
+  }
+
+  [dir=rtl] & ~ .dd-handle {
+    padding-right: $nestable-button-width;
+  }
+}
+
+.dd-placeholder,
+.dd-empty {
+  box-sizing: border-box;
+  margin: $nestable-item-margin 0;
+  padding: 0;
+  border: 1px dashed #b6bcbf;
+  background: #f2fbff;
+}
+
+.dd-empty {
+  min-height: 6.25rem;
+  border: 1px dashed #bbb;
+}
+
+.dd-dragel {
+  position: absolute;
+  z-index: 9999;
+  pointer-events: none;
+
+   > .dd-item .dd-handle {
+    margin-top: 0;
+  }
+}
+
+.default-style {
+  @import '../../css/_appwork/include';
+
+  .dd-handle,
+  .dd-content {
+    border: 1px solid $gray-200;
+    border-radius: $border-radius;
+  }
+
+  .dd-empty {
+    background: $gray-100;
+  }
+}
+
+.material-style {
+  @import '../../css/_appwork/include-material';
+
+  .dd-handle,
+  .dd-content {
+    border: 1px solid $gray-200;
+    border-radius: $border-radius;
+  }
+
+  .dd-empty {
+    background: $gray-100;
+  }
+}

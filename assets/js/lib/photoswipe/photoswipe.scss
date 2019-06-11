@@ -1,0 +1,144 @@
+@import "../../node_modules/photoswipe/dist/photoswipe";
+@import "../../node_modules/photoswipe/dist/default-skin/default-skin";
+
+a[itemprop="contentUrl"] {
+  display: block;
+  width: 100%;
+}
+
+a[itemprop="contentUrl"] img {
+  width: 100%;
+}
+
+.pswp__button,
+.pswp__button--arrow--left:before,
+.pswp__button--arrow--right:before {
+  background-image: url(default-skin.png);
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.1), (-webkit-min-device-pixel-ratio: 1.09375), (min-resolution: 105dpi), (min-resolution: 1.1dppx) {
+  .pswp--svg .pswp__button,
+  .pswp--svg .pswp__button--arrow--left:before,
+  .pswp--svg .pswp__button--arrow--right:before {
+    background-image: url(default-skin.png);
+  }
+
+  .pswp--svg .pswp__button--arrow--left,
+  .pswp--svg .pswp__button--arrow--right {
+    background: none;
+  }
+}
+
+.pswp__button--arrow--left,
+.pswp__button--arrow--right {
+  background: none;
+}
+
+.pswp__preloader--active .pswp__preloader__icn {
+  background-image: url(preloader.gif);
+}
+
+.pswp--css_animation .pswp__preloader__icn,
+.pswp--css_animation .pswp__preloader__donut {
+  background: none;
+}
+
+[dir=rtl] {
+  .pswp__button,
+  .pswp__button--share,
+  .pswp__button--zoom {
+    transform: scaleX(-1);
+  }
+
+  .pswp__button {
+    float: left;
+  }
+
+  .pswp__button--arrow--left {
+    right: 0;
+    left: auto;
+
+    &::before {
+      right: 6px;
+      left: auto;
+    }
+  }
+
+  .pswp__button--arrow--right {
+    right: auto;
+    left: 0;
+
+    &::before {
+      right: auto;
+      left: 6px;
+    }
+  }
+
+  .pswp__share-tooltip {
+    right: auto;
+    left: 44px;
+    z-index: 1620;
+  }
+
+  a.pswp__share--facebook::before {
+    right: auto;
+    left: 15px;
+  }
+
+  .pswp__counter {
+    right: 0;
+    left: auto;
+  }
+
+  .pswp__caption {
+    right: 0;
+    left: auto;
+  }
+
+  .pswp__caption__center {
+    text-align: right;
+  }
+
+  .pswp--css_animation {
+    .pswp__preloader__icn {
+      right: 15px;
+      left: auto;
+    }
+
+    .pswp__preloader__donut {
+      right: 0;
+      left: auto;
+      border-right-color: transparent;
+      border-left-color: #fff;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .pswp__preloader {
+      right: auto;
+      left: auto;
+      float: left;
+    }
+  }
+
+  .pswp__top-bar {
+    right: 0;
+    left: auto;
+  }
+}
+
+.default-style {
+	@import "../../css/_appwork/include";
+
+  .pswp {
+    z-index: $zindex-modal-top;
+  }
+}
+
+.material-style {
+	@import "../../css/_appwork/include-material";
+
+  .pswp {
+    z-index: $zindex-modal-top;
+  }
+}

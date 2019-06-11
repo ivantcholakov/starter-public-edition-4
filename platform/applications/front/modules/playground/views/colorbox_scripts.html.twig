@@ -1,0 +1,60 @@
+
+{{ js('lib/colorbox/jquery.colorbox-min.js') }}
+
+    <script type="text/javascript">
+    //<![CDATA[
+
+    // Our customized translations.
+    jQuery.extend(jQuery.colorbox.settings, {
+        current: {{ lang('ui_slideshow_current')|json_encode|raw }},
+        previous: {{ lang('ui_slideshow_previous')|json_encode|raw }},
+        next: {{ lang('ui_slideshow_next')|json_encode|raw }},
+        close: {{ lang('ui_close')|json_encode|raw }},
+        slideshowStart: {{ lang('ui_slideshow_start')|json_encode|raw }},
+        slideshowStop: {{ lang('ui_slideshow_stop')|json_encode|raw }}
+    });
+
+    // See https://github.com/jackmoore/colorbox/issues/158
+
+    // Make ColorBox responsive
+    jQuery.colorbox.settings.minWidth  = '500';
+    jQuery.colorbox.settings.maxWidth  = '95%';
+    jQuery.colorbox.settings.maxHeight = '95%';
+
+    // ColorBox resize function
+    var resizeTimer;
+
+    function resizeColorBox() {
+
+        if (resizeTimer) {
+            clearTimeout(resizeTimer);
+        }
+
+        resizeTimer = setTimeout(function() {
+            if (jQuery('#cboxOverlay').is(':visible')) {
+                jQuery.colorbox.reload();
+            }
+        }, 300);
+    }
+
+    // Resize ColorBox when resizing window or changing mobile device orientation
+    jQuery(window).resize(resizeColorBox);
+    window.addEventListener('orientationchange', resizeColorBox, false);
+
+    // Activate ColorBox
+    function activateColorBox() {
+
+        $("a[rel='colorbox']").colorbox();
+
+        $("a[rel='colorbox-slideshow']").colorbox({
+            slideshow: true,
+            slideshowAuto: false
+        });
+    }
+
+    $(function() {
+        activateColorBox();
+    });
+
+    //]]>
+    </script>

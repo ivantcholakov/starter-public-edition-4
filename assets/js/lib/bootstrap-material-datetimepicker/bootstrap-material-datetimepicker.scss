@@ -1,0 +1,398 @@
+@import '../../css/_custom-variables/libs';
+
+$dtp-padding: 1rem !default;
+$dtp-header-height: 2rem !default;
+
+.dtp {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  animation-duration: .3s;
+  user-select: none;
+
+  &.hidden {
+    display: none;
+  }
+}
+
+// Utilities
+//
+
+.dtp .p10 {
+  display: inline-block;
+  width: 10%;
+
+   > a {
+    display: block;
+    width: 100%;
+    color: rgba(#000, .2);
+    text-decoration: none;
+  }
+}
+
+.dtp .p20 {
+  display: inline-block;
+  width: 20%;
+}
+
+.dtp .p60 {
+  display: inline-block;
+  width: 60%;
+}
+
+.dtp .p80 {
+  display: inline-block;
+  width: 80%;
+}
+
+.dtp .hidden {
+  display: none;
+}
+
+.dtp .invisible {
+  visibility: hidden;
+}
+
+.dtp .left {
+  float: left;
+
+  [dir=rtl] & {
+    float: right;
+  }
+}
+
+.dtp .right {
+  float: right;
+
+  [dir=rtl] & {
+    float: left;
+  }
+}
+
+.dtp .clearfix {
+  clear: both;
+}
+
+.dtp .center {
+  text-align: center;
+}
+
+// Icons
+//
+
+.dtp-select-month-before,
+.dtp-select-month-after,
+.dtp-select-year-before,
+.dtp-select-year-after,
+.dtp-select-year-range.before,
+.dtp-select-year-range.after,
+.dtp-close > a {
+  font-size: 1.25rem;
+
+   > .material-icons {
+    display: none;
+  }
+}
+
+.dtp-select-month-before:before,
+.dtp-select-year-before:before {
+  content: "❮";
+}
+
+.dtp-select-month-after:before,
+.dtp-select-year-after:before {
+  content: "❯";
+}
+
+.dtp-select-year-range.before:before {
+  content: "❯";
+  display: inline-block;
+  transform: rotate(-90deg);
+  direction: ltr !important;
+}
+
+.dtp-select-year-range.after:before {
+  content: "❯";
+  display: inline-block;
+  transform: rotate(90deg);
+  direction: ltr !important;
+}
+
+.dtp-close > a:before {
+  content: "×";
+}
+
+// Content
+//
+
+.dtp-content {
+  position: relative;
+  left: 50%;
+  max-width: 18.75rem;
+  background: #fff;
+
+  [dir=rtl] & {
+    right: 50%;
+    left: auto;
+    margin-left: 0 !important;
+    transform: translate(50%, 0);
+  }
+}
+
+// Header
+//
+
+header.dtp-header {
+  text-align: center;
+  line-height: $dtp-header-height;
+}
+
+.dtp-close {
+  position: absolute;
+  top: 0;
+  right: $dtp-padding;
+
+  [dir=rtl] & {
+    right: auto;
+    left: $dtp-padding;
+  }
+
+   > a {
+    line-height: 1;
+  }
+}
+
+.dtp-date,
+.dtp-time {
+  padding: $dtp-padding;
+  text-align: center;
+}
+
+.dtp-date > div {
+  margin: 0;
+  padding: 0;
+}
+
+.dtp-actual-month,
+.dtp-actual-year {
+  font-size: 1.375rem;
+}
+
+.dtp-actual-num,
+.dtp-actual-maxtime {
+  font-size: 2.625rem;
+  line-height: .9;
+}
+
+.dtp-actual-year {
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.disabled:hover {
+    cursor: inherit;
+  }
+}
+
+.dtp-actual-time {
+  text-align: center;
+  font-weight: 500;
+}
+
+// Picker
+//
+
+.dtp-picker {
+  padding: $dtp-padding;
+  text-align: center;
+}
+
+.dtp-picker-year {
+  margin-bottom: .0625rem;
+}
+
+.dtp-select-year-range {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  line-height: 1;
+
+  &.before {
+    margin-bottom: .625rem !important;
+  }
+
+  &.after {
+    margin-top: .625rem !important;
+  }
+}
+
+.dtp-picker-month {
+  padding-bottom: 1.25rem !important;
+  text-align: center;
+  text-transform: uppercase !important;
+  font-weight: 500;
+}
+
+.dtp .year-picker-item {
+  margin: 0 auto;
+  padding-top: .3125rem;
+  text-align: center;
+  cursor: pointer;
+
+  &.active {
+    font-weight: bold;
+  }
+}
+
+table.dtp-picker-days tr > td > a,
+.dtp-picker-time > a {
+  padding: .4375rem;
+  border-radius: 50% !important;
+  text-decoration: none;
+}
+
+table.dtp-picker-days {
+  margin: 0;
+  min-height: 13.8125rem;
+  border: none;
+}
+
+table.dtp-picker-days tr {
+  border: none;
+}
+
+table.dtp-picker-days tr > td {
+  padding: .25rem;
+  border: none;
+  text-align: center;
+  font-weight: 700;
+  font-size: .8125rem;
+
+   > span.dtp-select-day {
+    padding: .4375rem;
+  }
+}
+
+table.dtp-picker-days tr > th {
+  padding: .25rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.dtp-picker-time > .dtp-select-hour,
+.dtp-picker-time > .dtp-select-minute {
+  cursor: pointer;
+}
+
+a.dtp-meridien-am,
+a.dtp-meridien-pm {
+  position: relative;
+  top: .625rem;
+  padding: .7em .5em;
+  border-radius: 50% !important;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+// Buttons
+//
+
+.dtp-buttons {
+  padding: 0 $dtp-padding $dtp-padding $dtp-padding;
+  text-align: right;
+
+  [dir=rtl] & {
+    text-align: left;
+  }
+
+  .btn + .btn {
+    margin-left: .3125rem;
+
+    [dir=rtl] & {
+      margin-right: .3125rem;
+      margin-left: 0;
+    }
+  }
+}
+
+.default-style {
+  @import "../../css/_appwork/include";
+
+  .dtp {
+    z-index: $zindex-modal-top;
+    background: rgba($modal-backdrop-bg, $modal-backdrop-opacity);
+  }
+
+  .dtp-content {
+    border-radius: $border-radius;
+    box-shadow: $modal-content-box-shadow-xs;
+  }
+
+  header.dtp-header {
+    @include border-top-radius(if($border-radius, calc(#{$border-radius} - 2px), 0));
+  }
+
+  .dtp .year-picker-item {
+    font-size: $font-size-xl;
+  }
+
+  table.dtp-picker-days tr > td > a,
+  .dtp-picker-time > a {
+    color: $body-color;
+  }
+
+  table.dtp-picker-days tr > td > span.dtp-select-day {
+    color: $text-muted !important;
+  }
+
+  table.dtp-picker-days tr > th {
+    color: $text-muted;
+  }
+
+  a.dtp-meridien-am,
+  a.dtp-meridien-pm {
+    position: relative;
+    background: $gray-100;
+    color: $body-color;
+  }
+}
+
+.material-style {
+  @import "../../css/_appwork/include-material";
+
+  .dtp {
+    z-index: $zindex-modal-top;
+    background: rgba($modal-backdrop-bg, $modal-backdrop-opacity);
+  }
+
+  .dtp-content {
+    border-radius: 0;
+    box-shadow: $modal-content-box-shadow-xs;
+  }
+
+  .dtp .year-picker-item {
+    font-size: $font-size-xl;
+  }
+
+  table.dtp-picker-days tr > td > a,
+  .dtp-picker-time > a {
+    color: $body-color;
+  }
+
+  table.dtp-picker-days tr > td > span.dtp-select-day {
+    color: $text-muted !important;
+  }
+
+  table.dtp-picker-days tr > th {
+    color: $text-muted;
+  }
+
+  a.dtp-meridien-am,
+  a.dtp-meridien-pm {
+    position: relative;
+    background: $gray-100;
+    color: $body-color;
+  }
+}

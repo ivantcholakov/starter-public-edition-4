@@ -1,0 +1,111 @@
+/* scaffolding */
+/* ----------- */
+
+.twitter-typeahead {
+  display: block !important;
+}
+
+.tt-hint {
+  color: #999;
+}
+
+.tt-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  float: left;
+  background-clip: padding-box;
+  list-style: none;
+  text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+
+  [dir=rtl] & {
+    right: 0 !important;
+    left: auto !important;
+    float: right;
+    text-align: right;
+  }
+}
+
+.tt-suggestion {
+  display: block;
+  clear: both;
+  width: 100%;
+  border: 0;
+  background: none;
+  text-align: inherit;
+  white-space: nowrap;
+  cursor: default;
+
+  p {
+    margin: 0;
+  }
+}
+
+.default-style {
+  @import "../../css/_appwork/include";
+
+  .tt-hint {
+    color: $input-placeholder-color;
+  }
+
+  .tt-menu {
+    z-index: $zindex-dropdown;
+    margin: $dropdown-spacer 0;
+    padding: $dropdown-padding-y 0;
+    min-width: $dropdown-min-width;
+    border: $dropdown-border-width solid $dropdown-border-color;
+    background-color: $dropdown-bg;
+    box-shadow: $dropdown-box-shadow;
+    color: $body-color;
+    font-size: $font-size-base;
+
+    @include border-radius($border-radius);
+  }
+
+  .tt-suggestion {
+    padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+    color: $dropdown-link-color;
+    font-weight: $font-weight-normal;
+
+    @include hover-focus {
+      background-color: $dropdown-link-hover-bg;
+      color: $dropdown-link-hover-color;
+      text-decoration: none;
+    }
+  }
+}
+
+.material-style {
+  @import "../../css/_appwork/include-material";
+
+  .tt-hint {
+    color: $input-placeholder-color;
+  }
+
+  .tt-menu {
+    z-index: $zindex-dropdown;
+    margin: $dropdown-spacer 0;
+    padding: $dropdown-padding-y 0;
+    min-width: $dropdown-min-width;
+    border: $dropdown-border-width solid $dropdown-border-color;
+    background-color: $dropdown-bg;
+    box-shadow: $dropdown-box-shadow;
+    color: $body-color;
+    font-size: $font-size-base;
+
+    @include border-radius($border-radius);
+  }
+
+  .tt-suggestion {
+    padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+    color: $dropdown-link-color;
+    font-weight: $font-weight-normal;
+
+    @include hover-focus {
+      background-color: $dropdown-link-hover-bg;
+      color: $dropdown-link-hover-color;
+      text-decoration: none;
+    }
+  }
+}
