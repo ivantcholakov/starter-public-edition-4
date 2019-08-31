@@ -1,0 +1,82 @@
+
+    <script type="text/javascript">
+    //<![CDATA[
+
+    function refresh_twig() {
+
+        var keys = [];
+
+        {% for item in items %}
+        if ($('#app_{{ loop.index0 }}').is(':checked')) {
+            keys.push({{ loop.index0 }});
+        }
+        {% endfor %}
+
+        $('.messages').html('');
+
+        if (keys.length > 0) {
+
+            var last = keys[keys.length - 1];
+
+            $('#refresh_twig').addClass('loading');
+
+            {% for item in items %}
+
+            if ($('#app_{{ loop.index0 }}').is(':checked')) {
+
+                $.ajax({
+                    type: 'get',
+                    mode: 'queue',
+                    url: '{{ site_url('twig/ajax')|e('js') }}',
+                    cache: false,
+                    data: {
+                        i: {{ loop.index0 }}
+                    },
+                    success: function(data) {
+
+                        $('#message_' + '{{ loop.index0 }}').html(
+                            '<div class="ui ' + (data.success ? 'positive' : 'negative') + ' message">' + {{ loop.index0 }} + ': ' + htmlspecialchars(data.feedback_message) + '</div>'
+                        );
+
+                        if ({{ loop.index0 }} == last) {
+                            $('#refresh_twig').removeClass('loading');
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+
+                        $('#message_' + '{{ loop.index0 }}').html(
+                            '<div class="ui negative message">' + {{ loop.index0 }} + ': ' + xhr.status + ' (AJAX)' + '</div>'
+                        );
+
+                        if ({{ loop.index0 }} == last) {
+                            $('#refresh_twig').removeClass('loading');
+                        }
+                    }
+                });
+            }
+
+            {% endfor %}
+        }
+    }
+
+    $(function() {
+
+        $('#refresh_twig').on('click', function() {
+
+            refresh_twig();
+        });
+
+        $('#check_all_button').on('click', function() {
+
+            $('.ui.checkbox.twig').checkbox('check');
+        });
+
+        $('#uncheck_all_button').on('click', function() {
+
+            $('.ui.checkbox.twig').checkbox('uncheck');
+        });
+
+    });
+
+    //]]>
+    </script>

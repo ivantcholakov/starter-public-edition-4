@@ -56,6 +56,8 @@ class Nav extends CI_Model {
             $nav['settings/phpinfo'] = array('label' => 'phpinfo()', 'icon' => 'info circle icon', 'location' => site_url('phpinfo'), 'parent_id' => 'settings');
         }
 
+        $nav['twig'] = array('label' => 'Twig', 'icon' => 'file code outline icon',  'location' => site_url('twig'), 'parent_id' => 'settings');
+
         //----------------------------------------------------------------------
 
         $nav['logout'] = array('label' => $this->lang->line('ui_logout'), 'icon' => 'sign-out icon', 'location' => site_url('logout'));

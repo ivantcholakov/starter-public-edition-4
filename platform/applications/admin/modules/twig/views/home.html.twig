@@ -1,0 +1,54 @@
+
+                                <div class="ui segment">
+
+                                    <h4>Deletion (refresh) of the system's Twig-template cache</h4>
+ 
+                                    <p>This operation has to be performed after a upgrade of the corresponding application (site).</p>
+ 
+                                    <table class="ui celled striped selectable compact table" id="datatable">
+
+                                        <thead>
+                                            <tr>
+                                                <th class="eight wide">
+                                                    <span style="float: left;">Application (site)</span>
+                                                    <button id="uncheck_all_button" type="button" class="ui grey small compact button right aligned" style="float: right;"><i class="square outline icon"></i>Uncheck All</button>
+                                                    <button id="check_all_button" type="button" class="ui grey small compact button" style="float: right;"><i class="checkmark icon"></i>Check All</button>
+                                                </th>
+                                                <th class="eight wide">Message</th>
+
+                                            </tr>
+                                        </thead>
+
+                                        <tfoot class="mobile hidden">
+                                            <tr>
+                                                <th>Application (site)</th>
+                                                <th>Message</th>
+                                            </tr>
+                                        </tfoot>
+
+                                        <tbody>
+                                            {% for item in items %}
+                                            <tr>
+
+                                                <td>
+                                                    <div class="ui checkbox twig">
+                                                        <input type="checkbox" id="app_{{ loop.index0 }}" name="app_{{ loop.index0 }}" value="1" data-i="{{ loop.index0 }}" />
+                                                        <label for="app_{{ loop.index0 }}">{{ item['name'] }}</label>
+                                                    </div>
+                                                </td>
+
+                                                <td class="messages" id="message_{{ loop.index0 }}">
+                                                    
+                                                </td>
+
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+
+                                    </table>
+
+                                    <p>
+                                        <button type="button" class="ui primary fluid button" id="refresh_twig"><i class="refresh icon"></i>Refresh Twig-Template Cache</button>
+                                    </p>
+
+                                </div>

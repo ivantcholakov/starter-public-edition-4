@@ -66,7 +66,11 @@
     {% if breadcrumb_widget is not empty %}
                         <div class="breadcrumb">{{ breadcrumb_widget|raw }}</div>
     {% endif %}
+        {% if registry('header_image') is not empty %}
+                        {{ registry('header_image')|raw }}
+        {% else %}
                         {{ registry('header_icon')|raw }}
+        {% endif %}
                         <div class="content">
                             {{ registry('title')|raw }}
     {% if registry('subtitle') is not empty %}

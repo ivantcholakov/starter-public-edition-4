@@ -677,6 +677,64 @@ class Image_lib extends CI_Image_lib
     // --------------------------------------------------------------------
 
     /**
+     * Get image properties
+     *
+     * A helper function that gets info about the file
+     *
+     * @param    string
+     * @param    bool
+     * @return    mixed
+     */
+    public function get_image_properties($path = '', $return = FALSE)
+    {
+        // For now we require GD but we should
+        // find a way to determine this using IM or NetPBM
+
+        if ($path === '')
+        {
+            $path = $this->full_src_path;
+        }
+
+        if ( ! file_exists($path))
+        {
+            $this->set_error('imglib_invalid_path');
+            return FALSE;
+        }
+
+        $vals = @ getimagesize($path);
+        if ($vals === FALSE)
+        {
+            $this->set_error('imglib_invalid_image');
+            return FALSE;
+        }
+
+        $types = array(1 => 'gif', 2 => 'jpeg', 3 => 'png');
+        $mime = isset($types[$vals[2]]) ? 'image/'.$types[$vals[2]] : 'image/jpg';
+
+        if ($return === TRUE)
+        {
+            return array(
+                'width'      => $vals[0],
+                'height'     => $vals[1],
+                'image_type' => $vals[2],
+                'size_str'   => $vals[3],
+                'mime_type'  => $mime
+            );
+        }
+
+        $this->orig_width  = $vals[0];
+        $this->orig_height = $vals[1];
+        $this->image_type  = $vals[2];
+        $this->size_str    = $vals[3];
+        $this->mime_type   = $mime;
+
+        return TRUE;
+    }
+
+
+    // --------------------------------------------------------------------
+
+    /**
      * Create Image - GD
      *
      * This simply creates an image resource handle
