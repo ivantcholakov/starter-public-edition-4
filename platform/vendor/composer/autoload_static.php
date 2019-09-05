@@ -14,6 +14,7 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
         '8cff32064859f4559445b89279f3199c' => __DIR__ . '/..' . '/php-http/message/src/filters.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        'fe17454461a24db888b8da8720edd309' => __DIR__ . '/..' . '/athlon1600/php-proxy/src/helpers.php',
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
     );
@@ -47,6 +48,7 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
         array (
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Cache\\' => 10,
+            'Proxy\\' => 6,
             'PHPMailer\\PHPMailer\\' => 20,
         ),
         'N' => 
@@ -134,6 +136,10 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
         'Psr\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
+        ),
+        'Proxy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/athlon1600/php-proxy/src',
         ),
         'PHPMailer\\PHPMailer\\' => 
         array (
@@ -1011,6 +1017,19 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
         'Parsedown' => __DIR__ . '/..' . '/erusev/parsedown/Parsedown.php',
         'ParsedownExtra' => __DIR__ . '/..' . '/erusev/parsedown-extra/ParsedownExtra.php',
         'ParsedownExtraTest' => __DIR__ . '/..' . '/erusev/parsedown-extra/test/ParsedownExtraTest.php',
+        'Proxy\\Config' => __DIR__ . '/..' . '/athlon1600/php-proxy/src/Config.php',
+        'Proxy\\Event\\ProxyEvent' => __DIR__ . '/..' . '/athlon1600/php-proxy/src/Event/ProxyEvent.php',
+        'Proxy\\Html' => __DIR__ . '/..' . '/athlon1600/php-proxy/src/Html.php',
+        'Proxy\\Http\\ParamStore' => __DIR__ . '/..' . '/athlon1600/php-proxy/src/Http/ParamStore.php',
+        'Proxy\\Http\\Request' => __DIR__ . '/..' . '/athlon1600/php-proxy/src/Http/Request.php',
+        'Proxy\\Http\\Response' => __DIR__ . '/..' . '/athlon1600/php-proxy/src/Http/Response.php',
+        'Proxy\\Plugin\\AbstractPlugin' => __DIR__ . '/..' . '/athlon1600/php-proxy/src/Plugin/AbstractPlugin.php',
+        'Proxy\\Plugin\\CookiePlugin' => __DIR__ . '/..' . '/athlon1600/php-proxy/src/Plugin/CookiePlugin.php',
+        'Proxy\\Plugin\\HeaderRewritePlugin' => __DIR__ . '/..' . '/athlon1600/php-proxy/src/Plugin/HeaderRewritePlugin.php',
+        'Proxy\\Plugin\\ProxifyPlugin' => __DIR__ . '/..' . '/athlon1600/php-proxy/src/Plugin/ProxifyPlugin.php',
+        'Proxy\\Plugin\\StreamPlugin' => __DIR__ . '/..' . '/athlon1600/php-proxy/src/Plugin/StreamPlugin.php',
+        'Proxy\\Proxy' => __DIR__ . '/..' . '/athlon1600/php-proxy/src/Proxy.php',
+        'Proxy\\Redis' => __DIR__ . '/..' . '/athlon1600/php-proxy/src/Redis.php',
         'Psr\\Cache\\CacheException' => __DIR__ . '/..' . '/psr/cache/src/CacheException.php',
         'Psr\\Cache\\CacheItemInterface' => __DIR__ . '/..' . '/psr/cache/src/CacheItemInterface.php',
         'Psr\\Cache\\CacheItemPoolInterface' => __DIR__ . '/..' . '/psr/cache/src/CacheItemPoolInterface.php',

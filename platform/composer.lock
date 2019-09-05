@@ -4,8 +4,51 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6ef9072d1ad996e33b0ac1d4d7a598bd",
+    "content-hash": "ffaa7d3f32b94d596b8fb511eb439d28",
     "packages": [
+        {
+            "name": "athlon1600/php-proxy",
+            "version": "v5.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Athlon1600/php-proxy.git",
+                "reference": "09ae057d3651087664401b7754624bd8cd8cf472"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Athlon1600/php-proxy/zipball/09ae057d3651087664401b7754624bd8cd8cf472",
+                "reference": "09ae057d3651087664401b7754624bd8cd8cf472",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*"
+            },
+            "suggest": {
+                "predis/predis": "For caching purposes"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Proxy\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "homepage": "https://www.php-proxy.com/",
+            "keywords": [
+                "php proxy",
+                "php proxy script",
+                "php web proxy",
+                "proxy script",
+                "web proxy"
+            ],
+            "time": "2017-12-25T20:05:11+00:00"
+        },
         {
             "name": "clue/stream-filter",
             "version": "v1.4.0",

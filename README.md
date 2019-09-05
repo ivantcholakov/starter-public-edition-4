@@ -520,6 +520,7 @@ Installed Composer Packages
 | intervention/image                  | Image handling and manipulation library                            | yohang88/letter-avatar                            |
 | tubalmartin/cssmin                  | A PHP port of the YUI CSS compressor                               | Parser 'cssmin' driver                            |
 | oyejorge/less.php                   | A PHP port of the Javascript version of LESS                       | Parser 'less' driver                              |
+| athlon1600/php-proxy                | A web proxy script written in PHP.                                 | Demo feature for previewing the error logs        |
 
 Real Life Usage
 ---------------
@@ -549,6 +550,7 @@ Real Life Usage
 * http://geopro2009.com - geodetic services, designer: Irina Stancheva
 * http://trenchovahouse.com - a family hotel, designer: Irina Stancheva
 * A new student accommodation management system for Sofia University "St. Kliment Ohridski", Bulgaria, running as of 18-th July, 2018.
+* https://steiger-bg.com/ - construction machinery, designer: Irina Stancheva
 
 Reported by Zashev Design - Web Design Studio
 
