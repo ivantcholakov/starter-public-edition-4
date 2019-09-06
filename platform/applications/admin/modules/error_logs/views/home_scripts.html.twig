@@ -41,9 +41,16 @@
 
                 var html = '';
 
-                for (var i = 0; i < json.files.length; ++i) {
+                if (json.files.length > 0) {
 
-                    html = html + '<p><button type="button" class="ui fluid' + (json.files[i] == json.currentFile ? ' primary' : '') +' button select_file_{{ loop.index0 }}" data-i="{{ loop.index0 }}" data-file-name="' + htmlspecialchars(json.files[i]) + '">' + htmlspecialchars(json.files[i]) + '</button></p>';
+                    for (var i = 0; i < json.files.length; ++i) {
+
+                        html = html + '<p><button type="button" class="ui fluid' + (json.files[i] == json.currentFile ? ' primary' : '') +' button select_file_{{ loop.index0 }}" data-i="{{ loop.index0 }}" data-file-name="' + htmlspecialchars(json.files[i]) + '">' + htmlspecialchars(json.files[i]) + '</button></p>';
+                    }
+
+                } else {
+
+                    html = '<p><div class="ui positive message"><p class="center aligned text">There are no error log files.</p></div></p>';
                 }
 
                 $('#file_list_{{ loop.index0 }}').html(html);
