@@ -1,0 +1,98 @@
+
+{% if items is not empty %}
+
+                    <style>
+
+                        table.error_log tbody tr td:first-child i {
+                            margin-right: 0 !important;
+                        }
+
+                    </style>
+
+                    <div class="ui top attached wrappable menu" id="tab" style="margin-top: 0;">
+
+    {% for item in items %}
+                        <a data-tab="error_log_{{ loop.index0 }}" class="item{{ (session('error_logs_active_tab') is empty and loop.index0 == 0) or session('error_logs_active_tab') == 'error_log_' ~ loop.index0 ? ' active' : '' }}"><strong>{{ item['name'] }}</strong></a>
+    {% endfor %}
+
+                    </div>
+
+    {% for item in items %}
+
+                    <div data-tab="error_log_{{ loop.index0 }}" class="ui bottom attached{{ (session('error_logs_active_tab') is empty and loop.index0 == 0) or session('error_logs_active_tab') == 'error_log_' ~ loop.index0 ? ' active' : '' }} tab segment">
+
+                        <div class="ui grid">
+
+                            <div class="row">
+
+                                <div class="sixteen wide mobile sixteen wide tablet three wide computer column">
+
+                                    <p>
+                                        <div id="file_list_{{ loop.index0 }}"></div>
+                                    </p>
+
+                                </div>
+
+                                <div class="sixteen wide mobile sixteen wide tablet thirteen wide computer column">
+
+                                    <p>
+
+                                        <table class="ui celled striped selectable compact table error_log" id="datatable_{{ loop.index0 }}">
+
+                                            <thead>
+                                                <tr>
+                                                    <th class="collapsing"></th>
+                                                    <th class="two wide">Level</th>
+                                                    <th class="three wide">Date</th>
+                                                    <th class="eleven wide">Content</th>
+                                                </tr>
+
+                                            <tr>
+                                                <td></td>
+                                                <td><div class="ui fluid input">{{ form_dropdown('search_level_' ~ loop.index0, {'': lang('ui_all'), 'INFO': 'INFO', 'DEBUG': 'DEBUG', 'ERROR': 'ERROR'}, '', 'id="search_level_' ~ loop.index0 ~ '" class="ui fluid native selection dropdown no break"') }}</div></td>
+                                                <td></td>
+                                                <td><div class="ui fluid input"><input id="search_content_{{ loop.index0 }}" type="text" placeholder="{{ lang('ui_search')|e('html_attr') }}" /></div></td>
+                                            </thead>
+
+                                            <tfoot class="mobile hidden">
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Level</th>
+                                                    <th>Date</th>
+                                                    <th>Content</th>
+                                                </tr>
+                                            </tfoot>
+
+                                            <tbody>
+
+                                            </tbody>
+
+                                        </table>
+
+                                    </p>
+
+                                    <p>
+
+                                        <span id="download_file_{{ loop.index0 }}"></span>
+                                        <span id="delete_file_{{ loop.index0 }}"></span>
+                                        <span id="delete_all_files_{{ loop.index0 }}"></span>
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+    {% endfor %}
+
+{% else %}
+
+                    <div class="ui negative message">
+                        There are no configured log-sources.
+                    </div>
+
+{% endif %}

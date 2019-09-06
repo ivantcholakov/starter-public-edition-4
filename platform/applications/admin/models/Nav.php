@@ -57,6 +57,7 @@ class Nav extends CI_Model {
         }
 
         $nav['twig'] = array('label' => 'Twig', 'icon' => 'file code outline icon',  'location' => site_url('twig'), 'parent_id' => 'settings');
+        $nav['error_logs'] = array('label' => 'Error Logs', 'icon' => 'exclamation triangle icon',  'location' => site_url('error-logs'), 'parent_id' => 'settings');
 
         //----------------------------------------------------------------------
 

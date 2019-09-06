@@ -1,0 +1,358 @@
+
+    <script type="text/javascript">
+    //<![CDATA[
+
+    $(function() {
+
+{% if items is not empty %}
+
+        $('#tab .item').tab({
+            'onVisible': function(tabPath) {
+
+                $.ajax({
+                    type: 'post',
+                    mode: 'queue',
+                    url: '{{ site_url('error-logs/tab') }}',
+                    data: {
+                        active: tabPath
+                    },
+                    success: function(data) {
+
+                    }
+                });
+            }
+        });
+
+    {% for item in items %}
+
+        var current_file_{{ loop.index0 }} = null;
+
+        function refresh_extra_ui_{{ loop.index0 }}(json) {
+
+            $('#file_list_{{ loop.index0 }}').html('');
+
+            $('#download_file_{{ loop.index0 }}').html('');
+            $('#delete_file_{{ loop.index0 }}').html('');
+            $('#delete_all_files_{{ loop.index0 }}').html('');
+
+            if (typeof json != 'undefined') {
+
+                current_file_{{ loop.index0 }} = json.currentFile;
+
+                var html = '';
+
+                for (var i = 0; i < json.files.length; ++i) {
+
+                    html = html + '<p><button type="button" class="ui fluid' + (json.files[i] == json.currentFile ? ' primary' : '') +' button select_file_{{ loop.index0 }}" data-i="{{ loop.index0 }}" data-file-name="' + htmlspecialchars(json.files[i]) + '">' + htmlspecialchars(json.files[i]) + '</button></p>';
+                }
+
+                $('#file_list_{{ loop.index0 }}').html(html);
+
+                if (current_file_{{ loop.index0 }}) {
+
+                    $('#download_file_{{ loop.index0 }}').html('<a href="{{ site_url('error-logs/proxy/' ~ loop.index0) }}?dl=' + $.base64.encode(current_file_{{ loop.index0 }}) + '" class="ui primary button download_file_{{ loop.index0 }}"><i class="download icon"></i>Download File</a>');
+                    $('#delete_file_{{ loop.index0 }}').html('<button class="ui negative button delete_file_{{ loop.index0 }}"><i class="trash icon"></i>Delete File</button>');
+
+                    if (json.files.length > 1) {
+
+                        $('#delete_all_files_{{ loop.index0 }}').html('<button class="ui negative button delete_all_files_{{ loop.index0 }}"><i class="trash icon"></i>Delete All Files</button>');
+                    }
+                }
+            }
+        }
+
+        var datatable_{{ loop.index0 }} = $('#datatable_{{ loop.index0 }}').DataTable({
+            'dom':
+                "<'ui grid'"+
+                    "<'row'"+
+                        "<'sixteen wide mobile sixteen wide tablet eight wide computer column'l>"+
+                        "<'right aligned sixteen wide mobile sixteen wide tablet eight wide computer column'f>"+
+                        "<'sixteen wide mobile sixteen wide tablet six wide computer column'i>"+
+                        "<'right aligned sixteen wide mobile sixteen wide tablet ten wide computer column'p>"+
+                    ">"+
+                    "<'row dt-table'"+
+                        "<'sixteen wide column'tr>"+
+                    ">"+
+                    "<'row'"+
+                        "<'sixteen wide mobile sixteen wide tablet six wide computer column'i>"+
+                        "<'right aligned sixteen wide mobile sixteen wide tablet ten wide computer column'p>"+
+                    ">"+
+                ">",
+            'order': [],
+            'orderCellsTop': true,
+            'pagingType': 'simple_numbers',
+            "lengthMenu": [[5, 10, 25, 50, 100, 200], [5, 10, 25, 50, 100, 200]],
+            "pageLength": 5,
+            'stateSave': true,
+            'ajax': {
+                'url': '{{ site_url('error-logs/proxy/' ~ loop.index0) }}',
+                'dataSrc': 'logs',
+                'type': 'get',
+                'mode': 'queue',
+                'cache': false,
+                'data': function (d) {
+                    var f = current_file_{{ loop.index0 }} || '';
+                    d.f = f != '' ? $.base64.encode(f) : null;
+                },
+                'error': function(xhr, status, error) {
+
+                    clear_loading_state_{{ loop.index0 }}();
+                }
+            },
+            'columns': [
+                {
+                    'data': null,
+                    'render': function (data, type, row, meta) {
+
+                        switch (row['level']) {
+
+                            case 'ERROR':
+                                return '<i class="exclamation triangle icon"></i>';
+
+                            case 'DEBUG':
+                                return '<i class="attention icon"></i>';
+
+                            case 'INFO':
+                            case 'ALL':
+                                return '<i class="info icon"></i>';
+                        }
+
+                        return null;
+                    }
+                },
+                {
+                    'data': 'level'
+                },
+                {
+                    'data': 'date'
+                },
+                {
+                    'data': 'content',
+                }
+            ],
+            'columnDefs': [
+                {
+                    'targets': [0, 1, 3],
+                    'orderable': false
+                }
+            ],
+            'createdRow': function (row, data, dataIndex) {
+
+                switch (data['level']) {
+
+                    case 'ERROR':
+                        $(row).addClass('negative');
+                        break;
+
+                    case 'DEBUG':
+                        $(row).addClass('warning');
+                        break;
+
+                    case 'INFO':
+                        $(row).addClass('positive');
+                        break;
+                }
+            },
+            'language': {{ language_datatables()|raw }},
+            // Making the table responsive.
+            'autoWidth': false,
+            'initComplete': function(settings, json) {
+
+                refresh_extra_ui_{{ loop.index0 }}(json);
+
+                var cols = settings.aoPreSearchCols;
+                for (var i = 0; i < cols.length; i++) {
+                    var value = cols[i].sSearch;
+                    if (value.length > 0) {
+                        switch (i) {
+                            case 1:
+                                $('#search_level_{{ loop.index0 }}').val(value);
+                                break;
+                            case 3:
+                                $('#search_content_{{ loop.index0 }}').val(value);
+                                break;
+                        }
+                    }
+                }
+            }
+        });
+
+        // Individual text-input filters.
+
+        $("#datatable_{{ loop.index0 }} thead input[type=text]").on('keyup change', function () {
+
+            datatable_{{ loop.index0 }}
+                .column($(this).closest('td').index() + ':visible')
+                .search(this.value)
+                .draw();
+        });
+
+        $('#search_level_{{ loop.index0 }}').on('change', function () {
+
+            datatable_{{ loop.index0 }}
+                .column(1)
+                .search($(this).val())
+                .draw();
+        });
+
+        // "Clear search" and "Clear sort" buttons.
+
+        $('#datatable_{{ loop.index0 }}_filter input').after(' <div class="ui icon buttons"><button id="clear_search_{{ loop.index0 }}" class="ui icon button" title="{{ lang('ui_clear_search')|e('html_attr')|e('js') }}"><i class="zoom-out icon"></i></button> <button id="clear_sort_{{ loop.index0 }}" class="ui icon button" title="{{ lang('ui_clear_sort')|e('html_attr')|e('js') }}"><i class="sort icon"></i></button></div>');
+
+        // Clear sort.
+        $('#clear_sort_{{ loop.index0 }}').on('click', function() {
+
+            datatable_{{ loop.index0 }}.sortNeutral();
+        });
+
+        // Clear search.
+        $('#clear_search_{{ loop.index0 }}').on('click', function() {
+
+            datatable_{{ loop.index0 }}.column(1).search('');
+            $('#search_level_{{ loop.index0 }}').val('');
+
+            datatable_{{ loop.index0 }}.column(3).search('');
+            $('#search_content_{{ loop.index0 }}').val('');
+
+            datatable_{{ loop.index0 }}.search('');
+            $('#datatable_{{ loop.index0 }}_filter input').val('');
+
+            datatable_{{ loop.index0 }}.draw();
+        });
+
+        // Reload the table and refresh all the additional UI elements.
+        function refresh_{{ loop.index0 }}() {
+
+            datatable_{{ loop.index0 }}.ajax.reload(function (json) {
+
+                refresh_extra_ui_{{ loop.index0 }}(json);
+            });
+        }
+
+        function clear_loading_state_{{ loop.index0 }}() {
+
+            $('#file_list_{{ loop.index0 }} button').removeClass('loading');
+
+            $('#delete_file_{{ loop.index0 }} button').removeClass('loading');
+            $('#delete_all_files_{{ loop.index0 }} button').removeClass('loading');
+        }
+
+        // Button handlers.
+
+        $('#file_list_{{ loop.index0 }}').on('click', '.select_file_{{ loop.index0 }}', function (e) {
+
+            $(this).addClass('loading');
+
+            current_file_{{ loop.index0 }} = $(this).attr('data-file-name');
+            refresh_{{ loop.index0 }}();
+
+            e.preventDefault();
+            return false;
+        });
+
+        $('#delete_file_{{ loop.index0 }}').on('click', 'button', function (e) {
+
+            var button = $(this);
+
+            swal({
+                title: '{{ lang('ui_confirm')|e('js') }}',
+                text: sprintf('{{ lang('ui_confirm_file_deletion', '<strong>%s</strong>')|e('js') }}', current_file_{{ loop.index0 }}),
+                type: 'warning',
+                showCancelButton: true,
+                cancelButtonText: '{{ lang('ui_no')|e('js') }}',
+                confirmButtonColor: '#d01919',
+                confirmButtonText: '{{ lang('ui_yes')|e('js') }}',
+                html: true
+            },
+            function() {
+
+                button.addClass('loading');
+
+                $.ajax({
+                    type: 'post',
+                    url: '{{ site_url('error-logs/proxy/' ~ loop.index0) }}',
+                    'type': 'get',
+                    'mode': 'queue',
+                    'cache': false,
+                    data: {
+                        del: $.base64.encode(current_file_{{ loop.index0 }})
+                    },
+                    success: function(data) {
+
+                        if (data.success) {
+
+                            current_file_{{ loop.index0 }} = null;
+                            refresh_{{ loop.index0 }}();
+
+                            show_main_feedback_message(htmlspecialchars(data.feedback_message), 'confirmation_message');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+
+                        clear_loading_state_{{ loop.index0 }}();
+                    }
+                });
+
+            });
+
+            e.preventDefault();
+            return false;
+        });
+
+        $('#delete_all_files_{{ loop.index0 }}').on('click', 'button', function (e) {
+
+            var button = $(this);
+
+            swal({
+                title: '{{ lang('ui_confirm')|e('js') }}',
+                text: sprintf('{{ lang('ui_confirm_file_deletion', '<strong>%s</strong>')|e('js') }}', '{{ lang('ui_all')|e('js') }}'),
+                type: 'warning',
+                showCancelButton: true,
+                cancelButtonText: '{{ lang('ui_no')|e('js') }}',
+                confirmButtonColor: '#d01919',
+                confirmButtonText: '{{ lang('ui_yes')|e('js') }}',
+                html: true
+            },
+            function() {
+
+                button.addClass('loading');
+
+                $.ajax({
+                    type: 'post',
+                    url: '{{ site_url('error-logs/proxy/' ~ loop.index0) }}',
+                    'type': 'get',
+                    'mode': 'queue',
+                    'cache': false,
+                    data: {
+                        del: $.base64.encode('all')
+                    },
+                    success: function(data) {
+
+                        if (data.success) {
+
+                            current_file_{{ loop.index0 }} = null;
+                            refresh_{{ loop.index0 }}();
+
+                            show_main_feedback_message(htmlspecialchars(data.feedback_message), 'confirmation_message');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+
+                        clear_loading_state_{{ loop.index0 }}();
+                    }
+                });
+
+            });
+
+            e.preventDefault();
+            return false;
+        });
+
+    {% endfor %}
+
+{% endif %}
+
+    });
+
+    //]]>
+    </script>
