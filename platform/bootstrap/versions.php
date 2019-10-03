@@ -4,14 +4,14 @@
  * CodeIgniter Version
  * @var    string
  */
-define('CI_VERSION', '3.1.10');
+define('CI_VERSION', '3.1.11');
 
 
 /**
  * Platform (Application Starter) Version
  * @var    string
  */
-define('PLATFORM_VERSION', '4.3.43');
+define('PLATFORM_VERSION', '4.3.44');
 
 
 /**

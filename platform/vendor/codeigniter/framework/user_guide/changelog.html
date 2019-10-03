@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Change Log &mdash; CodeIgniter 3.1.10 documentation</title>
+  <title>Change Log &mdash; CodeIgniter 3.1.11 documentation</title>
   
 
   
@@ -33,7 +33,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="CodeIgniter 3.1.10 documentation" href="index.html"/>
+    <link rel="top" title="CodeIgniter 3.1.11 documentation" href="index.html"/>
         <link rel="next" title="The MIT License (MIT)" href="license.html"/>
         <link rel="prev" title="XML Helper" href="helpers/xml_helper.html"/> 
 
@@ -421,6 +421,37 @@
             
   <div class="section" id="change-log">
 <h1>Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="version-3-1-11">
+<h2>Version 3.1.11<a class="headerlink" href="#version-3-1-11" title="Permalink to this headline">¶</a></h2>
+<p>Release Date: Sep 19, 2019</p>
+<ul class="simple">
+<li>General Changes<ul>
+<li>Changed <code class="docutils literal"><span class="pre">CI_Log</span></code> to append <code class="docutils literal"><span class="pre">PHP_EOL</span></code> instead of <code class="docutils literal"><span class="pre">\n</span></code> at the end of log messages.</li>
+<li>Improved performance in <a class="reference internal" href="libraries/caching.html"><span class="doc">Cache Library</span></a> ‘redis’ driver with non-scalar variables.</li>
+<li>Altered the <a class="reference internal" href="libraries/sessions.html"><span class="doc">Session Library</span></a> ‘files’ driver to log error and trigger a session start failure instead of throwing an <code class="docutils literal"><span class="pre">Exception</span></code> in case of unusable <code class="docutils literal"><span class="pre">$config['sess_save_path']</span></code>.</li>
+<li>Updated the <a class="reference internal" href="libraries/sessions.html"><span class="doc">Session</span></a> and <a class="reference internal" href="libraries/caching.html"><span class="doc">Cache</span></a> libraries’ ‘redis’ driver to work with phpRedis 5.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="bug-fixes-for-3-1-11">
+<h2>Bug fixes for 3.1.11<a class="headerlink" href="#bug-fixes-for-3-1-11" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Fixed a bug (#5681) - <a class="reference internal" href="database/forge.html"><span class="doc">Database Forge</span></a> method <code class="docutils literal"><span class="pre">modify_column()</span></code> produced erroneous SQL for <code class="docutils literal"><span class="pre">DEFAULT</span></code> attribute changes under PostgreSQL, Firebird.</li>
+<li>Fixed a bug (#5692) - <a class="reference internal" href="database/forge.html"><span class="doc">Database Forge</span></a> didn’t handle column nullability with the ‘oci8’, ‘pdo/oci’ drivers.</li>
+<li>Fixed a bug (#5701) - <a class="reference internal" href="database/index.html"><span class="doc">Database</span></a> driver ‘pdo/pgsql’ produced incorrect DSNs when constructing from a configuration array.</li>
+<li>Fixed a bug (#5708) - <a class="reference internal" href="libraries/sessions.html"><span class="doc">Session Library</span></a> ‘redis’ driver too often failed with locking-related errors that could’ve been avoided.</li>
+<li>Fixed a bug (#5703) - <a class="reference internal" href="libraries/sessions.html"><span class="doc">Session Library</span></a> triggered an <code class="docutils literal"><span class="pre">E_WARNING</span></code> message about changing <code class="docutils literal"><span class="pre">session.save_path</span></code> during an active session when it fails to obtain a lock.</li>
+<li>Fixed a bug where <a class="reference internal" href="libraries/sessions.html"><span class="doc">Session Library</span></a> ‘database’ driver didn’t trigger a failure if it can’t obtain a lock.</li>
+<li>Fixed a bug (#5755) - <a class="reference internal" href="libraries/form_validation.html"><span class="doc">Form Validation Library</span></a> rule <strong>valid_url</strong> accepted digit-only domains due to a PHP bug.</li>
+<li>Fixed a bug (#5753) - <a class="reference internal" href="libraries/caching.html"><span class="doc">Cache Library</span></a> ‘redis’ driver methods <code class="docutils literal"><span class="pre">increment()</span></code>, <code class="docutils literal"><span class="pre">decrement()</span></code> ignored their <code class="docutils literal"><span class="pre">$offset</span></code> parameter.</li>
+<li>Fixed a bug (#5779) - <a class="reference internal" href="libraries/sessions.html"><span class="doc">Session Library</span></a> ‘redis’ only attempted to validate session IDs in case the connection to Redis failed.</li>
+<li>Fixed a bug (#5774) - <a class="reference internal" href="database/results.html"><span class="doc">Database Results</span></a> method <code class="docutils literal"><span class="pre">custom_result_object()</span></code> didn’t properly handle empty result sets, triggering <code class="docutils literal"><span class="pre">E_WARNING</span></code> messages on PHP 7.2+.</li>
+<li>Fixed a bug (#5788) - <a class="reference internal" href="database/results.html"><span class="doc">Database Results</span></a> method <code class="docutils literal"><span class="pre">field_data()</span></code> triggered an <code class="docutils literal"><span class="pre">E_NOTICE</span></code> error with PDO when a field type is not recognized by PHP.</li>
+<li>Fixed a bug (#5796) - <a class="reference internal" href="database/query_builder.html"><span class="doc">Query Builder</span></a> method <code class="docutils literal"><span class="pre">list_tables()</span></code> triggered an SQL syntax error under MySQL when the database schema is a numeric string.</li>
+<li>Fixed a bug where <a class="reference internal" href="libraries/security.html"><span class="doc">Security Class</span></a> would trigger an <code class="docutils literal"><span class="pre">E_WARNING</span></code> if CSRF inputs are arrays instead of strings.</li>
+</ul>
+</div>
 <div class="section" id="version-3-1-10">
 <h2>Version 3.1.10<a class="headerlink" href="#version-3-1-10" title="Permalink to this headline">¶</a></h2>
 <p>Release Date: Jan 16, 2019</p>
@@ -4187,7 +4218,7 @@ and fixed various typos.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014 - 2019, British Columbia Institute of Technology.
-      Last updated on Jan 16, 2019.
+      Last updated on Sep 19, 2019.
     </p>
   </div>
 
@@ -4208,7 +4239,7 @@ and fixed various typos.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.1.10',
+            VERSION:'3.1.11',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
