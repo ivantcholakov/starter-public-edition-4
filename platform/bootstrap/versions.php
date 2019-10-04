@@ -14,7 +14,6 @@ define('CI_VERSION', '3.1.11');
 define('PLATFORM_VERSION', '4.3.44');
 
 
-
 /**
  * Minimum Required PHP Version
  * @var    string
