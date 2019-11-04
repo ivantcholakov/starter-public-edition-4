@@ -1,0 +1,10 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+
+/*--------------
+     Page
+---------------*/
+
+@largeMonitorGutter: 8%;
+@widescreenMonitorGutter: 10%;

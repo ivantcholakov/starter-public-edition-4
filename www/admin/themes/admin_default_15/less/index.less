@@ -52,8 +52,14 @@
 
 @import "@{default-assets-less-lib-path}dataTables/dataTables.semanticui-source.less";
 
+// Responsive Plugin
+@import '@{default-assets-less-lib-path}dataTables/responsive.semanticui.less';
+
+// Select Plugin
 @import '@{default-assets-less-lib-path}dataTables/select.semanticui-variables.less';
 @import '@{default-assets-less-lib-path}dataTables/select.semanticui-source.less';
+
+// Visual Corrections
 
 div.dataTables_wrapper div.dataTables_length .ui.selection.dropdown {
     min-width: 100px;
@@ -72,6 +78,8 @@ div.dataTables_wrapper > div.ui.grid > div.row div.column {
     padding-top: 7px;
     padding-bottom: 7px;
 }
+
+// Item Details Controls
 
 th.details-control {
     min-width: 35px;

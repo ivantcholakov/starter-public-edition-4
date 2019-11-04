@@ -187,3 +187,22 @@ body {
 }
 
 /* End Site Structure */
+/* Workarounds */
+
+.ui.card .content .header {
+    // jQuery.ellipsis mistakenly lowers the height, keep it.
+    min-height: 26px;
+}
+
+/* End Workarounds */
+/* Printing */
+
+// http://www.itsupportguides.com/tech-tips-tricks/how-to-hide-urlhref-when-printing-bootstrap-website/
+// http://stackoverflow.com/questions/7301989/need-to-remove-href-values-when-printing-in-chrome
+@media print {
+    a[href]:after {
+        content: none !important;
+    }
+}
+
+/* End Printing */
