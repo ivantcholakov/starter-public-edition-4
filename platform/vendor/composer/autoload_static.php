@@ -1586,8 +1586,6 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
         'WhichBrowser\\Model\\Using' => __DIR__ . '/..' . '/whichbrowser/parser/src/Model/Using.php',
         'WhichBrowser\\Model\\Version' => __DIR__ . '/..' . '/whichbrowser/parser/src/Model/Version.php',
         'WhichBrowser\\Parser' => __DIR__ . '/..' . '/whichbrowser/parser/src/Parser.php',
-        'WhichBrowser\\Testrunner' => __DIR__ . '/..' . '/whichbrowser/parser/tests/src/Testrunner.php',
-        'WhichBrowser\\Tests' => __DIR__ . '/..' . '/whichbrowser/parser/tests/src/Tests.php',
         'YoHang88\\LetterAvatar\\LetterAvatar' => __DIR__ . '/..' . '/yohang88/letter-avatar/src/LetterAvatar.php',
         'lessc' => __DIR__ . '/..' . '/oyejorge/less.php/lessc.inc.php',
         't1st3\\JSONMin\\JSONMin' => __DIR__ . '/..' . '/t1st3/php-json-minify/src/t1st3/JSONMin/JSONMin.php',

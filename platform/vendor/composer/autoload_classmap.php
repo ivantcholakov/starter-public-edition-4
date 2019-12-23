@@ -1314,8 +1314,6 @@ return array(
     'WhichBrowser\\Model\\Using' => $vendorDir . '/whichbrowser/parser/src/Model/Using.php',
     'WhichBrowser\\Model\\Version' => $vendorDir . '/whichbrowser/parser/src/Model/Version.php',
     'WhichBrowser\\Parser' => $vendorDir . '/whichbrowser/parser/src/Parser.php',
-    'WhichBrowser\\Testrunner' => $vendorDir . '/whichbrowser/parser/tests/src/Testrunner.php',
-    'WhichBrowser\\Tests' => $vendorDir . '/whichbrowser/parser/tests/src/Tests.php',
     'YoHang88\\LetterAvatar\\LetterAvatar' => $vendorDir . '/yohang88/letter-avatar/src/LetterAvatar.php',
     'lessc' => $vendorDir . '/oyejorge/less.php/lessc.inc.php',
     't1st3\\JSONMin\\JSONMin' => $vendorDir . '/t1st3/php-json-minify/src/t1st3/JSONMin/JSONMin.php',
