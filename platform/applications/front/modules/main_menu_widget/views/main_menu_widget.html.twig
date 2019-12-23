@@ -134,47 +134,52 @@ The MIT License, http://opensource.org/licenses/MIT
 
         <nav id="main_navigation">
 
-            <div class="ui grid">
+            <div class="main_navigation_wrapper headroom--pinned">
 
-                <div class="mobile hidden row">
-                    <div class="column">
+                <div class="ui grid">
 
-                        <div id="main_navigation_expanded" class="ui inverted blue borderless attached menu page grid">
+                    <div class="mobile hidden row">
+                        <div class="column">
 
-                            <a href="{{ site_url() }}" class="brand item">{# <img src="{{ base_uri('apple-touch-icon-precomposed.png') }}" /> #}<strong>v. {{ constant('PLATFORM_VERSION') }}</strong></a>
-                            {{ main_menu_macro.display_items(nav) }}
+                            <div id="main_navigation_expanded" class="ui inverted blue borderless attached menu page grid">
 
-                            <div class="right menu">
-                                {{ widget('theme_switcher_widget/index', 'navbar') }}
-                                {{ widget('language_switcher_widget/index', 'navbar') }}
+                                <a href="{{ site_url() }}" class="brand item">{# <img src="{{ base_uri('apple-touch-icon-precomposed.png') }}" /> #}<strong>v. {{ constant('PLATFORM_VERSION') }}</strong></a>
+                                {{ main_menu_macro.display_items(nav) }}
+
+                                <div class="right menu">
+                                    {{ widget('theme_switcher_widget/index', 'navbar') }}
+                                    {{ widget('language_switcher_widget/index', 'navbar') }}
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="mobile only row">
+                        <div class="column">
+
+                            <div id="main_navigation_collapsed" class="ui inverted blue borderless attached fluid menu">
+                                <a href="{{ site_url() }}" class="brand item">{# <img src="{{ base_uri('apple-touch-icon-precomposed.png') }}" /> #}<strong>v. {{ constant('PLATFORM_VERSION') }}</strong></a>
+                                <div class="right menu">
+                                    {{ widget('language_switcher_widget/index', 'navbar') }}
+                                </div>
+                                <div class="right menu open" style="margin-left: 0 !important;">
+                                    <a href="" class="menu item toggle">
+                                        <i class="content icon"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="ui vertical inverted blue borderless attached stacked fluid menu" style="display: none;">
+                                {{ main_menu_macro.display_items_mobile(nav) }}
+                                {{ widget('theme_switcher_widget/index', 'navbar_mobile') }}
                             </div>
 
                         </div>
 
                     </div>
-                </div>
 
-                <div class="mobile only row">
-                    <div class="column">
-
-                        <div id="main_navigation_collapsed" class="ui inverted blue borderless attached fluid menu">
-                            <a href="{{ site_url() }}" class="brand item">{# <img src="{{ base_uri('apple-touch-icon-precomposed.png') }}" /> #}<strong>v. {{ constant('PLATFORM_VERSION') }}</strong></a>
-                            <div class="right menu">
-                                {{ widget('language_switcher_widget/index', 'navbar') }}
-                            </div>
-                            <div class="right menu open" style="margin-left: 0 !important;">
-                                <a href="" class="menu item toggle">
-                                    <i class="content icon"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="ui vertical inverted blue borderless attached stacked fluid menu" style="display: none;">
-                            {{ main_menu_macro.display_items_mobile(nav) }}
-                            {{ widget('theme_switcher_widget/index', 'navbar_mobile') }}
-                        </div>
-
-                    </div>
                 </div>
 
             </div>

@@ -186,6 +186,31 @@ body {
     margin-top: 15px;
 }
 
+/* Main Menu */
+
+#main_navigation {
+    .main_navigation_wrapper {
+        width: 100% !important;
+        box-shadow: none !important;
+        &.headroom {
+            will-change: transform;
+            transition: transform 150ms linear;
+        }
+        &.headroom--pinned {
+            transform: translateY(0%);
+            &.with-shadow {
+                box-shadow: 0 4px 19px -8px rgba(0,0,0,.4) !important;
+            }
+        }
+        &.headroom--unpinned {
+            transform: translateY(-101%);
+        }
+        .main_navigation_expanded {
+            box-shadow: none !important;
+        }
+    }
+}
+
 /* End Site Structure */
 
 

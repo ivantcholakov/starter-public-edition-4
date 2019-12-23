@@ -44,24 +44,78 @@ $(function () {
 
     $('.popover').popup({ 'on': Modernizr.touch ? 'click' : 'hover' });
 
-    $('#main_navigation .menu.toggle').on("click", function(e) {
+    // Initialize main menu features.
 
-        e.preventDefault();
+    $('.main_navigation_wrapper').visibility({
+        type: 'fixed'
+    });
 
-        //$('#main_navigation .ui.vertical.menu').toggle();
+    $('.main_navigation_wrapper:not(:first-of-type) [id]').removeAttr('id');
+
+    $('.main_navigation_wrapper:first-of-type').headroom({
+        offset : 50,
+        tolerance : 5
+    });
+
+    function show_mobile_menu() {
+
+        //
+        $('html, body').animate({
+            scrollTop: 0
+        }, 100);
+        //
+
         var menu = $('#main_navigation .ui.vertical.menu');
+
+        $('#main_navigation .extra').hide();
+
         menu.transition({
             animation: 'slide down',
             onComplete : function() {
 
-                if (menu.hasClass('hidden')) {
-                    menu.hide();
-                } else {
-                    menu.show();
-                }
+                menu.css('display', 'block');
+                $('#main_navigation .menu.toggle i').addClass('close').removeClass('content');
             }
         });
+    }
+
+    function hide_mobile_menu() {
+
+        //
+        $('html, body').animate({
+            scrollTop: 0
+        }, 100);
+        //
+
+        var menu = $('#main_navigation .ui.vertical.menu');
+
+        menu.transition({
+            animation: 'slide down',
+            onComplete : function() {
+
+                menu.css('display', 'none');
+                $('#main_navigation .menu.toggle i').addClass('content').removeClass('close');
+            }
+        });
+    }
+
+    function toggle_mobile_menu() {
+
+        var menu = $('#main_navigation .ui.vertical.menu');
+
+        if (menu.hasClass('hidden')) {
+            show_mobile_menu();
+        } else {
+            hide_mobile_menu();
+        }
+    }
+
+    $('#main_navigation .menu.toggle').on('click', function(e) {
+
+        e.preventDefault();
+        toggle_mobile_menu();
     });
+
 });
 
 
@@ -119,6 +173,13 @@ $('pre').addClass('prettyprint');
         setInterval( function() {
 
             if( scroll_event_fired ) {
+
+                // Main menu shadow.
+                if ($(this).scrollTop() > 2) {
+                    $('#main_navigation .main_navigation_wrapper').addClass('with-shadow');
+                } else {
+                    $('#main_navigation .main_navigation_wrapper').removeClass('with-shadow');
+                }
 
                 /* 
                 Stop code below from being executed until the next scroll event. 
