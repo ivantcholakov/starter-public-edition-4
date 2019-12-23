@@ -478,6 +478,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Slick, the last carousel you'll ever need, https://github.com/kenwheeler/slick , http://kenwheeler.github.io/slick/
 * Intervention Image - a PHP image handling and manipulation library, https://github.com/Intervention/image
 * Letter Avatar for PHP - generate user avatar using name initials letter, https://github.com/yohang88/letter-avatar
+* Headroom.js - A widget that reacts to the user's scroll, https://github.com/WickyNilliams/headroom.js
 
 The Playground
 --------------
