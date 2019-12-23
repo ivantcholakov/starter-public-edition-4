@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') || exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013-2016
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013-2019
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -64,6 +64,10 @@ class CI_Parser_mustache extends CI_Parser_driver {
         if (empty($options['cache']) && array_key_exists('cache', $options))
         {
             unset($options['cache']);
+        }
+        elseif (array_key_exists('cache', $options))
+        {
+            $options['cache'] = rtrim($options['cache'], '/\\');
         }
 
         if (is_object($data))
@@ -129,6 +133,10 @@ class CI_Parser_mustache extends CI_Parser_driver {
         if (array_key_exists('cache', $options))
         {
             unset($options['cache']);
+        }
+        elseif (array_key_exists('cache', $options))
+        {
+            $options['cache'] = rtrim($options['cache'], '/\\');
         }
 
         if (is_object($data))
