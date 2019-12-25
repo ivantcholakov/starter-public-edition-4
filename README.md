@@ -479,6 +479,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Intervention Image - a PHP image handling and manipulation library, https://github.com/Intervention/image
 * Letter Avatar for PHP - generate user avatar using name initials letter, https://github.com/yohang88/letter-avatar
 * Headroom.js - A widget that reacts to the user's scroll, https://github.com/WickyNilliams/headroom.js
+* Swiper, "the free and most modern mobile touch slider with hardware accelerated transitions and amazing native behavior" - https://github.com/nolimits4web/swiper , https://swiperjs.com
 
 The Playground
 --------------

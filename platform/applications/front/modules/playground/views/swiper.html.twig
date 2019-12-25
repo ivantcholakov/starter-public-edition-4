@@ -1,0 +1,136 @@
+
+                <p>
+                    See
+                    <a href="https://swiperjs.com" target="_blank" rel="noopener">https://swiperjs.com</a>,
+                    <a href="https://github.com/nolimits4web/swiper" target="_blank" rel="noopener">https://github.com/nolimits4web/swiper</a>
+                </p>
+
+                {% set image_count = images|count %}
+                {% if image_count > 0 %}
+
+                <h2 class="ui header center aligned text">Example 1</h2>
+
+                <div class="ui grid">
+                    <div class="centered row">
+                        <div class="sixteen wide mobile sixteen wide tablet eight wide computer column">
+
+                            <div id="gallery-top-container" style="visibility: hidden;">
+
+                                <div id="gallery-top" class="swiper-container gallery-top">
+
+                                    <div class="swiper-wrapper">
+
+                                        {% for img in images %}
+                                        <div class="swiper-slide" style="background-image:url('{{ img['src']|e('css') }}')"></div>
+                                        {% endfor %}
+
+                                    </div>
+
+                                </div>
+
+                                {% if image_count > 1 %}
+                                <div id="gallery-top-swiper-button-next" class="swiper-button-next swiper-button-white"></div>
+                                <div id="gallery-top-swiper-button-prev" class="swiper-button-prev swiper-button-white"></div>
+                                {% endif %}
+
+                            </div>
+
+                            <div id="gallery-thumbs-container" style="{% if image_count <= 1 %}display: none; {% endif %}visibility: hidden; padding-left: 1em; padding-right: 1em;">
+
+                                <div id="gallery-thumbs" class="swiper-container gallery-thumbs">
+
+                                    <div class="swiper-wrapper">
+
+                                        {% for img in images %}
+                                        <div class="swiper-slide" style="background-image: url('{{ img['src']|e('css') }}')"></div>
+                                        {% endfor %}
+
+                                    </div>
+
+                                </div>
+
+                                {% if image_count > 1 %}
+                                <div id="gallery-thumbs-swiper-button-next" class="swiper-button-next swiper-button-white"></div>
+                                <div id="gallery-thumbs-swiper-button-prev" class="swiper-button-prev swiper-button-white"></div>
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="ui header center aligned text">Example 2</h2>
+
+                <div class="ui grid">
+                    <div class="centered row">
+                        <div class="sixteen wide mobile sixteen wide tablet eight wide computer column">
+
+                            <div id="example2-slider-container" style="visibility: hidden;">
+
+                                <div id="example2-slider" class="swiper-container">
+
+                                    <div class="swiper-wrapper">
+
+                                        {% for img in images %}
+                                        <div class="swiper-slide">
+
+                                            <div class="example2-item">
+                                                <div class="image">
+                                                    <img class="ui fluid image" src="{{ img['src']|e('html_attr') }}" alt="{{ ec['title']|e('html_attr') }}" title="{{ ec['title']|e('html_attr') }}" />
+                                                </div>
+                                                <div class="content">
+                                                    <div class="header ellipsis-2 center aligned">{{ img['title'] }}</div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        {% endfor %}
+
+                                    </div>
+
+                                </div>
+
+                                {% if image_count > 1 %}
+                                <div id="example2-swiper-button-prev" class="swiper-button-prev"></div>
+                                <div id="example2-swiper-button-next" class="swiper-button-next"></div>
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="ui header center aligned text">Example 3</h2>
+
+                <div class="ui grid">
+                    <div class="centered row">
+                        <div class="sixteen wide mobile sixteen wide tablet eight wide computer column">
+
+                            <div id="example3-slider" class="swiper-container" style="visibility: hidden;">
+
+                                <div class="swiper-wrapper">
+
+                                    {% for img in images %}
+                                    <div class="swiper-slide" style="background-image: url('{{ img['src']|e('css') }}')"></div>
+                                    {% endfor %}
+
+                                </div>
+
+                                <div class="swiper-pagination"></div>
+
+                                {% if image_count > 1 %}
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-button-next"></div>
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                {% endif %}
+
+                <div class="ui hidden divider"></div>
