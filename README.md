@@ -475,7 +475,6 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * SweetAlert, a beautiful replacement for JavaScript's "alert", https://github.com/t4t5/sweetalert , http://t4t5.github.io/sweetalert/
 * Handlebars.js - an extension to the Mustache templating language, https://github.com/wycats/handlebars.js , http://handlebarsjs.com
 * Handlebars.php - Handlebars processor for PHP, https://github.com/XaminProject/handlebars.php
-* Slick, the last carousel you'll ever need, https://github.com/kenwheeler/slick , http://kenwheeler.github.io/slick/
 * Intervention Image - a PHP image handling and manipulation library, https://github.com/Intervention/image
 * Letter Avatar for PHP - generate user avatar using name initials letter, https://github.com/yohang88/letter-avatar
 * Headroom.js - A widget that reacts to the user's scroll, https://github.com/WickyNilliams/headroom.js
