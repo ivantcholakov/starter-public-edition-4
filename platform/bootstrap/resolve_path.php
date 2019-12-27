@@ -9,7 +9,7 @@ if (!function_exists('resolve_path')) {
      * @author 131 dot php at cloudyks dot org
      */
 
-    //realpath like, working with absolute/relative path & a little bit shorter :p 
+    //realpath like, working with absolute/relative path & a little bit shorter :p
 
     function resolve_path($path) {
 
@@ -30,7 +30,7 @@ if (!function_exists('resolve_path')) {
             }
         }
 
-        return ($path{0} == '/' ? '/' : '').join('/', $out); 
+        return (strpos($path, '/') === 0 ? '/' : '').implode('/', $out);
     }
 
 }
