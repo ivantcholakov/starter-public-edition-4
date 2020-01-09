@@ -9,7 +9,7 @@
  * www.captcha.ru, www.kruglov.ru
  *
  * System requirements: PHP 4.0.6+ w/ GD
- * 
+ *
  * KCAPTCHA is a free software. You can freely use it for developing own site or software.
  * If you use this software as a part of own sofware, you must leave copyright notices intact or add KCAPTCHA copyright notices to own.
  * As a default configuration, KCAPTCHA has a small credits text at bottom of CAPTCHA image.
@@ -17,7 +17,7 @@
  *
  * -----------------------------------------------------------------------------
  *
- * Ported for CodeIgniter by Ivan Tcholakov, 2013.
+ * Ported for CodeIgniter by Ivan Tcholakov, 2013-2020.
  * Code repository: https://github.com/ivantcholakov/codeigniter-kcaptcha
  *
  * Important note: This feature requires Session library/driver to be loaded.
@@ -53,7 +53,7 @@ class Kcaptcha {
         $allowed_symbols = '23456789abcdegikpqsvxyz';       // alphabet without similar symbols (o=0, 1=l, i=j, t=f)
 
         // folder with fonts
-        $fontsdir = 'kcaptcha_fonts';    
+        $fontsdir = 'kcaptcha_fonts';
 
         // CAPTCHA string length
         $length = mt_rand(5, 7);    // random 5 or 6 or 7
@@ -158,9 +158,9 @@ class Kcaptcha {
 
             closedir($handle);
         }
-    
+
         $alphabet_length = strlen($alphabet);
-        
+
         do {
 
             // Generate random keystring.
@@ -175,7 +175,7 @@ class Kcaptcha {
 
             $fontfile_width = imagesx($font);
             $fontfile_height = imagesy($font) - 1;
-            
+
             $font_metrics = array();
             $symbol = 0;
             $reading_symbol = false;
@@ -187,14 +187,14 @@ class Kcaptcha {
 
                 if (!$reading_symbol && !$transparent) {
 
-                    $font_metrics[$alphabet{$symbol}] = array('start' => $i);
+                    $font_metrics[$alphabet[$symbol]] = array('start' => $i);
                     $reading_symbol = true;
                     continue;
                 }
 
                 if ($reading_symbol && $transparent) {
 
-                    $font_metrics[$alphabet{$symbol}]['end'] = $i;
+                    $font_metrics[$alphabet[$symbol]]['end'] = $i;
                     $reading_symbol = false;
                     $symbol++;
                     continue;
@@ -218,7 +218,7 @@ class Kcaptcha {
 
             for ($i = 0; $i < $length; $i++) {
 
-                $m = $font_metrics[$keystring{$i}];
+                $m = $font_metrics[$keystring[$i]];
 
                 $y = (($i%2)*$fluctuation_amplitude - $fluctuation_amplitude/2)*$odd
                     + mt_rand(-round($fluctuation_amplitude/3), round($fluctuation_amplitude/3))
@@ -295,7 +295,7 @@ class Kcaptcha {
             imagesetpixel($img, mt_rand(0, $x - 1), mt_rand(10, $height - 15), $black);
         }
 
-        
+
         $center = $x/2;
 
         // credits. To remove, see configuration file
@@ -384,10 +384,10 @@ class Kcaptcha {
                 imagesetpixel($img2, $x, $y, imagecolorallocate($img2, $newred, $newgreen, $newblue));
             }
         }
-        
-        header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); 
-        header('Cache-Control: no-store, no-cache, must-revalidate'); 
-        header('Cache-Control: post-check=0, pre-check=0', FALSE); 
+
+        header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+        header('Cache-Control: no-store, no-cache, must-revalidate');
+        header('Cache-Control: post-check=0, pre-check=0', FALSE);
         header('Pragma: no-cache');
 
         if (function_exists('imagejpeg')) {
@@ -427,7 +427,7 @@ class Kcaptcha {
             $keystring = '';
 
             for ($i = 0; $i < $length; $i++) {
-                $keystring .= $allowed_symbols{mt_rand(0, $allowed_symbols_length - 1)};
+                $keystring .= $allowed_symbols[mt_rand(0, $allowed_symbols_length - 1)];
             }
 
             if (!preg_match('/cp|cb|ck|c6|c9|rn|rm|mm|co|do|cl|db|qp|qb|dp|ww/', $keystring)) {
