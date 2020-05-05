@@ -4,7 +4,7 @@
         "optimize-autoloader": true
     },
     "require": {
-        "codeigniter/framework": "dev-3.1-stable#7911ed0bd42f1fa0ec985faf53eb7db7b7bc7c1b",
+        "codeigniter/framework": "dev-3.1-stable#f27b3409b00c6a08d89c1e6b06e5f1b9463d703d",
         "roave/security-advisories": "dev-master",
         "paragonie/random_compat": "^2.0.2",
         "fg/multiplayer": "^1.2.1",
