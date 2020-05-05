@@ -238,17 +238,17 @@ if (!function_exists('file_type_icon_fa')) {
         if (is_array($result)) {
 
             foreach ($result as $key => & $value) {
-                $value = 'fa-file-'.$value.'-o';
+                $value = 'fa-file-'.$value;
             }
 
             return $result;
         }
 
         if ($result == '') {
-            return 'fa-file-o';
+            return 'fa-file';
         }
 
-        return 'fa-file-'.$result.'-o';
+        return 'fa-file-'.$result;
     }
 }
 
