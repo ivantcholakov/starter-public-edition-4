@@ -107,6 +107,16 @@ class Template
         log_message('info', 'Template class Initialized');
     }
 
+    /**
+     * An empty method that keeps chaining, the parameter does the desired operation as a side-effect.
+     * @param   mixed   $expression     A (conditional) expression in its own context.
+     * @return  object                  Returns a reference to the created library instance.
+     */
+    public function that($expression = NULL)
+    {
+        return $this;
+    }
+
     // --------------------------------------------------------------------
 
     /**
