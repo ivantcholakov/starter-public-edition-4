@@ -19,7 +19,7 @@ if (!isset($argv_1[0])) {
 }
 
 if (!in_array($argv_1[0], $languages)) {
-    $argv[1] = $default_cli_language.($argv_1[0] != '' ? '/'.$argv_1[0] : '').$argv[1]; // Insert the language segment.
+    $argv[1] = $default_cli_language.($argv_1[0] != '' ? '/'.$argv_1[0] : '').(isset($argv[1]) ? $argv[1] : ''); // Insert the language segment.
 }
 
 unset($languages);
@@ -28,6 +28,6 @@ unset($argv_1);
 
 //
 
-$_SERVER['PATH_INFO'] = $_SERVER['REQUEST_URI'] = $argv[1];
+$_SERVER['PATH_INFO'] = $_SERVER['REQUEST_URI'] = (isset($argv[1]) ? $argv[1] : '');
 
-require dirname(__FILE__) . '/index.php';
+require dirname(__FILE__) . '/../../../www/index.php';
