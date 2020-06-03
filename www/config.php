@@ -21,12 +21,14 @@ $PLATFORMRUN = $PLATFORMPATH.'/run.php';
 $PLATFORMCREATE = $PLATFORMPATH.'/create.php';
 $PLATFORMDESTROY = $PLATFORMPATH.'/destroy.php';
 
-// Uncomment for enabling production mode.
-//if (!defined('ENVIRONMENT')) {
-//    define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'production');
-//}
+if (!defined('ENVIRONMENT')) {
+// Uncomment accordingly for enabling development/testing/production mode.
+//    define('ENVIRONMENT', 'development');
+//    define('ENVIRONMENT', 'testing');
+    define('ENVIRONMENT', 'production');
+}
 
 // Uncomment if it is necessary.
-// You need to know what you diong here:
+// You need to know what you doing here:
 // http://php.net/manual/en/function.umask.php
 //umask(0002);
