@@ -37,7 +37,7 @@
 
 /*
  *---------------------------------------------------------------
- * The Bootstrap folder, for a custom initialization.
+ * The Bootstrap folder, for our custom initialization.
  *---------------------------------------------------------------
  */
 define('BOOTSTRAPPATH', rtrim(str_replace('\\', '/', realpath(dirname(__FILE__).'/bootstrap')), '/').'/');
@@ -47,14 +47,6 @@ if (BOOTSTRAPPATH == '' || BOOTSTRAPPATH == '/' || !is_dir(BOOTSTRAPPATH)) {
     echo 'Your bootstrap folder path (BOOTSTRAPPATH) does not appear to be set correctly. Please, make corrections within the following file: '.__FILE__;
     exit(3); // EXIT_* constants not yet defined; 3 is EXIT_CONFIG.
 }
-
-
-/*
- *---------------------------------------------------------------
- * Get version data.
- *---------------------------------------------------------------
- */
-require BOOTSTRAPPATH.'versions.php';
 
 
 /*

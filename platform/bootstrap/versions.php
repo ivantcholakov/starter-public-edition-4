@@ -32,5 +32,5 @@ if (version_compare(PHP_VERSION, PLATFORM_PHP_VERSION_MIN, '<')) {
 
     header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
     echo 'PHP '.PLATFORM_PHP_VERSION_MIN.' or newer is required.';
-    exit(3);
+    exit(3); // EXIT_CONFIG
 }

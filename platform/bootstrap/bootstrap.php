@@ -2,9 +2,39 @@
 
 /**
  * A Custom Bootstrap File
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013 - 2016
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013 - 2020
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
+
+if ( ! function_exists('is_php'))
+{
+    /**
+     * Determines if the current version of PHP is equal to or greater than the supplied value
+     *
+     * @param       string
+     * @return      bool        TRUE if the current version is $version or higher
+     */
+    function is_php($version)
+    {
+        static $_is_php;
+        $version = (string) $version;
+
+        if ( ! isset($_is_php[$version]))
+        {
+            $_is_php[$version] = version_compare(PHP_VERSION, $version, '>=');
+        }
+
+        return $_is_php[$version];
+    }
+}
+
+/*
+ *---------------------------------------------------------------
+ * Get and check version data
+ *---------------------------------------------------------------
+ */
+
+require BOOTSTRAPPATH.'versions.php';
 
 
 /*
@@ -13,23 +43,21 @@
  * --------------------------------------------------------------------
  */
 
-require BOOTSTRAPPATH.'is_php.php';
-
-define('IS_PHP_5_1', is_php('5.1.0'));
-define('IS_PHP_5_2', is_php('5.2.0'));
-define('IS_PHP_5_3', is_php('5.3.0'));
-define('IS_PHP_5_4', is_php('5.4.0'));
-define('IS_PHP_5_5', is_php('5.5.0'));
+define('IS_PHP_5_1', is_php('5.1.0'));  // DEPRECATED
+define('IS_PHP_5_2', is_php('5.2.0'));  // DEPRECATED
+define('IS_PHP_5_3', is_php('5.3.0'));  // DEPRECATED
+define('IS_PHP_5_4', is_php('5.4.0'));  // DEPRECATED
+define('IS_PHP_5_5', is_php('5.5.0'));  // DEPRECATED
 define('IS_WINDOWS_OS', strtolower(substr(php_uname('s'), 0, 3 )) == 'win');
-define('IS_CLI', (PHP_SAPI == 'cli') or defined('STDIN'));
-define('IS_CLI_REQUEST', IS_CLI);   // Deprecated, use IS_CLI instead.
+define('IS_CLI', (PHP_SAPI == 'cli') || defined('STDIN'));
+define('IS_CLI_REQUEST', IS_CLI);   // DEPRECATED, use IS_CLI instead.
 define('IS_AJAX_REQUEST', isset($_SERVER['HTTP_X_REQUESTED_WITH'])
     && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
 
-define('ICONV_INSTALLED', function_exists('iconv'));
-define('MBSTRING_INSTALLED', extension_loaded('mbstring'));
-define('PCRE_UTF8_INSTALLED', @preg_match('/./u', 'é') === 1);
-define('INTL_INSTALLED', function_exists('intl_get_error_code'));
+define('ICONV_INSTALLED', function_exists('iconv'));                // DEPRECATED
+define('MBSTRING_INSTALLED', extension_loaded('mbstring'));         // DEPRECATED
+define('PCRE_UTF8_INSTALLED', @preg_match('/./u', 'é') === 1);      // DEPRECATED
+define('INTL_INSTALLED', function_exists('intl_get_error_code'));   // DEPRECATED
 
 // Fix $_SERVER['REQUEST_URI'] if it is missing.
 if (!isset($_SERVER['REQUEST_URI']) || $_SERVER['REQUEST_URI'] == '') {
@@ -38,30 +66,6 @@ if (!isset($_SERVER['REQUEST_URI']) || $_SERVER['REQUEST_URI'] == '') {
         $_SERVER['REQUEST_URI'] .= '?'.$_SERVER['QUERY_STRING'];
     }
 }
-
-
-/*
- * --------------------------------------------------------------------
- * Debugging
- * --------------------------------------------------------------------
- */
-
-require BOOTSTRAPPATH.'preg_error_message.php';
-require BOOTSTRAPPATH.'print_d.php';
-
-
-/*
- * --------------------------------------------------------------------
- * Essential functions to serve bootstrap process further
- * --------------------------------------------------------------------
- */
-
-require BOOTSTRAPPATH.'str_to_bool.php';
-require BOOTSTRAPPATH.'resolve_path.php';
-require BOOTSTRAPPATH.'merge_paths.php';
-require BOOTSTRAPPATH.'detect_https.php';
-require BOOTSTRAPPATH.'detect_host.php';
-require BOOTSTRAPPATH.'detect_url.php';
 
 
 /*
@@ -265,10 +269,39 @@ define('EXT', '.php');
 
 /*
  * --------------------------------------------------------------------
- * Making sure PEAR packages are to be searched in this site first.
+ * Various helper functions
+ * --------------------------------------------------------------------
+ */
+
+require BOOTSTRAPPATH.'print_d.php';
+require BOOTSTRAPPATH.'helpers.php';
+
+if (!function_exists('http_build_str') || !function_exists('http_build_url')) {
+    require BOOTSTRAPPATH.'http_build_url.php';
+}
+
+require BASEPATH.'core/compat/standard.php';
+
+if (!function_exists('secure_random_bytes')) {
+    require BOOTSTRAPPATH.'srand/srand.php';
+}
+
+
+/*
+ * --------------------------------------------------------------------
+ * Making sure PEAR packages are to be searched in this site first
  * --------------------------------------------------------------------
  */
 set_include_path(COMMONPATH.'third_party/pear'.PATH_SEPARATOR.get_include_path());
+
+
+/*
+ *---------------------------------------------------------------------
+ * Base URL detection
+ *---------------------------------------------------------------------
+ */
+$DETECT_URL = detect_url();    // A deprecated global variable.
+define('DETECTED_BASE_URL', $DETECT_URL['base_url']);
 
 
 /*
@@ -296,52 +329,7 @@ if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/environment.php')) {
 
 /*
  * --------------------------------------------------------------------
- * Functions for PHP backward compatibility
- * --------------------------------------------------------------------
- */
-
-require BASEPATH.'core/compat/standard.php';
-
-if (!function_exists('secure_random_bytes')) {
-    require BOOTSTRAPPATH.'srand/srand.php';
-}
-
-
-/*
- * --------------------------------------------------------------------
- * Other possibly missing functions (PHP, PECL)
- * --------------------------------------------------------------------
- */
-
-if (!function_exists('http_build_str') || !function_exists('http_build_url')) {
-    require BOOTSTRAPPATH.'http_build_url.php';
-}
-
-
-/*
- * --------------------------------------------------------------------
- * Fundamental functions.
- * --------------------------------------------------------------------
- */
-require BOOTSTRAPPATH.'arrays.php';
-require BOOTSTRAPPATH.'is_serialized.php';
-require BOOTSTRAPPATH.'str_replace_limit.php';
-
-if (!function_exists('money_format')) {
-    require BOOTSTRAPPATH.'money_format.php';
-}
-
-/*
- * --------------------------------------------------------------------
  * A custom PHP5-style autoloader
  * --------------------------------------------------------------------
  */
 require BOOTSTRAPPATH.'autoload.php';
-
-
-/*
- *---------------------------------------------------------------
- * URL-based detection, stored within a global variable.
- *---------------------------------------------------------------
- */
-$DETECT_URL = detect_url();
