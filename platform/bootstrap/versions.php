@@ -15,6 +15,13 @@ define('PLATFORM_VERSION', '4.4.0-dev');
 
 
 /**
+ * The Whole End-Product Version, Set Accordingly
+ * @var    string
+ */
+define('PRODUCT_VERSION', '1.0.0');
+
+
+/**
  * Minimum Required PHP Version
  * @var    string
  */
