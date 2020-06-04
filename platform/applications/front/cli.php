@@ -7,6 +7,8 @@ if (!((PHP_SAPI == 'cli') || defined('STDIN'))) {
     die('Command line only!');
 }
 
+define('CLIPATH', dirname(__FILE__));
+
 // Added by Ivan Tcholakov, 04-JUN-2020.
 // A fix about the language segment for command-line interface.
 
