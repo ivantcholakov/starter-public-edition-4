@@ -17,9 +17,9 @@ if (!isset($SELF)) {
     $SELF = 'index.php';
 }
 
-$PLATFORMRUN = $PLATFORMPATH.'/run.php';
-$PLATFORMCREATE = $PLATFORMPATH.'/create.php';
-$PLATFORMDESTROY = $PLATFORMPATH.'/destroy.php';
+$PLATFORMRUN = $PLATFORMPATH.'/bootstrap/run.php';
+$PLATFORMCREATE = $PLATFORMPATH.'/bootstrap/create.php';
+$PLATFORMDESTROY = $PLATFORMPATH.'/bootstrap/destroy.php';
 
 if (!defined('ENVIRONMENT')) {
 // Uncomment accordingly for enabling development/testing/production mode.
