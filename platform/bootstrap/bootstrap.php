@@ -15,13 +15,12 @@
  * current environment. Setting the environment also influences
  * things like logging and error reporting.
  *
- * This can be set to anything, but default usage is:
+ * The allowed modes are:
  *
  *     development
  *     testing
  *     production
  *
- * NOTE: If you change these, also change the error_reporting() code below
  */
 
 if (!defined('ENVIRONMENT')) {
@@ -115,6 +114,9 @@ if (FCPATH == '' || FCPATH == '/' || !is_dir(FCPATH)) {
     echo 'Your front controller directory path (FCPATH) does not appear to be set correctly.';
     exit(3); // EXIT_CONFIG
 }
+
+// Ensure the current directory is pointing to the current front controller's directory
+chdir(FCPATH);
 
 if (isset($DEFAULTFCPATH)) {
     define('DEFAULTFCPATH', rtrim(str_replace('\\', '/', realpath($DEFAULTFCPATH)), '/').'/');
@@ -285,11 +287,6 @@ if (WRITABLEPATH == '' || WRITABLEPATH == '/' || !is_dir(WRITABLEPATH)) {
  * Miscellaneous
  * --------------------------------------------------------------------
  */
-
-// Set the current directory correctly for CLI requests
-if (IS_CLI) {
-    chdir(dirname(FCPATH));
-}
 
 // The PHP file extension
 // This global constant is deprecated.
