@@ -7,7 +7,6 @@ if (!((PHP_SAPI == 'cli') || defined('STDIN'))) {
     die('Command line only!');
 }
 
-/*
 // Added by Ivan Tcholakov, 04-JUN-2020.
 // A fix about the language segment for command-line interface.
 
@@ -28,7 +27,7 @@ unset($default_cli_language);
 unset($argv_1);
 
 //
-*/
+
 $_SERVER['PATH_INFO'] = $_SERVER['REQUEST_URI'] = (isset($argv[1]) ? $argv[1] : '');
 
-require dirname(__FILE__) . '/../../../public/admin/index.php';
+require dirname(__FILE__) . '/index.php';
