@@ -935,4 +935,17 @@ class browser extends uploader {
         $this->session['langs'] = $langs;
         return $langs;
     }
+
+    // Added by Ivan Tcholakov, 04-JUN-2020.
+
+    protected function callBack($message = '', $data = array()) {
+
+        $html = '<p>'.html_escape($message).'</p>'.
+            '<p>'.json_encode($data).'</p>';
+
+        header("Content-Type: text/html; charset=UTF-8");
+        echo "<html><body>$html</body></html>";
+    }
+
+    //
 }
