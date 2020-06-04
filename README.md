@@ -26,10 +26,8 @@ https://www.codeigniter.com/userguide3/
 Requirements
 ------------
 
-PHP 5.3.7 or higher, Apache 2.2 - 2.4 (mod_rewrite should be enabled).
+PHP 5.5.0 or higher, Apache 2.2 - 2.4 (mod_rewrite should be enabled).
 For database support seek information within CodeIgniter 3 documentation.
-
-For the bundled Twig engine PHP 5.4.0 or higher is required.
 
 For UTF-8 encoded sites it is highly recommendable the following PHP extensions to be installed:
 
@@ -42,20 +40,20 @@ Installation
 
 Download source and place it on your web-server within its document root or within a sub-folder.
 Make the folder platform/writable to be writable. It is to contain CodeIgniter's cache, logs and other things that you might add.
-Open the site with a browser on an address like this: http://localhost/starter-public-edition-4/www/
+Open the site with a browser on an address like this: http://localhost/starter-public-edition-4/public/
 
-On your web-server you may move one level up the content of the folder www, so the segment www from the address to disappear.
+On your web-server you may move one level up the content of the folder public, so the segment public from the address to disappear.
 Also you can move the folder platform to a folder outside the document root of the web server for increased security.
-After such a rearrangement open the file config.php (www/config.php before rearrangement), find the setting $PLATFORMPATH and change this path accordingly.
+After such a rearrangement open the file config.php (public/config.php before rearrangement), find the setting $PLATFORMPATH and change this path accordingly.
 
 The following directories (the locations are the original) must have writable access:
 
 ```
 platform/upload/
 platform/writable/
-www/cache/
-www/editor/
-www/upload/
+public/cache/
+public/editor/
+public/upload/
 ```
 
 Have a look at the files .htaccess and robots.txt and adjust them for your site.
@@ -185,7 +183,7 @@ Features
 --------
 
 * CodeIgniter 3, https://codeigniter.com/, https://github.com/bcit-ci/CodeIgniter , installed by using Composer.
-* On a web-server you can place your site (www folder) within a subdirectory.
+* On a web-server you can place your site (public folder) within a subdirectory.
 * Codeigniter Cross Modular Extensions - XHMVC,
 https://bitbucket.org/xperez/codeigniter-cross-modular-extensions-xhmvc,
 http://www.4amics.com/x.perez/2013/06/xhmvc-common-modular-extensions/ (only the essential piece of code).
@@ -193,7 +191,7 @@ http://www.4amics.com/x.perez/2013/06/xhmvc-common-modular-extensions/ (only the
 you would not be forced to rename them according to the new strict "ucfirst" naming convention.
 * Modular Extensions - HMVC for CodeIgniter, https://bitbucket.org/wiredesignz/codeigniter-modular-extensions-hmvc
 * Enhanced bootsrapping process, see the content of the folder platform/core/bootstrap/.
-* In addition to the normal MVC execution, it is possible to run non-MVC scripts, look at the folder www/non-mvc/ for examples.
+* In addition to the normal MVC execution, it is possible to run non-MVC scripts, look at the folder public/non-mvc/ for examples.
 * Adapted for HMVC rooting has been implemented. Within a module you are able to place controllers in this way:
 ```
     modules/demo/controllers/page/Page.php     -> address: site_url/demo/page/[index/method]
@@ -225,7 +223,7 @@ class Welcome_controller extends Base_Controller {
 Thus the class name Welcome is available to be used as a model name instead of those ugly names Welcome_model, Welcome_m, etc.
 The technique of this hack is available, but it is not mandatory.
 
-* Hack 4. Running CodeIgniter from the Command Line, http://net.tutsplus.com/tutorials/php/6-codeigniter-hacks-for-the-masters/ - see the file www/cli.php.
+* Hack 4. Running CodeIgniter from the Command Line, http://net.tutsplus.com/tutorials/php/6-codeigniter-hacks-for-the-masters/ - see the file public/cli.php.
 * Form Validation Callbacks in HMVC in Codeigniter, http://www.mahbubblog.com/php/form-validation-callbacks-in-hmvc-in-codeigniter/
 * Making CodeIgniter’s Profiler AJAX compatible, http://dragffy.com/blog/posts/making-codeigniters-profiler-ajax-compatible
 * CodeIgniter Form Validation External Callbacks, https://gist.github.com/1503599, https://ellislab.com/forums/viewthread/205469/
@@ -413,7 +411,7 @@ Have a look at platform/common/config/less_compile.php file. It contains a list 
 to be used for LESS to CSS compilation. You may edit this list according to your needs. Before compilation, make sure
 that destination files (if exist) are writable and their containing folders are writable too.
 
-LESS-compilation is to be done from command-line. Open a terminal at the folder platform/www/ and write the following
+LESS-compilation is to be done from command-line. Open a terminal at the folder platform/public/ and write the following
 command:
 
 ```bash
@@ -423,7 +421,7 @@ php cli.php less compile
 Or, you may choose which LESS-sources to compile by pointing at their names:
 
 ```bash
-php cli.php less compile bootstrap-3 bootstrap-3-min
+php cli.php less compile semantic-ui semantic-ui-min
 ```
 
 * A way for database classes/drivers modification: Files under platform/core/framework/database/ folder may be copied
