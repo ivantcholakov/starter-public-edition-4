@@ -1789,12 +1789,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/Roave/SecurityAdvisories.git",
-            "reference": "6f531c98f815f2fd22b90343e0525a3c686aee6a"
+            "reference": "de6fda3af9b36c77fdeb62b968157032f7111b09"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/6f531c98f815f2fd22b90343e0525a3c686aee6a",
-            "reference": "6f531c98f815f2fd22b90343e0525a3c686aee6a",
+            "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/de6fda3af9b36c77fdeb62b968157032f7111b09",
+            "reference": "de6fda3af9b36c77fdeb62b968157032f7111b09",
             "shasum": ""
         },
         "conflict": {
@@ -1888,6 +1888,7 @@
             "monolog/monolog": ">=1.8,<1.12",
             "namshi/jose": "<2.2",
             "nzo/url-encryptor-bundle": ">=4,<4.3.2|>=5,<5.0.1",
+            "october/october": ">=1.0.319,<1.0.466",
             "onelogin/php-saml": "<2.10.4",
             "oneup/uploader-bundle": "<1.9.3|>=2,<2.1.5",
             "openid/php-openid": "<2.3",
@@ -1914,6 +1915,7 @@
             "propel/propel": ">=2-alpha.1,<=2-alpha.7",
             "propel/propel1": ">=1,<=1.7.1",
             "pusher/pusher-php-server": "<2.2.1",
+            "rainlab/debugbar-plugin": "<3.1",
             "robrichards/xmlseclibs": "<3.0.4",
             "sabre/dav": ">=1.6,<1.6.99|>=1.7,<1.7.11|>=1.8,<1.8.9",
             "scheb/two-factor-bundle": ">=0,<3.26|>=4,<4.11",
@@ -2034,7 +2036,7 @@
             "zfcampus/zf-apigility-doctrine": ">=1,<1.0.3",
             "zfr/zfr-oauth2-server-module": "<0.1.2"
         },
-        "time": "2020-06-03T14:57:13+00:00",
+        "time": "2020-06-04T00:00:55+00:00",
         "type": "metapackage",
         "notification-url": "https://packagist.org/downloads/",
         "license": [
