@@ -290,8 +290,8 @@ if (WRITABLEPATH == '' || WRITABLEPATH == '/' || !is_dir(WRITABLEPATH)) {
 // The PHP file extension. DEPRECATED
 define('EXT', '.php');
 
-// Ensure the current directory is pointing to the current front controller's directory
-chdir(IS_CLI && defined('CLIPATH') ? CLIPATH : FCPATH);
+// Set the current directory correctly for CLI requests.
+chdir(defined('CLIPATH') ? CLIPATH : FCPATH);
 
 
 /*
