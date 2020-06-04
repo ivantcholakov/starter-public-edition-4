@@ -6,6 +6,35 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
+/*
+ *---------------------------------------------------------------
+ * APPLICATION ENVIRONMENT
+ *---------------------------------------------------------------
+ *
+ * You can load different configurations depending on your
+ * current environment. Setting the environment also influences
+ * things like logging and error reporting.
+ *
+ * This can be set to anything, but default usage is:
+ *
+ *     development
+ *     testing
+ *     production
+ *
+ * NOTE: If you change these, also change the error_reporting() code below
+ */
+
+if (!defined('ENVIRONMENT')) {
+    define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'production');
+}
+
+if (!in_array(ENVIRONMENT, array('development', 'testing', 'production'))) {
+    header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+    echo 'The application environment is not set correctly.';
+    exit(1); // EXIT_ERROR
+}
+
+
 if ( ! function_exists('is_php'))
 {
     /**
@@ -314,16 +343,16 @@ if (file_exists(COMMONPATH.'config/environment.php')) {
     include COMMONPATH.'config/environment.php';
 }
 
-if (file_exists(COMMONPATH.'config/'.ENVIRONMENT.'/environment.php')) {
-    include COMMONPATH.'config/'.ENVIRONMENT.'/environment.php';
+if (file_exists(COMMONPATH.'config/boot/'.ENVIRONMENT.'.php')) {
+    include COMMONPATH.'config/boot/'.ENVIRONMENT.'.php';
 }
 
 if (file_exists(APPPATH.'config/environment.php')) {
     include APPPATH.'config/environment.php';
 }
 
-if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/environment.php')) {
-    include APPPATH.'config/'.ENVIRONMENT.'/environment.php';
+if (file_exists(APPPATH.'config/boot/'.ENVIRONMENT.'.php')) {
+    include APPPATH.'config/boot/'.ENVIRONMENT.'.php';
 }
 
 

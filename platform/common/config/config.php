@@ -131,6 +131,7 @@ $config['subclass_prefix'] = 'MY_';
 |    autoloading (application/config/autoload.php)
 */
 $config['composer_autoload'] = PLATFORMPATH.'vendor/'.(is_php('5.5') ? 'autoload.php' : 'my_autoload.php');
+defined('COMPOSER_PATH') || define('COMPOSER_PATH', $config['composer_autoload']);
 
 /*
 |--------------------------------------------------------------------------

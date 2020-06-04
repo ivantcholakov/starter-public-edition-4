@@ -3,15 +3,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
-| Display Debug backtrace
+| Timing Constants
 |--------------------------------------------------------------------------
 |
-| If set to TRUE, a backtrace will be displayed along with php errors. If
-| error_reporting is disabled, the backtrace will not display, regardless
-| of this setting
-|
+| Provide simple ways to work with the myriad of PHP functions that
+| require information to be in seconds.
 */
-defined('SHOW_DEBUG_BACKTRACE') OR define('SHOW_DEBUG_BACKTRACE', TRUE);
+defined('SECOND') || define('SECOND', 1);
+defined('MINUTE') || define('MINUTE', 60);
+defined('HOUR')   || define('HOUR', 3600);
+defined('DAY')    || define('DAY', 86400);
+defined('WEEK')   || define('WEEK', 604800);
+defined('MONTH')  || define('MONTH', 2592000);
+defined('YEAR')   || define('YEAR', 31536000);
+defined('DECADE') || define('DECADE', 315360000);
 
 /*
 |--------------------------------------------------------------------------
