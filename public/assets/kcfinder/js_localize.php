@@ -19,6 +19,7 @@ require dirname(__FILE__).'/../../config.php';
 $assign_to_config['csrf_protection'] = false;
 require $PLATFORMCREATE;
 ci()->load->helper('template');
+chdir(dirname(__FILE__));
 //
 
 require "core/autoload.php";

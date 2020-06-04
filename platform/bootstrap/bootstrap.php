@@ -290,8 +290,11 @@ if (WRITABLEPATH == '' || WRITABLEPATH == '/' || !is_dir(WRITABLEPATH)) {
 // The PHP file extension. DEPRECATED
 define('EXT', '.php');
 
-// Set the current directory correctly for CLI requests.
-chdir(defined('CLIPATH') ? CLIPATH : FCPATH);
+// Making sure PEAR packages are to be searched in this site first
+set_include_path(COMMONPATH.'third_party/pear'.PATH_SEPARATOR.get_include_path());
+
+// Ensure the current directory is pointing to the front controller's directory
+chdir(FCPATH);
 
 
 /*
@@ -312,14 +315,6 @@ require BASEPATH.'core/compat/standard.php';
 if (!function_exists('secure_random_bytes')) {
     require BOOTSTRAPPATH.'srand/srand.php';
 }
-
-
-/*
- * --------------------------------------------------------------------
- * Making sure PEAR packages are to be searched in this site first
- * --------------------------------------------------------------------
- */
-set_include_path(COMMONPATH.'third_party/pear'.PATH_SEPARATOR.get_include_path());
 
 
 /*
