@@ -945,6 +945,7 @@ class browser extends uploader {
 
         header("Content-Type: text/html; charset=UTF-8");
         echo "<html><body>$html</body></html>";
+        exit;
     }
 
     //
