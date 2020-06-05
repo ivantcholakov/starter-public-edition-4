@@ -45,6 +45,8 @@ Open the site with a browser on an address like this: http://localhost/starter-p
 On your web-server you may move one level up the content of the folder public, so the segment public from the address to disappear.
 Also you can move the folder platform to a folder outside the document root of the web server for increased security.
 After such a rearrangement open the file config.php (public/config.php before rearrangement), find the setting $PLATFORMPATH and change this path accordingly.
+The file public/config.php contains also the ENVIRONMENT setting that can be switched among development, testing, and production mode.
+By default ENVIRONMENT is set to 'production'.
 
 The following directories (the locations are the original) must have writable access:
 
