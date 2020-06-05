@@ -29,7 +29,6 @@ class Php_http_client_controller extends Playground_Base_Controller {
 
     public function index() {
 
-        $php_required = '5.5';
         $this->load->helper('url');
 
         $result = null;
@@ -71,13 +70,10 @@ class Php_http_client_controller extends Playground_Base_Controller {
 
 EOT;
 
-        if (is_php($php_required))
-        {
-            eval($code_example);
-        }
+        eval($code_example);
 
         $this->template
-            ->set(compact('php_required', 'code_example', 'result', 'status_code', 'content_type'))
+            ->set(compact('code_example', 'result', 'status_code', 'content_type'))
             ->build('rest/php_http_client');
     }
 

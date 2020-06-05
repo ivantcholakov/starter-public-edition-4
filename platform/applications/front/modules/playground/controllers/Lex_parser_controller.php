@@ -28,14 +28,6 @@ class Lex_parser_controller extends Playground_Base_Controller {
 
     public function index() {
 
-        $php_min = '5.3';
-
-        if (!is_php($php_min)) {
-
-            $this->output->set_output('PHP '.$php_min.' is required for Lex parser.');
-            return;
-        }
-
         $countries = $this->_get_country_data();
         $countries_10 = array_slice($countries, 0, 10);
 

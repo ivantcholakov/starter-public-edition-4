@@ -19,12 +19,6 @@ template_partial('subnavbar');
 
                         <pre><code><?php echo html_escape($code_example); ?></code></pre>
 
-<?php
-
-if (is_php($php_required)) {
-
-?>
-
                         <h3>Result:</h3>
 
                         <?php echo print_d($result); ?>
@@ -40,14 +34,3 @@ if (is_php($php_required)) {
                         <h3>Content Type:</h3>
 
                         <?php echo print_d($content_type); ?>
-
-<?php
-
-} else {
-
-?>
-
-                        <div class="alert alert-warning">PHP <?php echo $php_required ?> is required for this demo to work.</div>
-<?php
-
-}

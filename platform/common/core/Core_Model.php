@@ -2405,7 +2405,7 @@ class Core_Model extends CI_Model
 
         $this->_reset_state();
 
-        return is_php('5.3.0') ? json_encode($data, $as_json_options) : json_encode($data);
+        return json_encode($data, $as_json_options);
     }
 
     /**

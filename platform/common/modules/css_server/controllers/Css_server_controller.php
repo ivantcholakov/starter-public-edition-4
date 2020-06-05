@@ -83,14 +83,6 @@ class Css_server_controller extends Core_Controller {
 
     protected function _compile_scss($options) {
 
-        $php_min = '5.4';
-
-        if (!is_php($php_min)) {
-
-            $this->_show_500('Requires PHP '.$php_min.' or above.');
-            return;
-        }
-
         $name = $options['name'];
         $source = $options['source'];
         $destination = $options['destination'];

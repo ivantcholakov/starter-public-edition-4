@@ -27,7 +27,7 @@ class Letter_avatar_controller extends Base_Controller {
         $name = preg_replace('/[^\p{L}\s]/u', '', UTF8::strtoupper(url_title($name, ' ', false, $this->transliterate_to_ascii)));
         $name = preg_split('/\s/m', $name, null, PREG_SPLIT_NO_EMPTY);
 
-        if (!empty($name) && is_php('5.5')) {
+        if (!empty($name)) {
 
             if (count($name) == 1) {
                 $name = UTF8::str_split($name[0]);

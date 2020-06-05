@@ -42,7 +42,7 @@ class User_photo extends CI_Model {
             return $this->get_gravatar($user, $_options);
         }
 
-        if (is_php('5.5') && $photo_source == 'letter_avatar') {
+        if ($photo_source == 'letter_avatar') {
             return $this->get_letter_avatar($user, $_options);
         }
 

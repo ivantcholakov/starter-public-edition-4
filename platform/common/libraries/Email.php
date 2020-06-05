@@ -11,7 +11,7 @@
  * PHPMailer Version 6.1.6 (May 27th, 2020).
  */
 
-if (is_php('5.5') && class_exists('\\PHPMailer\\PHPMailer\\PHPMailer', true)) {
+if (class_exists('\\PHPMailer\\PHPMailer\\PHPMailer', true)) {
 
     require_once dirname(__FILE__).'/Email_3_1_x_phpmailer_6_0_x.php';
 

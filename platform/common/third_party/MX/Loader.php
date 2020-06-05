@@ -1185,19 +1185,11 @@ class MX_Loader extends CI_Loader
 
             if (isset($_ci_template_content)) {
 
-                if (!is_php('5.4') && ! ini_get('short_open_tag') && CI::$APP->config->item('rewrite_short_tags') === TRUE) {
-                    echo eval('?>'.preg_replace("/;*\s*\?>/", "; ?>", str_replace('<?=', '<?php echo ', $_ci_template_content)));
-                } else {
-                    echo eval('?>'.$_ci_template_content);
-                }
+                echo eval('?>'.$_ci_template_content);
 
             } else {
 
-                if (!is_php('5.4') && ! ini_get('short_open_tag') && CI::$APP->config->item('rewrite_short_tags') === TRUE) {
-                    echo eval('?>'.preg_replace("/;*\s*\?>/", "; ?>", str_replace('<?=', '<?php echo ', file_get_contents($_ci_path))));
-                } else {
-                    include($_ci_path);
-                }
+                include($_ci_path);
             }
 
         } else {
@@ -1222,19 +1214,11 @@ class MX_Loader extends CI_Loader
 
                 if (isset($_ci_template_content)) {
 
-                    if (!is_php('5.4') && ! ini_get('short_open_tag') && CI::$APP->config->item('rewrite_short_tags') === TRUE) {
-                        echo eval('?>'.preg_replace("/;*\s*\?>/", "; ?>", str_replace('<?=', '<?php echo ', $_ci_template_content)));
-                    } else {
-                        echo eval('?>'.$_ci_template_content);
-                    }
+                    echo eval('?>'.$_ci_template_content);
 
                 } else {
 
-                    if (!is_php('5.4') && ! ini_get('short_open_tag') && CI::$APP->config->item('rewrite_short_tags') === TRUE) {
-                        echo eval('?>'.preg_replace("/;*\s*\?>/", "; ?>", str_replace('<?=', '<?php echo ', file_get_contents($_ci_path))));
-                    } else {
-                        include($_ci_path);
-                    }
+                    include($_ci_path);
                 }
 
                 $_ci_template_content = ob_get_clean();

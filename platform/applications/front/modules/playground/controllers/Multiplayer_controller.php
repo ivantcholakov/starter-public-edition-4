@@ -23,6 +23,8 @@ class Multiplayer_controller extends Playground_Base_Controller {
 
     public function index() {
 
+        $this->load->library('multiplayer');
+
         $videos = array(
             'https://www.youtube.com/watch?v=NRhVcTTMlrM',
             'http://vimeo.com/60743823',
@@ -30,21 +32,9 @@ class Multiplayer_controller extends Playground_Base_Controller {
             'http://vbox7.com/play:25c4115f2d',
         );
 
-        $multiplayer = null;
-        $php_required = '5.4.0';
-        $system_requirements_ok = is_php($php_required);
-
-        if ($system_requirements_ok) {
-
-            $this->load->library('multiplayer');
-            $multiplayer = $this->multiplayer;
-        }
-
         $this->template
-            ->set('multiplayer', $multiplayer)
+            ->set('multiplayer', $this->multiplayer)
             ->set('videos', $videos)
-            ->set('php_required', $php_required)
-            ->set('system_requirements_ok', $system_requirements_ok)
             ->build('multiplayer');
     }
 

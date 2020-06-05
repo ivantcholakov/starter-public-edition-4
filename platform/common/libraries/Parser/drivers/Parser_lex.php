@@ -12,13 +12,6 @@ class CI_Parser_lex extends CI_Parser_driver {
 
     public function initialize()
     {
-        $php_min = '5.3';
-
-        if (!is_php($php_min))
-        {
-            throw new Exception('CI_Parser_lex: Requires PHP '.$php_min.' or above.');
-        }
-
         $this->ci = get_instance();
 
         // Default configuration options.

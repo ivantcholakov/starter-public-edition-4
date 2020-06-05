@@ -9,18 +9,12 @@
 
 class Which_browser {
 
-    protected $php_min = '5.4';
-
     protected $wb_parser;
 
     protected $with_clause = false;
     protected $wb_parser_2;
 
     public function __construct($config = array()) {
-
-        if (!is_php($this->php_min)) {
-            throw new Exception('Which_browser: Requires PHP '.$this->php_min.' or above.');
-        }
 
         $this->initialize($config);
     }

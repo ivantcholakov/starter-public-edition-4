@@ -509,7 +509,7 @@ abstract class REST_Controller extends Core_Controller {
         $this->request->body = NULL;
 
         $this->{'_parse_' . $this->request->method}();
-        
+
         // Fix parse method return arguments null
         if ($this->{'_'.$this->request->method.'_args'} === null)
         {
@@ -661,14 +661,14 @@ abstract class REST_Controller extends Core_Controller {
         //}
         //
 
-        // Check to see if this is CI 3.x
-        // Modified by Ivan Tcholakov, 30-MAY-2015.
-        //if (explode('.', CI_VERSION, 2)[0] < 3)
-        if ((int) CI_VERSION < 3)
+        //// Check to see if this is CI 3.x
+        //// Modified by Ivan Tcholakov, 30-MAY-2015.
+        ////if (explode('.', CI_VERSION, 2)[0] < 3)
+        ////if ((int) CI_VERSION < 3)
         //
-        {
-            throw new Exception('REST Server requires CodeIgniter 3.x');
-        }
+        //{
+        //    throw new Exception('REST Server requires CodeIgniter 3.x');
+        //}
     }
 
     /**
@@ -717,8 +717,8 @@ abstract class REST_Controller extends Core_Controller {
             {
                 $this->_log_request();
             }
-            
-            // fix cross site to option request error 
+
+            // fix cross site to option request error
             if($this->request->method == 'options') {
                 exit;
             }

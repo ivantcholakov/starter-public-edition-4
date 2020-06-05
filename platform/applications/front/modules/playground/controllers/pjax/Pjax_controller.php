@@ -42,25 +42,15 @@ class Pjax_controller extends Playground_Base_Controller {
 
     public function page_2() {
 
+        $this->load->library('multiplayer');
+
         $this->registry->set('pjax_subnavbar_active', 'page_2');
 
         $video = 'https://www.youtube.com/watch?v=QTXyXuqfBLA';
 
-        $multiplayer = null;
-        $php_required = '5.4.0';
-        $system_requirements_ok = is_php($php_required);
-
-        if ($system_requirements_ok) {
-
-            $this->load->library('multiplayer');
-            $multiplayer = $this->multiplayer;
-        }
-
         $this->template
-            ->set('multiplayer', $multiplayer)
+            ->set('multiplayer', $this->multiplayer)
             ->set('video', $video)
-            ->set('php_required', $php_required)
-            ->set('system_requirements_ok', $system_requirements_ok)
             ->append_title('Pjax - Test Page 2')
             ->set_breadcrumb('Pjax', site_url('playground/pjax'))
             ->set_breadcrumb('Pjax - Test Page 2', site_url('playground/pjax/page-2'))
