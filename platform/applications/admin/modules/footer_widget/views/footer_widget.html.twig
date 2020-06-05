@@ -6,7 +6,7 @@
             <div class="column">
 
                 {% autoescape false %}{{ setting('copyright_note')|replace({'{year}': 'now'|date('Y'), '{organization}': setting('contact_organization')}) }}{% endautoescape %}
-                Versions: CI {{ constant('CI_VERSION') }}; PLATFORM {{ constant('PLATFORM_VERSION') }}
+                Versions: CI {{ constant('CI_VERSION') }}; PLATFORM {{ constant('PLATFORM_VERSION') }}; PRODUCT {{ constant('PRODUCT_VERSION') }}
                 <a class="circular ui icon huge blue scroll top button" href="{{ constant('CURRENT_URI') }}#page-top" title="{{ lang('ui_go_to_top')|e('html_attr') }}" style="display: none;"><i class="chevron up icon"></i></a>
 
             </div>
