@@ -253,8 +253,10 @@ if (!is_file(COMPOSER_PATH)) {
     exit(3); // EXIT_CONFIG
 }
 
+define('VENDORPATH', rtrim(str_replace('\\', '/', realpath(dirname(COMPOSER_PATH))), '/').'/');
+
 // Path to the system directory
-define('BASEPATH', rtrim(str_replace('\\', '/', realpath(dirname(COMPOSER_PATH).'/codeigniter/framework/system')), '/').'/');
+define('BASEPATH', VENDORPATH.'codeigniter/framework/system/');
 
 // Is the system path correct?
 if (BASEPATH == '' || BASEPATH == '/' || !is_dir(BASEPATH)) {
