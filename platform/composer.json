@@ -29,7 +29,7 @@
         "guzzlehttp/psr7": "^1.3",
         "php-http/message": "^1.4",
         "matthiasmullie/minify": "^1.3",
-        "phpmailer/phpmailer": "^6.1.6",
+        "ivantcholakov/codeigniter-phpmailer": "^1.4",
         "xamin/handlebars.php": "dev-master#38c743f79b8a2b501d9be97a413a56e5c2ed3e0f",
         "intervention/image": "^2.3",
         "yohang88/letter-avatar": "1.0.5",

@@ -592,6 +592,47 @@
         ]
     },
     {
+        "name": "ivantcholakov/codeigniter-phpmailer",
+        "version": "v1.4.4",
+        "version_normalized": "1.4.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ivantcholakov/codeigniter-phpmailer.git",
+            "reference": "e49367119503c619fec981c46bb0b219e43e3dea"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ivantcholakov/codeigniter-phpmailer/zipball/e49367119503c619fec981c46bb0b219e43e3dea",
+            "reference": "e49367119503c619fec981c46bb0b219e43e3dea",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.0",
+            "phpmailer/phpmailer": "^6.1.6"
+        },
+        "time": "2020-06-06T23:56:52+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ivan Tcholakov",
+                "email": "ivantcholakov@gmail.com",
+                "homepage": "https://github.com/ivantcholakov"
+            }
+        ],
+        "description": "A CodeIgniter 3 compatible email-library powered by PHPMailer.",
+        "homepage": "https://github.com/ivantcholakov/codeigniter-phpmailer",
+        "keywords": [
+            "codeigniter",
+            "php",
+            "phpmailer"
+        ]
+    },
+    {
         "name": "leafo/scssphp",
         "version": "v0.7.7",
         "version_normalized": "0.7.7.0",

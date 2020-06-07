@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5c8cedc2c10452013683ef4cb1c98f53",
+    "content-hash": "5f4e8fb42421bb282822246b8e0d1e9a",
     "packages": [
         {
             "name": "athlon1600/php-proxy",
@@ -575,6 +575,45 @@
                 "watermark"
             ],
             "time": "2019-11-02T09:15:47+00:00"
+        },
+        {
+            "name": "ivantcholakov/codeigniter-phpmailer",
+            "version": "v1.4.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ivantcholakov/codeigniter-phpmailer.git",
+                "reference": "e49367119503c619fec981c46bb0b219e43e3dea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ivantcholakov/codeigniter-phpmailer/zipball/e49367119503c619fec981c46bb0b219e43e3dea",
+                "reference": "e49367119503c619fec981c46bb0b219e43e3dea",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0",
+                "phpmailer/phpmailer": "^6.1.6"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivan Tcholakov",
+                    "email": "ivantcholakov@gmail.com",
+                    "homepage": "https://github.com/ivantcholakov"
+                }
+            ],
+            "description": "A CodeIgniter 3 compatible email-library powered by PHPMailer.",
+            "homepage": "https://github.com/ivantcholakov/codeigniter-phpmailer",
+            "keywords": [
+                "codeigniter",
+                "php",
+                "phpmailer"
+            ],
+            "time": "2020-06-06T23:56:52+00:00"
         },
         {
             "name": "leafo/scssphp",
