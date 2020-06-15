@@ -324,7 +324,6 @@ if (!function_exists('secure_random_bytes')) {
  * Base URL detection
  *---------------------------------------------------------------------
  */
-$DETECT_URL = detect_url();    // A deprecated global variable.
 define('DETECTED_BASE_URL', detect_url('base_url'));
 
 

@@ -15,10 +15,6 @@ if ( ! function_exists('get_config'))
     {
         static $config;
 
-        // Added by Ivan Tcholakov, 13-OCT-2013.
-        global $DETECT_URL;
-        //
-
         if (empty($config))
         {
             // Added by Ivan Tcholakov, 02-OCT-2013.

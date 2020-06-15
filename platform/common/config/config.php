@@ -410,10 +410,15 @@ $config['sess_regenerate_destroy'] = FALSE;
 |    'cookie_httponly') will also affect sessions.
 |
 */
-global $DETECT_URL;
 $config['cookie_prefix']    = '';
-$config['cookie_domain']    = (IS_CLI || $_SERVER['SERVER_NAME'] == 'localhost' || strcasecmp($_SERVER['SERVER_NAME'], gethostname()) == 0) ? '' : $_SERVER['SERVER_NAME'];
-$config['cookie_path']      = $DETECT_URL['base_uri'];
+$config['cookie_domain']    = (
+        IS_CLI
+        || detect_url('server_name') == 'localhost'
+        || detect_url('server_name') == '::1'
+        || detect_url('server_name') == '127.0.0.1'
+        || strcasecmp(detect_url('server_name'), gethostname()) == 0)
+    ? '' : detect_url('server_name');
+$config['cookie_path']      = detect_url('base_uri');
 $config['cookie_secure']    = FALSE;
 $config['cookie_httponly']  = FALSE;
 

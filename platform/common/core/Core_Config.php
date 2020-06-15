@@ -109,18 +109,16 @@ class Core_Config extends MX_Config {
             $this->initialize_languages();
         }
 
-        global $DETECT_URL;
-
         // Set the base_url automatically if none was provided
         if (empty($this->config['base_url']))
         {
-            $this->set_item('base_url', $DETECT_URL['base_url']);
+            $this->set_item('base_url', detect_url('base_url'));
         }
         // For hard-coded configuration setting 'base_url'
         // replace the protocol and the port with the actual detected values.
         else
         {
-            $this->set_item('base_url', http_build_url($this->config['base_url'], array('scheme' => $DETECT_URL['server_protocol'], 'port' => $DETECT_URL['port'])));
+            $this->set_item('base_url', http_build_url($this->config['base_url'], array('scheme' => detect_url('server_protocol'), 'port' => detect_url('port'))));
         }
 
         if (!defined('BASE_URL')) {
@@ -128,7 +126,7 @@ class Core_Config extends MX_Config {
         }
 
         if (!defined('BASE_URI')) {
-            define('BASE_URI', $DETECT_URL['base_uri']);
+            define('BASE_URI', detect_url('base_uri'));
         }
 
         if (!defined('SERVER_URL')) {
@@ -144,7 +142,7 @@ class Core_Config extends MX_Config {
         }
 
         if (!defined('CURRENT_URI')) {
-            define('CURRENT_URI', $DETECT_URL['current_uri']);
+            define('CURRENT_URI', detect_url('current_uri'));
         }
 
         if (!defined('CURRENT_URL')) {
@@ -152,27 +150,27 @@ class Core_Config extends MX_Config {
         }
 
         if (!defined('CURRENT_URL_IS_HTTPS')) {
-            define('CURRENT_URL_IS_HTTPS', $DETECT_URL['is_https']);
+            define('CURRENT_URL_IS_HTTPS', detect_url('is_https'));
         }
 
         if (!defined('CURRENT_URL_PROTOCOL')) {
-            define('CURRENT_URL_PROTOCOL', $DETECT_URL['server_protocol']);
+            define('CURRENT_URL_PROTOCOL', detect_url('server_protocol'));
         }
 
         if (!defined('CURRENT_URL_HOST')) {
-            define('CURRENT_URL_HOST', $DETECT_URL['server_name']);
+            define('CURRENT_URL_HOST', detect_url('server_name'));
         }
 
         if (!defined('CURRENT_URL_PORT')) {
-            define('CURRENT_URL_PORT', $DETECT_URL['port']);
+            define('CURRENT_URL_PORT', detect_url('port'));
         }
 
         if (!defined('CURRENT_URI_STRING')) {
-            define('CURRENT_URI_STRING', $DETECT_URL['current_uri_string']);
+            define('CURRENT_URI_STRING', detect_url('current_uri_string'));
         }
 
         if (!defined('CURRENT_QUERY_STRING')) {
-            define('CURRENT_QUERY_STRING', $DETECT_URL['current_query_string']);
+            define('CURRENT_QUERY_STRING', detect_url('current_query_string'));
         }
 
         // Added by Ivan Tcholakov, 13-JAN-2014.
