@@ -63,7 +63,9 @@ Within the folder platform/applications you will by default two applications - "
 Have a look at their configuration files. Also, the common PHP configuration files you may find at platform/common/config/ folder.
 
 The platform auto-detects its base URL address nevertheless its public part is on the document root of the web-server or not.
-I don't expect you to be forced to set it up manually within platform/common/config/config.php.
+However, on production installation, site should be accessed only through trusted host/server/domain names,
+see platform/common/config/config.php , the configuration settings $config['restrictAccessToTrustedHostsOnly'] and
+$config['trustedHosts'] for more information.
 
 Installation on a developer's machine
 -------------------------------------
