@@ -3,6 +3,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
+| Restrict Site Access To Trusted Hosts Only
+|--------------------------------------------------------------------------
+|
+| On production site access should be enabled only for trusted
+| host/server/domain names; 'restrictAccessToTrustedHosts' option should be
+| set to true.
+|
+| Define yor trusted hosts below, within the array option
+| 'trustedHosts'. If 'trustedHosts' setting is empty, only 'localhost'
+| would be allowed by default.
+|
+| Examples:
+|
+| 'localhost'                       - exact match;
+| '::1'                             - exact match;
+| '127.0.0.1'                       - exact match;
+| 'yoursite.com'                    - exact match;
+| 'dev.yoursite.com'                - exact match;
+| '/^.+\.yoursite\.com$/'           - a pattern to be used by preg_match();
+| '/^.+\.yoursite\.com$/'           - a pattern;
+| '/^(en|de|bg)\.yoursite\.com$/'   - a pattern.
+|
+*/
+
+$config['restrictAccessToTrustedHostsOnly'] = true;
+
+$config['trustedHosts'] = array(
+    'localhost',
+    '::1',
+    '127.0.0.1',
+);
+
+/*
+|--------------------------------------------------------------------------
 | Base Site URL
 |--------------------------------------------------------------------------
 |
@@ -12,9 +46,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |    examples: http://example.com/ , http://example.com/my-site/
 |
 | If this is not set then CodeIgniter will try guess the protocol, domain
-| and path to your installation. However, you should always configure this
-| explicitly and never rely on auto-guessing, especially in production
-| environments.
+| and path to your installation.
+|
+| If base URL auto-guessing (auto-detection) is allowed, access to the site
+| should be restricted to trusted hosts only, see the settings
+| $config['restrictAccessToTrustedHostsOnly'] and $config['trustedHosts'] above.
 |
 */
 $config['base_url'] = '';

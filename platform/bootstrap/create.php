@@ -250,6 +250,62 @@ if (isset($assign_to_config) && is_array($assign_to_config))
     }
 }
 
+$restrictAccessToTrustedHostsOnly = $CFG->item('restrictAccessToTrustedHostsOnly');
+
+if (!empty($restrictAccessToTrustedHostsOnly) && !IS_CLI)
+{
+    $detectedHost = detect_url('server_name');
+    $trustedHosts = $CFG->item('trustedHosts');
+
+    if (empty($trustedHosts) || !is_array($trustedHosts))
+    {
+        $trustedHosts = array('localhost');
+    }
+
+    $trustedHostFound = false;
+
+    foreach ($trustedHosts as $trustedHost)
+    {
+        if (!is_string($trustedHost))
+        {
+            continue;
+        }
+
+        if (strpos($trustedHost, '/') === 0)
+        {
+            // The setting is a pattern.
+            if (preg_match($trustedHost, $detectedHost))
+            {
+                $trustedHostFound = true;
+                break;
+            }
+        }
+        else
+        {
+            // The setting is a string to be matched exactly.
+            if ($trustedHost === $detectedHost)
+            {
+                $trustedHostFound = true;
+                break;
+            }
+        }
+    }
+
+    if (!$trustedHostFound)
+    {
+        header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+        echo 'Not trusted host/server/domain name.';
+        exit;
+    }
+
+    unset($detectedHost);
+    unset($trustedHosts);
+    unset($trustedHostFound);
+    unset($trustedHost);
+}
+
+unset($restrictAccessToTrustedHostsOnly);
+
 /*
  * ------------------------------------------------------
  *  Instantiate the hooks class
