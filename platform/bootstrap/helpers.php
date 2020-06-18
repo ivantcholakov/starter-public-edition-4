@@ -707,37 +707,6 @@ if (!function_exists('_get_object_vars_recursive_callback')) {
 // @link http://laravel.com/
 
 /**
- * Recursively remove slashes from array keys and values.
- *
- * @param  array  $array
- * @return array
- */
-
-// DEPRECATED, don't use this function.
-
-if (!function_exists('array_strip_slashes')) {
-
-    function array_strip_slashes($array) {
-
-        $result = array();
-
-        foreach ($array as $key => $value) {
-
-            $key = stripslashes($key);
-
-            if (is_array($value)) {
-                $result[$key] = array_strip_slashes($value);
-            } else {
-                $result[$key] = stripslashes($value);
-            }
-        }
-
-        return $result;
-    }
-
-}
-
-/**
  * Divide an array into two arrays. One with keys and the other with values.
  *
  * @param  array  $array
