@@ -1747,7 +1747,7 @@ class MX_Loader extends CI_Loader
                     $config_output = array();
                 }
 
-                $config_output = array_merge_recursive($config_output, $autoload);
+                $config_output = array_merge_recursive_distinct($config_output, $autoload);
 
                 foreach ($config_output as & $item) {
 

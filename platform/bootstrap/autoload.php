@@ -196,7 +196,7 @@ function _autoload_classes_read_config(& $config_output, $config_file) {
                 $config_output = array();
             }
 
-            $config_output = array_merge_recursive($config_output, $autoload);
+            $config_output = array_merge_recursive_distinct($config_output, $autoload);
         }
     }
 }
