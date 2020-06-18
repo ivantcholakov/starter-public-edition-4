@@ -813,6 +813,61 @@ if (!function_exists('array_intersect_compare')) {
 
 }
 
+if (!function_exists('array_merge_recursive_distinct')) {
+
+    // Ivan Tcholakov, 18-JUN-2020, License: MIT.
+    function array_merge_recursive_distinct() {
+
+        $args = func_get_args();
+
+        if (empty($args)) {
+
+            return [];
+        }
+
+        $result = array_shift($args);
+
+        if (!is_array($result)) {
+
+            throw new InvalidArgumentException('array_merge_recursive_distinct(): Array arguments are expected.');
+        }
+
+        if (empty($args)) {
+
+            return $result;
+        }
+
+        foreach ($args as $arr) {
+
+            if (!is_array($arr)) {
+
+                throw new InvalidArgumentException('array_merge_recursive_distinct(): Array arguments are expected.');
+            }
+
+            foreach ($arr as $key => $value) {
+
+                if (
+                    is_array($value)
+                    &&
+                    isset($result[$key])
+                    &&
+                    is_array($result[$key])
+                ) {
+
+                    $result[$key] = array_merge_recursive_distinct($result[$key], $value);
+
+                } else {
+
+                    $result[$key] = $value;
+                }
+            }
+        }
+
+        return $result;
+    }
+
+}
+
 // Miscelaneous ----------------------------------------------------------------
 
 if (!function_exists('money_format')) {
