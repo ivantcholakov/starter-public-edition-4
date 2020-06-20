@@ -43,7 +43,8 @@ $config['helpers'] = array(
 // Extending the Twig parser: Choose Twig extensions to be loaded.
 $config['extensions'] = array(
     'Twig_Extension_StringLoader',
-    array('Twig_Extension_Debug', ENVIRONMENT !== 'production'),
+    //array('Twig_Extension_Debug', ENVIRONMENT !== 'production'),
+    array('Twig_Extension_Debug', true),
     array('Twig_Extensions_Extension_Text', false), // TRUE enables the corresponding extension.
     array('Twig_Extensions_Extension_I18n', false),
     array('Twig_Extensions_Extension_Intl', false),
@@ -57,9 +58,12 @@ $config['functions'] = array(
     array('call_static', array('Parser_Twig_Extension_Static', 'call_static')),
     array('get_static', array('Parser_Twig_Extension_Static', 'get_static')),
     // Debugging Previews
-    array('print_d', 'print_d', array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
-    array('print_r', array('Parser_Twig_Extension_Debug', 'print_r'), array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
-    array('var_export', array('Parser_Twig_Extension_Debug', 'var_export'), array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
+    //array('print_d', 'print_d', array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
+    array('print_d', 'print_d', array('is_safe' => array('html'))),
+    //array('print_r', array('Parser_Twig_Extension_Debug', 'print_r'), array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
+    array('print_r', array('Parser_Twig_Extension_Debug', 'print_r'), array('is_safe' => array('html'))),
+    //array('var_export', array('Parser_Twig_Extension_Debug', 'var_export'), array('is_safe' => array('html')), ENVIRONMENT !== 'production'),
+    array('var_export', array('Parser_Twig_Extension_Debug', 'var_export'), array('is_safe' => array('html'))),
     // PHP
     array('mt_rand', 'mt_rand', array('is_safe' => array('html'))),
     array('rand', 'mt_rand', array('is_safe' => array('html'))),
