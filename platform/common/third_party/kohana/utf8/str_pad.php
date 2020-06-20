@@ -1,4 +1,4 @@
-<?php defined('SYSPATH') or die('No direct script access.');
+<?php defined('KOHANASYSPATH') or die('No direct script access.');
 /**
  * UTF8::str_pad
  *

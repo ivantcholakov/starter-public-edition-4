@@ -1,4 +1,4 @@
-<?php defined('SYSPATH') or die('No direct script access.');
+<?php defined('KOHANASYSPATH') or die('No direct script access.');
 /**
  * A port of [phputf8](http://sourceforge.net/projects/phputf8/) to a unified set
  * of files. Provides multi-byte aware replacement string functions.
@@ -146,7 +146,7 @@ class Kohana_UTF8 {
 	{
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -172,7 +172,7 @@ class Kohana_UTF8 {
 
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -202,7 +202,7 @@ class Kohana_UTF8 {
 
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -232,7 +232,7 @@ class Kohana_UTF8 {
 
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -262,7 +262,7 @@ class Kohana_UTF8 {
 
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -294,7 +294,7 @@ class Kohana_UTF8 {
 
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -319,7 +319,7 @@ class Kohana_UTF8 {
 	{
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -346,7 +346,7 @@ class Kohana_UTF8 {
 
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -372,7 +372,7 @@ class Kohana_UTF8 {
 
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -395,7 +395,7 @@ class Kohana_UTF8 {
 	{
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -419,7 +419,7 @@ class Kohana_UTF8 {
 	{
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -445,7 +445,7 @@ class Kohana_UTF8 {
 	{
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -474,7 +474,7 @@ class Kohana_UTF8 {
 	{
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -500,7 +500,7 @@ class Kohana_UTF8 {
 	{
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -526,7 +526,7 @@ class Kohana_UTF8 {
 	{
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -552,7 +552,7 @@ class Kohana_UTF8 {
 	{
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -578,7 +578,7 @@ class Kohana_UTF8 {
 	{
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -602,7 +602,7 @@ class Kohana_UTF8 {
 	{
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -624,7 +624,7 @@ class Kohana_UTF8 {
 	{
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -648,7 +648,7 @@ class Kohana_UTF8 {
 	{
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -672,7 +672,7 @@ class Kohana_UTF8 {
 	{
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -696,7 +696,7 @@ class Kohana_UTF8 {
 	{
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -719,7 +719,7 @@ class Kohana_UTF8 {
 	{
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -749,7 +749,7 @@ class Kohana_UTF8 {
 	{
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -779,7 +779,7 @@ class Kohana_UTF8 {
 	{
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;
@@ -802,7 +802,7 @@ class Kohana_UTF8 {
 	{
 		if ( ! isset(self::$called[__FUNCTION__]))
 		{
-			require SYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.EXT;
+			require KOHANASYSPATH.'utf8'.DIRECTORY_SEPARATOR.__FUNCTION__.KOHANAEXT;
 
 			// Function has been called
 			self::$called[__FUNCTION__] = TRUE;

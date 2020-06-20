@@ -2,29 +2,29 @@
 
 /**
  * UTF-8 string support for CodeIgniter based on Kohana's implementation.
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013-2015 (for this file)
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013-2020 (for this file)
  * @license The MIT License (for this file)
- * @version 1.0.0
+ * @version 1.0.1
  * Code repository: https://github.com/ivantcholakov/codeigniter-utf8
  *
  * See the file application/third_party/kohana/Kohana_UTF8.php for
  * technical requirements and license information.
  */
 
-if (!defined('SYSPATH')) {
-    define('SYSPATH', COMMONPATH.'third_party/kohana/');
+if (!defined('KOHANASYSPATH')) {
+    define('KOHANASYSPATH', COMMONPATH.'third_party/kohana/');
 }
 
-if (!defined('EXT')) {
-    define('EXT', '.php');
+if (!defined('KOHANAEXT')) {
+    define('KOHANAEXT', '.php');
 }
 
-if (!defined('ICONV_INSTALLED')) {
-    define('ICONV_INSTALLED', function_exists('iconv'));
+if (!defined('KOHANA_ICONV_INSTALLED')) {
+    define('KOHANA_ICONV_INSTALLED', function_exists('iconv'));
 }
 
-if (!defined('MBSTRING_INSTALLED')) {
-    define('MBSTRING_INSTALLED', extension_loaded('mbstring'));
+if (!defined('KOHANA_MBSTRING_INSTALLED')) {
+    define('KOHANA_MBSTRING_INSTALLED', extension_loaded('mbstring'));
 }
 
 if (!class_exists('Kohana', false)) {
@@ -32,7 +32,7 @@ if (!class_exists('Kohana', false)) {
 }
 
 if (!class_exists('Kohana_UTF8', false)) {
-    require SYSPATH.'Kohana_UTF8.php';
+    require KOHANASYSPATH.'Kohana_UTF8.php';
 }
 
 class UTF8 extends Kohana_UTF8 {
@@ -50,10 +50,10 @@ class UTF8 extends Kohana_UTF8 {
             return $string;
         }
 
-        if (ICONV_INSTALLED) {
+        if (KOHANA_ICONV_INSTALLED) {
             return @ (string) iconv($from_encoding, 'UTF-8', $string);
         }
-        elseif (MBSTRING_INSTALLED) {
+        elseif (KOHANA_MBSTRING_INSTALLED) {
             return @ (string) mb_convert_encoding($string, 'UTF-8', $from_encoding);
         }
 
@@ -68,10 +68,10 @@ class UTF8 extends Kohana_UTF8 {
             return $string;
         }
 
-        if (ICONV_INSTALLED) {
+        if (KOHANA_ICONV_INSTALLED) {
             return @ (string) iconv('UTF-8', $to_encoding, $string);
         }
-        elseif (MBSTRING_INSTALLED) {
+        elseif (KOHANA_MBSTRING_INSTALLED) {
             return @ (string) mb_convert_encoding($string, $to_encoding, 'UTF-8');
         }
     }
