@@ -193,6 +193,8 @@ class CI_Parser_twig extends CI_Parser_driver {
             unset($item);
         }
 
+        $loaded_extensions = array();
+
         if (!empty($options['extensions']) && is_array($options['extensions']))
         {
             foreach ($options['extensions'] as & $item)
@@ -207,6 +209,7 @@ class CI_Parser_twig extends CI_Parser_driver {
                     case 1:
 
                         $parser->addExtension(new $item[0]);
+                        $loaded_extensions[] = $item[0];
                         break;
 
                     default:
@@ -214,6 +217,7 @@ class CI_Parser_twig extends CI_Parser_driver {
                         if ($item[1] !== false)
                         {
                             $parser->addExtension(new $item[0]);
+                            $loaded_extensions[] = $item[0];
                         }
 
                         break;
@@ -222,6 +226,16 @@ class CI_Parser_twig extends CI_Parser_driver {
 
             unset($item);
         }
+
+        if (!empty($options['debug']))
+        {
+            if (!in_array('Twig_Extension_Debug', $loaded_extensions))
+            {
+                $parser->addExtension(new Twig_Extension_Debug);
+            }
+        }
+
+        $loaded_functions = array();
 
         if (!empty($options['functions']) && is_array($options['functions']))
         {
@@ -237,16 +251,19 @@ class CI_Parser_twig extends CI_Parser_driver {
                     case 1:
 
                         $parser->addFunction(new Twig_SimpleFunction($item[0], $item[0]));
+                        $loaded_functions[] = $item[0];
                         break;
 
                     case 2:
 
                         $parser->addFunction(new Twig_SimpleFunction($item[0], $item[1]));
+                        $loaded_functions[] = $item[0];
                         break;
 
                     case 3:
 
                         $parser->addFunction(new Twig_SimpleFunction($item[0], $item[1], $item[2]));
+                        $loaded_functions[] = $item[0];
                         break;
 
                     default:
@@ -254,6 +271,7 @@ class CI_Parser_twig extends CI_Parser_driver {
                         if ($item[3] !== false)
                         {
                             $parser->addFunction(new Twig_SimpleFunction($item[0], $item[1], $item[2]));
+                            $loaded_functions[] = $item[0];
                         }
 
                         break;
@@ -261,6 +279,24 @@ class CI_Parser_twig extends CI_Parser_driver {
             }
 
             unset($item);
+        }
+
+        if (!empty($options['debug']))
+        {
+            if (!in_array('print_d', $loaded_functions))
+            {
+                $parser->addFunction(new Twig_SimpleFunction('print_d', 'print_d', array('is_safe' => array('html'))));
+            }
+
+            if (!in_array('print_r', $loaded_functions))
+            {
+                $parser->addFunction(new Twig_SimpleFunction('print_r', array('Parser_Twig_Extension_Debug', 'print_r'), array('is_safe' => array('html'))));
+            }
+
+            if (!in_array('var_export', $loaded_functions))
+            {
+                $parser->addFunction(new Twig_SimpleFunction('var_export', array('Parser_Twig_Extension_Debug', 'var_export'), array('is_safe' => array('html'))));
+            }
         }
 
         if (!empty($options['filters']) && is_array($options['filters']))
