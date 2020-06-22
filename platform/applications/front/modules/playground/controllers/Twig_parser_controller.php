@@ -38,7 +38,7 @@ class Twig_parser_controller extends Playground_Base_Controller {
         $twig_test_name = 'test.html.twig';
         $twig_test_path = $this->load->path($twig_test_name);
         $twig_test_source = @ (string) file_get_contents($twig_test_path);
-        $twig_test_1 = $this->parser->parse_string($twig_test_source, array(), true, 'twig');
+        $twig_test_1 = $this->parser->parse_string($twig_test_source, array(), true, array('twig' => array('debug' => true)));
         $twig_test_2 = $this->load->view($twig_test_name, array(), true);
 
         $this->template
@@ -78,6 +78,7 @@ class Twig_parser_controller extends Playground_Base_Controller {
             ->set_partial('twig_partial', 'twig_partial')
             ->set_metadata('description', 'Twig parser testing page')
             ->set_metadata('keywords', 'CodeIgniter Twig Template Parser')
+            ->enable_parser_body(array('twig' => array('debug' => true)))
             ->build('twig_parser');
     }
 

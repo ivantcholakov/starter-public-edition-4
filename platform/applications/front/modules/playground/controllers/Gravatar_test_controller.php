@@ -70,6 +70,7 @@ class Gravatar_test_controller extends Playground_Base_Controller {
 
         $this->template
             ->set(compact('email', 'gravatar', 'profile', 'last_error', 'show_profile'))
+            ->enable_parser_body(array('twig' => array('debug' => true)))
             ->build('gravatar_test');
     }
 
