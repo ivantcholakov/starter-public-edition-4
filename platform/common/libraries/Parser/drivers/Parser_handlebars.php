@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') || exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2016
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2016-2020
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -51,11 +51,6 @@ class CI_Parser_handlebars extends CI_Parser_driver {
 
         $options = array_merge($this->config, $options);
 
-        if (empty($options['cache']) && array_key_exists('cache', $options))
-        {
-            unset($options['cache']);
-        }
-
         if (is_object($data))
         {
             $data = get_object_vars($data);
@@ -79,51 +74,66 @@ class CI_Parser_handlebars extends CI_Parser_driver {
             $template = $ci->load->path($template);
         }
 
-        // For security reasons don't parse PHP content.
+        if (array_key_exists('cache', $options)) {
 
-        $path = pathinfo($template);
-        $base_dir = $path['dirname'];
-        $template = $path['basename'];
-
-        $ci->load->parser();
-        $p = $ci->parser->detect($template, $detected_extension, $detected_filename);
-
-        if ($detected_extension == '')
-        {
-            $detected_extension = $options['extension'];
-        }
-
-        $cache = null;
-
-        if (!empty($options['cache']))
-        {
-            if (!is_object($options['cache']))
-            {
-                $cache = new Handlebars\Cache\Disk($options['cache']);
+            if ($options['cache'] != '') {
+                $options['cache'] = rtrim($options['cache'], '/\\');
+            } else {
+                unset($options['cache']);
             }
-            else
-            {
-                $cache = $options['cache'];
-            }
-
-            unset($options['cache']);
         }
 
-        $parser = new Handlebars\Handlebars($options);
-        $parser->setLoader(new Handlebars\Loader\FilesystemLoader($base_dir, array('extension' => '.'.$detected_extension)));
-
-        if (!empty($cache))
-        {
-            $parser->setCache($cache);
+        if (!array_key_exists('cache_file_prefix', $options)) {
+            $options['cache_file_prefix'] = '';
         }
 
-        // Modified by Ivan Tcholakov, 07-JAN-2019.
-        // PHP 7.3, handlebars.php v0.10.4
-        // Suppressing the warning "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"?
-        // See https://github.com/XaminProject/handlebars.php/issues/174
-        //$template = $parser->render($detected_filename, $data);
-        $template = @ $parser->render($detected_filename, $data);
-        //
+        if (!array_key_exists('cache_file_suffix', $options)) {
+            $options['cache_file_suffix'] = '';
+        }
+
+        if (isset($options['cache']) && $options['cache'] != '') {
+
+            $options['cache'] = new \Handlebars\Cache\Disk(
+                $options['cache'],
+                $options['cache_file_prefix'],
+                $options['cache_file_suffix']
+            );
+        }
+
+        unset($options['cache_file_prefix']);
+        unset($options['cache_file_suffix']);
+
+        $base_dir = pathinfo($template, PATHINFO_DIRNAME);
+        $filename = pathinfo($template, PATHINFO_FILENAME);
+        $extension = pathinfo($template, PATHINFO_EXTENSION);
+
+        if (array_key_exists('loader', $options) && !is_object($options['loader'])) {
+            unset($options['loader']);
+        }
+
+        if (empty($options['loader'])) {
+            $options['loader'] = new \Handlebars\Loader\FilesystemLoader($base_dir, array('extension' => '.'.$extension));
+        }
+
+        if (array_key_exists('partials_loader', $options) && !is_object($options['partials_loader'])) {
+            unset($options['partials_loader']);
+        }
+
+        if (empty($options['partials_loader'])) {
+            $options['partials_loader'] = new \Handlebars\Loader\FilesystemLoader($base_dir, array('extension' => '.'.$extension));
+        }
+
+        if (array_key_exists('helpers', $options) && !is_array($options['helpers']) && !$options['helpers'] instanceof \Traversable) {
+            unset($options['helpers']);
+        }
+
+        if (!empty($options['helpers'])) {
+            $options['helpers'] = new \Handlebars\Helpers($options['helpers']);
+        }
+
+        $parser = new \Handlebars\Handlebars($options);
+
+        $template = $parser->render($filename, $data);
 
         return $this->output($template, $return, $ci, $is_mx);
     }
@@ -136,11 +146,6 @@ class CI_Parser_handlebars extends CI_Parser_driver {
         }
 
         $options = array_merge($this->config, $options);
-
-        if (array_key_exists('cache', $options))
-        {
-            unset($options['cache']);
-        }
 
         if (is_object($data))
         {
@@ -160,15 +165,46 @@ class CI_Parser_handlebars extends CI_Parser_driver {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
-        $parser = new Handlebars\Handlebars($options);
+        if (array_key_exists('cache', $options)) {
 
-        // Modified by Ivan Tcholakov, 07-JAN-2019.
-        // PHP 7.3, handlebars.php v0.10.4
-        // Suppressing the warning "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"?
-        // See https://github.com/XaminProject/handlebars.php/issues/174
-        //$template = $parser->render($template, $data);
+            if ($options['cache'] != '') {
+                $options['cache'] = rtrim($options['cache'], '/\\');
+            } else {
+                unset($options['cache']);
+            }
+        }
+
+        if (!array_key_exists('cache_file_prefix', $options)) {
+            $options['cache_file_prefix'] = '';
+        }
+
+        if (!array_key_exists('cache_file_suffix', $options)) {
+            $options['cache_file_suffix'] = '';
+        }
+
+        if (isset($options['cache']) && $options['cache'] != '') {
+
+            $options['cache'] = new \Handlebars\Cache\Disk(
+                $options['cache'],
+                $options['cache_file_prefix'],
+                $options['cache_file_suffix']
+            );
+        }
+
+        unset($options['cache_file_prefix']);
+        unset($options['cache_file_suffix']);
+
+        if (array_key_exists('helpers', $options) && !is_array($options['helpers']) && !$options['helpers'] instanceof \Traversable) {
+            unset($options['helpers']);
+        }
+
+        if (!empty($options['helpers'])) {
+            $options['helpers'] = new \Handlebars\Helpers($options['helpers']);
+        }
+
+        $parser = new \Handlebars\Handlebars($options);
+
         $template = @ $parser->render($template, $data);
-        //
 
         return $this->output($template, $return, $ci, $is_mx);
     }
