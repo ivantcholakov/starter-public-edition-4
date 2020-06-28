@@ -3,7 +3,7 @@
 /**
  * A PHP wrapper for less.js
  *
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2016.
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2016-2020.
  * @license The MIT License (MIT)
  * @link http://opensource.org/licenses/MIT
  */
@@ -71,7 +71,7 @@ class Lessjs_Parser {
      */
     public function parse($filename) {
 
-        $cmd = $this->getCompilerPath().$this->parseOptions().' '.$this->escapeShellArg($filename);
+        $cmd = $this->getCompilerPath().$this->parseOptions().' '.escape_shell_arg($filename);
 
         $descriptorspec = array(
             0 => array('pipe', 'r'), // stdin
@@ -176,7 +176,7 @@ class Lessjs_Parser {
                 case 'uri_root':
 
                     if ($value != '') {
-                        $result[] = '--rootpath='.$this->escapeShellArg($value);
+                        $result[] = '--rootpath='.escape_shell_arg($value);
                     }
 
                     break;
@@ -197,42 +197,6 @@ class Lessjs_Parser {
     protected function getCompilerPath() {
 
         return $this->options['lessc_path'];
-    }
-
-    protected function isWindows() {
-
-        // Beware about 'Darwin'.
-        return 0 === stripos(PHP_OS, 'win');
-    }
-
-    protected function escapeShellArg($arg) {
-
-        if ($this->isWindows()) {
-
-            // See http://stackoverflow.com/questions/6427732/how-can-i-escape-an-arbitrary-string-for-use-as-a-command-line-argument-in-windo
-
-            // Sequence of backslashes followed by a double quote:
-            // double up all the backslashes and escape the double quote
-            $arg = preg_replace('/(\\*)"/', '$1$1\\"', $arg);
-
-            // Sequence of backslashes followed by the end of the arg,
-            // which will become a double quote later:
-            // double up all the backslashes
-            $arg = preg_replace('/(\\*)$/', '$1$1', $arg);
-
-            // All other backslashes do not need modifying
-
-            // Double-quote the whole thing
-            $arg = '"'.$arg.'"';
-
-            // Escape shell metacharacters.
-            $arg = preg_replace('/([\(\)%!^"<>&|;, ])/', '^$1', $arg);
-
-            return $arg;
-        }
-
-        // See http://markushedlund.com/dev-tech/php-escapeshellarg-with-unicodeutf-8-support
-        return "'" . str_replace("'", "'\\''", $arg) . "'";
     }
 
 }

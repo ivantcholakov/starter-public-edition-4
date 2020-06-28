@@ -3,7 +3,7 @@
 /**
  * A PHP wrapper for autoprefixer.js
  *
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2016.
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2016-2020.
  * @license The MIT License (MIT)
  * @link http://opensource.org/licenses/MIT
  */
@@ -72,7 +72,7 @@ class Autoprefixer_Parser {
      */
     public function parse($filename) {
 
-        $cmd = $this->getCompilerPath().' --no-map --use autoprefixer'.$this->parseOptions().' '.$this->escapeShellArg($filename);
+        $cmd = $this->getCompilerPath().' --no-map --use autoprefixer'.$this->parseOptions().' '.escape_shell_arg($filename);
 
         $descriptorspec = array(
             0 => array('pipe', 'r'), // stdin
@@ -168,7 +168,7 @@ class Autoprefixer_Parser {
 }';
         file_put_contents($this->config_file, $config);
 
-        $result[] = '--config '.$this->escapeShellArg($this->config_file);
+        $result[] = '--config '.escape_shell_arg($this->config_file);
 
         return empty($result) ? '' : ' '.implode(' ', $result);
     }
@@ -176,42 +176,6 @@ class Autoprefixer_Parser {
     protected function getCompilerPath() {
 
         return $this->options['postcss_path'];
-    }
-
-    protected function isWindows() {
-
-        // Beware about 'Darwin'.
-        return 0 === stripos(PHP_OS, 'win');
-    }
-
-    protected function escapeShellArg($arg) {
-
-        if ($this->isWindows()) {
-
-            // See http://stackoverflow.com/questions/6427732/how-can-i-escape-an-arbitrary-string-for-use-as-a-command-line-argument-in-windo
-
-            // Sequence of backslashes followed by a double quote:
-            // double up all the backslashes and escape the double quote
-            $arg = preg_replace('/(\\*)"/', '$1$1\\"', $arg);
-
-            // Sequence of backslashes followed by the end of the arg,
-            // which will become a double quote later:
-            // double up all the backslashes
-            $arg = preg_replace('/(\\*)$/', '$1$1', $arg);
-
-            // All other backslashes do not need modifying
-
-            // Double-quote the whole thing
-            $arg = '"'.$arg.'"';
-
-            // Escape shell metacharacters.
-            $arg = preg_replace('/([\(\)%!^"<>&|;, ])/', '^$1', $arg);
-
-            return $arg;
-        }
-
-        // See http://markushedlund.com/dev-tech/php-escapeshellarg-with-unicodeutf-8-support
-        return "'" . str_replace("'", "'\\''", $arg) . "'";
     }
 
 }
