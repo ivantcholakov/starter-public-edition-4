@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015-2020
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -37,10 +37,17 @@ class Scss_controller extends Playground_Base_Controller {
 
             $input = $this->load->source('test.scss');
 
-            try {
-                $output = $this->parser->parse_string($input, null, true, 'scss');
-            } catch(Exception $e) {
-                $output = $e->getMessage();
+            if (is_php('5.6')) {
+
+                try {
+                    $output = $this->parser->parse_string($input, null, true, 'scss');
+                } catch(Exception $e) {
+                    $output = $e->getMessage();
+                }
+
+            } else {
+
+                $output = 'PHP 5.6 or higher is required.';
             }
 
         } else {
@@ -59,10 +66,17 @@ class Scss_controller extends Playground_Base_Controller {
 
                 $input = $this->input->post('input');
 
-                try {
-                    $output = $this->parser->parse_string($input, null, true, 'scss');
-                } catch(Exception $e) {
-                    $output = $e->getMessage();
+                if (is_php('5.6')) {
+
+                    try {
+                        $output = $this->parser->parse_string($input, null, true, 'scss');
+                    } catch(Exception $e) {
+                        $output = $e->getMessage();
+                    }
+
+                } else {
+
+                    $output = 'PHP 5.6 or higher is required.';
                 }
 
             } elseif (validation_errors()) {
