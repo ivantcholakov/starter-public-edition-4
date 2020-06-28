@@ -312,7 +312,7 @@ class Image_lib extends CI_Image_lib
             }
         }
 
-        $cmd .= ' '.escapeshellarg($this->full_src_path).' '.escapeshellarg($this->full_dst_path).' 2>&1';
+        $cmd .= ' '.escape_shell_arg($this->full_src_path).' '.escape_shell_arg($this->full_dst_path).' 2>&1';
 
         $retval = 1;
         // exec() might be disabled
@@ -398,7 +398,7 @@ class Image_lib extends CI_Image_lib
             $cmd_inner = 'pnmscale -xysize '.$this->width.' '.$this->height;
         }
 
-        $cmd = $this->library_path.$cmd_in.' '.escapeshellarg($this->full_src_path).' | '.$cmd_inner.' | '.$cmd_out.' > '.$this->dest_folder.'netpbm.tmp';
+        $cmd = $this->library_path.$cmd_in.' '.escape_shell_arg($this->full_src_path).' | '.$cmd_inner.' | '.$cmd_out.' > '.$this->dest_folder.'netpbm.tmp';
 
         $retval = 1;
         // exec() might be disabled
