@@ -253,7 +253,7 @@ The technique of this hack is available, but it is not mandatory.
 * Mustache, Logic-less templates, https://github.com/bobthecow/mustache.php, https://github.com/janl/mustache.js
 * Less.php compiler, https://github.com/oyejorge/less.php
 * PHPMailer, http://phpmailer.worxware.com/, https://github.com/PHPMailer/PHPMailer
-* A CodeIgniter compatible email-library powered by PHPMailer, https://github.com/ivantcholakov/codeigniter-phpmailer
+* A CodeIgniter 3 compatible email-library powered by PHPMailer, https://github.com/ivantcholakov/codeigniter-phpmailer
 * A PHP class for transliteration, https://github.com/ivantcholakov/transliterate
 * AES (256, 192, 128) Symmetric Encryption, Compatible with OpenSSL, https://github.com/ivantcholakov/gibberish-aes-php
 * HTML Purifier, http://htmlpurifier.org/
@@ -503,7 +503,7 @@ Installed Composer Packages
 | roave/security-advisories           | Blocks installing packages with known security vulnerabilities     | Composer                                          |
 | paragonie/random_compat             | PHP 5.x polyfill for random_bytes() and random_int() from PHP 7    | CodeIgniter, other components                     |
 | fg/multiplayer                      | Builds customizable video embed codes from any URL                 | Multiplayer library                               |
-| leafo/scssphp                       | A compiler for SCSS written in PHP                                 | Parser 'scss' driver                              |
+| scssphp/scssphp                     | A compiler for SCSS written in PHP                                 | Parser 'scss' driver                              |
 | guzzlehttp/guzzle                   | A HTTP client library                                              | Playground, REST service test                     |
 | whichbrowser/parser                 | Useragent sniffing library for PHP                                 | Which_browser library                             |
 | erusev/parsedown                    | Parser for Markdown                                                | Parser 'markdown' driver                          |
@@ -522,7 +522,6 @@ Installed Composer Packages
 | yohang88/letter-avatar              | Generates user avatars based on name initials                      | userphotos application                            |
 | intervention/image                  | Image handling and manipulation library                            | yohang88/letter-avatar                            |
 | tubalmartin/cssmin                  | A PHP port of the YUI CSS compressor                               | Parser 'cssmin' driver                            |
-| oyejorge/less.php                   | A PHP port of the Javascript version of LESS                       | Parser 'less' driver                              |
 | athlon1600/php-proxy                | A web proxy script written in PHP.                                 | Demo feature for previewing the error logs        |
 
 Real Life Usage
