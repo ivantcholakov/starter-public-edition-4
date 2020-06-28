@@ -1,7 +1,12 @@
+[![Latest Stable Version](https://poser.pugx.org/ivantcholakov/codeigniter-phpmailer/v)](//packagist.org/packages/ivantcholakov/codeigniter-phpmailer)
+[![Total Downloads](https://poser.pugx.org/ivantcholakov/codeigniter-phpmailer/downloads)](//packagist.org/packages/ivantcholakov/codeigniter-phpmailer)
+[![Latest Unstable Version](https://poser.pugx.org/ivantcholakov/codeigniter-phpmailer/v/unstable)](//packagist.org/packages/ivantcholakov/codeigniter-phpmailer)
+[![License](https://poser.pugx.org/ivantcholakov/codeigniter-phpmailer/license)](//packagist.org/packages/ivantcholakov/codeigniter-phpmailer)
+
 A CodeIgniter compatible email-library powered by PHPMailer
 ===========================================================
 
-Version: 1.4.4  
+Version: 1.4.5  
 Author: Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2020.  
 License: The MIT License (MIT), http://opensource.org/licenses/MIT
 
@@ -9,10 +14,12 @@ This library is compatible with CodeIgniter 3.1.x and PHP >= 5.5.0.
 
 Tested on CodeIgniter 3.1.11 (September 19th, 2019) and PHPMailer Version 6.1.6 (May 27th, 2020).
 
-PHPMailer Links
----------------
+Links
+-----
 
-https://github.com/PHPMailer/PHPMailer
+Package: https://packagist.org/packages/ivantcholakov/codeigniter-phpmailer
+
+PHPMailer: https://github.com/PHPMailer/PHPMailer
 
 Installation
 ------------

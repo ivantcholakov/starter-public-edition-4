@@ -5,6 +5,7 @@
     },
     "require": {
         "php": ">=5.5.0",
+        "symfony/options-resolver": "<5.0",
         "codeigniter/framework": "dev-3.1-stable#f27b3409b00c6a08d89c1e6b06e5f1b9463d703d",
         "roave/security-advisories": "dev-master",
         "paragonie/random_compat": "^2.0.2",
@@ -23,7 +24,7 @@
         "rmccue/requests": ">=1.0",
         "t1st3/php-json-minify": "^0.6.2",
         "php-http/guzzle6-adapter": "^1.1",
-        "php-http/discovery": "^1.1",
+        "php-http/discovery": "<1.7",
         "php-http/client-common": "^1.4",
         "php-http/curl-client": "^1.6",
         "guzzlehttp/psr7": "^1.3",

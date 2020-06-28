@@ -593,24 +593,24 @@
     },
     {
         "name": "ivantcholakov/codeigniter-phpmailer",
-        "version": "v1.4.4",
-        "version_normalized": "1.4.4.0",
+        "version": "v1.4.5",
+        "version_normalized": "1.4.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/ivantcholakov/codeigniter-phpmailer.git",
-            "reference": "e49367119503c619fec981c46bb0b219e43e3dea"
+            "reference": "1369336e28411a0212a74cab8794d0931848b738"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/ivantcholakov/codeigniter-phpmailer/zipball/e49367119503c619fec981c46bb0b219e43e3dea",
-            "reference": "e49367119503c619fec981c46bb0b219e43e3dea",
+            "url": "https://api.github.com/repos/ivantcholakov/codeigniter-phpmailer/zipball/1369336e28411a0212a74cab8794d0931848b738",
+            "reference": "1369336e28411a0212a74cab8794d0931848b738",
             "shasum": ""
         },
         "require": {
             "php": ">=5.5.0",
             "phpmailer/phpmailer": "^6.1.6"
         },
-        "time": "2020-06-06T23:56:52+00:00",
+        "time": "2020-06-25T16:02:05+00:00",
         "type": "library",
         "installation-source": "dist",
         "notification-url": "https://packagist.org/downloads/",
@@ -1142,41 +1142,40 @@
     },
     {
         "name": "php-http/discovery",
-        "version": "1.8.0",
-        "version_normalized": "1.8.0.0",
+        "version": "1.6.1",
+        "version_normalized": "1.6.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/php-http/discovery.git",
-            "reference": "10d9019f393773345aedc0dc79e7fd678da874ee"
+            "reference": "684855f2c2e9d0a61868b8f8d6bd0295c8a4b651"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/php-http/discovery/zipball/10d9019f393773345aedc0dc79e7fd678da874ee",
-            "reference": "10d9019f393773345aedc0dc79e7fd678da874ee",
+            "url": "https://api.github.com/repos/php-http/discovery/zipball/684855f2c2e9d0a61868b8f8d6bd0295c8a4b651",
+            "reference": "684855f2c2e9d0a61868b8f8d6bd0295c8a4b651",
             "shasum": ""
         },
         "require": {
-            "php": "^7.1"
+            "php": "^5.5 || ^7.0"
         },
         "conflict": {
             "nyholm/psr7": "<1.0"
         },
         "require-dev": {
-            "akeneo/phpspec-skip-example-extension": "^4.0",
             "php-http/httplug": "^1.0 || ^2.0",
             "php-http/message-factory": "^1.0",
-            "phpspec/phpspec": "^5.1",
+            "phpspec/phpspec": "^2.4",
             "puli/composer-plugin": "1.0.0-beta10"
         },
         "suggest": {
             "php-http/message": "Allow to use Guzzle, Diactoros or Slim Framework factories",
             "puli/composer-plugin": "Sets up Puli which is recommended for Discovery to work. Check http://docs.php-http.org/en/latest/discovery.html for more details."
         },
-        "time": "2020-06-14T10:44:12+00:00",
+        "time": "2019-02-23T07:42:53+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.7-dev"
+                "dev-master": "1.5-dev"
             }
         },
         "installation-source": "dist",
@@ -2110,92 +2109,28 @@
         ]
     },
     {
-        "name": "symfony/deprecation-contracts",
-        "version": "v2.1.2",
-        "version_normalized": "2.1.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/deprecation-contracts.git",
-            "reference": "dd99cb3a0aff6cadd2a8d7d7ed72c2161e218337"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/dd99cb3a0aff6cadd2a8d7d7ed72c2161e218337",
-            "reference": "dd99cb3a0aff6cadd2a8d7d7ed72c2161e218337",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=7.1"
-        },
-        "time": "2020-05-27T08:34:37+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.1-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "function.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Nicolas Grekas",
-                "email": "p@tchwork.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "A generic function and convention to trigger deprecation notices",
-        "homepage": "https://symfony.com",
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
-    },
-    {
         "name": "symfony/options-resolver",
-        "version": "v5.1.2",
-        "version_normalized": "5.1.2.0",
+        "version": "v4.4.10",
+        "version_normalized": "4.4.10.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/options-resolver.git",
-            "reference": "663f5dd5e14057d1954fe721f9709d35837f2447"
+            "reference": "73e1d0fe11ffceb7b7d4ca55b7381cd7ce0bac05"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/options-resolver/zipball/663f5dd5e14057d1954fe721f9709d35837f2447",
-            "reference": "663f5dd5e14057d1954fe721f9709d35837f2447",
+            "url": "https://api.github.com/repos/symfony/options-resolver/zipball/73e1d0fe11ffceb7b7d4ca55b7381cd7ce0bac05",
+            "reference": "73e1d0fe11ffceb7b7d4ca55b7381cd7ce0bac05",
             "shasum": ""
         },
         "require": {
-            "php": ">=7.2.5",
-            "symfony/deprecation-contracts": "^2.1",
-            "symfony/polyfill-php80": "^1.15"
+            "php": "^7.1.3"
         },
-        "time": "2020-05-23T13:08:13+00:00",
+        "time": "2020-05-23T12:09:32+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "5.1-dev"
+                "dev-master": "4.4-dev"
             }
         },
         "installation-source": "dist",
@@ -2531,88 +2466,6 @@
             }
         ],
         "description": "Symfony polyfill backporting some PHP 7.2+ features to lower PHP versions",
-        "homepage": "https://symfony.com",
-        "keywords": [
-            "compatibility",
-            "polyfill",
-            "portable",
-            "shim"
-        ],
-        "funding": [
-            {
-                "url": "https://symfony.com/sponsor",
-                "type": "custom"
-            },
-            {
-                "url": "https://github.com/fabpot",
-                "type": "github"
-            },
-            {
-                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                "type": "tidelift"
-            }
-        ]
-    },
-    {
-        "name": "symfony/polyfill-php80",
-        "version": "v1.17.1",
-        "version_normalized": "1.17.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/polyfill-php80.git",
-            "reference": "4a5b6bba3259902e386eb80dd1956181ee90b5b2"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/4a5b6bba3259902e386eb80dd1956181ee90b5b2",
-            "reference": "4a5b6bba3259902e386eb80dd1956181ee90b5b2",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=7.0.8"
-        },
-        "time": "2020-06-06T08:46:27+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.17-dev"
-            },
-            "thanks": {
-                "name": "symfony/polyfill",
-                "url": "https://github.com/symfony/polyfill"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Polyfill\\Php80\\": ""
-            },
-            "files": [
-                "bootstrap.php"
-            ],
-            "classmap": [
-                "Resources/stubs"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Ion Bazan",
-                "email": "ion.bazan@gmail.com"
-            },
-            {
-                "name": "Nicolas Grekas",
-                "email": "p@tchwork.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony polyfill backporting some PHP 8.0+ features to lower PHP versions",
         "homepage": "https://symfony.com",
         "keywords": [
             "compatibility",
