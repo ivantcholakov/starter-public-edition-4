@@ -50,7 +50,7 @@
   margin-top: 12px;
 }
 .sweet-alert button:focus, .sweet-alert button.cancel:focus {
-  box-shadow: 0 0 1px 2px rgba(88, 144, 255, .75), 0 1px 1px rgba(0, 0, 0, .15) !important;
+  box-shadow: 0 0 1px 2px rgba(88, 144, 255, 0.75), 0 1px 1px rgba(0, 0, 0, 0.15) !important;
 }
 .sweet-alert button.confirm {
   border: 1px solid #3d5586;
@@ -83,7 +83,7 @@
   margin: 10px 0;
 }
 .sweet-alert input:focus {
-  box-shadow: 0 0 1px 2px rgba(88, 144, 255, .75), 0 1px 1px rgba(0, 0, 0, .15) !important;
+  box-shadow: 0 0 1px 2px rgba(88, 144, 255, 0.75), 0 1px 1px rgba(0, 0, 0, 0.15) !important;
 }
 .sweet-alert fieldset .sa-input-error {
   display: none;

@@ -115,7 +115,7 @@
   margin: 10px 0;
 }
 .sweet-alert input:focus {
-  border-color: #94a1a6;
+  border-color: #94A1A6;
   box-shadow: inset 0 0 0 1px rgba(77, 99, 107, 0.7);
 }
 .sweet-alert fieldset .sa-input-error {

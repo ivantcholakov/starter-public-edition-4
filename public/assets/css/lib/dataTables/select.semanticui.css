@@ -22,7 +22,7 @@ table.dataTable.order-column tbody > tr.selected > .sorting_3,
 table.dataTable.display tbody > tr.selected > .sorting_3,
 table.dataTable.order-column tbody > tr > .selected,
 table.dataTable.display tbody > tr > .selected {
-  background-color: rgba(0, 0, 0, 0.06900000000000001);
+  background-color: rgba(0, 0, 0, 0.069);
 }
 table.dataTable.display tbody > tr.odd.selected > .sorting_1,
 table.dataTable.order-column.stripe tbody > tr.odd.selected > .sorting_1 {
@@ -38,7 +38,7 @@ table.dataTable.order-column.stripe tbody > tr.odd.selected > .sorting_3 {
 }
 table.dataTable.display tbody > tr.even.selected > .sorting_1,
 table.dataTable.order-column.stripe tbody > tr.even.selected > .sorting_1 {
-  background-color: rgba(0, 0, 0, 0.06900000000000001);
+  background-color: rgba(0, 0, 0, 0.069);
 }
 table.dataTable.display tbody > tr.even.selected > .sorting_2,
 table.dataTable.order-column.stripe tbody > tr.even.selected > .sorting_2 {
@@ -54,7 +54,7 @@ table.dataTable.order-column.stripe tbody > tr.odd > .selected {
 }
 table.dataTable.display tbody > tr.even > .selected,
 table.dataTable.order-column.stripe tbody > tr.even > .selected {
-  background-color: rgba(0, 0, 0, 0.06900000000000001);
+  background-color: rgba(0, 0, 0, 0.069);
 }
 table.dataTable.display tbody > tr.selected:hover > .sorting_1,
 table.dataTable.order-column.hover tbody > tr.selected:hover > .sorting_1 {
@@ -104,7 +104,7 @@ table.dataTable tr.selected th.select-checkbox:after {
   margin-top: -11px;
   margin-left: -4px;
   text-align: center;
-  text-shadow: 1px 1px #b0bed9, -1px -1px #b0bed9, 1px -1px #b0bed9, -1px 1px #b0bed9;
+  text-shadow: 1px 1px #B0BED9, -1px -1px #B0BED9, 1px -1px #B0BED9, -1px 1px #B0BED9;
 }
 div.dataTables_wrapper span.select-info,
 div.dataTables_wrapper span.select-item {
