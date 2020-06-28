@@ -10,7 +10,6 @@
         "roave/security-advisories": "dev-master",
         "paragonie/random_compat": "^2.0.2",
         "fg/multiplayer": "^1.2.1",
-        "leafo/scssphp": "0.7.7",
         "guzzlehttp/guzzle": "~6.0",
         "whichbrowser/parser": "~2.0.24",
         "erusev/parsedown": "^1.6",
@@ -36,6 +35,7 @@
         "tubalmartin/cssmin": "^4.1",
         "oyejorge/less.php": "~1.7.0.14",
         "athlon1600/php-proxy": "^5.1",
-        "salesforce/handlebars-php": "^2.3"
+        "salesforce/handlebars-php": "^2.3",
+        "scssphp/scssphp": "^1.1"
     }
 }
