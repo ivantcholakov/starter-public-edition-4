@@ -284,6 +284,10 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
         ),
         'H' => 
         array (
+            'Handlebars' => 
+            array (
+                0 => __DIR__ . '/..' . '/salesforce/handlebars-php/src',
+            ),
             'HTMLPurifier' => 
             array (
                 0 => __DIR__ . '/..' . '/ezyang/htmlpurifier/library',
@@ -598,6 +602,21 @@ class ComposerStaticInit7ec88c9c84ecdbd075c7338e7e8fd784
         'HTMLPurifier_VarParser_Flexible' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier/VarParser/Flexible.php',
         'HTMLPurifier_VarParser_Native' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier/VarParser/Native.php',
         'HTMLPurifier_Zipper' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier/Zipper.php',
+        'Handlebars\\Autoloader' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Autoloader.php',
+        'Handlebars\\Cache' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Cache.php',
+        'Handlebars\\Cache\\APC' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Cache/APC.php',
+        'Handlebars\\Cache\\Disk' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Cache/Disk.php',
+        'Handlebars\\Cache\\Dummy' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Cache/Dummy.php',
+        'Handlebars\\Context' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Context.php',
+        'Handlebars\\Handlebars' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Handlebars.php',
+        'Handlebars\\HandlebarsString' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/HandlebarsString.php',
+        'Handlebars\\Helpers' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Helpers.php',
+        'Handlebars\\Loader' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Loader.php',
+        'Handlebars\\Loader\\FilesystemLoader' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Loader/FilesystemLoader.php',
+        'Handlebars\\Loader\\StringLoader' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Loader/StringLoader.php',
+        'Handlebars\\Parser' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Parser.php',
+        'Handlebars\\Template' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Template.php',
+        'Handlebars\\Tokenizer' => __DIR__ . '/..' . '/salesforce/handlebars-php/src/Handlebars/Tokenizer.php',
         'Http\\Adapter\\Guzzle6\\Client' => __DIR__ . '/..' . '/php-http/guzzle6-adapter/src/Client.php',
         'Http\\Adapter\\Guzzle6\\Promise' => __DIR__ . '/..' . '/php-http/guzzle6-adapter/src/Promise.php',
         'Http\\Client\\Common\\BatchClient' => __DIR__ . '/..' . '/php-http/client-common/src/BatchClient.php',

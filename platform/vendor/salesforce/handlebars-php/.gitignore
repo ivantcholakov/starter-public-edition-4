@@ -1,0 +1,7 @@
+vendor
+*.swp
+*.swo
+composer.phar
+composer.lock
+*.iml
+.idea

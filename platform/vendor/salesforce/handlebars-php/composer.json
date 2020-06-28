@@ -1,0 +1,33 @@
+{
+    "name": "salesforce/handlebars-php",
+    "description": "Handlebars processor for php",
+    "homepage": "http://www.github.com/salesforce/handlebars-php",
+    "keywords": ["templating", "mustache", "handlebars"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "fzerorubigd",
+            "email": "fzerorubigd@gmail.com"
+        },
+        {
+            "name": "Behrooz Shabani (everplays)",
+            "email": "everplays@gmail.com"
+        },
+        {
+            "name": "Mardix",
+            "homepage": "https://github.com/mardix"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4"
+    },
+    "autoload": {
+        "psr-0": {
+            "Handlebars": "src/"
+        }
+    }
+}
