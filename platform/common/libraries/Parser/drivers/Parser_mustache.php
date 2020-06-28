@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') || exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013-2019
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013-2020
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -19,9 +19,6 @@ class CI_Parser_mustache extends CI_Parser_driver {
         $this->config = array(
             'cache' => MUSTACHE_CACHE,
             'cache_file_mode' => FILE_WRITE_MODE,
-            'escape' => null,
-            'charset' => null,
-            'entity_flags' => ENT_COMPAT,
             'full_path' => FALSE,
         );
 
@@ -54,22 +51,6 @@ class CI_Parser_mustache extends CI_Parser_driver {
 
         $options = array_merge($this->config, $options);
 
-        if (!isset($options['charset']) || trim($options['charset']) == '')
-        {
-            $options['charset'] = $this->ci->config->item('charset');
-        }
-
-        $options['charset'] = strtoupper($options['charset']);
-
-        if (empty($options['cache']) && array_key_exists('cache', $options))
-        {
-            unset($options['cache']);
-        }
-        elseif (array_key_exists('cache', $options))
-        {
-            $options['cache'] = rtrim($options['cache'], '/\\');
-        }
-
         if (is_object($data))
         {
             $data = get_object_vars($data);
@@ -93,23 +74,42 @@ class CI_Parser_mustache extends CI_Parser_driver {
             $template = $ci->load->path($template);
         }
 
-        // For security reasons don't parse PHP content.
+        if (array_key_exists('cache', $options)) {
 
-        $path = pathinfo($template);
-        $base_dir = $path['dirname'];
-        $template = $path['basename'];
-
-        $ci->load->parser();
-        $p = $ci->parser->detect($template, $detected_extension, $detected_filename);
-
-        if ($detected_extension == '')
-        {
-            $detected_extension = $options['extension'];
+            if ($options['cache'] != '') {
+                $options['cache'] = rtrim($options['cache'], '/\\');
+            } else {
+                unset($options['cache']);
+            }
         }
 
-        $parser = new Mustache_Engine($options);
-        $parser->setLoader(new Mustache_Loader_FilesystemLoader($base_dir, array('extension' => '.'.$detected_extension)));
-        $template = $parser->render($detected_filename, $data);
+        if (array_key_exists('charset', $options)) {
+            $options['charset'] = strtoupper($options['charset']);
+        }
+
+        $base_dir = pathinfo($template, PATHINFO_DIRNAME);
+        $filename = pathinfo($template, PATHINFO_FILENAME);
+        $extension = pathinfo($template, PATHINFO_EXTENSION);
+
+        if (array_key_exists('loader', $options) && !is_object($options['loader'])) {
+            unset($options['loader']);
+        }
+
+        if (empty($options['loader'])) {
+            $options['loader'] = new \Mustache_Loader_FilesystemLoader($base_dir, array('extension' => '.'.$extension));
+        }
+
+        if (array_key_exists('partials_loader', $options) && !is_object($options['partials_loader'])) {
+            unset($options['partials_loader']);
+        }
+
+        if (empty($options['partials_loader'])) {
+            $options['partials_loader'] = new \Mustache_Loader_FilesystemLoader($base_dir, array('extension' => '.'.$extension));
+        }
+
+        $parser = new \Mustache_Engine($options);
+
+        $template = $parser->render($filename, $data);
 
         return $this->output($template, $return, $ci, $is_mx);
     }
@@ -122,22 +122,6 @@ class CI_Parser_mustache extends CI_Parser_driver {
         }
 
         $options = array_merge($this->config, $options);
-
-        if (!isset($options['charset']) || trim($options['charset']) == '')
-        {
-            $options['charset'] = $this->ci->config->item('charset');
-        }
-
-        $options['charset'] = strtoupper($options['charset']);
-
-        if (array_key_exists('cache', $options))
-        {
-            unset($options['cache']);
-        }
-        elseif (array_key_exists('cache', $options))
-        {
-            $options['cache'] = rtrim($options['cache'], '/\\');
-        }
 
         if (is_object($data))
         {
@@ -157,8 +141,27 @@ class CI_Parser_mustache extends CI_Parser_driver {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
-        $parser = new Mustache_Engine($options);
-        $parser->setLoader(new Mustache_Loader_StringLoader());
+        if (array_key_exists('cache', $options)) {
+
+            if ($options['cache'] != '') {
+                $options['cache'] = rtrim($options['cache'], '/\\');
+            } else {
+                unset($options['cache']);
+            }
+        }
+
+        if (array_key_exists('charset', $options)) {
+            $options['charset'] = strtoupper($options['charset']);
+        }
+
+        $options['loader'] = new \Mustache_Loader_StringLoader();
+
+        if (array_key_exists('partials_loader', $options)) {
+            unset($options['partials_loader']);
+        }
+
+        $parser = new \Mustache_Engine($options);
+
         $template = $parser->render($template, $data);
 
         return $this->output($template, $return, $ci, $is_mx);
