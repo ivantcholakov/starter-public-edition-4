@@ -13,7 +13,6 @@ return array(
     'Parsedown' => array($vendorDir . '/erusev/parsedown'),
     'Mustache' => array($vendorDir . '/mustache/mustache/src'),
     'Multiplayer' => array($vendorDir . '/fg/multiplayer/lib'),
-    'Less' => array($vendorDir . '/oyejorge/less.php/lib'),
     'Handlebars' => array($vendorDir . '/salesforce/handlebars-php/src'),
     'HTMLPurifier' => array($vendorDir . '/ezyang/htmlpurifier/library'),
 );
