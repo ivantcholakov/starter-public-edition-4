@@ -12,7 +12,8 @@ $config['cache'] = ENVIRONMENT === 'production' ? MUSTACHE_CACHE : null;
 // "Override default permissions for cache files. Defaults to using
 // the system-defined umask. It is strongly recommended that you
 // configure your umask properly rather than overriding permissions here."
-$config['cache_file_mode'] = 0666;
+//$config['cache_file_mode'] = 0666;
+$config['cache_file_mode'] = FILE_WRITE_MODE;
 
 // "Enable template caching for lambda sections. This is generally
 // not recommended, as lambda sections are often too dynamic
