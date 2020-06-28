@@ -17,6 +17,7 @@
 
                 <div class="right menu">
 
+                    <div class="mobile hidden item">{{ constant('ENVIRONMENT')|upper|e('html') }}</div>
                     {{ widget('theme_switcher_widget/index', 'navbar') }}
                     {{ widget('account_widget') }}
 
