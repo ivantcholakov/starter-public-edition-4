@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') || exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013 - 2016
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013 - 2020
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -17,7 +17,6 @@ class CI_Parser_less extends CI_Parser_driver {
         // Default configuration options.
 
         $this->config = array(
-            'implementation' => 'less.php',
             'tmp_dir' => TMP_PATH,
             'compress' => FALSE,
             'strictUnits' => FALSE,
@@ -68,19 +67,8 @@ class CI_Parser_less extends CI_Parser_driver {
             $template = $ci->load->path($template);
         }
 
-        switch ($options['implementation'])
-        {
-            case 'less.js':
-                $parser = new Lessjs_Parser($options);
-                $template = $parser->parse($template);
-                break;
-
-            default:
-                $parser = new Less_Parser($options);
-                $parser->parseFile($template, $options['uri_root']);
-                $template = $parser->getCss();
-                break;
-        }
+        $parser = new Lessjs_Parser($options);
+        $template = $parser->parse($template);
 
         return $this->output($template, $return, $ci, $is_mx);
     }
@@ -102,19 +90,8 @@ class CI_Parser_less extends CI_Parser_driver {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
-        switch ($options['implementation'])
-        {
-            case 'less.js':
-                $parser = new Lessjs_Parser($options);
-                $template = $parser->parseString($template);
-                break;
-
-            default:
-                $parser = new Less_Parser($options);
-                $parser->parse($template);
-                $template = $parser->getCss();
-                break;
-        }
+        $parser = new Lessjs_Parser($options);
+        $template = $parser->parseString($template);
 
         return $this->output($template, $return, $ci, $is_mx);
     }

@@ -1,16 +1,14 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013-2016
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013-2020
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-// Which compiler is to be used:
-// 'less.php' - https://github.com/oyejorge/less.php
+// Javascript LESS compiler is to be used, called internaly through CLI.
 // 'less.js'  - https://github.com/less/less.js
 //              Install less.js globally, for example on Ubuntu:
 //              sudo npm install -g less
-$config['implementation'] = 'less.php';
 
 // For less.js - the compiler's executable path.
 $config['lessc_path'] = 'lessc';
@@ -37,6 +35,3 @@ $config['relativeUrls'] = TRUE;
 
 // Indentation characters for the output css content, if it is not to be compressed.
 $config['indentation'] = '  ';
-
-// For the full list of possible options see https://github.com/oyejorge/less.php
-// Probably most of them should not be defined here, globally.
