@@ -204,7 +204,7 @@ class CI_Parser_handlebars extends CI_Parser_driver {
 
         $parser = new \Handlebars\Handlebars($options);
 
-        $template = @ $parser->render($template, $data);
+        $template = $parser->render($template, $data);
 
         return $this->output($template, $return, $ci, $is_mx);
     }
