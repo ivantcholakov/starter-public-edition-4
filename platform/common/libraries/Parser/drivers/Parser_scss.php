@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') || exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015 - 2016
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015 - 2020
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -75,7 +75,7 @@ class CI_Parser_scss extends CI_Parser_driver {
             $template = $ci->load->path($template);
         }
 
-        $parser = new \Leafo\ScssPhp\Compiler();
+        $parser = new \ScssPhp\ScssPhp\Compiler();
 
         $parser->setImportPaths($options['import_paths']);
         $parser->addImportPath(dirname($template));
@@ -88,7 +88,7 @@ class CI_Parser_scss extends CI_Parser_driver {
             $formatter = 'expanded';
         }
 
-        $formatter = 'Leafo\ScssPhp\Formatter\\'.ucfirst($formatter);
+        $formatter = 'ScssPhp\ScssPhp\Formatter\\'.ucfirst($formatter);
         $parser->setFormatter($formatter);
 
         $parser->setLineNumberStyle($options['line_number_style']);
@@ -115,7 +115,7 @@ class CI_Parser_scss extends CI_Parser_driver {
             list($ci, $is_mx) = $this->detect_mx();
         }
 
-        $parser = new \Leafo\ScssPhp\Compiler();
+        $parser = new \ScssPhp\ScssPhp\Compiler();
 
         $parser->setImportPaths($options['import_paths']);
         $parser->setNumberPrecision($options['number_precision']);
@@ -127,7 +127,7 @@ class CI_Parser_scss extends CI_Parser_driver {
             $formatter = 'expanded';
         }
 
-        $formatter = 'Leafo\ScssPhp\Formatter\\'.ucfirst($formatter);
+        $formatter = 'ScssPhp\ScssPhp\Formatter\\'.ucfirst($formatter);
         $parser->setFormatter($formatter);
 
         $parser->setLineNumberStyle($options['line_number_style']);
