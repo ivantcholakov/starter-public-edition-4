@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4bfd9eb82c39b6fd88f62bc9c919e383",
+    "content-hash": "4dd82d16fb44c71fbf15cf784fd36100",
     "packages": [
         {
             "name": "athlon1600/php-proxy",
@@ -2695,49 +2695,6 @@
             "time": "2020-02-12T10:54:23+00:00"
         },
         {
-            "name": "xamin/handlebars.php",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/XaminProject/handlebars.php.git",
-                "reference": "38c743f79b8a2b501d9be97a413a56e5c2ed3e0f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/XaminProject/handlebars.php/zipball/38c743f79b8a2b501d9be97a413a56e5c2ed3e0f",
-                "reference": "38c743f79b8a2b501d9be97a413a56e5c2ed3e0f",
-                "shasum": ""
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.4",
-                "squizlabs/php_codesniffer": "~1.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Handlebars": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "fzerorubigd",
-                    "email": "fzerorubigd@gmail.com"
-                },
-                {
-                    "name": "Behrooz Shabani (everplays)",
-                    "email": "everplays@gmail.com"
-                }
-            ],
-            "description": "Handlebars processor for php",
-            "homepage": "https://github.com/XaminProject/handlebars.php",
-            "abandoned": true,
-            "time": "2016-12-27T09:15:36+00:00"
-        },
-        {
             "name": "yohang88/letter-avatar",
             "version": "1.0.5",
             "source": {
@@ -2792,8 +2749,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "codeigniter/framework": 20,
-        "roave/security-advisories": 20,
-        "xamin/handlebars.php": 20
+        "roave/security-advisories": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

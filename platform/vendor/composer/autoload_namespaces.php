@@ -14,6 +14,5 @@ return array(
     'Mustache' => array($vendorDir . '/mustache/mustache/src'),
     'Multiplayer' => array($vendorDir . '/fg/multiplayer/lib'),
     'Less' => array($vendorDir . '/oyejorge/less.php/lib'),
-    'Handlebars' => array($vendorDir . '/xamin/handlebars.php/src'),
     'HTMLPurifier' => array($vendorDir . '/ezyang/htmlpurifier/library'),
 );
