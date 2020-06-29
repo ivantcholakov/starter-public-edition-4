@@ -1,8 +1,8 @@
 {
-    "name": "symfony/options-resolver",
+    "name": "symfony/process",
     "type": "library",
-    "description": "Symfony OptionsResolver Component",
-    "keywords": ["options", "config", "configuration"],
+    "description": "Symfony Process Component",
+    "keywords": [],
     "homepage": "https://symfony.com",
     "license": "MIT",
     "authors": [
@@ -19,7 +19,7 @@
         "php": "^5.5.9|>=7.0.8"
     },
     "autoload": {
-        "psr-4": { "Symfony\\Component\\OptionsResolver\\": "" },
+        "psr-4": { "Symfony\\Component\\Process\\": "" },
         "exclude-from-classmap": [
             "/Tests/"
         ]

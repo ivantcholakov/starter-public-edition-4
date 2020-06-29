@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Symfony\Component\OptionsResolver\Exception;
+namespace Symfony\Component\Process\Exception;
 
 /**
- * Marker interface for all exceptions thrown by the OptionsResolver component.
+ * InvalidArgumentException for the Process Component.
  *
- * @author Bernhard Schussek <bschussek@gmail.com>
+ * @author Romain Neutron <imprec@gmail.com>
  */
-interface ExceptionInterface
+class InvalidArgumentException extends \InvalidArgumentException implements ExceptionInterface
 {
 }
