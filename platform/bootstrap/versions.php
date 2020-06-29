@@ -25,7 +25,7 @@ define('PRODUCT_VERSION', '1.0.0');
  * Minimum Required PHP Version
  * @var    string
  */
-define('PLATFORM_PHP_VERSION_MIN', '5.5.0');
+define('PLATFORM_PHP_VERSION_MIN', '5.5.9');
 
 
 if (version_compare(PHP_VERSION, PLATFORM_PHP_VERSION_MIN, '<')) {
