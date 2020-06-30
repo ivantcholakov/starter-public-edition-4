@@ -52,7 +52,7 @@ class Lessjs_Parser {
 
             $this->parse($filename);
 
-        } catch (Exception $ex) {
+        } catch (\Exception $ex) {
 
             @ unlink($filename);
 
@@ -86,7 +86,7 @@ class Lessjs_Parser {
 
             $this->stdout = $process->getOutput();
 
-        } catch (Exception $exception) {
+        } catch (\Exception $exception) {
 
             $this->stderr = 'Lessjs: Can\'t execute a command.';
 
