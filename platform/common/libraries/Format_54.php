@@ -63,7 +63,7 @@ class Format {
      *
      * @var mixed
      */
-    protected $_data = array();
+    protected $_data = [];
 
     /**
      * Type to convert from
@@ -93,7 +93,7 @@ class Format {
         {
             if (method_exists($this, '_from_'.$from_type))
             {
-                $data = call_user_func(array($this, '_from_'.$from_type), $data);
+                $data = call_user_func([$this, '_from_'.$from_type], $data);
             }
             else
             {
@@ -146,7 +146,7 @@ class Format {
             $data = (array) $data;
         }
 
-        $array = array();
+        $array = [];
         foreach ((array) $data as $key => $value)
         {
             if (is_object($value) === TRUE || is_array($value) === TRUE)
@@ -273,7 +273,7 @@ class Format {
         {
             // Single array
             $headings = array_keys($data);
-            $data = array($data);
+            $data = [$data];
         }
 
         // Load the table library
@@ -291,31 +291,6 @@ class Format {
         }
 
         return $this->_CI->table->generate();
-    }
-
-    /**
-     * Format data as HTML - debug preview.
-     *
-     * @param mixed|NULL $data Optional data to pass, so as to override the data passed
-     * to the constructor
-     * @return string
-     */
-    public function to_debug($data = NULL)
-    {
-        // If no data is passed as a parameter, then use the data passed
-        // via the constructor
-        if ($data === NULL && func_num_args() === 0)
-        {
-            $data = $this->_data;
-        }
-
-        // Cast as an array if not already
-        if (is_array($data) === FALSE)
-        {
-            $data = (array) $data;
-        }
-
-        return print_d($data);
     }
 
     /**
@@ -372,7 +347,7 @@ class Format {
         {
             // Single array
             $headings = array_keys($data);
-            $data = array($data);
+            $data = [$data];
         }
 
         // Apply the headings
@@ -434,40 +409,30 @@ class Format {
 
         if (empty($callback) === TRUE)
         {
-            // Added by Ivan Tcholakov, 15-MAR-2017.
-            if (is_php('5.4')) {
-                return json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-            }
+            // Modified by Ivan Tcholakov, 15-MAR-2017.
+            //return json_encode($data, JSON_UNESCAPED_UNICODE);
+            return json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
             //
-
-            return json_encode($data);
         }
 
         // We only honour a jsonp callback which are valid javascript identifiers
         elseif (preg_match('/^[a-z_\$][a-z0-9\$_]*(\.[a-z_\$][a-z0-9\$_]*)*$/i', $callback))
         {
             // Return the data as encoded json with a callback
-
-            // Added by Ivan Tcholakov, 15-MAR-2017.
-            if (is_php('5.4')) {
-                return $callback.'('.json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT).');';
-            }
+            // Modified by Ivan Tcholakov, 15-MAR-2017.
+            //return $callback.'('.json_encode($data, JSON_UNESCAPED_UNICODE).');';
+            return $callback.'('.json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT).');';
             //
-
-            return $callback.'('.json_encode($data).');';
         }
 
         // An invalid jsonp callback function provided.
         // Though I don't believe this should be hardcoded here
         $data['warning'] = 'INVALID JSONP CALLBACK: '.$callback;
 
-        // Added by Ivan Tcholakov, 15-MAR-2017.
-        if (is_php('5.4')) {
-            return json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-        }
+        // Modified by Ivan Tcholakov, 15-MAR-2017.
+        //return json_encode($data, JSON_UNESCAPED_UNICODE);
+        return json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
         //
-
-        return json_encode($data);
     }
 
     /**
@@ -516,7 +481,7 @@ class Format {
      */
     protected function _from_xml($data)
     {
-        return $data ? (array) simplexml_load_string($data, 'SimpleXMLElement', LIBXML_NOCDATA) : array();
+        return $data ? (array) simplexml_load_string($data, 'SimpleXMLElement', LIBXML_NOCDATA) : [];
     }
 
     /**

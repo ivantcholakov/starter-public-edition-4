@@ -30,5 +30,4 @@ template_partial('subnavbar');
                             <li><a href="<?php echo site_url('playground/rest/server-api-example/users.html'); ?>">Users</a> - get it in HTML (users.html)</li>
                             <li><a href="<?php echo site_url('playground/rest/server-api-example/users/format/html'); ?>">Users</a> - get it in HTML (users/format/html)</li>
                             <li><a href="<?php echo site_url('playground/rest/server-api-example/users?format=html'); ?>">Users</a> - get it in HTML (users?format=html)</li>
-                            <li><a href="<?php echo site_url('playground/rest/server-api-example/users/format/debug'); ?>">Users</a> - get it as a debugging HTML preview</li>
                         </ol>

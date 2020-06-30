@@ -6,7 +6,7 @@ use stdClass;
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require_once dirname(__FILE__).'/REST_Controller_53.php';
+require_once dirname(__FILE__).'/REST_Controller_54.php';
 
 class REST_Controller extends \REST_Controller {
 
