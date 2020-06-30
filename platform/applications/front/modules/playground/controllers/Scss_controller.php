@@ -37,17 +37,10 @@ class Scss_controller extends Playground_Base_Controller {
 
             $input = $this->load->source('test.scss');
 
-            if (is_php('5.6')) {
-
-                try {
-                    $output = $this->parser->parse_string($input, null, true, 'scss');
-                } catch(Exception $e) {
-                    $output = $e->getMessage();
-                }
-
-            } else {
-
-                $output = 'PHP 5.6 or higher is required.';
+            try {
+                $output = $this->parser->parse_string($input, null, true, 'scss');
+            } catch(Exception $e) {
+                $output = $e->getMessage();
             }
 
         } else {
@@ -66,17 +59,10 @@ class Scss_controller extends Playground_Base_Controller {
 
                 $input = $this->input->post('input');
 
-                if (is_php('5.6')) {
-
-                    try {
-                        $output = $this->parser->parse_string($input, null, true, 'scss');
-                    } catch(Exception $e) {
-                        $output = $e->getMessage();
-                    }
-
-                } else {
-
-                    $output = 'PHP 5.6 or higher is required.';
+                try {
+                    $output = $this->parser->parse_string($input, null, true, 'scss');
+                } catch(Exception $e) {
+                    $output = $e->getMessage();
                 }
 
             } elseif (validation_errors()) {

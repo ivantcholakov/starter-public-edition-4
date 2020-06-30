@@ -13,13 +13,6 @@ class CI_Parser_jsonmin extends CI_Parser_driver {
 
     public function initialize()
     {
-        $php_min = '5.6.0';
-
-        if (!is_php($php_min))
-        {
-            throw new Exception('CI_Parser_jsonmin: Requires PHP '.$php_min.' or above.');
-        }
-
         $this->ci = get_instance();
 
         // Default configuration options.
