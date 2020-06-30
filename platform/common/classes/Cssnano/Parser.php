@@ -95,7 +95,19 @@ class Cssnano_Parser {
                 $this->stderr .= PHP_EOL.$exception->getMessage();
             }
 
+            if (isset($this->config_file)) {
+
+                @ unlink($this->config_file);
+                $this->config_file = null;
+            }
+
             throw new \RuntimeException($this->stderr);
+        }
+
+        if (isset($this->config_file)) {
+
+            @ unlink($this->config_file);
+            $this->config_file = null;
         }
 
         return $this->stdout;
