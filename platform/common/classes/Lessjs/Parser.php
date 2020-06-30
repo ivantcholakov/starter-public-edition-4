@@ -1,5 +1,8 @@
 <?php
 
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
+
 /**
  * A PHP wrapper for less.js
  *
@@ -11,6 +14,8 @@
 class Lessjs_Parser {
 
     protected $options;
+    protected $stdout;
+    protected $stderr;
 
     public function __construct($options = null) {
 
@@ -40,26 +45,23 @@ class Lessjs_Parser {
      */
     public function parseString($str) {
 
-        $result = null;
-
         $filename = tempnam($this->options['tmp_dir'], 'Lessjs_');
         file_put_contents($filename, $str);
 
         try {
 
-            $result = $this->parse($filename);
+            $this->parse($filename);
 
         } catch (Exception $ex) {
-            // Intentionally left empty.
+
+            @ unlink($filename);
+
+            throw new \RuntimeException($this->stderr);
         }
 
         @ unlink($filename);
 
-        if (!empty($ex)) {
-            throw $ex;
-        }
-
-        return $result;
+        return $this->stdout;
     }
 
     /**
@@ -71,50 +73,31 @@ class Lessjs_Parser {
      */
     public function parse($filename) {
 
+        $this->stdout = '';
+        $this->stderr = '';
+
         $cmd = $this->getCompilerPath().$this->parseOptions().' '.escape_shell_arg($filename);
 
-        $descriptorspec = array(
-            0 => array('pipe', 'r'), // stdin
-            1 => array('pipe', 'w'), // stdout
-            2 => array('pipe', 'w')  // stderr
-        );
+        $process = new Process($cmd);
 
-        $process = proc_open($cmd, $descriptorspec, $pipes);
+        try {
 
-        if (is_resource($process)) {
+            $process->mustRun();
 
-            $stdout = stream_get_contents($pipes[1]);
-            fclose($pipes[1]);
+            $this->stdout = $process->getOutput();
 
-            $stderr = stream_get_contents($pipes[2]);
-            fclose($pipes[2]);
+        } catch (Exception $exception) {
 
-            $return = proc_close($process);
+            $this->stderr = 'Lessjs: Can\'t execute a command.';
 
-        } else {
+            if (ENVIRONMENT !== 'production') {
+                $this->stderr .= PHP_EOL.$exception->getMessage();
+            }
 
-            $return = 1;
-            $stderr = "Lessjs_Parser: Can't execute a command.\n";
+            throw new \RuntimeException($this->stderr);
         }
 
-        if ($return === 0) {
-            return $stdout;
-        }
-
-        throw new RuntimeException($stderr);
-    }
-
-    public function getVersion() {
-
-        $cmd = $this->getCompilerPath().' --version';
-
-        exec($cmd, $output, $return);
-
-        if ($return == 0 && isset($output[0])) {
-            return $output[0];
-        }
-
-        return null;
+        return $this->stdout;
     }
 
     //--------------------------------------------------------------------------
