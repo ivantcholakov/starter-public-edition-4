@@ -27,6 +27,7 @@ class Main_menu_widget_controller extends Base_Widget_Controller {
         $nav['contact-page-test'] = array('label' => 'Contact Page Test', 'icon' => 'mail icon', 'location' => 'contact-page-test');
         $nav['playground'] = array('label' => 'The Playground', 'icon' => 'sun icon', 'location' => 'playground');
 
+        /*
         // Sub-menu demostration.
         $nav['non_mvc_page'] = array('label' => 'Non-MVC Page Demonstration', 'location' => 'non-mvc/demo.php', 'parent_id' => 'playground');
         $nav['http_build_url'] = array('label' => 'Testing http_build_url()', 'location' => 'non-mvc/http_build_url_test.php', 'parent_id' => 'playground');
@@ -35,6 +36,7 @@ class Main_menu_widget_controller extends Base_Widget_Controller {
         $nav['playground/mustache'] = array('label' => 'Mustache Parser Test', 'location' => 'playground/mustache', 'parent_id' => 'playground');
         $nav['playground/separator_2'] = array('blank' => true, 'parent_id' => 'playground');
         $nav['and_so_on'] = array('label' => 'And so on, see the Playground index page', 'location' => 'playground', 'parent_id' => 'playground');
+        */
 
         $nav = $this->menu->render($nav, $active, NULL, 'data');
         $this->menu->reset();
