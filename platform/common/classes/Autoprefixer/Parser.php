@@ -48,6 +48,7 @@ class Autoprefixer_Parser {
 
         $filename = tempnam($this->options['tmp_dir'], 'Autoprefixer_');
         file_put_contents($filename, $str);
+        @chmod($filename, FILE_WRITE_MODE);
 
         try {
 
@@ -169,6 +170,7 @@ class Autoprefixer_Parser {
     }
 }';
         file_put_contents($this->config_file, $config);
+        @chmod($this->config_file, FILE_WRITE_MODE);
 
         $result[] = '--config '.escape_shell_arg($this->config_file);
 

@@ -131,6 +131,7 @@ class TSCompiler {
 		$tmpFile = tempnam(self::$TMP_DIR, 'TS_');
 		$file = $tmpFile . '.ts';
 		file_put_contents($file, $str);
+                @chmod($file, FILE_WRITE_MODE);
 		$compiledCode = self::compileToStr($file, $options, $errorInfo);
 		unlink($file);
 		unlink($tmpFile);

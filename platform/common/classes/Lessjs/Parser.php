@@ -47,6 +47,7 @@ class Lessjs_Parser {
 
         $filename = tempnam($this->options['tmp_dir'], 'Lessjs_');
         file_put_contents($filename, $str);
+        @chmod($filename, FILE_WRITE_MODE);
 
         try {
 
