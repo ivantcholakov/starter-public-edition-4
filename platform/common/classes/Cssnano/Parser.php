@@ -155,10 +155,6 @@ class Cssnano_Parser {
         @chmod($config_file, FILE_WRITE_MODE);
         $this->config_file = $config_file.'.json';
 
-        // The external script requires .json extension,
-        // otherwise the file is not accepted as valid.
-        rename($this->config_file, $this->config_file .= '.json');
-
         $config = '{
     "cssnano": {
         "safe": '.json_encode(!empty($this->options['safe'])).'
