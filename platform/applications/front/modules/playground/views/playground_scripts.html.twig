@@ -1,0 +1,24 @@
+
+{{ js('lib/imagesloaded/imagesloaded.pkgd.min.js') }}
+{{ js('lib/masonry/masonry.pkgd.min.js') }}
+
+    <script type="text/javascript">
+    //<![CDATA[
+
+    (function( $ ) {
+
+        var $container = $('.masonry-container');
+
+        $container.imagesLoaded( function () {
+
+            $container.masonry({
+                columnWidth: '.masonry-item',
+                itemSelector: '.masonry-item',
+                percentPosition: true
+            });
+        });
+
+    })(jQuery);
+
+    //]]>
+    </script>

@@ -21,6 +21,7 @@ class Playground_controller extends Playground_Base_Controller {
     public function index() {
 
         $this->template
+            ->set_partial('scripts', 'playground_scripts')
             ->build('playground');
     }
 
