@@ -76,7 +76,7 @@ define('IS_PHP_5_2', is_php('5.2.0'));  // DEPRECATED
 define('IS_PHP_5_3', is_php('5.3.0'));  // DEPRECATED
 define('IS_PHP_5_4', is_php('5.4.0'));  // DEPRECATED
 define('IS_PHP_5_5', is_php('5.5.0'));  // DEPRECATED
-define('IS_WINDOWS_OS', strtolower(substr(php_uname('s'), 0, 3 )) == 'win');
+define('IS_WINDOWS_OS', stripos(PHP_OS, 'WIN') === 0);
 define('IS_CLI', (PHP_SAPI == 'cli') || defined('STDIN'));
 define('IS_CLI_REQUEST', IS_CLI);       // DEPRECATED, use IS_CLI instead.
 define('IS_AJAX_REQUEST', isset($_SERVER['HTTP_X_REQUESTED_WITH'])
