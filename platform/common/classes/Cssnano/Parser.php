@@ -81,6 +81,7 @@ class Cssnano_Parser {
         $cmd = $this->getCompilerPath().' --no-map --use cssnano'.$this->parseOptions().' '.escape_shell_arg($filename);
 
         $process = new Process($cmd);
+        $process->setTimeout(3600);
 
         try {
 
