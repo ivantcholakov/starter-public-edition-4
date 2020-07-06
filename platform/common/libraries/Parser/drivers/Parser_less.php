@@ -18,10 +18,6 @@ class CI_Parser_less extends CI_Parser_driver {
 
         $this->config = array(
             'tmp_dir' => TMP_PATH,
-            'compress' => FALSE,
-            'strictUnits' => FALSE,
-            'uri_root' => '',
-            'relativeUrls' => TRUE,
             'full_path' => FALSE,
         );
 

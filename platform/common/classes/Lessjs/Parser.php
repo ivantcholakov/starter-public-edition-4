@@ -108,12 +108,21 @@ class Lessjs_Parser {
 
         $this->options = array();
 
+        // See http://lesscss.org/usage/#command-line-usage
+
         $this->options['lessc_path'] = 'lessc';
         $this->options['tmp_dir'] = sys_get_temp_dir();
-        $this->options['compress'] = false; // This option is deprecated.
-        $this->options['strictUnits'] = false;
-        $this->options['uri_root'] = '';
-        $this->options['relativeUrls'] = true;
+        $this->options['compress'] = false;         // Deprecated.
+        $this->options['strict_units'] = false;
+        $this->options['rootpath'] = '';
+        $this->options['relative_urls'] = true;     // Deprecated.
+        $this->options['include_path'] = '';
+        $this->options['rewrite_urls'] = 'off';
+        $this->options['math'] = 'always';
+        $this->options['global_var'] = '';
+        $this->options['modify_var'] = '';
+        $this->options['url_args'] = '';
+        $this->options['verbose'] = false;
     }
 
     protected function setOption($key, $value) {
@@ -126,6 +135,18 @@ class Lessjs_Parser {
 
             case 'tmp_dir':
                 $this->options[$key] = $value == '' ? sys_get_temp_dir() : $value;
+                break;
+
+            case 'relativeUrls':
+                $this->options['relative_urls'] = $value;
+                break;
+
+            case 'strictUnits':
+                $this->options['strict_units'] = $value;
+                break;
+
+            case 'uri_root':
+                $this->options['rootpath'] = $value;
                 break;
 
             default:
@@ -150,7 +171,7 @@ class Lessjs_Parser {
 
                     break;
 
-                case 'strictUnits':
+                case 'strict_units':
 
                     if (!empty($value)) {
                         $result[] = '--strict-units=on';
@@ -158,7 +179,7 @@ class Lessjs_Parser {
 
                     break;
 
-                case 'uri_root':
+                case 'rootpath':
 
                     if ($value != '') {
                         $result[] = '--rootpath='.escape_shell_arg($value);
@@ -166,14 +187,72 @@ class Lessjs_Parser {
 
                     break;
 
-                case 'relativeUrls':
+                case 'relative_urls':
 
                     if (!empty($value)) {
-                        $result[] = '--relative-urls';
+
+                        $value = 'all';
+                        $result[] = '--rewrite-urls='.escape_shell_arg($value);
                     }
 
                     break;
-            }
+
+                case 'include_path':
+
+                    if (is_array($value)) {
+                        $value = implode(IS_WINDOWS_OS ? ';' : ':', $value);
+                    }
+
+                    if ($value != '') {
+                        $result[] = '--include-path='.escape_shell_arg($value);
+                    }
+
+                    break;
+
+                case 'rewrite_urls':
+
+                    $result[] = '--rewrite-urls='.escape_shell_arg($value);
+
+                    break;
+
+                case 'math':
+
+                    $result[] = '--math='.escape_shell_arg($value);
+
+                    break;
+
+                case 'global_var':
+
+                    if ($value != '') {
+                        $result[] = '--global-var='.escape_shell_arg($value);
+                    }
+
+                    break;
+
+                case 'modify_var':
+
+                    if ($value != '') {
+                        $result[] = '--modify-var='.escape_shell_arg($value);
+                    }
+
+                    break;
+
+                case 'url_args':
+
+                    if ($value != '') {
+                        $result[] = '--url-args='.escape_shell_arg($value);
+                    }
+
+                    break;
+
+                case 'verbose':
+
+                    if (!empty($value)) {
+                        $result[] = '--verbose';
+                    }
+
+                    break;
+                }
         }
 
         return empty($result) ? '' : ' '.implode(' ', $result);
