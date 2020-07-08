@@ -443,8 +443,41 @@ A simple example:
 
 As you can see, there are source and destinations files, and a chain of parsers with their specific options.
 The type of the task here is the name of the first parser to be applied. Practically, more complex tasks
-might be needed when CSS and Javascripts are merged into a single result file, there are two special task-types:
-'merge_css' and 'merge_js', see within the configuration file about how they are done.
+might be needed when CSS and Javascripts are merged into a single result file. For this purpose there are
+two special task-types: 'merge_css' and 'merge_js', see an example:
+
+```php
+    [
+        'name' => 'front_default_css',
+        'type' => 'merge_css',
+        'destination' => DEFAULTFCPATH.'themes/front_default/css/front.min.css',
+        'sources' => [
+            [
+                'source' => DEFAULTFCPATH.'themes/front_default/src/front.less',
+                'type' => 'less',
+                'less' => [
+                    'rewrite_urls' => 'all',
+                ],
+                'autoprefixer' => ['browsers' => ['> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4']],
+                'cssmin' => [],
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/scss/lib/sweetalert/sweetalert.scss',
+                'type' => 'scss',
+                'autoprefixer' => ['browsers' => ['> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4']],
+                'cssmin' => [],
+            ],
+        ],
+        'before' => '_prepare_semantic_source',
+        'after' => [
+            '_create_sha384',
+            '_create_sha384_base64',
+        ],
+    ],
+```
+
+Within the example 'before' and 'after' elements are callbacks that do additional user-defined
+actions before and after the correspinding task is executed. 
 
 Compilation is to be done from command-line. Open a terminal at the folder platform/public/ and write the following
 command:
