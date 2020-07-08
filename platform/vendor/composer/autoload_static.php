@@ -25,7 +25,6 @@ class ComposerStaticInite8cec9e0c2dc76883ed32798db3a44e5
     public static $prefixLengthsPsr4 = array (
         't' => 
         array (
-            'tubalmartin\\CssMin\\' => 19,
             't1st3\\' => 6,
         ),
         'Y' => 
@@ -96,10 +95,6 @@ class ComposerStaticInite8cec9e0c2dc76883ed32798db3a44e5
     );
 
     public static $prefixDirsPsr4 = array (
-        'tubalmartin\\CssMin\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/tubalmartin/cssmin/src',
-        ),
         't1st3\\' => 
         array (
             0 => __DIR__ . '/..' . '/t1st3/php-json-minify/src/t1st3',
@@ -1551,10 +1546,6 @@ class ComposerStaticInite8cec9e0c2dc76883ed32798db3a44e5
         'WhichBrowser\\Parser' => __DIR__ . '/..' . '/whichbrowser/parser/src/Parser.php',
         'YoHang88\\LetterAvatar\\LetterAvatar' => __DIR__ . '/..' . '/yohang88/letter-avatar/src/LetterAvatar.php',
         't1st3\\JSONMin\\JSONMin' => __DIR__ . '/..' . '/t1st3/php-json-minify/src/t1st3/JSONMin/JSONMin.php',
-        'tubalmartin\\CssMin\\Colors' => __DIR__ . '/..' . '/tubalmartin/cssmin/src/Colors.php',
-        'tubalmartin\\CssMin\\Command' => __DIR__ . '/..' . '/tubalmartin/cssmin/src/Command.php',
-        'tubalmartin\\CssMin\\Minifier' => __DIR__ . '/..' . '/tubalmartin/cssmin/src/Minifier.php',
-        'tubalmartin\\CssMin\\Utils' => __DIR__ . '/..' . '/tubalmartin/cssmin/src/Utils.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
