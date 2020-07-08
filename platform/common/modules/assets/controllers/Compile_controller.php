@@ -40,6 +40,8 @@ class Compile_controller extends Core_Controller {
 
     public function index()
     {
+        echo PHP_EOL;
+
         $params = array_slice($this->uri->rsegment_array(), 2);
 
         if (empty($this->tasks)) {
