@@ -20,15 +20,8 @@ $config['tasks'] = [
 
     // SCSS --------------------------------------------------------------------
 
-    // php cli.php assets compile material-design-icons material-design-icons-min
+    // php cli.php assets compile material-design-icons-min
 
-    [
-        'name' => 'material-design-icons',
-        'type' => 'scss',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/material-design-icons/material-icons.css',
-        'source' => DEFAULTFCPATH.'assets/scss/lib/material-design-icons/material-icons.scss',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-    ],
     [
         'name' => 'material-design-icons-min',
         'type' => 'scss',
@@ -38,17 +31,10 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php assets compile sweetalert sweetalert-min sweetalert-custom sweetalert-custom-min sweetalert-facebook sweetalert-facebook-min sweetalert-google sweetalert-google-min sweetalert-twitter sweetalert-twitter-min
+    // php cli.php assets compile sweetalert-min sweetalert-custom-min sweetalert-facebook-min sweetalert-google-min sweetalert-twitter-min
 
-    // php cli.php assets compile sweetalert sweetalert-min
+    // php cli.php sweetalert sweetalert-min
 
-    [
-        'name' => 'sweetalert',
-        'type' => 'scss',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/sweetalert/sweetalert.css',
-        'source' => DEFAULTFCPATH.'assets/scss/lib/sweetalert/sweetalert.scss',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-    ],
     [
         'name' => 'sweetalert-min',
         'type' => 'scss',
@@ -58,15 +44,8 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php assets compile sweetalert-custom sweetalert-custom-min
+    // php cli.php assets compile sweetalert-custom-min
 
-    [
-        'name' => 'sweetalert-custom',
-        'type' => 'scss',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/sweetalert/sweetalert-custom.css',
-        'source' => DEFAULTFCPATH.'assets/scss/lib/sweetalert/sweetalert-custom.scss',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-    ],
     [
         'name' => 'sweetalert-custom-min',
         'type' => 'scss',
@@ -76,15 +55,8 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php assets compile sweetalert-facebook sweetalert-facebook-min
+    // php cli.php assets compile sweetalert-facebook-min
 
-    [
-        'name' => 'sweetalert-facebook',
-        'type' => 'scss',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/sweetalert/facebook.css',
-        'source' => DEFAULTFCPATH.'assets/scss/lib/sweetalert/facebook.scss',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-    ],
     [
         'name' => 'sweetalert-facebook-min',
         'type' => 'scss',
@@ -94,15 +66,8 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php assets compile sweetalert-google sweetalert-google-min
+    // php cli.php assets compile sweetalert-google-min
 
-    [
-        'name' => 'sweetalert-google',
-        'type' => 'scss',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/sweetalert/google.css',
-        'source' => DEFAULTFCPATH.'assets/scss/lib/sweetalert/google.scss',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-    ],
     [
         'name' => 'sweetalert-google-min',
         'type' => 'scss',
@@ -112,15 +77,8 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php assets compile sweetalert-twitter sweetalert-twitter-min
+    // php cli.php assets compile sweetalert-twitter-min
 
-    [
-        'name' => 'sweetalert-twitter',
-        'type' => 'scss',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/sweetalert/twitter.css',
-        'source' => DEFAULTFCPATH.'assets/scss/lib/sweetalert/twitter.scss',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-    ],
     [
         'name' => 'sweetalert-twitter-min',
         'type' => 'scss',
@@ -132,15 +90,8 @@ $config['tasks'] = [
 
     // LESS --------------------------------------------------------------------
 
-    // php cli.php less compile editor editor-min
+    // php cli.php less compile editor-min
 
-    [
-        'name' => 'editor',
-        'type' => 'less',
-        'source' => DEFAULTFCPATH.'assets/less/lib/editor/index.less',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/editor/editor.css',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-    ],
     [
         'name' => 'editor-min',
         'type' => 'less',
@@ -150,15 +101,8 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php less compile font-awesome-5 font-awesome-5-min
+    // php cli.php less compile font-awesome-5-min
 
-    [
-        'name' => 'font-awesome-5',
-        'type' => 'less',
-        'source' => DEFAULTFCPATH.'assets/less/lib/font-awesome-5/fontawesome-all.less',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/font-awesome-5/fontawesome-all.css',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-    ],
     [
         'name' => 'font-awesome-5-min',
         'type' => 'less',
@@ -168,15 +112,8 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php less compile material-icons material-icons-min
+    // php cli.php less compile material-icons-min
 
-    [
-        'name' => 'material-icons',
-        'type' => 'less',
-        'source' => DEFAULTFCPATH.'assets/less/lib/material-icons/material-icons.less',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/material-icons/material-icons.css',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-    ],
     [
         'name' => 'material-icons-min',
         'type' => 'less',
@@ -186,15 +123,8 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php less compile datatables-semantic-ui datatables-semantic-ui-min
+    // php cli.php less compile datatables-semantic-ui-min
 
-    [
-        'name' => 'datatables-semantic-ui',
-        'type' => 'less',
-        'source' => DEFAULTFCPATH.'assets/less/lib/dataTables/dataTables.semanticui.less',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/dataTables/dataTables.semanticui.css',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-    ],
     [
         'name' => 'datatables-semantic-ui-min',
         'type' => 'less',
@@ -204,15 +134,8 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php less compile datatables-responsive-semantic-ui datatables-responsive-semantic-ui-min
+    // php cli.php less compile datatables-responsive-semantic-ui-min
 
-    [
-        'name' => 'datatables-responsive-semantic-ui',
-        'type' => 'less',
-        'source' => DEFAULTFCPATH.'assets/less/lib/dataTables/responsive.semanticui.less',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/dataTables/responsive.semanticui.css',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-    ],
     [
         'name' => 'datatables-responsive-semantic-ui-min',
         'type' => 'less',
@@ -222,15 +145,8 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php less compile datatables-select-semantic-ui datatables-select-semantic-ui-min
+    // php cli.php less compile datatables-select-semantic-ui-min
 
-    [
-        'name' => 'datatables-select-semantic-ui',
-        'type' => 'less',
-        'source' => DEFAULTFCPATH.'assets/less/lib/dataTables/select.semanticui.less',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/dataTables/select.semanticui.css',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-    ],
     [
         'name' => 'datatables-select-semantic-ui-min',
         'type' => 'less',
@@ -240,15 +156,8 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php less compile semantic-ui semantic-ui-min
+    // php cli.php less compile semantic-ui-min
 
-    [
-        'name' => 'semantic-ui',
-        'type' => 'less',
-        'source' => DEFAULTFCPATH.'assets/less/lib/semantic/semantic.less',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/semantic/semantic.css',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-    ],
     [
         'name' => 'semantic-ui-min',
         'type' => 'less',
@@ -258,15 +167,8 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php less compile semantic-ui-custom semantic-ui-custom-min
+    // php cli.php less compile semantic-ui-custom-min
 
-    [
-        'name' => 'semantic-ui-custom',
-        'type' => 'less',
-        'source' => DEFAULTFCPATH.'assets/less/lib/semantic-custom/semantic-custom.less',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/semantic-custom/semantic-custom.css',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-    ],
     [
         'name' => 'semantic-ui-custom-min',
         'type' => 'less',
