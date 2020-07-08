@@ -139,7 +139,7 @@ class Compile_controller extends Core_Controller {
                     write_file($task['destination'], $task['result']);
                     @chmod($task['destination'], FILE_WRITE_MODE);
 
-                    echo $task['destination'].PHP_EOL;
+                    echo $task['name'].': '.$task['destination'].PHP_EOL;
 
                 } catch(Exception $e) {
 
