@@ -1,23 +1,14 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015-2016
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015-2020
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
 // Which CSS minifier is to be used:
-// 'yui_css_compressor' - https://github.com/tubalmartin/YUI-CSS-compressor-PHP-port
-// 'minifycss'          - https://github.com/matthiasmullie/minify
 // 'cssnano'            - http://cssnano.co
-$config['implementation'] = 'yui_css_compressor';
-
-// Options for 'yui_css_compressor':
-
-$config['raise_php_limits'] = TRUE;
-$config['memory_limit'] = '128M';
-$config['max_execution_time'] = 60;
-$config['pcre_backtrack_limit'] = 1000 * 1000;
-$config['pcre_recursion_limit'] = 500 * 1000;
+// 'minifycss'          - https://github.com/matthiasmullie/minify
+$config['implementation'] = 'cssnano';
 
 // Options for 'cssnano':
 

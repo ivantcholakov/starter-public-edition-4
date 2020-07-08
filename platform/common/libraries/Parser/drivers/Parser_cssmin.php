@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') || exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015 - 2017
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015 - 2020
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
@@ -17,12 +17,7 @@ class CI_Parser_cssmin extends CI_Parser_driver {
         // Default configuration options.
 
         $this->config = array(
-            'implementation' => 'yui_css_compressor',
-            'raise_php_limits' => TRUE,
-            'memory_limit' => '128M',
-            'max_execution_time' => 60,
-            'pcre_backtrack_limit' => 1000 * 1000,
-            'pcre_recursion_limit' => 500 * 1000,
+            'implementation' => 'cssnano',
             'safe' => TRUE,
             'full_path' => FALSE,
         );
@@ -71,50 +66,14 @@ class CI_Parser_cssmin extends CI_Parser_driver {
 
         switch ($options['implementation'])
         {
-            case 'cssnano':
-                $parser = new Cssnano_Parser($options);
-                $template = $parser->parse($template);
-                break;
-
             case 'minifycss':
                 $parser = new MatthiasMullie\Minify\CSS($template);
                 $template = $parser->minify();
                 break;
 
             default:
-
-                // For security reasons don't parse PHP content.
-                $template = @ file_get_contents($template);
-
-                $options['raise_php_limits'] = !empty($options['raise_php_limits']);
-
-                $parser = new tubalmartin\CssMin\Minifier($options['raise_php_limits']);
-
-                if ($options['raise_php_limits'])
-                {
-                    if ($options['memory_limit'] != '')
-                    {
-                        $parser->setMemoryLimit($options['memory_limit']);
-                    }
-
-                    if ($options['max_execution_time'] != '')
-                    {
-                        $parser->setMaxExecutionTime($options['max_execution_time']);
-                    }
-
-                    if ($options['pcre_backtrack_limit'] != '')
-                    {
-                        $parser->setPcreBacktrackLimit($options['pcre_backtrack_limit']);
-                    }
-
-                    if ($options['pcre_recursion_limit'] != '')
-                    {
-                        $parser->setPcreRecursionLimit($options['pcre_recursion_limit']);
-                    }
-                }
-
-                $template = $parser->run($template);
-
+                $parser = new Cssnano_Parser($options);
+                $template = $parser->parse($template);
                 break;
         }
 
@@ -140,47 +99,14 @@ class CI_Parser_cssmin extends CI_Parser_driver {
 
         switch ($options['implementation'])
         {
-            case 'cssnano':
-                $parser = new Cssnano_Parser($options);
-                $template = $parser->parseString($template);
-                break;
-
             case 'minifycss':
                 $parser = new MatthiasMullie\Minify\CSS($template);
                 $template = $parser->minify();
                 break;
 
             default:
-
-                $options['raise_php_limits'] = !empty($options['raise_php_limits']);
-
-                $parser = new tubalmartin\CssMin\Minifier($options['raise_php_limits']);
-
-                if ($options['raise_php_limits'])
-                {
-                    if ($options['memory_limit'] != '')
-                    {
-                        $parser->setMemoryLimit($options['memory_limit']);
-                    }
-
-                    if ($options['max_execution_time'] != '')
-                    {
-                        $parser->setMaxExecutionTime($options['max_execution_time']);
-                    }
-
-                    if ($options['pcre_backtrack_limit'] != '')
-                    {
-                        $parser->setPcreBacktrackLimit($options['pcre_backtrack_limit']);
-                    }
-
-                    if ($options['pcre_recursion_limit'] != '')
-                    {
-                        $parser->setPcreRecursionLimit($options['pcre_recursion_limit']);
-                    }
-                }
-
-                $template = $parser->run($template);
-
+                $parser = new Cssnano_Parser($options);
+                $template = $parser->parseString($template);
                 break;
         }
 
