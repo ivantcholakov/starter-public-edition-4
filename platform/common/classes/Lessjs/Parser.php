@@ -112,10 +112,8 @@ class Lessjs_Parser {
 
         $this->options['lessc_path'] = 'lessc';
         $this->options['tmp_dir'] = sys_get_temp_dir();
-        $this->options['compress'] = false;         // Deprecated.
         $this->options['strict_units'] = false;
         $this->options['rootpath'] = '';
-        $this->options['relative_urls'] = true;     // Deprecated.
         $this->options['include_path'] = '';
         $this->options['rewrite_urls'] = 'off';
         $this->options['math'] = 'always';
@@ -189,11 +187,8 @@ class Lessjs_Parser {
 
                 case 'relative_urls':
 
-                    if (!empty($value)) {
-
-                        $value = 'all';
-                        $result[] = '--rewrite-urls='.escape_shell_arg($value);
-                    }
+                    $value = empty($value) ? 'off' : 'all';
+                    $result[] = '--rewrite-urls='.escape_shell_arg($value);
 
                     break;
 
