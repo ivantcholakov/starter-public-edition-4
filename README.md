@@ -432,9 +432,7 @@ A simple example:
         'type' => 'less',
         'source' => DEFAULTFCPATH.'themes/front_default/src/my.less',
         'destination' => DEFAULTFCPATH.'themes/front_default/src/my.min.css',
-        'less' => [
-            'rewrite_urls' => 'all',
-        ],
+        'less' => [],
         'autoprefixer' => ['browsers' => ['> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4']],
         'cssmin' => [],
     ],
@@ -455,9 +453,7 @@ two special task-types: 'merge_css' and 'merge_js', see an example:
             [
                 'source' => DEFAULTFCPATH.'themes/front_default/src/front.less',
                 'type' => 'less',
-                'less' => [
-                    'rewrite_urls' => 'all',
-                ],
+                'less' => [],
                 'autoprefixer' => ['browsers' => ['> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4']],
                 'cssmin' => [],
             ],
