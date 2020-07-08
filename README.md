@@ -59,7 +59,7 @@ public/upload/
 ```
 
 Have a look at the files .htaccess and robots.txt and adjust them for your site.
-Within the folder platform/applications you will by default two applications - "front" and "admin".
+Within the directory platform/applications you will by default two applications - "front" and "admin".
 Have a look at their configuration files. Also, the common PHP configuration files you may find at platform/common/config/ folder.
 
 The platform auto-detects its base URL address nevertheless its public part is on the document root of the web-server or not.
@@ -172,19 +172,23 @@ This command should work:
 tsc -v
 ```
 
+On compilation of huge web-resources Node.js might exaust its memory, in such case try
+(the value may vary):
+
+```sh
+export NODE_OPTIONS=--max-old-space-size=8192
+```
+
 Coding Rules
 ------------
 
-For originally written code:
+For originally written code a tab is turned into four spaces. This is the only
+strict rule. Standard PSR rules are welcome, but it is desirable code not to be
+'compressed' vertically, use more meaningful empty lines that would make code
+more readable and comfortable.
 
-* A tab is turned into four spaces.
-
-For CodeIgniter system files, third-party libraries, components, etc.:
-
-* Use the code rules adopted by the corresponding authors.
-
-Features
---------
+Additional Features
+-------------------
 
 * CodeIgniter 3, https://codeigniter.com/, https://github.com/bcit-ci/CodeIgniter , installed by using Composer.
 * On a web-server you can place your site (public folder) within a subdirectory.
@@ -409,23 +413,50 @@ $this->template
 ```
 
 * CodeIgniter Checkbox Helper, https://gist.github.com/mikedfunk/4004986
-* Configured LESS-assets compiler has been added.
+* Configured web-assets compiler has been added.
 
-Have a look at platform/common/config/less_compile.php file. It contains a list of files (sources, destinations)
+Gulp/Webpack and etc. package managers
+from the Javascript world might be annoying burden for a PHP-developer. In order to make this matter easier, a web-asset
+compilator has been implemented, it uses internally the corresponding parsers. First, the
+compiler's tasks must be specified by names, see the configuration file platform/common/config/assets_compile.php.
+
+Have a look at platform/common/config/assets_compile.php file. It contains a list of files (sources, destinations)
 to be used for LESS to CSS compilation. You may edit this list according to your needs. Before compilation, make sure
 that destination files (if exist) are writable and their containing folders are writable too.
+A simple example:
 
-LESS-compilation is to be done from command-line. Open a terminal at the folder platform/public/ and write the following
+```php
+    ...
+    [
+        'name' => 'my_task',
+        'type' => 'less',
+        'source' => DEFAULTFCPATH.'themes/front_default/src/my.less',
+        'destination' => DEFAULTFCPATH.'themes/front_default/src/my.min.css',
+        'less' => [
+            'rewrite_urls' => 'all',
+        ],
+        'autoprefixer' => ['browsers' => ['> 1%', 'last 2 versions', 'Firefox ESR', 'Safari >= 7', 'iOS >= 7', 'ie >= 10', 'Edge >= 12', 'Android >= 4']],
+        'cssmin' => [],
+    ],
+    ...
+```
+
+As you can see, there are source and destinations files, and a chain of parsers with their specific options.
+The type of the task here is the name of the first parser to be applied. Practically, more complex tasks
+might be needed when CSS and Javascripts are merged into a single result file, there are two special task-types:
+'merge_css' and 'merge_js', see within the configuration file about how they are done.
+
+Compilation is to be done from command-line. Open a terminal at the folder platform/public/ and write the following
 command:
 
 ```bash
-php cli.php less compile
+php cli.php assets compile
 ```
 
-Or, you may choose which LESS-sources to compile by pointing at their names:
+Or, you may choose which tasks to execute by pointing at their names:
 
 ```bash
-php cli.php less compile semantic-ui semantic-ui-min
+php cli.php assets compile task_name_1 task_name_2 task_name_3 ...
 ```
 
 * A way for database classes/drivers modification: Files under platform/core/framework/database/ folder may be copied
