@@ -66239,7 +66239,7 @@ body.pushable > .pusher {
 :root .mdi-flip-horizontal,
 :root .mdi-flip-vertical {
   -webkit-filter: none;
-          filter: none;
+  filter: none;
 }
 .mdi-stack {
   position: relative;
