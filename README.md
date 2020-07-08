@@ -473,7 +473,10 @@ two special task-types: 'merge_css' and 'merge_js', see an example:
 ```
 
 Within the example 'before' and 'after' elements are callbacks that do additional user-defined
-actions before and after the correspinding task is executed. 
+actions before and after the correspinding task is executed.
+
+There is a defined special task-type 'copy' that allows merging already minified CSS or JavaScript without
+any processing.
 
 Compilation is to be done from command-line. Open a terminal at the folder platform/public/ and write the following
 command:
