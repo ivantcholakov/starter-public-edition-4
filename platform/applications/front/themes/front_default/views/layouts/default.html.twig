@@ -17,6 +17,7 @@
 {{ css('lib/sweetalert/sweetalert-custom.min.css') }}
 {{ css('lib/jquery-ui-custom/jquery-ui.min.css') }}
 {{ theme_css('front.min.css?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ css('lib/highlightjs/github.css') }}
 {{ file_partial('css') }}
 {{ partial('css') }}
 {{ js('lib/phpjs/phpjs.min.js') }}
@@ -107,9 +108,10 @@
 {{ file_partial('scripts') }}
 {{ partial('scripts') }}
 
-{{ js('lib/google-code-prettify/prettify.js') }}
 {{ js('lib/jquery-ui-custom/jquery-ui.min.js') }}
 {{ js('front.js') }}
+{{ js('lib/highlightjs/highlight.pack.min.js') }}
+    <script>hljs.initHighlightingOnLoad();</script>
 
     <div id="debug"></div>
 

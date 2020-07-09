@@ -509,7 +509,7 @@ if ( ! function_exists('html_code'))
     {
         if ($begin === null)
         {
-            $begin = '<pre class="prettyprint"><code>';
+            $begin = '<pre><code>';
         }
 
         if ($end === null)

@@ -5,22 +5,6 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-?>
-
-    <script type="text/javascript">
-    //<![CDATA[
-
-        !function ($) {
-            $(function() {
-                window.prettyPrint && prettyPrint();
-            })
-        } (window.jQuery);
-
-    //]]>
-    </script>
-
-<?php
-
 echo js('lib/mustache/mustache.min.js');
 
 ?>
