@@ -58,13 +58,10 @@ echo js_platform();
         WebFont.load({
             custom: {
                 families: [
-                    'Icons', 'outline-icons', 'brand-icons',
-                    'Font Awesome 5 Free',
-                    'Font Awesome 5 Brands'
+                    'Icons', 'outline-icons', 'brand-icons'
                 ],
                 urls: [
-                    ASSET_CSS_URI + 'lib/semantic-icons-default/icons.css',
-                    ASSET_CSS_URI + 'lib/font-awesome-5/fontawesome-all.min.css'
+                    ASSET_CSS_URI + 'lib/semantic-icons-default/icons.css'
                 ]
             },
             timeout: 2000
@@ -311,7 +308,7 @@ echo body_begin('id="page-top"');
                 <div class="column">
 
                     <p>
-                        <a href="<?php echo site_url('playground'); ?>" class="ui primary button"><i class="fa fa-angle-double-left"></i> Back to the Playground</a>
+                        <a href="<?php echo site_url('playground'); ?>" class="ui primary button"><i class="arrow left icon"></i> Back to the Playground</a>
                     </p>
 
                 </div>

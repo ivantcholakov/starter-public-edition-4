@@ -10,7 +10,6 @@ $config['config']['contentsLangDirection'] = get_instance()->lang->direction();
 
 $config['config']['contentsCss'] = array();
 $config['config']['contentsCss'][] = DEFAULT_BASE_URL.'assets/css/lib/semantic-icons-default/icons.css?v='.PLATFORM_VERSION;
-$config['config']['contentsCss'][] = DEFAULT_BASE_URL.'assets/css/lib/font-awesome-5/fontawesome-all.min.css';
 $config['config']['contentsCss'][] = DEFAULT_BASE_URL.'assets/css/lib/editor/editor.css?v='.PLATFORM_VERSION;
 
 $config['config']['width'] = '';

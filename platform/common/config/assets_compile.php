@@ -90,17 +90,6 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php less compile font-awesome-5-min
-
-    [
-        'name' => 'font-awesome-5-min',
-        'type' => 'less',
-        'source' => DEFAULTFCPATH.'assets/less/lib/font-awesome-5/fontawesome-all.less',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/font-awesome-5/fontawesome-all.min.css',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-        'cssmin' => [],
-    ],
-
     // php cli.php less compile datatables-semantic-ui-min
 
     [
