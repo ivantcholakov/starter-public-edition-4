@@ -25,36 +25,8 @@ class Visual_themes extends CI_Model {
                 'name' => 'Front Default',
             ),
             array(
-                'key' => 'front_semantic_ui_default',
-                'name' => 'Semantic UI Default',
-            ),
-            array(
-                'key' => 'front_semantic_ui_amazon',
-                'name' => 'Semantic UI Amazon',
-            ),
-            array(
-                'key' => 'front_semantic_ui_basic',
-                'name' => 'Semantic UI Basic',
-            ),
-            array(
-                'key' => 'front_semantic_ui_chubby',
-                'name' => 'Semantic UI Chubby',
-            ),
-            array(
-                'key' => 'front_semantic_ui_classic',
-                'name' => 'Semantic UI Classic',
-            ),
-            array(
                 'key' => 'front_semantic_ui_flat',
                 'name' => 'Semantic UI Flat',
-            ),
-            array(
-                'key' => 'front_semantic_ui_github',
-                'name' => 'Semantic UI GitHub',
-            ),
-            array(
-                'key' => 'front_semantic_ui_material',
-                'name' => 'Semantic UI Material',
             ),
         );
     }

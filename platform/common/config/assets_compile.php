@@ -291,61 +291,6 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php less compile front-semantic-ui-default-min
-
-    [
-        'name' => 'front-semantic-ui-default-min',
-        'type' => 'less',
-        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_default/less/index.less',
-        'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_default/css/front.min.css',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-        'cssmin' => [],
-    ],
-
-    // php cli.php less compile front-semantic-ui-amazon-min
-
-    [
-        'name' => 'front-semantic-ui-amazon-min',
-        'type' => 'less',
-        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_amazon/less/index.less',
-        'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_amazon/css/front.min.css',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-        'cssmin' => [],
-    ],
-
-    // php cli.php less compile front-semantic-ui-basic-min
-
-    [
-        'name' => 'front-semantic-ui-basic-min',
-        'type' => 'less',
-        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_basic/less/index.less',
-        'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_basic/css/front.min.css',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-        'cssmin' => [],
-    ],
-
-    // php cli.php less compile front-semantic-ui-chubby-min
-
-    [
-        'name' => 'front-semantic-ui-chubby-min',
-        'type' => 'less',
-        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_chubby/less/index.less',
-        'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_chubby/css/front.min.css',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-        'cssmin' => [],
-    ],
-
-    // php cli.php less compile front-semantic-ui-classic-min
-
-    [
-        'name' => 'front-semantic-ui-classic-min',
-        'type' => 'less',
-        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_classic/less/index.less',
-        'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_classic/css/front.min.css',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-        'cssmin' => [],
-    ],
-
     // php cli.php less compile front-semantic-ui-flat-min
 
     [
@@ -353,28 +298,6 @@ $config['tasks'] = [
         'type' => 'less',
         'source' => DEFAULTFCPATH.'themes/front_semantic_ui_flat/less/index.less',
         'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_flat/css/front.min.css',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-        'cssmin' => [],
-    ],
-
-    // php cli.php less compile front-semantic-ui-github-min
-
-    [
-        'name' => 'front-semantic-ui-github-min',
-        'type' => 'less',
-        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_github/less/index.less',
-        'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_github/css/front.min.css',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-        'cssmin' => [],
-    ],
-
-    // php cli.php less compile front-semantic-ui-material-min
-
-    [
-        'name' => 'front-semantic-ui-material-min',
-        'type' => 'less',
-        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_material/less/index.less',
-        'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_material/css/front.min.css',
         'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
         'cssmin' => [],
     ],
