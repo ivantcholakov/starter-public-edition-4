@@ -79,7 +79,10 @@ class Compile_controller extends Core_Controller {
                 }
 
                 if (!is_file($source)) {
-                    continue;
+
+                    echo $task['name'].': '.sprintf('Failed to find the source file "%s".', $source).PHP_EOL;
+
+                    return;
                 }
 
                 $task['source'] = $source;
@@ -136,19 +139,16 @@ class Compile_controller extends Core_Controller {
 
             if ($task['destination'] != '') {
 
-                try {
+                if (!write_file($task['destination'], $task['result'])) {
 
-                    write_file($task['destination'], $task['result']);
-                    @chmod($task['destination'], FILE_WRITE_MODE);
-
-                    echo $task['name'].': '.$task['destination'].PHP_EOL;
-
-                } catch(Exception $e) {
-
-                    echo $task['name'].': '.$e->getMessage().PHP_EOL;
+                    echo $task['name'].': '.sprintf('Failed to write the destination file "%s".', $task['destination']).PHP_EOL;
 
                     return;
                 }
+
+                @chmod($task['destination'], FILE_WRITE_MODE);
+
+                echo $task['name'].': '.$task['destination'].PHP_EOL;
             }
 
             if (isset($task['after'])) {
