@@ -511,22 +511,18 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Smiley Icons from Django-emoticons, https://github.com/Fantomas42/django-emoticons
 * Secure Random Bytes in PHP, https://github.com/GeorgeArgyros/Secure-random-bytes-in-PHP
 * php-passgen - A library for generating cryptographically secure passwords in PHP, https://github.com/defuse/php-passgen
-* A PHP port of the YUI CSS compressor, https://github.com/tubalmartin/YUI-CSS-compressor-PHP-port
 * JSMinPlus - a JavaScript minifier, https://github.com/mrclay/minify/blob/2.2.0/min/lib/JSMinPlus.php
 * less.js script for client-side usage (for learning and development purposes, for production compile less assets before deploying), https://github.com/less/less.js
 * Ellipsis (jQuery version) - A plugin to truncate strings that are too long, https://github.com/danbeam/ellipsis/
 * Roave Security Advisories - This package ensures that your application doesn't have installed dependencies with known security vulnerabilities, https://github.com/Roave/SecurityAdvisories
 * Requests for PHP - A HTTP library written in PHP, for human beings, https://github.com/rmccue/Requests, http://requests.ryanmccue.info
 * Pjax jQuery plugin - pushState + ajax = pjax, https://github.com/defunkt/jquery-pjax, http://pjax.herokuapp.com
-* scssphp, a compiler for SCSS written in PHP, https://github.com/leafo/scssphp, http://leafo.github.io/scssphp/
+* scssphp, a compiler for SCSS written in PHP, https://github.com/scssphp/scssphp
 * TSCompiler (the PHP implementation), https://github.com/ComFreek/TSCompiler
 * Colorbox, a light-weight, customizable lightbox plugin for jQuery, https://github.com/jackmoore/colorbox
 * php-json-minify, a JSON minifier and uncommenter written in PHP, https://github.com/T1st3/php-json-minify
 * Animate.css, a bunch of cool, fun, and cross-browser animations for you to use in your projects, https://github.com/daneden/animate.css, http://daneden.github.io/animate.css/
 * Web Font Loader, gives you added control when using linked fonts via @font-face, https://github.com/typekit/webfontloader
-* Material Design icons by Google https://github.com/google/material-design-icons, http://google.github.io/material-design-icons/
-* Material Design icons with Bootstrap-like styling, https://github.com/mervick/material-design-icons
-* Lex, a lightweight template parser used by PyroCMS, https://github.com/pyrocms/lex
 * Twig, the flexible, fast, and secure template engine for PHP, http://twig.sensiolabs.org
 * PHP 5.x support for random_bytes() and random_int(), https://github.com/paragonie/random_compat
 * WhichBrowser/Parser, a useragent parser library for PHP, https://github.com/WhichBrowser/Parser
@@ -584,7 +580,6 @@ Installed Composer Packages
 | phpmailer/phpmailer                 | An email creation and transfer component for PHP                   | The custom Email library                          |
 | yohang88/letter-avatar              | Generates user avatars based on name initials                      | userphotos application                            |
 | intervention/image                  | Image handling and manipulation library                            | yohang88/letter-avatar                            |
-| tubalmartin/cssmin                  | A PHP port of the YUI CSS compressor                               | Parser 'cssmin' driver                            |
 | athlon1600/php-proxy                | A web proxy script written in PHP.                                 | Demo feature for previewing the error logs        |
 
 Real Life Usage

@@ -20,17 +20,6 @@ $config['tasks'] = [
 
     // SCSS --------------------------------------------------------------------
 
-    // php cli.php assets compile material-design-icons-min
-
-    [
-        'name' => 'material-design-icons-min',
-        'type' => 'scss',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/material-design-icons/material-icons.min.css',
-        'source' => DEFAULTFCPATH.'assets/scss/lib/material-design-icons/material-icons.scss',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-        'cssmin' => [],
-    ],
-
     // php cli.php assets compile sweetalert-min sweetalert-custom-min sweetalert-facebook-min sweetalert-google-min sweetalert-twitter-min
 
     // php cli.php sweetalert sweetalert-min
@@ -108,17 +97,6 @@ $config['tasks'] = [
         'type' => 'less',
         'source' => DEFAULTFCPATH.'assets/less/lib/font-awesome-5/fontawesome-all.less',
         'destination' => DEFAULTFCPATH.'assets/css/lib/font-awesome-5/fontawesome-all.min.css',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-        'cssmin' => [],
-    ],
-
-    // php cli.php less compile material-icons-min
-
-    [
-        'name' => 'material-icons-min',
-        'type' => 'less',
-        'source' => DEFAULTFCPATH.'assets/less/lib/material-icons/material-icons.less',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/material-icons/material-icons.min.css',
         'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
         'cssmin' => [],
     ],
