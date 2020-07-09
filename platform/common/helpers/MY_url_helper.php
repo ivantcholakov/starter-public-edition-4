@@ -248,7 +248,7 @@ if ( ! function_exists('auto_link'))
      * @author Ivan Tcholakov (adaptation)
      *
      * @see url_helper
-     * @link https://codeigniter.com/user_guide/helpers/url_helper.html
+     * @link https://codeigniter.com/userguide3/helpers/url_helper.html
      * @param string $str
      * @param string $type
      * @param mixed $attributes

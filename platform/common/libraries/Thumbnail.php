@@ -44,7 +44,7 @@ class Thumbnail {
     protected $wm_enabled_min_w;
     protected $wm_enabled_min_h;
 
-    // See https://www.codeigniter.com/user_guide/libraries/image_lib.html#watermarking-preferences
+    // See https://www.codeigniter.com/userguide3/libraries/image_lib.html#watermarking-preferences
 
     // Common Watermarking Options
     protected $wm_type; // 'text' or 'overlay'

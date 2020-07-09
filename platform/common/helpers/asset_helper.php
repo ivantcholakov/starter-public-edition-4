@@ -7,7 +7,7 @@
  * @package      CodeIgniter
  * @author       Rick Ellis
  * @copyright    Copyright (c) 2006, pMachine, Inc.
- * @license      https://www.codeigniter.com/user_guide/license.html
+ * @license      https://www.codeigniter.com/userguide3/license.html
  * @link         https://www.codeigniter.com
  * @since        Version 1.0
  * @filesource
