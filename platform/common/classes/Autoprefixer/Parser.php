@@ -93,7 +93,7 @@ class Autoprefixer_Parser {
 
             $this->stderr = 'Autoprefixer: Can\'t execute a command.';
 
-            if (ENVIRONMENT !== 'production') {
+            if (IS_CLI || ENVIRONMENT !== 'production') {
                 $this->stderr .= PHP_EOL.$exception->getMessage();
             }
 

@@ -92,7 +92,7 @@ class Lessjs_Parser {
 
             $this->stderr = 'Lessjs: Can\'t execute a command.';
 
-            if (ENVIRONMENT !== 'production') {
+            if (IS_CLI || ENVIRONMENT !== 'production') {
                 $this->stderr .= PHP_EOL.$exception->getMessage();
             }
 
