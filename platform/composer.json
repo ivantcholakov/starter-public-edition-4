@@ -7,7 +7,7 @@
         "php": ">=5.6.0",
         "symfony/options-resolver": "<4.0",
         "symfony/process": "<4.0",
-        "codeigniter/framework": "dev-3.1-stable#f27b3409b00c6a08d89c1e6b06e5f1b9463d703d",
+        "codeigniter/framework": "dev-3.1-stable#899338a3ea4651533493ffd9d1ce7002e9ddf53e",
         "roave/security-advisories": "dev-master",
         "paragonie/random_compat": "^2.0.2",
         "fg/multiplayer": "^1.2.1",

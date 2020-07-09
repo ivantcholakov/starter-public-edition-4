@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1145be42bafcdbe6563c7e27584dee1e",
+    "content-hash": "8f2fe3ed1147668ca84d9101c1ea34da",
     "packages": [
         {
             "name": "athlon1600/php-proxy",
@@ -110,12 +110,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bcit-ci/CodeIgniter.git",
-                "reference": "f27b3409b00c6a08d89c1e6b06e5f1b9463d703d"
+                "reference": "899338a3ea4651533493ffd9d1ce7002e9ddf53e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bcit-ci/CodeIgniter/zipball/f27b3409b00c6a08d89c1e6b06e5f1b9463d703d",
-                "reference": "f27b3409b00c6a08d89c1e6b06e5f1b9463d703d",
+                "url": "https://api.github.com/repos/bcit-ci/CodeIgniter/zipball/899338a3ea4651533493ffd9d1ce7002e9ddf53e",
+                "reference": "899338a3ea4651533493ffd9d1ce7002e9ddf53e",
                 "shasum": ""
             },
             "require": {
