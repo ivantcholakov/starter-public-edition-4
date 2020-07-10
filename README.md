@@ -255,7 +255,6 @@ The technique of this hack is available, but it is not mandatory.
 * Parsedown - Better Markdown Parser in PHP - https://github.com/erusev/parsedown
 * Parsedown Extra - An extension of Parsedown that adds support for Markdown Extra - https://github.com/erusev/parsedown-extra
 * Mustache, Logic-less templates, https://github.com/bobthecow/mustache.php, https://github.com/janl/mustache.js
-* Less.php compiler, https://github.com/oyejorge/less.php
 * PHPMailer, http://phpmailer.worxware.com/, https://github.com/PHPMailer/PHPMailer
 * A CodeIgniter 3 compatible email-library powered by PHPMailer, https://github.com/ivantcholakov/codeigniter-phpmailer
 * A PHP class for transliteration, https://github.com/ivantcholakov/transliterate
@@ -518,7 +517,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Requests for PHP - A HTTP library written in PHP, for human beings, https://github.com/rmccue/Requests, http://requests.ryanmccue.info
 * Pjax jQuery plugin - pushState + ajax = pjax, https://github.com/defunkt/jquery-pjax, http://pjax.herokuapp.com
 * scssphp, a compiler for SCSS written in PHP, https://github.com/scssphp/scssphp
-* TSCompiler (the PHP implementation), https://github.com/ComFreek/TSCompiler
+* TSCompiler, https://github.com/ComFreek/TSCompiler
 * Colorbox, a light-weight, customizable lightbox plugin for jQuery, https://github.com/jackmoore/colorbox
 * php-json-minify, a JSON minifier and uncommenter written in PHP, https://github.com/T1st3/php-json-minify
 * Animate.css, a bunch of cool, fun, and cross-browser animations for you to use in your projects, https://github.com/daneden/animate.css, http://daneden.github.io/animate.css/
@@ -535,7 +534,7 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * CSS & JavaScript minifier, in PHP, https://github.com/matthiasmullie/minify , http://www.minifier.org
 * SweetAlert, a beautiful replacement for JavaScript's "alert", https://github.com/t4t5/sweetalert , http://t4t5.github.io/sweetalert/
 * Handlebars.js - an extension to the Mustache templating language, https://github.com/wycats/handlebars.js , http://handlebarsjs.com
-* Handlebars.php - Handlebars processor for PHP, https://github.com/XaminProject/handlebars.php
+* Handlebars.php - Handlebars processor for PHP, https://github.com/salesforce/handlebars-php
 * Intervention Image - a PHP image handling and manipulation library, https://github.com/Intervention/image
 * Letter Avatar for PHP - generate user avatar using name initials letter, https://github.com/yohang88/letter-avatar
 * Headroom.js - A widget that reacts to the user's scroll, https://github.com/WickyNilliams/headroom.js
