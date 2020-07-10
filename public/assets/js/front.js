@@ -120,19 +120,6 @@ $(function () {
 
 
 /*
- * prettyPrint
- */
-
-$('pre').addClass('prettyprint');
-
-!function ($) {
-    $(function() {
-        window.prettyPrint && prettyPrint();
-    })
-} (window.jQuery);
-
-
-/*
  * See http://appglobe.com/scroll-to-top-animation/
  */
 
