@@ -53,12 +53,5 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = TRUE;
 
-// A route for the command-line SCSS compiler.
-$route['scss/compile/(.+)'] = 'scss/compile/index/$1';
-
-// A route for the command-line LESS compiler.
-$route['less/compile/(.+)'] = 'less/compile/index/$1';
-
-// Routes for the "on-the-fly" SCSS/LESS compiler.
-$route['(assets/css/[a-zA-Z0-9_\-\./]+\.css)'] = 'css_server/index/$1';
-$route['(themes/[a-zA-Z0-9_\-]+/css/[a-zA-Z0-9_\-\./]+\.css)'] = 'css_server/index/$1';
+// A route for the command-line asset compiler.
+$route['assets/compile/(.+)'] = 'assets/compile/index/$1';

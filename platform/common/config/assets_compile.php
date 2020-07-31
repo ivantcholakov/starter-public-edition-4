@@ -79,7 +79,7 @@ $config['tasks'] = [
 
     // LESS --------------------------------------------------------------------
 
-    // php cli.php less compile editor-min
+    // php cli.php assets compile editor-min
 
     [
         'name' => 'editor-min',
@@ -90,7 +90,7 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php less compile datatables-semantic-ui-min
+    // php cli.php assets compile datatables-semantic-ui-min
 
     [
         'name' => 'datatables-semantic-ui-min',
@@ -101,7 +101,7 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php less compile datatables-responsive-semantic-ui-min
+    // php cli.php assets compile datatables-responsive-semantic-ui-min
 
     [
         'name' => 'datatables-responsive-semantic-ui-min',
@@ -112,7 +112,7 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php less compile datatables-select-semantic-ui-min
+    // php cli.php assets compile datatables-select-semantic-ui-min
 
     [
         'name' => 'datatables-select-semantic-ui-min',
@@ -123,7 +123,7 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php less compile semantic-ui-min
+    // php cli.php assets compile semantic-ui-min
 
     [
         'name' => 'semantic-ui-min',
@@ -134,7 +134,7 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php less compile semantic-ui-custom-min
+    // php cli.php assets compile semantic-ui-custom-min
 
     [
         'name' => 'semantic-ui-custom-min',
@@ -145,7 +145,7 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php less compile admin-default-18-min admin-default-18-login-min admin-default-18-error-min
+    // php cli.php assets compile admin-default-18-min admin-default-18-login-min admin-default-18-error-min
 
     [
         'name' => 'admin-default-18-min',
@@ -172,7 +172,7 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php less compile admin-default-17-min admin-default-17-login-min admin-default-17-error-min
+    // php cli.php assets compile admin-default-17-min admin-default-17-login-min admin-default-17-error-min
 
     [
         'name' => 'admin-default-17-min',
@@ -199,7 +199,7 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php less compile admin-default-min admin-default-login-min admin-default-error-min
+    // php cli.php assets compile admin-default-min admin-default-login-min admin-default-error-min
 
     [
         'name' => 'admin-default-min',
@@ -226,7 +226,7 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php less compile admin-default-15-min admin-default-15-login-min admin-default-15-error-min
+    // php cli.php assets compile admin-default-15-min admin-default-15-login-min admin-default-15-error-min
 
     [
         'name' => 'admin-default-15-min',
@@ -253,7 +253,7 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php less compile admin-default-14-min admin-default-14-login-min admin-default-14-error-min
+    // php cli.php assets compile admin-default-14-min admin-default-14-login-min admin-default-14-error-min
 
     [
         'name' => 'admin-default-14-min',
@@ -280,7 +280,7 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php less compile front-semantic-ui-flat-min
+    // php cli.php assets compile front-semantic-ui-flat-min
 
     [
         'name' => 'front-semantic-ui-flat-min',
@@ -291,7 +291,7 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php less compile front-default-min
+    // php cli.php assets compile front-default-min
 
     [
         'name' => 'front-default-min',
