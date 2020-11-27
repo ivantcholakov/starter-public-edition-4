@@ -4,7 +4,7 @@
  * UTF-8 string support for CodeIgniter based on Kohana's implementation.
  * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2013-2020 (for this file)
  * @license The MIT License (for this file)
- * @version 1.0.1
+ * @version 1.0.2
  * Code repository: https://github.com/ivantcholakov/codeigniter-utf8
  *
  * See the file application/third_party/kohana/Kohana_UTF8.php for

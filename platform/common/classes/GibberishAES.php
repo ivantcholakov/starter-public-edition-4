@@ -50,10 +50,10 @@ defined('BASEPATH') OR exit('No direct script access allowed.');
  * GibberishAES::size($old_key_size);
  * echo $decrypted_string;
  *
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2016.
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2020.
  * Code repository: @link https://github.com/ivantcholakov/gibberish-aes-php
  *
- * @version 1.3.1
+ * @version 1.3.2
  *
  * @license The MIT License (MIT)
  * @link http://opensource.org/licenses/MIT

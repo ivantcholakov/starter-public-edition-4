@@ -3,9 +3,9 @@
 /**
  * Transliteration class
  *
- * @version 1.1.1
+ * @version 1.1.2
  *
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2016.
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2020.
  * @link https://github.com/ivantcholakov/transliterate
  *
  * @license The MIT License (MIT)
