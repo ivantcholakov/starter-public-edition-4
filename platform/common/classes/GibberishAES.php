@@ -73,10 +73,6 @@ class GibberishAES {
     protected static $mcrypt_exists = null;
     protected static $mbstring_func_overload = null;
 
-    // This is a static class, instances are disabled.
-    final private function __construct() {}
-    final private function __clone() {}
-
     /**
      * Crypt AES (256, 192, 128)
      *

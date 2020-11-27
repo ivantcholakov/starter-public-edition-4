@@ -37,9 +37,6 @@ if (!class_exists('Kohana_UTF8', false)) {
 
 class UTF8 extends Kohana_UTF8 {
 
-    final private function __construct() {}
-    final private function __clone() {}
-
     public static $aliases = array('UTF-8', 'WINDOWS-65001', 'CP65001', 'WIN-65001', 'WIN65001', '65001');
 
     public static function encode($string, $from_encoding) {

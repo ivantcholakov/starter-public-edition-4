@@ -53,9 +53,6 @@ class Transliterate {
     private static $cyr_ru_additional_lower = array('в','кс','к','ё', 'я', 'ю', 'ь', 'ъ','ы');
     private static $lat_ru_additional_lower = array('w','x', 'q','yo','ja','ju','\'','`','y');
 
-    final private function __construct() {}
-    final private function __clone() {}
-
     /**
      * Converts cyrillic letters within a string into their ASCII equivalents.
      * Conversion is language dependent.

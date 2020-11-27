@@ -1336,7 +1336,7 @@ class Template
         return '';
     }
 
-    public function set_attributes($tag = 'body', $attributes) {
+    public function set_attributes($tag = 'body', $attributes = array()) {
 
         // $attributes: string or array
 

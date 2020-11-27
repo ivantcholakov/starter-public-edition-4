@@ -4,9 +4,6 @@ class KCFinderConfig {
 
     protected static $config = array();
 
-    final private function __construct() {}
-    final private function __clone() {}
-
     public static function get($key) {
 
         $key = (string) $key;

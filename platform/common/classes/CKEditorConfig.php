@@ -4,9 +4,6 @@ class CKEditorConfig {
 
     protected static $config = array();
 
-    final private function __construct() {}
-    final private function __clone() {}
-
     public static function get($editor_config_key = null, $editor_toolbar_key = null) {
 
         $editor_config_key = (string) $editor_config_key;

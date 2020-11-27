@@ -15,9 +15,6 @@ class RandSeeder {
 
     protected static $rand_seeder;
 
-    final private function __construct() {}
-    final private function __clone() {}
-
     public static function get() {
 
         if (!isset(self::$rand_seeder)) {
