@@ -513,7 +513,6 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * less.js script for client-side usage (for learning and development purposes, for production compile less assets before deploying), https://github.com/less/less.js
 * Ellipsis (jQuery version) - A plugin to truncate strings that are too long, https://github.com/danbeam/ellipsis/
 * Roave Security Advisories - This package ensures that your application doesn't have installed dependencies with known security vulnerabilities, https://github.com/Roave/SecurityAdvisories
-* Pjax jQuery plugin - pushState + ajax = pjax, https://github.com/defunkt/jquery-pjax, http://pjax.herokuapp.com
 * scssphp, a compiler for SCSS written in PHP, https://github.com/scssphp/scssphp
 * TSCompiler, https://github.com/ComFreek/TSCompiler
 * Colorbox, a light-weight, customizable lightbox plugin for jQuery, https://github.com/jackmoore/colorbox

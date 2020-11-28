@@ -410,11 +410,8 @@ class Template
         }
 
         // Want this file wrapped with a layout file?
-        if (
-                !$this->_ci->input->get_request_header('X-PJAX')    // See https://github.com/defunkt/jquery-pjax
-                &&
-                $this->_layout)
-        {
+        if ($this->_layout) {
+
             // Added to $this->_data['template'] by refference
             $template['body'] = $this->_body;
 
@@ -456,20 +453,6 @@ class Template
             }
             //
         }
-        // Added by Ivan Tcholakov, 15-AUG-2015.
-        elseif ($this->_ci->input->get_request_header('X-PJAX'))
-        {
-            if (strpos($this->_ci->input->get_request_header('Accept'), 'text/html') !== false && $this->_title != '')
-            {
-                // Ivan, 15-AUG-2015:
-                // This makes not valid HTML, title tag should not exist within the returned
-                // HTML fragment, but I can't the make other way to work.
-                $this->_body = '
-    <title>'.html_escape(strip_tags($this->_title)).'</title>
-'.$this->_body;
-            }
-        }
-        //
 
         // Added by Ivan Tcholakov, 20-JAN-2016.
         $this->_body = str_replace($this->template_body_placeholder, $template_body, $this->_body);
