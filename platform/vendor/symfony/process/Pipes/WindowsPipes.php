@@ -35,9 +35,9 @@ class WindowsPipes extends AbstractPipes
     ];
     private $haveReadSupport;
 
-    public function __construct($input, $haveReadSupport)
+    public function __construct($input, bool $haveReadSupport)
     {
-        $this->haveReadSupport = (bool) $haveReadSupport;
+        $this->haveReadSupport = $haveReadSupport;
 
         if ($this->haveReadSupport) {
             // Fix for PHP bug #51800: reading from STDOUT pipe hangs forever on Windows if the output is too big.
@@ -96,7 +96,7 @@ class WindowsPipes extends AbstractPipes
     /**
      * {@inheritdoc}
      */
-    public function getDescriptors()
+    public function getDescriptors(): array
     {
         if (!$this->haveReadSupport) {
             $nullstream = fopen('NUL', 'c');
@@ -121,7 +121,7 @@ class WindowsPipes extends AbstractPipes
     /**
      * {@inheritdoc}
      */
-    public function getFiles()
+    public function getFiles(): array
     {
         return $this->files;
     }
@@ -129,7 +129,7 @@ class WindowsPipes extends AbstractPipes
     /**
      * {@inheritdoc}
      */
-    public function readAndWrite($blocking, $close = false)
+    public function readAndWrite(bool $blocking, bool $close = false): array
     {
         $this->unblock();
         $w = $this->write();
@@ -164,7 +164,7 @@ class WindowsPipes extends AbstractPipes
     /**
      * {@inheritdoc}
      */
-    public function haveReadSupport()
+    public function haveReadSupport(): bool
     {
         return $this->haveReadSupport;
     }
@@ -172,7 +172,7 @@ class WindowsPipes extends AbstractPipes
     /**
      * {@inheritdoc}
      */
-    public function areOpen()
+    public function areOpen(): bool
     {
         return $this->pipes && $this->fileHandles;
     }
