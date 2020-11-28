@@ -217,11 +217,11 @@ Hello, {{ name }}!
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ <strong>dump</strong>(array_1) }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ <strong>dump</strong>(array_1)|raw }}{% endverbatim %}</code></pre>
 <a href="http://twig.sensiolabs.org/doc/functions/dump.html" target="_blank" rel="noopener">dump</a>
                                         </td>
                                         <td>
-{{ dump(array_1) }}
+{{ dump(array_1)|raw }}
                                         </td>
                                     </tr>
 
