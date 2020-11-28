@@ -508,13 +508,11 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * Multiplayer - A tiny library to build nice HTML embed codes for videos, https://github.com/felixgirault/multiplayer, https://packagist.org/packages/fg/multiplayer
 * Smiley Icons, http://thuthuatvietnam.com/sites/default/files/uploads/files/2013/08/huong-dan-su-dung-smiley-helper-tren-codeigniter.zip, http://thuthuatvietnam.com/huong-dan-su-dung-smileys-helper-tren-codeigniter.html
 * Smiley Icons from Django-emoticons, https://github.com/Fantomas42/django-emoticons
-* Secure Random Bytes in PHP, https://github.com/GeorgeArgyros/Secure-random-bytes-in-PHP
 * php-passgen - A library for generating cryptographically secure passwords in PHP, https://github.com/defuse/php-passgen
 * JSMinPlus - a JavaScript minifier, https://github.com/mrclay/minify/blob/2.2.0/min/lib/JSMinPlus.php
 * less.js script for client-side usage (for learning and development purposes, for production compile less assets before deploying), https://github.com/less/less.js
 * Ellipsis (jQuery version) - A plugin to truncate strings that are too long, https://github.com/danbeam/ellipsis/
 * Roave Security Advisories - This package ensures that your application doesn't have installed dependencies with known security vulnerabilities, https://github.com/Roave/SecurityAdvisories
-* Requests for PHP - A HTTP library written in PHP, for human beings, https://github.com/rmccue/Requests, http://requests.ryanmccue.info
 * Pjax jQuery plugin - pushState + ajax = pjax, https://github.com/defunkt/jquery-pjax, http://pjax.herokuapp.com
 * scssphp, a compiler for SCSS written in PHP, https://github.com/scssphp/scssphp
 * TSCompiler, https://github.com/ComFreek/TSCompiler
@@ -529,7 +527,6 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * imagesLoaded - "You images done yet or what?", https://github.com/desandro/imagesloaded
 * Masonry - a cascading grid layout library, https://github.com/desandro/masonry
 * Semantic UI - a component framework based around useful principles from natural language, http://www.semantic-ui.com
-* A collection of HTTP related packages (HTTPlug), https://github.com/php-http , http://httplug.io
 * jQuery keepalive Plugin, sends ajax requests to the server at configurable intervals to keep a PHP session from expiring, https://github.com/waynewalls/jquery.keepalive
 * CSS & JavaScript minifier, in PHP, https://github.com/matthiasmullie/minify , http://www.minifier.org
 * SweetAlert, a beautiful replacement for JavaScript's "alert", https://github.com/t4t5/sweetalert , http://t4t5.github.io/sweetalert/
@@ -560,7 +557,6 @@ Installed Composer Packages
 |:------------------------------------|:-------------------------------------------------------------------|:--------------------------------------------------|
 | codeigniter/framework               | CodeIgniter 3                                                      | Everywhere                                        |
 | roave/security-advisories           | Blocks installing packages with known security vulnerabilities     | Composer                                          |
-| paragonie/random_compat             | PHP 5.x polyfill for random_bytes() and random_int() from PHP 7    | CodeIgniter, other components                     |
 | fg/multiplayer                      | Builds customizable video embed codes from any URL                 | Multiplayer library                               |
 | scssphp/scssphp                     | A compiler for SCSS written in PHP                                 | Parser 'scss' driver                              |
 | guzzlehttp/guzzle                   | A HTTP client library                                              | Playground, REST service test                     |
@@ -571,11 +567,8 @@ Installed Composer Packages
 | mustache/mustache                   | A Mustache template engine implementation in PHP                   | Parser 'mustache' driver                          |
 | netcarver/textile                   | Textile markup language parser                                     | Parser 'textile' driver                           |
 | twig/twig                           | Twig template language for PHP                                     | Parser 'twig' driver                              |
-| twig/extensions                     | Common additional features for Twig                                | Parser 'twig' driver                              |
 | ezyang/htmlpurifier                 | Standards compliant HTML filter written in PHP                     | admin and user HTML filters for the online editor |
-| rmccue/requests                     | A HTTP library written in PHP                                      | Playground, REST service test                     |
 | t1st3/php-json-minify               | A JSON minifier                                                    | Parser 'jsonmin' driver                           |
-| php-http/*                          | An abstract HTTP client and its drivers/dependencies               | Playground, REST service test                     |
 | matthiasmullie/minify               | CSS & JS minifier                                                  | Parser 'cssmin' and 'jsmin' drivers               |
 | phpmailer/phpmailer                 | An email creation and transfer component for PHP                   | The custom Email library                          |
 | yohang88/letter-avatar              | Generates user avatars based on name initials                      | userphotos application                            |
