@@ -80,7 +80,7 @@ class Autoprefixer_Parser {
 
         $cmd = $this->getCompilerPath().' --no-map --use autoprefixer'.$this->parseOptions().' '.escape_shell_arg($filename);
 
-        $process = new Process($cmd);
+        $process = Process::fromShellCommandline($cmd);
         $process->setTimeout(3600);
 
         try {
