@@ -16,7 +16,7 @@ class Twig_template_inheritance_test_controller extends Base_Controller {
         $this->template->append_title($title);
 
         $this->template
-            ->set_theme('front_semantic_ui_default')
+            ->set_theme('front_default')
             ->set_layout('direct')
         ;
     }

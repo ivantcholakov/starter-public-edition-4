@@ -31,8 +31,15 @@ class Twig_parser_controller extends Playground_Base_Controller {
         $countries = $this->_get_country_data();
         $countries_10 = array_slice($countries, 0, 10);
 
-        //$twig_template_inheritance_test = $this->curl->create(site_url('playground/twig-template-inheritance-test'))->get()->execute();
-        $twig_template_inheritance_test = @ Requests::get(site_url('playground/twig-template-inheritance-test'))->body;
+        try {
+
+            $twig_template_inheritance_test = (string) (new GuzzleHttp\Client())
+                ->get(site_url('playground/twig-template-inheritance-test'), ['verify' => false])
+                ->getBody();
+        } catch (\GuzzleHttp\Exception\ServerException $e) {
+
+            $twig_template_inheritance_test = $e->getMessage();
+        }
 
         // Miscellaneous Tests
         $twig_test_name = 'test.html.twig';

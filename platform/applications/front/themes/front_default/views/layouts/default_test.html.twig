@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+{{ meta_charset() }}
+{{ html_title() }}
+</head>
+
+<body>
+
+    <div>
+        {% block content %}
+            <p>This is a static default text displayed within the template body.</p>
+        {% endblock %}
+    </div>
+
+    <div>
+        {% block sidebar %}
+            <p>The sidebar, default content, defined within a block "sidebar".<p>
+        {% endblock %}
+    </div>
+
+</body>
+
+</html>

@@ -37,21 +37,24 @@ class Post_test extends Playground_Base_Controller {
 
         $code_example = <<<EOT
 
-        \$user_id = 1;
-
         \$this->load->helper('url');
 
-        \$headers = array('Accept' => 'application/json');
-        \$options = array(
-            'auth' => array('admin', '1234'),
-            'verify' => false,  // Disable SSL verification, this option value is insecure and should be avoided!
+        \$client = new GuzzleHttp\Client();
+        \$res = \$client->post(
+            site_url('playground/rest/server-api-example/users'),
+            [
+                'auth' =>  ['admin', '1234'],
+                'verify' => false,  // Disable SSL verification, this option value is insecure and should be avoided!,
+                'form_params' => array('name' => 'John', 'email' => 'john@example.com')
+            ]
         );
-        \$data = array('name' => 'John', 'email' => 'john@example.com');
-        \$request = Requests::post(site_url('playground/rest/server-api-example/users'), \$headers, \$data, \$options);
 
-        \$result = \$request->body;
-        \$status_code = \$request->status_code;
-        \$content_type = \$request->headers['content-type'];
+        \$result = (string) \$res->getBody();
+        \$status_code = \$res->getStatusCode();
+
+        \$content_type = \$res->getHeader('content-type');
+        \$content_type = is_array(\$content_type) ? \$content_type[0] : \$content_type;
+
 
 EOT;
 
