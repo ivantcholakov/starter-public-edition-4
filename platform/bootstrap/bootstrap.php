@@ -314,10 +314,6 @@ if (!function_exists('http_build_str') || !function_exists('http_build_url')) {
 
 require BASEPATH.'core/compat/standard.php';
 
-if (!function_exists('secure_random_bytes')) {
-    require BOOTSTRAPPATH.'srand/srand.php';
-}
-
 
 /*
  *---------------------------------------------------------------------
