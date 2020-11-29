@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '243d3b8845648297b4b80a73410a163e2ceba806',
+    'reference' => 'c2fef8b5168c2f5f2fd3eafe190f6582fd41458e',
     'name' => '__root__',
   ),
   'versions' => 
@@ -31,7 +31,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '243d3b8845648297b4b80a73410a163e2ceba806',
+      'reference' => 'c2fef8b5168c2f5f2fd3eafe190f6582fd41458e',
     ),
     'athlon1600/php-proxy' => 
     array (
@@ -62,12 +62,12 @@ private static $installed = array (
     ),
     'erusev/parsedown-extra' => 
     array (
-      'pretty_version' => '0.7.1',
-      'version' => '0.7.1.0',
+      'pretty_version' => '0.8.1',
+      'version' => '0.8.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '0db5cce7354e4b76f155d092ab5eb3981c21258c',
+      'reference' => '91ac3ff98f0cea243bdccc688df43810f044dcef',
     ),
     'ezyang/htmlpurifier' => 
     array (
@@ -274,8 +274,8 @@ private static $installed = array (
     ),
     'symfony/options-resolver' => 
     array (
-      'pretty_version' => 'v5.1.8',
-      'version' => '5.1.8.0',
+      'pretty_version' => 'v5.1.9',
+      'version' => '5.1.9.0',
       'aliases' => 
       array (
       ),
@@ -301,12 +301,12 @@ private static $installed = array (
     ),
     'symfony/process' => 
     array (
-      'pretty_version' => 'v5.1.8',
-      'version' => '5.1.8.0',
+      'pretty_version' => 'v5.1.9',
+      'version' => '5.1.9.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'f00872c3f6804150d6a0f73b4151daab96248101',
+      'reference' => 'b25b468538c82f6594058aabaa9bac48d7ef2170',
     ),
     't1st3/php-json-minify' => 
     array (
