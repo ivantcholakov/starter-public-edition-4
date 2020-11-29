@@ -46,7 +46,7 @@ require "core/autoload.php";
 // json_encode() IMPLEMENTATION IF JSON EXTENSION IS MISSING
 if (!function_exists("json_encode")) {
 
-    function json_encode($data) {
+    function json_encode($data, $options = null) {
 
         if (is_array($data)) {
             $ret = array();

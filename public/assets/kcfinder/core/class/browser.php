@@ -93,7 +93,7 @@ class browser extends uploader {
                 $this->backMsg($message);
             else {
                 header("Content-Type: text/plain; charset={$this->charset}");
-                die(json_encode(array('error' => $message)));
+                die(json_encode(array('error' => $message), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
             }
         }
 
@@ -453,7 +453,7 @@ class browser extends uploader {
             }
         }
         if (count($error))
-            return json_encode(array('error' => $error));
+            return json_encode(array('error' => $error), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
         return true;
     }
 
@@ -505,7 +505,7 @@ class browser extends uploader {
             }
         }
         if (count($error))
-            return json_encode(array('error' => $error));
+            return json_encode(array('error' => $error), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
         return true;
     }
 
@@ -538,7 +538,7 @@ class browser extends uploader {
             }
         }
         if (count($error))
-            return json_encode(array('error' => $error));
+            return json_encode(array('error' => $error), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
         return true;
     }
 
@@ -644,7 +644,7 @@ class browser extends uploader {
 
     protected function act_check4Update() {
         if ($this->config['denyUpdateCheck'])
-            return json_encode(array('version' => false));
+            return json_encode(array('version' => false), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 
         // Caching HTTP request for 6 hours
         if (isset($this->session['checkVersion']) &&
@@ -879,7 +879,7 @@ class browser extends uploader {
             $this->backMsg($message, $data);
         else {
             $message = $this->label($message, $data);
-            die(json_encode(array('error' => $message)));
+            die(json_encode(array('error' => $message), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
         }
     }
 
@@ -941,7 +941,7 @@ class browser extends uploader {
     protected function callBack($message = '', $data = array()) {
 
         $html = '<p>'.html_escape($message).'</p>'.
-            '<p>'.json_encode($data).'</p>';
+            '<p>'.json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT).'</p>';
 
         header("Content-Type: text/html; charset=UTF-8");
         echo "<html><body>$html</body></html>";
