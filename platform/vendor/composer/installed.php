@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '6fb9c9ab462f09772be5b004f8659372e65d27c9',
+    'reference' => '243d3b8845648297b4b80a73410a163e2ceba806',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '6fb9c9ab462f09772be5b004f8659372e65d27c9',
+      'reference' => '243d3b8845648297b4b80a73410a163e2ceba806',
     ),
     'athlon1600/php-proxy' => 
     array (
@@ -112,12 +112,12 @@
     ),
     'ivantcholakov/codeigniter-phpmailer' => 
     array (
-      'pretty_version' => 'v1.4.5',
-      'version' => '1.4.5.0',
+      'pretty_version' => 'v1.4.6',
+      'version' => '1.4.6.0',
       'aliases' => 
       array (
       ),
-      'reference' => '1369336e28411a0212a74cab8794d0931848b738',
+      'reference' => 'fb873593743449bd080fcdabd3877265987a726f',
     ),
     'matthiasmullie/minify' => 
     array (

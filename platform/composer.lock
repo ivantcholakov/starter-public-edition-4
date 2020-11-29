@@ -603,21 +603,21 @@
         },
         {
             "name": "ivantcholakov/codeigniter-phpmailer",
-            "version": "v1.4.5",
+            "version": "v1.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivantcholakov/codeigniter-phpmailer.git",
-                "reference": "1369336e28411a0212a74cab8794d0931848b738"
+                "reference": "fb873593743449bd080fcdabd3877265987a726f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivantcholakov/codeigniter-phpmailer/zipball/1369336e28411a0212a74cab8794d0931848b738",
-                "reference": "1369336e28411a0212a74cab8794d0931848b738",
+                "url": "https://api.github.com/repos/ivantcholakov/codeigniter-phpmailer/zipball/fb873593743449bd080fcdabd3877265987a726f",
+                "reference": "fb873593743449bd080fcdabd3877265987a726f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.5.0",
-                "phpmailer/phpmailer": "^6.1.6"
+                "phpmailer/phpmailer": "^6.2.0"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
@@ -640,9 +640,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ivantcholakov/codeigniter-phpmailer/issues",
-                "source": "https://github.com/ivantcholakov/codeigniter-phpmailer/tree/v1.4.5"
+                "source": "https://github.com/ivantcholakov/codeigniter-phpmailer/tree/v1.4.6"
             },
-            "time": "2020-06-25T16:02:05+00:00"
+            "time": "2020-11-29T01:35:51+00:00"
         },
         {
             "name": "matthiasmullie/minify",
