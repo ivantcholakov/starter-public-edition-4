@@ -24,7 +24,7 @@
 </style>
 
 
-                            <p><big>The current Twig version is {{ constant('Twig_Environment::VERSION') }}</big></p>
+                            <p><big>The current Twig version is {{ constant('\\Twig\\Environment::VERSION') }}</big></p>
 
                             <p>See <a href="http://twig.sensiolabs.org" target="_blank" rel="noopener">http://twig.sensiolabs.org</a>, <a href="http://twig.sensiolabs.org/doc/templates.html" target="_blank" rel="noopener">http://twig.sensiolabs.org/doc/templates.html</a></p>
                             <p>
@@ -224,7 +224,7 @@ Hello, {{ name }}!
 {{ dump(array_1)|raw }}
                                         </td>
                                     </tr>
-
+{#
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>print_r</strong>(array_1) }}{% endverbatim %}</code></pre>
@@ -234,7 +234,8 @@ Hello, {{ name }}!
 {{ print_r(array_1) }}
                                         </td>
                                     </tr>
-
+#}
+{#
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ <strong>var_export</strong>(array_1) }}{% endverbatim %}</code></pre>
@@ -244,7 +245,7 @@ Hello, {{ name }}!
 {{ var_export(array_1) }}
                                         </td>
                                     </tr>
-
+#}
                                     <tr class="positive">
                                         <td colspan="2" class="center aligned">
                                             <h4>Checking if a Variable Exists, and If a Variable is Empty</h4>
@@ -573,7 +574,7 @@ Line 3
 {{ constant('BASE_URL') }}
                                         </td>
                                     </tr>
-
+{#
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ "limp bizkit"|<strong>convert_encoding</strong>('HTML-ENTITIES', _charset) }}
@@ -591,7 +592,7 @@ Line 3
 {{ "лимп бизкит"|convert_encoding('HTML-ENTITIES', _charset)|raw }}
                                         </td>
                                     </tr>
-
+#}
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% for i in 0..10 %}
@@ -734,7 +735,7 @@ Line 3
 {{ array_1|first }}
                                         </td>
                                     </tr>
-
+{#
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% <strong>filter</strong> upper|raw %}
@@ -752,7 +753,7 @@ limp bizkit
 {% endfilter %}
                                         </td>
                                     </tr>
-
+#}
                                     <tr>
                                         <td>
 <a href="http://twig.sensiolabs.org/doc/tags/flush.html" target="_blank" rel="noopener">flush</a>
@@ -1091,7 +1092,7 @@ limp bizkit
                                         <td>
                                         </td>
                                     </tr>
-
+{#
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% <strong>set</strong> counter = 1 %}
@@ -1110,7 +1111,7 @@ limp bizkit
 {% endfor %}
                                         </td>
                                     </tr>
-
+#}
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ '12345'|<strong>slice</strong>(0, 2) }}
@@ -1144,7 +1145,7 @@ limp bizkit
 <pre><code>{{ source('test.html')|escape }}</code></pre>
                                         </td>
                                     </tr>
-
+{#
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% filter escape('html') %}{% <strong>spaceless</strong> %}
@@ -1162,7 +1163,7 @@ limp bizkit
 {% endspaceless %}{% endfilter %}
                                         </td>
                                     </tr>
-
+#}
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ print_d("one, two, three"|<strong>split(', ')</strong>) }}{% endverbatim %}</code></pre>
@@ -1248,7 +1249,7 @@ limp bizkit
                                         <td>
                                         </td>
                                     </tr>
-
+{#
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}&lt;pre&gt;&lt;code&gt;{% filter escape('html') %}{% <strong>verbatim</strong> %}&lt;ul&gt;
@@ -1266,7 +1267,7 @@ limp bizkit
 </ul>{% endverbatim %}{% endfilter %}</code></pre>
                                         </td>
                                     </tr>
-
+#}
                                     <tr class="positive">
                                         <td colspan="2" class="center aligned">
                                             <h4>PHP Functions</h4>
@@ -2065,10 +2066,10 @@ $(function() {
                                     </tr>
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{{ constant('<strong>Twig_Environment::VERSION</strong>') }}{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ constant('<strong>\Twig\Environment::VERSION</strong>') }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{{ constant('Twig_Environment::VERSION') }}
+{{ constant('\\Twig\\Environment::VERSION') }}
                                         </td>
                                     </tr>
 
@@ -2101,7 +2102,7 @@ $(function() {
                                             <h4>HTML</h4>
                                         </td>
                                     </tr>
-
+{#
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% filter <strong>html_code</strong> %}&lt;div&gt;&lt;/div&gt;{% endfilter %}
@@ -2119,7 +2120,7 @@ $(function() {
 {{ dog|html_code }}
                                         </td>
                                     </tr>
-
+#}
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ dangerous_value|<strong>xss_clean</strong> }}{% endverbatim %}</code></pre>
@@ -2135,7 +2136,7 @@ $(function() {
                                             <h4>Formatters, Parsers</h4>
                                         </td>
                                     </tr>
-
+{#
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% filter <strong>markdown</strong> %} Formatted **text** {% endfilter %}
@@ -2146,7 +2147,7 @@ $(function() {
 {{ string_markdown|markdown }}
                                         </td>
                                     </tr>
-
+#}{#
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% filter <strong>textile</strong> %} Formatted **text** {% endfilter %}
@@ -2157,7 +2158,7 @@ $(function() {
 {{ string_textile|textile }}
                                         </td>
                                     </tr>
-
+#}
                                     <tr class="positive">
                                         <td colspan="2" class="center aligned">
                                             <h4>Platform Routines</h4>
@@ -3077,7 +3078,7 @@ width = 180px, height = 120px
                                             <h4>Twig Template Inheritance Test</h4>
                                         </td>
                                     </tr>
-
+{#
                                     <tr>
                                         <td>
 <p>The layout base: themes/x/views/layouts/default_test.html.twig</p>
@@ -3124,7 +3125,7 @@ width = 180px, height = 120px
 {{ twig_template_inheritance_test|html_code }}
                                         </td>
                                     </tr>
-
+#}
                                     <tr class="positive">
                                         <td colspan="2" class="center aligned">
                                             <h4>Miscellaneous Tests</h4>

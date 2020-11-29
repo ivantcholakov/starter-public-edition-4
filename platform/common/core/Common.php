@@ -434,12 +434,11 @@ if (!function_exists('_get_simple_twig_instance')) {
 
         if (!isset($instance[$charset])) {
 
-            $instance[$charset] = new Twig_Environment(
-                new Parser_Twig_Loader_String,
+            $instance[$charset] = new \Twig\Environment(
+                null,
                 array(
                     'debug' => false,
                     'charset' => $charset,
-                    'base_template_class' => 'Twig_Template',
                     'strict_variables' => false,
                     'autoescape' => 'html',
                     'cache' => false,
