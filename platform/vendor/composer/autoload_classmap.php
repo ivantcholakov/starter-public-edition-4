@@ -725,6 +725,7 @@ return array(
     'Symfony\\Component\\String\\Exception\\InvalidArgumentException' => $vendorDir . '/symfony/string/Exception/InvalidArgumentException.php',
     'Symfony\\Component\\String\\Exception\\RuntimeException' => $vendorDir . '/symfony/string/Exception/RuntimeException.php',
     'Symfony\\Component\\String\\Inflector\\EnglishInflector' => $vendorDir . '/symfony/string/Inflector/EnglishInflector.php',
+    'Symfony\\Component\\String\\Inflector\\FrenchInflector' => $vendorDir . '/symfony/string/Inflector/FrenchInflector.php',
     'Symfony\\Component\\String\\Inflector\\InflectorInterface' => $vendorDir . '/symfony/string/Inflector/InflectorInterface.php',
     'Symfony\\Component\\String\\LazyString' => $vendorDir . '/symfony/string/LazyString.php',
     'Symfony\\Component\\String\\Slugger\\AsciiSlugger' => $vendorDir . '/symfony/string/Slugger/AsciiSlugger.php',

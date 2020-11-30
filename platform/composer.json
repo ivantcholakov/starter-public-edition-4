@@ -38,12 +38,12 @@
         "scssphp/scssphp": "^1.1",
         "matthiasmullie/minify": "^1.3",
         "t1st3/php-json-minify": "^0.6.2",
+        "whichbrowser/parser": "^2.0",
         "ezyang/htmlpurifier": "^4.8.0",
         "ivantcholakov/codeigniter-phpmailer": "^1.4",
         "intervention/image": "^2.3",
         "yohang88/letter-avatar": "1.0.5",
         "athlon1600/php-proxy": "^5.1",
-        "guzzlehttp/guzzle": "~7.0",
-        "whichbrowser/parser": "^2.0"
+        "guzzlehttp/guzzle": "~7.0"
     }
 }

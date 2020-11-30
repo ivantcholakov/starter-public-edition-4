@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '3cefc8ac55524714fda1317aa519e8cb56e77de1',
+    'reference' => 'd78496368db2d6458193288488937bc46e6c5bf0',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '3cefc8ac55524714fda1317aa519e8cb56e77de1',
+      'reference' => 'd78496368db2d6458193288488937bc46e6c5bf0',
     ),
     'athlon1600/php-proxy' => 
     array (
@@ -261,8 +261,8 @@
     ),
     'symfony/filesystem' => 
     array (
-      'pretty_version' => 'v5.1.9',
-      'version' => '5.1.9.0',
+      'pretty_version' => 'v5.2.0',
+      'version' => '5.2.0.0',
       'aliases' => 
       array (
       ),
@@ -270,8 +270,8 @@
     ),
     'symfony/finder' => 
     array (
-      'pretty_version' => 'v5.1.9',
-      'version' => '5.1.9.0',
+      'pretty_version' => 'v5.2.0',
+      'version' => '5.2.0.0',
       'aliases' => 
       array (
       ),
@@ -279,8 +279,8 @@
     ),
     'symfony/intl' => 
     array (
-      'pretty_version' => 'v5.1.9',
-      'version' => '5.1.9.0',
+      'pretty_version' => 'v5.2.0',
+      'version' => '5.2.0.0',
       'aliases' => 
       array (
       ),
@@ -288,12 +288,12 @@
     ),
     'symfony/options-resolver' => 
     array (
-      'pretty_version' => 'v5.1.9',
-      'version' => '5.1.9.0',
+      'pretty_version' => 'v5.2.0',
+      'version' => '5.2.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'c6a02905e4ffc7a1498e8ee019db2b477cd1cc02',
+      'reference' => '87a2a4a766244e796dd9cb9d6f58c123358cd986',
     ),
     'symfony/polyfill-ctype' => 
     array (
@@ -414,21 +414,21 @@
     ),
     'symfony/process' => 
     array (
-      'pretty_version' => 'v5.1.9',
-      'version' => '5.1.9.0',
+      'pretty_version' => 'v5.2.0',
+      'version' => '5.2.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'b25b468538c82f6594058aabaa9bac48d7ef2170',
+      'reference' => '240e74140d4d956265048f3025c0aecbbc302d54',
     ),
     'symfony/string' => 
     array (
-      'pretty_version' => 'v5.1.9',
-      'version' => '5.1.9.0',
+      'pretty_version' => 'v5.2.0',
+      'version' => '5.2.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'a97573e960303db71be0dd8fda9be3bca5e0feea',
+      'reference' => '40e975edadd4e32cd16f3753b3bad65d9ac48242',
     ),
     't1st3/php-json-minify' => 
     array (
