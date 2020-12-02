@@ -33,7 +33,7 @@
                 </h4>
 
                 <p>
-                    <pre><code>{% filter escape %}{% verbatim %}{% set my_image = image_url('playground.jpg') %} {# Twig syntax #}{% endverbatim %}{% endfilter %}</code></pre>
+                    <pre><code>{% apply escape %}{% verbatim %}{% set my_image = image_url('playground.jpg') %} {# Twig syntax #}{% endverbatim %}{% endapply %}</code></pre>
                 </p>
 
                 <h4>
@@ -74,7 +74,7 @@
                                     <img src="{{ thumbnail(my_image, 120) }}" />
                                     <br />
                                     width = 120px
-                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                    <pre><code>{% apply escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120) }}" />{% endverbatim %}{% endapply %}</code></pre>
                                 </p>
 
                                 <div class="ui divider"></div>
@@ -83,7 +83,7 @@
                                     <img src="{{ thumbnail(my_image, 180) }}" />
                                     <br />
                                     width = 180px
-                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                    <pre><code>{% apply escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180) }}" />{% endverbatim %}{% endapply %}</code></pre>
                                 </p>
                             </td>
                             <td>
@@ -91,7 +91,7 @@
                                     <img src="{{ thumbnail(my_image, 120, null, null, null, true) }}" />
                                     <br />
                                     width = 120px
-                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120, null, null, null, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                    <pre><code>{% apply escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120, null, null, null, true) }}" />{% endverbatim %}{% endapply %}</code></pre>
                                 </p>
 
                                 <div class="ui divider"></div>
@@ -100,7 +100,7 @@
                                     <img src="{{ thumbnail(my_image, 180, null, null, null, true) }}" />
                                     <br />
                                     width = 180px
-                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180, null, null, null, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                    <pre><code>{% apply escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180, null, null, null, true) }}" />{% endverbatim %}{% endapply %}</code></pre>
                                 </p>
                             </td>
                         </tr>
@@ -117,7 +117,7 @@
                                     <img src="{{ thumbnail(my_image, null, 120) }}" />
                                     <br />
                                     height = 120px
-                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, null, 120) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                    <pre><code>{% apply escape %}{% verbatim %}<img src="{{ thumbnail(my_image, null, 120) }}" />{% endverbatim %}{% endapply %}</code></pre>
                                 </p>
 
                                 <div class="ui divider"></div>
@@ -126,7 +126,7 @@
                                     <img src="{{ thumbnail(my_image, null, 180) }}" />
                                     <br />
                                     height = 180px
-                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, null, 180) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                    <pre><code>{% apply escape %}{% verbatim %}<img src="{{ thumbnail(my_image, null, 180) }}" />{% endverbatim %}{% endapply %}</code></pre>
                                 </p>
                             </td>
                             <td>
@@ -134,7 +134,7 @@
                                     <img src="{{ thumbnail(my_image, null, 120, null, null, true) }}" />
                                     <br />
                                     height = 120px
-                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, null, 120, null, null, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                    <pre><code>{% apply escape %}{% verbatim %}<img src="{{ thumbnail(my_image, null, 120, null, null, true) }}" />{% endverbatim %}{% endapply %}</code></pre>
                                 </p>
 
                                 <div class="ui divider"></div>
@@ -143,7 +143,7 @@
                                     <img src="{{ thumbnail(my_image, null, 180, null, null, true) }}" />
                                     <br />
                                     height = 180px
-                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, null, 180, null, null, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                    <pre><code>{% apply escape %}{% verbatim %}<img src="{{ thumbnail(my_image, null, 180, null, null, true) }}" />{% endverbatim %}{% endapply %}</code></pre>
                                 </p>
                             </td>
                         </tr>
@@ -160,7 +160,7 @@
                                     <img src="{{ thumbnail(my_image, 180, 120) }}" />
                                     <br />
                                     width = 180px, height = 120px
-                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180, 120) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                    <pre><code>{% apply escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180, 120) }}" />{% endverbatim %}{% endapply %}</code></pre>
                                 </p>
 
                                 <div class="ui divider"></div>
@@ -169,7 +169,7 @@
                                     <img src="{{ thumbnail(my_image, 120, 180) }}" />
                                     <br />
                                     width = 120px, height = 180px
-                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120, 180) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                    <pre><code>{% apply escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120, 180) }}" />{% endverbatim %}{% endapply %}</code></pre>
                                 </p>
                             </td>
                             <td>
@@ -177,7 +177,7 @@
                                     <img src="{{ thumbnail(my_image, 180, 120, null, null, true) }}" />
                                     <br />
                                     width = 180px, height = 120px
-                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180, 120, null, null, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                    <pre><code>{% apply escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180, 120, null, null, true) }}" />{% endverbatim %}{% endapply %}</code></pre>
                                 </p>
 
                                 <div class="ui divider"></div>
@@ -186,7 +186,7 @@
                                     <img src="{{ thumbnail(my_image, 120, 180, null, null, true) }}" />
                                     <br />
                                     width = 120px, height = 180px
-                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120, 180, null, null, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                    <pre><code>{% apply escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120, 180, null, null, true) }}" />{% endverbatim %}{% endapply %}</code></pre>
                                 </p>
                             </td>
                         </tr>
@@ -204,7 +204,7 @@
                                         <img src="{{ thumbnail(my_image, 180, 120, true) }}" />
                                     </div>
                                     width = 180px, height = 120px
-                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180, 120, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                    <pre><code>{% apply escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180, 120, true) }}" />{% endverbatim %}{% endapply %}</code></pre>
                                 </p>
 
                                 <div class="ui divider"></div>
@@ -214,7 +214,7 @@
                                         <img src="{{ thumbnail(my_image, 120, 180, true) }}" />
                                     </div>
                                     width = 120px, height = 180px
-                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120, 180, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                    <pre><code>{% apply escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120, 180, true) }}" />{% endverbatim %}{% endapply %}</code></pre>
                                 </p>
                             </td>
                             <td>
@@ -223,7 +223,7 @@
                                         <img src="{{ thumbnail(my_image, 180, 120, true, null, true) }}" />
                                     </div>
                                     width = 180px, height = 120px
-                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180, 120, true, null, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                    <pre><code>{% apply escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180, 120, true, null, true) }}" />{% endverbatim %}{% endapply %}</code></pre>
                                 </p>
 
                                 <div class="ui divider"></div>
@@ -232,7 +232,7 @@
                                     <div class="image-container image-container-120x180">
                                         <img src="{{ thumbnail(my_image, 120, 180, true, null, true) }}" />
                                     </div>
-                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120, 180, true, null, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                    <pre><code>{% apply escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120, 180, true, null, true) }}" />{% endverbatim %}{% endapply %}</code></pre>
                                     width = 120px, height = 180px
                                 </p>
                             </td>
@@ -251,7 +251,7 @@
                                         <img src="{{ thumbnail(my_image, 180, 120, true, true) }}" />
                                     </div>
                                     width = 180px, height = 120px
-                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180, 120, true, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                    <pre><code>{% apply escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180, 120, true, true) }}" />{% endverbatim %}{% endapply %}</code></pre>
                                 </p>
 
                                 <div class="ui divider"></div>
@@ -261,7 +261,7 @@
                                         <img src="{{ thumbnail(my_image, 120, 180, true, true) }}" />
                                     </div>
                                     width = 120px, height = 180px
-                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120, 180, true, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                    <pre><code>{% apply escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120, 180, true, true) }}" />{% endverbatim %}{% endapply %}</code></pre>
                                 </p>
                             </td>
                             <td>
@@ -270,7 +270,7 @@
                                         <img src="{{ thumbnail(my_image, 180, 120, true, true, true) }}" />
                                     </div>
                                     width = 180px, height = 120px
-                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180, 120, true, true, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                    <pre><code>{% apply escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 180, 120, true, true, true) }}" />{% endverbatim %}{% endapply %}</code></pre>
                                 </p>
 
                                 <div class="ui divider"></div>
@@ -280,7 +280,7 @@
                                         <img src="{{ thumbnail(my_image, 120, 180, true, true, true) }}" />
                                     </div>
                                     width = 120px, height = 180px
-                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120, 180, true, true, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                    <pre><code>{% apply escape %}{% verbatim %}<img src="{{ thumbnail(my_image, 120, 180, true, true, true) }}" />{% endverbatim %}{% endapply %}</code></pre>
                                 </p>
                             </td>
                         </tr>
@@ -298,7 +298,7 @@
                                         <img class="ui fluid image" src="{{ thumbnail(my_image) }}" />
                                     </a>
                                     <br />
-                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                    <pre><code>{% apply escape %}{% verbatim %}<img src="{{ thumbnail(my_image) }}" />{% endverbatim %}{% endapply %}</code></pre>
                                 </p>
                             </td>
                             <td>
@@ -307,7 +307,7 @@
                                         <img class="ui fluid image" src="{{ thumbnail(my_image, null, null, null, null, true) }}" />
                                     </a>
                                     <br />
-                                    <pre><code>{% filter escape %}{% verbatim %}<img src="{{ thumbnail(my_image, null, null, null, null, true) }}" />{% endverbatim %}{% endfilter %}</code></pre>
+                                    <pre><code>{% apply escape %}{% verbatim %}<img src="{{ thumbnail(my_image, null, null, null, null, true) }}" />{% endverbatim %}{% endapply %}</code></pre>
                                 </p>
                             </td>
                         </tr>
