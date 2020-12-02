@@ -141,6 +141,10 @@ class Image_lib extends CI_Image_lib
      */
     public function image_process_gd($action = 'resize')
     {
+
+        // Added by Ivan Tcholakov, 02-DEC-2020.
+
+
         $v2_override = FALSE;
 
         // If the target width/height match the source, AND if the new file name is not equal to the old file name
@@ -837,6 +841,17 @@ class Image_lib extends CI_Image_lib
      * @return      bool
      */
     public function fit() {
+
+        if (($this->user_width === 0 && $this->user_height === 0) || $this->orig_width === 0 || $this->orig_height === 0
+            || ( ! ctype_digit((string) $this->user_width) && ! ctype_digit((string) $this->user_height))
+            || ! ctype_digit((string) $this->orig_width) || ! ctype_digit((string) $this->orig_height))
+        {
+            return;
+        }
+
+        // Sanitize
+        $this->user_width = (int) $this->user_width;
+        $this->user_height = (int) $this->user_height;
 
         // Overwrite the dimensions with the original user specified dimensions.
         $this->width = $this->user_width;
