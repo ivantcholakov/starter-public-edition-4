@@ -141,10 +141,6 @@ class Image_lib extends CI_Image_lib
      */
     public function image_process_gd($action = 'resize')
     {
-
-        // Added by Ivan Tcholakov, 02-DEC-2020.
-
-
         $v2_override = FALSE;
 
         // If the target width/height match the source, AND if the new file name is not equal to the old file name
