@@ -696,25 +696,25 @@ Line 3
 {{ array_1|first }}
                                         </td>
                                     </tr>
-{#
+
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{% <strong>filter</strong> upper|raw %}
+<pre><code>{% verbatim %}{% <strong>apply</strong> upper|raw %}
 limp bizkit
 &lt;br /&gt;
 лимп бизкит
-{% endfilter %}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/tags/filter.html" target="_blank" rel="noopener">filter</a>
+{% endapply %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/tags/apply.html" target="_blank" rel="noopener">apply</a>
                                         </td>
                                         <td>
-{% filter upper|raw %}
+{% apply upper|raw %}
 limp bizkit
 <br />
 лимп бизкит
-{% endfilter %}
+{% endapply %}
                                         </td>
                                     </tr>
-#}
+
                                     <tr>
                                         <td>
 <a href="http://twig.sensiolabs.org/doc/tags/flush.html" target="_blank" rel="noopener">flush</a>
