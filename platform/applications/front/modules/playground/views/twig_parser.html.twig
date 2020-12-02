@@ -553,25 +553,7 @@ Line 3
 {{ constant('BASE_URL') }}
                                         </td>
                                     </tr>
-{#
-                                    <tr>
-                                        <td>
-<pre><code>{% verbatim %}{{ "limp bizkit"|<strong>convert_encoding</strong>('HTML-ENTITIES', _charset) }}
-&lt;br /&gt;
-{{ "лимп бизкит"|<strong>convert_encoding</strong>('HTML-ENTITIES', _charset) }}
-&lt;br /&gt;
-{{ "лимп бизкит"|<strong>convert_encoding</strong>('HTML-ENTITIES', _charset)|raw }}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/filters/convert_encoding.html" target="_blank" rel="noopener">convert_encoding</a>
-                                        </td>
-                                        <td>
-{{ "limp bizkit"|convert_encoding('HTML-ENTITIES', _charset) }}
-<br />
-{{ "лимп бизкит"|convert_encoding('HTML-ENTITIES', _charset) }}
-<br />
-{{ "лимп бизкит"|convert_encoding('HTML-ENTITIES', _charset)|raw }}
-                                        </td>
-                                    </tr>
-#}
+
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% for i in 0..10 %}
