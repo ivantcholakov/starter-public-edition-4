@@ -1110,25 +1110,25 @@ limp bizkit
 <pre><code>{{ source('test.html')|escape }}</code></pre>
                                         </td>
                                     </tr>
-{#
+
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{% filter escape('html') %}{% <strong>spaceless</strong> %}
+<pre><code>{% verbatim %}{% apply spaceless|escape('html') %}
     &lt;div&gt;
         &lt;strong&gt;spaceless&lt;/strong&gt;
     &lt;/div&gt;
-{% endspaceless %}{% endfilter %}{% endverbatim %}</code></pre>
-<a href="http://twig.sensiolabs.org/doc/tags/spaceless.html" target="_blank" rel="noopener">spaceless</a>
+{% endapply %}{% endverbatim %}</code></pre>
+<a href="http://twig.sensiolabs.org/doc/filters/spaceless.html" target="_blank" rel="noopener">spaceless</a>
                                         </td>
                                         <td>
-{% filter escape('html') %}{% spaceless %}
+{% apply spaceless|escape('html') %}
     <div>
         <strong>spaceless</strong>
     </div>
-{% endspaceless %}{% endfilter %}
+{% endapply %}
                                         </td>
                                     </tr>
-#}
+
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ print_d("one, two, three"|<strong>split(', ')</strong>) }}{% endverbatim %}</code></pre>
