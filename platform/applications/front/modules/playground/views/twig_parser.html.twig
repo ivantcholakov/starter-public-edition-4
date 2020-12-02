@@ -1487,74 +1487,11 @@ limp bizkit
 
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}&lt;div id=&quot;map_canvas&quot; class=&quot;google-maps&quot;&gt;&lt;/div&gt;
-
-&lt;script type=&quot;text/javascript&quot; src=&quot;{{ <strong>is_https</strong>() ? 'https:' : 'http:' }}//maps.google.com/maps/api/js&quot;&gt;&lt;/script&gt;
-
-&lt;script type=&quot;text/javascript&quot;&gt;
-//&lt;![CDATA[
-
-$(function() {
-
-    var map;
-    var map_marker;
-
-    var data = {
-        latitude: 42.66667,
-        longitude: 25.25,
-        zoom: 6
-    }
-
-    var position = new google.maps.LatLng(data.latitude, data.longitude);
-
-    var options = {
-         center: position,
-         zoom: data.zoom,
-         mapTypeId: google.maps.MapTypeId.ROADMAP
-     };
-
-     map = new google.maps.Map(document.getElementById(&#039;map_canvas&#039;), options);
-     map_marker = new google.maps.Marker({map: map, position: position});
-});
-
-//]]&gt;
-&lt;/script&gt;{% endverbatim %}</code></pre>
+<pre><code>{% verbatim %}{{ print_d(<strong>is_https</strong>()) }}{% endverbatim %}</code></pre>
 <a href="https://codeigniter.com/userguide3/general/common_functions.html#is_https" target="_blank" rel="noopener">is_https</a>
                                         </td>
                                         <td>
-<div id="map_canvas" class="google-maps"></div>
-
-<script type="text/javascript" src="{{ is_https() ? 'https:' : 'http:' }}//maps.google.com/maps/api/js"></script>
-
-<script type="text/javascript">
-//<![CDATA[
-
-$(function() {
-
-    var map;
-    var map_marker;
-
-    var data = {
-        latitude: 42.66667,
-        longitude: 25.25,
-        zoom: 6
-    }
-
-    var position = new google.maps.LatLng(data.latitude, data.longitude);
-
-    var options = {
-         center: position,
-         zoom: data.zoom,
-         mapTypeId: google.maps.MapTypeId.ROADMAP
-     };
-
-     map = new google.maps.Map(document.getElementById('map_canvas'), options);
-     map_marker = new google.maps.Marker({map: map, position: position});
-});
-
-//]]>
-</script>
-
+{{ print_d(is_https()) }}
                                         </td>
                                     </tr>
 
@@ -2057,25 +1994,25 @@ $(function() {
                                             <h4>HTML</h4>
                                         </td>
                                     </tr>
-{#
+
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{% filter <strong>html_code</strong> %}&lt;div&gt;&lt;/div&gt;{% endfilter %}
+<pre><code>{% verbatim %}{% apply <strong>html_code</strong> %}&lt;div&gt;&lt;/div&gt;{% endapply %}
 &lt;br /&gt;
-{% filter <strong>html_code</strong> %}{% verbatim %}&lt;div&gt;{{ dog }}&lt;/div&gt;{&#37; endverbatim %}{% endfilter %}
+{% apply <strong>html_code</strong> %}{% verbatim %}&lt;div&gt;{{ dog }}&lt;/div&gt;{&#37; endverbatim %}{% endapply %}
 &lt;br /&gt;
 {{ dog|<strong>html_code</strong> }}
 {% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{% filter html_code %}<div></div>{% endfilter %}
+{% apply html_code %}<div></div>{% endapply %}
 <br />
-{% filter html_code %}{% verbatim %}<div>{{ dog }}</div>{% endverbatim %}{% endfilter %}
+{% apply html_code %}{% verbatim %}<div>{{ dog }}</div>{% endverbatim %}{% endapply %}
 <br />
 {{ dog|html_code }}
                                         </td>
                                     </tr>
-#}
+
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ dangerous_value|<strong>xss_clean</strong> }}{% endverbatim %}</code></pre>
@@ -2091,29 +2028,29 @@ $(function() {
                                             <h4>Formatters, Parsers</h4>
                                         </td>
                                     </tr>
-{#
+
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{% filter <strong>markdown</strong> %} Formatted **text** {% endfilter %}
+<pre><code>{% verbatim %}{% apply <strong>markdown</strong> %} Formatted **text** {% endapply %}
 {{ string_markdown|<strong>markdown</strong> }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{% filter markdown %} Formatted **text** {% endfilter %}
+{% apply markdown %} Formatted **text** {% endapply %}
 {{ string_markdown|markdown }}
                                         </td>
                                     </tr>
-#}{#
+#}
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}{% filter <strong>textile</strong> %} Formatted **text** {% endfilter %}
+<pre><code>{% verbatim %}{% apply <strong>textile</strong> %} Formatted **text** {% endapply %}
 {{ string_textile|<strong>textile</strong> }}{% endverbatim %}</code></pre>
                                         </td>
                                         <td>
-{% filter textile %} Formatted **text** {% endfilter %}
+{% apply textile %} Formatted **text** {% endapply %}
 {{ string_textile|textile }}
                                         </td>
                                     </tr>
-#}
+
                                     <tr class="positive">
                                         <td colspan="2" class="center aligned">
                                             <h4>Platform Routines</h4>
@@ -3033,11 +2970,11 @@ width = 180px, height = 120px
                                             <h4>Twig Template Inheritance Test</h4>
                                         </td>
                                     </tr>
-{#
+
                                     <tr>
                                         <td>
 <p>The layout base: themes/x/views/layouts/default_test.html.twig</p>
-{% filter html_code %}{% verbatim %}<!DOCTYPE html>
+{% apply html_code %}{% verbatim %}<!DOCTYPE html>
 <html>
 
 <head>
@@ -3061,14 +2998,14 @@ width = 180px, height = 120px
 
 </body>
 
-</html>{% endverbatim %}{% endfilter %}
+</html>{% endverbatim %}{% endapply %}
 
 <p>The template body: modules/playground/views/twig_template_inheritance_test.html.twig</p>
-{% filter html_code %}{% verbatim %}{% extends 'layouts/default_test.html' %}
+{% apply html_code %}{% verbatim %}{% extends 'layouts/default_test.html' %}
 {% block content %}
     {{ parent() }}
     <p>{{ text_in_body }}</p>
-{% endblock %}{% endverbatim %}{% endfilter %}
+{% endblock %}{% endverbatim %}{% endapply %}
 <a href="http://twig.sensiolabs.org/doc/tags/extends.html" target="_blank" rel="noopener">extends</a>
 <a href="http://twig.sensiolabs.org/doc/tags/block.html" target="_blank" rel="noopener">block (tag)</a>
 <a href="http://twig.sensiolabs.org/doc/functions/block.html" target="_blank" rel="noopener">block (function)</a>
@@ -3080,7 +3017,7 @@ width = 180px, height = 120px
 {{ twig_template_inheritance_test|html_code }}
                                         </td>
                                     </tr>
-#}
+
                                     <tr class="positive">
                                         <td colspan="2" class="center aligned">
                                             <h4>Miscellaneous Tests</h4>
