@@ -1214,25 +1214,25 @@ limp bizkit
                                         <td>
                                         </td>
                                     </tr>
-{#
+
                                     <tr>
                                         <td>
-<pre><code>{% verbatim %}&lt;pre&gt;&lt;code&gt;{% filter escape('html') %}{% <strong>verbatim</strong> %}&lt;ul&gt;
+<pre><code>{% verbatim %}&lt;pre&gt;&lt;code&gt;{% apply escape('html') %}{% <strong>verbatim</strong> %}&lt;ul&gt;
     {% for value in array_1 %}
         &lt;li&gt;{{ value|e }}&lt;/li&gt;
     {% endfor %}
-&lt;/ul&gt;{&#37 endverbatim %}{% endfilter %}&lt;/code&gt;&lt;/pre&gt;{% endverbatim %}</code></pre>
+&lt;/ul&gt;{&#37 endverbatim %}{% endapply %}&lt;/code&gt;&lt;/pre&gt;{% endverbatim %}</code></pre>
 <a href="http://twig.sensiolabs.org/doc/tags/verbatim.html" target="_blank" rel="noopener">verbatim</a>
                                         </td>
                                         <td>
-<pre><code>{% filter escape('html') %}{% verbatim %}<ul>
+<pre><code>{% apply escape('html') %}{% verbatim %}<ul>
     {% for value in array_1 %}
         <li>{{ value|e }}</li>
     {% endfor %}
-</ul>{% endverbatim %}{% endfilter %}</code></pre>
+</ul>{% endverbatim %}{% endapply %}</code></pre>
                                         </td>
                                     </tr>
-#}
+
                                     <tr class="positive">
                                         <td colspan="2" class="center aligned">
                                             <h4>PHP Functions</h4>
