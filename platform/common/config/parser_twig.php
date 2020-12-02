@@ -200,7 +200,6 @@ $config['filters'] = array(
     array('count', 'count', array('is_safe' => array('html'))),
     array('gettype', 'gettype', array('is_safe' => array('html'))),
     array('ltrim', array('Parser_Twig_Extension_Php', 'ltrim')),
-    array('money_format', array('Parser_Twig_Extension_Php', 'money_format')),
     array('rtrim', array('Parser_Twig_Extension_Php', 'rtrim')),
     'sprintf',
     'str_repeat',

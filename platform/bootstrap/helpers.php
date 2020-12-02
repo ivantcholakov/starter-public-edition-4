@@ -847,17 +847,6 @@ if (!function_exists('array_merge_recursive_distinct')) {
 
 // Miscelaneous ----------------------------------------------------------------
 
-if (!function_exists('money_format')) {
-
-    // A fallback money_format(), DEPRECATED, avoid using this function.
-    // http://stackoverflow.com/questions/6369887/alternative-to-money-format-function-in-php-on-windows-platform
-    function money_format($format, $number) {
-
-        return number_format($number, 2);
-    }
-
-}
-
 /**
  * @author Ivan Tcholakov, 2016
  * @license MIT
