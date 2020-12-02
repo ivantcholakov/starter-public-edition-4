@@ -1053,12 +1053,14 @@ limp bizkit
                                         <td>
                                         </td>
                                     </tr>
-{#
+
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{% <strong>set</strong> counter = 1 %}
-{% for country in countries if counter <= 10 %}
+{% for country in countries %}
+    {% if counter <= 10 %}
     {{ counter }} -- ({{ country.code }}) {{ country.name }}&lt;br /&gt;
+    {% endif %}
     {% <strong>set</strong> counter = counter + 1 %}
 {% endfor %}
 {% endverbatim %}</code></pre>
@@ -1066,13 +1068,15 @@ limp bizkit
                                         </td>
                                         <td>
 {% set counter = 1 %}
-{% for country in countries if counter <= 10 %}
+{% for country in countries %}
+    {% if counter <= 10 %}
     {{ counter }} -- ({{ country.code }}) {{ country.name }}<br />
+    {% endif %}
     {% set counter = counter + 1 %}
 {% endfor %}
                                         </td>
                                     </tr>
-#}
+
                                     <tr>
                                         <td>
 <pre><code>{% verbatim %}{{ '12345'|<strong>slice</strong>(0, 2) }}
