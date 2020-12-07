@@ -15,4 +15,8 @@ use Composer\Installers\BaseInstaller;
  */
 class CustomInstaller extends BaseInstaller
 {
+    public function getLocations()
+    {
+        return [ '' => false ];
+    }
 }
