@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'voku\\helper\\' => array($vendorDir . '/voku/anti-xss/src/voku/helper'),
+    'voku\\' => array($vendorDir . '/voku/portable-utf8/src/voku', $vendorDir . '/voku/portable-ascii/src/voku'),
     't1st3\\' => array($vendorDir . '/t1st3/php-json-minify/src/t1st3'),
     'YoHang88\\LetterAvatar\\' => array($vendorDir . '/yohang88/letter-avatar/src'),
     'WhichBrowser\\' => array($vendorDir . '/whichbrowser/parser/src', $vendorDir . '/whichbrowser/parser/tests/src'),

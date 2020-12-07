@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'd78496368db2d6458193288488937bc46e6c5bf0',
+    'reference' => '8501ac6e3127033db506167759e8ec81377fd910',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'd78496368db2d6458193288488937bc46e6c5bf0',
+      'reference' => '8501ac6e3127033db506167759e8ec81377fd910',
     ),
     'athlon1600/php-proxy' => 
     array (
@@ -230,7 +230,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'fa05999280434eacf621cc78ab9179d9394c7998',
+      'reference' => '676668eda60bb8a32bd2a4efcb12c96d6e1c4bc6',
     ),
     'salesforce/handlebars-php' => 
     array (
@@ -456,6 +456,33 @@
       array (
       ),
       'reference' => 'b02fa41f3783a2616eccef7b92fbc2343ffed737',
+    ),
+    'voku/anti-xss' => 
+    array (
+      'pretty_version' => '4.1.31',
+      'version' => '4.1.31.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '22dea9be8dbffa466995ea87a12da5f3bce874bb',
+    ),
+    'voku/portable-ascii' => 
+    array (
+      'pretty_version' => '1.5.6',
+      'version' => '1.5.6.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '80953678b19901e5165c56752d087fc11526017c',
+    ),
+    'voku/portable-utf8' => 
+    array (
+      'pretty_version' => '5.4.51',
+      'version' => '5.4.51.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '578f5266725dc9880483d24ad0cfb39f8ce170f7',
     ),
     'whichbrowser/parser' => 
     array (

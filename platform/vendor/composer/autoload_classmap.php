@@ -989,4 +989,8 @@ return array(
     'WhichBrowser\\Parser' => $vendorDir . '/whichbrowser/parser/src/Parser.php',
     'YoHang88\\LetterAvatar\\LetterAvatar' => $vendorDir . '/yohang88/letter-avatar/src/LetterAvatar.php',
     't1st3\\JSONMin\\JSONMin' => $vendorDir . '/t1st3/php-json-minify/src/t1st3/JSONMin/JSONMin.php',
+    'voku\\helper\\ASCII' => $vendorDir . '/voku/portable-ascii/src/voku/helper/ASCII.php',
+    'voku\\helper\\AntiXSS' => $vendorDir . '/voku/anti-xss/src/voku/helper/AntiXSS.php',
+    'voku\\helper\\Bootup' => $vendorDir . '/voku/portable-utf8/src/voku/helper/Bootup.php',
+    'voku\\helper\\UTF8' => $vendorDir . '/voku/portable-utf8/src/voku/helper/UTF8.php',
 );
