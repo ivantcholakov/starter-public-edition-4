@@ -5,6 +5,14 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "extra": {
+        "installer-types": ["library", "component"],
+        "installer-paths": {
+            "../public/assets/composer-asset/{$vendor}/{$name}/": [
+                "type:component"
+            ]
+        }
+    },
     "require": {
         "php": ">=7.2.5",
         "oomphinc/composer-installers-extender": "^2.0",
