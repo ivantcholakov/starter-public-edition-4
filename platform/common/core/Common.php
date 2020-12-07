@@ -435,7 +435,7 @@ if (!function_exists('_get_simple_twig_instance')) {
         if (!isset($instance[$charset])) {
 
             $instance[$charset] = new \Twig\Environment(
-                null,
+                new \Parser_Twig_Loader_Filesystem([]),
                 array(
                     'debug' => false,
                     'charset' => $charset,
