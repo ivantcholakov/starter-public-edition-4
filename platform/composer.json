@@ -55,6 +55,13 @@
         "intervention/image": "^2.3",
         "yohang88/letter-avatar": "1.0.5",
         "athlon1600/php-proxy": "^5.1",
-        "guzzlehttp/guzzle": "~7.0"
+        "guzzlehttp/guzzle": "~7.0",
+        "components/jquery": "3.5.1",
+        "components/modernizr": "^3.5",
+        "components/webfontloader": "^1.6",
+        "components/highlightjs": "^9.16",
+        "scrivo/highlight.php": "^9.18",
+        "desandro/imagesloaded": "4.1.4",
+        "desandro/masonry": "4.2.2"
     }
 }
