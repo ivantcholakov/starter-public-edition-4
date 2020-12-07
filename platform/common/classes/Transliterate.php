@@ -1,9 +1,9 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed.');
 
 /**
- * Transliteration class
+ * Transliteration Class
  *
- * @version 1.1.2
+ * @version 1.1.3
  *
  * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2020.
  * @link https://github.com/ivantcholakov/transliterate
@@ -12,18 +12,17 @@
  * @link http://opensource.org/licenses/MIT
  */
 
-if (!defined('ICONV_INSTALLED')) {
-    define('ICONV_INSTALLED', function_exists('iconv'));
+if (!defined('TRANSLITERATE_ICONV_INSTALLED')) {
+    define('TRANSLITERATE_ICONV_INSTALLED', function_exists('iconv'));
 }
 
-if (!defined('INTL_INSTALLED')) {
-    define('INTL_INSTALLED', function_exists('intl_get_error_code'));
+if (!defined('TRANSLITERATE_INTL_INSTALLED')) {
+    define('TRANSLITERATE_INTL_INSTALLED', function_exists('intl_get_error_code'));
 }
 
-if (!defined('IS_CODEIGNITER')) {
+if (!defined('TRANSLITERATE_IS_CODEIGNITER')) {
     // A flag, telling that this code runs on CodeIgniter framework.
-    //define('IS_CODEIGNITER', defined('BASEPATH') && defined('APPPATH') && defined('CI_VERSION') && function_exists('get_instance'));
-    define('IS_CODEIGNITER', true);
+    define('TRANSLITERATE_IS_CODEIGNITER', defined('BASEPATH') && defined('APPPATH') && defined('CI_VERSION') && function_exists('get_instance'));
 }
 
 class Transliterate {
@@ -144,7 +143,7 @@ class Transliterate {
 
         static $transliterator_ids = array();
 
-        if (INTL_INSTALLED && class_exists('Transliterator', false)) {
+        if (TRANSLITERATE_INTL_INSTALLED && class_exists('Transliterator', false)) {
 
             if (empty($transliterator_ids)) {
                 $transliterator_ids = Transliterator::listIDs();
@@ -223,7 +222,7 @@ class Transliterate {
         static $search;
         static $replace;
 
-        if (IS_CODEIGNITER) {
+        if (TRANSLITERATE_IS_CODEIGNITER) {
 
             if (!isset($search) || !is_array($search)) {
 
@@ -257,7 +256,9 @@ class Transliterate {
                 }
             }
 
-            $string = preg_replace($search, $replace, $string);
+            if (!empty($search)) {
+                $string = preg_replace($search, $replace, $string);
+            }
         }
 
         if (ICONV_INSTALLED) {
@@ -276,7 +277,7 @@ class Transliterate {
 
         if ($language == '') {
 
-            if (IS_CODEIGNITER) {
+            if (TRANSLITERATE_IS_CODEIGNITER) {
 
                 $ci = & get_instance();
                 $language = $ci->config->item('language');
