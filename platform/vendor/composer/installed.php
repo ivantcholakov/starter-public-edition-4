@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '8501ac6e3127033db506167759e8ec81377fd910',
+    'reference' => '6d5850b6fe3b88a7414d5b5872085569bd09255c',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '8501ac6e3127033db506167759e8ec81377fd910',
+      'reference' => '6d5850b6fe3b88a7414d5b5872085569bd09255c',
     ),
     'athlon1600/php-proxy' => 
     array (
@@ -37,6 +37,15 @@
       array (
       ),
       'reference' => '899338a3ea4651533493ffd9d1ce7002e9ddf53e',
+    ),
+    'composer/installers' => 
+    array (
+      'pretty_version' => 'v1.9.0',
+      'version' => '1.9.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'b93bcf0fa1fccb0b7d176b0967d969691cd74cca',
     ),
     'erusev/parsedown' => 
     array (
@@ -155,6 +164,15 @@
       ),
       'reference' => '1846fd5aeace2a0dd57c4f770f693d12bcd7fa26',
     ),
+    'oomphinc/composer-installers-extender' => 
+    array (
+      'pretty_version' => '2.0.0',
+      'version' => '2.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8d3fe38a1723e0e91076920c8bb946b1696e28ca',
+    ),
     'phpmailer/phpmailer' => 
     array (
       'pretty_version' => 'v6.2.0',
@@ -232,6 +250,13 @@
       ),
       'reference' => '676668eda60bb8a32bd2a4efcb12c96d6e1c4bc6',
     ),
+    'roundcube/plugin-installer' => 
+    array (
+      'replaced' => 
+      array (
+        0 => '*',
+      ),
+    ),
     'salesforce/handlebars-php' => 
     array (
       'pretty_version' => '2.3.0',
@@ -249,6 +274,13 @@
       array (
       ),
       'reference' => 'f7c9088320e218ca42e4ef0074259a1ba24ec93a',
+    ),
+    'shama/baton' => 
+    array (
+      'replaced' => 
+      array (
+        0 => '*',
+      ),
     ),
     'symfony/deprecation-contracts' => 
     array (
