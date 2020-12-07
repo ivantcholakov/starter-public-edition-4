@@ -575,15 +575,10 @@ if (!function_exists('js_platform')) {
 if (!function_exists('js_modernizr')) {
 
     // Added by Ivan Tcholakov. 22-OCT-2013.
+    // Modified by Ivan Tcholakov, 08-DEC-2020.
     function js_modernizr() {
 
-        ci()->load->helper('asset');
-
-        if (config_item('load_javascripts_from_source')) {
-            return js('lib/modernizr/modernizr.custom.js');
-        }
-
-        return js('lib/modernizr/modernizr.custom.min.js');
+        return '    <script type="text/javascript" src="'.html_attr_escape(default_base_url('assets/composer-asset/components/modernizr/modernizr.js')).'"></script>';
     }
 
 }
@@ -591,34 +586,10 @@ if (!function_exists('js_modernizr')) {
 if (!function_exists('js_jquery')) {
 
     // Added by Ivan Tcholakov. 21-OCT-2013.
+    // Modified by Ivan Tcholakov, 08-DEC-2020.
     function js_jquery() {
 
-        ci()->load->helper('asset');
-        ci()->load->helper('user_agent');
-
-        $jquery_version = '1.12.4';
-
-        $browser = user_agent_ie();
-
-        if ($browser['is_ie']) {
-
-            if ($browser['ie_version'] < 7) {
-                $jquery_version = '1.9.1';
-            }
-        }
-
-        if (config_item('load_javascripts_from_source')) {
-
-            $result = js("lib/jquery/jquery-$jquery_version.js");
-            $result .= js('lib/jquery/jquery-migrate-1.4.1.js');
-
-        } else {
-
-            $result = js("lib/jquery/jquery-$jquery_version.min.js");
-            $result .= js('lib/jquery/jquery-migrate-1.4.1.min.js');
-        }
-
-        return $result;
+        return '    <script type="text/javascript" src="'.html_attr_escape(default_base_url('assets/composer-asset/components/jquery/jquery.min.js')).'"></script>';
     }
 
 }
