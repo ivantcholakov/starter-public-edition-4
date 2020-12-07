@@ -1,0 +1,24 @@
+{
+  "name": "components-webfontloader",
+  "description": "Web Font Loader gives you added control when using linked fonts via @font-face.",
+  "version": "1.6.3",
+  "keywords": [
+    "components",
+    "webfontloader"
+  ],
+  "homepage": "http://github.com/components/webfontloader/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/components/webfontloader.git"
+  },
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "main": "webfontloader.js",
+  "browser": {
+    "webfontloader": "webfontloader.js"
+  }
+}

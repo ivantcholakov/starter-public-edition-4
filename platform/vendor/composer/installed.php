@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '9bf170850d3a26663bbe68c7e3f7dc7205cc7467',
+    'reference' => '683468fb3c0749bd83620048eb3cea371b741a9e',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '9bf170850d3a26663bbe68c7e3f7dc7205cc7467',
+      'reference' => '683468fb3c0749bd83620048eb3cea371b741a9e',
     ),
     'athlon1600/php-proxy' => 
     array (
@@ -38,6 +38,42 @@
       ),
       'reference' => '899338a3ea4651533493ffd9d1ce7002e9ddf53e',
     ),
+    'components/highlightjs' => 
+    array (
+      'pretty_version' => 'v9.16.2',
+      'version' => '9.16.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '1dea393aa70365843cfec34b1f365930d383bdfe',
+    ),
+    'components/jquery' => 
+    array (
+      'pretty_version' => '3.5.1',
+      'version' => '3.5.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'b33e8f0f9a1cb2ae390cf05d766a900b53d2125b',
+    ),
+    'components/modernizr' => 
+    array (
+      'pretty_version' => '3.5.0',
+      'version' => '3.5.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'f4fc5301da393558235c8c927937ed21a5a7c344',
+    ),
+    'components/webfontloader' => 
+    array (
+      'pretty_version' => '1.6.3',
+      'version' => '1.6.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '3fdb1367e4e413e26f4587bf03dff0149ad59804',
+    ),
     'composer/installers' => 
     array (
       'pretty_version' => 'v1.9.0',
@@ -46,6 +82,24 @@
       array (
       ),
       'reference' => 'b93bcf0fa1fccb0b7d176b0967d969691cd74cca',
+    ),
+    'desandro/imagesloaded' => 
+    array (
+      'pretty_version' => 'v4.1.4',
+      'version' => '4.1.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '67c4e57453120935180c45c6820e7d3fbd2ea1f9',
+    ),
+    'desandro/masonry' => 
+    array (
+      'pretty_version' => 'v4.2.2',
+      'version' => '4.2.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '3b0883cf4a4a046896719b9cf282ea74be7ffecd',
     ),
     'erusev/parsedown' => 
     array (
@@ -265,6 +319,15 @@
       array (
       ),
       'reference' => '59fc47c7b2701659cb483d0f3461c4f712693b2b',
+    ),
+    'scrivo/highlight.php' => 
+    array (
+      'pretty_version' => 'v9.18.1.5',
+      'version' => '9.18.1.5',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'fa75a865928a4a5d49e5e77faca6bd2f2410baaf',
     ),
     'scssphp/scssphp' => 
     array (

@@ -1,0 +1,32 @@
+{
+    "name": "components/modernizr",
+    "description": "Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user's browser.",
+    "keywords": [
+        "html5",
+        "css3",
+        "browser",
+        "feature detection"
+    ],
+    "type": "component",
+    "homepage": "https://modernizr.com",
+    "license": "MIT",
+    "authors": [
+        { "name": "Faruk Ates" },
+        { "name": "Paul Irish" },
+        { "name": "Alex Sexton" },
+        { "name": "Ryan Seddon" },
+        { "name": "Patrick Kettner" },
+        { "name": "Stu Cox" },
+        { "name": "Richard Herrera" }
+    ],
+    "extra": {
+        "component": {
+            "scripts": [
+                "modernizr.js"
+            ],
+            "shim": {
+                "exports": "window.Modernizr"
+            }
+        }
+    }
+}
