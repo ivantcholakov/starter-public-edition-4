@@ -226,6 +226,55 @@ if (!function_exists('url_add_params')) {
 
 }
 
+if ( ! function_exists('safe_mailto'))
+{
+    /**
+     * Encoded Mailto Link
+     *
+     * A weaker alternative implementation because
+     * Javascript's function document.write()
+     * breaks Turbolinks.
+     * @link https://stackoverflow.com/questions/12592363/looking-for-a-php-only-email-address-obfuscator-function
+     *
+     * @param    string    the email address
+     * @param    string    the link title
+     * @param    mixed    any attributes
+     * @return    string
+     */
+    function safe_mailto($email, $title = '', $attributes = '')
+    {
+        if (!empty($attributes))
+        {
+            $attributes = _stringify_attributes($attributes);
+        }
+
+        $email = trim($email);
+        $title = trim($title);
+
+        if ($title == '') {
+            $title = $email;
+        }
+
+        $encoded_email = '';
+
+        for ($a = 0, $b = \UTF8::strlen($email);  $a < $b; $a++)
+        {
+            $letter = \UTF8::substr($email, $a, 1);
+            $encoded_email .= '&#'.(mt_rand(0, 1) == 0  ? 'x'.dechex(\UTF8::ord($letter)) : \UTF8::ord($letter)) . ';';
+        }
+
+        $encoded_title = '';
+
+        for ($a = 0, $b = \UTF8::strlen($title);  $a < $b; $a++)
+        {
+            $letter = \UTF8::substr($title, $a, 1);
+            $encoded_title .= '&#'.(mt_rand(0, 1) == 0  ? 'x'.dechex(\UTF8::ord($letter)) : \UTF8::ord($letter)) . ';';
+        }
+
+        return '<a href="mailto:'.$encoded_email.'" '.$attributes.'>'.$encoded_title.'</a>';
+    }
+}
+
 if ( ! function_exists('auto_link'))
 {
     /**
