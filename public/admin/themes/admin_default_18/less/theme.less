@@ -26,9 +26,11 @@
 @import (optional) "@{themesFolder}/@{site}/globals/site.variables";
 
 /* Component's site.variables */
-@import (optional) "@{default-assets-less-lib-path}/semantic/@{themesFolder}/@{theme}/globals/site.variables";
-@import (optional) "@{default-assets-less-lib-path}/semantic-custom/@{themesFolder}/@{theme}/globals/site.variables";
-@import (optional) "@{themesFolder}/@{theme}/globals/site.variables";
+& when not (@theme = 'default') {
+  @import (optional) "@{default-assets-less-lib-path}/semantic/@{themesFolder}/@{theme}/globals/site.variables";
+  @import (optional) "@{default-assets-less-lib-path}/semantic-custom/@{themesFolder}/@{theme}/globals/site.variables";
+  @import (optional) "@{themesFolder}/@{theme}/globals/site.variables";
+}
 
 /* Site theme site.variables */
 @import (optional) "@{default-assets-less-lib-path}/semantic/@{siteFolder}/globals/site.variables";
@@ -56,6 +58,19 @@
 @import (optional) "@{siteFolder}/@{type}s/@{element}.variables";
 
 
+/*-------------------------
+    Central Color Map
+-------------------------*/
+
+/* Default */
+@import (optional) "@{default-assets-less-lib-path}/semantic/@{themesFolder}/@{site}/globals/colors.less";
+@import (optional) "@{default-assets-less-lib-path}/semantic-custom/@{themesFolder}/@{site}/globals/colors.less";
+@import (optional) "@{themesFolder}/default/globals/colors.less";
+
+/* Site Theme */
+@import (optional) "@{themesFolder}/@{site}/globals/colors.less";
+
+
 /*******************************
              Mix-ins
 *******************************/
@@ -65,7 +80,7 @@
 -------------------*/
 
 .loadFonts() when (@importGoogleFonts) {
-    @import url('@{googleProtocol}fonts.googleapis.com/css?family=@{googleFontRequest}');
+  @import (css) url('@{googleProtocol}fonts.googleapis.com/css?family=@{googleFontRequest}');
 }
 
 /*------------------
@@ -73,6 +88,12 @@
 -------------------*/
 
 .loadUIOverrides() {
+
+    & when not (@theme = 'default') {
+      @import (optional) "@{default-assets-less-lib-path}/semantic/@{themesFolder}/default/@{type}s/@{element}.overrides";
+      @import (optional) "@{default-assets-less-lib-path}/semantic-custom/@{themesFolder}/default/@{type}s/@{element}.overrides";
+      @import (optional) "@{themesFolder}/default/@{type}s/@{element}.overrides";
+    }
 
     @import (optional) "@{default-assets-less-lib-path}/semantic/@{themesFolder}/@{theme}/@{type}s/@{element}.overrides";
     @import (optional) "@{default-assets-less-lib-path}/semantic-custom/@{themesFolder}/@{theme}/@{type}s/@{element}.overrides";
