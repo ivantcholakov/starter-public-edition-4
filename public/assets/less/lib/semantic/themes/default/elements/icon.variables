@@ -22,8 +22,8 @@
 /*
 /* Outline Icons */
 @importOutlineIcons: true;
-/*
 @outlineFontName: 'outline-icons';
+/*
 @outlineSrc:
   url("@{fontPath}/@{outlineFontName}.eot?#iefix") format('embedded-opentype'),
   url("@{fontPath}/@{outlineFontName}.woff2") format('woff2'),
@@ -36,8 +36,8 @@
 
 /* Brand Icons */
 @importBrandIcons: true;
-/*
 @brandFontName: 'brand-icons';
+/*
 @brandSrc:
   url("@{fontPath}/@{brandFontName}.eot?#iefix") format('embedded-opentype'),
   url("@{fontPath}/@{brandFontName}.woff2") format('woff2'),
