@@ -269,15 +269,17 @@ each(@colors, {
   @c: @colors[@@color][color];
   @l: @colors[@@color][light];
 
-  i.@{color}.icon.icon.icon.icon {
+  i.@{color}.icon.icon.icon.icon.icon {
     color: @c;
   }
   & when (@variationIconInverted) {
-    i.inverted.@{color}.icon.icon.icon.icon {
+    i.inverted.@{color}.icon.icon.icon.icon.icon {
       color: @l;
     }
-    i.inverted.bordered.@{color}.icon.icon.icon.icon,
-    i.inverted.circular.@{color}.icon.icon.icon.icon {
+    i.inverted.bordered.@{color}.icon.icon.icon.icon.icon,
+    i.inverted.circular.@{color}.icon.icon.icon.icon.icon,
+    i.inverted.bordered.@{color}.icons,
+    i.inverted.circular.@{color}.icons {
       background-color: @c;
       color: @white;
     }
@@ -293,6 +295,7 @@ i.icon,
 i.icons {
   font-size: @medium;
   line-height: @lineHeight;
+  font-style: normal;
 }
 & when not (@variationIconSizes = false) {
   each(@variationIconSizes, {
@@ -371,6 +374,73 @@ i.icons {
       i.icons .inverted.corner.icon {
         text-shadow: @cornerIconInvertedShadow;
       }
+    }
+  }
+}
+
+& when ((@variationIconGroups) or (@variationIconCorner))
+   and ((@variationIconBordered) or (@variationIconCircular)) {
+  /*************************************************
+     Bordered/circular with corner or group icons
+  *************************************************/
+  i.bordered.icons,
+  i.circular.icons {
+    width: @borderedSize;
+    height: @borderedSize;
+    box-shadow: @borderedShadow;
+    vertical-align: middle;
+  }
+  i.circular.icons {
+    border-radius: 500em;
+  }
+  i.bordered.icons i.icon:first-child,
+  i.circular.icons i.icon:first-child {
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  & when (@variationIconInverted) {
+    /* Inverted Icon */
+    i.bordered.inverted.icons,
+    i.circular.inverted.icons {
+      border: none;
+      box-shadow: none;
+      background-color: @black;
+      color: @white;
+    }
+  }
+
+  & when (@variationIconCorner) {
+    /* Corner Icon */
+    i.bordered.icons .icon.corner,
+    i.circular.icons .icon.corner,
+    i.bordered.icons .icon.corner[class*="bottom right"],
+    i.circular.icons .icon.corner[class*="bottom right"] {
+      top: auto;
+      left: auto;
+      right: @borderedGroupCornerOffset;
+      bottom: @borderedGroupCornerOffset;
+    }
+    i.bordered.icons .icon.corner[class*="top right"],
+    i.circular.icons .icon.corner[class*="top right"] {
+      top: @borderedGroupCornerOffset;
+      left: auto;
+      right: @borderedGroupCornerOffset;
+      bottom: auto;
+    }
+    i.bordered.icons .icon.corner[class*="top left"],
+    i.circular.icons .icon.corner[class*="top left"] {
+      top: @borderedGroupCornerOffset;
+      left: @borderedGroupCornerOffset;
+      right: auto;
+      bottom: auto;
+    }
+    i.bordered.icons .icon.corner[class*="bottom left"],
+    i.circular.icons .icon.corner[class*="bottom left"] {
+      top: auto;
+      left: @borderedGroupCornerOffset;
+      right: auto;
+      bottom: @borderedGroupCornerOffset;
     }
   }
 }
