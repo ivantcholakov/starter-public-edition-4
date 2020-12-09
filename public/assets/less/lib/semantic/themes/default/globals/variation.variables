@@ -26,6 +26,7 @@
 @variationButtonFluid: true;
 @variationButtonCircular: true;
 @variationButtonGroups: true;
+@variationButtonStackable: true;
 @variationButtonSizes: @variationAllSizes;
 
 /* Container */
@@ -321,6 +322,8 @@
 
 /* Card */
 @variationCardInverted: true;
+@variationCardDisabled: true;
+@variationCardLoading: true;
 @variationCardHorizontal: true;
 @variationCardRaised: true;
 @variationCardCentered: true;
@@ -379,6 +382,7 @@
 @variationCheckboxToggle: true;
 @variationCheckboxIndeterminate: true;
 @variationCheckboxFitted: true;
+@variationCheckboxRightAligned: true;
 @variationCheckboxSizes: @variationAllSizes;
 
 /* Dimmer */
@@ -463,6 +467,7 @@
 @variationProgressActive: true;
 @variationProgressAttached: true;
 @variationProgressSpeeds: true;
+@variationProgressRightAligned: true;
 @variationProgressSizes: @variationAllSizes;
 
 /* Rating */
@@ -524,6 +529,7 @@
 @variationToastWarning: true;
 @variationToastSuccess: true;
 @variationToastError: true;
+@variationToastHorizontal: true;
 @variationToastFloating: true;
 @variationToastProgress: true;
 @variationToastIcon: true;

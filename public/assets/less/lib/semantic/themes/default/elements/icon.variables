@@ -7,8 +7,8 @@
 ---------------*/
 
 /* Solid Icons */
-/*
 @fontName: 'icons';
+/*
 @src:
   url("@{fontPath}/@{fontName}.eot?#iefix") format('embedded-opentype'),
   url("@{fontPath}/@{fontName}.woff2") format('woff2'),
@@ -88,6 +88,8 @@
   -@cornerIconStroke  @cornerIconStroke 0 @black,
    @cornerIconStroke  @cornerIconStroke 0 @black
 ;
+
+@borderedGroupCornerOffset: 1.15em;
 
 @mini: 0.4em;
 @tiny: 0.5em;
