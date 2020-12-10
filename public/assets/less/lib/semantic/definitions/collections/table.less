@@ -191,6 +191,9 @@
   .ui.table:not(.unstackable) > tbody > tr > th:not(.rowspanned),
   .ui.table:not(.unstackable) > tfoot > tr > th:not(.rowspanned),
   .ui.table:not(.unstackable) > tr > td:not(.rowspanned),
+  // Added by Ivan Tcholakov, 10-DEC-2020.
+  .ui.table:not(.unstackable) > thead > tr > td:not(.rowspanned),
+  //
   .ui.table:not(.unstackable) > tbody > tr > td:not(.rowspanned),
   .ui.table:not(.unstackable) > tfoot > tr > td:not(.rowspanned) {
     display: block !important;
@@ -217,6 +220,9 @@
   .ui.ui.ui.ui.table:not(.unstackable) > tbody > tr > th,
   .ui.ui.ui.ui.table:not(.unstackable) > tfoot > tr > th,
   .ui.ui.ui.ui.table:not(.unstackable) > tr > td,
+  // Added by Ivan Tcholakov, 10-DEC-2020.
+  .ui.ui.ui.ui.table:not(.unstackable) > thead > tr > td,
+  //
   .ui.ui.ui.ui.table:not(.unstackable) > tbody > tr > td,
   .ui.ui.ui.ui.table:not(.unstackable) > tfoot > tr > td {
     background: none;
@@ -229,6 +235,9 @@
   .ui.table:not(.unstackable) > tbody > tr > th:first-child,
   .ui.table:not(.unstackable) > tfoot > tr > th:first-child,
   .ui.table:not(.unstackable) > tr > td:first-child,
+  // Added by Ivan Tcholakov, 10-DEC-2020.
+  .ui.table:not(.unstackable) > thead > tr > td:first-child,
+  //
   .ui.table:not(.unstackable) > tbody > tr > td:first-child,
   .ui.table:not(.unstackable) > tfoot > tr > td:first-child {
     font-weight: @responsiveCellHeaderFontWeight;
@@ -313,6 +322,9 @@
     .ui.structured.celled.table > tbody > tr > th,
     .ui.structured.celled.table > tfoot > tr > th,
     .ui.structured.celled.table > tr > td,
+    // Added by Ivan Tcholakov, 10-DEC-2020.
+    .ui.structured.celled.table > thead > tr > td,
+    //
     .ui.structured.celled.table > tbody > tr > td ,
     .ui.structured.celled.table > tfoot > tr > td {  border-left: @cellBorder;
       border-right: @cellBorder;
@@ -350,6 +362,9 @@
   /* Highlight Defining Column */
   .ui.definition.table > tr > td:first-child:not(.ignored),
   .ui.definition.table > tbody > tr > td:first-child:not(.ignored),
+  // Added by Ivan Tcholakov, 10-DEC-2020.
+  .ui.definition.table > thead > tr > td:first-child:not(.ignored),
+  //
   .ui.definition.table > tfoot > tr > td:first-child:not(.ignored),
   .ui.definition.table tr td.definition {
     background: @definitionColumnBackground;
@@ -483,6 +498,9 @@
     .ui[class*="tablet stackable"].table > tbody > tr > th:not(.rowspanned),
     .ui[class*="tablet stackable"].table > tfoot > tr > th:not(.rowspanned),
     .ui[class*="tablet stackable"].table > tr > th:not(.rowspanned),
+    // Added by Ivan Tcholakov, 10-DEC-2020.
+    .ui[class*="tablet stackable"].table > thead > tr > td:not(.rowspanned),
+    //
     .ui[class*="tablet stackable"].table > tbody > tr > td:not(.rowspanned),
     .ui[class*="tablet stackable"].table > tfoot > tr > td:not(.rowspanned),
     .ui[class*="tablet stackable"].table > tr > td:not(.rowspanned)  {
@@ -511,6 +529,9 @@
     .ui[class*="tablet stackable"].table > tbody > tr > th,
     .ui[class*="tablet stackable"].table > tfoot > tr > th,
     .ui[class*="tablet stackable"].table > tr > th,
+    // Added by Ivan Tcholakov, 10-DEC-2020.
+    .ui[class*="tablet stackable"].table > thead > tr > td,
+    //
     .ui[class*="tablet stackable"].table > tbody > tr > td,
     .ui[class*="tablet stackable"].table > tfoot > tr > td,
     .ui[class*="tablet stackable"].table > tr > td {
@@ -1091,6 +1112,9 @@ each(@colors, {
     border-color: @invertedHeaderBorderColor;
     color: @invertedHeaderColor;
   }
+  // Added by Ivan Tcholakov, 10-DEC-2020.
+  .ui.inverted.table > thead > tr > td,
+  //
   .ui.inverted.table > tbody > tr > td,
   .ui.inverted.table > tfoot > tr > td,
   .ui.inverted.table > tr > td {
@@ -1116,7 +1140,10 @@ each(@colors, {
     .ui.inverted.definition.table > thead:not(.full-width) > tr > th:first-child {
       background: @definitionPageBackground;
     }
-    .ui.inverted.definition.table > tbody > tr > td:first-child
+    // Added by Ivan Tcholakov, 10-DEC-2020.
+    .ui.inverted.definition.table > thead > tr > td:first-child,
+    //
+    .ui.inverted.definition.table > tbody > tr > td:first-child,
     .ui.inverted.definition.table > tfoot > tr > td:first-child,
     .ui.inverted.definition.table > tr > td:first-child {
       background: @invertedDefinitionColumnBackground;
@@ -1159,6 +1186,9 @@ each(@colors, {
   .ui.basic.table > tbody > tr {
     border-bottom: @basicTableCellBorder;
   }
+  // Added by Ivan Tcholakov, 10-DEC-2020.
+  .ui.basic.table > thead > tr > td,
+  //
   .ui.basic.table > tbody > tr > td,
   .ui.basic.table > tfoot > tr > td,
   .ui.basic.table >tr > td {
@@ -1178,6 +1208,10 @@ each(@colors, {
   .ui[class*="very basic"].table:not(.sortable):not(.striped) > tbody > tr > th,
   .ui[class*="very basic"].table:not(.sortable):not(.striped) > tfoot > tr > th,
   .ui[class*="very basic"].table:not(.sortable):not(.striped) > tr > td,
+  // Added by Ivan Tcholakov, 10-DEC-2020.
+  .ui[class*="very basic"].table:not(.sortable):not(.striped) > thead > tr > td,
+  .ui[class*="very basic"].table:not(.sortable):not(.striped) > tfoot > tr > td,
+  //
   .ui[class*="very basic"].table:not(.sortable):not(.striped) > tbody > tr > td {
     padding: @basicTableCellPadding;
   }
@@ -1187,6 +1221,9 @@ each(@colors, {
   .ui[class*="very basic"].table:not(.sortable):not(.striped) > tfoot > tr > th:first-child,
   .ui[class*="very basic"].table:not(.sortable):not(.striped) > tr > td:first-child,
   .ui[class*="very basic"].table:not(.sortable):not(.striped) > tbody > tr > td:first-child ,
+  // Added by Ivan Tcholakov, 10-DEC-2020.
+  .ui[class*="very basic"].table:not(.sortable):not(.striped) > thead > tr > td:first-child,
+  //
   .ui[class*="very basic"].table:not(.sortable):not(.striped) > tfoot > tr > td:first-child {
     padding-left: 0;
   }
@@ -1196,6 +1233,9 @@ each(@colors, {
   .ui[class*="very basic"].table:not(.sortable):not(.striped) > tfoot > tr > th:last-child,
   .ui[class*="very basic"].table:not(.sortable):not(.striped) > tr > td:last-child,
   .ui[class*="very basic"].table:not(.sortable):not(.striped) > tbody > tr > td:last-child,
+  // Added by Ivan Tcholakov, 10-DEC-2020.
+  .ui[class*="very basic"].table:not(.sortable):not(.striped) > thead > tr > td:last-child,
+  //
   .ui[class*="very basic"].table:not(.sortable):not(.striped) > tfoot >tr > td:last-child {
     padding-right: 0;
   }
@@ -1214,6 +1254,9 @@ each(@colors, {
   .ui.celled.table > tbody > tr > th,
   .ui.celled.table > tfoot > tr > th,
   .ui.celled.table > tr > td,
+  // Added by Ivan Tcholakov, 10-DEC-2020.
+  .ui.celled.table > thead > tr > td,
+  //
   .ui.celled.table > tbody > tr > td ,
   .ui.celled.table > tfoot > tr > td {
     border-left: @cellBorder;
@@ -1229,6 +1272,9 @@ each(@colors, {
   .ui.celled.table > tbody > tr > th:first-child,
   .ui.celled.table > tfoot > tr > th:first-child,
   .ui.celled.table > tr > td:first-child,
+  // Added by Ivan Tcholakov, 10-DEC-2020.
+  .ui.celled.table > thead > tr > td:first-child,
+  //
   .ui.celled.table > tbody > tr > td:first-child,
   .ui.celled.table > tfoot >tr > td:first-child {
     border-left: none;
@@ -1252,6 +1298,9 @@ each(@colors, {
   .ui.padded.table > tbody > tr > th,
   .ui.padded.table > tfoot > tr > th,
   .ui.padded.table > tr > td,
+  // Added by Ivan Tcholakov, 10-DEC-2020.
+  .ui.padded.table > thead > tr > td,
+  //
   .ui.padded.table > tbody > tr > td ,
   .ui.padded.table > tfoot > tr > td {
     padding: @paddedVerticalPadding @paddedHorizontalPadding;
@@ -1266,6 +1315,9 @@ each(@colors, {
     padding-right: @veryPaddedHorizontalPadding;
   }
   .ui[class*="very padded"].table > tr > td,
+  // Added by Ivan Tcholakov, 10-DEC-2020.
+  .ui[class*="very padded"].table > thead > tr > td,
+  //
   .ui[class*="very padded"].table > tbody > tr > td ,
   .ui[class*="very padded"].table > tfoot > tr > td {
     padding: @veryPaddedVerticalPadding @veryPaddedHorizontalPadding;
@@ -1285,6 +1337,9 @@ each(@colors, {
     padding-right: @compactHorizontalPadding;
   }
   .ui.compact.table > tr > td,
+  // Added by Ivan Tcholakov, 10-DEC-2020.
+  .ui.compact.table > thead > tr > td,
+  //
   .ui.compact.table > tbody > tr > td ,
   .ui.compact.table > tfoot > tr > td {
     padding: @compactVerticalPadding @compactHorizontalPadding;
@@ -1299,6 +1354,9 @@ each(@colors, {
     padding-right: @veryCompactHorizontalPadding;
   }
   .ui[class*="very compact"].table > tr > td,
+  // Added by Ivan Tcholakov, 10-DEC-2020.
+  .ui[class*="very compact"].table > thead > tr > td,
+  //
   .ui[class*="very compact"].table > tbody > tr > td ,
   .ui[class*="very compact"].table > tfoot > tr > td {
     padding: @veryCompactVerticalPadding @veryCompactHorizontalPadding;
