@@ -64,9 +64,12 @@ _display.modal = function ( options ) {
 					.empty()
 					.append( render() );
 
-				_modal
-					.appendTo( 'body' )
-					.modal('show');
+				// Only need to attach the first time
+				if (! _modal.parent().hasClass('dimmer')) {
+					_modal.appendTo( 'body' )
+				}
+
+				_modal.modal('show');
 			}
 		}
 	};

@@ -98,17 +98,36 @@ table.dataTable {
         td.select-checkbox,
         th.select-checkbox {
             &:after {
-                content: '\2714';
+                content: '\2713';
+                font-size: 20px;
 
-                margin-top: -11px;
-                margin-left: -4px;
+                margin-top: -19px;
+                margin-left: -6px;
 
                 text-align: center;
                 text-shadow:
-                    1px 1px #B0BED9,
-                    -1px -1px #B0BED9,
-                    1px -1px #B0BED9,
-                    -1px 1px #B0BED9;
+                    1px 1px @table-selected,
+                    -1px -1px @table-selected,
+                    1px -1px @table-selected,
+                    -1px 1px @table-selected;
+            }
+        }
+    }
+
+    &.compact {
+        tbody td.select-checkbox,
+        tbody th.select-checkbox {
+            &:before {
+                margin-top: -12px;
+            }
+        }
+
+        tr.selected {
+            td.select-checkbox,
+            th.select-checkbox {
+                &:after {
+                    margin-top: -16px;
+                }
             }
         }
     }
