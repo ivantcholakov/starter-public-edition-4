@@ -14,6 +14,19 @@ code, pre {
 /* End Force <pre> and <code> Tags to Word Wrap */
 
 
+/* Code */
+
+code {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    color: #333;
+    background: #f8f8f8;
+}
+
+/* End Code */
+
+
 /* Colored Texts */
 
 // See https://github.com/Semantic-Org/Semantic-UI/issues/1885
