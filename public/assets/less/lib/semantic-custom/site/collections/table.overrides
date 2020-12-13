@@ -1,5 +1,5 @@
 /*******************************
-         Site Overrides
+         Table Overrides
 *******************************/
 
 .ui.table thead td {
@@ -23,4 +23,53 @@
 .ui.table td.neutral {
     background: @infoBackgroundColor !important;
     color: @infoTextColor !important;
+}
+
+
+/*
+ *  DataTables - Semantic UI Integration
+ */
+
+@import "@{default-assets-less-lib-path}dataTables/dataTables.semanticui-source.less";
+
+// Responsive Plugin
+@import '@{default-assets-less-lib-path}dataTables/responsive.semanticui.less';
+
+// Select Plugin
+@import '@{default-assets-less-lib-path}dataTables/select.semanticui-variables.less';
+@import '@{default-assets-less-lib-path}dataTables/select.semanticui-source.less';
+
+// Visual Corrections
+
+div.dataTables_wrapper div.dataTables_length .ui.selection.dropdown {
+    min-width: 100px;
+}
+
+div.dataTables_wrapper > div.ui.grid > div.row {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+div.dataTables_wrapper > div.ui.grid > div.row:first-child {
+    padding-top: 7px;
+}
+
+div.dataTables_wrapper > div.ui.grid > div.row div.column {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+// Item Details Controls
+
+th.details-control {
+    min-width: 35px;
+}
+
+td.details-control {
+    background: url('@{default-assets-uri}img/lib/details-open.png') no-repeat center center;
+    cursor: pointer;
+}
+
+tr.shown td.details-control {
+    background: url('@{default-assets-uri}img/lib/details-close.png') no-repeat center center;
 }
