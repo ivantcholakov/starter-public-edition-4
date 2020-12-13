@@ -35,43 +35,6 @@
 @import (less) "@{default-assets-css-lib-path}animate/animate.css";
 
 
-/* Colorbox */
-
-@colorbox-example-dir: "example3/";
-@colorbox-import-file: "@{default-assets-css-lib-path}colorbox/@{colorbox-example-dir}colorbox.css";
-@colorbox-image-dir: "@{default-assets-uri}css/lib/colorbox/@{colorbox-example-dir}images/";
-
-@import (inline) "@{colorbox-import-file}";
-
-/* Colorbox Fix URLs */
-
-#cboxLoadingGraphic {
-    background-image: url("@{colorbox-image-dir}loading.gif");
-}
-
-#cboxPrevious {
-    background-image: url("@{colorbox-image-dir}controls.png");
-}
-
-#cboxNext {
-    background-image: url("@{colorbox-image-dir}controls.png");
-}
-
-#cboxClose {
-    background-image: url("@{colorbox-image-dir}controls.png");
-}
-
-/* End Colorbox Fix URLs */
-
-/* Colorbox Visual Corrections */
-
-#cboxPrevious, #cboxNext, #cboxSlideshow, #cboxClose {
-    outline: 0 !important;
-}
-
-/* End Colorbox */
-
-
 /* Site Structure */
 
 /* Sticky Footer */
@@ -162,37 +125,3 @@ body {
 }
 
 /* End Site Structure */
-
-
-/* Workarounds */
-
-.ui.card .content .header {
-    // jQuery.ellipsis mistakenly lowers the height, keep it.
-    min-height: 26px;
-}
-
-/* End Workarounds */
-
-/* Code */
-
-code {
-    display: block;
-    overflow-x: auto;
-    padding: 0.5em;
-    color: #333;
-    background: #f8f8f8;
-}
-
-/* End Code */
-
-/* Printing */
-
-// http://www.itsupportguides.com/tech-tips-tricks/how-to-hide-urlhref-when-printing-bootstrap-website/
-// http://stackoverflow.com/questions/7301989/need-to-remove-href-values-when-printing-in-chrome
-@media print {
-    a[href]:after {
-        content: none !important;
-    }
-}
-
-/* End Printing */

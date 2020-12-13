@@ -37,43 +37,6 @@
 @import (less) "@{default-assets-css-lib-path}animate/animate.css";
 
 
-/* Colorbox */
-
-@colorbox-example-dir: "example3/";
-@colorbox-import-file: "@{default-assets-css-lib-path}colorbox/@{colorbox-example-dir}colorbox.css";
-@colorbox-image-dir: "@{default-assets-uri}css/lib/colorbox/@{colorbox-example-dir}images/";
-
-@import (inline) "@{colorbox-import-file}";
-
-/* Colorbox Fix URLs */
-
-#cboxLoadingGraphic {
-    background-image: url("@{colorbox-image-dir}loading.gif");
-}
-
-#cboxPrevious {
-    background-image: url("@{colorbox-image-dir}controls.png");
-}
-
-#cboxNext {
-    background-image: url("@{colorbox-image-dir}controls.png");
-}
-
-#cboxClose {
-    background-image: url("@{colorbox-image-dir}controls.png");
-}
-
-/* End Colorbox Fix URLs */
-
-/* Colorbox Visual Corrections */
-
-#cboxPrevious, #cboxNext, #cboxSlideshow, #cboxClose {
-    outline: 0 !important;
-}
-
-/* End Colorbox */
-
-
 /* Site Structure */
 
 /* Sticky Footer */
@@ -229,14 +192,4 @@ a:hover .ui.dashboard.segments, button:hover .ui.dashboard.segments {
     transform: translateY(-3px);
 }
 
-/* Enad Landing Page */
-
-
-/* Workarounds */
-
-.ui.card .content .header {
-    // jQuery.ellipsis mistakenly lowers the height, keep it.
-    min-height: 26px;
-}
-
-/* End Workarounds */
+/* End Landing Page */
