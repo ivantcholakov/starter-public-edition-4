@@ -283,24 +283,74 @@ $config['tasks'] = [
     // php cli.php assets compile front-semantic-ui-flat-min
 
     [
-        'name' => 'front-semantic-ui-flat-min',
-        'type' => 'less',
-        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_flat/less/index.less',
+        'name' => 'front-semantic-ui-flat-mi',
+        'type' => 'merge_css',
         'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_flat/css/front.min.css',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-        'cssmin' => [],
+        'sources' => [
+            [
+                'source' => DEFAULTFCPATH.'themes/front_semantic_ui_flat/less/index.less',
+                'type' => 'less',
+                'less' => [],
+                'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
+                'cssmin' => [],
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/css/lib/animate/animate.min.css',
+                'type' => 'copy',
+            ],
+        ],
+        'after' => [
+            '_assets_compile_create_sha384',
+            '_assets_compile_create_sha384_base64',
+        ],
     ],
 
     // php cli.php assets compile front-default-min
 
     [
         'name' => 'front-default-min',
-        'type' => 'less',
-        'source' => DEFAULTFCPATH.'themes/front_default/less/index.less',
+        'type' => 'merge_css',
         'destination' => DEFAULTFCPATH.'themes/front_default/css/front.min.css',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-        'cssmin' => [],
+        'sources' => [
+            [
+                'source' => DEFAULTFCPATH.'themes/front_default/less/index.less',
+                'type' => 'less',
+                'less' => [],
+                'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
+                'cssmin' => [],
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/css/lib/animate/animate.min.css',
+                'type' => 'copy',
+            ],
+        ],
+        'after' => [
+            '_assets_compile_create_sha384',
+            '_assets_compile_create_sha384_base64',
+        ],
     ],
 
     // -------------------------------------------------------------------------
 ];
+
+if (!function_exists('_assets_compile_create_sha384')) {
+
+    function _assets_compile_create_sha384($task) {
+
+        $destination_hash = $task['destination'].'.sha384';
+        $hash = hash('sha384', $task['result']);
+        write_file($destination_hash, $hash);
+        @chmod($destination_hash, FILE_WRITE_MODE);
+    }
+}
+
+if (!function_exists('_assets_compile_create_sha384_base64')) {
+
+    function _assets_compile_create_sha384_base64($task) {
+
+        $destination_hash = $task['destination'].'.sha384.base64';
+        $hash = base64_encode(hash('sha384', $task['result']));
+        write_file($destination_hash, $hash);
+        @chmod($destination_hash, FILE_WRITE_MODE);
+    }
+}
