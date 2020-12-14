@@ -274,6 +274,9 @@ class Compile_controller extends Core_Controller {
 
                 $this->execute($subtask);
 
+                // Remove @charset "UTF-8"; , because this declaration would be invalid if it was used several times.
+                $subtask['result'] = preg_replace('/\@charset\s*["\']UTF-8["\']\s*;{0,1}/i', '', $subtask['result'], 1);
+
                 if ($first) {
                     $task['result'] = trim($subtask['result']);
                 } else {
