@@ -1,5 +1,9 @@
 <?php
 
+// Compiling visual themes with Semantic/Fomantic UI might require a lot
+// of memory for node.js. In such case try from a command line this (Linux):
+// export NODE_OPTIONS=--max-old-space-size=8192
+
 // An autoprefixer option: Supported browsers.
 
 $config['autoprefixer_browsers'] = [
@@ -267,6 +271,7 @@ $config['tasks'] = [
             ],
         ],
         'after' => [
+            '_assets_compile_create_md5',
             '_assets_compile_create_sha384',
             '_assets_compile_create_sha384_base64',
         ],
@@ -292,6 +297,7 @@ $config['tasks'] = [
             ],
         ],
         'after' => [
+            '_assets_compile_create_md5',
             '_assets_compile_create_sha384',
             '_assets_compile_create_sha384_base64',
         ],
@@ -299,6 +305,17 @@ $config['tasks'] = [
 
     // -------------------------------------------------------------------------
 ];
+
+if (!function_exists('_assets_compile_create_md5')) {
+
+    function _assets_compile_create_md5($task) {
+
+        $destination_hash = $task['destination'].'.md5';
+        $hash = md5($task['result']);
+        write_file($destination_hash, $hash);
+        @chmod($destination_hash, FILE_WRITE_MODE);
+    }
+}
 
 if (!function_exists('_assets_compile_create_sha384')) {
 
