@@ -90,39 +90,6 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
-    // php cli.php assets compile datatables-semantic-ui-min
-
-    [
-        'name' => 'datatables-semantic-ui-min',
-        'type' => 'less',
-        'source' => DEFAULTFCPATH.'assets/less/lib/dataTables/dataTables.semanticui.less',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/dataTables/dataTables.semanticui.min.css',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-        'cssmin' => [],
-    ],
-
-    // php cli.php assets compile datatables-responsive-semantic-ui-min
-
-    [
-        'name' => 'datatables-responsive-semantic-ui-min',
-        'type' => 'less',
-        'source' => DEFAULTFCPATH.'assets/less/lib/dataTables/responsive.semanticui.less',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/dataTables/responsive.semanticui.min.css',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-        'cssmin' => [],
-    ],
-
-    // php cli.php assets compile datatables-select-semantic-ui-min
-
-    [
-        'name' => 'datatables-select-semantic-ui-min',
-        'type' => 'less',
-        'source' => DEFAULTFCPATH.'assets/less/lib/dataTables/select.semanticui.less',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/dataTables/select.semanticui.min.css',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-        'cssmin' => [],
-    ],
-
     // php cli.php assets compile semantic-ui-min
 
     [
