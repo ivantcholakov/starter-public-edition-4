@@ -45,6 +45,9 @@ class Compile_controller extends Core_Controller {
         $params = array_slice($this->uri->rsegment_array(), 2);
 
         if (empty($this->tasks)) {
+
+            echo 'There are no configured tasks.'.PHP_EOL;
+
             return;
         }
 
@@ -66,7 +69,7 @@ class Compile_controller extends Core_Controller {
 
         if (empty($tasks)) {
 
-            echo 'No tasks has been found.'.PHP_EOL;
+            echo 'No task has been found.'.PHP_EOL;
 
             return;
         }
