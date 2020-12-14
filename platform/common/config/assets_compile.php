@@ -283,7 +283,7 @@ $config['tasks'] = [
     // php cli.php assets compile front-semantic-ui-flat-min
 
     [
-        'name' => 'front-semantic-ui-flat-mi',
+        'name' => 'front-semantic-ui-flat-min',
         'type' => 'merge_css',
         'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_flat/css/front.min.css',
         'sources' => [
