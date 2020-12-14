@@ -271,7 +271,6 @@ $config['tasks'] = [
             ],
         ],
         'after' => [
-            '_assets_compile_create_md5',
             '_assets_compile_create_sha384',
             '_assets_compile_create_sha384_base64',
         ],
@@ -297,7 +296,6 @@ $config['tasks'] = [
             ],
         ],
         'after' => [
-            '_assets_compile_create_md5',
             '_assets_compile_create_sha384',
             '_assets_compile_create_sha384_base64',
         ],
