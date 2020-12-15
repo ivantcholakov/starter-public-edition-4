@@ -22,8 +22,10 @@
 {{ css('lib/highlightjs/github.css') }}
 {{ file_partial('css') }}
 {{ partial('css') }}
-{{ js('lib/phpjs/phpjs.min.js') }}
-{{ js_modernizr() }}
+
+{{ theme_js('front.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
+
+
 {{ js_jquery() }}
 {{ js('lib/jquery-base64/jquery.base64.js') }}
 {{ js('lib/jquery-json/jquery.json.js') }}

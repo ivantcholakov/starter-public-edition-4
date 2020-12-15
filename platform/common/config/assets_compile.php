@@ -190,6 +190,8 @@ $config['tasks'] = [
         'cssmin' => [],
     ],
 
+    // -------------------------------------------------------------------------
+
     // php cli.php assets compile front-semantic-ui-flat-min
 
     [
@@ -214,6 +216,29 @@ $config['tasks'] = [
         ],
     ],
 
+    // php cli.php assets compile front-semantic-ui-flat-js-min
+
+    [
+        'name' => 'front-default-js-min',
+        'type' => 'merge_js',
+        'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_flat/js/front.min.js',
+        'sources' => [
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/phpjs/phpjs.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/composer-asset/components/modernizr/modernizr.js',
+                'type' => 'jsmin',
+            ],
+        ],
+        'after' => [
+            '_assets_compile_create_sha384',
+        ],
+    ],
+
+    // -------------------------------------------------------------------------
+
     // php cli.php assets compile front-default-min
 
     [
@@ -231,6 +256,27 @@ $config['tasks'] = [
             [
                 'source' => DEFAULTFCPATH.'assets/css/lib/animate/animate.min.css',
                 'type' => 'copy',
+            ],
+        ],
+        'after' => [
+            '_assets_compile_create_sha384',
+        ],
+    ],
+
+    // php cli.php assets compile front-default-js-min
+
+    [
+        'name' => 'front-default-js-min',
+        'type' => 'merge_js',
+        'destination' => DEFAULTFCPATH.'themes/front_default/js/front.min.js',
+        'sources' => [
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/phpjs/phpjs.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/composer-asset/components/modernizr/modernizr.js',
+                'type' => 'jsmin',
             ],
         ],
         'after' => [
