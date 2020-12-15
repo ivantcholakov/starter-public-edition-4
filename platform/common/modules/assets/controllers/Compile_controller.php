@@ -40,15 +40,13 @@ class Compile_controller extends Core_Controller {
 
     public function index()
     {
-        echo PHP_EOL;
+        $this->line('');
 
         $params = array_slice($this->uri->rsegment_array(), 2);
 
         if (empty($this->tasks)) {
 
-            echo 'There are no configured tasks.'.PHP_EOL;
-
-            return;
+            $this->terminate('There are no configured tasks.');
         }
 
         $tasks = [];
@@ -69,35 +67,27 @@ class Compile_controller extends Core_Controller {
 
         if (empty($tasks)) {
 
-            echo 'No task has been found.'.PHP_EOL;
-
-            return;
+            $this->terminate('No task has been found.');
         }
 
         foreach ($tasks as $task) {
 
             if (!isset($task['name']) || trim($task['name']) == '') {
 
-                echo 'No task name has been specified.'.PHP_EOL;
-
-                return;
+                $this->terminate('No task name has been specified.');
             }
 
             if (!isset($task['type']) || trim($task['type']) == '') {
 
-                echo 'No task type has been specified.'.PHP_EOL;
-
-                return;
+                $this->terminate('No task type has been specified.');
             }
 
-            echo 'Task: '.$task['name'].PHP_EOL;
-            echo 'Type: '.$task['type'].PHP_EOL;
+            $this->line('Task: '.$task['name']);
+            $this->line('Type: '.$task['type']);
 
             if (isset($task['source']) && trim($task['source']) == '') {
 
-                echo $task['name'].': Empty source file name.'.PHP_EOL;
-
-                return;
+                $this->terminate($task['name'].': Empty source file name.');
             }
 
             if (isset($task['source'])) {
@@ -106,21 +96,17 @@ class Compile_controller extends Core_Controller {
 
                 if (!is_file($source)) {
 
-                    echo $task['name'].': '.sprintf('Failed to find the source file "%s".', $source).PHP_EOL;
-
-                    return;
+                    $this->terminate($task['name'].': '.sprintf('Failed to find the source file "%s".', $source));
                 }
 
                 $task['source'] = $source;
 
-                echo 'Source: '.$task['source'].PHP_EOL;
+                $this->line('Source: '.$task['source']);
             }
 
             if (isset($task['destination']) && trim($task['destination']) == '') {
 
-                echo $task['name'].': Empty destination file name.'.PHP_EOL;
-
-                return;
+                $this->terminate($task['name'].': Empty destination file name.');
             }
 
             if (isset($task['destination'])) {
@@ -132,14 +118,12 @@ class Compile_controller extends Core_Controller {
 
                 if (!is_dir($dir)) {
 
-                    echo $task['name'].': '.sprintf('Failed to create the destination directory "%s".', $dir).PHP_EOL;
-
-                    return;
+                    $this->terminate($task['name'].': '.sprintf('Failed to create the destination directory "%s".', $dir));
                 }
 
                 $task['destination'] = $destination;
 
-                echo 'Destination: '.$task['destination'].PHP_EOL;
+                $this->line('Destination: '.$task['destination']);
             }
 
             if (isset($task['before'])) {
@@ -174,13 +158,11 @@ class Compile_controller extends Core_Controller {
 
                 if (!write_file($task['destination'], $task['result'])) {
 
-                    echo $task['name'].': '.sprintf('Failed to write the destination file "%s".', $task['destination']).PHP_EOL;
-
-                    return;
+                    $this->terminate($task['name'].': '.sprintf('Failed to write the destination file "%s".', $task['destination']));
 
                 } else {
 
-                    echo $task['name'].': Destination file has been written successfully.'.PHP_EOL;
+                    $this->line($task['name'].': Destination file has been written successfully.');
                 }
 
                 @chmod($task['destination'], FILE_WRITE_MODE);
@@ -216,10 +198,21 @@ class Compile_controller extends Core_Controller {
                 unset($task['result']);
             }
 
-            echo $task['name'].': Done.'.PHP_EOL;
+            $this->line($task['name'].': Done.');
 
-            echo PHP_EOL;
+            $this->line('');
         }
+    }
+
+    protected function line($message)
+    {
+        echo $message.PHP_EOL;
+    }
+
+    protected function terminate($message)
+    {
+        echo $message.PHP_EOL;
+        exit(1);
     }
 
     protected function find($name)
@@ -307,25 +300,19 @@ class Compile_controller extends Core_Controller {
 
                 if (!isset($subtask['type']) || trim($subtask['type']) == '') {
 
-                    echo 'No subtask type has been specified.'.PHP_EOL;
-
-                    return;
+                    $this->terminate('No subtask type has been specified.');
                 }
 
-                echo 'Subtask: '.$subtask['type'].PHP_EOL;
+                $this->line('Subtask: '.$subtask['type']);
 
                 if (!in_array($subtask['type'], ['copy', 'less', 'scss', 'autoprefixer', 'cssmin'])) {
 
-                    echo 'Invalid subtask type: '.$subtask['type'].PHP_EOL;
-
-                    return;
+                    $this->terminate('Invalid subtask type: '.$subtask['type']);
                 }
 
                 if (isset($subtask['source']) && trim($subtask['source']) == '') {
 
-                    echo 'Subtask: Empty source file name.'.PHP_EOL;
-
-                    return;
+                    $this->terminate('Subtask: Empty source file name.');
                 }
 
                 if (isset($subtask['source'])) {
@@ -334,14 +321,12 @@ class Compile_controller extends Core_Controller {
 
                     if (!is_file($source)) {
 
-                        echo 'Subtask: '.sprintf('Failed to find the source file "%s".', $source).PHP_EOL;
-
-                        return;
+                        $this->terminate('Subtask: '.sprintf('Failed to find the source file "%s".', $source));
                     }
 
                     $subtask['source'] = $source;
 
-                    echo 'Source: '.$subtask['source'].PHP_EOL;
+                    $this->line('Source: '.$subtask['source']);
                 }
 
                 $this->execute($subtask);
@@ -376,25 +361,19 @@ class Compile_controller extends Core_Controller {
 
                 if (!isset($subtask['type']) || trim($subtask['type']) == '') {
 
-                    echo 'No subtask type has been specified.'.PHP_EOL;
-
-                    return;
+                    $this->terminate('No subtask type has been specified.');
                 }
 
-                echo 'Subtask: '.$subtask['type'].PHP_EOL;
+                $this->line('Subtask: '.$subtask['type']);
 
                 if (!in_array($subtask['type'], ['copy', 'jsmin'])) {
 
-                    echo 'Invalid subtask type: '.$subtask['type'].PHP_EOL;
-
-                    return;
+                    $this->terminate('Invalid subtask type: '.$subtask['type']);
                 }
 
                 if (isset($subtask['source']) && trim($subtask['source']) == '') {
 
-                    echo 'Subtask: Empty source file name.'.PHP_EOL;
-
-                    return;
+                    $this->terminate('Subtask: Empty source file name.');
                 }
 
                 if (isset($subtask['source'])) {
@@ -403,14 +382,12 @@ class Compile_controller extends Core_Controller {
 
                     if (!is_file($source)) {
 
-                        echo 'Subtask: '.sprintf('Failed to find the source file "%s".', $source).PHP_EOL;
-
-                        return;
+                        $this->terminate('Subtask: '.sprintf('Failed to find the source file "%s".', $source));
                     }
 
                     $subtask['source'] = $source;
 
-                    echo 'Source: '.$subtask['source'].PHP_EOL;
+                    $this->line('Source: '.$subtask['source']);
                 }
 
                 $this->execute($subtask);
