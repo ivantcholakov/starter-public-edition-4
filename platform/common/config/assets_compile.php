@@ -244,6 +244,10 @@ $config['tasks'] = [
                 'type' => 'jsmin',
             ],
             [
+                'source' => DEFAULTFCPATH.'assets/composer-asset/components/highlightjs/highlight.pack.min.js',
+                'type' => 'copy',
+            ],
+            [
                 'source' => DEFAULTFCPATH.'assets/js/lib/sweetalert2/sweetalert2.min.js',
                 'type' => 'copy',
             ],
@@ -260,7 +264,7 @@ $config['tasks'] = [
                 'type' => 'jsmin',
             ],
             [
-                'source' => DEFAULTFCPATH.'assets/composer-asset/components/highlightjs/highlight.pack.min.js',
+                'source' => DEFAULTFCPATH.'assets/js/lib/semantic/semantic.min.js',
                 'type' => 'copy',
             ],
         ],
@@ -327,6 +331,10 @@ $config['tasks'] = [
                 'type' => 'jsmin',
             ],
             [
+                'source' => DEFAULTFCPATH.'assets/composer-asset/components/highlightjs/highlight.pack.min.js',
+                'type' => 'copy',
+            ],
+            [
                 'source' => DEFAULTFCPATH.'assets/js/lib/sweetalert2/sweetalert2.min.js',
                 'type' => 'copy',
             ],
@@ -343,7 +351,7 @@ $config['tasks'] = [
                 'type' => 'jsmin',
             ],
             [
-                'source' => DEFAULTFCPATH.'assets/composer-asset/components/highlightjs/highlight.pack.min.js',
+                'source' => DEFAULTFCPATH.'assets/js/lib/semantic/semantic.min.js',
                 'type' => 'copy',
             ],
         ],
