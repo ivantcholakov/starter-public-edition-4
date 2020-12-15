@@ -12,6 +12,8 @@
 {{ favicon() }}
 {{ apple_touch_icon_precomposed() }}
 
+    <script type="text/javascript" src="{{ base_url('assets/js/lib/turbolinks/turbolinks.js')|e('html_attr') }}"></script>
+
 {{ js_platform() }}
 {{ file_partial('webfontloader') }}
 {{ css('lib/sweetalert2/sweetalert2.min.css') }}
@@ -23,6 +25,7 @@
 {{ js('lib/phpjs/phpjs.min.js') }}
 {{ js_modernizr() }}
 {{ js_jquery() }}
+{{ js('lib/jquery-base64/jquery.base64.js') }}
 {{ js('lib/jquery-json/jquery.json.js') }}
 {{ partial('ckeditor') }}
 {{ js('lib/promise-polyfill/polyfill.min.js') }}

@@ -12,6 +12,8 @@
 {{ favicon() }}
 {{ apple_touch_icon_precomposed() }}
 
+    <script type="text/javascript" src="{{ base_url('assets/js/lib/turbolinks/turbolinks.js')|e('html_attr') }}"></script>
+
 {{ js_platform() }}
 {{ file_partial('webfontloader') }}
 {{ css('lib/sweetalert2/sweetalert2.min.css') }}
