@@ -22,67 +22,6 @@ $config['autoprefixer_browsers'] = [
 
 $config['tasks'] = [
 
-    // SCSS --------------------------------------------------------------------
-
-    // php cli.php assets compile sweetalert-min sweetalert-custom-min sweetalert-facebook-min sweetalert-google-min sweetalert-twitter-min
-
-    // php cli.php sweetalert sweetalert-min
-
-    [
-        'name' => 'sweetalert-min',
-        'type' => 'scss',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/sweetalert/sweetalert.min.css',
-        'source' => DEFAULTFCPATH.'assets/scss/lib/sweetalert/sweetalert.scss',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-        'cssmin' => [],
-    ],
-
-    // php cli.php assets compile sweetalert-custom-min
-
-    [
-        'name' => 'sweetalert-custom-min',
-        'type' => 'scss',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/sweetalert/sweetalert-custom.min.css',
-        'source' => DEFAULTFCPATH.'assets/scss/lib/sweetalert/sweetalert-custom.scss',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-        'cssmin' => [],
-    ],
-
-    // php cli.php assets compile sweetalert-facebook-min
-
-    [
-        'name' => 'sweetalert-facebook-min',
-        'type' => 'scss',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/sweetalert/facebook.min.css',
-        'source' => DEFAULTFCPATH.'assets/scss/lib/sweetalert/facebook.scss',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-        'cssmin' => [],
-    ],
-
-    // php cli.php assets compile sweetalert-google-min
-
-    [
-        'name' => 'sweetalert-google-min',
-        'type' => 'scss',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/sweetalert/google.min.css',
-        'source' => DEFAULTFCPATH.'assets/scss/lib/sweetalert/google.scss',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-        'cssmin' => [],
-    ],
-
-    // php cli.php assets compile sweetalert-twitter-min
-
-    [
-        'name' => 'sweetalert-twitter-min',
-        'type' => 'scss',
-        'destination' => DEFAULTFCPATH.'assets/css/lib/sweetalert/twitter.min.css',
-        'source' => DEFAULTFCPATH.'assets/scss/lib/sweetalert/twitter.scss',
-        'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-        'cssmin' => [],
-    ],
-
-    // LESS --------------------------------------------------------------------
-
     // php cli.php assets compile editor-min
 
     [

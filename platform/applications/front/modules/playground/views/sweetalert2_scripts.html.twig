@@ -1,0 +1,168 @@
+
+    <script type="text/javascript">
+    //<![CDATA[
+
+    (function($) {
+
+        $('#test_1').on('click', function() {
+
+            Swal.fire('Oops...', 'Something went wrong!', 'error');
+        });
+
+        $('#test_2').on('click', function() {
+
+            Swal.fire("Here's a message!");
+        });
+
+        $('#test_3').on('click', function() {
+
+            Swal.fire("Here's a message!", "It's pretty, isn't it?");
+        });
+
+        $('#test_4').on('click', function() {
+
+            Swal.fire("Good job!", "You clicked the button!", "success");
+        });
+
+        $('#test_5').on('click', function() {
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!"
+            }).then(function(result) {
+
+                if (result.value) {
+
+                    Swal.fire(
+                        'Deleted!',
+                        'Your imaginary file has been deleted.',
+                        'success'
+                    );
+
+                } else {
+
+                    Swal.fire(
+                        'Cancelled',
+                        'Your imaginary file is safe :)',
+                        'error'
+                    );
+                }
+            });
+        });
+
+        $('#test_6').on('click', function() {
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "No, cancel plx!",
+                allowOutsideClick: false
+            }).then(function(result) {
+
+                if (result.value) {
+
+                    Swal.fire(
+                        'Deleted!',
+                        'Your imaginary file has been deleted.',
+                        'success'
+                    );
+
+                // For more information about handling dismissals please visit
+                // https://sweetalert2.github.io/#handling-dismissals
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+
+                    Swal.fire(
+                        'Cancelled',
+                        'Your imaginary file is safe :)',
+                        'error'
+                    );
+                }
+            });
+        });
+
+        $('#test_7').on('click', function() {
+
+            Swal.fire({
+                title: "Sweet!",
+                text: "Here's a custom image.",
+                imageUrl: "{{ image_url('lib/thumbs-up.jpg')|e('js') }}"
+            });
+        });
+
+        $('#test_8').on('click', function() {
+
+            Swal.fire({
+                title: "HTML <small>Title</small>!",
+                html: 'A custom <span style="color:#F8BB86">html<span> message.'
+            });
+        });
+
+        $('#test_9').on('click', function() {
+
+            Swal.fire({
+                title: "Auto close alert!",
+                text: "I will close in 2 seconds.",
+                timer: 2000,
+                showConfirmButton: false
+            });
+        });
+
+        $('#test_10').on('click', function() {
+
+            Swal.fire({
+                title: "An input!",
+                input: "text",
+                inputLabel: "Write something interesting:",
+                inputPlaceholder: "Write something",
+                showCancelButton: true,
+                inputValidator: function(value) {
+
+                    if (value == '') {
+                        return "You need to write something!";
+                    }
+                }
+
+            }).then(function(result) {
+
+                if (typeof result.value === 'undefined') {
+                    return false;
+                }
+
+                Swal.fire("Nice!", "You wrote: " + result.value, "success");
+            });
+        });
+
+        $('#test_11').on('click', function() {
+
+            Swal.fire({
+                title: "Ajax request example",
+                text: "Submit to run ajax request",
+                showCancelButton: true,
+                showLoaderOnConfirm: true,
+                preConfirm: function () {
+
+                    // Just an imitation, returning the result immediately.
+                    return "Ajax request finished!";
+                }
+            }).then(function(result) {
+
+                if (typeof result.value === 'undefined') {
+                    return false;
+                }
+
+                Swal.fire(result.value);
+            });
+        });
+
+    })(jQuery);
+
+    //]]>
+    </script>
