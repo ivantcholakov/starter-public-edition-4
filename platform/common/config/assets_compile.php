@@ -192,69 +192,6 @@ $config['tasks'] = [
 
     // -------------------------------------------------------------------------
 
-    // php cli.php assets compile front-semantic-ui-flat-min
-
-    [
-        'name' => 'front-semantic-ui-flat-min',
-        'type' => 'merge_css',
-        'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_flat/css/front.min.css',
-        'sources' => [
-            [
-                'source' => DEFAULTFCPATH.'themes/front_semantic_ui_flat/less/index.less',
-                'type' => 'less',
-                'less' => [],
-                'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
-                'cssmin' => [],
-            ],
-            [
-                'source' => DEFAULTFCPATH.'assets/css/lib/jquery-ui-custom/jquery-ui.min.css',
-                'type' => 'copy',
-            ],
-            [
-                'source' => DEFAULTFCPATH.'assets/css/lib/sweetalert2/sweetalert2.min.css',
-                'type' => 'copy',
-            ],
-            [
-                'source' => DEFAULTFCPATH.'assets/composer-asset/components/highlightjs/styles/github.css',
-                'type' => 'cssmin',
-            ],
-            [
-                'source' => DEFAULTFCPATH.'assets/css/lib/animate/animate.min.css',
-                'type' => 'copy',
-            ],
-        ],
-        'after' => [
-            '_assets_compile_create_sha384',
-        ],
-    ],
-
-    // php cli.php assets compile front-semantic-ui-flat-js-min
-
-    [
-        'name' => 'front-default-js-min',
-        'type' => 'merge_js',
-        'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_flat/js/front.min.js',
-        'sources' => [
-            [
-                'source' => DEFAULTFCPATH.'assets/js/lib/phpjs/phpjs.min.js',
-                'type' => 'copy',
-            ],
-            [
-                'source' => DEFAULTFCPATH.'assets/js/lib/promise-polyfill/polyfill.min.js',
-                'type' => 'copy',
-            ],
-            [
-                'source' => DEFAULTFCPATH.'assets/composer-asset/components/modernizr/modernizr.js',
-                'type' => 'jsmin',
-            ],
-        ],
-        'after' => [
-            '_assets_compile_create_sha384',
-        ],
-    ],
-
-    // -------------------------------------------------------------------------
-
     // php cli.php assets compile front-default-min
 
     [
@@ -305,6 +242,109 @@ $config['tasks'] = [
             [
                 'source' => DEFAULTFCPATH.'assets/composer-asset/components/modernizr/modernizr.js',
                 'type' => 'jsmin',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/sweetalert2/sweetalert2.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/composer-asset/components/jquery/jquery.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/jquery-base64/jquery.base64.js',
+                'type' => 'jsmin',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/jquery-json/jquery.json.js',
+                'type' => 'jsmin',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/composer-asset/components/highlightjs/highlight.pack.min.js',
+                'type' => 'copy',
+            ],
+        ],
+        'after' => [
+            '_assets_compile_create_sha384',
+        ],
+    ],
+
+    // -------------------------------------------------------------------------
+
+    // php cli.php assets compile front-semantic-ui-flat-min
+
+    [
+        'name' => 'front-semantic-ui-flat-min',
+        'type' => 'merge_css',
+        'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_flat/css/front.min.css',
+        'sources' => [
+            [
+                'source' => DEFAULTFCPATH.'themes/front_semantic_ui_flat/less/index.less',
+                'type' => 'less',
+                'less' => [],
+                'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
+                'cssmin' => [],
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/css/lib/jquery-ui-custom/jquery-ui.min.css',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/css/lib/sweetalert2/sweetalert2.min.css',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/composer-asset/components/highlightjs/styles/github.css',
+                'type' => 'cssmin',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/css/lib/animate/animate.min.css',
+                'type' => 'copy',
+            ],
+        ],
+        'after' => [
+            '_assets_compile_create_sha384',
+        ],
+    ],
+
+    // php cli.php assets compile front-semantic-ui-flat-js-min
+
+    [
+        'name' => 'front-semantic-ui-flat-js-min',
+        'type' => 'merge_js',
+        'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_flat/js/front.min.js',
+        'sources' => [
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/phpjs/phpjs.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/promise-polyfill/polyfill.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/composer-asset/components/modernizr/modernizr.js',
+                'type' => 'jsmin',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/sweetalert2/sweetalert2.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/composer-asset/components/jquery/jquery.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/jquery-base64/jquery.base64.js',
+                'type' => 'jsmin',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/jquery-json/jquery.json.js',
+                'type' => 'jsmin',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/composer-asset/components/highlightjs/highlight.pack.min.js',
+                'type' => 'copy',
             ],
         ],
         'after' => [
