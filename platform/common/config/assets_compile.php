@@ -207,6 +207,18 @@ $config['tasks'] = [
                 'cssmin' => [],
             ],
             [
+                'source' => DEFAULTFCPATH.'assets/css/lib/jquery-ui-custom/jquery-ui.min.css',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/css/lib/sweetalert2/sweetalert2.min.css',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/composer-asset/components/highlightjs/styles/github.css',
+                'type' => 'cssmin',
+            ],
+            [
                 'source' => DEFAULTFCPATH.'assets/css/lib/animate/animate.min.css',
                 'type' => 'copy',
             ],
@@ -225,6 +237,10 @@ $config['tasks'] = [
         'sources' => [
             [
                 'source' => DEFAULTFCPATH.'assets/js/lib/phpjs/phpjs.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/promise-polyfill/polyfill.min.js',
                 'type' => 'copy',
             ],
             [
@@ -254,6 +270,14 @@ $config['tasks'] = [
                 'cssmin' => [],
             ],
             [
+                'source' => DEFAULTFCPATH.'assets/css/lib/jquery-ui-custom/jquery-ui.min.css',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/css/lib/sweetalert2/sweetalert2.min.css',
+                'type' => 'copy',
+            ],
+            [
                 'source' => DEFAULTFCPATH.'assets/css/lib/animate/animate.min.css',
                 'type' => 'copy',
             ],
@@ -272,6 +296,10 @@ $config['tasks'] = [
         'sources' => [
             [
                 'source' => DEFAULTFCPATH.'assets/js/lib/phpjs/phpjs.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/promise-polyfill/polyfill.min.js',
                 'type' => 'copy',
             ],
             [

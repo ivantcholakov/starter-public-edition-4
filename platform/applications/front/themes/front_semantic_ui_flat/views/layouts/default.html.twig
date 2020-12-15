@@ -16,10 +16,7 @@
 
 {{ js_platform() }}
 {{ file_partial('webfontloader') }}
-{{ css('lib/sweetalert2/sweetalert2.min.css') }}
-{{ css('lib/jquery-ui-custom/jquery-ui.min.css') }}
 {{ theme_css('front.min.css?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ css('lib/highlightjs/github.css') }}
 {{ file_partial('css') }}
 {{ partial('css') }}
 
@@ -30,7 +27,6 @@
 {{ js('lib/jquery-base64/jquery.base64.js') }}
 {{ js('lib/jquery-json/jquery.json.js') }}
 {{ partial('ckeditor') }}
-{{ js('lib/promise-polyfill/polyfill.min.js') }}
 {{ js('lib/sweetalert2/sweetalert2.min.js') }}
 
 {{ partial('head') }}
