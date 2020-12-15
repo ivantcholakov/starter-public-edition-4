@@ -260,7 +260,7 @@ class Gravatar {
             $ch = curl_init();
 
             $options = array(
-                CURLOPT_USERAGENT, $this->gravatar_useragent,
+                CURLOPT_USERAGENT => $this->gravatar_useragent,
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_POST => true,
                 CURLOPT_POSTFIELDS => array(),
