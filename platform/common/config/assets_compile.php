@@ -267,6 +267,18 @@ $config['tasks'] = [
                 'source' => DEFAULTFCPATH.'assets/js/lib/semantic/semantic.min.js',
                 'type' => 'copy',
             ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/jquery-ui-custom/jquery-ui.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/headroom/headroom.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/headroom/jQuery.headroom.min.js',
+                'type' => 'copy',
+            ],
         ],
         'after' => [
             '_assets_compile_create_sha384',
@@ -352,6 +364,18 @@ $config['tasks'] = [
             ],
             [
                 'source' => DEFAULTFCPATH.'assets/js/lib/semantic/semantic.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/jquery-ui-custom/jquery-ui.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/headroom/headroom.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/headroom/jQuery.headroom.min.js',
                 'type' => 'copy',
             ],
         ],
