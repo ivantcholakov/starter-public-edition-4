@@ -5,8 +5,6 @@
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
-echo js('lib/handlebars/handlebars.min.js');
-
 ?>
 
     <script type="text/javascript">

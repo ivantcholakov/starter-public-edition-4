@@ -276,6 +276,14 @@ $config['tasks'] = [
                 'type' => 'copy',
             ],
             [
+                'source' => DEFAULTFCPATH.'assets/js/lib/handlebars/handlebars.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/mustache/mustache.min.js',
+                'type' => 'copy',
+            ],
+            [
                 'source' => DEFAULTFCPATH.'assets/js/lib/semantic/semantic.min.js',
                 'type' => 'copy',
             ],
@@ -434,6 +442,14 @@ $config['tasks'] = [
             ],
             [
                 'source' => DEFAULTFCPATH.'assets/js/lib/gibberish-aes/gibberish-aes.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/handlebars/handlebars.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/mustache/mustache.min.js',
                 'type' => 'copy',
             ],
             [
