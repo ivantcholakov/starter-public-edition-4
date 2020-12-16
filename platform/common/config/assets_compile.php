@@ -316,6 +316,10 @@ $config['tasks'] = [
                 'type' => 'copy',
             ],
             [
+                'source' => DEFAULTFCPATH.'assets/js/lib/swiper/swiper.min.js',
+                'type' => 'copy',
+            ],
+            [
                 'source' => DEFAULTFCPATH.'assets/js/lib/colorbox/jquery.colorbox-min.js',
                 'type' => 'copy',
             ],
@@ -452,6 +456,10 @@ $config['tasks'] = [
             ],
             [
                 'source' => DEFAULTFCPATH.'assets/composer-asset/desandro/masonry/dist/masonry.pkgd.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/swiper/swiper.min.js',
                 'type' => 'copy',
             ],
             [
