@@ -279,6 +279,14 @@ $config['tasks'] = [
                 'source' => DEFAULTFCPATH.'assets/js/lib/headroom/jQuery.headroom.min.js',
                 'type' => 'copy',
             ],
+            [
+                'source' => DEFAULTFCPATH.'assets/composer-asset/desandro/imagesloaded/imagesloaded.pkgd.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/composer-asset/desandro/masonry/dist/masonry.pkgd.min.js',
+                'type' => 'copy',
+            ],
         ],
         'after' => [
             '_assets_compile_create_sha384',
@@ -376,6 +384,14 @@ $config['tasks'] = [
             ],
             [
                 'source' => DEFAULTFCPATH.'assets/js/lib/headroom/jQuery.headroom.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/composer-asset/desandro/imagesloaded/imagesloaded.pkgd.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/composer-asset/desandro/masonry/dist/masonry.pkgd.min.js',
                 'type' => 'copy',
             ],
         ],
