@@ -256,6 +256,10 @@ $config['tasks'] = [
                 'type' => 'copy',
             ],
             [
+                'source' => DEFAULTFCPATH.'assets/js/lib/jquery-ajax-queue/jquery-ajax-queue.js',
+                'type' => 'jsmin',
+            ],
+            [
                 'source' => DEFAULTFCPATH.'assets/js/lib/jquery-base64/jquery.base64.js',
                 'type' => 'jsmin',
             ],
@@ -265,6 +269,30 @@ $config['tasks'] = [
             ],
             [
                 'source' => DEFAULTFCPATH.'assets/js/lib/semantic/semantic.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/dataTables/jquery.dataTables.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/dataTables/dataTables.semanticui.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/dataTables/plug-ins/api/sortNeutral.js',
+                'type' => 'jsmin',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/dataTables/dataTables.responsive.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/dataTables/responsive.semanticui.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/dataTables/dataTables.select.min.js',
                 'type' => 'copy',
             ],
             [
@@ -285,6 +313,10 @@ $config['tasks'] = [
             ],
             [
                 'source' => DEFAULTFCPATH.'assets/composer-asset/desandro/masonry/dist/masonry.pkgd.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/colorbox/jquery.colorbox-min.js',
                 'type' => 'copy',
             ],
         ],
@@ -363,6 +395,10 @@ $config['tasks'] = [
                 'type' => 'copy',
             ],
             [
+                'source' => DEFAULTFCPATH.'assets/js/lib/jquery-ajax-queue/jquery-ajax-queue.js',
+                'type' => 'jsmin',
+            ],
+            [
                 'source' => DEFAULTFCPATH.'assets/js/lib/jquery-base64/jquery.base64.js',
                 'type' => 'jsmin',
             ],
@@ -372,6 +408,30 @@ $config['tasks'] = [
             ],
             [
                 'source' => DEFAULTFCPATH.'assets/js/lib/semantic/semantic.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/dataTables/jquery.dataTables.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/dataTables/dataTables.semanticui.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/dataTables/plug-ins/api/sortNeutral.js',
+                'type' => 'jsmin',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/dataTables/dataTables.responsive.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/dataTables/responsive.semanticui.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/dataTables/dataTables.select.min.js',
                 'type' => 'copy',
             ],
             [
@@ -392,6 +452,10 @@ $config['tasks'] = [
             ],
             [
                 'source' => DEFAULTFCPATH.'assets/composer-asset/desandro/masonry/dist/masonry.pkgd.min.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/colorbox/jquery.colorbox-min.js',
                 'type' => 'copy',
             ],
         ],
