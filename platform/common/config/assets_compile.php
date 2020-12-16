@@ -497,7 +497,11 @@ if (!function_exists('_assets_compile_create_md5')) {
 
         $destination_hash = $task['destination'].'.md5';
         $hash = md5($task['result']);
-        write_file($destination_hash, $hash);
+
+        if (!write_file($destination_hash, $hash)) {
+            return false;
+        }
+
         @chmod($destination_hash, FILE_WRITE_MODE);
     }
 }
@@ -508,7 +512,11 @@ if (!function_exists('_assets_compile_create_sha384')) {
 
         $destination_hash = $task['destination'].'.sha384';
         $hash = hash('sha384', $task['result']);
-        write_file($destination_hash, $hash);
+
+        if (!write_file($destination_hash, $hash)) {
+            return false;
+        }
+
         @chmod($destination_hash, FILE_WRITE_MODE);
     }
 }
@@ -519,7 +527,11 @@ if (!function_exists('_assets_compile_create_sha384_base64')) {
 
         $destination_hash = $task['destination'].'.sha384.base64';
         $hash = base64_encode(hash('sha384', $task['result']));
-        write_file($destination_hash, $hash);
+
+        if (!write_file($destination_hash, $hash)) {
+            return false;
+        }
+
         @chmod($destination_hash, FILE_WRITE_MODE);
     }
 }

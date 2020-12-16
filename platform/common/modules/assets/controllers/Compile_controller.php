@@ -102,6 +102,8 @@ class Compile_controller extends Core_Controller {
                 $task['source'] = $source;
 
                 $this->line('Source: '.$task['source']);
+
+                $task['source_dir'] = rtrim(str_replace('\\', '/', realpath(dirname($task['source']))), '/').'/';
             }
 
             if (isset($task['destination']) && trim($task['destination']) == '') {
@@ -124,6 +126,8 @@ class Compile_controller extends Core_Controller {
                 $task['destination'] = $destination;
 
                 $this->line('Destination: '.$task['destination']);
+
+                $task['destination_dir'] = rtrim(str_replace('\\', '/', realpath(dirname($task['destination']))), '/').'/';
             }
 
             if (isset($task['before'])) {
@@ -132,14 +136,19 @@ class Compile_controller extends Core_Controller {
 
                     if (is_callable($task['before'])) {
 
-                        call_user_func_array($task['before'], [$task]);
+                        if (call_user_func_array($task['before'], [$task]) === false) {
+                            $this->terminate($task['name'].': "before" routine has failed.');
+                        }
 
                     } else {
 
                         foreach($task['before'] as $before) {
 
                             if (is_callable($before)) {
-                                call_user_func_array($before, [$task]);
+
+                                if (call_user_func_array($before, [$task]) === false) {
+                                    $this->terminate($task['name'].': "before" routine has failed.');
+                                }
                             }
                         }
                     }
@@ -147,7 +156,10 @@ class Compile_controller extends Core_Controller {
                 } else {
 
                     if (is_callable($task['before'])) {
-                        call_user_func_array($task['before'], [$task]);
+
+                        if (call_user_func_array($task['before'], [$task]) === false) {
+                            $this->terminate($task['name'].': "before" routine has failed.');
+                        }
                     }
                 }
             }
@@ -174,14 +186,19 @@ class Compile_controller extends Core_Controller {
 
                     if (is_callable($task['after'])) {
 
-                        call_user_func_array($task['after'], [$task]);
+                        if (call_user_func_array($task['after'], [$task]) === false) {
+                            $this->terminate($task['name'].': "after" routine has failed.');
+                        }
 
                     } else {
 
                         foreach($task['after'] as $after) {
 
                             if (is_callable($after)) {
-                                call_user_func_array($after, [$task]);
+
+                                if (call_user_func_array($after, [$task]) === false) {
+                                    $this->terminate($task['name'].': "after" routine has failed.');
+                                }
                             }
                         }
                     }
@@ -189,7 +206,10 @@ class Compile_controller extends Core_Controller {
                 } else {
 
                     if (is_callable($task['after'])) {
-                        call_user_func_array($task['after'], [$task]);
+
+                        if (call_user_func_array($task['after'], [$task]) === false) {
+                            $this->terminate($task['name'].': "after" routine has failed.');
+                        }
                     }
                 }
             }
@@ -298,6 +318,8 @@ class Compile_controller extends Core_Controller {
 
             foreach ($task['sources'] as & $subtask) {
 
+                $subtask['name'] = $task['name'];
+
                 if (!isset($subtask['type']) || trim($subtask['type']) == '') {
 
                     $this->terminate('No subtask type has been specified.');
@@ -327,12 +349,82 @@ class Compile_controller extends Core_Controller {
                     $subtask['source'] = $source;
 
                     $this->line('Source: '.$subtask['source']);
+
+                    $subtask['source_dir'] = rtrim(str_replace('\\', '/', realpath(dirname($subtask['source']))), '/').'/';
+                }
+
+                if (isset($subtask['before'])) {
+
+                    if (is_array($subtask['before'])) {
+
+                        if (is_callable($subtask['before'])) {
+
+                            if (call_user_func_array($subtask['before'], [$subtask]) === false) {
+                                $this->terminate($subtask['name'].': "before" routine has failed.');
+                            }
+
+                        } else {
+
+                            foreach($subtask['before'] as $before) {
+
+                                if (is_callable($before)) {
+
+                                    if (call_user_func_array($before, [$subtask]) === false) {
+                                        $this->terminate($subtask['name'].': "before" routine has failed.');
+                                    }
+                                }
+                            }
+                        }
+
+                    } else {
+
+                        if (is_callable($subtask['before'])) {
+
+                            if (call_user_func_array($subtask['before'], [$subtask]) === false) {
+                                $this->terminate($subtask['name'].': "before" routine has failed.');
+                            }
+                        }
+                    }
                 }
 
                 $this->execute($subtask);
 
                 // Remove @charset "UTF-8"; , because this declaration would be invalid if it was used several times.
                 $subtask['result'] = preg_replace('/\@charset\s*["\']UTF-8["\']\s*;{0,1}/i', '', $subtask['result'], 1);
+
+                if (isset($subtask['after'])) {
+
+                    if (is_array($subtask['after'])) {
+
+                        if (is_callable($subtask['after'])) {
+
+                            if (call_user_func_array($subtask['after'], [$subtask]) === false) {
+                                $this->terminate($subtask['name'].': "after" routine has failed.');
+                            }
+
+                        } else {
+
+                            foreach($subtask['after'] as $after) {
+
+                                if (is_callable($after)) {
+
+                                    if (call_user_func_array($after, [$subtask]) === false) {
+                                        $this->terminate($subtask['name'].': "after" routine has failed.');
+                                    }
+                                }
+                            }
+                        }
+
+                    } else {
+
+                        if (is_callable($subtask['after'])) {
+
+                            if (call_user_func_array($subtask['after'], [$subtask]) === false) {
+                                $this->terminate($subtask['name'].': "after" routine has failed.');
+                            }
+                        }
+                    }
+                }
 
                 if ($first) {
                     $task['result'] = trim($subtask['result']);
@@ -358,6 +450,8 @@ class Compile_controller extends Core_Controller {
             $first = true;
 
             foreach ($task['sources'] as & $subtask) {
+
+                $subtask['name'] = $task['name'];
 
                 if (!isset($subtask['type']) || trim($subtask['type']) == '') {
 
@@ -390,7 +484,79 @@ class Compile_controller extends Core_Controller {
                     $this->line('Source: '.$subtask['source']);
                 }
 
+                if (isset($task['destination_dir'])) {
+                    $subtask['destination_dir'] = $task['destination_dir'];
+                }
+
+                if (isset($subtask['before'])) {
+
+                    if (is_array($subtask['before'])) {
+
+                        if (is_callable($subtask['before'])) {
+
+                            if (call_user_func_array($subtask['before'], [$subtask]) === false) {
+                                $this->terminate($subtask['name'].': "before" routine has failed.');
+                            }
+
+                        } else {
+
+                            foreach($subtask['before'] as $before) {
+
+                                if (is_callable($before)) {
+
+                                    if (call_user_func_array($before, [$subtask]) === false) {
+                                        $this->terminate($subtask['name'].': "before" routine has failed.');
+                                    }
+                                }
+                            }
+                        }
+
+                    } else {
+
+                        if (is_callable($subtask['before'])) {
+
+                            if (call_user_func_array($subtask['before'], [$subtask]) === false) {
+                                $this->terminate($subtask['name'].': "before" routine has failed.');
+                            }
+                        }
+                    }
+                }
+
                 $this->execute($subtask);
+
+                if (isset($subtask['after'])) {
+
+                    if (is_array($subtask['after'])) {
+
+                        if (is_callable($subtask['after'])) {
+
+                            if (call_user_func_array($subtask['after'], [$subtask]) === false) {
+                                $this->terminate($subtask['name'].': "after" routine has failed.');
+                            }
+
+                        } else {
+
+                            foreach($subtask['after'] as $after) {
+
+                                if (is_callable($after)) {
+
+                                    if (call_user_func_array($after, [$subtask]) === false) {
+                                        $this->terminate($subtask['name'].': "after" routine has failed.');
+                                    }
+                                }
+                            }
+                        }
+
+                    } else {
+
+                        if (is_callable($subtask['after'])) {
+
+                            if (call_user_func_array($subtask['after'], [$subtask]) === false) {
+                                $this->terminate($subtask['name'].': "after" routine has failed.');
+                            }
+                        }
+                    }
+                }
 
                 if ($first) {
                     $task['result'] = trim($subtask['result']);
