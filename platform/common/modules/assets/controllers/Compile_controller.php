@@ -353,6 +353,10 @@ class Compile_controller extends Core_Controller {
                     $subtask['source_dir'] = rtrim(str_replace('\\', '/', realpath(dirname($subtask['source']))), '/').'/';
                 }
 
+                if (isset($task['destination_dir'])) {
+                    $subtask['destination_dir'] = $task['destination_dir'];
+                }
+
                 if (isset($subtask['before'])) {
 
                     if (is_array($subtask['before'])) {
@@ -482,6 +486,8 @@ class Compile_controller extends Core_Controller {
                     $subtask['source'] = $source;
 
                     $this->line('Source: '.$subtask['source']);
+
+                    $subtask['source_dir'] = rtrim(str_replace('\\', '/', realpath(dirname($subtask['source']))), '/').'/';
                 }
 
                 if (isset($task['destination_dir'])) {
