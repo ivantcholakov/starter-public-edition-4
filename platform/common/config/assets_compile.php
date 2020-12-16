@@ -268,6 +268,14 @@ $config['tasks'] = [
                 'type' => 'jsmin',
             ],
             [
+                'source' => DEFAULTFCPATH.'assets/js/lib/jquery-url/jquery.url.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/gibberish-aes/gibberish-aes.min.js',
+                'type' => 'copy',
+            ],
+            [
                 'source' => DEFAULTFCPATH.'assets/js/lib/semantic/semantic.min.js',
                 'type' => 'copy',
             ],
@@ -409,6 +417,14 @@ $config['tasks'] = [
             [
                 'source' => DEFAULTFCPATH.'assets/js/lib/jquery-json/jquery.json.js',
                 'type' => 'jsmin',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/jquery-url/jquery.url.js',
+                'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/gibberish-aes/gibberish-aes.min.js',
+                'type' => 'copy',
             ],
             [
                 'source' => DEFAULTFCPATH.'assets/js/lib/semantic/semantic.min.js',
