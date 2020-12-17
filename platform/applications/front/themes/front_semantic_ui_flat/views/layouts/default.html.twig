@@ -17,48 +17,11 @@
     <script type="text/javascript" src="{{ base_url('assets/composer-asset/components/webfontloader/webfontloader.js') }}"></script>
     <script type="text/javascript" src="{{ base_url('assets/js/webfontloader.js') }}"></script>
 
-
 {{ theme_css('front.min.css?v=' ~ constant('PLATFORM_VERSION')) }}
 {{ file_partial('css') }}
 {{ partial('css') }}
 
 {{ theme_js('front.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
-
-    <script type="text/javascript">
-    //<![CDATA[
-
-    // highlight.js - Turbolinks compatibility.
-
-    hljs.called = false;
-    hljs.ArrayProto = [];
-
-    hljs.initHighlighting = function() {
-
-        if (hljs.initHighlighting.called) {
-            return;
-        }
-
-        hljs.initHighlighting.called = true;
-
-        var blocks = document.querySelectorAll('pre code');
-        hljs.ArrayProto.forEach.call(blocks, hljs.highlightBlock);
-    }
-
-    hljs.initHighlightingOnLoad = function() {
-
-        if (! hljs.initHighlighting.called) {
-
-            addEventListener('turbolinks:load', hljs.initHighlighting, false);
-            addEventListener('turbolinks:render', hljs.initHighlighting, false);
-            addEventListener('DOMContentLoaded', hljs.initHighlighting, false);
-            addEventListener('load', hljs.initHighlighting, false);
-        }
-    }
-
-    hljs.initHighlightingOnLoad();
-
-    //]]>
-    </script>
 
 {{ partial('ckeditor') }}
 
