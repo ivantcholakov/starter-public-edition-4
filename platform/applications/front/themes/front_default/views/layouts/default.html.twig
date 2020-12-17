@@ -13,7 +13,10 @@
 {{ apple_touch_icon_precomposed() }}
 
 {{ js_platform() }}
-{{ file_partial('webfontloader') }}
+
+    <script type="text/javascript" src="{{ base_url('assets/composer-asset/components/webfontloader/webfontloader.js') }}"></script>
+    <script type="text/javascript" src="{{ base_url('assets/js/webfontloader.js') }}"></script>
+
 {{ theme_css('front.min.css?v=' ~ constant('PLATFORM_VERSION')) }}
 {{ file_partial('css') }}
 {{ partial('css') }}
