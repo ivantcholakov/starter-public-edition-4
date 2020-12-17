@@ -236,6 +236,10 @@ $config['tasks'] = [
                 'type' => 'copy',
             ],
             [
+                'source' => DEFAULTFCPATH.'assets/js/turbolinks.js',
+                'type' => 'jsmin',
+            ],
+            [
                 'source' => DEFAULTFCPATH.'assets/js/lib/phpjs/phpjs.min.js',
                 'type' => 'copy',
             ],
@@ -407,6 +411,10 @@ $config['tasks'] = [
             [
                 'source' => DEFAULTFCPATH.'assets/js/lib/turbolinks/turbolinks.js',
                 'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/turbolinks.js',
+                'type' => 'jsmin',
             ],
             [
                 'source' => DEFAULTFCPATH.'assets/js/lib/phpjs/phpjs.min.js',
