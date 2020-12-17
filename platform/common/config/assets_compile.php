@@ -256,6 +256,10 @@ $config['tasks'] = [
                 'type' => 'copy',
             ],
             [
+                'source' => DEFAULTFCPATH.'assets/js/highlight.js',
+                'type' => 'jsmin',
+            ],
+            [
                 'source' => DEFAULTFCPATH.'assets/js/lib/sweetalert2/sweetalert2.min.js',
                 'type' => 'copy',
             ],
@@ -431,6 +435,10 @@ $config['tasks'] = [
             [
                 'source' => DEFAULTFCPATH.'assets/composer-asset/components/highlightjs/highlight.pack.min.js',
                 'type' => 'copy',
+            ],
+            [
+                'source' => DEFAULTFCPATH.'assets/js/highlight.js',
+                'type' => 'jsmin',
             ],
             [
                 'source' => DEFAULTFCPATH.'assets/js/lib/sweetalert2/sweetalert2.min.js',

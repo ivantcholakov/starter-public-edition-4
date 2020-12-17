@@ -1,7 +1,7 @@
 
 // highlight.js - Turbolinks compatibility.
 
-if (turbolinksSupported) {
+if (turbolinksSupported()) {
 
     var hljsEventsInitialized = false;
 
@@ -17,7 +17,13 @@ if (turbolinksSupported) {
 
         hljs.initHighlightingOnLoad = function() {
 
-            addEventListener('turbolinks:load', hljs.initHighlighting, false);
+            if (hljsEventsInitialized) {
+                return;
+            }
+
+            addEventListener('turbolinks:render', hljs.initHighlighting, false);
+
+            hljsEventsInitialized = true;
         }
     }
 }
