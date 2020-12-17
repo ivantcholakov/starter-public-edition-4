@@ -232,6 +232,10 @@ $config['tasks'] = [
         'destination' => DEFAULTFCPATH.'themes/front_default/js/front.min.js',
         'sources' => [
             [
+                'source' => DEFAULTFCPATH.'assets/js/lib/turbolinks/turbolinks.js',
+                'type' => 'copy',
+            ],
+            [
                 'source' => DEFAULTFCPATH.'assets/js/lib/phpjs/phpjs.min.js',
                 'type' => 'copy',
             ],
@@ -400,6 +404,10 @@ $config['tasks'] = [
         'type' => 'merge_js',
         'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_flat/js/front.min.js',
         'sources' => [
+            [
+                'source' => DEFAULTFCPATH.'assets/js/lib/turbolinks/turbolinks.js',
+                'type' => 'copy',
+            ],
             [
                 'source' => DEFAULTFCPATH.'assets/js/lib/phpjs/phpjs.min.js',
                 'type' => 'copy',

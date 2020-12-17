@@ -12,8 +12,6 @@
 {{ favicon() }}
 {{ apple_touch_icon_precomposed() }}
 
-    <script type="text/javascript" src="{{ base_url('assets/js/lib/turbolinks/turbolinks.js')|e('html_attr') }}"></script>
-
 {{ js_platform() }}
 {{ file_partial('webfontloader') }}
 {{ theme_css('front.min.css?v=' ~ constant('PLATFORM_VERSION')) }}
