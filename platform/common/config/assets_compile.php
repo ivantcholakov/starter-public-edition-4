@@ -215,6 +215,10 @@ $config['tasks'] = [
                 'type' => 'copy',
             ],
             [
+                'source' => DEFAULTFCPATH.'assets/composer-asset/components/highlightjs/styles/github.css',
+                'type' => 'cssmin',
+            ],
+            [
                 'source' => DEFAULTFCPATH.'assets/css/lib/animate/animate.min.css',
                 'type' => 'copy',
             ],
