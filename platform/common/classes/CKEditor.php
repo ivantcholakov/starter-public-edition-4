@@ -181,7 +181,7 @@ class CKEditor
 
         $js = $this->returnGlobalEvents();
         if (!empty($_config)) {
-            $js .= "CKEDITOR.replace('".$id."', ".$this->jsEncode($_config).");";
+            $js .= "CKEDITOR.replace('".$id."', ".json_encode($_config, JSON_UNESCAPED_UNICODE).");";
         }
         else {
             $js .= "CKEDITOR.replace('".$id."');";
