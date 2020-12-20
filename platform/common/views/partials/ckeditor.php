@@ -13,23 +13,26 @@ echo js('ckeditor/adapters/jquery.js?t='.CKEditor::timestamp);
     <script type="text/javascript">
     //<![CDATA[
 
-        CKEDITOR.timestamp = <?php echo json_encode(CKEditor::timestamp); ?>;
+        if (typeof CKEDITOR !== 'undefined') {
 
-        // Allow i tags to be empty (for Font Awesome).
-        CKEDITOR.config.protectedSource.push(/<i[^>]><\/i>/g);
-        CKEDITOR.dtd.$removeEmpty['i'] = false;
+            CKEDITOR.timestamp = <?php echo json_encode(CKEditor::timestamp); ?>;
 
-        // Protect Google AdSense tags.
-        CKEDITOR.config.protectedSource.push(/<ins[^>]><\/ins>/g);
-        CKEDITOR.dtd.$removeEmpty['ins'] = false;
+            // Allow i tags to be empty (for Font Awesome).
+            CKEDITOR.config.protectedSource.push(/<i[^>]><\/i>/g);
+            CKEDITOR.dtd.$removeEmpty['i'] = false;
 
-        // Allow some block tags within anchors.
-        CKEDITOR.dtd.a.div = 1;
-        CKEDITOR.dtd.a.p = 1;
+            // Protect Google AdSense tags.
+            CKEDITOR.config.protectedSource.push(/<ins[^>]><\/ins>/g);
+            CKEDITOR.dtd.$removeEmpty['ins'] = false;
 
-        // Protect Twig syntax {{ }} and {% %}
-        CKEDITOR.config.protectedSource.push(/\{\{[\s\S]*?\}\}/g);
-        CKEDITOR.config.protectedSource.push(/\{\%[\s\S]*?%\}/g);
+            // Allow some block tags within anchors.
+            CKEDITOR.dtd.a.div = 1;
+            CKEDITOR.dtd.a.p = 1;
+
+            // Protect Twig syntax {{ }} and {% %}
+            CKEDITOR.config.protectedSource.push(/\{\{[\s\S]*?\}\}/g);
+            CKEDITOR.config.protectedSource.push(/\{\%[\s\S]*?%\}/g);
+        }
 
     //]]>
     </script>

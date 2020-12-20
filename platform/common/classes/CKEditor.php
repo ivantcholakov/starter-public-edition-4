@@ -132,6 +132,7 @@ class CKEditor
     {
         // Added by Ivan Tcholakov, 20-DEC-2020.
         $this->textareaAttributes = html_attr_add_class($this->textareaAttributes, 'ckeditor', true);
+        $this->textareaAttributes = html_attr_set($this->textareaAttributes, 'style', 'visibility: hidden;' , true);
         //
 
         $attr = "";
@@ -147,9 +148,9 @@ class CKEditor
 
         $js = $this->returnGlobalEvents();
         if (!empty($_config))
-            $js .= "CKEDITOR.replace('".$name."', ".json_encode($_config, JSON_UNESCAPED_UNICODE).");";
+            $js .= "if (typeof CKEDITOR !== 'undefined') { CKEDITOR.replace('".$name."', ".json_encode($_config, JSON_UNESCAPED_UNICODE)."); }";
         else
-            $js .= "CKEDITOR.replace('".$name."');";
+            $js .= "if (typeof CKEDITOR !== 'undefined') { CKEDITOR.replace('".$name."'); }";
 
         $out .= $this->script($js);
 
@@ -185,10 +186,10 @@ class CKEditor
 
         $js = $this->returnGlobalEvents();
         if (!empty($_config)) {
-            $js .= "CKEDITOR.replace('".$id."', ".json_encode($_config, JSON_UNESCAPED_UNICODE).");";
+            $js .= "if (typeof CKEDITOR !== 'undefined') { CKEDITOR.replace('".$id."', ".json_encode($_config, JSON_UNESCAPED_UNICODE)."); }";
         }
         else {
-            $js .= "CKEDITOR.replace('".$id."');";
+            $js .= "if (typeof CKEDITOR !== 'undefined') { CKEDITOR.replace('".$id."'); }";
         }
         $out .= $this->script($js);
 
@@ -229,22 +230,22 @@ class CKEditor
         $js = $this->returnGlobalEvents();
         if (empty($_config)) {
             if (empty($className)) {
-                $js .= "CKEDITOR.replaceAll();";
+                $js .= "if (typeof CKEDITOR !== 'undefined') { CKEDITOR.replaceAll(); }";
             }
             else {
-                $js .= "CKEDITOR.replaceAll('".$className."');";
+                $js .= "if (typeof CKEDITOR !== 'undefined') { CKEDITOR.replaceAll('".$className."'); }";
             }
         }
         else {
             $classDetection = "";
-            $js .= "CKEDITOR.replaceAll( function(textarea, config) {\n";
+            $js .= "if (typeof CKEDITOR !== 'undefined') { CKEDITOR.replaceAll( function(textarea, config) {\n";
             if (!empty($className)) {
                 $js .= "    var classRegex = new RegExp('(?:^| )' + '". $className ."' + '(?:$| )');\n";
                 $js .= "    if (!classRegex.test(textarea.className))\n";
                 $js .= "        return false;\n";
             }
-            $js .= "    CKEDITOR.tools.extend(config, ". $this->jsEncode($_config) .", true);";
-            $js .= "} );";
+            $js .= "    CKEDITOR.tools.extend(config, ". json_encode($_config, JSON_UNESCAPED_UNICODE) .", true);";
+            $js .= "} ); }";
 
         }
 
