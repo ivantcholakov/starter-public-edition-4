@@ -350,16 +350,6 @@ $config['tasks'] = [
             [
                 'source' => DEFAULTFCPATH.'assets/js/lib/swiper/swiper.min.js',
                 'type' => 'copy',
-                'after' => [
-                    function($task) {
-
-                        $filename = 'swiper.min.js.map';
-
-                        if (! @copy($task['source_dir'].$filename, $task['destination_dir'].$filename)) {
-                            return false;
-                        }
-                    },
-                ],
             ],
             [
                 'source' => DEFAULTFCPATH.'assets/js/lib/colorbox/jquery.colorbox-min.js',
@@ -531,16 +521,6 @@ $config['tasks'] = [
             [
                 'source' => DEFAULTFCPATH.'assets/js/lib/swiper/swiper.min.js',
                 'type' => 'copy',
-                'after' => [
-                    function($task) {
-
-                        $filename = 'swiper.min.js.map';
-
-                        if (! @copy($task['source_dir'].$filename, $task['destination_dir'].$filename)) {
-                            return false;
-                        }
-                    },
-                ],
             ],
             [
                 'source' => DEFAULTFCPATH.'assets/js/lib/colorbox/jquery.colorbox-min.js',
