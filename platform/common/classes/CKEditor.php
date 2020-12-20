@@ -20,11 +20,11 @@ class CKEditor
     /**
      * The version of %CKEditor.
      */
-    const version = '4.6.2';
+    const version = '4.15.1';
     /**
      * A constant string unique for each release of %CKEditor.
      */
-    const timestamp = '20af917';
+    const timestamp = '1aa21195b';
 
     /**
      * URL to the %CKEditor installation directory (absolute or relative to document root).
@@ -148,9 +148,9 @@ class CKEditor
 
         $js = $this->returnGlobalEvents();
         if (!empty($_config))
-            $js .= "if (typeof CKEDITOR !== 'undefined') { CKEDITOR.replace('".$name."', ".json_encode($_config, JSON_UNESCAPED_UNICODE)."); }";
+            $js .= "if (typeof CKEDITOR !== 'undefined' && typeof CKEDITOR.instances['".$name."'] !== 'undefined') { CKEDITOR.replace('".$name."', ".json_encode($_config, JSON_UNESCAPED_UNICODE)."); }";
         else
-            $js .= "if (typeof CKEDITOR !== 'undefined') { CKEDITOR.replace('".$name."'); }";
+            $js .= "if (typeof CKEDITOR !== 'undefined' && typeof CKEDITOR.instances['".$name."'] !== 'undefined') { CKEDITOR.replace('".$name."'); }";
 
         $out .= $this->script($js);
 
@@ -186,10 +186,10 @@ class CKEditor
 
         $js = $this->returnGlobalEvents();
         if (!empty($_config)) {
-            $js .= "if (typeof CKEDITOR !== 'undefined') { CKEDITOR.replace('".$id."', ".json_encode($_config, JSON_UNESCAPED_UNICODE)."); }";
+            $js .= "if (typeof CKEDITOR !== 'undefined' && typeof CKEDITOR.instances['".$id."'] !== 'undefined') { CKEDITOR.replace('".$id."', ".json_encode($_config, JSON_UNESCAPED_UNICODE)."); }";
         }
         else {
-            $js .= "if (typeof CKEDITOR !== 'undefined') { CKEDITOR.replace('".$id."'); }";
+            $js .= "if (typeof CKEDITOR !== 'undefined' && typeof CKEDITOR.instances['".$id."'] !== 'undefined') { CKEDITOR.replace('".$id."'); }";
         }
         $out .= $this->script($js);
 
