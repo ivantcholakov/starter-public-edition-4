@@ -130,6 +130,10 @@ class CKEditor
      */
     public function editor($name, $value = "", $config = array(), $events = array())
     {
+        // Added by Ivan Tcholakov, 20-DEC-2020.
+        $this->textareaAttributes = html_attr_add_class($this->textareaAttributes, 'ckeditor', true);
+        //
+
         $attr = "";
         foreach ($this->textareaAttributes as $key => $val) {
             $attr.= " " . $key . '="' . str_replace('"', '&quot;', $val) . '"';
