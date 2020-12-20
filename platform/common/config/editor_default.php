@@ -26,3 +26,7 @@ $config['config']['toolbarCanCollapse'] = false;
 $config['config']['allowedContent'] = true;
 
 $config['config']['extraPlugins'] = 'showprotected';
+$config['config']['removePlugins'] = 'easyimage, cloudservices';
+
+$config['config']['cloudServices_tokenUrl'] = 'https://example.com/cs-token-endpoint';
+$config['config']['cloudServices_uploadUrl'] = 'https://your-organization-id.cke-cs.com/easyimage/upload/';
