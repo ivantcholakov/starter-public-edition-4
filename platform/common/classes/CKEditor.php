@@ -131,7 +131,7 @@ class CKEditor
     public function editor($name, $value = "", $config = array(), $events = array())
     {
         // Added by Ivan Tcholakov, 20-DEC-2020.
-        $this->textareaAttributes = html_attr_add_class($this->textareaAttributes, 'ckeditor', true);
+        $this->textareaAttributes = html_attr_add_class($this->textareaAttributes, 'online-editor', true);
         $this->textareaAttributes = html_attr_set($this->textareaAttributes, 'style', 'visibility: hidden;' , true);
         //
 
@@ -148,9 +148,9 @@ class CKEditor
 
         $js = $this->returnGlobalEvents();
         if (!empty($_config))
-            $js .= "if (typeof CKEDITOR !== 'undefined' && typeof CKEDITOR.instances['".$name."'] !== 'undefined') { CKEDITOR.replace('".$name."', ".json_encode($_config, JSON_UNESCAPED_UNICODE)."); }";
+            $js .= "if (typeof CKEDITOR !== 'undefined') { if (typeof CKEDITOR.instances['".$name."'] !== 'undefined') { CKEDITOR.instances['".$name."'].destroy(true); } CKEDITOR.replace('".$name."', ".json_encode($_config, JSON_UNESCAPED_UNICODE)."); }";
         else
-            $js .= "if (typeof CKEDITOR !== 'undefined' && typeof CKEDITOR.instances['".$name."'] !== 'undefined') { CKEDITOR.replace('".$name."'); }";
+            $js .= "if (typeof CKEDITOR !== 'undefined') { if (typeof CKEDITOR.instances['".$name."'] !== 'undefined') { CKEDITOR.instances['".$name."'].destroy(true); } CKEDITOR.replace('".$name."'); }";
 
         $out .= $this->script($js);
 
@@ -186,10 +186,10 @@ class CKEditor
 
         $js = $this->returnGlobalEvents();
         if (!empty($_config)) {
-            $js .= "if (typeof CKEDITOR !== 'undefined' && typeof CKEDITOR.instances['".$id."'] !== 'undefined') { CKEDITOR.replace('".$id."', ".json_encode($_config, JSON_UNESCAPED_UNICODE)."); }";
+            $js .= "if (typeof CKEDITOR !== 'undefined') { if (typeof CKEDITOR.instances['".$id."'] !== 'undefined') { CKEDITOR.instances['".$id."'].destroy(true); } CKEDITOR.replace('".$id."', ".json_encode($_config, JSON_UNESCAPED_UNICODE)."); }";
         }
         else {
-            $js .= "if (typeof CKEDITOR !== 'undefined' && typeof CKEDITOR.instances['".$id."'] !== 'undefined') { CKEDITOR.replace('".$id."'); }";
+            $js .= "if (typeof CKEDITOR !== 'undefined') { if (typeof CKEDITOR.instances['".$id."'] !== 'undefined') { CKEDITOR.instances['".$id."'].destroy(true); } CKEDITOR.replace('".$id."'); }";
         }
         $out .= $this->script($js);
 
