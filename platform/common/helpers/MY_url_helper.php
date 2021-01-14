@@ -11,7 +11,7 @@ if (!function_exists('redirect'))
 
         // Added by Ivan Tcholakov, 16-DEC-2020.
         // See https://github.com/turbolinks/turbolinks#following-redirects
-        header('Turbolinks-Location', $uri);
+        header('Turbolinks-Location: '.$uri);
         //
 
         // IIS environment likely? Use 'refresh' for better compatibility
