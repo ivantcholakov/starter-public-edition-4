@@ -59,6 +59,16 @@ div.dataTables_wrapper > div.ui.grid > div.row div.column {
     padding-bottom: 7px;
 }
 
+table.dataTable tbody td.select-checkbox:after,
+table.dataTable tbody td.select-checkbox:before,
+table.dataTable tbody th.select-checkbox:after,
+table.dataTable tbody th.select-checkbox:before {
+    top: 54%;
+    left: 50%;
+    width: 1em;
+    height: 1em;
+}
+
 // Item Details Controls
 
 th.details-control {
