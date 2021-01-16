@@ -22,9 +22,6 @@
     RewriteCond %{REQUEST_URI} /assets/
     RewriteCond %{REQUEST_URI} \.(js|css|less|gif|bmp|ico|jpg|jpeg|jpe|mov|qt|mp3|xml|mp4|m4v|mpeg|mpg|pdf|png|swf|tif|tiff|wav|wma|wri|zip|eot|svg|ttf|woff|woff2|lang)$
     RewriteCond %{REQUEST_FILENAME} !-f
-    # Exclude those CSS files that could be compiled "on-the-fly" by LESS/SCSS compilers.
-    RewriteCond %{REQUEST_URI} !(admin-theme\.min\.css)
-    #
     RewriteRule ^assets/(.*) ../assets/$1 [L,QSA]
 
     # Search favorite icons at the upper directory if not found at the current.
