@@ -17,8 +17,6 @@ $(function () {
         duration: 100
     });
 
-
-    // Dismiss messages.
     $('body').on('click', '.message .close', function() {
 
         $(this)
@@ -27,16 +25,11 @@ $(function () {
         ;
     });
 
-
-    // Initialize accordions.
     $('.ui.accordion')
       .accordion()
     ;
 
-
-    // Initialize popover messages.
     $('.popover').popup({ 'on': Modernizr.touch ? 'click' : 'hover' });
-
 
     // Initialize main menu features.
 
