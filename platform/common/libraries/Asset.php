@@ -269,11 +269,13 @@ class Asset {
         }
 
         $base_location = config_item($location_type == 'url' ? 'asset_url' : 'asset_dir');
+        $base = $location_type == 'url' ? BASE_URL : BASE_URI;
+        $relative_base = preg_replace('#^'.preg_quote($base).'#', '', $base_location);
 
         // If they are using a direct path, take them to it
-        if (strpos($asset_name, 'assets/') !== FALSE)
+        if (strpos($asset_name, $relative_base) !== FALSE)
         {
-            $asset_location = $base_location.$asset_name;
+            $asset_location = $base.$asset_name;
         }
 
         // If they have just given a filename, not an asset path, and its in a theme
