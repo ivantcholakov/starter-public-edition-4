@@ -56,7 +56,7 @@ $(function () {
 
 
 $.keepalive.configure( {
-    interval : 1000 * 60 * 10,  // Ping every 10 minutes for keeping the PHP session alive.
+    interval : 1000 * 60 * 80,  // Ping every 80 minutes for keeping the PHP session alive.
     url: SITE_URL + 'keep-alive/ping',
     successCallback : function() {},
     errorCallback : function() {}

@@ -9,11 +9,6 @@ if (!function_exists('redirect'))
             $uri = site_url($uri);
         }
 
-        // Added by Ivan Tcholakov, 16-DEC-2020.
-        // See https://github.com/turbolinks/turbolinks#following-redirects
-        header('Turbolinks-Location: '.$uri);
-        //
-
         // IIS environment likely? Use 'refresh' for better compatibility
         if ($method === 'auto' && isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS') !== FALSE)
         {
