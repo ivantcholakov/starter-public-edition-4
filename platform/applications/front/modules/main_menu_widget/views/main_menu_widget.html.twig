@@ -1,5 +1,5 @@
 {#
-Ivan Tcholakov <ivantcholakov@gmail.com>, 2016
+Ivan Tcholakov <ivantcholakov@gmail.com>, 2016-2020
 The MIT License, http://opensource.org/licenses/MIT
 #}
 
@@ -9,11 +9,13 @@ The MIT License, http://opensource.org/licenses/MIT
 
     {% for item in items %}
 
+    {% if item['hidden'] is zero %}
+
         {% if item['children'] is empty %}
 
-            {% set classes = 'item' %}
+            {% set classes = item['class'] ~ ' item' %}
 
-            {% if item['is_active'] is not empty %}
+            {% if item['is_active'] is not zero %}
                 {% set classes = classes ~ ' active' %}
             {% endif %}
 
@@ -21,11 +23,11 @@ The MIT License, http://opensource.org/licenses/MIT
 
                             <a href="{{ item['link'] }}"{% if classes is not empty %} class="{{ classes|e('html_attr') }}"{% endif %}>{% if item['icon'] is not empty %}<i class="{{ item['icon']|e('html_attr') }}"></i> {% endif %}{{ item['label'] }}</a>
 
-    {% else %}
+        {% else %}
 
             {% set classes = 'ui dropdown item' %}
 
-            {% if item['is_active'] is not empty %}
+            {% if item['is_active'] is not zero %}
                 {# TODO: See why dropdown item does not work when it is active. $}
                 {# {% set classes = classes ~ ' active' %} #}
             {% endif %}
@@ -36,7 +38,7 @@ The MIT License, http://opensource.org/licenses/MIT
                                 <i class="dropdown icon"></i>
 
                                 <div class="menu">
-                                    <a href="{{ item['link'] }}" class="item{% if item['is_active'] is not empty and item['has_active'] is empty %} active{% endif %}">{% if item['icon'] is not empty %}<i class="{{ item['icon']|e('html_attr') }}"></i> {% endif %}{{ item['label'] }}</a>
+                                    <a href="{{ item['link'] }}" class="item{% if item['is_active'] is not zero and item['has_active'] is zero %} active{% endif %}">{% if item['icon'] is not empty %}<i class="{{ item['icon']|e('html_attr') }}"></i> {% endif %}{{ item['label'] }}</a>
                                     <div class="ui divider"></div>
                                     {{ main_menu_macro.display_children(item['children'], 1) }}
                                 </div>
@@ -44,6 +46,8 @@ The MIT License, http://opensource.org/licenses/MIT
                             </div>
 
         {% endif %}
+
+    {% endif %}
 
     {% endfor %}
 
@@ -57,8 +61,16 @@ The MIT License, http://opensource.org/licenses/MIT
 
     {% for item in items %}
 
+    {% if item['hidden'] is zero %}
+
+        {% set classes = item['class'] ~ ' item' %}
+
+        {% if item['is_active'] is not zero %}
+            {% set classes = classes ~ ' active' %}
+        {% endif %}
+
         {% if not item['blank'] %}
-                            <a href="{{ item['link'] }}" {{ html_attr(item['attributes']) }} class="item{% if item['is_active'] is not empty and item['has_active'] is empty %}{# !!! #} active{% endif %}">{% if item['icon'] is not empty %}<i class="{{ item['icon']|e('html_attr') }}"></i>{% endif %}{{ item['label'] }}</a>
+                            <a href="{{ item['link'] }}" {{ html_attr(item['attributes']) }} {% if classes is not empty %} class="{{ classes|e('html_attr') }}"{% endif %}>{{ '&nbsp;&nbsp;&nbsp;&nbsp;'|str_repeat(level - 1)|raw }}{% if item['icon'] is not empty %}<i class="{{ item['icon']|e('html_attr') }}"></i>{% endif %}{{ item['label'] }}</a>
         {% else %}
                             <div class="ui divider"></div>
         {% endif %}
@@ -66,6 +78,8 @@ The MIT License, http://opensource.org/licenses/MIT
         {% if item['children'] is not empty %}
             {{ main_menu_macro.display_children(item['children'], level + 1) }}
         {% endif %}
+
+    {% endif %}
 
     {% endfor %}
 
@@ -77,11 +91,13 @@ The MIT License, http://opensource.org/licenses/MIT
 
     {% for item in items %}
 
+    {% if item['hidden'] is zero %}
+
         {% if item['children'] is empty %}
 
             {% set classes = 'item' %}
 
-            {% if item['is_active'] is not empty %}
+            {% if item['is_active'] is not zero %}
                 {% set classes = classes ~ ' active' %}
             {% endif %}
 
@@ -93,14 +109,16 @@ The MIT License, http://opensource.org/licenses/MIT
 
             {% set classes = 'item' %}
 
-            {% if item['is_active'] is not empty %}
+            {% if item['is_active'] is not zero %}
                 {% set classes = classes ~ ' active' %}
             {% endif %}
 
-                            <a href="{{ item['link'] }}" class="item{% if item['is_active'] is not empty and item['has_active'] is empty %} active{% endif %}">{% if item['icon'] is not empty %}<i class="{{ item['icon']|e('html_attr') }}"></i> {% endif %}{{ item['label'] }}</a>
+                            <a href="{{ item['link'] }}" class="item{% if item['is_active'] is not zero and item['has_active'] is zero %} active{% endif %}">{% if item['icon'] is not empty %}<i class="{{ item['icon']|e('html_attr') }}"></i> {% endif %}{{ item['label'] }}</a>
                             {{ main_menu_macro.display_children_mobile(item['children'], 1) }}
 
         {% endif %}
+
+    {% endif %}
 
     {% endfor %}
 
@@ -114,8 +132,10 @@ The MIT License, http://opensource.org/licenses/MIT
 
     {% for item in items %}
 
+    {% if item['hidden'] is zero %}
+
         {% if not item['blank'] %}
-                            <a href="{{ item['link'] }}" {{ html_attr(item['attributes']) }} class="item{% if item['is_active'] is not empty and item['has_active'] is empty %}{# !!! #} active{% endif %}">{{ '&nbsp;&nbsp;&nbsp;&nbsp;'|str_repeat(level)|raw }}{% if item['icon'] is not empty %}<i class="{{ item['icon']|e('html_attr') }}"></i>{% endif %}{{ item['label'] }}</a>
+                            <a href="{{ item['link'] }}" {{ html_attr(item['attributes']) }} class="item{% if item['is_active'] is not zero and item['has_active'] is zero %}{# !!! #} active{% endif %}">{{ '&nbsp;&nbsp;&nbsp;&nbsp;'|str_repeat(level)|raw }}{% if item['icon'] is not empty %}<i class="{{ item['icon']|e('html_attr') }}"></i>{% endif %}{{ item['label'] }}</a>
         {% else %}
                             {# <div class="ui divider"></div> #}
         {% endif %}
@@ -123,6 +143,8 @@ The MIT License, http://opensource.org/licenses/MIT
         {% if item['children'] is not empty %}
             {{ main_menu_macro.display_children_mobile(item['children'], level + 1) }}
         {% endif %}
+
+    {% endif %}
 
     {% endfor %}
 

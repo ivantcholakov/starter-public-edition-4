@@ -9,6 +9,8 @@ $config['config']['contentsLanguage'] = language_ckeditor();
 $config['config']['contentsLangDirection'] = get_instance()->lang->direction();
 
 $config['config']['contentsCss'] = array();
+$config['config']['contentsCss'][] = DEFAULT_BASE_URL.'assets/css/lib/open-sans/open-sans.min.css?v='.PLATFORM_VERSION;
+$config['config']['contentsCss'][] = DEFAULT_BASE_URL.'assets/css/lib/open-sans-condensed/open-sans-condensed.min.css?v='.PLATFORM_VERSION;
 $config['config']['contentsCss'][] = DEFAULT_BASE_URL.'assets/css/lib/semantic-icons-default/icons.css?v='.PLATFORM_VERSION;
 $config['config']['contentsCss'][] = DEFAULT_BASE_URL.'assets/css/lib/editor/editor.min.css?v='.PLATFORM_VERSION;
 
