@@ -23,9 +23,9 @@ $PLATFORMDESTROY = $PLATFORMPATH.'/bootstrap/destroy.php';
 
 if (!defined('ENVIRONMENT')) {
 // Uncomment accordingly for enabling development/testing/production mode.
-    define('ENVIRONMENT', 'development');
+//    define('ENVIRONMENT', 'development');
 //    define('ENVIRONMENT', 'testing');
-//    define('ENVIRONMENT', 'production');
+    define('ENVIRONMENT', 'production');
 }
 
 // Uncomment if it is necessary.
