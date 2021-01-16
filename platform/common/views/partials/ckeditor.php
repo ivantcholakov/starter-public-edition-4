@@ -17,6 +17,11 @@ echo js('ckeditor/adapters/jquery.js?t='.CKEditor::timestamp);
 
             CKEDITOR.timestamp = <?php echo json_encode(CKEditor::timestamp); ?>;
 
+            CKEDITOR.config.font_names =
+                'Open Sans/Open Sans, Helvetica Neue, Arial, Helvetica, sans-serif;' +
+                'Open Sans Condensed/Open Sans Condensed, Helvetica Neue, Arial, Helvetica, sans-serif;' +
+                CKEDITOR.config.font_names;
+
             // Allow i tags to be empty (for Font Awesome).
             CKEDITOR.config.protectedSource.push(/<i[^>]><\/i>/g);
             CKEDITOR.dtd.$removeEmpty['i'] = false;
