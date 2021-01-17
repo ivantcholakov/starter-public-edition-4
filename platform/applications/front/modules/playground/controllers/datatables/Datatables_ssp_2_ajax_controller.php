@@ -120,7 +120,7 @@ class Datatables_ssp_2_ajax_controller extends Base_Ajax_Controller {
 
         $disabled = $this->has_order || $this->has_filter;
 
-        return '<button type="button" data-id="'.$item['id'].'" class="ui icon button mobile hidden action_reorder"'.($disabled ? ' disabled="disabled"' : '').'><i class="hand paper icon"></i></button>';
+        return '<button type="button" data-id="'.$item['id'].'" class="ui grey icon button mobile hidden action_reorder"'.($disabled ? ' disabled="disabled"' : '').'><i class="hand paper icon"></i></button>';
     }
 
     public function _formatter_action_up_or_down($value, $item) {
@@ -129,8 +129,8 @@ class Datatables_ssp_2_ajax_controller extends Base_Ajax_Controller {
 
         return
             '<div class="ui icon buttons">'.
-            '<button type="button" data-id="'.$item['id'].'" class="ui icon button action_up"'.($disabled ? ' disabled="disabled"' : '').'><i class="arrow up icon"></i></button>'.
-            '<button type="button" data-id="'.$item['id'].'" class="ui icon button action_down"'.($disabled ? ' disabled="disabled"' : '').'><i class="arrow down icon"></i></button>'.
+            '<button type="button" data-id="'.$item['id'].'" class="ui grey icon button action_up"'.($disabled ? ' disabled="disabled"' : '').'><i class="arrow up icon"></i></button>'.
+            '<button type="button" data-id="'.$item['id'].'" class="ui grey icon button action_down"'.($disabled ? ' disabled="disabled"' : '').'><i class="arrow down icon"></i></button>'.
             '</div>';
     }
 
