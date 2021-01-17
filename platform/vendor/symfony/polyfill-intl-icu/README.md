@@ -1,9 +1,9 @@
 Symfony Polyfill / Intl: ICU
 ============================
 
-This component provides a collection of functions/classes using the
-[`symfony/intl`](https://github.com/symfony/intl) package when the
-[Intl](https://php.net/intl) extension is not installed, including:
+This package provides fallback implementations when the
+[Intl](https://php.net/intl) extension is not installed.
+It is limited to the "en" locale and to:
 
 - [`intl_is_failure()`](https://php.net/intl-is-failure)
 - [`intl_get_error_code()`](https://php.net/intl-get-error-code)
