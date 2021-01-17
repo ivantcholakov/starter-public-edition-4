@@ -55,13 +55,17 @@
                         </div>
                     </div>
 
-                    <button class="ui fluid big primary button" type="submit"><i class="sign in alternate icon"> {{ lang('ui_login') }}</i></button>
+                    <div class="field">
+
+                        <button class="ui fluid big primary button" type="submit"><i class="sign in alternate icon"></i>{{ lang('ui_login') }}</button>
+
+                    </div>
 
                 </div>
 
             {{ form_close() }}
 
-            <div class="ui message">
+            <div class="ui segment"style="margin-bottom: 1em;">
 
                 <p>
                     {# {{ lang('ui_login_tip') }} #}
