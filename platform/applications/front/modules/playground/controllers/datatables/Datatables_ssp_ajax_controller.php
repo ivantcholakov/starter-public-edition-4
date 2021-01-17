@@ -92,15 +92,15 @@ class Datatables_ssp_ajax_controller extends Base_Ajax_Controller {
         $gmap_url = gmap_url($item['latitude'], $item['longitude'], 6);
 
         if ($gmap_url != '') {
-            $result[] = '<a href="'.$gmap_url.'" class="compact ui icon button" title="'.$this->lang->line('ui_map').'" target="_blank" rel="noopener"><i class="marker icon"></i></a>';
+            $result[] = '<a href="'.$gmap_url.'" class="teal ui icon button" title="'.html_attr($this->lang->line('ui_map')).'" target="_blank" rel="noopener"><i class="marker icon"></i></a>';
         }
 
         if ($item['link'] != '') {
-            $result[] = '<a href="'.$item['link'].'" class="compact ui icon button" title="'.$this->lang->line('ui_information').'" target="_blank" rel="noopener"><i class="external icon"></i></a>';
+            $result[] = '<a href="'.$item['link'].'" class="teal ui icon button" title="'.html_attr($this->lang->line('ui_information')).'" target="_blank" rel="noopener"><i class="external icon"></i></a>';
         }
 
-        $result[] = '<a href="javascript://" class="compact primary ui icon button" title="'.$this->lang->line('ui_edit').'"><i class="write icon"></i></a>';
-        $result[] = '<a id="delete_action_'.$item['id'].'" href="javascript://" class="compact negative ui icon button delete_action" title="'.$this->lang->line('ui_delete').'"><i class="trash icon"></i></a>';
+        $result[] = '<button type="button" data-id="'.html_attr($item['id']).'" class="primary ui icon button edit_action" title="'.html_attr($this->lang->line('ui_edit')).'"><i class="write icon"></i></button>';
+        $result[] = '<button type="button" data-id="'.html_attr($item['id']).'" class="negative ui icon button delete_action" title="'.html_attr($this->lang->line('ui_delete')).'"><i class="trash icon"></i></button>';
 
         return '<div class="ui icon buttons">'.implode('', $result).'</div>';
     }

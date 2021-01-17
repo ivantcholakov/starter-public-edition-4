@@ -109,6 +109,38 @@
             table.draw();
         });
 
+        $('#datatable').on('click', '.edit_action', function(e) {
+
+            if ($(this).is("[disabled]")) {
+
+                e.preventDefault();
+                return false;
+            }
+
+            var id = $(this).attr('data-id');
+
+            // Write your custom code here.
+
+            e.preventDefault();
+            return false;
+        });
+
+        $('#datatable').on('click', '.delete_action', function(e) {
+
+            if ($(this).is("[disabled]")) {
+
+                e.preventDefault();
+                return false;
+            }
+
+            var id = $(this).attr('data-id');
+
+            // Write your custom code here.
+
+            e.preventDefault();
+            return false;
+        });
+
     });
 
     //]]>

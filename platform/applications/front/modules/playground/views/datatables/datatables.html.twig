@@ -19,7 +19,7 @@
                                     <td><div class="ui fluid input"><input id="search_country_name" type="text" placeholder="{{ lang('ui_search')|e('html_attr') }}" /></div></td>
                                     <td></td>
                                     <td>
-                                       <a href="javascript://" class="compact positive ui icon button" title="{{ lang('ui_add')|e('html_attr') }}"><i class="add circle icon"></i></a>
+                                       <a href="javascript://" class="positive ui icon button" title="{{ lang('ui_add')|e('html_attr') }}"><i class="add circle icon"></i></a>
                                     </td>
                                 </tr>
 
@@ -46,8 +46,8 @@
                                     <td><img src="{{ constant('BASE_URI') }}assets/img/lib/flags-iso/shiny/32/{{ country_flag(item['code']) }}.png" /></td>
                                     <td>
                                         <div class="ui icon buttons">
-                                            <a href="javascript://" class="compact primary ui icon button" title="{{ lang('ui_edit')|e('html_attr') }}"><i class="write icon"></i></a>
-                                            <a id="delete_action_{{ item['id'] }}" href="javascript://" class="compact negative ui icon button delete_action" title="{{ lang('ui_delete')|e('html_attr') }}"><i class="trash icon"></i></a>
+                                            <button type="button" data-id="{{ item['id']|e('html_attr') }}" class="primary ui icon button edit_action" title="{{ lang('ui_edit')|e('html_attr') }}"><i class="write icon"></i></button>
+                                            <button type="button" data-id="{{ item['id']|e('html_attr') }}" class="negative ui icon button delete_action" title="{{ lang('ui_delete')|e('html_attr') }}"><i class="trash icon"></i></button>
                                         </div>
                                     </td>
                                 </tr>
