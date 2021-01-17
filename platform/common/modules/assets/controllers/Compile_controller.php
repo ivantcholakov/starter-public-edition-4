@@ -232,6 +232,7 @@ class Compile_controller extends Core_Controller {
     protected function terminate($message)
     {
         echo $message.PHP_EOL;
+        echo PHP_EOL;
         exit(1);
     }
 
