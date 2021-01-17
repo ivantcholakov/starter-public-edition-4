@@ -61,7 +61,7 @@ class Nav extends CI_Model {
 
         //----------------------------------------------------------------------
 
-        $nav['logout'] = array('label' => $this->lang->line('ui_logout'), 'icon' => 'sign-out icon', 'location' => site_url('logout'));
+        $nav['logout'] = array('label' => $this->lang->line('ui_logout'), 'icon' => 'sign out alternate icon', 'location' => site_url('logout'));
 
         //----------------------------------------------------------------------
 
