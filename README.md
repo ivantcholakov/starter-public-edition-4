@@ -549,13 +549,14 @@ A contact form has been created that with minimal adaptation you may use directl
 If you have no previous experience with CodeIgniter, get familiar with its User Guide first:
 https://www.codeigniter.com/user_guide/
 
-Installed Composer Packages
----------------------------
+Installed Composer Packages (Not a Full List)
+---------------------------------------------
 
 | Package                             | Description                                                        | Usage                                             |
 |:------------------------------------|:-------------------------------------------------------------------|:--------------------------------------------------|
 | codeigniter/framework               | CodeIgniter 3                                                      | Everywhere                                        |
 | roave/security-advisories           | Blocks installing packages with known security vulnerabilities     | Composer                                          |
+| ivantcholakov/codeigniter-phpmailer | The wrapper library for PHPMailer.                                 | Sending emails                                    |
 | fg/multiplayer                      | Builds customizable video embed codes from any URL                 | Multiplayer library                               |
 | scssphp/scssphp                     | A compiler for SCSS written in PHP                                 | Parser 'scss' driver                              |
 | guzzlehttp/guzzle                   | A HTTP client library                                              | Playground, REST service test                     |
