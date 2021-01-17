@@ -208,7 +208,7 @@ $config['tasks'] = [
     [
         'name' => 'front-semantic-ui-flat-min',
         'type' => 'less',
-        'source' => DEFAULTFCPATH.'hemes/front_semantic_ui_flat/less/index.less',
+        'source' => DEFAULTFCPATH.'themes/front_semantic_ui_flat/less/index.less',
         'destination' => DEFAULTFCPATH.'themes/front_semantic_ui_flat/css/front.min.css',
         'autoprefixer' => ['browsers' => $config['autoprefixer_browsers']],
         'cssmin' => [],
