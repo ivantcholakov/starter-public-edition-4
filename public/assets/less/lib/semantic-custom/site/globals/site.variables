@@ -12,6 +12,15 @@
 /* The size of page text  */
 @fontSize : 16px;
 
+/*-------------------
+       Fonts
+--------------------*/
+
+@fontName          : 'Open Sans';
+
+@headerFont    : @fontName, "Helvetica Neue", Arial, Helvetica, sans-serif;
+@pageFont      : @fontName, "Helvetica Neue", Arial, Helvetica, sans-serif;
+
 /*--------------
    Form Input
 ---------------*/
