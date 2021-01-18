@@ -2,7 +2,7 @@
 {% set image_count = images|count %}
 {% if image_count > 0 %}
 
-{{ css('lib/swiper/swiper.min.css') }}
+{{ css('lib/swiper/swiper.min.css?v=' ~ constant('PLATFORM_VERSION')) }}
 
     <style>
 

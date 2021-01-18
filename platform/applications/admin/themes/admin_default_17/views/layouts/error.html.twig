@@ -20,7 +20,7 @@
 {{ js_modernizr() }}
 {{ js_jquery() }}
 
-{{ js('lib/phpjs/phpjs.min.js') }}
+{{ js('lib/phpjs/phpjs.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
 
 {{ partial('head') }}
 

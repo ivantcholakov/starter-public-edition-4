@@ -2,8 +2,8 @@
 {% set image_count = images|count %}
 {% if image_count > 0 %}
 
-{{ js('lib/swiper/swiper.min.js') }}
-{{ js('assets/composer-asset/desandro/imagesloaded/imagesloaded.pkgd.min.js') }}
+{{ js('lib/swiper/swiper.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ js('assets/composer-asset/desandro/imagesloaded/imagesloaded.pkgd.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
 
     <script type="text/javascript">
     //<![CDATA[

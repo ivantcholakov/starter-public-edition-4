@@ -578,7 +578,7 @@ if (!function_exists('js_modernizr')) {
     // Modified by Ivan Tcholakov, 08-DEC-2020.
     function js_modernizr() {
 
-        return '    <script type="text/javascript" src="'.html_attr_escape(base_url('assets/composer-asset/components/modernizr/modernizr.js')).'"></script>';
+        return '    <script type="text/javascript" src="'.html_attr_escape(base_url('assets/composer-asset/components/modernizr/modernizr.js?v='.PLATFORM_VERSION)).'"></script>';
     }
 
 }
@@ -589,7 +589,7 @@ if (!function_exists('js_jquery')) {
     // Modified by Ivan Tcholakov, 08-DEC-2020.
     function js_jquery() {
 
-        return '    <script type="text/javascript" src="'.html_attr_escape(base_url('assets/composer-asset/components/jquery/jquery.min.js')).'"></script>';
+        return '    <script type="text/javascript" src="'.html_attr_escape(base_url('assets/composer-asset/components/jquery/jquery.min.js?v='.PLATFORM_VERSION)).'"></script>';
     }
 
 }

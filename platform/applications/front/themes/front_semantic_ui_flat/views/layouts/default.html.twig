@@ -14,20 +14,20 @@
 
 {{ js_platform() }}
 {{ file_partial('webfontloader') }}
-{{ css('lib/sweetalert2/sweetalert2.min.css') }}
-{{ css('lib/jquery-ui-custom/jquery-ui.min.css') }}
+{{ css('lib/sweetalert2/sweetalert2.min.css?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ css('lib/jquery-ui-custom/jquery-ui.min.css?v=' ~ constant('PLATFORM_VERSION')) }}
 {{ theme_css('front.min.css?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ css('assets/composer-asset/components/highlightjs/styles/github.css') }}
+{{ css('assets/composer-asset/components/highlightjs/styles/github.css?v=' ~ constant('PLATFORM_VERSION')) }}
 {{ file_partial('css') }}
 {{ partial('css') }}
-{{ js('lib/phpjs/phpjs.min.js') }}
+{{ js('lib/phpjs/phpjs.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
 {{ js_modernizr() }}
 {{ js_jquery() }}
-{{ js('lib/jquery-base64/jquery.base64.js') }}
-{{ js('lib/jquery-json/jquery.json.js') }}
+{{ js('lib/jquery-base64/jquery.base64.js?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ js('lib/jquery-json/jquery.json.js?v=' ~ constant('PLATFORM_VERSION')) }}
 {{ partial('ckeditor') }}
-{{ js('lib/sweetalert2/sweetalert2.min.js') }}
-{{ js('lib/promise-polyfill/polyfill.min.js') }}
+{{ js('lib/sweetalert2/sweetalert2.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ js('lib/promise-polyfill/polyfill.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
 
 {{ partial('head') }}
 
@@ -103,15 +103,15 @@
 {{ js_scale_fix_ios() }}
 
 {{ js('lib/semantic/semantic.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('lib/headroom/headroom.min.js') }}
-{{ js('lib/headroom/jQuery.headroom.min.js') }}
+{{ js('lib/headroom/headroom.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ js('lib/headroom/jQuery.headroom.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
 
 {{ file_partial('scripts') }}
 {{ partial('scripts') }}
 
-{{ js('lib/jquery-ui-custom/jquery-ui.min.js') }}
+{{ js('lib/jquery-ui-custom/jquery-ui.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
 {{ js('front.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('assets/composer-asset/components/highlightjs/highlight.pack.min.js') }}
+{{ js('assets/composer-asset/components/highlightjs/highlight.pack.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
     <script>hljs.initHighlightingOnLoad();</script>
 
     <div id="debug"></div>
