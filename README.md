@@ -511,7 +511,6 @@ The copied files can be modified/customized. See https://github.com/ivantcholako
 * php-passgen - A library for generating cryptographically secure passwords in PHP, https://github.com/defuse/php-passgen
 * JSMinPlus - a JavaScript minifier, https://github.com/mrclay/minify/blob/2.2.0/min/lib/JSMinPlus.php
 * less.js script for client-side usage (for learning and development purposes, for production compile less assets before deploying), https://github.com/less/less.js
-* Ellipsis (jQuery version) - A plugin to truncate strings that are too long, https://github.com/danbeam/ellipsis/
 * Roave Security Advisories - This package ensures that your application doesn't have installed dependencies with known security vulnerabilities, https://github.com/Roave/SecurityAdvisories
 * scssphp, a compiler for SCSS written in PHP, https://github.com/scssphp/scssphp
 * TSCompiler, https://github.com/ComFreek/TSCompiler

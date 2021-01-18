@@ -110,7 +110,7 @@
 {{ partial('scripts') }}
 
 {{ js('lib/jquery-ui-custom/jquery-ui.min.js') }}
-{{ js('front.js') }}
+{{ js('front.js?v=' ~ constant('PLATFORM_VERSION')) }}
 {{ js('assets/composer-asset/components/highlightjs/highlight.pack.min.js') }}
     <script>hljs.initHighlightingOnLoad();</script>
 

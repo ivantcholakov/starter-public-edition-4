@@ -141,23 +141,3 @@ $.keepalive.configure( {
     }
 
 })(jQuery);
-
-
-// https://github.com/danbeam/ellipsis/
-
-function ellipsize() {
-    $('.ellipsis').ellipsis();
-    $('.ellipsis-1').ellipsis({'lines': 1});
-    $('.ellipsis-2').ellipsis({'lines': 2});
-    $('.ellipsis-3').ellipsis({'lines': 3});
-    $('.ellipsis-4').ellipsis({'lines': 4});
-    $('.ellipsis-5').ellipsis({'lines': 5});
-    $('.ellipsis-6').ellipsis({'lines': 6});
-    $('.ellipsis-7').ellipsis({'lines': 7});
-    $('.ellipsis-8').ellipsis({'lines': 8});
-    $('.ellipsis-9').ellipsis({'lines': 9});
-    $('.ellipsis-10').ellipsis({'lines': 10});
-}
-
-$(ellipsize);  // when document is ready
-$(window).on('resize', ellipsize);  // on resize

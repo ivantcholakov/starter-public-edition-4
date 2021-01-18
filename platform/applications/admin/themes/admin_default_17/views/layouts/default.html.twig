@@ -126,7 +126,6 @@
 {{ partial('handle_unauthenticated_ajax') }}
 {{ js('lib/semantic/semantic.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
 {{ js('lib/jquery-ajax-queue/jquery-ajax-queue.js') }}
-{{ js('lib/jquery-ellipsis/jquery.ellipsis.min.js') }}
 {{ js('lib/jquery-keepalive/jquery.keepalive.min.js') }}
 {{ js('lib/dataTables/jquery.dataTables.min.js') }}
 {{ js('lib/dataTables/dataTables.semanticui.min.js') }}
@@ -138,7 +137,7 @@
 {% if language_jquery_ui() != 'en' %}
 {{ js('lib/jquery-ui-custom/i18n/jquery.ui.datepicker-' ~ language_jquery_ui() ~ '.js') }}
 {% endif %}
-{{ js('admin.js') }}
+{{ js('admin.js?v=' ~ constant('PLATFORM_VERSION')) }}
 
 {{ partial('scripts') }}
 
