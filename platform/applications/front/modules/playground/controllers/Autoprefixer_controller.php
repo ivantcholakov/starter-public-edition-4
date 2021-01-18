@@ -72,7 +72,7 @@ class Autoprefixer_controller extends Playground_Base_Controller {
 
                 $output = null;
 
-                $this->template->set('error_message', '<ul>'.validation_errors('<li>', '</li>').'</ul>');
+                $this->template->set('error_message', '<ul class="list">'.validation_errors('<li>', '</li>').'</ul>');
                 $this->template->set('validation_errors', validation_errors_array());
             }
         }

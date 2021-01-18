@@ -77,7 +77,7 @@ class Login_controller extends Base_Controller {
 
         } elseif (validation_errors()) {
 
-            $this->template->set('error_message', '<ul>'.validation_errors('<li>', '</li>').'</ul>');
+            $this->template->set('error_message', '<ul class="list">'.validation_errors('<li>', '</li>').'</ul>');
             $this->template->set('validation_errors', validation_errors_array());
         }
 
