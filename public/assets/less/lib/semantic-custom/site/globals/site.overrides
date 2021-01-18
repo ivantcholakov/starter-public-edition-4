@@ -81,16 +81,6 @@ code {
 /* End Colored Texts */
 
 
-/* Workarounds */
-
-.ui.card .content .header {
-    // jQuery.ellipsis mistakenly lowers the height, keep it.
-    min-height: 26px;
-}
-
-/* End Workarounds */
-
-
 /* Printing */
 
 // http://www.itsupportguides.com/tech-tips-tricks/how-to-hide-urlhref-when-printing-bootstrap-website/
