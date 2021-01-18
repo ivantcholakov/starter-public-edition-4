@@ -261,45 +261,45 @@
 
             var button = $(this);
 
-            swal({
+            Swal.fire({
                 title: '{{ lang('ui_confirm')|e('js') }}',
-                text: sprintf('{{ lang('ui_confirm_file_deletion', '<strong>%s</strong>')|e('js') }}', current_file_{{ loop.index0 }}),
+                html: sprintf('{{ lang('ui_confirm_file_deletion', '<strong>%s</strong>')|e('js') }}', current_file_{{ loop.index0 }}),
                 type: 'warning',
                 showCancelButton: true,
                 cancelButtonText: '{{ lang('ui_no')|e('js') }}',
                 confirmButtonColor: '#d01919',
-                confirmButtonText: '{{ lang('ui_yes')|e('js') }}',
-                html: true
-            },
-            function() {
+                confirmButtonText: '{{ lang('ui_yes')|e('js') }}'
+            }).then(function(result) {
 
-                button.addClass('loading');
+                if (result.value) {
 
-                $.ajax({
-                    type: 'post',
-                    url: '{{ site_url('error-logs/proxy/' ~ loop.index0) }}',
-                    'type': 'get',
-                    'mode': 'queue',
-                    'cache': false,
-                    data: {
-                        del: $.base64.encode(current_file_{{ loop.index0 }})
-                    },
-                    success: function(data) {
+                    button.addClass('loading');
 
-                        if (data.success) {
+                    $.ajax({
+                        type: 'post',
+                        url: '{{ site_url('error-logs/proxy/' ~ loop.index0) }}',
+                        'type': 'get',
+                        'mode': 'queue',
+                        'cache': false,
+                        data: {
+                            del: $.base64.encode(current_file_{{ loop.index0 }})
+                        },
+                        success: function(data) {
 
-                            current_file_{{ loop.index0 }} = null;
-                            refresh_{{ loop.index0 }}();
+                            if (data.success) {
 
-                            show_main_feedback_message(htmlspecialchars(data.feedback_message), 'confirmation_message');
+                                current_file_{{ loop.index0 }} = null;
+                                refresh_{{ loop.index0 }}();
+
+                                show_main_feedback_message(htmlspecialchars(data.feedback_message), 'confirmation_message');
+                            }
+                        },
+                        error: function(xhr, status, error) {
+
+                            clear_loading_state_{{ loop.index0 }}();
                         }
-                    },
-                    error: function(xhr, status, error) {
-
-                        clear_loading_state_{{ loop.index0 }}();
-                    }
-                });
-
+                    });
+                }
             });
 
             e.preventDefault();
@@ -310,45 +310,45 @@
 
             var button = $(this);
 
-            swal({
+            Swal.fire({
                 title: '{{ lang('ui_confirm')|e('js') }}',
-                text: sprintf('{{ lang('ui_confirm_file_deletion', '<strong>%s</strong>')|e('js') }}', '{{ lang('ui_all')|e('js') }}'),
+                html: sprintf('{{ lang('ui_confirm_file_deletion', '<strong>%s</strong>')|e('js') }}', '{{ lang('ui_all')|e('js') }}'),
                 type: 'warning',
                 showCancelButton: true,
                 cancelButtonText: '{{ lang('ui_no')|e('js') }}',
                 confirmButtonColor: '#d01919',
-                confirmButtonText: '{{ lang('ui_yes')|e('js') }}',
-                html: true
-            },
-            function() {
+                confirmButtonText: '{{ lang('ui_yes')|e('js') }}'
+            }).then(function(result) {
 
-                button.addClass('loading');
+                if (result.value) {
 
-                $.ajax({
-                    type: 'post',
-                    url: '{{ site_url('error-logs/proxy/' ~ loop.index0) }}',
-                    'type': 'get',
-                    'mode': 'queue',
-                    'cache': false,
-                    data: {
-                        del: $.base64.encode('all')
-                    },
-                    success: function(data) {
+                    button.addClass('loading');
 
-                        if (data.success) {
+                    $.ajax({
+                        type: 'post',
+                        url: '{{ site_url('error-logs/proxy/' ~ loop.index0) }}',
+                        'type': 'get',
+                        'mode': 'queue',
+                        'cache': false,
+                        data: {
+                            del: $.base64.encode('all')
+                        },
+                        success: function(data) {
 
-                            current_file_{{ loop.index0 }} = null;
-                            refresh_{{ loop.index0 }}();
+                            if (data.success) {
 
-                            show_main_feedback_message(htmlspecialchars(data.feedback_message), 'confirmation_message');
+                                current_file_{{ loop.index0 }} = null;
+                                refresh_{{ loop.index0 }}();
+
+                                show_main_feedback_message(htmlspecialchars(data.feedback_message), 'confirmation_message');
+                            }
+                        },
+                        error: function(xhr, status, error) {
+
+                            clear_loading_state_{{ loop.index0 }}();
                         }
-                    },
-                    error: function(xhr, status, error) {
-
-                        clear_loading_state_{{ loop.index0 }}();
-                    }
-                });
-
+                    });
+                }
             });
 
             e.preventDefault();
