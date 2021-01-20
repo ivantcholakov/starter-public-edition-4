@@ -22,6 +22,24 @@ define('PRODUCT_VERSION', '1.0.0');
 
 
 /**
+ * A number to be used on referencing web-assets for browser cache busting.
+ * Increment it when you change some web-asset sources (JavaScript, CSS, fonts, etc.)
+ * to guarantee on production environment that browsers always load fresh source copies.
+ *
+ * Sample usage in platform's views (fragments in PHP syntax):
+ * 'my.css?v='.WEB_ASSET_CACHE_BUST_NUMBER
+ * 'my.js?v='.WEB_ASSET_CACHE_BUST_NUMBER
+ *
+ * Sample usage in platform's views (fragments in Twig syntax):
+ * 'my.css?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')
+ * 'my.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')
+ *
+ *  * @var    string
+ */
+define('WEB_ASSET_CACHE_BUST_NUMBER', '0');
+
+
+/**
  * Minimum Required PHP Version
  * @var    string
  */
