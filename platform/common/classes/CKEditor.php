@@ -24,7 +24,7 @@ class CKEditor
     /**
      * A constant string unique for each release of %CKEditor.
      */
-    const timestamp = '1aa21195b';
+    const timestamp = WEB_ASSET_CACHE_BUST_NUMBER;
 
     /**
      * URL to the %CKEditor installation directory (absolute or relative to document root).
