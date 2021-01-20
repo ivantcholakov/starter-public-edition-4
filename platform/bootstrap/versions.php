@@ -34,7 +34,7 @@ define('PRODUCT_VERSION', '1.0.0');
  * 'my.css?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')
  * 'my.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')
  *
- *  * @var    string
+ * @var    string
  */
 define('WEB_ASSET_CACHE_BUST_NUMBER', '0');
 
