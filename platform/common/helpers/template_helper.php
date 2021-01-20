@@ -564,10 +564,7 @@ if (!function_exists('js_platform')) {
 '
     <script type="text/javascript">
     //<![CDATA[
-'.$constants_js.'
-        var site_url = '.json_encode(CURRENT_SITE_URL).'; // The language segment is added. Kept here for BC, replaced by CURRENT_SITE_URL.
-        var site_uri = '.json_encode(CURRENT_SITE_URI).'; // The language segment is added. Kept here for BC, replaced by CURRENT_SITE_URI.
-    //]]>
+'.$constants_js.'    //]]>
     </script>';
     }
 
