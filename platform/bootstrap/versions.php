@@ -30,6 +30,10 @@ define('PRODUCT_VERSION', '1.0.0');
  * 'my.css?v='.WEB_ASSET_CACHE_BUST_NUMBER
  * 'my.js?v='.WEB_ASSET_CACHE_BUST_NUMBER
  *
+ * Sample usage in platform's views (fragments in JavaScript syntax):
+ * 'my.css?v=' + WEB_ASSET_CACHE_BUST_NUMBER
+ * 'my.js?v=' + WEB_ASSET_CACHE_BUST_NUMBER
+ *
  * Sample usage in platform's views (fragments in Twig syntax):
  * 'my.css?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')
  * 'my.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')
