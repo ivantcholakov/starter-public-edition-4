@@ -14,7 +14,7 @@
 
 {{ js_platform() }}
 {% include 'partials/webfontloader' %}
-{{ theme_css('login.min.css?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ theme_css('login.min.css?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
 {{ partial('css') }}
 
 {{ js_modernizr() }}
@@ -31,7 +31,7 @@
 {{ js_mbp_helper() }}
 {{ js_scale_fix_ios() }}
 
-{{ js('lib/semantic/semantic.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ js('lib/semantic/semantic.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
 
 {{ partial('scripts') }}
 

@@ -8,7 +8,7 @@ https://google-webfonts-helper.herokuapp.com
 
 #}
 
-    {{ js('assets/composer-asset/components/webfontloader/webfontloader.js?v=' ~ constant('PLATFORM_VERSION')) }}
+    {{ js('assets/composer-asset/components/webfontloader/webfontloader.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
 
     <script type="text/javascript">
     //<![CDATA[
@@ -21,9 +21,9 @@ https://google-webfonts-helper.herokuapp.com
                     'Icons', 'outline-icons', 'brand-icons'
                 ],
                 urls: [
-                    DEFAULT_BASE_URI + 'assets/css/lib/open-sans/open-sans.min.css',
-                    DEFAULT_BASE_URI + 'assets/css/lib/open-sans-condensed/open-sans-condensed.min.css',
-                    DEFAULT_BASE_URI + 'assets/css/lib/semantic-icons-default/icons.css'
+                    DEFAULT_BASE_URI + 'assets/css/lib/open-sans/open-sans.min.css' + WEB_ASSET_CACHE_BUST_NUMBER,
+                    DEFAULT_BASE_URI + 'assets/css/lib/open-sans-condensed/open-sans-condensed.min.css' + WEB_ASSET_CACHE_BUST_NUMBER,
+                    DEFAULT_BASE_URI + 'assets/css/lib/semantic-icons-default/icons.css' + WEB_ASSET_CACHE_BUST_NUMBER
                 ]
             },
             timeout: 2000

@@ -1,12 +1,12 @@
 
 {% if driver_ok %}
 
-{{ js('lib/dataTables/jquery.dataTables.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('lib/dataTables/dataTables.semanticui.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('lib/dataTables/plug-ins/api/sortNeutral.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('lib/dataTables/dataTables.responsive.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('lib/dataTables/responsive.semanticui.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('lib/dataTables/dataTables.select.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ js('lib/dataTables/jquery.dataTables.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('lib/dataTables/dataTables.semanticui.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('lib/dataTables/plug-ins/api/sortNeutral.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('lib/dataTables/dataTables.responsive.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('lib/dataTables/responsive.semanticui.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('lib/dataTables/dataTables.select.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
 
     <script type="text/javascript">
     //<![CDATA[

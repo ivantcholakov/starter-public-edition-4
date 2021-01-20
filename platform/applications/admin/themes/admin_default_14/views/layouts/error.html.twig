@@ -14,13 +14,13 @@
 
 {{ js_platform() }}
 {% include 'partials/webfontloader' %}
-{{ theme_css('error.min.css?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ theme_css('error.min.css?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
 {{ partial('css') }}
 
 {{ js_modernizr() }}
 {{ js_jquery() }}
 
-{{ js('lib/phpjs/phpjs.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ js('lib/phpjs/phpjs.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
 
 {{ partial('head') }}
 
@@ -77,7 +77,7 @@
 {{ js_mbp_helper() }}
 {{ js_scale_fix_ios() }}
 
-{{ js('lib/semantic/semantic.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ js('lib/semantic/semantic.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
 
 {{ partial('scripts') }}
 

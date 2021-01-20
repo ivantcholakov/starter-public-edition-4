@@ -14,19 +14,19 @@
 
 {{ js_platform() }}
 {% include 'partials/webfontloader' %}
-{{ css('lib/sweetalert2/sweetalert2.min.css?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ css('lib/jquery-ui-custom/jquery-ui.min.css?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ theme_css('admin.min.css?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ css('lib/sweetalert2/sweetalert2.min.css?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ css('lib/jquery-ui-custom/jquery-ui.min.css?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ theme_css('admin.min.css?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
 {{ partial('css') }}
 
 {{ js_modernizr() }}
 {{ js_jquery() }}
 
-{{ js('lib/phpjs/phpjs.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('lib/jquery-json/jquery.json.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('lib/jquery-base64/jquery.base64.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('lib/sweetalert2/sweetalert2.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('lib/promise-polyfill/polyfill.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ js('lib/phpjs/phpjs.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('lib/jquery-json/jquery.json.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('lib/jquery-base64/jquery.base64.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('lib/sweetalert2/sweetalert2.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('lib/promise-polyfill/polyfill.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
 
 {{ partial('head') }}
 
@@ -124,20 +124,20 @@
 {{ js_scale_fix_ios() }}
 
 {{ partial('handle_unauthenticated_ajax') }}
-{{ js('lib/semantic/semantic.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('lib/jquery-ajax-queue/jquery-ajax-queue.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('lib/jquery-keepalive/jquery.keepalive.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('lib/dataTables/jquery.dataTables.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('lib/dataTables/dataTables.semanticui.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('lib/dataTables/plug-ins/api/sortNeutral.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('lib/dataTables/dataTables.responsive.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('lib/dataTables/responsive.semanticui.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('lib/dataTables/dataTables.select.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('lib/jquery-ui-custom/jquery-ui.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ js('lib/semantic/semantic.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('lib/jquery-ajax-queue/jquery-ajax-queue.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('lib/jquery-keepalive/jquery.keepalive.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('lib/dataTables/jquery.dataTables.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('lib/dataTables/dataTables.semanticui.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('lib/dataTables/plug-ins/api/sortNeutral.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('lib/dataTables/dataTables.responsive.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('lib/dataTables/responsive.semanticui.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('lib/dataTables/dataTables.select.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('lib/jquery-ui-custom/jquery-ui.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
 {% if language_jquery_ui() != 'en' %}
-{{ js('lib/jquery-ui-custom/i18n/jquery.ui.datepicker-' ~ language_jquery_ui() ~ '.js?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ js('lib/jquery-ui-custom/i18n/jquery.ui.datepicker-' ~ language_jquery_ui() ~ '.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
 {% endif %}
-{{ js('admin.js?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ js('admin.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
 
 {{ partial('scripts') }}
 

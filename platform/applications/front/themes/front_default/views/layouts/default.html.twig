@@ -14,20 +14,20 @@
 
 {{ js_platform() }}
 {{ file_partial('webfontloader') }}
-{{ css('lib/sweetalert2/sweetalert2.min.css?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ css('lib/jquery-ui-custom/jquery-ui.min.css?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ theme_css('front.min.css?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ css('assets/composer-asset/components/highlightjs/styles/github.css?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ css('lib/sweetalert2/sweetalert2.min.css?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ css('lib/jquery-ui-custom/jquery-ui.min.css?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ theme_css('front.min.css?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ css('assets/composer-asset/components/highlightjs/styles/github.css?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
 {{ file_partial('css') }}
 {{ partial('css') }}
-{{ js('lib/phpjs/phpjs.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ js('lib/phpjs/phpjs.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
 {{ js_modernizr() }}
 {{ js_jquery() }}
-{{ js('lib/jquery-base64/jquery.base64.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('lib/jquery-json/jquery.json.js?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ js('lib/jquery-base64/jquery.base64.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('lib/jquery-json/jquery.json.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
 {{ partial('ckeditor') }}
-{{ js('lib/sweetalert2/sweetalert2.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('lib/promise-polyfill/polyfill.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ js('lib/sweetalert2/sweetalert2.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('lib/promise-polyfill/polyfill.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
 
 {{ partial('head') }}
 
@@ -102,16 +102,16 @@
 {{ js_mbp_helper() }}
 {{ js_scale_fix_ios() }}
 
-{{ js('lib/semantic/semantic.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('lib/headroom/headroom.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('lib/headroom/jQuery.headroom.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ js('lib/semantic/semantic.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('lib/headroom/headroom.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('lib/headroom/jQuery.headroom.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
 
 {{ file_partial('scripts') }}
 {{ partial('scripts') }}
 
-{{ js('lib/jquery-ui-custom/jquery-ui.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('front.js?v=' ~ constant('PLATFORM_VERSION')) }}
-{{ js('assets/composer-asset/components/highlightjs/highlight.pack.min.js?v=' ~ constant('PLATFORM_VERSION')) }}
+{{ js('lib/jquery-ui-custom/jquery-ui.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('front.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
+{{ js('assets/composer-asset/components/highlightjs/highlight.pack.min.js?v=' ~ constant('WEB_ASSET_CACHE_BUST_NUMBER')) }}
     <script>hljs.initHighlightingOnLoad();</script>
 
     <div id="debug"></div>
