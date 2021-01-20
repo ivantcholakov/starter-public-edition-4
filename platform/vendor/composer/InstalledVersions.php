@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '3455018e281a8ef5ac2aa87f7f90dcd5cb7b13ab',
+    'reference' => 'b755d1e5fee3a027211fccba41c9510a7fe797b4',
     'name' => '__root__',
   ),
   'versions' => 
@@ -41,7 +41,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '3455018e281a8ef5ac2aa87f7f90dcd5cb7b13ab',
+      'reference' => 'b755d1e5fee3a027211fccba41c9510a7fe797b4',
     ),
     'athlon1600/php-proxy' => 
     array (
@@ -325,7 +325,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '5688b64287a502c56061ab3f400f05e190d5fa5a',
+      'reference' => '600038234d7523270505fc1bfc442fbe813b8f2d',
     ),
     'roundcube/plugin-installer' => 
     array (
