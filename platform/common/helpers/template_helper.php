@@ -545,6 +545,7 @@ if (!function_exists('js_platform')) {
             'UA_IS_MOBILE',
             'UA_IS_ROBOT',
             'UA_IS_REFERRAL',
+            'WEB_ASSET_CACHE_BUST_NUMBER',
         );
 
         $constants_js = array();
