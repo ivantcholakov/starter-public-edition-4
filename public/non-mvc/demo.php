@@ -48,9 +48,9 @@ echo apple_touch_icon_precomposed();
 
 echo js_platform();
 
-?>
+echo js('assets/composer-asset/components/webfontloader/webfontloader.js?v='.WEB_ASSET_CACHE_BUST_NUMBER);
 
-    <script type="text/javascript" src="<?php echo js_url('lib/webfontloader/webfontloader.js'); ?>"></script>
+?>
 
     <script type="text/javascript">
     //<![CDATA[
@@ -61,7 +61,7 @@ echo js_platform();
                     'Icons', 'outline-icons', 'brand-icons'
                 ],
                 urls: [
-                    ASSET_CSS_URI + 'lib/semantic-icons-default/icons.css'
+                    ASSET_CSS_URI + 'lib/semantic-icons-default/icons.css?v=' + WEB_ASSET_CACHE_BUST_NUMBER
                 ]
             },
             timeout: 2000
@@ -73,7 +73,7 @@ echo js_platform();
 <?php
 
 // A CSS loading example.
-echo css('lib/semantic-custom/semantic-custom.min.css?v='.PLATFORM_VERSION);
+echo css('lib/semantic-custom/semantic-custom.min.css?v='.WEB_ASSET_CACHE_BUST_NUMBER);
 
 ?>
 
@@ -341,7 +341,7 @@ echo js_bp_plugins();
 echo js_mbp_helper();
 echo js_scale_fix_ios();
 
-echo js('lib/semantic/semantic.min.js?v='.PLATFORM_VERSION);
+echo js('lib/semantic/semantic.min.js?v='.WEB_ASSET_CACHE_BUST_NUMBER);
 
 ?>
 
