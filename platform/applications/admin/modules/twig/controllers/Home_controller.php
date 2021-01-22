@@ -1,6 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-// Extend from a controller with more resticted user access.
 class Home_controller extends Base_Authenticated_Controller {
 
     public function __construct() {

@@ -1,6 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-// Extend from a controller with more resticted user access.
 class Ajax_controller extends Base_Authenticated_Ajax_Controller {
 
     public function __construct() {

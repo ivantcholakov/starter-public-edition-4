@@ -5,15 +5,19 @@
  
                                     <p>This operation has to be performed after a upgrade of the corresponding application (site).</p>
  
-                                    <table class="ui celled striped selectable compact table" id="datatable">
+                                    <p>
+                                        <div class="ui icon buttons">
+                                            <button id="check_all_button" type="button" class="ui green button"><i class="checkmark icon"></i><span class="mobile hidden"> Check All</span></button>
+                                            <button id="uncheck_all_button" type="button" class="ui red button"><i class="square outline icon"></i><span class="mobile hidden"> Uncheck All</span></button>
+                                        </div>
+
+                                    </p>
+
+                                    <table class="ui celled striped compact table" id="datatable">
 
                                         <thead>
                                             <tr>
-                                                <th class="eight wide">
-                                                    <span style="float: left;">Application (site)</span>
-                                                    <button id="uncheck_all_button" type="button" class="ui grey small compact button right aligned" style="float: right;"><i class="square outline icon"></i>Uncheck All</button>
-                                                    <button id="check_all_button" type="button" class="ui grey small compact button" style="float: right;"><i class="checkmark icon"></i>Check All</button>
-                                                </th>
+                                                <th class="eight wide">Application (site)</th>
                                                 <th class="eight wide">Message</th>
 
                                             </tr>
@@ -33,7 +37,7 @@
                                                 <td>
                                                     <div class="ui checkbox twig">
                                                         <input type="checkbox" id="app_{{ loop.index0 }}" name="app_{{ loop.index0 }}" value="1" data-i="{{ loop.index0 }}" />
-                                                        <label for="app_{{ loop.index0 }}">{{ item['name'] }}</label>
+                                                        <label for="app_{{ loop.index0 }}" style="cursor: pointer;">{{ item['name'] }}</label>
                                                     </div>
                                                 </td>
 
@@ -48,7 +52,7 @@
                                     </table>
 
                                     <p>
-                                        <button type="button" class="ui primary fluid button" id="refresh_twig"><i class="refresh icon"></i>Refresh Twig-Template Cache</button>
+                                        <button type="button" class="ui primary large fluid button" id="refresh_twig"><i class="refresh icon"></i>Refresh Twig-Template Cache</button>
                                     </p>
 
                                 </div>

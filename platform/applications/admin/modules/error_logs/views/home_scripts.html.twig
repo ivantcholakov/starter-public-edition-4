@@ -58,11 +58,11 @@
                 if (current_file_{{ loop.index0 }}) {
 
                     $('#download_file_{{ loop.index0 }}').html('<a href="{{ site_url('error-logs/proxy/' ~ loop.index0) }}?dl=' + $.base64.encode(current_file_{{ loop.index0 }}) + '" class="ui primary button download_file_{{ loop.index0 }}"><i class="download icon"></i>Download File</a>');
-                    $('#delete_file_{{ loop.index0 }}').html('<button class="ui negative button delete_file_{{ loop.index0 }}"><i class="trash icon"></i>Delete File</button>');
+                    $('#delete_file_{{ loop.index0 }}').html('<button type="button" class="ui negative button delete_file_{{ loop.index0 }}"><i class="trash icon"></i>Delete File</button>');
 
                     if (json.files.length > 1) {
 
-                        $('#delete_all_files_{{ loop.index0 }}').html('<button class="ui negative button delete_all_files_{{ loop.index0 }}"><i class="trash icon"></i>Delete All Files</button>');
+                        $('#delete_all_files_{{ loop.index0 }}').html('<button type="button" class="ui negative button delete_all_files_{{ loop.index0 }}"><i class="trash icon"></i>Delete All Files</button>');
                     }
                 }
             }
@@ -204,7 +204,7 @@
 
         // "Clear search" and "Clear sort" buttons.
 
-        $('#datatable_{{ loop.index0 }}_filter input').after(' <div class="ui icon buttons"><button id="clear_search_{{ loop.index0 }}" class="ui icon button" title="{{ lang('ui_clear_search')|e('html_attr')|e('js') }}"><i class="search minus icon"></i></button> <button id="clear_sort_{{ loop.index0 }}" class="ui icon button" title="{{ lang('ui_clear_sort')|e('html_attr')|e('js') }}"><i class="sort icon"></i></button></div>');
+        $('#datatable_{{ loop.index0 }}_filter input').after(' <div class="ui icon buttons"><button type="button" id="clear_search_{{ loop.index0 }}" class="ui grey icon button" title="{{ lang('ui_clear_search')|e('html_attr')|e('js') }}"><i class="search minus icon"></i></button> <button type="button" id="clear_sort_{{ loop.index0 }}" class="ui grey icon button" title="{{ lang('ui_clear_sort')|e('html_attr')|e('js') }}"><i class="sort icon"></i></button></div>');
 
         // Clear sort.
         $('#clear_sort_{{ loop.index0 }}').on('click', function() {
@@ -264,7 +264,7 @@
             Swal.fire({
                 title: '{{ lang('ui_confirm')|e('js') }}',
                 html: sprintf('{{ lang('ui_confirm_file_deletion', '<strong>%s</strong>')|e('js') }}', current_file_{{ loop.index0 }}),
-                type: 'warning',
+                icon: 'warning',
                 showCancelButton: true,
                 cancelButtonText: '{{ lang('ui_no')|e('js') }}',
                 confirmButtonColor: '#d01919',
@@ -313,7 +313,7 @@
             Swal.fire({
                 title: '{{ lang('ui_confirm')|e('js') }}',
                 html: sprintf('{{ lang('ui_confirm_file_deletion', '<strong>%s</strong>')|e('js') }}', '{{ lang('ui_all')|e('js') }}'),
-                type: 'warning',
+                icon: 'warning',
                 showCancelButton: true,
                 cancelButtonText: '{{ lang('ui_no')|e('js') }}',
                 confirmButtonColor: '#d01919',

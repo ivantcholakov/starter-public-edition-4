@@ -12,12 +12,16 @@
                 </a>
 
                 <a href="{{ default_base_url() }}" target="_blank" rel="noopener" class="mobile hidden item">
-                    <i class="home icon"></i> <span class="tablet hidden">Go To Site</span>
+                    <i class="home icon"></i> <span class="mobile hidden tablet hidden computer hidden">Go To Site</span>
+                </a>
+
+                <a href="{{ default_base_url('sitemap.xml')|e('html_attr') }}" target="_blank" rel="noopener" class="mobile hidden tablet hidden computer hidden item">
+                    <i class="sitemap icon"></i> <span class="mobile hidden tablet hidden computer hidden">Sitemap XML</span>
                 </a>
 
                 <div class="right menu">
 
-                    <div class="mobile hidden item">{{ constant('ENVIRONMENT')|upper|e('html') }}</div>
+                    <div class="mobile hidden tablet hidden computer hidden item">{{ constant('ENVIRONMENT')|upper|e('html') }}</div>
                     {{ widget('theme_switcher_widget/index', 'navbar') }}
                     {{ widget('account_widget') }}
 
