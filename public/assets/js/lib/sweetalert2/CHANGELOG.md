@@ -1,3 +1,45 @@
+## [10.13.3](https://github.com/sweetalert2/sweetalert2/compare/v10.13.2...v10.13.3) (2021-01-25)
+
+
+### Bug Fixes
+
+* apply $swal2-icon-size to success and error icons ([#2158](https://github.com/sweetalert2/sweetalert2/issues/2158)) ([f367041](https://github.com/sweetalert2/sweetalert2/commit/f367041215c7b44cdc4968bc45458c8e4ecd7e0b))
+
+## [10.13.2](https://github.com/sweetalert2/sweetalert2/compare/v10.13.1...v10.13.2) (2021-01-25)
+
+
+### Bug Fixes
+
+* warnings in IE11 for invalid elements in templates ([#2157](https://github.com/sweetalert2/sweetalert2/issues/2157)) ([3f9cbd6](https://github.com/sweetalert2/sweetalert2/commit/3f9cbd6e67559a1d91cdd6cb5e3179a09a980c61))
+
+## [10.13.1](https://github.com/sweetalert2/sweetalert2/compare/v10.13.0...v10.13.1) (2021-01-24)
+
+
+### Bug Fixes
+
+* only throw warnings for direct children in template ([#2156](https://github.com/sweetalert2/sweetalert2/issues/2156)) ([a0d19ea](https://github.com/sweetalert2/sweetalert2/commit/a0d19ea49dc12d29c952a4025acfcffc0d45c73a))
+
+# [10.13.0](https://github.com/sweetalert2/sweetalert2/compare/v10.12.7...v10.13.0) (2021-01-05)
+
+
+### Features
+
+* add customClass.inputLabel ([4d0f89c](https://github.com/sweetalert2/sweetalert2/commit/4d0f89c87966c7c49e636c6e16e4738d8180144c))
+
+## [10.12.7](https://github.com/sweetalert2/sweetalert2/compare/v10.12.6...v10.12.7) (2021-01-01)
+
+
+### Bug Fixes
+
+* do not animate timer progress bar is timer was unset (fix [#2147](https://github.com/sweetalert2/sweetalert2/issues/2147)) ([3b165eb](https://github.com/sweetalert2/sweetalert2/commit/3b165eb8ad4fb98184d7fe910fbdca83f7ad5e49))
+
+## [10.12.6](https://github.com/sweetalert2/sweetalert2/compare/v10.12.5...v10.12.6) (2020-12-23)
+
+
+### Bug Fixes
+
+* do not close toast by internal click in case the timer is set ([03f5469](https://github.com/sweetalert2/sweetalert2/commit/03f54693cb5d76bf99fa230fd63cca0636327649))
+
 ## [10.12.5](https://github.com/sweetalert2/sweetalert2/compare/v10.12.4...v10.12.5) (2020-12-12)
 
 
