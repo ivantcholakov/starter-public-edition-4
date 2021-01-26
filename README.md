@@ -663,7 +663,7 @@ License Information
 -------------------
 
 For original code in this project:  
-Copyright (c) 2012 - 2020:  
+Copyright (c) 2012 - 2021:  
 Ivan Tcholakov (the initial author) ivantcholakov@gmail.com,  
 Gwenaël Gallon.  
 License: The MIT License (MIT), http://opensource.org/licenses/MIT
