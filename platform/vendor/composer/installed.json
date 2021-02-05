@@ -56,12 +56,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bcit-ci/CodeIgniter.git",
-                "reference": "899338a3ea4651533493ffd9d1ce7002e9ddf53e"
+                "reference": "0925b5099919300a239909588351a6482c5e792d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bcit-ci/CodeIgniter/zipball/899338a3ea4651533493ffd9d1ce7002e9ddf53e",
-                "reference": "899338a3ea4651533493ffd9d1ce7002e9ddf53e",
+                "url": "https://api.github.com/repos/bcit-ci/CodeIgniter/zipball/0925b5099919300a239909588351a6482c5e792d",
+                "reference": "0925b5099919300a239909588351a6482c5e792d",
                 "shasum": ""
             },
             "require": {
@@ -74,7 +74,7 @@
             "suggest": {
                 "paragonie/random_compat": "Provides better randomness in PHP 5.x"
             },
-            "time": "2020-03-30T09:06:02+00:00",
+            "time": "2021-01-05T12:38:44+00:00",
             "type": "project",
             "installation-source": "dist",
             "notification-url": "https://packagist.org/downloads/",
@@ -83,6 +83,13 @@
             ],
             "description": "The CodeIgniter framework",
             "homepage": "https://codeigniter.com",
+            "support": {
+                "forum": "http://forum.codeigniter.com/",
+                "issues": "https://github.com/bcit-ci/CodeIgniter/issues",
+                "slack": "https://codeigniterchat.slack.com",
+                "source": "https://github.com/bcit-ci/CodeIgniter",
+                "wiki": "https://github.com/bcit-ci/CodeIgniter/wiki"
+            },
             "install-path": "../codeigniter/framework"
         },
         {
