@@ -162,7 +162,7 @@ class User_photo_manager extends CI_Model {
         }
 
         if (count($this->errors) > 1) {
-            return '<ul><li>'.implode('</li><li>', $this->errors).'</li></ul>';
+            return '<ul class="list"><li>'.implode('</li><li>', $this->errors).'</li></ul>';
         }
 
         return '<p>'.$this->errors[0].'</p>';
