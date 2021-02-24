@@ -37,17 +37,17 @@ class Welcome_controller extends Base_Controller {
                     'path' => PLATFORM_UPLOAD_PATH,
                     'is_writable' => NULL
                 ),
-            'www/upload/' =>
+            'public/upload/' =>
                 array(
                     'path' => PUBLIC_UPLOAD_PATH,
                     'is_writable' => NULL
                 ),
-            'www/cache/' =>
+            'public/cache/' =>
                 array(
                     'path' => PUBLIC_CACHE_PATH,
                     'is_writable' => NULL
                 ),
-            'www/editor/' =>
+            'public/editor/' =>
                 array(
                     'path' => DEFAULTFCPATH.'editor/',
                     'is_writable' => NULL
