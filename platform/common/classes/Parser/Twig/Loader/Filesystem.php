@@ -55,7 +55,7 @@ class Parser_Twig_Loader_Filesystem extends \Twig\Loader\FilesystemLoader {
             $this->validateName($name);
 
             list($namespace, $shortname) = $this->parseName($name);
-        } catch (LoaderError $e) {
+        } catch (\Twig\Error\LoaderError $e) {
             if (!$throw) {
                 return null;
             }
@@ -108,7 +108,7 @@ class Parser_Twig_Loader_Filesystem extends \Twig\Loader\FilesystemLoader {
     {
         if (isset($name[0]) && '@' == $name[0]) {
             if (false === $pos = strpos($name, '/')) {
-                throw new LoaderError(sprintf('Malformed namespaced template name "%s" (expecting "@namespace/template_name").', $name));
+                throw new \Twig\Error\LoaderError(sprintf('Malformed namespaced template name "%s" (expecting "@namespace/template_name").', $name));
             }
 
             $namespace = substr($name, 1, $pos - 1);
