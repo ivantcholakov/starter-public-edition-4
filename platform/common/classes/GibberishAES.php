@@ -50,10 +50,10 @@ defined('BASEPATH') OR exit('No direct script access allowed.');
  * GibberishAES::size($old_key_size);
  * echo $decrypted_string;
  *
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2020.
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2021.
  * Code repository: @link https://github.com/ivantcholakov/gibberish-aes-php
  *
- * @version 1.3.2
+ * @version 1.3.3
  *
  * @license The MIT License (MIT)
  * @link http://opensource.org/licenses/MIT
@@ -268,7 +268,7 @@ class GibberishAES {
     protected static function mbstring_func_overload() {
 
         if (!isset(self::$mbstring_func_overload)) {
-            self::$mbstring_func_overload = extension_loaded('mbstring') && ini_get('mbstring.func_overload');
+            self::$mbstring_func_overload = (defined('MB_OVERLOAD_STRING') && ((int) @ini_get('mbstring.func_overload') & MB_OVERLOAD_STRING));
         }
 
         return self::$mbstring_func_overload;
