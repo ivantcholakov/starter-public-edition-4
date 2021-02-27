@@ -11,6 +11,11 @@ class Core_Output extends CI_Output {
 
     public function __construct()
     {
+        // Modified by Ivan Tcholakov, 27-FEB-2021.
+        //isset(self::$func_overload) OR self::$func_overload = (extension_loaded('mbstring') && ini_get('mbstring.func_overload'));
+        isset(self::$func_overload) OR self::$func_overload = (defined('MB_OVERLOAD_STRING') && ((int) @ini_get('mbstring.func_overload') & MB_OVERLOAD_STRING));
+        //
+
         parent::__construct();
 
         // Added by Ivan Tcholakov, 24-JAN-2016.

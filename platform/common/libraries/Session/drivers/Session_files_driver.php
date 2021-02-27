@@ -100,7 +100,12 @@ class CI_Session_files_driver extends CI_Session_driver implements SessionHandle
 	 */
 	public function __construct(&$params)
 	{
-		parent::__construct($params);
+		// Modified and moved here by Ivan Tcholakov, 27-FEB-2021.
+		//isset(self::$func_overload) OR self::$func_overload = (extension_loaded('mbstring') && ini_get('mbstring.func_overload'));
+		isset(self::$func_overload) OR self::$func_overload = (defined('MB_OVERLOAD_STRING') && ((int) @ini_get('mbstring.func_overload') & MB_OVERLOAD_STRING));
+		//
+
+                parent::__construct($params);
 
 		if (isset($this->_config['save_path']))
 		{
@@ -114,8 +119,6 @@ class CI_Session_files_driver extends CI_Session_driver implements SessionHandle
 		}
 
 		$this->_sid_regexp = $this->_config['_sid_regexp'];
-
-		isset(self::$func_overload) OR self::$func_overload = (extension_loaded('mbstring') && ini_get('mbstring.func_overload'));
 	}
 
 	// ------------------------------------------------------------------------

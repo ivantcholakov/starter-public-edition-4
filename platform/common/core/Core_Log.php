@@ -10,6 +10,11 @@ class Core_Log extends CI_Log {
     {
         $config =& get_config();
 
+        // Modified by Ivan Tcholakov, 27-FEB-2021.
+        //isset(self::$func_overload) OR self::$func_overload = (extension_loaded('mbstring') && ini_get('mbstring.func_overload'));
+        isset(self::$func_overload) OR self::$func_overload = (defined('MB_OVERLOAD_STRING') && ((int) @ini_get('mbstring.func_overload') & MB_OVERLOAD_STRING));
+        //
+
         $this->_log_path = ($config['log_path'] !== '') ? $config['log_path'] : APPPATH.'logs/';
         file_exists($this->_log_path) OR mkdir($this->_log_path, DIR_WRITE_MODE, TRUE);
         $this->_file_permissions = FILE_WRITE_MODE;
