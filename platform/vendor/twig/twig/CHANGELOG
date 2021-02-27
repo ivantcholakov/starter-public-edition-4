@@ -1,3 +1,9 @@
+# 3.3.0 (2021-02-08)
+
+ * Fix macro calls in a "cache" tag
+ * Add the slug filter
+ * Allow extra bundle to be compatible with Twig 2
+
 # 3.2.1 (2021-01-05)
 
  * Fix extra bundle compat with older versions of Symfony
@@ -75,7 +81,7 @@
 
 # 2.14.4 (2021-XX-XX)
 
- * n/a
+ * Add the slug filter
 
 # 2.14.3 (2021-01-05)
 
