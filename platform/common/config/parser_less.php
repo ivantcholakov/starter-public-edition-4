@@ -71,3 +71,6 @@ $config['url_args'] = '';
 
 // Be verbose.
 $config['verbose'] = false;
+
+// Enable inline JavaScript.
+$config['javascript_enabled'] = false;

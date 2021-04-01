@@ -123,6 +123,7 @@ class Lessjs_Parser {
         $this->options['modify_var'] = '';
         $this->options['url_args'] = '';
         $this->options['verbose'] = false;
+        $this->options['javascript_enabled'] = false;
     }
 
     protected function setOption($key, $value) {
@@ -249,7 +250,15 @@ class Lessjs_Parser {
                     }
 
                     break;
-                }
+
+                case 'javascript_enabled':
+
+                    if (!empty($value)) {
+                        $result[] = '--js';
+                    }
+
+                    break;
+            }
         }
 
         return empty($result) ? '' : ' '.implode(' ', $result);
