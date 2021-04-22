@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '1bd8c299baa5966eca63749a744b0cfb47cab11b',
+    'reference' => 'b927361b51ee35e4a5e771ebc87a93d17556db61',
     'name' => '__root__',
   ),
   'versions' => 
@@ -42,7 +42,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '1bd8c299baa5966eca63749a744b0cfb47cab11b',
+      'reference' => 'b927361b51ee35e4a5e771ebc87a93d17556db61',
     ),
     'athlon1600/php-proxy' => 
     array (
@@ -326,7 +326,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '0a55b3eacf6b4a0fdc6ec9d01e00285ca9942b2b',
+      'reference' => '593c4de369ca852cf3b86037f19435d47c136448',
     ),
     'roundcube/plugin-installer' => 
     array (
@@ -371,12 +371,12 @@ private static $installed = array (
     ),
     'symfony/deprecation-contracts' => 
     array (
-      'pretty_version' => 'v2.2.0',
-      'version' => '2.2.0.0',
+      'pretty_version' => 'v2.4.0',
+      'version' => '2.4.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '5fa56b4074d1ae755beb55617ddafe6f5d78f665',
+      'reference' => '5f38c8804a9e97d23e0c8d63341088cd8a22d627',
     ),
     'symfony/filesystem' => 
     array (
@@ -542,12 +542,12 @@ private static $installed = array (
     ),
     'symfony/translation-contracts' => 
     array (
-      'pretty_version' => 'v2.3.0',
-      'version' => '2.3.0.0',
+      'pretty_version' => 'v2.4.0',
+      'version' => '2.4.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'e2eaa60b558f26a4b0354e1bbb25636efaaad105',
+      'reference' => '95c812666f3e91db75385749fe219c5e494c7f95',
     ),
     't1st3/php-json-minify' => 
     array (
