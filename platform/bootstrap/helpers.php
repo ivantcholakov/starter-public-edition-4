@@ -848,7 +848,7 @@ if (!function_exists('array_merge_recursive_distinct')) {
 // Miscelaneous ----------------------------------------------------------------
 
 /**
- * @author Ivan Tcholakov, 2016
+ * @author Ivan Tcholakov, 2016-2021
  * @license MIT
  */
 
@@ -856,7 +856,19 @@ if (!function_exists('preg_error_message')) {
 
     function preg_error_message($code = null) {
 
+        static $preg_last_error_msg_exists = null;
+
+        if (!isset($preg_last_error_msg_exists)) {
+            $preg_last_error_msg_exists = function_exists('preg_last_error_msg');
+        }
+
         if ($code === null) {
+
+            if ($preg_last_error_msg_exists) {
+
+                return preg_last_error_msg();
+            }
+
             $code = preg_last_error();
         }
 
