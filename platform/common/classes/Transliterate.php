@@ -3,9 +3,9 @@
 /**
  * Transliteration Class
  *
- * @version 1.1.3
+ * @version 1.1.4
  *
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2020.
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2012-2021.
  * @link https://github.com/ivantcholakov/transliterate
  *
  * @license The MIT License (MIT)
@@ -261,7 +261,7 @@ class Transliterate {
             }
         }
 
-        if (ICONV_INSTALLED) {
+        if (TRANSLITERATE_ICONV_INSTALLED) {
             $string = iconv('UTF-8', 'ASCII//TRANSLIT', $string);
         }
 
