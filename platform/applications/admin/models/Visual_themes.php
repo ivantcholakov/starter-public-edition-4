@@ -59,7 +59,7 @@ class Visual_themes extends CI_Model {
         // Modified by Ivan Tcholakov, 28-OCT-2017.
         //$result = $this->session->userdata($this->session_key);
         $result = $this->input->cookie($this->session_key);
-        $this->input->set_cookie($this->session_key, $result, 31536000);
+        $this->input->set_cookie($this->session_key, (string) $result, 31536000);
         //
 
         if ($result != '') {
@@ -77,7 +77,7 @@ class Visual_themes extends CI_Model {
         if (in_array($key, $keys)) {
             // Modified by Ivan Tcholakov, 28-OCT-2017.
             //$this->session->set_userdata($this->session_key, $key);
-            $this->input->set_cookie($this->session_key, $key, 31536000);
+            $this->input->set_cookie($this->session_key, (string) $key, 31536000);
             //
         }
     }

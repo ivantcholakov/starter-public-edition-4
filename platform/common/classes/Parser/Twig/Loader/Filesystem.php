@@ -80,7 +80,7 @@ class Parser_Twig_Loader_Filesystem extends \Twig\Loader\FilesystemLoader {
 
             $file = $ci->parser->find_file($path.'/'.$shortname, $detected_parser, $detected_extension, $detected_filename, 'twig');
 
-            if (is_file($file)) {
+            if ($file != '' && is_file($file)) {
 
                 if (false !== $realpath = realpath($file)) {
                     return $this->cache[$name] = $realpath;

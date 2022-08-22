@@ -302,7 +302,7 @@ class Autologin extends Core_Model {
 
         return $this->input->set_cookie(array(
             'name' => $this->cookie_name,
-            'value' => $this->gibberish->encrypt(serialize($data), $this->encryption_key),
+            'value' => (string) $this->gibberish->encrypt(serialize($data), $this->encryption_key),
             'expire' => $this->expiration_time
         ));
     }
