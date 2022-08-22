@@ -43,7 +43,7 @@ class Handlebars_controller extends Playground_Base_Controller {
 
         $csv = (string) @ file_get_contents(APPPATH.'demo_data/countries.csv');
 
-        $items = preg_split('/\r\n|\r|\n/m', $csv, null, PREG_SPLIT_NO_EMPTY);
+        $items = preg_split('/\r\n|\r|\n/m', $csv, -1, PREG_SPLIT_NO_EMPTY);
 
         foreach ($items as & $item) {
 

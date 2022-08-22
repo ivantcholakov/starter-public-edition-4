@@ -887,7 +887,7 @@ return array (
   ),
   'PHP' => 
   array (
-    0 => 'PHP',
+    0 => '₱',
   ),
   'PKR' => 
   array (
@@ -994,6 +994,12 @@ return array (
   'SKK' => 
   array (
     0 => 'SKK',
+  ),
+  'SLE' => 
+  array (
+    0 => 'SLE',
+    1 => 2,
+    2 => 0,
   ),
   'SLL' => 
   array (
@@ -1169,6 +1175,10 @@ return array (
   array (
     0 => 'VEB',
   ),
+  'VED' => 
+  array (
+    0 => 'VED',
+  ),
   'VEF' => 
   array (
     0 => 'VEF',
@@ -1223,7 +1233,7 @@ return array (
   ),
   'XOF' => 
   array (
-    0 => 'CFA',
+    0 => 'F CFA',
     1 => 0,
     2 => 0,
   ),

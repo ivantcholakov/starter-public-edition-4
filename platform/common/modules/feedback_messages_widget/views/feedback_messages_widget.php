@@ -1,30 +1,30 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 $feedback_message_target = isset($feedback_message_target) ? trim($feedback_message_target) : '';
-$feedback_message_target = $feedback_message_target != '' ? $feedback_message_target : trim(ci()->session->flashdata('feedback_message_target'));
-$feedback_message_target = $feedback_message_target != '' ? $feedback_message_target : trim(ci()->session->tempdata('feedback_message_target'));
-$feedback_message_target = $feedback_message_target != '' ? $feedback_message_target : trim(ci()->registry->get('feedback_message_target'));
+$feedback_message_target = $feedback_message_target != '' ? $feedback_message_target : trim((string) ci()->session->flashdata('feedback_message_target'));
+$feedback_message_target = $feedback_message_target != '' ? $feedback_message_target : trim((string) ci()->session->tempdata('feedback_message_target'));
+$feedback_message_target = $feedback_message_target != '' ? $feedback_message_target : trim((string) ci()->registry->get('feedback_message_target'));
 $feedback_message_target = $feedback_message_target != '' ? $feedback_message_target : 'main_feedback_message';
 
 $normal_message = isset($normal_message) ? trim($normal_message) : '';
-$normal_message = $normal_message != '' ? $normal_message : trim(ci()->session->flashdata('normal_message'));
-$normal_message = $normal_message != '' ? $normal_message : trim(ci()->session->tempdata('normal_message'));
-$normal_message = $normal_message != '' ? $normal_message : trim(ci()->registry->get('normal_message'));
+$normal_message = $normal_message != '' ? $normal_message : trim((string) ci()->session->flashdata('normal_message'));
+$normal_message = $normal_message != '' ? $normal_message : trim((string) ci()->session->tempdata('normal_message'));
+$normal_message = $normal_message != '' ? $normal_message : trim((string) ci()->registry->get('normal_message'));
 
 $confirmation_message = isset($confirmation_message) ? trim($confirmation_message) : '';
-$confirmation_message = $confirmation_message != '' ? $confirmation_message : trim(ci()->session->flashdata('confirmation_message'));
-$confirmation_message = $confirmation_message != '' ? $confirmation_message : trim(ci()->session->tempdata('confirmation_message'));
-$confirmation_message = $confirmation_message != '' ? $confirmation_message : trim(ci()->registry->get('confirmation_message'));
+$confirmation_message = $confirmation_message != '' ? $confirmation_message : trim((string) ci()->session->flashdata('confirmation_message'));
+$confirmation_message = $confirmation_message != '' ? $confirmation_message : trim((string) ci()->session->tempdata('confirmation_message'));
+$confirmation_message = $confirmation_message != '' ? $confirmation_message : trim((string) ci()->registry->get('confirmation_message'));
 
 $warning_message = isset($warning_message) ? trim($warning_message) : '';
-$warning_message = $warning_message != '' ? $warning_message : trim(ci()->session->flashdata('warning_message'));
-$warning_message = $warning_message != '' ? $warning_message : trim(ci()->session->tempdata('warning_message'));
-$warning_message = $warning_message != '' ? $warning_message : trim(ci()->registry->get('warning_message'));
+$warning_message = $warning_message != '' ? $warning_message : trim((string) ci()->session->flashdata('warning_message'));
+$warning_message = $warning_message != '' ? $warning_message : trim((string) ci()->session->tempdata('warning_message'));
+$warning_message = $warning_message != '' ? $warning_message : trim((string) ci()->registry->get('warning_message'));
 
 $error_message = isset($error_message) ? trim($error_message) : '';
-$error_message = $error_message != '' ? $error_message : trim(ci()->session->flashdata('error_message'));
-$error_message = $error_message != '' ? $error_message : trim(ci()->session->tempdata('error_message'));
-$error_message = $error_message != '' ? $error_message : trim(ci()->registry->get('error_message'));
+$error_message = $error_message != '' ? $error_message : trim((string) ci()->session->flashdata('error_message'));
+$error_message = $error_message != '' ? $error_message : trim((string) ci()->session->tempdata('error_message'));
+$error_message = $error_message != '' ? $error_message : trim((string) ci()->registry->get('error_message'));
 
 if ($feedback_message_target == $feedback_message_id) {
 

@@ -485,8 +485,12 @@ trait Derive
                     $this->data->os->version->nickname = 'Catalina';
                 }
 
-                if ($this->data->os->version->is('11.0')) {
+                if ($this->data->os->version->is('11')) {
                     $this->data->os->version->nickname = 'Big Sur';
+                }
+
+                if ($this->data->os->version->is('12')) {
+                    $this->data->os->version->nickname = 'Monterey';
                 }
             }
         }

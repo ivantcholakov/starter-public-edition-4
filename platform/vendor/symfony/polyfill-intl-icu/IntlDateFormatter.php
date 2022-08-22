@@ -67,6 +67,12 @@ abstract class IntlDateFormatter
     public const MEDIUM = 2;
     public const SHORT = 3;
 
+    /* date format types */
+    public const RELATIVE_FULL = 128;
+    public const RELATIVE_LONG = 129;
+    public const RELATIVE_MEDIUM = 130;
+    public const RELATIVE_SHORT = 131;
+
     /* calendar formats */
     public const TRADITIONAL = 0;
     public const GREGORIAN = 1;
@@ -80,6 +86,10 @@ abstract class IntlDateFormatter
         self::LONG => 'MMMM d, y',
         self::MEDIUM => 'MMM d, y',
         self::SHORT => 'M/d/yy',
+        self::RELATIVE_FULL => 'EEEE, MMMM d, y',
+        self::RELATIVE_LONG => 'MMMM d, y',
+        self::RELATIVE_MEDIUM => 'MMM d, y',
+        self::RELATIVE_SHORT => 'M/d/yy',
     ];
 
     /**
@@ -116,6 +126,11 @@ abstract class IntlDateFormatter
     private $timezoneId;
 
     /**
+     * @var bool
+     */
+    private $isRelativeDateType = false;
+
+    /**
      * @param string|null                             $locale   The locale code. The only currently supported locale is "en" (or null using the default locale, i.e. "en")
      * @param \IntlTimeZone|\DateTimeZone|string|null $timezone Timezone identifier
      * @param \IntlCalendar|int|null                  $calendar Calendar to use for formatting or parsing. The only currently
@@ -137,6 +152,16 @@ abstract class IntlDateFormatter
             throw new MethodArgumentValueNotImplementedException(__METHOD__, 'calendar', $calendar, 'Only the GREGORIAN calendar is supported');
         }
 
+        if (\PHP_VERSION_ID >= 80100) {
+            if (null === $dateType) {
+                @trigger_error('Passing null to parameter #2 ($dateType) of type int is deprecated', \E_USER_DEPRECATED);
+            }
+
+            if (null === $timeType) {
+                @trigger_error('Passing null to parameter #3 ($timeType) of type int is deprecated', \E_USER_DEPRECATED);
+            }
+        }
+
         $this->dateType = $dateType ?? self::FULL;
         $this->timeType = $timeType ?? self::FULL;
 
@@ -146,6 +171,10 @@ abstract class IntlDateFormatter
 
         $this->setPattern($pattern);
         $this->setTimeZone($timezone);
+
+        if (\in_array($this->dateType, [self::RELATIVE_FULL, self::RELATIVE_LONG, self::RELATIVE_MEDIUM, self::RELATIVE_SHORT], true)) {
+            $this->isRelativeDateType = true;
+        }
     }
 
     /**
@@ -172,7 +201,7 @@ abstract class IntlDateFormatter
     /**
      * Format the date/time value (timestamp) as a string.
      *
-     * @param int|\DateTimeInterface $datetime The timestamp to format
+     * @param int|string|\DateTimeInterface $datetime The timestamp to format
      *
      * @return string|bool The formatted value or false if formatting failed
      *
@@ -184,9 +213,13 @@ abstract class IntlDateFormatter
     {
         // intl allows timestamps to be passed as arrays - we don't
         if (\is_array($datetime)) {
-            $message = 'Only integer Unix timestamps and DateTime objects are supported';
+            $message = 'Only Unix timestamps and DateTime objects are supported';
 
-            throw new MethodArgumentValueNotImplementedException(__METHOD__, 'timestamp', $datetime, $message);
+            throw new MethodArgumentValueNotImplementedException(__METHOD__, 'datetime', $datetime, $message);
+        }
+
+        if (\is_string($datetime) && $dt = \DateTime::createFromFormat('U', $datetime)) {
+            $datetime = $dt;
         }
 
         // behave like the intl extension
@@ -204,11 +237,27 @@ abstract class IntlDateFormatter
         }
 
         if ($datetime instanceof \DateTimeInterface) {
-            $datetime = $datetime->getTimestamp();
+            $datetime = $datetime->format('U');
         }
 
-        $transformer = new FullTransformer($this->getPattern(), $this->getTimeZoneId());
-        $formatted = $transformer->format($this->createDateTime($datetime));
+        $pattern = $this->getPattern();
+        $formatted = '';
+
+        if ($this->isRelativeDateType && $formatted = $this->getRelativeDateFormat($datetime)) {
+            if (self::NONE === $this->timeType) {
+                $pattern = '';
+            } else {
+                $pattern = $this->defaultTimeFormats[$this->timeType];
+                if (\in_array($this->dateType, [self::RELATIVE_MEDIUM, self::RELATIVE_SHORT], true)) {
+                    $formatted .= ', ';
+                } else {
+                    $formatted .= ' at ';
+                }
+            }
+        }
+
+        $transformer = new FullTransformer($pattern, $this->getTimeZoneId());
+        $formatted .= $transformer->format($this->createDateTime($datetime));
 
         // behave like the intl extension
         Icu::setError(Icu::U_ZERO_ERROR);
@@ -540,10 +589,9 @@ abstract class IntlDateFormatter
      *
      * @return \DateTime
      */
-    protected function createDateTime(int $timestamp)
+    protected function createDateTime($timestamp)
     {
-        $dateTime = new \DateTime();
-        $dateTime->setTimestamp($timestamp);
+        $dateTime = \DateTime::createFromFormat('U', $timestamp);
         $dateTime->setTimezone($this->dateTimeZone);
 
         return $dateTime;
@@ -561,7 +609,7 @@ abstract class IntlDateFormatter
             $pattern = $this->defaultDateFormats[$this->dateType];
         }
         if (self::NONE !== $this->timeType) {
-            if (self::FULL === $this->dateType || self::LONG === $this->dateType) {
+            if (\in_array($this->dateType, [self::FULL, self::LONG, self::RELATIVE_FULL, self::RELATIVE_LONG], true)) {
                 $pattern .= ' \'at\' ';
             } elseif (self::NONE !== $this->dateType) {
                 $pattern .= ', ';
@@ -570,5 +618,28 @@ abstract class IntlDateFormatter
         }
 
         return $pattern;
+    }
+
+    private function getRelativeDateFormat(int $timestamp): string
+    {
+        $today = $this->createDateTime(time());
+        $today->setTime(0, 0, 0);
+
+        $datetime = $this->createDateTime($timestamp);
+        $datetime->setTime(0, 0, 0);
+
+        $interval = $today->diff($datetime);
+
+        if (false !== $interval) {
+            if (0 === $interval->days) {
+                return 'today';
+            }
+
+            if (1 === $interval->days) {
+                return 1 === $interval->invert ? 'yesterday' : 'tomorrow';
+            }
+        }
+
+        return '';
     }
 }

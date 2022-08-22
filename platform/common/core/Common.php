@@ -471,11 +471,9 @@ if ( ! function_exists('_stringify_attributes'))
      */
     function _stringify_attributes($attributes, $js = FALSE)
     {
-        $atts = NULL;
-
         if (empty($attributes))
         {
-            return $atts;
+            return NULL;
         }
 
         // Added by Ivan Tcholakov, 03-JAN-2016.
@@ -492,6 +490,7 @@ if ( ! function_exists('_stringify_attributes'))
 
         $attributes = (array) $attributes;
 
+        $atts = '';
         foreach ($attributes as $key => $val)
         {
             $atts .= ($js) ? $key.'='.$val.',' : ' '.$key.'="'.$val.'"';

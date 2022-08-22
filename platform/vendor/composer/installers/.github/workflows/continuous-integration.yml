@@ -17,12 +17,6 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "5.3"
-          - "5.4"
-          - "5.5"
-          - "5.6"
-          - "7.0"
-          - "7.1"
           - "7.2"
           - "7.3"
           - "7.4"
@@ -30,7 +24,7 @@ jobs:
           - "8.1"
         dependencies: [locked]
         include:
-          - php-version: "5.3"
+          - php-version: "7.2"
             dependencies: lowest
           - php-version: "8.1"
             dependencies: lowest
@@ -44,6 +38,7 @@ jobs:
         with:
           coverage: "none"
           php-version: "${{ matrix.php-version }}"
+          tools: composer:snapshot
 
       - name: Get composer cache directory
         id: composercache
@@ -61,10 +56,7 @@ jobs:
         run: "echo \"COMPOSER_FLAGS=$COMPOSER_FLAGS --prefer-lowest\" >> $GITHUB_ENV"
 
       - name: "Install latest dependencies"
-        run: |
-          # Remove PHPStan as it requires a newer PHP
-          composer remove phpstan/phpstan phpstan/phpstan-phpunit --dev --no-update
-          composer update ${{ env.COMPOSER_FLAGS }}
+        run: "composer update ${{ env.COMPOSER_FLAGS }}"
 
       - name: "Run tests"
         run: "vendor/bin/simple-phpunit --verbose"

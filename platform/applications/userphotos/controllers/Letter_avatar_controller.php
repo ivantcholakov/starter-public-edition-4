@@ -25,7 +25,7 @@ class Letter_avatar_controller extends Base_Controller {
 
         $name = urldecode($this->input->get('n'));
         $name = preg_replace('/[^\p{L}\s]/u', '', UTF8::strtoupper(url_title($name, ' ', false, $this->transliterate_to_ascii)));
-        $name = preg_split('/\s/m', $name, null, PREG_SPLIT_NO_EMPTY);
+        $name = preg_split('/\s/m', $name, -1, PREG_SPLIT_NO_EMPTY);
 
         if (!empty($name)) {
 

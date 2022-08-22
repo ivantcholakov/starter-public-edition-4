@@ -38,12 +38,12 @@ use Twig\TokenParser\TokenParserInterface;
  */
 class Environment
 {
-    const VERSION = '3.3.0';
-    const VERSION_ID = 30300;
-    const MAJOR_VERSION = 3;
-    const MINOR_VERSION = 3;
-    const RELEASE_VERSION = 0;
-    const EXTRA_VERSION = '';
+    public const VERSION = '3.4.2';
+    public const VERSION_ID = 30402;
+    public const MAJOR_VERSION = 3;
+    public const MINOR_VERSION = 4;
+    public const RELEASE_VERSION = 2;
+    public const EXTRA_VERSION = '';
 
     private $charset;
     private $loader;
@@ -228,14 +228,14 @@ class Environment
     {
         if (\is_string($cache)) {
             $this->originalCache = $cache;
-            $this->cache = new FilesystemCache($cache);
+            $this->cache = new FilesystemCache($cache, $this->autoReload ? FilesystemCache::FORCE_BYTECODE_INVALIDATION : 0);
         } elseif (false === $cache) {
             $this->originalCache = $cache;
             $this->cache = new NullCache();
         } elseif ($cache instanceof CacheInterface) {
             $this->originalCache = $this->cache = $cache;
         } else {
-            throw new \LogicException(sprintf('Cache can only be a string, false, or a \Twig\Cache\CacheInterface implementation.'));
+            throw new \LogicException('Cache can only be a string, false, or a \Twig\Cache\CacheInterface implementation.');
         }
     }
 
@@ -260,7 +260,7 @@ class Environment
     {
         $key = $this->getLoader()->getCacheKey($name).$this->optionsHash;
 
-        return $this->templateClassPrefix.hash('sha256', $key).(null === $index ? '' : '___'.$index);
+        return $this->templateClassPrefix.hash(\PHP_VERSION_ID < 80100 ? 'sha256' : 'xxh128', $key).(null === $index ? '' : '___'.$index);
     }
 
     /**
@@ -382,7 +382,7 @@ class Environment
      */
     public function createTemplate(string $template, string $name = null): TemplateWrapper
     {
-        $hash = hash('sha256', $template, false);
+        $hash = hash(\PHP_VERSION_ID < 80100 ? 'sha256' : 'xxh128', $template, false);
         if (null !== $name) {
             $name = sprintf('%s (string template %s)', $name, $hash);
         } else {
@@ -433,11 +433,20 @@ class Environment
             return $this->load($names);
         }
 
+        $count = \count($names);
         foreach ($names as $name) {
-            try {
-                return $this->load($name);
-            } catch (LoaderError $e) {
+            if ($name instanceof Template) {
+                return $name;
             }
+            if ($name instanceof TemplateWrapper) {
+                return $name;
+            }
+
+            if (1 !== $count && !$this->getLoader()->exists($name)) {
+                continue;
+            }
+
+            return $this->load($name);
         }
 
         throw new LoaderError(sprintf('Unable to find one of the following templates: "%s".', implode('", "', $names)));
@@ -525,7 +534,7 @@ class Environment
 
     public function setCharset(string $charset)
     {
-        if ('UTF8' === $charset = strtoupper($charset)) {
+        if ('UTF8' === $charset = null === $charset ? null : strtoupper($charset)) {
             // iconv on Windows requires "UTF-8" instead of "UTF8"
             $charset = 'UTF-8';
         }
@@ -548,6 +557,13 @@ class Environment
         $this->runtimeLoaders[] = $loader;
     }
 
+    /**
+     * @template TExtension of ExtensionInterface
+     *
+     * @param class-string<TExtension> $class
+     *
+     * @return TExtension
+     */
     public function getExtension(string $class): ExtensionInterface
     {
         return $this->extensionSet->getExtension($class);
@@ -556,9 +572,11 @@ class Environment
     /**
      * Returns the runtime implementation of a Twig element (filter/function/tag/test).
      *
-     * @param string $class A runtime class name
+     * @template TRuntime of object
      *
-     * @return object The runtime implementation
+     * @param class-string<TRuntime> $class A runtime class name
+     *
+     * @return TRuntime The runtime implementation
      *
      * @throws RuntimeError When the template cannot be found
      */
@@ -804,8 +822,8 @@ class Environment
     {
         $this->optionsHash = implode(':', [
             $this->extensionSet->getSignature(),
-            PHP_MAJOR_VERSION,
-            PHP_MINOR_VERSION,
+            \PHP_MAJOR_VERSION,
+            \PHP_MINOR_VERSION,
             self::VERSION,
             (int) $this->debug,
             (int) $this->strictVariables,

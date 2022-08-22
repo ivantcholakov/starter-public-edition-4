@@ -435,10 +435,10 @@ abstract class HTML_Common2 implements ArrayAccess
     public function addClass($class)
     {
         if (!is_array($class)) {
-            $class = preg_split('/\s+/', $class, null, PREG_SPLIT_NO_EMPTY);
+            $class = preg_split('/\s+/', (string) $class, -1, PREG_SPLIT_NO_EMPTY);
         }
         $curClass = preg_split(
-            '/\s+/', $this->getAttribute('class'), null, PREG_SPLIT_NO_EMPTY
+            '/\s+/', (string) $this->getAttribute('class'), -1, PREG_SPLIT_NO_EMPTY
         );
         foreach ($class as $c) {
             if (!in_array($c, $curClass)) {
@@ -461,11 +461,11 @@ abstract class HTML_Common2 implements ArrayAccess
     public function removeClass($class)
     {
         if (!is_array($class)) {
-            $class = preg_split('/\s+/', $class, null, PREG_SPLIT_NO_EMPTY);
+            $class = preg_split('/\s+/', (string) $class, -1, PREG_SPLIT_NO_EMPTY);
         }
         $curClass = array_diff(
             preg_split(
-                '/\s+/', $this->getAttribute('class'), null, PREG_SPLIT_NO_EMPTY
+                '/\s+/', (string) $this->getAttribute('class'), -1, PREG_SPLIT_NO_EMPTY
             ),
             $class
         );

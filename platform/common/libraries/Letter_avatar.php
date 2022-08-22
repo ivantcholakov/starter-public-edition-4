@@ -64,7 +64,7 @@ class Letter_avatar {
         $query = array();
 
         $name = preg_replace('/[^\p{L}\s]/u', '', UTF8::strtoupper(url_title($name, ' ', false, false)));
-        $name = preg_split('/\s/m', $name, null, PREG_SPLIT_NO_EMPTY);
+        $name = preg_split('/\s/m', $name, -1, PREG_SPLIT_NO_EMPTY);
 
         if (!empty($name)) {
 
