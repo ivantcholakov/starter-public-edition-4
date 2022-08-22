@@ -569,7 +569,7 @@ if ( ! function_exists('set_value'))
         }
         elseif ($escape === 'attr')
         {
-            return str_replace(array("'", '"'), array('&#39;', '&quot;'), html_escape($value));
+            return str_replace(array("'", '"'), array('&#39;', '&quot;'), (string) html_escape($value));
         }
 
         return html_escape($value);
