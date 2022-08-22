@@ -124,6 +124,8 @@ class Datatable {
 
             foreach ($select as $key => $field) {
 
+                $field = (string) $field;
+
                 if (trim($field) != '') {
 
                     if (isset($expressions[$i])) {
