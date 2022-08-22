@@ -176,9 +176,9 @@ class MX_Router extends CI_Router
         // Get the segments array elements.
         list($segment0, $segment1, $segment2) = array_pad($segments, 3, NULL);
 
-        $segment0 = str_replace('-', '_', $segment0);
-        $segment1 = str_replace('-', '_', $segment1);
-        $segment2 = str_replace('-', '_', $segment2);
+        $segment0 = str_replace('-', '_', (string) $segment0);
+        $segment1 = str_replace('-', '_', (string) $segment1);
+        $segment2 = str_replace('-', '_', (string) $segment2);
 
         // Check modules.
         foreach (Modules::$locations as $location => $offset) {

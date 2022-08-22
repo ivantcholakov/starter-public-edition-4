@@ -500,7 +500,7 @@ class MX_Loader extends CI_Loader
             }
         }
 
-        $_alias = strtolower($object_name);
+        $_alias = strtolower((string) $object_name);
 
         if (!$_alias) {
 
