@@ -49,7 +49,7 @@
         "netcarver/textile": "^3.7",
         "twig/twig": "^3.0",
         "twig/string-extra": "^3.0",
-        "salesforce/handlebars-php": "^2.3",
+        "salesforce/handlebars-php": "^3.0",
         "scssphp/scssphp": "^1.1",
         "matthiasmullie/minify": "^1.3",
         "t1st3/php-json-minify": "^0.6.2",

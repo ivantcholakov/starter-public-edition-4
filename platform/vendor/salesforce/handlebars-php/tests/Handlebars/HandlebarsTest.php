@@ -3,7 +3,7 @@
 /**
  * Class AutoloaderTest
  */
-class HandlebarsTest extends \PHPUnit_Framework_TestCase
+class HandlebarsTest extends PHPUnit\Framework\TestCase
 {
     /**
      * Test handlebars autoloader
@@ -249,7 +249,7 @@ class HandlebarsTest extends \PHPUnit_Framework_TestCase
         ));
         $template = "{{#each data}}{{@first}}, {{@last}}, {{@index}}, {{@unknown}}{{/each}}";
 
-        $this->assertEquals("", $engine->render($template, $data));
+        $this->assertEquals('apple, banana, 0, zucchini', $engine->render($template, $data));
     }
 
     /**
@@ -422,7 +422,11 @@ class HandlebarsTest extends \PHPUnit_Framework_TestCase
      */
     private function delTree($dir)
     {
-        $files = array_diff(scandir($dir), array('.', '..'));
+        $contents = scandir($dir);
+        if ($contents === false) {
+            return;
+        }
+        $files = array_diff($contents, array('.', '..'));
         foreach ($files as $file) {
             (is_dir("$dir/$file")) ? delTree("$dir/$file") : unlink("$dir/$file");
         }

@@ -1,0 +1,17 @@
+name: PHPUnit
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Composer Install
+        run: composer install
+
+      - name: Run Tests
+        run: phpunit

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9758b8425467f839fbbde1bbbea133b5",
+    "content-hash": "2f52346bee6adaf0f40e14bafda38b1a",
     "packages": [
         {
             "name": "athlon1600/php-proxy",
@@ -1858,12 +1858,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "4f051d70956e86d68c2ac3d078b803473c6d9426"
+                "reference": "bd4a45f60f097f0c44f77c6d72caa24ebc9b9f66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/4f051d70956e86d68c2ac3d078b803473c6d9426",
-                "reference": "4f051d70956e86d68c2ac3d078b803473c6d9426",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/bd4a45f60f097f0c44f77c6d72caa24ebc9b9f66",
+                "reference": "bd4a45f60f097f0c44f77c6d72caa24ebc9b9f66",
                 "shasum": ""
             },
             "conflict": {
@@ -2051,7 +2051,6 @@
                 "laminas/laminas-http": "<2.14.2",
                 "laravel/fortify": "<1.11.1",
                 "laravel/framework": "<6.20.42|>=7,<7.30.6|>=8,<8.75",
-                "laravel/laravel": "<=9.1.8",
                 "laravel/socialite": ">=1,<1.0.99|>=2,<2.0.10",
                 "latte/latte": "<2.10.8",
                 "lavalite/cms": "<=5.8",
@@ -2367,27 +2366,27 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-08-18T20:04:23+00:00"
+            "time": "2022-08-22T17:06:07+00:00"
         },
         {
             "name": "salesforce/handlebars-php",
-            "version": "2.3.0",
+            "version": "v3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/salesforce/handlebars-php.git",
-                "reference": "59fc47c7b2701659cb483d0f3461c4f712693b2b"
+                "reference": "12d26943f643854b2cf0f52c4afbbb30fd469d47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/salesforce/handlebars-php/zipball/59fc47c7b2701659cb483d0f3461c4f712693b2b",
-                "reference": "59fc47c7b2701659cb483d0f3461c4f712693b2b",
+                "url": "https://api.github.com/repos/salesforce/handlebars-php/zipball/12d26943f643854b2cf0f52c4afbbb30fd469d47",
+                "reference": "12d26943f643854b2cf0f52c4afbbb30fd469d47",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4"
+                "phpunit/phpunit": "^9"
             },
             "type": "library",
             "autoload": {
@@ -2422,9 +2421,9 @@
             ],
             "support": {
                 "issues": "https://github.com/salesforce/handlebars-php/issues",
-                "source": "https://github.com/salesforce/handlebars-php/tree/2.3.0"
+                "source": "https://github.com/salesforce/handlebars-php/tree/v3"
             },
-            "time": "2020-06-08T17:23:52+00:00"
+            "time": "2022-07-29T14:09:54+00:00"
         },
         {
             "name": "scrivo/highlight.php",

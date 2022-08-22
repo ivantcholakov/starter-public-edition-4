@@ -98,7 +98,7 @@ class Tokenizer
 
         $this->reset();
 
-        if ($delimiters = trim($delimiters)) {
+        if ($delimiters !== null && $delimiters = trim($delimiters)) {
             list($otag, $ctag) = explode(' ', $delimiters);
             $this->otag = $otag;
             $this->ctag = $ctag;
