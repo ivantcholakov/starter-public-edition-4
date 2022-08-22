@@ -55,6 +55,7 @@ $(function () {
                 i: i
             },
             success: function(html) {
+                $('#queued_ajax_segment .loader').removeClass('active');
                 $('#queued_ajax').append('<li>' + html + '</li>');
             }
         });
@@ -80,11 +81,13 @@ $(function () {
         $.ajax({
             url: '<?php echo site_uri('playground/ajax-queue/test'); ?>',
             type: 'GET',
+            cache: false,
 
             data: {
                 i: i
             },
             success: function(html) {
+                $('#ordinary_ajax_segment .loader').removeClass('active');
                 $('#ordinary_ajax').append('<li>' + html + '</li>');
             }
         });
