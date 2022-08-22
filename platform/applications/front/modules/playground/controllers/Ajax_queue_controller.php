@@ -33,7 +33,7 @@ class Ajax_queue_controller extends Playground_Base_Controller {
     public function test() {
 
         $i = (int) $this->input->get('i');
-        @usleep(1000 - i * 250);
+        @ usleep(1000 - $i * 250);
         $this->output->set_header('Content-type: text/html; charset=utf-8', true);
         $this->output->set_output('result '.$i);
     }
@@ -49,6 +49,7 @@ $(function () {
         $.ajax({
             url: '<?php echo site_uri('playground/ajax-queue/test'); ?>',
             type: 'GET',
+            cache: false,
             mode: 'queue',
             data: {
                 i: i
