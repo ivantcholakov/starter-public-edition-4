@@ -122,6 +122,30 @@ if (!function_exists('set_email_settings')) {
             $ci->settings->set('email_smtp_conn_options', $config['smtp_conn_options']);
         }
 
+        //----------------------------------------------------------------------
+
+        if (array_key_exists('oauth_type', $config)) {
+            $ci->settings->set('email_oauth_type', (string) $config['oauth_type']);
+        }
+
+        if (array_key_exists('oauth_user_email', $config)) {
+            $ci->settings->set('email_oauth_user_email', (string) $config['oauth_user_email']);
+        }
+
+        if (array_key_exists('oauth_client_id', $config)) {
+            $ci->settings->set('email_oauth_client_id', (string) $config['oauth_client_id']);
+        }
+
+        if (array_key_exists('oauth_client_secret', $config)) {
+            $ci->settings->set('email_oauth_client_secret', (string) $config['oauth_client_secret']);
+        }
+
+        if (array_key_exists('oauth_refresh_token', $config)) {
+            $ci->settings->set('email_oauth_refresh_token', (string) $config['oauth_refresh_token']);
+        }
+
+        //----------------------------------------------------------------------
+
         if (array_key_exists('dkim_domain', $config)) {
             $ci->settings->set('email_dkim_domain', (string) $config['dkim_domain']);
         }
@@ -227,6 +251,14 @@ if (!function_exists('get_email_settings')) {
 
         $config['smtp_auto_tls'] = array_key_exists('smtp_auto_tls', $config) ? $config['smtp_auto_tls'] : true;
         $config['smtp_conn_options'] = array_key_exists('smtp_conn_options', $config) ? $config['smtp_conn_options'] : array();
+
+        $config['oauth_type'] = array_key_exists('oauth_type', $config) ? $config['oauth_type'] : '';
+        $config['oauth_instance'] = array_key_exists('oauth_instance', $config) ? $config['oauth_instance'] : null;
+        $config['oauth_user_email'] = array_key_exists('oauth_user_email', $config) ? $config['oauth_user_email'] : '';
+        $config['oauth_client_id'] = array_key_exists('oauth_client_id', $config) ? $config['oauth_client_id'] : '';
+        $config['oauth_client_secret'] = array_key_exists('oauth_client_secret', $config) ? $config['oauth_client_secret'] : '';
+        $config['oauth_refresh_token'] = array_key_exists('oauth_refresh_token', $config) ? $config['oauth_refresh_token'] : '';
+
         $config['dkim_domain'] = array_key_exists('dkim_domain', $config) ? $config['dkim_domain'] : '';
         $config['dkim_private'] = array_key_exists('dkim_private', $config) ? $config['dkim_private'] : '';
         $config['dkim_private_string'] = array_key_exists('dkim_private_string', $config) ? $config['dkim_private_string'] : '';
@@ -268,6 +300,13 @@ if (!function_exists('get_email_settings')) {
 
             'email_smtp_auto_tls',
             'email_smtp_conn_options',
+
+            'email_oauth_type',
+            'email_oauth_user_email',
+            'email_oauth_client_id',
+            'email_oauth_client_secret',
+            'email_oauth_refresh_token',
+
             'email_dkim_domain',
             'email_dkim_private',
             'email_dkim_private_string',
@@ -312,6 +351,12 @@ if (!function_exists('get_email_settings')) {
             $config['smtp_conn_options'] = array();
         }
 
+        $config['oauth_type'] = isset($settings['email_oauth_type']) ? (string) $settings['email_oauth_type'] : $config['oauth_type'];
+        $config['oauth_user_email'] = isset($settings['email_oauth_user_email']) ? (string) $settings['email_oauth_user_email'] : $config['oauth_user_email'];
+        $config['oauth_client_id'] = isset($settings['email_oauth_client_id']) ? (string) $settings['email_oauth_client_id'] : $config['oauth_client_id'];
+        $config['oauth_client_secret'] = isset($settings['email_oauth_client_secret']) ? (string) $settings['email_oauth_client_secret'] : $config['oauth_client_secret'];
+        $config['oauth_refresh_token'] = isset($settings['email_oauth_refresh_token']) ? (string) $settings['email_oauth_refresh_token'] : $config['oauth_refresh_token'];
+        
         $config['dkim_domain'] = isset($settings['email_dkim_domain']) ? (string) $settings['email_dkim_domain'] : $config['dkim_domain'];
         $config['dkim_private'] = isset($settings['email_dkim_private']) ? (string) $settings['email_dkim_private'] : $config['dkim_private'];
         $config['dkim_private_string'] = isset($settings['email_dkim_private_string']) ? (string) $settings['email_dkim_private_string'] : $config['dkim_private_string'];
