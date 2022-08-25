@@ -17,7 +17,7 @@
  *
  * -----------------------------------------------------------------------------
  *
- * Ported for CodeIgniter by Ivan Tcholakov, 2013-2020.
+ * Ported for CodeIgniter by Ivan Tcholakov, 2013-2022.
  * Code repository: https://github.com/ivantcholakov/codeigniter-kcaptcha
  *
  * Important note: This feature requires Session library/driver to be loaded.
