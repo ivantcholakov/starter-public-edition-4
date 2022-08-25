@@ -4,7 +4,7 @@
  * CodeIgniter Version
  * @var    string
  */
-define('CI_VERSION', '3.1.11');
+define('CI_VERSION', '3.1.13');
 
 
 /**
@@ -47,7 +47,7 @@ define('WEB_ASSET_CACHE_BUST_NUMBER', '0');
  * Minimum Required PHP Version
  * @var    string
  */
-define('PLATFORM_PHP_VERSION_MIN', '7.2.5');
+define('PLATFORM_PHP_VERSION_MIN', '7.3.0');
 
 
 if (version_compare(PHP_VERSION, PLATFORM_PHP_VERSION_MIN, '<')) {

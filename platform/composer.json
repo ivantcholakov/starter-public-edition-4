@@ -18,7 +18,7 @@
         }
     },
     "require": {
-        "php": ">=7.2.5",
+        "php": ">=7.3.0",
         "oomphinc/composer-installers-extender": "^2.0",
         "codeigniter/framework": "3.1.13",
         "roave/security-advisories": "dev-master",
@@ -55,7 +55,7 @@
         "t1st3/php-json-minify": "^0.6.2",
         "whichbrowser/parser": "^2.0",
         "ezyang/htmlpurifier": "^4.8.0",
-        "ivantcholakov/codeigniter-phpmailer": "^1.4",
+        "ivantcholakov/codeigniter-phpmailer": "^1.5",
         "intervention/image": "^2.3",
         "yohang88/letter-avatar": "1.0.5",
         "athlon1600/php-proxy": "^5.1",
