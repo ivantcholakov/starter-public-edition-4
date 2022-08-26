@@ -207,7 +207,7 @@ if (!function_exists('url_add_params')) {
 
             } else {
 
-                if ($skip_empty_params && trim($value) == '') {
+                if ($skip_empty_params && trim((string) $value) == '') {
                     continue;
                 }
 
@@ -248,8 +248,8 @@ if ( ! function_exists('safe_mailto'))
             $attributes = _stringify_attributes($attributes);
         }
 
-        $email = trim($email);
-        $title = trim($title);
+        $email = trim((string) $email);
+        $title = trim((string) $title);
 
         if ($title == '') {
             $title = $email;
@@ -364,6 +364,7 @@ if (!function_exists('url_title') && IS_UTF8_CHARSET) {
     // Added by Ivan Tcholakov, 31-DEC-2013.
     function url_title($str, $separator = '-', $lowercase = FALSE, $transliterate_to_ascii = TRUE, $language = NULL) {
 
+        $str = (string) $str;
         $language = (string) $language;
 
         if ($language == '') {
@@ -448,8 +449,8 @@ if (!function_exists('gmap_url')) {
      */
     function gmap_url($latitude, $longitude, $zoom = null, $show_marker = true, $marker_name = null) {
 
-        $latitude = trim($latitude);
-        $longitude = trim($longitude);
+        $latitude = trim((string) $latitude);
+        $longitude = trim((string) $longitude);
 
         if ($latitude == '' || !is_numeric($latitude) || $longitude == '' || !is_numeric($longitude)) {
             return;

@@ -98,7 +98,7 @@ if (!function_exists('nohtml')) {
 
     function nohtml($string) {
 
-        return get_instance()->security->xss_clean(strip_tags($string));
+        return get_instance()->security->xss_clean(strip_tags((string) $string));
     }
 
 }
@@ -107,7 +107,7 @@ if (!function_exists('trim_html')) {
 
     function trim_html($string) {
 
-        return trim(nohtml($string), " \t\n\r\0\x0B") == '' ? '' : $string;
+        return trim(nohtml($string), " \t\n\r\0\x0B") == '' ? '' : (string) $string;
     }
 
 }
@@ -130,8 +130,8 @@ if (!function_exists('gmap')) {
      */
     function gmap($latitude, $longitude, $zoom = null, $element_id = null, $element_class = null) {
 
-        $latitude = trim($latitude);
-        $longitude = trim($longitude);
+        $latitude = trim((string) $latitude);
+        $longitude = trim((string) $longitude);
 
         if ($latitude == '' || !is_numeric($latitude) || $longitude == '' || !is_numeric($longitude)) {
             return;
@@ -218,8 +218,8 @@ if (!function_exists('gmap_embed')) {
      */
     function gmap_embed($latitude, $longitude, $zoom = null, $show_marker = true, $marker_name = null, $attributes = null) {
 
-        $latitude = trim($latitude);
-        $longitude = trim($longitude);
+        $latitude = trim((string) $latitude);
+        $longitude = trim((string) $longitude);
 
         if ($latitude == '' || !is_numeric($latitude) || $longitude == '' || !is_numeric($longitude)) {
             return;

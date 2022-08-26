@@ -1,5 +1,5 @@
 
-{% macro display_item_class(item, full_class_attribute) %}{% apply spaceless %}
+{% macro display_item_class(item, full_class_attribute) %}
 
     {% set full_class_attribute = full_class_attribute|default(true) %}
 
@@ -23,9 +23,9 @@
 
     {{ result|raw }}
 
-{% endapply %}{% endmacro %}
+{% endmacro %}
 
-{% macro display_item(item) %}{% apply spaceless %}
+{% macro display_item(item) %}
 
     {% if item['is_header'] %}
         {{ item['label'] }}
@@ -35,7 +35,7 @@
         {% if item['badge'] is not empty %}{{ item['badge']|raw }}{% endif %}
     {% endif %}
 
-{% endapply %}{% endmacro %}
+{% endmacro %}
 
 {% macro display_children(items, level = 0) %}
 

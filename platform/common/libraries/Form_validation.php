@@ -76,10 +76,12 @@ class Form_validation extends CI_Form_validation {
 
     public function valid_email($str) {
 
-        return valid_email($str);
+        return valid_email((string) $str);
     }
 
     public function min_length($str, $val) {
+
+        $str = (string) $str;
 
         if (!is_numeric($val)) {
             return false;
@@ -94,6 +96,8 @@ class Form_validation extends CI_Form_validation {
 
     public function max_length($str, $val) {
 
+        $str = (string) $str;
+
         if (!is_numeric($val)) {
             return false;
         } else {
@@ -107,6 +111,8 @@ class Form_validation extends CI_Form_validation {
 
     public function exact_length($str, $val) {
 
+        $str = (string) $str;
+
         if (!is_numeric($val)) {
             return false;
         } else {
@@ -119,6 +125,8 @@ class Form_validation extends CI_Form_validation {
     }
 
     public function prep_url($str = '') {
+
+        $str = (string) $str;
 
         // Added by Ivan Tcholakov, 08-DEC-2011.
         $str = str_ireplace('http://', 'http://', $str);
@@ -150,7 +158,7 @@ class Form_validation extends CI_Form_validation {
      */
     public function xss_clean($str)
     {
-        return $this->CI->security->xss_clean($str);
+        return $this->CI->security->xss_clean((string) $str);
     }
 
     // The following rule has been "borrowed" from

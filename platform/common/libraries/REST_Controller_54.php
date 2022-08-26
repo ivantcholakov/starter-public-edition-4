@@ -1124,7 +1124,7 @@ abstract class REST_Controller extends Core_Controller {
 
                     foreach ($list_ip_addresses as $ip_address)
                     {
-                        if ($this->input->ip_address() === trim($ip_address))
+                        if ($this->input->ip_address() === trim((string) $ip_address))
                         {
                             // there is a match, set the the value to TRUE and break out of the loop
                             $found_address = TRUE;
@@ -1820,7 +1820,7 @@ abstract class REST_Controller extends Core_Controller {
      */
     public function validation_errors()
     {
-        $string = strip_tags($this->form_validation->error_string());
+        $string = strip_tags((string) $this->form_validation->error_string());
 
         return explode(PHP_EOL, trim($string, PHP_EOL));
     }
@@ -2179,7 +2179,7 @@ abstract class REST_Controller extends Core_Controller {
         {
             // As $ip is a reference, trim leading and trailing whitespace, then store the new value
             // using the reference
-            $ip = trim($ip);
+            $ip = trim((string) $ip);
         }
 
         if (in_array($this->input->ip_address(), $whitelist) === FALSE)

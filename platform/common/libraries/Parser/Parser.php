@@ -445,7 +445,7 @@ class CI_Parser extends CI_Driver_Library {
 
 					foreach ($value as & $item)
 					{
-						$item = ltrim($item, '.');
+						$item = ltrim((string) $item, '.');
 					}
 
 					unset($item);

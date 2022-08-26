@@ -526,7 +526,7 @@ class MX_Router extends CI_Router
         // Compile the segments into an array
         foreach (explode('/', preg_replace('|/*(.+?)/*$|', '\\1', $this->uri->uri_string)) as $val)
         {
-            $val = trim($val);
+            $val = trim((string) $val);
             // Filter segments for security
             $this->uri->filter_uri($val);
 

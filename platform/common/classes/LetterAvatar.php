@@ -74,13 +74,13 @@ class LetterAvatar extends \YoHang88\LetterAvatar\LetterAvatar {
     // Added by Ivan Tcholakov, 23-JUL-2017.
     protected function strtoupper($str)
     {
-        return UTF8::strtoupper($str);
+        return UTF8::strtoupper((string) $str);
     }
 
     // Added by Ivan Tcholakov, 23-JUL-2017.
     protected function substr($str, $offset, $length = NULL)
     {
-        return UTF8::substr($str, $offset, $length);
+        return UTF8::substr((string) $str, $offset, $length);
     }
 
     public function __toString()

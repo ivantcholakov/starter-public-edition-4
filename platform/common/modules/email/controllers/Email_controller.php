@@ -174,11 +174,11 @@ class Email_controller extends Core_Controller {
             $bcc = $bcc_email;
         }
 
-        $subject = isset($data['subject']) ? trim($data['subject']) : '';
+        $subject = isset($data['subject']) ? trim((string) $data['subject']) : '';
         $body = isset($data['body']) ? $data['body'] : '';
         $alt_body = isset($data['alt_body']) ? $data['alt_body'] : '';
 
-        if ($subject != '' && trim($body) != '') {
+        if ($subject != '' && trim((string) $body) != '') {
 
             if (isset($data['headers']) && is_array($data['headers'])) {
 
@@ -247,13 +247,13 @@ class Email_controller extends Core_Controller {
                 ->subject($subject)
                 ->message($body);
 
-            if (trim($alt_body) != '') {
+            if (trim((string) $alt_body) != '') {
                 $this->email->set_alt_message($alt_body);
             }
 
             $result = (bool) $this->email->send();
 
-            $debug_message = trim(strip_tags($this->email->print_debugger()));
+            $debug_message = trim(strip_tags((string) $this->email->print_debugger()));
 
             $this->email->clear();
 

@@ -10,6 +10,8 @@ if (!function_exists('clean_file_name')) {
     // For UTF-8 encoded sites only.
     function clean_file_name($file_name, $separator = '-',  $lowercase = false, $language = NULL) {
 
+        $file_name = (string) $file_name;
+
         $extension = UTF8::strtolower(extension($file_name));
 
         if ($extension != '') {
@@ -45,7 +47,7 @@ if (!function_exists('fixed_basename')) {
         }
 
         // Remove right-most slashes when $uri points to directory.
-        $uri = rtrim($uri, $separators);
+        $uri = rtrim((string) $uri, $separators);
 
         // Returns the trailing part of the $uri starting after one of the directory
         // separators.

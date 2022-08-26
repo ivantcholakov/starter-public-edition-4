@@ -555,8 +555,8 @@ class Template
      */
     public function set_metadata($name, $content, $type = 'meta', $place = 'header', $override = false)
     {
-        $name = html_escape(strip_tags($name));
-        $content = trim(html_escape(strip_tags($content)));
+        $name = html_escape(strip_tags((string) $name));
+        $content = trim(html_escape(strip_tags((string) $content)));
 
         // Keywords with no comments? ARG! comment them
         if ($name == 'keywords' and ! strpos($content, ',')) {
@@ -1249,7 +1249,7 @@ class Template
                 $title = $title_segments;
             }
 
-            $this->_title = trim($this->_title) != '' ? $this->_title.$this->_title_separator.$title : $title;
+            $this->_title = trim((string) $this->_title) != '' ? $this->_title.$this->_title_separator.$title : $title;
         }
 
         return $this;
@@ -1266,7 +1266,7 @@ class Template
                 $title = $title_segments;
             }
 
-            $this->_title = trim($this->_title) != '' ? $title.$this->_title_separator.$this->_title : $title;
+            $this->_title = trim((string) $this->_title) != '' ? $title.$this->_title_separator.$this->_title : $title;
         }
 
         return $this;

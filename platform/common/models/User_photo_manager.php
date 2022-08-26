@@ -210,7 +210,7 @@ class User_photo_manager extends CI_Model {
             $label = $this->lang->line('ui_max_width');
 
             if ($this->lang->current() == 'bulgarian' && count($result) > 0) {
-                $label = UTF8::strtolower($label);
+                $label = UTF8::strtolower((string) $label);
             }
 
             $result[] = $label.': '.$this->max_width.' px';
@@ -221,7 +221,7 @@ class User_photo_manager extends CI_Model {
             $label = $this->lang->line('ui_max_height');
 
             if ($this->lang->current() == 'bulgarian' && count($result) > 0) {
-                $label = UTF8::strtolower($label);
+                $label = UTF8::strtolower((string) $label);
             }
 
             $result[] = $label.': '.$this->max_height.' px';

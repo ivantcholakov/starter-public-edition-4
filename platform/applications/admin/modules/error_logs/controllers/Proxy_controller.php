@@ -4,12 +4,16 @@ class Proxy_controller extends Base_Controller {
 
     public function __construct() {
 
+        if (isset($_GET['dl']) && $_GET['dl'] != '') {
+            $_SERVER['HTTP_X_REQUESTED_WITH'] = 'xmlhttprequest';
+        }
+
         parent::__construct();
     }
 
     public function index() {
 
-        $i = $this->uri->rsegment(3);
+        $i = (string) $this->uri->rsegment(3);
 
         if (!ctype_digit($i)) {
 

@@ -125,18 +125,18 @@ class Users extends Core_Model {
 
     public function valid_username($username) {
 
-        if (UTF8::strlen($username) < $this->username_min_length()) {
+        if (UTF8::strlen((string) $username) < $this->username_min_length()) {
             return false;
         }
 
-        if (UTF8::strlen($username) > $this->username_max_length()) {
+        if (UTF8::strlen((string) $username) > $this->username_max_length()) {
             return false;
         }
 
         $username_validator = (string) config_item('username_validator');
 
         if ($username_validator != '') {
-            return (bool) preg_match($username_validator, $username);
+            return (bool) preg_match($username_validator, (string) $username);
         }
 
         return true;

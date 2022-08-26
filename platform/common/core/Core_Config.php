@@ -631,7 +631,7 @@ class Core_Config extends MX_Config {
 
             $result = array();
 
-            $uri = ltrim($uri);
+            $uri = ltrim((string) $uri);
 
             $uri_expl = explode('/', $uri, 2);
 

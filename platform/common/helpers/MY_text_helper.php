@@ -21,6 +21,10 @@ if (!function_exists('character_limiter') && IS_UTF8_CHARSET) {
      */
     function character_limiter($str, $n = 500, $end_char = '&#8230;') {
 
+        $str = (string) $str;
+        $n = (int) $n;
+        $end_char = (string) $end_char;
+
         if (UTF8::strlen($str) < $n) {
             return $str;
         }
@@ -88,6 +92,8 @@ if (!function_exists('ellipsize') && IS_UTF8_CHARSET)
      */
     function ellipsize($str, $max_length, $position = 1, $ellipsis = '&hellip;')
     {
+        $str = (string) $str;
+
         // Strip tags
         $str = trim(strip_tags($str));
 
@@ -231,6 +237,8 @@ if (!function_exists('word_limiter') && IS_UTF8_CHARSET) {
      */
     function word_limiter($str, $limit = 100, $end_char = '&#8230;')
     {
+        $str = (string) $str;
+
         if (UTF8::trim($str) === '')
         {
             return $str;

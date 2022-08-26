@@ -41,9 +41,9 @@ class MX_URI extends CI_URI {
         //
         //    $this->segments[0] = NULL;
         //    // Populate the segments array
-        //    foreach (explode('/', trim($this->uri_string, '/')) as $val)
+        //    foreach (explode('/', trim((string) $this->uri_string, '/')) as $val)
         //    {
-        //        $val = trim($val);
+        //        $val = trim((string) $val);
         //        // Filter segments for security
         //        $this->filter_uri($val);
         //
@@ -81,7 +81,7 @@ class MX_URI extends CI_URI {
         $query = isset($uri['query']) ? $uri['query'] : '';
         // Modified by Ivan Tcholakov, 19-FEB-2015.
         //$uri = isset($uri['path']) ? $uri['path'] : '';
-        $uri = isset($uri['path']) ? rawurldecode($uri['path']) : '';
+        $uri = isset($uri['path']) ? rawurldecode((string) $uri['path']) : '';
         //
 
         if (isset($_SERVER['SCRIPT_NAME'][0]))
@@ -98,7 +98,7 @@ class MX_URI extends CI_URI {
 
         // This section ensures that even on servers that require the URI to be in the query string (Nginx) a correct
         // URI is found, and also fixes the QUERY_STRING server var and $_GET array.
-        if (trim($uri, '/') === '' && strncmp($query, '/', 1) === 0)
+        if (trim($uri, '/') === '' && strncmp((string) $query, '/', 1) === 0)
         {
             $query = explode('?', $query, 2);
             // Modified by Ivan Tcholakov, 19-FEB-2015.
@@ -136,11 +136,11 @@ class MX_URI extends CI_URI {
     {
         $uri = isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : @getenv('QUERY_STRING');
 
-        if (trim($uri, '/') === '')
+        if (trim((string) $uri, '/') === '')
         {
             return '';
         }
-        elseif (strncmp($uri, '/', 1) === 0)
+        elseif (strncmp((string) $uri, '/', 1) === 0)
         {
             $uri = explode('?', $uri, 2);
             $_SERVER['QUERY_STRING'] = isset($uri[1]) ? $uri[1] : '';

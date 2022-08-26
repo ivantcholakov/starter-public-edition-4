@@ -195,7 +195,7 @@ class Menu {
 
             foreach($items as $key => $val)
             {
-                $id = (is_array($val) AND !empty($val['id'])) ? $val['id'] : trim($key);
+                $id = (is_array($val) AND !empty($val['id'])) ? $val['id'] : trim((string) $key);
                 // Modified by Ivan Tcholakov, 04-JAN-2014.
                 // Adding support for font-based icons.
                 //$defaults = array('id' => $id, 'label' => '', 'location' => $key, 'attributes' => array(), 'active' => NULL, 'parent_id' => $this->root_value, 'hidden' => FALSE);

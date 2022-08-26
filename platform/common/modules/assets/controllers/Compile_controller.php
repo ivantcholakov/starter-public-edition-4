@@ -72,12 +72,12 @@ class Compile_controller extends Core_Controller {
 
         foreach ($tasks as $task) {
 
-            if (!isset($task['name']) || trim($task['name']) == '') {
+            if (!isset($task['name']) || trim((string) $task['name']) == '') {
 
                 $this->terminate('No task name has been specified.');
             }
 
-            if (!isset($task['type']) || trim($task['type']) == '') {
+            if (!isset($task['type']) || trim((string) $task['type']) == '') {
 
                 $this->terminate('No task type has been specified.');
             }
@@ -85,7 +85,7 @@ class Compile_controller extends Core_Controller {
             $this->line('Task: '.$task['name']);
             $this->line('Type: '.$task['type']);
 
-            if (isset($task['source']) && trim($task['source']) == '') {
+            if (isset($task['source']) && trim((string) $task['source']) == '') {
 
                 $this->terminate($task['name'].': Empty source file name.');
             }
@@ -106,7 +106,7 @@ class Compile_controller extends Core_Controller {
                 $task['source_dir'] = rtrim(str_replace('\\', '/', realpath(dirname($task['source']))), '/').'/';
             }
 
-            if (isset($task['destination']) && trim($task['destination']) == '') {
+            if (isset($task['destination']) && trim((string) $task['destination']) == '') {
 
                 $this->terminate($task['name'].': Empty destination file name.');
             }
@@ -321,7 +321,7 @@ class Compile_controller extends Core_Controller {
 
                 $subtask['name'] = $task['name'];
 
-                if (!isset($subtask['type']) || trim($subtask['type']) == '') {
+                if (!isset($subtask['type']) || trim((string) $subtask['type']) == '') {
 
                     $this->terminate('No subtask type has been specified.');
                 }
@@ -333,7 +333,7 @@ class Compile_controller extends Core_Controller {
                     $this->terminate('Invalid subtask type: '.$subtask['type']);
                 }
 
-                if (isset($subtask['source']) && trim($subtask['source']) == '') {
+                if (isset($subtask['source']) && trim((string) $subtask['source']) == '') {
 
                     $this->terminate('Subtask: Empty source file name.');
                 }
@@ -432,9 +432,9 @@ class Compile_controller extends Core_Controller {
                 }
 
                 if ($first) {
-                    $task['result'] = trim($subtask['result']);
+                    $task['result'] = trim((string) $subtask['result']);
                 } else {
-                    $task['result'] .= "\n\n".trim($subtask['result']);
+                    $task['result'] .= "\n\n".trim((string) $subtask['result']);
                 }
 
                 unset($subtask['result']);
@@ -458,7 +458,7 @@ class Compile_controller extends Core_Controller {
 
                 $subtask['name'] = $task['name'];
 
-                if (!isset($subtask['type']) || trim($subtask['type']) == '') {
+                if (!isset($subtask['type']) || trim((string) $subtask['type']) == '') {
 
                     $this->terminate('No subtask type has been specified.');
                 }
@@ -470,7 +470,7 @@ class Compile_controller extends Core_Controller {
                     $this->terminate('Invalid subtask type: '.$subtask['type']);
                 }
 
-                if (isset($subtask['source']) && trim($subtask['source']) == '') {
+                if (isset($subtask['source']) && trim((string) $subtask['source']) == '') {
 
                     $this->terminate('Subtask: Empty source file name.');
                 }
@@ -566,9 +566,9 @@ class Compile_controller extends Core_Controller {
                 }
 
                 if ($first) {
-                    $task['result'] = trim($subtask['result']);
+                    $task['result'] = trim((string) $subtask['result']);
                 } else {
-                    $task['result'] .= "\n\n".trim($subtask['result']);
+                    $task['result'] .= "\n\n".trim((string) $subtask['result']);
                 }
 
                 unset($subtask['result']);

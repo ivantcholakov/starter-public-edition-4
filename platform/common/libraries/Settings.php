@@ -185,7 +185,7 @@ class Settings {
             return $this;
         }
 
-        $key = trim($key);
+        $key = trim((string) $key);
 
         if ($key == '') {
             return $this;

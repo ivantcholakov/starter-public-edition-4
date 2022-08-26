@@ -11,21 +11,21 @@ class Parser_Twig_Extension_Format {
 
         $ci = & get_instance();
 
-        return $ci->parser->parse_string(trim($text), null, true, 'markdown');
+        return $ci->parser->parse_string(trim((string) $text), null, true, 'markdown');
     }
 
     public static function textile($text) {
 
         $ci = & get_instance();
 
-        return $ci->parser->parse_string(trim($text), null, true, 'textile');
+        return $ci->parser->parse_string(trim((string) $text), null, true, 'textile');
     }
 
     public static function i18n($text) {
 
         $ci = & get_instance();
 
-        return $ci->parser->parse_string(trim($text), null, true, 'i18n');
+        return $ci->parser->parse_string(trim((string) $text), null, true, 'i18n');
     }
 
 }

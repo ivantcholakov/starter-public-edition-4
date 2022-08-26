@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2017
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2022
  * @license The MIT License, http://opensource.org/licenses/MIT
  *
  * Code repository: https://github.com/ivantcholakov/codeigniter-base-model
@@ -258,7 +258,7 @@ class Core_Tree_Model extends Core_Model {
 
         if (!is_array($select)) {
 
-            $select = trim($select);
+            $select = trim((string) $select);
             $select = $select == '' ? $this->_table.'.*' : $select;
             $select = explode(',', $select);
 
@@ -528,7 +528,7 @@ class Core_Tree_Model extends Core_Model {
 
         if (!is_array($select)) {
 
-            $select = trim($select);
+            $select = trim((string) $select);
             $select = $select == '' ? $this->_table.'.*' : $select;
             $select = explode(',', $select);
 

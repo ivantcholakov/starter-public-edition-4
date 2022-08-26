@@ -446,6 +446,7 @@ class Rest_client
 
         // Find out what format the data was returned in
         $returned_mime = @$this->_ci->curl->info['content_type'];
+        $returned_mime = (string) $returned_mime;
 
         // If they sent through more than just mime, strip it off
         if (strpos($returned_mime, ';'))

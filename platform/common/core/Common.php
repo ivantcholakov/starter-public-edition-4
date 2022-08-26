@@ -594,7 +594,7 @@ if (!function_exists('html_attr_merge')) {
 
         $attr1->mergeAttributes($attr2->getAttributes());
 
-        if (trim($attr1->getAttribute('class')) == '') {
+        if (trim((string) $attr1->getAttribute('class')) == '') {
             $attr1->removeAttribute('class');
         }
 

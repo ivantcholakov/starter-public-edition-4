@@ -245,7 +245,7 @@ class Gravatar {
             }
         }
 
-        $format = trim($format);
+        $format = trim((string) $format);
 
         if ($format != '') {
             $format = '.'.ltrim($format, '.');
@@ -336,7 +336,7 @@ class Gravatar {
      */
     public function create_hash($email) {
 
-        return md5(strtolower(trim($email)));
+        return md5(strtolower(trim((string) $email)));
     }
 
     protected function is_https() {
@@ -373,7 +373,7 @@ class Gravatar {
      */
     public function set_email($email)
     {
-        $email = trim(strtolower($email));
+        $email = trim(strtolower((string) $email));
 
         if ( ! filter_var($email, FILTER_VALIDATE_EMAIL) === FALSE)
         {

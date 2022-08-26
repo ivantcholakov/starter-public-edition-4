@@ -143,7 +143,7 @@ class Base_Controller extends Core_Controller {
 
     protected function _set_header_icon($icon) {
 
-        if (trim($icon) != '') {
+        if (trim((string) $icon) != '') {
             //$this->registry->set('header_icon', '<i class="circular '.$icon.' icon"></i>');
             $this->registry->set('header_icon', '<i class="'.$icon.' icon"></i>');
         } else {
@@ -153,7 +153,7 @@ class Base_Controller extends Core_Controller {
 
     protected function _set_header_image($url, $attributes = null) {
 
-        if (trim($url) != '') {
+        if (trim((string) $url) != '') {
             $this->registry->set('header_image', '<img src="'.html_attr_escape($url).'" '.html_attr($attributes).' />');
         } else {
             $this->registry->delete('header_image');

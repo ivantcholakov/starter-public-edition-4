@@ -1013,7 +1013,7 @@ class MX_Loader extends CI_Loader
     // Added by Ivan Tcholakov, FEB-2016.
     public function locations($base = null) {
 
-        $base = trim($base, '/');
+        $base = trim((string) $base, '/');
 
         $paths = array();
         $result = array();
@@ -1045,7 +1045,7 @@ class MX_Loader extends CI_Loader
                     continue;
                 }
 
-                $path = rtrim(str_replace('\\', '/', $path), '/').'/';
+                $path = rtrim(str_replace('\\', '/', (string) $path), '/').'/';
 
                 if ($module != '') {
                     $path .= $module.'/';
@@ -1525,7 +1525,7 @@ class MX_Loader extends CI_Loader
         // Get the class name, and while we're at it trim any slashes.
         // The directory path can be included as part of the class name,
         // but we don't want a leading slash
-        $class = str_replace('.php', '', trim($class, '/'));
+        $class = str_replace('.php', '', trim((string) $class, '/'));
 
         // Was the path included with the class name?
         // We look for a slash to determine this
