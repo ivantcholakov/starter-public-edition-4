@@ -663,14 +663,15 @@ License Information
 -------------------
 
 For original code in this project:  
-Copyright (c) 2012 - 2021:  
+Copyright (c) 2012 - 2022:  
 Ivan Tcholakov (the initial author) ivantcholakov@gmail.com,  
 Gwenaël Gallon.  
 License: The MIT License (MIT), http://opensource.org/licenses/MIT
 
 CodeIgniter:  
 Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)  
-Copyright (c) 2014 - 2020, British Columbia Institute of Technology (http://bcit.ca/)  
+Copyright (c) 2014 - 2019, British Columbia Institute of Technology (http://bcit.ca/)  
+Copyright (c) 2019 - 2022, CodeIgniter Foundation (https://codeigniter.com/)  
 License: The MIT License (MIT), http://opensource.org/licenses/MIT
 
 Third parties:  
