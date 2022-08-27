@@ -648,7 +648,7 @@ if (!function_exists('html_attr_remove_class')) {
 
         $attr->removeClass($class);
 
-        if (trim($attr->getAttribute('class')) == '') {
+        if (trim((string) $attr->getAttribute('class')) == '') {
             $attr->removeAttribute('class');
         }
 

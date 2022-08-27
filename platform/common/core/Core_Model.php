@@ -554,7 +554,7 @@ class Core_Model extends CI_Model
                 ->set($data, '', $escape);
 
             // See http://www.sqlite.org/compile.html#enable_update_delete_limit
-            if (strpos($this->_dbdriver, 'sqlite') === false && strpos($this->_subdriver, 'sqlite') === false) {
+            if (strpos((string) $this->_dbdriver, 'sqlite') === false && strpos((string) $this->_subdriver, 'sqlite') === false) {
                 $this->_database->limit(1);
             }
 
@@ -655,7 +655,7 @@ class Core_Model extends CI_Model
             $this->_database->set($data, '', $escape);
 
             // See http://www.sqlite.org/compile.html#enable_update_delete_limit
-            if (strpos($this->_dbdriver, 'sqlite') === false && strpos($this->_subdriver, 'sqlite') === false) {
+            if (strpos((string) $this->_dbdriver, 'sqlite') === false && strpos((string) $this->_subdriver, 'sqlite') === false) {
                 $this->_database->limit(1);
             }
 
@@ -774,7 +774,7 @@ class Core_Model extends CI_Model
         if ($this->soft_delete)
         {
             // See http://www.sqlite.org/compile.html#enable_update_delete_limit
-            if (strpos($this->_dbdriver, 'sqlite') === false && strpos($this->_subdriver, 'sqlite') === false) {
+            if (strpos((string) $this->_dbdriver, 'sqlite') === false && strpos((string) $this->_subdriver, 'sqlite') === false) {
                 $this->_database->limit(1);
             }
 
@@ -790,7 +790,7 @@ class Core_Model extends CI_Model
         else
         {
             // See http://www.sqlite.org/compile.html#enable_update_delete_limit
-            if (strpos($this->_dbdriver, 'sqlite') === false && strpos($this->_subdriver, 'sqlite') === false) {
+            if (strpos((string) $this->_dbdriver, 'sqlite') === false && strpos((string) $this->_subdriver, 'sqlite') === false) {
                 $this->_database->limit(1);
             }
 
@@ -824,7 +824,7 @@ class Core_Model extends CI_Model
         if ($this->soft_delete)
         {
             // See http://www.sqlite.org/compile.html#enable_update_delete_limit
-            if (strpos($this->_dbdriver, 'sqlite') === false && strpos($this->_subdriver, 'sqlite') === false) {
+            if (strpos((string) $this->_dbdriver, 'sqlite') === false && strpos((string) $this->_subdriver, 'sqlite') === false) {
                 $this->_database->limit(1);
             }
 
@@ -841,7 +841,7 @@ class Core_Model extends CI_Model
         else
         {
             // See http://www.sqlite.org/compile.html#enable_update_delete_limit
-            if (strpos($this->_dbdriver, 'sqlite') === false && strpos($this->_subdriver, 'sqlite') === false) {
+            if (strpos((string) $this->_dbdriver, 'sqlite') === false && strpos((string) $this->_subdriver, 'sqlite') === false) {
                 $this->_database->limit(1);
             }
 
@@ -2220,9 +2220,9 @@ class Core_Model extends CI_Model
         {
             foreach ($this->$event as $method)
             {
-                if (strpos($method, '('))
+                if (strpos((string) $method, '('))
                 {
-                    preg_match('/([a-zA-Z0-9\_\-]+)(\(([a-zA-Z0-9\_\-\., ]+)\))?/', $method, $matches);
+                    preg_match('/([a-zA-Z0-9\_\-]+)(\(([a-zA-Z0-9\_\-\., ]+)\))?/', (string) $method, $matches);
 
                     $method = $matches[1];
                     $this->callback_parameters = explode(',', $matches[3]);
