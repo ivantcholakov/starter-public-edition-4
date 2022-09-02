@@ -638,7 +638,7 @@ class Image_lib extends CI_Image_lib
         if ($alpha > 0)
         {
             // copy the image directly, the image's alpha transparency being the sole determinant of blending
-            imagecopy($src_img, $wm_img, $x_axis, $y_axis, 0, 0, $wm_width, $wm_height);
+            imagecopy($src_img, $wm_img, (int) $x_axis, (int) $y_axis, 0, 0, (int) $wm_width, (int) $wm_height);
         }
         else
         {
