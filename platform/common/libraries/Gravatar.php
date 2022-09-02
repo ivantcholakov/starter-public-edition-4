@@ -3,12 +3,12 @@
 /**
  * Gravatar Library for CodeIgniter
  *
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015 - 2016
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015 - 2022
  * @author Ryan Marshall <ryan@irealms.co.uk>, 2011 - 2015, @link http://irealms.co.uk
  *
  * Code repository: @link https://github.com/ivantcholakov/Codeigniter-Gravatar
  *
- * @version 1.1.1
+ * @version 1.1.3
  *
  * @license The MIT License (MIT)
  * @link http://opensource.org/licenses/MIT
