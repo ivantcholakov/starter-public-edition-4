@@ -294,7 +294,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 
 		foreach ($select as $val)
 		{
-			$val = trim($val);
+			$val = trim((string) $val);
 
 			if ($val !== '')
 			{
