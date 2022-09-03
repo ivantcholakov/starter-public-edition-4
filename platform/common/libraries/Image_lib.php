@@ -649,7 +649,7 @@ class Image_lib extends CI_Image_lib
             }
 
             // Merge the images with the specified opacity.
-            imagecopymerge($src_img, $wm_img, $x_axis, $y_axis, 0, 0, $wm_width, $wm_height, $this->wm_opacity);
+            imagecopymerge($src_img, $wm_img, (int) $x_axis, (int) $y_axis, 0, 0, (int) $wm_width, (int) $wm_height, (int) $this->wm_opacity);
         }
 
         // We can preserve transparency for PNG images
