@@ -30,7 +30,7 @@ class Theme_switcher_widget_controller extends Base_Widget_Controller {
         foreach ($theme_switcher as $key => $value) {
 
             $theme_switcher[$key]['label'] = $value['name'];
-            $theme_switcher[$key]['link'] = http_build_url(CURRENT_URL, array('query' => http_build_query(array('theme' => $value['key']))), HTTP_URL_JOIN_QUERY);
+            $theme_switcher[$key]['link'] = http_build_url(CURRENT_URL, array('query' => http_build_query(array('theme' => base64_encode($value['key'])))), HTTP_URL_JOIN_QUERY);
 
             if ($value['key'] == $this->visual_themes->get_current()) {
                 $theme_switcher[$key]['active'] = true;

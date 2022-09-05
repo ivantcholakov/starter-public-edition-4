@@ -11,10 +11,15 @@ class Base_Controller extends Core_Controller {
             ->library('template')
         ;
 
-        // Determine the current visual theme.
-        if ($this->input->get('theme') != '' && $this->input->method() == 'get' && !$this->input->is_ajax_request()) {
+        $theme = (string) $this->input->get('theme');
 
-            $theme = (string) $this->input->get('theme');
+        if ($theme != '') {
+            $theme = (string) base64_decode($theme);
+        }
+
+        // Determine the current visual theme.
+        if ($theme != '' && $this->input->method() == 'get' && !$this->input->is_ajax_request()) {
+
             $this->visual_themes->set_current($theme);
 
             parse_str(parse_url(CURRENT_URL, PHP_URL_QUERY), $query);

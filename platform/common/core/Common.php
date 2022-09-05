@@ -493,7 +493,7 @@ if ( ! function_exists('_stringify_attributes'))
         $atts = '';
         foreach ($attributes as $key => $val)
         {
-            $atts .= ($js) ? $key.'='.$val.',' : ' '.$key.'="'.$val.'"';
+            $atts .= ($js) ? $key.'='.$val.',' : ' '.get_instance()->security->xss_clean($key).'="'.html_attr_escape($val).'"';
         }
 
         return rtrim($atts, ',');
@@ -530,7 +530,19 @@ if (!function_exists('html_attr')) {
 
         $attr = new HTML_Attributes($attributes);
 
-        return $attr->getAttributes( ! $return_as_array);
+        if (!$return_as_array) {
+
+            $str = '';
+            $attributes = $attr->getAttributes(false);
+
+            foreach ($attributes as $key => $value) {
+                $str .= ' ' . get_instance()->security->xss_clean($key) . '="' . html_attr_escape($value) . '"';
+            }
+
+            return $str;
+        }
+
+        return $attr->getAttributes(false);
     }
 
 }

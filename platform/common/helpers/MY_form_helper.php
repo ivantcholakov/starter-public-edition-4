@@ -189,13 +189,13 @@ if ( ! function_exists('form_open'))
             $attributes .= ' accept-charset="'.strtolower(config_item('charset')).'"';
         }
 
-        $form = '<form action="'.$action.'"'.$attributes.">\n";
+        $form = '<form action="'.html_attr_escape(get_instance()->security->xss_clean($action)).'"'.$attributes.">\n";
 
         if (is_array($hidden))
         {
             foreach ($hidden as $name => $value)
             {
-                $form .= '<input type="hidden" name="'.$name.'" value="'.form_prep($value).'" />'."\n";
+                $form .= '<input type="hidden" name="'.html_attr_escape($name).'" value="'.form_prep($value).'" />'."\n";
             }
         }
 
@@ -359,7 +359,7 @@ if ( ! function_exists('form_hidden'))
 
         if ( ! is_array($value))
         {
-            $form .= '<input type="hidden" name="'.$name.'" value="'.form_prep($value)."\" />\n";
+            $form .= '<input type="hidden" name="'.html_attr_escape($name).'" value="'.form_prep($value)."\" />\n";
         }
         else
         {
@@ -480,7 +480,7 @@ if ( ! function_exists('form_dropdown'))
                     continue;
                 }
 
-                $form .= '<optgroup label="'.$key."\">\n";
+                $form .= '<optgroup label="'.html_attr_escape($key)."\">\n";
 
                 foreach ($val as $optgroup_key => $optgroup_val)
                 {
@@ -614,14 +614,16 @@ if ( ! function_exists('_parse_form_attributes'))
         {
             if ($key === 'value')
             {
-                $val = form_prep($val);
+                $att .= get_instance()->security->xss_clean($key).'="'.form_prep($val).'" ';
             }
             elseif ($key === 'name' && ! strlen($default['name']))
             {
                 continue;
             }
-
-            $att .= $key.'="'.$val.'" ';
+            else
+            {
+                $att .= get_instance()->security->xss_clean($key).'="'.html_attr_escape($val).'" ';
+            }
         }
 
         return $att;
@@ -630,3 +632,23 @@ if ( ! function_exists('_parse_form_attributes'))
 
 // ------------------------------------------------------------------------
 // End BC functions
+
+
+// Added by Ivan Tcholakov, 05-SEP-2022.
+if ( ! function_exists('_attributes_to_string'))
+{
+    function _attributes_to_string($attributes)
+    {
+        if (empty($attributes))
+        {
+            return '';
+        }
+
+        if (is_array($attributes) || is_string($attributes) || is_object($attributes))
+        {
+            return html_attr($attributes, false);
+        }
+
+        return FALSE;
+    }
+}
