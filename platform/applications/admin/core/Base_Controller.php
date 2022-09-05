@@ -126,6 +126,10 @@ class Base_Controller extends Core_Controller {
                 redirect('login');
             }
 
+            if (CURRENT_URL == site_url()) {
+                redirect('login');
+            }
+
             redirect(http_build_url(site_url('login'), array('query' => http_build_query(array('continue' => base64_encode(CURRENT_URL))))));
         }
 
