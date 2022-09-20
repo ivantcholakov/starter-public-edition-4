@@ -28,14 +28,14 @@
                     <div class="field{% if validation_errors['username'] %} error{% endif %}">
                         <div class="ui big left icon input">
                             <i class="user icon"></i>
-                            <input type="text" name="username" id="username" value="{{ set_value('username') }}" placeholder="* {{ lang('ui_username')|e('html_attr') }}" maxlength="256" spellcheck="false">
+                            <input type="text" name="username" id="username" value="{{ set_value('username') }}" placeholder="* {{ lang('ui_username')|e('html_attr') }}" maxlength="256" spellcheck="false" />
                         </div>
                     </div>
 
                     <div class="field{% if validation_errors['password'] %} error{% endif %}">
                         <div class="ui big left icon input">
                             <i class="lock icon"></i>
-                            <input type="password" name="password" id="password" value="{{ set_value('password') }}" placeholder="* {{ lang('ui_password')|e('html_attr') }}" maxlength="256" spellcheck="false">
+                            <input type="password" name="password" id="password" value="{{ set_value('password') }}" placeholder="* {{ lang('ui_password')|e('html_attr') }}" maxlength="256" spellcheck="false" />
                         </div>
                     </div>
 
