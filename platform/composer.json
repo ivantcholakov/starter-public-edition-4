@@ -48,7 +48,7 @@
         "pixel418/markdownify": "2.3.1",
         "mustache/mustache": "2.14.2",
         "netcarver/textile": "3.7.7",
-        "twig/twig": "3.4.2",
+        "twig/twig": "3.4.3",
         "twig/string-extra": "3.4.0",
         "salesforce/handlebars-php": "3.0.0",
         "scssphp/scssphp": "1.11.0",
