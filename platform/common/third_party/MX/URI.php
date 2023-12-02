@@ -4,6 +4,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+#[\AllowDynamicProperties]
 class MX_URI extends CI_URI {
 
     public function __construct()

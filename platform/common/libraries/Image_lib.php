@@ -576,13 +576,30 @@ class Image_lib extends CI_Image_lib
 
         // Fetch watermark image properties
         $props        = $this->get_image_properties($this->wm_overlay_path, TRUE);
+
+        if ($props === false) {
+
+            return false;
+        }
+
         $wm_img_type    = $props['image_type'];
         $wm_width    = $props['width'];
         $wm_height    = $props['height'];
 
         // Create two image resources
         $wm_img  = $this->image_create_gd($this->wm_overlay_path, $wm_img_type);
+
+        if ($wm_img === false) {
+
+            return false;
+        }
+
         $src_img = $this->image_create_gd($this->full_src_path);
+
+        if ($src_img === false) {
+
+            return false;
+        }
 
         // Reverse the offset if necessary
         // When the image is positioned at the bottom

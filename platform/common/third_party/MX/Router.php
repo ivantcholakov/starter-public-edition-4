@@ -41,6 +41,7 @@ require dirname(__FILE__).'/Modules.php';
 
 // Controller location logic has been modified by Ivan Tcholakov, 2014.
 
+#[\AllowDynamicProperties]
 class MX_Router extends CI_Router
 {
     // A public property for assisting proper calculation of $ci->uri->ruri_string();

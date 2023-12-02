@@ -262,6 +262,8 @@ class Asset {
 
     private function _other_asset_location($asset_name, $module_name = NULL, $asset_type = NULL, $location_type = 'url')
     {
+        $asset_name = (string) $asset_name;
+
         // Check whether the given name is a full URL or an absolute path.
         if (strpos($asset_name, '://') !== FALSE || strpos($asset_name, '//') === 0 || strpos($asset_name, '/') === 0 || stripos($asset_name, 'data:') === 0)
         {
