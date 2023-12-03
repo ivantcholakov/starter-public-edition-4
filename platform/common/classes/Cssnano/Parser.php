@@ -38,10 +38,9 @@ class Cssnano_Parser {
     }
 
     /**
-     * Parse a Less string into css
+     * Parse a CSS string
      *
      * @param string $str The string to convert
-     * @param string $uri_root The url of the file
      * @return string
      */
     public function parseString($str) {
@@ -67,10 +66,9 @@ class Cssnano_Parser {
     }
 
     /**
-     * Parse a Less string from a given file
+     * Parse a CSS string from a given file
      *
      * @param string $filename The file to parse
-     * @param string $uri_root The url of the file
      * @return string
      */
     public function parse($filename) {

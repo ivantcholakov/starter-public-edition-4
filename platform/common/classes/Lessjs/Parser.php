@@ -40,7 +40,6 @@ class Lessjs_Parser {
      * Parse a Less string into css
      *
      * @param string $str The string to convert
-     * @param string $uri_root The url of the file
      * @return string
      */
     public function parseString($str) {
@@ -69,7 +68,6 @@ class Lessjs_Parser {
      * Parse a Less string from a given file
      *
      * @param string $filename The file to parse
-     * @param string $uri_root The url of the file
      * @return string
      */
     public function parse($filename) {
