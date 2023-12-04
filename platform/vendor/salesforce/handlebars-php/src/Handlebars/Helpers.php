@@ -204,6 +204,10 @@ class Helpers
      *
      * {{#if condition}}
      *      Something here
+     * {{else if condition}}
+     *      something else if here
+     * {{else if condition}}
+     *      something else if here
      * {{else}}
      *      something else here
      * {{/if}}
@@ -218,14 +222,53 @@ class Helpers
      */
     public function helperIf($template, $context, $args, $source)
     {
+        $tpl = $template->getEngine()->loadString('{{#if ' . $args . '}}' . $source . '{{/if}}');
+        $tree = $tpl->getTree();
         $tmp = $context->get($args);
         if ($tmp) {
-            $template->setStopToken('else');
+            $token = 'else';
+            foreach ($tree[0]['nodes'] as $node) {
+                $name = trim($node['name'] ?? '');
+                if ($name && substr($name, 0, 7) == 'else if') {
+                    $token = $node['name'];
+                    break;
+                }
+            }
+            $template->setStopToken($token);
             $buffer = $template->render($context);
             $template->setStopToken(false);
             $template->discard();
             return $buffer;
         } else {
+            foreach ($tree[0]['nodes'] as $key => $node) {
+                $name = trim(isset($node['name']) ? $node['name'] : '');
+                if ($name && substr($name, 0, 7) == 'else if') {
+                    $template->setStopToken($node['name']);
+                    $template->discard();
+                    $template->setStopToken(false);
+                    $args = $this->parseArgs($context, substr($name, 7));
+                    $token = 'else';
+                    $remains = array_slice($tree[0]['nodes'], $key + 1);
+                    foreach ($remains as $remain) {
+                        $name = trim($remain['name'] ?? '');
+                        if ($name && substr($name, 0, 7) == 'else if') {
+                            $token = $remain['name'];
+                            break;
+                        }
+                    }
+                    if (isset($args[0]) && $args[0]) {
+                        $template->setStopToken($token);
+                        $buffer = $template->render($context);
+                        $template->setStopToken(false);
+                        $template->discard();
+                        return $buffer;
+                    } else if ($token != 'else') {
+                        continue;
+                    } else {
+                        return $this->renderElse($template, $context);
+                    }
+                }
+            }
             return $this->renderElse($template, $context);
         }
     }
@@ -256,7 +299,7 @@ class Helpers
         $tmp = $context->get($keyname);
 
         if (is_array($tmp) || $tmp instanceof Traversable) {
-            $tmp = array_slice($tmp, $slice_start ?? 0, $slice_end);
+            $tmp = array_slice($tmp, $slice_start ?? 0, $slice_end, true);
             $buffer = '';
             $islist = array_values($tmp) === $tmp;
 
@@ -729,5 +772,29 @@ class Helpers
             $slice_end = $slice_end ? (int) $slice_end : null;
         }
         return [$m[1], $slice_start, $slice_end];
+    }
+
+    /**
+     * Parse avariable from current args
+     *
+     * @param \Handlebars\Context  $context  context object
+     * @param array                $args     passed arguments to helper
+     * @return array
+     */
+    private function parseArgs($context, $args)
+    {
+        $args = preg_replace('/\s+/', ' ', trim($args));
+        $eles = explode(' ', $args);
+        foreach ($eles as $key => $ele) {
+            if (in_array(substr($ele, 0, 1), ['\'', '"'])) {
+                $val = trim($ele, '\'"');
+            } else if (is_numeric($ele)) {
+                $val = $ele;
+            } else {
+                $val = $context->get($ele);
+            }
+            $eles[$key] = $val;
+        }
+        return $eles;
     }
 }

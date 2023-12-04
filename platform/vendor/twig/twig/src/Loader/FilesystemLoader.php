@@ -36,7 +36,7 @@ class FilesystemLoader implements LoaderInterface
      */
     public function __construct($paths = [], string $rootPath = null)
     {
-        $this->rootPath = (null === $rootPath ? getcwd() : $rootPath).\DIRECTORY_SEPARATOR;
+        $this->rootPath = ($rootPath ?? getcwd()).\DIRECTORY_SEPARATOR;
         if (null !== $rootPath && false !== ($realPath = realpath($rootPath))) {
             $this->rootPath = $realPath.\DIRECTORY_SEPARATOR;
         }
@@ -183,9 +183,9 @@ class FilesystemLoader implements LoaderInterface
         }
 
         try {
-            $this->validateName($name);
-
             list($namespace, $shortname) = $this->parseName($name);
+
+            $this->validateName($shortname);
         } catch (LoaderError $e) {
             if (!$throw) {
                 return null;
@@ -250,7 +250,7 @@ class FilesystemLoader implements LoaderInterface
 
     private function validateName(string $name): void
     {
-        if (false !== strpos($name, "\0")) {
+        if (str_contains($name, "\0")) {
             throw new LoaderError('A template name cannot contain NUL bytes.');
         }
 

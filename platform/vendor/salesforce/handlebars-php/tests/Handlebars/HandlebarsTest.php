@@ -367,6 +367,12 @@ class HandlebarsTest extends PHPUnit\Framework\TestCase
                 'outputNotEnabled' => 'applebananacarrotzucchini',
                 'outputEnabled' => ''
             ],
+            [
+                'src' => '{{#each data}}{{@key}}{{/each}}',
+                'data' => ['data' => ['fruit' => 'apple', '19' => 'banana', 'true' => 'carrot']],
+                'outputNotEnabled' => 'fruit19true',
+                'outputEnabled' => 'fruit19true',
+            ],
         ];
 
         // Build out a test case for when the enableDataVariables feature is enabled and when it's not

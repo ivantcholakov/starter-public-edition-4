@@ -27,7 +27,6 @@ class Template
      */
     protected $handlebars;
 
-
     protected $tree = [];
 
     protected $source = '';
@@ -36,7 +35,6 @@ class Template
      * @var array Run stack
      */
     private $stack = [];
-    private $_stack = [];
 
     /**
      * Handlebars template constructor
@@ -51,7 +49,6 @@ class Template
         $this->tree = $tree;
         $this->source = $source;
         array_push($this->stack, [0, $this->getTree(), false]);
-
     }
 
     /**
@@ -87,14 +84,12 @@ class Template
     /**
      * set stop token for render and discard method
      *
-     * @param string $token token to set as stop token or false to remove
+     * @param string|false $token token to set as stop token or false to remove
      *
      * @return void
      */
-
     public function setStopToken($token)
     {
-        $this->_stack = $this->stack;
         $topStack = array_pop($this->stack);
         $topStack[2] = $token;
         array_push($this->stack, $topStack);
@@ -103,9 +98,8 @@ class Template
     /**
      * get current stop token
      *
-     * @return string|bool
+     * @return string|false
      */
-
     public function getStopToken()
     {
         return end($this->stack)[2];
@@ -191,8 +185,6 @@ class Template
 
     /**
      * Discard top tree
-     *
-     * @param mixed $context current context
      *
      * @return string
      */

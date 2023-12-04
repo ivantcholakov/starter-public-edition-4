@@ -5,3 +5,4 @@ composer.phar
 composer.lock
 *.iml
 .idea
+.phpunit.result.cache
