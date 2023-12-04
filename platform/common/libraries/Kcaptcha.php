@@ -17,7 +17,7 @@
  *
  * -----------------------------------------------------------------------------
  *
- * Ported for CodeIgniter by Ivan Tcholakov, 2013-2022.
+ * Ported for CodeIgniter by Ivan Tcholakov, 2013-2023.
  * Code repository: https://github.com/ivantcholakov/codeigniter-kcaptcha
  *
  * Important note: This feature requires Session library/driver to be loaded.
@@ -141,6 +141,8 @@ class Kcaptcha {
      */
     public function create() {
 
+        $this->clear();
+
         extract($this->config);
 
         $fonts = array();
@@ -189,6 +191,7 @@ class Kcaptcha {
 
                     $font_metrics[$alphabet[$symbol]] = array('start' => $i);
                     $reading_symbol = true;
+
                     continue;
                 }
 
@@ -197,6 +200,7 @@ class Kcaptcha {
                     $font_metrics[$alphabet[$symbol]]['end'] = $i;
                     $reading_symbol = false;
                     $symbol++;
+
                     continue;
                 }
             }
@@ -245,6 +249,7 @@ class Kcaptcha {
                                     $py = $sy + $y;
 
                                     if ($py > $height) {
+
                                         break;
                                     }
 
@@ -294,7 +299,6 @@ class Kcaptcha {
         for ($i = 0; $i < (($height - 30)*$x)*$black_noise_density; $i++) {
             imagesetpixel($img, mt_rand(0, $x - 1), mt_rand(10, $height - 15), $black);
         }
-
 
         $center = $x/2;
 
@@ -362,12 +366,11 @@ class Kcaptcha {
                     $frsx1 = 1 - $frsx;
                     $frsy1 = 1 - $frsy;
 
-                    $newcolor = (
+                    $newcolor =
                         $color*$frsx1*$frsy1 +
                         $color_x*$frsx*$frsy1 +
                         $color_y*$frsx1*$frsy +
-                        $color_xy*$frsx*$frsy
-                    );
+                        $color_xy*$frsx*$frsy;
 
                     if ($newcolor > 255) {
                         $newcolor = 255;
@@ -431,6 +434,7 @@ class Kcaptcha {
             }
 
             if (!preg_match('/cp|cb|ck|c6|c9|rn|rm|mm|co|do|cl|db|qp|qb|dp|ww/', $keystring)) {
+
                 break;
             }
 

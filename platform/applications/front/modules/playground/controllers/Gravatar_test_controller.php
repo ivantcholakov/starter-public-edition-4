@@ -22,7 +22,7 @@ class Gravatar_test_controller extends Playground_Base_Controller {
 
         $this->template
             ->append_title($title)
-            ->set_breadcrumb($title, site_url('playground/gravatar-test'));
+            ->set_breadcrumb($title, site_url('playground/gravatar-test'))
         ;
 
         $this->registry->set('nav', 'playground');
@@ -65,8 +65,6 @@ class Gravatar_test_controller extends Playground_Base_Controller {
             $this->template->set('error_message', '<ul class="list">'.validation_errors('<li>', '</li>').'</ul>');
             $this->template->set('validation_errors', validation_errors_array());
         }
-
-        $this->captcha->clear();
 
         $this->template
             ->set(compact('email', 'gravatar', 'profile', 'last_error', 'show_profile'))

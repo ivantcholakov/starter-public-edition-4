@@ -88,8 +88,6 @@ class Email_test_controller extends Playground_Base_Controller {
             'handlebars'
         );
 
-        $this->captcha->clear();
-
         $this->template
             ->set(compact('subject', 'body'))
             ->build('email_test');
