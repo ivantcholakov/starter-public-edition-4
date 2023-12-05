@@ -3,12 +3,12 @@
 /**
  * Gravatar Library for CodeIgniter
  *
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015 - 2022
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2015 - 2023
  * @author Ryan Marshall <ryan@irealms.co.uk>, 2011 - 2015, @link http://irealms.co.uk
  *
  * Code repository: @link https://github.com/ivantcholakov/Codeigniter-Gravatar
  *
- * @version 1.1.3
+ * @version 1.2.0
  *
  * @license The MIT License (MIT)
  * @link http://opensource.org/licenses/MIT
@@ -60,7 +60,7 @@ class Gravatar {
         $this->is_https = $this->is_https();
         $this->curl_exists = function_exists('curl_init');
         $allow_url_fopen = @ini_get('allow_url_fopen');
-        $allow_url_fopen = $allow_url_fopen === false || in_array(strtolower($allow_url_fopen), array('on', 'true', '1'));
+        $allow_url_fopen = $allow_url_fopen === false || in_array(strtolower((string) $allow_url_fopen), array('on', 'true', '1'));
         $this->allow_url_fopen = $allow_url_fopen;
 
         if (!is_array($config)) {
@@ -180,7 +180,7 @@ class Gravatar {
 
     /**
      * Executes a request for Gravatar profile data and returns it as a multidimensional array.
-     * @link https://en.gravatar.com/site/implement/profiles/
+     * @link https://docs.gravatar.com/profiles/php/
      *
      * @param   string      $email          A registered email.
      * @return  array/null                  Received profile data.
@@ -190,6 +190,7 @@ class Gravatar {
         $result = $this->execute_profile_request($email, 'php');
 
         if ($this->last_error != GRAVATAR_NO_ERROR) {
+
             return null;
         }
 
@@ -198,18 +199,21 @@ class Gravatar {
         if ($result === false) {
 
             $this->last_error = GRAVATAR_INCORRECT_FORMAT;
+
             return null;
         }
 
         if (!is_array($result)) {
 
             $this->last_error = GRAVATAR_PROFILE_DOES_NOT_EXIST;
+
             return null;
         }
 
         if (!isset($result['entry']) || !isset($result['entry'][0])) {
 
             $this->last_error = GRAVATAR_INCORRECT_FORMAT;
+
             return null;
         }
 
@@ -218,7 +222,7 @@ class Gravatar {
 
     /**
      * Executes a request for Gravatar profile data and returns raw received response.
-     * @link https://en.gravatar.com/site/implement/profiles/
+     * @link https://docs.gravatar.com/profiles/php/
      *
      * @param   string      $email      A registered email.
      * @param   string      $format     '', 'json', 'xml', 'php', 'vcf', 'qr'.
@@ -233,6 +237,7 @@ class Gravatar {
             if (!valid_email($email)) {
 
                 $this->last_error = GRAVATAR_INVALID_EMAIL;
+
                 return null;
             }
 
@@ -241,6 +246,7 @@ class Gravatar {
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
                 $this->last_error = GRAVATAR_INVALID_EMAIL;
+
                 return null;
             }
         }
@@ -251,21 +257,20 @@ class Gravatar {
             $format = '.'.ltrim($format, '.');
         }
 
+        $url = $this->gravatar_secure_base_url.$this->create_hash_sha256($email).$format;
+
         $result = null;
 
         if ($this->curl_exists) {
-
-            $url = $this->gravatar_secure_base_url.$this->create_hash($email).$format;
 
             $ch = curl_init();
 
             $options = array(
                 CURLOPT_USERAGENT => $this->gravatar_useragent,
                 CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_POST => true,
-                CURLOPT_POSTFIELDS => array(),
                 CURLOPT_URL => $url,
-                CURLOPT_TIMEOUT => 3,
+                CURLOPT_TIMEOUT => 5,
+                CURLOPT_SSL_VERIFYPEER => false,
             );
 
             if (!ini_get('safe_mode') && !ini_get('open_basedir')) {
@@ -283,12 +288,11 @@ class Gravatar {
             if ($code != 200) {
 
                 $this->last_error = GRAVATAR_CANT_CONNECT;
+
                 return null;
             }
 
         } elseif ($this->allow_url_fopen) {
-
-            $url = $this->gravatar_base_url.$this->create_hash($email).$format;
 
             $options = array(
                 'http' => array(
@@ -304,12 +308,14 @@ class Gravatar {
         } else {
 
             $this->last_error = GRAVATAR_CANT_CONNECT;
+
             return null;
         }
 
         if ($result === false) {
 
             $this->last_error = GRAVATAR_CANT_CONNECT;
+
             return null;
         }
 
@@ -329,7 +335,7 @@ class Gravatar {
 
     /**
      * Creates a hash value from a provided e-mail address.
-     * @link https://en.gravatar.com/site/implement/hash/
+     * @link https://docs.gravatar.com/gravatar-images/php/
      *
      * @param   string      $email      A registered email.
      * @return  string/null             The hash for accessing the avatar or profile data.
@@ -346,168 +352,31 @@ class Gravatar {
         }
 
         if (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off') {
+
             return true;
+
         } elseif (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+
             return true;
+
         } elseif (!empty($_SERVER['HTTP_FRONT_END_HTTPS']) && strtolower($_SERVER['HTTP_FRONT_END_HTTPS']) !== 'off') {
+
             return true;
         }
 
         return false;
     }
 
-    //--------------------------------------------------------------------------
-    // The following original methods are kept here for backward compatibility.
-    // Consider them as deprecated.
-    //--------------------------------------------------------------------------
-
-
     /**
-     * Set the email to be used, converting it into an md5 hash as required by gravatar.com
+     * Creates a sha256 hash value from a provided e-mail address.
+     * @link https://docs.gravatar.com/general/hash/
      *
-     * @param string $email
-     *
-     * @return string|null Email hash or if email didn't validate then return NULL
-     *
-     * @deprecated
+     * @param   string      $email      A registered email.
+     * @return  string/null             The hash for accessing the avatar or profile data.
      */
-    public function set_email($email)
-    {
-        $email = trim(strtolower((string) $email));
+    public function create_hash_sha256($email) {
 
-        if ( ! filter_var($email, FILTER_VALIDATE_EMAIL) === FALSE)
-        {
-            return md5($email);
-        }
-
-        return NULL;
-    }
-
-    /**
-     * get_gravatar_url
-     *
-     * @see http://en.gravatar.com/site/implement/images/ for available options
-     *
-     * @param string $rating defaults to g
-     * @param string $size defaults to 80
-     * @param string $default_image default sets can be found on the above link
-     * @param boolean $secure set to TRUE if a secure url is required
-     *
-     * @return string gratavar url
-     *
-     * @deprecated
-     */
-    public function get_gravatar($email, $rating = NULL, $size = NULL, $default_image = NULL, $secure = NULL)
-    {
-        $hash = $this->set_email($email);
-
-        if ($hash === NULL)
-        {
-            // $hash has to be set to a value so the gravatar site can return a default image
-            $hash = 'invalid_email';
-        }
-
-        $query_string = NULL;
-        $options = array();
-
-        if ($rating !== NULL)
-        {
-            $options['r'] = $rating;
-        }
-
-        if ($size !== NULL)
-        {
-            $options['s'] = $size;
-        }
-
-        if ($default_image !== NULL)
-        {
-            $options['d'] = urlencode($default_image);
-        }
-
-        if (count($options) > 0)
-        {
-            $query_string = '?'. http_build_query($options);
-        }
-
-        if ($secure !== NULL)
-        {
-            $base = $this->gravatar_secure_base_url;
-        }
-        else
-        {
-            $base = $this->gravatar_base_url;
-        }
-
-        return $base .'avatar/'. $hash . $query_string;
-    }
-
-    /**
-     * Grab the full profile data for a given email from gravatar.com in xml format
-     *
-     * @param string $email
-     * @param string fetch_method defaults to file, 'curl' is the other option
-     *
-     * @return object|null $xml->entry on success, NULL on an error
-     *
-     * @deprecated
-     */
-    public function get_profile($email, $fetch_method = 'file')
-    {
-        $hash = $this->set_email($email);
-
-        if ($hash === NULL)
-        {
-            // A hash value of NULL will return no xml so the method returns NULL
-            return NULL;
-        }
-
-        libxml_use_internal_errors(TRUE);
-
-        if ($fetch_method === 'file')
-        {
-            if (ini_get('allow_url_fopen') == FALSE)
-            {
-                return NULL;
-            }
-
-            $str = file_get_contents($this->gravatar_base_url . $hash .'.xml');
-        }
-
-        if ($fetch_method === 'curl')
-        {
-            if ( ! function_exists('curl_init'))
-            {
-                return NULL;
-            }
-
-            $ch = curl_init();
-            $options = array(
-                CURLOPT_RETURNTRANSFER => TRUE,
-                CURLOPT_POST => TRUE,
-                CURLOPT_URL => $this->gravatar_secure_base_url . $hash .'.xml',
-                CURLOPT_TIMEOUT => 3
-            );
-            curl_setopt_array($ch, $options);
-            $str = curl_exec($ch);
-        }
-
-        $xml = simplexml_load_string($str);
-
-        if ($xml === FALSE)
-        {
-            $errors = array();
-            foreach(libxml_get_errors() as $error)
-            {
-                $errors[] = $error->message.'\n';
-            }
-            $error_string = implode('\n', $errors);
-            throw new Exception('Failed loading XML\n'. $error_string);
-        }
-        else
-        {
-            return $xml->entry;
-        }
+        return hash('sha256', strtolower(trim((string) $email)));
     }
 
 }

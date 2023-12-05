@@ -1,9 +1,15 @@
 {#
-Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2016
+Ivan Tcholakov <ivantcholakov@gmail.com>, 2014-2023
 The MIT License, http://opensource.org/licenses/MIT
 #}
 
                 <div class="ui grid">
+
+                    <div class="sixteen wide mobile sixteen wide tablet sixteen wide computer column">
+
+                        <p><a href="https://gravatar.com/" target="_blank" rel="noopener">https://gravatar.com/</a></p>
+
+                    </div>
 
                     <div class="sixteen wide mobile six wide tablet five wide computer column">
 
@@ -21,7 +27,7 @@ The MIT License, http://opensource.org/licenses/MIT
                             <div class="field">
                                 <img id="captcha_image"
                                     class="ui middle aligned image pointer"
-                                    src="{{ captcha().src ~ '?nocache=' ~ rand(100000000, 999999999) }}"
+                                    src="{{ (captcha().src ~ '?nocache=' ~ rand(100000000, 999999999))|e('html_attr') }}"
                                     title="{{ lang('captcha.tip')|e('html_attr') }}"
                                 />
                             </div>
@@ -81,7 +87,7 @@ The MIT License, http://opensource.org/licenses/MIT
                         <h3>Result:</h3>
 
                         <p>
-                            <img class="img-thumbnail" src="{{ gravatar }}" />
+                            <img class="img-thumbnail" src="{{ gravatar|e('html_attr') }}" />
                         </p>
 
                         {{ print_d(profile) }}
