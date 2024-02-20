@@ -363,9 +363,12 @@ class Core_Model extends CI_Model
             return $this->_return_sql('select');
         }
 
-        $row = $this->_database
-            ->get($this->_table)
-            ->{$this->_return_type()}();
+        $get = $this->_database
+            ->get($this->_table);
+
+        $row = $get
+            ? $get->{$this->_return_type()}()
+            : ($this->_temporary_return_type == 'array' ? array() : null);
 
         $row = $this->trigger('after_get', $row);
 
@@ -445,9 +448,12 @@ class Core_Model extends CI_Model
             return $this->_return_sql('select');
         }
 
-        $result = $this->_database
-            ->get($this->_table)
-            ->{$this->_return_type(1)}();
+        $get = $this->_database
+            ->get($this->_table);
+
+        $result = $get
+            ? $get->{$this->_return_type(1)}()
+            : array();
 
         foreach ($result as $key => &$row)
         {
@@ -1087,7 +1093,12 @@ class Core_Model extends CI_Model
             return $this->_return_sql('select');
         }
 
-        $row = $this->_database->get($this->_table)->row_array();
+        $get = $this->_database
+            ->get($this->_table);
+
+        $row = $get
+            ? $get->row_array()
+            : array();
 
         $result = isset($row[$this->primary_key]);
 
@@ -1161,7 +1172,12 @@ class Core_Model extends CI_Model
             return $this->_return_sql('select');
         }
 
-        $result = $this->_database->get($this->_table)->result_array();
+        $get = $this->_database
+            ->get($this->_table);
+
+        $result = $get
+            ? $get->result_array()
+            : array();
 
         if ($this->_function_exists_array_column)
         {
