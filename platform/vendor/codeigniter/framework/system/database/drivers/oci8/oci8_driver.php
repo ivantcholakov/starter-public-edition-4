@@ -60,6 +60,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  * @author	  Kelly McArdle
  */
+#[\AllowDynamicProperties]
 class CI_DB_oci8_driver extends CI_DB {
 
 	/**

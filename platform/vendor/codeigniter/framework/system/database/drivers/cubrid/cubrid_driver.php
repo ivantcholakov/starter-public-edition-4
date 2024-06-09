@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author		Esen Sagynov
  * @link		https://codeigniter.com/userguide3/database/
  */
+#[\AllowDynamicProperties]
 class CI_DB_cubrid_driver extends CI_DB {
 
 	/**

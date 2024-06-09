@@ -536,7 +536,11 @@ if (!function_exists('html_attr')) {
             $attributes = $attr->getAttributes(false);
 
             foreach ($attributes as $key => $value) {
-                $str .= ' ' . get_instance()->security->xss_clean($key) . '="' . html_attr_escape($value) . '"';
+
+                // Modified by Ivan Tcholakov, 16-JAN-2024.
+                //$str .= ' ' . get_instance()->security->xss_clean($key) . '="' . html_attr_escape($value) . '"';
+                $str .= ' ' . get_instance()->security->xss_clean($key) . '="' . ((strtolower((string) $key) == 'class') ? str_replace('&#x20;', ' ', html_attr_escape($value)) : html_attr_escape($value)) . '"';
+                //
             }
 
             return $str;

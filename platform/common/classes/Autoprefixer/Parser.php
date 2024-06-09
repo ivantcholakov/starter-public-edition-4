@@ -163,7 +163,7 @@ class Autoprefixer_Parser {
 
         $config = '{
     "autoprefixer": {
-        "browsers": '.json_encode($this->options['browsers'], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE).'
+        "browsers": '.json_encode($this->options['browsers']).'
     }
 }';
         file_put_contents($this->config_file, $config);

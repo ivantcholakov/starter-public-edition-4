@@ -150,6 +150,8 @@ class Submit_controller extends Core_Controller {
 
         $messages_html = $this->_prepare_messages_html($success, $messages);
 
+        $this->captcha->clear();
+
         $this->output->set_output(json_encode(compact('success', 'messages', 'messages_html')));
     }
 

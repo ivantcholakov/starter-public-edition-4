@@ -71,6 +71,10 @@ class Image_lib extends CI_Image_lib
     public $user_x_axis = '';
     public $user_y_axis = '';
 
+    // For PHP 8 compatibility.
+    public $dest_image;
+    public $dest_folder;
+
     public function __construct($props = array())
     {
         $this->file_permissions = FILE_WRITE_MODE;
