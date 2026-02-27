@@ -14,7 +14,7 @@ This version supports multiple applications.
 PHP
 ---
 
-If you are a beginner with little or no PHP experience, you might need to read a training tutorial like this one:
+If you are a beginner with little or no [PHP](https://www.interviewbit.com/php-interview-questions/) experience, you might need to read a training tutorial like this one:
 
 PHP Tutorial for Beginners: Learn in 7 Days, https://www.guru99.com/php-tutorials.html
 
