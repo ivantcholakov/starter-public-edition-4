@@ -11,7 +11,7 @@ define('CI_VERSION', '3.1.13');
  * Platform (Application Starter) Version
  * @var    string
  */
-define('PLATFORM_VERSION', '4.6.11');
+define('PLATFORM_VERSION', '4.7.0');
 
 
 /**
@@ -47,7 +47,7 @@ define('WEB_ASSET_CACHE_BUST_NUMBER', '0');
  * Minimum Required PHP Version
  * @var    string
  */
-define('PLATFORM_PHP_VERSION_MIN', '8.0.2');
+define('PLATFORM_PHP_VERSION_MIN', '8.1.0');
 
 
 if (version_compare(PHP_VERSION, PLATFORM_PHP_VERSION_MIN, '<')) {
