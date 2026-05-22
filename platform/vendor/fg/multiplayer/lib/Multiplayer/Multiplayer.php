@@ -108,7 +108,7 @@ class Multiplayer {
 	 *	@param callable $template A function to generate the HTML code of a
 	 *		player from an URL.
 	 */
-	public function __construct(array $services = [], callable $template = null) {
+	public function __construct(array $services = [], ?callable $template = null) {
 		$this->_services = array_merge($this->_services, $services);
 
 		if ($template) {
@@ -146,12 +146,12 @@ HTML;
 	 *		player from an URL.
 	 *	@return string Prepared HTML code.
 	 */
-	public function html($source, array $params = [], callable $template = null) {
+	public function html($source, array $params = [], ?callable $template = null) {
 		$params += $this->_params;
 		$id = null;
 
 		foreach ($this->_services as $service => $config) {
-			if (preg_match($config['id'], $source, $matches)) {
+			if (preg_match($config['id'], (string) $source, $matches)) {
 				$id = $matches['id'];
 				break;
 			}

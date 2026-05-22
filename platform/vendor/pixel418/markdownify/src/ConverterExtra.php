@@ -26,6 +26,12 @@ class ConverterExtra extends Converter
      */
     protected $row = 0;
 
+    public $isMarkdownable = [];
+    public $tableLookaheadHeader;
+    public $tdSubstitute;
+    public $tableLookaheadBody;
+    public $keepHTML;
+
     /**
      * constructor, see Markdownify::Markdownify() for more information
      */
