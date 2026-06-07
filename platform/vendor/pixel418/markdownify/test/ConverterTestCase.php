@@ -3,10 +3,12 @@
 namespace Test\Markdownify;
 
 use Markdownify\Converter;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 require_once(__DIR__ . '/../vendor/autoload.php');
 
-class ConverterTestCase extends \PHPUnit_Framework_TestCase
+class ConverterTestCase extends TestCase
 {
 
 
@@ -15,11 +17,29 @@ class ConverterTestCase extends \PHPUnit_Framework_TestCase
     protected $converter;
 
 
+    /* UNICODE TEST METHODS
+     *************************************************************************/
+
+    #[DataProvider('providerUnicodeConversion')]
+    public function testUnicodeConversion($md)
+    {
+        $html = '<p>' . $md . '</p>';
+        $this->assertEquals($md, $this->converter->parseString($html));
+    }
+
+    public static function providerUnicodeConversion()
+    {
+        return [
+            ['regular ascii'],
+            ['مرحبا بك'],
+        ];
+    }
+
+
     /* HEADING TEST METHODS
      *************************************************************************/
-    /**
-     * @dataProvider providerHeadingConversion
-     */
+
+    #[DataProvider('providerHeadingConversion')]
     public function testHeadingConversion_withAttribute($level, $attributesHTML, $attributesMD = null)
     {
         $innerHTML = 'Heading ' . $level;
@@ -34,7 +54,7 @@ class ConverterTestCase extends \PHPUnit_Framework_TestCase
         $this->assertEquals($md, $this->converter->parseString($html));
     }
 
-    public function providerHeadingConversion()
+    public static function providerHeadingConversion()
     {
         $attributes = [' id="idAttribute"', ' class=" class1  class2 "'];
         $data = [];
@@ -47,15 +67,13 @@ class ConverterTestCase extends \PHPUnit_Framework_TestCase
         return $data;
     }
 
-    /**
-     * @dataProvider providerHeadingConversionEscape
-     */
+    #[DataProvider('providerHeadingConversionEscape')]
     public function testHeadingConversionEscape($html, $md)
     {
         $this->assertEquals($md, $this->converter->parseString($html));
     }
 
-    public function providerHeadingConversionEscape()
+    public static function providerHeadingConversionEscape()
     {
         $data = [];
         $data['level1']['html'] = '# Heading 1';
@@ -69,15 +87,13 @@ class ConverterTestCase extends \PHPUnit_Framework_TestCase
     /* ESCAPE TEST METHODS
      *************************************************************************/
 
-    /**
-     * @dataProvider providerAutoescapeConversion
-     */
+    #[DataProvider('providerAutoescapeConversion')]
     public function testAutoescapeConversion($html, $md)
     {
         $this->assertEquals($md, $this->converter->parseString($html));
     }
 
-    public function providerAutoescapeConversion()
+    public static function providerAutoescapeConversion()
     {
         return [
             ['AT&amp;T', 'AT&T'],
@@ -87,12 +103,30 @@ class ConverterTestCase extends \PHPUnit_Framework_TestCase
     }
 
 
-    /* STRIP TAGS OPTION
+    /* O:P TAG TEST METHODS
      *************************************************************************/
 
     /**
-     * @dataProvider providerKeepHTMLOption
+     * @dataProvider providerOfficeTagConversion
      */
+    public function testOfficeTagConversion($html, $md)
+    {
+        $this->assertEquals($md, $this->converter->parseString($html));
+    }
+
+    public static function providerOfficeTagConversion()
+    {
+        return [
+            ['<p>Hello<o:p></o:p></p>', 'Hello'],
+            ['<p>Hello<o:p> World</o:p></p>', 'Hello World'],
+        ];
+    }
+
+
+    /* STRIP TAGS OPTION
+     *************************************************************************/
+
+    #[DataProvider('providerKeepHTMLOption')]
     public function testKeepHTMLOption($html, $mdWithTag, $mdWithoutTag)
     {
         $this->converter->setKeepHTML(false);
@@ -101,7 +135,7 @@ class ConverterTestCase extends \PHPUnit_Framework_TestCase
         $this->assertEquals($mdWithTag, $this->converter->parseString($html));
     }
 
-    public function providerKeepHTMLOption()
+    public static function providerKeepHTMLOption()
     {
         $data = [];
 
@@ -129,15 +163,13 @@ class ConverterTestCase extends \PHPUnit_Framework_TestCase
     /* BLOCKQUOTE TEST METHODS
      *************************************************************************/
 
-    /**
-     * @dataProvider providerBlockquoteConversion
-     */
+    #[DataProvider('providerBlockquoteConversion')]
     public function testBlockquoteConversion($html, $md)
     {
         $this->assertEquals($md, $this->converter->parseString($html));
     }
 
-    public function providerBlockquoteConversion()
+    public static function providerBlockquoteConversion()
     {
         $data = [];
         $data['simple']['html'] = '<blockquote>blockquoted text goes here</blockquote>';
@@ -157,15 +189,13 @@ class ConverterTestCase extends \PHPUnit_Framework_TestCase
     /* LISTS TEST METHODS
      *************************************************************************/
 
-    /**
-     * @dataProvider providerListConversion
-     */
+    #[DataProvider('providerListConversion')]
     public function testListConversion($html, $md)
     {
         $this->assertEquals($md, $this->converter->parseString($html));
     }
 
-    public function providerListConversion()
+    public static function providerListConversion()
     {
         $data = [];
         $data['ordered']['html'] = '<ol><li>Bird</li><li>McHale</li><li>Parish</li></ol>';
@@ -206,6 +236,27 @@ class ConverterTestCase extends \PHPUnit_Framework_TestCase
             . PHP_EOL
             . '  1. Bird' . PHP_EOL
             . '  2. Magic';
+        $data['followed-by-text']['html'] = '<ol><li>Bird</li><li>Magic</li></ol>McHale';
+        $data['followed-by-text']['md'] = '  1. Bird' . PHP_EOL
+            . '  2. Magic' . PHP_EOL
+            . PHP_EOL
+            . 'McHale';
+        $data['unordered-followed-by-text']['html'] = '<ul><li>Bird</li><li>Magic</li></ul>McHale';
+        $data['unordered-followed-by-text']['md'] = '  * Bird' . PHP_EOL
+            . '  * Magic' . PHP_EOL
+            . PHP_EOL
+            . 'McHale';
+        $data['followed-by-text-with-link']['html'] = 'This is plain text<br /><ol><li>Plain a list item</li><li><strong>Bold list item</strong></li><li><em>Italic list item</em></li></ol>Here we have a <a href="https://www.helloworld.com">link</a> as well!';
+        $data['followed-by-text-with-link']['md'] = 'This is plain text  ' . PHP_EOL
+            . PHP_EOL
+            . PHP_EOL
+            . '  1. Plain a list item' . PHP_EOL
+            . '  2. **Bold list item**' . PHP_EOL
+            . '  3. _Italic list item_' . PHP_EOL
+            . PHP_EOL
+            . 'Here we have a [link][1] as well!' . PHP_EOL
+            . PHP_EOL
+            . ' [1]: https://www.helloworld.com';
         $data['nested-ordered']['html'] = '<ol><li>Bird</li><li>Colors<ol><li>Red</li><li>Green<ol><li>Light</li><li>Dark</li></ol></li><li>Blue</li></ol></li></ol>';
         $data['nested-ordered']['md'] = '  1. Bird' . PHP_EOL
             . '  2. Colors' . PHP_EOL
@@ -230,15 +281,13 @@ class ConverterTestCase extends \PHPUnit_Framework_TestCase
     /* CODE TEST METHODS
      *************************************************************************/
 
-    /**
-     * @dataProvider providerCodeConversion
-     */
+    #[DataProvider('providerCodeConversion')]
     public function testCodeConversion($html, $md)
     {
         $this->assertEquals($md, $this->converter->parseString($html));
     }
 
-    public function providerCodeConversion()
+    public static function providerCodeConversion()
     {
         $data = [];
         $data['inline']['html'] = '<p>Use the <code>printf()</code> function.</p>';
@@ -276,6 +325,28 @@ end tell
         $data['pre-html']['md'] = '    <div class="footer">
         &copy; 2004 Foo Corporation
     </div>';
+        $data['inline-multiline']['html'] = "<code>Foo<br/>\nBar</code>";
+        $data['inline-multiline']['md'] = '```' . PHP_EOL
+            . 'Foo' . PHP_EOL
+            . 'Bar' . PHP_EOL
+            . '```';
+        $data['inline-multiline-newline']['html'] = "<code>Foo\nBar</code>";
+        $data['inline-multiline-newline']['md'] = '```' . PHP_EOL
+            . 'Foo' . PHP_EOL
+            . 'Bar' . PHP_EOL
+            . '```';
+        $data['inline-multiline-br']['html'] = '<code>Foo<br>Bar</code>';
+        $data['inline-multiline-br']['md'] = '```' . PHP_EOL
+            . 'Foo' . PHP_EOL
+            . 'Bar' . PHP_EOL
+            . '```';
+        $data['inline-multiline-backticks']['html'] = "<code>Foo `bar` Baz<br/>Qux</code>";
+        $data['inline-multiline-backticks']['md'] = '```' . PHP_EOL
+            . 'Foo `bar` Baz' . PHP_EOL
+            . 'Qux' . PHP_EOL
+            . '```';
+        $data['inline-single-line-only']['html'] = '<code>single line only</code>';
+        $data['inline-single-line-only']['md'] = '`single line only`';
 
         return $data;
     }
@@ -284,9 +355,7 @@ end tell
     /* LINK TEST METHODS
      *************************************************************************/
 
-    /**
-     * @dataProvider providerLinkConversion
-     */
+    #[DataProvider('providerLinkConversion')]
     public function testLinkConversion($html, $md, $linkPosition = null)
     {
         if ($linkPosition !== null) {
@@ -295,7 +364,7 @@ end tell
         $this->assertEquals($md, $this->converter->parseString($html));
     }
 
-    public function providerLinkConversion()
+    public static function providerLinkConversion()
     {
         $data = [];
 
@@ -352,6 +421,10 @@ end tell
         $data['url-title']['md'] = 'This is [an example][1] inline link.' . PHP_EOL
             . PHP_EOL
             . ' [1]: http://example.com/ "Title"';
+        $data['url-unquoted-attributes']['html'] = '<p>This is <a href=http://example.com/ title=Title>an example</a> inline link.</p>';
+        $data['url-unquoted-attributes']['md'] = 'This is [an example][1] inline link.' . PHP_EOL
+            . PHP_EOL
+            . ' [1]: http://example.com/ "Title"';
 
         // Link with href + title + id attributes
         $data['url-title-id']['html'] = '<p>This is <a href="http://example.com/" title="Title" id="myLink">an example</a> inline link.</p>';
@@ -389,6 +462,10 @@ end tell
         $data['image-title']['md'] = '![Alt text][1]' . PHP_EOL
             . PHP_EOL
             . ' [1]: /path/to/img.jpg "Optional title attribute"';
+        $data['image-unquoted-attributes']['html'] = '<img src=/path/to/img.jpg alt="Alt text" title=Optional />';
+        $data['image-unquoted-attributes']['md'] = '![Alt text][1]' . PHP_EOL
+            . PHP_EOL
+            . ' [1]: /path/to/img.jpg "Optional"';
 
         // Image with src + alt + title attributes in content
         $data['image-title--in']['html'] = '<img src="/path/to/img.jpg" alt="Alt text" title="Optional title attribute" />';
@@ -413,15 +490,13 @@ end tell
     /* EMPHASIS TEST METHODS
      *************************************************************************/
 
-    /**
-     * @dataProvider providerEmphasisConversion
-     */
+    #[DataProvider('providerEmphasisConversion')]
     public function testEmphasisConversion($html, $md)
     {
         $this->assertEquals($md, $this->converter->parseString($html));
     }
 
-    public function providerEmphasisConversion()
+    public static function providerEmphasisConversion()
     {
         $data = [];
         $data['strong']['html'] = '<strong>double asterisks</strong>';
@@ -444,15 +519,13 @@ end tell
     /* RULES TEST METHODS
      *************************************************************************/
 
-    /**
-     * @dataProvider providerRulesConversion
-     */
+    #[DataProvider('providerRulesConversion')]
     public function testRulesConversion($html, $md)
     {
         $this->assertEquals($md, $this->converter->parseString($html));
     }
 
-    public function providerRulesConversion()
+    public static function providerRulesConversion()
     {
         $data = [];
         $data['hr']['html'] = '<hr>';
@@ -469,16 +542,14 @@ end tell
     /* FIX BREAKS TESTS
      *************************************************************************/
 
-    /**
-     * @dataProvider providerFixBreaks
-     */
+    #[DataProvider('providerFixBreaks')]
     public function testFixBreaks($html, $md)
     {
         $this->assertEquals($md, $this->converter->parseString($html));
     }
 
 
-    public function providerFixBreaks()
+    public static function providerFixBreaks()
     {
         $data = [];
         $data['break1']['html'] = "<strong>Hello,<br>How are you doing?</strong>";
@@ -492,16 +563,14 @@ end tell
     /* FIX TAG SPACES TESTS
      *************************************************************************/
 
-    /**
-     * @dataProvider providerFixTagSpaces
-     */
+    #[DataProvider('providerFixTagSpaces')]
     public function testFixTagSpaces($html, $md)
     {
         $this->assertEquals($md, $this->converter->parseString($html));
     }
 
 
-    public function providerFixTagSpaces()
+    public static function providerFixTagSpaces()
     {
         $data = [];
         $data['strong']['html'] = "<p>This is<strong> strong</strong> text</p>";
@@ -532,10 +601,10 @@ end tell
         $converter = new Converter();
         $bqOutput = $converter->parseString($blockquote);
 
-        $this->assertContains('>', $bqOutput);
+        $this->assertStringContainsString('>', $bqOutput);
 
         $lbOutput = $converter->parseString($linebreaks);
 
-        $this->assertNotContains('>', $lbOutput);
+        $this->assertStringNotContainsString('>', $lbOutput);
     }
 }

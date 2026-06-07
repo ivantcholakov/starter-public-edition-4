@@ -57,7 +57,6 @@ class ComposerStaticInite8cec9e0c2dc76883ed32798db3a44e5
         array (
             'Twig\\Extra\\String\\' => 18,
             'Twig\\' => 5,
-            'Test\\Markdownify\\' => 17,
         ),
         'S' =>
         array (
@@ -160,10 +159,6 @@ class ComposerStaticInite8cec9e0c2dc76883ed32798db3a44e5
         'Twig\\' =>
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
-        ),
-        'Test\\Markdownify\\' =>
-        array (
-            0 => __DIR__ . '/..' . '/pixel418/markdownify/test',
         ),
         'Symfony\\Polyfill\\Uuid\\' =>
         array (
@@ -1308,9 +1303,6 @@ class ComposerStaticInite8cec9e0c2dc76883ed32798db3a44e5
         'Symfony\\Polyfill\\Php84\\Php84' => __DIR__ . '/..' . '/symfony/polyfill-php84/Php84.php',
         'Symfony\\Polyfill\\Php85\\Php85' => __DIR__ . '/..' . '/symfony/polyfill-php85/Php85.php',
         'Symfony\\Polyfill\\Uuid\\Uuid' => __DIR__ . '/..' . '/symfony/polyfill-uuid/Uuid.php',
-        'Test\\Markdownify\\ConverterExtraTest' => __DIR__ . '/..' . '/pixel418/markdownify/test/ConverterExtraTest.php',
-        'Test\\Markdownify\\ConverterTest' => __DIR__ . '/..' . '/pixel418/markdownify/test/ConverterTest.php',
-        'Test\\Markdownify\\ConverterTestCase' => __DIR__ . '/..' . '/pixel418/markdownify/test/ConverterTestCase.php',
         'Twig\\AbstractTwigCallable' => __DIR__ . '/..' . '/twig/twig/src/AbstractTwigCallable.php',
         'Twig\\Attribute\\AsTwigFilter' => __DIR__ . '/..' . '/twig/twig/src/Attribute/AsTwigFilter.php',
         'Twig\\Attribute\\AsTwigFunction' => __DIR__ . '/..' . '/twig/twig/src/Attribute/AsTwigFunction.php',

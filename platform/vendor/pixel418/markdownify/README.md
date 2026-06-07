@@ -1,6 +1,6 @@
 # Markdownify
 
-[![Build Status](https://travis-ci.org/Elephant418/Markdownify.png?branch=master)](https://travis-ci.org/Elephant418/Markdownify?branch=master)
+[![Tests](https://github.com/Elephant418/Markdownify/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/Elephant418/Markdownify/actions/workflows/tests.yml)
 [![Total Downloads](https://poser.pugx.org/pixel418/markdownify/downloads)](https://packagist.org/packages/pixel418/markdownify)
 [![MIT](https://poser.pugx.org/pixel418/markdownify/license)](https://opensource.org/licenses/MIT)
 
@@ -34,7 +34,7 @@ $converter->parseString('<h1 id="md">Heading</h1>');
 How to Install
 --------
 
-This library package requires `PHP 5.4` or later.<br>
+This library package requires `PHP 5.4` or later and is compatible with `PHP 8.5`.<br>
 Install [Composer](http://getcomposer.org/doc/01-basic-usage.md#installation) and run the following command to get the latest version:
 
 ```sh

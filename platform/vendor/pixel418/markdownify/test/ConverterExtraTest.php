@@ -3,6 +3,7 @@
 namespace Test\Markdownify;
 
 use Markdownify\ConverterExtra;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 require_once(__DIR__ . '/../vendor/autoload.php');
 
@@ -12,7 +13,7 @@ class ConverterExtraTest extends ConverterTestCase
 
     /* UTILS
      *************************************************************************/
-    public function setUp()
+    protected function setUp(): void
     {
         $this->converter = new ConverterExtra;
     }
@@ -20,9 +21,7 @@ class ConverterExtraTest extends ConverterTestCase
 
     /* HEADING TEST METHODS
      *************************************************************************/
-    /**
-     * @dataProvider providerHeadingConversion
-     */
+    #[DataProvider('providerHeadingConversion')]
     public function testHeadingConversion_withAttribute($level, $attributesHTML, $attributesMD = null)
     {
         $innerHTML = 'Heading ' . $level;
@@ -31,7 +30,7 @@ class ConverterExtraTest extends ConverterTestCase
         $this->assertEquals($md, $this->converter->parseString($html));
     }
 
-    public function providerHeadingConversion()
+    public static function providerHeadingConversion()
     {
         $attributes = [' id="idAttribute"', ' class=" class1  class2 "'];
         $data = [];
@@ -44,10 +43,17 @@ class ConverterExtraTest extends ConverterTestCase
         return $data;
     }
 
+    public function testHeadingConversionWithoutCssClassOutput()
+    {
+        $this->converter->setAddCssClass(false);
+        $html = '<h1 id="idAttribute" class=" class1  class2 ">Heading 1</h1>';
+        $this->assertEquals('# Heading 1', $this->converter->parseString($html));
+    }
+
 
     /* LINK TEST METHODS
      *************************************************************************/
-    public function providerLinkConversion()
+    public static function providerLinkConversion()
     {
         $data = parent::providerLinkConversion();
 
@@ -72,6 +78,16 @@ class ConverterExtraTest extends ConverterTestCase
  [1]: http://example.com/ "Title"';
 
         return $data;
+    }
+
+    public function testLinkConversionWithoutCssClassOutput()
+    {
+        $this->converter->setAddCssClass(false);
+        $html = '<p>This is <a href="http://example.com/" title="Title" class=" class1  class2 " id="myLink">an example</a> inline link.</p>';
+        $md = 'This is [an example][1] inline link.' . PHP_EOL
+            . PHP_EOL
+            . ' [1]: http://example.com/ "Title"';
+        $this->assertEquals($md, $this->converter->parseString($html));
     }
 
 
@@ -135,6 +151,178 @@ EOF;
 | ------------ | ------------- |
 | Content Cell | Content Cell  |
 |              | Content Cell  |
+EOF;
+        $this->assertEquals($md, $this->converter->parseString($html));
+    }
+
+    public function testTableConversionWithoutHeaderCells()
+    {
+        $this->converter->setKeepHTML(false);
+        $html = <<<EOF
+<table>
+<tr>
+  <td>January</td>
+  <td>42</td>
+</tr>
+<tr>
+  <td>February</td>
+  <td>51</td>
+</tr>
+<tr>
+  <td>March</td>
+  <td>39</td>
+</tr>
+</table>
+EOF;
+        $md = <<<EOF
+|          |    |
+| -------- | -- |
+| January  | 42 |
+| February | 51 |
+| March    | 39 |
+EOF;
+        $this->assertEquals($md, $this->converter->parseString($html));
+    }
+
+    public function testTableConversionWithoutHeaderCellsKeepingHtml()
+    {
+        $this->converter->setKeepHTML(true);
+        $html = <<<EOF
+<table>
+<tr>
+  <td>January</td>
+  <td>42</td>
+</tr>
+<tr>
+  <td>February</td>
+  <td>51</td>
+</tr>
+<tr>
+  <td>March</td>
+  <td>39</td>
+</tr>
+</table>
+EOF;
+        $md = <<<EOF
+<table>
+  <tr>
+    <td>
+      January
+    </td>
+    
+    <td>
+      42
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      February
+    </td>
+    
+    <td>
+      51
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      March
+    </td>
+    
+    <td>
+      39
+    </td>
+  </tr>
+</table>
+EOF;
+        $this->assertEquals($md, $this->converter->parseString($html));
+    }
+
+    public function testTableConversionWithoutHeaderCellsWithThreeColumns()
+    {
+        $this->converter->setKeepHTML(false);
+        $html = <<<EOF
+<table>
+<tr>
+  <td>One</td>
+  <td>Two</td>
+  <td>Three</td>
+</tr>
+<tr>
+  <td>Alpha</td>
+  <td>Beta</td>
+  <td>Gamma</td>
+</tr>
+</table>
+EOF;
+        $md = <<<EOF
+|       |      |       |
+| ----- | ---- | ----- |
+| One   | Two  | Three |
+| Alpha | Beta | Gamma |
+EOF;
+        $this->assertEquals($md, $this->converter->parseString($html));
+    }
+
+    public function testTableConversionWithRowHeadersButWithoutTopHeaderRow()
+    {
+        $this->converter->setKeepHTML(false);
+        $html = <<<EOF
+<table>
+<tr>
+  <th>January</th>
+  <td>42</td>
+</tr>
+<tr>
+  <th>February</th>
+  <td>51</td>
+</tr>
+<tr>
+  <th>March</th>
+  <td>39</td>
+</tr>
+</table>
+EOF;
+        $md = <<<EOF
+|          |    |
+| -------- | -- |
+| January  | 42 |
+| February | 51 |
+| March    | 39 |
+EOF;
+        $this->assertEquals($md, $this->converter->parseString($html));
+    }
+
+    public function testTableConversionWithRowHeadersAndTopHeaderRow()
+    {
+        $this->converter->setKeepHTML(false);
+        $html = <<<EOF
+<table>
+<tr>
+  <th></th>
+  <th>Sales</th>
+</tr>
+<tr>
+  <th>January</th>
+  <td>42</td>
+</tr>
+<tr>
+  <th>February</th>
+  <td>51</td>
+</tr>
+<tr>
+  <th>March</th>
+  <td>39</td>
+</tr>
+</table>
+EOF;
+        $md = <<<EOF
+|          | Sales |
+| -------- | ----- |
+| January  | 42    |
+| February | 51    |
+| March    | 39    |
 EOF;
         $this->assertEquals($md, $this->converter->parseString($html));
     }

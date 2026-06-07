@@ -133,6 +133,7 @@ class Converter
     protected $ignore = [
         'html',
         'body',
+        'o:p',
     ];
 
     /**
@@ -228,6 +229,13 @@ class Converter
     protected $indent = '';
 
     /**
+     * Saved indentation while preserving raw HTML inside <pre> blocks.
+     *
+     * @var string
+     */
+    protected $preIndent = '';
+
+    /**
      * constructor, set options, setup parser
      *
      * @param int $linkPosition define the position of links
@@ -312,7 +320,8 @@ class Converter
     protected function parse()
     {
         $this->output = '';
-        // drop tags
+
+        // Drop tags
         $this->parser->html = preg_replace('#<(' . implode('|', $this->drop) . ')[^>]*>.*</\\1>#sU', '', $this->parser->html);
         while ($this->parser->nextNode()) {
             switch ($this->parser->nodeType) {
@@ -328,6 +337,7 @@ class Converter
                     // else drop
                     break;
                 case 'text':
+                    $this->flushLinebreaks();
                     $this->handleText();
                     break;
                 case 'tag':
@@ -504,9 +514,6 @@ class Converter
      */
     protected function handleTagToText()
     {
-        // Added by Ivan Tcholakov, 28-FEB-2025.
-        static $indent;
-
         if (!$this->keepHTML) {
             if (!$this->parser->isStartTag && $this->parser->isBlockElement) {
                 $this->setLineBreaks(2);
@@ -536,8 +543,7 @@ class Converter
                     // don't indent inside <pre> tags
                     if ($this->parser->tagName == 'pre') {
                         $this->out($this->parser->node);
-                        //static $indent;
-                        $indent = $this->indent;
+                        $this->preIndent = $this->indent;
                         $this->indent = '';
                     } else {
                         $this->out($this->parser->node . "\n" . $this->indent);
@@ -558,8 +564,7 @@ class Converter
                     } else {
                         // reset indentation
                         $this->out($this->parser->node);
-                        //static $indent;
-                        $this->indent = $indent;
+                        $this->indent = $this->preIndent;
                     }
 
                     if (in_array($this->parent(), ['ins', 'del'])) {
@@ -914,6 +919,16 @@ class Converter
             $this->buffer();
         } else {
             $buffer = $this->unbuffer();
+            $buffer = str_replace("\r\n", "\n", $buffer);
+            $buffer = str_replace("\r", "\n", $buffer);
+            if (preg_match('#(?:<br\s*/?>|&lt;br\s*/?>)#i', $buffer) || strpos($buffer, "\n") !== false) {
+                $buffer = preg_replace('#(?:<br\s*/?>|&lt;br\s*/?>)\n?#i', "\n", $buffer);
+                $buffer = trim($buffer, "\r\n");
+                $this->out("```\n" . $buffer . "\n```", true);
+                $this->setLineBreaks(2);
+
+                return;
+            }
             // use as many backticks as needed
             preg_match_all('#`+#', $buffer, $matches);
             if (!empty($matches[0])) {
@@ -1220,54 +1235,9 @@ class Converter
      * @author derernst@gmx.ch <http://www.php.net/manual/en/function.html-entity-decode.php#68536>
      * @author Milian Wolff <http://milianw.de>
      */
-    protected function decode($text, $quote_style = ENT_QUOTES)
+    protected function decode($text)
     {
-        return htmlspecialchars_decode($text, $quote_style);
-    }
-
-    /**
-     * callback for decode() which converts a hexadecimal entity to UTF-8
-     *
-     * @param array $matches
-     * @return string UTF-8 encoded
-     */
-    protected function _decode_hex($matches)
-    {
-        return $this->unichr(hexdec($matches[1]));
-    }
-
-    /**
-     * callback for decode() which converts a numerical entity to UTF-8
-     *
-     * @param array $matches
-     * @return string UTF-8 encoded
-     */
-    protected function _decode_numeric($matches)
-    {
-        return $this->unichr($matches[1]);
-    }
-
-    /**
-     * UTF-8 chr() which supports numeric entities
-     *
-     * @author grey - greywyvern - com <http://www.php.net/manual/en/function.chr.php#55978>
-     * @param array $matches
-     * @return string UTF-8 encoded
-     */
-    protected function unichr($dec)
-    {
-        if ($dec < 128) {
-            $utf = chr($dec);
-        } elseif ($dec < 2048) {
-            $utf = chr(192 + (($dec - ($dec % 64)) / 64));
-            $utf .= chr(128 + ($dec % 64));
-        } else {
-            $utf = chr(224 + (($dec - ($dec % 4096)) / 4096));
-            $utf .= chr(128 + ((($dec % 4096) - ($dec % 64)) / 64));
-            $utf .= chr(128 + ($dec % 64));
-        }
-
-        return $utf;
+        return htmlspecialchars_decode($text, ENT_QUOTES);
     }
 
     /**

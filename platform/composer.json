@@ -46,7 +46,7 @@
         "voku/anti-xss": "4.1.42",
         "erusev/parsedown": "1.8.0",
         "erusev/parsedown-extra": "0.8.1",
-        "pixel418/markdownify": "2.3.1",
+        "pixel418/markdownify": "2.3.3",
         "mustache/mustache": "2.14.2",
         "netcarver/textile": "4.0.0",
         "twig/twig": "3.27.1",

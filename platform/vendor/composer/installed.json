@@ -1967,32 +1967,31 @@
         },
         {
             "name": "pixel418/markdownify",
-            "version": "v2.3.1",
-            "version_normalized": "2.3.1.0",
+            "version": "v2.3.3",
+            "version_normalized": "2.3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Elephant418/Markdownify.git",
-                "reference": "891be2176858712c6c4581da410e96fc2019e3f0"
+                "reference": "c148ed9eae72eb9ad90a8d19675cc3b98345d351"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Elephant418/Markdownify/zipball/891be2176858712c6c4581da410e96fc2019e3f0",
-                "reference": "891be2176858712c6c4581da410e96fc2019e3f0",
+                "url": "https://api.github.com/repos/Elephant418/Markdownify/zipball/c148ed9eae72eb9ad90a8d19675cc3b98345d351",
+                "reference": "c148ed9eae72eb9ad90a8d19675cc3b98345d351",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8"
+                "phpunit/phpunit": "^11.5"
             },
-            "time": "2019-01-22T16:33:43+00:00",
+            "time": "2026-03-23T14:58:28+00:00",
             "type": "lib",
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Markdownify\\": "src",
-                    "Test\\Markdownify\\": "test"
+                    "Markdownify\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2019,6 +2018,10 @@
                 "markdown",
                 "markdownify"
             ],
+            "support": {
+                "issues": "https://github.com/Elephant418/Markdownify/issues",
+                "source": "https://github.com/Elephant418/Markdownify/tree/v2.3.3"
+            },
             "install-path": "../pixel418/markdownify"
         },
         {

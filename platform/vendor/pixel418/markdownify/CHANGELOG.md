@@ -2,6 +2,25 @@ CHANGELOG
 ==============
 
 
+23/03/2026 v2.3.3
+--------------
+
+ * Fix: ordered and unordered list spacing when text follows a list (#46)
+ * Fix: convert headerless tables with an empty Markdown header row (#44)
+ * Fix: convert multiline inline code to fenced code blocks (#34)
+ * Feature: support unquoted HTML attribute parsing
+ * Feature: ignore Word `o:p` tags while preserving their contents
+ * Feature: add `ConverterExtra::setAddCssClass(false)` to disable Markdown Extra CSS selector output
+
+
+23/03/2026 v2.3.2
+--------------
+
+ * Support: PHP 8.5
+ * Fix: remove dynamic properties deprecated on modern PHP versions
+ * Test: update PHPUnit configuration for current PHP releases
+
+
 22/01/2019 v2.3.1
 --------------
 
