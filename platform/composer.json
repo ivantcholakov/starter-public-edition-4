@@ -73,6 +73,7 @@
         "scrivo/highlight.php": "9.18.1.9",
         "desandro/imagesloaded": "4.1.4",
         "desandro/masonry": "4.2.2",
-        "symfony/polyfill-php84": "1.38.1"
+        "symfony/polyfill-php84": "1.38.1",
+        "symfony/polyfill-php85": "1.38.1"
     }
 }
