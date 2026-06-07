@@ -22,7 +22,6 @@
         "paragonie/sodium_compat": "v1.20.0",
         "oomphinc/composer-installers-extender": "^2.0",
         "codeigniter/framework": "3.1.13",
-        "symfony/polyfill-php81": "1.28.0",
         "symfony/polyfill-php82": "1.38.1",
         "symfony/polyfill-php83": "1.38.1",
         "symfony/polyfill-ctype": "1.28.0",
