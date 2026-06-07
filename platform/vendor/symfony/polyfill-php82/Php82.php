@@ -113,7 +113,7 @@ class Php82
         }
 
         if ($value[$digits] < '0' || $value[$digits] > 9) {
-            $message = sprintf(
+            $message = \sprintf(
                 'Invalid quantity "%s": no valid leading digits, interpreting as "0" for backwards compatibility',
                 self::escapeString($value)
             );
@@ -155,7 +155,7 @@ class Php82
                     $allowed_digits = '01';
                     break;
                 default:
-                    $message = sprintf(
+                    $message = \sprintf(
                         'Invalid prefix "0%s", interpreting as "0" for backwards compatibility',
                         $value[$digits + 1]
                     );
@@ -166,7 +166,43 @@ class Php82
 
             $digits += 2;
             if ($digits === $str_end) {
-                $message = sprintf(
+                $message = \sprintf(
+                    'Invalid quantity "%s": no digits after base prefix, interpreting as "0" for backwards compatibility',
+                    self::escapeString($value)
+                );
+                trigger_error($message, \E_USER_WARNING);
+
+                return 0;
+            }
+
+            $digits_consumed = $digits;
+            /* Ignore leading whitespace. */
+            while ($digits_consumed < $str_end && false !== strpos($ctype_space, $value[$digits_consumed])) {
+                ++$digits_consumed;
+            }
+            if ($digits_consumed !== $str_end && ('+' === $value[$digits_consumed] || '-' === $value[$digits_consumed])) {
+                ++$digits_consumed;
+            }
+
+            if ('0' === $value[$digits_consumed]) {
+                /* Value is just 0 */
+                if ($digits_consumed + 1 === $str_end) {
+                    goto evaluation;
+                }
+                switch ($value[$digits_consumed + 1]) {
+                    case 'x':
+                    case 'X':
+                    case 'o':
+                    case 'O':
+                    case 'b':
+                    case 'B':
+                        $digits_consumed += 2;
+                        break;
+                }
+            }
+
+            if ($digits !== $digits_consumed) {
+                $message = \sprintf(
                     'Invalid quantity "%s": no digits after base prefix, interpreting as "0" for backwards compatibility',
                     self::escapeString($value)
                 );
@@ -196,16 +232,6 @@ class Php82
         }
 
         $digits_end = $digits;
-
-        // The native function treats 0x0x123 the same as 0x123.  This is a bug which we must replicate.
-        if (
-            16 === $base
-            && $digits_end + 2 < $str_end
-            && '0x' === substr($value, $digits_end, 2)
-            && false !== strpos($allowed_digits, $value[$digits_end + 2])
-        ) {
-            $digits_end += 2;
-        }
 
         while ($digits_end < $str_end && false !== strpos($allowed_digits, $value[$digits_end])) {
             ++$digits_end;
@@ -240,7 +266,7 @@ class Php82
         $retval = (int) $retval;
 
         if ($digits_end === $digits) {
-            $message = sprintf(
+            $message = \sprintf(
                 'Invalid quantity "%s": no valid leading digits, interpreting as "0" for backwards compatibility',
                 self::escapeString($value)
             );
@@ -278,7 +304,7 @@ class Php82
                 $interpreted = self::escapeString(substr($value, $str, $digits_end - $str));
                 $chr = self::escapeString($value[$str_end - 1]);
 
-                $message = sprintf(
+                $message = \sprintf(
                     'Invalid quantity "%s": unknown multiplier "%s", interpreting as "%s" for backwards compatibility',
                     $invalid,
                     $chr,
@@ -309,7 +335,7 @@ class Php82
 
         if ($digits_end !== $str_end - 1) {
             /* More than one character in suffix */
-            $message = sprintf(
+            $message = \sprintf(
                 'Invalid quantity "%s", interpreting as "%s%s" for backwards compatibility',
                 self::escapeString($value),
                 self::escapeString(substr($value, $str, $digits_end - $str)),
@@ -326,7 +352,7 @@ class Php82
             /* Not specifying the resulting value here because the caller may make
              * additional conversions. Not specifying the allowed range
              * because the caller may do narrower range checks. */
-            $message = sprintf(
+            $message = \sprintf(
                 'Invalid quantity "%s": value is out of range, using overflow result for backwards compatibility',
                 self::escapeString($value)
             );
@@ -356,7 +382,7 @@ class Php82
                     case '\\': $escaped .= '\\\\'; break;
                     case "\x1B": $escaped .= '\\e'; break;
                     default:
-                        $escaped .= '\\x'.strtoupper(sprintf('%02x', $c));
+                        $escaped .= '\\x'.strtoupper(\sprintf('%02x', $c));
                 }
             } else {
                 $escaped .= $string[$n];
