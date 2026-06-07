@@ -46,7 +46,7 @@
         "erusev/parsedown": "1.8.0",
         "erusev/parsedown-extra": "0.8.1",
         "pixel418/markdownify": "2.3.3",
-        "mustache/mustache": "2.14.2",
+        "mustache/mustache": "3.2.0",
         "netcarver/textile": "4.0.0",
         "twig/twig": "3.27.1",
         "twig/string-extra": "3.8.0",

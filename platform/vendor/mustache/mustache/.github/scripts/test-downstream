@@ -1,0 +1,157 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+MUSTACHE_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+readonly MUSTACHE_ROOT
+readonly DEFAULT_PROJECTS=("wp-cli")
+readonly OVERRIDE_VERSION="${DOWNSTREAM_MUSTACHE_VERSION:-3.0.99}"
+
+usage() {
+    cat <<'USAGE'
+Usage:
+  .github/scripts/test-downstream <project-id>
+  .github/scripts/test-downstream all
+  .github/scripts/test-downstream --list
+
+Project IDs:
+  wp-cli
+USAGE
+}
+
+list_projects() {
+    printf '%s\n' "${DEFAULT_PROJECTS[@]}"
+}
+
+retry() {
+    local -r attempts="$1"
+    shift
+
+    local try=1
+    until "$@"; do
+        if [[ "${try}" -ge "${attempts}" ]]; then
+            echo "    FAILED after ${attempts} attempts: $*" >&2
+            return 1
+        fi
+
+        try=$((try + 1))
+        echo "    Retrying (${try}/${attempts}): $*" >&2
+        sleep 2
+    done
+}
+
+run_wp_cli_smoke() {
+    php <<'PHP'
+<?php
+
+require getcwd() . '/vendor/autoload.php';
+require getcwd() . '/php/utils.php';
+
+$template = tempnam(sys_get_temp_dir(), 'mustache-wp-cli-');
+
+try {
+    file_put_contents($template, 'Hello {{ name }}: {{ html }}');
+
+    $output = \WP_CLI\Utils\mustache_render($template, [
+        'name' => 'WP-CLI',
+        'html' => '<strong>raw</strong>',
+    ]);
+
+    if ($output !== 'Hello WP-CLI: <strong>raw</strong>') {
+        fwrite(STDERR, "Unexpected WP-CLI Mustache output: {$output}\n");
+        exit(1);
+    }
+} finally {
+    @unlink($template);
+}
+PHP
+}
+
+run_one_project() {
+    local -r project="$1"
+    local repo ref
+
+    case "${project}" in
+        wp-cli)
+            repo="wp-cli/wp-cli"
+            ref="main"
+            ;;
+        *)
+            echo "Unknown project ID: ${project}" >&2
+            return 1
+            ;;
+    esac
+
+    local -r mustache_path="${MUSTACHE_PATH:-${MUSTACHE_ROOT}}"
+    local repo_config_json
+    repo_config_json=$(php -r 'echo json_encode([
+        "type" => "path",
+        "url" => $argv[1],
+        "options" => [
+            "symlink" => true,
+            "versions" => ["mustache/mustache" => $argv[2]],
+        ],
+    ]);' "${mustache_path}" "${OVERRIDE_VERSION}")
+    readonly repo_config_json
+
+    local -r tmp_dir="$(mktemp -d)"
+    local -r work_dir="${tmp_dir}/${project}"
+
+    echo
+    echo "==> ${project}"
+    echo "    repo: ${repo} (${ref})"
+
+    (
+        if [[ "${DOWNSTREAM_KEEP_TMP:-0}" == "1" ]]; then
+            echo "    temp dir preserved: ${tmp_dir}"
+        else
+            trap 'rm -rf "${tmp_dir}"' EXIT
+        fi
+
+        retry 3 git clone --depth 1 --branch "${ref}" "https://github.com/${repo}.git" "${work_dir}"
+        cd "${work_dir}"
+
+        composer config repositories.mustache "${repo_config_json}"
+        if [[ -f composer.lock ]]; then
+            composer update mustache/mustache --with-all-dependencies --no-dev --no-interaction --no-progress
+        else
+            composer update --no-dev --no-interaction --no-progress
+        fi
+
+        case "${project}" in
+            wp-cli) run_wp_cli_smoke ;;
+        esac
+    )
+}
+
+main() {
+    local -a projects=()
+
+    if [[ $# -ne 1 ]]; then
+        usage
+        exit 1
+    fi
+
+    case "$1" in
+        --list)
+            list_projects
+            return
+            ;;
+        all)
+            projects=("${DEFAULT_PROJECTS[@]}")
+            ;;
+        -h|--help)
+            usage
+            return
+            ;;
+        *)
+            projects=("$1")
+            ;;
+    esac
+
+    for project in "${projects[@]}"; do
+        run_one_project "${project}"
+    done
+}
+
+main "$@"

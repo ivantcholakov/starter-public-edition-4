@@ -1,0 +1,35 @@
+name: Downstream
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 4 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  downstream:
+    name: ${{ matrix.project }} (PHP ${{ matrix.php }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - project: wp-cli
+            php: '8.3'
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v6
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: composer:v2
+          coverage: none
+
+      - name: Run downstream smoke test
+        run: .github/scripts/test-downstream "${{ matrix.project }}"
+        timeout-minutes: 10
