@@ -25,7 +25,7 @@
         "symfony/polyfill-php80": "1.28.0",
         "symfony/polyfill-php81": "1.28.0",
         "symfony/polyfill-php82": "1.38.1",
-        "symfony/polyfill-php83": "1.28.0",
+        "symfony/polyfill-php83": "1.38.1",
         "symfony/polyfill-ctype": "1.28.0",
         "symfony/polyfill-mbstring": "1.28.0",
         "symfony/polyfill-iconv": "1.28.0",

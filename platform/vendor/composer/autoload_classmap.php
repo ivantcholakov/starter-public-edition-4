@@ -730,6 +730,7 @@ return array(
     'Random\\RandomError' => $vendorDir . '/symfony/polyfill-php82/Resources/stubs/Random/RandomError.php',
     'Random\\RandomException' => $vendorDir . '/symfony/polyfill-php82/Resources/stubs/Random/RandomException.php',
     'ReturnTypeWillChange' => $vendorDir . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
+    'SQLite3Exception' => $vendorDir . '/symfony/polyfill-php83/Resources/stubs/SQLite3Exception.php',
     'ScssPhp\\ScssPhp\\Base\\Range' => $vendorDir . '/scssphp/scssphp/src/Base/Range.php',
     'ScssPhp\\ScssPhp\\Block' => $vendorDir . '/scssphp/scssphp/src/Block.php',
     'ScssPhp\\ScssPhp\\Block\\AtRootBlock' => $vendorDir . '/scssphp/scssphp/src/Block/AtRootBlock.php',
