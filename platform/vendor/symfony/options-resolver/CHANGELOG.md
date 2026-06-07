@@ -1,6 +1,23 @@
 CHANGELOG
 =========
 
+7.3
+---
+
+ * Support union type in `OptionResolver::setAllowedTypes()` method
+ * Add `OptionsResolver::setOptions()` and `OptionConfigurator::options()` methods
+ * Deprecate defining nested options via `setDefault()`, use `setOptions()` instead
+
+6.4
+---
+
+ * Improve message with full path on invalid type in nested option
+
+6.3
+---
+
+ * Add `OptionsResolver::setIgnoreUndefined()` and `OptionConfigurator::ignoreUndefined()` to ignore not defined options while resolving
+
 6.0
 ---
 
