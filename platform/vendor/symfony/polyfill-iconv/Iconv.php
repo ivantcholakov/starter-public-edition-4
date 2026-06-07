@@ -185,7 +185,7 @@ final class Iconv
 
         if (('utf-8' !== $inCharset && !self::loadMap('from.', $inCharset, $inMap))
           || ('utf-8' !== $outCharset && !self::loadMap('to.', $outCharset, $outMap))) {
-            trigger_error(sprintf(self::ERROR_WRONG_CHARSET, $inCharset, $outCharset));
+            trigger_error(\sprintf(self::ERROR_WRONG_CHARSET, $inCharset, $outCharset));
 
             return false;
         }
@@ -429,32 +429,6 @@ final class Iconv
     }
 
     public static function iconv_strlen($s, $encoding = null)
-    {
-        static $hasXml = null;
-        if (null === $hasXml) {
-            $hasXml = \extension_loaded('xml');
-        }
-
-        if ($hasXml) {
-            return self::strlen1($s, $encoding);
-        }
-
-        return self::strlen2($s, $encoding);
-    }
-
-    public static function strlen1($s, $encoding = null)
-    {
-        if (null === $encoding) {
-            $encoding = self::$internalEncoding;
-        }
-        if (0 !== stripos($encoding, 'utf-8') && false === $s = self::iconv($encoding, 'utf-8', $s)) {
-            return false;
-        }
-
-        return \strlen(utf8_decode($s));
-    }
-
-    public static function strlen2($s, $encoding = null)
     {
         if (null === $encoding) {
             $encoding = self::$internalEncoding;
