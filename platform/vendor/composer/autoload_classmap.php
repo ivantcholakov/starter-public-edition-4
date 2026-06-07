@@ -224,6 +224,7 @@ return array(
     'HTMLPurifier_AttrDef_CSS_Multiple' => $vendorDir . '/ezyang/htmlpurifier/library/HTMLPurifier/AttrDef/CSS/Multiple.php',
     'HTMLPurifier_AttrDef_CSS_Number' => $vendorDir . '/ezyang/htmlpurifier/library/HTMLPurifier/AttrDef/CSS/Number.php',
     'HTMLPurifier_AttrDef_CSS_Percentage' => $vendorDir . '/ezyang/htmlpurifier/library/HTMLPurifier/AttrDef/CSS/Percentage.php',
+    'HTMLPurifier_AttrDef_CSS_Ratio' => $vendorDir . '/ezyang/htmlpurifier/library/HTMLPurifier/AttrDef/CSS/Ratio.php',
     'HTMLPurifier_AttrDef_CSS_TextDecoration' => $vendorDir . '/ezyang/htmlpurifier/library/HTMLPurifier/AttrDef/CSS/TextDecoration.php',
     'HTMLPurifier_AttrDef_CSS_URI' => $vendorDir . '/ezyang/htmlpurifier/library/HTMLPurifier/AttrDef/CSS/URI.php',
     'HTMLPurifier_AttrDef_Clone' => $vendorDir . '/ezyang/htmlpurifier/library/HTMLPurifier/AttrDef/Clone.php',
