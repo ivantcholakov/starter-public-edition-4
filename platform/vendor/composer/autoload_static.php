@@ -29,7 +29,6 @@ class ComposerStaticInite8cec9e0c2dc76883ed32798db3a44e5
         '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '04b6576f786ea6b5b4b577af08f8e4d1' => __DIR__ . '/..' . '/symfony/polyfill-intl-messageformatter/bootstrap.php',
-        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
         '5897ea0ac4cccf14d323035e65887801' => __DIR__ . '/..' . '/symfony/polyfill-php82/bootstrap.php',
         '662a729f963d39afe703c9d9b7ab4a8c' => __DIR__ . '/..' . '/symfony/polyfill-php83/bootstrap.php',
@@ -70,7 +69,6 @@ class ComposerStaticInite8cec9e0c2dc76883ed32798db3a44e5
             'Symfony\\Polyfill\\Php83\\' => 23,
             'Symfony\\Polyfill\\Php82\\' => 23,
             'Symfony\\Polyfill\\Php81\\' => 23,
-            'Symfony\\Polyfill\\Php80\\' => 23,
             'Symfony\\Polyfill\\Php72\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Intl\\Normalizer\\' => 33,
@@ -193,10 +191,6 @@ class ComposerStaticInite8cec9e0c2dc76883ed32798db3a44e5
         'Symfony\\Polyfill\\Php81\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php81',
-        ),
-        'Symfony\\Polyfill\\Php80\\' =>
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
         ),
         'Symfony\\Polyfill\\Php72\\' =>
         array (
@@ -384,7 +378,6 @@ class ComposerStaticInite8cec9e0c2dc76883ed32798db3a44e5
 
     public static $classMap = array (
         'AllowDynamicProperties' => __DIR__ . '/..' . '/symfony/polyfill-php82/Resources/stubs/AllowDynamicProperties.php',
-        'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'CURLStringFile' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/CURLStringFile.php',
         'Collator' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/Resources/stubs/Collator.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
@@ -1076,7 +1069,6 @@ class ComposerStaticInite8cec9e0c2dc76883ed32798db3a44e5
         'Pdo\\Odbc' => __DIR__ . '/..' . '/symfony/polyfill-php84/Resources/stubs/Pdo/Odbc.php',
         'Pdo\\Pgsql' => __DIR__ . '/..' . '/symfony/polyfill-php84/Resources/stubs/Pdo/Pgsql.php',
         'Pdo\\Sqlite' => __DIR__ . '/..' . '/symfony/polyfill-php84/Resources/stubs/Pdo/Sqlite.php',
-        'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
         'Proxy\\Config' => __DIR__ . '/..' . '/athlon1600/php-proxy/src/Config.php',
         'Proxy\\Event\\ProxyEvent' => __DIR__ . '/..' . '/athlon1600/php-proxy/src/Event/ProxyEvent.php',
         'Proxy\\Html' => __DIR__ . '/..' . '/athlon1600/php-proxy/src/Html.php',
@@ -1175,7 +1167,6 @@ class ComposerStaticInite8cec9e0c2dc76883ed32798db3a44e5
         'SensitiveParameterValue' => __DIR__ . '/..' . '/symfony/polyfill-php82/Resources/stubs/SensitiveParameterValue.php',
         'Stevenmaguire\\OAuth2\\Client\\Provider\\Microsoft' => __DIR__ . '/..' . '/stevenmaguire/oauth2-microsoft/src/Provider/Microsoft.php',
         'Stevenmaguire\\OAuth2\\Client\\Provider\\MicrosoftResourceOwner' => __DIR__ . '/..' . '/stevenmaguire/oauth2-microsoft/src/Provider/MicrosoftResourceOwner.php',
-        'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'Symfony\\Component\\Filesystem\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/symfony/filesystem/Exception/ExceptionInterface.php',
         'Symfony\\Component\\Filesystem\\Exception\\FileNotFoundException' => __DIR__ . '/..' . '/symfony/filesystem/Exception/FileNotFoundException.php',
         'Symfony\\Component\\Filesystem\\Exception\\IOException' => __DIR__ . '/..' . '/symfony/filesystem/Exception/IOException.php',
@@ -1295,8 +1286,6 @@ class ComposerStaticInite8cec9e0c2dc76883ed32798db3a44e5
         'Symfony\\Polyfill\\Intl\\Normalizer\\Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Normalizer.php',
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'Symfony\\Polyfill\\Php72\\Php72' => __DIR__ . '/..' . '/symfony/polyfill-php72/Php72.php',
-        'Symfony\\Polyfill\\Php80\\Php80' => __DIR__ . '/..' . '/symfony/polyfill-php80/Php80.php',
-        'Symfony\\Polyfill\\Php80\\PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/PhpToken.php',
         'Symfony\\Polyfill\\Php81\\Php81' => __DIR__ . '/..' . '/symfony/polyfill-php81/Php81.php',
         'Symfony\\Polyfill\\Php82\\NoDynamicProperties' => __DIR__ . '/..' . '/symfony/polyfill-php82/NoDynamicProperties.php',
         'Symfony\\Polyfill\\Php82\\Php82' => __DIR__ . '/..' . '/symfony/polyfill-php82/Php82.php',
@@ -1571,8 +1560,6 @@ class ComposerStaticInite8cec9e0c2dc76883ed32798db3a44e5
         'Twig\\Util\\DeprecationCollector' => __DIR__ . '/..' . '/twig/twig/src/Util/DeprecationCollector.php',
         'Twig\\Util\\ReflectionCallable' => __DIR__ . '/..' . '/twig/twig/src/Util/ReflectionCallable.php',
         'Twig\\Util\\TemplateDirIterator' => __DIR__ . '/..' . '/twig/twig/src/Util/TemplateDirIterator.php',
-        'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
-        'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
         'WhichBrowser\\Analyser' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser.php',
         'WhichBrowser\\Analyser\\Camouflage' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Camouflage.php',
         'WhichBrowser\\Analyser\\Corrections' => __DIR__ . '/..' . '/whichbrowser/parser/src/Analyser/Corrections.php',
