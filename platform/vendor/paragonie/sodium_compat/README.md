@@ -2,7 +2,6 @@
 
 [![Build Status](https://github.com/paragonie/sodium_compat/actions/workflows/ci.yml/badge.svg)](https://github.com/paragonie/sodium_compat/actions)
 [![Psalm Status](https://github.com/paragonie/sodium_compat/actions/workflows/psalm.yml/badge.svg)](https://github.com/paragonie/sodium_compat/actions)
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/itcx1vgmfqiawgbe?svg=true)](https://ci.appveyor.com/project/paragonie-scott/sodium-compat)
 [![Latest Stable Version](https://poser.pugx.org/paragonie/sodium_compat/v/stable)](https://packagist.org/packages/paragonie/sodium_compat)
 [![Latest Unstable Version](https://poser.pugx.org/paragonie/sodium_compat/v/unstable)](https://packagist.org/packages/paragonie/sodium_compat)
 [![License](https://poser.pugx.org/paragonie/sodium_compat/license)](https://packagist.org/packages/paragonie/sodium_compat)
@@ -11,11 +10,46 @@
 Sodium Compat is a pure PHP polyfill for the Sodium cryptography library 
 (libsodium), a core extension in PHP 7.2.0+ and otherwise [available in PECL](https://pecl.php.net/package/libsodium).
 
-This library tentatively supports PHP 5.2.4 - 8.x (latest), but officially
-only supports [non-EOL'd versions of PHP](https://secure.php.net/supported-versions.php).
-
 If you have the PHP extension installed, Sodium Compat will opportunistically
 and transparently use the PHP extension instead of our implementation.
+
+## Major Versions and Branches
+
+sodium_compat v1.21.0 was the last v1.x release from the master branch. From now
+on, all future releases that support PHP 5.2 - 8.0 and 32-bit integers will be
+[in the `v1.x` branch](https://github.com/paragonie/sodium_compat/tree/v1.x).
+
+Newer versions of sodium_compat (i.e., v2.0.0) will continue to live in the master
+branch, unless a new major version is needed. The goal of this work is to improve
+code readability and performance, while reducing boilerplate code.
+
+When in doubt, refer to the README file in [the master branch](https://github.com/paragonie/sodium_compat/blob/master/README.md)
+for the latest in version information.
+
+### Which version should I use?
+
+| sodium_compat version | PHP versions supported | 32-bit support? | Branch                                                        |
+|-----------------------|------------------------|-----------------|---------------------------------------------------------------|
+| `v1.x.y`              | 5.2.4 - LATEST         | YES             | [v1.x](https://github.com/paragonie/sodium_compat/tree/v1.x)  |
+| `v2.x.y`              | 8.1 - LATEST           | NO              | **master**                                                    |
+
+If you need 32-bit PHP support (`PHP_INT_SIZE == 4`), continue using sodium_compat v1.x.
+If you want improved performance and smaller dependencies, use v2.x.
+
+We recommend libraries and frameworks set a Composer version constraint as follows:
+
+```javascript
+{
+    "require": {
+        /* ... */
+        "paragonie/sodium_compat": ">= 1"
+        /* ... */
+    }
+}
+```
+
+Applications should, conversely, specify the actual version that matters to them 
+and their deployments.
 
 ## IMPORTANT!
 
@@ -126,32 +160,6 @@ if (sodium_crypto_sign_verify_detached($signature, $message, $alice_pk)) {
 }
 ```
 
-## Polyfill For the Old PECL Extension API
-
-If you're using PHP 5.3.0 or newer and do not have the PECL extension installed,
-you can just use the [standard ext/sodium API features as-is](https://paragonie.com/book/pecl-libsodium)
-and the polyfill will work its magic.
-
-```php
-<?php
-require_once "/path/to/sodium_compat/autoload.php";
-
-$alice_kp = \Sodium\crypto_sign_keypair();
-$alice_sk = \Sodium\crypto_sign_secretkey($alice_kp);
-$alice_pk = \Sodium\crypto_sign_publickey($alice_kp);
-
-$message = 'This is a test message.';
-$signature = \Sodium\crypto_sign_detached($message, $alice_sk);
-if (\Sodium\crypto_sign_verify_detached($signature, $message, $alice_pk)) {
-    echo 'OK', PHP_EOL;
-} else {
-    throw new Exception('Invalid signature');
-}
-```
-
-The polyfill does not expose this API on PHP < 5.3, or if you have the PHP
-extension installed already.
-
 ## General-Use Polyfill
 
 If your users are on PHP < 5.3, or you want to write code that will work
@@ -177,7 +185,7 @@ if (ParagonIE_Sodium_Compat::crypto_sign_verify_detached($signature, $message, $
 }
 ```
 
-Generally: If you replace `\Sodium\ ` with `ParagonIE_Sodium_Compat::`, any
+Generally: If you replace `sodium_` with `ParagonIE_Sodium_Compat::`, any
 code already written for the libsodium PHP extension should work with our
 polyfill without additional code changes.
 
@@ -219,26 +227,6 @@ if (ParagonIE_Sodium_Compat::polyfill_is_fast()) {
 }
 ```
 
-### Help, my PHP only has 32-Bit Integers! It's super slow!
-
-If the `PHP_INT_SIZE` constant equals `4` instead of `8` (PHP 5 on Windows,
-Linux on i386, etc.), you will run into **significant performance issues**.
-
-In particular: public-key cryptography (encryption and signatures)
-is affected. There is nothing we can do about that.
-
-The root cause of these performance issues has to do with implementing cryptography
-algorithms in constant-time using 16-bit limbs (to avoid overflow) in pure PHP.
-
-To mitigate these performance issues, simply install PHP 7.2 or newer and enable
-the `sodium` extension.
-
-Affected users are encouraged to install the sodium extension (or libsodium from
-older version of PHP).
-
-Windows users on PHP 5 may be able to simply upgrade to PHP 7 and the slowdown
-will be greatly reduced.
-
 ## Documentation
 
 First, you'll want to read the [Libsodium Quick Reference](https://paragonie.com/blog/2017/06/libsodium-quick-reference-quick-comparison-similar-functions-and-which-one-use).
@@ -266,6 +254,10 @@ insightful technical information you may find helpful.
     * `crypto_sign()`
     * `crypto_sign_open()`
 * PECL Libsodium Features
+    * `crypto_aead_aegis128l_encrypt()`
+    * `crypto_aead_aegis128l_decrypt()`
+    * `crypto_aead_aegis256_encrypt()`
+    * `crypto_aead_aegis256_decrypt()`
     * `crypto_aead_aes256gcm_encrypt()`
     * `crypto_aead_aes256gcm_decrypt()`
     * `crypto_aead_chacha20poly1305_encrypt()`
@@ -343,13 +335,13 @@ insightful technical information you may find helpful.
 
 ### Features Excluded from this Polyfill
 
-* `\Sodium\memzero()` - Although we expose this API endpoint, we can't reliably
+* `sodium_memzero()` - Although we expose this API endpoint, we can't reliably
   zero buffers from PHP.
   
   If you have the PHP extension installed, sodium_compat
   will use the native implementation to zero out the string provided. Otherwise
   it will throw a `SodiumException`.
-* `\Sodium\crypto_pwhash()` - It's not feasible to polyfill scrypt or Argon2
+* `sodium_crypto_pwhash()` - It's not feasible to polyfill scrypt or Argon2
   into PHP and get reasonable performance. Users would feel motivated to select
   parameters that downgrade security to avoid denial of service (DoS) attacks.
   
@@ -361,6 +353,8 @@ insightful technical information you may find helpful.
   To detect support for Argon2i at runtime, use
   `ParagonIE_Sodium_Compat::crypto_pwhash_is_available()`, which returns a
    boolean value (`TRUE` or `FALSE`).
+* Libsodium's HKDF API (`crypto_kdf_hkdf_*()`) is not included because PHP has
+  its own [HMAC features](https://php.met/hash_hmac) amd it was not deemed necessary.
 
 ### PHPCompatibility Ruleset
 
