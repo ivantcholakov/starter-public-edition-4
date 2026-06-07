@@ -39,7 +39,7 @@
         "symfony/string": "7.4.13",
         "symfony/options-resolver": "7.4.8",
         "symfony/process": "7.4.13",
-        "symfony/filesystem": "6.0.19",
+        "symfony/filesystem": "7.4.11",
         "symfony/finder": "6.0.19",
         "psr/cache": "3.0.0",
         "fg/multiplayer": "1.2.1",
