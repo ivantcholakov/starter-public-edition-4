@@ -939,7 +939,6 @@ return array(
     'Symfony\\Polyfill\\Intl\\MessageFormatter\\MessageFormatter' => $vendorDir . '/symfony/polyfill-intl-messageformatter/MessageFormatter.php',
     'Symfony\\Polyfill\\Intl\\Normalizer\\Normalizer' => $vendorDir . '/symfony/polyfill-intl-normalizer/Normalizer.php',
     'Symfony\\Polyfill\\Mbstring\\Mbstring' => $vendorDir . '/symfony/polyfill-mbstring/Mbstring.php',
-    'Symfony\\Polyfill\\Php72\\Php72' => $vendorDir . '/symfony/polyfill-php72/Php72.php',
     'Symfony\\Polyfill\\Php83\\Php83' => $vendorDir . '/symfony/polyfill-php83/Php83.php',
     'Symfony\\Polyfill\\Php84\\Php84' => $vendorDir . '/symfony/polyfill-php84/Php84.php',
     'Symfony\\Polyfill\\Php85\\Php85' => $vendorDir . '/symfony/polyfill-php85/Php85.php',

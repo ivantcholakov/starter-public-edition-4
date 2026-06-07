@@ -42,7 +42,7 @@
         "symfony/finder": "7.4.8",
         "psr/cache": "3.0.0",
         "fg/multiplayer": "1.2.1",
-        "voku/portable-utf8": "6.0.13",
+        "voku/portable-utf8": "6.1.1",
         "erusev/parsedown": "1.8.0",
         "erusev/parsedown-extra": "0.8.1",
         "pixel418/markdownify": "2.3.3",
