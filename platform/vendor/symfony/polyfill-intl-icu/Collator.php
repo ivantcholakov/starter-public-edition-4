@@ -118,23 +118,21 @@ abstract class Collator
     }
 
     /**
-     * Not supported. Compare two Unicode strings.
+     * Compare two Unicode strings.
      *
-     * @return bool|int
+     * @return int|false
      *
      * @see https://php.net/collator.compare
-     *
-     * @throws MethodNotImplementedException
      */
     public function compare(string $string1, string $string2)
     {
-        throw new MethodNotImplementedException(__METHOD__);
+        return strcasecmp($string1, $string2) ?: $string2 <=> $string1;
     }
 
     /**
      * Not supported. Get a value of an integer collator attribute.
      *
-     * @return bool|int The attribute value on success or false on error
+     * @return int|false The attribute value on success or false on error
      *
      * @see https://php.net/collator.getattribute
      *
@@ -148,7 +146,7 @@ abstract class Collator
     /**
      * Returns collator's last error code. Always returns the U_ZERO_ERROR class constant value.
      *
-     * @return int The error code from last collator call
+     * @return int|false The error code from last collator call
      */
     public function getErrorCode()
     {
@@ -158,7 +156,7 @@ abstract class Collator
     /**
      * Returns collator's last error message. Always returns the U_ZERO_ERROR_MESSAGE class constant value.
      *
-     * @return string The error message from last collator call
+     * @return string|false The error message from last collator call
      */
     public function getErrorMessage()
     {
@@ -168,8 +166,8 @@ abstract class Collator
     /**
      * Returns the collator's locale.
      *
-     * @return string The locale used to create the collator. Currently always
-     *                returns "en".
+     * @return string|false The locale used to create the collator. Currently
+     *                      always returns "en".
      */
     public function getLocale(int $type = Locale::ACTUAL_LOCALE)
     {
@@ -179,7 +177,7 @@ abstract class Collator
     /**
      * Not supported. Get sorting key for a string.
      *
-     * @return string The collation key for $string
+     * @return string|false The collation key for $string
      *
      * @see https://php.net/collator.getsortkey
      *
@@ -193,7 +191,7 @@ abstract class Collator
     /**
      * Not supported. Get current collator's strength.
      *
-     * @return bool|int The current collator's strength or false on failure
+     * @return int The current collator's strength or false on failure
      *
      * @see https://php.net/collator.getstrength
      *

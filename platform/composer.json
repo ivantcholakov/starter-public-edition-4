@@ -31,7 +31,7 @@
         "symfony/polyfill-iconv": "1.37.0",
         "symfony/polyfill-intl-grapheme": "1.38.1",
         "symfony/polyfill-intl-idn": "1.38.1",
-        "symfony/polyfill-intl-icu": "1.28.0",
+        "symfony/polyfill-intl-icu": "1.38.0",
         "symfony/polyfill-intl-messageformatter": "1.28.0",
         "symfony/polyfill-intl-normalizer": "1.28.0",
         "symfony/polyfill-uuid": "1.28.0",
