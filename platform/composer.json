@@ -34,7 +34,7 @@
         "symfony/polyfill-intl-icu": "1.38.0",
         "symfony/polyfill-intl-messageformatter": "1.38.0",
         "symfony/polyfill-intl-normalizer": "1.38.0",
-        "symfony/polyfill-uuid": "1.28.0",
+        "symfony/polyfill-uuid": "1.37.0",
         "symfony/deprecation-contracts": "3.0.2",
         "symfony/string": "6.0.19",
         "symfony/options-resolver": "6.0.19",
