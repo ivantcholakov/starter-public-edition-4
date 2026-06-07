@@ -112,7 +112,9 @@ class MessageFormatter
     public function setPattern(string $pattern)
     {
         try {
-            $this->tokens = self::tokenizePattern($pattern);
+            $tokens = self::tokenizePattern($pattern);
+            self::validateTokens($tokens);
+            $this->tokens = $tokens;
             $this->pattern = $pattern;
         } catch (\DomainException $e) {
             return false;
@@ -143,8 +145,13 @@ class MessageFormatter
     public function parse(string $string)
     {
         $this->errorCode = -1;
-        $this->errorMessage = sprintf('The PHP intl extension is required to use "MessageFormatter::%s()".', __FUNCTION__);
+        $this->errorMessage = \sprintf('The PHP intl extension is required to use "MessageFormatter::%s()".', __FUNCTION__);
 
+        return false;
+    }
+
+    public static function parseMessage(string $locale, string $pattern, string $message)
+    {
         return false;
     }
 
@@ -157,6 +164,59 @@ class MessageFormatter
         }
 
         return implode('', $tokens);
+    }
+
+    private static function validateTokens(array $tokens): void
+    {
+        foreach ($tokens as $token) {
+            if (!\is_array($token)) {
+                continue;
+            }
+            $type = isset($token[1]) ? trim($token[1]) : 'none';
+            switch ($type) {
+                case 'none':
+                case 'number':
+                case 'date':
+                case 'time':
+                case 'spellout':
+                case 'ordinal':
+                case 'duration':
+                case 'choice':
+                    break;
+                case 'selectordinal':
+                case 'plural':
+                case 'select':
+                    if (!isset($token[2])) {
+                        throw new \DomainException('Message pattern is invalid.');
+                    }
+                    $sub = self::tokenizePattern($token[2]);
+                    $c = \count($sub);
+                    if ($c < 2) {
+                        throw new \DomainException('Message pattern is invalid.');
+                    }
+                    $hasOther = false;
+                    for ($i = 0; 1 + $i < $c; $i += 2) {
+                        if (\is_array($sub[$i]) || !\is_array($sub[1 + $i])) {
+                            throw new \DomainException('Message pattern is invalid.');
+                        }
+                        $selector = trim($sub[$i]);
+                        if ('plural' === $type && 0 === $i && 0 === strncmp($selector, 'offset:', 7)) {
+                            $offsetEnd = strpos(str_replace(["\n", "\r", "\t"], ' ', $selector), ' ', 7);
+                            $selector = false !== $offsetEnd ? trim(substr($selector, 1 + $offsetEnd)) : '';
+                        }
+                        if ('other' === $selector) {
+                            $hasOther = true;
+                        }
+                        self::validateTokens(self::tokenizePattern(implode(',', $sub[1 + $i])));
+                    }
+                    if (!$hasOther) {
+                        throw new \DomainException('Message pattern is invalid.');
+                    }
+                    break;
+                default:
+                    throw new \DomainException('Message pattern is invalid.');
+            }
+        }
     }
 
     private static function tokenizePattern($pattern)
@@ -227,7 +287,7 @@ class MessageFormatter
             case 'duration':
             case 'choice':
             case 'selectordinal':
-                throw new \DomainException(sprintf('The PHP intl extension is required to use the "%s" message format.', $type));
+                throw new \DomainException(\sprintf('The PHP intl extension is required to use the "%s" message format.', $type));
             case 'number':
                 $format = isset($token[2]) ? trim($token[2]) : null;
                 if (!is_numeric($arg) || (null !== $format && 'integer' !== $format)) {
@@ -296,9 +356,9 @@ class MessageFormatter
                         $offset = (int) trim(substr($selector, 7, $pos - 7));
                         $selector = trim(substr($selector, 1 + $pos, \strlen($selector)));
                     }
-                    if (false === $message && 'other' === $selector ||
-                        '=' === $selector[0] && (int) substr($selector, 1, \strlen($selector)) === $arg ||
-                        'one' === $selector && 1 == $arg - $offset
+                    if (false === $message && 'other' === $selector
+                        || '=' === $selector[0] && (int) substr($selector, 1, \strlen($selector)) === $arg
+                        || 'one' === $selector && 1 == $arg - $offset
                     ) {
                         $message = implode(',', str_replace('#', $arg - $offset, $plural[$i]));
                     }

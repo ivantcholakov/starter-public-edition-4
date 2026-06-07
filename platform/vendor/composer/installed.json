@@ -3276,34 +3276,31 @@
         },
         {
             "name": "symfony/polyfill-intl-messageformatter",
-            "version": "v1.28.0",
-            "version_normalized": "1.28.0.0",
+            "version": "v1.38.0",
+            "version_normalized": "1.38.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-messageformatter.git",
-                "reference": "695939f0c6342f252050ad3e6b855ac745b99e18"
+                "reference": "62cbeebabc201dbdf515243ccaf0f087ca988e1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-messageformatter/zipball/695939f0c6342f252050ad3e6b855ac745b99e18",
-                "reference": "695939f0c6342f252050ad3e6b855ac745b99e18",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-messageformatter/zipball/62cbeebabc201dbdf515243ccaf0f087ca988e1d",
+                "reference": "62cbeebabc201dbdf515243ccaf0f087ca988e1d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.2"
             },
             "suggest": {
                 "ext-intl": "For best performance"
             },
-            "time": "2023-01-26T09:26:14+00:00",
+            "time": "2026-05-25T15:05:24+00:00",
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "1.28-dev"
-                },
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "installation-source": "dist",
@@ -3343,7 +3340,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-intl-messageformatter/tree/v1.28.0"
+                "source": "https://github.com/symfony/polyfill-intl-messageformatter/tree/v1.38.0"
             },
             "funding": [
                 {
@@ -3352,6 +3349,10 @@
                 },
                 {
                     "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
                     "type": "github"
                 },
                 {
