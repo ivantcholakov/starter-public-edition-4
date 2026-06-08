@@ -20,7 +20,7 @@
  * Additions and fixes Copyright (c) 2010-17 Netcarver         https://github.com/netcarver
  * Additions and fixes Copyright (c) 2011    Jeff Soo          http://ipsedixit.net/
  * Additions and fixes Copyright (c) 2012    Robert Wetzlmayr  http://wetzlmayr.com/
- * Additions and fixes Copyright (c) 2012-19 Jukka Svahn       http://rahforum.biz/
+ * Additions and fixes Copyright (c) 2012-24 Jukka Svahn       https://rahforum.biz/
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -384,7 +384,7 @@ class Parser
      *
      * @var string
      */
-    protected $ver = '4.0.0';
+    protected $ver = '4.1.4';
 
     /**
      * Regular expression snippets.
@@ -1972,6 +1972,9 @@ class Parser
             // Inline markup (em, strong, sup, sub, del etc).
             $text = $this->spans($text);
 
+            // Generate links.
+            $text = $this->links($text);
+
             // Glyph level substitutions (mainly typographic -- " & ' => curly quotes, -- => em-dash etc.
             $text = $this->glyphs($text);
         }
@@ -1980,6 +1983,9 @@ class Parser
         $text = $this->replaceGlyphs($text);
         $text = $this->retrieveTags($text);
         $text = $this->retrieveURLs($text);
+
+        // Replace shelved instances that were inside tag and link attributes.
+        $text = $this->retrieve($text);
 
         $text = str_replace($this->getLineBreak(), $this->getLineBreak()."\n", $text);
 
@@ -2527,14 +2533,14 @@ class Parser
         }
 
         if (preg_match("/\(([^()]+)\)/U", $matched, $cls)) {
-            $class_regex = "/^([-a-zA-Z 0-9_\.\/\[\]]*)$/";
+            $class_regex = "/^([-a-zA-Z 0-9_\.\/\[\]:!]*)$/";
 
             // Consume entire class block -- valid or invalid.
             $matched = str_replace($cls[0], '', $matched);
 
             // Only allow a restricted subset of the CSS standard characters for classes/ids.
             // No encoding markers allowed.
-            if (preg_match("/\(([-a-zA-Z 0-9_\/\[\]\.\:\#]+)\)/U", $cls[0], $cls)) {
+            if (preg_match("/\(([-a-zA-Z 0-9_\/\[\].:!#]+)\)/U", $cls[0], $cls)) {
                 $hashpos = strpos($cls[1], '#');
                 // If a textile class block attribute was found with a '#' in it
                 // split it into the css class and css id...
@@ -3033,8 +3039,8 @@ class Parser
 
         foreach ($list as $index => $m) {
             $start = '';
-            $content = trim($m['content']);
-            $ltype = $this->liType($m['tl']);
+            $content = trim((string) $m['content']);
+            $ltype = $this->liType((string) $m['tl']);
 
             if (isset($list[$index + 1])) {
                 $next = $list[$index + 1];
@@ -3042,9 +3048,9 @@ class Parser
                 $next = false;
             }
 
-            if (strpos($m['tl'], ';') !== false) {
+            if (strpos((string) $m['tl'], ';') !== false) {
                 $litem = 'dt';
-            } elseif (strpos($m['tl'], ':') !== false) {
+            } elseif (strpos((string) $m['tl'], ':') !== false) {
                 $litem = 'dd';
             } else {
                 $litem = 'li';
@@ -3074,12 +3080,16 @@ class Parser
                 }
             }
 
-            if ($prev && $prev['tl'] && strpos($prev['tl'], ';') !== false && strpos($m['tl'], ':') !== false) {
+            if ($prev
+                && $prev['tl']
+                && strpos((string) $prev['tl'], ';') !== false
+                && strpos((string) $m['tl'], ':') !== false
+            ) {
                 $lists[$m['tl']] = 2;
             }
 
-            $tabs = str_repeat("\t", $m['level'] - 1);
-            $atts = $this->parseAttribs($m['atts']);
+            $tabs = str_repeat("\t", ((int) $m['level']) - 1);
+            $atts = $this->parseAttribs((string) $m['atts']);
 
             if (!isset($lists[$m['tl']])) {
                 $lists[$m['tl']] = 1;
@@ -3754,7 +3764,6 @@ class Parser
                 ksort($o);
             }
 
-            // @phpstan-ignore-next-line
             $this->notes = $o;
         }
 
@@ -3856,7 +3865,12 @@ class Parser
             foreach ($items as $id) {
                 $out[] = '<sup><a href="#noteref'.$id.'">'. (($decode) ? $this->decodeHigh($i_) : $i_) .'</a></sup>';
                 if ($allow_inc) {
-                    $i_++;
+                    if (function_exists('str_increment')) {
+                        // @phpstan-ignore-next-line
+                        $i_ = str_increment($i_);
+                    } else {
+                        $i_++;
+                    }
                 }
             }
 
@@ -3949,6 +3963,7 @@ class Parser
         // If we are referencing a note that hasn't had the definition parsed yet, then assign it an ID.
 
         if (empty($this->notes[$m['label']]['id'])) {
+            // @phpstan-ignore-next-line
             $id = $this->notes[$m['label']]['id'] = $this->linkPrefix . ($this->linkIndex++);
         } else {
             $id = $this->notes[$m['label']]['id'];
@@ -3958,6 +3973,7 @@ class Parser
         $out = '<span id="noteref'.$refid.'">'.$num.'</span>';
 
         if (!$nolink) {
+            // @phpstan-ignore-next-line
             $out = '<a href="#note'.$id.'">'.$out.'</a>';
         }
 
@@ -4707,6 +4723,10 @@ class Parser
         $url = $m['url'];
         $title = (isset($m['title'])) ? $m['title'] : '';
         $href = (isset($m['href'])) ? $m['href'] : '';
+
+        if ($href && !$this->isValidUrl($href)) {
+            return $m[0];
+        }
 
         $alignments = array(
             '<'    => 'left',
