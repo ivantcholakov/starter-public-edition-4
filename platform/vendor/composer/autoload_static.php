@@ -148,7 +148,6 @@ class ComposerStaticInite8cec9e0c2dc76883ed32798db3a44e5
         'WhichBrowser\\' =>
         array (
             0 => __DIR__ . '/..' . '/whichbrowser/parser/src',
-            1 => __DIR__ . '/..' . '/whichbrowser/parser/tests/src',
         ),
         'Twig\\Extra\\String\\' =>
         array (

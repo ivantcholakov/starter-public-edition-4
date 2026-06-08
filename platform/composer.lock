@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e2aa0357bca1a790504f7e382d96235d",
+    "content-hash": "a321349967436c799f1a08ffe1bd7e87",
     "packages": [
         {
             "name": "athlon1600/php-proxy",
@@ -4756,16 +4756,16 @@
         },
         {
             "name": "whichbrowser/parser",
-            "version": "v2.1.7",
+            "version": "v2.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WhichBrowser/Parser-PHP.git",
-                "reference": "1044880bc792dbce5948fbff22ae731c43c280d9"
+                "reference": "581d614d686bfbec3529ad60562a5213ac5d8d72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WhichBrowser/Parser-PHP/zipball/1044880bc792dbce5948fbff22ae731c43c280d9",
-                "reference": "1044880bc792dbce5948fbff22ae731c43c280d9",
+                "url": "https://api.github.com/repos/WhichBrowser/Parser-PHP/zipball/581d614d686bfbec3529ad60562a5213ac5d8d72",
+                "reference": "581d614d686bfbec3529ad60562a5213ac5d8d72",
                 "shasum": ""
             },
             "require": {
@@ -4788,8 +4788,7 @@
             "autoload": {
                 "psr-4": {
                     "WhichBrowser\\": [
-                        "src/",
-                        "tests/src/"
+                        "src/"
                     ]
                 }
             },
@@ -4814,9 +4813,9 @@
             ],
             "support": {
                 "issues": "https://github.com/WhichBrowser/Parser-PHP/issues",
-                "source": "https://github.com/WhichBrowser/Parser-PHP/tree/v2.1.7"
+                "source": "https://github.com/WhichBrowser/Parser-PHP/tree/v2.1.8"
             },
-            "time": "2022-04-19T20:14:54+00:00"
+            "time": "2024-04-17T12:47:41+00:00"
         },
         {
             "name": "yohang88/letter-avatar",
