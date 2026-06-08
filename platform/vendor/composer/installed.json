@@ -1256,27 +1256,27 @@
         },
         {
             "name": "ivantcholakov/codeigniter-phpmailer",
-            "version": "v1.5.0",
-            "version_normalized": "1.5.0.0",
+            "version": "v1.6.0",
+            "version_normalized": "1.6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivantcholakov/codeigniter-phpmailer.git",
-                "reference": "83b38693b7439710e1c5dcf946a2069bc3b0fad6"
+                "reference": "b34fb828ad1a411d9f8c23969b68b114ef9a575d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivantcholakov/codeigniter-phpmailer/zipball/83b38693b7439710e1c5dcf946a2069bc3b0fad6",
-                "reference": "83b38693b7439710e1c5dcf946a2069bc3b0fad6",
+                "url": "https://api.github.com/repos/ivantcholakov/codeigniter-phpmailer/zipball/b34fb828ad1a411d9f8c23969b68b114ef9a575d",
+                "reference": "b34fb828ad1a411d9f8c23969b68b114ef9a575d",
                 "shasum": ""
             },
             "require": {
                 "hayageek/oauth2-yahoo": "^2.0.5",
-                "league/oauth2-google": "^4.0.0",
-                "php": ">=7.3.0",
-                "phpmailer/phpmailer": "^6.6.4",
+                "league/oauth2-google": "^5.0.0",
+                "php": ">=8.1.0",
+                "phpmailer/phpmailer": "^7.1.1",
                 "stevenmaguire/oauth2-microsoft": "^2.2.0"
             },
-            "time": "2022-08-25T03:11:28+00:00",
+            "time": "2026-05-20T06:39:54+00:00",
             "type": "library",
             "installation-source": "dist",
             "notification-url": "https://packagist.org/downloads/",
@@ -1299,7 +1299,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ivantcholakov/codeigniter-phpmailer/issues",
-                "source": "https://github.com/ivantcholakov/codeigniter-phpmailer/tree/v1.5.0"
+                "source": "https://github.com/ivantcholakov/codeigniter-phpmailer/tree/v1.6.0"
             },
             "install-path": "../ivantcholakov/codeigniter-phpmailer"
         },
@@ -1373,29 +1373,29 @@
         },
         {
             "name": "league/oauth2-google",
-            "version": "4.2.0",
-            "version_normalized": "4.2.0.0",
+            "version": "5.0.0",
+            "version_normalized": "5.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/oauth2-google.git",
-                "reference": "72be69505f890ea8b6d4e716f619b3c10a1f5010"
+                "reference": "23ba9a808fd88d7c9a9fdec5548c4861b3a4b295"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth2-google/zipball/72be69505f890ea8b6d4e716f619b3c10a1f5010",
-                "reference": "72be69505f890ea8b6d4e716f619b3c10a1f5010",
+                "url": "https://api.github.com/repos/thephpleague/oauth2-google/zipball/23ba9a808fd88d7c9a9fdec5548c4861b3a4b295",
+                "reference": "23ba9a808fd88d7c9a9fdec5548c4861b3a4b295",
                 "shasum": ""
             },
             "require": {
                 "league/oauth2-client": "^2.0 || ^3.0",
-                "php": "^7.3 || ^8.0"
+                "php": "^8.0"
             },
             "require-dev": {
                 "eloquent/phony-phpunit": "^6.0 || ^7.1",
                 "phpunit/phpunit": "^8.0 || ^9.0",
                 "squizlabs/php_codesniffer": "^3.0"
             },
-            "time": "2026-03-09T09:36:58+00:00",
+            "time": "2026-03-23T14:25:21+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1425,7 +1425,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/oauth2-google/issues",
-                "source": "https://github.com/thephpleague/oauth2-google/tree/4.2.0"
+                "source": "https://github.com/thephpleague/oauth2-google/tree/5.0.0"
             },
             "install-path": "../league/oauth2-google"
         },
@@ -2021,17 +2021,17 @@
         },
         {
             "name": "phpmailer/phpmailer",
-            "version": "v6.9.1",
-            "version_normalized": "6.9.1.0",
+            "version": "v7.1.1",
+            "version_normalized": "7.1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "039de174cd9c17a8389754d3b877a2ed22743e18"
+                "reference": "1bc1716a507a65e039d4ac9d9adebbbd0d346e15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/039de174cd9c17a8389754d3b877a2ed22743e18",
-                "reference": "039de174cd9c17a8389754d3b877a2ed22743e18",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/1bc1716a507a65e039d4ac9d9adebbbd0d346e15",
+                "reference": "1bc1716a507a65e039d4ac9d9adebbbd0d346e15",
                 "shasum": ""
             },
             "require": {
@@ -2045,13 +2045,14 @@
                 "doctrine/annotations": "^1.2.6 || ^1.13.3",
                 "php-parallel-lint/php-console-highlighter": "^1.0.0",
                 "php-parallel-lint/php-parallel-lint": "^1.3.2",
-                "phpcompatibility/php-compatibility": "^9.3.5",
-                "roave/security-advisories": "dev-latest",
-                "squizlabs/php_codesniffer": "^3.7.2",
+                "phpcompatibility/php-compatibility": "^10.0.0@dev",
+                "squizlabs/php_codesniffer": "^3.13.5",
                 "yoast/phpunit-polyfills": "^1.0.4"
             },
             "suggest": {
                 "decomplexity/SendOauth2": "Adapter for using XOAUTH2 authentication",
+                "directorytree/imapengine": "For uploading sent messages via IMAP, see gmail example",
+                "ext-imap": "Needed to support advanced email address parsing according to RFC822",
                 "ext-mbstring": "Needed to send email in multibyte encoding charset or decode encoded addresses",
                 "ext-openssl": "Needed for secure SMTP sending and DKIM signing",
                 "greew/oauth2-azure-provider": "Needed for Microsoft Azure XOAUTH2 authentication",
@@ -2061,7 +2062,7 @@
                 "symfony/polyfill-mbstring": "To support UTF-8 if the Mbstring PHP extension is not enabled (^1.2)",
                 "thenetworg/oauth2-azure": "Needed for Microsoft XOAUTH2 authentication"
             },
-            "time": "2023-11-25T22:23:28+00:00",
+            "time": "2026-05-18T08:06:14+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2093,7 +2094,7 @@
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
             "support": {
                 "issues": "https://github.com/PHPMailer/PHPMailer/issues",
-                "source": "https://github.com/PHPMailer/PHPMailer/tree/v6.9.1"
+                "source": "https://github.com/PHPMailer/PHPMailer/tree/v7.1.1"
             },
             "funding": [
                 {

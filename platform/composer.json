@@ -56,7 +56,7 @@
         "t1st3/php-json-minify": "0.6.2",
         "whichbrowser/parser": "2.1.8",
         "ezyang/htmlpurifier": "4.19.0",
-        "ivantcholakov/codeigniter-phpmailer": "1.5.0",
+        "ivantcholakov/codeigniter-phpmailer": "1.6.0",
         "guzzlehttp/guzzle": "7.11.1",
         "intervention/image": "2.7.2",
         "yohang88/letter-avatar": "1.0.5",
