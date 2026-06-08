@@ -617,6 +617,7 @@ return array(
     'League\\OAuth2\\Client\\Token\\AccessToken' => $vendorDir . '/league/oauth2-client/src/Token/AccessToken.php',
     'League\\OAuth2\\Client\\Token\\AccessTokenInterface' => $vendorDir . '/league/oauth2-client/src/Token/AccessTokenInterface.php',
     'League\\OAuth2\\Client\\Token\\ResourceOwnerAccessTokenInterface' => $vendorDir . '/league/oauth2-client/src/Token/ResourceOwnerAccessTokenInterface.php',
+    'League\\OAuth2\\Client\\Token\\SettableRefreshTokenInterface' => $vendorDir . '/league/oauth2-client/src/Token/SettableRefreshTokenInterface.php',
     'League\\OAuth2\\Client\\Tool\\ArrayAccessorTrait' => $vendorDir . '/league/oauth2-client/src/Tool/ArrayAccessorTrait.php',
     'League\\OAuth2\\Client\\Tool\\BearerAuthorizationTrait' => $vendorDir . '/league/oauth2-client/src/Tool/BearerAuthorizationTrait.php',
     'League\\OAuth2\\Client\\Tool\\GuardedPropertyTrait' => $vendorDir . '/league/oauth2-client/src/Tool/GuardedPropertyTrait.php',
