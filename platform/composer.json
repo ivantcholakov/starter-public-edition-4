@@ -52,7 +52,7 @@
         "twig/string-extra": "3.24.0",
         "salesforce/handlebars-php": "3.0.1",
         "scssphp/scssphp": "2.1.0",
-        "matthiasmullie/minify": "1.3.71",
+        "matthiasmullie/minify": "1.3.75",
         "t1st3/php-json-minify": "0.6.2",
         "whichbrowser/parser": "2.1.7",
         "ezyang/htmlpurifier": "4.19.0",
