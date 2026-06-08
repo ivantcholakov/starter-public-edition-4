@@ -334,9 +334,10 @@ if (!function_exists('html_attr_escape')) {
 
     function html_attr_escape($string) {
 
-        $twig = & _get_simple_twig_instance();
-
-        return call_user_func($twig->getFilter('escape')->getCallable(), $twig, $string, 'html_attr');
+        return
+            _get_simple_twig_instance()
+                ->getRuntime(\Twig\Runtime\EscaperRuntime::class)
+                ->escape($string, 'html_attr');
     }
 
 }
@@ -346,9 +347,10 @@ if (!function_exists('js_escape')) {
 
     function js_escape($string) {
 
-        $twig = & _get_simple_twig_instance();
-
-        return call_user_func($twig->getFilter('escape')->getCallable(), $twig, $string, 'js');
+        return
+            _get_simple_twig_instance()
+                ->getRuntime(\Twig\Runtime\EscaperRuntime::class)
+                ->escape($string, 'js');
     }
 
 }
@@ -358,9 +360,10 @@ if (!function_exists('css_escape')) {
 
     function css_escape($string) {
 
-        $twig = & _get_simple_twig_instance();
-
-        return call_user_func($twig->getFilter('escape')->getCallable(), $twig, $string, 'css');
+        return
+            _get_simple_twig_instance()
+                ->getRuntime(\Twig\Runtime\EscaperRuntime::class)
+                ->escape($string, 'css');
     }
 
 }
@@ -370,9 +373,10 @@ if (!function_exists('url_escape')) {
 
     function url_escape($string) {
 
-        $twig = & _get_simple_twig_instance();
-
-        return call_user_func($twig->getFilter('escape')->getCallable(), $twig, $string, 'url');
+        return
+            _get_simple_twig_instance()
+                ->getRuntime(\Twig\Runtime\EscaperRuntime::class)
+                ->escape($string, 'url');
     }
 
 }
@@ -420,7 +424,7 @@ if (!function_exists('esc')) {
 // Added by Ivan Tcholakov, 26-APR-2016.
 if (!function_exists('_get_simple_twig_instance')) {
 
-    function & _get_simple_twig_instance($charset = null) {
+    function _get_simple_twig_instance($charset = null) {
 
         static $instance = array();
 

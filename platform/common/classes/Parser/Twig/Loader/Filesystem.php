@@ -3,7 +3,7 @@
 /**
  * This is an integration class for CodeIgniter.
  *
- * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2016
+ * @author Ivan Tcholakov <ivantcholakov@gmail.com>, 2016-2020
  * @license The MIT License, http://opensource.org/licenses/MIT
  */
 
