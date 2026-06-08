@@ -59,7 +59,7 @@ class MockHandler implements \Countable
 
     /**
      * The passed in value must be an array of
-     * {@see \Psr\Http\Message\ResponseInterface} objects, Exceptions,
+     * {@see ResponseInterface} objects, Exceptions,
      * callables, or Promises.
      *
      * @param array<int, mixed>|null $queue       The parameters to be passed to the append function, as an indexed array.

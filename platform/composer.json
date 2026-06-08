@@ -60,7 +60,7 @@
         "league/oauth2-google": "4.0.1",
         "hayageek/oauth2-yahoo": "2.0.5",
         "stevenmaguire/oauth2-microsoft": "2.2.0",
-        "guzzlehttp/guzzle": "7.8.1",
+        "guzzlehttp/guzzle": "7.11.1",
         "intervention/image": "2.7.2",
         "yohang88/letter-avatar": "1.0.5",
         "athlon1600/php-proxy": "5.2.0",

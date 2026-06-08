@@ -44,7 +44,13 @@ final class StreamWrapper
                 .'writable, or both.');
         }
 
-        return fopen('guzzle://stream', $mode, false, self::createStreamContext($stream));
+        $resource = @fopen('guzzle://stream', $mode, false, self::createStreamContext($stream));
+
+        if ($resource === false) {
+            throw new \RuntimeException('Unable to create stream resource');
+        }
+
+        return $resource;
     }
 
     /**
@@ -69,7 +75,7 @@ final class StreamWrapper
         }
     }
 
-    public function stream_open(string $path, string $mode, int $options, string &$opened_path = null): bool
+    public function stream_open(string $path, string $mode, int $options, ?string &$opened_path = null): bool
     {
         $options = stream_context_get_options($this->context);
 
@@ -136,10 +142,14 @@ final class StreamWrapper
      *   ctime: int,
      *   blksize: int,
      *   blocks: int
-     * }
+     * }|false
      */
-    public function stream_stat(): array
+    public function stream_stat()
     {
+        if ($this->stream->getSize() === null) {
+            return false;
+        }
+
         static $modeMap = [
             'r' => 33060,
             'rb' => 33060,
