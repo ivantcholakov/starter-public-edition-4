@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e74380ddb48f7db8b184ab81b38faba6",
+    "content-hash": "9ebc5e9ff019c003eeb0038ea5ea9757",
     "packages": [
         {
             "name": "athlon1600/php-proxy",
