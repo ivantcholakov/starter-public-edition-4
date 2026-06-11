@@ -495,7 +495,7 @@ class Transliterate {
                 break;
 
             case 'traditional-chinese':
-            case 'zh-hant';
+            case 'zh-hant':
             case 'zh-tw':
                 $l = 'zh-Hant';
                 break;
