@@ -16,8 +16,7 @@ class Curl_controller extends Playground_Base_Controller {
         $this->template
             ->append_title($title)
             ->set_breadcrumb('RESTful Service Test', site_url('playground/rest/server'))
-            ->set_breadcrumb($title, site_url('playground/rest/curl'))
-        ;
+            ->set_breadcrumb($title, site_url('playground/rest/curl'));
 
         $this->template
             ->set_partial('subnavbar', 'rest/subnavbar')

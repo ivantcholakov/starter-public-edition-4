@@ -44,8 +44,7 @@ class Base_Controller extends Core_Controller {
         $this->template
             ->set_layout('default')
             ->set_metadata('robots', 'noindex,nofollow,noarchive')
-            ->set_breadcrumb('<i class="dashboard icon"></i>'.$this->lang->line('ui_home'), site_url())
-        ;
+            ->set_breadcrumb('<i class="dashboard icon"></i>'.$this->lang->line('ui_home'), site_url());
     }
 
     // Code for the real authentication system.
@@ -146,8 +145,7 @@ class Base_Controller extends Core_Controller {
 
         $this->template
             ->prepend_title($title_short)
-            ->set_breadcrumb($title_short)
-        ;
+            ->set_breadcrumb($title_short);
     }
 
     protected function _set_header_icon($icon) {

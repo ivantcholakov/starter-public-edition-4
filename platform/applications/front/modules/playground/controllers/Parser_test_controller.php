@@ -16,7 +16,6 @@ class Parser_test_controller extends Playground_Base_Controller {
         $this->template
             ->append_title($title)
             ->set_breadcrumb($title, site_url('playground/parser-test'));
-        ;
 
         $this->registry->set('nav', 'playground/parser_test');
     }

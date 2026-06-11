@@ -16,7 +16,6 @@ class Jquery_url_parser_controller extends Playground_Base_Controller {
         $this->template
             ->append_title($title)
             ->set_breadcrumb($title, site_url('playground/jquery-url-parser'));
-        ;
 
         $this->registry->set('nav', 'playground');
     }

@@ -18,7 +18,6 @@ class Markdownify_controller extends Playground_Base_Controller {
         $this->template
             ->append_title($title)
             ->set_breadcrumb($title, site_url('playground/markdownify'));
-        ;
 
         $this->registry->set('nav', 'playground');
     }

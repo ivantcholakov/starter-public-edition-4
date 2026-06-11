@@ -16,7 +16,6 @@ class Less_controller extends Playground_Base_Controller {
         $this->template
             ->append_title($title)
             ->set_breadcrumb($title, site_url('playground/less'));
-        ;
 
         $this->registry->set('nav', 'playground');
     }

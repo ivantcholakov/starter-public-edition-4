@@ -16,7 +16,6 @@ class Masonry_controller extends Playground_Base_Controller {
         $this->template
             ->append_title($title)
             ->set_breadcrumb($title, site_url('playground/masonry'));
-        ;
 
         $this->registry->set('nav', 'playground');
     }

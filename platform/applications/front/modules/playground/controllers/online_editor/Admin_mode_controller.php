@@ -13,8 +13,7 @@ class Admin_mode_controller extends Playground_Base_Controller {
         $this->template
             ->append_title($title)
             ->set_breadcrumb('Online Editor Test', site_url('playground/online-editor/user-mode'))
-            ->set_breadcrumb($title, site_url('playground/online-editor/admin-mode'))
-        ;
+            ->set_breadcrumb($title, site_url('playground/online-editor/admin-mode'));
 
         $this->template
             ->set_partial('ckeditor', 'partials/ckeditor')

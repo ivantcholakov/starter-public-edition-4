@@ -16,7 +16,6 @@ class Print_test_controller extends Playground_Base_Controller {
         $this->template
             ->append_title($title)
             ->set_breadcrumb($title, site_url('playground/print-test'));
-        ;
 
         $print = $this->input->get('print');
         $print = !empty($print);
