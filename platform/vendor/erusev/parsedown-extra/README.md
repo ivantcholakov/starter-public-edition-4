@@ -1,8 +1,4 @@
-> You might also like [Caret](http://caret.io?ref=parsedown) - our Markdown editor for the Desktop.
-
 ## Parsedown Extra
-
-[![Build Status](https://img.shields.io/travis/erusev/parsedown-extra/master.svg?style=flat-square)](https://travis-ci.org/erusev/parsedown-extra)
 
 An extension of [Parsedown](http://parsedown.org) that adds support for [Markdown Extra](https://michelf.ca/projects/php-markdown/extra/).
 
@@ -24,8 +20,12 @@ echo $Extra->text('# Header {.sth}'); # prints: <h1 class="sth">Header</h1>
 
 **Who uses Parsedown Extra?**
 
-[October CMS](http://octobercms.com/), [Bolt CMS](http://bolt.cm/), [Kirby CMS](http://getkirby.com/), [Grav CMS](http://getgrav.org/), [Statamic CMS](http://www.statamic.com/) and [more](https://www.versioneye.com/php/erusev:parsedown-extra/references).
+[October CMS](https://octobercms.com/), [Winter CMS](https://wintercms.com/), [Bolt CMS](https://boltcms.io/), [Kirby CMS](https://getkirby.com/), [Grav CMS](https://getgrav.org/), [Statamic CMS](https://www.statamic.com/) and [more](https://www.versioneye.com/php/erusev:parsedown-extra/references).
 
 **How can I help?**
 
-Use it, star it, share it and in case you feel generous, [donate some money](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=528P3NZQMP8N2).
+Use it, star it, share it and in case you feel generous, [donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=528P3NZQMP8N2).
+
+**What else should I know?**
+
+I also make [Nota](https://nota.md/) — a notes app designed for local Markdown files.

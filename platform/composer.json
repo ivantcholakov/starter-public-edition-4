@@ -44,7 +44,7 @@
         "fg/multiplayer": "1.2.1",
         "voku/portable-utf8": "6.1.1",
         "erusev/parsedown": "1.8.0",
-        "erusev/parsedown-extra": "0.8.1",
+        "erusev/parsedown-extra": "0.9.0",
         "pixel418/markdownify": "2.3.3",
         "mustache/mustache": "3.2.0",
         "netcarver/textile": "4.1.4",
