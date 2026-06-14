@@ -168,6 +168,122 @@ class Welcome_controller extends Base_Controller {
 
         //----------------------------------------------------------------------
 
+        $diagnostics[] = '<br /><strong>Installed/detected features for developers:</strong>';
+
+        $process = \Symfony\Component\Process\Process::fromShellCommandline('node -v');
+        $process->setTimeout(3600);
+
+        try {
+
+            $process->mustRun();
+
+            $diagnostics[] = 'node - ' . $yes . ', ' . $process->getOutput();
+
+        } catch (Exception $ex) {
+
+            $diagnostics[] = 'node - ' . $no;
+        }
+
+        $process = \Symfony\Component\Process\Process::fromShellCommandline('npm -v');
+        $process->setTimeout(3600);
+
+        try {
+
+            $process->mustRun();
+
+            $diagnostics[] = 'npm - ' . $yes . ', ' . $process->getOutput();
+
+        } catch (Exception $ex) {
+
+            $diagnostics[] = 'npm - ' . $no;
+        }
+
+        $process = \Symfony\Component\Process\Process::fromShellCommandline('lessc -v');
+        $process->setTimeout(3600);
+
+        try {
+
+            $process->mustRun();
+
+            $diagnostics[] = 'lessc - '  . $yes . ', ' . $process->getOutput();
+
+        } catch (Exception $ex) {
+
+            $diagnostics[] = 'lessc - ' . $no;
+        }
+
+        $process = \Symfony\Component\Process\Process::fromShellCommandline('postcss --version');
+        $process->setTimeout(3600);
+
+        try {
+
+            $process->mustRun();
+
+            $diagnostics[] = 'postcss - '  . $yes . ', ' . $process->getOutput();
+
+        } catch (Exception $ex) {
+
+            $diagnostics[] = 'postcss - ' . $no;
+        }
+
+        $process = \Symfony\Component\Process\Process::fromShellCommandline('autoprefixer --version');
+        $process->setTimeout(3600);
+
+        try {
+
+            $process->mustRun();
+
+            $diagnostics[] = 'autoprefixer - '  . $yes . ', ' . $process->getOutput();
+
+        } catch (Exception $ex) {
+
+            $diagnostics[] = 'autoprefixer - ' . $no;
+        }
+
+        $process = \Symfony\Component\Process\Process::fromShellCommandline('cssnano -v');
+        $process->setTimeout(3600);
+
+        try {
+
+            $process->mustRun();
+
+            $diagnostics[] = 'cssnano - '  . $yes . ', ' . $process->getOutput();
+
+        } catch (Exception $ex) {
+
+            $diagnostics[] = 'cssnano - ' . $no;
+        }
+
+        $process = \Symfony\Component\Process\Process::fromShellCommandline('uglifyjs -v');
+        $process->setTimeout(3600);
+
+        try {
+
+            $process->mustRun();
+
+            $diagnostics[] = 'uglifyjs - '  . $yes . ', ' . $process->getOutput();
+
+        } catch (Exception $ex) {
+
+            $diagnostics[] = 'uglifyjs - ' . $no;
+        }
+
+        $process = \Symfony\Component\Process\Process::fromShellCommandline('tsc -v');
+        $process->setTimeout(3600);
+
+        try {
+
+            $process->mustRun();
+
+            $diagnostics[] = 'tsc - '  . $yes . ', ' . $process->getOutput();
+
+        } catch (Exception $ex) {
+
+            $diagnostics[] = 'tsc - ' . $no;
+        }
+
+        //----------------------------------------------------------------------
+
         $diagnostics = implode('<br />', $diagnostics);
 
         $this->template

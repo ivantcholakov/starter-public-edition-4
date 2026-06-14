@@ -138,6 +138,10 @@ lessc -v
 
 * Install PostCSS and its CLI utility (https://github.com/postcss/postcss-cli) globally:
 
+```
+sudo npm -g install postcss
+```
+
 ```sh
 sudo npm -g install postcss-cli
 ```
@@ -160,10 +164,32 @@ sudo npm -g install autoprefixer
 sudo npm -g install cssnano
 ```
 
+```sh
+sudo npm -g install cssnano-cli
+```
+
+This command should work:
+
+```sh
+cssnano -v
+```
+
+* Install UglifyJS (https://github.com/mishoo/UglifyJS):
+
+```sh
+sudo npm -g install uglify-js
+```
+
+This command should work:
+
+```sh
+uglifyjs -v
+```
+
 * Install TypeScript compiler (if it is needed):
 
 ```sh
-sudo npm -g install typescript-compiler
+sudo npm -g install typescript
 ```
 
 This command should work:
