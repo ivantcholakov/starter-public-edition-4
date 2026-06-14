@@ -48,7 +48,7 @@ class TSCompiler {
 	protected static function buildCommand(Array $options) {
 		$cmd = 'tsc ';
 		if (isset($options['outputFile'])) {
-			$cmd .= '--out ' . escape_shell_arg($options['outputFile']) . ' ';
+			$cmd .= '--outFile ' . escape_shell_arg($options['outputFile']) . ' ';
 		}
 		$cmd .= escape_shell_arg($options['inputFile']);
 		return $cmd;
