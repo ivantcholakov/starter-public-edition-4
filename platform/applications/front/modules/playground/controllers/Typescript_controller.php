@@ -44,7 +44,7 @@ class Typescript_controller extends Playground_Base_Controller {
             }
 
             try {
-                $output_min = $this->parser->parse_string($input, null, true, array('ts', 'jsmin'));
+                $output_min = $this->parser->parse_string($input, null, true, array('ts', 'jsmin' => ['implementation' => 'minifyjs']));
             } catch(Exception $e) {
                 $output_min = $e->getMessage();
             }
