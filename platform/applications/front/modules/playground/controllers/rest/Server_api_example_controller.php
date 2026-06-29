@@ -2,8 +2,6 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-use Restserver\Libraries\REST_Controller;
-
 /**
  * This is an example of a few basic user interaction methods you could use
  * all done with a hardcoded array

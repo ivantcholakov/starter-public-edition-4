@@ -439,7 +439,7 @@ class Rest_client
         $this->response_string =& $response;
 
         // It is a supported format, so just run its formatting method
-        if (array_key_exists($this->format, $this->supported_formats))
+        if (array_key_exists((string) $this->format, $this->supported_formats))
         {
             return $this->{'_'.$this->format}($response);
         }

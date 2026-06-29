@@ -345,7 +345,10 @@ class Curl {
             $errno = curl_errno($this->session);
             $error = curl_error($this->session);
 
-            curl_close($this->session);
+            if (\PHP_VERSION_ID < 80000) {
+                curl_close($this->session);
+            }
+
             $this->set_defaults();
 
             $this->error_code = $errno;
@@ -357,7 +360,10 @@ class Curl {
         // Request successful
         else
         {
-            curl_close($this->session);
+            if (\PHP_VERSION_ID < 80000) {
+                curl_close($this->session);
+            }
+
             $this->last_response = $this->response;
             $this->set_defaults();
             return $this->last_response;
