@@ -5,12 +5,10 @@
 |  Auto-load Classes in PHP5 Way - A Location Map
 |
 |  An example:
-|  $autoload['classes'] = array(
+|  $autoload['classes'] = [
 |      'Markdownify' => COMMONPATH.'third_party/markdownify/markdownify.php'
-|  );
+|  ];
 | -------------------------------------------------------------------
 */
 
-$autoload['classes'] = array(
-    'Restserver\\Libraries\\REST_Controller' => COMMONPATH.'libraries/REST_Controller.php',
-);
+$autoload['classes'] = [];
