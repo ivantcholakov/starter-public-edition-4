@@ -65,7 +65,7 @@
         "components/modernizr": "3.5.0",
         "components/webfontloader": "1.6.3",
         "components/highlightjs": "9.16.2",
-        "scrivo/highlight.php": "9.18.1.9",
+        "scrivo/highlight.php": "9.18.1.10",
         "desandro/imagesloaded": "4.1.4",
         "desandro/masonry": "4.2.2"
     }
