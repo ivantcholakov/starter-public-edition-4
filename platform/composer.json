@@ -61,7 +61,7 @@
         "intervention/image": "2.7.2",
         "yohang88/letter-avatar": "1.0.5",
         "athlon1600/php-proxy": "5.2.0",
-        "components/jquery": "3.6.0",
+        "components/jquery": "3.7.1",
         "components/modernizr": "3.5.0",
         "components/webfontloader": "1.6.3",
         "components/highlightjs": "9.16.2",
