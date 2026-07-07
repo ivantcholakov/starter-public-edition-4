@@ -58,9 +58,9 @@ class Map extends CI_Model {
         }
 
         $result = array(
-            'latitude' => (double) $latitude,
-            'longitude' => (double) $longitude,
-            'zoom' => (double) $zoom,
+            'latitude' => (float) $latitude,
+            'longitude' => (float) $longitude,
+            'zoom' => (float) $zoom,
             'link' => $found ? gmap_url($latitude, $longitude, $zoom) : '',
             'found' => $found,
         );

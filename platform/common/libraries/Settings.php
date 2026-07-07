@@ -336,7 +336,7 @@ class Settings {
 
             } else {
 
-                $value = (double) $value;
+                $value = (float) $value;
             }
 
         }
