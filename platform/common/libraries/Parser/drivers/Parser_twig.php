@@ -214,7 +214,7 @@ class CI_Parser_twig extends CI_Parser_driver {
         return $this->output($result, $return, $ci, $is_mx);
     }
 
-    protected function createFilesystemLoader(array $options = null)
+    protected function createFilesystemLoader(?array $options = null)
     {
         if (empty($options)) {
             $options = [];
@@ -249,7 +249,7 @@ class CI_Parser_twig extends CI_Parser_driver {
         return $loader;
     }
 
-    protected function loadHelpers(array $options = null)
+    protected function loadHelpers(?array $options = null)
     {
         if (empty($options)) {
             $options = [];
@@ -282,7 +282,7 @@ class CI_Parser_twig extends CI_Parser_driver {
         }
     }
 
-    protected function loadExtensions(array $options = null)
+    protected function loadExtensions(?array $options = null)
     {
         if (empty($options)) {
             $options = [];
@@ -332,7 +332,7 @@ class CI_Parser_twig extends CI_Parser_driver {
         )));
     }
 
-    protected function loadFunctions(array $options = null)
+    protected function loadFunctions(?array $options = null)
     {
         if (empty($options)) {
             $options = [];
@@ -397,7 +397,7 @@ class CI_Parser_twig extends CI_Parser_driver {
         }
     }
 
-    protected function loadFilters(array $options = null)
+    protected function loadFilters(?array $options = null)
     {
         if (empty($options)) {
             $options = [];
@@ -449,7 +449,7 @@ class CI_Parser_twig extends CI_Parser_driver {
         }
     }
 
-    protected function loadTests(array $options = null)
+    protected function loadTests(?array $options = null)
     {
         if (empty($options)) {
             $options = [];
@@ -501,7 +501,7 @@ class CI_Parser_twig extends CI_Parser_driver {
         }
     }
 
-    protected function loadGlobals(array $options = null)
+    protected function loadGlobals(?array $options = null)
     {
         if (empty($options)) {
             $options = [];
