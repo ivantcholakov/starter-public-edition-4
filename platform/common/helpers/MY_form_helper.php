@@ -292,7 +292,7 @@ if ( ! function_exists('build_validation_message'))
 
         $line = get_instance()->lang->line('form_validation_'.$rule);
 
-        return str_replace(array('{field}', '{param}'), array($field, $param), $line);
+        return str_replace(array('{field}', '{param}'), array($field, $param), (string) $line);
     }
 }
 
@@ -530,10 +530,10 @@ if ( ! function_exists('form_prep'))
 
         if ($is_textarea === TRUE)
         {
-            return html_escape($str);
+            return html_escape((string) $str);
         }
 
-        return str_replace(array("'", '"'), array('&#39;', '&quot;'), html_escape($str));
+        return str_replace(array("'", '"'), array('&#39;', '&quot;'), html_escape((string) $str));
     }
 }
 
@@ -569,7 +569,7 @@ if ( ! function_exists('set_value'))
         }
         elseif ($escape === 'attr')
         {
-            return str_replace(array("'", '"'), array('&#39;', '&quot;'), (string) html_escape($value));
+            return str_replace(array("'", '"'), array('&#39;', '&quot;'), html_escape((string) $value));
         }
 
         return html_escape($value);

@@ -162,7 +162,10 @@ class Decoder extends \Intervention\Image\AbstractDecoder
 
         // copy original
         imagecopy($canvas, $resource, 0, 0, 0, 0, $width, $height);
-        imagedestroy($resource);
+
+        if (\PHP_VERSION_ID < 80000) {
+            imagedestroy($resource);
+        }
 
         $resource = $canvas;
 

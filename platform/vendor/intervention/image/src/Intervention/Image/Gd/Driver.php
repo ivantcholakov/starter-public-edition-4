@@ -13,7 +13,7 @@ class Driver extends \Intervention\Image\AbstractDriver
      * @param Decoder $decoder
      * @param Encoder $encoder
      */
-    public function __construct(Decoder $decoder = null, Encoder $encoder = null)
+    public function __construct(?Decoder $decoder = null, ?Encoder $encoder = null)
     {
         if ( ! $this->coreAvailable()) {
             throw new NotSupportedException(
@@ -81,7 +81,7 @@ class Driver extends \Intervention\Image\AbstractDriver
         imagesavealpha($clone, true);
         $transparency = imagecolorallocatealpha($clone, 0, 0, 0, 127);
         imagefill($clone, 0, 0, $transparency);
-        
+
         imagecopy($clone, $core, 0, 0, 0, 0, $width, $height);
 
         return $clone;

@@ -55,14 +55,19 @@ class FillCommand extends AbstractCommand
 
             // set base as new resource-core
             $image->setCore($base);
-            imagedestroy($resource);
+
+            if (\PHP_VERSION_ID < 80000) {
+                imagedestroy($resource);
+            }
 
         } else {
             // fill whole image otherwise
             imagefilledrectangle($resource, 0, 0, $width - 1, $height - 1, $filling);
         }
 
-        isset($tile) ? imagedestroy($tile->getCore()) : null;
+        if (\PHP_VERSION_ID < 80000) {
+            isset($tile) ? imagedestroy($tile->getCore()) : null;
+        }
 
         return true;
     }

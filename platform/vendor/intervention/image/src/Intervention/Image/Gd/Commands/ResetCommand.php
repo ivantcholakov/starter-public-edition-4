@@ -17,11 +17,13 @@ class ResetCommand extends AbstractCommand
     {
         $backupName = $this->argument(0)->value();
         $backup = $image->getBackup($backupName);
-        
+
         if (is_resource($backup) || $backup instanceof \GdImage) {
 
             // destroy current resource
-            imagedestroy($image->getCore());
+            if (\PHP_VERSION_ID < 80000) {
+                imagedestroy($image->getCore());
+            }
 
             // clone backup
             $backup = $image->getDriver()->cloneCore($backup);

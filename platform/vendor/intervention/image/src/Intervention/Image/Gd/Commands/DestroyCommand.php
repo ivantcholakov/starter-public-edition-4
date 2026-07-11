@@ -15,11 +15,14 @@ class DestroyCommand extends AbstractCommand
     public function execute($image)
     {
         // destroy image core
-        imagedestroy($image->getCore());
+        if (\PHP_VERSION_ID < 80000) {
 
-        // destroy backups
-        foreach ($image->getBackups() as $backup) {
-            imagedestroy($backup);
+            imagedestroy($image->getCore());
+
+            // destroy backups
+            foreach ($image->getBackups() as $backup) {
+                imagedestroy($backup);
+            }
         }
 
         return true;

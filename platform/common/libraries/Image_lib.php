@@ -254,8 +254,10 @@ class Image_lib extends CI_Image_lib
         }
 
         // Kill the file handles
-        imagedestroy($dst_img);
-        imagedestroy($src_img);
+        if (\PHP_VERSION_ID < 80000) {
+            imagedestroy($dst_img);
+            imagedestroy($src_img);
+        }
 
         if ($this->dynamic_output !== TRUE)
         {
@@ -468,8 +470,10 @@ class Image_lib extends CI_Image_lib
         }
 
         // Kill the file handles
-        imagedestroy($dst_img);
-        imagedestroy($src_img);
+        if (\PHP_VERSION_ID < 80000) {
+            imagedestroy($dst_img);
+            imagedestroy($src_img);
+        }
 
         // Modified by Ivan Tcholakov, 12-APR-2015.
         //chmod($this->full_dst_path, $this->file_permissions);
@@ -550,7 +554,9 @@ class Image_lib extends CI_Image_lib
         }
 
         // Kill the file handles
-        imagedestroy($src_img);
+        if (\PHP_VERSION_ID < 80000) {
+            imagedestroy($src_img);
+        }
 
         // Modified by Ivan Tcholakov, 12-APR-2015.
         //chmod($this->full_dst_path, $this->file_permissions);
@@ -690,8 +696,10 @@ class Image_lib extends CI_Image_lib
             return FALSE;
         }
 
-        imagedestroy($src_img);
-        imagedestroy($wm_img);
+        if (\PHP_VERSION_ID < 80000) {
+            imagedestroy($src_img);
+            imagedestroy($wm_img);
+        }
 
         return TRUE;
     }
