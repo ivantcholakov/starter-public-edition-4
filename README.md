@@ -26,7 +26,7 @@ https://www.codeigniter.com/userguide3/
 Requirements
 ------------
 
-PHP 8.0.2 or higher, Apache 2.4 (mod_rewrite should be enabled).
+PHP 8.2.0 or higher, Apache 2.4 (mod_rewrite should be enabled).
 For database support seek information within CodeIgniter 3 documentation.
 
 For UTF-8 encoded sites it is highly recommendable the following PHP extensions to be installed:
