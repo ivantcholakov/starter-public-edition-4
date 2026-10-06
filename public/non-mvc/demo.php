@@ -48,7 +48,7 @@ echo apple_touch_icon_precomposed();
 
 echo js_platform();
 
-echo js('assets/composer-asset/components/webfontloader/webfontloader.js?v='.WEB_ASSET_CACHE_BUST_NUMBER);
+echo js('assets/components/webfontloader/webfontloader.js?v='.WEB_ASSET_CACHE_BUST_NUMBER);
 
 ?>
 

@@ -1,5 +1,0 @@
-{
-    "require": {
-        "paragonie/sodium_compat": "2.5.0"
-    }
-}

@@ -1,21 +1,10 @@
 {
     "config": {
         "preferred-install": "dist",
-        "optimize-autoloader": true,
-        "allow-plugins": {
-            "composer/installers": true
-        }
+        "optimize-autoloader": true
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "extra": {
-        "installer-types": ["library", "component"],
-        "installer-paths": {
-            "../public/assets/composer-asset/{$vendor}/{$name}/": [
-                "type:component"
-            ]
-        }
-    },
     "require": {
         "php": ">=8.2.0",
         "paragonie/sodium_compat": "2.5.0",
@@ -59,13 +48,7 @@
         "intervention/image": "2.7.2",
         "yohang88/letter-avatar": "1.0.5",
         "athlon1600/php-proxy": "5.2.0",
-        "components/jquery": "3.7.1",
-        "components/modernizr": "3.5.0",
-        "components/webfontloader": "1.6.3",
-        "components/highlightjs": "9.16.2",
         "scrivo/highlight.php": "9.18.1.10",
-        "desandro/imagesloaded": "4.1.4",
-        "desandro/masonry": "4.2.2",
         "voku/anti-xss": "4.1.44",
         "voku/portable-ascii": "2.1.1"
     }
