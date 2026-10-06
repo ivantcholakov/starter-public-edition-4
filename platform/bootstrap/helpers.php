@@ -15,17 +15,27 @@ if (!function_exists('resolve_path')) {
 
     function resolve_path($path) {
 
-        $path = str_replace('\\', '/', $path);
+        $path = str_replace('\\', '/', (string) $path);
 
-        $out = array();
+        $out = [];
 
         foreach (explode('/', $path) as $i => $fold) {
 
-            if ($fold == '' || $fold == '.') {
+            if (
+                $fold == ''
+                ||
+                $fold == '.'
+            ) {
+
                 continue;
             }
 
-            if ($fold == '..' && $i > 0 && end($out) != '..') {
+            if (
+                $fold == '..'
+                &&
+                $i > 0
+                && end($out) != '..'
+            ) {
                 array_pop($out);
             } else {
                 $out[] = $fold;
@@ -45,8 +55,8 @@ if (!function_exists('merge_paths')) {
     function merge_paths($path1, $path2) {
 
         // Added by Ivan Tcholakov, 13-MAR-2016.
-        $path1 = str_replace('\\', '/', $path1);
-        $path2 = str_replace('\\', '/', $path2);
+        $path1 = str_replace('\\', '/', (string) $path1);
+        $path2 = str_replace('\\', '/', (string) $path2);
         //
 
         $p1 = explode('/', trim($path1,' /'));
@@ -58,7 +68,8 @@ if (!function_exists('merge_paths')) {
 
             if (array_slice($p1, -$len) === array_slice($p2, 0, $len)) {
 
-                return '/'
+                return
+                    '/'
                     . implode('/', array_slice($p1, 0, -$len))
                     . '/'
                     . implode('/', $p2);
@@ -84,16 +95,28 @@ if (!function_exists('detect_https')) {
         return
 
             (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off')
-            ? true
-            : (
-                (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https')
-                ? true
-                : (
-                    (!empty($_SERVER['HTTP_FRONT_END_HTTPS']) && strtolower($_SERVER['HTTP_FRONT_END_HTTPS']) !== 'off')
-                    ? true
-                    : false
-                )
-            );
+                ?
+                    true
+                :
+                    (
+                        (
+                            isset($_SERVER['HTTP_X_FORWARDED_PROTO'])
+                            &&
+                            strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https'
+                        )
+                            ?
+                                true
+                            :
+                                (
+                                    (
+                                        !empty($_SERVER['HTTP_FRONT_END_HTTPS'])
+                                        &&
+                                        strtolower($_SERVER['HTTP_FRONT_END_HTTPS']) !== 'off'
+                                    )
+                                        ? true
+                                        : false
+                                )
+                    );
     }
 
 }
@@ -576,24 +599,27 @@ if (!function_exists('str_replace_limit')) {
 
                 // Call this function again for
                 $this_function = __FUNCTION__;
-                $subject = $this_function(
+
+                $subject =
+                    $this_function(
                         $this_search,
                         $this_replace,
                         $subject,
                         $this_count,
                         $limit
-                );
+                    );
 
                 // Adjust $count
                 $count += $this_count;
 
                 // Adjust $limit, if not -1
-                if($limit!=-1){
+                if ($limit != -1) {
                     $limit -= $this_count;
                 }
 
                 // Reached $limit, return $subject
-                if($limit===0){
+                if ($limit === 0) {
+
                     return $subject;
                 }
 
@@ -602,6 +628,7 @@ if (!function_exists('str_replace_limit')) {
             return $subject;
 
         } else {
+
             $search = strval($search);
             $replace = strval($replace);
 
@@ -609,7 +636,8 @@ if (!function_exists('str_replace_limit')) {
             $pos = strpos($subject, $search);
 
             // Return $subject if $search cannot be found
-            if($pos===false){
+            if ($pos === false) {
+
                 return $subject;
             }
 
@@ -617,7 +645,7 @@ if (!function_exists('str_replace_limit')) {
             $search_len = strlen($search);
 
             // Loop until $search can no longer be found, or $limit is reached
-            for($i=0;(($i<$limit)||($limit===-1));$i++){
+            for ($i = 0; (($i<$limit) || ($limit === -1)); $i++) {
 
                 // Replace
                 $subject = substr_replace($subject, $replace, $pos, $search_len);
@@ -652,13 +680,14 @@ if (!function_exists('_str_replace_limit_valid_integer')) {
      * @param mixed $string
      * @return bool Returns boolean TRUE if string is a valid integer, or FALSE if it is not
      */
-    function _str_replace_limit_valid_integer($string){
+    function _str_replace_limit_valid_integer($string) {
+
         // 1. Cast as string (in case integer is provided)
         // 1. Convert the string to an integer and back to a string
         // 2. Check if identical (note: 'identical', NOT just 'equal')
         // Note: TRUE, FALSE, and NULL $string values all return FALSE
         $string = strval($string);
-        return ($string===strval(intval($string)));
+        return ($string === strval(intval($string)));
     }
 
 }
@@ -703,6 +732,48 @@ if (!function_exists('_get_object_vars_recursive_callback')) {
 
 }
 
+if (!function_exists('array_first')) {
+
+    // Built-in PHP 8.5 and above.
+
+    /**
+     * Returns the first value of a given array.
+     *
+     * @param array $array The array to get the first value of.
+     * @return mixed First value of the array, or null if the array is
+     *   empty. Note that null itself can also be a valid array value.
+     */
+    function array_first(array $array): mixed {
+
+        return
+            $array === []
+                ? null
+                : $array[array_key_first($array)];
+    }
+
+}
+
+if (!function_exists('array_last')) {
+
+    // Built-in PHP 8.5 and above.
+
+    /**
+     * Returns the first value of a given array.
+     *
+     * @param array $array The array to get the first value of.
+     * @return mixed First value of the array, or null if the array is
+     *   empty. Note that null itself can also be a valid array value.
+     */
+    function array_last(array $array): mixed {
+
+        return
+            $array === []
+                ? null
+                : $array[array_key_last($array)];
+    }
+
+}
+
 // The following functions have been borrowed from Laravel framework.
 // @link http://laravel.com/
 
@@ -716,7 +787,7 @@ if (!function_exists('array_divide')) {
 
     function array_divide($array) {
 
-        return array(array_keys($array), array_values($array));
+        return [array_keys($array), array_values($array)];
     }
 
 }
@@ -798,7 +869,9 @@ if (!function_exists('array_merge_recursive_distinct')) {
 
         if (!is_array($arg0)) {
 
-            throw new InvalidArgumentException('array_merge_recursive_distinct(): Array arguments are expected.');
+            throw new InvalidArgumentException(
+                'array_merge_recursive_distinct(): Array arguments are expected.'
+            );
         }
 
         $result = array_merge([], $arg0);
@@ -812,7 +885,9 @@ if (!function_exists('array_merge_recursive_distinct')) {
 
             if (!is_array($arr)) {
 
-                throw new InvalidArgumentException('array_merge_recursive_distinct(): Array arguments are expected.');
+                throw new InvalidArgumentException(
+                    'array_merge_recursive_distinct(): Array arguments are expected.'
+                );
             }
 
             foreach ($arr as $key => $value) {
@@ -877,34 +952,47 @@ if (!function_exists('preg_error_message')) {
         switch ($code) {
 
             case PREG_NO_ERROR:
+
                 $result = 'PCRE: No error, probably invalid regular expression.';
+
                 break;
 
             case PREG_INTERNAL_ERROR:
+
                 $result = 'PCRE: Internal error.';
+
                 break;
 
             case PREG_BACKTRACK_LIMIT_ERROR:
+
                 $result = 'PCRE: Backtrack limit has been exhausted.';
+
                 break;
 
             case PREG_RECURSION_LIMIT_ERROR:
+
                 $result = 'PCRE: Recursion limit has been exhausted.';
+
                 break;
 
             case PREG_BAD_UTF8_ERROR:
+
                 $result = 'PCRE: Malformed UTF-8 data.';
+
                 break;
 
             default:
 
                 if (is_php('5.3') && $code == PREG_BAD_UTF8_OFFSET_ERROR) {
+
                     $result = 'PCRE: Did not end at a valid UTF-8 codepoint.';
-                }
-                elseif (is_php('7') && $code == PREG_JIT_STACKLIMIT_ERROR) {
+
+                } elseif (is_php('7') && $code == PREG_JIT_STACKLIMIT_ERROR) {
+
                     $result = 'PCRE: Failed because of limited JIT stack space.';
-                }
-                else {
+
+                } else {
+
                     $result = 'PCRE: Error '.$code.'.';
                 }
 
