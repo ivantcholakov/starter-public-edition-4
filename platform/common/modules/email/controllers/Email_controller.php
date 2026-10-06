@@ -255,7 +255,7 @@ class Email_controller extends Core_Controller {
 
             $debug_message = trim(strip_tags((string) $this->email->print_debugger()));
 
-            $this->email->clear();
+            $this->email->clear(true);
 
             $this->registry->set('email_debugger', $debug_message);
 
