@@ -3,8 +3,7 @@
         "preferred-install": "dist",
         "optimize-autoloader": true,
         "allow-plugins": {
-            "composer/installers": true,
-            "oomphinc/composer-installers-extender": true
+            "composer/installers": true
         }
     },
     "minimum-stability": "dev",
@@ -20,7 +19,6 @@
     "require": {
         "php": ">=8.2.0",
         "paragonie/sodium_compat": "2.5.0",
-        "oomphinc/composer-installers-extender": "2.0.1",
         "codeigniter/framework": "3.1.13",
         "symfony/polyfill-php83": "1.38.1",
         "symfony/polyfill-php84": "1.38.1",
@@ -67,6 +65,8 @@
         "components/highlightjs": "9.16.2",
         "scrivo/highlight.php": "9.18.1.10",
         "desandro/imagesloaded": "4.1.4",
-        "desandro/masonry": "4.2.2"
+        "desandro/masonry": "4.2.2",
+        "voku/anti-xss": "4.1.44",
+        "voku/portable-ascii": "2.1.1"
     }
 }
