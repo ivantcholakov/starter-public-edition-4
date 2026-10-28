@@ -8,7 +8,7 @@ class ProxyEvent implements \ArrayAccess {
 	public function __construct($data = array()){
 		$this->data = $data;
 	}
-        
+
 	#[\ReturnTypeWillChange]
 	public function offsetSet($offset, $value){
 		
